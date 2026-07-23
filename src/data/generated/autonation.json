@@ -1,0 +1,5327 @@
+{
+  "id": "autonation",
+  "customerName": "AutoNation",
+  "websiteUrl": "https://www.autonation.com/",
+  "brandDomain": "autonation.com",
+  "networkName": "Invoca for Automotive",
+  "industry": "Automotive Retail & Service",
+  "bookingTerm": "Test Drive",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 19, 2026 - Jan 24, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 400,
+      "yTicks": [
+        0,
+        100,
+        200,
+        300,
+        400
+      ],
+      "chart": [
+        {
+          "date": "01/19",
+          "value": 215
+        },
+        {
+          "date": "01/20",
+          "value": 268
+        },
+        {
+          "date": "01/21",
+          "value": 312
+        },
+        {
+          "date": "01/22",
+          "value": 289
+        },
+        {
+          "date": "01/23",
+          "value": 351
+        },
+        {
+          "date": "01/24",
+          "value": 374
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Test Drive Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Test Drive Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AN_NewCar_Toyota_RAV4_Exact",
+          "marketingSearchTerm": "autonation toyota rav4 price",
+          "landingPageUrl": "https://www.autonation.com/shop/new/toyota/rav4?utm_source=google&utm_medium=cpc&utm_campaign=AN_NewCar_Toyota_RAV4_Exact",
+          "websiteJourney": "Home / Shop / New Cars",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Used-Cars-Under-15k_Local",
+          "marketingSearchTerm": "used cars for sale near me under $15,000",
+          "landingPageUrl": "https://www.autonation.com/shop/used?price=under-15000&utm_source=google&utm_medium=cpc&utm_campaign=Used-Cars-Under-15k_Local",
+          "websiteJourney": "Home / Shop / By Price / Under $15,000",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AN_CPO_SUV_Geo",
+          "marketingSearchTerm": "certified pre-owned suv near me",
+          "landingPageUrl": "https://www.autonation.com/shop/certified?body=suv&utm_source=google&utm_medium=cpc&utm_campaign=AN_CPO_SUV_Geo",
+          "websiteJourney": "Home / Shop / Used Cars / Certified Pre-Owned",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AN_EV_Inventory_State",
+          "marketingSearchTerm": "electric cars for sale florida",
+          "landingPageUrl": "https://www.autonation.com/shop/electric?utm_source=bing&utm_medium=cpc&utm_campaign=AN_EV_Inventory_State",
+          "websiteJourney": "Home / Shop / Electric Cars",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AN_Payments_Under300",
+          "marketingSearchTerm": "cars under $300 a month",
+          "landingPageUrl": "https://www.autonation.com/shop?payment=under-300&utm_source=google&utm_medium=cpc&utm_campaign=AN_Payments_Under300",
+          "websiteJourney": "Home / Shop / By Monthly Payment / Under $300",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AN_NewTruck_F150_Exact",
+          "marketingSearchTerm": "ford f-150 for sale near me",
+          "landingPageUrl": "https://www.autonation.com/shop/new/ford/f-150?utm_source=bing&utm_medium=cpc&utm_campaign=AN_NewTruck_F150_Exact",
+          "websiteJourney": "Home / Shop / New Cars / Ford",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AN_SellMyCar_InstantOffer",
+          "marketingSearchTerm": "sell my car instant offer",
+          "landingPageUrl": "https://www.autonation.com/sell?utm_source=google&utm_medium=cpc&utm_campaign=AN_SellMyCar_InstantOffer",
+          "websiteJourney": "Home / Sell My Car",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AN_Finance_Prequal_CreditTiers",
+          "marketingSearchTerm": "car loan prequalification bad credit",
+          "landingPageUrl": "https://www.autonation.com/finance/prequalify?utm_source=google&utm_medium=cpc&utm_campaign=AN_Finance_Prequal_CreditTiers",
+          "websiteJourney": "Home / Finance / Get Prequalified",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Service-OilChange-NearMe",
+          "marketingSearchTerm": "oil change appointment near me",
+          "landingPageUrl": "https://www.autonation.com/service/oil-change?utm_source=google&utm_medium=cpc&utm_campaign=Service-OilChange-NearMe",
+          "websiteJourney": "Home / Service / Schedule Service",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Every_Mile_Made_Easy",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/shop/new?utm_source=instagram&utm_medium=paid_social&utm_campaign=Every_Mile_Made_Easy",
+          "websiteJourney": "Home / Shop / New Cars",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "A_Vehicle_For_Every_Journey_Family",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/shop/used?lifestyle=family&utm_source=facebook&utm_medium=paid_social&utm_campaign=A_Vehicle_For_Every_Journey_Family",
+          "websiteJourney": "Home / Shop / Used Cars",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "AN_EV_Lifestyle_Outdoors",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/shop/electric?utm_source=instagram&utm_medium=paid_social&utm_campaign=AN_EV_Lifestyle_Outdoors",
+          "websiteJourney": "Home / Shop / Electric Cars",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "SEO_ResearchHub_Comparisons",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/research/jeep-cherokee-vs-grand-cherokee?utm_source=organic&utm_medium=organic&utm_campaign=SEO_ResearchHub_Comparisons",
+          "websiteJourney": "Home / Vehicle Research / Buying Guides",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "SEO_ServiceCenter_Local",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/service?utm_source=organic&utm_medium=organic&utm_campaign=SEO_ServiceCenter_Local",
+          "websiteJourney": "Home / Find a Store / Service Center",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "SEO_ProtectionPlans",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/protection/vehicle-protection-plans?utm_source=organic&utm_medium=organic&utm_campaign=SEO_ProtectionPlans",
+          "websiteJourney": "Home / Shop / Vehicle Protection Plans",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "AN_ProtectionPlan_Cost",
+          "marketingSearchTerm": "extended warranty vehicle protection plan cost",
+          "landingPageUrl": "https://www.autonation.com/protection/vehicle-protection-plans?utm_source=google&utm_medium=cpc&utm_campaign=AN_ProtectionPlan_Cost",
+          "websiteJourney": "Home / Shop / Vehicle Protection Plans",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "AN_Retarget_SavedInventory",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/favorites?utm_source=facebook&utm_medium=paid_social&utm_campaign=AN_Retarget_SavedInventory",
+          "websiteJourney": "Home / Shop / Saved Vehicles",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "SEO_MobileService_NearMe",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/service/mobile?utm_source=organic&utm_medium=organic&utm_campaign=SEO_MobileService_NearMe",
+          "websiteJourney": "Home / Service / Mobile Service",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "AN_Brake_Service_Geo",
+          "marketingSearchTerm": "brake service near me",
+          "landingPageUrl": "https://www.autonation.com/service/brakes?utm_source=bing&utm_medium=cpc&utm_campaign=AN_Brake_Service_Geo",
+          "websiteJourney": "Home / Service / Schedule Service",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "AN_Luxury_Lifestyle_Tiles",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.autonation.com/shop/new?lifestyle=luxury&utm_source=instagram&utm_medium=paid_social&utm_campaign=AN_Luxury_Lifestyle_Tiles",
+          "websiteJourney": "Home / Shop / New Cars",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (AutoNation)",
+      "dateRange": "1/19/2026-1/24/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "12,480"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "68%"
+            },
+            {
+              "label": "Vehicle Purchase (Percent)",
+              "value": "22%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,562,300"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "12,480"
+            },
+            {
+              "label": "Support Call (Percent)",
+              "value": "14%"
+            },
+            {
+              "label": "Billing Call (Percent)",
+              "value": "9%"
+            },
+            {
+              "label": "Warranty Call (Percent)",
+              "value": "9%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "68%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Vehicle Purchase (Percent)",
+              "value": "22%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "1/19/2026",
+          "1/20/2026",
+          "1/21/2026",
+          "1/22/2026",
+          "1/23/2026",
+          "1/24/2026"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              1320,
+              1410,
+              1280,
+              1350,
+              1490,
+              1640
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              860,
+              910,
+              830,
+              880,
+              970,
+              1060
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              220,
+              240,
+              210,
+              230,
+              250,
+              280
+            ]
+          },
+          {
+            "name": "Vehicle Purchase (Count)",
+            "values": [
+              420,
+              450,
+              410,
+              440,
+              490,
+              540
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12480,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "5,200",
+                "47%",
+                "24%",
+                "$1,986,400"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "2,100",
+                "41%",
+                "19%",
+                "$742,100"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1,900",
+                "46%",
+                "25%",
+                "$728,900"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "1,800",
+                "43%",
+                "21%",
+                "$629,500"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "1,480",
+                "40%",
+                "18%",
+                "$475,400"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12480,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "4,900",
+                "48%",
+                "25%",
+                "$1,912,600"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "2,600",
+                "40%",
+                "18%",
+                "$824,300"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "2,300",
+                "44%",
+                "21%",
+                "$742,800"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "1,480",
+                "45%",
+                "23%",
+                "$598,200"
+              ]
+            },
+            {
+              "name": "Retargeting/Display",
+              "metrics": [
+                "1,200",
+                "39%",
+                "17%",
+                "$484,400"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12480,
+          "rows": [
+            {
+              "name": "AN_NewCar_Toyota_RAV4_Exact",
+              "metrics": [
+                "3,100",
+                "49%",
+                "26%",
+                "$1,284,700"
+              ]
+            },
+            {
+              "name": "Used-Cars-Under-15k_Local",
+              "metrics": [
+                "2,700",
+                "44%",
+                "20%",
+                "$742,900"
+              ]
+            },
+            {
+              "name": "Every Mile Made Easy",
+              "metrics": [
+                "2,300",
+                "41%",
+                "19%",
+                "$698,400"
+              ]
+            },
+            {
+              "name": "Service-OilChange-NearMe",
+              "metrics": [
+                "2,200",
+                "42%",
+                "21%",
+                "$1,020,300"
+              ]
+            },
+            {
+              "name": "AN_Retarget_SavedInventory",
+              "metrics": [
+                "2,180",
+                "40%",
+                "18%",
+                "$816,000"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12480,
+          "rows": [
+            {
+              "name": "used cars for sale near me under $15,000",
+              "metrics": [
+                "3,300",
+                "45%",
+                "21%",
+                "$864,200"
+              ]
+            },
+            {
+              "name": "autonation toyota rav4 price",
+              "metrics": [
+                "2,700",
+                "50%",
+                "27%",
+                "$1,142,600"
+              ]
+            },
+            {
+              "name": "certified pre-owned suv near me",
+              "metrics": [
+                "2,400",
+                "46%",
+                "23%",
+                "$918,300"
+              ]
+            },
+            {
+              "name": "cars under $300 a month",
+              "metrics": [
+                "2,180",
+                "42%",
+                "19%",
+                "$742,700"
+              ]
+            },
+            {
+              "name": "electric cars for sale",
+              "metrics": [
+                "1,900",
+                "41%",
+                "18%",
+                "$894,500"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Set (Industry) (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "New Cars",
+              "metrics": [
+                "3,600",
+                "52%",
+                "27%",
+                "$1,684,200"
+              ]
+            },
+            {
+              "name": "Used Cars",
+              "metrics": [
+                "3,200",
+                "48%",
+                "23%",
+                "$984,600"
+              ]
+            },
+            {
+              "name": "Certified Pre-Owned",
+              "metrics": [
+                "2,400",
+                "46%",
+                "22%",
+                "$862,300"
+              ]
+            },
+            {
+              "name": "Electric Cars",
+              "metrics": [
+                "1,780",
+                "44%",
+                "20%",
+                "$648,900"
+              ]
+            },
+            {
+              "name": "Service & Parts",
+              "metrics": [
+                "1,500",
+                "30%",
+                "12%",
+                "$382,300"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12480,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "4,900",
+                "47%",
+                "24%",
+                "$1,864,300"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "3,400",
+                "45%",
+                "22%",
+                "$1,286,400"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "2,300",
+                "43%",
+                "20%",
+                "$782,100"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "1,880",
+                "42%",
+                "19%",
+                "$629,500"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Vehicle Purchase (Count)",
+        "xLabels": [
+          "1/19/2026",
+          "1/20/2026",
+          "1/21/2026",
+          "1/22/2026",
+          "1/23/2026",
+          "1/24/2026"
+        ],
+        "series": [
+          {
+            "name": "New Cars",
+            "values": [
+              142,
+              150,
+              138,
+              148,
+              164,
+              182
+            ]
+          },
+          {
+            "name": "Used Cars",
+            "values": [
+              118,
+              124,
+              114,
+              122,
+              136,
+              150
+            ]
+          },
+          {
+            "name": "Certified Pre-Owned",
+            "values": [
+              88,
+              94,
+              86,
+              92,
+              102,
+              114
+            ]
+          },
+          {
+            "name": "Electric Cars",
+            "values": [
+              64,
+              68,
+              62,
+              66,
+              74,
+              82
+            ]
+          },
+          {
+            "name": "Service & Parts",
+            "values": [
+              38,
+              42,
+              36,
+              40,
+              46,
+              52
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "66 Calls",
+      "totalNote": "total of 222 calls from Jan 1 to Oct 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2025-10/31/2025",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Daniel Foster called to check RAV4 availability at the local Sales Center and asked about a hybrid trim. Oscar confirmed two RAV4 units in stock, walked through features, and booked a test drive for Saturday morning. Daniel was thrilled and confirmed the appointment.",
+          "date": "Sep 12, 10:24 AM",
+          "agent": "Oscar",
+          "duration": "2m 15s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 87,
+          "summary": "Priya Nair inquired about a certified pre-owned SUV she saw online and wanted to know about the certification warranty coverage. Lila reviewed the inspection details, matched her budget, and scheduled a test drive for the next afternoon. Priya was pleased with the smooth process.",
+          "date": "Aug 5, 3:47 PM",
+          "agent": "Lila",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 82,
+          "summary": "Marcus Webb called the Service Center to book an oil change and multi-point inspection for his sedan. Rosey found an opening for Thursday and confirmed the standard maintenance package and pricing. Marcus was satisfied and set the service appointment.",
+          "date": "Jul 18, 9:12 AM",
+          "agent": "Rosey",
+          "duration": "1m 50s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New shopper Angela Ruiz called to schedule a visit and test drive a RAV4, mentioning she also had a trade-in to appraise. Mary collected her full contact details, current vehicle info, and finance prequalification interest, then booked the test drive for Friday. Angela appreciated the thorough intake and confirmed her appointment.",
+          "date": "Jun 3, 2:42 PM",
+          "agent": "Mary",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Kevin Tan asked about the electric car inventory and range on a specific EV model. Lee explained charging options and the EV buyers guide, then scheduled a test drive for the weekend. Kevin was engaged and confirmed.",
+          "date": "Oct 9, 4:18 PM",
+          "agent": "Lee",
+          "duration": "2m 28s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Sandra Mills called about finance prequalification and whether her trade-in could cover the down payment. Sue explained the soft-pull prequalification process and APR tiers but Sandra wanted to think it over before visiting. No appointment was set on the call.",
+          "date": "May 21, 11:33 AM",
+          "agent": "Sue",
+          "duration": "2m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Robert Hayes wanted to test drive a Ford F-150 and compare it to a Silverado. Mike confirmed both trucks were on the lot and scheduled a test drive for Monday evening. Robert was satisfied with the plan.",
+          "date": "Apr 14, 5:02 PM",
+          "agent": "Mike",
+          "duration": "2m 10s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Teresa Gomez called to sell her car and asked whether a trade-in on a certified pre-owned vehicle would get a better value. Jennifer explained the instant offer and appraisal steps but Teresa was frustrated the online quote was lower than expected. She said she'd call back after shopping around.",
+          "date": "Mar 27, 1:19 PM",
+          "agent": "Jennifer",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Paul Jenkins called about his vehicle protection plan and disputed what the extended coverage included. Rose reviewed the plan terms and deductible but Paul felt the roadside benefit was misrepresented at purchase. She opened a review ticket without full resolution.",
+          "date": "Feb 11, 10:47 AM",
+          "agent": "Rose",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 29,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Nicole Barrett called to dispute a charge on her financing statement she didn't recognize. Oscar located the account and explained the fee but Nicole remained unhappy and asked for a supervisor callback. The issue was escalated unresolved.",
+          "date": "Sep 30, 3:33 PM",
+          "agent": "Oscar",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Greg Sullivan complained that his oil change appointment ran two hours over and the multi-point inspection was skipped. Lila apologized and offered to reschedule with a discount, but Greg was irritated by the wait. He declined to rebook on the call.",
+          "date": "Jul 2, 12:05 PM",
+          "agent": "Lila",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Monica Reyes called about a delivery delay on the vehicle she purchased last week. Lee checked the transport status but couldn't give a firm date, which upset Monica. She asked for a manager and hung up dissatisfied.",
+          "date": "Aug 22, 6:14 PM",
+          "agent": "Lee",
+          "duration": "2m 20s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Brian Klein called to cancel a pending purchase agreement after finding a better deal elsewhere. Sue tried to retain him with an updated offer but Brian was firm and wanted the deposit refunded. The cancellation was processed with visible frustration.",
+          "date": "Jan 16, 9:41 AM",
+          "agent": "Sue",
+          "duration": "1m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Diane Hoffman called the Collision Center furious about a paint mismatch after post-accident repair. Mike apologized and offered to re-inspect the body work but Diane demanded a refund and threatened a complaint. The call ended tense and unresolved.",
+          "date": "Oct 27, 4:52 PM",
+          "agent": "Mike",
+          "duration": "3m 22s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Aaron Blake called after hours to complain about a service billing error and left a message requesting an urgent callback. The call rolled to voicemail and no agent was available to assist. No resolution occurred on this call.",
+          "date": "Feb 28, 7:26 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "test drive",
+        "rav4",
+        "oil change",
+        "certified",
+        "trade",
+        "finance"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Jun 6, 2:28 PM",
+      "duration": "4m 12s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Vehicle Interest & Budget",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Verify Service Area & ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Test Drive Date/Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Protection Plan Info",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted caller by name",
+        "Confirmed vehicle model interest (Toyota RAV4)",
+        "Identified budget range ($22K–$28K)",
+        "Verified ZIP code (33139)",
+        "Captured full legal name",
+        "Confirmed contact phone",
+        "Scheduled test drive appointment",
+        "Provided sales center hours",
+        "Mentioned inventory availability",
+        "Responded to caller objections",
+        "Set appointment reminder protocol",
+        "Confirmed appointment via phone",
+        "Professional tone throughout"
+      ],
+      "unmetSignals": [
+        "Did not capture email address",
+        "Failed to identify trade-in vehicle",
+        "Did not confirm financing interest",
+        "Missed cross-sell opportunity (VSC/Protection Plan)",
+        "No mention of CPO certification details",
+        "Did not offer mobile service info",
+        "Incomplete address capture",
+        "No vehicle features education",
+        "Skipped appointment confirmation text option",
+        "Did not mention current promotions",
+        "No upsell to higher trim level",
+        "No mention of lease vs. purchase intent",
+        "Incomplete co-applicant information",
+        "Did not reference vehicle research tools",
+        "No follow-up scheduling option offered",
+        "Did not mention AutoNation Finance pre-qualification",
+        "Missed roadside assistance mention",
+        "No warranty details provided",
+        "Did not offer extended hours",
+        "No mention of same-day financing",
+        "Did not discuss insurance options",
+        "Did not mention collision center services",
+        "Incomplete payment expectation setting",
+        "Did not offer service appointment booking",
+        "Did not mention parts availability"
+      ],
+      "naSignals": [
+        "Service appointment scheduling (intake call)",
+        "Extended warranty claim process",
+        "Collision center estimate process",
+        "Parts order tracking",
+        "Fleet pricing inquiry",
+        "Insurance claim filing",
+        "Used vehicle return process",
+        "Trade-in evaluation results",
+        "Financing document signing",
+        "Service center mobile dispatch availability"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller is a new customer actively shopping for a reliable mid-size SUV and wants to schedule a test drive of the Toyota RAV4 to evaluate fit, features, and financing options before purchase."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The customer expects a smooth intake process, availability of a RAV4 in their budget range ($22K–$28K) at the local AutoNation sales center, and a confirmed test drive appointment within 2–3 days."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the customer's email address for follow-up confirmations and digital materials, explained what to expect during the test drive visit (documentation, financing pre-qualification, vehicle features walkthrough), and offered a brief mention of AutoNation's Vehicle Protection Plans or extended warranty to build awareness for the in-person consultation."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Thank you for calling AutoNation. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi Marcus. I'm interested in scheduling a test drive. I've been looking at the Toyota RAV4 on your website."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:18",
+          "text": "Great! You've made an excellent choice. The RAV4 is one of our most popular models. Before we schedule, I'd like to gather some information. What's your full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "It's Jennifer Zhao."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:32",
+          "text": "Perfect, Jennifer. And what's your approximate budget for the RAV4?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:40",
+          "text": "I'm looking to spend somewhere between $22,000 and $28,000. I'm interested in either new or certified pre-owned."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:52",
+          "text": "Excellent. We have great options in that range. Are you in the Miami area, or which ZIP code are we working with?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "Yes, I'm in Miami. My ZIP is 33139."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:10",
+          "text": "Perfect. That's in our service area. Jennifer, what's the best phone number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:20",
+          "text": "It's ****-****-9847."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:26",
+          "text": "Thank you. I've noted that down. Now, when would be convenient for you to visit us for the test drive? We're open Monday through Saturday, 9 AM to 6 PM."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:42",
+          "text": "How about Thursday afternoon? Something around 2 PM would work best for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:52",
+          "text": "Thursday at 2 PM works perfectly. I'm scheduling you for Thursday, June 13th at 2 PM for a RAV4 test drive. You'll want to bring a valid driver's license and proof of insurance. Do you have any other questions?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:14",
+          "text": "No, that sounds good. I'm excited to see the vehicle."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:22",
+          "text": "Wonderful, Jennifer. We're looking forward to seeing you Thursday at 2 PM. Your appointment is confirmed. Thank you for choosing AutoNation, and we'll see you soon!"
+        }
+      ],
+      "aiSummary": "Jennifer Zhao, a new customer from Miami (ZIP 33139), called to schedule a test drive for a Toyota RAV4 with a budget of $22,000–$28,000. Agent Marcus Bell successfully captured her name, location, phone number, and confirmed an appointment for Thursday, June 13th at 2 PM. While Marcus provided clear directions and appointment details, he missed the opportunity to capture her email address for follow-up and did not set detailed expectations about the test drive visit (documentation, financing pre-qualification process, or vehicle features tour). No mention was made of AutoNation's Vehicle Protection Plans or financing pre-qualification options, which represent key upsell opportunities for new customers.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus — Nice structure on the intake call. You nailed the greeting, qualification (budget, vehicle, location), and appointment scheduling, which is the core win here. Two coaching points: (1) Always capture email in addition to phone — Jennifer will need follow-up confirmations and she may prefer digital delivery of inventory details or financing pre-qual links before Thursday. (2) Set clear expectations: tell her what docs to bring (DL + proof of insurance is good), but also walk her through what happens during the visit — 'You'll meet with our sales consultant, we'll do a quick pre-qual for financing options, and then we'll take the RAV4 out for a 15–20 minute test drive.' That context makes her visit feel less uncertain and increases show-up rate. Great effort overall!"
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "8/11/2025-8/16/2025",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "5,139"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$340.67"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,750,719"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "3,102"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "60.4%"
+            },
+            {
+              "label": "Test Drive: Scheduled (Count)",
+              "value": "2,187"
+            },
+            {
+              "label": "Test Drive: Scheduled (Percent)",
+              "value": "42.6%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "2,037"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "39.6%"
+            },
+            {
+              "label": "Test Drive: Canceled (Percent)",
+              "value": "11.3%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Test Drives)",
+          "chart": {
+            "legend": "Test Drive: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Google",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Bing",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "AutoNation.com Direct",
+                "value": 33,
+                "display": "33%"
+              },
+              {
+                "name": "Cars.com",
+                "value": 26,
+                "display": "26%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Test Drives)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Test Drive: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "2,041",
+                  "55%",
+                  "$742,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "1,118",
+                  "41%",
+                  "$401,556"
+                ]
+              },
+              {
+                "cells": [
+                  "AutoNation.com Direct",
+                  "902",
+                  "33%",
+                  "$318,204"
+                ]
+              },
+              {
+                "cells": [
+                  "Cars.com",
+                  "648",
+                  "26%",
+                  "$182,441"
+                ]
+              },
+              {
+                "cells": [
+                  "Meta",
+                  "430",
+                  "19%",
+                  "$106,200"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2000,
+            "axisTicks": [
+              0,
+              400,
+              800,
+              1200,
+              1600,
+              2000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 1880,
+                "display": "1,880"
+              },
+              {
+                "name": "Organic Search",
+                "value": 1245,
+                "display": "1,245"
+              },
+              {
+                "name": "Paid Social",
+                "value": 842,
+                "display": "842"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 631,
+                "display": "631"
+              },
+              {
+                "name": "Retargeting/Display",
+                "value": 541,
+                "display": "541"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Test Drives)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Test Drive: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "1,880",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "1,245",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "842",
+                  "31%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "631",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "Retargeting/Display",
+                  "541",
+                  "24%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1400,
+            "axisTicks": [
+              0,
+              280,
+              560,
+              840,
+              1120,
+              1400
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "AN_NewCar_Toyota_RAV4_Exact",
+                "value": 1290,
+                "display": "1,290"
+              },
+              {
+                "name": "Used-Cars-Under-15k_Local",
+                "value": 1042,
+                "display": "1,042"
+              },
+              {
+                "name": "Service-OilChange-NearMe",
+                "value": 836,
+                "display": "836"
+              },
+              {
+                "name": "Every Mile Made Easy",
+                "value": 624,
+                "display": "624"
+              },
+              {
+                "name": "AN_Retarget_SavedInventory",
+                "value": 498,
+                "display": "498"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Test Drives)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Test Drive: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "AN_NewCar_Toyota_RAV4_Exact",
+                  "1,290",
+                  "56%",
+                  "$512,880"
+                ]
+              },
+              {
+                "cells": [
+                  "Used-Cars-Under-15k_Local",
+                  "1,042",
+                  "47%",
+                  "$318,644"
+                ]
+              },
+              {
+                "cells": [
+                  "Service-OilChange-NearMe",
+                  "836",
+                  "29%",
+                  "$142,120"
+                ]
+              },
+              {
+                "cells": [
+                  "Every Mile Made Easy",
+                  "624",
+                  "34%",
+                  "$188,760"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 900,
+            "axisTicks": [
+              0,
+              180,
+              360,
+              540,
+              720,
+              900
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "used cars near me under $15,000",
+                "value": 842,
+                "display": "842"
+              },
+              {
+                "name": "autonation toyota rav4 price",
+                "value": 701,
+                "display": "701"
+              },
+              {
+                "name": "certified pre-owned suv near me",
+                "value": 565,
+                "display": "565"
+              },
+              {
+                "name": "cars under $300 a month",
+                "value": 448,
+                "display": "448"
+              },
+              {
+                "name": "oil change appointment near me",
+                "value": 389,
+                "display": "389"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Test Drives)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Test Drive: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "used cars near me under $15,000",
+                  "51%"
+                ]
+              },
+              {
+                "cells": [
+                  "autonation toyota rav4 price",
+                  "57%"
+                ]
+              },
+              {
+                "cells": [
+                  "certified pre-owned suv near me",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "cars under $300 a month",
+                  "40%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Test Drive: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "New Cars",
+              "1,486",
+              "54%",
+              "63%"
+            ]
+          },
+          {
+            "cells": [
+              "Used Cars & CPO",
+              "1,208",
+              "49%",
+              "67%"
+            ]
+          },
+          {
+            "cells": [
+              "Electric Cars",
+              "642",
+              "41%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Service & Parts",
+              "874",
+              "27%",
+              "44%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Test Drive: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "AutoNation Toyota Las Vegas",
+              "1,412",
+              "96",
+              "6.8%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "AutoNation Honda Miami",
+              "1,188",
+              "112",
+              "9.4%",
+              "43%"
+            ]
+          },
+          {
+            "cells": [
+              "AutoNation Ford Fort Worth",
+              "1,024",
+              "78",
+              "7.6%",
+              "39%"
+            ]
+          },
+          {
+            "cells": [
+              "AutoNation Chevrolet Denver",
+              "915",
+              "134",
+              "14.6%",
+              "31%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16"
+        ],
+        "series": [
+          {
+            "name": "Reschedule Test Drive",
+            "values": [
+              142,
+              138,
+              121,
+              109,
+              98,
+              87
+            ]
+          },
+          {
+            "name": "Service Appointment",
+            "values": [
+              128,
+              124,
+              112,
+              101,
+              92,
+              80
+            ]
+          },
+          {
+            "name": "Financing/Billing",
+            "values": [
+              96,
+              89,
+              82,
+              74,
+              68,
+              61
+            ]
+          },
+          {
+            "name": "Cancel Test Drive",
+            "values": [
+              71,
+              66,
+              59,
+              54,
+              48,
+              42
+            ]
+          },
+          {
+            "name": "General Scheduling",
+            "values": [
+              58,
+              54,
+              49,
+              44,
+              39,
+              34
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/19/2026-1/24/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "1287"
+          },
+          {
+            "label": "Sales Call (Percent)",
+            "value": "84%"
+          },
+          {
+            "label": "Vehicle Purchase (Percent)",
+            "value": "48%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,247,850"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Purchase (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$187,340"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Purchase (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$298,560"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Purchase (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$145,920"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Purchase (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$243,780"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Purchase (Percent)",
+              "value": "51%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$261,450"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Vehicle Purchase (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$110,800"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 420,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "298",
+                "68%",
+                "52%",
+                "$412,580"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "187",
+                "54%",
+                "43%",
+                "$267,490"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "152",
+                "52%",
+                "39%",
+                "$198,220"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "94",
+                "61%",
+                "48%",
+                "$168,560"
+              ]
+            },
+            {
+              "name": "Email/CRM",
+              "metrics": [
+                "71",
+                "45%",
+                "35%",
+                "$127,340"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 425,
+          "rows": [
+            {
+              "name": "Mobile Web",
+              "metrics": [
+                "267",
+                "66%",
+                "51%",
+                "$389,750"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "198",
+                "58%",
+                "45%",
+                "$298,340"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "145",
+                "52%",
+                "40%",
+                "$187,920"
+              ]
+            },
+            {
+              "name": "Social Media Link",
+              "metrics": [
+                "112",
+                "48%",
+                "38%",
+                "$162,480"
+              ]
+            },
+            {
+              "name": "SMS Link",
+              "metrics": [
+                "80",
+                "43%",
+                "32%",
+                "$108,900"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 430,
+          "rows": [
+            {
+              "name": "AN_NewCar_Toyota_RAV4_Exact",
+              "metrics": [
+                "234",
+                "72%",
+                "56%",
+                "$521,340"
+              ]
+            },
+            {
+              "name": "Used-Cars-Under-15k_Local",
+              "metrics": [
+                "189",
+                "59%",
+                "44%",
+                "$298,560"
+              ]
+            },
+            {
+              "name": "Service-OilChange-NearMe",
+              "metrics": [
+                "127",
+                "41%",
+                "28%",
+                "$156,780"
+              ]
+            },
+            {
+              "name": "CPO_SUV_Finance_Under300mo",
+              "metrics": [
+                "98",
+                "63%",
+                "48%",
+                "$187,920"
+              ]
+            },
+            {
+              "name": "Every_Mile_Made_Easy_Retarget",
+              "metrics": [
+                "74",
+                "52%",
+                "39%",
+                "$127,450"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 385,
+          "rows": [
+            {
+              "name": "used cars for sale near me under $15,000",
+              "metrics": [
+                "156",
+                "61%",
+                "47%",
+                "$298,340"
+              ]
+            },
+            {
+              "name": "certified pre-owned SUV near me",
+              "metrics": [
+                "142",
+                "67%",
+                "52%",
+                "$367,890"
+              ]
+            },
+            {
+              "name": "AutoNation Toyota RAV4 price",
+              "metrics": [
+                "118",
+                "56%",
+                "43%",
+                "$214,560"
+              ]
+            },
+            {
+              "name": "electric cars for sale my area",
+              "metrics": [
+                "95",
+                "48%",
+                "36%",
+                "$162,480"
+              ]
+            },
+            {
+              "name": "car loan prequalification bad credit",
+              "metrics": [
+                "71",
+                "42%",
+                "31%",
+                "$127,340"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Test Drive Scheduled (Percent)",
+            "Vehicle Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "New Vehicles",
+              "metrics": [
+                "398",
+                "72%",
+                "58%",
+                "$487,230"
+              ]
+            },
+            {
+              "name": "Used Vehicles",
+              "metrics": [
+                "287",
+                "64%",
+                "45%",
+                "$342,180"
+              ]
+            },
+            {
+              "name": "AutoNation Certified Pre-Owned",
+              "metrics": [
+                "214",
+                "59%",
+                "42%",
+                "$265,490"
+              ]
+            },
+            {
+              "name": "Service & Maintenance",
+              "metrics": [
+                "189",
+                "38%",
+                "22%",
+                "$98,740"
+              ]
+            },
+            {
+              "name": "Vehicle Protection Plans",
+              "metrics": [
+                "199",
+                "52%",
+                "38%",
+                "$54,210"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Vehicle Purchase (Count)",
+        "xLabels": [
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "New Vehicles",
+            "values": [
+              14,
+              12,
+              15,
+              13,
+              16
+            ]
+          },
+          {
+            "name": "Used Vehicles",
+            "values": [
+              9,
+              8,
+              11,
+              10,
+              12
+            ]
+          },
+          {
+            "name": "AutoNation Certified Pre-Owned",
+            "values": [
+              7,
+              6,
+              9,
+              8,
+              7
+            ]
+          },
+          {
+            "name": "Service & Maintenance",
+            "values": [
+              3,
+              4,
+              5,
+              4,
+              3
+            ]
+          },
+          {
+            "name": "Vehicle Protection Plans",
+            "values": [
+              5,
+              4,
+              6,
+              5,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "This Month",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Test Drive Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Test Drive Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Test Drive Scheduled (Count)",
+            "value": "324"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "834"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Test Drive Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Test Drive Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Test Drive Scheduled (Count)",
+            "value": "25"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Test Drive Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Test Drive Scheduled",
+            "values": [
+              72,
+              75,
+              71,
+              78,
+              74,
+              76,
+              72,
+              79,
+              73,
+              75,
+              78,
+              71,
+              77,
+              74,
+              76,
+              75,
+              72,
+              78,
+              74,
+              77,
+              75,
+              73,
+              76,
+              78,
+              71,
+              75,
+              172,
+              189,
+              176,
+              184,
+              191,
+              187,
+              179,
+              188,
+              194,
+              182,
+              176,
+              191,
+              185,
+              178,
+              189,
+              192,
+              184,
+              187,
+              193,
+              188,
+              186,
+              191,
+              189
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,124"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "90%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "712"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "63%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "701"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "98%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Test Drive Scheduled (Count)",
+        "xLabels": [
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Test Drive Availability & Scheduling",
+            "values": [
+              34,
+              41,
+              38,
+              44,
+              39,
+              51
+            ]
+          },
+          {
+            "name": "Vehicle Pricing & Financing Options",
+            "values": [
+              28,
+              31,
+              29,
+              36,
+              33,
+              42
+            ]
+          },
+          {
+            "name": "Vehicle Features & Specifications",
+            "values": [
+              18,
+              22,
+              19,
+              28,
+              24,
+              35
+            ]
+          },
+          {
+            "name": "Trade-In Value & Offer",
+            "values": [
+              15,
+              18,
+              16,
+              1,
+              22,
+              31
+            ]
+          },
+          {
+            "name": "Service & Extended Warranty Plans",
+            "values": [
+              12,
+              14,
+              11,
+              16,
+              13,
+              18
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2025-2/28/2025",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "5,247"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "2,156"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Test Drive Booked (Count)",
+            "value": "1,687"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$287,540"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review - Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 5,
+          "axisTicks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 2,
+              "display": "2"
+            },
+            {
+              "name": "Diana Reeves",
+              "value": 3,
+              "display": "3"
+            },
+            {
+              "name": "Kevin Patterson",
+              "value": 2,
+              "display": "2"
+            },
+            {
+              "name": "Sarah Mitchell",
+              "value": 4,
+              "display": "4"
+            },
+            {
+              "name": "James Rodriguez",
+              "value": 3,
+              "display": "3"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Test Drive Booked (Count)",
+        "xLabels": [
+          "Dec 29-Jan 4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-Feb 1",
+          "Feb 2-8",
+          "Feb 9-15",
+          "Feb 16-22",
+          "Feb 23-Mar 1"
+        ],
+        "series": [
+          {
+            "name": "Tanya Williams",
+            "values": [
+              44,
+              45,
+              46,
+              46,
+              47,
+              47,
+              48,
+              48,
+              49
+            ]
+          },
+          {
+            "name": "Brett Hoffman",
+            "values": [
+              42,
+              43,
+              44,
+              45,
+              45,
+              46,
+              46,
+              47,
+              47
+            ]
+          },
+          {
+            "name": "Lisa Nakamura",
+            "values": [
+              40,
+              41,
+              42,
+              43,
+              44,
+              44,
+              45,
+              46,
+              46
+            ]
+          },
+          {
+            "name": "David Foster",
+            "values": [
+              43,
+              44,
+              45,
+              46,
+              46,
+              47,
+              47,
+              48,
+              48
+            ]
+          },
+          {
+            "name": "Amanda Cruz",
+            "values": [
+              41,
+              42,
+              43,
+              44,
+              44,
+              45,
+              46,
+              46,
+              47
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "94%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "51%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "39.42%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "97.18%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "73.86%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 45,
+        "yMax": 75,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 44
+          },
+          {
+            "label": "01/02",
+            "bar": 50
+          },
+          {
+            "label": "01/03",
+            "bar": 52
+          },
+          {
+            "label": "01/04",
+            "bar": 50
+          },
+          {
+            "label": "01/05",
+            "bar": 46
+          },
+          {
+            "label": "01/06",
+            "bar": 38
+          },
+          {
+            "label": "01/07",
+            "bar": 41
+          },
+          {
+            "label": "01/08",
+            "bar": 47
+          },
+          {
+            "label": "01/09",
+            "bar": 52
+          },
+          {
+            "label": "01/10",
+            "bar": 55
+          },
+          {
+            "label": "01/11",
+            "bar": 46
+          },
+          {
+            "label": "01/12",
+            "bar": 42
+          },
+          {
+            "label": "01/13",
+            "bar": 41
+          },
+          {
+            "label": "01/14",
+            "bar": 43
+          },
+          {
+            "label": "01/15",
+            "bar": 49
+          },
+          {
+            "label": "01/16",
+            "bar": 49
+          },
+          {
+            "label": "01/17",
+            "bar": 51
+          },
+          {
+            "label": "01/18",
+            "bar": 49
+          },
+          {
+            "label": "01/19",
+            "bar": 45
+          },
+          {
+            "label": "01/20",
+            "bar": 43
+          },
+          {
+            "label": "01/21",
+            "bar": 39
+          },
+          {
+            "label": "01/22",
+            "bar": 46
+          },
+          {
+            "label": "01/23",
+            "bar": 51
+          },
+          {
+            "label": "01/24",
+            "bar": 53
+          },
+          {
+            "label": "01/25",
+            "bar": 51
+          },
+          {
+            "label": "01/26",
+            "bar": 41
+          },
+          {
+            "label": "01/27",
+            "bar": 39
+          },
+          {
+            "label": "01/28",
+            "bar": 42
+          },
+          {
+            "label": "01/29",
+            "bar": 48
+          },
+          {
+            "label": "01/30",
+            "bar": 54
+          },
+          {
+            "label": "01/31",
+            "bar": 50
+          },
+          {
+            "label": "02/01",
+            "bar": 47
+          },
+          {
+            "label": "02/02",
+            "bar": 43
+          },
+          {
+            "label": "02/03",
+            "bar": 42
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 50,
+          "axisTicks": [
+            0,
+            10,
+            20,
+            30,
+            40,
+            50
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Chen",
+              "value": 40.82,
+              "display": "40.82%"
+            },
+            {
+              "name": "Kevin Patterson",
+              "value": 41.15,
+              "display": "41.15%"
+            },
+            {
+              "name": "Diana Reeves",
+              "value": 41.44,
+              "display": "41.44%"
+            },
+            {
+              "name": "James Rodriguez",
+              "value": 41.73,
+              "display": "41.73%"
+            },
+            {
+              "name": "Robert Santos",
+              "value": 42.06,
+              "display": "42.06%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Test Drive Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Chen",
+                "40.82%",
+                "18%",
+                "$12,450",
+                "31"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Patterson",
+                "41.15%",
+                "22%",
+                "$18,920",
+                "37"
+              ]
+            },
+            {
+              "cells": [
+                "Diana Reeves",
+                "41.44%",
+                "26%",
+                "$24,680",
+                "42"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "41.73%",
+                "31%",
+                "$28,540",
+                "48"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Santos",
+                "42.06%",
+                "35%",
+                "$35,270",
+                "53"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 50,
+          "axisTicks": [
+            0,
+            10,
+            20,
+            30,
+            40,
+            50
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Tanya Williams",
+              "value": 48.92,
+              "display": "48.92%"
+            },
+            {
+              "name": "David Foster",
+              "value": 48.37,
+              "display": "48.37%"
+            },
+            {
+              "name": "Brett Hoffman",
+              "value": 47.84,
+              "display": "47.84%"
+            },
+            {
+              "name": "Amanda Cruz",
+              "value": 47.21,
+              "display": "47.21%"
+            },
+            {
+              "name": "Lisa Nakamura",
+              "value": 46.58,
+              "display": "46.58%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Test Drive Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Tanya Williams",
+                "48.92%",
+                "68%",
+                "$92,150",
+                "74"
+              ]
+            },
+            {
+              "cells": [
+                "David Foster",
+                "48.37%",
+                "64%",
+                "$87,380",
+                "71"
+              ]
+            },
+            {
+              "cells": [
+                "Brett Hoffman",
+                "47.84%",
+                "61%",
+                "$82,510",
+                "68"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Cruz",
+                "47.21%",
+                "58%",
+                "$76,840",
+                "64"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Nakamura",
+                "46.58%",
+                "54%",
+                "$71,240",
+                "61"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Test Drive Booked (Count)",
+        "yMax": 60,
+        "yTicks": [
+          0,
+          20,
+          40,
+          60
+        ],
+        "suffix": "%",
+        "rightLabel": "Test Drive Booked (Count)",
+        "rightMax": 60,
+        "rightTicks": [
+          0,
+          15,
+          30,
+          45,
+          60
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 44,
+            "line": 40
+          },
+          {
+            "label": "01/02",
+            "bar": 50,
+            "line": 43
+          },
+          {
+            "label": "01/03",
+            "bar": 52,
+            "line": 41
+          },
+          {
+            "label": "01/04",
+            "bar": 50,
+            "line": 36
+          },
+          {
+            "label": "01/05",
+            "bar": 46,
+            "line": 26
+          },
+          {
+            "label": "01/06",
+            "bar": 38,
+            "line": 23
+          },
+          {
+            "label": "01/07",
+            "bar": 41,
+            "line": 25
+          },
+          {
+            "label": "01/08",
+            "bar": 47,
+            "line": 32
+          },
+          {
+            "label": "01/09",
+            "bar": 52,
+            "line": 35
+          },
+          {
+            "label": "01/10",
+            "bar": 55,
+            "line": 42
+          },
+          {
+            "label": "01/11",
+            "bar": 46,
+            "line": 44
+          },
+          {
+            "label": "01/12",
+            "bar": 42,
+            "line": 42
+          },
+          {
+            "label": "01/13",
+            "bar": 41,
+            "line": 32
+          },
+          {
+            "label": "01/14",
+            "bar": 43,
+            "line": 27
+          },
+          {
+            "label": "01/15",
+            "bar": 49,
+            "line": 24
+          },
+          {
+            "label": "01/16",
+            "bar": 49,
+            "line": 27
+          },
+          {
+            "label": "01/17",
+            "bar": 51,
+            "line": 28
+          },
+          {
+            "label": "01/18",
+            "bar": 49,
+            "line": 36
+          },
+          {
+            "label": "01/19",
+            "bar": 45,
+            "line": 43
+          },
+          {
+            "label": "01/20",
+            "bar": 43,
+            "line": 45
+          },
+          {
+            "label": "01/21",
+            "bar": 39,
+            "line": 39
+          },
+          {
+            "label": "01/22",
+            "bar": 46,
+            "line": 33
+          },
+          {
+            "label": "01/23",
+            "bar": 51,
+            "line": 28
+          },
+          {
+            "label": "01/24",
+            "bar": 53,
+            "line": 25
+          },
+          {
+            "label": "01/25",
+            "bar": 51,
+            "line": 23
+          },
+          {
+            "label": "01/26",
+            "bar": 41,
+            "line": 30
+          },
+          {
+            "label": "01/27",
+            "bar": 39,
+            "line": 38
+          },
+          {
+            "label": "01/28",
+            "bar": 42,
+            "line": 44
+          },
+          {
+            "label": "01/29",
+            "bar": 48,
+            "line": 42
+          },
+          {
+            "label": "01/30",
+            "bar": 54,
+            "line": 39
+          },
+          {
+            "label": "01/31",
+            "bar": 50,
+            "line": 34
+          },
+          {
+            "label": "02/01",
+            "bar": 47,
+            "line": 29
+          },
+          {
+            "label": "02/02",
+            "bar": 43,
+            "line": 22
+          },
+          {
+            "label": "02/03",
+            "bar": 42,
+            "line": 25
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 60,
+        "yTicks": [
+          0,
+          20,
+          40,
+          60
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 6000,
+        "rightTicks": [
+          0,
+          2000,
+          4000,
+          6000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 44,
+            "line": 4126
+          },
+          {
+            "label": "01/02",
+            "bar": 50,
+            "line": 4292
+          },
+          {
+            "label": "01/03",
+            "bar": 52,
+            "line": 3945
+          },
+          {
+            "label": "01/04",
+            "bar": 50,
+            "line": 3249
+          },
+          {
+            "label": "01/05",
+            "bar": 46,
+            "line": 2527
+          },
+          {
+            "label": "01/06",
+            "bar": 38,
+            "line": 2126
+          },
+          {
+            "label": "01/07",
+            "bar": 41,
+            "line": 2230
+          },
+          {
+            "label": "01/08",
+            "bar": 47,
+            "line": 2792
+          },
+          {
+            "label": "01/09",
+            "bar": 52,
+            "line": 3543
+          },
+          {
+            "label": "01/10",
+            "bar": 55,
+            "line": 4137
+          },
+          {
+            "label": "01/11",
+            "bar": 46,
+            "line": 4290
+          },
+          {
+            "label": "01/12",
+            "bar": 42,
+            "line": 3933
+          },
+          {
+            "label": "01/13",
+            "bar": 41,
+            "line": 3227
+          },
+          {
+            "label": "01/14",
+            "bar": 43,
+            "line": 2514
+          },
+          {
+            "label": "01/15",
+            "bar": 49,
+            "line": 2123
+          },
+          {
+            "label": "01/16",
+            "bar": 49,
+            "line": 2240
+          },
+          {
+            "label": "01/17",
+            "bar": 51,
+            "line": 2806
+          },
+          {
+            "label": "01/18",
+            "bar": 49,
+            "line": 3561
+          },
+          {
+            "label": "01/19",
+            "bar": 45,
+            "line": 4147
+          },
+          {
+            "label": "01/20",
+            "bar": 43,
+            "line": 4289
+          },
+          {
+            "label": "01/21",
+            "bar": 39,
+            "line": 3915
+          },
+          {
+            "label": "01/22",
+            "bar": 46,
+            "line": 3210
+          },
+          {
+            "label": "01/23",
+            "bar": 51,
+            "line": 2500
+          },
+          {
+            "label": "01/24",
+            "bar": 53,
+            "line": 2121
+          },
+          {
+            "label": "01/25",
+            "bar": 51,
+            "line": 2246
+          },
+          {
+            "label": "01/26",
+            "bar": 41,
+            "line": 2824
+          },
+          {
+            "label": "01/27",
+            "bar": 39,
+            "line": 3580
+          },
+          {
+            "label": "01/28",
+            "bar": 42,
+            "line": 4158
+          },
+          {
+            "label": "01/29",
+            "bar": 48,
+            "line": 4282
+          },
+          {
+            "label": "01/30",
+            "bar": 54,
+            "line": 3902
+          },
+          {
+            "label": "01/31",
+            "bar": 50,
+            "line": 3192
+          },
+          {
+            "label": "02/01",
+            "bar": 47,
+            "line": 2487
+          },
+          {
+            "label": "02/02",
+            "bar": 43,
+            "line": 2114
+          },
+          {
+            "label": "02/03",
+            "bar": 42,
+            "line": 2257
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2025-2/28/2025",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          40,
+          80,
+          120
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 95
+          },
+          {
+            "label": "01/02",
+            "bar": 7,
+            "line": 97
+          },
+          {
+            "label": "01/03",
+            "bar": 8,
+            "line": 96
+          },
+          {
+            "label": "01/04",
+            "bar": 8,
+            "line": 94
+          },
+          {
+            "label": "01/05",
+            "bar": 8,
+            "line": 86
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 4,
+            "line": 87
+          },
+          {
+            "label": "01/08",
+            "bar": 6,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 9,
+            "line": 92
+          },
+          {
+            "label": "01/10",
+            "bar": 11,
+            "line": 96
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 98
+          },
+          {
+            "label": "01/12",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 6,
+            "line": 87
+          },
+          {
+            "label": "01/15",
+            "bar": 9,
+            "line": 86
+          },
+          {
+            "label": "01/16",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/17",
+            "bar": 7,
+            "line": 88
+          },
+          {
+            "label": "01/18",
+            "bar": 7,
+            "line": 93
+          },
+          {
+            "label": "01/19",
+            "bar": 7,
+            "line": 97
+          },
+          {
+            "label": "01/20",
+            "bar": 7,
+            "line": 99
+          },
+          {
+            "label": "01/21",
+            "bar": 2,
+            "line": 94
+          },
+          {
+            "label": "01/22",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/23",
+            "bar": 8,
+            "line": 88
+          },
+          {
+            "label": "01/24",
+            "bar": 10,
+            "line": 87
+          },
+          {
+            "label": "01/25",
+            "bar": 10,
+            "line": 85
+          },
+          {
+            "label": "01/26",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/27",
+            "bar": 3,
+            "line": 94
+          },
+          {
+            "label": "01/28",
+            "bar": 5,
+            "line": 99
+          },
+          {
+            "label": "01/29",
+            "bar": 8,
+            "line": 96
+          },
+          {
+            "label": "01/30",
+            "bar": 10,
+            "line": 95
+          },
+          {
+            "label": "01/31",
+            "bar": 6,
+            "line": 92
+          },
+          {
+            "label": "02/01",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "02/02",
+            "bar": 5,
+            "line": 84
+          },
+          {
+            "label": "02/03",
+            "bar": 6,
+            "line": 86
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "5,842"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:34"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "213"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "286"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 85
+          },
+          {
+            "label": "01/02",
+            "line": 87
+          },
+          {
+            "label": "01/03",
+            "line": 86
+          },
+          {
+            "label": "01/04",
+            "line": 83
+          },
+          {
+            "label": "01/05",
+            "line": 75
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 75
+          },
+          {
+            "label": "01/08",
+            "line": 80
+          },
+          {
+            "label": "01/09",
+            "line": 81
+          },
+          {
+            "label": "01/10",
+            "line": 86
+          },
+          {
+            "label": "01/11",
+            "line": 88
+          },
+          {
+            "label": "01/12",
+            "line": 87
+          },
+          {
+            "label": "01/13",
+            "line": 79
+          },
+          {
+            "label": "01/14",
+            "line": 76
+          },
+          {
+            "label": "01/15",
+            "line": 74
+          },
+          {
+            "label": "01/16",
+            "line": 76
+          },
+          {
+            "label": "01/17",
+            "line": 76
+          },
+          {
+            "label": "01/18",
+            "line": 82
+          },
+          {
+            "label": "01/19",
+            "line": 87
+          },
+          {
+            "label": "01/20",
+            "line": 89
+          },
+          {
+            "label": "01/21",
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "line": 80
+          },
+          {
+            "label": "01/23",
+            "line": 77
+          },
+          {
+            "label": "01/24",
+            "line": 75
+          },
+          {
+            "label": "01/25",
+            "line": 73
+          },
+          {
+            "label": "01/26",
+            "line": 78
+          },
+          {
+            "label": "01/27",
+            "line": 84
+          },
+          {
+            "label": "01/28",
+            "line": 88
+          },
+          {
+            "label": "01/29",
+            "line": 86
+          },
+          {
+            "label": "01/30",
+            "line": 85
+          },
+          {
+            "label": "01/31",
+            "line": 81
+          },
+          {
+            "label": "02/01",
+            "line": 78
+          },
+          {
+            "label": "02/02",
+            "line": 72
+          },
+          {
+            "label": "02/03",
+            "line": 74
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "31%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "61%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:02"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "8%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "71.4%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "74.2%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "79.6%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "52.1%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jessica L. Martinez",
+                "18",
+                "75.5%",
+                "81.2%",
+                "51.3%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "22",
+                "72.8%",
+                "78.9%",
+                "53.4%"
+              ]
+            },
+            {
+              "cells": [
+                "Rachel Kowalski",
+                "15",
+                "74.3%",
+                "78.7%",
+                "51.6%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Aug 11, 2025 - Aug 16, 2025",
+      "callCount": "5,139 calls",
+      "pagerLabel": "1 of 52",
+      "calls": [
+        {
+          "time": "8/11/25 12:02 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "8/11/25 9:41 am",
+          "id": "A31C-4B8E1D77A0F2"
+        },
+        {
+          "time": "8/12/25 11:18 am",
+          "id": "7D2E-9C0A44E1B3F8"
+        },
+        {
+          "time": "8/12/25 2:53 pm",
+          "id": "C48A-1F6B2E90D5A7"
+        },
+        {
+          "time": "8/13/25 10:07 am",
+          "id": "3E9F-6A2C88B41E0D"
+        },
+        {
+          "time": "8/13/25 4:22 pm",
+          "id": "B1D7-0E5F73A9C21B"
+        },
+        {
+          "time": "8/14/25 8:36 am",
+          "id": "9F04-2D8A16C0E7B5"
+        },
+        {
+          "time": "8/14/25 1:49 pm",
+          "id": "6C3B-5E1F09A72D48"
+        },
+        {
+          "time": "8/15/25 3:11 pm",
+          "id": "D82A-4B7C10F53E9A"
+        },
+        {
+          "time": "8/16/25 12:57 pm",
+          "id": "5A7E-8C2D93F016B4"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling AutoNation, this is Marcus. How can I help you find your next vehicle today?",
+          "highlights": [
+            "Thank you for calling AutoNation",
+            "How can I help you find your next vehicle today?"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi, yeah, I'm looking at used SUVs. I saw a Toyota RAV4 on your site and wanted more info.",
+          "highlights": [
+            "used SUVs",
+            "Toyota RAV4"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:15",
+          "text": "Great choice, the RAV4 is one of our most popular models. Is this your first time shopping with AutoNation?",
+          "highlights": [
+            "most popular models",
+            "first time shopping with AutoNation"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:23",
+          "text": "Yeah, first time. A friend recommended you guys.",
+          "highlights": [
+            "first time"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:28",
+          "text": "Welcome, we're glad to have you. Can I get your name so I can pull up the right inventory for you?",
+          "highlights": [
+            "Can I get your name"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:35",
+          "text": "Sure, it's Danielle Reyes.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:39",
+          "text": "Thanks, Danielle. Are you leaning toward a Certified Pre-Owned RAV4, or open to standard used inventory too?",
+          "highlights": [
+            "Certified Pre-Owned RAV4"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:47",
+          "text": "Certified pre-owned would be ideal, I want the warranty coverage. My budget's around $25,000.",
+          "highlights": [
+            "Certified pre-owned",
+            "warranty coverage",
+            "$25,000"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:56",
+          "text": "Perfect. We have a couple of Certified Pre-Owned RAV4 XLE models in that $23,000 to $27,000 range with the multi-point inspection and coverage included.",
+          "highlights": [
+            "Certified Pre-Owned RAV4 XLE",
+            "multi-point inspection"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:06",
+          "text": "That sounds good. What would payments look like on something like that?",
+          "highlights": [
+            "What would payments look like"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:12",
+          "text": "With our financing, that typically lands in the $300 to $450 a month tier depending on your term and down payment. We also offer soft-pull prequalification so it won't affect your credit.",
+          "highlights": [
+            "$300 to $450 a month",
+            "prequalification"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:23",
+          "text": "Oh nice, I'd like to get prequalified. And can I see the RAV4 in person?",
+          "highlights": [
+            "get prequalified",
+            "see the RAV4 in person"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:30",
+          "text": "Absolutely. I'd recommend scheduling a test drive so you can get a feel for it. Are you available later this week?",
+          "highlights": [
+            "scheduling a test drive"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:38",
+          "text": "Thursday morning would work for me.",
+          "highlights": [
+            "Thursday morning"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:43",
+          "text": "Let's do Thursday at 10 AM at our AutoNation Toyota Sales Center. Does that time work?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "AutoNation Toyota Sales Center"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:51",
+          "text": "Yes, 10 AM Thursday is perfect.",
+          "highlights": [
+            "10 AM Thursday is perfect"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:56",
+          "text": "Great, you're booked. What's the best phone number and email to send the confirmation and prequalification link?",
+          "highlights": [
+            "you're booked",
+            "phone number and email"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:04",
+          "text": "It's 555-٢٠٤-8817, and danielle.reyes@email.com.",
+          "highlights": [
+            "danielle.reyes@email.com"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:13",
+          "text": "Perfect, I've got your test drive set for Thursday at 10 AM and I'll email the prequalification link now. We'll have the Certified Pre-Owned RAV4 ready for you.",
+          "highlights": [
+            "test drive set for Thursday at 10 AM",
+            "prequalification link"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:26",
+          "text": "Awesome, thank you so much Marcus.",
+          "highlights": [
+            "thank you so much"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "My pleasure, Danielle. See you Thursday, and thanks for choosing AutoNation!",
+          "highlights": [
+            "See you Thursday",
+            "thanks for choosing AutoNation"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Test Drive: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Certified Pre-Owned Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Financing / Prequalification Intent",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Popular Model Inquiry (RAV4)",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Contact Info Captured",
+          "badges": [
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Monthly Payment Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Danielle Reyes, a first-time AutoNation shopper, called about a used Toyota RAV4 she saw online and expressed interest in a Certified Pre-Owned model within a $25,000 budget. Agent Marcus recommended Certified Pre-Owned RAV4 XLE inventory in the $23,000–$27,000 range with included warranty coverage and multi-point inspection, and explained the $300–$450/month financing tier plus soft-pull prequalification. He scheduled a test drive for Thursday at 10 AM at the AutoNation Toyota Sales Center and captured her phone and email to send confirmation and the prequalification link.",
+        "keyPoints": [
+          "New customer — first time shopping with AutoNation, referred by a friend",
+          "Interested in a Certified Pre-Owned Toyota RAV4 with warranty coverage",
+          "Budget around $25,000; agent matched CPO RAV4 XLE at $23K–$27K",
+          "Discussed $300–$450/month financing and offered soft-pull prequalification",
+          "Test drive booked for Thursday at 10 AM at the Toyota Sales Center",
+          "Captured phone number and email for confirmation and prequalification link"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Test Drive booked — Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "5,139 calls",
+      "dateRange": "Aug 11, 2025 - Aug 16, 2025",
+      "pagerLabel": "1 of 52",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi! This is AutoNation. Thanks for texting us about the Toyota RAV4. Are you looking to schedule a test drive at one of our Sales Centers?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, I'm interested in the 2025 RAV4 I saw online. Do you have any in stock near me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great! We have several RAV4s available. First, what's your price range—are you looking at vehicles under $30,000, or are you open to higher trims?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:25 AM",
+              "text": "Probably around $25,000 to $35,000. I want a good balance of features."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "Perfect. Have you financed a vehicle before, or would you like to explore our AutoNation Finance options for prequalification?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "I've financed before. I'm good on that part. Just want to see the vehicle in person."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Understood! Are you looking for a New vehicle, Certified Pre-Owned, or are you open to either?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Certified Pre-Owned would be ideal if you have one in my price range."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Excellent. Would tomorrow, Saturday, work for you to visit our AutoNation Sales Center, or would you prefer Monday or Tuesday?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:34 AM",
+              "text": "Monday works better for me. What times are available?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:35 AM",
+              "text": "Great! We're open Monday from 9 AM to 8 PM. Would 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:37 AM",
+              "text": "2 PM Monday is perfect. How do I know where to go?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:38 AM",
+              "text": "You're all set for Monday at 2 PM! Our Sales Center is at 1500 Auto Drive, San Jose. Ask for our Sales team when you arrive. Is this the best number to reach you with a reminder?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:40 AM",
+              "text": "Yes, this number is fine."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:41 AM",
+              "text": "Perfect! We'll send you a confirmation text tomorrow. If you have any questions, call us at 877-936-2933. See you Monday!"
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Test Drive: Scheduled",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keypress"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Vehicle: Certified Pre-Owned RAV4",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Finance: Not Interested",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "(408) 555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "(408) 555-0147",
+            "repeatCaller": "No",
+            "city": "San Jose",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Chen",
+            "firstName": "Sarah",
+            "lastName": "Chen",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A721-223GH456789BC",
+          "time": "8/16/25 10:48 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A721-223GH456789BC",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B834-334IJ567890DE",
+          "time": "8/16/25 10:32 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B834-334IJ567890DE",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D945-445JK678901EF",
+          "time": "8/16/25 10:18 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D945-445JK678901EF",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "3,027 calls",
+      "dateRange": "Aug 11, 2025 - Aug 16, 2025",
+      "pagerLabel": "1 of 31",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "8/16/25 4:12 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling AutoNation. This is Marcus. How can I help you find your next vehicle today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Yeah, hi. I'm looking for a used SUV, something reliable, you know, under thirty thousand."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Awesome. We've got some great options in that range. Are you looking to replace a vehicle you currently own, or is this your first SUV?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "I've got a sedan right now, but I want something bigger for my family. Kids need more space."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. A family SUV is a smart move. What brands are you most interested in? Toyota, Honda, Chevrolet?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "I like Toyota. I've heard good things about the RAV4. Do you guys have any in stock?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "We absolutely do. The RAV4 is one of our most popular models and customers love them for family use. Have you had a chance to test drive an SUV before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Not recently, no. I'd definitely want to see it in person and take it out."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Great. We can get you set up for a test drive. What area are you in? Are you closer to our Phoenix location or one of our other Arizona stores?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Phoenix, yeah. That's convenient for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Perfect. How about this Saturday, March fifteenth, at ten in the morning? We've got a couple of RAV4s available then."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Saturday morning works great. Ten is perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Excellent. So I've got you down for a test drive this Saturday, March fifteenth at ten AM at our Phoenix AutoNation location. Your confirmation number is five five nine eight two, and we'll give you a quick call Friday to remind you. What's the best number to reach you on?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "It's six zero two, five five five, eight one two four."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Got it, six zero two, five five five, eight one two four. We'll call you Friday afternoon. Thanks for choosing AutoNation, and we look forward to seeing you Saturday!"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Thanks, Marcus. See you then."
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Test Drive: Scheduled",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Vehicle Intent: SUV / Family",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Brand Preference: Toyota RAV4",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Price Range Confirmed: Under $30k",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "3/10/26 4:12 pm",
+            "duration": "5:47",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice — Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "602-555-8124",
+            "repeatCaller": "No",
+            "city": "Phoenix",
+            "region": "AZ",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B829-4D7A1E562C45",
+          "time": "8/16/25 3:54 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B829-4D7A1E562C45",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C641-9B3E2F774D18",
+          "time": "8/16/25 3:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C641-9B3E2F774D18",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D755-6C1F8A293B07",
+          "time": "8/16/25 3:21 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D755-6C1F8A293B07",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm AutoNation's AI assistant helping you get a personalized vehicle quote and schedule a test drive — we're currently featuring select models with payments under $300/mo and Certified Pre-Owned specials; would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time — which vehicle type or model are you interested in (new, used, Certified Pre-Owned, or electric), your target monthly payment or price range, whether you'll be financing or paying cash, your ideal timeline to buy, and your ZIP code so I can confirm the nearest AutoNation store.",
+        "Estimate then book: Once I confirm we have inventory near your ZIP, I'll share a preliminary price or monthly-payment range based on what you shared, recommend meeting with a sales specialist for an exact, vehicle-specific quote, and propose a specific day and time for your test drive — you'll get a reminder text beforehand with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "AutoNation_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Shop Vehicles",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Finance & Prequalification",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Store & Service Center",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"vehicle protection plan\",\"question\":\"Is my extended vehicle protection plan still active and does it cover my current repair?\",\"answer\":\"I can help you confirm your Vehicle Protection Plan status and coverage details — let me connect you with your AutoNation store so a specialist can review your plan and schedule any needed service.\"},{\"topic\":\"reschedule test drive\",\"question\":\"I need to move my test drive to a different day, can you help?\",\"answer\":\"Absolutely, I can reschedule your test drive — just let me know your preferred day and time and I'll confirm availability at your AutoNation store and send you a reminder text.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you have used cars under $15,000?",
+              "answer": "Yes, we carry a wide selection of budget-friendly pre-owned vehicles, and inventory changes daily by location — share your ZIP and I'll help you set up a test drive to see what's available near you."
+            },
+            {
+              "question": "What Certified Pre-Owned vehicles do you have?",
+              "answer": "Our AutoNation Certified Pre-Owned vehicles are inspected and come with warranty coverage — let me know your preferred make or model and ZIP so I can book you a test drive with a specialist."
+            },
+            {
+              "question": "Can I find cars with payments under $300 a month?",
+              "answer": "Yes, we promote vehicles in monthly-payment tiers including under $300, $300–$450, and $450+ — final payments depend on the vehicle and financing, so let's schedule a visit to get you exact numbers."
+            },
+            {
+              "question": "Do you sell electric cars?",
+              "answer": "We have a dedicated EV inventory along with an EV Buyers Guide to help you choose — tell me your ZIP and I'll set up a test drive at the nearest store."
+            },
+            {
+              "question": "How much is a Toyota RAV4?",
+              "answer": "The RAV4 is one of our most popular models and pricing varies by trim, year, and location, so I can't quote an exact figure here — let's book a test drive and a specialist will give you a precise quote."
+            },
+            {
+              "question": "Can you give me a price for a specific vehicle?",
+              "answer": "Vehicle pricing is specific to the exact car and location, so the best way to get an accurate quote is to meet with a specialist — I'd be happy to schedule a test drive for you."
+            },
+            {
+              "question": "Do you offer financing?",
+              "answer": "Yes, AutoNation Finance offers prequalification and loan options across credit tiers with no cost to apply — I can book you a consultation so a finance specialist can walk you through your options."
+            },
+            {
+              "question": "Can I get prequalified with bad credit?",
+              "answer": "We work with customers across a range of credit tiers and offer a soft-pull prequalification — let's set up a time to meet with a finance specialist to review your options."
+            },
+            {
+              "question": "How do I sell or trade in my car?",
+              "answer": "You can get an offer through our Sell My Car process, and a specialist can appraise your vehicle in person — share your ZIP and I'll schedule you at the nearest store."
+            },
+            {
+              "question": "Do you have a service center near me?",
+              "answer": "We have AutoNation Service Centers in many locations — give me your ZIP and I'll help you find the closest one and book an appointment."
+            },
+            {
+              "question": "How much is an oil change?",
+              "answer": "Oil change and standard maintenance pricing varies by vehicle and location, so I can't quote an exact price here — let me book you a service appointment for a precise estimate."
+            },
+            {
+              "question": "Do you offer mobile service?",
+              "answer": "Yes, AutoNation Mobile Service brings maintenance and repairs to your home or office — share your ZIP and I'll help schedule a visit."
+            },
+            {
+              "question": "What's the cost of an extended warranty?",
+              "answer": "Our Vehicle Protection Plans vary based on your vehicle and coverage level, so exact pricing comes from a specialist — I can arrange a consultation to review the right plan for you."
+            },
+            {
+              "question": "Do you do brake service?",
+              "answer": "Yes, our service centers handle pad and rotor replacement, brake inspections, and fluid service, with pricing based on your vehicle — let's book a service appointment for an exact estimate."
+            },
+            {
+              "question": "Can you install new tires?",
+              "answer": "We sell and install tires including mounting, balancing, and alignment add-ons — pricing depends on the tire and vehicle, so let me schedule you for a service appointment."
+            },
+            {
+              "question": "What brands do you carry?",
+              "answer": "We sell across roughly 30 brands including Toyota, Honda, Ford, Chevrolet, BMW, and Mercedes-Benz — tell me what you're interested in and your ZIP, and I'll book a test drive."
+            },
+            {
+              "question": "What are your service center hours?",
+              "answer": "Hours vary by location, so share your ZIP and I'll confirm the hours for your nearest AutoNation store while we get your appointment scheduled."
+            },
+            {
+              "question": "Do you handle collision repair?",
+              "answer": "Yes, our Collision Centers handle body work, paint, and frame repair, often coordinated with insurance — let's set up a time for an estimate at the nearest center."
+            },
+            {
+              "question": "Can I schedule a test drive?",
+              "answer": "Absolutely — just tell me the vehicle you're interested in and your ZIP, and I'll find a time that works for you at your local AutoNation store."
+            },
+            {
+              "question": "Do you offer auto insurance?",
+              "answer": "Yes, AutoNation Insurance provides bundled quotes and policies through our partners — I can book you a consultation to get personalized rates."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a test drive\",\"follow_up_message\":\"Great — I've got a couple of test drive slots open at your nearest AutoNation store this week. Would tomorrow at 10 AM or 2 PM work better for you? I'll send a reminder text with a number to call.\"},{\"intent\":\"request a vehicle quote\",\"follow_up_message\":\"Happy to help you get exact numbers — the best way is to meet with a specialist who can prepare a precise quote and financing options. Can I schedule you for a visit this week? Just share your ZIP so I can confirm the closest store.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "goal": "Qualify the customer's vehicle interest and budget, then book an in-person test drive with a sales specialist at their nearest AutoNation store.",
+        "bookingType": "in-person test drive",
+        "offer": "Ask about our current specials, including select models with payments under $300/mo and Certified Pre-Owned deals",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Are you looking for a new, used, Certified Pre-Owned, or electric vehicle?",
+          "Do you have a specific make or model in mind, like a Toyota RAV4 or Ford F-150?",
+          "What's your target price range or monthly payment (under $300, $300–$450, or $450+)?",
+          "Will you be financing or paying cash, and are you interested in prequalification?",
+          "What's your ideal timeline to purchase?",
+          "What's your ZIP code so I can confirm the nearest AutoNation store and available inventory?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "7/22/26 3:42 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "7/22/26 3:42 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "7/22/26 3:42 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "AutoNation",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(480) 555-0142",
+      "campaign": "Certified Pre-Owned SUV - Phoenix Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Test Drive Lead",
+      "estimatedValue": "$28,500",
+      "googleSearch": "certified pre-owned SUV Phoenix under $30000",
+      "websiteSearch": "AutoNation Honda CR-V CPO near me",
+      "callingWebpage": "/shop/used-cars/certified-pre-owned",
+      "products": "AutoNation Certified Pre-Owned Honda CR-V, Vehicle Protection Plan Extended Warranty",
+      "cartId": "AN-7392K",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@emaildomain.com",
+      "street": "2847 North Camelback Road",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85016",
+      "digitalJourney": "/home › /shop/used-cars › /shop/used-cars/certified-pre-owned › /shop/by-brand/honda",
+      "intent": "Shopping for a reliable certified pre-owned SUV with warranty coverage; interested in test drive availability this week.",
+      "coverage": "ZIP 85016 confirmed - Phoenix serviceable",
+      "switchIntent": "High - actively comparing CPO inventory, prefers Honda CR-V, ready to test drive and finance same day.",
+      "greeting": "Hi Sarah! Thanks for calling AutoNation. I see you're interested in our Certified Pre-Owned Honda CR-V models. I'd love to get you in for a test drive at our Phoenix location. Do you have time this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "AutoNation",
+      "callerName": "Marcus Johnson",
+      "callerPhone": "(303) 555-0189",
+      "campaign": "Electric Vehicle Buyers - Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Service Appointment Lead",
+      "estimatedValue": "$42,000",
+      "googleSearch": "electric cars for sale Denver Colorado 2024",
+      "websiteSearch": "AutoNation EV inventory near me",
+      "callingWebpage": "/shop/electric-cars",
+      "products": "AutoNation Electric Vehicle Inventory, AutoNation Finance Prequalification",
+      "cartId": "AN-5164M",
+      "serviceable": "Yes",
+      "email": "marcus.johnson@emaildomain.com",
+      "street": "3601 South Gaylord Street",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80210",
+      "digitalJourney": "/home › /shop/electric-cars › /finance › /shop/by-price/30000-and-above",
+      "intent": "EV buyer researching available inventory; interested in financing options and understanding incentives; considering switch from gas vehicle.",
+      "coverage": "ZIP 80210 confirmed - Denver serviceable",
+      "appointment": "Test Drive with EV Specialist - Thursday, July 18, 2:00 PM at Denver Sales Center",
+      "greeting": "Hi Marcus! This is Jennifer from AutoNation. Just confirming your test drive appointment for Thursday at 2 PM to check out our electric vehicles. Feel free to reach out if you have any questions about charging or incentives beforehand. Looking forward to seeing you!"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "AutoNation",
+      "brandDomain": "www.autonation.com",
+      "brandIcon": "🚗",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Phoenix, AZ",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Used-Cars-Under-15k_Local",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "used cars for sale near me under $15,000",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/shop/used-cars?price=under-15k",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile - iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Used Cars Under $15k, Toyota RAV4 CPO Inventory",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes - Trade-In Appraisal (not submitted)",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Phoenix, AZ",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "test_drive_used_cars",
+          "name": "Test Drive - Certified Pre-Owned"
+        },
+        {
+          "id": "finance_prequalification",
+          "name": "Finance - Prequalification & Approval"
+        },
+        {
+          "id": "general_customer_support",
+          "name": "General Customer Support"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there! Thanks for calling AutoNation. I see you're interested in our certified pre-owned inventory under fifteen thousand. Are you looking to get behind the wheel of one of our vehicles today, or do you have questions about a specific model?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I'm looking at that Toyota RAV4 you guys have listed. It's got good mileage and the price looks right. I'm just not sure if I can trade in my current vehicle or if I should sell it separately.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Toyota RAV4</strong> CPO interest"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Trade-in</strong> inquiry"
+            },
+            {
+              "c": "orange",
+              "t": "Budget-conscious buyer"
+            }
+          ],
+          "q": [
+            35,
+            45,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect, the RAV4 is one of our most popular models, and we can absolutely help with a trade-in appraisal same day. Have you had a chance to check the vehicle's condition or mileage, and would you be available to visit one of our Phoenix area locations this week for a test drive and trade evaluation?",
+          "sigs": [],
+          "q": [
+            55,
+            30,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "This week works for me, yeah. Probably Thursday or Friday after work. And no, I haven't seen it in person yet, so I'd definitely want to inspect it before committing. Do you guys offer any extended warranty coverage on certified cars?",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Test drive ready</strong> - this week"
+            },
+            {
+              "c": "blue",
+              "t": "In-person inspection required"
+            },
+            {
+              "c": "purple",
+              "t": "Protection plan curious"
+            }
+          ],
+          "q": [
+            78,
+            15,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent! All our certified pre-owned vehicles come with our AutoNation CPO warranty, and we can discuss extended vehicle protection plans with you at the dealership. Let me get you connected with our Test Drive team in Phoenix—they'll confirm availability for Thursday or Friday, get your trade-in details locked in, and make sure that RAV4 is prepped and ready for your inspection. Sound good?",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+/* =============================================================================
+   standalone.css — full-page screens shown OUTSIDE the app shell:
+   .ix = Invoca Exchange (invoca.com/integrations)
+   .ga = Google Ads "Search Keywords" (shadyblindsnow.com demo asset)
+   ============================================================================= */
+
+/* ===================== INVOCA EXCHANGE ===================================== */
+.ix { min-height: 100vh; background: #fff; color: #16233a; font-family: var(--font-base); }
+.ix-header { display: flex; align-items: center; gap: 28px; padding: 14px 40px; border-bottom: 1px solid #eef0f2; position: sticky; top: 0; background: #fff; z-index: 10; }
+.ix-logo-img { height: 26px; cursor: pointer; }
+.ix-nav { display: flex; gap: 22px; color: #16233a; font-size: 15px; }
+.ix-nav span { cursor: pointer; }
+.ix-header-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.ix-muted { color: #5b6577; font-size: 14px; }
+.ix-login { background: none; border: none; font: inherit; font-size: 14px; color: #16233a; cursor: pointer; }
+.ix-demo { background: #12c07e; color: #06301f; border: none; border-radius: 6px; font: inherit; font-weight: 700; font-size: 14px; padding: 9px 18px; cursor: pointer; }
+
+.ix-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; padding: 56px 40px; max-width: 1240px; margin: 0 auto; }
+.ix-hero-text h1 { font-size: 52px; font-weight: 800; letter-spacing: -1px; margin: 0 0 18px; }
+.ix-hero-text p { font-size: 18px; line-height: 1.6; color: #45505f; max-width: 460px; }
+.ix-orbit { position: relative; height: 340px; }
+.ix-orbit-ring { position: absolute; border: 1.5px dashed #cfe9dd; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.ix-orbit-ring.r1 { width: 200px; height: 200px; }
+.ix-orbit-ring.r2 { width: 320px; height: 320px; }
+.ix-orbit-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 96px; height: 96px; background: #d8f5e8; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.ix-orbit-center img { width: 44px; }
+.ix-orbit-dot { position: absolute; width: 40px; height: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.12); top: 50%; left: 50%; }
+.ix-orbit-dot.d0 { transform: translate(60px, -160px); }
+.ix-orbit-dot.d1 { transform: translate(150px, -70px); }
+.ix-orbit-dot.d2 { transform: translate(150px, 40px); }
+.ix-orbit-dot.d3 { transform: translate(70px, 130px); }
+.ix-orbit-dot.d4 { transform: translate(-110px, 120px); }
+.ix-orbit-dot.d5 { transform: translate(-180px, 10px); }
+.ix-orbit-dot.d6 { transform: translate(-150px, -100px); }
+.ix-orbit-dot.d7 { transform: translate(-40px, -160px); }
+
+.ix-section { max-width: 1240px; margin: 0 auto; padding: 20px 40px; }
+.ix-h2 { font-size: 22px; font-weight: 700; margin: 8px 0 16px; }
+.ix-featured { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ix-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+.ix-tile { border: 1px solid #e6e8eb; border-radius: 12px; padding: 18px; background: #fff; transition: box-shadow .15s, border-color .15s; }
+.ix-clickable { cursor: pointer; }
+.ix-clickable:hover { box-shadow: 0 8px 22px rgba(0,0,0,.10); border-color: #12c07e; }
+.ix-tile-top { display: flex; align-items: center; margin-bottom: 12px; }
+.ix-logo { width: 40px; height: 40px; border-radius: 10px; color: #fff; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+.ix-badge { margin-left: auto; font-size: 11px; font-weight: 700; color: #0a7f57; background: #e3f7ee; border-radius: 20px; padding: 3px 10px; }
+.ix-tile-name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.ix-tile-desc { font-size: 13px; color: #5b6577; line-height: 1.45; }
+
+.ix-filters { display: flex; gap: 48px; }
+.ix-filter-label { font-size: 13px; font-weight: 700; color: #16233a; margin-bottom: 10px; }
+.ix-chips { display: flex; flex-wrap: wrap; gap: 8px; max-width: 560px; }
+.ix-chip { font-size: 13px; color: #45505f; border: 1px solid #dfe3e8; border-radius: 20px; padding: 5px 12px; cursor: pointer; }
+.ix-chip:hover { border-color: #12c07e; color: #0a7f57; }
+.ix-footer { text-align: center; color: #9aa0a6; font-size: 12px; padding: 40px; }
+
+/* ===================== GOOGLE ADS ========================================= */
+.ga { min-height: 100vh; background: #fff; font-family: "Roboto", var(--font-base); color: #3c4043; }
+.ga-topbar { display: flex; align-items: center; gap: 16px; background: #3c4043; color: #fff; padding: 0 16px; height: 48px; }
+.ga-hamburger { cursor: pointer; }
+.ga-topbar .material-icons { color: #dadce0; font-size: 20px; }
+.ga-logo { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 500; color: #fff; }
+.ga-logo-mark { width: 18px; height: 18px; border-radius: 50%; background: conic-gradient(#4285f4 0 25%, #34a853 0 50%, #fbbc04 0 75%, #ea4335 0); }
+.ga-campaigns { font-size: 14px; color: #e8eaed; }
+.ga-topicons { margin-left: auto; display: flex; align-items: center; gap: 18px; }
+.ga-avatar { width: 26px; height: 26px; border-radius: 50%; background: #a142f4; }
+
+.ga-body { display: flex; }
+.ga-nav { width: 200px; border-right: 1px solid #e8eaed; padding: 8px 0; flex-shrink: 0; }
+.ga-nav-item { padding: 9px 24px; font-size: 14px; color: #3c4043; cursor: pointer; }
+.ga-nav-item:hover { background: #f1f3f4; }
+.ga-nav-item.ga-parent { font-weight: 500; }
+.ga-nav-item.ga-active { color: #1a73e8; background: #e8f0fe; border-right: 3px solid #1a73e8; font-weight: 500; }
+
+.ga-main { flex: 1; padding: 20px 28px; min-width: 0; }
+.ga-head { display: flex; align-items: center; margin-bottom: 16px; }
+.ga-head h1 { font-size: 22px; font-weight: 400; color: #202124; margin: 0; }
+.ga-daterange { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #5f6368; }
+.ga-custom { color: #5f6368; }
+.ga-daterange .material-icons { font-size: 20px; color: #5f6368; }
+
+.ga-card { border: 1px solid #e8eaed; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.ga-legend { display: flex; gap: 20px; font-size: 13px; color: #5f6368; margin-bottom: 8px; }
+.ga-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.ga-dot { width: 10px; height: 10px; border-radius: 50%; }
+.ga-chart { display: block; }
+.ga-axis { fill: #9aa0a6; font-size: 10px; }
+
+.ga-filterbar { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #3c4043; padding: 8px 0; border-bottom: 1px solid #e8eaed; }
+.ga-filterbar .material-icons { font-size: 20px; color: #5f6368; }
+.ga-blue { color: #1a73e8; }
+.ga-add-filter { color: #5f6368; font-weight: 500; letter-spacing: .3px; }
+.ga-toolbar { margin-left: auto; display: flex; gap: 16px; }
+
+.ga-table-wrap { overflow-x: auto; }
+.ga-table { border-collapse: collapse; width: 100%; font-size: 13px; white-space: nowrap; }
+.ga-table th { text-align: left; color: #5f6368; font-weight: 500; padding: 12px 16px; border-bottom: 1px solid #e8eaed; }
+.ga-table td { padding: 12px 16px; border-bottom: 1px solid #f1f3f4; color: #3c4043; }
+.ga-table .ga-num { text-align: right; }
+.ga-check { width: 20px; }
+.ga-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #34a853; display: inline-block; }
+.ga-subrow td { color: #5f6368; border-bottom: none; padding-top: 4px; padding-bottom: 4px; }
+.ga-subitem { padding-left: 8px !important; }
+.ga-total td { font-weight: 500; color: #202124; background: #fafafa; }
+.ga-pager { text-align: right; font-size: 12px; color: #5f6368; padding: 12px 16px; }
+.ga-footer { font-size: 11px; color: #9aa0a6; padding: 16px 0; }

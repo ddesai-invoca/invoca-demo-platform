@@ -1,0 +1,76 @@
+/* =============================================================================
+   Titan design tokens — measured from the live Invoca platform.
+   Single source of truth for color / type / spacing across every screen.
+   ============================================================================= */
+
+/* ---- Fonts (bundled locally for offline use) ----------------------------- */
+@font-face { font-family: "Lato"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/lato-400.woff2") format("woff2"); }
+@font-face { font-family: "Lato"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/lato-700.woff2") format("woff2"); }
+@font-face { font-family: "Material Icons"; font-style: normal; font-weight: 400; src: url("/fonts/material-icons.woff2") format("woff2"); }
+
+:root {
+  /* Brand / accent */
+  --color-bg-page: #f6f7f9;
+  --color-white: #ffffff;
+  --color-topbar: #f6f7f9;       /* chrome bg — matches page */
+  --color-sidebar: #f5f6fa;      /* left rail bg */
+  --color-blue: #00acf1;        /* Save / +/ links */
+  --color-teal: #008075;        /* date + filter pills */
+  --color-green-bar: #2cbf58;   /* chart bars */
+  --color-green-active: #0a830e;/* active nav item */
+  --color-new-bg: #d5f2de;      /* NEW badge */
+  --color-demo-bg: #f5d9a8;
+  --color-demo-text: #8a6d2f;
+
+  /* Text */
+  --color-text: #343a40;        /* body / table */
+  --color-text-nav: #2c3951;    /* sidebar labels */
+  --color-text-title: #15243e;  /* report title */
+  --color-text-muted: #6c757d;
+  --color-text-faint: #9aa0a6;
+
+  /* Lines / surfaces */
+  --color-border: #e6e8eb;
+  --color-row-alt: #f9f9f9;
+  --color-row-hover: #eef6fb;
+
+  /* Typography */
+  --font-base: "Lato", "Avenir", "Museo Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --fs-title: 24px;
+  --fs-body: 13.2px;
+  --fs-th: 11.55px;
+  --fs-small: 12px;
+  --lh-body: 1.5;
+
+  /* Layout */
+  --sidebar-w: 86px;
+  --topbar-h: 75px;
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  background: var(--color-bg-page);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal; font-style: normal;
+  line-height: 1; letter-spacing: normal; text-transform: none;
+  display: inline-block; white-space: nowrap; direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--color-blue); text-decoration: none; }

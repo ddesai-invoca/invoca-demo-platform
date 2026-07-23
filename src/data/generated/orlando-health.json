@@ -1,0 +1,5327 @@
+{
+  "id": "orlando-health",
+  "customerName": "Orlando Health",
+  "websiteUrl": "https://www.orlandohealth.com/",
+  "brandDomain": "orlandohealth.com",
+  "networkName": "Invoca for Healthcare",
+  "industry": "Hospital & Health Systems",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 19, 2026 - Jan 24, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 100,
+      "yTicks": [
+        20,
+        40,
+        60,
+        80,
+        100
+      ],
+      "chart": [
+        {
+          "date": "01/19",
+          "value": 58
+        },
+        {
+          "date": "01/20",
+          "value": 74
+        },
+        {
+          "date": "01/21",
+          "value": 81
+        },
+        {
+          "date": "01/22",
+          "value": 67
+        },
+        {
+          "date": "01/23",
+          "value": 92
+        },
+        {
+          "date": "01/24",
+          "value": 49
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "ER Near Me - Wait Times",
+          "marketingSearchTerm": "emergency room near me",
+          "landingPageUrl": "https://www.orlandohealth.com/find-a-location/orlando-area-ers?utm_source=google&utm_medium=cpc&utm_campaign=er_near_me_wait_times",
+          "websiteJourney": "Home / Find a Location / Orlando Area ERs",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Doctor - Orlando",
+          "marketingSearchTerm": "find a doctor orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/find-a-doctor?utm_source=google&utm_medium=cpc&utm_campaign=find_a_doctor_orlando",
+          "websiteJourney": "Home / Find a Doctor / Primary Care Doctors",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Cancer Institute - Second Opinion",
+          "marketingSearchTerm": "cancer center orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/cancer-institute?utm_source=bing&utm_medium=cpc&utm_campaign=cancer_second_opinion",
+          "websiteJourney": "Home / Services & Specialties / Cancer Institute",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Bariatric Surgery Orlando",
+          "marketingSearchTerm": "bariatric surgery orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/weight-loss-and-bariatric-surgery-institute?utm_source=google&utm_medium=cpc&utm_campaign=bariatric_orlando",
+          "websiteJourney": "Home / Services & Specialties / Weight Loss and Bariatric Surgery Institute",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mammogram Appointment Orlando",
+          "marketingSearchTerm": "mammogram appointment orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/womens-institute?utm_source=google&utm_medium=cpc&utm_campaign=mammogram_orlando",
+          "websiteJourney": "Home / Services & Specialties / Women's Institute",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Health Blog / Content Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/content-hub?utm_source=organic&utm_medium=organic&utm_campaign=content_hub",
+          "websiteJourney": "Home / Content Hub / Heart Health",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "ER Near Me - Wait Times",
+          "marketingSearchTerm": "er wait times orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/find-a-location/orlando-area-ers?utm_source=bing&utm_medium=cpc&utm_campaign=er_wait_times",
+          "websiteJourney": "Home / Find a Location / Orlando Area ERs",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Doctor - Orlando",
+          "marketingSearchTerm": "primary care doctor near me",
+          "landingPageUrl": "https://www.orlandohealth.com/find-a-doctor/primary-care?utm_source=google&utm_medium=cpc&utm_campaign=primary_care",
+          "websiteJourney": "Home / Find a Doctor / Online Scheduling",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Nationally Recognized Care",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/cancer-institute?utm_source=facebook&utm_medium=social&utm_campaign=nationally_recognized_care",
+          "websiteJourney": "Home / Services & Specialties / Cancer Institute",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Colonoscopy Orlando",
+          "marketingSearchTerm": "colonoscopy orlando cost",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/digestive-health-institute?utm_source=google&utm_medium=cpc&utm_campaign=colonoscopy_orlando",
+          "websiteJourney": "Home / Services & Specialties / Digestive Health Institute",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Events & Classes",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/events-and-classes?utm_source=organic&utm_medium=organic&utm_campaign=events_classes",
+          "websiteJourney": "Home / Content Hub / Events & Classes",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Joint Replacement - Jewett",
+          "marketingSearchTerm": "knee replacement orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/orthopedic-institute?utm_source=google&utm_medium=cpc&utm_campaign=joint_replacement_jewett",
+          "websiteJourney": "Home / Services & Specialties / Orthopedic Institute",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "We Make It Personal",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/womens-institute?utm_source=instagram&utm_medium=social&utm_campaign=we_make_it_personal",
+          "websiteJourney": "Home / Services & Specialties / Women's Institute",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Virtual Visit - Telehealth",
+          "marketingSearchTerm": "virtual doctor visit orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/find-a-doctor/virtual-visit?utm_source=google&utm_medium=cpc&utm_campaign=virtual_visit",
+          "websiteJourney": "Home / Find a Doctor / Virtual Visit",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "MyChart Portal",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/patient-portal?utm_source=organic&utm_medium=organic&utm_campaign=mychart_portal",
+          "websiteJourney": "Home / Patient Portal (MyChart) / Login",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Neuroscience - Stroke Care",
+          "marketingSearchTerm": "stroke treatment orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/neuroscience-institute?utm_source=bing&utm_medium=cpc&utm_campaign=stroke_care",
+          "websiteJourney": "Home / Services & Specialties / Neuroscience Institute",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Heart & Vascular - Cardiac Care",
+          "marketingSearchTerm": "cardiologist near me",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/heart-and-vascular-institute?utm_source=google&utm_medium=cpc&utm_campaign=cardiac_care",
+          "websiteJourney": "Home / Services & Specialties / Heart & Vascular Institute",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "U.S. News Best Hospitals",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/find-a-location/orlando-area-hospitals?utm_source=facebook&utm_medium=social&utm_campaign=best_hospitals",
+          "websiteJourney": "Home / Find a Location / Orlando Area Hospitals",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Price Transparency Guide",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/patients-and-visitors/patient-financial-resources?utm_source=organic&utm_medium=organic&utm_campaign=price_transparency",
+          "websiteJourney": "Home / Patients & Visitors / Patient Financial Resources",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Childbirth & Maternity",
+          "marketingSearchTerm": "maternity hospital orlando",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/womens-institute/maternity?utm_source=google&utm_medium=cpc&utm_campaign=childbirth_maternity",
+          "websiteJourney": "Home / Services & Specialties / Women's Institute",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Nationally Recognized Care",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/services-and-specialties/rehabilitation-institute?utm_source=instagram&utm_medium=social&utm_campaign=nationally_recognized_care",
+          "websiteJourney": "Home / Services & Specialties / Rehabilitation Institute",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Health Blog / Content Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.orlandohealth.com/content-hub/aesthetic-reconstructive?utm_source=organic&utm_medium=organic&utm_campaign=content_hub",
+          "websiteJourney": "Home / Services & Specialties / Aesthetic and Reconstructive Surgery Institute",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Orlando Health)",
+      "dateRange": "1/19/2026-1/24/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,742"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "63%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,845,900"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "8,742"
+            },
+            {
+              "label": "Existing Patient Call (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Billing Call (Percent)",
+              "value": "11%"
+            },
+            {
+              "label": "Prescription Refill Call (Percent)",
+              "value": "5%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "63%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "48%"
+            },
+            {
+              "label": "Non-Qualified Inquiry (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "32%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "1/19/2026",
+          "1/20/2026",
+          "1/21/2026",
+          "1/22/2026",
+          "1/23/2026",
+          "1/24/2026"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              920,
+              880,
+              960,
+              1010,
+              870,
+              867
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              720,
+              690,
+              750,
+              780,
+              680,
+              670
+            ]
+          },
+          {
+            "name": "Non-Qualified Inquiry (Count)",
+            "values": [
+              260,
+              250,
+              280,
+              300,
+              240,
+              235
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              470,
+              450,
+              490,
+              510,
+              440,
+              437
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8742,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "3,200",
+                "51%",
+                "35%",
+                "$720,000"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "1,600",
+                "46%",
+                "31%",
+                "$360,000"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "1,450",
+                "44%",
+                "28%",
+                "$290,000"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1,550",
+                "49%",
+                "33%",
+                "$310,000"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "942",
+                "47%",
+                "30%",
+                "$165,900"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8742,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "4,200",
+                "52%",
+                "36%",
+                "$900,000"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "2,100",
+                "48%",
+                "31%",
+                "$420,000"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "1,250",
+                "43%",
+                "27%",
+                "$250,000"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "700",
+                "46%",
+                "30%",
+                "$160,000"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "492",
+                "45%",
+                "29%",
+                "$115,900"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8742,
+          "rows": [
+            {
+              "name": "ER Near Me – Wait Times",
+              "metrics": [
+                "2,400",
+                "50%",
+                "34%",
+                "$510,000"
+              ]
+            },
+            {
+              "name": "Find a Doctor – Orlando",
+              "metrics": [
+                "2,100",
+                "52%",
+                "36%",
+                "$445,000"
+              ]
+            },
+            {
+              "name": "Cancer Institute – Second Opinion",
+              "metrics": [
+                "1,600",
+                "49%",
+                "33%",
+                "$380,000"
+              ]
+            },
+            {
+              "name": "We Make It Personal",
+              "metrics": [
+                "1,500",
+                "44%",
+                "28%",
+                "$300,000"
+              ]
+            },
+            {
+              "name": "Nationally Recognized Care",
+              "metrics": [
+                "1,142",
+                "45%",
+                "29%",
+                "$210,900"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8742,
+          "rows": [
+            {
+              "name": "emergency room near me",
+              "metrics": [
+                "2,200",
+                "51%",
+                "34%",
+                "$470,000"
+              ]
+            },
+            {
+              "name": "find a doctor orlando",
+              "metrics": [
+                "2,000",
+                "52%",
+                "36%",
+                "$420,000"
+              ]
+            },
+            {
+              "name": "mychart login",
+              "metrics": [
+                "1,700",
+                "43%",
+                "27%",
+                "$360,000"
+              ]
+            },
+            {
+              "name": "bariatric surgery orlando",
+              "metrics": [
+                "1,500",
+                "50%",
+                "33%",
+                "$330,000"
+              ]
+            },
+            {
+              "name": "cancer center orlando",
+              "metrics": [
+                "1,342",
+                "49%",
+                "32%",
+                "$265,900"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 8742,
+          "rows": [
+            {
+              "name": "Cancer Institute",
+              "metrics": [
+                "2,100",
+                "54%",
+                "35%",
+                "$520,000"
+              ]
+            },
+            {
+              "name": "Heart & Vascular Institute",
+              "metrics": [
+                "1,900",
+                "52%",
+                "34%",
+                "$460,000"
+              ]
+            },
+            {
+              "name": "Orthopedic Institute",
+              "metrics": [
+                "1,750",
+                "50%",
+                "33%",
+                "$400,000"
+              ]
+            },
+            {
+              "name": "Women's Institute",
+              "metrics": [
+                "1,600",
+                "48%",
+                "30%",
+                "$300,000"
+              ]
+            },
+            {
+              "name": "Digestive Health Institute",
+              "metrics": [
+                "1,392",
+                "47%",
+                "29%",
+                "$165,900"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 8742,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "4,800",
+                "51%",
+                "35%",
+                "$1,050,000"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "1,600",
+                "47%",
+                "30%",
+                "$380,000"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "1,400",
+                "46%",
+                "29%",
+                "$280,000"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "942",
+                "45%",
+                "28%",
+                "$135,900"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "1/19/2026",
+          "1/20/2026",
+          "1/21/2026",
+          "1/22/2026",
+          "1/23/2026",
+          "1/24/2026"
+        ],
+        "series": [
+          {
+            "name": "Cancer Institute",
+            "values": [
+              90,
+              85,
+              95,
+              100,
+              88,
+              86
+            ]
+          },
+          {
+            "name": "Heart & Vascular Institute",
+            "values": [
+              80,
+              78,
+              85,
+              90,
+              76,
+              75
+            ]
+          },
+          {
+            "name": "Orthopedic Institute",
+            "values": [
+              72,
+              70,
+              78,
+              82,
+              68,
+              66
+            ]
+          },
+          {
+            "name": "Women's Institute",
+            "values": [
+              60,
+              58,
+              65,
+              68,
+              55,
+              54
+            ]
+          },
+          {
+            "name": "Digestive Health Institute",
+            "values": [
+              50,
+              48,
+              55,
+              58,
+              46,
+              45
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "66 Calls",
+      "totalNote": "total of 222 calls from Jan 1 to Oct 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2025-10/31/2025",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Patricia Alvarez called the Women's Institute to schedule a screening mammogram after a reminder from her PCP. Agent Mary verified her insurance, found an opening at the Winter Park location, and booked the appointment while confirming her MyChart access for results. Patricia was reassured and left the call satisfied.",
+          "date": "Mar 12, 10:18 AM",
+          "agent": "Mary",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Daniel Kwon wanted to establish care with a new primary care doctor near Lake Nona. Agent Lila matched him with an accepting PCP, walked him through activating his MyChart account, and secured a new-patient appointment for the following week. He thanked her for the smooth setup.",
+          "date": "Feb 4, 3:47 PM",
+          "agent": "Lila",
+          "duration": "2m 30s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 85,
+          "summary": "Gloria Simmons called the Digestive Health Institute to schedule a screening colonoscopy her doctor recommended. Agent Rosey confirmed her referral, explained the prep instructions, and booked an appointment at the Orlando Regional location. Gloria felt well-informed and confirmed the date.",
+          "date": "Apr 21, 9:32 AM",
+          "agent": "Rosey",
+          "duration": "2m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 10,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New patient Marcus Bellamy called the Orthopedic Institute (Jewett) to schedule a consultation for chronic knee pain. Agent Oscar collected his contact and insurance details, verified his information, and booked a new-patient appointment with a joint specialist. Marcus confirmed his email so he could complete intake forms in MyChart before the visit.",
+          "date": "May 9, 1:15 PM",
+          "agent": "Oscar",
+          "duration": "3m 02s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Angela Foster wanted an on-demand virtual visit for a lingering cough that wouldn't fit her work schedule. Agent Lee helped her log into MyChart and booked a same-day telehealth appointment with an available provider. She appreciated the quick, convenient option.",
+          "date": "Jun 17, 6:24 PM",
+          "agent": "Lee",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Robert Nguyen called asking about current ER wait times before bringing in his son with a high fever. Agent Sue looked up live wait times across nearby ERs and directed him to the shortest one, but no appointment was scheduled since it was walk-in emergency care. He hung up to head to the location.",
+          "date": "Jul 2, 8:51 PM",
+          "agent": "Sue",
+          "duration": "1m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 62,
+          "summary": "Teresa Holloway called with a billing question about an unexpected charge from a recent imaging visit. Agent Mike reviewed the account, explained the facility fee, and directed her to the Patient Financial Resources team for a possible adjustment. Teresa remained somewhat frustrated but understood the next steps.",
+          "date": "Aug 14, 11:06 AM",
+          "agent": "Mike",
+          "duration": "2m 22s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Cynthia Park called to check the status of her mammogram results, which she couldn't find in MyChart. Agent Jennifer confirmed the results were still under radiologist review and offered to send a message to the imaging department. Cynthia was disappointed by the delay but accepted the follow-up.",
+          "date": "Sep 3, 2:39 PM",
+          "agent": "Jennifer",
+          "duration": "1m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Harold Meyers called to reschedule his upcoming colonoscopy due to a conflict with his prep timing. Agent Rose located an alternate date but the earliest opening was three weeks out, which upset him. She moved the existing appointment without booking anything new.",
+          "date": "Sep 22, 4:11 PM",
+          "agent": "Rose",
+          "duration": "2m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Denise Carrington disputed a billing statement she claimed was already paid for her rehabilitation sessions. Agent Mike pulled the ledger but couldn't resolve the discrepancy on the call and escalated to the billing office. Denise was audibly irritated by the runaround.",
+          "date": "Jun 28, 10:44 AM",
+          "agent": "Mike",
+          "duration": "3m 08s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Frank Delgado called to complain about a long delay during a recent Heart & Vascular Institute appointment. Agent Sue apologized and logged a service complaint, offering to have a patient advocate reach out. Frank remained dissatisfied and demanded a callback from a manager.",
+          "date": "Oct 6, 1:29 PM",
+          "agent": "Sue",
+          "duration": "2m 47s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Karen Whitfield called after hours trying to confirm her bariatric surgery pre-op appointment but reached voicemail. She left a message with her name and callback number requesting confirmation. No agent handled the call live and nothing was scheduled.",
+          "date": "Jan 19, 7:58 PM",
+          "agent": "No Agent",
+          "duration": "0m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Steven Ortiz called to cancel an upcoming neurology appointment because he sought care elsewhere. Agent Lee processed the cancellation but the caller complained about how hard it was to reach someone. Steven ended the call frustrated with the phone system.",
+          "date": "Feb 27, 3:03 PM",
+          "agent": "Lee",
+          "duration": "1m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Melissa Grant angrily called about being sent to the wrong ER and the er wait time she endured with her elderly mother. Agent Jennifer apologized and documented the complaint, but the caller felt her concerns were dismissed. She asked for the incident to be escalated.",
+          "date": "Aug 30, 9:17 PM",
+          "agent": "Jennifer",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Gerald Foster called furious about a billing collections notice for a maternity delivery he insists his insurance covered. Agent Oscar tried to explain the claim status but the caller repeatedly interrupted and refused the transfer to financial services. The call ended unresolved with the caller threatening to dispute the charge.",
+          "date": "Oct 24, 4:56 PM",
+          "agent": "Oscar",
+          "duration": "3m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "appointment",
+        "mychart",
+        "mammogram",
+        "colonoscopy",
+        "er wait",
+        "billing"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Jun 6, 2:28 PM",
+      "duration": "4m 12s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Location & ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Requested Service/Institute",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Confirm Insurance Coverage",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Appointment & Confirm Date/Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Patient Expectations (First Visit Process)",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer MyChart Portal Enrollment",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller requesting new patient appointment",
+        "Verified service area (Orange County, FL)",
+        "Caller confirms primary care interest",
+        "Agent confirmed ZIP code match",
+        "Appointment successfully scheduled",
+        "Caller provided full legal name",
+        "Insurance information captured",
+        "Agent confirmed callback number",
+        "Visit date confirmed verbally",
+        "Time slot confirmed (afternoon availability)",
+        "Caller accepted appointment confirmation",
+        "Agent maintained professional tone",
+        "Greeting included hospital name"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "No discussion of visit preparation steps",
+        "First-visit expectations not outlined",
+        "MyChart enrollment opportunity missed",
+        "Co-pay estimate not discussed",
+        "Required documents list not provided",
+        "Parking/check-in instructions not given",
+        "Estimated wait time at clinic not mentioned",
+        "Insurance verification timeline not explained",
+        "Return visit scheduling not discussed"
+      ],
+      "naSignals": [
+        "Prescription refill request",
+        "Prior authorization status check",
+        "Billing dispute resolution",
+        "Medical records transfer request",
+        "Appointment cancellation or rescheduling",
+        "Surgical procedure pre-op instructions",
+        "Pharmacy coordination",
+        "Insurance claim status",
+        "Referral coordination with specialist",
+        "Laboratory result delivery"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "The caller is a new patient seeking to establish primary care with Orlando Health and schedule an initial wellness visit. They are not responding to an acute condition but rather initiating preventive care engagement."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The caller expects a straightforward appointment booking process and confirmation of an available time slot within the next 1–2 weeks. They have insurance coverage and want to know they are registered in the system."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured the caller's email address for appointment confirmation and outlined what to expect during the first visit (check-in time, required documents, co-pay estimate). Setting these expectations upfront reduces no-shows and improves patient satisfaction."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:00",
+          "text": "Good afternoon, thank you for calling Orlando Health Primary Care scheduling. My name is Marcus. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:08",
+          "text": "Hi, yes, I'm looking to schedule an appointment with a primary care doctor. I'm new to the area and would like to get established."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:20",
+          "text": "Wonderful, I'd be happy to help you get set up with one of our physicians. First, may I have your full name, please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Sure, it's Jennifer Summers."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:35",
+          "text": "Great, Jennifer. And what area of Central Florida are you in? I want to make sure we schedule you at one of our convenient locations."
+        },
+        {
+          "speaker": "caller",
+          "time": "00:45",
+          "text": "I'm in the Winter Park area, so Orange County."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:52",
+          "text": "Perfect, we have several excellent primary care clinics in Orange County. Just to confirm your ZIP code—is that 32789?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "Yes, that's correct."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:09",
+          "text": "Excellent. And what brings you in today, Jennifer? Are you looking for a routine wellness visit or do you have a specific health concern?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:20",
+          "text": "Just a routine physical and wellness check. I want to establish care and get my preventive screening started."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:31",
+          "text": "That's great. Our primary care doctors offer comprehensive wellness visits and preventive care. May I have a phone number where we can reach you to confirm your appointment?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:45",
+          "text": "Sure, it's ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:58",
+          "text": "Thank you, Jennifer. And for our records, do you have health insurance coverage?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:08",
+          "text": "Yes, I have Blue Cross Blue Shield through my employer."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:18",
+          "text": "Perfect. We accept Blue Cross, so you're all set. Let me get you scheduled. How does next Thursday, June 13th at 2:00 PM sound?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:35",
+          "text": "That works great for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:42",
+          "text": "Wonderful, Jennifer. I have you confirmed for June 13th at 2:00 PM with our Orlando Health Primary Care clinic on Colonial Drive. Your confirmation number is 4782-WP. You'll want to arrive about 10 minutes early."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:08",
+          "text": "Got it. Is there anything I need to bring?"
+        },
+        {
+          "speaker": "agent",
+          "time": "03:15",
+          "text": "Just bring your insurance card and a valid photo ID. Our front desk can answer any other questions when you arrive."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:28",
+          "text": "Sounds good, thank you."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:35",
+          "text": "You're very welcome, Jennifer. We look forward to seeing you next Thursday. Thank you for choosing Orlando Health. Have a great day!"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:55",
+          "text": "Thank you, goodbye."
+        }
+      ],
+      "aiSummary": "Jennifer Summers, a new patient in Winter Park, Florida, called to schedule a routine primary care wellness visit with Orlando Health. Marcus Bell confirmed her location, insurance coverage (Blue Cross Blue Shield), and successfully booked her for June 13th at 2:00 PM at the Colonial Drive clinic. While the appointment was secured and key information captured, the agent missed opportunities to obtain Jennifer's email address for digital confirmation and to outline first-visit expectations such as check-in procedures, required documents, and potential co-pay amounts.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus—Great call structure and tone throughout. You nailed the greeting, confirmed the patient's location and insurance, and closed with a clear appointment confirmation and confirmation number. Two coaching points: (1) Always capture the patient's email address before closing—it's critical for our appointment reminder workflow and reduces no-shows. (2) Next time, set first-visit expectations explicitly: tell Jennifer what time to arrive, what documents to bring, and mention her estimated co-pay once we've verified her benefits. These small touches drive patient satisfaction and reduce friction at check-in."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "8/11/2025-8/16/2025",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "5,139"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$340.67"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,750,719"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "3,072"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "59.8%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "2,405"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "46.8%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "2,067"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "40.2%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "11.4%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Google",
+                "value": 52,
+                "display": "52%"
+              },
+              {
+                "name": "Bing",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Facebook",
+                "value": 33,
+                "display": "33%"
+              },
+              {
+                "name": "Physician Referral",
+                "value": 28,
+                "display": "28%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "2,318",
+                  "52%",
+                  "$842,560"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "971",
+                  "44%",
+                  "$361,204"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "742",
+                  "33%",
+                  "$228,915"
+                ]
+              },
+              {
+                "cells": [
+                  "Physician Referral",
+                  "614",
+                  "28%",
+                  "$201,470"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "494",
+                  "24%",
+                  "$116,570"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 2400,
+            "axisTicks": [
+              0,
+              400,
+              800,
+              1200,
+              1600,
+              2000,
+              2400
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 2015,
+                "display": "2,015"
+              },
+              {
+                "name": "Organic Search",
+                "value": 1288,
+                "display": "1,288"
+              },
+              {
+                "name": "Social",
+                "value": 742,
+                "display": "742"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 598,
+                "display": "598"
+              },
+              {
+                "name": "Referral",
+                "value": 496,
+                "display": "496"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "2,015",
+                  "51%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "1,288",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "742",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "598",
+                  "40%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "496",
+                  "29%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1600,
+            "axisTicks": [
+              0,
+              400,
+              800,
+              1200,
+              1600
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "ER Near Me – Wait Times",
+                "value": 1442,
+                "display": "1,442"
+              },
+              {
+                "name": "Find a Doctor – Orlando",
+                "value": 1105,
+                "display": "1,105"
+              },
+              {
+                "name": "Cancer Institute – Second Opinion",
+                "value": 816,
+                "display": "816"
+              },
+              {
+                "name": "We Make It Personal",
+                "value": 624,
+                "display": "624"
+              },
+              {
+                "name": "U.S. News Best Hospitals",
+                "value": 471,
+                "display": "471"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "ER Near Me – Wait Times",
+                  "1,442",
+                  "54%",
+                  "$612,340"
+                ]
+              },
+              {
+                "cells": [
+                  "Find a Doctor – Orlando",
+                  "1,105",
+                  "49%",
+                  "$402,118"
+                ]
+              },
+              {
+                "cells": [
+                  "Cancer Institute – Second Opinion",
+                  "816",
+                  "41%",
+                  "$358,960"
+                ]
+              },
+              {
+                "cells": [
+                  "We Make It Personal",
+                  "624",
+                  "35%",
+                  "$188,405"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 1000,
+            "axisTicks": [
+              0,
+              200,
+              400,
+              600,
+              800,
+              1000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "emergency room near me",
+                "value": 912,
+                "display": "912"
+              },
+              {
+                "name": "find a doctor orlando",
+                "value": 728,
+                "display": "728"
+              },
+              {
+                "name": "mychart login",
+                "value": 611,
+                "display": "611"
+              },
+              {
+                "name": "cancer center orlando",
+                "value": 459,
+                "display": "459"
+              },
+              {
+                "name": "mammogram appointment orlando",
+                "value": 388,
+                "display": "388"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "emergency room near me",
+                  "56%"
+                ]
+              },
+              {
+                "cells": [
+                  "find a doctor orlando",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "cancer center orlando",
+                  "42%"
+                ]
+              },
+              {
+                "cells": [
+                  "mammogram appointment orlando",
+                  "47%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Cancer Institute",
+              "1,024",
+              "48%",
+              "63%"
+            ]
+          },
+          {
+            "cells": [
+              "Heart & Vascular Institute",
+              "842",
+              "44%",
+              "57%"
+            ]
+          },
+          {
+            "cells": [
+              "Orthopedic Institute (Jewett)",
+              "766",
+              "46%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Women's Institute",
+              "598",
+              "41%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Orlando Health ORMC (Downtown)",
+              "1,486",
+              "112",
+              "7.5%",
+              "49%"
+            ]
+          },
+          {
+            "cells": [
+              "Orlando Health Dr. P. Phillips Hospital",
+              "1,024",
+              "78",
+              "6.9%",
+              "46%"
+            ]
+          },
+          {
+            "cells": [
+              "Orlando Health Winnie Palmer Hospital",
+              "842",
+              "64",
+              "7.2%",
+              "44%"
+            ]
+          },
+          {
+            "cells": [
+              "Orlando Health Horizon West Hospital",
+              "688",
+              "55",
+              "8.1%",
+              "42%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16"
+        ],
+        "series": [
+          {
+            "name": "Reschedule",
+            "values": [
+              142,
+              138,
+              121,
+              109,
+              96,
+              88
+            ]
+          },
+          {
+            "name": "Appointment",
+            "values": [
+              131,
+              126,
+              114,
+              103,
+              91,
+              82
+            ]
+          },
+          {
+            "name": "Billing",
+            "values": [
+              98,
+              92,
+              85,
+              79,
+              71,
+              64
+            ]
+          },
+          {
+            "name": "Cancel",
+            "values": [
+              74,
+              69,
+              63,
+              58,
+              52,
+              47
+            ]
+          },
+          {
+            "name": "Scheduling",
+            "values": [
+              61,
+              57,
+              52,
+              48,
+              43,
+              39
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/19/2026-1/24/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "1247"
+          },
+          {
+            "label": "New Patient Call (Percent)",
+            "value": "84%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "45%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,247,650"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$142,880"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "52%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$218,765"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "61%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$195,420"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$156,340"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "56%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$247,610"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "68%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$286,635"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1450,
+          "rows": [
+            {
+              "name": "Paid Search (Google/Bing)",
+              "metrics": [
+                "382",
+                "71%",
+                "48%",
+                "$425,680"
+              ]
+            },
+            {
+              "name": "Organic / SEO",
+              "metrics": [
+                "295",
+                "68%",
+                "44%",
+                "$328,920"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "218",
+                "64%",
+                "42%",
+                "$242,850"
+              ]
+            },
+            {
+              "name": "Direct / MyChart Portal",
+              "metrics": [
+                "156",
+                "79%",
+                "53%",
+                "$186,240"
+              ]
+            },
+            {
+              "name": "Email / Newsletter",
+              "metrics": [
+                "128",
+                "73%",
+                "46%",
+                "$148,980"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1425,
+          "rows": [
+            {
+              "name": "Mobile / App",
+              "metrics": [
+                "401",
+                "72%",
+                "49%",
+                "$455,120"
+              ]
+            },
+            {
+              "name": "Desktop Web",
+              "metrics": [
+                "268",
+                "69%",
+                "45%",
+                "$298,760"
+              ]
+            },
+            {
+              "name": "Voice / Phone",
+              "metrics": [
+                "210",
+                "71%",
+                "47%",
+                "$238,680"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "187",
+                "75%",
+                "51%",
+                "$212,430"
+              ]
+            },
+            {
+              "name": "Tablet",
+              "metrics": [
+                "105",
+                "66%",
+                "40%",
+                "$118,240"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1520,
+          "rows": [
+            {
+              "name": "Find a Doctor – Orlando",
+              "metrics": [
+                "319",
+                "74%",
+                "51%",
+                "$370,850"
+              ]
+            },
+            {
+              "name": "ER Wait Times – Near Me",
+              "metrics": [
+                "287",
+                "68%",
+                "43%",
+                "$319,260"
+              ]
+            },
+            {
+              "name": "We Make It Personal – Specialty Care",
+              "metrics": [
+                "245",
+                "71%",
+                "48%",
+                "$278,920"
+              ]
+            },
+            {
+              "name": "U.S. News Best Hospitals – Trust",
+              "metrics": [
+                "198",
+                "79%",
+                "54%",
+                "$228,540"
+              ]
+            },
+            {
+              "name": "MyChart Appointment Scheduling",
+              "metrics": [
+                "162",
+                "73%",
+                "46%",
+                "$186,380"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 1480,
+          "rows": [
+            {
+              "name": "Find a doctor Orlando",
+              "metrics": [
+                "356",
+                "72%",
+                "49%",
+                "$412,560"
+              ]
+            },
+            {
+              "name": "Emergency room near me",
+              "metrics": [
+                "298",
+                "67%",
+                "42%",
+                "$328,620"
+              ]
+            },
+            {
+              "name": "Colonoscopy Orlando cost",
+              "metrics": [
+                "192",
+                "76%",
+                "52%",
+                "$226,480"
+              ]
+            },
+            {
+              "name": "Bariatric surgery Orlando",
+              "metrics": [
+                "168",
+                "73%",
+                "50%",
+                "$195,840"
+              ]
+            },
+            {
+              "name": "Mammogram appointment Orlando",
+              "metrics": [
+                "145",
+                "74%",
+                "48%",
+                "$169,350"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Primary Care & Family Medicine",
+              "metrics": [
+                "312",
+                "77%",
+                "51%",
+                "$368,640"
+              ]
+            },
+            {
+              "name": "Heart & Vascular Institute",
+              "metrics": [
+                "248",
+                "72%",
+                "48%",
+                "$425,920"
+              ]
+            },
+            {
+              "name": "Cancer Institute",
+              "metrics": [
+                "201",
+                "68%",
+                "46%",
+                "$385,240"
+              ]
+            },
+            {
+              "name": "Orthopedic & Joint Replacement",
+              "metrics": [
+                "187",
+                "75%",
+                "50%",
+                "$410,680"
+              ]
+            },
+            {
+              "name": "Digestive Health & Colonoscopy",
+              "metrics": [
+                "156",
+                "73%",
+                "45%",
+                "$248,170"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Primary Care & Family Medicine",
+            "values": [
+              14,
+              12,
+              9,
+              11,
+              15
+            ]
+          },
+          {
+            "name": "Heart & Vascular Institute",
+            "values": [
+              8,
+              10,
+              12,
+              9,
+              11
+            ]
+          },
+          {
+            "name": "Cancer Institute",
+            "values": [
+              5,
+              6,
+              7,
+              8,
+              6
+            ]
+          },
+          {
+            "name": "Orthopedic & Joint Replacement",
+            "values": [
+              7,
+              9,
+              8,
+              10,
+              8
+            ]
+          },
+          {
+            "name": "Digestive Health & Colonoscopy",
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "This Month",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "324"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "892"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "27"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              78,
+              80,
+              75,
+              82,
+              77,
+              79,
+              81,
+              76,
+              78,
+              80,
+              79,
+              77,
+              81,
+              75,
+              78,
+              82,
+              80,
+              79,
+              77,
+              76,
+              81,
+              78,
+              80,
+              79,
+              76,
+              77,
+              78,
+              75,
+              80,
+              79,
+              81,
+              82,
+              178,
+              185,
+              192,
+              188,
+              195,
+              182,
+              190,
+              187,
+              193,
+              189,
+              186,
+              191,
+              188,
+              192,
+              189,
+              190,
+              187
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,247"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "89%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,423"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "712"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "691"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Primary Care / Routine Checkup",
+            "values": [
+              12,
+              11,
+              10,
+              9,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "Specialty Institute Referral",
+            "values": [
+              8,
+              9,
+              7,
+              11,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "ER Wait Times / Urgent Care",
+            "values": [
+              2,
+              1,
+              3,
+              2,
+              1,
+              12
+            ]
+          },
+          {
+            "name": "Appointment Rescheduling",
+            "values": [
+              6,
+              7,
+              5,
+              6,
+              8,
+              7
+            ]
+          },
+          {
+            "name": "MyChart / Portal Access",
+            "values": [
+              4,
+              5,
+              6,
+              4,
+              5,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2025-2/28/2025",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "3,847"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "1,592"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "1,156"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$287,450"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review - Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 5,
+          "axisTicks": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Rebecca Torres",
+              "value": 2,
+              "display": "2"
+            },
+            {
+              "name": "Marcus Johnson",
+              "value": 3,
+              "display": "3"
+            },
+            {
+              "name": "Patricia Chen",
+              "value": 4,
+              "display": "4"
+            },
+            {
+              "name": "David Ramirez",
+              "value": 2,
+              "display": "2"
+            },
+            {
+              "name": "Angela Brooks",
+              "value": 3,
+              "display": "3"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Dec 29-Jan 4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-Feb 1",
+          "Feb 2-8",
+          "Feb 9-15",
+          "Feb 16-22",
+          "Feb 23-Mar 1"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              42,
+              44,
+              45,
+              46,
+              47,
+              48,
+              48,
+              49,
+              50
+            ]
+          },
+          {
+            "name": "James Kennedy",
+            "values": [
+              38,
+              40,
+              41,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48
+            ]
+          },
+          {
+            "name": "Lisa Rodriguez",
+            "values": [
+              41,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              48,
+              49
+            ]
+          },
+          {
+            "name": "Michael Harper",
+            "values": [
+              39,
+              41,
+              42,
+              44,
+              45,
+              46,
+              47,
+              48,
+              48
+            ]
+          },
+          {
+            "name": "Jennifer Walsh",
+            "values": [
+              40,
+              42,
+              43,
+              45,
+              46,
+              47,
+              47,
+              49,
+              50
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "94%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "52%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "41.18%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "97.22%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "73.85%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 45,
+        "yMax": 75,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 44
+          },
+          {
+            "label": "01/02",
+            "bar": 50
+          },
+          {
+            "label": "01/03",
+            "bar": 52
+          },
+          {
+            "label": "01/04",
+            "bar": 50
+          },
+          {
+            "label": "01/05",
+            "bar": 46
+          },
+          {
+            "label": "01/06",
+            "bar": 38
+          },
+          {
+            "label": "01/07",
+            "bar": 41
+          },
+          {
+            "label": "01/08",
+            "bar": 47
+          },
+          {
+            "label": "01/09",
+            "bar": 52
+          },
+          {
+            "label": "01/10",
+            "bar": 55
+          },
+          {
+            "label": "01/11",
+            "bar": 46
+          },
+          {
+            "label": "01/12",
+            "bar": 42
+          },
+          {
+            "label": "01/13",
+            "bar": 41
+          },
+          {
+            "label": "01/14",
+            "bar": 43
+          },
+          {
+            "label": "01/15",
+            "bar": 49
+          },
+          {
+            "label": "01/16",
+            "bar": 49
+          },
+          {
+            "label": "01/17",
+            "bar": 51
+          },
+          {
+            "label": "01/18",
+            "bar": 49
+          },
+          {
+            "label": "01/19",
+            "bar": 45
+          },
+          {
+            "label": "01/20",
+            "bar": 43
+          },
+          {
+            "label": "01/21",
+            "bar": 39
+          },
+          {
+            "label": "01/22",
+            "bar": 46
+          },
+          {
+            "label": "01/23",
+            "bar": 51
+          },
+          {
+            "label": "01/24",
+            "bar": 53
+          },
+          {
+            "label": "01/25",
+            "bar": 51
+          },
+          {
+            "label": "01/26",
+            "bar": 41
+          },
+          {
+            "label": "01/27",
+            "bar": 39
+          },
+          {
+            "label": "01/28",
+            "bar": 42
+          },
+          {
+            "label": "01/29",
+            "bar": 48
+          },
+          {
+            "label": "01/30",
+            "bar": 54
+          },
+          {
+            "label": "01/31",
+            "bar": 50
+          },
+          {
+            "label": "02/01",
+            "bar": 47
+          },
+          {
+            "label": "02/02",
+            "bar": 43
+          },
+          {
+            "label": "02/03",
+            "bar": 42
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 50,
+          "axisTicks": [
+            0,
+            10,
+            20,
+            30,
+            40,
+            50
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Rebecca Torres",
+              "value": 40.2,
+              "display": "40.2%"
+            },
+            {
+              "name": "Marcus Johnson",
+              "value": 40.8,
+              "display": "40.8%"
+            },
+            {
+              "name": "Patricia Chen",
+              "value": 41.1,
+              "display": "41.1%"
+            },
+            {
+              "name": "David Ramirez",
+              "value": 41.5,
+              "display": "41.5%"
+            },
+            {
+              "name": "Angela Brooks",
+              "value": 41.9,
+              "display": "41.9%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Rebecca Torres",
+                "40.2%",
+                "35%",
+                "$18,450",
+                "142"
+              ]
+            },
+            {
+              "cells": [
+                "Marcus Johnson",
+                "40.8%",
+                "38%",
+                "$22,100",
+                "156"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Chen",
+                "41.1%",
+                "40%",
+                "$25,680",
+                "174"
+              ]
+            },
+            {
+              "cells": [
+                "David Ramirez",
+                "41.5%",
+                "42%",
+                "$28,920",
+                "198"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Brooks",
+                "41.9%",
+                "44%",
+                "$31,200",
+                "216"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 50,
+          "axisTicks": [
+            0,
+            10,
+            20,
+            30,
+            40,
+            50
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 48.6,
+              "display": "48.6%"
+            },
+            {
+              "name": "Jennifer Walsh",
+              "value": 48.3,
+              "display": "48.3%"
+            },
+            {
+              "name": "Lisa Rodriguez",
+              "value": 47.9,
+              "display": "47.9%"
+            },
+            {
+              "name": "James Kennedy",
+              "value": 47.4,
+              "display": "47.4%"
+            },
+            {
+              "name": "Michael Harper",
+              "value": 47.1,
+              "display": "47.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "48.6%",
+                "71%",
+                "$84,350",
+                "412"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Walsh",
+                "48.3%",
+                "69%",
+                "$79,840",
+                "398"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Rodriguez",
+                "47.9%",
+                "67%",
+                "$75,220",
+                "384"
+              ]
+            },
+            {
+              "cells": [
+                "James Kennedy",
+                "47.4%",
+                "64%",
+                "$68,900",
+                "356"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Harper",
+                "47.1%",
+                "62%",
+                "$64,160",
+                "328}]"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 60,
+        "yTicks": [
+          0,
+          20,
+          40,
+          60
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 60,
+        "rightTicks": [
+          0,
+          15,
+          30,
+          45,
+          60
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 44,
+            "line": 40
+          },
+          {
+            "label": "01/02",
+            "bar": 50,
+            "line": 43
+          },
+          {
+            "label": "01/03",
+            "bar": 52,
+            "line": 41
+          },
+          {
+            "label": "01/04",
+            "bar": 50,
+            "line": 36
+          },
+          {
+            "label": "01/05",
+            "bar": 46,
+            "line": 26
+          },
+          {
+            "label": "01/06",
+            "bar": 38,
+            "line": 23
+          },
+          {
+            "label": "01/07",
+            "bar": 41,
+            "line": 25
+          },
+          {
+            "label": "01/08",
+            "bar": 47,
+            "line": 32
+          },
+          {
+            "label": "01/09",
+            "bar": 52,
+            "line": 35
+          },
+          {
+            "label": "01/10",
+            "bar": 55,
+            "line": 42
+          },
+          {
+            "label": "01/11",
+            "bar": 46,
+            "line": 44
+          },
+          {
+            "label": "01/12",
+            "bar": 42,
+            "line": 42
+          },
+          {
+            "label": "01/13",
+            "bar": 41,
+            "line": 32
+          },
+          {
+            "label": "01/14",
+            "bar": 43,
+            "line": 27
+          },
+          {
+            "label": "01/15",
+            "bar": 49,
+            "line": 24
+          },
+          {
+            "label": "01/16",
+            "bar": 49,
+            "line": 27
+          },
+          {
+            "label": "01/17",
+            "bar": 51,
+            "line": 28
+          },
+          {
+            "label": "01/18",
+            "bar": 49,
+            "line": 36
+          },
+          {
+            "label": "01/19",
+            "bar": 45,
+            "line": 43
+          },
+          {
+            "label": "01/20",
+            "bar": 43,
+            "line": 45
+          },
+          {
+            "label": "01/21",
+            "bar": 39,
+            "line": 39
+          },
+          {
+            "label": "01/22",
+            "bar": 46,
+            "line": 33
+          },
+          {
+            "label": "01/23",
+            "bar": 51,
+            "line": 28
+          },
+          {
+            "label": "01/24",
+            "bar": 53,
+            "line": 25
+          },
+          {
+            "label": "01/25",
+            "bar": 51,
+            "line": 23
+          },
+          {
+            "label": "01/26",
+            "bar": 41,
+            "line": 30
+          },
+          {
+            "label": "01/27",
+            "bar": 39,
+            "line": 38
+          },
+          {
+            "label": "01/28",
+            "bar": 42,
+            "line": 44
+          },
+          {
+            "label": "01/29",
+            "bar": 48,
+            "line": 42
+          },
+          {
+            "label": "01/30",
+            "bar": 54,
+            "line": 39
+          },
+          {
+            "label": "01/31",
+            "bar": 50,
+            "line": 34
+          },
+          {
+            "label": "02/01",
+            "bar": 47,
+            "line": 29
+          },
+          {
+            "label": "02/02",
+            "bar": 43,
+            "line": 22
+          },
+          {
+            "label": "02/03",
+            "bar": 42,
+            "line": 25
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 60,
+        "yTicks": [
+          0,
+          20,
+          40,
+          60
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 6000,
+        "rightTicks": [
+          0,
+          2000,
+          4000,
+          6000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 44,
+            "line": 4126
+          },
+          {
+            "label": "01/02",
+            "bar": 50,
+            "line": 4292
+          },
+          {
+            "label": "01/03",
+            "bar": 52,
+            "line": 3945
+          },
+          {
+            "label": "01/04",
+            "bar": 50,
+            "line": 3249
+          },
+          {
+            "label": "01/05",
+            "bar": 46,
+            "line": 2527
+          },
+          {
+            "label": "01/06",
+            "bar": 38,
+            "line": 2126
+          },
+          {
+            "label": "01/07",
+            "bar": 41,
+            "line": 2230
+          },
+          {
+            "label": "01/08",
+            "bar": 47,
+            "line": 2792
+          },
+          {
+            "label": "01/09",
+            "bar": 52,
+            "line": 3543
+          },
+          {
+            "label": "01/10",
+            "bar": 55,
+            "line": 4137
+          },
+          {
+            "label": "01/11",
+            "bar": 46,
+            "line": 4290
+          },
+          {
+            "label": "01/12",
+            "bar": 42,
+            "line": 3933
+          },
+          {
+            "label": "01/13",
+            "bar": 41,
+            "line": 3227
+          },
+          {
+            "label": "01/14",
+            "bar": 43,
+            "line": 2514
+          },
+          {
+            "label": "01/15",
+            "bar": 49,
+            "line": 2123
+          },
+          {
+            "label": "01/16",
+            "bar": 49,
+            "line": 2240
+          },
+          {
+            "label": "01/17",
+            "bar": 51,
+            "line": 2806
+          },
+          {
+            "label": "01/18",
+            "bar": 49,
+            "line": 3561
+          },
+          {
+            "label": "01/19",
+            "bar": 45,
+            "line": 4147
+          },
+          {
+            "label": "01/20",
+            "bar": 43,
+            "line": 4289
+          },
+          {
+            "label": "01/21",
+            "bar": 39,
+            "line": 3915
+          },
+          {
+            "label": "01/22",
+            "bar": 46,
+            "line": 3210
+          },
+          {
+            "label": "01/23",
+            "bar": 51,
+            "line": 2500
+          },
+          {
+            "label": "01/24",
+            "bar": 53,
+            "line": 2121
+          },
+          {
+            "label": "01/25",
+            "bar": 51,
+            "line": 2246
+          },
+          {
+            "label": "01/26",
+            "bar": 41,
+            "line": 2824
+          },
+          {
+            "label": "01/27",
+            "bar": 39,
+            "line": 3580
+          },
+          {
+            "label": "01/28",
+            "bar": 42,
+            "line": 4158
+          },
+          {
+            "label": "01/29",
+            "bar": 48,
+            "line": 4282
+          },
+          {
+            "label": "01/30",
+            "bar": 54,
+            "line": 3902
+          },
+          {
+            "label": "01/31",
+            "bar": 50,
+            "line": 3192
+          },
+          {
+            "label": "02/01",
+            "bar": 47,
+            "line": 2487
+          },
+          {
+            "label": "02/02",
+            "bar": 43,
+            "line": 2114
+          },
+          {
+            "label": "02/03",
+            "bar": 42,
+            "line": 2257
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2025-2/28/2025",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          40,
+          80,
+          120
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 95
+          },
+          {
+            "label": "01/02",
+            "bar": 7,
+            "line": 97
+          },
+          {
+            "label": "01/03",
+            "bar": 8,
+            "line": 96
+          },
+          {
+            "label": "01/04",
+            "bar": 8,
+            "line": 94
+          },
+          {
+            "label": "01/05",
+            "bar": 8,
+            "line": 86
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 4,
+            "line": 87
+          },
+          {
+            "label": "01/08",
+            "bar": 6,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 9,
+            "line": 92
+          },
+          {
+            "label": "01/10",
+            "bar": 11,
+            "line": 96
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 98
+          },
+          {
+            "label": "01/12",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 6,
+            "line": 87
+          },
+          {
+            "label": "01/15",
+            "bar": 9,
+            "line": 86
+          },
+          {
+            "label": "01/16",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/17",
+            "bar": 7,
+            "line": 88
+          },
+          {
+            "label": "01/18",
+            "bar": 7,
+            "line": 93
+          },
+          {
+            "label": "01/19",
+            "bar": 7,
+            "line": 97
+          },
+          {
+            "label": "01/20",
+            "bar": 7,
+            "line": 99
+          },
+          {
+            "label": "01/21",
+            "bar": 2,
+            "line": 94
+          },
+          {
+            "label": "01/22",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/23",
+            "bar": 8,
+            "line": 88
+          },
+          {
+            "label": "01/24",
+            "bar": 10,
+            "line": 87
+          },
+          {
+            "label": "01/25",
+            "bar": 10,
+            "line": 85
+          },
+          {
+            "label": "01/26",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/27",
+            "bar": 3,
+            "line": 94
+          },
+          {
+            "label": "01/28",
+            "bar": 5,
+            "line": 99
+          },
+          {
+            "label": "01/29",
+            "bar": 8,
+            "line": 96
+          },
+          {
+            "label": "01/30",
+            "bar": 10,
+            "line": 95
+          },
+          {
+            "label": "01/31",
+            "bar": 6,
+            "line": 92
+          },
+          {
+            "label": "02/01",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "02/02",
+            "bar": 5,
+            "line": 84
+          },
+          {
+            "label": "02/03",
+            "bar": 6,
+            "line": 86
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "5,847"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:34"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "216"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "378"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 85
+          },
+          {
+            "label": "01/02",
+            "line": 87
+          },
+          {
+            "label": "01/03",
+            "line": 86
+          },
+          {
+            "label": "01/04",
+            "line": 83
+          },
+          {
+            "label": "01/05",
+            "line": 75
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 75
+          },
+          {
+            "label": "01/08",
+            "line": 80
+          },
+          {
+            "label": "01/09",
+            "line": 81
+          },
+          {
+            "label": "01/10",
+            "line": 86
+          },
+          {
+            "label": "01/11",
+            "line": 88
+          },
+          {
+            "label": "01/12",
+            "line": 87
+          },
+          {
+            "label": "01/13",
+            "line": 79
+          },
+          {
+            "label": "01/14",
+            "line": 76
+          },
+          {
+            "label": "01/15",
+            "line": 74
+          },
+          {
+            "label": "01/16",
+            "line": 76
+          },
+          {
+            "label": "01/17",
+            "line": 76
+          },
+          {
+            "label": "01/18",
+            "line": 82
+          },
+          {
+            "label": "01/19",
+            "line": 87
+          },
+          {
+            "label": "01/20",
+            "line": 89
+          },
+          {
+            "label": "01/21",
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "line": 80
+          },
+          {
+            "label": "01/23",
+            "line": 77
+          },
+          {
+            "label": "01/24",
+            "line": 75
+          },
+          {
+            "label": "01/25",
+            "line": 73
+          },
+          {
+            "label": "01/26",
+            "line": 78
+          },
+          {
+            "label": "01/27",
+            "line": 84
+          },
+          {
+            "label": "01/28",
+            "line": 88
+          },
+          {
+            "label": "01/29",
+            "line": 86
+          },
+          {
+            "label": "01/30",
+            "line": 85
+          },
+          {
+            "label": "01/31",
+            "line": 81
+          },
+          {
+            "label": "02/01",
+            "line": 78
+          },
+          {
+            "label": "02/02",
+            "line": 72
+          },
+          {
+            "label": "02/03",
+            "line": 74
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "31%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "61%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "8%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "74%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "77.5%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "79.2%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "51.33%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Martinez",
+                "4",
+                "80%",
+                "82.5%",
+                "52.5%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "3",
+                "75%",
+                "76.67%",
+                "50%"
+              ]
+            },
+            {
+              "cells": [
+                "Sarah Williams",
+                "5",
+                "78%",
+                "79.4%",
+                "51.6%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Aug 11, 2025 - Aug 16, 2025",
+      "callCount": "5,139 calls",
+      "pagerLabel": "1 of 52",
+      "calls": [
+        {
+          "time": "8/11/25 12:02 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "8/11/25 9:14 am",
+          "id": "A3C1-9B2E7F04D18A"
+        },
+        {
+          "time": "8/12/25 11:47 am",
+          "id": "7D9E-3F1A0C82B4E6"
+        },
+        {
+          "time": "8/12/25 2:33 pm",
+          "id": "C21F-6E8D90A3F572"
+        },
+        {
+          "time": "8/13/25 8:05 am",
+          "id": "48BA-1D5C7E90F236"
+        },
+        {
+          "time": "8/13/25 4:19 pm",
+          "id": "9E0D-2A7B4F16C8D3"
+        },
+        {
+          "time": "8/14/25 10:52 am",
+          "id": "B6F2-8C3D1E570A94"
+        },
+        {
+          "time": "8/15/25 1:27 pm",
+          "id": "5A8C-4F92D7E01B36"
+        },
+        {
+          "time": "8/15/25 6:41 pm",
+          "id": "D14E-7B0A6C39F582"
+        },
+        {
+          "time": "8/16/25 3:58 pm",
+          "id": "E92B-0F5D8A21C743"
+        }
+      ],
+      "duration": "2:22",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Orlando Health, this is Danielle. How can I help you take care of your health today?",
+          "highlights": [
+            "Thank you for calling Orlando Health",
+            "this is Danielle"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi Danielle. I'm new to the area and I need to set up a screening mammogram. I've never been seen at Orlando Health before.",
+          "highlights": [
+            "screening mammogram",
+            "never been seen at Orlando Health before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:16",
+          "text": "Welcome to Central Florida! I'd be happy to get that scheduled for you at our Women's Institute. Since you're a new patient, may I start with your first and last name?",
+          "highlights": [
+            "Women's Institute",
+            "new patient"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:26",
+          "text": "Sure, it's Karen Whitfield.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:30",
+          "text": "Thank you, Ms. Whitfield. And is this a routine annual screening mammogram, or did a provider recommend a diagnostic exam?",
+          "highlights": [
+            "screening mammogram"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:39",
+          "text": "Just routine, my annual. My last one was about a year ago back in Ohio.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:46",
+          "text": "Perfect. A routine screening mammogram at the Women's Institute typically runs between $150 and $350 for self-pay, though most insurance covers annual screenings at no cost. Do you have insurance you'd like us to bill?",
+          "highlights": [
+            "$150 and $350",
+            "Women's Institute"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:59",
+          "text": "Yes, I have Florida Blue now. Will that be accepted?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:06",
+          "text": "Yes, Florida Blue is one of our accepted plans. I'll note that and our billing team will verify your coverage before the visit. Would you like me to find a doctor for a primary care follow-up as well, since you're new to the area?",
+          "highlights": [
+            "accepted plans",
+            "find a doctor"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:18",
+          "text": "Oh, that would actually be great. I don't have a primary care doctor yet.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:24",
+          "text": "Wonderful. I can set up a Primary Care office visit to establish care, and we can bundle your MyChart portal access so you can message your providers and manage appointments online — that's free.",
+          "highlights": [
+            "Primary Care office visit",
+            "MyChart portal access",
+            "free"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:36",
+          "text": "Let's do both then. Sooner the better for the mammogram.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:41",
+          "text": "I have an opening for the screening mammogram this Thursday, August 14th at 10 AM at our Winter Park Women's Institute location. Does that work?",
+          "highlights": [
+            "Thursday, August 14th at 10 AM",
+            "Women's Institute"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:51",
+          "text": "Thursday at 10 works perfectly.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:55",
+          "text": "Great, you're scheduled. For the Primary Care visit to establish care, I have the following Monday at 9:30 AM with Dr. Alvarez. Shall I book that too?",
+          "highlights": [
+            "you're scheduled",
+            "book that too"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:04",
+          "text": "Yes, please book it. And I'll get the MyChart set up before then.",
+          "highlights": [
+            "book it"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:09",
+          "text": "Done — both appointments are confirmed and you'll get a MyChart activation link by text. Is there a good mobile number and email to send that to?",
+          "highlights": [
+            "both appointments are confirmed",
+            "MyChart activation link"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:15",
+          "text": "Yes, 407-555-0184 and karen.whitfield@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:19",
+          "text": "Perfect, all set. Welcome to Orlando Health, Ms. Whitfield — we'll see you Thursday. Take care!",
+          "highlights": [
+            "Welcome to Orlando Health",
+            "see you Thursday",
+            "Take care"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Service: Screening Mammogram",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Service: Primary Care Establish Care",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Insurance Verification Requested",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "MyChart Enrollment Offered",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New patient Karen Whitfield, recently relocated to Central Florida, called to schedule a routine annual screening mammogram and had no established primary care provider. The agent, Danielle, recommended a Women's Institute screening mammogram and a Primary Care office visit to establish care, plus free MyChart portal enrollment. Both appointments were booked — the mammogram for Thursday, Aug 14 at 10 AM in Winter Park and a primary care visit the following Monday at 9:30 AM with Dr. Alvarez. Insurance (Florida Blue) verification was noted and contact details were captured.",
+        "keyPoints": [
+          "New patient relocating to Central Florida",
+          "Needs routine annual screening mammogram",
+          "Referred to Women's Institute and Primary Care to establish care",
+          "MyChart portal enrollment offered at no cost",
+          "Florida Blue insurance flagged for verification",
+          "Two appointments scheduled; mobile and email captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointments booked — Mammogram Thursday 10 AM, Primary Care Monday 9:30 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "5,139 calls",
+      "dateRange": "Aug 11, 2025 - Aug 16, 2025",
+      "pagerLabel": "1 of 52",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there! This is Orlando Health. Thanks for reaching out. Are you calling about scheduling an appointment or getting information about one of our services?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi yes I'm interested in scheduling a mammogram at your women's institute"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Great! I'd be happy to help you schedule a screening mammogram. Have you been seen at Orlando Health before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "No this would be my first time"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Welcome! We're glad you're choosing Orlando Health for your preventive care. Just to confirm, are you looking to schedule a screening mammogram or do you have any specific concerns your doctor referred you for?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Just a routine screening. I'm due for my annual"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Perfect. Our screening mammograms are comprehensive and typically run about 150 to 350 dollars depending on your insurance. Do you have active health insurance we can verify?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:29 AM",
+              "text": "Yes I have Blue Cross Blue Shield"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:30 AM",
+              "text": "Excellent. We accept BCBS. Now let's get you scheduled. Would you prefer an appointment on a weekday morning or afternoon?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:31 AM",
+              "text": "Weekday morning would work best for me"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:32 AM",
+              "text": "Great! We have availability this Thursday March 13th at 9 AM at our Women's Institute location on Sand Lake Road. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "That's perfect thank you"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Wonderful! You're all set for Thursday March 13th at 9 AM for your screening mammogram. Please arrive 10 minutes early to check in. You'll receive a reminder text tomorrow. Questions for me?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "No that's all thank you"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "You're welcome! We look forward to seeing you. If you need to reschedule, just call us at 407-303-5910. Have a great day!"
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Screening Mammogram",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Insurance Verified",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "407-303-5910",
+            "totalMessages": "16",
+            "source": "407-303-5910",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "321-555-0847",
+            "repeatCaller": "No",
+            "city": "Orlando",
+            "region": "FL",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Martinez",
+            "firstName": "Jennifer",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Eastern Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A742-8B3C4E9F7D2A",
+          "time": "8/16/25 10:51 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A742-8B3C4E9F7D2A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B893-5F6D7E2C1A4B",
+          "time": "8/16/25 10:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B893-5F6D7E2C1A4B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D104-9C7A3B8F2E5D",
+          "time": "8/16/25 10:43 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D104-9C7A3B8F2E5D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "3,027 calls",
+      "dateRange": "Aug 11, 2025 - Aug 16, 2025",
+      "pagerLabel": "1 of 31",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "8/16/25 4:12 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Thank you for calling Orlando Health. This is Marcus speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi, yeah, I'm looking to schedule a colonoscopy. I haven't had one in about five years."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Great, thanks for calling. Colonoscopy screening is really important. Are you a current patient with Orlando Health, or is this your first time reaching out to us?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "No, this is my first time. I just moved to the area."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect, welcome to Orlando Health. I'm showing we have our Colon and Rectal Institute that specializes in exactly this. Do you have a primary care doctor already, or would you like us to help connect you with one first?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "No, I don't have one yet. But I'm ready to get the colonoscopy scheduled if possible."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Absolutely. I can definitely help with that. Just to confirm, have you done any preparation fasting or taken any bowel prep medications recently, or is this your first time going through the prep process?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "First time for me. I'm not sure what that involves."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Got it. Our scheduling team will walk you through everything. We've got some openings coming up. Would you prefer a morning or afternoon appointment?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Morning works better for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Excellent. I'm seeing we have an opening on Tuesday, March eighteenth at nine o'clock AM at our downtown Orlando location. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Yeah, that sounds great."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Perfect. So to confirm, that's Tuesday, March eighteenth at nine AM for your colonoscopy screening at our downtown location. You'll receive a call reminder forty-eight hours before your appointment. Our callback number is eight seven seven, nine three six, two nine three three. Is that the best number to reach you at?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "Yes, that's my cell phone. Thanks so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:21 PM",
+              "text": "You're welcome. Thank you for choosing Orlando Health, and we'll see you on the eighteenth. Have a great day."
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Colonoscopy Screening",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Primary Care Need Identified",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "3/10/26 4:12 pm",
+            "duration": "9:14",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice — Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "407-555-0184",
+            "repeatCaller": "No",
+            "city": "Winter Park",
+            "region": "FL",
+            "phoneType": "Mobile",
+            "displayName": "David Martinez",
+            "firstName": "David",
+            "lastName": "Martinez",
+            "gender": "Male",
+            "destinationTimeZone": "Eastern Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B523-3A8FE615E2K4",
+          "time": "8/16/25 3:58 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B523-3A8FE615E2K4",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C741-4B7GF926R3L5",
+          "time": "8/16/25 3:45 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C741-4B7GF926R3L5",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D867-5C8HG037S4M6",
+          "time": "8/16/25 3:32 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D867-5C8HG037S4M6",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm Orlando Health's AI scheduling assistant, here to help you find the right care and get you connected with a provider at one of our Central Florida locations — new patients can often be seen within days, and MyChart scheduling is always free. Would you like to get started?",
+        "Qualify one question at a time: To match you with the right specialist, I'll ask a few quick questions one at a time — what type of care you need (for example primary care, cancer, heart & vascular, orthopedics, or women's health), whether you'd prefer an in-person or virtual visit, whether you're a new or established patient, your preferred timing, and finally your ZIP code so I can confirm the nearest Orlando Health location.",
+        "Estimate then book: Once I confirm we serve your ZIP code, I'll note that costs vary by insurance and are detailed in our Price Transparency Guide rather than quoted upfront, recommend a consultation with the right specialist for a personalized care plan, propose a specific day and time, and confirm you'll receive a reminder text before your appointment with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Orlando_Health_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Location",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Provider",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data__type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"reschedule\",\"question\":\"I need to move my appointment with my cardiologist — can you help?\",\"answer\":\"Absolutely, I can help you reschedule through MyChart or connect you with the Heart & Vascular Institute scheduling team. What day and time works best for you?\"},{\"topic\":\"billing\",\"question\":\"Where can I see what my procedure will cost?\",\"answer\":\"Cost estimates depend on your insurance and are outlined in our Price Transparency Guide and available through Patient Financial Resources. I can also have a billing specialist follow up with you directly.\"}]}",
+          "qaPairs": [
+            {
+              "question": "How do I find a doctor at Orlando Health?",
+              "answer": "You can use our Find a Provider tool or I can match you with the right specialist based on your needs. Would you like me to help schedule a visit today?"
+            },
+            {
+              "question": "Do you offer virtual visits?",
+              "answer": "Yes, we offer MyChart-based on-demand telehealth and scheduled virtual visits for care that fits your schedule. I can set up a virtual appointment for you now if you'd like."
+            },
+            {
+              "question": "What are the ER wait times?",
+              "answer": "We display live ER wait times across our Orlando-area emergency rooms on our website so you can choose the fastest location. If this is an emergency, please call 911 right away."
+            },
+            {
+              "question": "How do I schedule a mammogram?",
+              "answer": "Screening mammograms are offered through our Women's Institute and I can help you book one at a nearby location. What ZIP code are you in so I can find the closest option?"
+            },
+            {
+              "question": "Can I book a colonoscopy?",
+              "answer": "Yes, our Digestive Health and Colon & Rectal Institutes provide screening and therapeutic colonoscopies. I'd recommend a consultation with a GI specialist — would you like me to schedule one?"
+            },
+            {
+              "question": "Do you take my insurance?",
+              "answer": "We accept a wide range of insurance plans listed under our Insurances Accepted page, and coverage details can be confirmed at booking. I can connect you with a specialist to verify your plan."
+            },
+            {
+              "question": "How much does a primary care visit cost?",
+              "answer": "Costs vary by your insurance and visit type, and details are available in our Price Transparency Guide. Let's get you scheduled with a primary care provider — what's your preferred timing?"
+            },
+            {
+              "question": "Where are your locations?",
+              "answer": "We have 20+ locations across Central Florida, plus hospitals and specialty care in Alabama and Puerto Rico. Share your ZIP code and I'll find the nearest one."
+            },
+            {
+              "question": "How do I log into MyChart?",
+              "answer": "You can access MyChart from our Patient Portal link to schedule appointments, message providers, and refill prescriptions for free. Would you like help booking an appointment today?"
+            },
+            {
+              "question": "Can I get a second opinion for cancer?",
+              "answer": "Yes, our nationally recognized Cancer Institute offers second opinions with multidisciplinary specialists. I can help you request a consultation — would you like to start?"
+            },
+            {
+              "question": "Do you offer weight-loss surgery?",
+              "answer": "Our Weight Loss and Bariatric Surgery Institute offers medically supervised programs including gastric sleeve and bypass. I'd recommend an informational consultation — shall I set that up?"
+            },
+            {
+              "question": "How do I schedule joint replacement surgery?",
+              "answer": "Our Jewett Orthopedic Institute handles hip and knee replacements with a full rehab pathway. Let's begin with a consultation with an orthopedic specialist — what's your availability?"
+            },
+            {
+              "question": "Can I see a doctor about maternity care?",
+              "answer": "Our Women's Institute provides full labor, delivery, and newborn care. I can schedule you with an OB provider — what ZIP code are you in?"
+            },
+            {
+              "question": "Do you have physical therapy?",
+              "answer": "Yes, our Rehabilitation Institute offers physical and occupational therapy for post-surgical and injury recovery. Would you like me to book an evaluation?"
+            },
+            {
+              "question": "How do I get a referral to a specialist?",
+              "answer": "Many specialists accept direct scheduling, and I can help match you with the right Institute based on your needs. What type of care are you looking for?"
+            },
+            {
+              "question": "Are you accepting new patients?",
+              "answer": "Yes, many of our providers are accepting new patients across our Central Florida locations. Share your ZIP code and I'll find availability near you."
+            },
+            {
+              "question": "Can I schedule imaging like an MRI or CT scan?",
+              "answer": "Yes, we offer advanced diagnostic imaging for cardiac, neuro, and oncology needs. I can help arrange your appointment — would you like to proceed?"
+            },
+            {
+              "question": "Do you treat strokes and neurological conditions?",
+              "answer": "Our Neuroscience Institute provides advanced brain, spine, and stroke care. For non-emergencies I can schedule a consultation with a specialist — shall I do that?"
+            },
+            {
+              "question": "How soon can I be seen?",
+              "answer": "Availability varies by specialty and location, but many patients are seen within a few days. Let me check openings near you — what's your ZIP code?"
+            },
+            {
+              "question": "How do I refill a prescription?",
+              "answer": "You can request refills anytime through MyChart under Refill My Prescription. If you also need to see a provider, I'd be happy to schedule that for you."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule an appointment\",\"follow_up_message\":\"Great — I can get you scheduled with the right Orlando Health provider. Could you share your ZIP code and preferred day and time so I can confirm the nearest location and book your appointment?\"},{\"intent\":\"request cost information\",\"follow_up_message\":\"Costs depend on your insurance and are detailed in our Price Transparency Guide, so the best next step is a consultation where a specialist can review your care plan. Would you like me to schedule that and have a financial counselor follow up?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "goal": "Guide the patient to schedule an in-person or virtual appointment with the right Orlando Health provider or Institute at their nearest Central Florida location.",
+        "bookingType": "in-person or virtual appointment with a provider",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "What type of care are you looking for (for example primary care, cancer, heart & vascular, orthopedics, or women's health)?",
+          "Would you prefer an in-person visit or a virtual visit?",
+          "Are you a new patient or an established Orlando Health patient?",
+          "When would you like to be seen — any preferred days or times?",
+          "What's your ZIP code so I can confirm the nearest Orlando Health location and availability?"
+        ]
+      },
+      "serviceArea": "the greater Orlando and Central Florida area — ZIP codes starting with 327 and 328"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "7/22/26 3:34 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "7/22/26 3:34 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "7/22/26 3:34 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Orlando Health",
+      "callerName": "Michael Torres",
+      "callerPhone": "(407) 555-0184",
+      "campaign": "Heart & Vascular Institute - Winter Park Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$8,500",
+      "googleSearch": "minimally invasive heart surgery near me",
+      "websiteSearch": "cardiac catheterization Orlando cost",
+      "callingWebpage": "/services/heart-vascular-institute",
+      "products": "Cardiac Catheterization, Diagnostic Imaging",
+      "cartId": "OH-7392K",
+      "serviceable": "Yes",
+      "email": "mtorres.1982@email.com",
+      "street": "1847 Aloma Avenue",
+      "city": "Winter Park",
+      "state": "FL",
+      "zip": "32789",
+      "digitalJourney": "/home › /services › /heart-vascular-institute › /find-a-doctor",
+      "intent": "Seeking minimally invasive cardiac intervention with board-certified cardiologist; concerned about family history of coronary disease.",
+      "coverage": "ZIP 32789 confirmed - Winter Park serviceable",
+      "switchIntent": "High - referred by PCP, wants initial consultation within 7–10 days to discuss catheterization candidacy.",
+      "greeting": "Hi Michael, thanks for calling Orlando Health. I see you're interested in our Heart & Vascular Institute for cardiac care. Are you looking to schedule a consultation with one of our cardiologists this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "Orlando Health",
+      "callerName": "Sarah Chen",
+      "callerPhone": "(321) 555-0641",
+      "campaign": "Cancer Institute - Maitland Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$22,000",
+      "googleSearch": "second opinion cancer treatment Orlando",
+      "websiteSearch": "oncology center near me Florida",
+      "callingWebpage": "/services/cancer-institute",
+      "products": "Cancer Treatment, Multidisciplinary Oncology Care",
+      "cartId": "OH-5816M",
+      "serviceable": "Yes",
+      "email": "sarahchen.md@email.com",
+      "street": "591 Clayton Court",
+      "city": "Maitland",
+      "state": "FL",
+      "zip": "32751",
+      "digitalJourney": "/home › /services › /cancer-institute › /find-a-doctor",
+      "intent": "Seeking second opinion on breast cancer diagnosis; interested in comprehensive treatment planning at nationally recognized center.",
+      "coverage": "ZIP 32751 confirmed - Maitland serviceable",
+      "appointment": "Second-opinion oncology consultation - Thu Jan 23, 2:00 PM with Dr. Patricia Valdez, Medical Oncology",
+      "greeting": "Hi Sarah, this is Keisha from Orlando Health Cancer Institute. We're all set for your consultation with Dr. Valdez this Thursday at 2 PM. She's reviewed your pathology, and we're excited to discuss your personalized treatment plan. Do you have any questions before your visit?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Orlando Health",
+      "brandDomain": "www.orlandohealth.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (407) 555-0142",
+      "callerLocation": "Orlando, FL",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Marketing Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Campaign",
+          "value": "Find a Doctor – Orlando",
+          "highlight": false
+        },
+        {
+          "label": "Marketing Search Term(s)",
+          "value": "primary care doctor near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/services-specialties/primary-care",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile - iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Primary Care, Heart & Vascular Institute",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Appointment Request - not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Orlando, FL",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "new_appointment_scheduling",
+          "name": "Appointment Scheduling - New Patient"
+        },
+        {
+          "id": "existing_patient_support",
+          "name": "MyChart & Existing Patient Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry & Information"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thanks for calling Orlando Health. I see you're interested in primary care. Are you looking to establish care with a new primary care physician, or do you need an urgent concern addressed today?",
+          "sigs": [],
+          "q": [
+            25,
+            40,
+            35
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, I've been looking for a new doctor in Orlando. I moved here a few months ago and haven't found someone yet. I'd like to get set up with routine care and maybe get a physical done.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New patient</strong> seeking PCP"
+            },
+            {
+              "c": "blue",
+              "t": "Routine physical needed"
+            },
+            {
+              "c": "green",
+              "t": "Service area confirmed - Orlando"
+            }
+          ],
+          "q": [
+            60,
+            20,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect, that's great. Do you have insurance coverage, or would you be looking at self-pay options? And are there any specific health concerns or specialists you might need to see alongside your primary care?",
+          "sigs": [],
+          "q": [
+            70,
+            15,
+            15
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I have Blue Cross insurance, and no, just looking for someone to do my annual physical and manage my cholesterol. I'd prefer someone close to downtown Orlando if possible.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "Insurance verified - <strong>Blue Cross</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Chronic disease management - <strong>cholesterol</strong>"
+            },
+            {
+              "c": "green",
+              "t": "Location preference - downtown"
+            }
+          ],
+          "q": [
+            85,
+            8,
+            7
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. I'm connecting you now to our New Patient Appointment team. They'll match you with an available primary care physician in your area, get you scheduled, and handle your insurance verification. You should be all set for your physical within the next week or two.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    }
+  }
+}

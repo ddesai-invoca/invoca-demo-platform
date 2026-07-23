@@ -1,0 +1,120 @@
+!function() {
+    class e {
+        static getC99Cookie(name) {
+            let cookieArray = document.cookie.split(';');
+            for(let i = 0; i < cookieArray.length; i++) {
+                let cookiePair = cookieArray[i].split('=');
+                if(name === cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+        static generateCookie() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                return v.toString(16);
+            });
+        }
+        static extractTLD(host) {
+            const secondLevelDomains = ["com", "net", "gov", "org", "edu", "mil", "ltd"];
+
+            if(!host){
+                return host;
+            }
+            host = host.toLowerCase ();
+            const hostParts = host.split(".");
+            if(hostParts.length <= 2) {
+                // something weird = just return
+                return host;
+            }
+            var length = hostParts.length - 1;
+            var last = hostParts[length];
+            var secondLast = hostParts[length - 1];
+            var thirdLast = hostParts[length - 2];
+        
+            // defaults to last 2 parts.
+            var retVal = secondLast + '.' + last;
+        
+            // 1 character top level domains are allowed. eg : intl.m.dk ==> m.dk
+            // if it is 2 and 2, then it is multi level.
+            // if it is 3 and 2, and secondLast is com/net/gov then it is multi-level
+            if(    (secondLast.length == 2 && last.length <= 2 && (thirdLast != 'www'))
+                || (secondLast.length == 3 && secondLevelDomains.includes(secondLast))
+                ){
+                retVal = thirdLast + '.' + retVal;
+            }
+            
+            return retVal;
+        }
+        static setOrRefreshC99Cookie() {
+            const cookieName = 'c99_user_id';
+            const daysToExpire = 400;
+            let cookieValue = this.getC99Cookie(cookieName);
+
+            if (cookieValue === null) {
+                cookieValue = this.generateCookie();
+            }
+
+            const date = new Date();
+            date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+            const expirationDate = date.toUTCString();
+            const maxAgeInSeconds = daysToExpire * 24 * 60 * 60;
+            const tld = this.extractTLD(window.location.host);
+            document.cookie = `${cookieName}=${cookieValue}; Path=/; Domain=.${tld}; Expires=${expirationDate}; Max-Age=${maxAgeInSeconds}; SameSite=None; Secure`
+        }
+        static getCookie() {
+            return document.cookie
+        }
+        static getDomain() {
+            return window.location.host
+        }
+        static getPage() {
+            return window.location.href
+        }
+        static getUserAgent() {
+            return window.navigator.userAgent
+        }
+        static getReferral() {
+            return this.getScriptParams().get("referrer") ?? document.referrer
+        }
+        static getToken() {
+            const e = this.getScriptParams().get("token");
+            if (!e)
+                throw new Error("Token not set");
+            return e
+        }
+        static getScriptParams() {
+            const e = document.getElementById("tagserver");
+            if (!e)
+                throw new Error("Token not set");
+            const t = e.getAttribute("src");
+            if (!t)
+                throw new Error("Token not set");
+            return new URLSearchParams(t)
+        }
+        async fire() {
+            e.setOrRefreshC99Cookie();
+
+            const t = e.getCookie()
+              , r = e.getReferral()
+              , n = {
+                token: e.getToken(),
+                timestamp: Date.now().toString(),
+                domain: e.getDomain(),
+                page: e.getPage(),
+                user_agent: e.getUserAgent()
+            };
+            t && (n.cookie = t),
+            r && (n.referral = r);
+            const o = new URLSearchParams(n);
+            fetch(`https://api.c99.ai/api/v1/fire?${o}`, {
+                mode: "no-cors",
+                credentials: "include"
+            })
+        }
+    }
+    let t = new e;
+    t.fire(),
+    t = null
+}();
