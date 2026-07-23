@@ -121,7 +121,7 @@ export function installAuth(app: Express) {
 
   // Gate everything else: pages redirect to login, /api returns 401.
   app.use((req: Request, res: Response, next: NextFunction) => {
-    if (req.path.startsWith("/auth/")) return next();
+    if (req.path.startsWith("/auth/") || req.path === "/healthz") return next();
     if (verify(parseCookies(req.headers.cookie)[COOKIE])) return next();
     if (req.path.startsWith("/api/")) return res.status(401).json({ error: "Sign in required." });
     return res.redirect("/auth/login");

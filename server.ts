@@ -52,6 +52,9 @@ const ttsProvider: "deepgram" | "elevenlabs" =
 const app = express();
 app.use(express.json({ limit: "2mb" }));
 
+// Health check for the host (Render etc.) — exempt from auth, always 200.
+app.get("/healthz", (_req, res) => res.type("text").send("ok"));
+
 // Google sign-in gate (@invoca.com only) — must run before the API + static
 // routes. No-op unless GOOGLE_CLIENT_ID/SECRET are set (so local runs stay open).
 installAuth(app);
