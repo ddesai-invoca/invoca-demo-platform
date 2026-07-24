@@ -194,17 +194,8 @@ export function ConversationIntelligence() {
               <div className="ci-analysis-body ci-summary">
                 <div className="ci-section-head">
                   <span className="ci-section-title">AI Summary</span>
-                  <span className="ci-ai-tag"><span className="material-icons">auto_awesome</span> AI generated</span>
-                </div>
-                <div className="ci-sum-meta">
-                  <span className={"ci-sentiment ci-sent-" + d.aiSummary.sentiment.toLowerCase()}>{d.aiSummary.sentiment}</span>
-                  <span className="ci-outcome"><span className="material-icons">event_available</span>{d.aiSummary.outcome}</span>
                 </div>
                 <p className="ci-sum-text">{d.aiSummary.summary}</p>
-                <div className="ci-sig-sub">KEY POINTS</div>
-                <ul className="ci-keypoints">
-                  {d.aiSummary.keyPoints.map((k, i) => <li key={i}>{k}</li>)}
-                </ul>
               </div>
             ) : (
               <div className="ci-analysis-body ci-empty-tab">
