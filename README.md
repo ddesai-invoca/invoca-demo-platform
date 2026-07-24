@@ -1,32 +1,60 @@
-# React + TypeScript + Vite
+# Invoca Demo Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A re-skinnable clone of the Invoca product (dashboards, Call Review, Conversation
+Intelligence reports, Agent Studio, live SMS/Voice preview agents) that generates a
+tailored demo per prospect from a `CustomerProfile`, plus an in-app **Ask AI**
+assistant that can answer questions about and live-edit the dashboards.
 
-Currently, two official plugins are available:
+Built with Vite + React + TypeScript. The AI features (chat, Ask AI, signal
+analysis, prospect generation, voice) run through a small Node backend that holds
+the API keys server-side — so this is **not** a static site.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live deployment
 
-## React Compiler
+- **URL:** https://invoca-demo-platform.onrender.com
+- **Access:** Google sign-in, restricted to **@invoca.com** accounts.
+- **Host:** Render (Starter web service, auto-deploys on push to `main`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run locally
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+cp .env.example .env      # fill in ANTHROPIC_API_KEY (+ optional voice keys)
+npm run dev               # http://localhost:5173  (Vite dev server + /api endpoints)
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Generate a prospect from the CLI: `npm run generate` (see `engine/`).
+
+## Deploying updates
+
+The app auto-redeploys when you push to `main`:
+
+```bash
+git add -A && git commit -m "…" && git push
+```
+
+Render rebuilds (`npm install && npm run build`) and restarts (`npm start`). Watch
+progress in the Render dashboard → **Logs**.
+
+## Production server & hosting
+
+`server.ts` serves the built app **and** the `/api/*` backend, gated by
+`googleAuth.ts` (Google sign-in, `@invoca.com` only). Everything is driven by
+environment variables set in Render (never committed):
+
+| Var | Purpose |
+| --- | --- |
+| `ANTHROPIC_API_KEY` | Required — all AI features |
+| `ELEVENLABS_API_KEY` / `DEEPGRAM_API_KEY` | Optional — premium Voice-agent TTS |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Enables the sign-in gate |
+| `ALLOWED_EMAIL_DOMAIN` | Who may sign in (default `invoca.com`) |
+| `SESSION_SECRET` | Signs the login cookie |
+| `BASE_URL` | Public URL, e.g. `https://invoca-demo-platform.onrender.com` (must match the Google OAuth redirect URI, no trailing slash) |
+
+**Full deploy guide (Render + Google OAuth, step by step):** see [`DEPLOY.md`](DEPLOY.md).
+
+## Cost note
+
+Hosting is a few dollars a month; the real spend is **API token usage** (each
+prospect generation is a chunk of Anthropic tokens). Keep an eye on the Anthropic
+usage dashboard as the team uses it.
