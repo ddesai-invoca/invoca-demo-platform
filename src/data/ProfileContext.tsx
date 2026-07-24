@@ -88,6 +88,13 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
 
   const profile = byId[profileId] ?? byId[DEFAULT_PROFILE_ID] ?? profiles[0];
 
+  // Mirror the ACTIVE profile to localStorage so the standalone static pages
+  // (e.g. the Google Ads capture) can re-skin themselves to the current prospect
+  // — works for seeds, generated, and build-bundled profiles alike.
+  useEffect(() => {
+    try { if (profile) localStorage.setItem("invoca-demo:active-profile", JSON.stringify(profile)); } catch { /* ignore quota */ }
+  }, [profile]);
+
   return (
     <Ctx.Provider value={{ profile, profileId, setProfileId, profiles, addProfile, removeProfile }}>
       {children}
