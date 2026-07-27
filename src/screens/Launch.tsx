@@ -37,6 +37,15 @@ const TOTAL_WEIGHT = BUILD_STEPS.reduce((s, st) => s + st.weight, 0);
 
 /* A row in the prospect list — either a shared-library demo (has a creator) or a
    built-in/locally-cached sample (doesn't). */
+type EntryGroup = "mine" | "team" | "sample";
+
+/* Section order + headers for the prospect dropdown. */
+const GROUP_ORDER: [EntryGroup, string][] = [
+  ["mine", "My demos"],
+  ["team", "Team demos"],
+  ["sample", "Samples"],
+];
+
 interface Entry {
   id: string;
   name: string;
@@ -44,6 +53,7 @@ interface Entry {
   creator?: { name: string; email: string };
   mine: boolean;
   inLibrary: boolean;
+  group: EntryGroup;
 }
 
 export function Launch() {
@@ -84,18 +94,26 @@ export function Launch() {
     return () => document.removeEventListener("mousedown", onDown);
   }, []);
 
-  /* One list, two sources: demos published to the shared team library (each with
-     a creator) and any built-in / locally-cached samples that aren't in it yet.
-     Search matches the prospect, the industry, OR the creator's name or email. */
+  /* One list, three groups: MY demos (library demos I own + prospects I generated
+     locally but haven't published), the TEAM library (demos other people created),
+     and SAMPLES (the bundled seed prospects, which belong to no one). Search
+     matches the prospect, the industry, OR the creator's name or email. */
   const libraryIds = new Set(demos.map((d) => d.id));
   const entries: Entry[] = [
-    ...demos.map((d) => ({
-      id: d.id, name: d.prospect, industry: d.industry,
-      creator: d.creator, mine: isMine(d), inLibrary: true,
-    })),
+    ...demos.map((d) => {
+      const mine = isMine(d);
+      return {
+        id: d.id, name: d.prospect, industry: d.industry,
+        creator: d.creator, mine, inLibrary: true,
+        group: (mine ? "mine" : "team") as EntryGroup,
+      };
+    }),
     ...profiles.filter((p) => !libraryIds.has(p.id)).map((p) => ({
       id: p.id, name: p.customerName, industry: p.industry,
       creator: undefined, mine: false, inLibrary: false,
+      // A locally-generated prospect is the user's own (just unpublished); the
+      // code-defined seeds are shared samples.
+      group: (SEED_IDS.has(p.id) ? "sample" : "mine") as EntryGroup,
     })),
   ];
 
@@ -146,7 +164,58 @@ export function Launch() {
     const copy = await duplicateDemo(e.id);
     setBusyId(null);
     if (!copy) { setError(`Couldn't duplicate ${e.name}.`); return; }
-    await openEntry({ ...e, id: copy.id, mine: true, creator: copy.creator, inLibrary: true });
+    await openEntry({ ...e, id: copy.id, mine: true, creator: copy.creator, inLibrary: true, group: "mine" });
+  }
+
+  /* One prospect row. Ownership/state decides the meta line + which actions show:
+     mine → delete; someone else's → duplicate; local unpublished → publish. */
+  function renderRow(e: Entry) {
+    const canDelete = e.inLibrary ? e.mine : !SEED_IDS.has(e.id);
+    return (
+      <div key={e.id} className="prospect-option" onClick={() => openEntry(e)}>
+        <div className="prospect-option-text">
+          <span className="prospect-name">{e.name}</span>
+          <span className="prospect-meta">
+            {e.industry}
+            {e.group === "team" && e.creator && <> · <span className="prospect-owner">{e.creator.name}</span></>}
+            {e.group === "mine" && !e.inLibrary && <> · <span className="prospect-owner">Not published</span></>}
+          </span>
+        </div>
+        <span className="prospect-actions">
+          {busyId === e.id && <span className="prospect-spin" aria-label="Opening" />}
+          {!e.inLibrary && !SEED_IDS.has(e.id) && (
+            <button
+              className="prospect-dup"
+              title={`Publish ${e.name} to the team library`}
+              aria-label={`Publish ${e.name}`}
+              onClick={(ev) => { ev.stopPropagation(); void publish(e); }}
+            >
+              <span className="material-icons">cloud_upload</span>
+            </button>
+          )}
+          {e.inLibrary && !e.mine && (
+            <button
+              className="prospect-dup"
+              title={`Duplicate ${e.name} — makes an editable copy that's yours`}
+              aria-label={`Duplicate ${e.name}`}
+              onClick={(ev) => { ev.stopPropagation(); void duplicate(e); }}
+            >
+              <span className="material-icons">content_copy</span>
+            </button>
+          )}
+          {canDelete && (
+            <button
+              className="prospect-delete"
+              title={`Delete ${e.name}`}
+              aria-label={`Delete ${e.name}`}
+              onClick={(ev) => { ev.stopPropagation(); setPendingDelete(e); }}
+            >
+              <span className="material-icons">delete_outline</span>
+            </button>
+          )}
+        </span>
+      </div>
+    );
   }
 
   // Overall % — done steps count fully; the in-flight step eases up asymptotically
@@ -303,7 +372,7 @@ export function Launch() {
         {entries.length > 0 && !busy && (
           <div className="launch-recent">
             <div className="launch-recent-head">
-              Team demo library
+              Demo library
               {me && <span className="launch-me">signed in as {me.name}</span>}
             </div>
             <div className="prospect-select" ref={selectRef}>
@@ -323,51 +392,16 @@ export function Launch() {
                   {filtered.length === 0 ? (
                     <div className="prospect-empty">Nothing matches "{query}"</div>
                   ) : (
-                    filtered.map((e) => (
-                      <div key={e.id} className="prospect-option" onClick={() => openEntry(e)}>
-                        <div className="prospect-option-text">
-                          <span className="prospect-name">{e.name}</span>
-                          <span className="prospect-meta">
-                            {e.industry}
-                            {e.creator && <> · <span className={e.mine ? "prospect-owner-me" : "prospect-owner"}>{e.mine ? "You" : e.creator.name}</span></>}
-                            {!e.inLibrary && " · Sample"}
-                          </span>
+                    GROUP_ORDER.map(([g, label]) => {
+                      const rows = filtered.filter((e) => e.group === g);
+                      if (!rows.length) return null;
+                      return (
+                        <div key={g} className="prospect-group">
+                          <div className="prospect-group-head">{label}</div>
+                          {rows.map((e) => renderRow(e))}
                         </div>
-                        <span className="prospect-actions">
-                          {busyId === e.id && <span className="prospect-spin" aria-label="Opening" />}
-                          {!e.inLibrary && (
-                            <button
-                              className="prospect-dup"
-                              title={`Publish ${e.name} to the team library`}
-                              aria-label={`Publish ${e.name}`}
-                              onClick={(ev) => { ev.stopPropagation(); void publish(e); }}
-                            >
-                              <span className="material-icons">cloud_upload</span>
-                            </button>
-                          )}
-                          {e.inLibrary && !e.mine && (
-                            <button
-                              className="prospect-dup"
-                              title={`Duplicate ${e.name} — makes an editable copy that's yours`}
-                              aria-label={`Duplicate ${e.name}`}
-                              onClick={(ev) => { ev.stopPropagation(); void duplicate(e); }}
-                            >
-                              <span className="material-icons">content_copy</span>
-                            </button>
-                          )}
-                          {(e.inLibrary ? e.mine : !SEED_IDS.has(e.id)) && (
-                            <button
-                              className="prospect-delete"
-                              title={`Delete ${e.name}`}
-                              aria-label={`Delete ${e.name}`}
-                              onClick={(ev) => { ev.stopPropagation(); setPendingDelete(e); }}
-                            >
-                              <span className="material-icons">delete_outline</span>
-                            </button>
-                          )}
-                        </span>
-                      </div>
-                    ))
+                      );
+                    })
                   )}
                 </div>
               )}

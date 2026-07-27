@@ -1460,3 +1460,7 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 /* Ask AI drawer — "someone else's demo" notice */
 .aiad-readonly { display: flex; gap: 10px; align-items: flex-start; margin: 0 18px 4px; padding: 10px 12px; background: #fff8e6; border: 1px solid #f2d98f; border-radius: 6px; color: #7a5b12; font-size: 12.5px; line-height: 1.45; }
 .aiad-readonly .material-icons { font-size: 17px; flex: none; margin-top: 1px; }
+
+/* Demo library — grouped sections (My demos / Team demos / Samples) */
+.prospect-group + .prospect-group { border-top: 1px solid #edeff2; }
+.prospect-group-head { padding: 8px 14px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #9aa1ac; }
