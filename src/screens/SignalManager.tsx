@@ -25,53 +25,27 @@ const COLS: { key: string; label: string; width: number }[] = [
   { key: "actions", label: "Actions", width: 124 },
 ];
 
-/* The hero illustrations are NOT in the capture — only three large SVGs exist
-   across every bundle (300x189 / 300x204 / 320x220) and none is this pair, so
-   they're fetched separately and "Webpage, Complete" missed them. These are
-   redrawn from the screenshot: a cloud with an upload arrow, three isometric
-   wireframe cubes, and the pale-blue diagonal streaks behind both that give the
-   Invoca illustrations their look. Swap in the real SVGs if they turn up. */
-function Streaks() {
-  return (
-    <g stroke="#b0cdff" strokeWidth="3" strokeLinecap="round">
-      <path d="M6 30h16M2 42h9" />
-      <path d="M98 74h16M110 62h9" />
-    </g>
-  );
-}
+/* The hero illustrations are CSS sprites on the real page, not SVG — which is
+   why they never turned up as <svg> or <img>. A later SingleFile capture inlined
+   the sheet as a base64 PNG; these three are cropped straight out of it, so they
+   are the actual artwork rather than a redraw:
 
-function UploadArt() {
-  return (
-    <svg className="sg-art" viewBox="0 0 120 96" aria-hidden="true">
-      <Streaks />
-      {/* cloud */}
-      <path d="M36 66a15 15 0 0 1 1.8-29.9A22 22 0 0 1 80 41.5 13 13 0 0 1 84 66Z"
-        fill="#fff" stroke="#2666f9" strokeWidth="2.6" strokeLinejoin="round" />
-      {/* upload arrow: head at the top, inside the cloud */}
-      <path d="M60 79V50" fill="none" stroke="#2666f9" strokeWidth="2.6" strokeLinecap="round" />
-      <path d="M49.5 60.5 60 50l10.5 10.5" fill="none" stroke="#2666f9"
-        strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M44 86h32" stroke="#2666f9" strokeWidth="2.6" strokeLinecap="round" />
-    </svg>
-  );
-}
+     public/signal/card-bg.png      the shared pale streaks + sparkles
+                                    (sprite x1412 y0, 256x236 @2x -> 128x118 css)
+     public/signal/icon-upload.png  cloud + arrows   (x3974 y54, 128x128 -> 64x64)
+     public/signal/icon-api.png     three cubes      (x3846 y58, 128x122 -> 64x61)
 
-function ApiArt() {
-  /* One isometric wireframe cube at (cx, top): w = half-width, h = side height. */
-  const cube = (cx: number, top: number, w: number, h: number) => (
-    <g fill="#fff" stroke="#2666f9" strokeWidth="2.4" strokeLinejoin="round">
-      <path d={`M${cx} ${top} ${cx + w} ${top + w / 2} ${cx + w} ${top + w / 2 + h} ${cx} ${top + w + h} ${cx - w} ${top + w / 2 + h} ${cx - w} ${top + w / 2}Z`} />
-      <path d={`M${cx - w} ${top + w / 2} ${cx} ${top + w} ${cx + w} ${top + w / 2}`} fill="none" />
-      <path d={`M${cx} ${top + w}v${h}`} fill="none" />
-    </g>
-  );
+   The sheet is 4468x236 for a 118px-tall box, i.e. @2x, so every CSS
+   background-position doubles to get the real pixel offset — that's what made
+   the first crop attempt land on the wrong artwork.
+
+   Composition mirrors the real rules: a 128x118 box carrying the streaks, with
+   the 64px glyph centred on it (`margin: 27px auto`). */
+function CardIcon({ glyph, size }: { glyph: string; size: { w: number; h: number } }) {
   return (
-    <svg className="sg-art" viewBox="0 0 120 96" aria-hidden="true">
-      <Streaks />
-      {cube(40, 14, 15, 15)}
-      {cube(80, 14, 15, 15)}
-      {cube(60, 48, 15, 15)}
-    </svg>
+    <div className="sg-cardicon">
+      <img src={glyph} alt="" width={size.w} height={size.h} />
+    </div>
   );
 }
 
@@ -96,7 +70,7 @@ export function SignalManager() {
 
       <div className="sg-heroes">
         <section className="sg-hero">
-          <UploadArt />
+          <CardIcon glyph="/signal/icon-upload.png" size={{ w: 64, h: 64 }} />
           <div className="sg-hero-text">
             <h2>{d.uploadTitle}</h2>
             <p>{d.uploadBody}</p>
@@ -104,7 +78,7 @@ export function SignalManager() {
           </div>
         </section>
         <section className="sg-hero">
-          <ApiArt />
+          <CardIcon glyph="/signal/icon-api.png" size={{ w: 64, h: 61 }} />
           <div className="sg-hero-text">
             <h2>{d.apiTitle}</h2>
             <p>{d.apiBody}</p>

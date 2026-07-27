@@ -1479,7 +1479,11 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .sg-heroes { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; margin-bottom: 30px; }
 .sg-hero { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #e7e9eb;
   border-radius: 4px; padding: 26px 28px; }
-.sg-art { width: 132px; height: 106px; flex: none; }
+/* Real sprite composition: 128x118 box with the shared streaks/sparkles
+   background, and the 64px glyph centred on it (margin: 27px auto). */
+.sg-cardicon { width: 128px; height: 118px; flex: none;
+  background: url(/signal/card-bg.png) no-repeat center / 128px 118px; }
+.sg-cardicon img { display: block; margin: 27px auto; }
 .sg-hero-text h2 { font-size: 20px; font-weight: 400; color: #15243e; margin: 0 0 8px; }
 .sg-hero-text p { font-size: 14px; line-height: 1.5; color: #3d3d3d; margin: 0 0 18px; }
 .sg-hero-link { background: none; border: none; padding: 0; font-family: inherit; font-size: 13px;
