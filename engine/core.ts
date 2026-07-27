@@ -113,7 +113,9 @@ function scaleRules(s: Scale, bookingTerm: string): string {
     `5. count x percent must equal the count shown elsewhere for the same thing, and revenue / won-sales must land near ${$(s.avgSale)} on every row (no row at $800 next to a row at $4,000).\n` +
     `6. Never pair a non-zero conversion percent with $0 revenue, or a 0 count with revenue.\n` +
     `7. Chart series must sum to the KPI tile they roll up into, and a chart must cover the SAME period as the date range — use the weekly buckets ${JSON.stringify(WEEK_LABELS)} as xLabels unless told otherwise.\n` +
-    `8. Use "${bookingTerm}" for the scheduled-visit metric EVERYWHERE. Never drift to "Appointment"/"Consultation" if that is not the bookingTerm.`
+    `8. Use "${bookingTerm}" for the scheduled-visit metric EVERYWHERE. Never drift to "Appointment"/"Consultation" if that is not the bookingTerm.\n` +
+    `9. NO ROUND NUMBERS, and this applies to EVERY ROW, not just the totals. Real reporting never lands on 22,000 calls or $4,750,000 — every count and every dollar figure needs its own odd tail (22,417 / 11,864 / 6,952 / $4,755,155).\n` +
+    `   In particular do NOT build a table out of round rows plus one odd row that absorbs the remainder — "22,000 / 11,000 / 7,000 / 3,000 / 4,318" is exactly the pattern that gives a demo away. Vary every row independently, then make them sum to the required total.`
   );
 }
 
@@ -291,7 +293,7 @@ function generateDigitalInsights(client: Anthropic, name: string, brandDomain: s
   );
 }
 
-function generateDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, qualifiedCallTerm: string, conversionTerm: string, sc: Scale) {
+export function generateDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, qualifiedCallTerm: string, conversionTerm: string, sc: Scale) {
   return structured<z.infer<typeof DashboardView>>(
     client,
     DashboardView,

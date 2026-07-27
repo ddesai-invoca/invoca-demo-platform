@@ -1,0 +1,5185 @@
+{
+  "id": "mattress-firm",
+  "customerName": "Mattress Firm",
+  "websiteUrl": "https://www.mattressfirm.com/",
+  "brandDomain": "mattressfirm.com",
+  "networkName": "Invoca for Mattress Retail",
+  "industry": "Specialty mattress & sleep-products retail",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 16000,
+      "yTicks": [
+        0,
+        4000,
+        8000,
+        12000,
+        16000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8500
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 14200
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 13800
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 13200
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 10630
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "MF - Brand Core",
+          "marketingSearchTerm": "mattress firm near me",
+          "landingPageUrl": "https://www.mattressfirm.com/?utm_source=google&utm_medium=cpc&utm_campaign=mf_brand_core",
+          "websiteJourney": "Home / Find A Store",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mattress Sale - Nonbrand",
+          "marketingSearchTerm": "queen mattress sale",
+          "landingPageUrl": "https://www.mattressfirm.com/mattresses?utm_source=google&utm_medium=cpc&utm_campaign=mattress_sale_nonbrand",
+          "websiteJourney": "Home / Mattresses / Queen",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mattress Sale - Nonbrand",
+          "marketingSearchTerm": "best mattress for back pain",
+          "landingPageUrl": "https://www.mattressfirm.com/mattresses?utm_source=google&utm_medium=cpc&utm_campaign=back_pain",
+          "websiteJourney": "Home / Mattresses / Hybrid",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Tempur-Pedic Retailer PLA",
+          "marketingSearchTerm": "tempur-pedic vs purple",
+          "landingPageUrl": "https://www.mattressfirm.com/brands/tempur-pedic?utm_source=bing&utm_medium=cpc&utm_campaign=tempurpedic_pla",
+          "websiteJourney": "Home / Mattresses / Brands / Tempur-Pedic",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "July 4th Save Big",
+          "marketingSearchTerm": "mattress 4th of july sale",
+          "landingPageUrl": "https://www.mattressfirm.com/sale-clearance?utm_source=google&utm_medium=cpc&utm_campaign=july4th",
+          "websiteJourney": "Home / Sale & Clearance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "0% APR Financing Push",
+          "marketingSearchTerm": "0% financing mattress",
+          "landingPageUrl": "https://www.mattressfirm.com/financing?utm_source=google&utm_medium=cpc&utm_campaign=financing_push",
+          "websiteJourney": "Home / Financing",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Mattress Sale - Nonbrand",
+          "marketingSearchTerm": "hybrid mattress under $500",
+          "landingPageUrl": "https://www.mattressfirm.com/mattresses/hybrid?utm_source=bing&utm_medium=cpc&utm_campaign=hybrid_deals",
+          "websiteJourney": "Home / Mattresses / Hybrid",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mattress Sale - Nonbrand",
+          "marketingSearchTerm": "cooling mattress for hot sleepers",
+          "landingPageUrl": "https://www.mattressfirm.com/mattresses?utm_source=google&utm_medium=cpc&utm_campaign=cooling_mattress",
+          "websiteJourney": "Home / Mattresses / Memory Foam",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Adjustable Base Instant Gift",
+          "marketingSearchTerm": "adjustable bed base",
+          "landingPageUrl": "https://www.mattressfirm.com/adjustable-bed-bases?utm_source=google&utm_medium=cpc&utm_campaign=adjustable_base",
+          "websiteJourney": "Home / Adjustable Bed Bases",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "72 Hour Sale Retargeting",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/sale-clearance?utm_source=facebook&utm_medium=paidsocial&utm_campaign=72hour_retargeting",
+          "websiteJourney": "Home / Sale & Clearance",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Sleep Struggles Prospecting",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/mattresses?utm_source=instagram&utm_medium=paidsocial&utm_campaign=sleep_struggles",
+          "websiteJourney": "Home / Mattresses / Plush",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Adjustable Base Instant Gift",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/adjustable-bed-bases?utm_source=facebook&utm_medium=paidsocial&utm_campaign=base_gift",
+          "websiteJourney": "Home / Adjustable Bed Bases",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Sleep Guide Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/blog/sleep-guide?utm_source=organic&utm_medium=organic&utm_campaign=sleep_guide_hub",
+          "websiteJourney": "Home / Blog / Sleep Guide",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Best Mattress for Back Pain",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/mattresses/hybrid?utm_source=organic&utm_medium=organic&utm_campaign=back_pain_guide",
+          "websiteJourney": "Home / Mattresses / Hybrid",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Sleep Guide Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/brands/tempur-pedic?utm_source=organic&utm_medium=organic&utm_campaign=brand_content",
+          "websiteJourney": "Home / Mattresses / Brands / Tempur-Pedic",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Sleep Guide Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/box-springs-frames?utm_source=organic&utm_medium=organic&utm_campaign=frames_content",
+          "websiteJourney": "Home / Box Springs & Frames",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Mattress Sale - Nonbrand",
+          "marketingSearchTerm": "memory foam mattress deals",
+          "landingPageUrl": "https://www.mattressfirm.com/mattresses/memory-foam?utm_source=google&utm_medium=cpc&utm_campaign=memory_foam_deals",
+          "websiteJourney": "Home / Mattresses / Memory Foam",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "72 Hour Sale Retargeting",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/mattresses?utm_source=instagram&utm_medium=paidsocial&utm_campaign=72hour_ig",
+          "websiteJourney": "Home / Mattresses / Firm",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "MF - Brand Core",
+          "marketingSearchTerm": "sealy posturepedic reviews",
+          "landingPageUrl": "https://www.mattressfirm.com/brands/sealy?utm_source=bing&utm_medium=cpc&utm_campaign=sealy_brand",
+          "websiteJourney": "Home / Mattresses / Brands / Sealy",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Best Mattress for Back Pain",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.mattressfirm.com/bedding/pillows?utm_source=organic&utm_medium=organic&utm_campaign=pillows_content",
+          "websiteJourney": "Home / Bedding / Pillows",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Mattress Firm)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "47,318"
+            },
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Purchase (Percent)",
+              "value": "24%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$15,310,247"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,571"
+            },
+            {
+              "label": "Delivery & Order Status Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing & Financing Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Store Location & Hours Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Sales Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Sales Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "44%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Purchase (Percent)",
+              "value": "24%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Sales Call (Count)",
+        "xLabels": [
+          "Jan 1-5",
+          "Jan 6-11",
+          "Jan 12-17",
+          "Jan 18-23",
+          "Jan 24-28",
+          "Jan 29-31"
+        ],
+        "series": [
+          {
+            "name": "Sales Call (Count)",
+            "values": [
+              6600,
+              6600,
+              6600,
+              6600,
+              6600,
+              6747
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              3470,
+              3470,
+              3470,
+              3470,
+              3470,
+              3470
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              946,
+              946,
+              946,
+              946,
+              946,
+              948
+            ]
+          },
+          {
+            "name": "Purchase (Count)",
+            "values": [
+              1900,
+              1900,
+              1900,
+              1900,
+              1900,
+              1856
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47318,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "22,000",
+                "40%",
+                "16%",
+                "$4,755,155"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "11,000",
+                "45%",
+                "26%",
+                "$3,906,300"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "7,000",
+                "48%",
+                "31%",
+                "$2,896,050"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "4,318",
+                "50%",
+                "32%",
+                "$1,885,800"
+              ]
+            },
+            {
+              "name": "Yelp",
+              "metrics": [
+                "3,000",
+                "55%",
+                "46%",
+                "$1,866,942"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47318,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "20,000",
+                "42%",
+                "16%",
+                "$4,324,115"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "12,000",
+                "46%",
+                "23%",
+                "$3,717,720"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "8,000",
+                "49%",
+                "30%",
+                "$3,254,352"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "4,318",
+                "52%",
+                "36%",
+                "$2,101,320"
+              ]
+            },
+            {
+              "name": "SMS",
+              "metrics": [
+                "3,000",
+                "56%",
+                "47%",
+                "$1,912,740"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 28100,
+          "rows": [
+            {
+              "name": "Mattress Sale – Nonbrand",
+              "metrics": [
+                "9,000",
+                "38%",
+                "14%",
+                "$1,697,220"
+              ]
+            },
+            {
+              "name": "MF – Brand Core",
+              "metrics": [
+                "7,500",
+                "52%",
+                "30%",
+                "$3,030,750"
+              ]
+            },
+            {
+              "name": "72 Hour Sale Retargeting",
+              "metrics": [
+                "5,200",
+                "46%",
+                "25%",
+                "$1,751,100"
+              ]
+            },
+            {
+              "name": "Tempur-Pedic Retailer PLA",
+              "metrics": [
+                "3,800",
+                "48%",
+                "28%",
+                "$1,433,208"
+              ]
+            },
+            {
+              "name": "New Year Mattress Sale",
+              "metrics": [
+                "2,600",
+                "58%",
+                "50%",
+                "$1,751,100"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12500,
+          "rows": [
+            {
+              "name": "mattress firm near me",
+              "metrics": [
+                "4,200",
+                "42%",
+                "18%",
+                "$1,018,332"
+              ]
+            },
+            {
+              "name": "queen mattress sale",
+              "metrics": [
+                "3,100",
+                "46%",
+                "26%",
+                "$1,085,682"
+              ]
+            },
+            {
+              "name": "best mattress for back pain",
+              "metrics": [
+                "2,400",
+                "48%",
+                "30%",
+                "$969,840"
+              ]
+            },
+            {
+              "name": "hybrid mattress under $500",
+              "metrics": [
+                "1,700",
+                "50%",
+                "34%",
+                "$778,566"
+              ]
+            },
+            {
+              "name": "adjustable bed base",
+              "metrics": [
+                "1,100",
+                "58%",
+                "52%",
+                "$770,484"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Mattresses",
+              "metrics": [
+                "24,000",
+                "46%",
+                "25%",
+                "$8,653,047"
+              ]
+            },
+            {
+              "name": "Sale & Clearance",
+              "metrics": [
+                "9,500",
+                "40%",
+                "22%",
+                "$2,310,000"
+              ]
+            },
+            {
+              "name": "Adjustable Bed Bases",
+              "metrics": [
+                "6,400",
+                "42%",
+                "22%",
+                "$1,960,000"
+              ]
+            },
+            {
+              "name": "Bedding",
+              "metrics": [
+                "4,418",
+                "43%",
+                "24%",
+                "$1,267,200"
+              ]
+            },
+            {
+              "name": "Box Springs & Frames",
+              "metrics": [
+                "3,000",
+                "48%",
+                "27%",
+                "$1,120,000"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 47318,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "16,000",
+                "42%",
+                "18%",
+                "$3,893,075"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "12,000",
+                "46%",
+                "24%",
+                "$3,879,360"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "9,500",
+                "48%",
+                "28%",
+                "$3,583,020"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "8,318",
+                "45%",
+                "25%",
+                "$2,801,760"
+              ]
+            },
+            {
+              "name": "Other",
+              "metrics": [
+                "1,500",
+                "58%",
+                "57%",
+                "$1,153,032"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Purchase (Count)",
+        "xLabels": [
+          "Jan 1-5",
+          "Jan 6-11",
+          "Jan 12-17",
+          "Jan 18-23",
+          "Jan 24-28",
+          "Jan 29-31"
+        ],
+        "series": [
+          {
+            "name": "Mattresses",
+            "values": [
+              1000,
+              1000,
+              1000,
+              1000,
+              1000,
+              1000
+            ]
+          },
+          {
+            "name": "Sale & Clearance",
+            "values": [
+              350,
+              350,
+              350,
+              350,
+              350,
+              350
+            ]
+          },
+          {
+            "name": "Adjustable Bed Bases",
+            "values": [
+              233,
+              233,
+              233,
+              233,
+              234,
+              234
+            ]
+          },
+          {
+            "name": "Bedding",
+            "values": [
+              176,
+              176,
+              176,
+              176,
+              176,
+              176
+            ]
+          },
+          {
+            "name": "Box Springs & Frames",
+            "values": [
+              133,
+              133,
+              133,
+              133,
+              134,
+              134
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 47,318 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Danielle Foster called wanting to compare a Tempur-Pedic to the Purple after waking up achy every morning. Sleep Expert Oscar walked her through firmness options and booked an in-store fitting consultation at her nearest location. She scheduled for Saturday and mentioned she was ready to buy that day.",
+          "date": "Jan 6, 10:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 45s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Marcus Bell asked about the DreamCloud PressureSmart Plush queen on sale and whether free delivery was included. Lila confirmed the $899 price with free and fast delivery and set up a consultation to finalize sizing. Marcus happily agreed to come in the next day.",
+          "date": "Feb 12, 3:22 PM",
+          "agent": "Lila",
+          "duration": "2m 10s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "Priya Raman called about 0% financing on a Sealy Posturepedic Plus Hybrid for her guest room. Rosey explained the equal monthly payments financing plan and reserved a consultation slot to complete the application in store. Priya booked for Thursday evening.",
+          "date": "Mar 4, 1:05 PM",
+          "agent": "Rosey",
+          "duration": "2m 30s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "New customer Gregory Nash called to schedule his first Sleep Expert consultation, interested in a hybrid mattress plus an adjustable base bundle. Lee collected his name, phone number, preferred store, and sleep concerns about a snoring partner, then booked him for the weekend. Gregory confirmed the appointment and asked about the ELEVATE code.",
+          "date": "Apr 9, 4:48 PM",
+          "agent": "Lee",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 70,
+          "summary": "Tina Alvarez wanted to try the Sleepy's Skye Hybrid with the adjustable base gift offer. Mary described the $499 bundle and scheduled a consultation so Tina could test the recline features in person. Tina booked for Tuesday afternoon.",
+          "date": "May 15, 11:32 AM",
+          "agent": "Mary",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Howard Kim called to check the delivery status of his Beautyrest Black order placed last week. Sue looked up the order and confirmed it was scheduled for Friday between 9 and noon. Howard was satisfied but did not schedule anything new.",
+          "date": "Jun 3, 2:42 PM",
+          "agent": "Sue",
+          "duration": "1m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Angela Ruiz asked which mattress was best for a hot sleeper and inquired about the Sealy Frisco Euro Pillow Top. Mike explained the temperature regulation features and booked a consultation to compare cooling models. Angela agreed to come in Saturday.",
+          "date": "Jul 21, 9:18 AM",
+          "agent": "Mike",
+          "duration": "2m 20s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 17,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Robert Castellano called upset that his delivery window was missed and the crew never arrived. Jennifer apologized, located the order, and escalated to the delivery team to reschedule for the next day. Robert remained frustrated but accepted the new slot.",
+          "date": "Aug 8, 5:11 PM",
+          "agent": "Jennifer",
+          "duration": "2m 50s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 52,
+          "summary": "Nancy Whitfield called about a warranty claim on a sagging Tempur-Pedic she bought two years ago. Rose explained the warranty inspection process and emailed her the claim form. Nancy was disappointed there was no immediate replacement and ended the call unresolved.",
+          "date": "Aug 27, 12:36 PM",
+          "agent": "Rose",
+          "duration": "3m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Derek Mason disputed a financing charge on his branded credit card statement that he did not recognize. Oscar reviewed the account and directed him to the financing provider's billing line for a formal dispute. Derek was annoyed the store couldn't resolve it directly.",
+          "date": "Sep 2, 3:59 PM",
+          "agent": "Oscar",
+          "duration": "2m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Sophia Grant called to cancel an order she placed online because she found a better price elsewhere. Lila processed the cancellation and mentioned the Low Price Guarantee, but Sophia declined to reconsider. The order was cancelled without a new booking.",
+          "date": "Sep 14, 10:47 AM",
+          "agent": "Lila",
+          "duration": "1m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Victor Ramirez complained that his adjustable base arrived with a damaged remote and no setup instructions. Lee documented the issue and arranged a replacement part shipment. Victor stayed unhappy about the wait and asked to speak to a manager.",
+          "date": "Sep 25, 1:23 PM",
+          "agent": "Lee",
+          "duration": "3m 10s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 33,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Karen Doyle called about a warranty repair on a Serta box spring frame that was creaking loudly. Mary tried to gather photos but Karen grew impatient with the documentation requirements. The claim was left pending and Karen hung up dissatisfied.",
+          "date": "Oct 3, 4:15 PM",
+          "agent": "Mary",
+          "duration": "2m 35s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 35,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Anonymous caller reached the after-hours line and rolled to voicemail without leaving details, mentioning something about a delayed delivery. No agent was available to assist. The message was too garbled to follow up on.",
+          "date": "Oct 11, 7:52 PM",
+          "agent": "No Agent",
+          "duration": "0m 45s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Franklin Ober angrily called to cancel his entire order and demand a refund after a second missed appointment. Jennifer attempted to save the sale but Franklin refused and requested corporate contact info. The order was cancelled and the customer remained hostile.",
+          "date": "Oct 22, 6:04 PM",
+          "agent": "Jennifer",
+          "duration": "3m 20s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "tempur-pedic",
+        "delivery",
+        "adjustable base",
+        "warranty",
+        "financing",
+        "cancel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Sleep Concern",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area & ZIP",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Consultation Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Mattress Preference Expectations",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer 120-Night Trial & Financing Info",
+          "points": "10/10",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Greeted caller by name",
+        "Confirmed customer is new to Mattress Firm",
+        "Identified back pain as primary sleep concern",
+        "Clarified need for medium-to-firm mattress feel",
+        "Asked about sleep position (back sleeper)",
+        "Confirmed ZIP code 75201 (service area available)",
+        "Captured full name: Jennifer Moreno",
+        "Captured phone number",
+        "Scheduled consultation at Dallas store",
+        "Mentioned 120-Night Trial guarantee",
+        "Referenced Low Price Guarantee",
+        "Offered 0% financing option",
+        "Professional closing statement"
+      ],
+      "unmetSignals": [
+        "Did not ask about current mattress age/condition",
+        "Did not capture email address",
+        "Did not confirm preferred appointment date options",
+        "Did not mention bed partner considerations",
+        "Did not ask about budget range",
+        "Did not discuss adjustable base interest",
+        "Did not clarify if in-store or virtual consultation preferred",
+        "Did not mention specific brand availability (Tempur-Pedic, Sealy)",
+        "Did not ask about allergies or temperature sensitivity",
+        "Did not provide store hours or address"
+      ],
+      "naSignals": [
+        "Discuss previous purchase history",
+        "Address warranty claim",
+        "Process return or exchange",
+        "Coordinate delivery scheduling",
+        "Discuss financing application status",
+        "Confirm order shipment status",
+        "Handle billing inquiry"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. Jennifer is experiencing chronic back pain and waking up stiff. She's a back sleeper looking for a mattress with medium-to-firm support to alleviate discomfort and improve sleep quality."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "Jennifer expects expert guidance during an in-store consultation to find the right mattress fit. She's interested in the 120-Night Trial and financing options, and wants to avoid a long purchasing process."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus should have captured Jennifer's email address and confirmed her preferred appointment date/time. He could also have asked about bed-partner needs and specific budget range to better prepare the store team for her visit."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Hi there, welcome to Mattress Firm! I'm Marcus. Are you calling because you're ready to find your perfect mattress?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:26",
+          "text": "Hi Marcus. Yes, I've been having really bad back pain when I wake up and I heard Mattress Firm can help me find something better."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:38",
+          "text": "I'm so glad you called. We're definitely the right place—we're the #1 Tempur-Pedic retailer and we work with Sleep Experts to get you matched with the perfect mattress. Have you shopped with us before?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:51",
+          "text": "No, this is my first time. I'm really hoping to find something that helps with the pain."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "You're in great hands. I'd love to set up a consultation with one of our Sleep Experts so they can make sure we get you exactly what you need. First, may I get your full name?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:14",
+          "text": "Of course. It's Jennifer Moreno."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:20",
+          "text": "Perfect, Jennifer. And just to clarify, you mentioned back pain when you wake up. Are you a back sleeper, or do you switch positions throughout the night?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:32",
+          "text": "I'm mostly a back sleeper. Sometimes I roll to my side, but I spend most of the night on my back."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:42",
+          "text": "That helps a lot. For back pain, we usually recommend a medium to firm feel mattress. Would that sound right for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:54",
+          "text": "Yes, I think something firm would be best. My current mattress is way too soft."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:04",
+          "text": "Excellent. Now, what's your ZIP code? I'll make sure we have availability at your nearest store."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:12",
+          "text": "It's 75201—that's Dallas."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:20",
+          "text": "Perfect, Jennifer. We have a full-service store right in your area. And what's the best phone number to reach you to confirm your appointment?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:32",
+          "text": "It's ****-****-****. "
+        },
+        {
+          "speaker": "agent",
+          "time": "02:41",
+          "text": "Got it. I'm going to schedule you for a consultation this Saturday at 10 AM at our Dallas location. Our Sleep Experts will have you tested on several mattresses, and remember—we offer a 120-Night Trial so you can make sure it's the perfect fit. Plus, we have 0% financing available. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:58",
+          "text": "That sounds great. Saturday at 10 works perfectly."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:07",
+          "text": "Wonderful, Jennifer. You're all set. We're excited to help you sleep better and get rid of that back pain. See you Saturday!"
+        }
+      ],
+      "aiSummary": "Jennifer Moreno, a new customer experiencing chronic back pain, called to schedule an in-store mattress consultation at Mattress Firm's Dallas location. Marcus qualified her need for a medium-to-firm mattress suited for back sleepers and successfully booked her for Saturday at 10 AM. He positioned the 120-Night Trial and 0% financing options but did not capture her email address or discuss specific mattress preferences ahead of her visit.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus Great structure and professional tone throughout the call. You nailed the greeting, qualification of her back-pain concern, and service-area confirmation. Two coaching notes: (1) Always capture the email address before closing—it's our primary channel for confirmation and follow-up. (2) Next time, ask about budget range and whether she sleeps alone or with a partner; that intel helps the store team prep the right mattress set for her to try. Keep it up!"
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "47,318"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$323.56"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$15,310,247"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "30,987"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "65%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "20,820"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "44%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "16,331"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Google",
+                "value": 52,
+                "display": "52%"
+              },
+              {
+                "name": "Bing",
+                "value": 44,
+                "display": "44%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Meta",
+                "value": 38,
+                "display": "38%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google",
+                  "21,450",
+                  "52%",
+                  "$6,940,000"
+                ]
+              },
+              {
+                "cells": [
+                  "Meta",
+                  "9,340",
+                  "38%",
+                  "$3,020,000"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing",
+                  "6,820",
+                  "44%",
+                  "$2,210,000"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "5,208",
+                  "30%",
+                  "$1,690,247"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "4,500",
+                  "41%",
+                  "$1,450,000"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 25000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 24200,
+                "display": "24,200"
+              },
+              {
+                "name": "Paid Social",
+                "value": 9340,
+                "display": "9,340"
+              },
+              {
+                "name": "Direct",
+                "value": 5208,
+                "display": "5,208"
+              },
+              {
+                "name": "Organic",
+                "value": 4500,
+                "display": "4,500"
+              },
+              {
+                "name": "Email/SMS",
+                "value": 4070,
+                "display": "4,070"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "24,200",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Social",
+                  "9,340",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "5,208",
+                  "30%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "4,500",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/SMS",
+                  "4,070",
+                  "46%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 10000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Mattress Sale – Nonbrand",
+                "value": 8900,
+                "display": "8,900"
+              },
+              {
+                "name": "MF – Brand Core",
+                "value": 7600,
+                "display": "7,600"
+              },
+              {
+                "name": "72 Hour Sale Retargeting",
+                "value": 4300,
+                "display": "4,300"
+              },
+              {
+                "name": "Tempur-Pedic Retailer PLA",
+                "value": 3200,
+                "display": "3,200"
+              },
+              {
+                "name": "0% APR Financing Push",
+                "value": 2100,
+                "display": "2,100"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Mattress Sale – Nonbrand",
+                  "8,900",
+                  "42%",
+                  "$2,880,000"
+                ]
+              },
+              {
+                "cells": [
+                  "MF – Brand Core",
+                  "7,600",
+                  "51%",
+                  "$2,470,000"
+                ]
+              },
+              {
+                "cells": [
+                  "72 Hour Sale Retargeting",
+                  "4,300",
+                  "38%",
+                  "$1,390,000"
+                ]
+              },
+              {
+                "cells": [
+                  "Tempur-Pedic Retailer PLA",
+                  "3,200",
+                  "47%",
+                  "$1,040,000"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 6000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000,
+              6000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "mattress firm near me",
+                "value": 5200,
+                "display": "5,200"
+              },
+              {
+                "name": "queen mattress sale",
+                "value": 3400,
+                "display": "3,400"
+              },
+              {
+                "name": "best mattress for back pain",
+                "value": 2600,
+                "display": "2,600"
+              },
+              {
+                "name": "adjustable bed base",
+                "value": 1700,
+                "display": "1,700"
+              },
+              {
+                "name": "cooling mattress for hot sleepers",
+                "value": 1150,
+                "display": "1,150"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "mattress firm near me",
+                  "58%"
+                ]
+              },
+              {
+                "cells": [
+                  "best mattress for back pain",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "queen mattress sale",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "adjustable bed base",
+                  "39%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Mattresses",
+              "18,900",
+              "46%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Sale & Clearance",
+              "9,800",
+              "43%",
+              "72%"
+            ]
+          },
+          {
+            "cells": [
+              "Adjustable Bed Bases",
+              "7,200",
+              "41%",
+              "60%"
+            ]
+          },
+          {
+            "cells": [
+              "Bedding",
+              "4,100",
+              "35%",
+              "55%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Mattress Firm Houston Galleria",
+              "6,800",
+              "540",
+              "6%",
+              "45%"
+            ]
+          },
+          {
+            "cells": [
+              "Mattress Firm Dallas Preston Center",
+              "5,400",
+              "430",
+              "7%",
+              "43%"
+            ]
+          },
+          {
+            "cells": [
+              "Mattress Firm Atlanta Midtown",
+              "4,900",
+              "380",
+              "5%",
+              "47%"
+            ]
+          },
+          {
+            "cells": [
+              "Mattress Firm Phoenix Camelback",
+              "3,700",
+              "300",
+              "8%",
+              "42%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1600,
+              1900,
+              1800,
+              1850,
+              1750
+            ]
+          },
+          {
+            "name": "Comparing Retailers",
+            "values": [
+              1200,
+              1350,
+              1300,
+              1400,
+              1350
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1000,
+              1050,
+              1080,
+              1020,
+              1050
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              640,
+              700,
+              680,
+              690,
+              690
+            ]
+          },
+          {
+            "name": "Outside Delivery Area",
+            "values": [
+              460,
+              480,
+              490,
+              480,
+              488
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "18,927"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Purchase (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$8,726,841"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$892,640"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,156,920"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$920,180"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,205,640"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,842,560"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Purchase (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,708,901"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 22000,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "7,245",
+                "58%",
+                "35%",
+                "$2,635,875"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "5,108",
+                "54%",
+                "32%",
+                "$1,748,672"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "3,420",
+                "57%",
+                "34%",
+                "$1,565,280"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2,015",
+                "52%",
+                "28%",
+                "$765,285"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "1,139",
+                "48%",
+                "22%",
+                "$376,114"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21500,
+          "rows": [
+            {
+              "name": "SMS Agent Assist",
+              "metrics": [
+                "6,840",
+                "59%",
+                "36%",
+                "$2,612,640"
+              ]
+            },
+            {
+              "name": "Voice Agent",
+              "metrics": [
+                "5,920",
+                "57%",
+                "34%",
+                "$2,108,320"
+              ]
+            },
+            {
+              "name": "Live Chat",
+              "metrics": [
+                "4,050",
+                "53%",
+                "31%",
+                "$1,689,150"
+              ]
+            },
+            {
+              "name": "Phone",
+              "metrics": [
+                "1,550",
+                "51%",
+                "26%",
+                "$952,100"
+              ]
+            },
+            {
+              "name": "Web Form",
+              "metrics": [
+                "567",
+                "45%",
+                "20%",
+                "$364,631"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21800,
+          "rows": [
+            {
+              "name": "72-Hour Sale SMS Blast",
+              "metrics": [
+                "5,680",
+                "61%",
+                "38%",
+                "$2,189,440"
+              ]
+            },
+            {
+              "name": "Tempur-Pedic Retailer PLA",
+              "metrics": [
+                "4,215",
+                "56%",
+                "33%",
+                "$1,527,405"
+              ]
+            },
+            {
+              "name": "Mattress Sale - Nonbrand",
+              "metrics": [
+                "3,760",
+                "54%",
+                "31%",
+                "$1,403,560"
+              ]
+            },
+            {
+              "name": "Sleep Struggles Prospecting",
+              "metrics": [
+                "2,840",
+                "52%",
+                "28%",
+                "$1,108,880"
+              ]
+            },
+            {
+              "name": "Adjustable Base Gift Campaign",
+              "metrics": [
+                "1,640",
+                "48%",
+                "22%",
+                "$612,880"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20900,
+          "rows": [
+            {
+              "name": "best mattress for back pain",
+              "metrics": [
+                "3,570",
+                "59%",
+                "36%",
+                "$1,375,620"
+              ]
+            },
+            {
+              "name": "mattress firm near me",
+              "metrics": [
+                "2,845",
+                "55%",
+                "32%",
+                "$934,840"
+              ]
+            },
+            {
+              "name": "queen mattress sale",
+              "metrics": [
+                "2,410",
+                "57%",
+                "34%",
+                "$1,102,340"
+              ]
+            },
+            {
+              "name": "hybrid mattress under 500",
+              "metrics": [
+                "1,680",
+                "52%",
+                "29%",
+                "$797,880"
+              ]
+            },
+            {
+              "name": "cooling mattress for hot sleepers",
+              "metrics": [
+                "1,240",
+                "48%",
+                "24%",
+                "$612,960"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "Purchase (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Mattresses",
+              "metrics": [
+                "11,206",
+                "58%",
+                "34%",
+                "$5,236,084"
+              ]
+            },
+            {
+              "name": "Adjustable Bed Bases",
+              "metrics": [
+                "3,845",
+                "54%",
+                "31%",
+                "$1,597,795"
+              ]
+            },
+            {
+              "name": "Bedding & Pillows",
+              "metrics": [
+                "2,420",
+                "51%",
+                "28%",
+                "$903,440"
+              ]
+            },
+            {
+              "name": "Box Springs & Frames",
+              "metrics": [
+                "1,015",
+                "46%",
+                "22%",
+                "$448,610"
+              ]
+            },
+            {
+              "name": "Furniture & Accessories",
+              "metrics": [
+                "441",
+                "40%",
+                "18%",
+                "$210,912"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Purchase (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Mattresses",
+            "values": [
+              187,
+              215,
+              198,
+              210,
+              178
+            ]
+          },
+          {
+            "name": "Adjustable Bed Bases",
+            "values": [
+              62,
+              74,
+              68,
+              71,
+              56
+            ]
+          },
+          {
+            "name": "Bedding & Pillows",
+            "values": [
+              41,
+              56,
+              48,
+              52,
+              42
+            ]
+          },
+          {
+            "name": "Box Springs & Frames",
+            "values": [
+              15,
+              22,
+              19,
+              21,
+              17
+            ]
+          },
+          {
+            "name": "Furniture & Accessories",
+            "values": [
+              8,
+              11,
+              9,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "376"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "892"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              72,
+              75,
+              73,
+              76,
+              74,
+              72,
+              75,
+              78,
+              73,
+              76,
+              74,
+              75,
+              77,
+              72,
+              76,
+              73,
+              75,
+              74,
+              73,
+              77,
+              75,
+              74,
+              76,
+              72,
+              75,
+              73,
+              74,
+              76,
+              75,
+              71,
+              74,
+              75,
+              182,
+              188,
+              175,
+              191,
+              185,
+              178,
+              189,
+              176,
+              184,
+              187,
+              179,
+              191,
+              185,
+              180,
+              188,
+              186,
+              182
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,174"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "719"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "705"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "98%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Mattress Firmness & Feel Selection",
+            "values": [
+              8,
+              11,
+              9,
+              10,
+              7,
+              12
+            ]
+          },
+          {
+            "name": "Cooling & Temperature Control",
+            "values": [
+              6,
+              9,
+              8,
+              11,
+              5,
+              10
+            ]
+          },
+          {
+            "name": "Financing & 0% APR Offers",
+            "values": [
+              7,
+              10,
+              6,
+              9,
+              8,
+              11
+            ]
+          },
+          {
+            "name": "120-Night Trial & Sleep Guarantee",
+            "values": [
+              5,
+              8,
+              7,
+              10,
+              6,
+              9
+            ]
+          },
+          {
+            "name": "Local Store Availability & Delivery",
+            "values": [
+              4,
+              6,
+              5,
+              8,
+              3,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "43,533"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "32,177"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "In-Store Consultation Booked (Count)",
+            "value": "20,820"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$15,310,247"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review - Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus DeVito",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Huang",
+              "value": 195,
+              "display": "195"
+            },
+            {
+              "name": "Todd Killian",
+              "value": 227,
+              "display": "227"
+            },
+            {
+              "name": "Priya Kasturi",
+              "value": 162,
+              "display": "162"
+            },
+            {
+              "name": "Brandon Schall",
+              "value": 204,
+              "display": "204"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "In-Store Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              78,
+              92,
+              115,
+              138,
+              162
+            ]
+          },
+          {
+            "name": "David Chen",
+            "values": [
+              71,
+              89,
+              104,
+              126,
+              151
+            ]
+          },
+          {
+            "name": "Amanda Torres",
+            "values": [
+              65,
+              81,
+              98,
+              119,
+              145
+            ]
+          },
+          {
+            "name": "Kyle Richardson",
+            "values": [
+              68,
+              85,
+              101,
+              122,
+              144
+            ]
+          },
+          {
+            "name": "Jessica Patel",
+            "values": [
+              62,
+              77,
+              93,
+              112,
+              135
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus DeVito",
+              "value": 52.3,
+              "display": "52.3%"
+            },
+            {
+              "name": "Jennifer Huang",
+              "value": 54.1,
+              "display": "54.1%"
+            },
+            {
+              "name": "Todd Killian",
+              "value": 55.7,
+              "display": "55.7%"
+            },
+            {
+              "name": "Priya Kasturi",
+              "value": 57.2,
+              "display": "57.2%"
+            },
+            {
+              "name": "Brandon Schall",
+              "value": 58.9,
+              "display": "58.9%"
+            },
+            {
+              "name": "Robert Gomez",
+              "value": 61.2,
+              "display": "61.2%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "In-Store Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus DeVito",
+                "52.3%",
+                "26%",
+                "$751,032",
+                "1,449"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Huang",
+                "54.1%",
+                "28%",
+                "$822,456",
+                "1,398"
+              ]
+            },
+            {
+              "cells": [
+                "Todd Killian",
+                "55.7%",
+                "29%",
+                "$867,291",
+                "1,472"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Kasturi",
+                "57.2%",
+                "31%",
+                "$924,525",
+                "1,328"
+              ]
+            },
+            {
+              "cells": [
+                "Brandon Schall",
+                "58.9%",
+                "32%",
+                "$1,017,408",
+                "1,485"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Gomez",
+                "61.2%",
+                "35%",
+                "$1,089,225",
+                "1,403"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "David Chen",
+              "value": 91.8,
+              "display": "91.8%"
+            },
+            {
+              "name": "Amanda Torres",
+              "value": 90.4,
+              "display": "90.4%"
+            },
+            {
+              "name": "Kyle Richardson",
+              "value": 89.1,
+              "display": "89.1%"
+            },
+            {
+              "name": "Jessica Patel",
+              "value": 87.6,
+              "display": "87.6%"
+            },
+            {
+              "name": "Christopher Vale",
+              "value": 88.3,
+              "display": "88.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "In-Store Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "93.2%",
+                "67%",
+                "$1,537,185",
+                "1,524"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "91.8%",
+                "65%",
+                "$1,425,375",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Amanda Torres",
+                "90.4%",
+                "63%",
+                "$1,345,245",
+                "1,438"
+              ]
+            },
+            {
+              "cells": [
+                "Kyle Richardson",
+                "89.1%",
+                "61%",
+                "$1,268,445",
+                "1,512"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Patel",
+                "87.6%",
+                "59%",
+                "$1,186,965",
+                "1,465"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Vale",
+                "88.3%",
+                "60%",
+                "$1,226,580",
+                "1,483}]}],"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "In-Store Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "In-Store Consultation Booked (Count)",
+        "rightMax": 1000,
+        "rightTicks": [
+          0,
+          250,
+          500,
+          750,
+          1000
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 772
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 740
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 689
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 658
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 573
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 601
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 664
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 690
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 769
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 746
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 672
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 649
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 578
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 596
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 680
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 700
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 762
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 750
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 658
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 637
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 586
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 593
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 691
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 714
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 753
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 751
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 649
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 622
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 597
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 594
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 686
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 700000,
+        "rightTicks": [
+          0,
+          233333.33333333334,
+          466666.6666666667,
+          700000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 567538
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 543959
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 506537
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 483333
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 420830
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 441650
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 487878
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 507109
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 565430
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 548219
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 493762
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 477231
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 424655
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 437719
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 499494
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 514714
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 560165
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 551448
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 483560
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 468222
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 431029
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 435548
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 508103
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 524946
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 553049
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 552244
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 476641
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 457022
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 438503
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 436389
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 513320
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "47,318"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,785"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,839"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "83%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martinez",
+                "412",
+                "88%",
+                "85%",
+                "81%"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "389",
+                "84%",
+                "81%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Kowalski",
+                "428",
+                "86%",
+                "83%",
+                "83%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "47,318 calls",
+      "pagerLabel": "1 of 4,732",
+      "calls": [
+        {
+          "time": "1/6/26 8:52 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:41 am",
+          "id": "3A1C-6B2D9E04A7F1"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C204-51D8AF3E9B60"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "9E7D-2F60C8A14B33"
+        },
+        {
+          "time": "1/16/26 12:33 pm",
+          "id": "7B15-A9D3026E5C48"
+        },
+        {
+          "time": "1/20/26 1:07 pm",
+          "id": "D842-3E71F5B0928A"
+        },
+        {
+          "time": "1/22/26 2:29 pm",
+          "id": "58F3-0C6B9A2D7E14"
+        },
+        {
+          "time": "1/26/26 3:44 pm",
+          "id": "1AE9-7D40B36F82C5"
+        },
+        {
+          "time": "1/28/26 4:15 pm",
+          "id": "6C30-E82A19F4D75B"
+        },
+        {
+          "time": "1/30/26 5:22 pm",
+          "id": "B4D7-52F803A6E19C"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Mattress Firm, home of the Sleep Experts. This is Danielle — who do I have the pleasure of speaking with today?",
+          "highlights": [
+            "Thank you for calling Mattress Firm",
+            "Sleep Experts"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi Danielle, my name is Marcus Bell. I've never bought from you before, but I've been waking up with really bad back pain and I think I finally need a new mattress.",
+          "highlights": [
+            "never bought from you before",
+            "bad back pain"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:19",
+          "text": "I'm so sorry to hear about the back pain, Marcus, and welcome — we'll take great care of you. Can I ask what position you usually sleep in and whether you share the bed?",
+          "highlights": [
+            "welcome"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:29",
+          "text": "I'm mostly a side sleeper, and yes, my wife and I share a queen. She's a light sleeper so every time I turn she wakes up.",
+          "highlights": [
+            "side sleeper",
+            "share a queen"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:40",
+          "text": "Got it — for a side sleeper with pain who needs good motion isolation, a plush hybrid is usually ideal. Do you have a budget range in mind?",
+          "highlights": [
+            "plush hybrid"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:50",
+          "text": "I'd like to stay reasonable — maybe under a thousand if I can. What would you suggest?",
+          "highlights": [
+            "under a thousand"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:58",
+          "text": "Perfect. I'd point you to the DreamCloud PressureSmart Plush at $899 — it's built for side sleepers and pain relief. If you want to save more, the Sleepy's by Sealy Hybrid is $499.99, half off, and still great for couples.",
+          "highlights": [
+            "DreamCloud PressureSmart Plush at $899",
+            "Sleepy's by Sealy Hybrid is $499.99"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:14",
+          "text": "The DreamCloud sounds good. Does it help with the motion thing so my wife isn't disturbed?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:22",
+          "text": "It does — the hybrid coils with the plush foam layer really absorb movement. And everything comes with our 120-Night Trial and Free & Fast Delivery, so you can test it risk-free.",
+          "highlights": [
+            "120-Night Trial",
+            "Free & Fast Delivery"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:34",
+          "text": "That's reassuring. I'd really like to lie on it before I commit, though.",
+          "highlights": [
+            "lie on it before I commit"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:42",
+          "text": "Absolutely — that's what I'd recommend. I can book you a free in-store consultation with one of our Sleep Experts so you can try the DreamCloud and a couple of others side by side. Would that work?",
+          "highlights": [
+            "free in-store consultation",
+            "Sleep Experts"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:54",
+          "text": "Yes, let's do that. I'm free Thursday morning.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:59",
+          "text": "Great — I have Thursday at 10 AM open at our Riverside location. Can I get the best phone number and email to send your confirmation?",
+          "highlights": [
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:08",
+          "text": "Sure — 555-204-7788, and marcus.bell@email.com.",
+          "highlights": [
+            "555-204-7788"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:16",
+          "text": "Perfect, you're all set for Thursday at 10 AM. I've also applied our extra 15% off sign-up offer to your visit. You'll get a text and email confirmation shortly.",
+          "highlights": [
+            "all set for Thursday at 10 AM",
+            "extra 15% off"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:26",
+          "text": "Awesome, thank you so much Danielle.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:30",
+          "text": "My pleasure, Marcus — we'll see you Thursday and help you sleep better soon. Thanks for choosing Mattress Firm!",
+          "highlights": [
+            "see you Thursday",
+            "Thanks for choosing Mattress Firm"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Sleep Need: Back Pain / Side Sleeper",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Product Interest: Hybrid Mattress",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Promo Mentioned: 120-Night Trial",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Financing / Offer Discussed",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Marcus Bell, a new customer, called Mattress Firm reporting persistent back pain and disturbed sleep as a side sleeper who shares a queen bed with a light-sleeping partner. Sleep Expert Danielle recommended the DreamCloud PressureSmart Plush ($899) for side-sleeper pain relief and motion isolation, along with the value-priced Sleepy's by Sealy Hybrid ($499.99). She reassured him with the 120-Night Trial and Free & Fast Delivery, then booked a free in-store consultation to let him test the mattresses in person. The consultation was scheduled for Thursday at 10 AM at the Riverside location with contact details captured.",
+        "keyPoints": [
+          "New customer — first purchase with Mattress Firm",
+          "Needs: back pain relief, side sleeper, motion isolation for shared queen",
+          "Recommended DreamCloud PressureSmart Plush ($899) and Sleepy's by Sealy Hybrid ($499.99)",
+          "Highlighted 120-Night Trial and Free & Fast Delivery",
+          "In-store consultation booked for Thursday 10 AM at Riverside",
+          "Captured phone (555-204-7788) and email; applied extra 15% off offer"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked — Thursday 10 AM, Riverside store"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "29,810 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,981",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there! Thanks for texting Mattress Firm. I'm Alex, a Sleep Expert. Are you looking to find the perfect mattress today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, I've been having back pain and need a new mattress"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm sorry to hear that. Back pain is really common, and the right mattress can make a huge difference. Have you tried memory foam or hybrid mattresses before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "No, I usually sleep on my back"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Perfect! Back sleepers typically do best with a medium to firm feel for proper spine support. What's your budget range for a new mattress?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Around $800 to $1200"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Great range! We have some excellent options like the Sealy Posturepedic Plus Hybrid at $1,149 or the DreamCloud Extra Firm at $1,249 - both fantastic for back pain relief. Have you considered an adjustable base to go with it?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Maybe, what's the benefit?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "An adjustable base lets you elevate your head and feet to reduce strain on your back and improve circulation. Many of our back-pain customers love the combo. Would you like to schedule a consultation with one of our Sleep Experts at a store near you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Sure, that sounds good"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Excellent! Are you available this Saturday, March 15th at 10 AM or would Sunday at 2 PM work better for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Saturday at 10 AM works"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "Perfect! I've scheduled your consultation for Saturday, March 15th at 10 AM. You'll meet with one of our Sleep Experts who can help you test mattresses in person. We'll send you a reminder text tomorrow. Our store number is 877-936-2933 if you need to reach us. Thanks for choosing Mattress Firm!"
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Back Pain Intent",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Back Sleeper Profile",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Adjustable Base Upsell",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "877-936-2933",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "(415) 287-4562",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "David Chen",
+            "firstName": "David",
+            "lastName": "Chen",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A8F2-4C3E91B7D2A1",
+          "time": "3/10/26 11:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A8F2-4C3E91B7D2A1",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "P7K9-5F6G2H8I1J3K5",
+          "time": "3/11/26 2:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "P7K9-5F6G2H8I1J3K5",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "L4M6-8N9O0P1Q2R3S4",
+          "time": "3/12/26 9:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "L4M6-8N9O0P1Q2R3S4",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "47,318 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,732",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there! Thanks for calling Mattress Firm. This is Sarah speaking. How can I help you find your perfect mattress today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hey, yeah. I've been having a lot of back pain lately and I'm not sure what kind of mattress would be best for me."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "I'm sorry to hear that. Back pain is really common, and we have sleep experts who can help guide you to the right mattress. Are you currently shopping for yourself, or would this be for someone else?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "Just for me. I'm a back sleeper, so I need something that's got good support."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. Back sleepers typically do really well with firmer mattresses. What size are you looking for? Twin, queen, king?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Queen. And honestly, I'm trying not to spend too much right now if possible."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Great. We've got some excellent queen mattresses on sale right now, and I'd love to get you set up with one of our sleep experts who can walk you through the options and even let you try them out with our hundred and twenty night trial. Do you have time for a quick consultation, maybe sometime this week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "Yeah, that sounds good. When would work best?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Wonderful. How about Thursday afternoon? Would two o'clock work for you, or would evening be better?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Thursday at two is perfect. Where would that be?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Great! We'll schedule you with our sleep experts at the store nearest you. That'll be confirmed at the location. Let me grab your contact info real quick. What's the best phone number to reach you on?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Eight oh five, five five five, two three one two."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Perfect. That's eight oh five, five five five, two three one two. We've got you down for Thursday, January sixteenth at two p m. Our sleep experts will be ready to show you some great options for back pain relief. If you need to reschedule, just call us back at eight seven seven, nine three six, two nine three three. Thanks so much for choosing Mattress Firm!"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Thank you! I appreciate it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Intent: Back Pain Relief Mattress",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Product Interest: Firm Mattress",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "7:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice — Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "805-555-2312",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "Michael Torres",
+            "firstName": "Michael",
+            "lastName": "Torres",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-3D4FE621A89C",
+          "time": "1/18/26 3:45 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-3D4FE621A89C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C738-4E5GA732B10D",
+          "time": "1/22/26 2:30 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C738-4E5GA732B10D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D849-5F6HB843C21E",
+          "time": "1/28/26 5:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D849-5F6HB843C21E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: Hi, I'm Mattress Firm's AI Sleep Assistant here to help you find the right mattress and put together a personalized quote — right now our 72 Hour Sale has up to 60% off plus an extra 15% off when you join today. Would you like to get started?",
+        "Qualify one at a time: I'll ask a few quick questions one at a time — how many mattresses you need, what size (twin through California king), your preferred feel or type (plush, firm, memory foam, hybrid, or innerspring), your ideal purchase timeline, and finally your ZIP code so I can confirm delivery availability and your nearest store.",
+        "Estimate then book: Once I confirm we deliver to your ZIP, I'll share a preliminary price range based on the size and type you want, then recommend a free consultation with a Sleep Expert for an exact quote and hands-on fit; I can book you for a specific day and time, and you'll get a reminder text beforehand with a number to call if anything changes."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Mattress_Firm_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Shop Mattresses",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Sale & Clearance",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find A Store",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Order Status\",\"question\":\"When will my mattress be delivered?\",\"answer\":\"I can check your delivery window with your order number — most orders qualify for Free & Fast Delivery, and a Sleep Expert can confirm your exact date. Would you like me to have someone follow up?\"},{\"topic\":\"Sleep Trial\",\"question\":\"How does the 120-Night Trial work if I want to exchange my mattress?\",\"answer\":\"Our 120-Night Trial lets you sleep on your new mattress at home and exchange it if it isn't the right fit; a Sleep Expert can walk you through the exchange and help you pick a better match at your nearest store.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you have any sales going on right now?",
+              "answer": "Yes, we're running our 72 Hour Sale with up to 60% off, plus an extra 15% off when you join today. I'd love to book you a quick consultation with a Sleep Expert to lock in the best deal — what day works for you?"
+            },
+            {
+              "question": "What's the best mattress for back pain?",
+              "answer": "Many customers with back pain do well with a medium-feel hybrid or a supportive Sealy Posturepedic, but the right fit depends on your body and sleep position. A Sleep Expert can help you compare options in person — want me to set up a visit?"
+            },
+            {
+              "question": "Do you carry Tempur-Pedic?",
+              "answer": "Absolutely — we're the #1 Tempur-Pedic retailer and carry the full lineup. I can schedule a consultation so you can try them out and get a personalized quote; what time is best for you?"
+            },
+            {
+              "question": "What's the difference between memory foam and hybrid?",
+              "answer": "Memory foam contours closely for pressure relief, while hybrids combine coils and foam for support with a bit more bounce and airflow. A Sleep Expert can help you feel the difference — shall I book you a visit?"
+            },
+            {
+              "question": "Do you have cooling mattresses for hot sleepers?",
+              "answer": "Yes, several of our models feature temperature-regulating materials designed for hot sleepers. I'd recommend a consultation so a Sleep Expert can match you to the coolest options — want me to find a time?"
+            },
+            {
+              "question": "How much is a queen mattress?",
+              "answer": "Queen pricing varies quite a bit by brand, feel, and current promotions, so I can't quote an exact number here. Let me book you with a Sleep Expert for an accurate quote and today's best deals — what day works?"
+            },
+            {
+              "question": "Do you offer financing?",
+              "answer": "Yes, we offer special financing including 0% interest equal monthly payment options on qualifying purchases. A Sleep Expert can review the plans with you at your appointment — want me to schedule one?"
+            },
+            {
+              "question": "Do you deliver for free?",
+              "answer": "We offer Free & Fast Delivery on qualifying orders. I can confirm availability for your area during a quick consultation — could you share your ZIP so I can get you set up?"
+            },
+            {
+              "question": "Can I try the mattress before buying?",
+              "answer": "Yes — you can test mattresses at your local store, plus we back your purchase with a 120-Night Trial at home. Want me to book a visit with a Sleep Expert so you can try a few?"
+            },
+            {
+              "question": "What sizes do you carry?",
+              "answer": "We carry all sizes from twin up to California king. A Sleep Expert can help you choose the right size and quote it for you — shall I set up an appointment?"
+            },
+            {
+              "question": "Do you have adjustable bed bases?",
+              "answer": "Yes, we carry adjustable bed bases and often bundle them with mattresses at great prices. Let me book you a consultation to see the options and get a quote — what time works?"
+            },
+            {
+              "question": "Is there a mattress under $500?",
+              "answer": "We do have several options in that range, especially during our current sale, though availability shifts with promotions. A Sleep Expert can show you the best value picks — want me to schedule a visit?"
+            },
+            {
+              "question": "Do you price match?",
+              "answer": "Yes, we back purchases with our Low Price Guarantee. A Sleep Expert can go over the details and confirm your best price at your appointment — shall I book one for you?"
+            },
+            {
+              "question": "What brands do you carry?",
+              "answer": "We carry top brands like Tempur-Pedic, Purple, Serta, Beautyrest, Sealy, DreamCloud, and our house label Sleepy's. I can book you a consultation to compare them side by side — what day works?"
+            },
+            {
+              "question": "Where is the nearest store?",
+              "answer": "I can help you find the closest Mattress Firm store — could you share your ZIP code? Then I'll set you up with a Sleep Expert consultation there."
+            },
+            {
+              "question": "Do you have mattresses for side sleepers?",
+              "answer": "Yes, plush and medium hybrid models tend to work well for side sleepers by relieving pressure at the hips and shoulders. A Sleep Expert can match you to the right feel — want me to book a visit?"
+            },
+            {
+              "question": "How firm are your mattresses?",
+              "answer": "We offer everything from plush to extra firm across our brands. The best way to find your perfect feel is in person — shall I schedule a consultation with a Sleep Expert?"
+            },
+            {
+              "question": "Can you help a couple with different sleep preferences?",
+              "answer": "Definitely — many of our mattresses isolate motion and offer split adjustable bases for couples with different needs. A Sleep Expert can help you both find common ground; want me to set up a time?"
+            },
+            {
+              "question": "Do you take away my old mattress?",
+              "answer": "Old mattress removal may be available with delivery depending on your area. A Sleep Expert can confirm the details for your ZIP — would you like me to book a consultation?"
+            },
+            {
+              "question": "How long does a consultation take?",
+              "answer": "A Sleep Expert consultation is quick and pressure-free, usually giving you plenty of time to try options and get a personalized quote. Want me to find a time that fits your schedule?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule a Sleep Expert consultation\",\"follow_up_message\":\"Great news — I can get you in with a Sleep Expert at your nearest Mattress Firm store. Does tomorrow at 2:00 PM work, or would another time be better? You'll get a reminder text before your appointment.\"},{\"intent\":\"Request a personalized quote\",\"follow_up_message\":\"Based on the size and feel you shared, I can give you a preliminary range now, but a Sleep Expert will finalize your exact quote with today's best sale pricing. Can I book you for a quick consultation this week?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "goal": "Guide the customer to book a free consultation with a Sleep Expert to find the right mattress and receive an exact quote with current sale pricing.",
+        "bookingType": "in-store consultation with a Sleep Expert",
+        "offer": "Save up to 60% during our 72 Hour Sale, plus an extra 15% off when you join today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "How many mattresses are you looking to purchase?",
+          "What size do you need — twin, full, queen, king, or California king?",
+          "Do you have a preferred feel or type, like plush, firm, memory foam, hybrid, or innerspring?",
+          "What's your ideal timeline for getting your new mattress?",
+          "What's your ZIP code so I can confirm delivery availability and find your nearest store?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "7/27/26 9:16 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "7/27/26 9:16 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "7/27/26 9:16 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Mattress Firm",
+      "callerName": "Jennifer Martinez",
+      "callerPhone": "(512) 555-0847",
+      "campaign": "Memory Foam Mattress - Austin Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,875",
+      "googleSearch": "best memory foam mattress for back pain Austin",
+      "websiteSearch": "cooling memory foam queen mattress sale",
+      "callingWebpage": "/mattresses/memory-foam",
+      "products": "DreamCloud PressureSmart Technology Plush Mattress, Adjustable Bed Base",
+      "cartId": "MF-7384K",
+      "serviceable": "Yes",
+      "email": "j.martinez.sleep@gmail.com",
+      "street": "2847 Westlake Hills Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78746",
+      "digitalJourney": "/home › /mattresses › /mattresses/memory-foam › /adjustable-bed-bases",
+      "intent": "Shopping for a memory foam mattress with cooling technology; experiencing back pain and poor sleep quality; interested in adjustable base compatibility.",
+      "coverage": "ZIP 78746 confirmed - Austin serviceable",
+      "switchIntent": "High - currently sleeping on old innerspring, experiencing chronic pain, wants expert consultation on best memory foam option this week.",
+      "greeting": "Hi Jennifer! Thanks for calling Mattress Firm. I see you've been looking at our memory foam mattresses for back pain relief. I'd love to connect you with one of our Sleep Experts® to discuss the DreamCloud and adjustable base options that would work best for you. Can I schedule a consultation at our Austin location?"
+    },
+    "smsScreenpop": {
+      "brandName": "Mattress Firm",
+      "callerName": "Marcus Thompson",
+      "callerPhone": "(619) 555-0923",
+      "campaign": "Hybrid Mattress Deal - San Diego SMS",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$1,425",
+      "googleSearch": "hybrid mattress under 500 San Diego",
+      "websiteSearch": "Sleepy's by Sealy hybrid mattress queen size",
+      "callingWebpage": "/mattresses/hybrid",
+      "products": "Sleepy's By Sealy Hybrid Mattress, Box Spring Frame",
+      "cartId": "MF-5126J",
+      "serviceable": "Yes",
+      "email": "m.thompson.sd@yahoo.com",
+      "street": "4521 Coronado Avenue",
+      "city": "San Diego",
+      "state": "CA",
+      "zip": "92107",
+      "digitalJourney": "/home › /sale-clearance › /mattresses/hybrid › /box-springs-frames",
+      "intent": "Looking for an affordable hybrid mattress with good support for side sleeping; interested in current sale pricing and free delivery offer.",
+      "coverage": "ZIP 92107 confirmed - San Diego serviceable",
+      "appointment": "In-home consultation with Sleep Expert® - Thursday, July 18, 2:00 PM",
+      "greeting": "Hi Marcus! This is Sarah from Mattress Firm. Thanks for texting! We've got you booked for an in-home consultation this Thursday at 2 PM to explore our hybrid options. The Sleepy's By Sealy Hybrid is on sale right now at $499.99 with free delivery. Do you have any questions before your appointment?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Mattress Firm",
+      "brandDomain": "www.mattressfirm.com",
+      "brandIcon": "🛏️",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Mattress Sale – Nonbrand",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "queen mattress sale under $500",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / Mattresses / Memory Foam",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile - iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Sleepy's By Sealy Hybrid Mattress, Sealy Frisco™ Medium Euro Pillow Top",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes - not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "sleep_consultation_new",
+          "name": "Sleep Expert Consultation - New Customer"
+        },
+        {
+          "id": "order_support",
+          "name": "Existing Order Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Product Inquiry"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there! Thanks for calling Mattress Firm. I'm your AI Sleep Expert. I see you've been looking at some of our queen mattresses. Are you shopping for yourself, or is this for a bed partner as well?",
+          "sigs": [],
+          "q": [
+            15,
+            65,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, for my wife and me. We've been looking at the Sleepy's Hybrid and the Sealy Frisco because of the sale prices. We really need something that won't sleep hot since she gets overheated.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "<strong>Couple</strong> - temperature control need"
+            },
+            {
+              "c": "green",
+              "t": "<strong>2 products</strong> under consideration"
+            }
+          ],
+          "q": [
+            45,
+            35,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. The Sealy Frisco has excellent medium-feel support, and the Sleepy's Hybrid is a great value option with hybrid technology. Both handle heat well. Are you looking to purchase within the next week or two, and would you want to try it in-store first or go directly online?",
+          "sigs": [],
+          "q": [
+            68,
+            18,
+            14
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We'd actually like to see them in person if we can. And yeah, probably this weekend or early next week. We also want to know about your 120-Night Trial—my wife is pretty particular about her mattress.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>120-Night Trial</strong> important"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>In-store visit</strong> + this weekend"
+            }
+          ],
+          "q": [
+            87,
+            7,
+            6
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Excellent. You're going to love our Sleep Experts® in-store experience—they can help you test both mattresses and confirm the 120-Night Trial guarantee applies to your purchase. Let me connect you with our Santa Barbara showroom team to schedule a consultation and lock in our current sale pricing. You'll be in great hands.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    }
+  }
+}
