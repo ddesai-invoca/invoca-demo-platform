@@ -61,12 +61,19 @@ export interface Scale {
 }
 
 function buildScale(t: z.infer<typeof TermsOutput>): Scale {
-  const calls = Math.max(8000, Math.round((t.monthlyCalls || 48000) / 100) * 100);
+  /* Real reporting never lands on a round number, and a round total is the
+     fastest way for a prospect to spot invented data. So nothing here is
+     rounded to a boundary: the volume keeps whatever odd tail the model gave
+     it (only nudged off a multiple of 100 if it arrived tidy), and revenue
+     carries a deterministic residual because a month's revenue is the sum of
+     thousands of different ticket sizes, never an exact multiple of the mean. */
+  let calls = Math.max(8137, Math.round(t.monthlyCalls || 48293));
+  if (calls % 100 === 0) calls += 37 + (calls % 7);
   const salesPct = 84;
   const purchasePct = Math.min(45, Math.max(12, Math.round(t.purchaseRatePct || 25)));
   const purchases = Math.round((calls * purchasePct) / 100);
-  const avgSale = Math.max(150, Math.round((t.avgSaleAmount || 3000) / 10) * 10);
-  const revenue = purchases * avgSale;
+  const avgSale = Math.max(150, Math.round(t.avgSaleAmount || 3000));
+  const revenue = purchases * avgSale + Math.round(avgSale * (0.23 + ((calls % 89) / 89) * 0.61));
   const consultPct = Math.min(salesPct - 5, purchasePct + 20);
   const answered = Math.round(calls * 0.92);
   return {
@@ -243,8 +250,8 @@ function generateTerms(client: Anthropic, name: string, brief: string) {
       `- customerNoun: the Title-Case SINGULAR word THIS business uses for a customer ("Customer", "Patient", "Member", "Client", "Guest", "Rider", …). Reused across the platform.\n` +
       `- qualifiedCallTerm: what THIS business calls a sales-QUALIFIED inbound call in its dashboards — the "Sales Call" equivalent (e.g. "Sales Call", "Residency Inquiry", "New Patient Call", "Sales Inquiry"). Title-Case. Reused VERBATIM across every dashboard so terminology stays consistent.\n` +
       `- conversionTerm: the Title-Case noun for a WON, revenue-generating conversion for THIS business — the "Purchase / Job Complete" equivalent (the closed sale/outcome), e.g. "Purchase", "Reservation Booked", "Membership Sold", "New Patient", "Move-In", "Job Won". This is DISTINCT from the bookingTerm (which is only the scheduled visit). Reused VERBATIM across every dashboard.\n` +
-      `- monthlyCalls: inbound marketing-driven calls in ONE month for an ENTERPRISE-scale version of this business (Invoca sells to large brands, so the demo should look like one). Default to the 25,000–90,000 range. Go LOWER only if that volume is genuinely not credible for this vertical — a business with a small buyer pool or a very high ticket (private aviation, enterprise B2B, luxury real estate) should get a believable number instead of a big one; credibility beats size.\n` +
-      `- avgSaleAmount: the realistic dollar value of ONE won sale for this business. Be honest to the vertical (a window-treatment job ~$3,000; a dental implant ~$4,500; a car ~$38,000; a gym membership ~$700; a senior-living move-in ~$5,000/mo).\n` +
+      `- monthlyCalls: inbound marketing-driven calls in ONE month for an ENTERPRISE-scale version of this business (Invoca sells to large brands, so the demo should look like one). Default to the 25,000–90,000 range. It MUST NOT be a round number — real call volume is never exactly 48,000 or 60,000. Give an odd, specific figure like 47,318 / 62,904 / 38,176; a round total is the fastest way for a prospect to tell the data is invented. Go LOWER only if that volume is genuinely not credible for this vertical — a business with a small buyer pool or a very high ticket (private aviation, enterprise B2B, luxury real estate) should get a believable number instead of a big one; credibility beats size.\n` +
+      `- avgSaleAmount: the realistic dollar value of ONE won sale for this business. Also NOT round — "$3,147" reads real, "$3,000" reads made up. Be honest to the vertical (a window-treatment job ~$3,000; a dental implant ~$4,500; a car ~$38,000; a gym membership ~$700; a senior-living move-in ~$5,000/mo).\n` +
       `- purchaseRatePct: the share of ALL inbound calls that end in a won sale, 12–45. High-ticket, considered purchases sit low (15–25); transactional or service businesses sit higher (30–45). monthlyCalls x purchaseRatePct x avgSaleAmount must produce a MONTHLY revenue figure that is credible for this business — sanity-check it before answering.`,
     1200
   );
