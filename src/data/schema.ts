@@ -627,6 +627,36 @@ export const GumloopArtifact = z.object({
 });
 
 /* ---- The customer profile ------------------------------------------------- */
+/* ---- Signal (Manage Signals) ----------------------------------------------
+   Matched to the real Invoca page (network 1847 /manage_signals). It's a MUI
+   DataGrid with 12 columns; the widths in SignalManager.tsx come straight off
+   the capture's inline styles. `rules` holds the real Signal expression syntax
+   (voice_signal = any(...), scorecard[...] , duration < 1 min) — that string is
+   what makes the screen read as the actual product rather than a mock-up. */
+export const SignalRow = z.object({
+  name: z.string(),                 // "Consultation Booked (Conversion)"
+  status: z.string(),               // "ACTIVE"
+  types: z.string(),                // "Keyword Spotting, Rules" | "Rules, Scorecard" | "Keypress"
+  usedIn: z.string(),               // "2 Signals" | "1 Scorecard" | "1 Campaign" | ""
+  description: z.string(),          // usually "" — most real rows leave it blank
+  taggedAs: z.string(),             // "Conversion" | "Lead" | ""
+  revenue: z.string(),              // almost always "" on this page
+  rules: z.string(),                // the Signal expression
+  createdAt: z.string(),            // "12/13/25 11:00 am"
+  updatedAt: z.string(),
+});
+export const SignalManagerView = z.object({
+  title: z.string(),                // "Signal"
+  uploadTitle: z.string(),
+  uploadBody: z.string(),
+  apiTitle: z.string(),
+  apiBody: z.string(),
+  filterLabel: z.string(),          // "All Signals"
+  pagerLabel: z.string(),           // "1 - 10 of 10"
+  rowsPerPage: z.string(),          // "100"
+  signals: z.array(SignalRow),
+});
+
 export const CustomerProfile = z.object({
   id: z.string(),                   // slug: "shady-blinds"
   customerName: z.string(),         // "Shady Blinds"
@@ -662,6 +692,7 @@ export const CustomerProfile = z.object({
     voiceScreenpop: VoiceScreenpop.optional(),   // data for the Voice Screenpop artifact
     smsScreenpop: SmsScreenpop.optional(),        // data for the SMS Screenpop artifact
     voiceRoutingDemo: VoiceRoutingDemo.optional(), // data for the Voice Routing Demo artifact
+    signalManager: SignalManagerView.optional(), // Signal nav: the Manage Signals grid
     // aiAgents: AIAgentsView,           ← future
   }),
 });

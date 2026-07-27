@@ -1466,3 +1466,84 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .launch-pickers { display: flex; flex-direction: column; gap: 14px; }
 .prospect-picker-label { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #9aa1ac; }
 .prospect-picker-count { display: inline-flex; align-items: center; justify-content: center; min-width: 17px; height: 17px; padding: 0 5px; border-radius: 999px; background: #eef0f3; color: #6b7280; font-size: 10.5px; font-weight: 700; letter-spacing: 0; }
+
+/* ===== Signal — Manage Signals grid (matched to network 1847 /manage_signals)
+   Column widths live in SignalManager.tsx (read off the capture's inline
+   styles). Colours are our tokens, measured against the screenshot, because
+   emotion's runtime CSS didn't serialise into the saved page. */
+.sg-page { padding: 18px 24px 40px; }
+.sg-title { font-size: 29.7px; font-weight: 400; color: #15243e; margin: 0 0 18px; }
+.sg-empty { font-size: 14px; color: #5b6577; }
+
+/* Two hero cards, side by side, equal width */
+.sg-heroes { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; margin-bottom: 30px; }
+.sg-hero { display: flex; align-items: center; gap: 18px; background: #fff; border: 1px solid #e7e9eb;
+  border-radius: 4px; padding: 26px 28px; }
+.sg-art { width: 132px; height: 106px; flex: none; }
+.sg-hero-text h2 { font-size: 20px; font-weight: 400; color: #15243e; margin: 0 0 8px; }
+.sg-hero-text p { font-size: 14px; line-height: 1.5; color: #3d3d3d; margin: 0 0 18px; }
+.sg-hero-link { background: none; border: none; padding: 0; font-family: inherit; font-size: 13px;
+  font-weight: 700; letter-spacing: 0.04em; color: #2666f9; cursor: pointer; }
+
+/* Toolbar: Show / filter / search on the left, actions on the right */
+.sg-toolbar { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.sg-show { font-size: 14px; font-weight: 700; color: #343a40; }
+.sg-select { display: inline-flex; align-items: center; justify-content: space-between; gap: 6px;
+  min-width: 196px; height: 38px; padding: 0 8px 0 12px; border: 1px solid #c7ccd3; border-radius: 4px;
+  background: #fff; font-size: 14px; color: #15243e; cursor: pointer; }
+.sg-select .material-icons { font-size: 22px; color: #5b6577; }
+.sg-select-sm { min-width: 68px; height: 30px; }
+.sg-search { display: inline-flex; align-items: center; gap: 6px; width: 244px; height: 38px;
+  padding: 0 10px; border: 1px solid #c7ccd3; border-radius: 4px; background: #fff; }
+.sg-search .material-icons { font-size: 20px; color: #8a919e; }
+.sg-search input { border: none; outline: none; flex: 1; font-family: inherit; font-size: 14px; }
+.sg-toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.sg-new { display: inline-flex; align-items: center; gap: 4px; height: 38px; padding: 0 18px 0 12px;
+  background: #2666f9; color: #fff; border: none; border-radius: 4px; font-family: inherit;
+  font-size: 14px; font-weight: 700; cursor: pointer; }
+.sg-new .material-icons { font-size: 20px; }
+.sg-bulk { height: 38px; padding: 0 18px; background: #eef0f3; color: #a1a7b2; border: none;
+  border-radius: 4px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: default; }
+.sg-selected { font-size: 14px; color: #3d3d3d; margin: 0 0 10px; }
+
+/* The grid. Horizontal scroll because the real one is wider than the viewport. */
+.sg-grid-wrap { overflow-x: auto; background: #fff; border: 1px solid #e7e9eb; border-radius: 4px; }
+.sg-grid { border-collapse: collapse; table-layout: fixed; min-width: 1567px; }
+.sg-grid th { height: 56px; padding: 0 10px; text-align: left; vertical-align: middle;
+  font-size: 14px; font-weight: 700; color: #343a40; background: #f5f6fa;
+  border-bottom: 1px solid #e7e9eb; white-space: nowrap; }
+.sg-grid td { padding: 12px 10px; vertical-align: top; font-size: 13px; color: #3d3d3d;
+  border-bottom: 1px solid #e7e9eb; }
+.sg-grid tr:last-child td { border-bottom: none; }
+.sg-wrap { white-space: normal; }
+.sg-name { color: #2666f9; text-decoration: none; font-size: 13px; }
+.sg-name:hover { text-decoration: underline; }
+
+/* ACTIVE pill — MuiChip filledSuccess on the real page */
+.sg-chip { display: inline-block; padding: 3px 10px; border-radius: 999px; background: #d6f5dd;
+  color: #1a7f37; font-size: 11.5px; font-weight: 700; letter-spacing: 0.03em; white-space: nowrap; }
+/* Tagged As — the neutral "Lead"/"Conversion" chip */
+.sg-tag { display: inline-block; padding: 3px 9px; border-radius: 3px; background: #eef0f3;
+  color: #5b6577; font-size: 11.5px; white-space: nowrap; }
+
+/* Rules — the Signal expression. Monospace so it reads as syntax. The real cell
+   truncates with an ellipsis after ~4 lines ('"billing and payments", ...'),
+   which is what keeps the row heights compact; max-height on the <td> alone
+   doesn't clip, so the clamp goes on an inner block. */
+.sg-rules { padding-top: 12px; padding-bottom: 12px; }
+.sg-rules span { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+  overflow: hidden; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px;
+  line-height: 1.45; color: #5b6577; word-break: break-word; }
+.sg-actions .material-icons { font-size: 20px; color: #5b6577; cursor: pointer; }
+
+/* Row checkbox */
+.sg-check { text-align: center; }
+.sg-box { display: inline-block; width: 16px; height: 16px; border: 2px solid #8a919e;
+  border-radius: 2px; vertical-align: middle; }
+
+/* Footer pager */
+.sg-pager { display: flex; align-items: center; justify-content: flex-end; gap: 12px;
+  padding: 12px 4px 0; font-size: 13px; color: #3d3d3d; }
+.sg-pager-count { margin-left: 8px; }
+.sg-pager-arrow { font-size: 22px; color: #5b6577; cursor: pointer; }
+.sg-disabled { color: #c7ccd3; cursor: default; }

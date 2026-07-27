@@ -1266,6 +1266,67 @@ export const shadyBlinds: CustomerProfile = {
     /* Voice Routing Demo artifact data — re-skinned to window treatments.
        Rendered into the animated routing HTML by src/artifacts/voiceRoutingDemo.ts.
        queues[0] ("Design Consultation") is the winning route. */
+    signalManager: {
+      title: "Signal",
+      uploadTitle: "Upload Signal Records",
+      uploadBody: "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      apiTitle: "View API Documentation",
+      apiBody: "Learn about how to post Signals and revenue from another system",
+      filterLabel: "All Signals",
+      pagerLabel: "1 - 10 of 10",
+      rowsPerPage: "100",
+      /* Ten signals covering the three groups an SE walks through — CONVERSIONS
+         (what the business counts as won, tagged "Conversion"), QUALITY (the
+         scorecard-backed coaching ones) and PRODUCT / INTENT (what the caller
+         wanted or objected to). Rule expressions use the real Signal syntax from
+         the captured page, with the spotted phrases re-skinned to window
+         treatments — that string is what makes this read as the actual product.
+
+         Sorted by NAME, like the real grid, so the groups interleave; the
+         Tagged As column is what makes the conversions pick out visually. */
+      signals: [
+        { name: "Competitor Mentioned", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "", description: "", taggedAs: "", revenue: "",
+          rules: 'voice_signal = any(1, ["budget blinds (Caller)", "3 day blinds (Caller)", "the home depot (Caller)", "another quote (Caller)"])',
+          createdAt: "02/11/25 5:24 pm", updatedAt: "01/06/26 8:10 pm" },
+        { name: "Compliance: Quoted Price Disclosure", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "1 Scorecard", description: "", taggedAs: "", revenue: "",
+          rules: 'voice_signal = any(1, ["price includes measure and install (Agent)", "quote is good for (Agent)", "no obligation (Agent)"])',
+          createdAt: "05/17/25 10:08 am", updatedAt: "01/13/26 8:41 am" },
+        { name: "Consultation Booked (Conversion)", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "2 Signals", description: "", taggedAs: "Conversion", revenue: "",
+          rules: 'voice_signal = any(1, ["see you Thursday (Agent)", "schedule your consultation (Agent)", "book the in-home (Agent)", "get a designer out (Agent)"])',
+          createdAt: "12/13/25 11:00 am", updatedAt: "01/14/26 9:12 am" },
+        { name: "Deposit Taken (Conversion)", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "", description: "", taggedAs: "Conversion", revenue: "",
+          rules: 'voice_signal = any(1, ["and the expiration date (Agent)", "card number (Agent)", "take the deposit (Agent)"])',
+          createdAt: "12/13/25 11:00 am", updatedAt: "12/13/25 11:01 am" },
+        { name: "Install Scheduled (Conversion)", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "1 Signal", description: "", taggedAs: "Conversion", revenue: "",
+          rules: 'voice_signal = any(1, ["confirm your installation (Agent)", "installer will be out (Agent)", "installation window (Agent)"])',
+          createdAt: "04/27/25 11:46 am", updatedAt: "01/13/26 3:24 pm" },
+        { name: "Motorization Interest", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "", description: "", taggedAs: "Lead", revenue: "",
+          rules: 'voice_signal = any(1, ["motorized (Caller)", "remote control (Caller)", "smart home", "works with Alexa"])',
+          createdAt: "07/22/25 9:07 pm", updatedAt: "01/12/26 5:09 pm" },
+        { name: "Price Sensitive (Industry)", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "1 Scorecard", description: "", taggedAs: "", revenue: "",
+          rules: 'voice_signal = any(1, ["too expensive (Caller)", "cheaper option (Caller)", "out of my budget (Caller)", "shop around (Caller)"])',
+          createdAt: "11/06/25 7:58 pm", updatedAt: "01/14/26 10:09 pm" },
+        { name: "Product Interest: Shutters", status: "ACTIVE", types: "Keyword Spotting",
+          usedIn: "1 Signal", description: "", taggedAs: "", revenue: "",
+          rules: 'voice_signal = any(1, ["plantation shutters", "shutters (Caller)", "faux wood shutters", "composite shutters"])',
+          createdAt: "11/06/25 7:58 pm", updatedAt: "01/06/26 8:29 pm" },
+        { name: "SALES CALL Needs Review", status: "ACTIVE", types: "Rules, Scorecard",
+          usedIn: "1 Scorecard", description: "", taggedAs: "", revenue: "",
+          rules: 'scorecard[SALES Call Handling Skills] < 60 and duration > 45 sec',
+          createdAt: "06/12/25 4:23 pm", updatedAt: "01/14/26 8:01 am" },
+        { name: "Score Card: Proper Greeting", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "3 Scorecards", description: "", taggedAs: "", revenue: "",
+          rules: 'voice_signal = any(1, ["thank you for calling Shady Blinds (Agent)", "how can I help you today (Agent)"])',
+          createdAt: "02/12/25 1:00 pm", updatedAt: "01/12/26 11:56 am" },
+      ],
+    },
     voiceRoutingDemo: {
       brandName: "Shady Blinds",
       brandDomain: "www.shadyblindsnow.com",

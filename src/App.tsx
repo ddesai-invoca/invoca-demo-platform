@@ -26,6 +26,7 @@ import { AgentConfig } from "./screens/AgentConfig";
 import { KnowledgeSources } from "./screens/KnowledgeSources";
 import { AiRecommendations } from "./screens/AiRecommendations";
 import { AgentWorkflow } from "./screens/AgentWorkflow";
+import { SignalManager } from "./screens/SignalManager";
 import { Launch } from "./screens/Launch";
 import { SmsPreviewPage } from "./screens/SmsPreviewPage";
 import { Placeholder } from "./screens/Placeholder";
@@ -46,6 +47,7 @@ const BUILT: Record<string, ReactNode> = {
   "/dashboards": <ManageDashboards />,
   "/call-review": <CallReview />,
   "/agent-studio": <AgentStudio />,
+  "/signal": <SignalManager />,
 };
 
 /* Standalone screens render OUTSIDE the app shell (their own full-page chrome). */

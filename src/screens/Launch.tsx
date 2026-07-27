@@ -24,6 +24,7 @@ const BUILD_STEPS: { key: string; label: string; weight: number }[] = [
   { key: "aiMessagingImpact", label: "AI Messaging Impact dashboard", weight: 1 },
   { key: "qualityManagement", label: "QM Actionable Insights dashboard", weight: 1 },
   { key: "qmInstantInsights", label: "QM Instant Insights dashboard", weight: 1 },
+  { key: "signalManager", label: "Signal library", weight: 1 },
   { key: "callReview", label: "Call Review", weight: 1 },
   { key: "callDetail", label: "Call Detail drill-in", weight: 1 },
   { key: "conversationIntelligence", label: "Conversation Intelligence", weight: 1 },

@@ -16,7 +16,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { CustomerProfile, DigitalInsightsReport, DashboardView, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView } from "../src/data/schema.ts";
+import { CustomerProfile, DigitalInsightsReport, DashboardView, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
 
 const QM_SCORE_MEAN = 71;   // true mean of the agent scorecard series
 const MODEL = "claude-opus-4-8";
@@ -704,6 +704,36 @@ async function generateQualityManagement(client: Anthropic, name: string, brief:
   return composeQm(g, sc);
 }
 
+/* Signal — the "Manage Signals" grid. Ten signals in the three groups an SE
+   walks through: CONVERSIONS, QUALITY (scorecard-backed) and PRODUCT / INTENT.
+   The `rules` string is real Signal syntax, so this reads as the product rather
+   than a mock-up; only the spotted phrases re-skin to the vertical. */
+function generateSignalManager(client: Anthropic, name: string, brief: string, bookingTerm: string) {
+  return structured<z.infer<typeof SignalManagerView>>(
+    client,
+    SignalManagerView,
+    `Produce the Invoca "Signal" (Manage Signals) grid for ${name} — the list of Signals this business has configured.\n\n` +
+      `BRIEF:\n${brief}\n\n` +
+      `${reskin(name)}\n\n` +
+      `- title exactly "Signal". filterLabel "All Signals". rowsPerPage "100". pagerLabel "1 - 10 of 10".\n` +
+      `- uploadTitle "Upload Signal Records"; uploadBody "Go here to upload Signal and/or revenue amounts to Invoca calls".\n` +
+      `- apiTitle "View API Documentation"; apiBody "Learn about how to post Signals and revenue from another system".\n` +
+      `- signals: EXACTLY 10, and they MUST cover all three groups so the seller can tell the whole story:\n` +
+      `  • 3 CONVERSIONS — what this business counts as won. taggedAs "Conversion". One MUST be "${bookingTerm} Booked (Conversion)".\n` +
+      `  • 3 QUALITY — scorecard-backed coaching signals. usedIn like "1 Scorecard" / "3 Scorecards", taggedAs "".\n` +
+      `  • 4 PRODUCT / INTENT — what the caller wanted or objected to (product interest, price sensitivity, a competitor named, an upsell interest). taggedAs "" or "Lead".\n` +
+      `- Every row: status "ACTIVE". types is one of "Keyword Spotting, Rules" | "Keyword Spotting" | "Rules" | "Rules, Scorecard" | "Keypress". usedIn is "" or a count like "2 Signals" / "1 Campaign" / "1 Integration" / "1 Scorecard". description "" on all ten (the real grid leaves it blank). revenue "" on all ten.\n` +
+      `- rules MUST use the real Invoca Signal expression syntax, with the spotted phrases re-skinned to THIS business and tagged (Agent) or (Caller):\n` +
+      `    keyword rows:   voice_signal = any(1, ["phrase one (Agent)", "phrase two (Caller)", "phrase three"])\n` +
+      `    scorecard rows: scorecard[<Scorecard Name>] < 60 and duration > 45 sec\n` +
+      `    rule rows:      answered_by_agent   |   duration < 1 min   |   signal = "..." or signal = "..."\n` +
+      `  Use 3–4 phrases per keyword row so the cell fills like the real one. Never write a generic phrase — they must be things a caller or agent of THIS business would actually say.\n` +
+      `- createdAt / updatedAt: "MM/DD/YY h:mm am|pm", createdAt BEFORE updatedAt, all inside the last ~14 months and consistent with the ${DATE_RANGE} demo window.\n` +
+      `- Sort the 10 rows by name ASCENDING (the real grid is name-sorted), so the three groups end up interleaved rather than blocked together.`,
+    6000
+  );
+}
+
 /* ---- QM Instant Insights dashboard (6th) ----------------------------------
    QA/contact-center metrics are generic across verticals, so the model just
    supplies realistic values + evaluator names; the engine composes the cards,
@@ -874,6 +904,7 @@ export async function generateProfile(
     dashboard, agentConfig, callReview, digitalInsights, conversationIntelligence,
     opsDashboard, callDetail, voiceConversationIntelligence, smsConversationIntelligence, aiAgentConversion,
     qualityManagement, voiceRoutingDemo, screenpops, aiMessagingImpact, qmInstantInsights,
+    signalManager,
   ] = await runPool([
     () => phase("dashboard", () => generateDashboard(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale)),
     () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm)),
@@ -890,6 +921,7 @@ export async function generateProfile(
     () => phase("screenpops", () => generateScreenpops(client, name, brief, bookingTerm, customerNoun)),
     () => phase("aiMessagingImpact", () => generateAiMessagingImpact(client, name, brief, bookingTerm, customerNoun, scale)),
     () => phase("qmInstantInsights", () => generateQmInstantInsights(client, name, brief, scale)),
+    () => phase("signalManager", () => generateSignalManager(client, name, brief, bookingTerm)),
   ], CONCURRENCY);
 
   /* Gumloop leave-behinds → clickable rows in My Reports. All three are rendered
@@ -913,7 +945,7 @@ export async function generateProfile(
     industry: terms.industry,
     bookingTerm,
     customerNoun,
-    reports: { digitalInsights, marketingDashboard: dashboard, callReview, callDetail, opsDashboard, aiAgentConversion, aiMessagingImpact, qualityManagement, qmInstantInsights, conversationIntelligence, smsConversationIntelligence, voiceConversationIntelligence, agentConfig, voiceScreenpop: screenpops.voiceScreenpop, smsScreenpop: screenpops.smsScreenpop, voiceRoutingDemo, gumloopArtifacts },
+    reports: { digitalInsights, marketingDashboard: dashboard, callReview, callDetail, opsDashboard, aiAgentConversion, aiMessagingImpact, qualityManagement, qmInstantInsights, conversationIntelligence, smsConversationIntelligence, voiceConversationIntelligence, agentConfig, voiceScreenpop: screenpops.voiceScreenpop, smsScreenpop: screenpops.smsScreenpop, voiceRoutingDemo, signalManager, gumloopArtifacts },
   };
   // Final guardrail: validate against the canonical schema.
   return CustomerProfile.parse(profile);
