@@ -60,21 +60,35 @@ export interface Scale {
   nonSalesCalls: number; answered: number; notAnswered: number; answerRatePct: number;
 }
 
-export function buildScale(t: z.infer<typeof TermsOutput>): Scale {
+export function buildScale(t: z.infer<typeof TermsOutput>, name = ""): Scale {
   /* Real reporting never lands on a round number, and a round total is the
      fastest way for a prospect to spot invented data. So nothing here is
      rounded to a boundary: the volume keeps whatever odd tail the model gave
      it (only nudged off a multiple of 100 if it arrived tidy), and revenue
      carries a deterministic residual because a month's revenue is the sum of
      thousands of different ticket sizes, never an exact multiple of the mean. */
+  /* Nudge by a deterministic, name-derived amount (<1.5%). Both of the first
+     two live generations came back with a volume copied verbatim from this
+     prompt's examples, so two unrelated prospects shared a call count. The
+     examples are gone now, but this makes a collision structurally impossible:
+     the offset is stable per prospect (same name -> same number) and far too
+     small to disturb a volume the model chose deliberately. */
+  let seed = 0;
+  for (const ch of name) seed = (seed * 31 + ch.charCodeAt(0)) % 100003;
   const asked = Math.round(t.monthlyCalls || 48293);
   let calls = Math.max(1153, asked);
+  // Warn only when the FLOOR actually bit -- compare before applying the
+  // per-prospect offset below, or every prospect trips a warning about a
+  // clamp that never happened.
   if (calls !== asked) {
     console.warn(`[scale] raised monthly calls ${asked} -> ${calls}: below this the breakdown tables
       round to zero rows. Revenue for this prospect will read high — a very-low-volume,
       very-high-ticket business does not fit these dashboards cleanly.`);
   }
-  if (calls % 10 === 0) calls += 7 + ((calls / 10) % 7);
+  calls += seed % Math.max(7, Math.round(calls * 0.014));
+  // Nudge by 1-9, never 10: `7 + (n % 7)` can land on exactly 10 and carry a
+  // multiple of ten straight onto the next one (47,560 -> 47,570).
+  if (calls % 10 === 0) calls += 1 + ((calls / 10) % 9);
   const salesPct = 84;
   const purchasePct = Math.min(45, Math.max(2, Math.round(t.purchaseRatePct || 25)));
   const purchases = Math.round((calls * purchasePct) / 100);
@@ -303,8 +317,8 @@ export function generateTerms(client: Anthropic, name: string, brief: string) {
       `- customerNoun: the Title-Case SINGULAR word THIS business uses for a customer ("Customer", "Patient", "Member", "Client", "Guest", "Rider", …). Reused across the platform.\n` +
       `- qualifiedCallTerm: what THIS business calls a sales-QUALIFIED inbound call in its dashboards — the "Sales Call" equivalent (e.g. "Sales Call", "Residency Inquiry", "New Patient Call", "Sales Inquiry"). Title-Case. Reused VERBATIM across every dashboard so terminology stays consistent.\n` +
       `- conversionTerm: the Title-Case noun for a WON, revenue-generating conversion for THIS business — the "Purchase / Job Complete" equivalent (the closed sale/outcome), e.g. "Purchase", "Reservation Booked", "Membership Sold", "New Patient", "Move-In", "Job Won". This is DISTINCT from the bookingTerm (which is only the scheduled visit). Reused VERBATIM across every dashboard.\n` +
-      `- monthlyCalls: inbound marketing-driven calls in ONE month for an ENTERPRISE-scale version of this business (Invoca sells to large brands, so the demo should look like one). Default to the 25,000–90,000 range. It MUST NOT be a round number — real call volume is never exactly 48,000 or 60,000. Give an odd, specific figure like 47,318 / 62,904 / 38,176; a round total is the fastest way for a prospect to tell the data is invented. Go LOWER only if that volume is genuinely not credible for this vertical — a business with a small buyer pool or a very high ticket (private aviation, enterprise B2B, luxury real estate) should get a believable number instead of a big one; credibility beats size.\n` +
-      `- avgSaleAmount: the realistic dollar value of ONE won sale for this business. Also NOT round — "$3,147" reads real, "$3,000" reads made up. Be honest to the vertical (a window-treatment job ~$3,000; a dental implant ~$4,500; a car ~$38,000; a gym membership ~$700; a senior-living move-in ~$5,000/mo).\n` +
+      `- monthlyCalls: inbound marketing-driven calls in ONE month for an ENTERPRISE-scale version of this business (Invoca sells to large brands, so the demo should look like one). Default to the 25,000–90,000 range. It MUST NOT be a round number — real call volume is never exactly 48,000 or 60,000, and a round total is the fastest way for a prospect to tell the data is invented. Derive the figure from THIS business's actual scale (store/branch/location count, market coverage, category demand) and give it an irregular tail down to the last digit. Do NOT reuse any number written in these instructions — a figure copied from the prompt is not sized to this business. Go LOWER only if that volume is genuinely not credible for this vertical — a business with a small buyer pool or a very high ticket (private aviation, enterprise B2B, luxury real estate) should get a believable number instead of a big one; credibility beats size.\n` +
+      `- avgSaleAmount: the realistic dollar value of ONE won sale for this business. Also NOT round: a figure ending in 00 reads invented, an irregular one reads like a real average. Derive it from this vertical's actual ticket, and do not copy a number from these instructions. Be honest to the vertical (a window-treatment job ~$3,000; a dental implant ~$4,500; a car ~$38,000; a gym membership ~$700; a senior-living move-in ~$5,000/mo).\n` +
       `- purchaseRatePct: the share of ALL inbound calls that end in a won sale, 2–45. High-ticket, considered purchases sit low (15–25); transactional or service businesses sit higher (30–45); an ultra-high-ticket business with a tiny buyer pool (private aviation, yachts, enterprise capital equipment) belongs at 2–6 with a correspondingly SMALL monthlyCalls — do not force it into the enterprise range. monthlyCalls x purchaseRatePct x avgSaleAmount must produce a MONTHLY revenue figure that is credible for this business — sanity-check it before answering.`,
     4000
   );
@@ -828,7 +842,7 @@ export async function generateProfile(
   const customerNoun = terms.customerNoun;
   const qualifiedCallTerm = terms.qualifiedCallTerm;
   const conversionTerm = terms.conversionTerm;
-  const scale = buildScale(terms);
+  const scale = buildScale(terms, name);
   console.log(`[scale] ${n(scale.calls)} calls/mo, ${n(scale.purchases)} sales @ ${$(scale.avgSale)} = ${$(scale.revenue)}`);
   /* Everything after the terms call depends ONLY on the brief + the 4 canonical terms
      (not on each other), so the 15 remaining phases — INCLUDING the heavy Digital
