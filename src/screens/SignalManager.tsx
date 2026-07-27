@@ -64,6 +64,19 @@ export function SignalManager() {
     );
   }
 
+  /* The primary conversion always renders FIRST. It's the row the demo drills
+     into, so it shouldn't be buried mid-list — a deliberate deviation from the
+     real grid, which is purely name-sorted. Everything below it stays
+     name-sorted like the real one.
+
+     Sorting HERE rather than trusting the data order is what makes this a
+     template for every prospect: a generated profile whose rows come back in
+     some other order still leads with its conversion. */
+  const rows = [...d.signals].sort((a, b) => {
+    const rank = (r: typeof a) => (r.taggedAs === "Conversion" ? 0 : 1);
+    return rank(a) - rank(b) || a.name.localeCompare(b.name);
+  });
+
   return (
     <div className="sg-page">
       <h1 className="sg-title">{d.title}</h1>
@@ -122,7 +135,7 @@ export function SignalManager() {
             </tr>
           </thead>
           <tbody>
-            {d.signals.map((s) => (
+            {rows.map((s) => (
               <tr key={s.name}>
                 <td className="sg-check"><span className="sg-box" /></td>
                 <td><a className="sg-name" href="#" onClick={(e) => e.preventDefault()}>{s.name}</a></td>

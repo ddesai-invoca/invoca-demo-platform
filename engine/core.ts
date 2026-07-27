@@ -730,7 +730,7 @@ function generateSignalManager(client: Anthropic, name: string, brief: string, b
       `    rule rows:      answered_by_agent   |   duration < 1 min   |   signal = "..." or signal = "..."\n` +
       `  Use 3–4 phrases per keyword row so the cell fills like the real one. Never write a generic phrase — they must be things a caller or agent of THIS business would actually say.\n` +
       `- createdAt / updatedAt: "MM/DD/YY h:mm am|pm", createdAt BEFORE updatedAt, all inside the last ~14 months and consistent with the ${DATE_RANGE} demo window.\n` +
-      `- Sort the 10 rows by name ASCENDING (the real grid is name-sorted), so the three groups end up interleaved rather than blocked together.`,
+      `- ORDER: the CONVERSION row goes FIRST, then the remaining 9 sorted by name ASCENDING. The real grid is purely name-sorted, but the conversion leads here because a later screen drills into it and it must not be buried mid-list. (The screen re-applies this order anyway, so it is belt-and-braces — but emit it in this order so the data reads the way it renders.)`,
     6000
   );
 }

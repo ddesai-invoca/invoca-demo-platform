@@ -1285,6 +1285,13 @@ export const shadyBlinds: CustomerProfile = {
          Sorted by NAME, like the real grid, so the groups interleave; the
          Tagged As column is what makes the conversions pick out visually. */
       signals: [
+        /* The primary conversion leads — it's the row the demo drills into.
+           The rest are name-sorted, as the real grid is. The screen enforces
+           this order too, so a generated prospect gets it regardless. */
+        { name: "Consultation Booked (Conversion)", status: "ACTIVE", types: "Keyword Spotting, Rules",
+          usedIn: "2 Signals", description: "", taggedAs: "Conversion", revenue: "",
+          rules: 'voice_signal = any(1, ["see you Thursday (Agent)", "schedule your consultation (Agent)", "book the in-home (Agent)", "get a designer out (Agent)"])',
+          createdAt: "12/13/25 11:00 am", updatedAt: "01/14/26 9:12 am" },
         { name: "Competitor Mentioned", status: "ACTIVE", types: "Keyword Spotting, Rules",
           usedIn: "", description: "", taggedAs: "", revenue: "",
           rules: 'voice_signal = any(1, ["budget blinds (Caller)", "3 day blinds (Caller)", "the home depot (Caller)", "another quote (Caller)"])',
@@ -1293,10 +1300,6 @@ export const shadyBlinds: CustomerProfile = {
           usedIn: "1 Scorecard", description: "", taggedAs: "", revenue: "",
           rules: 'voice_signal = any(1, ["price includes measure and install (Agent)", "quote is good for (Agent)", "no obligation (Agent)"])',
           createdAt: "05/17/25 10:08 am", updatedAt: "01/13/26 8:41 am" },
-        { name: "Consultation Booked (Conversion)", status: "ACTIVE", types: "Keyword Spotting, Rules",
-          usedIn: "2 Signals", description: "", taggedAs: "Conversion", revenue: "",
-          rules: 'voice_signal = any(1, ["see you Thursday (Agent)", "schedule your consultation (Agent)", "book the in-home (Agent)", "get a designer out (Agent)"])',
-          createdAt: "12/13/25 11:00 am", updatedAt: "01/14/26 9:12 am" },
         { name: "Consultation Discussed (Industry)", status: "ACTIVE", types: "Keyword Spotting, Rules",
           usedIn: "1 Signal", description: "", taggedAs: "", revenue: "",
           rules: 'voice_signal = any(1, ["free in-home consultation (Agent)", "have a designer come out (Agent)", "measure your windows (Agent)"])',
