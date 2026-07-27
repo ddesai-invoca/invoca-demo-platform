@@ -25,34 +25,52 @@ const COLS: { key: string; label: string; width: number }[] = [
   { key: "actions", label: "Actions", width: 124 },
 ];
 
-/* The two illustrations on the real page are inline SVG line art. These are
-   simplified stand-ins in the same weight and blue, sized to the same slot. */
+/* The hero illustrations are NOT in the capture — only three large SVGs exist
+   across every bundle (300x189 / 300x204 / 320x220) and none is this pair, so
+   they're fetched separately and "Webpage, Complete" missed them. These are
+   redrawn from the screenshot: a cloud with an upload arrow, three isometric
+   wireframe cubes, and the pale-blue diagonal streaks behind both that give the
+   Invoca illustrations their look. Swap in the real SVGs if they turn up. */
+function Streaks() {
+  return (
+    <g stroke="#b0cdff" strokeWidth="3" strokeLinecap="round">
+      <path d="M6 30h16M2 42h9" />
+      <path d="M98 74h16M110 62h9" />
+    </g>
+  );
+}
+
 function UploadArt() {
   return (
     <svg className="sg-art" viewBox="0 0 120 96" aria-hidden="true">
-      <path d="M28 62a16 16 0 0 1 2-31.8 24 24 0 0 1 45.5 6A14 14 0 0 1 92 62Z"
-        fill="none" stroke="#2666f9" strokeWidth="2.5" strokeLinejoin="round" />
-      <path d="M60 44v30M60 44l-11 11M60 44l11 11" fill="none" stroke="#2666f9"
-        strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M18 80h18M84 80h18" stroke="#cfe0ff" strokeWidth="3" strokeLinecap="round" />
+      <Streaks />
+      {/* cloud */}
+      <path d="M36 66a15 15 0 0 1 1.8-29.9A22 22 0 0 1 80 41.5 13 13 0 0 1 84 66Z"
+        fill="#fff" stroke="#2666f9" strokeWidth="2.6" strokeLinejoin="round" />
+      {/* upload arrow: head at the top, inside the cloud */}
+      <path d="M60 79V50" fill="none" stroke="#2666f9" strokeWidth="2.6" strokeLinecap="round" />
+      <path d="M49.5 60.5 60 50l10.5 10.5" fill="none" stroke="#2666f9"
+        strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M44 86h32" stroke="#2666f9" strokeWidth="2.6" strokeLinecap="round" />
     </svg>
   );
 }
 
 function ApiArt() {
+  /* One isometric wireframe cube at (cx, top): w = half-width, h = side height. */
+  const cube = (cx: number, top: number, w: number, h: number) => (
+    <g fill="#fff" stroke="#2666f9" strokeWidth="2.4" strokeLinejoin="round">
+      <path d={`M${cx} ${top} ${cx + w} ${top + w / 2} ${cx + w} ${top + w / 2 + h} ${cx} ${top + w + h} ${cx - w} ${top + w / 2 + h} ${cx - w} ${top + w / 2}Z`} />
+      <path d={`M${cx - w} ${top + w / 2} ${cx} ${top + w} ${cx + w} ${top + w / 2}`} fill="none" />
+      <path d={`M${cx} ${top + w}v${h}`} fill="none" />
+    </g>
+  );
   return (
     <svg className="sg-art" viewBox="0 0 120 96" aria-hidden="true">
-      {[
-        [34, 26], [72, 26], [53, 56],
-      ].map(([x, y], i) => (
-        <g key={i}>
-          <path d={`M${x} ${y}l14 8v16l-14 8-14-8V${y + 8}Z`} fill="none"
-            stroke="#2666f9" strokeWidth="2.5" strokeLinejoin="round" />
-          <path d={`M${x - 14} ${y + 8}l14 8 14-8M${x} ${y + 16}v16`} fill="none"
-            stroke="#2666f9" strokeWidth="2.5" strokeLinejoin="round" />
-        </g>
-      ))}
-      <path d="M14 84h22M84 84h22" stroke="#cfe0ff" strokeWidth="3" strokeLinecap="round" />
+      <Streaks />
+      {cube(40, 14, 15, 15)}
+      {cube(80, 14, 15, 15)}
+      {cube(60, 48, 15, 15)}
     </svg>
   );
 }

@@ -1471,7 +1471,7 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
    Column widths live in SignalManager.tsx (read off the capture's inline
    styles). Colours are our tokens, measured against the screenshot, because
    emotion's runtime CSS didn't serialise into the saved page. */
-.sg-page { padding: 18px 24px 40px; }
+.sg-page { padding: 18px 24px 40px; background: #fff; min-height: 100%; }
 .sg-title { font-size: 29.7px; font-weight: 400; color: #15243e; margin: 0 0 18px; }
 .sg-empty { font-size: 14px; color: #5b6577; }
 
@@ -1508,7 +1508,7 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 
 /* The grid. Horizontal scroll because the real one is wider than the viewport. */
 .sg-grid-wrap { overflow-x: auto; background: #fff; border: 1px solid #e7e9eb; border-radius: 4px; }
-.sg-grid { border-collapse: collapse; table-layout: fixed; min-width: 1567px; }
+.sg-grid { border-collapse: collapse; table-layout: fixed; width: 100%; min-width: 1567px; }
 .sg-grid th { height: 56px; padding: 0 10px; text-align: left; vertical-align: middle;
   font-size: 14px; font-weight: 700; color: #343a40; background: #f5f6fa;
   border-bottom: 1px solid #e7e9eb; white-space: nowrap; }
@@ -1523,8 +1523,8 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .sg-chip { display: inline-block; padding: 3px 10px; border-radius: 999px; background: #d6f5dd;
   color: #1a7f37; font-size: 11.5px; font-weight: 700; letter-spacing: 0.03em; white-space: nowrap; }
 /* Tagged As — the neutral "Lead"/"Conversion" chip */
-.sg-tag { display: inline-block; padding: 3px 9px; border-radius: 3px; background: #eef0f3;
-  color: #5b6577; font-size: 11.5px; white-space: nowrap; }
+.sg-tag { display: inline-block; padding: 3px 11px; border-radius: 999px; background: #eef0f3;
+  color: #5b6577; font-size: 11.5px; font-weight: 600; white-space: nowrap; }
 
 /* Rules — the Signal expression. Monospace so it reads as syntax. The real cell
    truncates with an ellipsis after ~4 lines ('"billing and payments", ...'),

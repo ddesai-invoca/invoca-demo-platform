@@ -719,9 +719,10 @@ function generateSignalManager(client: Anthropic, name: string, brief: string, b
       `- uploadTitle "Upload Signal Records"; uploadBody "Go here to upload Signal and/or revenue amounts to Invoca calls".\n` +
       `- apiTitle "View API Documentation"; apiBody "Learn about how to post Signals and revenue from another system".\n` +
       `- signals: EXACTLY 10, and they MUST cover all three groups so the seller can tell the whole story:\n` +
-      `  • 3 CONVERSIONS — what this business counts as won. taggedAs "Conversion". One MUST be "${bookingTerm} Booked (Conversion)".\n` +
-      `  • 3 QUALITY — scorecard-backed coaching signals. usedIn like "1 Scorecard" / "3 Scorecards", taggedAs "".\n` +
-      `  • 4 PRODUCT / INTENT — what the caller wanted or objected to (product interest, price sensitivity, a competitor named, an upsell interest). taggedAs "" or "Lead".\n` +
+      `  • EXACTLY ONE CONVERSION — the single won outcome this business counts, named "${bookingTerm} Booked (Conversion)" and the ONLY row with taggedAs "Conversion". Give it usedIn "2 Signals". A later screen drills into this row, so it must be unmistakably the primary conversion.\n` +
+      `    Do NOT tag a second row "Conversion". Steps along the way are NOT conversions — an earlier funnel step is "${bookingTerm} Discussed (Industry)" with taggedAs "", and a priced-but-not-won step is something like "Quote Provided" with taggedAs "Lead".\n` +
+      `  • 3-4 QUALITY — scorecard-backed coaching signals. usedIn like "1 Scorecard" / "3 Scorecards", taggedAs "".\n` +
+      `  • the REST are PRODUCT / INTENT — what the caller wanted or objected to (product interest, price sensitivity, a competitor named, an upsell interest). taggedAs "" or "Lead".\n` +
       `- Every row: status "ACTIVE". types is one of "Keyword Spotting, Rules" | "Keyword Spotting" | "Rules" | "Rules, Scorecard" | "Keypress". usedIn is "" or a count like "2 Signals" / "1 Campaign" / "1 Integration" / "1 Scorecard". description "" on all ten (the real grid leaves it blank). revenue "" on all ten.\n` +
       `- rules MUST use the real Invoca Signal expression syntax, with the spotted phrases re-skinned to THIS business and tagged (Agent) or (Caller):\n` +
       `    keyword rows:   voice_signal = any(1, ["phrase one (Agent)", "phrase two (Caller)", "phrase three"])\n` +
