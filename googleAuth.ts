@@ -36,7 +36,7 @@ function sign(payload: object): string {
   const body = b64url(JSON.stringify(payload));
   return `${body}.${hmac(body)}`;
 }
-function verify(token?: string): { email: string; exp: number } | null {
+function verify(token?: string): { email: string; name?: string; exp: number } | null {
   if (!token || !token.includes(".")) return null;
   const [body, mac] = token.split(".");
   const expect = hmac(body);
@@ -56,6 +56,19 @@ const secure = (req: Request) => (BASE_URL ? BASE_URL.startsWith("https") : req.
 
 function deniedPage(msg: string): string {
   return `<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Access restricted</title><body style="font-family:system-ui,-apple-system,sans-serif;background:#0b0f1a;color:#e5e7eb;display:grid;place-items:center;min-height:100vh;margin:0"><div style="text-align:center;max-width:440px;padding:24px"><div style="font-size:40px">🔒</div><h2 style="color:#fff;margin:12px 0 8px">Access restricted</h2><p style="color:#9aa1ac;line-height:1.5">${msg}</p><a href="/auth/login" style="display:inline-block;margin-top:14px;color:#fff;background:#2666f9;padding:10px 20px;border-radius:8px;text-decoration:none">Try again</a></div></body>`;
+}
+
+/* Who is making this request? With the gate on, it's the signed-in Google
+   account (the middleware below guarantees a valid session on every non-/auth
+   route). With the gate off — local dev — everything is attributed to one
+   local identity so the demo library still works without signing in. */
+export interface SessionUser { email: string; name: string }
+const DEV_USER: SessionUser = { email: "local@dev", name: "Local Dev" };
+
+export function currentUser(req: { headers: { cookie?: string } }): SessionUser {
+  const session = verify(parseCookies(req.headers.cookie)[COOKIE]);
+  if (!session) return DEV_USER;
+  return { email: session.email, name: session.name || session.email.split("@")[0] };
 }
 
 export function installAuth(app: Express) {
@@ -102,7 +115,8 @@ export function installAuth(app: Express) {
         return res.status(403).send(deniedPage(`Access is limited to <b>@${ALLOWED_DOMAIN}</b> accounts. You signed in as ${email || "an account outside that domain"}.`));
       }
 
-      const session = sign({ email, exp: Date.now() + MAX_AGE_MS });
+      const name = String(claims.name || claims.given_name || email.split("@")[0]);
+      const session = sign({ email, name, exp: Date.now() + MAX_AGE_MS });
       res.setHeader("Set-Cookie", [
         `${COOKIE}=${session}; HttpOnly; Path=/; Max-Age=${Math.floor(MAX_AGE_MS / 1000)}; SameSite=Lax${secure(req) ? "; Secure" : ""}`,
         `oauth_state=; Path=/; Max-Age=0`,

@@ -30,7 +30,9 @@ import { chatReply } from "./engine/chat.ts";
 import { analyzeSms } from "./engine/analyze.ts";
 import { synthesize } from "./engine/tts.ts";
 import { askAssistant } from "./engine/assistant.ts";
-import { installAuth, authEnabled } from "./googleAuth.ts";
+import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
+import { handleDemoApi } from "./engine/demoApi.ts";
+import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, "dist");
@@ -58,6 +60,20 @@ app.get("/healthz", (_req, res) => res.type("text").send("ok"));
 // Google sign-in gate (@invoca.com only) — must run before the API + static
 // routes. No-op unless GOOGLE_CLIENT_ID/SECRET are set (so local runs stay open).
 installAuth(app);
+
+/* Shared demo library (/api/me, /api/demos*). Returns null for any other route,
+   so the AI endpoints below still get their turn. Same handler as the dev server. */
+app.use(async (req, res, next) => {
+  if (!req.path.startsWith("/api/")) return next();
+  try {
+    const result = await handleDemoApi(req.method, req.path, req.body, currentUser(req));
+    if (!result) return next();
+    res.status(result.status).json(result.body);
+  } catch (e: any) {
+    console.error("[demos] failed:", e);
+    res.status(500).json({ error: e?.message || "Demo library request failed." });
+  }
+});
 
 const isOverloaded = (e: any) => e?.status === 529 || e?.status === 429 || /overload/i.test(String(e?.message || ""));
 
@@ -178,5 +194,6 @@ app.get("*", (_req, res) => res.sendFile(path.join(DIST, "index.html")));
 app.listen(PORT, () => {
   console.log(`Invoca demo running on http://localhost:${PORT}`);
   console.log(authEnabled ? "🔒 Google sign-in gate is ON (restricted by email domain)." : "🔓 Auth gate OFF — set GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET to require sign-in.");
+  console.log(`📁 Demo library: ${DATA_DIR}${isPersistent(DATA_DIR) ? "" : "  (⚠ not a persistent disk — demos are lost on redeploy)"}`);
   if (!apiKey) console.warn("⚠  ANTHROPIC_API_KEY not set — the AI features will return errors. Set it in the server environment (.env or host config).");
 });

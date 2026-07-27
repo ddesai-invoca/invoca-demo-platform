@@ -132,6 +132,40 @@ function chatApi(apiKey: string | undefined): Plugin {
   }
 }
 
+/* Dev mount for the shared demo library (/api/me, /api/demos*). Uses the SAME
+   handler as the production server (engine/demoApi.ts) so the two can't drift.
+   Locally there's no sign-in, so everything is attributed to the "Local Dev"
+   identity that googleAuth.currentUser() falls back to. */
+function demoLibraryApi(): Plugin {
+  return {
+    name: 'invoca-demo-library-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        const url = req.url || ''
+        if (!url.startsWith('/api/me') && !url.startsWith('/api/demos')) return next()
+        try {
+          let raw = ''
+          if (req.method !== 'GET' && req.method !== 'DELETE') for await (const chunk of req) raw += chunk
+          const [{ handleDemoApi }, { currentUser }] = await Promise.all([
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/demoApi.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
+          ])
+          const result = await handleDemoApi(req.method || 'GET', url, raw ? JSON.parse(raw) : undefined, currentUser(req))
+          if (!result) return next()
+          res.statusCode = result.status
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(result.body))
+        } catch (e: any) {
+          console.error('[demos] failed:', e)
+          res.statusCode = 500
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify({ error: e?.message || 'Demo library request failed.' }))
+        }
+      })
+    },
+  }
+}
+
 /* Dev-only endpoint: POST /api/ai-assistant { customerName, dashboardTitle,
    dataContext, question, history } → the "Ask AI" dashboard assistant's reply:
    either a text answer about the data, or a generated tile spec (kpi/line/bar/
@@ -276,6 +310,7 @@ export default defineConfig(({ mode }) => {
       react(),
       generateApi(apiKey),
       deleteProfileApi(),
+      demoLibraryApi(),
       chatApi(apiKey),
       assistantApi(apiKey),
       analyzeApi(apiKey),
