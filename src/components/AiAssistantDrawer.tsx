@@ -10,7 +10,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 interface Msg { role: "user" | "assistant"; content: string; icon?: string }
 
 export function AiAssistantDrawer() {
-  const { open, closeDrawer, active, focus, effectiveData, applyEdits, addTile, replaceTile } = useAiAssistant();
+  const { open, closeDrawer, active, focus, effectiveData, applyEdits, addTile, replaceTile, readOnly, activeDemo } = useAiAssistant();
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -58,7 +58,11 @@ export function AiAssistantDrawer() {
       const r = data.result;
       const push = (content: string, icon?: string) => setMessages((prev) => [...prev, { role: "assistant", content, icon }]);
 
-      if (r?.kind === "create" && r.tile) {
+      /* Someone else's demo: still answer questions, but never mutate it. The
+         server would reject the save anyway — this keeps the UI honest. */
+      if (readOnly && (r?.kind === "create" || r?.kind === "editTile" || r?.kind === "editData")) {
+        push(`This demo belongs to ${activeDemo?.creator.name ?? "someone else"}, so I can't change it. Duplicate it from the launch screen and I'll edit your copy.`, "lock");
+      } else if (r?.kind === "create" && r.tile) {
         addTile(active.key, { id: (crypto?.randomUUID?.() ?? String(Date.now())), ...normalizeTile(r.tile) });
         push(r.answer || `Added "${r.tile.title}" to the bottom of your dashboard.`, "add_chart");
       } else if (r?.kind === "editTile" && r.tile && focus?.id) {
@@ -99,6 +103,16 @@ export function AiAssistantDrawer() {
           </div>
           <span className="material-icons aiad-close" title="Close" onClick={closeDrawer}>close</span>
         </header>
+
+        {readOnly && (
+          <div className="aiad-readonly">
+            <span className="material-icons">lock</span>
+            <span>
+              <strong>{activeDemo?.creator.name}</strong>'s demo — view only. Ask anything about it;
+              duplicate it from the launch screen to make an editable copy.
+            </span>
+          </div>
+        )}
 
         <div className="aiad-body" ref={listRef}>
           {messages.length === 0 && (

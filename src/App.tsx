@@ -4,6 +4,7 @@ import { ProfileProvider } from "./data/ProfileContext";
 import { SmsCaptureProvider } from "./data/SmsCaptureContext";
 import { VoiceCaptureProvider } from "./data/VoiceCaptureContext";
 import { AiAssistantProvider } from "./data/AiAssistantContext";
+import { DemoLibraryProvider } from "./data/DemoLibraryContext";
 import { AppShell } from "./layout/AppShell";
 import { DigitalInsights } from "./screens/DigitalInsights";
 import { MyReports } from "./screens/MyReports";
@@ -53,6 +54,7 @@ const STANDALONE = new Set(["/integrations"]);
 export default function App() {
   return (
     <ProfileProvider>
+      <DemoLibraryProvider>
       <SmsCaptureProvider>
       <VoiceCaptureProvider>
       <AiAssistantProvider>
@@ -103,6 +105,7 @@ export default function App() {
       </AiAssistantProvider>
       </VoiceCaptureProvider>
       </SmsCaptureProvider>
+      </DemoLibraryProvider>
     </ProfileProvider>
   );
 }

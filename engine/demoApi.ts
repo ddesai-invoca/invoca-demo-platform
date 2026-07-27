@@ -44,8 +44,14 @@ function describe(profile: any) {
 const emptyCustomizations = () => ({ overrides: {}, tiles: {} });
 
 /** Build a new demo owned by `user` from a generated profile. */
-export function createDemo(profile: any, user: DemoUser, customizations?: DemoRecord["customizations"]): DemoRecord {
+export function createDemo(
+  profile: any,
+  user: DemoUser,
+  customizations?: DemoRecord["customizations"],
+  nameSuffix = "",
+): DemoRecord {
   const meta = describe(profile);
+  if (nameSuffix) meta.prospect = `${meta.prospect}${nameSuffix}`;
   const id = uniqueId(meta.prospect);
   const now = new Date().toISOString();
   // The frontend keys everything off profile.id — keep it equal to the demo id
@@ -56,7 +62,7 @@ export function createDemo(profile: any, user: DemoUser, customizations?: DemoRe
     creator: user,
     createdAt: now,
     updatedAt: now,
-    profile: { ...(profile as object), id },
+    profile: { ...(profile as object), id, customerName: meta.prospect },
     customizations: customizations ?? emptyCustomizations(),
   };
   return saveDemo(rec);
@@ -91,7 +97,9 @@ export async function handleDemoApi(
 
   if (isDuplicate) {
     if (method !== "POST") return err(405, "Method not allowed.");
-    const copy = createDemo(rec.profile, user, structuredClone(rec.customizations));
+    // Name it "<prospect> (copy)" — otherwise the library and the in-app customer
+    // switcher show two identically-named entries and nobody can tell them apart.
+    const copy = createDemo(rec.profile, user, structuredClone(rec.customizations), " (copy)");
     return ok({ demo: copy });
   }
 

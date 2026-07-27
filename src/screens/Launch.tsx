@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { useDemoLibrary } from "../data/DemoLibraryContext";
+import { useAiAssistant } from "../data/AiAssistantContext";
 import { CustomerProfile } from "../data/schema";
 import { SEED_IDS } from "../data/profiles";
 
@@ -33,8 +35,21 @@ const BUILD_STEPS: { key: string; label: string; weight: number }[] = [
 ];
 const TOTAL_WEIGHT = BUILD_STEPS.reduce((s, st) => s + st.weight, 0);
 
+/* A row in the prospect list — either a shared-library demo (has a creator) or a
+   built-in/locally-cached sample (doesn't). */
+interface Entry {
+  id: string;
+  name: string;
+  industry: string;
+  creator?: { name: string; email: string };
+  mine: boolean;
+  inLibrary: boolean;
+}
+
 export function Launch() {
   const { profiles, addProfile, removeProfile, setProfileId } = useProfile();
+  const { demos, me, isMine, openDemo, createDemo, duplicateDemo, deleteDemo } = useDemoLibrary();
+  const { hydrateDemo } = useAiAssistant();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -48,7 +63,8 @@ export function Launch() {
   // Searchable prospects dropdown + delete confirmation.
   const [query, setQuery] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [pendingDelete, setPendingDelete] = useState<CustomerProfile | null>(null);
+  const [pendingDelete, setPendingDelete] = useState<Entry | null>(null);
+  const [busyId, setBusyId] = useState<string | null>(null);
   const selectRef = useRef<HTMLDivElement | null>(null);
 
   // While generating, tick every 0.5s so the % bar can creep smoothly even when a
@@ -68,14 +84,69 @@ export function Launch() {
     return () => document.removeEventListener("mousedown", onDown);
   }, []);
 
+  /* One list, two sources: demos published to the shared team library (each with
+     a creator) and any built-in / locally-cached samples that aren't in it yet.
+     Search matches the prospect, the industry, OR the creator's name or email. */
+  const libraryIds = new Set(demos.map((d) => d.id));
+  const entries: Entry[] = [
+    ...demos.map((d) => ({
+      id: d.id, name: d.prospect, industry: d.industry,
+      creator: d.creator, mine: isMine(d), inLibrary: true,
+    })),
+    ...profiles.filter((p) => !libraryIds.has(p.id)).map((p) => ({
+      id: p.id, name: p.customerName, industry: p.industry,
+      creator: undefined, mine: false, inLibrary: false,
+    })),
+  ];
+
   const q = query.trim().toLowerCase();
   const filtered = q
-    ? profiles.filter((p) => p.customerName.toLowerCase().includes(q) || p.industry.toLowerCase().includes(q))
-    : profiles;
+    ? entries.filter((e) =>
+        e.name.toLowerCase().includes(q) ||
+        e.industry.toLowerCase().includes(q) ||
+        (e.creator?.name ?? "").toLowerCase().includes(q) ||
+        (e.creator?.email ?? "").toLowerCase().includes(q))
+    : entries;
 
   function open(id: string) {
     setProfileId(id);
     navigate(LANDING);
+  }
+
+  /* Library demos hold their profile server-side — fetch it, register it, open it. */
+  async function openEntry(e: Entry) {
+    if (!e.inLibrary) return open(e.id);
+    setBusyId(e.id);
+    const loaded = await openDemo(e.id);
+    setBusyId(null);
+    if (!loaded) { setError(`Couldn't open ${e.name}.`); return; }
+    const profile = CustomerProfile.safeParse(loaded.demo.profile);
+    if (!profile.success) { setError(`${e.name} couldn't be loaded (its data doesn't match the current schema).`); return; }
+    addProfile(profile.data);
+    hydrateDemo(loaded.demo.id, loaded.demo.customizations, loaded.canEdit, loaded.demo.creator);
+    open(profile.data.id);
+  }
+
+  /* Push a demo that only exists in this browser up to the shared library, so the
+     rest of the team can see it. Demos generated before the library existed (and
+     the bundled samples) are otherwise stranded locally. */
+  async function publish(e: Entry) {
+    const p = profiles.find((x) => x.id === e.id);
+    if (!p) return;
+    setBusyId(e.id);
+    const demo = await createDemo(p);
+    setBusyId(null);
+    if (!demo) { setError(`Couldn't publish ${e.name} to the library.`); return; }
+    await openEntry({ ...e, id: demo.id, mine: true, creator: demo.creator, inLibrary: true });
+  }
+
+  /* "Make it mine" — server-side copy, then open the copy for editing. */
+  async function duplicate(e: Entry) {
+    setBusyId(e.id);
+    const copy = await duplicateDemo(e.id);
+    setBusyId(null);
+    if (!copy) { setError(`Couldn't duplicate ${e.name}.`); return; }
+    await openEntry({ ...e, id: copy.id, mine: true, creator: copy.creator, inLibrary: true });
   }
 
   // Overall % — done steps count fully; the in-flight step eases up asymptotically
@@ -152,8 +223,14 @@ export function Launch() {
       if (streamError) throw new Error(streamError);
       if (!finalProfile) throw new Error("Generation ended without a profile.");
       const profile = CustomerProfile.parse(finalProfile);
-      addProfile(profile);
-      open(profile.id);
+      // Publish to the shared library under your name. If the library is
+      // unreachable, fall back to the old local-only behavior rather than
+      // losing a demo the user just waited minutes for.
+      const demo = await createDemo(profile);
+      const saved = demo ? { ...profile, id: demo.id } : profile;
+      addProfile(saved);
+      if (demo) hydrateDemo(demo.id, { overrides: {}, tiles: {} }, true, demo.creator);
+      open(saved.id);
     } catch (err: any) {
       setError(err?.message || "Something went wrong generating this prospect.");
       setBusy(false);
@@ -223,15 +300,18 @@ export function Launch() {
           </form>
         )}
 
-        {profiles.length > 0 && !busy && (
+        {entries.length > 0 && !busy && (
           <div className="launch-recent">
-            <div className="launch-recent-head">Your prospects</div>
+            <div className="launch-recent-head">
+              Team demo library
+              {me && <span className="launch-me">signed in as {me.name}</span>}
+            </div>
             <div className="prospect-select" ref={selectRef}>
               <div className={"prospect-search" + (dropdownOpen ? " open" : "")}>
                 <span className="material-icons prospect-search-icon">search</span>
                 <input
                   type="text"
-                  placeholder="Search prospects…"
+                  placeholder="Search by prospect or creator…"
                   value={query}
                   onChange={(e) => { setQuery(e.target.value); setDropdownOpen(true); }}
                   onFocus={() => setDropdownOpen(true)}
@@ -241,24 +321,51 @@ export function Launch() {
               {dropdownOpen && (
                 <div className="prospect-dropdown">
                   {filtered.length === 0 ? (
-                    <div className="prospect-empty">No prospects match "{query}"</div>
+                    <div className="prospect-empty">Nothing matches "{query}"</div>
                   ) : (
-                    filtered.map((p) => (
-                      <div key={p.id} className="prospect-option" onClick={() => open(p.id)}>
+                    filtered.map((e) => (
+                      <div key={e.id} className="prospect-option" onClick={() => openEntry(e)}>
                         <div className="prospect-option-text">
-                          <span className="prospect-name">{p.customerName}</span>
-                          <span className="prospect-meta">{p.industry}</span>
+                          <span className="prospect-name">{e.name}</span>
+                          <span className="prospect-meta">
+                            {e.industry}
+                            {e.creator && <> · <span className={e.mine ? "prospect-owner-me" : "prospect-owner"}>{e.mine ? "You" : e.creator.name}</span></>}
+                            {!e.inLibrary && " · Sample"}
+                          </span>
                         </div>
-                        {!SEED_IDS.has(p.id) && (
-                          <button
-                            className="prospect-delete"
-                            title={`Delete ${p.customerName}`}
-                            aria-label={`Delete ${p.customerName}`}
-                            onClick={(e) => { e.stopPropagation(); setPendingDelete(p); }}
-                          >
-                            <span className="material-icons">delete_outline</span>
-                          </button>
-                        )}
+                        <span className="prospect-actions">
+                          {busyId === e.id && <span className="prospect-spin" aria-label="Opening" />}
+                          {!e.inLibrary && (
+                            <button
+                              className="prospect-dup"
+                              title={`Publish ${e.name} to the team library`}
+                              aria-label={`Publish ${e.name}`}
+                              onClick={(ev) => { ev.stopPropagation(); void publish(e); }}
+                            >
+                              <span className="material-icons">cloud_upload</span>
+                            </button>
+                          )}
+                          {e.inLibrary && !e.mine && (
+                            <button
+                              className="prospect-dup"
+                              title={`Duplicate ${e.name} — makes an editable copy that's yours`}
+                              aria-label={`Duplicate ${e.name}`}
+                              onClick={(ev) => { ev.stopPropagation(); void duplicate(e); }}
+                            >
+                              <span className="material-icons">content_copy</span>
+                            </button>
+                          )}
+                          {(e.inLibrary ? e.mine : !SEED_IDS.has(e.id)) && (
+                            <button
+                              className="prospect-delete"
+                              title={`Delete ${e.name}`}
+                              aria-label={`Delete ${e.name}`}
+                              onClick={(ev) => { ev.stopPropagation(); setPendingDelete(e); }}
+                            >
+                              <span className="material-icons">delete_outline</span>
+                            </button>
+                          )}
+                        </span>
                       </div>
                     ))
                   )}
@@ -276,13 +383,21 @@ export function Launch() {
             <div className="confirm-icon"><span className="material-icons">warning_amber</span></div>
             <h2 className="confirm-title">Delete this prospect?</h2>
             <p className="confirm-text">
-              Are you sure you want to delete <strong>{pendingDelete.customerName}</strong>? This can't be undone.
+              Are you sure you want to delete <strong>{pendingDelete.name}</strong>?
+              {pendingDelete.inLibrary && " This removes it from the team library for everyone."} This can't be undone.
             </p>
             <div className="confirm-actions">
               <button className="confirm-cancel" onClick={() => setPendingDelete(null)}>Cancel</button>
               <button
                 className="confirm-delete"
-                onClick={() => { removeProfile(pendingDelete.id); setPendingDelete(null); }}
+                onClick={() => {
+                  const target = pendingDelete;
+                  setPendingDelete(null);
+                  // Drop the local cache too — otherwise a deleted library demo
+                  // reappears in the list as an orphaned local "Sample".
+                  if (target.inLibrary) void deleteDemo(target.id);
+                  removeProfile(target.id);
+                }}
               >
                 Delete
               </button>

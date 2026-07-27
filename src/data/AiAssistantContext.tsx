@@ -50,7 +50,16 @@ interface AiAssistantCtx {
   undo: (key: string) => void;
   canUndo: (key: string) => boolean;
   undoDepth: (key: string) => number;
+  /* Shared-library wiring: which demo is open, whether the signed-in user may
+     edit it, and how to load one in. Null for built-in/local samples, which stay
+     purely local and editable as before. */
+  activeDemo: ActiveDemo | null;
+  hydrateDemo: (id: string, customizations: DemoCustomizations, canEdit: boolean, creator: { name: string; email: string }) => void;
+  readOnly: boolean;
 }
+
+export interface ActiveDemo { id: string; canEdit: boolean; creator: { name: string; email: string } }
+export interface DemoCustomizations { overrides: Record<string, unknown>; tiles: Record<string, unknown[]> }
 
 const Ctx = createContext<AiAssistantCtx | null>(null);
 
@@ -100,10 +109,48 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const [active, setActive] = useState<Scope | null>(null);
   const [store, setStore] = useState<Persisted>(() => load());
   const baseRef = useRef<Record<string, unknown>>({}); // base data per key (not persisted; re-registered on mount)
+  const [activeDemo, setActiveDemo] = useState<ActiveDemo | null>(null);
+  const lastSyncedRef = useRef<string>("");   // guards against saving what we just loaded
 
   useEffect(() => {
     try { localStorage.setItem(LS, JSON.stringify(store)); } catch { /* ignore */ }
   }, [store]);
+
+  /* Pull one library demo's saved AI layer into the store. Server keys are bare
+     pathnames ("/dashboards/marketing"); the store keys them "<demoId>::<path>". */
+  const hydrateDemo = useCallback((id: string, c: DemoCustomizations, canEdit: boolean, creator: { name: string; email: string }) => {
+    setStore((prev) => {
+      const overrides = { ...prev.overrides };
+      const tiles = { ...prev.tiles };
+      for (const [p, v] of Object.entries(c?.overrides ?? {})) overrides[`${id}::${p}`] = v;
+      for (const [p, v] of Object.entries(c?.tiles ?? {})) tiles[`${id}::${p}`] = v as GeneratedTile[];
+      return { ...prev, overrides, tiles };
+    });
+    lastSyncedRef.current = JSON.stringify(c ?? {});
+    setActiveDemo({ id, canEdit, creator });
+  }, []);
+
+  /* Persist the active demo's slice back to the shared library (owner only),
+     debounced so a burst of edits is one write. */
+  useEffect(() => {
+    const demo = activeDemo;
+    if (!demo?.canEdit) return;
+    const prefix = `${demo.id}::`;
+    const slice: DemoCustomizations = { overrides: {}, tiles: {} };
+    for (const [k, v] of Object.entries(store.overrides)) if (k.startsWith(prefix)) slice.overrides[k.slice(prefix.length)] = v;
+    for (const [k, v] of Object.entries(store.tiles)) if (k.startsWith(prefix)) slice.tiles[k.slice(prefix.length)] = v;
+    const payload = JSON.stringify(slice);
+    if (payload === lastSyncedRef.current) return;   // nothing new since the last save/load
+    const t = setTimeout(() => {
+      lastSyncedRef.current = payload;
+      fetch(`/api/demos/${demo.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ customizations: slice }),
+      }).catch((e) => console.warn("[library] save failed:", e));
+    }, 800);
+    return () => clearTimeout(t);
+  }, [store, activeDemo]);
 
   const openDrawer = useCallback((f?: AssistantFocus) => { setFocus(f ?? null); setOpen(true); }, []);
   const closeDrawer = useCallback(() => setOpen(false), []);
@@ -118,8 +165,14 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const canUndo = useCallback((key: string) => (store.undo[key]?.length ?? 0) > 0, [store.undo]);
   const undoDepth = useCallback((key: string) => store.undo[key]?.length ?? 0, [store.undo]);
 
+  /* Viewing someone else's library demo: everything is read-only. The server is
+     the real authority (it 403s a PATCH from a non-owner) — this just stops the
+     UI from showing changes that would never be saved. */
+  const readOnly = !!activeDemo && !activeDemo.canEdit;
+
   // Push the current (override, tiles) as one undo step, then apply `mutate`.
   const mutate = useCallback((key: string, next: { override?: unknown | undefined; tiles?: GeneratedTile[] }) => {
+    if (readOnly) return;
     setStore((prev) => {
       const snap: Snapshot = { override: key in prev.overrides ? prev.overrides[key] : undefined, tiles: prev.tiles[key] ?? [] };
       const undoStack = [...(prev.undo[key] ?? []), snap].slice(-UNDO_CAP);
@@ -132,11 +185,11 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
       if (next.tiles) tiles[key] = next.tiles;
       return { overrides, tiles, undo: { ...prev.undo, [key]: undoStack } };
     });
-  }, []);
+  }, [readOnly]);
 
   const applyEdits = useCallback((key: string, edits: AssistantEdit[]): number => {
     const base = key in store.overrides ? store.overrides[key] : baseRef.current[key];
-    if (base == null) return 0;
+    if (base == null || readOnly) return 0;
     let nextData: unknown = base;
     let applied = 0;
     for (const e of edits) {
@@ -147,7 +200,7 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
     }
     if (applied) mutate(key, { override: nextData });
     return applied;
-  }, [store.overrides, mutate]);
+  }, [store.overrides, mutate, readOnly]);
 
   const addTile = useCallback((key: string, tile: GeneratedTile) => {
     mutate(key, { tiles: [...(store.tiles[key] ?? []), tile] });
@@ -162,6 +215,7 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   }, [store.tiles, mutate]);
 
   const undo = useCallback((key: string) => {
+    if (readOnly) return;
     setStore((prev) => {
       const stack = prev.undo[key] ?? [];
       if (!stack.length) return prev;
@@ -171,10 +225,10 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
       else overrides[key] = snap.override;
       return { overrides, tiles: { ...prev.tiles, [key]: snap.tiles }, undo: { ...prev.undo, [key]: stack.slice(0, -1) } };
     });
-  }, []);
+  }, [readOnly]);
 
   return (
-    <Ctx.Provider value={{ open, focus, openDrawer, closeDrawer, active, registerScope, effectiveData, tilesFor, applyEdits, addTile, replaceTile, removeTile, undo, canUndo, undoDepth }}>
+    <Ctx.Provider value={{ open, focus, openDrawer, closeDrawer, active, registerScope, effectiveData, tilesFor, applyEdits, addTile, replaceTile, removeTile, undo, canUndo, undoDepth, activeDemo, hydrateDemo, readOnly }}>
       {children}
     </Ctx.Provider>
   );
