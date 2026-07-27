@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useDemoLibrary } from "../data/DemoLibraryContext";
@@ -39,12 +39,69 @@ const TOTAL_WEIGHT = BUILD_STEPS.reduce((s, st) => s + st.weight, 0);
    built-in/locally-cached sample (doesn't). */
 type EntryGroup = "mine" | "team" | "sample";
 
-/* Section order + headers for the prospect dropdown. */
+/* Section order + headers — each is now its own dropdown. */
 const GROUP_ORDER: [EntryGroup, string][] = [
   ["mine", "My demos"],
   ["team", "Team demos"],
   ["sample", "Samples"],
 ];
+
+/* One self-contained library dropdown (one per group). Owns its search text +
+   open state + outside-click close, and filters its own rows by prospect,
+   industry, or creator name/email. */
+function LibraryPicker({ label, entries, renderRow }: { label: string; entries: Entry[]; renderRow: (e: Entry) => ReactNode }) {
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function onDown(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, []);
+
+  const q = query.trim().toLowerCase();
+  const filtered = q
+    ? entries.filter((e) =>
+        e.name.toLowerCase().includes(q) ||
+        e.industry.toLowerCase().includes(q) ||
+        (e.creator?.name ?? "").toLowerCase().includes(q) ||
+        (e.creator?.email ?? "").toLowerCase().includes(q))
+    : entries;
+
+  return (
+    <div className="prospect-picker" ref={ref}>
+      <div className="prospect-picker-label">
+        {label}
+        <span className="prospect-picker-count">{entries.length}</span>
+      </div>
+      <div className="prospect-select">
+        <div className={"prospect-search" + (open ? " open" : "")}>
+          <span className="material-icons prospect-search-icon">search</span>
+          <input
+            type="text"
+            placeholder={`Search ${label.toLowerCase()}…`}
+            value={query}
+            onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+            onFocus={() => setOpen(true)}
+          />
+          <span className="material-icons prospect-caret" onClick={() => setOpen((o) => !o)}>expand_more</span>
+        </div>
+        {open && (
+          <div className="prospect-dropdown">
+            {filtered.length === 0 ? (
+              <div className="prospect-empty">Nothing matches "{query}"</div>
+            ) : (
+              filtered.map((e) => renderRow(e))
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 interface Entry {
   id: string;
@@ -70,12 +127,10 @@ export function Launch() {
   const [, setTick] = useState(0);
   const stepStartRef = useRef<Record<string, number>>({});
 
-  // Searchable prospects dropdown + delete confirmation.
-  const [query, setQuery] = useState("");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  // Delete confirmation + which row is mid-open. Each library dropdown owns its
+  // own search + open state (see LibraryPicker below).
   const [pendingDelete, setPendingDelete] = useState<Entry | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
-  const selectRef = useRef<HTMLDivElement | null>(null);
 
   // While generating, tick every 0.5s so the % bar can creep smoothly even when a
   // single phase (research) runs for minutes — otherwise it looks frozen.
@@ -84,15 +139,6 @@ export function Launch() {
     const id = window.setInterval(() => setTick((t) => t + 1), 500);
     return () => window.clearInterval(id);
   }, [busy]);
-
-  // Close the dropdown when clicking outside it.
-  useEffect(() => {
-    function onDown(e: MouseEvent) {
-      if (selectRef.current && !selectRef.current.contains(e.target as Node)) setDropdownOpen(false);
-    }
-    document.addEventListener("mousedown", onDown);
-    return () => document.removeEventListener("mousedown", onDown);
-  }, []);
 
   /* One list, three groups: MY demos (library demos I own + prospects I generated
      locally but haven't published), the TEAM library (demos other people created),
@@ -116,15 +162,6 @@ export function Launch() {
       group: (SEED_IDS.has(p.id) ? "sample" : "mine") as EntryGroup,
     })),
   ];
-
-  const q = query.trim().toLowerCase();
-  const filtered = q
-    ? entries.filter((e) =>
-        e.name.toLowerCase().includes(q) ||
-        e.industry.toLowerCase().includes(q) ||
-        (e.creator?.name ?? "").toLowerCase().includes(q) ||
-        (e.creator?.email ?? "").toLowerCase().includes(q))
-    : entries;
 
   function open(id: string) {
     setProfileId(id);
@@ -375,36 +412,12 @@ export function Launch() {
               Demo library
               {me && <span className="launch-me">signed in as {me.name}</span>}
             </div>
-            <div className="prospect-select" ref={selectRef}>
-              <div className={"prospect-search" + (dropdownOpen ? " open" : "")}>
-                <span className="material-icons prospect-search-icon">search</span>
-                <input
-                  type="text"
-                  placeholder="Search by prospect or creator…"
-                  value={query}
-                  onChange={(e) => { setQuery(e.target.value); setDropdownOpen(true); }}
-                  onFocus={() => setDropdownOpen(true)}
-                />
-                <span className="material-icons prospect-caret" onClick={() => setDropdownOpen((o) => !o)}>expand_more</span>
-              </div>
-              {dropdownOpen && (
-                <div className="prospect-dropdown">
-                  {filtered.length === 0 ? (
-                    <div className="prospect-empty">Nothing matches "{query}"</div>
-                  ) : (
-                    GROUP_ORDER.map(([g, label]) => {
-                      const rows = filtered.filter((e) => e.group === g);
-                      if (!rows.length) return null;
-                      return (
-                        <div key={g} className="prospect-group">
-                          <div className="prospect-group-head">{label}</div>
-                          {rows.map((e) => renderRow(e))}
-                        </div>
-                      );
-                    })
-                  )}
-                </div>
-              )}
+            <div className="launch-pickers">
+              {GROUP_ORDER.map(([g, label]) => {
+                const rows = entries.filter((e) => e.group === g);
+                if (!rows.length) return null;
+                return <LibraryPicker key={g} label={label} entries={rows} renderRow={renderRow} />;
+              })}
             </div>
           </div>
         )}
