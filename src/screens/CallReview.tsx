@@ -255,7 +255,7 @@ export function CallReview() {
           </Filter>
           <Filter label="Evaluated By" info><Select text="Select People" /></Filter>
           <Filter label="Agent" info><Select text="Select Agent" /></Filter>
-          <Filter label="Review Status"><Select text="Not Yet Reviewed" /></Filter>
+          <Filter label="Review Status"><Select text="Any" /></Filter>
           <div className="cr-filter">
             <div className="cr-filter-label">Signals</div>
             <div className="cr-signals-field" onClick={openModal}>
@@ -287,7 +287,7 @@ export function CallReview() {
           <Filter label="Caller ID"><Input text="Enter Caller ID" /></Filter>
           <Filter label="Comments"><Select text="Select Comments" /></Filter>
           <Filter label="Marketing Data"><Input text="Select Marketing Data" /></Filter>
-          <Filter label="Sentiment" info><Select text="Negative" /></Filter>
+          <Filter label="Sentiment" info><Select text="Any" /></Filter>
           <Filter label="More Filters"><Input text="Select More Filters" /></Filter>
         </div>
       </aside>

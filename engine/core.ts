@@ -18,6 +18,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { CustomerProfile, DigitalInsightsReport, DashboardView, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView } from "../src/data/schema.ts";
 
+const QM_SCORE_MEAN = 71;   // true mean of the agent scorecard series
 const MODEL = "claude-opus-4-8";
 const FAST_MODEL = "claude-haiku-4-5-20251001";
 
@@ -32,7 +33,82 @@ const TermsOutput = z.object({
   customerNoun: z.string(),
   qualifiedCallTerm: z.string(),
   conversionTerm: z.string(),
+  monthlyCalls: z.number(),      // enterprise-scale inbound calls for ONE month
+  avgSaleAmount: z.number(),     // realistic won-deal value for THIS vertical
+  purchaseRatePct: z.number(),   // % of all calls that end in a won sale
 });
+
+/* ---- Canonical scale ------------------------------------------------------
+   ONE month, ONE call volume, ONE revenue figure, shared by every screen.
+
+   Before this existed each phase invented its own period and volume, so the
+   demo told the prospect they had 628 calls on one dashboard and 5,139 on the
+   next — across two different years. Now the volume is chosen ONCE (by the
+   terms phase, which has read the business brief and can judge what's credible
+   for the vertical) and every phase is handed the same anchors. */
+export const DATE_RANGE = "1/1/2026-1/31/2026";
+export const DATE_RANGE_LONG = "Jan 1, 2026 - Jan 31, 2026";
+/* Weekly buckets covering the month exactly (4+7+7+7+6 = 31 days). Charts use
+   these instead of an arbitrary 6-day window, so no chart can cover a period
+   the date filter above it doesn't. */
+export const WEEK_LABELS = ["Jan 1-4", "Jan 5-11", "Jan 12-18", "Jan 19-25", "Jan 26-31"];
+
+export interface Scale {
+  calls: number; salesPct: number; purchases: number; purchasePct: number;
+  revenue: number; avgSale: number; revPerCall: number;
+  consultations: number; consultPct: number;
+  nonSalesCalls: number; answered: number; notAnswered: number; answerRatePct: number;
+}
+
+function buildScale(t: z.infer<typeof TermsOutput>): Scale {
+  const calls = Math.max(8000, Math.round((t.monthlyCalls || 48000) / 100) * 100);
+  const salesPct = 84;
+  const purchasePct = Math.min(45, Math.max(12, Math.round(t.purchaseRatePct || 25)));
+  const purchases = Math.round((calls * purchasePct) / 100);
+  const avgSale = Math.max(150, Math.round((t.avgSaleAmount || 3000) / 10) * 10);
+  const revenue = purchases * avgSale;
+  const consultPct = Math.min(salesPct - 5, purchasePct + 20);
+  const answered = Math.round(calls * 0.92);
+  return {
+    calls, salesPct, purchases, purchasePct, revenue, avgSale,
+    revPerCall: revenue / calls,
+    consultations: Math.round((calls * consultPct) / 100), consultPct,
+    nonSalesCalls: Math.round((calls * (100 - salesPct)) / 100),
+    answered, notAnswered: calls - answered,
+    answerRatePct: Math.round((answered / calls) * 100),
+  };
+}
+
+const n = (v: number) => v.toLocaleString("en-US");
+const $ = (v: number) => "$" + Math.round(v).toLocaleString("en-US");
+
+/* Prepended to every DATA prompt. These are the rules that stop a prospect
+   finding an impossible number in a live demo. */
+function scaleRules(s: Scale, bookingTerm: string): string {
+  return (
+    `CANONICAL NUMBERS — every screen in this demo describes the SAME month and the SAME business. Use these EXACT figures:\n` +
+    `- dateRange: "${DATE_RANGE}" (one calendar month). NEVER invent a different period, year, or window.\n` +
+    `- Total calls for the month: ${n(s.calls)}. Total revenue: ${$(s.revenue)}. Won sales: ${n(s.purchases)} (${s.purchasePct}% of calls, ${$(s.avgSale)} average).\n` +
+    `- ${bookingTerm}s scheduled: ${n(s.consultations)} (${s.consultPct}% of calls). Calls answered by an agent: ${n(s.answered)} (${s.answerRatePct}%).\n` +
+    `ARITHMETIC RULES (a prospect WILL add these up):\n` +
+    `1. A breakdown that is a COMPLETE partition of the calls (e.g. Line of Business, Region, Product Category, New vs Existing) MUST have its Call Count column sum to EXACTLY ${n(s.calls)} and its revenue column sum to EXACTLY ${$(s.revenue)}.\n` +
+    `2. A "top 5" breakdown of a long tail (Campaign, Search Term) must sum to LESS than the total — never more. No subset may ever exceed its parent (a search term cannot have more calls than the whole paid-search channel).\n` +
+    `3. Percentages of mutually exclusive categories must sum to exactly 100%. No percentage may exceed 100%.\n` +
+    `4. Funnel order must hold on EVERY row: calls >= ${bookingTerm}s scheduled >= won sales. Never show more completed sales than scheduled visits.\n` +
+    `5. count x percent must equal the count shown elsewhere for the same thing, and revenue / won-sales must land near ${$(s.avgSale)} on every row (no row at $800 next to a row at $4,000).\n` +
+    `6. Never pair a non-zero conversion percent with $0 revenue, or a 0 count with revenue.\n` +
+    `7. Chart series must sum to the KPI tile they roll up into, and a chart must cover the SAME period as the date range — use the weekly buckets ${JSON.stringify(WEEK_LABELS)} as xLabels unless told otherwise.\n` +
+    `8. Use "${bookingTerm}" for the scheduled-visit metric EVERYWHERE. Never drift to "Appointment"/"Consultation" if that is not the bookingTerm.`
+  );
+}
+
+/* The "volume is not value" story the SE tells on every Call Outcome Summary. */
+function outcomeStory(): string {
+  return (
+    `STORY REQUIREMENT for every "Call Outcome Summary" table: include ONE row with a very HIGH call count but a clearly LOW conversion rate (the biggest row must have the WORST rate), and ONE row with a LOW call count but a clearly HIGH conversion rate (the smallest row must have the BEST rate) — a 3-5x spread between them. ` +
+    `That contrast is the point of the tile: it lets the seller say "your biggest channel is not your best channel." Order rows by Call Count descending, so the table visibly opens on high-volume/low-conversion and closes on low-volume/high-conversion.`
+  );
+}
 
 /* Prepended to every generation prompt: force the model to re-skin ALL wording to
    the prospect's vertical, while keeping each section's structure identical. */
@@ -166,24 +242,27 @@ function generateTerms(client: Anthropic, name: string, brief: string) {
       `- bookingTerm: the industry-appropriate word for what THIS business schedules with a new customer — a short, Title-Case, SINGULAR noun. Pick what truly fits: e.g. "Consultation", "Appointment", "Estimate", "Tour", "Test Drive", "Service Appointment", "Demo". This term is reused across the whole platform.\n` +
       `- customerNoun: the Title-Case SINGULAR word THIS business uses for a customer ("Customer", "Patient", "Member", "Client", "Guest", "Rider", …). Reused across the platform.\n` +
       `- qualifiedCallTerm: what THIS business calls a sales-QUALIFIED inbound call in its dashboards — the "Sales Call" equivalent (e.g. "Sales Call", "Residency Inquiry", "New Patient Call", "Sales Inquiry"). Title-Case. Reused VERBATIM across every dashboard so terminology stays consistent.\n` +
-      `- conversionTerm: the Title-Case noun for a WON, revenue-generating conversion for THIS business — the "Purchase / Job Complete" equivalent (the closed sale/outcome), e.g. "Purchase", "Reservation Booked", "Membership Sold", "New Patient", "Move-In", "Job Won". This is DISTINCT from the bookingTerm (which is only the scheduled visit). Reused VERBATIM across every dashboard.`,
+      `- conversionTerm: the Title-Case noun for a WON, revenue-generating conversion for THIS business — the "Purchase / Job Complete" equivalent (the closed sale/outcome), e.g. "Purchase", "Reservation Booked", "Membership Sold", "New Patient", "Move-In", "Job Won". This is DISTINCT from the bookingTerm (which is only the scheduled visit). Reused VERBATIM across every dashboard.\n` +
+      `- monthlyCalls: inbound marketing-driven calls in ONE month for an ENTERPRISE-scale version of this business (Invoca sells to large brands, so the demo should look like one). Default to the 25,000–90,000 range. Go LOWER only if that volume is genuinely not credible for this vertical — a business with a small buyer pool or a very high ticket (private aviation, enterprise B2B, luxury real estate) should get a believable number instead of a big one; credibility beats size.\n` +
+      `- avgSaleAmount: the realistic dollar value of ONE won sale for this business. Be honest to the vertical (a window-treatment job ~$3,000; a dental implant ~$4,500; a car ~$38,000; a gym membership ~$700; a senior-living move-in ~$5,000/mo).\n` +
+      `- purchaseRatePct: the share of ALL inbound calls that end in a won sale, 12–45. High-ticket, considered purchases sit low (15–25); transactional or service businesses sit higher (30–45). monthlyCalls x purchaseRatePct x avgSaleAmount must produce a MONTHLY revenue figure that is credible for this business — sanity-check it before answering.`,
     1200
   );
 }
 
 /* The Digital Journey & Call Attribution report table — the heavy part of the old
    report call, now generated as its own pool phase (needs only brief + bookingTerm). */
-function generateDigitalInsights(client: Anthropic, name: string, brandDomain: string, brief: string, bookingTerm: string) {
+function generateDigitalInsights(client: Anthropic, name: string, brandDomain: string, brief: string, bookingTerm: string, sc: Scale) {
   return structured<z.infer<typeof DigitalInsightsReport>>(
     client,
     DigitalInsightsReport,
     `Using this business brief, produce the Invoca "Digital Journey & Call Attribution Report" table for ${name}.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +
       `Requirements:\n` +
       `- title: exactly → "Digital Journey & Call Attribution Report"\n` +
-      `- dateRange: "Jan 19, 2026 - Jan 24, 2026". filterLabel: "Marketing Source: 3 selected". chartLegend: "Total Interactions".\n` +
-      `- chart: 6 daily points (01/19–01/24). yMax = clean round number above the tallest bar; yTicks = 5 evenly spaced values ending at yMax.\n` +
+      `- dateRange: "${DATE_RANGE_LONG}". filterLabel: "Marketing Source: 3 selected". chartLegend: "Total Interactions".\n` +
+      `- chart: 5 points, one per weekly bucket, dates EXACTLY ${JSON.stringify(WEEK_LABELS)}. These are total INTERACTIONS (web sessions + calls), so they MUST sum to MORE than the ${n(sc.calls)} calls — target about ${n(Math.round(sc.calls * 1.275))}. yMax = clean round number above the tallest bar; yTicks = 5 evenly spaced values ending at yMax.\n` +
       `- dimensionColumns: exactly ["Marketing Source","Marketing Medium","Marketing Campaign","Marketing Search Term","Full Landing Page URL","Website Journey"].\n` +
       `- signalColumns: exactly [{label:"Answered by Agent",badges:["Rule"]},{label:"${bookingTerm} Discussed (Industry)",badges:["Keyword Spotting","Rule"]},{label:"${bookingTerm} Booked (Conversion)",badges:["Keyword Spotting","Rule"]}].\n` +
       `- rows: 18–24 realistic interactions specific to THIS business. Sources: Paid Search / Social Media / Organic; mediums: cpc / Bing / Instagram / Facebook / Organic. Search terms "—" for social/organic. Landing page URLs must use the domain ${brandDomain} with utm params. Website Journey like "Home / Category / Subcategory". Each row's "signals" is 3 booleans aligned to signalColumns; make most rows' first signal (Answered by Agent) true and order the rows so the true ones come first (the table is sorted by that column descending), and vary the other two realistically.`,
@@ -191,20 +270,20 @@ function generateDigitalInsights(client: Anthropic, name: string, brandDomain: s
   );
 }
 
-function generateDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, qualifiedCallTerm: string, conversionTerm: string) {
+function generateDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, qualifiedCallTerm: string, conversionTerm: string, sc: Scale) {
   return structured<z.infer<typeof DashboardView>>(
     client,
     DashboardView,
     `Using this business brief, produce the Invoca "Marketing Performance Dashboard" for ${name}.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n${outcomeStory()}\n\n` +
       `The metric labels below are a TEMPLATE — keep the same count/shape. Two conversion terms are GIVEN and MUST be used VERBATIM everywhere they appear: the sales-qualified inbound call is "${qualifiedCallTerm}", and a won revenue conversion is "${conversionTerm}". Re-skin only the OTHER outcome words that don't fit ${name} (e.g. "Warranty Call" → a real call type; "Quote Discussed" → "Estimate Discussed"/"Pricing Discussed"; "Unqualified Lead" → the fitting term). Keep "Call Count" and "Total Revenue (Sale Amount)" verbatim.\n\n` +
-      `- title: "Marketing Performance Dashboard (${name})". dateRange: "1/19/2026-1/24/2026".\n` +
-      `- kpiGroups: exactly these 3, each 4 tiles (values as strings; percents "84%"; currency "$945,910"; counts may use commas):\n` +
+      `- title: "Marketing Performance Dashboard (${name})". dateRange: "${DATE_RANGE}".\n` +
+      `- kpiGroups: exactly these 3, each 4 tiles (values as strings; percents like "84%"; currency like "${$(sc.revenue)}"; counts use commas):\n` +
       `  1) "Call Performance Summary": Call Count, ${qualifiedCallTerm} (Percent), ${conversionTerm} (Percent), Total Revenue (Sale Amount)\n` +
-      `  2) "Non-Sales Inquiries": Call Count (same value), Support Call (Percent), Billing Call (Percent), Warranty Call (Percent)\n` +
+      `  2) "Non-Sales Inquiries": Call Count = ONLY the non-sales calls (${n(sc.nonSalesCalls)}, NOT the ${n(sc.calls)} total — repeating the total here is wrong), then three non-sales call types whose percents are shares of ALL calls and MUST sum to exactly ${100 - sc.salesPct}% (e.g. 8% + 5% + 3%), so sales + non-sales = 100%.\n` +
       `  3) "${qualifiedCallTerm} Breakout Metrics": ${qualifiedCallTerm} (Percent), Quote Discussed (Percent), Unqualified Lead (Percent), ${conversionTerm} (Percent)\n` +
-      `- breakdowns (in this order), each metricColumns=["Call Count","Quote Discussed (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"] with 4–5 rows; call counts roughly sum to the total Call Count:\n` +
+      `- breakdowns (in this order), each metricColumns=["Call Count","Quote Discussed (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"] with 5 rows ordered by Call Count DESCENDING. Source / Medium / Line of Business / Region / Product Category are COMPLETE partitions and must sum to exactly ${n(sc.calls)} calls and ${$(sc.revenue)}; Campaign / Search Term / Division are top-5 of a long tail and must sum to LESS:\n` +
       `  • Calls by Source / "Source: Call Outcome Summary" / "Marketing Source" / hasDonut:true\n` +
       `  • Calls by Medium / "Medium: Call Outcome Summary" / "Marketing Medium" / hasDonut:true\n` +
       `  • Calls by Campaign / "Campaign: Call Outcome Summary" / "Marketing Campaign" / hasDonut:true\n` +
@@ -218,15 +297,15 @@ function generateDashboard(client: Anthropic, name: string, brief: string, booki
   );
 }
 
-function generateCallReview(client: Anthropic, name: string, brief: string, bookingTerm: string) {
+function generateCallReview(client: Anthropic, name: string, brief: string, bookingTerm: string, sc: Scale) {
   const bt = bookingTerm.toLowerCase();
   return structured<z.infer<typeof CallReviewView>>(
     client,
     CallReviewView,
     `Using this business brief, produce Invoca "Call Review" demo data for ${name} — a list of scored, AI-summarized inbound phone calls.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n` +
-      `- shownCount: "66 Calls". totalNote: "total of 222 calls from Jan 1 to Oct 31". scoreDisplay: "Quality Score". sortBy: "Highest Score". dateRange: "01/01/2025-10/31/2025".\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +
+      `- shownCount: MUST equal the number of call objects you actually return, written as "<N> Calls" (15 calls returned → "15 Calls"). totalNote: "total of ${n(sc.calls)} calls from Jan 1 to Jan 31". scoreDisplay: "Quality Score". sortBy: "Highest Score". dateRange: "01/01/2026-01/31/2026".\n` +
       `- calls: exactly 15 items, each a realistic inbound phone call to THIS business, SORTED BY score DESCENDING (highest first):\n` +
       `  • scoreLabel: "Quality Score" for every call.\n` +
       `  • score: integer 34–92, strictly descending across the 15 calls, with a realistic spread.\n` +
@@ -251,7 +330,7 @@ function generateCallDetail(client: Anthropic, name: string, brief: string, book
     CallDetailView,
     `Produce Invoca "Call Detail" demo data for ${name} — the drill-in for ONE evaluated inbound call: a NEW-CUSTOMER ${bt}/intake call where the caller schedules and the agent collects their details.\n\n` +
       `BRIEF:\n${brief}\n\n${reskin(name)}\n\n` +
-      `- callId "0597-627F62F2570D". agent a full name (e.g. "Marcus Bell"). date like "Jun 6, 2:28 PM". duration "4m 12s".\n` +
+      `- callId "0597-627F62F2570D". agent a full name (e.g. "Marcus Bell"). date INSIDE the demo month during business hours, e.g. "Jan 12, 2:28 PM". duration MUST match the transcript: set it a few seconds past the LAST turn timestamp (a transcript ending at 02:14 means duration "2m 26s", never "4m 12s").\n` +
       `- scorecardName "BASE SKILLS". scorecardPercent 78. scorecardPoints "70/90 Points".\n` +
       `- scorecardRows: EXACTLY 10. Names specific to THIS business's intake ("(QA) Proper Greeting", "(QA) Proper Close", "Capture Full Name", capture steps for what this business qualifies on, "Capture Email", etc.). EXACTLY 7 rows status "met" points "10/10", 2 rows status "unmet" points "0/10", 1 row status "na" points "—/—".\n` +
       `- signalsMet 13, signalsUnmet 26, signalsNa 25. metSignals: ~13 signal names grounded in the call; unmetSignals: ~10 names; naSignals: ~7 names not applicable to an intake (order/delivery/billing/return).\n` +
@@ -264,7 +343,7 @@ function generateCallDetail(client: Anthropic, name: string, brief: string, book
   );
 }
 
-function generateOpsDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string) {
+function generateOpsDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string, sc: Scale) {
   return structured<z.infer<typeof OpsDashboardView>>(
     client,
     OpsDashboardView,
@@ -272,9 +351,9 @@ function generateOpsDashboard(client: Anthropic, name: string, brief: string, bo
       `BRIEF:\n${brief}\n\n` +
       `${reskin(name)}\n` +
       `Everywhere below: <BOOK> = "${bookingTerm}" (<BOOK>s = plural); <CUST> = "${customerNoun}" (<CUST>s = plural). Use them consistently, uppercasing inside ALL-CAPS group titles.\n` +
-      `- title: "Marketing and Operations Performance with Revenue". dateRange: "8/11/2025-8/16/2025".\n` +
+      `- title: "Marketing and Operations Performance with Revenue". dateRange: "${DATE_RANGE}".\n` +
       `- kpiGroups: exactly 3 (values are strings):\n` +
-      `  1) "MARKETING DRIVEN CALLS": Call Count (e.g. "5,139"), "Avg. Duration" ("2:56"), "Avg. Revenue (Sale Amount)" ("$340.67"), "Total Revenue (Sale Amount)" ("$1,750,719").\n` +
+      `  1) "MARKETING DRIVEN CALLS": Call Count "${n(sc.calls)}", "Avg. Duration" "2:56", "Avg. Revenue (Sale Amount)" "$${sc.revPerCall.toFixed(2)}", "Total Revenue (Sale Amount)" "${$(sc.revenue)}" — these four are FIXED, copy them exactly.\n` +
       `  2) "NEW <CUST> ACQUISITION": "Caller Type: New <CUST>s (Count)", "Caller Type: New <CUST>s (Percent)", "<BOOK>: Scheduled (Count)", "<BOOK>: Scheduled (Percent)".\n` +
       `  3) "EXISTING <CUST>s & RESCHEDULING": "Caller Type: Existing <CUST> (Count)", "Caller Type: Existing <CUST> (Percent)", "<BOOK>: Canceled (Percent)".\n` +
       `- marketingSections: exactly 4 — Source, Medium, Campaign, Search Terms. Each = { chartTitle, chart, tableTitle, table }. chart = { legend, axisMax, axisTicks (evenly spaced, ending at axisMax), axisSuffix, bars:[{name,value,display}] } where display is the drawn label ("55%" or "1,880"):\n` +
@@ -284,7 +363,7 @@ function generateOpsDashboard(client: Anthropic, name: string, brief: string, bo
       `  • Search Terms: chartTitle "MARKETING: Search Terms (Calls)"; legend "Call Count", 5 bars by call count (business-specific search terms). tableTitle "MARKETING: Search Terms (Calls resulting in <BOOK>s)"; columns ["Marketing Search Terms","<BOOK>: Scheduled (Percent)"], 4 rows.\n` +
       `- webpagesTitle "Webpages driving New <CUST>s"; webpages.columns ["Product Category","Call Count","<BOOK>: Scheduled (Percent)","Caller Type: New <CUST>s (Percent)"], 4 rows = this business's product/service categories.\n` +
       `- locationTitle "Location Call Handling"; locationHandling.columns ["Location","Call Count","Call Not Answered (Count)","Voice Mail (Percent)","<BOOK>: Scheduled (Percent)"], 4 rows = this business's actual location type (stores/branches/showrooms/clinics/dealerships/gyms — use real-sounding location names for ${name}).\n` +
-      `- noBookingChart: yLabel "Call Count", xLabels ["08/11","08/12","08/13","08/14","08/15","08/16"], series = the 5 top reasons calls DON'T convert for THIS business (adapt to the industry; e.g. Reschedule, ${bookingTerm}, Billing, Cancel, Scheduling), each 6 daily counts (first two largest).\n` +
+      `- noBookingChart: yLabel "Call Count", xLabels ${JSON.stringify(WEEK_LABELS)}, series = the 5 top reasons calls do NOT book for THIS business — each must be a genuine REASON (e.g. Price Above Budget, Comparing Providers, Timing Not Right, Needs Partner Approval, Outside Service Area), never the name of the booking itself. Values are weekly counts, and all 5 series together MUST sum to EXACTLY ${n(sc.calls - sc.consultations)} — the calls that did NOT book. Never more.\n` +
       `All numbers plausible and specific to ${name}. Every bar's value must be ≤ its chart's axisMax.`,
     22000
   );
@@ -293,21 +372,22 @@ function generateOpsDashboard(client: Anthropic, name: string, brief: string, bo
 /* AI Agent Conversion Dashboard (3rd dashboard) — how AI-agent interactions
    convert. Reuses the KpiGroup/Breakdown/MultiSeriesChart shapes; adds the six
    conversion cards. FAST_MODEL keeps it quick. */
-function generateAiAgentConversionDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, _customerNoun: string, qualifiedCallTerm: string, conversionTerm: string) {
+function generateAiAgentConversionDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, _customerNoun: string, _qualifiedCallTerm: string, conversionTerm: string, sc: Scale) {
   return structured<z.infer<typeof AiAgentConversionView>>(
     client,
     AiAgentConversionView,
     `Using this business brief, produce Invoca "AI Agent Conversion Dashboard" demo data for ${name} — how AI-agent interactions convert into ${bookingTerm}s and revenue.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n` +
-      `- title "AI Agent Conversion Dashboard". dateRange "1/19/2026-1/24/2026".\n` +
-      `- summary: title "AI Agent Performance Summary", tiles EXACTLY [ {label:"Interactions", value: an integer ~1000-1500}, {label:"${qualifiedCallTerm} (Percent)", value like "84%"}, {label:"${conversionTerm} (Percent)", value like "45%"}, {label:"Total Revenue (Sale Amount)", value like "$945,910"} ].\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n${outcomeStory()}\n\n` +
+      `- title "AI Agent Conversion Dashboard". dateRange "${DATE_RANGE}".\n` +
+      `- This dashboard covers ONLY the AI agent slice of the month, NOT the whole business: ${n(Math.round(sc.calls * 0.4))} interactions and ${$(Math.round(sc.revenue * 0.57))} revenue. Its breakdowns must sum to THOSE figures, not the platform totals, and must NOT reuse the Marketing dashboard rows verbatim.\n` +
+      `- summary: title "AI Agent Performance Summary", tiles EXACTLY [ {label:"Interactions", value "${n(Math.round(sc.calls * 0.4))}"}, {label:"${bookingTerm} Scheduled (Percent)", value like "56%"}, {label:"${conversionTerm} (Percent)", value like "33%"}, {label:"Total Revenue (Sale Amount)", value "${$(Math.round(sc.revenue * 0.57))}"} ] — the AI agent converts BETTER than the blended ${sc.purchasePct}% rate, which is the point of the dashboard. Every breakdown on this page rolls up to THESE two figures.\n` +
       `- conversionCards: EXACTLY 6. Titles in this order: "LEAD FORM (Conversions): Live Agent", "LEAD FORM (Conversions): SMS Agent & Live Agent", "LEAD FORM (Conversions): SMS Agent Assist", "Voice Agent (Conversions): Live Agent", "Voice Agent (Conversions): Voice Agent & Live Agent", "Voice Agent (Conversions): Voice Agent". chips first value: LEAD FORM cards (1–3) use "Interaction Type: Form Fill"; Voice Agent cards (4–6) use "Interaction Type: Voice". The other two chips follow the pattern: cards 1&4 [..., "SMS Engaged: No","Live Agent Call: Yes"]; cards 2&5 [..., "SMS Engaged: Yes","Live Agent Call: Yes"]; cards 3&6 [..., "SMS Engaged: Yes","Live Agent Call: No"]. Each card tiles EXACTLY [ {label:"${conversionTerm} (Percent)", value like "21%"}, {label:"Total Revenue (Sale Amount)", value like "$27,760"} ]. ${conversionTerm} % should INCREASE across each group (agent-assisted / agent-only convert best).\n` +
       `- breakdowns: EXACTLY 5.\n` +
       `  • Four with hasDonut:true: "Calls by Source"/"Source: Call Outcome Summary"/dimension "Marketing Source"; "Calls by Medium"/"Medium: Call Outcome Summary"/"Marketing Medium"; "Calls by Campaign"/"Campaign: Call Outcome Summary"/"Marketing Campaign" (campaign names SPECIFIC to ${name}); "Calls by Search Term"/"Search Term: Call Outcome Summary"/"Marketing Search Term" (real search queries a ${name} customer would type).\n` +
       `    Each: metricColumns ["Call Count","${bookingTerm} Scheduled (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"]; exactly 5 rows sorted by Call Count DESC (metrics aligned as [count, a %, a %, "$"+amount]); and donutTotal = an integer 15-30% LARGER than the sum of the 5 rows' Call Counts.\n` +
       `  • One with hasDonut:false: title & tableTitle "Conversions by Product Category", dimension "Product Category", metricColumns ["Call Count","${bookingTerm} Scheduled (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"], exactly 5 product/service-category rows for ${name}.\n` +
-      `- productCategoryGraph: stacked bar. yLabel "${conversionTerm} (Count)". xLabels ["01/19","01/20","01/21","01/22","01/23"]. series = one per product category (SAME names and order as the Product Category table rows), each with 5 small integer values (2-16).\n` +
+      `- productCategoryGraph: stacked bar. yLabel "${conversionTerm} (Count)". xLabels ${JSON.stringify(WEEK_LABELS)}. series = one per product category, SAME names and SAME ORDER as the Product Category table rows, and each series MUST sum to that row own ${conversionTerm} count (its Call Count x its percent). A series total that contradicts its table row is the most common bug here.\n` +
       `All numbers realistic and internally consistent. Re-skin every campaign, search term, and product category to ${name}'s actual business.`,
     9000,
     FAST_MODEL
@@ -316,14 +396,15 @@ function generateAiAgentConversionDashboard(client: Anthropic, name: string, bri
 
 /* AI Messaging Impact dashboard (4th) — Human-vs-AI story. Keeps the reference
    layout/labels; re-skins the Common Topics categories + amounts to the prospect. */
-function generateAiMessagingImpact(client: Anthropic, name: string, brief: string, bookingTerm: string, _customerNoun: string) {
+function generateAiMessagingImpact(client: Anthropic, name: string, brief: string, bookingTerm: string, _customerNoun: string, sc: Scale) {
   return structured<z.infer<typeof AiMessagingImpactView>>(
     client,
     AiMessagingImpactView,
     `Using this business brief, produce Invoca "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)" demo data for ${name} — contrasting AI-agent messaging (this month) vs human-only (last month). AI must dramatically outperform human on EVERY metric.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n` +
-      `- title "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)". dateRange "This Month".\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +
+      `- title "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)". dateRange "${DATE_RANGE}".\n` +
+      `- AI is THIS month, Human is LAST month. AI must win on EVERY metric a prospect could derive — including revenue PER ${bookingTerm}: AI revenue/count must come out HIGHER than the human one, not just the totals.\n` +
       `- aiLeadEngagement: title "AI Agent Lead Engagement (This Month)", tiles [{label:"Form Submits", value ~1000-1600}, {label:"Avg. Speed to Lead", value "0:01"}, {label:"AI SMS Engagement Rate", value ~"80-90%"}].\n` +
       `- aiAppointmentPerformance: title "AI Agent ${bookingTerm} Performance (This Month)", tiles [{label:"${bookingTerm} Scheduled (Percent)", ~"20-30%"}, {label:"${bookingTerm} Scheduled (Count)", ~250-400}, {label:"Total Revenue (Sale Amount)", a large "$" amount like "$1,743,824"}].\n` +
       `- humanLeadEngagement: title "Human-Only Lead Engagement (Last Month)", chip "Last Month", tiles [{label:"Form Submits", ~700-1000}, {label:"Avg. Speed to Lead", a SLOW time like "19:23:20"}, {label:"Human SMS Engagement Rate", ~"30-40%"}].\n` +
@@ -338,15 +419,15 @@ function generateAiMessagingImpact(client: Anthropic, name: string, brief: strin
   );
 }
 
-function generateConversationIntelligence(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string) {
+function generateConversationIntelligence(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string, sc: Scale) {
   return structured<z.infer<typeof ConversationIntelligenceView>>(
     client,
     ConversationIntelligenceView,
     `Using this business brief, produce Invoca "Conversation Intelligence" demo data for ${name} — the deep-dive analysis of ONE inbound phone call.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n` +
-      `- title: exactly "Conversation intelligence". dateRange: "Aug 11, 2025 - Aug 16, 2025". callCount: "5,139 calls". pagerLabel: "1 of 52".\n` +
-      `- calls: exactly 10 items for the left-hand list, each { time like "8/11/25 12:02 am" (all within Aug 11–16, 2025, ascending), id like "F57B-817F0292530D" (4 hex chars, dash, 12 hex chars, uppercase) }.\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +
+      `- title: exactly "Conversation intelligence". dateRange: "${DATE_RANGE_LONG}". callCount: "${n(sc.calls)} calls". pagerLabel: "1 of ${n(Math.round(sc.calls / 10))}" (10 rows per page, so pages = calls / 10).\n` +
+      `- calls: exactly 10 items for the left-hand list, each { time like "1/12/26 10:41 am" — all inside the demo month AND during BUSINESS HOURS (8am-6pm), ascending, no two identical. A rule-based "Business Hours: Inside" signal cannot fire on a 12:02 am call. id like "F57B-817F0292530D" (4 hex chars, dash, 12 hex chars, uppercase) }.\n` +
       `- duration: the selected call's length like "2:22" (between 1:30 and 3:00).\n` +
       `- transcript: 18–22 turns of a realistic inbound call to THIS business, alternating speaker "agent" and "caller" (start and end with "agent"). Each turn { speaker, time (mm:ss, strictly increasing, last ≈ duration), text, highlights }. The call: a NEW customer inquires about THIS business's actual products/services, the agent gathers name + needs, recommends specific products, offers the business's booking (consultation/appointment/quote), and SCHEDULES it, closing politely. highlights = array of 0–3 EXACT substrings from that turn's text to emphasize (greeting phrases, the booking being scheduled, product names, closing phrases); use [] when none.\n` +
       `- signals: 8–10 MET SIGNALS specific to THIS business, each { name, badges (subset of ["Keyword Spotting","Rule","Keypress"]), count (0 to hide, else 2–4) }. Include quality signals like "(QA) Proper Greeting" and "(QA) Proper Close" (both with a count), "Answered by Agent" (["Rule"], count 0), a "Caller Type: New ${customerNoun}" signal (["Keyword Spotting","Rule","Keypress"], count 2), a "${bookingTerm}: Scheduled" signal, and 2–3 product/intent signals.\n` +
@@ -357,14 +438,14 @@ function generateConversationIntelligence(client: Anthropic, name: string, brief
   );
 }
 
-function generateSmsConversationIntelligence(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string) {
+function generateSmsConversationIntelligence(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string, sc: Scale) {
   return structured<z.infer<typeof SmsConversationIntelligenceView>>(
     client,
     SmsConversationIntelligenceView,
     `Using this business brief, produce Invoca "AI SMS Conversation Intelligence" demo data for ${name} — a list of AI-SMS text conversations.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n` +
-      `- countLabel "5,139 calls". dateRange "Aug 11, 2025 - Aug 16, 2025". pagerLabel "1 of 52".\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +
+      `- countLabel "${n(Math.round(sc.calls * 0.63))} conversations". dateRange "${DATE_RANGE_LONG}". pagerLabel "1 of ${n(Math.round(sc.calls * 0.63 / 10))}".\n` +
       `- conversations: exactly 4.\n` +
       `  • conversations[0] is ACTIVE (active:true) — a full realistic AI-SMS conversation for THIS business:\n` +
       `    - id like "C516-117FE212560D" (4 hex chars, dash, 12 hex chars, UPPERCASE). time like "8/16/25 10:55 pm". date "March 10, 2026".\n` +
@@ -379,14 +460,14 @@ function generateSmsConversationIntelligence(client: Anthropic, name: string, br
 
 /* AI Voice Conversation Intelligence — the voice sibling of the SMS report: a
    list of AI-voice phone calls (1 active example + 3 inactive shells). */
-function generateVoiceConversationIntelligence(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string) {
+function generateVoiceConversationIntelligence(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string, sc: Scale) {
   return structured<z.infer<typeof VoiceConversationIntelligenceView>>(
     client,
     VoiceConversationIntelligenceView,
     `Using this business brief, produce Invoca "AI Voice Conversation Intelligence" demo data for ${name} — a list of AI-voice phone calls.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n` +
-      `- countLabel "3,027 calls". dateRange "Aug 11, 2025 - Aug 16, 2025". pagerLabel "1 of 31".\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +
+      `- countLabel "${n(sc.calls)} calls". dateRange "${DATE_RANGE_LONG}". pagerLabel "1 of ${n(Math.round(sc.calls / 10))}".\n` +
       `- conversations: exactly 4.\n` +
       `  • conversations[0] is ACTIVE (active:true) — a full realistic AI-voice phone call for THIS business:\n` +
       `    - id like "A417-2C9FE314770D" (4 hex chars, dash, 12 hex chars, UPPERCASE). time like "8/16/25 4:12 pm". date "March 10, 2026".\n` +
@@ -441,18 +522,34 @@ function generateScreenpops(client: Anthropic, name: string, brief: string, book
    The model generates only the compact re-skinnable content (KPI values, agent
    names/rows, weekly stacks); the engine composes the fixed chart scaffolding
    and deterministic daily points, so the long daily arrays are reliable. */
-function qmDays(barBase: number, barAmp: number, lineBase: number, lineAmp: number, withLine: boolean) {
-  const pts: { label: string; bar: number; line?: number }[] = [];
-  for (let i = 0; i < 34; i++) {
-    const m = i < 31 ? 1 : 2;
-    const day = i < 31 ? i + 1 : i - 30;
-    const label = `${String(m).padStart(2, "0")}/${String(day).padStart(2, "0")}`;
-    const bar = Math.round(barBase + barAmp * Math.sin(i * 0.9) + (i % 5) * 1.2);
-    const p: { label: string; bar: number; line?: number } = { label, bar };
-    if (withLine) p.line = Math.round(lineBase + lineAmp * Math.sin(i * 0.7 + 1) + (i % 4) * 1.1);
-    pts.push(p);
-  }
-  return pts;
+/* One point per day of the canonical month, so a QM chart can never cover a
+   different window than the date filter above it. Each series is re-centred on
+   the mean it was asked for (and a count/revenue series can be pinned to an
+   exact monthly TOTAL), which is what lets a tile claim an average or a total
+   and have it be literally true of the points underneath. The previous version
+   drifted ~2 points high because its `(i % 5)` sawtooth wasn't zero-mean. */
+const QM_DAYS = 31;
+function qmDays(
+  barMean: number, barAmp: number, lineMean: number, lineAmp: number,
+  withLine: boolean, lineTotal?: number,
+) {
+  const build = (mean: number, amp: number, phase: number, total?: number) => {
+    const raw = Array.from({ length: QM_DAYS }, (_, i) =>
+      mean + amp * Math.sin(i * 0.8 + phase) + amp * 0.28 * Math.sin(i * 2.3 + phase));
+    const shift = mean - raw.reduce((sum, v) => sum + v, 0) / QM_DAYS;
+    const out = raw.map((v) => Math.max(0, Math.round(v + shift)));
+    const target = Math.round(total ?? mean * QM_DAYS);
+    out[QM_DAYS - 1] += target - out.reduce((sum, v) => sum + v, 0);
+    return out;
+  };
+  const bars = build(barMean, barAmp, 0);
+  const lines = withLine ? build(lineMean, lineAmp, 1.2, lineTotal) : null;
+  return Array.from({ length: QM_DAYS }, (_, i) => {
+    const label = `01/${String(i + 1).padStart(2, "0")}`;
+    const p: { label: string; bar: number; line?: number } = { label, bar: bars[i] };
+    if (lines) p.line = lines[i];
+    return p;
+  });
 }
 const QmAgentRow = z.object({
   agent: z.string(),
@@ -477,57 +574,60 @@ const QmGen = z.object({
   bottomRows: z.array(QmAgentRow), // 5–6, low scores (~40–42%)
   topRows: z.array(QmAgentRow),    // 5–6, higher scores (~46–49%)
 });
-function composeQm(g: z.infer<typeof QmGen>): z.infer<typeof QualityManagementView> {
+function composeQm(g: z.infer<typeof QmGen>, sc: Scale): z.infer<typeof QualityManagementView> {
   const convCount = `${g.conversionNoun} (Count)`;
   const convPct = `${g.conversionNoun} (Percent)`;
   const scoreCol = "New Customer Sales Combination Scorecard (Average)";
   const cols = ["Agent", scoreCol, convPct, "Total Revenue (Sale Amount)", "Call Count"];
   const mkBars = (rows: z.infer<typeof QmAgentRow>[]) => ({
-    legend: "New Customer Sales Combination Scorecard", axisMax: 50, axisTicks: [0, 10, 20, 30, 40, 50], axisSuffix: "%",
+    legend: "New Customer Sales Combination Scorecard", axisMax: 100, axisTicks: [0, 25, 50, 75, 100], axisSuffix: "%",
     bars: rows.map((r) => ({ name: r.agent, value: r.score, display: `${r.score}%` })),
   });
   const mkTable = (rows: z.infer<typeof QmAgentRow>[]) => ({
     columns: cols,
     rows: rows.map((r) => ({ cells: [r.agent, `${r.score}%`, `${r.conv}%`, r.revenue, r.callCount] })),
   });
-  const lostMax = Math.max(5, ...g.lostAgents.map((a) => a.value));
+  const lostMax = Math.ceil(Math.max(5, ...g.lostAgents.map((a) => a.value)) / 50) * 50;
+  const convRightMax = Math.ceil((sc.consultations / 31) * 1.4 / 100) * 100;
+  const revRightMax = Math.ceil((sc.revenue / 31) * 1.4 / 100000) * 100000;
   return {
     title: "QM | Actionable Insights Dashboard",
-    dateRange: "1/1/2025-2/28/2025",
+    dateRange: DATE_RANGE,
     salesOpportunities: { title: "Sales Opportunities", chips: ["Answered by Agent: Yes"], tiles: [{ label: "Call Count", value: g.salesOppCallCount }, { label: "Buying Intent (Industry) (Count)", value: g.salesOppBuyingIntent }] },
     salesConversions: { title: "Sales Conversions", chips: ["2 Filters"], tiles: [{ label: convCount, value: g.salesConvCount }, { label: "Total Revenue (Sale Amount)", value: g.salesConvRevenue }] },
-    callsNeedingReview: { title: "Calls Needing Review - Lost Sales Opportunities", chips: ["5 Filters"], chart: { legend: "New Customer Sales Fail (Range & Count)", axisMax: lostMax, axisTicks: Array.from({ length: lostMax + 1 }, (_, i) => i), axisSuffix: "", bars: g.lostAgents.map((a) => ({ name: a.name, value: a.value, display: String(a.value) })) } },
-    highestConvertingAgents: { yLabel: convCount, xLabels: ["Dec 29-Jan 4", "Jan 5-11", "Jan 12-18", "Jan 19-25", "Jan 26-Feb 1", "Feb 2-8", "Feb 9-15", "Feb 16-22", "Feb 23-Mar 1"], series: g.weeklyAgents.map((a) => ({ name: a.name, values: a.values })) },
+    callsNeedingReview: { title: "Calls Needing Review - Lost Sales Opportunities", chips: ["5 Filters"], chart: { legend: "New Customer Sales Fail (Range & Count)", axisMax: lostMax, axisTicks: [0, lostMax / 4, lostMax / 2, (lostMax * 3) / 4, lostMax], axisSuffix: "", bars: g.lostAgents.map((a) => ({ name: a.name, value: a.value, display: String(a.value) })) } },
+    highestConvertingAgents: { yLabel: convCount, xLabels: WEEK_LABELS, series: g.weeklyAgents.map((a) => ({ name: a.name, values: a.values })) },
     baselineSkills: { title: "Baseline Skills", chips: [], tiles: [{ label: "Proper Greeting (Scorecard) (Percent)", value: g.greetingPct }, { label: "Asked for the Sale (Scorecard) (Percent)", value: g.askedForSalePct }] },
     scoredCalls: { title: "Scored Calls", chips: [], tiles: [{ label: "Information Gathering (Average)", value: g.infoGatheringPct }, { label: "Call Etiquette (Average)", value: g.callEtiquettePct }, { label: "New Customer Sales (Average)", value: g.newCustomerSalesPct }] },
-    baselineQualityScore: { title: "Baseline Sales Quality Score", cadence: "Daily", barLabel: scoreCol, average: 45, yMax: 75, yTicks: [0, 25, 50, 75], suffix: "%", points: qmDays(44, 6, 0, 0, false) },
+    baselineQualityScore: { title: "Baseline Sales Quality Score", cadence: "Daily", barLabel: scoreCol, average: QM_SCORE_MEAN, yMax: 100, yTicks: [0, 25, 50, 75, 100], suffix: "%", points: qmDays(QM_SCORE_MEAN, 8, 0, 0, false) },
     bottomByAgentBar: { title: "Bottom Quality Scores by Agent", chips: ["New Customer Sales Combination Scorecard: Applied"], chart: mkBars(g.bottomRows), pager: "1 - 6 of 30" },
     bottomByAgentTable: { title: "Bottom Quality Scores by Agent", chips: ["New Customer Sales Combination Scorecard: Applied"], table: mkTable(g.bottomRows) },
     topByAgentBar: { title: "Top Quality Scores by Agent", chips: [], chart: mkBars(g.topRows), pager: "1 - 6 of 30" },
     qualityByAgentTable: { title: "Quality Scores by Agent", chips: [], table: mkTable(g.topRows) },
-    trendingToConversion: { title: "Trending Sales Quality Score to Conversion", cadence: "Daily", barLabel: scoreCol, lineLabel: convCount, yMax: 60, yTicks: [0, 20, 40, 60], suffix: "%", rightLabel: convCount, rightMax: 60, rightTicks: [0, 15, 30, 45, 60], points: qmDays(44, 6, 32, 10, true) },
-    trendingToRevenue: { title: "Trending Sales Quality Score to Revenue", cadence: "Daily", barLabel: scoreCol, lineLabel: "Total Revenue (Sale Amount)", yMax: 60, yTicks: [0, 20, 40, 60], suffix: "%", rightLabel: "Total Revenue (Sale Amount)", rightMax: 6000, rightTicks: [0, 2000, 4000, 6000], rightPrefix: "$", points: qmDays(44, 6, 3200, 1100, true) },
+    trendingToConversion: { title: "Trending Sales Quality Score to Conversion", cadence: "Daily", barLabel: scoreCol, lineLabel: convCount, yMax: 100, yTicks: [0, 25, 50, 75, 100], suffix: "%", rightLabel: convCount, rightMax: convRightMax, rightTicks: [0, convRightMax / 4, convRightMax / 2, (convRightMax * 3) / 4, convRightMax], points: qmDays(QM_SCORE_MEAN, 8, Math.round(sc.consultations / 31), Math.round(sc.consultations / 31 / 8), true, sc.consultations) },
+    trendingToRevenue: { title: "Trending Sales Quality Score to Revenue", cadence: "Daily", barLabel: scoreCol, lineLabel: "Total Revenue (Sale Amount)", yMax: 100, yTicks: [0, 25, 50, 75, 100], suffix: "%", rightLabel: "Total Revenue (Sale Amount)", rightMax: revRightMax, rightTicks: [0, revRightMax / 3, (revRightMax * 2) / 3, revRightMax], rightPrefix: "$", points: qmDays(QM_SCORE_MEAN, 8, Math.round(sc.revenue / 31), Math.round(sc.revenue / 31 / 8), true, sc.revenue) },
   };
 }
-async function generateQualityManagement(client: Anthropic, name: string, brief: string, bookingTerm: string): Promise<z.infer<typeof QualityManagementView>> {
+async function generateQualityManagement(client: Anthropic, name: string, brief: string, bookingTerm: string, sc: Scale): Promise<z.infer<typeof QualityManagementView>> {
   const g = await structured<z.infer<typeof QmGen>>(
     client,
     QmGen,
     `Using this business brief, produce compact data for the Invoca "QM | Actionable Insights Dashboard" (a QA/scorecard dashboard) for ${name}.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +
       `- conversionNoun: the business's conversion event in Title Case, consistent with the booking term "${bookingTerm}" (e.g. "${bookingTerm} Booked").\n` +
-      `- salesOppCallCount (like "4,526"), salesOppBuyingIntent (like "1,802"), salesConvCount (like "1,403"), salesConvRevenue (like "$95,945").\n` +
-      `- greetingPct "95%", askedForSalePct "47%", infoGatheringPct "38.28%", callEtiquettePct "96.64%", newCustomerSalesPct "76.42%" (use realistic but similar values).\n` +
-      `- lostAgents: EXACTLY 5 { name (a plausible agent full name), value (small int 1–5) }.\n` +
-      `- weeklyAgents: EXACTLY 5 { name (agent), values (EXACTLY 9 small ints, one per week, trending UP toward the last week) }.\n` +
-      `- bottomRows: EXACTLY 5 { agent, score (~40–42, one decimal), conv (int %), revenue (like "$1,802"), callCount (like "28") } — the LOWEST scoring agents.\n` +
-      `- topRows: EXACTLY 5 { agent, score (~46–49), conv (int %), revenue, callCount } — the HIGHEST scoring agents.\n` +
+      `- salesOppCallCount MUST be "${n(sc.answered)}" (answered calls) and salesConvCount MUST be "${n(sc.consultations)}", salesConvRevenue MUST be "${$(sc.revenue)}". salesOppBuyingIntent sits BETWEEN them (about "${n(Math.round((sc.answered + sc.consultations) / 2))}") so the funnel only ever narrows.\n` +
+      `- greetingPct "95%", askedForSalePct "62%", infoGatheringPct "64.5%", callEtiquettePct "92.3%", newCustomerSalesPct "${QM_SCORE_MEAN}%" — newCustomerSalesPct MUST equal ${QM_SCORE_MEAN}% because that is the average of the agent scorecard scores below.\n` +
+      `- lostAgents: EXACTLY 5 { name (a plausible agent full name), value (lost opportunities this month, 150–260) }.\n` +
+      `- weeklyAgents: EXACTLY 5 { name (agent, reuse the topRows names), values (EXACTLY 5 ints — one per weekly bucket — trending UP; each agent total must roughly equal that agent callCount x conv% from topRows) }.\n` +
+      `- bottomRows: EXACTLY 6 { agent, score (52–61, one decimal), conv (int %, 26–35), revenue, callCount (1,300–1,500) } — the LOWEST scoring agents.\n` +
+      `- topRows: EXACTLY 6 { agent, score (87–94, one decimal), conv (int %, 58–67), revenue, callCount (1,400–1,550) } — the HIGHEST scoring agents.\n` +
+      `- CRITICAL: higher quality score MUST mean higher conversion. Every topRows conv% must exceed every bottomRows conv% — the two "Trending Quality Score to Conversion/Revenue" tiles exist to prove coaching pays, and the data inverting that kills the story. revenue = callCount x conv% x ${$(sc.revenue / Math.max(1, sc.consultations))} per booking, rounded.\n` +
       `Use realistic agent names; keep everything specific to ${name}. Do NOT include daily time-series arrays.`,
     3500,
     FAST_MODEL
   );
-  return composeQm(g);
+  return composeQm(g, sc);
 }
 
 /* ---- QM Instant Insights dashboard (6th) ----------------------------------
@@ -552,11 +652,11 @@ const QmInstantGen = z.object({
 function composeQmInstant(g: z.infer<typeof QmInstantGen>): z.infer<typeof QmInstantInsightsView> {
   return {
     title: "QM | Instant Insights Dashboard",
-    dateRange: "1/1/2025-2/28/2025",
+    dateRange: DATE_RANGE,
     trendingEssentialMetrics: {
       title: "Trending Essential Metrics", cadence: "Daily", barLabel: "Negative Sentiment (Percent)", lineLabel: "Average Agent Handle Time",
       linePrimary: true, yMin: 78, yMax: 105, yTicks: [80, 88, 96, 104], suffix: "", tickLabels: ["1:20", "1:28", "1:36", "1:44"],
-      rightLabel: "Negative Sentiment (Percent)", rightMax: 120, rightTicks: [0, 40, 80, 120], rightSuffix: "%",
+      rightLabel: "Negative Sentiment (Percent)", rightMax: 120, rightTicks: [0, 5, 10, 15, 20], rightSuffix: "%",
       points: (() => { const p = qmDays(4, 2, 90, 6, true); p[12].line = 101; p[12].bar = 50; return p; })(),
     },
     essentialMetrics: { title: "Essential Metrics", chips: [], tiles: [{ label: "Call Count", value: g.callCount }, { label: "Average Agent Handle Time", value: g.avgHandleTime }, { label: "Not Answered by Agent (Count)", value: g.notAnswered }, { label: "Negative Sentiment (Count)", value: g.negSentiment }] },
@@ -571,16 +671,16 @@ function composeQmInstant(g: z.infer<typeof QmInstantGen>): z.infer<typeof QmIns
     scoredCallsByEvaluator: { title: "Scored Calls by Evaluator", chips: [], table: { columns: ["Evaluated By", "Evaluated (Count)", "Introduction (Average)", "Phone Etiquette (Average)", "Problem Resolution (Average)"], rows: g.evaluators.map((e) => ({ cells: [e.name, e.count, e.intro, e.phone, e.problem] })) } },
   };
 }
-async function generateQmInstantInsights(client: Anthropic, name: string, brief: string): Promise<z.infer<typeof QmInstantInsightsView>> {
+async function generateQmInstantInsights(client: Anthropic, name: string, brief: string, sc: Scale): Promise<z.infer<typeof QmInstantInsightsView>> {
   const g = await structured<z.infer<typeof QmInstantGen>>(
     client,
     QmInstantGen,
     `Produce compact data for the Invoca "QM | Instant Insights Dashboard" (a QA at-a-glance dashboard) for ${name}. These are generic contact-center QA metrics — supply realistic values.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `- callCount (like "5,651"), avgHandleTime (mm:ss like "1:29"), notAnswered (like "199"), negSentiment (like "342").\n` +
+      `- callCount MUST be exactly "${n(sc.calls)}" and notAnswered exactly "${n(sc.notAnswered)}" (so the answer rate is ${sc.answerRatePct}%, which the trend chart is drawn to match). avgHandleTime (mm:ss like "1:29"). negSentiment about "${n(Math.round(sc.calls * 0.06))}".\n` +
       `- callerTalkPct "32%", agentTalkPct "59%", avgOvertalk "0:00", silencePct "9%" (realistic, similar).\n` +
-      `- qaEvalAvg (like "73%"), introAvg (like "76.67%"), phoneEtiquetteAvg (like "78.8%"), problemResolutionAvg (like "50.67%").\n` +
-      `- evaluators: EXACTLY 3 { name (a QA evaluator full name), count (like "3"), intro, phone, problem (percentages like "83.33%") }.\n` +
+      `- evaluators: EXACTLY 3 { name (a QA evaluator full name), count (how many calls they scored — hundreds, e.g. "412"), intro, phone, problem (percentages like "83.33%") }.\n` +
+      `- introAvg / phoneEtiquetteAvg / problemResolutionAvg MUST each be the COUNT-WEIGHTED average of that column across the 3 evaluators — compute it, do not guess. An average can never fall outside the range of the three numbers it averages. qaEvalAvg = the mean of those three rollups, rounded to a whole percent.\n` +
       `Keep values realistic; vary them a little from the examples.`,
     1500,
     FAST_MODEL
@@ -668,6 +768,8 @@ export async function generateProfile(
   const customerNoun = terms.customerNoun;
   const qualifiedCallTerm = terms.qualifiedCallTerm;
   const conversionTerm = terms.conversionTerm;
+  const scale = buildScale(terms);
+  console.log(`[scale] ${n(scale.calls)} calls/mo, ${n(scale.purchases)} sales @ ${$(scale.avgSale)} = ${$(scale.revenue)}`);
   /* Everything after the terms call depends ONLY on the brief + the 4 canonical terms
      (not on each other), so the 15 remaining phases — INCLUDING the heavy Digital
      Insights table (nothing reads it until final assembly) — run through a
@@ -699,21 +801,21 @@ export async function generateProfile(
     opsDashboard, callDetail, voiceConversationIntelligence, smsConversationIntelligence, aiAgentConversion,
     qualityManagement, voiceRoutingDemo, screenpops, aiMessagingImpact, qmInstantInsights,
   ] = await runPool([
-    () => phase("dashboard", () => generateDashboard(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm)),
+    () => phase("dashboard", () => generateDashboard(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale)),
     () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm)),
-    () => phase("callReview", () => generateCallReview(client, name, brief, bookingTerm)),
-    () => phase("digitalInsights", () => generateDigitalInsights(client, name, brandDomain, brief, bookingTerm)),
-    () => phase("conversationIntelligence", () => generateConversationIntelligence(client, name, brief, bookingTerm, customerNoun)),
-    () => phase("opsDashboard", () => generateOpsDashboard(client, name, brief, bookingTerm, customerNoun)),
+    () => phase("callReview", () => generateCallReview(client, name, brief, bookingTerm, scale)),
+    () => phase("digitalInsights", () => generateDigitalInsights(client, name, brandDomain, brief, bookingTerm, scale)),
+    () => phase("conversationIntelligence", () => generateConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
+    () => phase("opsDashboard", () => generateOpsDashboard(client, name, brief, bookingTerm, customerNoun, scale)),
     () => phase("callDetail", () => generateCallDetail(client, name, brief, bookingTerm)),
-    () => phase("voiceConversationIntelligence", () => generateVoiceConversationIntelligence(client, name, brief, bookingTerm, customerNoun)),
-    () => phase("smsConversationIntelligence", () => generateSmsConversationIntelligence(client, name, brief, bookingTerm, customerNoun)),
-    () => phase("aiAgentConversion", () => generateAiAgentConversionDashboard(client, name, brief, bookingTerm, customerNoun, qualifiedCallTerm, conversionTerm)),
-    () => phase("qualityManagement", () => generateQualityManagement(client, name, brief, bookingTerm)),
+    () => phase("voiceConversationIntelligence", () => generateVoiceConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
+    () => phase("smsConversationIntelligence", () => generateSmsConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
+    () => phase("aiAgentConversion", () => generateAiAgentConversionDashboard(client, name, brief, bookingTerm, customerNoun, qualifiedCallTerm, conversionTerm, scale)),
+    () => phase("qualityManagement", () => generateQualityManagement(client, name, brief, bookingTerm, scale)),
     () => phase("voiceRoutingDemo", () => generateVoiceRoutingDemo(client, name, brandDomain, brief, bookingTerm)),
     () => phase("screenpops", () => generateScreenpops(client, name, brief, bookingTerm, customerNoun)),
-    () => phase("aiMessagingImpact", () => generateAiMessagingImpact(client, name, brief, bookingTerm, customerNoun)),
-    () => phase("qmInstantInsights", () => generateQmInstantInsights(client, name, brief)),
+    () => phase("aiMessagingImpact", () => generateAiMessagingImpact(client, name, brief, bookingTerm, customerNoun, scale)),
+    () => phase("qmInstantInsights", () => generateQmInstantInsights(client, name, brief, scale)),
   ], CONCURRENCY);
 
   /* Gumloop leave-behinds → clickable rows in My Reports. All three are rendered

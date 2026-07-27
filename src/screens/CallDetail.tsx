@@ -145,7 +145,7 @@ export function CallDetail() {
                     </div>
                     <div className={"cd-turn-text " + (t.speaker === "agent" ? "cd-t-agent" : "cd-t-caller")}>{t.text}</div>
                   </div>
-                  {t.time === "00:14" && (
+                  {t.time === d.convStart && (
                     <div className="cd-conv-start"><span className="material-icons">emoji_objects</span>Estimated Conversation Start - {d.convStart}<span className="material-icons cd-cs-info">info</span></div>
                   )}
                 </div>
