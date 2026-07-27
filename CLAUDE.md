@@ -27,6 +27,45 @@ The generate command needs `ANTHROPIC_API_KEY` in `.env` (already created; git-i
 The same key powers the in-app **Launch screen** (live generation), so `npm run dev`
 must run with `.env` present.
 
+## Shared team demo library (server-backed)
+Demos are stored **on the server** so the whole team sees the same list, not just
+whoever's browser generated them. Storage = **one JSON file per demo on Render's
+persistent disk** (`engine/demoStore.ts`: `$DATA_DIR` → `/var/data` or `/data` if
+mounted → `<repo>/.data` locally, git-ignored). `engine/demoApi.ts` is a
+transport-agnostic handler (`handleDemoApi`) mounted by BOTH `server.ts` (prod) and
+the `demoLibraryApi()` plugin in `vite.config.ts` (dev) — keep them in sync.
+
+Routes: `GET /api/me`, `GET|POST /api/demos`, `GET|PATCH|DELETE /api/demos/:id`,
+`POST /api/demos/:id/duplicate`.
+
+**Ownership** (server-enforced — the frontend lock is convenience only):
+- Anyone signed in can **list and view** every demo.
+- Only the **creator** can PATCH/DELETE theirs (others get a 403 telling them to duplicate).
+- Anyone can **duplicate** someone else's → a copy owned by them, named
+  `<prospect> (copy)` (both `prospect` and `profile.customerName`) so the library and
+  the customer switcher never show two identical entries.
+
+Identity comes from the Google sign-in gate (`googleAuth.ts` → `currentUser(req)`,
+`@invoca.com` only); off-gate local dev is `Local Dev <local@dev>`.
+
+Frontend: `src/data/DemoLibraryContext.tsx` (`useDemoLibrary()`). If the API is
+unreachable it sets `available=false` and the app falls back to the local/bundled
+profiles it always used. The **Launch screen** renders library demos + any local-only
+profiles in one list: creator shown per row ("You" in blue, else their name), search
+matches **prospect / industry / creator name / creator email**, others' demos get a
+**Duplicate** button, only yours get **Delete**, and local-only demos get a **Publish**
+(`cloud_upload`) button that pushes them to the library. A freshly generated prospect
+is published automatically.
+
+**AI edits are per-demo and persist server-side.** `AiAssistantContext.hydrateDemo(id,
+customizations, canEdit, creator)` loads a demo's saved AI layer into the store (server
+keys are bare pathnames like `/dashboards/marketing`; the store prefixes them
+`<demoId>::<path>`), and an effect saves the active demo's slice back via PATCH,
+**debounced 800ms**, owner-only, guarded by `lastSyncedRef` so loading doesn't
+immediately re-save. On someone else's demo `readOnly` is true: `mutate`/`applyEdits`/
+`undo` no-op, and the Ask AI drawer shows a "view only" banner and declines any
+create/editData/editTile result.
+
 ## Launch screen & live generation (the front door)
 `/` and `/launch` render `src/screens/Launch.tsx` (full-page, outside the AppShell).
 An SE enters a prospect **name + URL** → **Launch** → the app POSTs to
