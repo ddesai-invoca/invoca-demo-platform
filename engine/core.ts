@@ -217,35 +217,72 @@ async function structured<T>(client: Anthropic, zodType: any, prompt: string, ma
   return zodType.parse(JSON.parse(text)) as T;
 }
 
-async function research(client: Anthropic, name: string, url: string): Promise<string> {
+export async function research(client: Anthropic, name: string, url: string): Promise<string> {
   const messages: Anthropic.MessageParam[] = [
     {
       role: "user",
-      content:
-        `Research the company "${name}" whose website is ${url}. ` +
-        `Fetch that URL and search the web as needed. Produce a concise brief covering:\n` +
-        `- what the business sells and its industry\n` +
-        `- their main product/service CATEGORIES and 8–15 specific product/service NAMES with realistic US price points\n` +
-        `- for each product, a one-line "components/features" description\n` +
-        `- the marketing channels they likely use (Paid Search, Social Media, Organic, etc.) and plausible campaign names\n` +
-        `- realistic search terms a customer would use\n` +
-        `- their site's navigation structure (for "Home / Category / Subcategory" journeys)\n` +
-        `Prioritize the homepage plus 1–2 key product/service/category pages (and a targeted search only if needed); STOP as soon as you have enough to write the brief — do NOT exhaustively crawl the site.\n` +
-        `Base it on their ACTUAL site content where possible. Return prose, no preamble.`,
+      content: [
+        {
+          type: "text",
+          text:
+            `Research the company "${name}" whose website is ${url}. ` +
+            `Fetch that URL and search the web as needed. Produce a concise brief covering:\n` +
+            `- what the business sells and its industry\n` +
+            `- their main product/service CATEGORIES and 8–15 specific product/service NAMES with realistic US price points\n` +
+            `- for each product, a one-line "components/features" description\n` +
+            `- the marketing channels they likely use (Paid Search, Social Media, Organic, etc.) and plausible campaign names\n` +
+            `- realistic search terms a customer would use\n` +
+            `- their site's navigation structure (for "Home / Category / Subcategory" journeys)\n` +
+            `Prioritize the homepage plus 1–2 key product/service/category pages (and a targeted search only if needed); STOP as soon as you have enough to write the brief — do NOT exhaustively crawl the site.\n` +
+            `Base it on their ACTUAL site content where possible. Return prose, no preamble.`,
+          // The prompt is identical every pause_turn iteration, so cache it —
+          // a resumed turn re-reads it instead of re-processing it.
+          cache_control: { type: "ephemeral" },
+        },
+      ],
     },
   ];
   const tools = [
-    { type: "web_fetch_20260209", name: "web_fetch", max_uses: 3 },
+    // max_content_tokens is a guard against a pathologically large page, NOT a
+    // speed lever — measured on a heavy retail SPA, capping at 8k changed the
+    // wall clock by <10% (201s -> 182s). It's set well above what a normal page
+    // returns (~11k) so it only bites runaway documents.
+    { type: "web_fetch_20260209", name: "web_fetch", max_uses: 3, max_content_tokens: 30000 },
     { type: "web_search_20260209", name: "web_search", max_uses: 2 },
   ] as any;
 
-  let response = await client.messages.create({ model: MODEL, max_tokens: 8000, thinking: { type: "adaptive" }, tools, messages });
+  /* effort:"low" is THE performance lever here, worth ~3.5x: research is
+     extraction and summarisation, not reasoning, and the default `high` had the
+     model deliberating over pages it had already read. Measured on the same
+     prospect: 201s at the default vs 58s at low — and the low-effort brief came
+     back LONGER and no less specific (6.7k vs 5.8k chars), because the time was
+     going into deliberation rather than coverage. Streaming keeps a long
+     tool-loop turn from tripping the SDK's request timeout. */
+  const req = {
+    model: MODEL,
+    max_tokens: 8000,
+    thinking: { type: "adaptive" as const },
+    output_config: { effort: "low" },
+    tools,
+  };
+
+  let response = await client.messages.stream({ ...req, messages } as any).finalMessage();
   let guard = 0;
   while (response.stop_reason === "pause_turn" && guard++ < 4) {
-    messages.push({ role: "assistant", content: response.content });
-    response = await client.messages.create({ model: MODEL, max_tokens: 8000, thinking: { type: "adaptive" }, tools, messages });
+    messages.push({ role: "assistant", content: response.content as any });
+    response = await client.messages.stream({ ...req, messages } as any).finalMessage();
   }
-  const brief = response.content.filter((b) => b.type === "text").map((b: any) => b.text).join("\n").trim();
+
+  /* Take only the TRAILING run of text blocks. Joining every text block sweeps
+     up the model's interstitial narration ("Let me fetch the homepage...") into
+     the brief, which then leaks into all 15 downstream phases. */
+  const blocks = response.content;
+  const tail: string[] = [];
+  for (let i = blocks.length - 1; i >= 0; i--) {
+    if (blocks[i].type === "text") tail.unshift((blocks[i] as any).text);
+    else break;
+  }
+  const brief = tail.join("\n").trim();
   if (!brief) throw new Error("Research produced no brief.");
   return brief;
 }
