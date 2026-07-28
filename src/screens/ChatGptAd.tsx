@@ -39,6 +39,9 @@ function shortArea(raw?: string): string | undefined {
    "Home & Business Security / Alarm Monitoring"), so prefer whichever side of
    the "&" actually has two words: "Business Security", "Vision Care",
    "Health Systems", "Window Treatments". */
+const STOP = new Set(["group", "center", "centre", "clinic", "the", "and", "inc",
+  "llc", "corp", "company"]);
+
 function industrySeg(industry: string): string {
   const head = industry.split(/[/,]/)[0].trim();
   const parts = head.split("&").map((x) => x.trim()).filter(Boolean);
@@ -100,17 +103,37 @@ function derive(p: ReturnType<typeof useProfile>["profile"]) {
      as a business name in every vertical. Bullets are neutral for the same
      reason: "off-the-shelf sizes" is nonsense for an eye clinic. */
   const seg = industrySeg(p.industry);
+  /* Competitor names must not collide with the prospect's own name. The plain
+     "<City> <Industry>" template produced "Orlando Health Systems" alongside
+     the real client "Orlando Health" — indistinguishable at a glance and the
+     kind of thing that derails a demo. Reject any candidate sharing two or
+     more significant words with the prospect and take the next pattern. */
+  const sig = (t: string) =>
+    new Set(t.toLowerCase().match(/[a-z]{4,}/g)?.filter((w) => !STOP.has(w)) ?? []);
+  const brandWords = sig(p.customerName);
+  const collides = (n: string) => {
+    let shared = 0;
+    for (const w of sig(n)) if (brandWords.has(w)) shared++;
+    return shared >= 2;
+  };
+  const rivals = [
+    `${shortCity} ${seg}`, `Premier ${seg}`, `${seg} of ${shortCity}`,
+    `Summit ${seg}`, `Cornerstone ${seg}`, `First Choice ${seg}`,
+  ].filter((n) => !collides(n)).slice(0, 3);
+
   const places = [
     { name: p.customerName, rating: "4.9", type: hero, prospect: true,
-      a: `Free ${p.bookingTerm.toLowerCase()}s, and they quote a firm number rather than a range.`,
+      /* NOT "Free <booking>s" — same false claim that was already fixed in the
+         ad headline; a hospital does not offer free appointments. */
+      a: `Books ${p.bookingTerm.toLowerCase()}s over the phone, usually with same-week availability.`,
       b: "Strong reviews for getting people booked in quickly." },
-    { name: `${shortCity} ${seg}`, rating: "4.7", type: seg, prospect: false,
+    { name: rivals[0], rating: "4.7", type: seg, prospect: false,
       a: "Long-established locally, with a high volume of reviews.",
       b: "Good if you want to talk options through in person first." },
-    { name: `Premier ${seg}`, rating: "4.6", type: seg, prospect: false,
+    { name: rivals[1], rating: "4.6", type: seg, prospect: false,
       a: "Competitive on price, though waits can run longer at busy times.",
       b: "Worth a call if budget is the deciding factor." },
-    { name: `${seg} of ${shortCity}`, rating: "4.4", type: seg, prospect: false,
+    { name: rivals[2], rating: "4.4", type: seg, prospect: false,
       a: "Broad range of services, less specialised in any one of them.",
       b: "Fine for something straightforward." },
   ];
