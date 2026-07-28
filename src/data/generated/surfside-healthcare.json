@@ -1,0 +1,5347 @@
+{
+  "id": "surfside-healthcare",
+  "customerName": "Surfside Healthcare",
+  "websiteUrl": "https://www.surfsidehealthcare.com/",
+  "brandDomain": "surfsidehealthcare.com",
+  "networkName": "Invoca for Healthcare",
+  "industry": "Ambulatory Healthcare Services",
+  "bookingTerm": "Appointment",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 9847
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 12634
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 11928
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 10542
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 9324
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Find a Doctor Near Me",
+          "marketingSearchTerm": "primary care doctor near me",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/find-a-doctor?utm_source=google&utm_medium=cpc&utm_campaign=find_a_doctor_near_me",
+          "websiteJourney": "Home / Find a Doctor / By Specialty",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Same-Day Virtual Visit",
+          "marketingSearchTerm": "same day virtual doctor visit",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/virtual-care?utm_source=google&utm_medium=cpc&utm_campaign=same_day_virtual_visit",
+          "websiteJourney": "Home / Virtual Care / Schedule a Virtual Visit",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Urgent Care Miami",
+          "marketingSearchTerm": "walk-in urgent care miami",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/urgent-care?utm_source=google&utm_medium=cpc&utm_campaign=urgent_care_miami",
+          "websiteJourney": "Home / Find a Location / Urgent Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Annual Physical Book Today",
+          "marketingSearchTerm": "annual physical exam cost",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/primary-care/annual-wellness?utm_source=google&utm_medium=cpc&utm_campaign=annual_physical_book_today",
+          "websiteJourney": "Home / Specialties & Treatments / Primary Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Cardiology New Patients",
+          "marketingSearchTerm": "cardiologist near me accepting new patients",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/specialties/cardiology?utm_source=bing&utm_medium=cpc&utm_campaign=cardiology_new_patients",
+          "websiteJourney": "Home / Specialties & Treatments / Cardiology",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Dermatology Appointments",
+          "marketingSearchTerm": "dermatologist appointment near me",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/specialties/dermatology?utm_source=google&utm_medium=cpc&utm_campaign=dermatology_appointments",
+          "websiteJourney": "Home / Specialties & Treatments / Dermatology",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Family Health Plan Enrollment",
+          "marketingSearchTerm": "family health plan enrollment",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/patient-services/health-plans?utm_source=google&utm_medium=cpc&utm_campaign=family_health_plan_enrollment",
+          "websiteJourney": "Home / Patient Services / Health Plans",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Modern Care for Your Family",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/?utm_source=facebook&utm_medium=social&utm_campaign=modern_care_for_your_family",
+          "websiteJourney": "Home / Specialties & Treatments / Primary Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Orthopedic Evaluation Booking",
+          "marketingSearchTerm": "orthopedic doctor near me",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/specialties/orthopedics?utm_source=bing&utm_medium=cpc&utm_campaign=orthopedic_evaluation_booking",
+          "websiteJourney": "Home / Specialties & Treatments / Orthopedics",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Meet Our Specialists",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/find-a-doctor?utm_source=instagram&utm_medium=social&utm_campaign=meet_our_specialists",
+          "websiteJourney": "Home / Find a Doctor / By Physician Name",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Behavioral Health Telehealth",
+          "marketingSearchTerm": "mental health therapy near me",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/specialties/behavioral-health?utm_source=google&utm_medium=cpc&utm_campaign=behavioral_health_telehealth",
+          "websiteJourney": "Home / Specialties & Treatments / Behavioral Health",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/patient-portal?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / Patient Portal / Login",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Flu Season Ready",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/primary-care/immunizations?utm_source=facebook&utm_medium=social&utm_campaign=flu_season_ready",
+          "websiteJourney": "Home / Specialties & Treatments / Immunization Clinic",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Womens Health OB-GYN",
+          "marketingSearchTerm": "obgyn near me accepting new patients",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/specialties/womens-health?utm_source=bing&utm_medium=cpc&utm_campaign=womens_health_obgyn",
+          "websiteJourney": "Home / Specialties & Treatments / Women's Health",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Lab & Blood Panel Pricing",
+          "marketingSearchTerm": "how much does a blood test cost without insurance",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/diagnostics/lab-panels?utm_source=google&utm_medium=cpc&utm_campaign=lab_blood_panel_pricing",
+          "websiteJourney": "Home / Diagnostics / Lab & Blood Panels",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/price-transparency?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / Patient Services / Price Transparency",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Modern Care for Your Family",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/virtual-care?utm_source=instagram&utm_medium=social&utm_campaign=modern_care_for_your_family",
+          "websiteJourney": "Home / Virtual Care / Schedule a Virtual Visit",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "—",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/pay-my-bill?utm_source=google&utm_medium=organic",
+          "websiteJourney": "Home / Patient Services / Pay My Bill",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Diagnostic Imaging Near Me",
+          "marketingSearchTerm": "x-ray imaging center near me",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/diagnostics/imaging?utm_source=google&utm_medium=cpc&utm_campaign=diagnostic_imaging_near_me",
+          "websiteJourney": "Home / Diagnostics / Imaging",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Find a Location by ZIP",
+          "marketingSearchTerm": "surfside clinic near me",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/find-a-location?utm_source=bing&utm_medium=cpc&utm_campaign=find_a_location_by_zip",
+          "websiteJourney": "Home / Find a Location / By ZIP",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Request Medical Records",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.surfsidehealthcare.com/patient-services/medical-records?utm_source=facebook&utm_medium=social&utm_campaign=request_medical_records",
+          "websiteJourney": "Home / Patient Services / Request Medical Records",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Surfside Healthcare)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "42,569"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,156,131"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "6,811"
+            },
+            {
+              "label": "Billing Inquiry (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Medical Records Request (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Prescription Refill (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "58%"
+            },
+            {
+              "label": "Ineligible Inquiry (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              5842,
+              8214,
+              7918,
+              7647,
+              6137
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              3914,
+              5528,
+              5312,
+              5127,
+              4132
+            ]
+          },
+          {
+            "name": "Ineligible Inquiry (Count)",
+            "values": [
+              842,
+              1214,
+              1138,
+              1076,
+              913
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              2314,
+              3342,
+              3218,
+              3047,
+              2552
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 42569,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "15,842",
+                "52%",
+                "22%",
+                "$978,412"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "8,934",
+                "58%",
+                "30%",
+                "$742,318"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "6,417",
+                "61%",
+                "38%",
+                "$686,547"
+              ]
+            },
+            {
+              "name": "Direct / Organic",
+              "metrics": [
+                "5,757",
+                "64%",
+                "45%",
+                "$731,905"
+              ]
+            },
+            {
+              "name": "Instagram",
+              "metrics": [
+                "5,619",
+                "71%",
+                "68%",
+                "$1,016,949"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 42569,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "17,238",
+                "50%",
+                "18%",
+                "$918,472"
+              ]
+            },
+            {
+              "name": "Paid Social",
+              "metrics": [
+                "9,846",
+                "57%",
+                "33%",
+                "$946,318"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "7,213",
+                "60%",
+                "40%",
+                "$842,905"
+              ]
+            },
+            {
+              "name": "Email / Patient Portal",
+              "metrics": [
+                "4,529",
+                "66%",
+                "52%",
+                "$722,641"
+              ]
+            },
+            {
+              "name": "Local / Maps",
+              "metrics": [
+                "3,743",
+                "69%",
+                "62%",
+                "$725,795"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 22794,
+          "rows": [
+            {
+              "name": "Find a Doctor Near Me",
+              "metrics": [
+                "6,842",
+                "48%",
+                "20%",
+                "$392,731"
+              ]
+            },
+            {
+              "name": "Same-Day Virtual Visit",
+              "metrics": [
+                "5,317",
+                "55%",
+                "33%",
+                "$503,571"
+              ]
+            },
+            {
+              "name": "Annual Physical, Book Today",
+              "metrics": [
+                "4,193",
+                "59%",
+                "42%",
+                "$505,401"
+              ]
+            },
+            {
+              "name": "Modern Care for Your Family",
+              "metrics": [
+                "3,528",
+                "63%",
+                "50%",
+                "$506,268"
+              ]
+            },
+            {
+              "name": "Urgent Care Near You",
+              "metrics": [
+                "2,914",
+                "68%",
+                "64%",
+                "$535,338"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 16848,
+          "rows": [
+            {
+              "name": "primary care doctor near me",
+              "metrics": [
+                "5,127",
+                "46%",
+                "21%",
+                "$309,013"
+              ]
+            },
+            {
+              "name": "same day virtual doctor visit",
+              "metrics": [
+                "4,038",
+                "54%",
+                "32%",
+                "$370,804"
+              ]
+            },
+            {
+              "name": "walk-in urgent care near me",
+              "metrics": [
+                "3,214",
+                "58%",
+                "40%",
+                "$368,967"
+              ]
+            },
+            {
+              "name": "annual physical exam cost",
+              "metrics": [
+                "2,576",
+                "62%",
+                "49%",
+                "$362,269"
+              ]
+            },
+            {
+              "name": "surfside healthcare patient portal login",
+              "metrics": [
+                "1,893",
+                "67%",
+                "63%",
+                "$342,271"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 42569,
+          "rows": [
+            {
+              "name": "Primary & Preventive Care",
+              "metrics": [
+                "13,847",
+                "48%",
+                "22%",
+                "$874,318"
+              ]
+            },
+            {
+              "name": "Specialty Treatment Centers",
+              "metrics": [
+                "10,238",
+                "52%",
+                "31%",
+                "$942,715"
+              ]
+            },
+            {
+              "name": "Virtual Care / Telehealth",
+              "metrics": [
+                "8,419",
+                "58%",
+                "40%",
+                "$967,204"
+              ]
+            },
+            {
+              "name": "Diagnostics & Imaging",
+              "metrics": [
+                "5,732",
+                "61%",
+                "52%",
+                "$756,382"
+              ]
+            },
+            {
+              "name": "Patient Services & Administration",
+              "metrics": [
+                "4,333",
+                "68%",
+                "66%",
+                "$615,512"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Pricing Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 42569,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "13,428",
+                "51%",
+                "22%",
+                "$914,382"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "10,847",
+                "56%",
+                "31%",
+                "$982,715"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "8,236",
+                "60%",
+                "40%",
+                "$806,214"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "6,142",
+                "63%",
+                "48%",
+                "$728,461"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "3,916",
+                "70%",
+                "68%",
+                "$724,359"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Primary & Preventive Care",
+            "values": [
+              462,
+              652,
+              631,
+              608,
+              489
+            ]
+          },
+          {
+            "name": "Specialty Treatment Centers",
+            "values": [
+              498,
+              701,
+              676,
+              652,
+              520
+            ]
+          },
+          {
+            "name": "Virtual Care / Telehealth",
+            "values": [
+              534,
+              752,
+              724,
+              698,
+              560
+            ]
+          },
+          {
+            "name": "Diagnostics & Imaging",
+            "values": [
+              442,
+              624,
+              601,
+              578,
+              469
+            ]
+          },
+          {
+            "name": "Patient Services & Administration",
+            "values": [
+              424,
+              598,
+              576,
+              554,
+              450
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 42,569 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Margaret Ellison called to book her annual physical exam at the Coastline clinic. Agent Oscar confirmed her preferred date, walked her through the patient portal login for pre-visit paperwork, and scheduled the visit. Margaret ended the call thanking the agent for the smooth experience.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "David Kwan requested a cardiology consultation after his primary provider flagged an irregular EKG. Agent Lila verified his referral, matched him with a specialist accepting new patients, and booked the cardiology appointment for the following week. David was reassured and grateful for the quick turnaround.",
+          "date": "Feb 11, 1:38 PM",
+          "agent": "Lila",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 9,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 83,
+          "summary": "Sandra Mireles called with a billing question about a lab panel charge she did not recognize. Agent Rosey pulled up the itemized statement, explained the metabolic panel fee, and applied a self-pay adjustment. Sandra was satisfied that the billing issue was resolved without needing a callback.",
+          "date": "Mar 4, 3:52 PM",
+          "agent": "Rosey",
+          "duration": "2m 05s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Nathaniel Brooks is a new patient who called to schedule a virtual visit and establish care. Agent Lee collected his full contact details, insurance information, and medical history, then booked his first telehealth appointment and set up his patient portal account. Nathaniel confirmed the visit and looked forward to meeting the physician.",
+          "date": "Apr 9, 10:27 AM",
+          "agent": "Lee",
+          "duration": "3m 08s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Priya Venkat called to set up a dermatology visit for a persistent skin rash. Agent Mary reviewed available specialists, confirmed the physical exam would include a biopsy option if needed, and scheduled the appointment. Priya was happy with the earliest available slot.",
+          "date": "May 15, 11:49 AM",
+          "agent": "Mary",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Carlos Reyna called about same-day urgent care for a possible sprained ankle. Agent Sue checked wait times at the nearest location and booked him into an urgent care slot that afternoon. Carlos appreciated the fast scheduling though he wished walk-in hours were longer.",
+          "date": "Jun 3, 2:42 PM",
+          "agent": "Sue",
+          "duration": "2m 21s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 17,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Helen Fontaine called to request her medical records be transferred to a new provider. Agent Mike verified her identity, explained the secure portal download option, and started the records transfer. Helen was fine with the process but noted the small retrieval fee felt unexpected.",
+          "date": "Jul 8, 4:16 PM",
+          "agent": "Mike",
+          "duration": "1m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Tyler Osborne called because his lab results were not showing in the patient portal after a virtual visit. Agent Jennifer confirmed the results were still pending the specialist read and explained when they would post. Tyler was mildly frustrated by the delay but understood the timeline.",
+          "date": "Aug 12, 8:55 AM",
+          "agent": "Jennifer",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Angela Ruiz called to schedule a women's health annual exam and discuss prenatal care coordination. Agent Rose booked the OB-GYN appointment and outlined the screenings included. Angela was satisfied overall despite a longer than expected hold time.",
+          "date": "Sep 2, 12:31 PM",
+          "agent": "Rose",
+          "duration": "3m 02s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Gregory Palmer disputed a billing charge for an imaging scan he believed his family health plan covered. Agent Oscar reviewed the claim, explained the out-of-network portion, and opened a billing review case. Gregory remained unhappy and asked for a supervisor callback.",
+          "date": "Sep 19, 3:07 PM",
+          "agent": "Oscar",
+          "duration": "3m 14s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 31,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Diane Whitmore called to cancel her upcoming orthopedic evaluation because she found care elsewhere. Agent Lila processed the cancellation and offered to keep her details on file. Diane declined a reschedule and ended the call abruptly.",
+          "date": "Oct 6, 9:41 AM",
+          "agent": "Lila",
+          "duration": "1m 22s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Marcus Deng complained that his medical records request from two weeks ago had not been fulfilled. Agent Mary located the stalled request and escalated it for same-day processing. Marcus stayed irritated about the original delay despite the fix.",
+          "date": "Jan 22, 1:12 PM",
+          "agent": "Mary",
+          "duration": "2m 49s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Rebecca Lyle called after hours to reschedule a behavioral health session but reached voicemail. She left a message asking for a callback to move her appointment. No agent was available to assist and the call rolled to the messaging system.",
+          "date": "Feb 27, 6:58 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Frank Alvarado called upset that his cardiology follow-up had been rescheduled twice without notice. Agent Sue apologized, confirmed a firm new date, and flagged the scheduling error internally. Frank remained dissatisfied and said the repeated changes were unacceptable.",
+          "date": "Mar 30, 4:44 PM",
+          "agent": "Sue",
+          "duration": "3m 21s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Yolanda Pierce called to complain about a billing statement and long portal wait times, threatening to switch providers. Agent Mike tried to explain the charges but could not fully resolve her concerns on the call. Yolanda ended the call angry and requested a formal complaint be filed.",
+          "date": "Apr 18, 11:03 AM",
+          "agent": "Mike",
+          "duration": "3m 26s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "virtual visit",
+        "cardiology",
+        "billing",
+        "physical",
+        "portal",
+        "records"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 12, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Service Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and Availability",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Insurance and Payment Method",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Schedule Appointment with Date and Time",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Patient Education on Visit Preparation",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "New patient inquiry",
+        "Seeking primary care evaluation",
+        "Interested in annual physical exam",
+        "Service area confirmed",
+        "Schedule booked successfully",
+        "Appointment time confirmed",
+        "Name and demographics captured",
+        "Phone number confirmed",
+        "Professional tone established",
+        "Clear call objective",
+        "Efficient call flow",
+        "Positive patient sentiment",
+        "Location preference identified"
+      ],
+      "unmetSignals": [
+        "Email address not captured",
+        "Insurance verification not completed",
+        "Payment method not discussed",
+        "Co-pay expectations not set",
+        "Pre-visit paperwork instructions not provided",
+        "Parking or check-in procedures not explained",
+        "Medical history questionnaire not mentioned",
+        "Dietary or medication restrictions not discussed",
+        "Follow-up confirmation not sent",
+        "Patient questions not fully addressed"
+      ],
+      "naSignals": [
+        "Billing dispute resolution",
+        "Prescription refill request",
+        "Lab result discussion",
+        "Cancellation or reschedule request",
+        "Referral to specialist",
+        "Medical record request",
+        "Insurance claim status",
+        "Telemedicine visit setup",
+        "Urgent care triage",
+        "Return visit booking"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "Yes. The caller is a new patient seeking an annual physical exam and comprehensive wellness evaluation with a primary care physician at Surfside Healthcare."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The caller expects to schedule an appointment at a convenient time and location, receive comprehensive preventive care screening, and establish care with an assigned physician."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent could have captured the patient's email address for appointment confirmation and discussed pre-visit preparation, including fasting requirements for lab work and what to bring for the office visit."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Good afternoon. Thank you for calling Surfside Healthcare scheduling. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:32",
+          "text": "Hi Marcus. I'm new to the area and I'd like to schedule an appointment for an annual physical exam."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:45",
+          "text": "That's great. I'd be happy to help you book an appointment for your wellness visit. May I ask your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "Sure. It's Jennifer Walsh."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:08",
+          "text": "Thank you, Jennifer. And just to confirm, you're looking for a comprehensive annual physical and preventive screening, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:22",
+          "text": "Yes, exactly. I haven't had a physical in a couple of years and I want to get everything checked out."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:35",
+          "text": "Perfect. We offer comprehensive wellness exams that include full history, vital signs, physical examination, and a care plan. What ZIP code are you located in?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:48",
+          "text": "I'm in the 33140 area, near Palmetto."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:58",
+          "text": "Excellent. We have a clinic location in that area. What's the best phone number to reach you at?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:12",
+          "text": "It's ****-****-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:25",
+          "text": "Thank you. And would you prefer morning or afternoon appointments?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:38",
+          "text": "Afternoon works better for me."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:48",
+          "text": "Got it. I have an opening with Dr. Sarah Mitchell next Thursday, October 19th at 2 PM. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:05",
+          "text": "Yes, that's perfect."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:12",
+          "text": "Wonderful, Jennifer. Your appointment is confirmed for October 19th at 2 PM with Dr. Sarah Mitchell for your annual physical exam. Please arrive about 15 minutes early to check in. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "03:35",
+          "text": "No, that's all. Thank you so much."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:42",
+          "text": "You're welcome, Jennifer. We look forward to seeing you. Have a great day."
+        }
+      ],
+      "aiSummary": "Jennifer Walsh, a new patient to the Surfside Healthcare system, called to schedule an annual physical exam. Marcus successfully captured her name, service need, and ZIP code, confirming availability at the Palmetto clinic location. An appointment was booked with Dr. Sarah Mitchell for October 19th at 2 PM. While the call maintained a professional tone and achieved the primary objective of scheduling, the agent did not capture the patient's email address for appointment confirmation or discuss pre-visit preparation and fasting requirements for lab work.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great structural flow on this call. Your greeting was clear, you confirmed the service need upfront, and you booked the appointment efficiently. Next time, capture the email address before closing. It's critical for sending appointment confirmation and pre-visit instructions. Also, briefly mention what Jennifer should expect on arrival, such as fasting if labs will be drawn. Those two additions will improve the patient experience and reduce no-shows."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "42,569"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$97.63"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,156,131"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "24,153"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "57%"
+            },
+            {
+              "label": "Appointment: Scheduled (Count)",
+              "value": "22,987"
+            },
+            {
+              "label": "Appointment: Scheduled (Percent)",
+              "value": "54%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "18,416"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "43%"
+            },
+            {
+              "label": "Appointment: Canceled (Percent)",
+              "value": "8%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Appointments)",
+          "chart": {
+            "legend": "Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral",
+                "value": 59,
+                "display": "59%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Google Ads",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Facebook",
+                "value": 47,
+                "display": "47%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Ads",
+                  "15,238",
+                  "55%",
+                  "$1,624,558"
+                ]
+              },
+              {
+                "cells": [
+                  "Facebook",
+                  "9,847",
+                  "47%",
+                  "$954,127"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "8,124",
+                  "58%",
+                  "$812,344"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "5,713",
+                  "59%",
+                  "$498,655"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing Ads",
+                  "3,647",
+                  "44%",
+                  "$266,447"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 20000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 18885,
+                "display": "18,885"
+              },
+              {
+                "name": "Social",
+                "value": 9847,
+                "display": "9,847"
+              },
+              {
+                "name": "Organic",
+                "value": 7214,
+                "display": "7,214"
+              },
+              {
+                "name": "Email/CRM",
+                "value": 4058,
+                "display": "4,058"
+              },
+              {
+                "name": "Local/Maps",
+                "value": 2565,
+                "display": "2,565"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "18,885",
+                  "52%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "9,847",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "7,214",
+                  "57%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email/CRM",
+                  "4,058",
+                  "63%"
+                ]
+              },
+              {
+                "cells": [
+                  "Local/Maps",
+                  "2,565",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Find a Doctor Near Me",
+                "value": 7842,
+                "display": "7,842"
+              },
+              {
+                "name": "Same-Day Virtual Visit",
+                "value": 6318,
+                "display": "6,318"
+              },
+              {
+                "name": "Annual Physical Book Today",
+                "value": 4927,
+                "display": "4,927"
+              },
+              {
+                "name": "Urgent Care Near You",
+                "value": 3684,
+                "display": "3,684"
+              },
+              {
+                "name": "Modern Care for Your Family",
+                "value": 2415,
+                "display": "2,415"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Find a Doctor Near Me",
+                  "7,842",
+                  "53%",
+                  "$758,214"
+                ]
+              },
+              {
+                "cells": [
+                  "Same-Day Virtual Visit",
+                  "6,318",
+                  "58%",
+                  "$612,447"
+                ]
+              },
+              {
+                "cells": [
+                  "Annual Physical Book Today",
+                  "4,927",
+                  "61%",
+                  "$487,336"
+                ]
+              },
+              {
+                "cells": [
+                  "Urgent Care Near You",
+                  "3,684",
+                  "49%",
+                  "$342,118"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 5000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "primary care doctor near me",
+                "value": 4318,
+                "display": "4,318"
+              },
+              {
+                "name": "same day virtual doctor visit",
+                "value": 3472,
+                "display": "3,472"
+              },
+              {
+                "name": "walk-in urgent care",
+                "value": 2847,
+                "display": "2,847"
+              },
+              {
+                "name": "annual physical exam cost",
+                "value": 1964,
+                "display": "1,964"
+              },
+              {
+                "name": "dermatologist appointment near me",
+                "value": 1238,
+                "display": "1,238"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "primary care doctor near me",
+                  "56%"
+                ]
+              },
+              {
+                "cells": [
+                  "same day virtual doctor visit",
+                  "62%"
+                ]
+              },
+              {
+                "cells": [
+                  "walk-in urgent care",
+                  "48%"
+                ]
+              },
+              {
+                "cells": [
+                  "annual physical exam cost",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Appointment: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Primary & Preventive Care",
+              "9,847",
+              "57%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Specialty Treatment Centers",
+              "7,214",
+              "52%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Virtual Care / Telehealth",
+              "5,368",
+              "63%",
+              "66%"
+            ]
+          },
+          {
+            "cells": [
+              "Diagnostics & Imaging",
+              "3,942",
+              "49%",
+              "44%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Surfside Downtown Clinic",
+              "13,842",
+              "1,124",
+              "4%",
+              "55%"
+            ]
+          },
+          {
+            "cells": [
+              "Oceanview Medical Center",
+              "11,318",
+              "918",
+              "3%",
+              "52%"
+            ]
+          },
+          {
+            "cells": [
+              "Harbor Point Family Clinic",
+              "9,724",
+              "764",
+              "5%",
+              "58%"
+            ]
+          },
+          {
+            "cells": [
+              "Bayshore Urgent Care",
+              "7,685",
+              "600",
+              "6%",
+              "49%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1124,
+              1318,
+              1187,
+              1062,
+              1151
+            ]
+          },
+          {
+            "name": "Insurance Not Accepted",
+            "values": [
+              918,
+              1024,
+              947,
+              912,
+              917
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              764,
+              842,
+              798,
+              781,
+              779
+            ]
+          },
+          {
+            "name": "Needs Referral First",
+            "values": [
+              547,
+              612,
+              578,
+              558,
+              552
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              418,
+              472,
+              448,
+              441,
+              432
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,028"
+          },
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,368,995"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$184,320"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$248,165"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$156,840"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$312,580"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$564,215"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$902,875"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20145,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4852",
+                "58%",
+                "34%",
+                "$389,728"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "3641",
+                "52%",
+                "31%",
+                "$287,543"
+              ]
+            },
+            {
+              "name": "Local Maps",
+              "metrics": [
+                "2917",
+                "59%",
+                "35%",
+                "$238,849"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2458",
+                "54%",
+                "30%",
+                "$189,274"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2141",
+                "61%",
+                "37%",
+                "$263,601"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20235,
+          "rows": [
+            {
+              "name": "Organic Web",
+              "metrics": [
+                "5263",
+                "57%",
+                "33%",
+                "$423,487"
+              ]
+            },
+            {
+              "name": "Paid Web",
+              "metrics": [
+                "4104",
+                "53%",
+                "30%",
+                "$318,652"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "3218",
+                "58%",
+                "35%",
+                "$271,904"
+              ]
+            },
+            {
+              "name": "Social Platform",
+              "metrics": [
+                "2389",
+                "55%",
+                "32%",
+                "$184,521"
+              ]
+            },
+            {
+              "name": "Direct Call",
+              "metrics": [
+                "1742",
+                "62%",
+                "38%",
+                "$239,156"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20384,
+          "rows": [
+            {
+              "name": "Find a Doctor Near Me",
+              "metrics": [
+                "3827",
+                "59%",
+                "36%",
+                "$318,945"
+              ]
+            },
+            {
+              "name": "Annual Physical, Book Today",
+              "metrics": [
+                "2956",
+                "54%",
+                "28%",
+                "$227,384"
+              ]
+            },
+            {
+              "name": "Same Day Virtual Visit",
+              "metrics": [
+                "2641",
+                "57%",
+                "33%",
+                "$204,867"
+              ]
+            },
+            {
+              "name": "Urgent Care Same Day",
+              "metrics": [
+                "2189",
+                "51%",
+                "29%",
+                "$168,342"
+              ]
+            },
+            {
+              "name": "Schedule Your Wellness Visit",
+              "metrics": [
+                "1584",
+                "63%",
+                "39%",
+                "$241,529"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20518,
+          "rows": [
+            {
+              "name": "Primary care doctor near me",
+              "metrics": [
+                "2847",
+                "56%",
+                "32%",
+                "$218,397"
+              ]
+            },
+            {
+              "name": "Same day virtual doctor visit",
+              "metrics": [
+                "2314",
+                "58%",
+                "35%",
+                "$189,456"
+              ]
+            },
+            {
+              "name": "Walk in urgent care",
+              "metrics": [
+                "1928",
+                "52%",
+                "28%",
+                "$148,259"
+              ]
+            },
+            {
+              "name": "Cardiologist near me accepting new patients",
+              "metrics": [
+                "1642",
+                "61%",
+                "39%",
+                "$212,648"
+              ]
+            },
+            {
+              "name": "Annual physical exam cost",
+              "metrics": [
+                "1289",
+                "64%",
+                "41%",
+                "$165,384"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Appointment Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 17028,
+          "rows": [
+            {
+              "name": "Primary Care Visits",
+              "metrics": [
+                "5427",
+                "57%",
+                "34%",
+                "$687,214"
+              ]
+            },
+            {
+              "name": "Specialty Consultations",
+              "metrics": [
+                "4236",
+                "55%",
+                "31%",
+                "$641,892"
+              ]
+            },
+            {
+              "name": "Telehealth Virtual Visits",
+              "metrics": [
+                "3841",
+                "59%",
+                "35%",
+                "$524,376"
+              ]
+            },
+            {
+              "name": "Preventive Care & Wellness",
+              "metrics": [
+                "2389",
+                "54%",
+                "30%",
+                "$354,621"
+              ]
+            },
+            {
+              "name": "Diagnostic & Imaging Services",
+              "metrics": [
+                "1135",
+                "58%",
+                "36%",
+                "$160,892"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Primary Care Visits",
+            "values": [
+              645,
+              689,
+              712,
+              598,
+              564
+            ]
+          },
+          {
+            "name": "Specialty Consultations",
+            "values": [
+              512,
+              487,
+              523,
+              468,
+              415
+            ]
+          },
+          {
+            "name": "Telehealth Virtual Visits",
+            "values": [
+              431,
+              472,
+              501,
+              413,
+              378
+            ]
+          },
+          {
+            "name": "Preventive Care & Wellness",
+            "values": [
+              289,
+              312,
+              328,
+              271,
+              245
+            ]
+          },
+          {
+            "name": "Diagnostic & Imaging Services",
+            "values": [
+              164,
+              152,
+              181,
+              143,
+              109
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,247"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "348"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "892"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Appointment Scheduled (Count)",
+            "value": "31"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Appointment Scheduled",
+            "values": [
+              73,
+              75,
+              78,
+              74,
+              76,
+              71,
+              79,
+              77,
+              72,
+              78,
+              75,
+              73,
+              76,
+              74,
+              77,
+              79,
+              75,
+              78,
+              73,
+              76,
+              74,
+              77,
+              75,
+              78,
+              71,
+              76,
+              74,
+              79,
+              175,
+              182,
+              179,
+              188,
+              176,
+              191,
+              184,
+              178,
+              187,
+              183,
+              189,
+              175,
+              192,
+              181,
+              186,
+              179,
+              194,
+              182,
+              177,
+              185,
+              180
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,183"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,247"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "718"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "701"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Appointment Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Annual Wellness Visit",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              10,
+              9
+            ]
+          },
+          {
+            "name": "Virtual Care Scheduling",
+            "values": [
+              6,
+              9,
+              7,
+              10,
+              8,
+              6
+            ]
+          },
+          {
+            "name": "Specialty Referral",
+            "values": [
+              4,
+              2,
+              5,
+              3,
+              1,
+              6
+            ]
+          },
+          {
+            "name": "Lab Test Ordering",
+            "values": [
+              5,
+              7,
+              6,
+              8,
+              4,
+              7
+            ]
+          },
+          {
+            "name": "Insurance Verification",
+            "values": [
+              7,
+              5,
+              8,
+              6,
+              9,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "39,163"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "31,075"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Appointment Booked (Count)",
+            "value": "22,987"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$4,156,131"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review - Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 247,
+              "display": "247"
+            },
+            {
+              "name": "Jennifer Okonkwo",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "David Rothstein",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "Priya Nambiar",
+              "value": 163,
+              "display": "163"
+            },
+            {
+              "name": "Kyle Henderson",
+              "value": 224,
+              "display": "224"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Chen",
+            "values": [
+              218,
+              241,
+              267,
+              289,
+              315
+            ]
+          },
+          {
+            "name": "Robert Martinez",
+            "values": [
+              201,
+              235,
+              258,
+              281,
+              312
+            ]
+          },
+          {
+            "name": "Aisha Thompson",
+            "values": [
+              189,
+              219,
+              244,
+              268,
+              298
+            ]
+          },
+          {
+            "name": "Michael Patel",
+            "values": [
+              176,
+              203,
+              229,
+              251,
+              276
+            ]
+          },
+          {
+            "name": "Lisa Goldstein",
+            "values": [
+              167,
+              192,
+              215,
+              237,
+              271
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 52.4,
+              "display": "52.4%"
+            },
+            {
+              "name": "Jennifer Okonkwo",
+              "value": 54.8,
+              "display": "54.8%"
+            },
+            {
+              "name": "David Rothstein",
+              "value": 55.2,
+              "display": "55.2%"
+            },
+            {
+              "name": "Priya Nambiar",
+              "value": 57.6,
+              "display": "57.6%"
+            },
+            {
+              "name": "Kyle Henderson",
+              "value": 58.9,
+              "display": "58.9%"
+            },
+            {
+              "name": "Tom Bradley",
+              "value": 59.7,
+              "display": "59.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "52.4%",
+                "26%",
+                "$61,048",
+                "1,289"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Okonkwo",
+                "54.8%",
+                "28%",
+                "$65,436",
+                "1,301"
+              ]
+            },
+            {
+              "cells": [
+                "David Rothstein",
+                "55.2%",
+                "29%",
+                "$68,107",
+                "1,305"
+              ]
+            },
+            {
+              "cells": [
+                "Priya Nambiar",
+                "57.6%",
+                "31%",
+                "$73,619",
+                "1,342"
+              ]
+            },
+            {
+              "cells": [
+                "Kyle Henderson",
+                "58.9%",
+                "33%",
+                "$78,891",
+                "1,417"
+              ]
+            },
+            {
+              "cells": [
+                "Tom Bradley",
+                "59.7%",
+                "34%",
+                "$81,548",
+                "1,419"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Chen",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Robert Martinez",
+              "value": 91.8,
+              "display": "91.8%"
+            },
+            {
+              "name": "Aisha Thompson",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "Michael Patel",
+              "value": 88.7,
+              "display": "88.7%"
+            },
+            {
+              "name": "Lisa Goldstein",
+              "value": 87.9,
+              "display": "87.9%"
+            },
+            {
+              "name": "Vincent Park",
+              "value": 87.3,
+              "display": "87.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Chen",
+                "93.2%",
+                "67%",
+                "$182,914",
+                "1,501"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Martinez",
+                "91.8%",
+                "65%",
+                "$175,847",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Aisha Thompson",
+                "89.4%",
+                "62%",
+                "$165,329",
+                "1,468"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Patel",
+                "88.7%",
+                "60%",
+                "$158,472",
+                "1,451"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Goldstein",
+                "87.9%",
+                "58%",
+                "$151,836",
+                "1,439"
+              ]
+            },
+            {
+              "cells": [
+                "Vincent Park",
+                "87.3%",
+                "59%",
+                "$154,121",
+                "1,422"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Appointment Booked (Count)",
+        "rightMax": 1100,
+        "rightTicks": [
+          0,
+          275,
+          550,
+          825,
+          1100
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 853
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 817
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 761
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 726
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 632
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 663
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 733
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 762
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 850
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 824
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 742
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 717
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 638
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 657
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 750
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 773
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 842
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 829
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 726
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 703
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 647
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 654
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 763
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 789
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 831
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 830
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 716
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 686
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 659
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 655
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 759
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 200000,
+        "rightTicks": [
+          0,
+          66666.66666666667,
+          133333.33333333334,
+          200000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 154065
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 147664
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 137505
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 131206
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 114239
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 119891
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 132440
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 137661
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 153493
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 148821
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 134037
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 129550
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 115277
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 118823
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 135593
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 139725
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 152063
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 149697
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 131268
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 127104
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 117007
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 118234
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 137930
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 142503
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 150132
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 149913
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 129389
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 124064
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 119036
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 118462
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 139339
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "42,569"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,406"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,554"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "85%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Patricia M. Connors",
+                "412",
+                "86%",
+                "84%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "James R. Caldwell",
+                "1087",
+                "88%",
+                "86%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Monica L. Hughes",
+                "1024",
+                "87%",
+                "85%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "42,569 calls",
+      "pagerLabel": "1 of 4,257",
+      "calls": [
+        {
+          "time": "1/6/26 8:37 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/8/26 9:14 am",
+          "id": "A24C-3B9E17D6C0F1"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "C9D2-4E7A1B08F3A6"
+        },
+        {
+          "time": "1/14/26 11:26 am",
+          "id": "7E10-92F3AC5D71B8"
+        },
+        {
+          "time": "1/16/26 12:53 pm",
+          "id": "B3F8-6D1C0A94E2F7"
+        },
+        {
+          "time": "1/20/26 1:38 pm",
+          "id": "D6A1-58EC3F27B901"
+        },
+        {
+          "time": "1/22/26 2:49 pm",
+          "id": "4F72-1A9D6E308C5B"
+        },
+        {
+          "time": "1/26/26 3:31 pm",
+          "id": "88BE-72C4901FA5D3"
+        },
+        {
+          "time": "1/28/26 4:17 pm",
+          "id": "1C5D-E3F70B248A69"
+        },
+        {
+          "time": "1/30/26 5:22 pm",
+          "id": "9A0F-46B18D5C273E"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Surfside Healthcare, this is Danielle. How can I help you take care of your health today?",
+          "highlights": [
+            "Thank you for calling Surfside Healthcare",
+            "How can I help you"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi Danielle, I just moved to the area and I'm looking for a new primary care doctor. I've never been seen at your clinic before.",
+          "highlights": [
+            "new primary care doctor",
+            "never been seen at your clinic before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "Welcome to the neighborhood, and I'd be glad to get you set up as a new patient. May I start with your first and last name?",
+          "highlights": [
+            "set up as a new patient"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:25",
+          "text": "Sure, it's Marcus Reyes.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:29",
+          "text": "Thanks, Marcus. Are you looking for a general check-in, or did you have a specific concern you wanted the physician to review?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:37",
+          "text": "Mostly a general check-in. It's been a couple of years, so probably a full physical and some bloodwork to be safe.",
+          "highlights": [
+            "full physical",
+            "bloodwork"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:47",
+          "text": "That's a great place to start. I'd recommend our New Patient Office Visit paired with an Annual Wellness Exam, which covers your full history, vitals, and a care plan with an assigned physician.",
+          "highlights": [
+            "New Patient Office Visit",
+            "Annual Wellness Exam"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:59",
+          "text": "That sounds right. How much does that run if I'm paying out of pocket?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:05",
+          "text": "The New Patient visit is around $200, and the wellness exam runs about $250. We can also add a comprehensive blood panel on-site for roughly $150 with results in the portal.",
+          "highlights": [
+            "comprehensive blood panel"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:16",
+          "text": "Let's include the blood panel too, then. Can I do all of that in one appointment?",
+          "highlights": [
+            "include the blood panel"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:23",
+          "text": "Absolutely, we can bundle the visit, exam, and lab draw into a single appointment. Do you have a preferred clinic location?",
+          "highlights": [
+            "single appointment"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:31",
+          "text": "The one near the marina district would be perfect, it's closest to me.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:37",
+          "text": "Perfect, our Marina District clinic has Dr. Alvarez accepting new patients. She has Thursday at 10 AM open this week. Does that work?",
+          "highlights": [
+            "accepting new patients",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:47",
+          "text": "Thursday at 10 works great for me.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:52",
+          "text": "Wonderful. I've scheduled your new patient appointment with Dr. Alvarez for Thursday at 10 AM at the Marina District clinic. What's the best phone number and email for your confirmation?",
+          "highlights": [
+            "I've scheduled your new patient appointment",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:03",
+          "text": "My cell is 555-0148 and my email is marcus.reyes@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:11",
+          "text": "Got it. Please arrive about 15 minutes early to complete intake, and fast for eight hours before the blood panel. You'll get a reminder in your patient portal.",
+          "highlights": [
+            "fast for eight hours",
+            "patient portal"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:21",
+          "text": "Great, thank you so much for the help.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:26",
+          "text": "My pleasure, Marcus. We look forward to seeing you Thursday at 10. Take care and welcome to Surfside Healthcare.",
+          "highlights": [
+            "welcome to Surfside Healthcare",
+            "look forward to seeing you"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Appointment: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Primary Care Visit",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Service: Annual Wellness Exam",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Service: Lab & Blood Panel",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Contact Info Captured",
+          "badges": [
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Marcus Reyes, a new patient who recently moved to the area, called to establish care with a primary care physician. He requested a general check-in, and the agent recommended a New Patient Office Visit paired with an Annual Wellness Exam plus an on-site comprehensive blood panel. The agent scheduled all three into a single appointment with Dr. Alvarez at the Marina District clinic for Thursday at 10 AM and captured his phone and email for confirmation.",
+        "keyPoints": [
+          "New patient establishing care after relocating",
+          "Needs a full physical and bloodwork",
+          "Recommended New Patient Visit, Annual Wellness Exam, and Lab & Blood Panel",
+          "Bundled into one appointment at the Marina District clinic",
+          "Booked with Dr. Alvarez, Thursday at 10 AM",
+          "Captured cell number and email for portal confirmation"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Appointment booked, Thursday 10 AM with Dr. Alvarez"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "26,818 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,682",
+      "conversations": [
+        {
+          "id": "C847-3F9E2B1A7C5D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there, thanks for texting Surfside Healthcare. I'm Maya with our scheduling team. How can we help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi I need to see a doctor soon. I've been having chest pain for a few days."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm sorry to hear that. We can definitely get you in. Have you been a patient with Surfside Healthcare before?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "No, this is my first time reaching out."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Great, welcome to Surfside. Given your chest pain, our Cardiology team would be ideal. We have an opening with Dr. Patterson on Thursday, March 13th at 2:30 PM. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Thursday works but can we do it earlier in the day?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Absolutely. We have 10:15 AM on Thursday, March 13th available. Would that time suit you better?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Yes, 10:15 AM is perfect. What's the cost?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "A Cardiology consultation is typically between $250 and $400 depending on what testing is needed. At your appointment, Dr. Patterson will assess and provide an exact estimate. Can I confirm your name and best callback number?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "It's James Morrison. My number is 415-822-6947."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Perfect, James. I have you down for Cardiology with Dr. Patterson on Thursday, March 13th at 10:15 AM. We'll send you a reminder text tomorrow. If you need to reschedule, just call us back at 877-936-2933. Looking forward to seeing you."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Great, thanks so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:33 AM",
+              "text": "You're welcome, James. See you Thursday. Bye."
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Specialty: Cardiology",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Symptom: Chest Pain",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Insurance: Not Mentioned",
+              "badges": [
+                "Rule"
+              ],
+              "count": 0
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C847-3F9E2B1A7C5D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "415-822-6947",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "415-822-6947",
+            "repeatCaller": "No",
+            "city": "San Francisco",
+            "region": "CA",
+            "phoneType": "Mobile",
+            "displayName": "James Morrison",
+            "firstName": "James",
+            "lastName": "Morrison",
+            "gender": "Male",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "C629-7A2E4F9B1D8C",
+          "time": "3/9/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C629-7A2E4F9B1D8C",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C514-6B3F8A2E5C1D",
+          "time": "3/8/26 11:19 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C514-6B3F8A2E5C1D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C735-9D4C1F7E2A6B",
+          "time": "3/7/26 9:52 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "C735-9D4C1F7E2A6B",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "42,569 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,257",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hello, thanks for calling Surfside Healthcare. My name is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:12 PM",
+              "text": "Hi Marcus. I'm looking to schedule an annual physical exam. I haven't been to a doctor in a couple years."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Great, I'd be happy to help you set up your wellness visit. Are you currently a patient with Surfside Healthcare, or would this be your first time visiting us?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "First time. I just moved to the area and I need to find a primary care doctor."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. Welcome to Surfside Healthcare. I have a few quick questions to help me get you scheduled with the right physician. What's your preferred location? We have clinics throughout the region."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "I'm in Austin. Is there a clinic nearby?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Yes, we have a clinic on Lamar Boulevard that serves the Austin area. That work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "Yeah, that sounds good."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Excellent. Now, do you have any specific health concerns or chronic conditions I should note for your visit?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "No, nothing major. Just want a comprehensive checkup and get my shots updated."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Perfect. We can definitely include immunization updates with your annual physical. I have an opening with Dr. Sarah Chen on Thursday, January twenty-third at two thirty PM. Does that work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Let me check my calendar. Yeah, that actually works great."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Wonderful. So I'm confirming your appointment for January twenty-three at two thirty PM with Dr. Sarah Chen at our Lamar Boulevard clinic. The visit will include your comprehensive physical exam and immunization review. We'll send you a confirmation email, and we ask that you arrive about fifteen minutes early to complete your intake form."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Okay, great. Do I need to bring anything with me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:19 PM",
+              "text": "Just bring your photo ID and insurance card if you have one. If you have any questions before your appointment, feel free to call us back at eight seven seven, nine three six, twenty-nine thirty-three. We look forward to seeing you, and thanks for choosing Surfside Healthcare."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:20 PM",
+              "text": "Thanks Marcus. I appreciate the help."
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Annual Wellness Visit",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Location: Lamar Boulevard Clinic",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "8:34",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice - Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "512-441-8847",
+            "repeatCaller": "No",
+            "city": "Austin",
+            "region": "TX",
+            "phoneType": "Mobile",
+            "displayName": "James Mitchell",
+            "firstName": "James",
+            "lastName": "Mitchell",
+            "gender": "Male",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B623-7E4A186F92CB",
+          "time": "1/22/26 2:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B623-7E4A186F92CB",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C751-9B3F2D8E47A6",
+          "time": "1/28/26 11:33 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C751-9B3F2D8E47A6",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D945-5C1B4F6A89ED",
+          "time": "1/30/26 6:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D945-5C1B4F6A89ED",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm Surfside Healthcare's AI scheduling assistant, and I can help you find the right care and get a personalized cost estimate for your visit. New patients can book a same-day virtual visit this week, would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, what type of care or specialty you need, whether you prefer an in-person or virtual visit, if you're a new or returning patient, your ideal timeline, and finally your ZIP code so I can confirm we serve your area.",
+        "Estimate then book: Once I confirm we serve your ZIP, I'll share a preliminary self-pay price range based on what you told me, recommend a consultation with the right provider for an exact quote, propose a specific day and time, and confirm you'll receive a reminder text before your appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Surfside_Healthcare_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Specialties & Treatments",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Doctor",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Location",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"reschedule\",\"question\":\"I need to move my cardiology consultation to next week, can you help?\",\"answer\":\"Of course, I can find a new time with your cardiologist. Let me pull up the next available openings and confirm one that works for you.\"},{\"topic\":\"records\",\"question\":\"How do I get a copy of my recent lab results?\",\"answer\":\"Your lab results are posted securely in the Patient Portal for download. If you need them transferred to another provider, I can start a medical records request for you.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you accept new patients?",
+              "answer": "Yes, Surfside Healthcare is welcoming new patients across our primary care and specialty centers. I can book your new patient office visit, would you like me to check available times?"
+            },
+            {
+              "question": "How much is an annual physical?",
+              "answer": "Pricing depends on your specific screenings and whether you use insurance, so I can't quote an exact number here. Let's book a wellness visit and our team will confirm your cost beforehand."
+            },
+            {
+              "question": "Can I see a doctor today?",
+              "answer": "We offer same-day virtual visits and urgent care for minor illness or injury. Want me to find the soonest available appointment for you?"
+            },
+            {
+              "question": "Do you offer virtual visits?",
+              "answer": "Yes, you can meet with a provider by secure video through our Patient Portal, including e-prescribing when appropriate. I can schedule a virtual visit whenever suits you."
+            },
+            {
+              "question": "How do I find a doctor near me?",
+              "answer": "I can match you with a provider by specialty and location. Share your ZIP code and the type of care you need and I'll book your appointment."
+            },
+            {
+              "question": "What specialties do you have?",
+              "answer": "Our specialty centers include Cardiology, Orthopedics, Dermatology, Women's Health, and Behavioral Health, along with Primary and Preventive Care. Tell me your concern and I'll get you scheduled with the right specialist."
+            },
+            {
+              "question": "Do you take walk-ins for urgent care?",
+              "answer": "Yes, our urgent care handles same-day minor illness and injury with on-site labs. I can also reserve a time so you're seen faster, want me to do that?"
+            },
+            {
+              "question": "How much does a blood test cost without insurance?",
+              "answer": "Lab panel costs vary by which tests are ordered, so I can't give an exact figure here. Let's book a visit and our team will confirm your price before your draw."
+            },
+            {
+              "question": "Can I get a flu shot?",
+              "answer": "Yes, we offer walk-in flu shots and other immunizations with a digital record. I can schedule you at the nearest clinic, what ZIP code are you in?"
+            },
+            {
+              "question": "Do you offer telehealth for mental health?",
+              "answer": "Yes, our Behavioral Health team offers counseling and psychiatric consults by telehealth or in person. I can set up a confidential appointment for you."
+            },
+            {
+              "question": "I need a dermatology appointment.",
+              "answer": "Our dermatologists handle skin exams, biopsies, and treatment plans. Let me find the next opening, would you prefer in person or virtual?"
+            },
+            {
+              "question": "Can I schedule a cardiology consultation?",
+              "answer": "Yes, our cardiology consultation includes an EKG and cardiac risk workup with a specialist. Share your availability and I'll book it for you."
+            },
+            {
+              "question": "Do you provide imaging like X-rays?",
+              "answer": "Yes, we offer on-site X-ray and ultrasound with a specialist read and digital images. I can schedule your imaging once your provider orders it, want to start with a visit?"
+            },
+            {
+              "question": "How do I enroll in a family health plan?",
+              "answer": "We offer a no-cost enrollment consult to match coverage for you and your family. I can book that benefits guidance session, what works for your schedule?"
+            },
+            {
+              "question": "Can I get an orthopedic evaluation?",
+              "answer": "Yes, our orthopedic evaluation covers joint and musculoskeletal assessment with a treatment plan. Let me find a time with a specialist for you."
+            },
+            {
+              "question": "Do you offer prenatal care?",
+              "answer": "Yes, our Women's Health team provides annual exams, screenings, and prenatal care coordination. I can schedule your OB-GYN visit, what ZIP code are you in?"
+            },
+            {
+              "question": "How do I request my medical records?",
+              "answer": "You can retrieve records securely through the Patient Portal, and I can start a transfer request to another provider if needed. Would you also like to book a follow-up visit?"
+            },
+            {
+              "question": "Where are your locations?",
+              "answer": "We have multiple clinics, and I can find the closest one to you. Share your ZIP code and I'll confirm the nearest location and book your appointment."
+            },
+            {
+              "question": "Can I pay my bill online?",
+              "answer": "Yes, you can pay securely online through our billing portal. If you have questions about your balance, I can also help you schedule time with our patient services team."
+            },
+            {
+              "question": "How soon can I be seen for a new patient visit?",
+              "answer": "New patient visits are often available within a few days, and virtual options can be even sooner. Give me your ZIP and preferred time and I'll book the earliest opening."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the appointment\",\"follow_up_message\":\"Great, I have you down for a new patient visit. To lock it in, please confirm your preferred day and I'll send a reminder text with a number to call if anything changes.\"},{\"intent\":\"request a quote\",\"follow_up_message\":\"Happy to help with cost details. Once we confirm your ZIP and the type of care you need, our team will provide an exact self-pay estimate at your consultation, shall I book that visit now?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "goal": "Guide the patient to book a consultation or appointment with the right Surfside Healthcare provider.",
+        "bookingType": "virtual or in-person appointment",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "What type of care or specialty are you looking for?",
+          "Would you prefer a virtual visit or an in-person appointment?",
+          "Are you a new or returning patient?",
+          "How soon would you like to be seen?",
+          "What ZIP code are you in so I can confirm the nearest clinic serves your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "7/28/26 2:38 pm"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "7/28/26 2:38 pm"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "7/28/26 2:38 pm"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Surfside Healthcare",
+      "callerName": "Michelle Torres",
+      "callerPhone": "(805) 555-0142",
+      "campaign": "Cardiology Consultation - Santa Barbara Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$3,247",
+      "googleSearch": "cardiologist near me accepting new patients",
+      "websiteSearch": "heart doctor santa barbara same day appointment",
+      "callingWebpage": "/specialties-and-treatments/cardiology",
+      "products": "Cardiology Consultation, Diagnostic Imaging",
+      "cartId": "SH-7429K",
+      "serviceable": "Yes",
+      "email": "michelle.torres@email.com",
+      "street": "2847 Olive Street",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "zip": "93105",
+      "digitalJourney": "/home › /find-a-doctor › /specialties-and-treatments/cardiology › /request-a-consultation",
+      "intent": "Michelle needs a cardiology evaluation for chest discomfort and heart palpitations. She wants to schedule a consultation with a specialist this week.",
+      "coverage": "ZIP 93105 confirmed - Santa Barbara serviceable",
+      "switchIntent": "High - experiencing symptoms now, wants in-person cardiology appointment within 3 business days",
+      "greeting": "Hi Michelle, thank you for calling Surfside Healthcare. I see you are interested in scheduling a cardiology consultation with one of our specialists. We have availability this week and can get you in for a comprehensive cardiac evaluation. Would Thursday or Friday work better for you?"
+    },
+    "smsScreenpop": {
+      "brandName": "Surfside Healthcare",
+      "callerName": "David Kowalski",
+      "callerPhone": "(559) 555-0187",
+      "campaign": "Annual Wellness Physical - Fresno Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Appointment Lead",
+      "estimatedValue": "$2,185",
+      "googleSearch": "annual physical exam near me",
+      "websiteSearch": "wellness checkup family health plan enrollment fresno",
+      "callingWebpage": "/specialties-and-treatments/primary-care",
+      "products": "Annual Wellness Physical Exam, Family Health Plan Enrollment",
+      "cartId": "SH-9156M",
+      "serviceable": "Yes",
+      "email": "david.kowalski@email.com",
+      "street": "1524 Palm Avenue",
+      "city": "Fresno",
+      "state": "CA",
+      "zip": "93650",
+      "digitalJourney": "/home › /find-a-location › /specialties-and-treatments › /request-a-consultation",
+      "intent": "David is seeking his annual wellness physical and exploring family health plan options for himself and two children. Prefers morning appointments.",
+      "coverage": "ZIP 93650 confirmed - Fresno serviceable",
+      "appointment": "Annual Wellness Physical with Dr. Sarah Chen, Friday July 18, 9:30 AM",
+      "greeting": "Hi David, this is Marcus from Surfside Healthcare. Great news, your annual wellness physical is confirmed for this Friday at 9:30 AM with Dr. Sarah Chen at our Fresno clinic. We will also review family health plan options during your visit. See you then, and please let us know if you have any questions."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Surfside Healthcare",
+      "brandDomain": "www.surfsidehealthcare.com",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Find a Doctor Near Me",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "cardiologist near me accepting new patients",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/specialties-and-treatments/cardiology",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile - iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Cardiology Consultation, Annual Wellness Exam",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes - not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "appt_new_cardiology",
+          "name": "Appointment - New Cardiology Evaluation"
+        },
+        {
+          "id": "support_existing_patient",
+          "name": "Support - Existing Patient Services"
+        },
+        {
+          "id": "general_intake",
+          "name": "General Intake - Patient Registration"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Surfside Healthcare. I'm an AI assistant here to help get you connected with the right team. Are you looking to schedule a new appointment with us today?",
+          "sigs": [],
+          "q": [
+            15,
+            40,
+            45
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I'm interested in seeing a cardiologist. I've been having some chest discomfort and my primary care doctor recommended I get evaluated. I'm a new patient.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New cardiology patient</strong> with clinical referral"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Chest discomfort</strong> evaluation needed"
+            },
+            {
+              "c": "blue",
+              "t": "Primary care <strong>physician referred</strong>"
+            }
+          ],
+          "q": [
+            72,
+            15,
+            13
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I'm glad your doctor recommended that evaluation. To help route you to our best cardiology team, I need to confirm a couple things. Are you currently a patient at Surfside Healthcare, and would you prefer an in-office visit or a virtual appointment?",
+          "sigs": [],
+          "q": [
+            80,
+            10,
+            10
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'm new to Surfside, so I don't have a patient portal yet. I'd prefer an in-office visit if possible, since this is a first evaluation. I'm available any time this week.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>In-office visit</strong> preferred"
+            },
+            {
+              "c": "green",
+              "t": "<strong>New patient</strong> to Surfside"
+            },
+            {
+              "c": "purple",
+              "t": "Flexible scheduling, <strong>this week</strong>"
+            }
+          ],
+          "q": [
+            94,
+            3,
+            3
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm connecting you now to our cardiology team who specializes in new patient evaluations. They'll schedule your in-office consultation and get you all the paperwork you need as a new patient. One moment please.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your appointment is booked (Agent)\", \"I have you scheduled for (Agent)\", \"we will see you on (Agent)\", \"confirmed your visit (Agent)\"])",
+          "createdAt": "03/12/25 9:14 am",
+          "updatedAt": "12/19/25 2:41 pm"
+        },
+        {
+          "name": "Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you have any openings (Caller)\", \"how soon can I be seen (Caller)\", \"what times are available (Agent)\", \"next available appointment (Agent)\"])",
+          "createdAt": "04/02/25 11:27 am",
+          "updatedAt": "11/30/25 4:08 pm"
+        },
+        {
+          "name": "Behavioral Health Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"talk to a therapist (Caller)\", \"counseling session (Caller)\", \"mental health visit (Caller)\", \"see a psychiatrist (Caller)\"])",
+          "createdAt": "05/18/25 8:52 am",
+          "updatedAt": "01/09/26 10:15 am"
+        },
+        {
+          "name": "Cardiology Consultation Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"see a cardiologist (Caller)\", \"heart specialist (Caller)\", \"need an EKG (Caller)\", \"having chest pain (Caller)\"])",
+          "createdAt": "02/07/25 1:33 pm",
+          "updatedAt": "12/28/25 9:47 am"
+        },
+        {
+          "name": "Empathy & Bedside Manner (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Experience] < 60 and duration > 45 sec",
+          "createdAt": "06/21/25 10:05 am",
+          "updatedAt": "01/14/26 3:22 pm"
+        },
+        {
+          "name": "HIPAA Compliance Statement (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Compliance & Privacy] < 60 and duration > 45 sec",
+          "createdAt": "01/29/25 9:41 am",
+          "updatedAt": "01/06/26 11:58 am"
+        },
+        {
+          "name": "Insurance Verification Handling (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Front Desk Quality] < 60 and duration > 45 sec",
+          "createdAt": "07/09/25 2:16 pm",
+          "updatedAt": "01/11/26 4:39 pm"
+        },
+        {
+          "name": "Price Sensitivity Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much does it cost (Caller)\", \"I do not have insurance (Caller)\", \"what is the cash price (Caller)\", \"self-pay rate (Caller)\"])",
+          "createdAt": "03/25/25 8:19 am",
+          "updatedAt": "12/12/25 1:04 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the self-pay price is (Agent)\", \"that visit would be (Agent)\", \"your out of pocket cost (Agent)\", \"the estimate comes to (Agent)\"])",
+          "createdAt": "04/16/25 10:48 am",
+          "updatedAt": "01/03/26 9:27 am"
+        },
+        {
+          "name": "Virtual Visit Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"schedule a virtual visit (Caller)\", \"video appointment (Caller)\", \"telehealth option (Caller)\", \"see a doctor online (Caller)\"])",
+          "createdAt": "05/30/25 11:12 am",
+          "updatedAt": "01/16/26 2:53 pm"
+        }
+      ]
+    }
+  }
+}

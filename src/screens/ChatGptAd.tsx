@@ -46,7 +46,13 @@ function industrySeg(industry: string): string {
   const head = industry.split(/[/,]/)[0].trim();
   const parts = head.split("&").map((x) => x.trim()).filter(Boolean);
   const pick = parts.find((x) => x.split(/\s+/).length >= 2) ?? parts[0] ?? industry;
-  return pick.replace(/\b\w/g, (c) => c.toUpperCase());
+  /* Cap at two words. "Ambulatory Healthcare Services" produced "Santa Barbara
+     Ambulatory Healthcare Services", which reads like a directory entry rather
+     than a business. The TAIL is the useful half ("Healthcare Services",
+     "Care Services"); the leading qualifier is what makes it clumsy. */
+  const words = pick.split(/\s+/);
+  const capped = words.length > 2 ? words.slice(-2).join(" ") : pick;
+  return capped.replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 function derive(p: ReturnType<typeof useProfile>["profile"]) {
@@ -520,7 +526,7 @@ export function ChatGptAd() {
                 </ol>
                 <p>
                   If you mainly want this <strong>sorted quickly</strong>, {d.places[0].name} is the
-                  one most people call first — they&rsquo;ll give you a firm number over the phone
+                  one most people call first, they&rsquo;ll give you a firm number over the phone
                   rather than a range, and {d.area ? `they cover ${d.area}` : "they cover this area"}.
                 </p>
                 <p>If you tell me:</p>
@@ -578,7 +584,7 @@ export function ChatGptAd() {
             <div className="cg-dock">
               <Composer value={text} onChange={setText} onSubmit={() => submit(text)} />
               <p className="cg-disclaimer">
-                Demo mock-up of a sponsored placement — not a live ChatGPT session.
+                Demo mock-up of a sponsored placement, not a live ChatGPT session.
               </p>
             </div>
           </>
@@ -700,11 +706,11 @@ function BizDrawer({ d, hero, place, back, onClose }: {
 
         <h3 className="cg-fly-h">Good to know</h3>
         <ul className="cg-fly-list">
-          <li><strong>Calling ahead</strong> is the fastest route — {d.booking}s are confirmed on the call.</li>
+          <li><strong>Calling ahead</strong> is the fastest route, {d.booking}s are confirmed on the call.</li>
           <li>Covers {d.area ?? d.shortCity} and the surrounding area.</li>
         </ul>
 
-        <p className="cg-fly-note">Demo mock-up — not a real listing.</p>
+        <p className="cg-fly-note">Demo mock-up, not a real listing.</p>
       </div>
     </aside>
   );
