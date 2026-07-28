@@ -108,74 +108,100 @@
 
 /* ===================== CHATGPT SPONSORED PLACEMENT ========================= */
 /* .cg = the AI-channel counterpart to the Google Ads page above: where the call
-   originates before Invoca ever sees it. Unlike .ix/.ga this is NOT a capture of
-   a real page — it's a mock-up of the placement format, so the type stack is a
-   plain system stack rather than Invoca's Lato, and the assistant mark is a
-   generic sparkle rather than anyone's logo. */
-.cg-root { display: flex; height: 100vh; background: #fff; color: #0d0d0d;
+   originates before Invoca ever sees it. Chrome is matched to a SingleFile
+   capture of chatgpt.com's dark landing state, using that page's own tokens
+   (surface #000, composer #303030, border #ffffff26, text #f3f3f3 /
+   #ffffffb3 / #ffffff94). The sponsored card itself is a mock-up of the
+   placement format, hence the disclaimer under the composer.
+   Type stack is a system stack, not Invoca's Lato — this isn't an Invoca page. */
+.cg-root { display: flex; height: 100vh; background: #000; color: #f3f3f3;
   font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+.cg-root button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+.cg-root .cg-voice { background: #fff; }
 
-.cg-side { width: 260px; flex: none; background: #f9f9f9; border-right: 1px solid #ececec;
-  padding: 12px 10px; overflow-y: auto; }
-.cg-side-top { display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 8px;
-  font-size: 14px; font-weight: 500; cursor: pointer; }
-.cg-side-top:hover { background: #ececec; }
-.cg-side-label { font-size: 12px; color: #8f8f8f; padding: 18px 8px 6px; }
-.cg-side-item { font-size: 14px; padding: 8px; border-radius: 8px; cursor: pointer;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.cg-side-item:hover { background: #ececec; }
-.cg-side-active { background: #ececec; }
-
-.cg-mark { width: 26px; height: 26px; flex: none; border-radius: 50%; border: 1px solid #d9d9d9;
-  display: inline-flex; align-items: center; justify-content: center; background: #fff; }
-.cg-mark .material-icons { font-size: 15px; color: #0d0d0d; }
-.cg-mark-sm { width: 22px; height: 22px; border: none; background: transparent; }
-.cg-mark-sm .material-icons { font-size: 18px; }
+/* --- icon rail --- */
+.cg-rail { width: 58px; flex: none; display: flex; flex-direction: column; align-items: center;
+  gap: 4px; padding: 14px 0 16px; border-right: 1px solid #ffffff14; }
+.cg-rail-mark { display: flex; padding: 6px; margin-bottom: 10px; }
+.cg-rail-mark img { filter: invert(1) brightness(1.6); }
+.cg-rail-btn { width: 36px; height: 36px; border-radius: 8px; color: #ffffffcc;
+  display: flex; align-items: center; justify-content: center; }
+.cg-rail-btn:hover { background: #ffffff1a; }
+.cg-avatar { margin-top: auto; width: 28px; height: 28px; border-radius: 50%; background: #e2762c;
+  color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .3px;
+  display: flex; align-items: center; justify-content: center; }
 
 .cg-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-.cg-head { padding: 14px 20px; font-size: 15px; font-weight: 600; border-bottom: 1px solid #f0f0f0; }
 
-.cg-thread { flex: 1; overflow-y: auto; padding: 32px 24px 8px; }
-.cg-thread > * { max-width: 740px; margin-left: auto; margin-right: auto; }
+/* --- top bar --- */
+.cg-top { display: flex; align-items: center; padding: 12px 18px; font-size: 16px; }
+.cg-top-name { display: inline-flex; align-items: center; gap: 4px; font-weight: 600; color: #f3f3f3; }
+.cg-top-name svg { color: #ffffff94; }
+.cg-top-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.cg-upgrade { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 500; }
+.cg-spark { color: #5b8dff; font-size: 13px; }
+.cg-panel { color: #ffffff94; display: flex; }
 
+/* --- landing state --- */
+.cg-splash { flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 0 24px 8vh; }
+.cg-headline { font-size: 29px; font-weight: 400; letter-spacing: -.2px; margin: 0 0 26px; }
+.cg-chips { width: 100%; max-width: 760px; margin-top: 18px; display: flex; flex-direction: column; }
+.cg-chip { display: flex; align-items: center; gap: 16px; padding: 12px 14px; border-radius: 10px;
+  font-size: 15px; color: #ffffffcc; text-align: left; }
+.cg-chip svg { color: #ffffff94; flex: none; }
+.cg-chip:hover { background: #ffffff0f; }
+.cg-chip-lead { color: #f3f3f3; }
+
+/* --- composer (shared by both states) --- */
+.cg-composer { width: 100%; max-width: 760px; display: flex; align-items: center; gap: 6px;
+  background: #303030; border-radius: 28px; padding: 8px 10px 8px 14px; }
+.cg-cbtn { color: #ffffffcc; display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%; }
+.cg-cbtn:hover { background: #ffffff1a; }
+.cg-input { flex: 1; min-width: 0; background: none; border: none; outline: none; color: #f3f3f3;
+  font: inherit; font-size: 15px; padding: 6px 4px; }
+.cg-input::placeholder { color: #ffffff94; }
+/* the white voice pill — four bars, standing in for the waveform glyph */
+.cg-voice { width: 34px; height: 34px; flex: none; border-radius: 50%; background: #fff;
+  display: flex; align-items: center; justify-content: center; gap: 2px; }
+.cg-voice span { width: 2px; border-radius: 1px; background: #0d0d0d; }
+.cg-voice span:nth-child(1) { height: 7px; }
+.cg-voice span:nth-child(2) { height: 13px; }
+.cg-voice span:nth-child(3) { height: 10px; }
+.cg-voice span:nth-child(4) { height: 5px; }
+
+/* --- answer state --- */
+.cg-thread { flex: 1; overflow-y: auto; padding: 20px 24px 8px; }
+.cg-thread > * { max-width: 720px; margin-left: auto; margin-right: auto; }
 .cg-user { display: flex; justify-content: flex-end; margin-bottom: 28px; }
-.cg-user span { background: #f4f4f4; border-radius: 20px; padding: 10px 18px; font-size: 15px;
+.cg-user span { background: #303030; border-radius: 20px; padding: 10px 18px; font-size: 15px;
   max-width: 70%; }
-
-.cg-assistant { display: flex; gap: 14px; margin-bottom: 20px; }
-.cg-answer { font-size: 15px; line-height: 1.75; padding-top: 2px; }
+.cg-answer { font-size: 15px; line-height: 1.75; color: #f3f3f3; margin-bottom: 22px; }
 .cg-answer p { margin: 0 0 14px; }
 .cg-answer ul { margin: 0 0 14px; padding-left: 22px; }
-.cg-answer li { margin-bottom: 8px; }
+.cg-answer li { margin-bottom: 9px; }
+.cg-answer strong { font-weight: 600; }
 
-/* The placement itself. Indented to line up with the assistant text, since in
-   the real format it reads as part of the answer rather than a separate block. */
-.cg-sponsored { padding-left: 40px; margin-bottom: 28px; }
-.cg-sponsored-label { font-size: 12px; color: #8f8f8f; margin-bottom: 6px; }
-.cg-ad { display: flex; gap: 14px; border: 1px solid #e3e3e3; border-radius: 16px;
-  padding: 16px; background: #fff; }
-.cg-ad:hover { background: #fafafa; }
-.cg-ad-icon { width: 42px; height: 42px; flex: none; border-radius: 10px; background: #f4f4f4;
+.cg-sponsored { margin-bottom: 26px; }
+.cg-sponsored-label { font-size: 12px; color: #ffffff94; margin-bottom: 7px; }
+.cg-ad { display: flex; gap: 14px; border: 1px solid #ffffff26; border-radius: 16px; padding: 16px; }
+.cg-ad:hover { background: #ffffff0a; }
+.cg-ad-icon { width: 42px; height: 42px; flex: none; border-radius: 10px; background: #303030;
   display: flex; align-items: center; justify-content: center; font-size: 22px; }
 .cg-ad-body { min-width: 0; }
 .cg-ad-brand { font-size: 15px; font-weight: 600; display: flex; align-items: baseline; gap: 8px; }
-.cg-ad-domain { font-size: 13px; font-weight: 400; color: #8f8f8f; }
-.cg-ad-head { font-size: 15px; color: #0d0d0d; margin-top: 4px; }
-.cg-ad-sub { font-size: 14px; line-height: 1.6; color: #5d5d5d; margin-top: 4px; }
+.cg-ad-domain { font-size: 13px; font-weight: 400; color: #ffffff94; }
+.cg-ad-head { font-size: 15px; margin-top: 4px; }
+.cg-ad-sub { font-size: 14px; line-height: 1.6; color: #ffffffb3; margin-top: 4px; }
 .cg-ad-actions { display: flex; gap: 10px; margin-top: 14px; }
-.cg-call { display: inline-flex; align-items: center; gap: 7px; background: #0d0d0d; color: #fff;
-  border: none; border-radius: 999px; padding: 9px 18px; font: inherit; font-size: 14px;
-  font-weight: 500; text-decoration: none; cursor: pointer; }
+.cg-call { display: inline-flex; align-items: center; gap: 7px; background: #fff; color: #0d0d0d;
+  border-radius: 999px; padding: 9px 18px; font-size: 14px; font-weight: 600;
+  text-decoration: none; }
 .cg-call .material-icons { font-size: 17px; }
-.cg-visit { background: #fff; color: #0d0d0d; border: 1px solid #d9d9d9; border-radius: 999px;
-  padding: 9px 18px; font: inherit; font-size: 14px; cursor: pointer; }
-.cg-sponsored-foot { font-size: 12px; color: #a0a0a0; margin-top: 8px; }
+.cg-visit { border: 1px solid #ffffff26; border-radius: 999px; padding: 9px 18px; font-size: 14px; }
+.cg-visit:hover { background: #ffffff14; }
+.cg-sponsored-foot { font-size: 12px; color: #ffffff70; margin-top: 8px; }
 
-.cg-composer { padding: 8px 24px 18px; }
-.cg-input { max-width: 740px; margin: 0 auto; display: flex; align-items: center;
-  border: 1px solid #d9d9d9; border-radius: 26px; padding: 14px 14px 14px 20px;
-  color: #8f8f8f; font-size: 15px; }
-.cg-send { margin-left: auto; background: #0d0d0d; color: #fff; border-radius: 50%;
-  font-size: 18px !important; padding: 5px; }
-.cg-disclaimer { max-width: 740px; margin: 8px auto 0; text-align: center; font-size: 12px;
-  color: #a0a0a0; }
+.cg-dock { display: flex; flex-direction: column; align-items: center; padding: 8px 24px 16px; }
+.cg-disclaimer { margin: 9px 0 0; font-size: 12px; color: #ffffff70; text-align: center; }

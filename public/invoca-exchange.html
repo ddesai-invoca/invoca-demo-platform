@@ -1565,12 +1565,18 @@ document.readyState==="complete"?document.body.appendChild(zi):window.addEventLi
   document.addEventListener('click', function(e){
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if (!a) return;
-    var hasLogo = a.querySelector && a.querySelector('img[src*="googleads"]');
     var txt = (a.textContent || '').toLowerCase();
-    if (hasLogo || txt.indexOf('google ads') > -1) {
+    var logo = function (s) { return a.querySelector && a.querySelector('img[src*="' + s + '"]'); };
+    // Match on the tile's logo filename first, text as the fallback — the cards
+    // are Webflow CMS items, so the markup is identical apart from those two.
+    if (logo('googleads') || txt.indexOf('google ads') > -1) {
       e.preventDefault();
       e.stopPropagation();
       window.location.href = origin + '/integrations/google-ads';
+    } else if (logo('chatgpt') || txt.indexOf('chatgpt') > -1) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = origin + '/integrations/chatgpt';
     }
   }, true);
 })();
