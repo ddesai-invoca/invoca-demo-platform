@@ -30,6 +30,31 @@ export interface PlaceInfo {
 
 const cache = new Map<string, PlaceInfo | null>();
 
+/* A text search ALWAYS returns its best guess, even when the business does not
+   exist. Measured: "Shady Blinds Santa Barbara" returned "Santa Barbara Screen &
+   Shade" and "Vector Security Santa Barbara" returned "Taurus Protection Inc." —
+   real, unrelated companies. Rendering those under the prospect's name would put
+   a stranger's phone number, reviews and storefront photo on the screen, and an
+   SE could dial it on a call. That is worse than the invented data this replaces.
+
+   So the result is only accepted when every significant word of the prospect's
+   name appears in the returned name. "Orlando Health" ⊂ "Orlando Health Orlando
+   Regional Medical Center" passes; "Shady Blinds" vs "Santa Barbara Screen &
+   Shade" does not. Fictional prospects therefore fall back to the brand mark,
+   which is the correct outcome for a business that has no listing. */
+const NAME_STOP = new Set(["the", "and", "inc", "llc", "ltd", "corp", "co",
+  "company", "group", "usa"]);
+
+const nameWords = (t: string) =>
+  (t.toLowerCase().match(/[a-z]{3,}/g) ?? []).filter((w) => !NAME_STOP.has(w));
+
+export function nameMatches(prospect: string, found: string): boolean {
+  const want = nameWords(prospect);
+  if (!want.length) return false;
+  const got = new Set(nameWords(found));
+  return want.every((w) => got.has(w));
+}
+
 /* Places (New) wants an explicit field mask; asking for everything is both
    slower and billed at a higher SKU. These are exactly the fields the flyout
    renders, nothing more. */
@@ -74,7 +99,10 @@ export async function fetchPlace(
     if (res.ok) {
       const body = (await res.json()) as { places?: any[] };
       const p = body?.places?.[0];
-      if (p) {
+      if (p && !nameMatches(name, p.displayName?.text ?? "")) {
+        console.warn(`[places] rejected "${p.displayName?.text}" for "${name}" (name mismatch)`);
+      }
+      if (p && nameMatches(name, p.displayName?.text ?? "")) {
         /* A photo is referenced by name and fetched from a second endpoint. We
            hand back the media URL with the key ALREADY APPLIED server-side, so
            the browser loads an image without ever seeing the secret. */
