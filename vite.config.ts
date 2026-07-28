@@ -136,6 +136,31 @@ function chatApi(apiKey: string | undefined): Plugin {
    handler as the production server (engine/demoApi.ts) so the two can't drift.
    Locally there's no sign-in, so everything is attributed to the "Local Dev"
    identity that googleAuth.currentUser() falls back to. */
+/* Resolves a prospect's og:image for the ChatGPT flyout hero. Lazy + cached in
+   engine/ogImage.ts, so it adds NOTHING to profile-generation time. Mirrored in
+   server.ts — keep the two in sync. */
+function ogImageApi(): Plugin {
+  return {
+    name: 'invoca-og-image-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (!(req.url || '').startsWith('/api/og-image')) return next()
+        try {
+          const domain = new URL(req.url!, 'http://x').searchParams.get('domain') || ''
+          const { fetchOgImage } = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/ogImage.ts')).href)
+          const url = await fetchOgImage(domain)
+          res.setHeader('content-type', 'application/json')
+          res.end(JSON.stringify({ url }))
+        } catch {
+          res.setHeader('content-type', 'application/json')
+          res.end(JSON.stringify({ url: null }))
+        }
+      })
+    },
+  }
+}
+
 function demoLibraryApi(): Plugin {
   return {
     name: 'invoca-demo-library-api',
@@ -310,6 +335,7 @@ export default defineConfig(({ mode }) => {
       react(),
       generateApi(apiKey),
       deleteProfileApi(),
+      ogImageApi(),
       demoLibraryApi(),
       chatApi(apiKey),
       assistantApi(apiKey),

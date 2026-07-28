@@ -174,6 +174,16 @@ app.post("/api/tts", async (req, res) => {
 });
 
 /* POST /api/delete-profile → remove a generated prospect's on-disk JSON. */
+/* Mirrors the ogImageApi() plugin in vite.config.ts — keep the two in sync. */
+app.get("/api/og-image", async (req, res) => {
+  try {
+    const { fetchOgImage } = await import("./engine/ogImage.ts");
+    res.json({ url: await fetchOgImage(String(req.query.domain ?? "")) });
+  } catch {
+    res.json({ url: null });
+  }
+});
+
 app.post("/api/delete-profile", (req, res) => {
   try {
     const { id } = req.body || {};

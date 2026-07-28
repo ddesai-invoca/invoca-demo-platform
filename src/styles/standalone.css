@@ -290,6 +290,9 @@
 .cg-fly-hero { height: 190px; display: flex; align-items: center; justify-content: center;
   background: linear-gradient(140deg, #33404c, #232c34); font-size: 54px; }
 .cg-fly-hero img { width: 76px; height: 76px; object-fit: contain; }
+/* a real og:image fills the banner; the icon fallback stays centred and small */
+.cg-fly-hero-photo { padding: 0; }
+.cg-fly-hero-photo .cg-fly-photo { width: 100%; height: 100%; object-fit: cover; }
 
 .cg-fly-body { padding: 18px 24px 40px; }
 .cg-fly-name { font-size: 20px; font-weight: 600; margin: 0; }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 
 /* ChatGPT sponsored placement — reached from the ChatGPT Ads tile on the Invoca
@@ -84,6 +84,7 @@ function derive(p: ReturnType<typeof useProfile>["profile"]) {
      wasn't in the table, which rendered "Dallas-Fort Worth Metroplex" over a
      map of San Francisco. A wrong map is worse than a generic one. */
   const ll = stated ? lookupLL(stated) : null;
+  const usedFallback = !ll;
   const city = ll ? stated! : DEFAULT_PLACE.label;
   const coords = ll ?? DEFAULT_PLACE.ll;
 
@@ -141,7 +142,12 @@ function derive(p: ReturnType<typeof useProfile>["profile"]) {
   /* The drawer wants a street address. We only have one for the fallback
      location, so anywhere else shows city/state rather than inventing a
      street that doesn't exist. */
-  const address = city === DEFAULT_PLACE.label
+  /* Keyed off whether we actually FELL BACK, not off the label matching. A
+     prospect that legitimately resolves to Santa Barbara, CA compared equal to
+     the fallback label and got handed the De La Vina street address — which is
+     Vector Security's screenpop city, so it printed a street it has no
+     connection to. */
+  const address = usedFallback
     ? "2930 De La Vina St, Santa Barbara, CA 93105"
     : `${shortCity}${vs?.state ? `, ${vs.state}` : ""}`;
 
@@ -379,6 +385,21 @@ export function ChatGptAd() {
   const [asked, setAsked] = useState<string | null>(null);
   const [drawer, setDrawer] = useState(false);
 
+  /* Prefetch the hero photo when the PAGE mounts, not when the drawer opens,
+     so the image is already decoded by the time the SE clicks the ad. Costs
+     nothing on the generation path — this runs at view time, and the server
+     caches per domain, so it's one fetch per prospect for the whole session. */
+  const [hero, setHero] = useState<string | null>(null);
+  useEffect(() => {
+    if (!d.domain) return;
+    let live = true;
+    fetch(`/api/og-image?domain=${encodeURIComponent(d.domain)}`)
+      .then((r) => r.json())
+      .then((j) => { if (live) setHero(j.url ?? null); })
+      .catch(() => { /* falls back to the brand mark */ });
+    return () => { live = false; };
+  }, [d.domain]);
+
   /* The landing state is a faithful copy, so there's no suggestion row seeded
      with the prospect's query to click — the SE types it. As a shortcut that
      costs nothing visually, submitting an EMPTY composer asks the prospect
@@ -391,7 +412,7 @@ export function ChatGptAd() {
 
   return (
     <div className={"cg-root" + (drawer ? " cg-root-flyout" : "")}>
-      {drawer && <BizDrawer d={d} onClose={() => setDrawer(false)} />}
+      {drawer && <BizDrawer d={d} hero={hero} onClose={() => setDrawer(false)} />}
       <nav className="cg-rail">
         {/* Clicking the mark returns to the Exchange, the way the Google Ads
             page returns by clicking its logo. */}
@@ -541,21 +562,28 @@ export function ChatGptAd() {
    different thing from inventing call volumes — it fabricates other people's
    words. The section keeps the rating block and paraphrased summary lines,
    which is what the real panel leads with anyway. */
-function BizDrawer({ d, onClose }: { d: ReturnType<typeof derive>; onClose: () => void }) {
+function BizDrawer({ d, hero, onClose }: {
+  d: ReturnType<typeof derive>; hero: string | null; onClose: () => void;
+}) {
   const [logoFailed, setLogoFailed] = useState(false);
+  const [heroFailed, setHeroFailed] = useState(false);
   return (
     <aside className="cg-fly" aria-label={`${d.brand} details`}>
       <button className="cg-fly-close" onClick={onClose} aria-label="Close">
         <Icon d={P.close} size={18} />
       </button>
 
-      {/* No photo library, so the banner is the brand mark rather than a stock
-          photo standing in for a real storefront. */}
-      <div className="cg-fly-hero">
-        {d.domain && !logoFailed
-          ? <img src={`https://www.google.com/s2/favicons?sz=128&domain=${d.domain}`}
-              alt="" onError={() => setLogoFailed(true)} />
-          : <span>{d.icon}</span>}
+      {/* Hero is the prospect's OWN og:image — the picture they chose to
+          represent themselves — rather than a stock photo standing in for a
+          real storefront. Degrades to their site icon, then the brand mark. */}
+      <div className={"cg-fly-hero" + (hero && !heroFailed ? " cg-fly-hero-photo" : "")}>
+        {hero && !heroFailed ? (
+          <img className="cg-fly-photo" src={hero} alt=""
+            referrerPolicy="no-referrer" onError={() => setHeroFailed(true)} />
+        ) : d.domain && !logoFailed ? (
+          <img src={`https://www.google.com/s2/favicons?sz=128&domain=${d.domain}`}
+            alt="" onError={() => setLogoFailed(true)} />
+        ) : <span>{d.icon}</span>}
       </div>
 
       <div className="cg-fly-body">
