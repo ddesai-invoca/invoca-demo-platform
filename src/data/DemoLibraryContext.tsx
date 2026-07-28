@@ -1,4 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import { CustomerProfile } from "./schema";
+import { useProfile } from "./ProfileContext";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 
 /* Client for the shared team demo library (server-backed — see engine/demoApi.ts).
    Demos live on the server so the whole team sees the same list; each one records
@@ -8,6 +10,10 @@ import { createContext, useCallback, useContext, useEffect, useState, type React
    Degrades gracefully: if the library API isn't reachable (offline, or a static
    host with no backend), `available` goes false and the app falls back to the
    local/bundled profiles it has always used. */
+
+/* When we last cached each demo, keyed by id. Compared against the library's
+   updatedAt to detect a server-side change the cache would otherwise hide. */
+const LS_STAMPS = "invoca-demo:demo-stamps";
 
 export interface DemoCreator { email: string; name: string }
 
@@ -113,6 +119,51 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
     const r = await api<{ demo: DemoSummary }>(`/api/demos/${id}`, { method: "PATCH", body: JSON.stringify({ customizations }) });
     return !!r?.demo;
   }, []);
+
+  /* SELF-HEAL STALE CACHED PROFILES.
+     ProfileContext caches profiles in localStorage so generated prospects
+     survive a refresh, but that cache had no invalidation: it never asked
+     whether the server's copy was newer. Opening a demo from the Launch screen
+     always refetches, so it looked fine — but the top-bar switcher and a plain
+     page reload read the cache, so a demo changed server-side (an AI edit from
+     another browser, a server-side patch or migration) kept rendering the OLD
+     content indefinitely, with no error anywhere.
+
+     That cost real time four separate times: a workflow that "didn't appear", a
+     local edit that "didn't work", a dash sweep that "didn't run", and a patched
+     transcript that "wasn't there" — every one of them correct on the server and
+     stale on screen.
+
+     Fix: remember the updatedAt we cached each demo at, and when the library
+     list says the server is newer, refetch that demo and replace the cached
+     copy. Refetch rather than evict, so the ACTIVE demo heals in place instead
+     of the app falling back to a different prospect mid-session. */
+  const { profiles, addProfile } = useProfile();
+  const healing = useRef(false);
+  useEffect(() => {
+    if (!demos.length || healing.current) return;
+    const stamps: Record<string, string> = (() => {
+      try { return JSON.parse(localStorage.getItem(LS_STAMPS) ?? "{}"); } catch { return {}; }
+    })();
+    const stale = demos.filter(
+      (d) => profiles.some((p) => p.id === d.id) && stamps[d.id] !== d.updatedAt,
+    );
+    if (!stale.length) return;
+
+    healing.current = true;
+    (async () => {
+      for (const d of stale) {
+        const loaded = await openDemo(d.id);
+        const parsed = loaded && CustomerProfile.safeParse(loaded.demo.profile);
+        if (parsed?.success) {
+          addProfile(parsed.data);
+          stamps[d.id] = d.updatedAt;
+        }
+      }
+      try { localStorage.setItem(LS_STAMPS, JSON.stringify(stamps)); } catch { /* ignore */ }
+      healing.current = false;
+    })();
+  }, [demos, profiles, openDemo, addProfile]);
 
   return (
     <Ctx.Provider value={{ me, demos, loading, available, refresh, isMine, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations }}>
