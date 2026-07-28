@@ -150,11 +150,22 @@ const P: Record<string, string> = {
   refresh: "M21 12a9 9 0 1 1-3-6.7M21 4v5h-5",
 };
 
-/* Real dark basemap tiles (CARTO "dark_all", built on OpenStreetMap). No API
-   key, no SDK — just <img> tiles positioned by the standard slippy-map
-   projection, which is why this is a few lines rather than a map library.
-   If the first tile fails to load we fall back to a flat panel, so a demo with
-   no network shows something map-shaped rather than broken images. */
+/* THE MAP. The real ChatGPT page uses Mapbox GL JS — the capture is full of
+   mapbox-gl CSS, and the map draws to a WebGL canvas, which is why the saved
+   HTML has no imagery in it. That navy-slate land, the pale roads and the
+   coloured interstate shields are Mapbox's night style; CARTO's dark basemap
+   is grayscale and near-black, which is exactly the difference you can see.
+
+   So: if VITE_MAPBOX_TOKEN is set we render Mapbox's Static Images API in the
+   same night style, which matches the real page because it IS the same
+   renderer — one <img>, no SDK, no npm dependency. A Mapbox *public* token
+   (pk.…) is designed to ship in browser code and should be URL-restricted in
+   the Mapbox dashboard; it is NOT a secret like the keys in .env, which is why
+   it can carry the VITE_ prefix.
+
+   Without a token we fall back to CARTO tiles, tinted toward the same palette.
+   Close, not identical. If the first tile 404s or there is no network we drop
+   to a flat panel rather than showing broken images. */
 const CITY_LL: Record<string, [number, number]> = {
   "san francisco": [37.7749, -122.4194], "santa barbara": [34.4208, -119.6982],
   "los angeles": [34.0522, -118.2437], "san diego": [32.7157, -117.1611],
@@ -205,6 +216,33 @@ function tileXY(lat: number, lon: number) {
   };
 }
 
+const MAPBOX_TOKEN = (import.meta.env as Record<string, string | undefined>)
+  .VITE_MAPBOX_TOKEN;
+
+/* The real page shows a photo of each business. We have no photo library, so
+   the PROSPECT gets its actual site icon (Google's favicon service — Clearbit's
+   logo API is dead) and the invented competitors get a neutral tile. Giving a
+   fictional competitor a real-looking photo would be the wrong kind of
+   convincing. Falls back to the brand emoji if the icon won't load. */
+function PlaceImg({ prospect, domain, icon }: {
+  prospect: boolean; domain: string; icon: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  if (prospect && domain && !failed) {
+    return (
+      <span className="cg-place-img">
+        <img src={`https://www.google.com/s2/favicons?sz=128&domain=${domain}`}
+          alt="" onError={() => setFailed(true)} />
+      </span>
+    );
+  }
+  return (
+    <span className={"cg-place-img" + (prospect ? "" : " cg-place-img-alt")} aria-hidden="true">
+      {prospect ? icon : ""}
+    </span>
+  );
+}
+
 function MapCard({ d }: { d: ReturnType<typeof derive> }) {
   const [broken, setBroken] = useState(false);
   const [lat, lon] = cityLatLng(d.city);
@@ -212,10 +250,19 @@ function MapCard({ d }: { d: ReturnType<typeof derive> }) {
   const cx = c.x * TS, cy = c.y * TS;
   const cols = [-2, -1, 0, 1, 2], rows = [-1, 0, 1];
 
+  const mapbox = MAPBOX_TOKEN
+    ? `https://api.mapbox.com/styles/v1/mapbox/navigation-night-v1/static/`
+      + `${lon},${lat},${Z - 1},0/1000x300@2x`
+      + `?access_token=${MAPBOX_TOKEN}&logo=false&attribution=false`
+    : null;
+
   return (
     <div className="cg-map">
-      {broken ? <div className="cg-map-offline" /> : (
-        <div className="cg-tiles">
+      {broken ? <div className="cg-map-offline" /> : mapbox ? (
+        <img className="cg-mapbox" src={mapbox} alt={`Map of ${d.city}`}
+          onError={() => setBroken(true)} />
+      ) : (
+        <div className="cg-tiles cg-tiles-tint">
           {rows.flatMap((dy) => cols.map((dx) => {
             const tx = Math.floor(c.x) + dx, ty = Math.floor(c.y) + dy;
             return (
@@ -244,7 +291,7 @@ function MapCard({ d }: { d: ReturnType<typeof derive> }) {
       <div className="cg-places">
         {d.places.slice(0, 2).map((pl) => (
           <div className="cg-place" key={pl.name}>
-            <span className="cg-place-img" aria-hidden="true">{pl.prospect ? d.icon : "▦"}</span>
+            <PlaceImg prospect={pl.prospect} domain={d.domain} icon={d.icon} />
             <span className="cg-place-txt">
               <span className="cg-place-name">{pl.name}</span>
               <span className="cg-place-meta">★ {pl.rating} • {pl.type}</span>
