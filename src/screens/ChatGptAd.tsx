@@ -176,6 +176,7 @@ const P: Record<string, string> = {
   down: "M17 2v12l-5 8-1-1 1.5-6H3L5.5 2H17z",
   share: "M12 16V3M7 8l5-5 5 5M4 16v4h16v-4",
   refresh: "M21 12a9 9 0 1 1-3-6.7M21 4v5h-5",
+  building: "M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5M9 10h.01M15 10h.01M9 13.5h.01M15 13.5h.01",
 };
 
 /* THE MAP. The real ChatGPT page uses Mapbox GL JS — the capture is full of
@@ -276,9 +277,11 @@ function PlaceImg({ prospect, domain, icon }: {
       </span>
     );
   }
+  /* The competitor tile was rendering an empty gradient — a blank box reads as
+     a broken image, not as "no photo". A storefront glyph reads as deliberate. */
   return (
     <span className={"cg-place-img" + (prospect ? "" : " cg-place-img-alt")} aria-hidden="true">
-      {prospect ? icon : ""}
+      {prospect ? icon : <Icon d={P.building} size={22} />}
     </span>
   );
 }
