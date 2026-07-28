@@ -34,6 +34,7 @@ import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
 import { handleDemoApi } from "./engine/demoApi.ts";
 import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
 import { migrateDemoDashes } from "./engine/dashSweep.ts";
+import { applyDemoPatches } from "./engine/demoPatches.ts";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, "dist");
@@ -222,5 +223,10 @@ app.listen(PORT, () => {
      their browser cannot fix a teammate's demo; the server can. Guarded by a
      marker file, so this is a no-op on every boot after the first. */
   migrateDemoDashes(DATA_DIR);
+  /* Agreed one-off content patches (engine/migrations/*.json). Server-side for
+     the same reason as the sweep: PATCH is creator-only, so a demo owned by
+     someone else cannot be updated from the browser. Content only, never
+     ownership. */
+  applyDemoPatches(DATA_DIR);
   if (!apiKey) console.warn("⚠  ANTHROPIC_API_KEY not set — the AI features will return errors. Set it in the server environment (.env or host config).");
 });

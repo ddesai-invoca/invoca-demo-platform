@@ -1,0 +1,222 @@
+{
+  "_note": "One-off content patch requested for the Big O Tires demo. Applied server-side because PATCH /api/demos/:id is creator-only and this demo belongs to bhyatt@invoca.com. Ownership is NOT touched.",
+  "demoId": "big-o-tires",
+  "marker": ".patch-big-o-convo-v1",
+  "reports": {
+    "voiceRoutingDemo": {
+      "convo": [
+        {
+          "role": "agent",
+          "q": [
+            48,
+            32,
+            20
+          ],
+          "sigs": [],
+          "text": "Hi, I'm Big O Tires's AI assistant here to help you get a personalized quote on tires and service. I see you are interested in the Pilot Sport tires for your Mercedes. Is that correct?"
+        },
+        {
+          "role": "caller",
+          "q": [
+            68,
+            20,
+            12
+          ],
+          "text": "Yes those are the ones.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Tire purchase intent</strong> confirmed"
+            },
+            {
+              "c": "blue",
+              "t": "Product interest: <strong>Michelin Pilot Sport</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Premium tier</strong> shopper"
+            }
+          ]
+        },
+        {
+          "role": "agent",
+          "q": [
+            74,
+            16,
+            10
+          ],
+          "sigs": [],
+          "text": "Great choice. Before I lock in your quote, I have this order going on a 2012 Mercedes-Benz C300 4Matic Sport. Is that the vehicle these tires are for?"
+        },
+        {
+          "role": "caller",
+          "q": [
+            80,
+            12,
+            8
+          ],
+          "text": "Yep, that's the one.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Vehicle confirmed</strong>: 2012 Mercedes-Benz C300"
+            },
+            {
+              "c": "blue",
+              "t": "Fitment <strong>verified from profile</strong>"
+            }
+          ]
+        },
+        {
+          "role": "agent",
+          "q": [
+            83,
+            10,
+            7
+          ],
+          "sigs": [],
+          "text": "Perfect. And just to double check what's in your cart: 2 Michelin Pilot Sport 4S, front 225/40ZR18, and 2 Michelin Pilot Sport 4S, rear 245/35ZR18, plus the recommended TPMS sensor kit. Does that all look right?"
+        },
+        {
+          "role": "caller",
+          "q": [
+            87,
+            8,
+            5
+          ],
+          "text": "Yes, that's correct.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Cart confirmed</strong>: 4 tires + TPMS kit"
+            },
+            {
+              "c": "blue",
+              "t": "Staggered fitment <strong>front and rear</strong>"
+            }
+          ]
+        },
+        {
+          "role": "agent",
+          "q": [
+            90,
+            6,
+            4
+          ],
+          "sigs": [],
+          "text": "You're all set. With mount and balance, tire disposal fee, and TPMS service included, your estimated total is $1,265.95, no payment needed online. Want me to schedule the install at our Timberline Rd location in Fort Collins?"
+        },
+        {
+          "role": "caller",
+          "q": [
+            93,
+            4,
+            3
+          ],
+          "text": "Yes please.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Quote accepted</strong>: $1,265.95"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Install requested</strong>, Timberline Rd"
+            }
+          ]
+        },
+        {
+          "role": "agent",
+          "q": [
+            94,
+            4,
+            2
+          ],
+          "sigs": [],
+          "text": "What day works best for you?"
+        },
+        {
+          "role": "caller",
+          "q": [
+            95,
+            3,
+            2
+          ],
+          "text": "Anytime Thursday morning would be great.",
+          "sigs": [
+            {
+              "c": "blue",
+              "t": "Preference: <strong>Thursday morning</strong>"
+            }
+          ]
+        },
+        {
+          "role": "agent",
+          "q": [
+            96,
+            2,
+            2
+          ],
+          "sigs": [],
+          "text": "I have 9:00 AM or 10:30 AM open this Thursday. Which would you prefer?"
+        },
+        {
+          "role": "caller",
+          "q": [
+            97,
+            2,
+            1
+          ],
+          "text": "9 AM works for me.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Time slot selected</strong>: Thursday 9:00 AM"
+            }
+          ]
+        },
+        {
+          "role": "agent",
+          "q": [
+            98,
+            1,
+            1
+          ],
+          "sigs": [],
+          "text": "You're booked, Thursday at 9:00 AM at Big O Tires, 2007 Timberline Rd, Fort Collins. We'll send a reminder text the day before. Anything else I can help with?"
+        },
+        {
+          "role": "caller",
+          "q": [
+            99,
+            1,
+            0
+          ],
+          "text": "Nope, that covers it. Thanks!",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Service Appointment booked</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "No further questions, <strong>call complete</strong>"
+            }
+          ]
+        },
+        {
+          "role": "agent",
+          "q": [
+            99,
+            1,
+            0
+          ],
+          "sigs": [],
+          "text": "You're welcome, see you Thursday!"
+        }
+      ],
+      "callerLocation": "Fort Collins, CO",
+      "routedSubtitle": "AI Agent confirmed the order and booked the install"
+    }
+  }
+}
