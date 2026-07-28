@@ -20,6 +20,7 @@ import { QualityManagementDashboard } from "./screens/QualityManagementDashboard
 import { QmInstantInsightsDashboard } from "./screens/QmInstantInsightsDashboard";
 import { ManageDashboards } from "./screens/ManageDashboards";
 import { InsightsAnalytics } from "./screens/InsightsAnalytics";
+import { InsightsDashboard } from "./screens/InsightsDashboard";
 import { CallReview } from "./screens/CallReview";
 import { CallDetail } from "./screens/CallDetail";
 import { AgentStudio } from "./screens/AgentStudio";
@@ -84,6 +85,9 @@ export default function App() {
           {/* Everything else lives inside the app shell */}
           <Route element={<AppShell />}>
             {/* Reports nav → My Reports list; individual reports open from there */}
+            {/* A saved Insights dashboard. The real URL carries a uuid; we pass
+                the name so the title matches the row that was clicked. */}
+            <Route path="/insights/dashboard/:name" element={<InsightsDashboard />} />
             <Route path="/reports/digital-insights" element={<DigitalInsights />} />
             <Route path="/reports/conversation-intelligence" element={<ConversationIntelligence />} />
             <Route path="/reports/sms-conversation-intelligence" element={<SmsConversationIntelligence />} />

@@ -73,7 +73,11 @@ export function InsightsAnalytics() {
         <tbody>
           {rows.map((r) => (
             <tr key={r.path}>
-              <td className="md-col-name"><Link to={r.path}>{r.name}</Link></td>
+              {/* Opens the Insights-style saved dashboard, which is what the real
+                  list does, rather than jumping to the platform dashboard. */}
+              <td className="md-col-name">
+                <Link to={`/insights/dashboard/${encodeURIComponent(r.name)}`}>{r.name}</Link>
+              </td>
               <td>{r.views}</td>
               <td>{r.author}</td>
               <td>{r.modified}</td>

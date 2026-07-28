@@ -1568,3 +1568,75 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .ia-count { margin-left: 6px; }
 .ia-arrow { font-size: 22px; color: #5b6577; cursor: pointer; }
 .ia-disabled { color: #c7ccd3; cursor: default; }
+
+/* Insights & Analytics -> a saved dashboard. Matched to the capture: white cards
+   on the grey page like the other dashboards, but a two-up grid at the top and
+   full-width "Performance By ..." sections below, each a donut beside a table
+   with a UNIQUE COUNT / TOTAL footer. */
+.ind-page { padding: 0 0 40px; }
+.ind-head { display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 18px 24px 10px; background: #fff; }
+.ind-crumb { display: block; font-size: 12px; font-weight: 700; letter-spacing: .04em;
+  color: #2666f9; text-decoration: none; }
+.ind-title { font-size: 29px; font-weight: 600; color: #15243e; margin: 4px 0 0; }
+.ind-actions { display: flex; align-items: center; gap: 12px; }
+/* The Ask pill is mint in the real header, distinct from the blue Add Tile. */
+.ind-ask { display: inline-flex; align-items: center; gap: 6px; background: #dff7ec;
+  color: #0d6b4a; border: none; border-radius: 999px; padding: 8px 16px; font: inherit;
+  font-size: 14px; font-weight: 600; cursor: pointer; }
+.ind-ask .material-icons { font-size: 17px; }
+.ind-add { display: inline-flex; align-items: center; gap: 6px; background: #2666f9;
+  color: #fff; border: none; border-radius: 6px; padding: 9px 16px; font: inherit;
+  font-size: 14px; font-weight: 600; cursor: pointer; }
+.ind-add .material-icons { font-size: 18px; }
+.ind-kebab { color: #5b6577; cursor: pointer; }
+
+.ind-filters { background: #fff; border-bottom: 1px solid #e7eaee; padding: 10px 24px 14px; }
+.ind-chip { background: #f0f1f4; border-radius: 999px; padding: 6px 14px; font-size: 13px;
+  color: #3d3d3d; }
+.ind-chip b { font-weight: 700; }
+
+.ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 24px 0; }
+.ind-card { background: #fff; border-radius: 4px; padding: 18px 20px 20px; margin: 10px 24px 0;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1), 0 1px 5px 0 rgba(0,0,0,.1); }
+.ind-grid .ind-card { margin: 0; }
+.ind-card-title { font-size: 17px; font-weight: 600; color: #15243e; margin: 0 0 16px; }
+
+.ind-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.ind-metrics { display: flex; flex-direction: column; gap: 22px; }
+.ind-m-label { display: block; font-size: 14px; font-weight: 600; color: #15243e; }
+.ind-m-value { display: block; font-size: 38px; font-weight: 700; color: #15243e; letter-spacing: -1px; }
+.ind-trend { display: flex; flex-direction: column; gap: 2px; }
+.ind-trend-value { font-size: 38px; font-weight: 700; color: #15243e; }
+.ind-trend-sub { font-size: 13px; color: #5b6577; }
+.ind-trend-sub mark { background: #eceef1; color: #3d3d3d; }
+.ind-rate { display: flex; flex-direction: column; }
+.ind-big { font-size: 44px; }
+
+.ind-split { display: grid; grid-template-columns: 1fr 1.6fr; gap: 24px; align-items: start; }
+.ind-half { min-width: 0; }
+.ind-sub { font-size: 14px; font-weight: 600; color: #15243e; margin: 0 0 10px; }
+.ind-tablewrap { overflow-x: auto; }
+.ind-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ind-table th { text-align: left; font-weight: 700; color: #343a40; padding: 10px 12px;
+  border-bottom: 2px solid #15243e; white-space: nowrap; }
+.ind-table td { padding: 11px 12px; border-top: 1px solid #e7eaee; color: #3d3d3d; }
+.ind-table th:not(:first-child), .ind-table td:not(:first-child) { text-align: right; }
+.ind-table tfoot td { border-top: 2px solid #15243e; }
+.ind-foot-label { display: block; font-size: 11px; letter-spacing: .06em; color: #8892a0; }
+.ind-table tfoot b { font-size: 16px; color: #15243e; }
+.ind-showing { font-size: 13px; color: #5b6577; margin: 10px 0 0; }
+
+.ind-map { position: relative; height: 520px; border-radius: 6px; overflow: hidden;
+  background: #e9ecef; }
+.ind-map-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ind-map-flat { position: absolute; inset: 0; background: #dfe3e6; }
+.ind-dots { position: absolute; inset: 0; pointer-events: none; }
+/* Semi-transparent so overlapping points read as density, like the real tile. */
+.ind-dot { position: absolute; width: 11px; height: 11px; margin: -5px 0 0 -5px;
+  border-radius: 50%; background: #f5405e; opacity: .72; }
+.ind-map-zoom { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; }
+.ind-map-zoom button { width: 28px; height: 28px; background: #2b3038; color: #fff;
+  border: none; font-size: 16px; cursor: pointer; }
+.ind-map-attr { position: absolute; left: 8px; bottom: 6px; font-size: 10px; color: #5b6577;
+  background: #ffffffcc; border-radius: 3px; padding: 1px 5px; }
