@@ -106,9 +106,14 @@ export function ChatGptAd() {
   const [text, setText] = useState("");
   const [asked, setAsked] = useState<string | null>(null);
 
+  /* The landing state is a faithful copy, so there's no suggestion row seeded
+     with the prospect's query to click — the SE types it. As a shortcut that
+     costs nothing visually, submitting an EMPTY composer asks the prospect
+     query instead of doing nothing, so Enter alone gets to the placement. */
   function submit(q: string) {
-    const v = q.trim();
-    if (v) { setAsked(v); setText(""); }
+    const v = q.trim() || d.query;
+    setAsked(v);
+    setText("");
   }
 
   return (
@@ -141,11 +146,6 @@ export function ChatGptAd() {
             <h1 className="cg-headline">What&rsquo;s on your mind today?</h1>
             <Composer value={text} onChange={setText} onSubmit={() => submit(text)} />
             <div className="cg-chips">
-              {/* The prospect query sits with the real suggestion rows so the
-                  demo is one click instead of typing it out live. */}
-              <button className="cg-chip cg-chip-lead" onClick={() => submit(d.query)}>
-                <Icon d={P.search} /><span>{d.query}</span>
-              </button>
               <button className="cg-chip"><Icon d={P.image} /><span>Create an image</span></button>
               <button className="cg-chip"><Icon d={P.pencil} /><span>Write or edit</span></button>
               <button className="cg-chip"><Icon d={P.globe} /><span>Search the web</span></button>
@@ -222,8 +222,11 @@ function Composer({ value, onChange, onSubmit }: {
   return (
     <form className="cg-composer" onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
       <button type="button" className="cg-cbtn"><Icon d={P.plus} /></button>
+      {/* Enter is handled explicitly rather than leaning on the form's implicit
+          submission, which didn't fire here even with a real submit button. */}
       <input className="cg-input" value={value} placeholder="Ask anything"
-        onChange={(e) => onChange(e.target.value)} />
+        onChange={(e) => onChange(e.target.value)}
+        onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); onSubmit(); } }} />
       <button type="button" className="cg-cbtn"><Icon d={P.mic} /></button>
       <button type="submit" className="cg-voice" aria-label="Send">
         <span /><span /><span /><span />
