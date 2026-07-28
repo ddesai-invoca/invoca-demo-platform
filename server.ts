@@ -33,6 +33,7 @@ import { askAssistant } from "./engine/assistant.ts";
 import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
 import { handleDemoApi } from "./engine/demoApi.ts";
 import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
+import { migrateDemoDashes } from "./engine/dashSweep.ts";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, "dist");
@@ -205,5 +206,9 @@ app.listen(PORT, () => {
   console.log(`Invoca demo running on http://localhost:${PORT}`);
   console.log(authEnabled ? "🔒 Google sign-in gate is ON (restricted by email domain)." : "🔓 Auth gate OFF — set GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET to require sign-in.");
   console.log(`📁 Demo library: ${DATA_DIR}${isPersistent(DATA_DIR) ? "" : "  (⚠ not a persistent disk — demos are lost on redeploy)"}`);
+  /* One-time content migration. PATCH is creator-only, so a user sweeping from
+     their browser cannot fix a teammate's demo; the server can. Guarded by a
+     marker file, so this is a no-op on every boot after the first. */
+  migrateDemoDashes(DATA_DIR);
   if (!apiKey) console.warn("⚠  ANTHROPIC_API_KEY not set — the AI features will return errors. Set it in the server environment (.env or host config).");
 });

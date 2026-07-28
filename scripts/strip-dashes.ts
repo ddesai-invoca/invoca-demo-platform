@@ -18,39 +18,12 @@
 */
 import fs from "node:fs";
 import path from "node:path";
+/* Rules live in engine/dashSweep.ts so this script and the server-side boot
+   migration cannot drift apart. */
+import { fixProse } from "../engine/dashSweep.ts";
 
 const REPO = path.resolve(import.meta.dirname, "..");
 const DRY = process.argv.includes("--dry");
-
-/* A dash is only "prose" if a letter or a closing bracket sits on one side and a
-   letter on the other with spaces around it, or if it's a real em/en dash. That
-   keeps ranges and compounds intact. */
-function fixProse(v: string): string {
-  /* A cell that is ONLY dashes (and maybe slashes) is a table PLACEHOLDER meaning
-     "no value". The dry run turned "—" into ", " and "—/—" into ", /, ", which
-     breaks the table rather than improving the prose. A placeholder dash is
-     normal UI, not an AI tell, so leave it alone. */
-  if (/^[\s—–\-/]+$/.test(v)) return v;
-
-  /* Preserve RANGES. The dry run mangled "$22K–$28K" into "$22K, $28K", which
-     changes the meaning of the number. Ranges keep a plain hyphen, which reads
-     fine and is not a dash-joined clause. */
-  let out = v.replace(
-    /(\$?[\d.,]+\s*[KMB%]?)\s*[—–]\s*(\$?[\d.,]+\s*[KMB%]?)/g,
-    "$1-$2",
-  );
-  out = out
-    // any remaining em/en dash is prose: turn it into a comma
-    .replace(/\s*[—–]\s*/g, ", ")
-    // spaced hyphen used as a connector: "Sure - I can help"
-    .replace(/([A-Za-z0-9)\]%])\s+-\s+([A-Za-z])/g, "$1, $2");
-  out = out
-    .replace(/,\s*,/g, ",")          // doubled commas
-    .replace(/,\s*([.!?;:])/g, "$1") // ", ." -> "."
-    .replace(/\(\s*,\s*/g, "(")      // "(, x" -> "(x"
-    .replace(/\s{2,}/g, " ");
-  return out;
-}
 
 const SKIP_KEY = /^(id|slug|url|href|domain|brandDomain|websiteUrl|dateRange|range|path|icon)$/i;
 const LOOKS_STRUCTURAL = (s: string) =>
