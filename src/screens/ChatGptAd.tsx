@@ -390,15 +390,30 @@ export function ChatGptAd() {
      nothing on the generation path — this runs at view time, and the server
      caches per domain, so it's one fetch per prospect for the whole session. */
   const [hero, setHero] = useState<string | null>(null);
+  /* Real listing data (photo, rating, reviews, address, phone, open/closed) when
+     a Places key is configured. Places FIRST because og:image is unreliable for
+     exactly the prospects that matter: enterprise sites 403/429 a server-side
+     fetch. og:image stays as the no-key fallback, then the brand mark. */
+  const [place, setPlace] = useState<PlaceInfo | null>(null);
   useEffect(() => {
-    if (!d.domain) return;
     let live = true;
-    fetch(`/api/og-image?domain=${encodeURIComponent(d.domain)}`)
-      .then((r) => r.json())
-      .then((j) => { if (live) setHero(j.url ?? null); })
-      .catch(() => { /* falls back to the brand mark */ });
+    (async () => {
+      try {
+        const q = new URLSearchParams({ name: d.brand, city: d.shortCity });
+        const j = await (await fetch(`/api/place?${q}`)).json();
+        if (live && j.place) {
+          setPlace(j.place);
+          if (j.place.photoUrl) { setHero(j.place.photoUrl); return; }
+        }
+      } catch { /* fall through to og:image */ }
+      if (!d.domain) return;
+      try {
+        const j = await (await fetch(`/api/og-image?domain=${encodeURIComponent(d.domain)}`)).json();
+        if (live) setHero(j.url ?? null);
+      } catch { /* falls back to the brand mark */ }
+    })();
     return () => { live = false; };
-  }, [d.domain]);
+  }, [d.domain, d.brand, d.shortCity]);
 
   /* The landing state is a faithful copy, so there's no suggestion row seeded
      with the prospect's query to click — the SE types it. As a shortcut that
@@ -412,7 +427,7 @@ export function ChatGptAd() {
 
   return (
     <div className={"cg-root" + (drawer ? " cg-root-flyout" : "")}>
-      {drawer && <BizDrawer d={d} hero={hero} onClose={() => setDrawer(false)} />}
+      {drawer && <BizDrawer d={d} hero={hero} place={place} onClose={() => setDrawer(false)} />}
       <nav className="cg-rail">
         {/* Clicking the mark returns to the Exchange, the way the Google Ads
             page returns by clicking its logo. */}
@@ -562,9 +577,23 @@ export function ChatGptAd() {
    different thing from inventing call volumes — it fabricates other people's
    words. The section keeps the rating block and paraphrased summary lines,
    which is what the real panel leads with anyway. */
-function BizDrawer({ d, hero, onClose }: {
-  d: ReturnType<typeof derive>; hero: string | null; onClose: () => void;
+interface PlaceInfo {
+  photoUrl?: string; rating?: number; reviews?: number;
+  address?: string; phone?: string; openNow?: boolean; name?: string;
+}
+
+function BizDrawer({ d, hero, place, onClose }: {
+  d: ReturnType<typeof derive>; hero: string | null;
+  place: PlaceInfo | null; onClose: () => void;
 }) {
+  /* Prefer the REAL listing values over our invented ones. This is a
+     correctness win, not just cosmetic: the 4.9 rating and "Open until 6:00 PM"
+     were made up. Anything Places doesn't return keeps the derived value. */
+  const rating = place?.rating != null ? place.rating.toFixed(1) : d.places[0].rating;
+  const reviews = place?.reviews;
+  const address = place?.address ?? d.address;
+  const phone = place?.phone ?? d.phone;
+  const openLabel = place?.openNow === false ? "Closed" : "Open";
   const [logoFailed, setLogoFailed] = useState(false);
   const [heroFailed, setHeroFailed] = useState(false);
   return (
@@ -589,27 +618,31 @@ function BizDrawer({ d, hero, onClose }: {
       <div className="cg-fly-body">
         <h2 className="cg-fly-name">{d.brand}</h2>
         <div className="cg-fly-rate">
-          <strong>{d.places[0].rating}</strong>
+          <strong>{rating}</strong>
           <span className="cg-fly-stars">★★★★★</span>
+          {reviews ? <span className="cg-fly-dim">({reviews.toLocaleString()})</span> : null}
           <span>• {d.hero}</span>
         </div>
 
         <div className="cg-fly-actions">
           <button>Directions</button>
           <button>Website</button>
-          <a className="cg-fly-call" href={`tel:${d.phone.replace(/[^\d+]/g, "")}`}>Call</a>
+          <a className="cg-fly-call" href={`tel:${phone.replace(/[^\d+]/g, "")}`}>Call</a>
         </div>
 
         <div className="cg-fly-row">
           <Icon d={P.clock} size={16} />
-          <span><span className="cg-open">Open</span> until 6:00 PM</span>
+          <span>
+            <span className={place?.openNow === false ? "cg-shut" : "cg-open"}>{openLabel}</span>
+            {place?.openNow == null ? " until 6:00 PM" : ""}
+          </span>
           <Icon d={P.chevron} size={15} />
         </div>
         <div className="cg-fly-row">
-          <Icon d={P.pin} size={16} /><span>{d.address}</span>
+          <Icon d={P.pin} size={16} /><span>{address}</span>
         </div>
         <div className="cg-fly-row">
-          <Icon d={P.phone} size={16} /><span>{d.phone}</span>
+          <Icon d={P.phone} size={16} /><span>{phone}</span>
         </div>
 
         <p className="cg-fly-desc">
@@ -621,7 +654,7 @@ function BizDrawer({ d, hero, onClose }: {
 
         <h3 className="cg-fly-h">What people say</h3>
         <div className="cg-fly-score">
-          <strong>{d.places[0].rating}</strong>
+          <strong>{rating}</strong>
           <span className="cg-fly-stars">★★★★★</span>
         </div>
         <ul className="cg-fly-list">

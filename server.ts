@@ -175,6 +175,18 @@ app.post("/api/tts", async (req, res) => {
 });
 
 /* POST /api/delete-profile → remove a generated prospect's on-disk JSON. */
+/* Mirrors the placeApi() plugin in vite.config.ts — keep the two in sync. */
+app.get("/api/place", async (req, res) => {
+  try {
+    const { fetchPlace } = await import("./engine/places.ts");
+    res.json({
+      place: await fetchPlace(String(req.query.name ?? ""), String(req.query.city ?? "")),
+    });
+  } catch {
+    res.json({ place: null });
+  }
+});
+
 /* Mirrors the ogImageApi() plugin in vite.config.ts — keep the two in sync. */
 app.get("/api/og-image", async (req, res) => {
   try {

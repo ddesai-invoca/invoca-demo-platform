@@ -139,6 +139,32 @@ function chatApi(apiKey: string | undefined): Plugin {
 /* Resolves a prospect's og:image for the ChatGPT flyout hero. Lazy + cached in
    engine/ogImage.ts, so it adds NOTHING to profile-generation time. Mirrored in
    server.ts — keep the two in sync. */
+/* Real business photo/rating for the ChatGPT flyout. Lazy + cached in
+   engine/places.ts, so it adds nothing to generation time. Mirrored in
+   server.ts — keep the two in sync. Key stays server-side. */
+function placeApi(): Plugin {
+  return {
+    name: 'invoca-place-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (!(req.url || '').startsWith('/api/place')) return next()
+        res.setHeader('content-type', 'application/json')
+        try {
+          const q = new URL(req.url!, 'http://x').searchParams
+          const { fetchPlace } = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/places.ts')).href)
+          const env = loadEnv('development', process.cwd(), '')
+          const info = await fetchPlace(q.get('name') || '', q.get('city') || undefined,
+            env.GOOGLE_PLACES_API_KEY)
+          res.end(JSON.stringify({ place: info }))
+        } catch {
+          res.end(JSON.stringify({ place: null }))
+        }
+      })
+    },
+  }
+}
+
 function ogImageApi(): Plugin {
   return {
     name: 'invoca-og-image-api',
@@ -335,6 +361,7 @@ export default defineConfig(({ mode }) => {
       react(),
       generateApi(apiKey),
       deleteProfileApi(),
+      placeApi(),
       ogImageApi(),
       demoLibraryApi(),
       chatApi(apiKey),
