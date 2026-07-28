@@ -966,6 +966,11 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-voice .wf-leaf-orange .wf-leaf-action { color: #b33b00; }        /* Support & Escalate — Invoca warning orange */
 /* Voice tree is taller — hide the decorative minimap so it doesn't overlap the leaves. */
 .wf-canvas-voice .wf-minimap { display: none; }
+/* The canvas clips (overflow:hidden) and is often narrower than the 760px tree.
+   With the built-in two-branch trees the clipped part is empty margin, so it
+   never mattered; a four-branch nurture tree loses a whole node off the right
+   edge. Allow horizontal scroll for those so every branch is reachable. */
+.wf-canvas-wide { overflow-x: auto; }
 
 /* zoom controls + minimap */
 .wf-zoom { position: absolute; left: 16px; bottom: 16px; display: flex; flex-direction: column; border: 1px solid #d5d9de; border-radius: 8px; overflow: hidden; background: #fff; }

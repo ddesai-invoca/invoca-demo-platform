@@ -33,13 +33,30 @@ export interface ChatBrain {
   knowledge?: string[];
   playbook?: SmsPlaybook;
   serviceArea?: string;   // voice: gate new orders by ZIP (empty/absent = no geo limit)
+  /* An extra workflow's own playbook (reports.extraWorkflows[].systemPrompt).
+     When set it REPLACES the generated sales persona — a nurture agent has a
+     different job on the same channel. Our SMS format rules are still appended
+     underneath, so a hand-written prompt can't accidentally produce a wall of
+     text or markdown that the phone UI can't render. */
+  customSystem?: string;
 }
 export interface ChatMessage {
   role: "user" | "assistant";
   content: string;
 }
 
+const SMS_FORMAT_RULES = [
+  "FORMAT (always): plain text only — no markdown, asterisks, bullets or headings.",
+  "Keep every message to 1-3 short sentences. Never send a wall of text.",
+  "One question at a time.",
+].join("\n");
+
 function buildSystem(brain: ChatBrain, voice: boolean): string {
+  /* A workflow-supplied playbook wins over the generated persona, with our
+     channel format rules appended so the phone UI stays renderable. */
+  if (!voice && brain.customSystem) {
+    return `${brain.customSystem}\n\n${SMS_FORMAT_RULES}`;
+  }
   const rules = (brain.rules ?? []).map((r) => `- ${r}`).join("\n");
   const qa = (brain.qaPairs ?? [])
     .map((p) => `Q: ${p.question}\nA: ${p.answer}`)

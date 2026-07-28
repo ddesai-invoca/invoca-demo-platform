@@ -118,12 +118,85 @@ function VoiceFlowTree() {
   );
 }
 
+
+/* Data-driven flow tree for an extra workflow (reports.extraWorkflows). The two
+   built-in trees above are hand-positioned two-branch layouts; a nurture agent
+   has four outcomes, so this one COMPUTES the layout: branches are spread
+   evenly across the canvas width and the connector lines are derived from the
+   same centres, which means it takes 2..5 branches without redrawing anything.
+   Node classes are reused from the built-in trees so it looks identical. */
+function ExtraFlowTree({ wf }: { wf: NonNullable<ReturnType<typeof useProfile>["profile"]["reports"]["extraWorkflows"]>[number] }) {
+  /* Match the built-in trees' 760x470 footprint exactly. Wider values (980,
+     then 856) both overflowed the canvas and clipped the last branch — the
+     canvas is sized around 760, so anything larger loses a node off the right
+     edge. Four branches therefore get narrower columns rather than a wider
+     canvas, and the titles wrap. */
+  const W = 760, H = 470;
+  const n = Math.max(1, wf.branches.length);
+  const colW = W / n;
+  const cx = (i: number) => Math.round(colW * i + colW / 2);
+  const nodeW = Math.min(206, Math.round(colW - 12));
+  const mid = W / 2;
+  const tone = (t?: string) =>
+    t === "green" ? "wf-leaf-green" : t === "orange" ? "wf-leaf-orange" : "";
+
+  return (
+    <div className="wf-tree" style={{ width: W, height: H }}>
+      <svg className="wf-lines" viewBox={`0 0 ${W} ${H}`} width={W} height={H} aria-hidden="true">
+        <line x1={mid} y1="62" x2={mid} y2="122" className="wf-l" />
+        <line x1={mid} y1="176" x2={mid} y2="210" className="wf-l" />
+        {/* the horizontal bus spans only as far as the outermost branches */}
+        <line x1={cx(0)} y1="210" x2={cx(n - 1)} y2="210" className="wf-l" />
+        {wf.branches.map((b, i) => (
+          <g key={b.title}>
+            <line x1={cx(i)} y1="210" x2={cx(i)} y2="240" className="wf-l" />
+            <line x1={cx(i)} y1="284" x2={cx(i)} y2="360"
+              className={"wf-l " + (b.tone === "green" ? "wf-l-green" : b.tone === "orange" ? "wf-l-orange" : "")} />
+          </g>
+        ))}
+      </svg>
+
+      <div className="wf-node wf-trigger" style={{ left: mid - 100, top: 8, width: 200 }}>
+        <div className="wf-node-title"><span className="material-icons">bolt</span>Triggered by</div>
+        <div className="wf-node-sub">{wf.triggeredBy ?? "1 Campaign"}</div>
+      </div>
+
+      <div className="wf-node wf-start" style={{ left: mid - 115, top: 122, width: 230 }}>
+        <div className="wf-node-title"><span className="material-icons">chat</span>Conversation Start</div>
+        <div className="wf-node-sub">{wf.startLabel}</div>
+      </div>
+
+      {wf.branches.map((b, i) => (
+        <div className="wf-node wf-intent" key={`i-${b.title}`}
+          style={{ left: cx(i) - nodeW / 2, top: 240, width: nodeW }}>
+          <div className="wf-node-title"><span className="material-icons">alt_route</span>{b.title}</div>
+        </div>
+      ))}
+
+      {wf.branches.map((b, i) => (
+        <div className={"wf-node wf-leaf " + tone(b.tone)} key={`l-${b.title}`}
+          style={{ left: cx(i) - nodeW / 2, top: 360, width: nodeW }}>
+          <div className="wf-leaf-title">{b.title} Users</div>
+          <div className="wf-leaf-action"><span className="material-icons">bolt</span>{b.action}</div>
+          {b.chips?.length ? (
+            <div className="wf-chips">{b.chips.map((c) => <span className="wf-chip" key={c}>{c}</span>)}</div>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function AgentWorkflow() {
   const { profile } = useProfile();
   const { channel } = useParams();
-  const isSms = (channel ?? "sms") !== "voice";
-  const channelLabel = isSms ? "SMS" : "Voice";
-  const workflowName = `${profile.customerName} - ${channelLabel}`;
+  /* The route param is a slug, not just sms|voice: extra workflows add their
+     own (e.g. "sms-nurture"). Resolve those first so they don't fall through to
+     the built-in SMS tree. */
+  const extra = (profile.reports.extraWorkflows ?? []).find((w) => w.slug === channel);
+  const isSms = extra ? extra.channel === "SMS" : (channel ?? "sms") !== "voice";
+  const channelLabel = extra ? extra.channel : isSms ? "SMS" : "Voice";
+  const workflowName = extra ? extra.label : `${profile.customerName} - ${channelLabel}`;
   const [voicePreview, setVoicePreview] = useState(false);
   const [inCall, setInCall] = useState(false);
   const closeVoice = () => { setVoicePreview(false); setInCall(false); };
@@ -133,7 +206,10 @@ export function AgentWorkflow() {
       <div className="wf-top">
         <h2 className="wf-title">Agent Workflow: {workflowName}</h2>
         <div className="wf-top-actions">
-          {isSms && <button className="wf-preview wf-preview-agent" onClick={() => window.open("/agent-studio/agent/preview", "_blank", "noopener")}>Preview Agent</button>}
+          {isSms && <button className="wf-preview wf-preview-agent" onClick={() => window.open(
+            extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
+                  : "/agent-studio/agent/preview",
+            "_blank", "noopener")}>Preview Agent</button>}
           <button className="wf-preview" onClick={() => { if (!isSms) setVoicePreview(true); }}>Preview Workflow</button>
         </div>
       </div>
@@ -172,9 +248,11 @@ export function AgentWorkflow() {
       </div>
 
       <div className={"wf-canvas" + (isSms ? "" : " wf-canvas-voice")}>
-        {isSms
-          ? <FlowTree channelLabel={channelLabel} bookingTerm={profile.bookingTerm} />
-          : <VoiceFlowTree />}
+        {extra
+          ? <ExtraFlowTree wf={extra} />
+          : isSms
+            ? <FlowTree channelLabel={channelLabel} bookingTerm={profile.bookingTerm} />
+            : <VoiceFlowTree />}
 
         <div className="wf-zoom">
           <button className="wf-zoom-btn"><span className="material-icons">add</span></button>

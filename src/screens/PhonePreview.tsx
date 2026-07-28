@@ -113,10 +113,20 @@ function BatteryIcon() {
   );
 }
 
-function useBrain() {
+/* `wf` is the extra-workflow slug from ?wf= (Preview Agent on a nurture
+   workflow). When present its systemPrompt REPLACES the default SMS sales
+   playbook — that's the whole point of a second SMS agent: same channel, a
+   different job. Absent, nothing changes for any other prospect. */
+function useBrain(wfSlug?: string | null) {
   const { profile } = useProfile();
   const ac = profile.reports.agentConfig;
+  const wf = wfSlug
+    ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
+    : undefined;
   return {
+    customSystem: wf?.systemPrompt,
+    openingMessage: wf?.openingMessage,
+    agentLabel: wf?.label,
     customerName: profile.customerName,
     industry: profile.industry,
     rules: ac?.brandConversationRules ?? [],
@@ -131,10 +141,12 @@ function useBrain() {
    tab (window.close) in page mode. Either way, the chat is captured to the SMS
    Conversation Intelligence report on ANY exit — the close/Done button AND a
    beforeunload guard (so closing the tab directly still saves the transcript). */
-export function PhonePreview({ onClose, mode = "modal" }: { onClose?: () => void; mode?: "modal" | "page" }) {
+export function PhonePreview({ onClose, mode = "modal", wf }: {
+  onClose?: () => void; mode?: "modal" | "page"; wf?: string | null;
+}) {
   const { profile } = useProfile();
   const { upsertCaptured, patchCaptured } = useSmsCapture();
-  const brain = useBrain();
+  const brain = useBrain(wf);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -172,6 +184,17 @@ export function PhonePreview({ onClose, mode = "modal" }: { onClose?: () => void
     if (started.current) return;
     started.current = true;
     (async () => {
+      /* An extra workflow can specify its opening text. Use it verbatim rather
+         than asking the model to invent one: a nurture agent's first message is
+         the scripted re-engagement line, and it needs to read identically every
+         time an SE runs the demo. {name} takes the screenpop caller's first
+         name so it's a real person from the rest of the story. */
+      if (brain.openingMessage) {
+        const first = (profile.reports.voiceScreenpop?.callerName ?? "").split(/\s+/)[0];
+        setMessages([{ role: "assistant",
+          content: brain.openingMessage.replace(/\{name\}/g, first || "there") }]);
+        return;
+      }
       setBusy(true);
       try {
         setMessages([{ role: "assistant", content: await ask([]) }]);
@@ -299,7 +322,11 @@ export function PhonePreview({ onClose, mode = "modal" }: { onClose?: () => void
             <div className="phone-home" />
           </div>
         </div>
-        <div className="phone-caption">Live preview — {profile.customerName} SMS agent</div>
+        {/* Name the workflow being previewed, not just the customer — with two
+            SMS agents "Reyes Law SMS agent" is ambiguous. */}
+        <div className="phone-caption">
+          Live preview — {brain.agentLabel ?? `${profile.customerName} SMS agent`}
+        </div>
     </>
   );
 

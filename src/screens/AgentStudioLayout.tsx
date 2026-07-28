@@ -25,6 +25,10 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
   const workflows = [
     { name: `${name} - Voice`, channel: "voice", status: "Live" },
     { name: `${name} - SMS`, channel: "sms", status: "Live" },
+    // per-prospect extras (Reyes Law's SMS nurture agent) — keep their own label
+    ...(profile.reports.extraWorkflows ?? []).map((w) => ({
+      name: w.label, channel: w.slug, status: w.status ?? "Live",
+    })),
   ];
 
   return (

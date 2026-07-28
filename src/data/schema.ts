@@ -657,6 +657,38 @@ export const SignalManagerView = z.object({
   signals: z.array(SignalRow),
 });
 
+/* EXTRA AGENT WORKFLOWS — additional Agent Studio workflows beyond the standard
+   Voice + SMS pair, defined per prospect rather than in code. Added for Reyes
+   Law's SMS nurture agent (re-engage prospects who went quiet after intake).
+
+   Optional, so every existing profile stays valid and simply shows the usual two
+   workflows. Nothing in the generation engine emits this yet — it's authored
+   into a demo's JSON. If nurture agents become standard, this is the slice an
+   engine phase would fill.
+
+   `systemPrompt` is the agent's own playbook and drives the Preview Agent, which
+   is why it lives in data: the whole point is that it differs per workflow. */
+export const WorkflowBranch = z.object({
+  title: z.string(),                    // "Re-engaged"
+  action: z.string(),                   // "Book Consultation"
+  tone: z.enum(["green", "orange", "blue", "grey"]).optional(),
+  chips: z.array(z.string()).optional(),
+});
+export type WorkflowBranch = z.infer<typeof WorkflowBranch>;
+
+export const ExtraWorkflow = z.object({
+  slug: z.string(),                     // URL segment under /workflow/<slug>
+  label: z.string(),                    // "Reyes Law - SMS - Nurture"
+  channel: z.string(),                  // "SMS" | "Voice"
+  status: z.string().optional(),
+  triggeredBy: z.string().optional(),
+  startLabel: z.string(),               // subtitle on the Conversation Start node
+  branches: z.array(WorkflowBranch),
+  systemPrompt: z.string(),             // the agent's playbook, used by Preview Agent
+  openingMessage: z.string().optional(),// what the agent texts first
+});
+export type ExtraWorkflow = z.infer<typeof ExtraWorkflow>;
+
 export const CustomerProfile = z.object({
   id: z.string(),                   // slug: "shady-blinds"
   customerName: z.string(),         // "Shady Blinds"
@@ -692,7 +724,8 @@ export const CustomerProfile = z.object({
     voiceScreenpop: VoiceScreenpop.optional(),   // data for the Voice Screenpop artifact
     smsScreenpop: SmsScreenpop.optional(),        // data for the SMS Screenpop artifact
     voiceRoutingDemo: VoiceRoutingDemo.optional(), // data for the Voice Routing Demo artifact
-    signalManager: SignalManagerView.optional(), // Signal nav: the Manage Signals grid
+    signalManager: SignalManagerView.optional(),
+    extraWorkflows: z.array(ExtraWorkflow).optional(), // Signal nav: the Manage Signals grid
     // aiAgents: AIAgentsView,           ← future
   }),
 });
