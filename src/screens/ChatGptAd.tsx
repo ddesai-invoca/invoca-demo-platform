@@ -73,11 +73,16 @@ function derive(p: ReturnType<typeof useProfile>["profile"]) {
      prospect on disk), then San Francisco as the explicit fallback. There is no
      true HQ field on the profile — if we ever want one it has to come from the
      engine, since only research knows it. */
-  const area0 = shortArea(r.agentConfig?.serviceArea);
   const vs = r.voiceScreenpop;
-  const city = area0
-    ?? (vs?.city ? `${vs.city}${vs.state ? `, ${vs.state}` : ""}` : undefined)
-    ?? "San Francisco, CA";
+  const stated = shortArea(r.agentConfig?.serviceArea)
+    ?? (vs?.city ? `${vs.city}${vs.state ? `, ${vs.state}` : ""}` : undefined);
+  /* Label and coordinates resolve TOGETHER and fall back together. An earlier
+     version kept the label and swapped only the coordinates when a place
+     wasn't in the table, which rendered "Dallas-Fort Worth Metroplex" over a
+     map of San Francisco. A wrong map is worse than a generic one. */
+  const ll = stated ? lookupLL(stated) : null;
+  const city = ll ? stated! : DEFAULT_PLACE.label;
+  const coords = ll ?? DEFAULT_PLACE.ll;
 
   /* The organic results. The prospect is ALWAYS first. The others are built
      from the city + category rather than invented business names — this is a
@@ -111,7 +116,7 @@ function derive(p: ReturnType<typeof useProfile>["profile"]) {
   ];
 
   return {
-    city, shortCity, places,
+    city, shortCity, places, coords,
     query: `best ${(isProcessWord ? hero : term!).toLowerCase()} near me`,
     hero,
     others: products.slice(1, 4),
@@ -196,13 +201,25 @@ const CITY_LL: Record<string, [number, number]> = {
    table key CONTAINED in the string ("dallas" inside the Metroplex, "greater
    Orlando and Central Florida" → orlando). San Francisco stays the fallback
    only when nothing matches at all. */
-function cityLatLng(city: string): [number, number] {
-  const s = city.toLowerCase();
+/* Where the map lands when we can't resolve the prospect's location at all.
+   The Santa Barbara office address (2930 De La Vina St, 93105), geocoded once
+   via Nominatim rather than eyeballed off a map. */
+const DEFAULT_PLACE = {
+  label: "Santa Barbara, CA",
+  ll: [34.4382504, -119.7275035] as [number, number],
+};
+
+/* Returns null when nothing matches, so the caller falls back label-and-all.
+   Scans for the longest table key CONTAINED in the string ("dallas" inside
+   "Dallas-Fort Worth Metroplex", "orlando" inside "greater Orlando and
+   Central Florida") — an exact-key lookup silently mismatched those. */
+function lookupLL(place: string): [number, number] | null {
+  const s = place.toLowerCase();
   let best = "";
   for (const k of Object.keys(CITY_LL)) {
     if (s.includes(k) && k.length > best.length) best = k;
   }
-  return CITY_LL[best] ?? CITY_LL["san francisco"];
+  return best ? CITY_LL[best] : null;
 }
 
 const Z = 12, TS = 256;
@@ -245,7 +262,7 @@ function PlaceImg({ prospect, domain, icon }: {
 
 function MapCard({ d }: { d: ReturnType<typeof derive> }) {
   const [broken, setBroken] = useState(false);
-  const [lat, lon] = cityLatLng(d.city);
+  const [lat, lon] = d.coords;
   const c = tileXY(lat, lon);
   const cx = c.x * TS, cy = c.y * TS;
   const cols = [-2, -1, 0, 1, 2], rows = [-1, 0, 1];
