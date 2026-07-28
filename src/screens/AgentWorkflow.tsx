@@ -11,7 +11,13 @@ import { VoiceCall } from "./VoiceCall";
 
 /* The flow tree is drawn at a fixed 760×470 size with absolutely-positioned
    nodes + an SVG connector layer, then centered in the dotted canvas. */
-function FlowTree({ channelLabel, bookingTerm }: { channelLabel: string; bookingTerm: string }) {
+function FlowTree({ channelLabel, profile }: {
+  channelLabel: string; profile: ReturnType<typeof useProfile>["profile"];
+}) {
+  /* Same source as the voice tree so both channels name the prospect's real
+     intents. "Sales Inquiry" read wrong for a hospital. */
+  const c = voiceCopy(profile);
+  const bookingTerm = profile.bookingTerm;
   return (
     <div className="wf-tree">
       <svg className="wf-lines" viewBox="0 0 760 470" width="760" height="470" aria-hidden="true">
@@ -38,19 +44,19 @@ function FlowTree({ channelLabel, bookingTerm }: { channelLabel: string; booking
       </div>
 
       <div className="wf-node wf-intent" style={{ left: 140, top: 240, width: 180 }}>
-        <div className="wf-node-title"><span className="material-icons">shopping_cart</span>Sales Inquiry</div>
+        <div className="wf-node-title"><span className="material-icons">shopping_cart</span>{c.newQ}</div>
       </div>
       <div className="wf-node wf-intent" style={{ left: 440, top: 240, width: 180 }}>
-        <div className="wf-node-title"><span className="material-icons">headset_mic</span>Need Support</div>
+        <div className="wf-node-title"><span className="material-icons">headset_mic</span>{c.supQ}</div>
       </div>
 
       <div className="wf-node wf-leaf wf-leaf-green" style={{ left: 120, top: 360, width: 220 }}>
-        <div className="wf-leaf-title">All Sales Inquiry Users</div>
+        <div className="wf-leaf-title">All {c.newQ} Users</div>
         <div className="wf-leaf-action"><span className="material-icons">call</span>Schedule {bookingTerm}</div>
-        <div className="wf-chips"><span className="wf-chip">Consumer Name</span><span className="wf-chip">Interest</span></div>
+        <div className="wf-chips"><span className="wf-chip">Consumer Name</span><span className="wf-chip">{c.newChips[0]}</span></div>
       </div>
       <div className="wf-node wf-leaf wf-leaf-orange" style={{ left: 430, top: 360, width: 200 }}>
-        <div className="wf-leaf-title">All Support Users</div>
+        <div className="wf-leaf-title">All {c.supQ} Users</div>
         <div className="wf-leaf-action"><span className="material-icons">headset_mic</span>Support &amp; Escalate</div>
       </div>
     </div>
@@ -72,7 +78,40 @@ function VIcon({ d }: { d: string }) {
 /* Voice flow diagram — a qualify-and-ROUTE tree, matched to Invoca's real Voice
    workflow (agent-management-v2): 248px nodes, MUI icons, grey node icons, green
    "Inform & Route" (AltRoute) + orange "Support & Escalate" leaves. */
-function VoiceFlowTree() {
+/* Derives every label from the prospect's own voice routing queues
+   (reports.voiceRoutingDemo.queues), which all seven profiles already carry in
+   the same shape: [0] is the new-business intent, [1] is existing-customer
+   support, [2] is general. Previously this tree was hardcoded Shady Blinds
+   retail copy, so Orlando Health's voice workflow talked about ordering window
+   treatments and collecting an Order Number. */
+function voiceCopy(p: ReturnType<typeof useProfile>["profile"]) {
+  const q = p.reports.voiceRoutingDemo?.queues ?? [];
+  // Queue names carry a qualifier after a dash ("Consultation - LASIK New
+  // Patient"); the node title wants the head, so cut at the first dash.
+  const head = (n?: string, fb = "") =>
+    (n ?? fb).split(/\s*[-–—]\s*/)[0].trim() || fb;
+  const newQ = head(q[0]?.name, "New Inquiry");
+  const supQ = head(q[1]?.name, "Existing Customer Support");
+  // "patient" vs "customer" comes from the prospect's own queue wording rather
+  // than a guess about the vertical.
+  const who = /patient/i.test(q[1]?.name ?? "") ? "patient"
+    : /resident/i.test(q[1]?.name ?? "") ? "resident" : "customer";
+  const hero = p.reports.marketingDashboard.breakdowns
+    .find((b) => /Product Category/i.test(b.title))?.rows[0]?.name;
+  const booking = p.bookingTerm.toLowerCase();
+  return {
+    newQ, supQ, who,
+    newSub: `Caller wants to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking} and is not an existing ${who}`,
+    supSub: `Caller is an existing ${who} and needs help with something already in progress`,
+    newChips: [hero ?? p.industry, p.bookingTerm, "Timeline"],
+    supChips: [`Existing ${who[0].toUpperCase()}${who.slice(1)}`, "Issue Type"],
+    newQueue: q[0]?.name ?? "New Inquiry",
+    supQueue: q[1]?.name ?? "Support",
+  };
+}
+
+function VoiceFlowTree({ profile }: { profile: ReturnType<typeof useProfile>["profile"] }) {
+  const c = voiceCopy(profile);
   return (
     <div className="wf-tree wf-voice">
       <svg className="wf-lines" viewBox="0 0 560 650" width="560" height="650" aria-hidden="true">
@@ -96,23 +135,23 @@ function VoiceFlowTree() {
       </div>
 
       <div className="wf-node wf-intent" style={{ left: 6, top: 344, width: 248 }}>
-        <div className="wf-node-title"><VIcon d={VIC.cart} />Sales Inquiry</div>
-        <div className="wf-node-sub">Caller is looking to order new window treatments — hasn't placed an order yet</div>
+        <div className="wf-node-title"><VIcon d={VIC.cart} />{c.newQ}</div>
+        <div className="wf-node-sub">{c.newSub}</div>
       </div>
       <div className="wf-node wf-intent" style={{ left: 302, top: 344, width: 248 }}>
-        <div className="wf-node-title"><VIcon d={VIC.headset} />Need Support</div>
-        <div className="wf-node-sub">Caller already has an order placed and needs help with it</div>
+        <div className="wf-node-title"><VIcon d={VIC.headset} />{c.supQ}</div>
+        <div className="wf-node-sub">{c.supSub}</div>
       </div>
 
       <div className="wf-node wf-leaf wf-leaf-green" style={{ left: 6, top: 512, width: 248 }}>
-        <div className="wf-leaf-title">All Sales Inquiry Users</div>
-        <div className="wf-leaf-action"><VIcon d={VIC.altRoute} />Inform &amp; Route</div>
-        <div className="wf-chips"><span className="wf-chip">Room Type</span><span className="wf-chip">Product Type</span><span className="wf-chip">Timeline</span></div>
+        <div className="wf-leaf-title">All {c.newQ} Users</div>
+        <div className="wf-leaf-action"><VIcon d={VIC.altRoute} />Route to {c.newQueue}</div>
+        <div className="wf-chips">{c.newChips.map((x) => <span className="wf-chip" key={x}>{x}</span>)}</div>
       </div>
       <div className="wf-node wf-leaf wf-leaf-orange" style={{ left: 302, top: 512, width: 248 }}>
-        <div className="wf-leaf-title">All Support Users</div>
-        <div className="wf-leaf-action"><VIcon d={VIC.headset} />Support &amp; Escalate</div>
-        <div className="wf-chips"><span className="wf-chip">Order Number</span><span className="wf-chip">Order Issue</span></div>
+        <div className="wf-leaf-title">All {c.supQ} Users</div>
+        <div className="wf-leaf-action"><VIcon d={VIC.headset} />Route to {c.supQueue}</div>
+        <div className="wf-chips">{c.supChips.map((x) => <span className="wf-chip" key={x}>{x}</span>)}</div>
       </div>
     </div>
   );
@@ -251,8 +290,8 @@ export function AgentWorkflow() {
         {extra
           ? <ExtraFlowTree wf={extra} />
           : isSms
-            ? <FlowTree channelLabel={channelLabel} bookingTerm={profile.bookingTerm} />
-            : <VoiceFlowTree />}
+            ? <FlowTree channelLabel={channelLabel} profile={profile} />
+            : <VoiceFlowTree profile={profile} />}
 
         <div className="wf-zoom">
           <button className="wf-zoom-btn"><span className="material-icons">add</span></button>
