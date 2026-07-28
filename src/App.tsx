@@ -29,6 +29,7 @@ import { AgentWorkflow } from "./screens/AgentWorkflow";
 import { SignalManager } from "./screens/SignalManager";
 import { Launch } from "./screens/Launch";
 import { SmsPreviewPage } from "./screens/SmsPreviewPage";
+import { ChatGptAd } from "./screens/ChatGptAd";
 import { Placeholder } from "./screens/Placeholder";
 import { NAV } from "./components/nav";
 
@@ -69,6 +70,11 @@ export default function App() {
           {/* Standalone full-page routes (no sidebar/topbar) — exact static copies */}
           <Route path="/integrations" element={<StaticRedirect to="/invoca-exchange.html" />} />
           <Route path="/integrations/google-ads" element={<StaticRedirect to="/google-ads.html" />} />
+
+          {/* ChatGPT sponsored placement — the AI-channel counterpart to the
+              Google Ads page: where the call starts, before Invoca sees it.
+              Profile-driven, so it re-skins per prospect like the app screens. */}
+          <Route path="/integrations/chatgpt" element={<ChatGptAd />} />
 
           {/* Preview Agent (SMS) — opens in its own browser tab from Agent Workflow */}
           <Route path="/agent-studio/agent/preview" element={<SmsPreviewPage />} />
