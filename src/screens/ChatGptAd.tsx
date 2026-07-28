@@ -34,6 +34,18 @@ function shortArea(raw?: string): string | undefined {
   return s && s.length <= 34 ? s : undefined;
 }
 
+/* Turn an industry string into something that reads as a business name.
+   Naively taking the first "&" segment gave Vector Security "Home" (from
+   "Home & Business Security / Alarm Monitoring"), so prefer whichever side of
+   the "&" actually has two words: "Business Security", "Vision Care",
+   "Health Systems", "Window Treatments". */
+function industrySeg(industry: string): string {
+  const head = industry.split(/[/,]/)[0].trim();
+  const parts = head.split("&").map((x) => x.trim()).filter(Boolean);
+  const pick = parts.find((x) => x.split(/\s+/).length >= 2) ?? parts[0] ?? industry;
+  return pick.replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 function derive(p: ReturnType<typeof useProfile>["profile"]) {
   const r = p.reports;
   const products = r.marketingDashboard.breakdowns
@@ -71,21 +83,31 @@ function derive(p: ReturnType<typeof useProfile>["profile"]) {
      from the city + category rather than invented business names — this is a
      mock-up, and naming plausible-sounding real competitors with fabricated
      star ratings is not something to put on a screen. */
-  const shortCity = city.split(",")[0];
-  const h = hero.toLowerCase();
+  /* A short city for business names and the footer. The full label can be a
+     region ("Dallas–Fort Worth Metroplex", "Orlando and Central Florida"),
+     which reads wrong inside a name — "Dallas–Fort Worth Metroplex Vision
+     Care". Cut at the first dash or "and". */
+  const shortCity = city.split(",")[0].split(/\s*[–—-]\s*|\s+and\s+/i)[0].trim();
+  /* Competitor names are built from the CITY + the industry, not the product
+     category. Product-based templates broke on healthcare — Key-Whitman's
+     category is "LASIK / EVO ICL", which produced "LASIK / EVO ICL Warehouse".
+     The industry's first segment ("Ophthalmology", "Window treatments") reads
+     as a business name in every vertical. Bullets are neutral for the same
+     reason: "off-the-shelf sizes" is nonsense for an eye clinic. */
+  const seg = industrySeg(p.industry);
   const places = [
     { name: p.customerName, rating: "4.9", type: hero, prospect: true,
-      a: `Free ${p.bookingTerm.toLowerCase()}s, and the quote covers measure, supply and install.`,
-      b: "Strong reviews for turning up on time and finishing in one visit." },
-    { name: `${shortCity} ${hero} Co.`, rating: "4.7", type: hero, prospect: false,
-      a: `Long-established local ${h} specialist with a showroom.`,
-      b: "Good if you want to see materials in person before ordering." },
-    { name: `Premier ${hero}`, rating: "4.6", type: hero, prospect: false,
-      a: "Competitive on price, though lead times can run longer in peak season.",
+      a: `Free ${p.bookingTerm.toLowerCase()}s, and they quote a firm number rather than a range.`,
+      b: "Strong reviews for getting people booked in quickly." },
+    { name: `${shortCity} ${seg}`, rating: "4.7", type: seg, prospect: false,
+      a: "Long-established locally, with a high volume of reviews.",
+      b: "Good if you want to talk options through in person first." },
+    { name: `Premier ${seg}`, rating: "4.6", type: seg, prospect: false,
+      a: "Competitive on price, though waits can run longer at busy times.",
       b: "Worth a call if budget is the deciding factor." },
-    { name: `${hero} Warehouse`, rating: "4.4", type: `${hero} supplier`, prospect: false,
-      a: "Largest stock range in the area, mostly off-the-shelf sizes.",
-      b: "Best for standard sizes rather than anything custom." },
+    { name: `${seg} of ${shortCity}`, rating: "4.4", type: seg, prospect: false,
+      a: "Broad range of services, less specialised in any one of them.",
+      b: "Fine for something straightforward." },
   ];
 
   return {
@@ -127,6 +149,113 @@ const P: Record<string, string> = {
   share: "M12 16V3M7 8l5-5 5 5M4 16v4h16v-4",
   refresh: "M21 12a9 9 0 1 1-3-6.7M21 4v5h-5",
 };
+
+/* Real dark basemap tiles (CARTO "dark_all", built on OpenStreetMap). No API
+   key, no SDK — just <img> tiles positioned by the standard slippy-map
+   projection, which is why this is a few lines rather than a map library.
+   If the first tile fails to load we fall back to a flat panel, so a demo with
+   no network shows something map-shaped rather than broken images. */
+const CITY_LL: Record<string, [number, number]> = {
+  "san francisco": [37.7749, -122.4194], "santa barbara": [34.4208, -119.6982],
+  "los angeles": [34.0522, -118.2437], "san diego": [32.7157, -117.1611],
+  "thousand oaks": [34.1706, -118.8376], "sacramento": [38.5816, -121.4944],
+  "san jose": [37.3382, -121.8863], "portland": [45.5152, -122.6784],
+  "seattle": [47.6062, -122.3321], "phoenix": [33.4484, -112.0740],
+  "denver": [39.7392, -104.9903], "dallas": [32.7767, -96.7970],
+  "fort worth": [32.7555, -97.3308], "houston": [29.7604, -95.3698],
+  "austin": [30.2672, -97.7431], "san antonio": [29.4241, -98.4936],
+  "orlando": [28.5383, -81.3792], "winter park": [28.6000, -81.3392],
+  "tampa": [27.9506, -82.4572], "miami": [25.7617, -80.1918],
+  "jacksonville": [30.3322, -81.6557], "atlanta": [33.7490, -84.3880],
+  "charlotte": [35.2271, -80.8431], "raleigh": [35.7796, -78.6382],
+  "nashville": [36.1627, -86.7816], "chicago": [41.8781, -87.6298],
+  "detroit": [42.3314, -83.0458], "minneapolis": [44.9778, -93.2650],
+  "kansas city": [39.0997, -94.5786], "columbus": [39.9612, -82.9988],
+  "cleveland": [41.4993, -81.6944], "pittsburgh": [40.4406, -79.9959],
+  "philadelphia": [39.9526, -75.1652], "new york": [40.7128, -74.0060],
+  "boston": [42.3601, -71.0589], "baltimore": [39.2904, -76.6122],
+  "washington": [38.9072, -77.0369], "richmond": [37.5407, -77.4360],
+  "las vegas": [36.1699, -115.1398], "salt lake city": [40.7608, -111.8910],
+  "duluth": [34.0029, -84.1446],
+};
+
+/* An exact key lookup silently mismatched: "Dallas–Fort Worth Metroplex" isn't
+   a key, so it fell back to San Francisco while the label still read Dallas —
+   a wrong map is worse than an obviously generic one. So scan for the longest
+   table key CONTAINED in the string ("dallas" inside the Metroplex, "greater
+   Orlando and Central Florida" → orlando). San Francisco stays the fallback
+   only when nothing matches at all. */
+function cityLatLng(city: string): [number, number] {
+  const s = city.toLowerCase();
+  let best = "";
+  for (const k of Object.keys(CITY_LL)) {
+    if (s.includes(k) && k.length > best.length) best = k;
+  }
+  return CITY_LL[best] ?? CITY_LL["san francisco"];
+}
+
+const Z = 12, TS = 256;
+
+function tileXY(lat: number, lon: number) {
+  const n = 2 ** Z;
+  const r = (lat * Math.PI) / 180;
+  return {
+    x: ((lon + 180) / 360) * n,
+    y: ((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * n,
+  };
+}
+
+function MapCard({ d }: { d: ReturnType<typeof derive> }) {
+  const [broken, setBroken] = useState(false);
+  const [lat, lon] = cityLatLng(d.city);
+  const c = tileXY(lat, lon);
+  const cx = c.x * TS, cy = c.y * TS;
+  const cols = [-2, -1, 0, 1, 2], rows = [-1, 0, 1];
+
+  return (
+    <div className="cg-map">
+      {broken ? <div className="cg-map-offline" /> : (
+        <div className="cg-tiles">
+          {rows.flatMap((dy) => cols.map((dx) => {
+            const tx = Math.floor(c.x) + dx, ty = Math.floor(c.y) + dy;
+            return (
+              <img key={`${tx}/${ty}`} alt="" draggable={false} className="cg-tile"
+                src={`https://a.basemaps.cartocdn.com/dark_all/${Z}/${tx}/${ty}@2x.png`}
+                onError={() => setBroken(true)}
+                style={{ left: tx * TS - cx, top: ty * TS - cy }} />
+            );
+          }))}
+        </div>
+      )}
+
+      {/* Pins sit at fixed offsets from centre rather than real coordinates —
+          we know the city, not each business's street address. */}
+      {d.places.slice(0, 3).map((pl, i) => (
+        <div key={pl.name} className="cg-pin"
+          style={{ left: `${[50, 68, 33][i]}%`, top: `${[28, 44, 52][i]}%` }}>
+          <span className="cg-pin-badge">★ {pl.rating}</span>
+          <span className="cg-pin-label">{pl.name}</span>
+        </div>
+      ))}
+
+      <button className="cg-map-expand">Expand <Icon d={P.expand} size={13} /></button>
+      <span className="cg-map-attr">© OpenStreetMap · CARTO</span>
+
+      <div className="cg-places">
+        {d.places.slice(0, 2).map((pl) => (
+          <div className="cg-place" key={pl.name}>
+            <span className="cg-place-img" aria-hidden="true">{pl.prospect ? d.icon : "▦"}</span>
+            <span className="cg-place-txt">
+              <span className="cg-place-name">{pl.name}</span>
+              <span className="cg-place-meta">★ {pl.rating} • {pl.type}</span>
+              <span className="cg-place-open">Open now</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function Icon({ d, size = 20 }: { d: string; size?: number }) {
   return (
@@ -195,50 +324,7 @@ export function ChatGptAd() {
             <div className="cg-thread">
               <div className="cg-user"><span>{asked}</span></div>
 
-              {/* Map card. A stylised SVG, not a real tile service — the page
-                  makes no network calls and there is no map key in this app.
-                  It carries the prospect's pin plus the other results. */}
-              <div className="cg-map">
-                <svg className="cg-map-svg" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid slice"
-                  aria-label={`Map of ${d.city}`}>
-                  <rect width="720" height="300" fill="#2a3a44" />
-                  <path d="M0 40 L240 0 L420 70 L720 30 L720 0 L0 0Z" fill="#22323a" />
-                  <path d="M0 250 L180 210 L380 268 L720 226 L720 300 L0 300Z" fill="#22323a" />
-                  <path d="M470 90 q60 -30 120 -10 t130 20 L720 150 L470 150Z" fill="#1d3540" />
-                  <g stroke="#556570" fill="none" strokeLinecap="round">
-                    <path d="M-20 118 C160 96 300 150 460 128 S680 108 740 120" strokeWidth="5" />
-                    <path d="M120 -10 C150 90 96 190 140 320" strokeWidth="4" />
-                    <path d="M520 -10 C500 90 560 190 540 320" strokeWidth="4" />
-                    <path d="M-20 205 C180 190 340 232 740 198" strokeWidth="3" opacity=".8" />
-                    <path d="M300 -10 C312 120 288 210 320 320" strokeWidth="2" opacity=".6" />
-                    <path d="M-20 62 C220 48 470 78 740 56" strokeWidth="2" opacity=".6" />
-                  </g>
-                  {d.places.slice(0, 3).map((pl, i) => (
-                    <g key={pl.name} transform={`translate(${[300, 500, 170][i]}, ${[96, 150, 190][i]})`}>
-                      <rect x="-26" y="-14" width="52" height="24" rx="12" fill="#141414" opacity=".92" />
-                      <text x="-16" y="3" fill="#fff" fontSize="12">★</text>
-                      <text x="-2" y="3" fill="#fff" fontSize="12">{pl.rating}</text>
-                      <text x="0" y="28" fill="#fff" fontSize="12" textAnchor="middle"
-                        style={{ paintOrder: "stroke", stroke: "#1b262c", strokeWidth: 3 }}>
-                        {pl.name.length > 22 ? pl.name.slice(0, 21) + "…" : pl.name}
-                      </text>
-                    </g>
-                  ))}
-                </svg>
-                <button className="cg-map-expand">Expand <Icon d={P.expand} size={13} /></button>
-                <div className="cg-places">
-                  {d.places.slice(0, 2).map((pl) => (
-                    <div className="cg-place" key={pl.name}>
-                      <span className="cg-place-img" aria-hidden="true">{pl.prospect ? d.icon : "▦"}</span>
-                      <span className="cg-place-txt">
-                        <span className="cg-place-name">{pl.name}</span>
-                        <span className="cg-place-meta">★ {pl.rating} • {pl.type}</span>
-                        <span className="cg-place-open">Open now</span>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <MapCard d={d} />
               <div className="cg-feedback">Give feedback</div>
 
               {/* Vertical-neutral by design: this same copy has to read naturally
