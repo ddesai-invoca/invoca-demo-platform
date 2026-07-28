@@ -54,6 +54,26 @@ function useBrain() {
     knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
     playbook: ac?.smsPlaybook,
     serviceArea: ac?.serviceArea,
+    /* Per-prospect routing for the voice prompt. Same source the workflow
+       diagram uses (voiceRoutingDemo.queues), so the spoken call and the
+       diagram name the same teams. Without this the prompt fell back to
+       hardcoded retail language and asked every caller, including a hospital's,
+       for an order number. */
+    voiceRouting: (() => {
+      const q = profile.reports.voiceRoutingDemo?.queues ?? [];
+      if (!q.length) return undefined;
+      const name = (i: number) => q[i]?.name;
+      return {
+        newQueue: name(0) ?? "the new enquiries team",
+        supportQueue: name(1) ?? "the support team",
+        generalQueue: name(2),
+        bookingTerm: profile.bookingTerm,
+        products: profile.reports.marketingDashboard.breakdowns
+          .find((b) => /Product Category/i.test(b.title))?.rows.map((x) => x.name),
+        who: /patient/i.test(name(1) ?? "") ? "patient"
+          : /resident/i.test(name(1) ?? "") ? "resident" : "customer",
+      };
+    })(),
   };
 }
 

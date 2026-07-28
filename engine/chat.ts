@@ -39,6 +39,19 @@ export interface ChatBrain {
      underneath, so a hand-written prompt can't accidentally produce a wall of
      text or markdown that the phone UI can't render. */
   customSystem?: string;
+  /* Per-prospect VOICE routing, from reports.voiceRoutingDemo.queues plus the
+     prospect's booking term and product categories. Without it the voice prompt
+     used to fall back to hardcoded retail language: it asked every caller for an
+     ORDER NUMBER and routed them to "our fulfillment team", which is wrong for a
+     hospital, a law firm or a security company. */
+  voiceRouting?: {
+    newQueue: string;          // queues[0] — new business / booking
+    supportQueue: string;      // queues[1] — existing customer
+    generalQueue?: string;     // queues[2] — everything else
+    bookingTerm: string;       // "Appointment", "Consultation", "Test Drive"
+    products?: string[];       // main things they offer, used as spoken examples
+    who?: string;              // "patient" | "resident" | "customer"
+  };
 }
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -124,36 +137,49 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
    a couple of details and hands the caller to the right team; it never sells,
    quotes prices, or resolves issues. Two paths: new order vs. existing/support.
    Re-skins per prospect via the business context (name / industry / brand rules). */
+const aOrAn = (w: string) => (/^[aeiou]/i.test(w) ? "an" : "a");
+/* Spoken aloud, so "Shady Blinds's assistant" grates. Names ending in s take a
+   bare apostrophe. */
+const poss = (n: string) => (/s$/i.test(n) ? `${n}'` : `${n}'s`);
+
 function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): string {
   const serviceArea = brain.serviceArea?.trim();
+  /* Fall back to neutral wording rather than retail wording when a profile has
+     no routing data, so an old profile degrades to "book an appointment /
+     existing customer" instead of asking a patient for an order number. */
+  const r = brain.voiceRouting ?? {
+    newQueue: "the new enquiries team",
+    supportQueue: "the support team",
+    bookingTerm: "appointment",
+  };
+  const book = (r.bookingTerm || "appointment").toLowerCase();
+  const who = r.who || "customer";
+  const products = r.products ?? [];
   return [
     NO_DASH_RULE,
     `You are the AI phone assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
     `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
     ``,
-    `CALL FLOW — follow this, adapting naturally to what the caller says:`,
-    `1. OPEN: greet them as ${brain.customerName}'s AI assistant and ask whether they need help with a NEW order (a new purchase) or with an EXISTING order / support. Phrase it naturally for the business (for example: "Do you need help ordering new blinds, or help with an existing order?"). Wait for their answer.`,
+    `CALL FLOW, adapt naturally to what the caller says:`,
+    `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant and ask whether they are calling to book ${aOrAn(book)} ${book}, or need help as an existing ${who}. Phrase it naturally for this business. Wait for their answer.`,
     ``,
-    `PATH A — NEW ORDER (they want to buy):`,
-    `   - FIRST, ask for the ZIP code of the service address.`,
+    `PATH A: BOOKING ${book.toUpperCase()} (new ${who})`,
     serviceArea
-      ? `   - SERVICE-AREA CHECK: treat the ZIP code "12345" as the ONLY out-of-service-area ZIP. If the caller's ZIP is 12345, politely APOLOGIZE — let them know ${brain.customerName} serves ${serviceArea} and that this ZIP is outside it, so you're unable to set up a consultation — then STOP; do NOT ask the questions below or route them anywhere. For ANY OTHER ZIP code, treat them as within the service area, briefly confirm you serve their area, and continue.`
+      ? `   - FIRST ask for their ZIP code. SERVICE-AREA CHECK: treat "12345" as the ONLY out-of-area ZIP. If they say 12345, politely apologise, explain ${brain.customerName} serves ${serviceArea}, say you cannot book them, then STOP: do not ask anything else or route them. For ANY other ZIP, briefly confirm you serve their area and continue.`
       : ``,
-    `   - Ask which room or space the products are for.`,
-    `   - Then ask their style/product preference — offer the main options ${brain.customerName} carries as examples (for window treatments, e.g. "roller shades, wood blinds, cellular shades, or something else").`,
-    `   - Then ask how soon they're looking to have them installed.`,
-    `   - Then ROUTE on their timeline:`,
-    `      • If the timeline is URGENT (this week, this weekend, ASAP, right away), treat them as a HOT LEAD: offer to connect them to a design consultant — "I'd like to connect you with a design consultant who can walk you through your options — does that work for you?" When they agree, say "OK, I'm transferring you to a design consultant now."`,
-    `      • If they're just BROWSING or comparing options (no urgency, still deciding), instead offer to connect them to browse support, using the same connect-and-confirm wording, then transfer.`,
+    products.length
+      ? `   - Ask which of these they need: ${products.slice(0, 4).join(", ")}. Offer them as spoken examples, not a list.`
+      : `   - Ask what they need help with, in their own words.`,
+    `   - Then ask how soon they need it.`,
+    `   - Then ROUTE on urgency:`,
+    `      • URGENT (today, this week, ASAP): treat as a HOT LEAD. Offer to connect them to ${r.newQueue}, confirm, then say "OK, I'm transferring you to ${r.newQueue} now."`,
+    `      • Still deciding or comparing: offer ${r.generalQueue ?? r.newQueue} instead, same confirm-then-transfer wording.`,
     ``,
-    `PATH B — EXISTING ORDER / SUPPORT:`,
-    `   a. Ask for their ORDER NUMBER first.`,
-    `   b. Then ask what the issue is — delivery, installation, or something else like damage, return, or billing.`,
-    `   c. Do NOT try to solve it. Once you have the order number AND the issue type, offer to connect them to the right team, confirm, then transfer ("Transferring you now."):`,
-    `      • delivery → our fulfillment team`,
-    `      • installation → our installation support team`,
-    `      • damage / return / billing / anything else → the appropriate support team`,
-    `      If the caller corrects the issue type, switch to the matching team before transferring.`,
+    `PATH B: EXISTING ${who.toUpperCase()}`,
+    `   a. Ask for whatever reference they have so the team can find them: the name on the account, and a reference or account number if they have one. Do NOT invent a required format.`,
+    `   b. Then ask what the issue is, in their own words.`,
+    `   c. Do NOT try to solve it. Once you have who they are AND what the issue is, offer to connect them to ${r.supportQueue}, confirm, then transfer ("Transferring you now.").`,
+    `      If it clearly is not a ${r.supportQueue} matter, route to ${r.generalQueue ?? r.supportQueue} instead.`,
     ``,
     `STYLE & RULES:`,
     `- This is a SPOKEN call: talk naturally and briefly (1–2 sentences), ask ONE question at a time, then stop and wait.`,
@@ -214,3 +240,8 @@ export function stripDashes(s: string): string {
     .replace(/\s{2,}/g, " ")
     .trim();
 }
+
+/* Test hook: lets a script assert the voice prompt re-skins per prospect
+   without standing up the whole app or spending an API call. */
+export const __buildVoiceSystemForTest = (brain: ChatBrain) =>
+  buildVoiceSystem(brain, "", "");
