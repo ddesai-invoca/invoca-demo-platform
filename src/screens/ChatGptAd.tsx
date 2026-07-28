@@ -441,7 +441,16 @@ export function ChatGptAd() {
                 <ol className="cg-list">
                   {d.places.map((pl) => (
                     <li key={pl.name}>
-                      <span className="cg-list-name">{pl.name}</span>{" "}
+                      {/* Only the prospect opens the flyout — the others are
+                          invented, so there is no listing to open. */}
+                      <span
+                        className={"cg-list-name" + (pl.prospect ? " cg-list-open" : "")}
+                        role={pl.prospect ? "button" : undefined}
+                        tabIndex={pl.prospect ? 0 : undefined}
+                        onClick={pl.prospect ? () => setDrawer(true) : undefined}
+                        onKeyDown={pl.prospect
+                          ? (e) => e.key === "Enter" && setDrawer(true) : undefined}
+                      >{pl.name}</span>{" "}
                       <span className="cg-list-city">({d.shortCity})</span>
                       <ul><li>{pl.a}</li><li>{pl.b}</li></ul>
                     </li>

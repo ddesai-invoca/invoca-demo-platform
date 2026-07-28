@@ -234,6 +234,8 @@
 .cg-list-name { text-decoration: underline; text-underline-offset: 3px;
   text-decoration-color: #ffffff4d; }
 .cg-list-city { color: #ffffffb3; }
+.cg-list-open { cursor: pointer; }
+.cg-list-open:hover { text-decoration-color: #fff; color: #fff; }
 
 .cg-loc { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #ffffff94;
   margin-bottom: 14px; }
