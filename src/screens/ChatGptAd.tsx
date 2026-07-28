@@ -190,6 +190,8 @@ const P: Record<string, string> = {
   share: "M12 16V3M7 8l5-5 5 5M4 16v4h16v-4",
   refresh: "M21 12a9 9 0 1 1-3-6.7M21 4v5h-5",
   close: "M6 6l12 12M18 6L6 18",
+  chevLeft: "M15 18l-6-6 6-6",
+  chevUp: "M6 15l6-6 6 6",
   clock: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2",
   phone: "M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z",
   building: "M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5M9 10h.01M15 10h.01M9 13.5h.01M15 13.5h.01",
@@ -302,7 +304,7 @@ function PlaceImg({ prospect, domain, icon }: {
   );
 }
 
-function MapCard({ d }: { d: ReturnType<typeof derive> }) {
+function MapCard({ d, onOpen }: { d: ReturnType<typeof derive>; onOpen: () => void }) {
   const [broken, setBroken] = useState(false);
   const [lat, lon] = d.coords;
   const c = tileXY(lat, lon);
@@ -354,7 +356,16 @@ function MapCard({ d }: { d: ReturnType<typeof derive> }) {
 
       <div className="cg-places">
         {d.places.slice(0, 2).map((pl) => (
-          <div className="cg-place" key={pl.name}>
+          <div
+            className={"cg-place" + (pl.prospect ? " cg-place-open-btn" : "")}
+            key={pl.name}
+            role={pl.prospect ? "button" : undefined}
+            tabIndex={pl.prospect ? 0 : undefined}
+            /* Only the prospect's card opens the expanded view, matching how
+               only their row in the results list opens the flyout. */
+            onClick={pl.prospect ? onOpen : undefined}
+            onKeyDown={pl.prospect ? (e) => e.key === "Enter" && onOpen() : undefined}
+          >
             <PlaceImg prospect={pl.prospect} domain={d.domain} icon={d.icon} />
             <span className="cg-place-txt">
               <span className="cg-place-name">{pl.name}</span>
@@ -384,6 +395,13 @@ export function ChatGptAd() {
   const [text, setText] = useState("");
   const [asked, setAsked] = useState<string | null>(null);
   const [drawer, setDrawer] = useState(false);
+  /* The expanded map state. Measured off the reference capture: the expanded
+     Mapbox canvas is FULL-BLEED (1868x859 in a 1913-wide window, starting right
+     of the icon rail) with the drawer overlaying it on the right, rather than
+     the two sitting side by side. */
+  const [expanded, setExpanded] = useState(false);
+  const openExpanded = () => { setExpanded(true); setDrawer(true); };
+  const closeAll = () => { setExpanded(false); setDrawer(false); };
 
   /* Prefetch the hero photo when the PAGE mounts, not when the drawer opens,
      so the image is already decoded by the time the SE clicks the ad. Costs
@@ -427,7 +445,15 @@ export function ChatGptAd() {
 
   return (
     <div className={"cg-root" + (drawer ? " cg-root-flyout" : "")}>
-      {drawer && <BizDrawer d={d} hero={hero} place={place} onClose={() => setDrawer(false)} />}
+      {drawer && (
+        <BizDrawer d={d} hero={hero} place={place} back={expanded}
+          onClose={() => (expanded ? closeAll() : setDrawer(false))} />
+      )}
+      {expanded && (
+        <ExpandedMap d={d} place={place} onClose={closeAll}>
+          <Composer value={text} onChange={setText} onSubmit={() => submit(text)} />
+        </ExpandedMap>
+      )}
       <nav className="cg-rail">
         {/* Clicking the mark returns to the Exchange, the way the Google Ads
             page returns by clicking its logo. */}
@@ -467,7 +493,7 @@ export function ChatGptAd() {
             <div className="cg-thread">
               <div className="cg-user"><span>{asked}</span></div>
 
-              <MapCard d={d} />
+              <MapCard d={d} onOpen={openExpanded} />
               <div className="cg-feedback">Give feedback</div>
 
               {/* Vertical-neutral by design: this same copy has to read naturally
@@ -582,9 +608,9 @@ interface PlaceInfo {
   address?: string; phone?: string; openNow?: boolean; name?: string;
 }
 
-function BizDrawer({ d, hero, place, onClose }: {
+function BizDrawer({ d, hero, place, back, onClose }: {
   d: ReturnType<typeof derive>; hero: string | null;
-  place: PlaceInfo | null; onClose: () => void;
+  place: PlaceInfo | null; back?: boolean; onClose: () => void;
 }) {
   /* Prefer the REAL listing values over our invented ones. This is a
      correctness win, not just cosmetic: the 4.9 rating and "Open until 6:00 PM"
@@ -598,8 +624,11 @@ function BizDrawer({ d, hero, place, onClose }: {
   const [heroFailed, setHeroFailed] = useState(false);
   return (
     <aside className="cg-fly" aria-label={`${d.brand} details`}>
-      <button className="cg-fly-close" onClick={onClose} aria-label="Close">
-        <Icon d={P.close} size={18} />
+      {/* In the expanded view the real panel uses a back chevron, not an X:
+          it returns to the thread rather than dismissing a layer. */}
+      <button className={"cg-fly-close" + (back ? " cg-fly-back" : "")}
+        onClick={onClose} aria-label={back ? "Back" : "Close"}>
+        <Icon d={back ? P.chevLeft : P.close} size={18} />
       </button>
 
       {/* Hero is the prospect's OWN og:image — the picture they chose to
@@ -678,6 +707,81 @@ function BizDrawer({ d, hero, place, onClose }: {
         <p className="cg-fly-note">Demo mock-up — not a real listing.</p>
       </div>
     </aside>
+  );
+}
+
+
+/* The expanded map. Measured off reference/chatgpt-expanded-map.html: the map
+   canvas is full-bleed behind the drawer (not side by side), the composer stays
+   centred in the MAP area rather than the window, and there is a collapse
+   chevron above it. Controls sit over the map: close top-left with zoom beneath,
+   an "Open Now" pill top-right.
+
+   Only the PROSPECT's pin renders here. The inline map shows competitors for
+   context; this view is that one business, per the brief. */
+function ExpandedMap({ d, place, onClose, children }: {
+  d: ReturnType<typeof derive>;
+  place: PlaceInfo | null;
+  onClose: () => void;
+  children: React.ReactNode;
+}) {
+  const [broken, setBroken] = useState(false);
+  const [zoom, setZoom] = useState(Z + 2);   // tighter than the inline card
+  const [lat, lon] = d.coords;
+  const c = tileXY(lat, lon);
+
+  /* Static Images API caps at 1280x1280, so ask for that and cover the viewport.
+     Cheaper and simpler than pulling in the GL SDK for a non-interactive map. */
+  const src = MAPBOX_TOKEN
+    ? `https://api.mapbox.com/styles/v1/mapbox/navigation-night-v1/static/`
+      + `${lon},${lat},${zoom},0/1280x1280@2x`
+      + `?access_token=${MAPBOX_TOKEN}&logo=false&attribution=false`
+    : null;
+
+  return (
+    <div className="cg-exp">
+      {broken || !src ? (
+        <div className="cg-exp-tiles">
+          {[-1, 0, 1].flatMap((dy) => [-1, 0, 1, 2].map((dx) => {
+            const tx = Math.floor(c.x) + dx, ty = Math.floor(c.y) + dy;
+            return (
+              <img key={`${tx}/${ty}`} alt="" className="cg-tile"
+                src={`https://a.basemaps.cartocdn.com/dark_all/${Z}/${tx}/${ty}@2x.png`}
+                style={{ left: tx * TS - c.x * TS, top: ty * TS - c.y * TS }} />
+            );
+          }))}
+        </div>
+      ) : (
+        <img className="cg-exp-map" src={src} alt={`Map of ${d.city}`}
+          onError={() => setBroken(true)} />
+      )}
+
+      <div className="cg-exp-pin">
+        <span className="cg-pin-badge">★ {place?.rating?.toFixed(1) ?? d.places[0].rating}</span>
+        <span className="cg-pin-label">{d.brand}</span>
+      </div>
+
+      <button className="cg-exp-close" onClick={onClose} aria-label="Close map">
+        <Icon d={P.close} size={18} />
+      </button>
+      <div className="cg-exp-zoom">
+        <button onClick={() => setZoom((z) => Math.min(17, z + 1))} aria-label="Zoom in">+</button>
+        <button onClick={() => setZoom((z) => Math.max(9, z - 1))} aria-label="Zoom out">−</button>
+      </div>
+      <span className="cg-exp-open">
+        {place?.openNow === false ? "Closed" : "Open Now"}
+      </span>
+      <span className="cg-map-attr cg-exp-attr">
+        {src ? "© Mapbox © OpenStreetMap" : "© OpenStreetMap · CARTO"}
+      </span>
+
+      <div className="cg-exp-dock">
+        <button className="cg-exp-collapse" onClick={onClose} aria-label="Collapse map">
+          <Icon d={P.chevUp} size={18} />
+        </button>
+        {children}
+      </div>
+    </div>
   );
 }
 
