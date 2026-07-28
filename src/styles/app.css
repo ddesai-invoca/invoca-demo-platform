@@ -1638,19 +1638,6 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .ind-table tfoot b { font-size: 16px; color: #15243e; }
 .ind-showing { font-size: 13px; color: #5b6577; margin: 10px 0 0; }
 
-.ind-map { position: relative; height: 520px; border-radius: 6px; overflow: hidden;
-  background: #e9ecef; }
-.ind-map-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ind-map-flat { position: absolute; inset: 0; background: #dfe3e6; }
-.ind-dots { position: absolute; inset: 0; pointer-events: none; }
-/* Semi-transparent so overlapping points read as density, like the real tile. */
-.ind-dot { position: absolute; width: 11px; height: 11px; margin: -5px 0 0 -5px;
-  border-radius: 50%; background: #f5405e; opacity: .72; }
-.ind-map-zoom { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; }
-.ind-map-zoom button { width: 28px; height: 28px; background: #2b3038; color: #fff;
-  border: none; font-size: 16px; cursor: pointer; }
-.ind-map-attr { position: absolute; left: 8px; bottom: 6px; font-size: 10px; color: #5b6577;
-  background: #ffffffcc; border-radius: 3px; padding: 1px 5px; }
 
 /* ThoughtSpot chart styling, scoped to the Insights screen. */
 .ind-spark { display: block; margin-top: 14px; overflow: visible; }

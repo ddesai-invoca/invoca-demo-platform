@@ -6,8 +6,11 @@ import { DonutChart } from "../components/DonutChart";
    /insights/dashboard/<uuid>). Matched to the capture: breadcrumb + title, an
    "Ask" pill beside Add Tile, a filter chip row, Summary Metrics, two rate
    tiles, a multi-series time chart, four "Performance By ..." sections that are
-   each a donut plus a table with a UNIQUE COUNT / TOTAL footer, and a Calls by
-   Location map.
+   each a donut plus a table with a UNIQUE COUNT / TOTAL footer.
+
+   NOTE the capture also has a "Calls by Location" map tile. It was built and then
+   removed at the user's request, so this screen deliberately ends at the four
+   Performance sections. Bring it back from git history rather than rewriting it.
 
    EVERYTHING IS DERIVED from reports.marketingDashboard, which already carries
    Source / Medium / Campaign / Search Term breakdowns in exactly the shape these
@@ -226,57 +229,6 @@ function PerfSection({ title, dimension, rows }: { title: string; dimension: str
   );
 }
 
-/* Calls by Location. The real tile is a Mapbox scatter of every call's origin;
-   this plots deterministic points across the continental US from the row data,
-   so the density differs per prospect but never moves between renders. A light
-   basemap matches the capture, which uses Mapbox's light style here rather than
-   the dark one the ChatGPT screen uses. */
-const MAPBOX_TOKEN = (import.meta.env as Record<string, string | undefined>).VITE_MAPBOX_TOKEN;
-
-function LocationTile({ seed, count }: { seed: string; count: number }) {
-  let h = 0;
-  for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) % 100003;
-  const rand = () => ((h = (h * 1103515245 + 12345) % 2147483648) / 2147483648);
-
-  /* Loose population-weighted boxes so the scatter clusters where people are,
-     rather than dusting the map evenly including empty desert. */
-  const BOXES: [number, number, number, number, number][] = [
-    [24, 49, -125, -115, 0.16], [31, 49, -115, -100, 0.12],
-    [29, 49, -100, -87, 0.26], [25, 47, -87, -75, 0.34],
-    [25, 36, -100, -80, 0.12],
-  ];
-  const pts = Array.from({ length: Math.min(420, Math.max(60, count)) }, () => {
-    const r = rand();
-    let acc = 0;
-    const box = BOXES.find((b) => (acc += b[4]) >= r) ?? BOXES[3];
-    const lat = box[0] + rand() * (box[1] - box[0]);
-    const lon = box[2] + rand() * (box[3] - box[2]);
-    return { x: ((lon + 128) / 60) * 100, y: ((52 - lat) / 30) * 100 };
-  });
-
-  const src = MAPBOX_TOKEN
-    ? `https://api.mapbox.com/styles/v1/mapbox/light-v11/static/-95,38,3.1,0/1000x520@2x`
-      + `?access_token=${MAPBOX_TOKEN}&logo=false&attribution=false`
-    : null;
-
-  return (
-    <section className="ind-card">
-      <h2 className="ind-card-title">Calls by Location</h2>
-      <div className="ind-map">
-        {src ? <img className="ind-map-img" src={src} alt="Calls by location" />
-             : <div className="ind-map-flat" />}
-        <div className="ind-dots">
-          {pts.map((p, i) => (
-            <span key={i} className="ind-dot" style={{ left: `${p.x}%`, top: `${p.y}%` }} />
-          ))}
-        </div>
-        <div className="ind-map-zoom"><button>+</button><button>−</button></div>
-        <span className="ind-map-attr">© Mapbox © OpenStreetMap</span>
-      </div>
-    </section>
-  );
-}
-
 export function InsightsDashboard() {
   const { profile } = useProfile();
   const { name } = useParams();
@@ -356,8 +308,6 @@ export function InsightsDashboard() {
       <PerfSection title="Performance By Source" dimension="Marketing Source" rows={source} />
       <PerfSection title="Performance By Campaign" dimension="Marketing Campaign" rows={campaign} />
       <PerfSection title="Performance By Calling Page" dimension="Calling Page" rows={page} />
-
-      <LocationTile seed={profile.id} count={Math.round(totalCalls / 100)} />
     </div>
   );
 }
