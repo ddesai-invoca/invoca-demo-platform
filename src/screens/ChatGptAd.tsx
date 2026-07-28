@@ -303,7 +303,12 @@ function MapCard({ d }: { d: ReturnType<typeof derive> }) {
       ))}
 
       <button className="cg-map-expand">Expand <Icon d={P.expand} size={13} /></button>
-      <span className="cg-map-attr">© OpenStreetMap · CARTO</span>
+      {/* Attribution has to name the provider actually being served — we pass
+          attribution=false to the static API, which makes displaying it our
+          job, and crediting CARTO for a Mapbox render is simply wrong. */}
+      <span className="cg-map-attr">
+        {mapbox ? "© Mapbox © OpenStreetMap" : "© OpenStreetMap · CARTO"}
+      </span>
 
       <div className="cg-places">
         {d.places.slice(0, 2).map((pl) => (
