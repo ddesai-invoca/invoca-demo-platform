@@ -138,8 +138,15 @@ function derive(p: ReturnType<typeof useProfile>["profile"]) {
       b: "Fine for something straightforward." },
   ];
 
+  /* The drawer wants a street address. We only have one for the fallback
+     location, so anywhere else shows city/state rather than inventing a
+     street that doesn't exist. */
+  const address = city === DEFAULT_PLACE.label
+    ? "2930 De La Vina St, Santa Barbara, CA 93105"
+    : `${shortCity}${vs?.state ? `, ${vs.state}` : ""}`;
+
   return {
-    city, shortCity, places, coords,
+    city, shortCity, places, coords, address, seg,
     query: `best ${(isProcessWord ? hero : term!).toLowerCase()} near me`,
     hero,
     others: products.slice(1, 4),
@@ -176,6 +183,9 @@ const P: Record<string, string> = {
   down: "M17 2v12l-5 8-1-1 1.5-6H3L5.5 2H17z",
   share: "M12 16V3M7 8l5-5 5 5M4 16v4h16v-4",
   refresh: "M21 12a9 9 0 1 1-3-6.7M21 4v5h-5",
+  close: "M6 6l12 12M18 6L6 18",
+  clock: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2",
+  phone: "M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z",
   building: "M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5M9 10h.01M15 10h.01M9 13.5h.01M15 13.5h.01",
 };
 
@@ -367,6 +377,7 @@ export function ChatGptAd() {
 
   const [text, setText] = useState("");
   const [asked, setAsked] = useState<string | null>(null);
+  const [drawer, setDrawer] = useState(false);
 
   /* The landing state is a faithful copy, so there's no suggestion row seeded
      with the prospect's query to click — the SE types it. As a shortcut that
@@ -379,7 +390,8 @@ export function ChatGptAd() {
   }
 
   return (
-    <div className="cg-root">
+    <div className={"cg-root" + (drawer ? " cg-root-flyout" : "")}>
+      {drawer && <BizDrawer d={d} onClose={() => setDrawer(false)} />}
       <nav className="cg-rail">
         {/* Clicking the mark returns to the Exchange, the way the Google Ads
             page returns by clicking its logo. */}
@@ -464,7 +476,9 @@ export function ChatGptAd() {
               {/* THE SPONSORED SLOT — always the prospect. This is the whole
                   point of the screen: the call starts here. */}
               <div className="cg-adwrap">
-                <div className="cg-ad">
+                <div className="cg-ad" role="button" tabIndex={0}
+                  onClick={() => setDrawer(true)}
+                  onKeyDown={(e) => e.key === "Enter" && setDrawer(true)}>
                   <div className="cg-ad-logo" aria-hidden="true">{d.icon}</div>
                   <div className="cg-ad-body">
                     <div className="cg-ad-row">
@@ -500,6 +514,100 @@ export function ChatGptAd() {
         )}
       </div>
     </div>
+  );
+}
+
+
+/* The business flyout — what opens when you click the sponsored ad. Matched to
+   a SingleFile capture taken with the panel OPEN (the earlier captures had
+   nothing to copy: the panel is mounted on click, so it simply wasn't in the
+   DOM). Measurements read off that capture:
+     400px wide, full height, right-aligned · px-6 (24px) content padding
+     action row: 3-up grid, 36px tall, 8px gap
+   Section order is the real one: photo, name, rating, actions, hours, address,
+   phone, description, What people say, Services, What it's like, Good to know.
+
+   Deliberately NOT copied: the capture's dated five-star customer testimonials.
+   Inventing quoted reviews and attributing them to a real named business is a
+   different thing from inventing call volumes — it fabricates other people's
+   words. The section keeps the rating block and paraphrased summary lines,
+   which is what the real panel leads with anyway. */
+function BizDrawer({ d, onClose }: { d: ReturnType<typeof derive>; onClose: () => void }) {
+  const [logoFailed, setLogoFailed] = useState(false);
+  return (
+    <aside className="cg-fly" aria-label={`${d.brand} details`}>
+      <button className="cg-fly-close" onClick={onClose} aria-label="Close">
+        <Icon d={P.close} size={18} />
+      </button>
+
+      {/* No photo library, so the banner is the brand mark rather than a stock
+          photo standing in for a real storefront. */}
+      <div className="cg-fly-hero">
+        {d.domain && !logoFailed
+          ? <img src={`https://www.google.com/s2/favicons?sz=128&domain=${d.domain}`}
+              alt="" onError={() => setLogoFailed(true)} />
+          : <span>{d.icon}</span>}
+      </div>
+
+      <div className="cg-fly-body">
+        <h2 className="cg-fly-name">{d.brand}</h2>
+        <div className="cg-fly-rate">
+          <strong>{d.places[0].rating}</strong>
+          <span className="cg-fly-stars">★★★★★</span>
+          <span>• {d.hero}</span>
+        </div>
+
+        <div className="cg-fly-actions">
+          <button>Directions</button>
+          <button>Website</button>
+          <a className="cg-fly-call" href={`tel:${d.phone.replace(/[^\d+]/g, "")}`}>Call</a>
+        </div>
+
+        <div className="cg-fly-row">
+          <Icon d={P.clock} size={16} />
+          <span><span className="cg-open">Open</span> until 6:00 PM</span>
+          <Icon d={P.chevron} size={15} />
+        </div>
+        <div className="cg-fly-row">
+          <Icon d={P.pin} size={16} /><span>{d.address}</span>
+        </div>
+        <div className="cg-fly-row">
+          <Icon d={P.phone} size={16} /><span>{d.phone}</span>
+        </div>
+
+        <p className="cg-fly-desc">
+          {d.brand} is {/^[aeiou]/i.test(d.seg) ? "an" : "a"} {d.seg.toLowerCase()} provider
+          serving {d.shortCity} and the surrounding area, offering {d.hero.toLowerCase()}
+          {d.others.length ? `, ${d.others.join(", ").toLowerCase()}` : ""}.
+          Bookings are taken by phone, with {d.booking}s usually available the same week.
+        </p>
+
+        <h3 className="cg-fly-h">What people say</h3>
+        <div className="cg-fly-score">
+          <strong>{d.places[0].rating}</strong>
+          <span className="cg-fly-stars">★★★★★</span>
+        </div>
+        <ul className="cg-fly-list">
+          <li>Reviewers consistently mention <strong>short wait times</strong> and being able to get booked in quickly.</li>
+          <li>Staff are described as <strong>knowledgeable and easy to deal with</strong> on the phone.</li>
+          <li>Pricing is regularly called out as <strong>clear and quoted up front</strong>.</li>
+        </ul>
+
+        <h3 className="cg-fly-h">Services</h3>
+        <p className="cg-fly-desc">
+          {[d.hero, ...d.others].join(", ")}. Enquiries and bookings are handled by phone,
+          and the team can talk through options and pricing on the call.
+        </p>
+
+        <h3 className="cg-fly-h">Good to know</h3>
+        <ul className="cg-fly-list">
+          <li><strong>Calling ahead</strong> is the fastest route — {d.booking}s are confirmed on the call.</li>
+          <li>Covers {d.area ?? d.shortCity} and the surrounding area.</li>
+        </ul>
+
+        <p className="cg-fly-note">Demo mock-up — not a real listing.</p>
+      </div>
+    </aside>
   );
 }
 

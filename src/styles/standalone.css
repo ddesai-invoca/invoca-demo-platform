@@ -268,3 +268,53 @@
 
 .cg-dock { display: flex; flex-direction: column; align-items: center; padding: 8px 24px 16px; }
 .cg-disclaimer { margin: 9px 0 0; font-size: 12px; color: #ffffff70; text-align: center; }
+
+/* --- business flyout (click the sponsored ad) ------------------------------
+   Matched to a capture taken with the panel open: 400px wide, full height,
+   right-aligned, 24px content padding, 36px action buttons in a 3-up grid.
+   The thread doesn't resize behind it — the real one overlays. */
+.cg-fly { position: fixed; top: 0; right: 0; width: 400px; height: 100vh; z-index: 40;
+  background: #000; border-left: 1px solid #ffffff1f; overflow-y: auto;
+  animation: cg-fly-in .22s cubic-bezier(.22,.61,.36,1); }
+@keyframes cg-fly-in { from { transform: translateX(100%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .cg-fly { animation: none; } }
+.cg-root-flyout .cg-main { padding-right: 400px; }
+
+.cg-fly-close { position: absolute; top: 12px; right: 12px; z-index: 2; width: 32px; height: 32px;
+  border-radius: 50%; background: #00000099 !important; color: #f3f3f3;
+  display: flex; align-items: center; justify-content: center; }
+.cg-fly-close:hover { background: #000000cc !important; }
+
+.cg-fly-hero { height: 190px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(140deg, #33404c, #232c34); font-size: 54px; }
+.cg-fly-hero img { width: 76px; height: 76px; object-fit: contain; }
+
+.cg-fly-body { padding: 18px 24px 40px; }
+.cg-fly-name { font-size: 20px; font-weight: 600; margin: 0; }
+.cg-fly-rate { display: flex; align-items: center; gap: 7px; font-size: 14px; color: #ffffffb3;
+  margin-top: 5px; }
+.cg-fly-rate strong { color: #f3f3f3; font-weight: 600; }
+.cg-fly-stars { color: #e8b339; letter-spacing: -1px; font-size: 12px; }
+
+.cg-fly-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+.cg-fly-actions > * { height: 36px; border-radius: 999px; background: #303030 !important;
+  color: #f3f3f3; font-size: 14px; font-weight: 500; display: flex; align-items: center;
+  justify-content: center; text-decoration: none; cursor: pointer; }
+.cg-fly-actions > *:hover { background: #3c3c3c !important; }
+.cg-fly-call { background: #fff !important; color: #0d0d0d !important; font-weight: 600; }
+.cg-fly-call:hover { background: #eaeaea !important; }
+
+.cg-fly-row { display: flex; align-items: center; gap: 11px; padding: 11px 0; font-size: 14px;
+  color: #ffffffcc; border-bottom: 1px solid #ffffff12; }
+.cg-fly-row svg { color: #ffffff8a; flex: none; }
+.cg-fly-row span { flex: 1; }
+.cg-open { color: #6cc57e; }
+
+.cg-fly-desc { font-size: 14px; line-height: 1.65; color: #ffffffcc; margin: 14px 0 0; }
+.cg-fly-h { font-size: 16px; font-weight: 600; margin: 26px 0 10px; }
+.cg-fly-score { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.cg-fly-score strong { font-size: 26px; font-weight: 600; }
+.cg-fly-list { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.65; color: #ffffffcc; }
+.cg-fly-list li { margin-bottom: 8px; }
+.cg-fly-list strong { color: #f3f3f3; font-weight: 600; }
+.cg-fly-note { font-size: 12px; color: #ffffff70; margin: 26px 0 0; }
