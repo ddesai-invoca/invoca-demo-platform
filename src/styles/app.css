@@ -1556,3 +1556,15 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .sg-pager-count { margin-left: 8px; }
 .sg-pager-arrow { font-size: 22px; color: #5b6577; cursor: pointer; }
 .sg-disabled { color: #c7ccd3; cursor: default; }
+
+/* Insights & Analytics — the same table as Manage Dashboards with three extra
+   columns and a pager, so it inherits .md-* and only adds what differs. */
+.ia-table th:not(.md-col-name), .ia-table td:not(.md-col-name) { width: 200px; }
+.ia-table td:not(.md-col-name) { color: #3d3d3d; }
+.ia-pager { display: flex; align-items: center; justify-content: flex-end; gap: 14px;
+  padding: 14px 4px 0; font-size: 13px; color: #3d3d3d; }
+.ia-rpp { display: inline-flex; align-items: center; gap: 2px; }
+.ia-rpp .material-icons { font-size: 20px; color: #5b6577; }
+.ia-count { margin-left: 6px; }
+.ia-arrow { font-size: 22px; color: #5b6577; cursor: pointer; }
+.ia-disabled { color: #c7ccd3; cursor: default; }

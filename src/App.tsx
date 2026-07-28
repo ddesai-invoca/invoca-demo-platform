@@ -19,6 +19,7 @@ import { AiMessagingImpactDashboard } from "./screens/AiMessagingImpactDashboard
 import { QualityManagementDashboard } from "./screens/QualityManagementDashboard";
 import { QmInstantInsightsDashboard } from "./screens/QmInstantInsightsDashboard";
 import { ManageDashboards } from "./screens/ManageDashboards";
+import { InsightsAnalytics } from "./screens/InsightsAnalytics";
 import { CallReview } from "./screens/CallReview";
 import { CallDetail } from "./screens/CallDetail";
 import { AgentStudio } from "./screens/AgentStudio";
@@ -45,6 +46,7 @@ function StaticRedirect({ to }: { to: string }) {
    to a Placeholder for now (so the nav is fully clickable end-to-end). */
 const BUILT: Record<string, ReactNode> = {
   "/reports": <MyReports />,
+  "/insights": <InsightsAnalytics />,
   "/dashboards": <ManageDashboards />,
   "/call-review": <CallReview />,
   "/agent-studio": <AgentStudio />,

@@ -56,6 +56,9 @@ export interface NavItem {
 /* The Invoca left-nav for network 2751 (Invoca for Home Services), matched
    exactly to the live platform: 14 items, order, labels, icons, Settings pin. */
 export const NAV: NavItem[] = [
+  // Invoca's newer Insights & Analytics list sits ABOVE Dashboards (network
+  // 1847 /insights) and uses the equalizer glyph in the real nav.
+  { label: "Insights & Analytics", icon: "equalizer",        path: "/insights" },
   { label: "Dashboards",    icon: "dashboard",             path: "/dashboards" },
   { label: "Call Review",   svg: CallReviewIcon,           path: "/call-review" },
   { label: "Agent Studio",  svg: AgentStudioIcon,          path: "/agent-studio" },
