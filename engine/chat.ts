@@ -45,8 +45,17 @@ export interface ChatMessage {
   content: string;
 }
 
+/* Em dashes and dash-joined clauses are one of the clearest "written by an AI"
+   tells, and this text is read by prospects during a demo. Banned outright for
+   every agent, on both channels — use a comma, or start a new sentence. */
+const NO_DASH_RULE =
+  "NEVER use em dashes, en dashes, or a hyphen joining two clauses. " +
+  "Use a comma, a full stop, or a new sentence instead. This matters: " +
+  "dashes make the message read as machine-written.";
+
 const SMS_FORMAT_RULES = [
-  "FORMAT (always): plain text only — no markdown, asterisks, bullets or headings.",
+  "FORMAT (always): plain text only, no markdown, asterisks, bullets or headings.",
+  NO_DASH_RULE,
   "Keep every message to 1-3 short sentences. Never send a wall of text.",
   "One question at a time.",
 ].join("\n");
@@ -82,6 +91,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
   const qList = questions.map((q) => `   • ${q}`).join("\n");
 
   return [
+    NO_DASH_RULE,
     `You are the SMS sales assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
     `You are texting a prospective customer. Your goal: ${goal}.`,
     ``,
@@ -117,6 +127,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
 function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): string {
   const serviceArea = brain.serviceArea?.trim();
   return [
+    NO_DASH_RULE,
     `You are the AI phone assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
     `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
     ``,
@@ -185,5 +196,21 @@ export async function chatReply(
     .map((b: any) => b.text)
     .join("")
     .trim();
-  return text || "…";
+  return stripDashes(text) || "…";
+}
+
+/* The NO_DASH_RULE in the prompt is advisory and the model ignores it often
+   enough to matter, so strip them for real on the way out. Prospects read this
+   text during a demo and dash-joined clauses are the clearest AI tell.
+
+   Only SPACED dashes and em/en dashes are touched, so hyphenated words survive:
+   "rear-ended", "EV-qualified" and "24-48h" all pass through unchanged. */
+export function stripDashes(s: string): string {
+  return s
+    .replace(/\s*[—–]\s*/g, ", ")     // em/en dash anywhere
+    .replace(/ +- +/g, ", ")           // spaced hyphen used as a connector
+    .replace(/,\s*,/g, ",")            // collapse any doubled commas
+    .replace(/,\s*([.!?])/g, "$1")     // ", ." -> "."
+    .replace(/\s{2,}/g, " ")
+    .trim();
 }
