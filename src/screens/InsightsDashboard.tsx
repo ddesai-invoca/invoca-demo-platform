@@ -41,6 +41,24 @@ function toRows(b: { rows: { name: string; metrics: string[] }[] } | undefined):
   });
 }
 
+/* ThoughtSpot's chart palette, READ OFF THE SCREENSHOTS rather than measured,
+   and that limitation is worth knowing: the SingleFile capture does not render
+   (ThoughtSpot builds the liveboard at runtime, so there is no DOM to measure),
+   and the only hex arrays in its bundle are library defaults it overrides
+   (d3 category10 and the Highcharts v10 set), neither of which matches what the
+   screenshots actually show. So these are eyeballed from the captured tiles:
+   grey for the {Null} slice, then mint, blue, purple, green, coral, amber.
+   The green (#2cbf58) and blue (#2666f9) DO appear verbatim in
+   titan-design-tokens.css, which is a good sign for the rest. */
+const TS_COLORS = ["#8892a0", "#2ee0ca", "#2666f9", "#7b61ff", "#2cbf58",
+  "#f5575a", "#f3cb00", "#87000b"];
+
+/* The TIME chart uses a different order from the donuts. Taking a slice of
+   TS_COLORS gave green/coral/yellow/maroon, but the capture's legend reads
+   green, yellow, teal, blue in that order, so the series order is explicit
+   rather than derived. */
+const TS_LINE_COLORS = ["#2cbf58", "#f3cb00", "#2ee0ca", "#2666f9"];
+
 function PerfSection({ title, dimension, rows }: { title: string; dimension: string; rows: Row[] }) {
   const total = (k: keyof Omit<Row, "name">) => rows.reduce((s, r) => s + r[k], 0);
   const shown = rows.slice(0, 8);
@@ -53,6 +71,7 @@ function PerfSection({ title, dimension, rows }: { title: string; dimension: str
           <DonutChart
             segments={rows.slice(0, 7).map((r) => ({ label: r.name, value: r.calls }))}
             total={total("calls")}
+            colors={TS_COLORS}
           />
         </div>
         <div className="ind-half">
@@ -203,7 +222,7 @@ export function InsightsDashboard() {
 
         <section className="ind-card">
           <h2 className="ind-card-title">Conversations/Metrics Over Time</h2>
-          <LineChart chart={md.salesCallBreakoutGraph} height={300} />
+          <LineChart chart={md.salesCallBreakoutGraph} height={300} colors={TS_LINE_COLORS} />
         </section>
 
         <section className="ind-card ind-rate">

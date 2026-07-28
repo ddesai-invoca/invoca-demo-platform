@@ -1573,12 +1573,22 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
    on the grey page like the other dashboards, but a two-up grid at the top and
    full-width "Performance By ..." sections below, each a donut beside a table
    with a UNIQUE COUNT / TOTAL footer. */
-.ind-page { padding: 0 0 40px; }
+/* Insights & Analytics is embedded THOUGHTSPOT, not Invoca UI, which is why this
+   screen looks different from every other one. Its font stack is
+   optimo-plain first (the real page's; the font file is NOT in the capture, so
+   this resolves to Helvetica Neue exactly as the real page does when ThoughtSpot's
+   CDN font is unavailable) and its tiles use a hairline border rather than
+   Invoca's two-layer shadow. Scoped to .ind-page so nothing else is affected. */
+.ind-page { padding: 0 0 40px;
+  font-family: optimo-plain, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.ind-page h1, .ind-page h2, .ind-page h3, .ind-page table, .ind-page button,
+.ind-page input { font-family: inherit; }
 .ind-head { display: flex; align-items: flex-start; justify-content: space-between;
   padding: 18px 24px 10px; background: #fff; }
 .ind-crumb { display: block; font-size: 12px; font-weight: 700; letter-spacing: .04em;
   color: #2666f9; text-decoration: none; }
-.ind-title { font-size: 29px; font-weight: 600; color: #15243e; margin: 4px 0 0; }
+.ind-title { font-size: 28px; font-weight: 600; color: #1d2b4a; margin: 4px 0 0;
+  letter-spacing: -.02em; }
 .ind-actions { display: flex; align-items: center; gap: 12px; }
 /* The Ask pill is mint in the real header, distinct from the blue Add Tile. */
 .ind-ask { display: inline-flex; align-items: center; gap: 6px; background: #dff7ec;
@@ -1597,17 +1607,18 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .ind-chip b { font-weight: 700; }
 
 .ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 24px 0; }
-.ind-card { background: #fff; border-radius: 4px; padding: 18px 20px 20px; margin: 10px 24px 0;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1), 0 1px 5px 0 rgba(0,0,0,.1); }
+.ind-card { background: #fff; border-radius: 8px; padding: 18px 20px 20px; margin: 10px 24px 0;
+  border: 1px solid #e3e6ea; }
 .ind-grid .ind-card { margin: 0; }
-.ind-card-title { font-size: 17px; font-weight: 600; color: #15243e; margin: 0 0 16px; }
+.ind-card-title { font-size: 16px; font-weight: 600; color: #1d2b4a; margin: 0 0 16px;
+  letter-spacing: -.01em; }
 
 .ind-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .ind-metrics { display: flex; flex-direction: column; gap: 22px; }
 .ind-m-label { display: block; font-size: 14px; font-weight: 600; color: #15243e; }
-.ind-m-value { display: block; font-size: 38px; font-weight: 700; color: #15243e; letter-spacing: -1px; }
+.ind-m-value { display: block; font-size: 40px; font-weight: 600; color: #1d2b4a; letter-spacing: -1.5px; }
 .ind-trend { display: flex; flex-direction: column; gap: 2px; }
-.ind-trend-value { font-size: 38px; font-weight: 700; color: #15243e; }
+.ind-trend-value { font-size: 40px; font-weight: 600; color: #1d2b4a; letter-spacing: -1.5px; }
 .ind-trend-sub { font-size: 13px; color: #5b6577; }
 .ind-trend-sub mark { background: #eceef1; color: #3d3d3d; }
 .ind-rate { display: flex; flex-direction: column; }
@@ -1618,8 +1629,8 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .ind-sub { font-size: 14px; font-weight: 600; color: #15243e; margin: 0 0 10px; }
 .ind-tablewrap { overflow-x: auto; }
 .ind-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.ind-table th { text-align: left; font-weight: 700; color: #343a40; padding: 10px 12px;
-  border-bottom: 2px solid #15243e; white-space: nowrap; }
+.ind-table th { text-align: left; font-weight: 600; color: #1d2b4a; padding: 10px 12px;
+  border-bottom: 2px solid #1d2b4a; white-space: nowrap; }
 .ind-table td { padding: 11px 12px; border-top: 1px solid #e7eaee; color: #3d3d3d; }
 .ind-table th:not(:first-child), .ind-table td:not(:first-child) { text-align: right; }
 .ind-table tfoot td { border-top: 2px solid #15243e; }

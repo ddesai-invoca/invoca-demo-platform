@@ -7,7 +7,11 @@ function niceMax(v: number): number {
   return Math.ceil(v / step) * step;
 }
 
-export function LineChart({ chart, height = 340 }: { chart: MultiSeriesChart; height?: number }) {
+/* `colors` overrides the series palette for a single screen (Insights &
+   Analytics is embedded ThoughtSpot); every other dashboard keeps the default. */
+export function LineChart({ chart, height = 340, colors = SERIES_COLORS }: {
+  chart: MultiSeriesChart; height?: number; colors?: string[];
+}) {
   const W = 900, H = height, padL = 56, padR = 20, padT = 48, padB = 36;
   const plotW = W - padL - padR;
   const plotH = H - padT - padB;
@@ -35,8 +39,8 @@ export function LineChart({ chart, height = 340 }: { chart: MultiSeriesChart; he
         return (
           <g key={s.name}>
             <title>{s.name}</title>
-            <line x1={lx} y1={22} x2={lx + 16} y2={22} stroke={SERIES_COLORS[i % SERIES_COLORS.length]} strokeWidth={2} />
-            <circle cx={lx + 8} cy={22} r={3} fill={SERIES_COLORS[i % SERIES_COLORS.length]} />
+            <line x1={lx} y1={22} x2={lx + 16} y2={22} stroke={colors[i % colors.length]} strokeWidth={2} />
+            <circle cx={lx + 8} cy={22} r={3} fill={colors[i % colors.length]} />
             <text x={lx + 20} y={26} className="chart-legend-text">{label}</text>
           </g>
         );
@@ -61,7 +65,7 @@ export function LineChart({ chart, height = 340 }: { chart: MultiSeriesChart; he
       )}
       {/* lines + markers */}
       {chart.series.map((s, si) => {
-        const color = SERIES_COLORS[si % SERIES_COLORS.length];
+        const color = colors[si % colors.length];
         const pts = s.values.map((v, i) => `${x(i)},${y(v)}`).join(" ");
         return (
           <g key={s.name}>

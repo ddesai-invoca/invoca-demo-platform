@@ -26,7 +26,12 @@ function truncate(s: string, n = 16): string {
   return s.length > n ? s.slice(0, n - 1) + "…" : s;
 }
 
-export function DonutChart({ segments, total }: { segments: DonutSegment[]; total: number }) {
+/* `colors` lets ONE screen override the palette without touching the six
+   dashboards that rely on the Invoca default. Added for Insights & Analytics,
+   which is embedded ThoughtSpot and uses a different palette entirely. */
+export function DonutChart({ segments, total, colors = COLORS }: {
+  segments: DonutSegment[]; total: number; colors?: string[];
+}) {
   const shownSum = segments.reduce((s, d) => s + d.value, 0) || 1;
   const grand = total || shownSum;
   let angle = -Math.PI / 2;
@@ -54,7 +59,7 @@ export function DonutChart({ segments, total }: { segments: DonutSegment[]; tota
 
         return (
           <g key={i}>
-            <path d={sector(a0, a1)} fill={COLORS[i % COLORS.length]} />
+            <path d={sector(a0, a1)} fill={colors[i % colors.length]} />
             {frac > 0.05 && (
               <text x={lx} y={ly + 4} textAnchor="middle" className="donut-pct">{pct}%</text>
             )}
