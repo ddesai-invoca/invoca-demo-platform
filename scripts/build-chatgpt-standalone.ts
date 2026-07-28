@@ -71,6 +71,14 @@ const rivals = [`${shortCity} ${seg}`, `Premier ${seg}`, `${seg} of ${shortCity}
   .filter((n) => !collides(n)).slice(0, 3);
 
 const booking = p.bookingTerm.toLowerCase();
+/* Prospect site + Invoca's opportunity-reference token, so the click is
+   traceable back to the placement. URL() rather than concatenation so an
+   existing query string survives. Mirrors trackedSiteUrl in ChatGptAd.tsx. */
+const siteUrl = (() => {
+  const u = new URL(`https://${p.brandDomain.replace(/^https?:\/\//, "").replace(/\/+$/, "")}`);
+  u.searchParams.set("oppref", "gAAAAABqZosEcRIQ_xkq");
+  return u.toString();
+})();
 const d = {
   brand: p.customerName, domain: p.brandDomain, industry: p.industry,
   icon: r.voiceRoutingDemo?.brandIcon ?? "◆",
@@ -206,6 +214,12 @@ ${cgCss}
     <div class="cg-thread" id="thread" hidden>
       <div class="cg-user"><span id="asked"></span></div>
 
+      <div class="cg-think" id="think" hidden>
+        <span class="cg-think-label">Searching the web</span>
+        <span class="cg-think-dots"><i></i><i></i><i></i></span>
+      </div>
+
+      <div id="results">
       <div class="cg-map">
         ${mapInline ? `<img class="cg-mapbox" src="${mapInline}" alt="Map of ${esc(d.city)}">` : `<div class="cg-map-offline"></div>`}
         ${d.places.slice(0, 3).map((pl, i) => `
@@ -276,6 +290,7 @@ ${cgCss}
           <span class="cg-loc-link">Learn about ads and personalization &rsaquo;</span></p>
       </div>
       <p class="cg-mistakes">ChatGPT can make mistakes. Check important info.</p>
+      </div>
     </div>
 
     <div class="cg-dock" id="dock" hidden>
@@ -315,7 +330,8 @@ ${cgCss}
     <div class="cg-fly-body">
       <h2 class="cg-fly-name">${esc(d.brand)}</h2>
       <div class="cg-fly-rate"><strong>4.9</strong><span class="cg-fly-stars">★★★★★</span><span>• ${esc(d.hero)}</span></div>
-      <div class="cg-fly-actions"><button>Directions</button><button>Website</button>
+      <div class="cg-fly-actions"><button>Directions</button>
+        <a href="${siteUrl}" target="_blank" rel="noopener noreferrer">Website</a>
         <a class="cg-fly-call" href="tel:${d.phone.replace(/[^\d+]/g, "")}">Call</a></div>
       <div class="cg-fly-row"><span class="material-icons" style="font-size:16px">schedule</span>
         <span><span class="cg-open">Open</span> until 6:00 PM</span>
@@ -354,6 +370,9 @@ function ask(){
   const v = ($('q').value || '').trim() || ${JSON.stringify(d.query)};
   $('asked').textContent = v;
   show('splash', false); show('thread', true); show('dock', true);
+  // a beat of "thinking" before the results, same as the app
+  show('think', true); show('results', false);
+  setTimeout(function(){ show('think', false); show('results', true); }, 1700);
   return false;
 }
 function openFly(){ $('flyIcon').textContent='close'; $('fly').classList.remove('cg-fly-back'); show('fly', true); }
@@ -365,7 +384,7 @@ function expand(){
 }
 function collapse(){ show('exp', false); show('fly', false); $('flyBtn').classList.remove('cg-fly-back'); $('root').classList.remove('cg-root-flyout'); }
 function closeFly(){ if(!$('exp').hidden) return collapse(); show('fly', false); }
-function reset(){ collapse(); show('fly', false); show('thread', false); show('dock', false); show('splash', true); $('q').value=''; return false; }
+function reset(){ show('think', false); show('results', true); collapse(); show('fly', false); show('thread', false); show('dock', false); show('splash', true); $('q').value=''; return false; }
 </script>
 </body></html>`;
 

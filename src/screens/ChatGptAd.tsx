@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 
 /* ChatGPT sponsored placement — reached from the ChatGPT Ads tile on the Invoca
@@ -53,6 +53,19 @@ function industrySeg(industry: string): string {
   const words = pick.split(/\s+/);
   const capped = words.length > 2 ? words.slice(-2).join(" ") : pick;
   return capped.replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/* The prospect's site with Invoca's opportunity-reference token appended, which
+   is what makes the click traceable back to this placement. Built with URL()
+   rather than string concatenation so it lands as a proper query parameter
+   whether or not the domain already carries one. */
+const OPP_REF = "gAAAAABqZosEcRIQ_xkq";
+
+export function trackedSiteUrl(domain: string): string {
+  const host = domain.replace(/^https?:\/\//, "").replace(/\/+$/, "");
+  const u = new URL(`https://${host}`);
+  u.searchParams.set("oppref", OPP_REF);
+  return u.toString();
 }
 
 function derive(p: ReturnType<typeof useProfile>["profile"]) {
@@ -401,6 +414,12 @@ export function ChatGptAd() {
   const [text, setText] = useState("");
   const [asked, setAsked] = useState<string | null>(null);
   const [drawer, setDrawer] = useState(false);
+  /* A beat of "thinking" before the answer appears. Without it the results
+     materialise the instant you press Enter, which is the one part of the flow
+     that reads as a mock-up rather than a real assistant. */
+  const [thinking, setThinking] = useState(false);
+  const thinkTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => { if (thinkTimer.current) clearTimeout(thinkTimer.current); }, []);
   /* The expanded map state. Measured off the reference capture: the expanded
      Mapbox canvas is FULL-BLEED (1868x859 in a 1913-wide window, starting right
      of the icon rail) with the drawer overlaying it on the right, rather than
@@ -447,6 +466,9 @@ export function ChatGptAd() {
     const v = q.trim() || d.query;
     setAsked(v);
     setText("");
+    setThinking(true);
+    if (thinkTimer.current) clearTimeout(thinkTimer.current);
+    thinkTimer.current = setTimeout(() => setThinking(false), 1700);
   }
 
   return (
@@ -499,9 +521,17 @@ export function ChatGptAd() {
             <div className="cg-thread">
               <div className="cg-user"><span>{asked}</span></div>
 
-              <MapCard d={d} onOpen={openExpanded} />
-              <div className="cg-feedback">Give feedback</div>
+              {thinking && (
+                <div className="cg-think">
+                  <span className="cg-think-label">Searching the web</span>
+                  <span className="cg-think-dots"><i /><i /><i /></span>
+                </div>
+              )}
 
+              {!thinking && <MapCard d={d} onOpen={openExpanded} />}
+              {!thinking && <div className="cg-feedback">Give feedback</div>}
+
+              {!thinking && <>
               {/* Vertical-neutral by design: this same copy has to read naturally
                   for window treatments, security, healthcare and auto. */}
               <div className="cg-answer">
@@ -579,6 +609,7 @@ export function ChatGptAd() {
               </div>
 
               <p className="cg-mistakes">ChatGPT can make mistakes. Check important info.</p>
+              </>}
             </div>
 
             <div className="cg-dock">
@@ -661,7 +692,7 @@ function BizDrawer({ d, hero, place, back, onClose }: {
 
         <div className="cg-fly-actions">
           <button>Directions</button>
-          <button>Website</button>
+          <a href={trackedSiteUrl(d.domain)} target="_blank" rel="noopener noreferrer">Website</a>
           <a className="cg-fly-call" href={`tel:${phone.replace(/[^\d+]/g, "")}`}>Call</a>
         </div>
 
