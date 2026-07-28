@@ -231,13 +231,10 @@ ${cgCss}
       <div class="cg-feedback">Give feedback</div>
 
       <div class="cg-answer">
-        <p>It depends a lot on what you actually need and who&rsquo;s available near you,
-          but there are three things worth checking before you decide:</p>
-        <ul>
-          <li><strong>Get a real number, not a range.</strong> Advertised pricing is a starting point, the number that matters is the one for your specific situation.</li>
-          <li><strong>Ask what&rsquo;s actually included.</strong> The headline number usually leaves out things you&rsquo;ll end up paying for anyway.</li>
-          <li><strong>Check availability first.</strong> Lead times vary widely between providers, and the fastest one isn&rsquo;t always the cheapest.</li>
-        </ul>
+        <!-- Matches the app exactly: a single lead-in, then the results. An
+             earlier draft of this file carried a generic "three things worth
+             checking" intro plus bullets that the app does not have. -->
+        <p>If you&rsquo;re in the ${esc(d.city)} area, here are some well-rated options nearby:</p>
         <ol class="cg-list">
           ${d.places.map((pl) => `<li>
             <span class="cg-list-name${pl.prospect ? " cg-list-open" : ""}"${pl.prospect ? ' onclick="openFly()"' : ""}>${esc(pl.name)}</span>
