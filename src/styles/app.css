@@ -1651,3 +1651,17 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
   border: none; font-size: 16px; cursor: pointer; }
 .ind-map-attr { position: absolute; left: 8px; bottom: 6px; font-size: 10px; color: #5b6577;
   background: #ffffffcc; border-radius: 3px; padding: 1px 5px; }
+
+/* ThoughtSpot chart styling, scoped to the Insights screen. */
+.ind-spark { display: block; margin-top: 14px; overflow: visible; }
+.ind-spark-line { fill: none; stroke: #3d5afe; stroke-width: 2.2; stroke-linejoin: round; }
+/* Very light fill: in the capture the area is barely tinted, so a heavier fill
+   reads as a different chart type entirely. */
+.ind-spark-area { fill: #3d5afe; fill-opacity: .12; stroke: none; }
+.ind-spark-band rect { fill: #d5d8dd; }
+
+.ind-tsline { display: block; overflow: visible; }
+.ind-ax { font-size: 15px; fill: #6b7684; }
+.ind-axtitle { font-size: 15px; font-weight: 600; fill: #1d2b4a; }
+.ind-axline { stroke: #c8cdd4; stroke-width: 1; }
+.ind-legend { font-size: 16px; fill: #1d2b4a; dominant-baseline: middle; }

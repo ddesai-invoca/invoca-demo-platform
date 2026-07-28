@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { DonutChart } from "../components/DonutChart";
-import { LineChart } from "../components/LineChart";
 
 /* Insights & Analytics -> a saved dashboard (network 1847
    /insights/dashboard/<uuid>). Matched to the capture: breadcrumb + title, an
@@ -58,6 +57,120 @@ const TS_COLORS = ["#8892a0", "#2ee0ca", "#2666f9", "#7b61ff", "#2cbf58",
    green, yellow, teal, blue in that order, so the series order is explicit
    rather than derived. */
 const TS_LINE_COLORS = ["#2cbf58", "#f3cb00", "#2ee0ca", "#2666f9"];
+
+/* Both charts below are LOCAL to this screen rather than additions to the shared
+   DonutChart/LineChart. The differences from ours are structural, not just
+   colour: legend on the right, a rotated y-axis title, an x-axis title, and a
+   forecast band. Bending the shared components into that shape would put six
+   other dashboards at risk for no benefit. */
+
+/* Weekly-trend sparkline: flat baseline with occasional spikes, a light area
+   fill, and the grey FORECAST band the capture shows past the last actual week.
+   Deterministic from the prospect id so it never moves between renders. */
+function TrendSparkline({ seed }: { seed: string }) {
+  const W = 760, H = 190, base = H - 26;
+  let h = 0;
+  for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) % 100003;
+  const rnd = () => ((h = (h * 1103515245 + 12345) % 2147483648) / 2147483648);
+
+  const N = 78;
+  const vals = Array.from({ length: N }, (_, i) => {
+    const r = rnd();
+    if (i === Math.floor(N * 0.27)) return 0.62;   // the two tall spikes in
+    if (i === Math.floor(N * 0.74)) return 1;       // the capture
+    return r < 0.12 ? r * 0.16 : r * 0.03;
+  });
+  const x = (i: number) => 8 + (i / (N - 1)) * (W - 16);
+  const y = (v: number) => base - v * (base - 14);
+  const line = vals.map((v, i) => (i ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1)).join(" ");
+
+  /* Forecast band: stepped grey blocks after the last actual point, above AND
+     below the baseline, which is how the capture draws the uncertainty range. */
+  const fStart = Math.floor(N * 0.78);
+  const steps = Array.from({ length: 6 }, (_, i) => {
+    const x0 = x(fStart + i * 3), x1 = x(fStart + (i + 1) * 3);
+    const up = 34 + rnd() * 26, dn = 30 + rnd() * 34;
+    return <rect key={i} x={x0} y={base - up} width={Math.max(1, x1 - x0)} height={up + dn} />;
+  });
+
+  return (
+    <svg className="ind-spark" viewBox={`0 0 ${W} ${H}`} width="100%" aria-hidden="true">
+      <g className="ind-spark-band">{steps}</g>
+      <path className="ind-spark-area" d={`${line} L${x(N - 1)},${base} L${x(0)},${base} Z`} />
+      <path className="ind-spark-line" d={line} />
+    </svg>
+  );
+}
+
+/* Conversations/Metrics Over Time. Matched to the capture: legend on the RIGHT
+   with round swatches, the y-axis title rotated up the left edge, an x-axis
+   title, and dense weekly ticks across two years where most weeks sit near zero
+   and a few spike hard. */
+function MetricsOverTime({ seed, series }: { seed: string; series: string[] }) {
+  const W = 1180, H = 470, padL = 92, padR = 300, padT = 22, padB = 74;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  let h = 0;
+  for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) % 100003;
+  const rnd = () => ((h = (h * 1103515245 + 12345) % 2147483648) / 2147483648);
+
+  const N = 108;                                  // roughly two years of weeks
+  const yMax = 30000;
+  const cols = Array.from({ length: N }, (_, i) => {
+    const r = rnd();
+    if (i === Math.floor(N * 0.86)) return 0.93;   // the one tall spike
+    if (i === Math.floor(N * 0.74)) return 0.11;   // the smaller cluster
+    if (i > Math.floor(N * 0.29) && i < Math.floor(N * 0.34)) return 0.02 + r * 0.05;
+    return r * 0.006;
+  });
+  const x = (i: number) => padL + (i / (N - 1)) * plotW;
+  const yOf = (f: number) => padT + plotH - f * plotH;
+
+  const TICKS = [0, 10000, 20000, 30000];
+  const XL = ["07/01/2024", "01/01/2025", "07/01/2025", "01/01/2026", "07/01/2026"];
+
+  return (
+    <svg className="ind-tsline" viewBox={`0 0 ${W} ${H}`} width="100%" aria-hidden="true">
+      {TICKS.map((t) => (
+        <text key={t} className="ind-ax" x={padL - 14} y={yOf(t / yMax) + 4} textAnchor="end">
+          {t === 0 ? "0" : `${t / 1000}K`}
+        </text>
+      ))}
+      <text className="ind-axtitle" transform={`translate(26,${padT + plotH / 2}) rotate(-90)`}
+        textAnchor="middle">Total Call Count &amp; Total Call Answered by Agent &amp; Total New ...</text>
+
+      {/* Each week draws all four series as thin adjacent ticks, which is what
+          makes the real chart read as a dense picket fence rather than lines. */}
+      {cols.map((f, i) => (
+        <g key={i}>
+          {series.map((_, si) => {
+            const fv = Math.max(0.0025, f * (1 - si * 0.13));
+            return <rect key={si} x={x(i) + si * 1.7} y={yOf(fv)} width={1.4}
+              height={padT + plotH - yOf(fv)} fill={TS_LINE_COLORS[si % TS_LINE_COLORS.length]} />;
+          })}
+        </g>
+      ))}
+      <line className="ind-axline" x1={padL} y1={padT + plotH} x2={padL + plotW} y2={padT + plotH} />
+
+      {XL.map((l, i) => (
+        <text key={l} className="ind-ax" x={padL + (i / (XL.length - 1)) * plotW}
+          y={padT + plotH + 26} textAnchor="middle">{l}</text>
+      ))}
+      <text className="ind-axtitle" x={padL + plotW / 2} y={H - 16} textAnchor="middle">
+        Weekly Call Start Time
+      </text>
+
+      {series.map((name, i) => (
+        <g key={name}>
+          <circle cx={W - padR + 26} cy={padT + 106 + i * 42} r={7}
+            fill={TS_LINE_COLORS[i % TS_LINE_COLORS.length]} />
+          <text className="ind-legend" x={W - padR + 44} y={padT + 112 + i * 42}>
+            {name.length > 26 ? name.slice(0, 25) + "..." : name}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+}
 
 function PerfSection({ title, dimension, rows }: { title: string; dimension: string; rows: Row[] }) {
   const total = (k: keyof Omit<Row, "name">) => rows.reduce((s, r) => s + r[k], 0);
@@ -216,13 +329,17 @@ export function InsightsDashboard() {
               <span className="ind-trend-value">0</span>
               <span className="ind-trend-sub">Week of {md.dateRange?.split("-")[1] ?? ""}</span>
               <span className="ind-trend-sub"><mark>0% (0)</mark> Week of {md.dateRange?.split("-")[0] ?? ""} ›</span>
+              <TrendSparkline seed={profile.id} />
             </div>
           </div>
         </section>
 
         <section className="ind-card">
           <h2 className="ind-card-title">Conversations/Metrics Over Time</h2>
-          <LineChart chart={md.salesCallBreakoutGraph} height={300} colors={TS_LINE_COLORS} />
+          <MetricsOverTime seed={profile.id} series={[
+            "Total Call Count", "Total Call Answered by Agent",
+            "Total New Sales Call", "Total New Service Activation",
+          ]} />
         </section>
 
         <section className="ind-card ind-rate">
