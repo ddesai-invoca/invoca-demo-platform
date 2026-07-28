@@ -19,8 +19,6 @@ import { useProfile } from "../data/ProfileContext";
    React. The chrome is matched to the capture; the sponsored placement itself
    is a mock-up of the format, which is why the disclaimer stays on the page. */
 
-const article = (w: string) => (/^[aeiou]/i.test(w) ? "an" : "a");
-
 /* `serviceArea` is written for the AI agent's system prompt, so it's a full
    paragraph ("the greater Santa Barbara, California area — ZIP codes starting
    with 931…"). An ad needs a place name, so trim it to one and give up
@@ -58,7 +56,40 @@ function derive(p: ReturnType<typeof useProfile>["profile"]) {
   const initials = caller.split(/\s+/).filter(Boolean).slice(0, 2)
     .map((w) => w[0]).join("").toUpperCase() || "A";
 
+  /* Where the map centres. Preference order, per the brief: the prospect's own
+     stated area first, then the screenpop location (populated for every
+     prospect on disk), then San Francisco as the explicit fallback. There is no
+     true HQ field on the profile — if we ever want one it has to come from the
+     engine, since only research knows it. */
+  const area0 = shortArea(r.agentConfig?.serviceArea);
+  const vs = r.voiceScreenpop;
+  const city = area0
+    ?? (vs?.city ? `${vs.city}${vs.state ? `, ${vs.state}` : ""}` : undefined)
+    ?? "San Francisco, CA";
+
+  /* The organic results. The prospect is ALWAYS first. The others are built
+     from the city + category rather than invented business names — this is a
+     mock-up, and naming plausible-sounding real competitors with fabricated
+     star ratings is not something to put on a screen. */
+  const shortCity = city.split(",")[0];
+  const h = hero.toLowerCase();
+  const places = [
+    { name: p.customerName, rating: "4.9", type: hero, prospect: true,
+      a: `Free ${p.bookingTerm.toLowerCase()}s, and the quote covers measure, supply and install.`,
+      b: "Strong reviews for turning up on time and finishing in one visit." },
+    { name: `${shortCity} ${hero} Co.`, rating: "4.7", type: hero, prospect: false,
+      a: `Long-established local ${h} specialist with a showroom.`,
+      b: "Good if you want to see materials in person before ordering." },
+    { name: `Premier ${hero}`, rating: "4.6", type: hero, prospect: false,
+      a: "Competitive on price, though lead times can run longer in peak season.",
+      b: "Worth a call if budget is the deciding factor." },
+    { name: `${hero} Warehouse`, rating: "4.4", type: `${hero} supplier`, prospect: false,
+      a: "Largest stock range in the area, mostly off-the-shelf sizes.",
+      b: "Best for standard sizes rather than anything custom." },
+  ];
+
   return {
+    city, shortCity, places,
     query: `best ${(isProcessWord ? hero : term!).toLowerCase()} near me`,
     hero,
     others: products.slice(1, 4),
@@ -88,6 +119,13 @@ const P: Record<string, string> = {
   globe: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18",
   panel: "M4 5h16v14H4zM10 5v14",
   chevron: "M6 9l6 6 6-6",
+  expand: "M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7",
+  pin: "M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z",
+  copy: "M9 9h10v12H9zM5 15H3V3h12v2",
+  up: "M7 22V10l5-8 1 1-1.5 6H21l-2.5 13H7z",
+  down: "M17 2v12l-5 8-1-1 1.5-6H3L5.5 2H17z",
+  share: "M12 16V3M7 8l5-5 5 5M4 16v4h16v-4",
+  refresh: "M21 12a9 9 0 1 1-3-6.7M21 4v5h-5",
 };
 
 function Icon({ d, size = 20 }: { d: string; size?: number }) {
@@ -157,50 +195,118 @@ export function ChatGptAd() {
             <div className="cg-thread">
               <div className="cg-user"><span>{asked}</span></div>
 
-              {/* Deliberately vertical-neutral advice: this same copy has to read
-                  naturally for window treatments, security, healthcare and auto,
-                  so it leans on how people shop rather than product specifics. */}
+              {/* Map card. A stylised SVG, not a real tile service — the page
+                  makes no network calls and there is no map key in this app.
+                  It carries the prospect's pin plus the other results. */}
+              <div className="cg-map">
+                <svg className="cg-map-svg" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid slice"
+                  aria-label={`Map of ${d.city}`}>
+                  <rect width="720" height="300" fill="#2a3a44" />
+                  <path d="M0 40 L240 0 L420 70 L720 30 L720 0 L0 0Z" fill="#22323a" />
+                  <path d="M0 250 L180 210 L380 268 L720 226 L720 300 L0 300Z" fill="#22323a" />
+                  <path d="M470 90 q60 -30 120 -10 t130 20 L720 150 L470 150Z" fill="#1d3540" />
+                  <g stroke="#556570" fill="none" strokeLinecap="round">
+                    <path d="M-20 118 C160 96 300 150 460 128 S680 108 740 120" strokeWidth="5" />
+                    <path d="M120 -10 C150 90 96 190 140 320" strokeWidth="4" />
+                    <path d="M520 -10 C500 90 560 190 540 320" strokeWidth="4" />
+                    <path d="M-20 205 C180 190 340 232 740 198" strokeWidth="3" opacity=".8" />
+                    <path d="M300 -10 C312 120 288 210 320 320" strokeWidth="2" opacity=".6" />
+                    <path d="M-20 62 C220 48 470 78 740 56" strokeWidth="2" opacity=".6" />
+                  </g>
+                  {d.places.slice(0, 3).map((pl, i) => (
+                    <g key={pl.name} transform={`translate(${[300, 500, 170][i]}, ${[96, 150, 190][i]})`}>
+                      <rect x="-26" y="-14" width="52" height="24" rx="12" fill="#141414" opacity=".92" />
+                      <text x="-16" y="3" fill="#fff" fontSize="12">★</text>
+                      <text x="-2" y="3" fill="#fff" fontSize="12">{pl.rating}</text>
+                      <text x="0" y="28" fill="#fff" fontSize="12" textAnchor="middle"
+                        style={{ paintOrder: "stroke", stroke: "#1b262c", strokeWidth: 3 }}>
+                        {pl.name.length > 22 ? pl.name.slice(0, 21) + "…" : pl.name}
+                      </text>
+                    </g>
+                  ))}
+                </svg>
+                <button className="cg-map-expand">Expand <Icon d={P.expand} size={13} /></button>
+                <div className="cg-places">
+                  {d.places.slice(0, 2).map((pl) => (
+                    <div className="cg-place" key={pl.name}>
+                      <span className="cg-place-img" aria-hidden="true">{pl.prospect ? d.icon : "▦"}</span>
+                      <span className="cg-place-txt">
+                        <span className="cg-place-name">{pl.name}</span>
+                        <span className="cg-place-meta">★ {pl.rating} • {pl.type}</span>
+                        <span className="cg-place-open">Open now</span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="cg-feedback">Give feedback</div>
+
+              {/* Vertical-neutral by design: this same copy has to read naturally
+                  for window treatments, security, healthcare and auto. */}
               <div className="cg-answer">
+                <p>If you&rsquo;re in the {d.city} area, here are some well-rated options nearby:</p>
+                <ol className="cg-list">
+                  {d.places.map((pl) => (
+                    <li key={pl.name}>
+                      <span className="cg-list-name">{pl.name}</span>{" "}
+                      <span className="cg-list-city">({d.shortCity})</span>
+                      <ul><li>{pl.a}</li><li>{pl.b}</li></ul>
+                    </li>
+                  ))}
+                </ol>
                 <p>
-                  It depends a lot on what you actually need and who&rsquo;s available near
-                  you, but there are three things worth checking before you decide:
+                  If you mainly want this <strong>sorted quickly</strong>, {d.places[0].name} is the
+                  one most people call first — they&rsquo;ll give you a firm number over the phone
+                  rather than a range, and {d.area ? `they cover ${d.area}` : "they cover this area"}.
                 </p>
+                <p>If you tell me:</p>
                 <ul>
-                  <li><strong>Get a real number, not a range.</strong> Advertised pricing is a starting point — the number that matters is the one for your specific situation.</li>
-                  <li><strong>Ask what&rsquo;s actually included.</strong> The headline number usually leaves out things you&rsquo;ll end up paying for anyway.</li>
-                  <li><strong>Check availability first.</strong> Lead times vary widely between providers, and the fastest one isn&rsquo;t always the cheapest.</li>
+                  <li>what you need it for, and</li>
+                  <li>your <strong>budget</strong>,</li>
                 </ul>
-                <p>
-                  The quickest way to get a firm answer is to talk to someone directly —
-                  and most places can get you in for {article(d.booking)} {d.booking} quickly
-                  {d.area ? `. Here's one covering ${d.area}` : ""}:
+                <p>I can narrow this down to the best option for you and estimate the total cost.</p>
+              </div>
+
+              <div className="cg-loc">
+                <Icon d={P.pin} size={14} />{d.shortCity} &nbsp;•&nbsp;
+                <span className="cg-loc-link">Use precise location</span>
+              </div>
+
+              <div className="cg-toolrow">
+                {[P.copy, P.up, P.down, P.share, P.refresh].map((ic, i) => (
+                  <span className="cg-tool" key={i}><Icon d={ic} size={17} /></span>
+                ))}
+                <span className="cg-tool cg-dots">···</span>
+                <span className="cg-sources">Sources</span>
+              </div>
+
+              {/* THE SPONSORED SLOT — always the prospect. This is the whole
+                  point of the screen: the call starts here. */}
+              <div className="cg-adwrap">
+                <div className="cg-ad">
+                  <div className="cg-ad-logo" aria-hidden="true">{d.icon}</div>
+                  <div className="cg-ad-body">
+                    <div className="cg-ad-row">
+                      <span className="cg-ad-domain">{d.domain}</span>
+                      <span className="cg-ad-badge">Ad</span>
+                    </div>
+                    <div className="cg-ad-head">{d.offer}</div>
+                    <div className="cg-ad-sub">
+                      Speak to a specialist about {d.hero.toLowerCase()} and what it&rsquo;ll
+                      actually cost &mdash; no obligation.
+                    </div>
+                    <a className="cg-call" href={`tel:${d.phone.replace(/[^\d+]/g, "")}`}>
+                      <span className="material-icons">call</span>{d.phone}
+                    </a>
+                  </div>
+                </div>
+                <p className="cg-adnote">
+                  Ads do not influence the answers you get from ChatGPT. Your chats stay private.{" "}
+                  <span className="cg-loc-link">Learn about ads and personalization &rsaquo;</span>
                 </p>
               </div>
 
-              <div className="cg-sponsored">
-                <div className="cg-sponsored-label">Sponsored</div>
-                <div className="cg-ad">
-                  <div className="cg-ad-icon" aria-hidden="true">{d.icon}</div>
-                  <div className="cg-ad-body">
-                    <div className="cg-ad-brand">
-                      {d.brand}<span className="cg-ad-domain">{d.domain}</span>
-                    </div>
-                    <div className="cg-ad-head">{d.offer} — book by phone in under a minute</div>
-                    <div className="cg-ad-sub">
-                      Speak to a specialist about {d.hero.toLowerCase()}
-                      {d.others.length ? `, ${d.others.join(", ").toLowerCase()}` : ""} and
-                      what it&rsquo;ll actually cost — no obligation.
-                    </div>
-                    <div className="cg-ad-actions">
-                      <a className="cg-call" href={`tel:${d.phone.replace(/[^\d+]/g, "")}`}>
-                        <span className="material-icons">call</span>{d.phone}
-                      </a>
-                      <button className="cg-visit">Visit site</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="cg-sponsored-foot">Sponsored results are paid placements.</div>
-              </div>
+              <p className="cg-mistakes">ChatGPT can make mistakes. Check important info.</p>
             </div>
 
             <div className="cg-dock">
