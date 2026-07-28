@@ -1165,7 +1165,7 @@
       "metSignals": [
         "Greeted caller by name",
         "Confirmed vehicle model interest (Toyota RAV4)",
-        "Identified budget range ($22K–$28K)",
+        "Identified budget range ($22K-$28K)",
         "Verified ZIP code (33139)",
         "Captured full legal name",
         "Confirmed contact phone",
@@ -1223,7 +1223,7 @@
         },
         {
           "question": "What are the customer's expectations?",
-          "answer": "The customer expects a smooth intake process, availability of a RAV4 in their budget range ($22K–$28K) at the local AutoNation sales center, and a confirmed test drive appointment within 2–3 days."
+          "answer": "The customer expects a smooth intake process, availability of a RAV4 in their budget range ($22K-$28K) at the local AutoNation sales center, and a confirmed test drive appointment within 2-3 days."
         },
         {
           "question": "How could the agent handle the call better?",
@@ -1308,12 +1308,12 @@
           "text": "Wonderful, Jennifer. We're looking forward to seeing you Thursday at 2 PM. Your appointment is confirmed. Thank you for choosing AutoNation, and we'll see you soon!"
         }
       ],
-      "aiSummary": "Jennifer Zhao, a new customer from Miami (ZIP 33139), called to schedule a test drive for a Toyota RAV4 with a budget of $22,000–$28,000. Agent Marcus Bell successfully captured her name, location, phone number, and confirmed an appointment for Thursday, June 13th at 2 PM. While Marcus provided clear directions and appointment details, he missed the opportunity to capture her email address for follow-up and did not set detailed expectations about the test drive visit (documentation, financing pre-qualification process, or vehicle features tour). No mention was made of AutoNation's Vehicle Protection Plans or financing pre-qualification options, which represent key upsell opportunities for new customers.",
+      "aiSummary": "Jennifer Zhao, a new customer from Miami (ZIP 33139), called to schedule a test drive for a Toyota RAV4 with a budget of $22,000-$28,000. Agent Marcus Bell successfully captured her name, location, phone number, and confirmed an appointment for Thursday, June 13th at 2 PM. While Marcus provided clear directions and appointment details, he missed the opportunity to capture her email address for follow-up and did not set detailed expectations about the test drive visit (documentation, financing pre-qualification process, or vehicle features tour). No mention was made of AutoNation's Vehicle Protection Plans or financing pre-qualification options, which represent key upsell opportunities for new customers.",
       "comment": {
         "author": "Kyle Paklaian",
         "audience": "Everyone",
         "date": "Oct 22, 2:55 PM",
-        "text": "@Marcus — Nice structure on the intake call. You nailed the greeting, qualification (budget, vehicle, location), and appointment scheduling, which is the core win here. Two coaching points: (1) Always capture email in addition to phone — Jennifer will need follow-up confirmations and she may prefer digital delivery of inventory details or financing pre-qual links before Thursday. (2) Set clear expectations: tell her what docs to bring (DL + proof of insurance is good), but also walk her through what happens during the visit — 'You'll meet with our sales consultant, we'll do a quick pre-qual for financing options, and then we'll take the RAV4 out for a 15–20 minute test drive.' That context makes her visit feel less uncertain and increases show-up rate. Great effort overall!"
+        "text": "@Marcus, Nice structure on the intake call. You nailed the greeting, qualification (budget, vehicle, location), and appointment scheduling, which is the core win here. Two coaching points: (1) Always capture email in addition to phone, Jennifer will need follow-up confirmations and she may prefer digital delivery of inventory details or financing pre-qual links before Thursday. (2) Set clear expectations: tell her what docs to bring (DL + proof of insurance is good), but also walk her through what happens during the visit, 'You'll meet with our sales consultant, we'll do a quick pre-qual for financing options, and then we'll take the RAV4 out for a 15-20 minute test drive.' That context makes her visit feel less uncertain and increases show-up rate. Great effort overall!"
       }
     },
     "opsDashboard": {
@@ -2714,7 +2714,7 @@
         ]
       },
       "callsNeedingReview": {
-        "title": "Calls Needing Review - Lost Sales Opportunities",
+        "title": "Calls Needing Review, Lost Sales Opportunities",
         "chips": [
           "5 Filters"
         ],
@@ -4422,17 +4422,17 @@
       "scoreValue": 86,
       "scoreLabel": "BASE SKILLS",
       "aiSummary": {
-        "summary": "Danielle Reyes, a first-time AutoNation shopper, called about a used Toyota RAV4 she saw online and expressed interest in a Certified Pre-Owned model within a $25,000 budget. Agent Marcus recommended Certified Pre-Owned RAV4 XLE inventory in the $23,000–$27,000 range with included warranty coverage and multi-point inspection, and explained the $300–$450/month financing tier plus soft-pull prequalification. He scheduled a test drive for Thursday at 10 AM at the AutoNation Toyota Sales Center and captured her phone and email to send confirmation and the prequalification link.",
+        "summary": "Danielle Reyes, a first-time AutoNation shopper, called about a used Toyota RAV4 she saw online and expressed interest in a Certified Pre-Owned model within a $25,000 budget. Agent Marcus recommended Certified Pre-Owned RAV4 XLE inventory in the $23,000-$27,000 range with included warranty coverage and multi-point inspection, and explained the $300-$450/month financing tier plus soft-pull prequalification. He scheduled a test drive for Thursday at 10 AM at the AutoNation Toyota Sales Center and captured her phone and email to send confirmation and the prequalification link.",
         "keyPoints": [
-          "New customer — first time shopping with AutoNation, referred by a friend",
+          "New customer, first time shopping with AutoNation, referred by a friend",
           "Interested in a Certified Pre-Owned Toyota RAV4 with warranty coverage",
-          "Budget around $25,000; agent matched CPO RAV4 XLE at $23K–$27K",
-          "Discussed $300–$450/month financing and offered soft-pull prequalification",
+          "Budget around $25,000; agent matched CPO RAV4 XLE at $23K-$27K",
+          "Discussed $300-$450/month financing and offered soft-pull prequalification",
           "Test drive booked for Thursday at 10 AM at the Toyota Sales Center",
           "Captured phone number and email for confirmation and prequalification link"
         ],
         "sentiment": "Positive",
-        "outcome": "Test Drive booked — Thursday 10 AM"
+        "outcome": "Test Drive booked, Thursday 10 AM"
       }
     },
     "smsConversationIntelligence": {
@@ -4459,7 +4459,7 @@
             {
               "speaker": "agent",
               "time": "6:23 AM",
-              "text": "Great! We have several RAV4s available. First, what's your price range—are you looking at vehicles under $30,000, or are you open to higher trims?"
+              "text": "Great! We have several RAV4s available. First, what's your price range, are you looking at vehicles under $30,000, or are you open to higher trims?"
             },
             {
               "speaker": "consumer",
@@ -4852,7 +4852,7 @@
             "duration": "5:47",
             "destinationPhone": "877-936-2933",
             "source": "877-936-2933",
-            "promoNumberDescription": "Voice — Paid Search",
+            "promoNumberDescription": "Voice, Paid Search",
             "connectionStatus": "Connected",
             "callerId": "602-555-8124",
             "repeatCaller": "No",
@@ -4959,9 +4959,9 @@
     },
     "agentConfig": {
       "brandConversationRules": [
-        "Intro + offer: Hi, I'm AutoNation's AI assistant helping you get a personalized vehicle quote and schedule a test drive — we're currently featuring select models with payments under $300/mo and Certified Pre-Owned specials; would you like to get started?",
-        "Qualify one question at a time: I'll ask a few quick questions one at a time — which vehicle type or model are you interested in (new, used, Certified Pre-Owned, or electric), your target monthly payment or price range, whether you'll be financing or paying cash, your ideal timeline to buy, and your ZIP code so I can confirm the nearest AutoNation store.",
-        "Estimate then book: Once I confirm we have inventory near your ZIP, I'll share a preliminary price or monthly-payment range based on what you shared, recommend meeting with a sales specialist for an exact, vehicle-specific quote, and propose a specific day and time for your test drive — you'll get a reminder text beforehand with a number to call."
+        "Intro + offer: Hi, I'm AutoNation's AI assistant helping you get a personalized vehicle quote and schedule a test drive, we're currently featuring select models with payments under $300/mo and Certified Pre-Owned specials; would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, which vehicle type or model are you interested in (new, used, Certified Pre-Owned, or electric), your target monthly payment or price range, whether you'll be financing or paying cash, your ideal timeline to buy, and your ZIP code so I can confirm the nearest AutoNation store.",
+        "Estimate then book: Once I confirm we have inventory near your ZIP, I'll share a preliminary price or monthly-payment range based on what you shared, recommend meeting with a sales specialist for an exact, vehicle-specific quote, and propose a specific day and time for your test drive, you'll get a reminder text beforehand with a number to call."
       ],
       "knowledgeSources": [
         {
@@ -4995,71 +4995,71 @@
           "title": "Qa pairs - 2026-03-11 13:12",
           "updated": "07/09/2026 3:29 PM",
           "enabled": true,
-          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"vehicle protection plan\",\"question\":\"Is my extended vehicle protection plan still active and does it cover my current repair?\",\"answer\":\"I can help you confirm your Vehicle Protection Plan status and coverage details — let me connect you with your AutoNation store so a specialist can review your plan and schedule any needed service.\"},{\"topic\":\"reschedule test drive\",\"question\":\"I need to move my test drive to a different day, can you help?\",\"answer\":\"Absolutely, I can reschedule your test drive — just let me know your preferred day and time and I'll confirm availability at your AutoNation store and send you a reminder text.\"}]}",
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"vehicle protection plan\",\"question\":\"Is my extended vehicle protection plan still active and does it cover my current repair?\",\"answer\":\"I can help you confirm your Vehicle Protection Plan status and coverage details, let me connect you with your AutoNation store so a specialist can review your plan and schedule any needed service.\"},{\"topic\":\"reschedule test drive\",\"question\":\"I need to move my test drive to a different day, can you help?\",\"answer\":\"Absolutely, I can reschedule your test drive, just let me know your preferred day and time and I'll confirm availability at your AutoNation store and send you a reminder text.\"}]}",
           "qaPairs": [
             {
               "question": "Do you have used cars under $15,000?",
-              "answer": "Yes, we carry a wide selection of budget-friendly pre-owned vehicles, and inventory changes daily by location — share your ZIP and I'll help you set up a test drive to see what's available near you."
+              "answer": "Yes, we carry a wide selection of budget-friendly pre-owned vehicles, and inventory changes daily by location, share your ZIP and I'll help you set up a test drive to see what's available near you."
             },
             {
               "question": "What Certified Pre-Owned vehicles do you have?",
-              "answer": "Our AutoNation Certified Pre-Owned vehicles are inspected and come with warranty coverage — let me know your preferred make or model and ZIP so I can book you a test drive with a specialist."
+              "answer": "Our AutoNation Certified Pre-Owned vehicles are inspected and come with warranty coverage, let me know your preferred make or model and ZIP so I can book you a test drive with a specialist."
             },
             {
               "question": "Can I find cars with payments under $300 a month?",
-              "answer": "Yes, we promote vehicles in monthly-payment tiers including under $300, $300–$450, and $450+ — final payments depend on the vehicle and financing, so let's schedule a visit to get you exact numbers."
+              "answer": "Yes, we promote vehicles in monthly-payment tiers including under $300, $300-$450, and $450+, final payments depend on the vehicle and financing, so let's schedule a visit to get you exact numbers."
             },
             {
               "question": "Do you sell electric cars?",
-              "answer": "We have a dedicated EV inventory along with an EV Buyers Guide to help you choose — tell me your ZIP and I'll set up a test drive at the nearest store."
+              "answer": "We have a dedicated EV inventory along with an EV Buyers Guide to help you choose, tell me your ZIP and I'll set up a test drive at the nearest store."
             },
             {
               "question": "How much is a Toyota RAV4?",
-              "answer": "The RAV4 is one of our most popular models and pricing varies by trim, year, and location, so I can't quote an exact figure here — let's book a test drive and a specialist will give you a precise quote."
+              "answer": "The RAV4 is one of our most popular models and pricing varies by trim, year, and location, so I can't quote an exact figure here, let's book a test drive and a specialist will give you a precise quote."
             },
             {
               "question": "Can you give me a price for a specific vehicle?",
-              "answer": "Vehicle pricing is specific to the exact car and location, so the best way to get an accurate quote is to meet with a specialist — I'd be happy to schedule a test drive for you."
+              "answer": "Vehicle pricing is specific to the exact car and location, so the best way to get an accurate quote is to meet with a specialist, I'd be happy to schedule a test drive for you."
             },
             {
               "question": "Do you offer financing?",
-              "answer": "Yes, AutoNation Finance offers prequalification and loan options across credit tiers with no cost to apply — I can book you a consultation so a finance specialist can walk you through your options."
+              "answer": "Yes, AutoNation Finance offers prequalification and loan options across credit tiers with no cost to apply, I can book you a consultation so a finance specialist can walk you through your options."
             },
             {
               "question": "Can I get prequalified with bad credit?",
-              "answer": "We work with customers across a range of credit tiers and offer a soft-pull prequalification — let's set up a time to meet with a finance specialist to review your options."
+              "answer": "We work with customers across a range of credit tiers and offer a soft-pull prequalification, let's set up a time to meet with a finance specialist to review your options."
             },
             {
               "question": "How do I sell or trade in my car?",
-              "answer": "You can get an offer through our Sell My Car process, and a specialist can appraise your vehicle in person — share your ZIP and I'll schedule you at the nearest store."
+              "answer": "You can get an offer through our Sell My Car process, and a specialist can appraise your vehicle in person, share your ZIP and I'll schedule you at the nearest store."
             },
             {
               "question": "Do you have a service center near me?",
-              "answer": "We have AutoNation Service Centers in many locations — give me your ZIP and I'll help you find the closest one and book an appointment."
+              "answer": "We have AutoNation Service Centers in many locations, give me your ZIP and I'll help you find the closest one and book an appointment."
             },
             {
               "question": "How much is an oil change?",
-              "answer": "Oil change and standard maintenance pricing varies by vehicle and location, so I can't quote an exact price here — let me book you a service appointment for a precise estimate."
+              "answer": "Oil change and standard maintenance pricing varies by vehicle and location, so I can't quote an exact price here, let me book you a service appointment for a precise estimate."
             },
             {
               "question": "Do you offer mobile service?",
-              "answer": "Yes, AutoNation Mobile Service brings maintenance and repairs to your home or office — share your ZIP and I'll help schedule a visit."
+              "answer": "Yes, AutoNation Mobile Service brings maintenance and repairs to your home or office, share your ZIP and I'll help schedule a visit."
             },
             {
               "question": "What's the cost of an extended warranty?",
-              "answer": "Our Vehicle Protection Plans vary based on your vehicle and coverage level, so exact pricing comes from a specialist — I can arrange a consultation to review the right plan for you."
+              "answer": "Our Vehicle Protection Plans vary based on your vehicle and coverage level, so exact pricing comes from a specialist, I can arrange a consultation to review the right plan for you."
             },
             {
               "question": "Do you do brake service?",
-              "answer": "Yes, our service centers handle pad and rotor replacement, brake inspections, and fluid service, with pricing based on your vehicle — let's book a service appointment for an exact estimate."
+              "answer": "Yes, our service centers handle pad and rotor replacement, brake inspections, and fluid service, with pricing based on your vehicle, let's book a service appointment for an exact estimate."
             },
             {
               "question": "Can you install new tires?",
-              "answer": "We sell and install tires including mounting, balancing, and alignment add-ons — pricing depends on the tire and vehicle, so let me schedule you for a service appointment."
+              "answer": "We sell and install tires including mounting, balancing, and alignment add-ons, pricing depends on the tire and vehicle, so let me schedule you for a service appointment."
             },
             {
               "question": "What brands do you carry?",
-              "answer": "We sell across roughly 30 brands including Toyota, Honda, Ford, Chevrolet, BMW, and Mercedes-Benz — tell me what you're interested in and your ZIP, and I'll book a test drive."
+              "answer": "We sell across roughly 30 brands including Toyota, Honda, Ford, Chevrolet, BMW, and Mercedes-Benz, tell me what you're interested in and your ZIP, and I'll book a test drive."
             },
             {
               "question": "What are your service center hours?",
@@ -5067,15 +5067,15 @@
             },
             {
               "question": "Do you handle collision repair?",
-              "answer": "Yes, our Collision Centers handle body work, paint, and frame repair, often coordinated with insurance — let's set up a time for an estimate at the nearest center."
+              "answer": "Yes, our Collision Centers handle body work, paint, and frame repair, often coordinated with insurance, let's set up a time for an estimate at the nearest center."
             },
             {
               "question": "Can I schedule a test drive?",
-              "answer": "Absolutely — just tell me the vehicle you're interested in and your ZIP, and I'll find a time that works for you at your local AutoNation store."
+              "answer": "Absolutely, just tell me the vehicle you're interested in and your ZIP, and I'll find a time that works for you at your local AutoNation store."
             },
             {
               "question": "Do you offer auto insurance?",
-              "answer": "Yes, AutoNation Insurance provides bundled quotes and policies through our partners — I can book you a consultation to get personalized rates."
+              "answer": "Yes, AutoNation Insurance provides bundled quotes and policies through our partners, I can book you a consultation to get personalized rates."
             }
           ]
         },
@@ -5083,7 +5083,7 @@
           "title": "Intent follow up - 2026-03-11 13:12",
           "updated": "07/09/2026 3:29 PM",
           "enabled": false,
-          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a test drive\",\"follow_up_message\":\"Great — I've got a couple of test drive slots open at your nearest AutoNation store this week. Would tomorrow at 10 AM or 2 PM work better for you? I'll send a reminder text with a number to call.\"},{\"intent\":\"request a vehicle quote\",\"follow_up_message\":\"Happy to help you get exact numbers — the best way is to meet with a specialist who can prepare a precise quote and financing options. Can I schedule you for a visit this week? Just share your ZIP so I can confirm the closest store.\"}]}",
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule a test drive\",\"follow_up_message\":\"Great, I've got a couple of test drive slots open at your nearest AutoNation store this week. Would tomorrow at 10 AM or 2 PM work better for you? I'll send a reminder text with a number to call.\"},{\"intent\":\"request a vehicle quote\",\"follow_up_message\":\"Happy to help you get exact numbers, the best way is to meet with a specialist who can prepare a precise quote and financing options. Can I schedule you for a visit this week? Just share your ZIP so I can confirm the closest store.\"}]}",
           "qaPairs": []
         }
       ],
@@ -5095,7 +5095,7 @@
         "qualifyingQuestions": [
           "Are you looking for a new, used, Certified Pre-Owned, or electric vehicle?",
           "Do you have a specific make or model in mind, like a Toyota RAV4 or Ford F-150?",
-          "What's your target price range or monthly payment (under $300, $300–$450, or $450+)?",
+          "What's your target price range or monthly payment (under $300, $300-$450, or $450+)?",
           "Will you be financing or paying cash, and are you interested in prequalification?",
           "What's your ideal timeline to purchase?",
           "What's your ZIP code so I can confirm the nearest AutoNation store and available inventory?"
@@ -5127,7 +5127,7 @@
       "brandName": "AutoNation",
       "callerName": "Sarah Mitchell",
       "callerPhone": "(480) 555-0142",
-      "campaign": "Certified Pre-Owned SUV - Phoenix Acquisition",
+      "campaign": "Certified Pre-Owned SUV, Phoenix Acquisition",
       "tagGreen": "✓ In Service Area",
       "tagBlue": "New Test Drive Lead",
       "estimatedValue": "$28,500",
@@ -5144,15 +5144,15 @@
       "zip": "85016",
       "digitalJourney": "/home › /shop/used-cars › /shop/used-cars/certified-pre-owned › /shop/by-brand/honda",
       "intent": "Shopping for a reliable certified pre-owned SUV with warranty coverage; interested in test drive availability this week.",
-      "coverage": "ZIP 85016 confirmed - Phoenix serviceable",
-      "switchIntent": "High - actively comparing CPO inventory, prefers Honda CR-V, ready to test drive and finance same day.",
+      "coverage": "ZIP 85016 confirmed, Phoenix serviceable",
+      "switchIntent": "High, actively comparing CPO inventory, prefers Honda CR-V, ready to test drive and finance same day.",
       "greeting": "Hi Sarah! Thanks for calling AutoNation. I see you're interested in our Certified Pre-Owned Honda CR-V models. I'd love to get you in for a test drive at our Phoenix location. Do you have time this week?"
     },
     "smsScreenpop": {
       "brandName": "AutoNation",
       "callerName": "Marcus Johnson",
       "callerPhone": "(303) 555-0189",
-      "campaign": "Electric Vehicle Buyers - Denver Acquisition",
+      "campaign": "Electric Vehicle Buyers, Denver Acquisition",
       "tagGreen": "✓ In Service Area",
       "tagBlue": "New Service Appointment Lead",
       "estimatedValue": "$42,000",
@@ -5169,8 +5169,8 @@
       "zip": "80210",
       "digitalJourney": "/home › /shop/electric-cars › /finance › /shop/by-price/30000-and-above",
       "intent": "EV buyer researching available inventory; interested in financing options and understanding incentives; considering switch from gas vehicle.",
-      "coverage": "ZIP 80210 confirmed - Denver serviceable",
-      "appointment": "Test Drive with EV Specialist - Thursday, July 18, 2:00 PM at Denver Sales Center",
+      "coverage": "ZIP 80210 confirmed, Denver serviceable",
+      "appointment": "Test Drive with EV Specialist, Thursday, July 18, 2:00 PM at Denver Sales Center",
       "greeting": "Hi Marcus! This is Jennifer from AutoNation. Just confirming your test drive appointment for Thursday at 2 PM to check out our electric vehicles. Feel free to reach out if you have any questions about charging or incentives beforehand. Looking forward to seeing you!"
     },
     "voiceRoutingDemo": {
@@ -5208,7 +5208,7 @@
         },
         {
           "label": "Device",
-          "value": "Mobile - iOS",
+          "value": "Mobile, iOS",
           "highlight": false
         }
       ],
@@ -5220,7 +5220,7 @@
         },
         {
           "label": "Quote Started",
-          "value": "Yes - Trade-In Appraisal (not submitted)",
+          "value": "Yes, Trade-In Appraisal (not submitted)",
           "highlight": true
         },
         {
@@ -5232,11 +5232,11 @@
       "queues": [
         {
           "id": "test_drive_used_cars",
-          "name": "Test Drive - Certified Pre-Owned"
+          "name": "Test Drive, Certified Pre-Owned"
         },
         {
           "id": "finance_prequalification",
-          "name": "Finance - Prequalification & Approval"
+          "name": "Finance, Prequalification & Approval"
         },
         {
           "id": "general_customer_support",
@@ -5312,7 +5312,7 @@
         },
         {
           "role": "agent",
-          "text": "Excellent! All our certified pre-owned vehicles come with our AutoNation CPO warranty, and we can discuss extended vehicle protection plans with you at the dealership. Let me get you connected with our Test Drive team in Phoenix—they'll confirm availability for Thursday or Friday, get your trade-in details locked in, and make sure that RAV4 is prepped and ready for your inspection. Sound good?",
+          "text": "Excellent! All our certified pre-owned vehicles come with our AutoNation CPO warranty, and we can discuss extended vehicle protection plans with you at the dealership. Let me get you connected with our Test Drive team in Phoenix, they'll confirm availability for Thursday or Friday, get your trade-in details locked in, and make sure that RAV4 is prepped and ready for your inspection. Sound good?",
           "sigs": [],
           "q": [
             96,

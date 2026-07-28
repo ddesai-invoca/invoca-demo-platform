@@ -143,12 +143,26 @@ function outcomeStory(): string {
 
 /* Prepended to every generation prompt: force the model to re-skin ALL wording to
    the prospect's vertical, while keeping each section's structure identical. */
+/* Injected into EVERY phase via reskin(), which all 17 of them call. SEs show
+   this text to real prospects, and dash-joined clauses are the clearest
+   "written by an AI" tell. The live agents in engine/chat.ts additionally strip
+   dashes from output, because a prompt rule alone gets ignored; here there is no
+   equivalent post-step, so generated profiles get swept by
+   scripts/strip-dashes.ts instead. */
+const NO_DASH_RULE =
+  ` NEVER use an em dash, an en dash, or a hyphen joining two clauses, in ANY ` +
+  `text you produce: labels, summaries, transcripts, descriptions. Use a comma, ` +
+  `a full stop, or a new sentence. Hyphens INSIDE a compound word are fine ` +
+  `("pre-owned", "rear-ended", "24-48h"). This is not stylistic: dashes make the ` +
+  `demo read as machine-generated.`;
+
 function reskin(name: string): string {
   return (
     `RE-SKIN EVERYTHING to ${name}'s industry. Use the exact terminology THIS business/vertical uses for: what it calls its customers (customer/patient/member/client/guest/rider…), its products & services, its locations (store/branch/showroom/clinic/dealership/gym…), its call reasons, and its conversion events. ` +
     `Keep each section's STRUCTURE identical (same number of columns, KPI tiles/groups, rows, and chart series) — only the wording and the numbers change to fit ${name}. ` +
     `Never leave a generic or wrong-industry label (e.g. don't say "Purchase"/"Warranty"/"Showroom"/"Customer" if a different word fits ${name} better). ` +
-    `Keep ONLY these platform-fixed labels verbatim: "Marketing Source", "Marketing Medium", "Marketing Campaign", "Marketing Search Term(s)", "Call Count", and "Total Revenue (Sale Amount)".`
+    `Keep ONLY these platform-fixed labels verbatim: "Marketing Source", "Marketing Medium", "Marketing Campaign", "Marketing Search Term(s)", "Call Count", and "Total Revenue (Sale Amount)".` +
+    NO_DASH_RULE
   );
 }
 
