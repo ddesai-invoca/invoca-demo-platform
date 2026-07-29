@@ -42,9 +42,31 @@
     return null;
   }
 
+  /* ---- per-prospect overrides ---------------------------------------------- */
+  /* Both defaults above are borrowed from data built for OTHER screens, so they
+     are sometimes wrong for a Google Ads account:
+       - the keyword is callReview.searchSuggestions[0], which is a CALL REVIEW
+         transcript search term. Those are deliberately single words that occur
+         in the call summaries ("monitoring", "camera"), not phrases a person
+         would type into Google.
+       - the conversion term is bookingTerm, which is the canonical term driving
+         labels on every screen in the platform.
+     Override them HERE rather than in the profile. Editing searchSuggestions
+     would make the Call Review search placeholder suggest a term that matches
+     no summary, and editing bookingTerm would rename the Agent Workflow leaf,
+     the dashboard KPIs and the CI signals along with it. Keyed by profile id
+     (the filename in src/data/generated), so add an entry per prospect. */
+  var OVERRIDES = {
+    "vector-security": {
+      keyword: "home security systems near me",
+      conversionTerm: "Quote",
+    },
+  };
+
   const profile = activeProfile();
-  const CT = (profile && profile.bookingTerm) || "Quote";        // conversion term
-  const KEYWORD = profile ? deriveKeyword(profile) : null;
+  const ov = (profile && OVERRIDES[profile.id]) || {};
+  const CT = ov.conversionTerm || (profile && profile.bookingTerm) || "Quote";
+  const KEYWORD = ov.keyword || (profile ? deriveKeyword(profile) : null);
 
   /* ---- DOM handles -------------------------------------------------------- */
   const kwEl = document.querySelector('ess-cell[essfield="keyword_text"] keyword-text div[dir="ltr"]');
