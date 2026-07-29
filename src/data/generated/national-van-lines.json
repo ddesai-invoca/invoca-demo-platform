@@ -1,0 +1,5310 @@
+{
+  "id": "national-van-lines",
+  "customerName": "National Van Lines",
+  "websiteUrl": "https://www.nationalvanlines.com/",
+  "brandDomain": "nationalvanlines.com",
+  "networkName": "Invoca for Moving & Relocation",
+  "industry": "Household goods moving and relocation",
+  "bookingTerm": "Estimate",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 15000,
+      "yTicks": [
+        3000,
+        6000,
+        9000,
+        12000,
+        15000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 8214
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 12876
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 13204
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 12491
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 9365
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Estimate Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Estimate Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Long Distance Movers, Free Quote",
+          "marketingSearchTerm": "long distance moving company",
+          "landingPageUrl": "nationalvanlines.com/long-distance-movers?utm_source=google&utm_medium=cpc&utm_campaign=ld_free_quote",
+          "websiteJourney": "Home / Long Distance Moving / Household Movers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Cross-Country Moving Near Me",
+          "marketingSearchTerm": "cross country movers near me",
+          "landingPageUrl": "nationalvanlines.com/cross-country-movers?utm_source=google&utm_medium=cpc&utm_campaign=cc_near_me",
+          "websiteJourney": "Home / Long Distance Moving / Cross Country Movers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Piano Movers Quote",
+          "marketingSearchTerm": "piano movers long distance",
+          "landingPageUrl": "nationalvanlines.com/specialty/piano-movers?utm_source=google&utm_medium=cpc&utm_campaign=piano_quote",
+          "websiteJourney": "Home / Specialty Moving / Piano Movers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Interstate Movers 2025",
+          "marketingSearchTerm": "best interstate moving companies 2025",
+          "landingPageUrl": "nationalvanlines.com/long-distance-movers?utm_source=bing&utm_medium=cpc&utm_campaign=interstate_2025",
+          "websiteJourney": "Home / Long Distance Moving / Household Movers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Cost Transparency Content",
+          "marketingSearchTerm": "how much does a long distance move cost",
+          "landingPageUrl": "nationalvanlines.com/blog/real-math-behind-a-long-distance-move?utm_source=google&utm_medium=organic&utm_campaign=cost_content",
+          "websiteJourney": "Home / Moving Guide (Blog) / Long Distance Cost",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Find-an-Agent Local Pages",
+          "marketingSearchTerm": "long distance moving company",
+          "landingPageUrl": "nationalvanlines.com/find-an-agent?utm_source=google&utm_medium=organic&utm_campaign=find_agent",
+          "websiteJourney": "Home / Find an Agent",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Apartment Movers Local",
+          "marketingSearchTerm": "apartment movers local",
+          "landingPageUrl": "nationalvanlines.com/residential/apartment-movers?utm_source=google&utm_medium=cpc&utm_campaign=apt_local",
+          "websiteJourney": "Home / Residential Moving / Apartment Movers",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Senior Downsizing Help",
+          "marketingSearchTerm": "senior moving downsizing help",
+          "landingPageUrl": "nationalvanlines.com/residential/senior-movers?utm_source=google&utm_medium=cpc&utm_campaign=senior_downsize",
+          "websiteJourney": "Home / Residential Moving / Senior Movers",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Moving Guide Hub",
+          "marketingSearchTerm": "is national van lines a broker or carrier",
+          "landingPageUrl": "nationalvanlines.com/blog/what-counts-as-a-long-distance-move?utm_source=google&utm_medium=organic&utm_campaign=guide_hub",
+          "websiteJourney": "Home / Moving Guide (Blog) / Carrier vs Broker",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Fine Art Moving",
+          "marketingSearchTerm": "fine art moving service",
+          "landingPageUrl": "nationalvanlines.com/specialty/fine-art-movers?utm_source=google&utm_medium=cpc&utm_campaign=fine_art",
+          "websiteJourney": "Home / Specialty Moving / Fine Art Movers",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "International Moving USA",
+          "marketingSearchTerm": "international moving company USA",
+          "landingPageUrl": "nationalvanlines.com/international-mover?utm_source=bing&utm_medium=cpc&utm_campaign=intl_usa",
+          "websiteJourney": "Home / International Mover",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Storage Content",
+          "marketingSearchTerm": "climate controlled storage for move",
+          "landingPageUrl": "nationalvanlines.com/storage/secure-storage-units?utm_source=google&utm_medium=organic&utm_campaign=storage_content",
+          "websiteJourney": "Home / Storage / Secure Storage Units",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Move Calculator Lead Tool",
+          "marketingSearchTerm": "moving cost calculator",
+          "landingPageUrl": "nationalvanlines.com/move-calculator?utm_source=google&utm_medium=cpc&utm_campaign=calc_lead",
+          "websiteJourney": "Home / Move Calculator",
+          "signals": [
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Award Badge Trust Signal",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "nationalvanlines.com/about/customer-satisfaction?utm_source=facebook&utm_medium=social&utm_campaign=award_badge",
+          "websiteJourney": "Home / About / Customer Satisfaction",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Customer Story",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "nationalvanlines.com/long-distance-movers?utm_source=instagram&utm_medium=social&utm_campaign=customer_story",
+          "websiteJourney": "Home / Long Distance Moving / Household Movers",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Local Moving SEO",
+          "marketingSearchTerm": "local movers made easy",
+          "landingPageUrl": "nationalvanlines.com/local-mover?utm_source=google&utm_medium=organic&utm_campaign=local_seo",
+          "websiteJourney": "Home / Local Mover",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Military Relocation",
+          "marketingSearchTerm": "military moving services",
+          "landingPageUrl": "nationalvanlines.com/specialty/military?utm_source=google&utm_medium=cpc&utm_campaign=military_reloc",
+          "websiteJourney": "Home / Specialty Moving / Military",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Moving Tips",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "nationalvanlines.com/blog/shuttle-service-in-long-distance-moving?utm_source=facebook&utm_medium=social&utm_campaign=moving_tips",
+          "websiteJourney": "Home / Moving Guide (Blog) / Shuttle Service",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Peak-Season Booking Reminder",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "nationalvanlines.com/free-moving-quote?utm_source=instagram&utm_medium=social&utm_campaign=peak_season",
+          "websiteJourney": "Home / Free Moving Quote",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic Search",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Realtor Referral Program",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "nationalvanlines.com/about/contact-us?utm_source=referral&utm_medium=organic&utm_campaign=realtor_referral",
+          "websiteJourney": "Home / About / Contact Us",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Hot Tub Movers",
+          "marketingSearchTerm": "hot tub moving service",
+          "landingPageUrl": "nationalvanlines.com/specialty/hot-tub?utm_source=bing&utm_medium=cpc&utm_campaign=hot_tub",
+          "websiteJourney": "Home / Specialty Moving / Hot Tub",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (National Van Lines)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "44,039"
+            },
+            {
+              "label": "Move Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Move Booked (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$38,684,245"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "7,046"
+            },
+            {
+              "label": "Move Status / Delivery Update (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing & Payment Question (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Claims & Damage Inquiry (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Move Inquiry Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Move Inquiry (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Quote Discussed (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Unqualified Lead (Percent)",
+              "value": "12%"
+            },
+            {
+              "label": "Move Booked (Percent)",
+              "value": "18%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Move Inquiry (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Move Inquiry (Count)",
+            "values": [
+              5842,
+              7913,
+              7684,
+              8021,
+              7533
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              2614,
+              3562,
+              3489,
+              3671,
+              3399
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              842,
+              1131,
+              1067,
+              1158,
+              1087
+            ]
+          },
+          {
+            "name": "Move Booked (Count)",
+            "values": [
+              1214,
+              1702,
+              1648,
+              1731,
+              1632
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44039,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "15,842",
+                "34%",
+                "11%",
+                "$8,214,530"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "11,317",
+                "39%",
+                "17%",
+                "$9,472,910"
+              ]
+            },
+            {
+              "name": "Referral / Realtor Partners",
+              "metrics": [
+                "7,684",
+                "42%",
+                "22%",
+                "$8,143,625"
+              ]
+            },
+            {
+              "name": "Reputation / Review Sites",
+              "metrics": [
+                "5,613",
+                "44%",
+                "24%",
+                "$6,589,430"
+              ]
+            },
+            {
+              "name": "Direct / Agent Directory",
+              "metrics": [
+                "3,583",
+                "48%",
+                "34%",
+                "$6,263,750"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44039,
+          "rows": [
+            {
+              "name": "Paid Click (cpc)",
+              "metrics": [
+                "14,318",
+                "33%",
+                "10%",
+                "$7,684,120"
+              ]
+            },
+            {
+              "name": "Organic Listing",
+              "metrics": [
+                "12,647",
+                "38%",
+                "16%",
+                "$9,318,470"
+              ]
+            },
+            {
+              "name": "Click-to-Call Mobile",
+              "metrics": [
+                "8,214",
+                "41%",
+                "21%",
+                "$8,472,630"
+              ]
+            },
+            {
+              "name": "Web Form Callback",
+              "metrics": [
+                "5,873",
+                "45%",
+                "25%",
+                "$7,143,275"
+              ]
+            },
+            {
+              "name": "Referral Link",
+              "metrics": [
+                "2,987",
+                "49%",
+                "33%",
+                "$6,065,750"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 26124,
+          "rows": [
+            {
+              "name": "Long Distance Movers, Free Quote",
+              "metrics": [
+                "9,314",
+                "35%",
+                "12%",
+                "$5,214,300"
+              ]
+            },
+            {
+              "name": "Cross-Country Moving Near Me",
+              "metrics": [
+                "6,842",
+                "39%",
+                "16%",
+                "$4,873,150"
+              ]
+            },
+            {
+              "name": "Piano Movers Quote",
+              "metrics": [
+                "4,318",
+                "42%",
+                "21%",
+                "$3,642,780"
+              ]
+            },
+            {
+              "name": "Moving Guide Hub",
+              "metrics": [
+                "3,187",
+                "44%",
+                "24%",
+                "$2,987,640"
+              ]
+            },
+            {
+              "name": "Find-an-Agent Local Pages",
+              "metrics": [
+                "2,463",
+                "47%",
+                "31%",
+                "$2,463,900"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 17977,
+          "rows": [
+            {
+              "name": "long distance moving company",
+              "metrics": [
+                "6,842",
+                "34%",
+                "13%",
+                "$3,842,150"
+              ]
+            },
+            {
+              "name": "cross country movers near me",
+              "metrics": [
+                "4,318",
+                "38%",
+                "17%",
+                "$2,918,470"
+              ]
+            },
+            {
+              "name": "how much does a long distance move cost",
+              "metrics": [
+                "3,187",
+                "41%",
+                "20%",
+                "$2,143,760"
+              ]
+            },
+            {
+              "name": "piano movers long distance",
+              "metrics": [
+                "2,143",
+                "44%",
+                "24%",
+                "$1,687,320"
+              ]
+            },
+            {
+              "name": "international moving company usa",
+              "metrics": [
+                "1,487",
+                "48%",
+                "30%",
+                "$1,342,900"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Set (Industry) (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 44039,
+          "rows": [
+            {
+              "name": "Long Distance Moving",
+              "metrics": [
+                "16,842",
+                "36%",
+                "15%",
+                "$12,318,470"
+              ]
+            },
+            {
+              "name": "Residential Moving",
+              "metrics": [
+                "11,318",
+                "39%",
+                "18%",
+                "$9,842,150"
+              ]
+            },
+            {
+              "name": "Specialty & High-Value Moving",
+              "metrics": [
+                "6,842",
+                "42%",
+                "21%",
+                "$7,143,890"
+              ]
+            },
+            {
+              "name": "Storage Services",
+              "metrics": [
+                "5,314",
+                "40%",
+                "19%",
+                "$5,214,300"
+              ]
+            },
+            {
+              "name": "International Moving",
+              "metrics": [
+                "3,723",
+                "44%",
+                "24%",
+                "$4,165,435"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 44039,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "14,318",
+                "37%",
+                "16%",
+                "$11,142,830"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "11,842",
+                "39%",
+                "18%",
+                "$9,873,410"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "8,314",
+                "41%",
+                "19%",
+                "$7,214,560"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "6,873",
+                "43%",
+                "21%",
+                "$6,318,720"
+              ]
+            },
+            {
+              "name": "Other / U.S. Territories",
+              "metrics": [
+                "2,692",
+                "46%",
+                "23%",
+                "$4,134,725"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Move Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Long Distance Moving",
+            "values": [
+              398,
+              542,
+              489,
+              548,
+              549
+            ]
+          },
+          {
+            "name": "Residential Moving",
+            "values": [
+              321,
+              438,
+              412,
+              441,
+              425
+            ]
+          },
+          {
+            "name": "Specialty & High-Value Moving",
+            "values": [
+              214,
+              312,
+              298,
+              318,
+              295
+            ]
+          },
+          {
+            "name": "Storage Services",
+            "values": [
+              158,
+              214,
+              203,
+              221,
+              214
+            ]
+          },
+          {
+            "name": "International Moving",
+            "values": [
+              132,
+              189,
+              178,
+              201,
+              194
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 44,039 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 90,
+          "summary": "Marcus Delgado called for a long distance move from Chicago to Austin and asked for a free written quote. Oscar walked him through the binding estimate process and scheduled an in-home estimate for the following week. Marcus confirmed and asked about climate controlled options for a later date.",
+          "date": "Feb 4, 10:18 AM",
+          "agent": "Oscar",
+          "duration": "2m 55s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 7,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 85,
+          "summary": "Diana Whitfield requested specialty piano movers for a baby grand going from Denver to Phoenix. Lila explained the specialized equipment used and the packing steps involved, then booked an estimate to assess access points. Diana was pleased and confirmed the appointment time.",
+          "date": "Mar 12, 1:47 PM",
+          "agent": "Lila",
+          "duration": "2m 31s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 81,
+          "summary": "Raymond Foster called to check the delivery status of his cross-country shipment that was already in transit. Rosey located the load, confirmed the delivery window, and gave him the driver contact details. He thanked her and did not request a new quote.",
+          "date": "Jan 9, 3:22 PM",
+          "agent": "Rosey",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 12,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Priya Nadella was a first time caller planning a long distance move from Seattle to Nashville and wanted to get started. Lee collected her origin and destination addresses, move date, and household size, then scheduled an in-home estimate and set up her account. She confirmed the appointment and was emailed the details.",
+          "date": "Apr 21, 11:05 AM",
+          "agent": "Lee",
+          "duration": "3m 10s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 72,
+          "summary": "Kevin Ramsey needed secure climate controlled storage during a two month gap between homes. Mary explained the short term storage rates and how it ties into the move, then booked an estimate to size the space needed. Kevin scheduled and asked for a follow up email.",
+          "date": "May 6, 9:41 AM",
+          "agent": "Mary",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 68,
+          "summary": "Angela Brooks called because her scheduled delivery crew was running behind and she had not heard back. Sue apologized, contacted dispatch, and gave her an updated arrival window. Angela was reassured but still frustrated about the earlier lack of communication.",
+          "date": "Jun 18, 4:03 PM",
+          "agent": "Sue",
+          "duration": "2m 24s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 19,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 64,
+          "summary": "Tyler Nguyen asked for a quote on an apartment move within the same city with a fourth floor walkup. Mike explained the hourly crew and truck pricing and the stair handling, then scheduled a local estimate. Tyler booked and confirmed his move date.",
+          "date": "Jul 2, 12:36 PM",
+          "agent": "Mike",
+          "duration": "1m 57s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 59,
+          "summary": "Sandra Coleman disputed a charge on her final invoice that she felt was higher than the estimate. Jennifer reviewed the line items, explained the added packing materials, and opened a billing review case. Sandra remained unhappy but agreed to wait for the follow up.",
+          "date": "Aug 14, 2:19 PM",
+          "agent": "Jennifer",
+          "duration": "2m 48s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 24,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 55,
+          "summary": "Gregory Paulson wanted a quote for a cross-country move from Boston to San Diego for a four bedroom home. Rose gathered the details and explained the peak season timing, then scheduled an estimate. He booked but seemed hesitant about the cost range.",
+          "date": "Sep 8, 10:52 AM",
+          "agent": "Rose",
+          "duration": "3m 04s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 50,
+          "summary": "Helen Marsh called to report that her upright piano arrived with a scratched leg after the move. Oscar took photos details and filed a damage claim with the claims department. Helen was upset and wanted a callback with a resolution.",
+          "date": "Jan 27, 3:55 PM",
+          "agent": "Oscar",
+          "duration": "2m 40s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 46,
+          "summary": "Brandon Hayes called to cancel his upcoming long distance move because his job offer fell through. Lila confirmed the cancellation and explained the deposit refund policy. Brandon was disappointed about a partial fee but accepted the terms.",
+          "date": "Feb 19, 1:14 PM",
+          "agent": "Lila",
+          "duration": "1m 42s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 30,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Nicole Barrett complained that her monthly storage bill kept increasing without notice. Mary looked into the account, found a rate adjustment, and escalated it to a supervisor. Nicole stayed irritated and demanded a written explanation.",
+          "date": "Mar 30, 11:38 AM",
+          "agent": "Mary",
+          "duration": "2m 09s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 33,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Walter Simmons called after hours about a missing box from his interstate delivery and reached voicemail. He left a detailed message with his job number and callback number. No agent was available to take the call live.",
+          "date": "Apr 3, 6:47 PM",
+          "agent": "No Agent",
+          "duration": "0m 52s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Teresa Vaughn wanted to cancel a pending charge she did not recognize on her card tied to a deposit. Jennifer verified the account and explained the hold, but Teresa insisted it was unauthorized. The call ended with a fraud review referral and no resolution.",
+          "date": "Aug 25, 9:29 AM",
+          "agent": "Jennifer",
+          "duration": "2m 33s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Douglas Reyes was angry that no one had returned his calls about a delayed long distance delivery for three days. Sue tried to locate the shipment but the tracking was outdated, and he grew more agitated. The call ended with an escalation ticket and a promised supervisor callback.",
+          "date": "Oct 11, 4:41 PM",
+          "agent": "Sue",
+          "duration": "3m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "long distance",
+        "piano",
+        "storage",
+        "quote",
+        "estimate",
+        "cancel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 26s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Move Type and Distance",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Estimate Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Estimate Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Storage or Additional Services",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Warm greeting with company name",
+        "Customer identified as new prospect",
+        "Move type clearly stated",
+        "Origin location confirmed",
+        "Destination location confirmed",
+        "Phone number captured and verified",
+        "Appointment date offered and accepted",
+        "Appointment time slot confirmed",
+        "Customer expressed interest in estimate",
+        "Agent used customer name during call",
+        "Professional closing statement",
+        "Customer understood next steps",
+        "Polite and courteous tone throughout"
+      ],
+      "unmetSignals": [
+        "Email address captured",
+        "Estimated move size discussed",
+        "Household inventory mentioned",
+        "Special items or fragile goods identified",
+        "Current residence type noted",
+        "Destination residence type noted",
+        "Timeline urgency confirmed",
+        "Budget expectations set",
+        "Expectations for estimate process explained",
+        "Appointment confirmation sent verbally"
+      ],
+      "naSignals": [
+        "Move completion date",
+        "Storage duration mentioned",
+        "Payment terms discussed",
+        "Delivery tracking provided",
+        "Insurance options reviewed",
+        "Specialty service upsell attempted"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The customer is relocating from Chicago to Denver and needs a professional long-distance moving estimate to understand cost and logistics for their residential move."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "They expect to receive a free written binding estimate from a National Van Lines agent, understand the cost structure, and schedule an in-home assessment within the next two weeks."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the customer's email address to send confirmation details, and set clear expectations about what to expect during the estimate visit, such as how long it will take and what the agent will measure."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling National Van Lines. This is Marcus Bell speaking. How can I help you with your move today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi Marcus, yes, I'm looking for a quote for a long-distance move. We're relocating from Chicago to Denver and need to understand what this is going to cost."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:45",
+          "text": "Great. I'd be happy to help you get a free estimate. Can I start by getting your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:54",
+          "text": "Sure, it's David Peterman."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:02",
+          "text": "Perfect, David. And just to confirm, you're looking to move from Chicago to Denver, correct?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:11",
+          "text": "Yes, that's right. We're a family of four and we have a three-bedroom home with furniture, the whole nine yards."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:24",
+          "text": "Excellent. So this is a residential long-distance move. What part of Chicago are you in right now, and what's your ZIP code?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:36",
+          "text": "We're in the Hyde Park area. The ZIP is 60615."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:45",
+          "text": "Perfect. And in Denver, what ZIP code will you be moving to?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:54",
+          "text": "We're looking at the Pearl District area. That's 80202."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:03",
+          "text": "Wonderful. And David, what's the best phone number to reach you for the estimate appointment?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:12",
+          "text": "It's ****-***-****. Is it possible to get an estimate within the next two weeks? We're hoping to move in early December."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:28",
+          "text": "Absolutely. I can schedule you for next Tuesday, October 29th at 10 AM. One of our local agents will come to your home, walk through the property, take measurements, and provide a written binding estimate. Does that work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:45",
+          "text": "Yes, that works perfectly. Thank you."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:54",
+          "text": "You're all set, David. One of our National Van Lines agents will see you next Tuesday at 10 AM. We really appreciate your business, and we look forward to helping your family move. Have a great day."
+        },
+        {
+          "speaker": "caller",
+          "time": "03:06",
+          "text": "Thanks, Marcus. See you then."
+        },
+        {
+          "speaker": "agent",
+          "time": "03:14",
+          "text": "Bye now."
+        }
+      ],
+      "aiSummary": "David Peterman, a new customer relocating his family of four from Chicago's Hyde Park to Denver's Pearl District, called to request a free moving estimate. Marcus Bell successfully captured the customer's name, phone number, origin and destination ZIP codes, and confirmed understanding of the move type and scope. An in-home estimate appointment was scheduled for Tuesday, October 29th at 10 AM. However, the agent did not capture the customer's email address or explain what to expect during the estimate visit, missing opportunities to enhance the customer experience and ensure appointment confirmation.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, solid structure on this intake call. You nailed the greeting, captured David's details, and booked the appointment efficiently. Two coaching tips for next time: (1) Always grab the email before you hang up, so you can send a confirmation and appointment details via email afterward. (2) Take 20 seconds to set expectations for the estimate visit. Tell them things like 'Our agent will walk through your home, take measurements, and may ask about any special items or fragile goods.' This makes the visit feel less like a surprise and builds trust."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "44,039"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$878.41"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$38,684,245"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "31,240"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "71%"
+            },
+            {
+              "label": "Estimate: Scheduled (Count)",
+              "value": "16,735"
+            },
+            {
+              "label": "Estimate: Scheduled (Percent)",
+              "value": "38%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "12,799"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Estimate: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Estimates)",
+          "chart": {
+            "legend": "Estimate: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Direct / Other",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Referral / Realtor",
+                "value": 54,
+                "display": "54%"
+              },
+              {
+                "name": "Social Media",
+                "value": 45,
+                "display": "45%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 33,
+                "display": "33%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Estimates)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Estimate: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Paid Search",
+                  "15,247",
+                  "18%",
+                  "$13,842,155"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "12,864",
+                  "33%",
+                  "$11,264,733"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "6,352",
+                  "45%",
+                  "$3,884,271"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral / Realtor",
+                  "5,127",
+                  "54%",
+                  "$5,738,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct / Other",
+                  "4,449",
+                  "58%",
+                  "$3,954,644"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 16000,
+            "axisTicks": [
+              0,
+              4000,
+              8000,
+              12000,
+              16000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 15247,
+                "display": "15,247"
+              },
+              {
+                "name": "Organic",
+                "value": 12864,
+                "display": "12,864"
+              },
+              {
+                "name": "Referral",
+                "value": 6352,
+                "display": "6,352"
+              },
+              {
+                "name": "Social",
+                "value": 5127,
+                "display": "5,127"
+              },
+              {
+                "name": "Email",
+                "value": 4449,
+                "display": "4,449"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Estimates)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Estimate: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "15,247",
+                  "18%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic",
+                  "12,864",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "6,352",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "5,127",
+                  "44%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email",
+                  "4,449",
+                  "47%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Long Distance Movers Free Quote",
+                "value": 6842,
+                "display": "6,842"
+              },
+              {
+                "name": "Cross Country Moving Near Me",
+                "value": 5127,
+                "display": "5,127"
+              },
+              {
+                "name": "Moving Guide Hub",
+                "value": 3914,
+                "display": "3,914"
+              },
+              {
+                "name": "Piano Movers Quote",
+                "value": 2647,
+                "display": "2,647"
+              },
+              {
+                "name": "Find an Agent Local Pages",
+                "value": 1983,
+                "display": "1,983"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Estimates)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Estimate: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Long Distance Movers Free Quote",
+                  "6,842",
+                  "51%",
+                  "$8,214,655"
+                ]
+              },
+              {
+                "cells": [
+                  "Cross Country Moving Near Me",
+                  "5,127",
+                  "46%",
+                  "$5,847,320"
+                ]
+              },
+              {
+                "cells": [
+                  "Moving Guide Hub",
+                  "3,914",
+                  "39%",
+                  "$3,124,890"
+                ]
+              },
+              {
+                "cells": [
+                  "Piano Movers Quote",
+                  "2,647",
+                  "43%",
+                  "$2,441,760"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "long distance moving company",
+                "value": 3247,
+                "display": "3,247"
+              },
+              {
+                "name": "cross country movers near me",
+                "value": 2614,
+                "display": "2,614"
+              },
+              {
+                "name": "how much does a long distance move cost",
+                "value": 1982,
+                "display": "1,982"
+              },
+              {
+                "name": "piano movers long distance",
+                "value": 1347,
+                "display": "1,347"
+              },
+              {
+                "name": "climate controlled storage for move",
+                "value": 964,
+                "display": "964"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Estimates)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Estimate: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "long distance moving company",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "cross country movers near me",
+                  "45%"
+                ]
+              },
+              {
+                "cells": [
+                  "how much does a long distance move cost",
+                  "34%"
+                ]
+              },
+              {
+                "cells": [
+                  "piano movers long distance",
+                  "42%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Estimate: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Long Distance Moving",
+              "14,238",
+              "47%",
+              "74%"
+            ]
+          },
+          {
+            "cells": [
+              "Residential Moving",
+              "11,647",
+              "41%",
+              "69%"
+            ]
+          },
+          {
+            "cells": [
+              "Specialty & High-Value Moving",
+              "6,842",
+              "44%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Storage Services",
+              "4,127",
+              "33%",
+              "58%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Estimate: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Broadview IL Headquarters Agent",
+              "14,247",
+              "682",
+              "4%",
+              "42%"
+            ]
+          },
+          {
+            "cells": [
+              "Dallas TX Agent",
+              "12,864",
+              "741",
+              "5%",
+              "39%"
+            ]
+          },
+          {
+            "cells": [
+              "Atlanta GA Agent",
+              "9,247",
+              "1,124",
+              "7%",
+              "36%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix AZ Agent",
+              "7,681",
+              "976",
+              "6%",
+              "34%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1642,
+              1847,
+              1713,
+              1594,
+              1418
+            ]
+          },
+          {
+            "name": "Comparing Movers",
+            "values": [
+              1247,
+              1463,
+              1384,
+              1382,
+              1371
+            ]
+          },
+          {
+            "name": "Move Date Not Set",
+            "values": [
+              1047,
+              1124,
+              1083,
+              1064,
+              1003
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              782,
+              843,
+              812,
+              764,
+              761
+            ]
+          },
+          {
+            "name": "Needs Spouse Approval",
+            "values": [
+              574,
+              632,
+              618,
+              594,
+              542
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "17,616"
+          },
+          {
+            "label": "Estimate Scheduled (Percent)",
+            "value": "58%"
+          },
+          {
+            "label": "Move Booked (Percent)",
+            "value": "35%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$22,050,020"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Move Booked (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,847,680"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Move Booked (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,156,220"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Move Booked (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$4,721,880"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Move Booked (Percent)",
+              "value": "32%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,894,560"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Move Booked (Percent)",
+              "value": "36%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,756,480"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Move Booked (Percent)",
+              "value": "39%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,673,200"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Scheduled (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 21184,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "6,847",
+                "62%",
+                "38%",
+                "$12,688,588"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "4,253",
+                "54%",
+                "31%",
+                "$6,439,225"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "3,116",
+                "59%",
+                "34%",
+                "$1,883,440"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "2,441",
+                "61%",
+                "36%",
+                "$1,227,720"
+              ]
+            },
+            {
+              "name": "Direct Traffic",
+              "metrics": [
+                "959",
+                "48%",
+                "28%",
+                "$1,308,620"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Scheduled (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20944,
+          "rows": [
+            {
+              "name": "Google Ads",
+              "metrics": [
+                "5,412",
+                "63%",
+                "39%",
+                "$10,296,888"
+              ]
+            },
+            {
+              "name": "Organic",
+              "metrics": [
+                "4,028",
+                "55%",
+                "32%",
+                "$6,348,160"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "3,687",
+                "58%",
+                "33%",
+                "$2,047,560"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "2,847",
+                "60%",
+                "37%",
+                "$2,055,380"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "1,642",
+                "49%",
+                "29%",
+                "$1,531,092"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Scheduled (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 19827,
+          "rows": [
+            {
+              "name": "Long Distance Free Quote",
+              "metrics": [
+                "4,216",
+                "64%",
+                "41%",
+                "$8,954,224"
+              ]
+            },
+            {
+              "name": "Cross Country Movers Spring Promo",
+              "metrics": [
+                "3,084",
+                "57%",
+                "35%",
+                "$4,893,480"
+              ]
+            },
+            {
+              "name": "Moving Guide Hub",
+              "metrics": [
+                "2,567",
+                "52%",
+                "28%",
+                "$1,995,760"
+              ]
+            },
+            {
+              "name": "Specialty Services Focus",
+              "metrics": [
+                "1,893",
+                "61%",
+                "38%",
+                "$3,126,540"
+              ]
+            },
+            {
+              "name": "Realtor Referral Program",
+              "metrics": [
+                "1,358",
+                "59%",
+                "32%",
+                "$2,132,640"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Scheduled (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 18842,
+          "rows": [
+            {
+              "name": "long distance moving company",
+              "metrics": [
+                "3,847",
+                "66%",
+                "42%",
+                "$8,037,840"
+              ]
+            },
+            {
+              "name": "cross country movers near me",
+              "metrics": [
+                "2,116",
+                "58%",
+                "36%",
+                "$3,512,320"
+              ]
+            },
+            {
+              "name": "best interstate moving companies 2025",
+              "metrics": [
+                "1,673",
+                "55%",
+                "31%",
+                "$2,544,175"
+              ]
+            },
+            {
+              "name": "piano movers long distance",
+              "metrics": [
+                "1,243",
+                "61%",
+                "39%",
+                "$2,365,485"
+              ]
+            },
+            {
+              "name": "moving cost calculator",
+              "metrics": [
+                "987",
+                "48%",
+                "26%",
+                "$1,254,200"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Scheduled (Percent)",
+            "Move Booked (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Long Distance Moving",
+              "metrics": [
+                "5,928",
+                "61%",
+                "38%",
+                "$8,771,520"
+              ]
+            },
+            {
+              "name": "Cross Country Moving",
+              "metrics": [
+                "4,247",
+                "59%",
+                "36%",
+                "$6,924,012"
+              ]
+            },
+            {
+              "name": "Specialty Moving Services",
+              "metrics": [
+                "3,116",
+                "57%",
+                "33%",
+                "$3,246,480"
+              ]
+            },
+            {
+              "name": "Local Moving",
+              "metrics": [
+                "2,584",
+                "56%",
+                "31%",
+                "$1,924,160"
+              ]
+            },
+            {
+              "name": "Storage Services",
+              "metrics": [
+                "1,741",
+                "54%",
+                "29%",
+                "$1,184,848"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Move Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Long Distance Moving",
+            "values": [
+              708,
+              891,
+              704,
+              823,
+              679
+            ]
+          },
+          {
+            "name": "Cross Country Moving",
+            "values": [
+              532,
+              667,
+              586,
+              722,
+              581
+            ]
+          },
+          {
+            "name": "Specialty Moving Services",
+            "values": [
+              412,
+              528,
+              461,
+              515,
+              387
+            ]
+          },
+          {
+            "name": "Local Moving",
+            "values": [
+              318,
+              428,
+              365,
+              392,
+              281
+            ]
+          },
+          {
+            "name": "Storage Services",
+            "values": [
+              252,
+              336,
+              298,
+              267,
+              202
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Estimate Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Estimate Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Estimate Scheduled (Count)",
+            "value": "376"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,831,052"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "842"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Estimate Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Estimate Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Estimate Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$136,528"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Estimate Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Estimate Scheduled",
+            "values": [
+              72,
+              75,
+              78,
+              71,
+              76,
+              74,
+              79,
+              73,
+              77,
+              75,
+              80,
+              72,
+              76,
+              78,
+              74,
+              71,
+              79,
+              73,
+              75,
+              77,
+              72,
+              76,
+              78,
+              74,
+              75,
+              76,
+              73,
+              77,
+              74,
+              78,
+              72,
+              187,
+              191,
+              174,
+              188,
+              182,
+              195,
+              178,
+              186,
+              181,
+              189,
+              175,
+              184,
+              192,
+              179,
+              186,
+              174,
+              188,
+              182
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,173"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "87%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "719"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "703"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Estimate Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Long Distance Moving Quote",
+            "values": [
+              11,
+              9,
+              3,
+              14,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Storage Unit Options",
+            "values": [
+              8,
+              6,
+              12,
+              7,
+              9,
+              8
+            ]
+          },
+          {
+            "name": "Piano or Fine Art Move",
+            "values": [
+              5,
+              4,
+              11,
+              6,
+              5,
+              4
+            ]
+          },
+          {
+            "name": "International Relocation",
+            "values": [
+              6,
+              7,
+              4,
+              8,
+              6,
+              7
+            ]
+          },
+          {
+            "name": "Senior Move Downsizing",
+            "values": [
+              7,
+              5,
+              8,
+              6,
+              4,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "40,516"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "28,626"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Estimate Booked (Count)",
+            "value": "16,735"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$38,684,245"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review - Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Thompson",
+              "value": 217,
+              "display": "217"
+            },
+            {
+              "name": "Patricia Gonzalez",
+              "value": 189,
+              "display": "189"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 243,
+              "display": "243"
+            },
+            {
+              "name": "Jessica Woodall",
+              "value": 201,
+              "display": "201"
+            },
+            {
+              "name": "David Vasquez",
+              "value": 174,
+              "display": "174"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Estimate Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              156,
+              178,
+              201,
+              218,
+              247
+            ]
+          },
+          {
+            "name": "James Roosevelt",
+            "values": [
+              148,
+              169,
+              192,
+              211,
+              239
+            ]
+          },
+          {
+            "name": "Elena Kashani",
+            "values": [
+              141,
+              165,
+              188,
+              206,
+              228
+            ]
+          },
+          {
+            "name": "William Burke",
+            "values": [
+              152,
+              171,
+              197,
+              219,
+              251
+            ]
+          },
+          {
+            "name": "Angela Torres",
+            "values": [
+              144,
+              162,
+              184,
+              203,
+              224
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Thompson",
+              "value": 56.2,
+              "display": "56.2%"
+            },
+            {
+              "name": "Patricia Gonzalez",
+              "value": 57.8,
+              "display": "57.8%"
+            },
+            {
+              "name": "Robert Chen",
+              "value": 54.9,
+              "display": "54.9%"
+            },
+            {
+              "name": "Jessica Woodall",
+              "value": 58.4,
+              "display": "58.4%"
+            },
+            {
+              "name": "David Vasquez",
+              "value": 55.3,
+              "display": "55.3%"
+            },
+            {
+              "name": "Michelle Horton",
+              "value": 61.1,
+              "display": "61.1%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Estimate Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Thompson",
+                "56.2%",
+                "28%",
+                "$1,047,388",
+                "1,421"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gonzalez",
+                "57.8%",
+                "31%",
+                "$1,198,756",
+                "1,389"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chen",
+                "54.9%",
+                "26%",
+                "$927,914",
+                "1,467"
+              ]
+            },
+            {
+              "cells": [
+                "Jessica Woodall",
+                "58.4%",
+                "32%",
+                "$1,221,644",
+                "1,403"
+              ]
+            },
+            {
+              "cells": [
+                "David Vasquez",
+                "55.3%",
+                "27%",
+                "$981,552",
+                "1,442"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Horton",
+                "61.1%",
+                "35%",
+                "$1,389,485",
+                "1,356"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 91.4,
+              "display": "91.4%"
+            },
+            {
+              "name": "James Roosevelt",
+              "value": 88.7,
+              "display": "88.7%"
+            },
+            {
+              "name": "Elena Kashani",
+              "value": 89.9,
+              "display": "89.9%"
+            },
+            {
+              "name": "William Burke",
+              "value": 93.2,
+              "display": "93.2%"
+            },
+            {
+              "name": "Angela Torres",
+              "value": 87.3,
+              "display": "87.3%"
+            },
+            {
+              "name": "Kevin Davenport",
+              "value": 90.6,
+              "display": "90.6%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Estimate Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "91.4%",
+                "64%",
+                "$2,068,864",
+                "1,539"
+              ]
+            },
+            {
+              "cells": [
+                "James Roosevelt",
+                "88.7%",
+                "61%",
+                "$1,926,543",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Elena Kashani",
+                "89.9%",
+                "63%",
+                "$2,014,278",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "William Burke",
+                "93.2%",
+                "67%",
+                "$2,156,392",
+                "1,508"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Torres",
+                "87.3%",
+                "58%",
+                "$1,752,816",
+                "1,442"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Davenport",
+                "90.6%",
+                "65%",
+                "$2,119,725",
+                "1,553"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Estimate Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Estimate Booked (Count)",
+        "rightMax": 800,
+        "rightTicks": [
+          0,
+          200,
+          400,
+          600,
+          800
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 620
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 594
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 554
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 529
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 461
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 483
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 533
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 554
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 618
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 599
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 540
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 522
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 465
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 479
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 546
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 563
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 612
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 602
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 529
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 512
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 472
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 477
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 555
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 574
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 604
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 603
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 521
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 500
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 480
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 478
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 556
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1800000,
+        "rightTicks": [
+          0,
+          600000,
+          1200000,
+          1800000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1433991
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1374415
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1279861
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1221234
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1063308
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1115913
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1232717
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1281308
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1428666
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1385179
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1247584
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1205814
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1072972
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1105981
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1262066
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1300524
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1415363
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1393337
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1221805
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1183052
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1089077
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1100494
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1283820
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1326376
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1397383
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1395350
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1204323
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1154753
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1107961
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1102619
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1296999
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "44,039"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "3,523"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "2,642"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "83%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "83%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "412",
+                "88%",
+                "85%",
+                "82%"
+              ]
+            },
+            {
+              "cells": [
+                "James Rodriguez",
+                "528",
+                "85%",
+                "82%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Chen",
+                "391",
+                "85%",
+                "83%",
+                "83%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "44,039 calls",
+      "pagerLabel": "1 of 4,404",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:22 am",
+          "id": "A31C-4B9E0176D2A4"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7D2E-1C3F88A0B5E9"
+        },
+        {
+          "time": "1/14/26 11:08 am",
+          "id": "9E4A-6D21F730C8B2"
+        },
+        {
+          "time": "1/16/26 12:33 pm",
+          "id": "C82F-3A70E914D6F1"
+        },
+        {
+          "time": "1/20/26 1:19 pm",
+          "id": "B14D-90E2C567A3F8"
+        },
+        {
+          "time": "1/22/26 2:05 pm",
+          "id": "5F93-2B8C41D07E6A"
+        },
+        {
+          "time": "1/26/26 3:44 pm",
+          "id": "E67B-7C10935AF2D4"
+        },
+        {
+          "time": "1/28/26 4:27 pm",
+          "id": "1A9C-58F30E24B7D6"
+        },
+        {
+          "time": "1/30/26 5:12 pm",
+          "id": "D40E-6E29A18C5B03"
+        }
+      ],
+      "duration": "2:34",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling National Van Lines, America's top-rated long distance mover since 1929. This is Marcus. How can I help you today?",
+          "highlights": [
+            "Thank you for calling National Van Lines",
+            "This is Marcus. How can I help you today?"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:09",
+          "text": "Hi Marcus. I'm planning a move from Denver to Austin and I wanted to get a quote. I've never used a moving company before.",
+          "highlights": [
+            "move from Denver to Austin"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:18",
+          "text": "Congratulations on the move, and you've come to the right place. Just so you know, we're a licensed carrier and agent network, not a broker, so your belongings are handled by our own vetted agents. May I get your name to start?",
+          "highlights": [
+            "licensed carrier and agent network, not a broker"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:31",
+          "text": "Sure, it's Rachel Nguyen. I've got a three bedroom house, so quite a bit of furniture.",
+          "highlights": [
+            "Rachel Nguyen"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:39",
+          "text": "Great, Rachel. A three bedroom Denver to Austin relocation is a classic long distance move for us. Do you have any specialty items like a piano, fine art, or anything oversized?",
+          "highlights": [
+            "long distance move"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:50",
+          "text": "Yes actually, we have an upright piano and a large glass dining table I'm worried about.",
+          "highlights": [
+            "upright piano"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:58",
+          "text": "Perfect, those are both things we handle every day. Our specialty piano movers have the equipment to move it safely, and we'll do custom crating for that glass table so it travels protected.",
+          "highlights": [
+            "specialty piano movers",
+            "custom crating"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:10",
+          "text": "That's a relief. How much should I expect this to cost roughly?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:17",
+          "text": "Most long distance moves range from about $2,000 to $7,500, and with the piano and crating a three bedroom cross-country move usually lands in the upper part of that range. We'll give you a firm written binding estimate, so no surprises.",
+          "highlights": [
+            "written binding estimate"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:31",
+          "text": "Okay. Do you also offer storage? Our new place won't be ready for a couple weeks.",
+          "highlights": [
+            "offer storage"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:39",
+          "text": "We do. We have secure climate-controlled storage at facilities nationwide, so we can hold your items short-term until your Austin home is ready.",
+          "highlights": [
+            "secure climate-controlled storage"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:49",
+          "text": "That sounds ideal. What's the next step?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:54",
+          "text": "The best next step is a free in-home estimate where our agent walks through everything and prices it exactly. I have Thursday at 10 AM open. Does that work?",
+          "highlights": [
+            "free in-home estimate",
+            "Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:04",
+          "text": "Thursday at 10 AM works great.",
+          "highlights": [
+            "Thursday at 10 AM works great"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:09",
+          "text": "Wonderful. I have your estimate booked for Thursday at 10 AM. What's the best phone number and email to send the confirmation?",
+          "highlights": [
+            "estimate booked for Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:18",
+          "text": "My cell is 720-555-0148 and email is rachel.nguyen@email.com.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:26",
+          "text": "Got it, confirmation is on its way. Thank you for choosing National Van Lines, Rachel. We look forward to your move. Have a great day.",
+          "highlights": [
+            "Thank you for choosing National Van Lines",
+            "Have a great day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Estimate: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Long Distance Move Intent",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Specialty Item: Piano",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Storage Interest",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Carrier Not Broker Assurance",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "New customer Rachel Nguyen called for a quote on a three bedroom long distance move from Denver to Austin. Agent Marcus confirmed National Van Lines handles her upright piano with specialty piano movers and offered custom crating for a glass dining table, plus secure climate-controlled storage during the gap before her new home is ready. He explained the written binding estimate process and scheduled a free in-home estimate for Thursday at 10 AM, capturing her phone and email for confirmation.",
+        "keyPoints": [
+          "New customer, first time using a moving company",
+          "Needs a three bedroom Denver to Austin long distance move",
+          "Specialty items: upright piano and glass dining table needing custom crating",
+          "Interested in short-term climate-controlled storage",
+          "Free in-home estimate scheduled for Thursday at 10 AM",
+          "Captured cell number and email for confirmation"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Estimate booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "27,745 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,774",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "8/16/25 10:55 pm",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. Thanks for reaching out to National Van Lines. This is Marcus. Are you looking to schedule a free moving estimate with one of our local agents?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, we're planning to move from Chicago to Denver in about two months. This is our first long distance move."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "Congratulations on the move. We'd love to help. Just to understand your needs better, are you moving a house, apartment, or condo?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "We have a three bedroom house with a lot of furniture. We also have a grand piano we're bringing with us."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "A grand piano is a specialty item. We absolutely handle those with care and custom equipment. About how many rooms of furniture are we talking, excluding the piano?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "Three bedrooms, living room, dining room, and kitchen. So probably around 5 or 6 rooms of stuff."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "Perfect. That sounds like a full house move plus specialty piano moving. Our agents can give you a detailed binding estimate. When would be a good time for an in home estimate visit, next week or the following week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "Next week works. What days are available?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Great. How about Tuesday March 18th between 10 AM and noon? One of our local Chicago agents can come out and give you a thorough walkthrough and binding quote."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "That works perfectly for us. What should we have ready?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Just be there and have access to all rooms including any storage areas. Our agent will measure, take notes on the piano, and give you a written binding estimate on the spot. You'll get a confirmation text tomorrow with the agent name and callback number. Does 630-555-0147 work as a contact?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "Yes that's our number. Thanks so much."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "You're all set. Look for confirmation by tomorrow morning. Questions before then, just call 1-800-523-5941. Thanks for choosing National Van Lines."
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Long Distance Moving",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Piano Moving",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Move Urgency: 8 Weeks",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "630-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "630-555-0147",
+            "repeatCaller": "No",
+            "city": "Chicago",
+            "region": "IL",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Martinez",
+            "firstName": "Sarah",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A847-2B3FC664E1E9",
+          "time": "8/16/25 10:42 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A847-2B3FC664E1E9",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B923-4A7D5E2C8F6A",
+          "time": "8/16/25 10:38 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B923-4A7D5E2C8F6A",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D651-9F2B1A8E4C7D",
+          "time": "8/16/25 10:29 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D651-9F2B1A8E4C7D",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "44,039 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,404",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/15/26 4:12 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hi there, thanks for calling National Van Lines. My name is Marcus. Can I help you with a moving quote today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Yeah, hi. I'm thinking about moving from Chicago to Denver and I'm not sure how much it's gonna cost."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:13 PM",
+              "text": "Great. I'd be happy to help you get an estimate. First, are you looking to move just yourself or your whole household?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:14 PM",
+              "text": "The whole household. We've got furniture, boxes, everything. We're in a three bedroom house."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "Perfect. And just to confirm, are you planning to do a full service move where we handle all the packing and loading, or would you prefer to pack some things yourself?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "No, full service please. We want professionals handling it all."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:15 PM",
+              "text": "Excellent choice. That's our most popular option. One more question before I get you scheduled. When are you looking to move? Like, what's your ideal moving date?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:16 PM",
+              "text": "We're thinking sometime in early March. Like the first or second week if possible."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Nice. Early March is perfect timing. How about we schedule you for an in home estimate? I can get you with one of our local agents right here in Denver. Does Tuesday, March third at two PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "Tuesday works good. Yeah, let's do that."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:17 PM",
+              "text": "Wonderful. So I've got you down for Tuesday, March third at two PM for your free in home moving estimate. Our agent will give you an accurate quote and answer any questions. Can I get your phone number to confirm?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:18 PM",
+              "text": "Sure, it's seven seven two, five five five, two one three eight."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Perfect. That's seven seven two, five five five, two one three eight. We'll give you a call the day before to confirm. Thanks for choosing National Van Lines and we'll see you Tuesday."
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Thanks a lot. Appreciate it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Estimate: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service: Full Service Moving",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Intent: Long Distance Moving",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 3
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/15/26 4:12 pm",
+            "duration": "7:23",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice - Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "773-555-0847",
+            "repeatCaller": "No",
+            "city": "Chicago",
+            "region": "IL",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Central Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B623-7A4E5F291B8C",
+          "time": "1/18/26 3:47 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B623-7A4E5F291B8C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C891-3D6F8E172A9B",
+          "time": "1/22/26 2:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C891-3D6F8E172A9B",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D754-2B9C4F061E3A",
+          "time": "1/28/26 5:19 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D754-2B9C4F061E3A",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as National Van Lines's AI agent here to help build a personalized moving quote, mention that booking your estimate 4 to 8 weeks ahead locks in better dates during peak season, and ask if they would like to get started.",
+        "Qualify one at a time: Ask a single question per message covering move size (bedrooms or apartment size), specialty items like a piano, fine art, or a hot tub, the type of move (local, long distance, cross country, or international), the target move date, and finally the origin and destination ZIP codes to confirm agent availability.",
+        "Estimate then book: Confirm National Van Lines has a vetted agent covering their ZIP codes, share a preliminary price range based on what they shared, recommend a consultation with a moving specialist for an exact written quote, propose a specific day and time such as Thursday at 2 PM, and confirm they will get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "National_Van_Lines_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Residential & Long Distance Moving Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Trusted Moving Agent",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Free Moving Quote",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"Move status\",\"question\":\"Where is my shipment right now and when will it be delivered?\",\"answer\":\"I can connect you with your dedicated NVL move coordinator who tracks your shipment and confirms your delivery window. They will give you a live update on your driver and estimated arrival.\"},{\"topic\":\"Reschedule\",\"question\":\"Can I change my scheduled move date?\",\"answer\":\"Yes, we can adjust your move date based on agent and truck availability, and earlier notice gives us the best options during peak season. I can have your coordinator confirm the new date and lock it in.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Is National Van Lines a broker or an actual carrier?",
+              "answer": "National Van Lines is a licensed carrier and agent network, not a broker, so your belongings are handled by vetted NVL agents and never handed off to unknown third parties. I can set up an estimate so a specialist walks you through how our network handles your move."
+            },
+            {
+              "question": "How much does a long distance move cost?",
+              "answer": "Most long distance moves range from about $2,000 to $7,500 depending on distance, weight, and services, but every move is custom. Let me gather a few details and book a consultation for an exact written quote."
+            },
+            {
+              "question": "How long has National Van Lines been in business?",
+              "answer": "We have been trusted since 1929 and have helped over one million families and businesses move across the U.S. I would be glad to schedule your estimate with one of our moving specialists."
+            },
+            {
+              "question": "Do you move pianos?",
+              "answer": "Yes, our specialty piano movers have the training and specialized equipment to safely handle pianos of all types and sizes. Share your piano type and move date and I can book an estimate for an exact quote."
+            },
+            {
+              "question": "Can you handle fine art and antiques?",
+              "answer": "Yes, we provide custom packing, careful handling, and secure transport for fine art, antiques, and other one of a kind pieces. Let me set up a consultation so a specialist can price it precisely."
+            },
+            {
+              "question": "Do you offer packing services?",
+              "answer": "We offer full-service packing, partial packing, and custom crating for fragile or valuable items. Tell me a bit about your home and I will book your estimate."
+            },
+            {
+              "question": "Do you provide storage?",
+              "answer": "Yes, we offer short-term and long-term climate-controlled storage at facilities nationwide. I can arrange a consultation to review your storage and moving needs together."
+            },
+            {
+              "question": "Do you handle international moves?",
+              "answer": "We provide full-service overseas relocation to more than 150 countries, including customs documentation and freight. Let me collect your details and schedule an estimate with an international specialist."
+            },
+            {
+              "question": "How far in advance should I book my move?",
+              "answer": "We recommend booking 4 to 8 weeks ahead, especially from May through September during peak moving season. Let me get you on the calendar for an estimate now so you have the best date options."
+            },
+            {
+              "question": "Do you move hot tubs?",
+              "answer": "Yes, we plan weight distribution and access points and handle disassembly and reassembly of hot tubs with specialized equipment. Share your location and I can book an estimate."
+            },
+            {
+              "question": "Can you move just a few large furniture pieces?",
+              "answer": "Absolutely, we disassemble, protect, transport, and reassemble items like sectionals, cabinets, and entertainment centers. Tell me what you are moving and I will schedule your estimate."
+            },
+            {
+              "question": "Do you help seniors downsize?",
+              "answer": "Yes, our senior moving services include help downsizing, packing, sorting, and settling in. Let me set up a consultation so we can tailor the plan to your needs."
+            },
+            {
+              "question": "Do you do local moves too?",
+              "answer": "Yes, our city agents make local moves easy with an hourly crew and truck. Share your ZIP codes and move date and I can book your estimate."
+            },
+            {
+              "question": "How do I get a quote?",
+              "answer": "The fastest way is a quick consultation where a specialist reviews your move and provides an exact written quote. I just need a few details first, then I will propose a time."
+            },
+            {
+              "question": "Do you move apartments and condos?",
+              "answer": "Yes, we handle local and long distance apartment and condo moves, including stair and elevator access. Let me gather your details and schedule an estimate."
+            },
+            {
+              "question": "Are you licensed and insured?",
+              "answer": "Yes, we operate under U.S. DOT No. 76628 as a licensed carrier with a nationwide network of vetted agents. I can book a consultation so a specialist covers coverage details with you."
+            },
+            {
+              "question": "What areas do you serve?",
+              "answer": "Our nationwide agent network serves all 50 states plus international destinations. Share your origin and destination ZIP codes and I will confirm agent availability and set up your estimate."
+            },
+            {
+              "question": "Do you offer military moves?",
+              "answer": "Yes, our specialty division provides handling for military relocations. Let me collect a few details and schedule an estimate with the right specialist."
+            },
+            {
+              "question": "Why should I choose National Van Lines?",
+              "answer": "We were ranked number one in the Customer Satisfaction Index by the GSA and named Best Overall Mover by CNET three years in a row. I would love to book your estimate so you can see the difference firsthand."
+            },
+            {
+              "question": "Can you give me an estimate over text?",
+              "answer": "I can share a preliminary price range based on your move details, and then a specialist confirms the exact written quote during your consultation. Let me ask a couple of quick questions and propose a time."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"Schedule an estimate\",\"follow_up_message\":\"Great, I can lock in your in-home estimate with a National Van Lines specialist. Does Thursday at 2 PM work, and you will get a reminder text with a number to call before your appointment?\"},{\"intent\":\"Request a moving quote\",\"follow_up_message\":\"Based on what you shared your move looks like it would fall in a preliminary range, and a specialist can confirm an exact written quote during a quick consultation. What day and time works best for you this week?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "goal": "Qualify the customer's move details and book an in-home estimate with a National Van Lines moving specialist for an exact written quote.",
+        "bookingType": "in-home estimate",
+        "offer": "Book your estimate 4 to 8 weeks ahead to lock in the best peak-season dates",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What size is your move, for example how many bedrooms or what size apartment?",
+          "Are there any specialty items like a piano, fine art, antiques, or a hot tub?",
+          "Is this a local, long distance, cross country, or international move?",
+          "What is your target move date?",
+          "What are your origin and destination ZIP codes so I can confirm agent availability?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "7/29/26 11:51 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "7/29/26 11:51 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "7/29/26 11:51 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "National Van Lines",
+      "callerName": "Michael Chen",
+      "callerPhone": "(805) 555-0142",
+      "campaign": "Cross Country Movers - San Luis Obispo Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Estimate Lead",
+      "estimatedValue": "$4,835",
+      "googleSearch": "cross country movers near me",
+      "websiteSearch": "long distance moving company california to texas",
+      "callingWebpage": "/cross-country-movers",
+      "products": "Cross Country Movers, Full Service Packing and Crating",
+      "cartId": "NVL-7392K",
+      "serviceable": "Yes",
+      "email": "michael.chen.slo@email.com",
+      "street": "1247 Foothill Boulevard",
+      "city": "San Luis Obispo",
+      "state": "CA",
+      "zip": "93401",
+      "digitalJourney": "/home › /residential-moving › /cross-country-movers › /move-calculator",
+      "intent": "Relocating household from San Luis Obispo to Austin, Texas. Needs full service moving and professional packing for valuable items.",
+      "coverage": "ZIP 93401 confirmed - San Luis Obispo serviceable",
+      "switchIntent": "High. Moving date set for August 15. Wants binding estimate and to book loading crew this week.",
+      "greeting": "Hi Michael, thanks for calling National Van Lines. I see you're planning a cross country move to Texas. I'd love to walk through your estimate and get you scheduled with one of our San Luis Obispo agents for an in home assessment. When works best for you this week?"
+    },
+    "smsScreenpop": {
+      "brandName": "National Van Lines",
+      "callerName": "Sarah Martinez",
+      "callerPhone": "(720) 555-0178",
+      "campaign": "Senior Moving Services - Denver Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Estimate Lead",
+      "estimatedValue": "$2,645",
+      "googleSearch": "senior moving services near me downsizing help",
+      "websiteSearch": "apartment movers denver colorado experienced seniors",
+      "callingWebpage": "/senior-moving-services",
+      "products": "Senior Moving Services, Secure Climate Controlled Storage",
+      "cartId": "NVL-5841M",
+      "serviceable": "Yes",
+      "email": "sarah.martinez.denver@email.com",
+      "street": "3892 Speer Boulevard",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80211",
+      "digitalJourney": "/home › /residential-moving › /senior-moving-services › /find-an-agent",
+      "intent": "Downsizing from large home to senior living community. Needs help sorting, packing, and temporary storage for items to sort later.",
+      "coverage": "ZIP 80211 confirmed - Denver serviceable",
+      "appointment": "In home assessment with senior specialist. Thu Jul 18, 2:00 PM",
+      "greeting": "Hi Sarah, this is Jennifer from National Van Lines. Confirming your in home estimate is set for Thursday at 2 PM with our Denver senior specialist. She'll help you plan your move and discuss storage options. Any questions before then? Text back anytime."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "National Van Lines",
+      "brandDomain": "www.nationalvanlines.com",
+      "brandIcon": "🚚",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Barbara, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Long Distance Movers Free Quote",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "cross country movers near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Residential Moving / Cross Country Movers",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile - iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Cross Country Movers, Long Distance Moving Estimate Calculator",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes - not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Barbara, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "estimate_new_project",
+          "name": "Estimate - New Cross Country Move"
+        },
+        {
+          "id": "support_existing_move",
+          "name": "Support - Existing Move"
+        },
+        {
+          "id": "specialty_services",
+          "name": "Specialty Moving Services"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Thank you for calling National Van Lines. I'm the AI assistant. I see you're interested in a cross country move. Can you tell me where you're relocating from and to?",
+          "sigs": [],
+          "q": [
+            15,
+            40,
+            45
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Hi, yeah. We're moving from Santa Barbara to Boston. It's a full house, so we need a professional mover. We're looking at early April.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Full house</strong> cross country move"
+            },
+            {
+              "c": "blue",
+              "t": "Santa Barbara to Boston"
+            },
+            {
+              "c": "green",
+              "t": "Specific timeline - early April"
+            }
+          ],
+          "q": [
+            45,
+            25,
+            30
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "That's great. A full household move from California to Massachusetts is definitely in our wheelhouse. Are you looking for full service packing, or do you have some items already packed?",
+          "sigs": [],
+          "q": [
+            65,
+            15,
+            20
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "We'd like the full service. They've got fragile stuff, fine art pieces, and a lot of antiques. So we really need professionals who know how to handle that carefully.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Full-service packing</strong> and specialty items"
+            },
+            {
+              "c": "orange",
+              "t": "Fine art and antiques - high-value cargo"
+            },
+            {
+              "c": "blue",
+              "t": "Professional handling required"
+            }
+          ],
+          "q": [
+            88,
+            8,
+            4
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. You're exactly the right fit for our team. I'm routing you to our Estimate and New Project department. They handle multi-state moves with specialty packing and fine art transport. They'll give you a binding estimate and walk you through the entire process. Stay on the line.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Estimate Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your move is booked (Agent)\", \"lock in that move date (Agent)\", \"go ahead and schedule the move (Caller)\", \"book my estimate (Caller)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "12/19/25 2:43 pm"
+        },
+        {
+          "name": "Climate Controlled Storage Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"climate controlled storage (Caller)\", \"store my belongings (Caller)\", \"storage in transit (Agent)\", \"how much is monthly storage (Caller)\"])",
+          "createdAt": "04/22/25 11:05 am",
+          "updatedAt": "11/30/25 4:18 pm"
+        },
+        {
+          "name": "Competitor Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"United Van Lines quoted me (Caller)\", \"Allied gave me a price (Caller)\", \"cheaper with another mover (Caller)\", \"your competitor said (Caller)\"])",
+          "createdAt": "05/09/25 3:47 pm",
+          "updatedAt": "12/02/25 10:22 am"
+        },
+        {
+          "name": "Cross Country Move Inquiry",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"moving across the country (Caller)\", \"cross country move (Caller)\", \"interstate move (Caller)\", \"relocating to another state (Caller)\"])",
+          "createdAt": "02/18/25 8:34 am",
+          "updatedAt": "01/08/26 1:15 pm"
+        },
+        {
+          "name": "Estimate Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Signal",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"walk you through the estimate (Agent)\", \"your written binding estimate (Agent)\", \"put together a quote (Agent)\", \"go over the moving costs (Agent)\"])",
+          "createdAt": "03/27/25 10:41 am",
+          "updatedAt": "12/22/25 9:05 am"
+        },
+        {
+          "name": "Greeting and Needs Assessment",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Call Greeting and Needs] < 60 and duration > 45 sec",
+          "createdAt": "06/11/25 2:26 pm",
+          "updatedAt": "01/12/26 11:48 am"
+        },
+        {
+          "name": "License and Carrier Assurance",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Carrier Trust Messaging] < 60 and duration > 45 sec",
+          "createdAt": "06/24/25 9:53 am",
+          "updatedAt": "01/06/26 3:31 pm"
+        },
+        {
+          "name": "Move Coordinator Follow-Up Commitment",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Follow Up Commitment] < 60 and duration > 45 sec",
+          "createdAt": "07/15/25 4:09 pm",
+          "updatedAt": "12/28/25 10:17 am"
+        },
+        {
+          "name": "Price Sensitivity Raised",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"that is too expensive (Caller)\", \"can you do any better on price (Caller)\", \"out of my budget (Caller)\", \"why is it so much (Caller)\"])",
+          "createdAt": "05/30/25 1:38 pm",
+          "updatedAt": "11/25/25 2:54 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"your total comes to (Agent)\", \"the price for your move (Agent)\", \"estimate is around (Agent)\", \"quoted price for the relocation (Agent)\"])",
+          "createdAt": "04/03/25 10:19 am",
+          "updatedAt": "01/09/26 4:02 pm"
+        }
+      ]
+    }
+  }
+}

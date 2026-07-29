@@ -110,6 +110,118 @@ function voiceCopy(p: ReturnType<typeof useProfile>["profile"]) {
   };
 }
 
+/* PER-PROSPECT VOICE ROUTING SPLIT.
+
+   The default voice tree above forks ONCE (new business vs existing customer)
+   and routes each branch to one queue. Some businesses qualify further before
+   they can route: a mover has to know whether it is an inter-state or a local
+   move, because those are different teams with different paperwork.
+
+   An entry here replaces the new-business branch with a second-level fork: the
+   intent node gets its own title, and it drops into TWO route leaves instead of
+   one. The existing-customer branch is untouched. Keyed by profile id, so every
+   other prospect keeps the default tree and the layout below never runs for
+   them.
+
+   The chips are given explicitly rather than derived. The default green leaf
+   uses [hero product, bookingTerm, "Timeline"], and bookingTerm here is
+   "Estimate" — the exact word this override exists to remove. */
+interface VoiceSplit {
+  newQ: string;
+  newSub: string;
+  routes: { title: string; queue: string; chips: string[] }[];
+}
+
+const VOICE_SPLIT: Record<string, VoiceSplit> = {
+  "national-van-lines": {
+    newQ: "Book a Move",
+    newSub: "Caller wants to book a move and is not an existing customer",
+    routes: [
+      {
+        title: "All Inter-State Users",
+        queue: "Inter-State Move (Team A)",
+        chips: ["Origin ZIP", "Destination ZIP", "Move Date"],
+      },
+      {
+        title: "All Local Move Users",
+        queue: "Local Move (Team B)",
+        chips: ["Origin ZIP", "Move Size", "Move Date"],
+      },
+    ],
+  },
+};
+
+/* The three-leaf variant. Deliberately a SEPARATE component from
+   VoiceFlowTree: this needs a wider canvas and a different connector geometry,
+   and threading both layouts through one component would put the other ten
+   prospects' verified tree at risk for no gain.
+
+   Geometry, all in the 820x700 viewBox. Three leaf slots at x 6 / 286 / 566
+   (248 wide each, 32 gap). The new-business intent is centred over the FIRST
+   TWO (their centres are 130 and 410, so 270), support sits over the third
+   (690), and the trigger and start nodes centre between those two at 480. */
+function VoiceFlowTreeSplit({ profile, split }: {
+  profile: ReturnType<typeof useProfile>["profile"]; split: VoiceSplit;
+}) {
+  const c = voiceCopy(profile);
+  /* The wrapper is what reserves the scaled footprint; see .wf-split-fit. */
+  return (
+    <div className="wf-split-fit">
+    <div className="wf-tree wf-voice wf-voice-split">
+      <svg className="wf-lines" viewBox="0 0 820 700" width="820" height="700" aria-hidden="true">
+        <line x1="480" y1="80" x2="480" y2="176" className="wf-l" />
+        <line x1="480" y1="248" x2="480" y2="280" className="wf-l" />
+        {/* first fork: new business (270) vs existing customer (690) */}
+        <line x1="270" y1="280" x2="690" y2="280" className="wf-l" />
+        <line x1="270" y1="280" x2="270" y2="344" className="wf-l" />
+        <line x1="690" y1="280" x2="690" y2="344" className="wf-l" />
+        {/* second fork: the two move types, under the new-business intent */}
+        <line x1="270" y1="452" x2="270" y2="486" className="wf-l wf-l-green" />
+        <line x1="130" y1="486" x2="410" y2="486" className="wf-l wf-l-green" />
+        <line x1="130" y1="486" x2="130" y2="540" className="wf-l wf-l-green" />
+        <line x1="410" y1="486" x2="410" y2="540" className="wf-l wf-l-green" />
+        {/* support drops straight to its single leaf */}
+        <line x1="690" y1="452" x2="690" y2="540" className="wf-l wf-l-orange" />
+      </svg>
+
+      <div className="wf-node wf-trigger" style={{ left: 356, top: 8, width: 248 }}>
+        <div className="wf-node-title"><VIcon d={VIC.bolt} />Triggered by</div>
+        <div className="wf-node-sub">2 campaigns and 0 forms</div>
+      </div>
+
+      <div className="wf-node wf-start" style={{ left: 356, top: 176, width: 248 }}>
+        <div className="wf-node-title"><VIcon d={VIC.chat} />Conversation Start</div>
+        <div className="wf-node-sub">Voice · classify intent</div>
+      </div>
+
+      <div className="wf-node wf-intent" style={{ left: 146, top: 344, width: 248 }}>
+        <div className="wf-node-title"><VIcon d={VIC.cart} />{split.newQ}</div>
+        <div className="wf-node-sub">{split.newSub}</div>
+      </div>
+      <div className="wf-node wf-intent" style={{ left: 566, top: 344, width: 248 }}>
+        <div className="wf-node-title"><VIcon d={VIC.headset} />{c.supQ}</div>
+        <div className="wf-node-sub">{c.supSub}</div>
+      </div>
+
+      {split.routes.map((r, i) => (
+        <div className="wf-node wf-leaf wf-leaf-green" key={r.queue}
+          style={{ left: i === 0 ? 6 : 286, top: 540, width: 248 }}>
+          <div className="wf-leaf-title">{r.title}</div>
+          <div className="wf-leaf-action"><VIcon d={VIC.altRoute} />Route to {r.queue}</div>
+          <div className="wf-chips">{r.chips.map((x) => <span className="wf-chip" key={x}>{x}</span>)}</div>
+        </div>
+      ))}
+
+      <div className="wf-node wf-leaf wf-leaf-orange" style={{ left: 566, top: 540, width: 248 }}>
+        <div className="wf-leaf-title">All {c.supQ} Users</div>
+        <div className="wf-leaf-action"><VIcon d={VIC.headset} />Route to {c.supQueue}</div>
+        <div className="wf-chips">{c.supChips.map((x) => <span className="wf-chip" key={x}>{x}</span>)}</div>
+      </div>
+    </div>
+    </div>
+  );
+}
+
 function VoiceFlowTree({ profile }: { profile: ReturnType<typeof useProfile>["profile"] }) {
   const c = voiceCopy(profile);
   return (
@@ -286,12 +398,16 @@ export function AgentWorkflow() {
         </div>
       </div>
 
-      <div className={"wf-canvas" + (isSms ? "" : " wf-canvas-voice")}>
+      <div className={"wf-canvas" + (isSms ? "" : " wf-canvas-voice")
+        + (!isSms && !extra && VOICE_SPLIT[profile.id] ? " wf-canvas-split" : "")}>
         {extra
           ? <ExtraFlowTree wf={extra} />
           : isSms
             ? <FlowTree channelLabel={channelLabel} profile={profile} />
-            : <VoiceFlowTree profile={profile} />}
+            /* A prospect with a VOICE_SPLIT entry gets the three-leaf tree. */
+            : VOICE_SPLIT[profile.id]
+              ? <VoiceFlowTreeSplit profile={profile} split={VOICE_SPLIT[profile.id]} />
+              : <VoiceFlowTree profile={profile} />}
 
         <div className="wf-zoom">
           <button className="wf-zoom-btn"><span className="material-icons">add</span></button>
