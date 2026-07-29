@@ -1,11 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 
 /* The network selector doubles as the live demo-customer switcher:
    pick a customer and the whole app re-skins to their generated data.
-   The logo returns to the Launch screen (new prospect / revisit). */
+   The logo returns to the Launch screen (new prospect / revisit).
+
+   The green "Network" chip beside it is a deliberate hidden entry point into the
+   Google results screen, the same trick the ChatGPT tile on the Exchange plays:
+   it starts the demo one step BEFORE Invoca, on the search that produced the
+   call. It is a button rather than a link on the <select> so picking a customer
+   still just switches customer. */
 export function TopBar() {
   const { profileId, setProfileId, profiles } = useProfile();
+  const navigate = useNavigate();
 
   return (
     <header className="topbar">
@@ -14,7 +21,13 @@ export function TopBar() {
       </Link>
       <span className="demo-badge">Demo<br />Network</span>
       <div className="net-wrap">
-        <span className="net-label">Network</span>
+        <button
+          className="net-label net-label-btn"
+          onClick={() => navigate("/google-search")}
+          title="Open the Google results page for this prospect"
+        >
+          Network
+        </button>
         <select
           className="net-select"
           value={profileId}

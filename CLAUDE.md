@@ -275,6 +275,7 @@ public/
 | AI Messaging Impact (Human vs AI) | `/dashboards/ai-messaging-impact` | Profile-driven (React) | ✅ 4th dashboard (`reports.aiMessagingImpact`, optional), built from screenshots (`AiMessagingImpactDashboard.tsx`): paired **1/3 + 2/3 KPI cards** (`.aim-row`) — AI (This Month) vs Human (Last Month, grey chip) for Lead Engagement + Appointment Performance — then AI-Assisted Appointment Trend **LineChart** (49 daily pts, flat→jump; sparse x-labels), AI-Assisted Opportunities + AI Lead Nurture tiles, and a **Common Topics** StackedBarChart re-skinned to the prospect (window-treatment topics for Shady Blinds). Reuses the shared template; engine generates it per prospect |
 | Invoca Exchange (Integrations) | `/integrations` | **Exact static copy** (identical for all customers) | ✅ real page served |
 | Google Ads Search Keywords | `/integrations/google-ads` | **Exact static copy** | ✅ real page served |
+| Google Search results | `/google-search` | Profile-driven (React) | ✅ dark-theme google.com/search with the PROSPECT in the top sponsored slot, opened from the green **Network** chip in the top bar (`TopBar.tsx`; the chip is a button, the `<select>` beside it is still the customer switcher). Matched to a SingleFile capture, measured off the rendered DOM: page `#22242a`, text `#e8e8e8`, link `#99c3ff`, place action `#a8c7fa`, hairline `#444746`, pill `#2c2e35`, search pill `#4d5156` 694x52 r26, results column x=122 w=652, result title 22/28, sitelink 18/26, place name 18/24, Places head 28/36, local pack 876 wide with a 438 map column. Sections in capture order: location chip, Sponsored Results (4 ads, stacked sitelink rows on the first), Places pack (list + Mapbox night map with pins, prospect repeated as a Sponsored place), organic results, a SECOND Sponsored Results block (inline chips + visits line), more organic, People also search for, Goooogle pager, footer. **Clicking the prospect's ad opens their site with the paid parameters**: `oppref` + `utm_source=google` + `utm_medium=cpc` + `utm_campaign=<their top campaign from the Marketing Performance dashboard>` + `utm_term=<the query>` + `utm_content` + a deterministic `gclid`. Only the prospect's ad is a real link; the rivals are inert by design. The ad's call extension uses the reserved **555** exchange with the prospect's own area code, so it reads local but cannot ring a real business. The search box is editable and Enter re-renders the wording (and `utm_term`) without pretending to search. The logo goes back to where the SE came from. "Google Sans" is not bundled, so headings fall back to Roboto/Arial |
 | All other nav items | various | Placeholder | ⏳ not built |
 
 ### Sidebar (left nav)
@@ -337,6 +338,25 @@ The Digital Journey report is one **white panel** (`.report-surface`: `#fff`, 1p
 border, `0 2px 4px` shadow, top-left corner rounded `5px`). `.main` is **full-bleed
 (no padding)** so that panel sits flush against the sidebar/topbar like the real
 page — non-report screens add their own padding (`.dash-page`; `.placeholder` self-pads).
+
+### Before Invoca sees the call: the two paid-placement screens
+`src/data/prospectPlace.ts` is shared by **`GoogleSearch.tsx`** and
+**`ChatGptAd.tsx`** and owns everything both need to agree on: `derive(profile)`
+(location, the invented rivals, hero product, the search query, the offer),
+`CITY_LL`/`lookupLL`/`DEFAULT_PLACE` (geocoding, fallback Santa Barbara),
+`trackedSiteUrl()` (the `oppref` token) and the Mapbox helpers. It lives outside
+both screens because the same prospect must land in the same city against the
+same competitors on both, and two copies would drift on the first fix.
+⚠️ **Label and coordinates must always resolve TOGETHER.** `derive` falls back
+label-and-all when it cannot geocode; recombining a fallback city with a live
+screenpop state printed "Santa Barbara, TX" for Reyes Law. If you build a
+location string, take BOTH halves from one source.
+⚠️ Competitor names, directories and review counts on both screens are
+**invented** from city + industry. The real captures name real businesses with
+real ratings; reproducing that shape with fabricated copy would put words in a
+named company's mouth. `derive` also rejects any rival name sharing two
+significant words with the prospect (that is what stopped "Orlando Health
+Systems" appearing beside the real Orlando Health).
 
 ### The Integrations click-through (demo circuit)
 Sidebar **Integrations** → `/integrations` → `StaticRedirect` to `/invoca-exchange.html`

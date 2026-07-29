@@ -23,6 +23,10 @@
 }
 .net-wrap { display: flex; align-items: center; gap: 8px; margin-left: 12px; }
 .net-label { color: #5c8a2f; background: #eef4e6; font-size: 12px; padding: 3px 8px; border-radius: var(--radius); font-weight: 600; }
+/* The chip is a <button> (it opens the Google results screen), so it has to be
+   stripped back to looking exactly like the label it replaced. */
+.net-label-btn { border: 0; font-family: inherit; line-height: 18px; cursor: pointer; }
+.net-label-btn:hover { background: #e4eed6; }
 .net-select {
   font-family: inherit; font-size: 14px; color: var(--color-text);
   border: 1px solid var(--color-border); border-radius: var(--radius); padding: 7px 30px 7px 12px;

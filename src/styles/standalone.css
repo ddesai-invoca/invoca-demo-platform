@@ -382,3 +382,255 @@
 @media (prefers-reduced-motion: reduce) {
   .cg-think-dots i { animation: none; opacity: .6; }
 }
+
+/* ===================== GOOGLE SEARCH RESULTS =============================== */
+/* Dark-theme google.com/search, matched to a SingleFile capture. Every value
+   here was read off the rendered capture's computed styles, not the screenshot:
+     page #22242a · text #e8e8e8 · secondary #9e9e9e · muted #bdc1c6 / #dadce0
+     link #99c3ff · place action #a8c7fa · hairline #444746 · pill #2c2e35
+     search pill #4d5156 694x52 r26 · results column x=122 w=652
+     result title 22/28 · sitelink 18/26 · place name 18/24 · Places 28/36
+     tab row 48px, active = 500 weight + 3px #e8e8e8 underline
+   Scoped under .gs-page so none of it can reach the platform screens. */
+.gs-page {
+  --gs-fg: #e8e8e8; --gs-2: #9e9e9e; --gs-mut: #bdc1c6; --gs-nm: #dadce0;
+  --gs-link: #99c3ff; --gs-act: #a8c7fa; --gs-line: #444746; --gs-pill: #2c2e35;
+  --gs-col: 652px;
+  position: fixed; inset: 0; overflow-y: auto; background: #22242a;
+  color: var(--gs-fg); font: 400 14px/22px Roboto, Arial, sans-serif;
+}
+.gs-page a { text-decoration: none; color: inherit; }
+.gs-page a:hover { text-decoration: underline; }
+/* `color: inherit` above is what makes an <a> inside .gs-ad-url or .gs-foot-links
+   take its parent's colour, which is right for those. But it is (0,1,1) and beat
+   .gs-ad-title (0,1,0), so the ONE headline that is a real link (the prospect's)
+   rendered white while the inert rivals rendered blue. These raise the four that
+   must stay coloured above it rather than dropping the inherit. */
+.gs-page a.gs-ad-title, .gs-page a.gs-res-title { color: var(--gs-link); }
+.gs-page a.gs-act { color: var(--gs-act); }
+.gs-page .gs-pages a, .gs-page .gs-foot-mid a { color: var(--gs-link); }
+.gs-g { font-family: "Google Sans", Roboto, Arial, sans-serif; }
+
+/* ---- header --------------------------------------------------------------- */
+.gs-head { border-bottom: 1px solid var(--gs-line); }
+.gs-head-row { display: flex; align-items: center; gap: 44px; padding: 26px 20px 0 122px; }
+.gs-logo { background: none; border: 0; padding: 0; cursor: pointer; line-height: 0;
+  margin-top: 4px; }
+.gs-pill {
+  /* flex: none, or the icon cluster shrinks it off the measured 694px. */
+  display: flex; align-items: center; flex: none; width: 694px; height: 52px;
+  background: #4d5156; border-radius: 26px; padding: 0 8px 0 20px; box-sizing: border-box;
+}
+.gs-input {
+  flex: 1; min-width: 0; height: 50px; background: none; border: 0; outline: none;
+  color: #e8eaed; font: 400 16px/50px Roboto, Arial, sans-serif;
+}
+.gs-pill-btn {
+  display: grid; place-items: center; width: 40px; height: 40px; border: 0;
+  background: none; color: var(--gs-mut); cursor: pointer; border-radius: 50%;
+}
+.gs-pill-div { width: 1px; height: 24px; background: #5f6368; margin: 0 6px; }
+.gs-mic { color: #99c3ff; } .gs-lens { color: #99c3ff; } .gs-go { color: #99c3ff; }
+.gs-head-icons { margin-left: auto; display: flex; align-items: center; gap: 8px;
+  padding-right: 12px; }
+.gs-hi { color: var(--gs-nm); display: grid; place-items: center; width: 32px; height: 32px; }
+.gs-avatar {
+  width: 32px; height: 32px; border-radius: 50%; background: #8ab4f8; color: #202124;
+  display: grid; place-items: center; font: 500 14px/1 Roboto, Arial, sans-serif;
+}
+.gs-tabs { display: flex; align-items: stretch; gap: 40px; padding: 0 0 0 122px; height: 48px; }
+.gs-tab {
+  display: flex; align-items: center; gap: 2px; color: #80868b; font-size: 14px;
+  border-bottom: 3px solid transparent; cursor: pointer;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+}
+.gs-tab-on { color: var(--gs-fg); font-weight: 500; border-bottom-color: var(--gs-fg); }
+.gs-tools { margin-left: auto; margin-right: 24px; }
+
+/* ---- body ---------------------------------------------------------------- */
+.gs-body { padding: 0 20px 40px 122px; }
+.gs-loc { display: flex; align-items: center; gap: 8px; height: 56px; font-size: 14px; }
+.gs-loc b { font-family: "Google Sans", Roboto, Arial, sans-serif; }
+.gs-loc-pill {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 14px;
+  border: 1px solid var(--gs-line); border-radius: 9999px; color: var(--gs-fg);
+  margin-left: 8px; cursor: pointer;
+}
+.gs-kebab { color: var(--gs-mut); display: inline-flex; cursor: pointer; }
+.gs-dot { margin: 0 5px; color: var(--gs-2); }
+
+.gs-spons-head, .gs-places-head, .gs-pasf-head {
+  font-family: "Google Sans", Roboto, Arial, sans-serif; font-weight: 400;
+  color: var(--gs-fg); margin: 26px 0 0;
+}
+.gs-spons-head { font-size: 16px; line-height: 24px; width: var(--gs-col);
+  padding-bottom: 10px; border-bottom: 1px solid var(--gs-line); }
+.gs-places-head { font-size: 28px; line-height: 36px; margin: 34px 0 12px; }
+.gs-pasf-head { font-size: 22px; line-height: 28px; margin: 40px 0 14px; }
+
+/* ---- an ad / a result ---------------------------------------------------- */
+.gs-ad, .gs-res { width: var(--gs-col); margin: 26px 0 0; }
+.gs-ad-head, .gs-res-head { display: flex; align-items: center; gap: 12px; }
+.gs-fav {
+  width: 28px; height: 28px; border-radius: 50%; background: #fff; flex: none;
+  display: grid; place-items: center; overflow: hidden;
+}
+.gs-fav img { width: 18px; height: 18px; display: block; }
+.gs-fav-alt {
+  background: #3c4043; color: var(--gs-nm);
+  font: 500 14px/1 "Google Sans", Roboto, Arial, sans-serif;
+}
+.gs-ad-id { display: flex; flex-direction: column; min-width: 0; }
+.gs-ad-brand {
+  font: 400 14px/20px "Google Sans", Roboto, Arial, sans-serif; color: var(--gs-nm);
+}
+.gs-ad-url {
+  display: flex; align-items: center; gap: 4px; font-size: 12px; line-height: 18px;
+  color: var(--gs-mut);
+}
+.gs-ad-title, .gs-res-title {
+  display: block; margin: 8px 0 0; color: var(--gs-link);
+  font: 400 22px/28px "Google Sans", Roboto, Arial, sans-serif;
+}
+.gs-ad-body { color: var(--gs-2); font-size: 14px; line-height: 22px; margin-top: 4px; }
+.gs-ad-rating, .gs-ad-visits { color: var(--gs-2); font-size: 14px; margin-top: 6px; }
+.gs-ad-call {
+  display: flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--gs-link);
+  font-size: 14px;
+}
+.gs-res-rating { display: flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 14px; }
+.gs-rate { color: var(--gs-2); }
+.gs-stars { color: #fabb05; letter-spacing: -1px; font-size: 12px; }
+.gs-revs { color: var(--gs-2); }
+
+/* Stacked sitelink rows: a hairline above the group and between rows, each row
+   50px tall with the chevron pinned right. Measured 600px wide, not 652. */
+.gs-sitelinks { width: 600px; margin-top: 18px; border-top: 1px solid var(--gs-line); }
+.gs-sitelink {
+  display: flex; align-items: center; justify-content: space-between; height: 50px;
+  border-bottom: 1px solid var(--gs-line); color: var(--gs-fg);
+  font: 400 18px/26px "Google Sans", Roboto, Arial, sans-serif; cursor: pointer;
+}
+.gs-sitelink svg { color: var(--gs-mut); flex: none; }
+/* Inline chips, the lower block's format. The capture prefixes each with a
+   left-to-right mark, which is why they sit slightly apart. */
+.gs-chips { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; }
+.gs-chip { color: var(--gs-link); font-size: 14px; }
+.gs-chip::before { content: "\200E"; }
+.gs-chip:not(:last-child)::after { content: " ·"; color: var(--gs-2); }
+
+.gs-hide {
+  width: var(--gs-col); display: flex; justify-content: center; margin: 22px 0 0;
+}
+.gs-hide span {
+  display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 20px;
+  background: var(--gs-pill); border-radius: 20px; font-size: 14px; cursor: pointer;
+}
+
+/* ---- the local pack ------------------------------------------------------ */
+/* 876 wide, deliberately wider than the 652 results column, which is how the
+   real pack overhangs to the right. */
+.gs-pack { display: flex; gap: 22px; width: 876px; border-radius: 12px; }
+.gs-pack-list { width: 416px; flex: none; }
+.gs-place {
+  display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--gs-line);
+}
+.gs-place-main { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.gs-spons-tag {
+  font: 700 14px/20px "Google Sans", Roboto, Arial, sans-serif; color: var(--gs-nm);
+}
+.gs-place-name {
+  font: 400 18px/24px "Google Sans", Roboto, Arial, sans-serif; color: var(--gs-fg);
+}
+.gs-place-stars { display: flex; align-items: center; gap: 3px; font-size: 14px;
+  color: var(--gs-2); margin-top: 2px; }
+.gs-place-meta, .gs-place-hours { font-size: 14px; color: var(--gs-2); margin-top: 1px; }
+.gs-place-hours b { color: #6dd58c; font-weight: 400; }
+.gs-place-note {
+  display: flex; gap: 6px; font-size: 14px; color: var(--gs-2); margin-top: 6px;
+}
+/* The glyph is a flex child, so without this it sits above the first line
+   instead of beside it. */
+.gs-quote-ic { color: var(--gs-mut); flex: none; font-size: 18px; line-height: 22px;
+  align-self: flex-start; }
+.gs-place-acts { display: flex; gap: 10px; flex: none; padding-top: 4px; }
+.gs-act {
+  display: flex; flex-direction: column; align-items: center; gap: 6px; width: 54px;
+  color: var(--gs-act); font-size: 14px;
+}
+.gs-act-ic {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gs-line);
+  display: grid; place-items: center;
+}
+.gs-more {
+  display: flex; align-items: center; gap: 6px; height: 44px; color: var(--gs-act);
+  font-size: 14px; cursor: pointer;
+}
+
+.gs-map {
+  position: relative; flex: 1; min-height: 620px; border-radius: 12px;
+  overflow: hidden; background: #1b2431;
+}
+.gs-map-img { width: 100%; height: 100%; object-fit: cover; display: block;
+  position: absolute; inset: 0; }
+.gs-map-off { position: absolute; inset: 0;
+  background: linear-gradient(160deg, #1f2937, #16202b); }
+.gs-tiles { position: absolute; inset: 0; }
+.gs-tile { position: absolute; width: 256px; height: 256px; }
+.gs-pin {
+  position: absolute; transform: translate(-50%, -100%); display: flex;
+  flex-direction: column; align-items: center; color: #ea4335;
+}
+.gs-pin-on { color: #ff5d52; }
+.gs-pin-label {
+  color: #fff; font-size: 11px; line-height: 14px; max-width: 96px; text-align: center;
+  text-shadow: 0 0 4px #000, 0 0 8px #000; margin-top: -2px;
+}
+.gs-pin-on .gs-pin-label { font-weight: 700; }
+.gs-map-open {
+  position: absolute; top: 12px; right: 12px; height: 32px; padding: 0 14px;
+  background: #303134; color: var(--gs-fg); border: 0; border-radius: 16px;
+  font: 400 13px/32px Roboto, Arial, sans-serif; cursor: pointer;
+}
+.gs-map-zoom {
+  position: absolute; right: 12px; bottom: 34px; display: flex; flex-direction: column;
+  border-radius: 4px; overflow: hidden;
+}
+.gs-map-zoom button {
+  width: 28px; height: 28px; display: grid; place-items: center; border: 0;
+  background: #303134; color: var(--gs-fg); cursor: pointer;
+}
+.gs-map-zoom button + button { border-top: 1px solid #444746; }
+.gs-map-attr {
+  position: absolute; left: 8px; bottom: 6px; font-size: 10px; color: #cfd3d7;
+  background: rgba(0, 0, 0, .45); padding: 1px 5px; border-radius: 3px;
+}
+
+/* ---- people also search for, pager, footer ------------------------------- */
+.gs-pasf {
+  width: var(--gs-col); display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px;
+}
+.gs-pasf-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--gs-pill); border-radius: 8px; padding: 12px 14px; font-size: 14px;
+  cursor: pointer;
+}
+.gs-pasf-item svg { color: var(--gs-mut); flex: none; }
+.gs-pager {
+  width: var(--gs-col); display: flex; flex-direction: column; align-items: center;
+  gap: 6px; margin: 44px 0 0;
+}
+.gs-goo { font: 400 28px/34px "Google Sans", Roboto, Arial, sans-serif; color: var(--gs-link); }
+.gs-goo b { font-weight: 400; letter-spacing: -1px; }
+.gs-pages { display: flex; align-items: center; gap: 14px; font-size: 14px; }
+.gs-pages a { color: var(--gs-link); cursor: pointer; }
+.gs-pages b { font-weight: 700; color: var(--gs-fg); }
+
+.gs-foot { margin-top: 40px; background: #1b1c20; border-top: 1px solid var(--gs-line);
+  color: #bfbfbf; }
+.gs-foot-in { padding: 20px 20px 24px 122px; }
+.gs-foot-top { font-size: 14px; }
+.gs-foot-mid { display: flex; align-items: center; gap: 4px; font-size: 14px; margin-top: 18px; }
+.gs-foot-mid a { color: var(--gs-link); cursor: pointer; }
+.gs-foot-links { display: flex; gap: 26px; font-size: 14px; margin-top: 18px; }
+.gs-foot-links a { cursor: pointer; }

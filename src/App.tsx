@@ -32,6 +32,7 @@ import { SignalManager } from "./screens/SignalManager";
 import { Launch } from "./screens/Launch";
 import { SmsPreviewPage } from "./screens/SmsPreviewPage";
 import { ChatGptAd } from "./screens/ChatGptAd";
+import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { NAV } from "./components/nav";
 
@@ -78,6 +79,12 @@ export default function App() {
               Google Ads page: where the call starts, before Invoca sees it.
               Profile-driven, so it re-skins per prospect like the app screens. */}
           <Route path="/integrations/chatgpt" element={<ChatGptAd />} />
+
+          {/* Google results page, opened from the "Network" chip in the top bar.
+              The other half of the same story: the prospect holds the top
+              sponsored slot, and the click carries the paid parameters into
+              their site. Standalone, because it is not an Invoca screen. */}
+          <Route path="/google-search" element={<GoogleSearch />} />
 
           {/* Preview Agent (SMS) — opens in its own browser tab from Agent Workflow */}
           <Route path="/agent-studio/agent/preview" element={<SmsPreviewPage />} />
