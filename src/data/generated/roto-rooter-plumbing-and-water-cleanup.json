@@ -1,0 +1,5375 @@
+{
+  "id": "roto-rooter-plumbing-and-water-cleanup",
+  "customerName": "Roto-Rooter Plumbing & Water Cleanup",
+  "websiteUrl": "https://www.rotorooter.com/",
+  "brandDomain": "rotorooter.com",
+  "networkName": "Invoca for Home Services",
+  "industry": "Residential and commercial plumbing, drain cleaning, and water damage restoration",
+  "bookingTerm": "Service Appointment",
+  "customerNoun": "Customer",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 25000,
+      "yTicks": [
+        5000,
+        10000,
+        15000,
+        20000,
+        25000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 16842
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 21317
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 19548
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 18204
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 16005
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Service Appointment Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Service Appointment Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Emergency Plumber, 24/7 Near Me",
+          "marketingSearchTerm": "emergency plumber near me",
+          "landingPageUrl": "https://www.rotorooter.com/plumbing/emergency-plumbing/?utm_source=google&utm_medium=cpc&utm_campaign=emergency_plumber_247",
+          "websiteJourney": "Home / Plumbing / Emergency Plumbing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Drain Cleaning, Local",
+          "marketingSearchTerm": "clogged drain repair",
+          "landingPageUrl": "https://www.rotorooter.com/drains/drain-cleaning/?utm_source=google&utm_medium=cpc&utm_campaign=drain_cleaning_local",
+          "websiteJourney": "Home / Drains / Drain Cleaning",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Water Heater Replacement, Same Day",
+          "marketingSearchTerm": "water heater replacement near me",
+          "landingPageUrl": "https://www.rotorooter.com/plumbing/water-heaters/?utm_source=google&utm_medium=cpc&utm_campaign=water_heater_same_day",
+          "websiteJourney": "Home / Plumbing / Water Heaters",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Sewer Line Repair, Branded",
+          "marketingSearchTerm": "sewer line clog",
+          "landingPageUrl": "https://www.rotorooter.com/drains/sewer-line/?utm_source=bing&utm_medium=cpc&utm_campaign=sewer_line_branded",
+          "websiteJourney": "Home / Drains / Sewer Line",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Drain Cleaning, Local",
+          "marketingSearchTerm": "drain cleaning cost",
+          "landingPageUrl": "https://www.rotorooter.com/drains/drain-cleaning/?utm_source=google&utm_medium=cpc&utm_campaign=drain_cleaning_local",
+          "websiteJourney": "Home / Drains / Drain Cleaning",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Emergency Plumber, 24/7 Near Me",
+          "marketingSearchTerm": "24 hour plumber",
+          "landingPageUrl": "https://www.rotorooter.com/plumbing/emergency-plumbing/?utm_source=google&utm_medium=cpc&utm_campaign=emergency_plumber_247",
+          "websiteJourney": "Home / Plumbing / Emergency Plumbing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Water Heater Replacement, Same Day",
+          "marketingSearchTerm": "tankless water heater install",
+          "landingPageUrl": "https://www.rotorooter.com/plumbing/water-heaters/?utm_source=bing&utm_medium=cpc&utm_campaign=water_heater_same_day",
+          "websiteJourney": "Home / Plumbing / Water Heaters",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Plumber in City Pages",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.rotorooter.com/locations/?utm_source=organic&utm_medium=organic&utm_campaign=plumber_city_pages",
+          "websiteJourney": "Home / Locations / City Landing",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Full-Service vs Drain Clearing",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.rotorooter.com/resources/plumbing-basics/?utm_source=organic&utm_medium=organic&utm_campaign=full_service_vs_clearing",
+          "websiteJourney": "Home / Resources / Plumbing Basics",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Sump Pump Service, Local",
+          "marketingSearchTerm": "sump pump replacement",
+          "landingPageUrl": "https://www.rotorooter.com/plumbing/sump-pumps/?utm_source=google&utm_medium=cpc&utm_campaign=sump_pump_local",
+          "websiteJourney": "Home / Plumbing / Sump Pumps",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Water Damage Restoration, 24/7",
+          "marketingSearchTerm": "water damage restoration near me",
+          "landingPageUrl": "https://www.rotorooter.com/water-damage/water-damage-restoration/?utm_source=google&utm_medium=cpc&utm_campaign=water_damage_247",
+          "websiteJourney": "Home / Water Damage / Water Damage Restoration",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Coupons Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.rotorooter.com/coupons/?utm_source=organic&utm_medium=organic&utm_campaign=coupons_hub",
+          "websiteJourney": "Home / Coupons / Water Heater Offer",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Hydro Jetting, Commercial",
+          "marketingSearchTerm": "hydro jetting service",
+          "landingPageUrl": "https://www.rotorooter.com/commercial/hydro-jetting/?utm_source=bing&utm_medium=cpc&utm_campaign=hydro_jetting_commercial",
+          "websiteJourney": "Home / Commercial / Hydro Jetting",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Toilet Repair, Local",
+          "marketingSearchTerm": "toilet won't flush repair",
+          "landingPageUrl": "https://www.rotorooter.com/plumbing/toilets/?utm_source=google&utm_medium=cpc&utm_campaign=toilet_repair_local",
+          "websiteJourney": "Home / Plumbing / Toilets",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Water Softener Content",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.rotorooter.com/water-quality/water-softeners/?utm_source=organic&utm_medium=organic&utm_campaign=water_softener_content",
+          "websiteJourney": "Home / Water Quality / Water Softeners",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Garbage Disposal Service, Local",
+          "marketingSearchTerm": "garbage disposal not working",
+          "landingPageUrl": "https://www.rotorooter.com/plumbing/garbage-disposals/?utm_source=google&utm_medium=cpc&utm_campaign=garbage_disposal_local",
+          "websiteJourney": "Home / Plumbing / Garbage Disposals",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Winter Pipe Protection",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.rotorooter.com/resources/plumbing-basics/?utm_source=facebook&utm_medium=facebook&utm_campaign=winter_pipe_protection",
+          "websiteJourney": "Home / Resources / Plumbing Basics",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Roto-Rooter Tips",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.rotorooter.com/schedule-service/?utm_source=instagram&utm_medium=instagram&utm_campaign=roto_rooter_tips",
+          "websiteJourney": "Home / Schedule Service",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Camera Inspection, Local",
+          "marketingSearchTerm": "video camera line inspection",
+          "landingPageUrl": "https://www.rotorooter.com/drains/camera-inspections/?utm_source=google&utm_medium=cpc&utm_campaign=camera_inspection_local",
+          "websiteJourney": "Home / Drains / Camera Inspections",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Organic",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Coupons Hub",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.rotorooter.com/coupons/?utm_source=organic&utm_medium=organic&utm_campaign=online_scheduling_discount",
+          "websiteJourney": "Home / Coupons / Online Scheduling Discount",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Social Media",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Schedule Online, App Download",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.rotorooter.com/schedule-service/?utm_source=facebook&utm_medium=facebook&utm_campaign=schedule_online_app",
+          "websiteJourney": "Home / Schedule Service / App Download",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Paid Search",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Backflow Prevention, Commercial",
+          "marketingSearchTerm": "backflow testing certification",
+          "landingPageUrl": "https://www.rotorooter.com/commercial/backflow-prevention/?utm_source=bing&utm_medium=cpc&utm_campaign=backflow_commercial",
+          "websiteJourney": "Home / Commercial / Backflow Prevention",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Roto-Rooter Plumbing & Water Cleanup)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "72,091"
+            },
+            {
+              "label": "Service Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Job Won (Percent)",
+              "value": "38%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$17,209,395"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "11,535"
+            },
+            {
+              "label": "Existing Job Follow-up Call (Percent)",
+              "value": "8%"
+            },
+            {
+              "label": "Billing Inquiry Call (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Careers & General Inquiry Call (Percent)",
+              "value": "3%"
+            }
+          ]
+        },
+        {
+          "title": "Service Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "Service Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Estimate Discussed (Percent)",
+              "value": "61%"
+            },
+            {
+              "label": "Not Serviceable Lead (Percent)",
+              "value": "9%"
+            },
+            {
+              "label": "Job Won (Percent)",
+              "value": "38%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "Service Call (Count)",
+        "xLabels": [
+          "Jan 1-5",
+          "Jan 6-10",
+          "Jan 11-15",
+          "Jan 16-20",
+          "Jan 21-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Service Call (Count)",
+            "values": [
+              10847,
+              11238,
+              10592,
+              10164,
+              9873,
+              7842
+            ]
+          },
+          {
+            "name": "Quote Discussed (Count)",
+            "values": [
+              7912,
+              8164,
+              7689,
+              7412,
+              7038,
+              5761
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              1142,
+              1208,
+              1124,
+              1087,
+              1014,
+              913
+            ]
+          },
+          {
+            "name": "Job Won (Count)",
+            "values": [
+              4918,
+              5124,
+              4792,
+              4613,
+              4381,
+              3567
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Discussed (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 72091,
+          "rows": [
+            {
+              "name": "Google",
+              "metrics": [
+                "34,218",
+                "44%",
+                "20%",
+                "$4,303,367"
+              ]
+            },
+            {
+              "name": "Bing",
+              "metrics": [
+                "12,547",
+                "67%",
+                "49%",
+                "$3,865,968"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "11,392",
+                "70%",
+                "52%",
+                "$3,720,272"
+              ]
+            },
+            {
+              "name": "Referral",
+              "metrics": [
+                "8,164",
+                "73%",
+                "55%",
+                "$2,819,720"
+              ]
+            },
+            {
+              "name": "Facebook",
+              "metrics": [
+                "5,770",
+                "84%",
+                "69%",
+                "$2,500,068"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Discussed (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 72091,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "31,547",
+                "42%",
+                "19%",
+                "$3,764,232"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "18,209",
+                "66%",
+                "48%",
+                "$5,494,055"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "11,392",
+                "70%",
+                "52%",
+                "$3,720,272"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "6,478",
+                "76%",
+                "58%",
+                "$2,359,396"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "4,465",
+                "84%",
+                "67%",
+                "$1,871,440"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Discussed (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 25914,
+          "rows": [
+            {
+              "name": "Emergency Plumber 24/7 Near Me",
+              "metrics": [
+                "9,847",
+                "48%",
+                "26%",
+                "$1,607,680"
+              ]
+            },
+            {
+              "name": "Drain Cleaning Local",
+              "metrics": [
+                "6,214",
+                "66%",
+                "45%",
+                "$1,755,888"
+              ]
+            },
+            {
+              "name": "Water Heater Replacement Same Day",
+              "metrics": [
+                "4,573",
+                "68%",
+                "48%",
+                "$1,378,460"
+              ]
+            },
+            {
+              "name": "Sewer Line Repair Branded",
+              "metrics": [
+                "3,192",
+                "74%",
+                "55%",
+                "$1,102,768"
+              ]
+            },
+            {
+              "name": "Online Scheduling Discount",
+              "metrics": [
+                "2,088",
+                "88%",
+                "78%",
+                "$1,023,012"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Discussed (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 20012,
+          "rows": [
+            {
+              "name": "emergency plumber near me",
+              "metrics": [
+                "7,412",
+                "46%",
+                "25%",
+                "$1,163,684"
+              ]
+            },
+            {
+              "name": "clogged drain repair",
+              "metrics": [
+                "5,138",
+                "65%",
+                "44%",
+                "$1,419,908"
+              ]
+            },
+            {
+              "name": "water heater replacement near me",
+              "metrics": [
+                "3,624",
+                "67%",
+                "49%",
+                "$1,115,328"
+              ]
+            },
+            {
+              "name": "sewer line clog",
+              "metrics": [
+                "2,451",
+                "75%",
+                "56%",
+                "$862,244"
+              ]
+            },
+            {
+              "name": "roto-rooter coupons",
+              "metrics": [
+                "1,387",
+                "89%",
+                "79%",
+                "$688,288"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Set (Industry) (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Plumbing",
+              "metrics": [
+                "24,318",
+                "58%",
+                "38%",
+                "$5,837,571"
+              ]
+            },
+            {
+              "name": "Drains",
+              "metrics": [
+                "19,547",
+                "59%",
+                "40%",
+                "$4,910,332"
+              ]
+            },
+            {
+              "name": "Water Damage",
+              "metrics": [
+                "12,284",
+                "56%",
+                "35%",
+                "$2,699,772"
+              ]
+            },
+            {
+              "name": "Commercial",
+              "metrics": [
+                "9,673",
+                "56%",
+                "36%",
+                "$2,186,696"
+              ]
+            },
+            {
+              "name": "Water Quality",
+              "metrics": [
+                "6,269",
+                "61%",
+                "40%",
+                "$1,575,024"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Estimate Discussed (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 72091,
+          "rows": [
+            {
+              "name": "South",
+              "metrics": [
+                "22,417",
+                "50%",
+                "30%",
+                "$4,228,635"
+              ]
+            },
+            {
+              "name": "West",
+              "metrics": [
+                "16,842",
+                "60%",
+                "38%",
+                "$4,019,200"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "13,394",
+                "62%",
+                "40%",
+                "$3,364,824"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "11,286",
+                "64%",
+                "42%",
+                "$2,976,720"
+              ]
+            },
+            {
+              "name": "Southwest",
+              "metrics": [
+                "8,152",
+                "72%",
+                "51%",
+                "$2,620,016"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Job Won (Count)",
+        "xLabels": [
+          "Jan 1-5",
+          "Jan 6-10",
+          "Jan 11-15",
+          "Jan 16-20",
+          "Jan 21-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Plumbing",
+            "values": [
+              1642,
+              1714,
+              1598,
+              1547,
+              1489,
+              1297
+            ]
+          },
+          {
+            "name": "Drains",
+            "values": [
+              1384,
+              1442,
+              1347,
+              1301,
+              1248,
+              1097
+            ]
+          },
+          {
+            "name": "Water Damage",
+            "values": [
+              762,
+              794,
+              741,
+              714,
+              684,
+              604
+            ]
+          },
+          {
+            "name": "Commercial",
+            "values": [
+              617,
+              643,
+              599,
+              578,
+              554,
+              491
+            ]
+          },
+          {
+            "name": "Water Quality",
+            "values": [
+              444,
+              462,
+              431,
+              416,
+              398,
+              357
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 72,091 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Delgado called about a slow kitchen line and asked for full-service drain cleaning rather than a quick clear. Oscar explained the end-to-end pipe cleaning and the six-month guarantee, then confirmed upfront pricing. Marcus scheduled a same-day service appointment and thanked the agent for the clear walkthrough.",
+          "date": "Jan 6, 9:14 AM",
+          "agent": "Oscar",
+          "duration": "2m 18s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 6,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Priya Nandakumar wanted to replace an aging tank unit and asked about a tankless water heater upgrade. Lila reviewed the A.O. Smith and Rinnai options, financing, and same-day installation availability. Priya booked a service appointment for the water heater replacement.",
+          "date": "Feb 11, 1:37 PM",
+          "agent": "Lila",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 83,
+          "summary": "Trevor Blanchard called before the storm season about basement flooding and asked for a sump pump replacement. Rosey confirmed the pump service, walked through the estimate range, and offered an online scheduling discount. Trevor scheduled a service appointment for the sump pump install.",
+          "date": "Mar 3, 4:52 PM",
+          "agent": "Rosey",
+          "duration": "1m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 9,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Angela Ruiz was a first-time caller who found Roto-Rooter through a search for an emergency plumber and wanted to set up service for a leaking main. Mary collected Angela's full name, address, phone number, and preferred window, then explained the upfront quote process. Angela scheduled her first service appointment and received a confirmation text.",
+          "date": "Mar 22, 11:05 AM",
+          "agent": "Mary",
+          "duration": "3m 06s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 11,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Dominic Farrell reported recurring backups and root intrusion, so he asked about sewer line cleaning. Lee recommended a camera inspection first, then mainline snaking, and explained why the $99 specials rarely cover the real job. Dominic booked a service appointment for the sewer line work.",
+          "date": "Apr 9, 8:41 AM",
+          "agent": "Lee",
+          "duration": "2m 33s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 14,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 66,
+          "summary": "Gwen Castellano called about hard water spotting and asked for a water softener quote. Mike offered the free hard-water test and outlined the whole-house filtration range. Gwen scheduled a service appointment for the softener assessment.",
+          "date": "Apr 27, 3:19 PM",
+          "agent": "Mike",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 16,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 61,
+          "summary": "Rachel Osei called to check the status of an already booked drain cleaning visit that was running late. Jennifer confirmed the technician was en route and updated the arrival window. Rachel did not cancel and no new appointment was created on this call.",
+          "date": "May 5, 10:28 AM",
+          "agent": "Jennifer",
+          "duration": "1m 42s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 20,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 57,
+          "summary": "Bill Hartness called for an update on an in-progress water damage restoration claim after a burst pipe. Rose explained the drying timeline and the mitigation steps still remaining. The call was informational and no new service appointment was scheduled.",
+          "date": "Jun 12, 2:47 PM",
+          "agent": "Rose",
+          "duration": "2m 12s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 23,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 53,
+          "summary": "Nadia Petrov was unhappy that her recent sump pump installation left a small floor leak. Sue apologized, logged the issue, and arranged a corrective visit under the existing job. No new appointment was booked because this was tied to the prior work order.",
+          "date": "Jul 1, 9:33 AM",
+          "agent": "Sue",
+          "duration": "2m 27s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 27,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 48,
+          "summary": "Kenji Yamada called to use the six-month guarantee after a drain cleaning clog returned. Oscar verified the original ticket and set up a warranty return visit at no charge. Because it was a guaranteed follow-up, no new paid appointment was created.",
+          "date": "Jul 19, 4:10 PM",
+          "agent": "Oscar",
+          "duration": "1m 51s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 44,
+          "summary": "Deborah Klein disputed a charge that was higher than the phone estimate on her invoice. Lila reviewed the line items and escalated the billing question to the branch manager. The dispute stayed open and no service was scheduled on this call.",
+          "date": "Aug 4, 11:56 AM",
+          "agent": "Lila",
+          "duration": "2m 39s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 32,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 41,
+          "summary": "Carlos Menendez called to cancel a scheduled hydro jetting visit because he chose another provider. Lee processed the cancel request and asked a few questions to understand the decision. No new appointment resulted from the call.",
+          "date": "Aug 21, 3:22 PM",
+          "agent": "Lee",
+          "duration": "1m 34s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 38,
+          "summary": "Yolanda Priest complained that her new water heater was producing rust-colored water days after install. Mike documented the fault and flagged it for a priority technician callback. The caller remained frustrated and no new appointment was booked.",
+          "date": "Sep 8, 8:59 AM",
+          "agent": "Mike",
+          "duration": "2m 50s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 37,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Gregory Vann called after hours about a spreading water damage emergency in his basement and reached voicemail during a call spike. No agent connected and the message was left for the dispatch queue. No service appointment was captured on this call.",
+          "date": "Sep 25, 10:47 PM",
+          "agent": "No Agent",
+          "duration": "0m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 39,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Helena Marsh called angry about a delayed sewer line repair that missed two promised windows. Jennifer apologized and tried to reschedule, but Helena wanted to cancel and demanded a supervisor. The call ended unresolved with no new appointment.",
+          "date": "Oct 2, 1:14 PM",
+          "agent": "Jennifer",
+          "duration": "3m 11s",
+          "scorecards": 8,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": true,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "drain cleaning",
+        "water heater",
+        "sump pump",
+        "sewer line",
+        "water damage",
+        "cancel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Identify Service Need",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area/ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Schedule Service Appointment",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Expectations for Technician Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Offer Applicable Promotion/Coupon",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller initiated with urgency",
+        "Agent greeted warmly and professionally",
+        "Caller confirmed residential customer",
+        "Agent identified clogged toilet as primary issue",
+        "Service area confirmed as in-service ZIP",
+        "Agent offered same-day appointment",
+        "Caller accepted appointment slot",
+        "Agent verified phone number",
+        "Caller is new customer",
+        "Agent documented service address",
+        "Toilet backup symptom captured",
+        "Caller expressed concern about water damage",
+        "Agent acknowledged emergency context"
+      ],
+      "unmetSignals": [
+        "Email address not captured in system",
+        "Agent did not explain technician ETA window",
+        "No mention of upfront pricing or estimate process",
+        "Caller did not receive coupon offer at close",
+        "Agent did not confirm whether backup is affecting other fixtures",
+        "Service history not reviewed (new customer assumed but not stated)",
+        "Availability for appointment time not confirmed by caller",
+        "Caller hesitation about cost not addressed",
+        "No financing option mentioned for potential repair upgrade",
+        "Agent did not gather detailed symptom timeline"
+      ],
+      "naSignals": [
+        "Previous service date not applicable",
+        "Return or rework request not applicable",
+        "Warranty claim process not applicable",
+        "Billing dispute resolution not applicable",
+        "Cancellation or reschedule not applicable",
+        "Account credits or refunds not applicable",
+        "Referral incentive not offered",
+        " appointment confirmation text sent"
+      ],
+      "prompts": [
+        {
+          "question": "Is the customer trying to solve a specific problem?",
+          "answer": "Yes. The caller has a clogged toilet that is backing up water and is concerned about potential water damage. This is a new customer seeking urgent residential plumbing service."
+        },
+        {
+          "question": "What are the customer's expectations?",
+          "answer": "The caller needs same-day or next-available emergency service to resolve the toilet blockage. They implied budget sensitivity but did not explicitly state a cost ceiling or financing preference."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "Marcus could have captured the email address to send appointment confirmation and pre-arrival tips, explained the upfront estimate process to set cost expectations, and confirmed whether the backup affects other fixtures in the home to assess severity."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Roto-Rooter Plumbing and Water Cleanup. This is Marcus speaking. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:28",
+          "text": "Hi yes, my toilet is backed up and I am really worried it is going to overflow and damage my bathroom floor. Can someone come out today?"
+        },
+        {
+          "speaker": "agent",
+          "time": "00:41",
+          "text": "I completely understand your concern. We specialize in emergency plumbing and we have technicians available today. Before I get you scheduled, may I have your full name please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:52",
+          "text": "Sure. It is Sarah Mitchell."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:00",
+          "text": "Great, Sarah. And just to confirm, is this for a residential property?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:05",
+          "text": "Yes, my home."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:08",
+          "text": "Perfect. Now, have you had this toilet issue before, or is this the first time you are experiencing a backup?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:17",
+          "text": "First time. We moved in about six months ago and everything has been fine until this morning."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:26",
+          "text": "Okay Sarah, what is the ZIP code for your location? I need to confirm we service your area."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:33",
+          "text": "It is 60611. That is Chicago, in the Lincoln Park neighborhood."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:41",
+          "text": "Excellent. 60611 is definitely in our service area. And what is the best phone number to reach you on?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:50",
+          "text": "It is ****-***-****."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:00",
+          "text": "Perfect, I have that down. Sarah, I have an opening for a technician to come out this afternoon around 3 to 5 PM. Does that window work for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:11",
+          "text": "Yes, that works great. What do I owe for this?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:19",
+          "text": "Our technician will perform a full diagnosis and provide you with an upfront quote before any work begins. Is there anything else I can help you with today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:29",
+          "text": "No, I think that covers it."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:35",
+          "text": "Wonderful, Sarah. Your appointment is set for today, 3 to 5 PM. A technician from our team will be there to fix your toilet. Thank you for choosing Roto-Rooter and we will see you soon."
+        }
+      ],
+      "aiSummary": "Sarah Mitchell, a new residential customer in Chicago's 60611 ZIP code, called with an urgent clogged toilet that is backing up and threatening water damage to her bathroom. Agent Marcus Bell confirmed her residential status, identified the service need, verified the service area, captured her phone number, and scheduled a same-day emergency appointment for 3 to 5 PM. The call was efficient and professional, though the agent did not capture Sarah's email address or provide detailed information about the upfront pricing process and technician ETA confirmation.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, you did a great job structuring this intake call and getting Sarah scheduled quickly for emergency service. Your greeting was warm and your close was professional. For next time, capture the email address before hanging up so we can send her the appointment confirmation and pre-arrival tips. Also, take a few seconds to explain that our technician will arrive during the window and provide an upfront estimate before touching anything. That sets the cost expectation early and builds trust with new customers in a high-stress situation."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "72,091"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$238.72"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$17,209,395"
+            }
+          ]
+        },
+        {
+          "title": "NEW CUSTOMER ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Customers (Count)",
+              "value": "45,238"
+            },
+            {
+              "label": "Caller Type: New Customers (Percent)",
+              "value": "63%"
+            },
+            {
+              "label": "Service Appointment: Scheduled (Count)",
+              "value": "41,813"
+            },
+            {
+              "label": "Service Appointment: Scheduled (Percent)",
+              "value": "58%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING CUSTOMERS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Customer (Count)",
+              "value": "26,853"
+            },
+            {
+              "label": "Caller Type: Existing Customer (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Service Appointment: Canceled (Percent)",
+              "value": "6%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Service Appointments)",
+          "chart": {
+            "legend": "Service Appointment: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Google Paid Search",
+                "value": 55,
+                "display": "55%"
+              },
+              {
+                "name": "Organic Search",
+                "value": 48,
+                "display": "48%"
+              },
+              {
+                "name": "Coupons & Promotions",
+                "value": 41,
+                "display": "41%"
+              },
+              {
+                "name": "Social Media",
+                "value": 33,
+                "display": "33%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Google Paid Search",
+                  "24,317",
+                  "55%",
+                  "$6,142,317"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic Search",
+                  "18,642",
+                  "48%",
+                  "$4,388,642"
+                ]
+              },
+              {
+                "cells": [
+                  "Bing Paid Search",
+                  "11,208",
+                  "41%",
+                  "$2,731,208"
+                ]
+              },
+              {
+                "cells": [
+                  "Coupons & Promotions",
+                  "9,431",
+                  "36%",
+                  "$2,105,431"
+                ]
+              },
+              {
+                "cells": [
+                  "Social Media",
+                  "8,493",
+                  "33%",
+                  "$1,841,797"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 30000,
+            "axisTicks": [
+              0,
+              5000,
+              10000,
+              15000,
+              20000,
+              25000,
+              30000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Paid Search",
+                "value": 25318,
+                "display": "25,318"
+              },
+              {
+                "name": "Organic SEO",
+                "value": 19442,
+                "display": "19,442"
+              },
+              {
+                "name": "Email & CRM",
+                "value": 11207,
+                "display": "11,207"
+              },
+              {
+                "name": "Social",
+                "value": 8731,
+                "display": "8,731"
+              },
+              {
+                "name": "Referral",
+                "value": 7393,
+                "display": "7,393"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Paid Search",
+                  "25,318",
+                  "57%"
+                ]
+              },
+              {
+                "cells": [
+                  "Organic SEO",
+                  "19,442",
+                  "51%"
+                ]
+              },
+              {
+                "cells": [
+                  "Email & CRM",
+                  "11,207",
+                  "46%"
+                ]
+              },
+              {
+                "cells": [
+                  "Social",
+                  "8,731",
+                  "38%"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "7,393",
+                  "44%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 15000,
+            "axisTicks": [
+              0,
+              2500,
+              5000,
+              7500,
+              10000,
+              12500,
+              15000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Emergency Plumber 24/7 Near Me",
+                "value": 14238,
+                "display": "14,238"
+              },
+              {
+                "name": "Drain Cleaning Local",
+                "value": 9417,
+                "display": "9,417"
+              },
+              {
+                "name": "Water Heater Replacement Same Day",
+                "value": 7842,
+                "display": "7,842"
+              },
+              {
+                "name": "Sewer Line Repair Branded",
+                "value": 5318,
+                "display": "5,318"
+              },
+              {
+                "name": "Seasonal Savings",
+                "value": 3942,
+                "display": "3,942"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Service Appointment: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Emergency Plumber 24/7 Near Me",
+                  "14,238",
+                  "61%",
+                  "$3,842,617"
+                ]
+              },
+              {
+                "cells": [
+                  "Drain Cleaning Local",
+                  "9,417",
+                  "54%",
+                  "$2,105,318"
+                ]
+              },
+              {
+                "cells": [
+                  "Water Heater Replacement Same Day",
+                  "7,842",
+                  "49%",
+                  "$2,918,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Sewer Line Repair Branded",
+                  "5,318",
+                  "45%",
+                  "$1,731,208"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 8000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "emergency plumber near me",
+                "value": 7842,
+                "display": "7,842"
+              },
+              {
+                "name": "clogged drain repair",
+                "value": 5318,
+                "display": "5,318"
+              },
+              {
+                "name": "water heater replacement near me",
+                "value": 4217,
+                "display": "4,217"
+              },
+              {
+                "name": "24 hour plumber",
+                "value": 3942,
+                "display": "3,942"
+              },
+              {
+                "name": "sewer line clog",
+                "value": 2817,
+                "display": "2,817"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Service Appointments)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Service Appointment: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "emergency plumber near me",
+                  "63%"
+                ]
+              },
+              {
+                "cells": [
+                  "clogged drain repair",
+                  "56%"
+                ]
+              },
+              {
+                "cells": [
+                  "water heater replacement near me",
+                  "51%"
+                ]
+              },
+              {
+                "cells": [
+                  "24 hour plumber",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Customers",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Service Appointment: Scheduled (Percent)",
+          "Caller Type: New Customers (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Plumbing",
+              "24,317",
+              "59%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Drains",
+              "19,442",
+              "55%",
+              "61%"
+            ]
+          },
+          {
+            "cells": [
+              "Water Damage",
+              "14,208",
+              "62%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Water Quality",
+              "8,124",
+              "47%",
+              "52%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Service Appointment: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Chicago Branch",
+              "21,318",
+              "1,742",
+              "4%",
+              "59%"
+            ]
+          },
+          {
+            "cells": [
+              "Dallas-Fort Worth Branch",
+              "18,442",
+              "1,318",
+              "3%",
+              "56%"
+            ]
+          },
+          {
+            "cells": [
+              "Atlanta Branch",
+              "17,893",
+              "1,517",
+              "5%",
+              "54%"
+            ]
+          },
+          {
+            "cells": [
+              "Phoenix Branch",
+              "14,438",
+              "1,190",
+              "4%",
+              "61%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget",
+            "values": [
+              1842,
+              1918,
+              1742,
+              1817,
+              1823
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              1442,
+              1517,
+              1418,
+              1472,
+              1469
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              1218,
+              1317,
+              1242,
+              1208,
+              1232
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              842,
+              871,
+              818,
+              838,
+              839
+            ]
+          },
+          {
+            "name": "Needs Partner Approval",
+            "values": [
+              671,
+              718,
+              682,
+              658,
+              664
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "28,836"
+          },
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "Job Won (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$9,809,355"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Job Won (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,247,384"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Job Won (Percent)",
+              "value": "26%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,834,521"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Job Won (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,847"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Job Won (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,563,295"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "Job Won (Percent)",
+              "value": "35%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,769,412"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "Job Won (Percent)",
+              "value": "42%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,237,896"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 33282,
+          "rows": [
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "11,847",
+                "58%",
+                "35%",
+                "$4,126,545"
+              ]
+            },
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "8,694",
+                "54%",
+                "32%",
+                "$2,769,408"
+              ]
+            },
+            {
+              "name": "Local SEO",
+              "metrics": [
+                "4,523",
+                "61%",
+                "37%",
+                "$1,849,267"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "2,156",
+                "48%",
+                "28%",
+                "$598,734"
+              ]
+            },
+            {
+              "name": "Mobile App",
+              "metrics": [
+                "1,616",
+                "55%",
+                "31%",
+                "$665,401"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 31754,
+          "rows": [
+            {
+              "name": "Voice Call",
+              "metrics": [
+                "13,284",
+                "57%",
+                "34%",
+                "$4,843,278"
+              ]
+            },
+            {
+              "name": "Web Form",
+              "metrics": [
+                "9,156",
+                "56%",
+                "32%",
+                "$2,936,821"
+              ]
+            },
+            {
+              "name": "SMS Message",
+              "metrics": [
+                "3,847",
+                "54%",
+                "29%",
+                "$1,247,963"
+              ]
+            },
+            {
+              "name": "Mobile App Booking",
+              "metrics": [
+                "1,423",
+                "59%",
+                "36%",
+                "$847,156"
+              ]
+            },
+            {
+              "name": "Social Media Message",
+              "metrics": [
+                "859",
+                "47%",
+                "27%",
+                "$534,137"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 33547,
+          "rows": [
+            {
+              "name": "Emergency Plumber 24/7 Near Me",
+              "metrics": [
+                "9,234",
+                "60%",
+                "38%",
+                "$3,847,521"
+              ]
+            },
+            {
+              "name": "Water Heater Replacement Same Day",
+              "metrics": [
+                "6,847",
+                "58%",
+                "35%",
+                "$2,427,834"
+              ]
+            },
+            {
+              "name": "Drain Cleaning Local Service",
+              "metrics": [
+                "5,126",
+                "54%",
+                "31%",
+                "$1,583,421"
+              ]
+            },
+            {
+              "name": "Sewer Line Repair Specialist",
+              "metrics": [
+                "3,284",
+                "52%",
+                "28%",
+                "$1,134,965"
+              ]
+            },
+            {
+              "name": "Summer Savings on Water Softener",
+              "metrics": [
+                "2,107",
+                "48%",
+                "24%",
+                "$815,614"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 30245,
+          "rows": [
+            {
+              "name": "emergency plumber near me",
+              "metrics": [
+                "4,847",
+                "62%",
+                "40%",
+                "$2,156,745"
+              ]
+            },
+            {
+              "name": "water heater replacement cost",
+              "metrics": [
+                "3,521",
+                "59%",
+                "36%",
+                "$1,456,789"
+              ]
+            },
+            {
+              "name": "clogged drain repair",
+              "metrics": [
+                "2,834",
+                "55%",
+                "32%",
+                "$964,523"
+              ]
+            },
+            {
+              "name": "24 hour plumber near me",
+              "metrics": [
+                "1,934",
+                "57%",
+                "34%",
+                "$785,294"
+              ]
+            },
+            {
+              "name": "tankless water heater install",
+              "metrics": [
+                "1,576",
+                "51%",
+                "28%",
+                "$634,156"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Service Appointment Scheduled (Percent)",
+            "Job Won (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Emergency Plumbing Services",
+              "metrics": [
+                "8,947",
+                "59%",
+                "36%",
+                "$3,421,847"
+              ]
+            },
+            {
+              "name": "Water Heater Repair and Installation",
+              "metrics": [
+                "7,284",
+                "57%",
+                "34%",
+                "$2,847,156"
+              ]
+            },
+            {
+              "name": "Drain Cleaning and Sewer Line",
+              "metrics": [
+                "6,521",
+                "54%",
+                "31%",
+                "$1,834,721"
+              ]
+            },
+            {
+              "name": "Water Quality and Softening",
+              "metrics": [
+                "3,456",
+                "52%",
+                "29%",
+                "$1,247,963"
+              ]
+            },
+            {
+              "name": "Water Damage Restoration",
+              "metrics": [
+                "2,648",
+                "56%",
+                "33%",
+                "$1,457,668"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "Job Won (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Emergency Plumbing Services",
+            "values": [
+              1124,
+              1247,
+              1089,
+              923,
+              797
+            ]
+          },
+          {
+            "name": "Water Heater Repair and Installation",
+            "values": [
+              989,
+              1056,
+              998,
+              847,
+              641
+            ]
+          },
+          {
+            "name": "Drain Cleaning and Sewer Line",
+            "values": [
+              821,
+              934,
+              756,
+              687,
+              516
+            ]
+          },
+          {
+            "name": "Water Quality and Softening",
+            "values": [
+              347,
+              384,
+              298,
+              256,
+              194
+            ]
+          },
+          {
+            "name": "Water Damage Restoration",
+            "values": [
+              287,
+              324,
+              241,
+              198,
+              150
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Service Appointment Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "28%"
+          },
+          {
+            "label": "Service Appointment Scheduled (Count)",
+            "value": "377"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$2,164,796"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Service Appointment Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Service Appointment Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Service Appointment Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,512"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Service Appointment Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Service Appointment Scheduled",
+            "values": [
+              71,
+              74,
+              79,
+              73,
+              76,
+              81,
+              78,
+              75,
+              82,
+              79,
+              77,
+              80,
+              74,
+              83,
+              78,
+              76,
+              79,
+              81,
+              75,
+              80,
+              78,
+              74,
+              79,
+              76,
+              183,
+              191,
+              176,
+              185,
+              192,
+              177,
+              181,
+              186,
+              174,
+              188,
+              179,
+              192,
+              175,
+              183,
+              189,
+              178,
+              185,
+              177,
+              182,
+              180,
+              174,
+              181,
+              178,
+              185,
+              179
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,217"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "10,847"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "748"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "61%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "722"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "96%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Service Appointment Scheduled (Count)",
+        "xLabels": [
+          "01/18",
+          "01/19",
+          "01/20",
+          "01/21",
+          "01/22",
+          "01/23"
+        ],
+        "series": [
+          {
+            "name": "Drain Cleaning & Sewer Line",
+            "values": [
+              8,
+              11,
+              9,
+              12,
+              10,
+              14
+            ]
+          },
+          {
+            "name": "Water Heater Repair & Replacement",
+            "values": [
+              6,
+              9,
+              7,
+              11,
+              8,
+              10
+            ]
+          },
+          {
+            "name": "Emergency Plumbing & Leaks",
+            "values": [
+              4,
+              7,
+              5,
+              9,
+              6,
+              8
+            ]
+          },
+          {
+            "name": "Water Damage & Flood Restoration",
+            "values": [
+              2,
+              5,
+              3,
+              7,
+              4,
+              6
+            ]
+          },
+          {
+            "name": "Camera Inspection & Hydro Jetting",
+            "values": [
+              3,
+              4,
+              2,
+              6,
+              3,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "66,324"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "54,069"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Service Appointment Booked (Count)",
+            "value": "41,813"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$17,209,395"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Patricia Ochoa",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "Kevin Daniels",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Sandra Liu",
+              "value": 204,
+              "display": "204"
+            },
+            {
+              "name": "Derek Martinez",
+              "value": 165,
+              "display": "165"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Service Appointment Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Jennifer Torres",
+            "values": [
+              287,
+              304,
+              319,
+              346,
+              371
+            ]
+          },
+          {
+            "name": "Robert Chang",
+            "values": [
+              269,
+              281,
+              298,
+              312,
+              334
+            ]
+          },
+          {
+            "name": "Michelle Graves",
+            "values": [
+              241,
+              256,
+              273,
+              291,
+              308
+            ]
+          },
+          {
+            "name": "David Patel",
+            "values": [
+              218,
+              237,
+              254,
+              276,
+              294
+            ]
+          },
+          {
+            "name": "Lisa Anderson",
+            "values": [
+              196,
+              214,
+              232,
+              251,
+              267
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Webb",
+              "value": 54.2,
+              "display": "54.2%"
+            },
+            {
+              "name": "Patricia Ochoa",
+              "value": 56.8,
+              "display": "56.8%"
+            },
+            {
+              "name": "Kevin Daniels",
+              "value": 52.1,
+              "display": "52.1%"
+            },
+            {
+              "name": "Sandra Liu",
+              "value": 58.4,
+              "display": "58.4%"
+            },
+            {
+              "name": "Derek Martinez",
+              "value": 61.3,
+              "display": "61.3%"
+            },
+            {
+              "name": "James Richter",
+              "value": 55.7,
+              "display": "55.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Service Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Webb",
+                "54.2%",
+                "28%",
+                "$152,854",
+                "1,347"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Ochoa",
+                "56.8%",
+                "30%",
+                "$169,427",
+                "1,412"
+              ]
+            },
+            {
+              "cells": [
+                "Kevin Daniels",
+                "52.1%",
+                "26%",
+                "$140,288",
+                "1,489"
+              ]
+            },
+            {
+              "cells": [
+                "Sandra Liu",
+                "58.4%",
+                "32%",
+                "$186,915",
+                "1,424"
+              ]
+            },
+            {
+              "cells": [
+                "Derek Martinez",
+                "61.3%",
+                "35%",
+                "$203,188",
+                "1,388"
+              ]
+            },
+            {
+              "cells": [
+                "James Richter",
+                "55.7%",
+                "29%",
+                "$160,715",
+                "1,351"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Jennifer Torres",
+              "value": 93.6,
+              "display": "93.6%"
+            },
+            {
+              "name": "Robert Chang",
+              "value": 91.2,
+              "display": "91.2%"
+            },
+            {
+              "name": "Michelle Graves",
+              "value": 89.4,
+              "display": "89.4%"
+            },
+            {
+              "name": "David Patel",
+              "value": 87.8,
+              "display": "87.8%"
+            },
+            {
+              "name": "Lisa Anderson",
+              "value": 92.1,
+              "display": "92.1%"
+            },
+            {
+              "name": "Christopher Mills",
+              "value": 88.7,
+              "display": "88.7%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Service Appointment Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Jennifer Torres",
+                "93.6%",
+                "67%",
+                "$397,248",
+                "1,517"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Chang",
+                "91.2%",
+                "64%",
+                "$374,923",
+                "1,487"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Graves",
+                "89.4%",
+                "61%",
+                "$312,847",
+                "1,443"
+              ]
+            },
+            {
+              "cells": [
+                "David Patel",
+                "87.8%",
+                "58%",
+                "$289,614",
+                "1,521"
+              ]
+            },
+            {
+              "cells": [
+                "Lisa Anderson",
+                "92.1%",
+                "65%",
+                "$351,782",
+                "1,498"
+              ]
+            },
+            {
+              "cells": [
+                "Christopher Mills",
+                "88.7%",
+                "62%",
+                "$331,604",
+                "1,505"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Service Appointment Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Service Appointment Booked (Count)",
+        "rightMax": 1900,
+        "rightTicks": [
+          0,
+          475,
+          950,
+          1425,
+          1900
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 1551
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 1486
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 1384
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 1320
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 1149
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 1206
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 1333
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 1385
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 1545
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 1498
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 1349
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 1303
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 1159
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 1195
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 1364
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 1406
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 1530
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 1507
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 1321
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 1279
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 1177
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 1189
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 1388
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 1434
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 1511
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 1509
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 1302
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 1248
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 1197
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 1192
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 1396
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 800000,
+        "rightTicks": [
+          0,
+          266666.6666666667,
+          533333.3333333334,
+          800000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 637938
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 611434
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 569370
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 543288
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 473032
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 496434
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 548397
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 570013
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 635569
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 616223
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 555011
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 536429
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 477331
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 492016
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 561454
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 578562
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 629651
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 619852
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 543543
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 526302
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 484496
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 489575
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 571131
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 590063
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 621652
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 620747
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 535765
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 513713
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 492897
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 490520
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 576987
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "72,091"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "4:47"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "5,767"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "4,325"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "87%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "89%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "86%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "86%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martinez",
+                "412",
+                "91%",
+                "87%",
+                "84%"
+              ]
+            },
+            {
+              "cells": [
+                "James Chen",
+                "389",
+                "88%",
+                "85%",
+                "87%"
+              ]
+            },
+            {
+              "cells": [
+                "Rebecca Thompson",
+                "298",
+                "88%",
+                "86%",
+                "86%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "72,091 calls",
+      "pagerLabel": "1 of 7,209",
+      "calls": [
+        {
+          "time": "1/6/26 8:47 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:22 am",
+          "id": "A3C1-4B92D71E0F8A"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7D2E-96A1C40B37E5"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "C0B4-2E7F5A9138DC"
+        },
+        {
+          "time": "1/17/26 12:33 pm",
+          "id": "9E81-6D3B0C7A24F1"
+        },
+        {
+          "time": "1/20/26 1:09 pm",
+          "id": "B462-8F17E93D50AC"
+        },
+        {
+          "time": "1/23/26 2:26 pm",
+          "id": "1F5D-73A2C68E90B4"
+        },
+        {
+          "time": "1/27/26 3:52 pm",
+          "id": "58AC-9B04E217D63F"
+        },
+        {
+          "time": "1/29/26 4:37 pm",
+          "id": "E device wrong-D7A3-40C1B85F92E6"
+        },
+        {
+          "time": "1/30/26 5:14 pm",
+          "id": "6B90-15E7A3C82D40"
+        }
+      ],
+      "duration": "2:38",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:00",
+          "text": "Thank you for calling Roto-Rooter Plumbing and Water Cleanup, this is Danielle. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Roto-Rooter Plumbing and Water Cleanup",
+            "this is Danielle"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:07",
+          "text": "Hi, my kitchen sink is completely backed up and the water just will not drain. I have never used you before.",
+          "highlights": [
+            "completely backed up",
+            "never used you before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:15",
+          "text": "I am sorry to hear that, we can definitely take care of it. May I start with your name and the address where you need service?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:23",
+          "text": "Sure, it is Marcus Bell, and I am at 412 Larkspur Lane here in Columbus.",
+          "highlights": [
+            "Marcus Bell"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:31",
+          "text": "Thank you, Marcus. And is it just the kitchen sink, or are you seeing slow drains anywhere else in the home?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:38",
+          "text": "Mostly the kitchen, but honestly the whole line has been slow for a while now.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:45",
+          "text": "That usually points to grease buildup in the line. I would recommend our Full-Service Drain Cleaning, which cleans the whole pipeline end to end rather than just poking a hole through the clog.",
+          "highlights": [
+            "Full-Service Drain Cleaning",
+            "cleans the whole pipeline end to end"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:56",
+          "text": "How is that different from the cheap drain specials I keep seeing?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:02",
+          "text": "Great question. Those low specials only clear a small opening. Our full service scours the pipe walls clean, and it comes with a six-month guarantee.",
+          "highlights": [
+            "six-month guarantee"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:11",
+          "text": "That sounds much better. What does that run?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:16",
+          "text": "Full-Service Drain Cleaning typically falls between 160 and 450 dollars, and the technician gives you an exact upfront price on site before any work begins.",
+          "highlights": [
+            "upfront price on site"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:26",
+          "text": "Okay. If it turns out to be deeper in the main line, can they check that too?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:33",
+          "text": "Absolutely. The technician can run a video camera line inspection to locate any deeper blockage or root intrusion, so nothing gets guessed at.",
+          "highlights": [
+            "video camera line inspection"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:42",
+          "text": "Perfect. Can someone come out today or tomorrow?",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "1:48",
+          "text": "We have same-day availability. I can get a technician out to you this afternoon between 2 and 4, or first thing tomorrow morning. Which works better?",
+          "highlights": [
+            "same-day availability"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:57",
+          "text": "This afternoon would be great, the 2 to 4 window.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:03",
+          "text": "Done. I have you scheduled for a Full-Service Drain Cleaning today between 2 and 4 PM at 412 Larkspur Lane. What is the best phone number for the technician to reach you?",
+          "highlights": [
+            "I have you scheduled for a Full-Service Drain Cleaning today between 2 and 4 PM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:15",
+          "text": "It is 614-555-0182.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:21",
+          "text": "Got it, 614-555-0182. You are all set, Marcus. You will get a text when the technician is on the way.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:30",
+          "text": "Thank you for choosing Roto-Rooter, Marcus. We will see you this afternoon. Have a great day.",
+          "highlights": [
+            "Thank you for choosing Roto-Rooter",
+            "Have a great day"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Caller Type: New Customer",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Service Appointment: Scheduled",
+          "badges": [
+            "Rule",
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Intent: Drain Cleaning",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Intent: Camera Line Inspection",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Upfront Pricing Quoted",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Same-Day Dispatch Requested",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Marcus Bell, a new customer at 412 Larkspur Lane in Columbus, called about a completely backed-up kitchen sink and a slow drain line throughout the home. The agent, Danielle, recommended Full-Service Drain Cleaning with a six-month guarantee and explained the option of a video camera line inspection if the blockage runs deeper into the main line. She quoted the typical 160 to 450 dollar range with upfront on-site pricing and confirmed same-day availability. A service appointment was scheduled for that afternoon between 2 and 4 PM, and the customer's callback number was captured.",
+        "keyPoints": [
+          "New customer, first time using Roto-Rooter",
+          "Need: backed-up kitchen sink and slow whole-house drain line",
+          "Recommended Full-Service Drain Cleaning with six-month guarantee",
+          "Offered video camera line inspection for deeper blockage",
+          "Quoted upfront pricing, same-day dispatch confirmed",
+          "Contact number 614-555-0182 captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Service Appointment booked, today 2 to 4 PM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "45,417 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 4,542",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there, thanks for texting Roto-Rooter. This is Marcus. How can we help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Hi yeah we have a clogged drain in our kitchen sink. Its been getting slower and slower"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm sorry to hear that. A slow kitchen drain usually means buildup in the pipe. Are you experiencing any backups or water pooling around the sink area?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "No backups yet but water is draining really slowly. Takes like 5 minutes to empty"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:25 AM",
+              "text": "Thanks for that detail. That's exactly what we can help with. Just to confirm, is this your primary residence in Portland, Oregon?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:26 AM",
+              "text": "Yes we live here full time. How much would drain cleaning cost?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:27 AM",
+              "text": "Great question. Our full service drain cleaning typically runs $160 to $450 depending on how severe the clog is. We'll do a complete end to end pipe cleaning and it comes with a 6 month guarantee. Would you be available for an appointment tomorrow morning between 8 and 10 AM?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:28 AM",
+              "text": "Tomorrow morning works. What part of tomorrow?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:29 AM",
+              "text": "Perfect. How about 9 AM tomorrow, March 11th? One of our technicians will arrive at your home in Portland with all the equipment needed and we'll get that drain flowing smoothly again."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "9 AM tomorrow is perfect. What else do I need to do?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Excellent. Your Service Appointment is confirmed for tomorrow March 11th at 9 AM. Our tech will call you at this number about 30 minutes before arrival. If you have any questions before then, just call us back at 877-936-2933. Thanks for choosing Roto-Rooter."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:32 AM",
+              "text": "Great thanks so much"
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Drain Cleaning Intent",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Full Service Solution Offered",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Price Quote Provided",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "14",
+            "source": "503-247-8956",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "503-247-8956",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Mitchell",
+            "firstName": "Sarah",
+            "lastName": "Mitchell",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A724-2B8FC94D7E61",
+          "time": "3/10/26 8:15 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A724-2B8FC94D7E61",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B841-5C3DA6F1B2E4",
+          "time": "3/10/26 11:42 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B841-5C3DA6F1B2E4",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D965-7A4EB6C2F9D3",
+          "time": "3/10/26 4:33 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D965-7A4EB6C2F9D3",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "72,091 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 7,209",
+      "conversations": [
+        {
+          "id": "B847-3F2ED519A64C",
+          "time": "1/15/26 2:34 pm",
+          "active": true,
+          "date": "January 15, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "2:34 PM",
+              "text": "Hello, thank you for calling Roto-Rooter Plumbing and Water Cleanup. This is Marcus speaking. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:35 PM",
+              "text": "Yeah, hi. I'm having trouble with my kitchen sink. It's draining really slowly and I'm not sure what's going on."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:35 PM",
+              "text": "I'm sorry to hear that. We can definitely help you with that. Have you tried using any drain cleaning products or plunging it yourself?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:36 PM",
+              "text": "Yeah, I tried plunging it a couple times but nothing really happened. It's still pretty backed up."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:36 PM",
+              "text": "Okay, that's helpful to know. Is this just affecting your kitchen sink, or are other drains in your home draining slowly too?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:37 PM",
+              "text": "Just the kitchen sink as far as I can tell. The bathroom drains seem fine."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:37 PM",
+              "text": "Perfect. That tells me it's likely a localized clog in your kitchen line. We specialize in full service drain cleaning that clears the entire pipe from end to end and comes with a six month guarantee. How soon would you like us to take a look?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:38 PM",
+              "text": "That sounds good. I'm pretty flexible. What days do you have available?"
+            },
+            {
+              "speaker": "agent",
+              "time": "2:39 PM",
+              "text": "Great. We can get you scheduled as soon as tomorrow. Would tomorrow at ten in the morning work for you, or would you prefer an afternoon time slot?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:39 PM",
+              "text": "Tomorrow morning at ten sounds perfect."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:40 PM",
+              "text": "Excellent. So I have you down for a drain cleaning service tomorrow, January sixteenth at ten AM. One of our technicians will come out and do a full assessment. You can expect to pay somewhere in the range of one hundred sixty to four hundred fifty dollars depending on what we find. Does that sound okay?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:40 PM",
+              "text": "Yeah, that's fine. Thank you."
+            },
+            {
+              "speaker": "agent",
+              "time": "2:41 PM",
+              "text": "Perfect. Just to confirm, we'll be there tomorrow at ten o'clock. If you need to reach us beforehand, you can call us back at eight seven seven, nine three six, twenty nine thirty three. Have a great day."
+            },
+            {
+              "speaker": "consumer",
+              "time": "2:41 PM",
+              "text": "Thanks so much. I appreciate it."
+            }
+          ],
+          "signals": [
+            {
+              "name": "(QA) Proper Greeting",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "(QA) Proper Close",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Service Appointment: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Customer",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Drain Cleaning Intent",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Kitchen Fixture Issue",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Full Service Requested",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "B847-3F2ED519A64C",
+            "callStartTime": "1/15/26 2:34 pm",
+            "duration": "7:12",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice: Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "503-481-6274",
+            "repeatCaller": "No",
+            "city": "Portland",
+            "region": "OR",
+            "phoneType": "Mobile",
+            "displayName": "Jennifer Adams",
+            "firstName": "Jennifer",
+            "lastName": "Adams",
+            "gender": "Female",
+            "destinationTimeZone": "Pacific Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "C923-4A8B7D2F1E6B",
+          "time": "1/22/26 11:47 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C923-4A8B7D2F1E6B",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D156-5B9C2E3A7F4D",
+          "time": "1/28/26 3:21 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D156-5B9C2E3A7F4D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "E784-6C7D9F1A3B2E",
+          "time": "1/09/26 9:15 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "E784-6C7D9F1A3B2E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro + offer: I'm Roto-Rooter Plumbing & Water Cleanup's AI agent, here to help you get a personalized quote and book a visit from a licensed technician. We're open 24/7 and can often offer an online scheduling discount, would you like to get started?",
+        "Qualify one question at a time: I'll ask a few quick questions one at a time, what plumbing or drain issue you're seeing, the fixture or unit involved and its type or brand (for example gas, electric, or tankless water heater), how many fixtures or drains are affected, how soon you need service, and your ZIP code so I can confirm we cover your area.",
+        "Estimate then book: Once I confirm we service your ZIP, I'll share a preliminary price range based on what you shared, then recommend an in-home visit with a technician for an exact upfront quote. I'll propose a specific day and time, and you'll get a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Roto_Rooter_Plumbing_Water_Cleanup_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Plumbing & Drain Services",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Locations",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Schedule Service",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"drain cleaning guarantee\",\"question\":\"My drain is slow again after you cleaned it last month, is that covered?\",\"answer\":\"Our full-service drain cleanings are guaranteed for six months, so a return visit for the same line is covered. I can schedule a technician to come back out at no additional charge, what day works for you?\"},{\"topic\":\"reschedule appointment\",\"question\":\"I need to move my water heater installation to another day, can you help?\",\"answer\":\"Absolutely, I can move your installation to a new day and time that works better for you. Let me know your preferred date and I'll update the appointment and send a reminder text.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do you offer 24/7 emergency service?",
+              "answer": "Yes, we're open and available 24/7 for urgent leaks, backups, and flooding. I can dispatch a technician for a same-day or after-hours visit, what's your ZIP code so I can confirm coverage?"
+            },
+            {
+              "question": "How much does drain cleaning cost?",
+              "answer": "Pricing depends on the drain and the severity of the blockage, so we provide an upfront quote on site before any work begins. I can book a technician to assess it and give you an exact price, would you like to schedule?"
+            },
+            {
+              "question": "Why don't you offer a $99 drain cleaning like other companies?",
+              "answer": "Those low advertised prices often only clear a drain temporarily rather than clean the full pipeline, and extra charges usually get added on site. We clean the entire line end to end and guarantee it for six months, and I can book a visit for an honest upfront quote."
+            },
+            {
+              "question": "My toilet won't flush, can you fix it?",
+              "answer": "Yes, we handle clog clearing, flapper and fill valve repairs, wax ring replacement, and full toilet swaps. I can schedule a technician to diagnose it, what day works best for you?"
+            },
+            {
+              "question": "Do you replace water heaters the same day?",
+              "answer": "In most cases we offer same-day installation and carry major brands like A.O. Smith, Rheem, Bradford White, and Rinnai. I can set up an in-home visit for an exact upfront quote, what's your ZIP code?"
+            },
+            {
+              "question": "What's the difference between a tankless and a tank water heater?",
+              "answer": "A tankless unit gives you endless hot water and higher efficiency, while a hybrid heat pump model offers maximum efficiency for the long term. A technician can recommend the best fit for your home during a visit, would you like me to book one?"
+            },
+            {
+              "question": "How long does a water heater last?",
+              "answer": "The average tank heater lasts about 10 years, though water quality and pressure can affect its lifespan. If yours is aging, I can schedule a technician to inspect it and review replacement options."
+            },
+            {
+              "question": "Do you do video camera inspections?",
+              "answer": "Yes, we use a waterproof drain camera to locate clogs, breaks, and root intrusion in your line. I can book an inspection with a technician who will provide an upfront quote, what day works?"
+            },
+            {
+              "question": "My garbage disposal stopped working, what can you do?",
+              "answer": "We handle jam clearing, motor and unit replacement, and leak repair for garbage disposals. I can schedule a technician to take a look, what's your ZIP code?"
+            },
+            {
+              "question": "Can you handle a sewer line clog?",
+              "answer": "Yes, we clear main sewer lines, remove roots, and snake the mainline, and we can run a camera to pinpoint the issue. I can book a technician to assess and quote it, would you like to schedule?"
+            },
+            {
+              "question": "Do you offer hydro jetting?",
+              "answer": "Yes, hydro jetting uses high-pressure water to scour grease, scale, and roots from your pipe walls. A technician can determine if it's the right solution and give an upfront quote, want me to set up a visit?"
+            },
+            {
+              "question": "Do you provide water damage restoration?",
+              "answer": "Yes, we offer 24/7 water removal, drying, and flood cleanup for emergency mitigation. I can dispatch a crew right away, what's your ZIP code so I can confirm coverage?"
+            },
+            {
+              "question": "Can you install a water softener?",
+              "answer": "Yes, we install water softeners and whole-house filtration systems, and we offer a free hard-water test. I can schedule a technician to test your water and quote a system, would you like to book?"
+            },
+            {
+              "question": "Do you fix sump pumps?",
+              "answer": "Yes, we repair and install sump pumps to help prevent basement flooding. I can book a technician to inspect yours, what day works best?"
+            },
+            {
+              "question": "Do you have any coupons or discounts?",
+              "answer": "We often have coupons and an online scheduling discount, plus savings on water heater installations. I can apply any current offer when I book your visit, would you like to get started?"
+            },
+            {
+              "question": "Do you offer financing?",
+              "answer": "Yes, we offer financing options for larger jobs like water heaters, restoration, and excavation. A technician can review the options with you during your visit, shall I schedule one?"
+            },
+            {
+              "question": "Do you detect hidden leaks?",
+              "answer": "Yes, we locate and repair hidden pipe and fixture leaks. I can schedule a technician to find the source and provide an upfront quote, what's your ZIP code?"
+            },
+            {
+              "question": "Do you service commercial properties?",
+              "answer": "Yes, we handle commercial plumbing including backflow prevention, grease traps, flushometers, and hydro jetting. I can book a technician for your business, what day works?"
+            },
+            {
+              "question": "How soon can someone come out?",
+              "answer": "We're available 24/7 and can often provide same-day service. Give me your ZIP code and I'll confirm coverage and find the soonest available appointment."
+            },
+            {
+              "question": "Are your technicians licensed?",
+              "answer": "Yes, our licensed technicians provide upfront pricing before any work begins and quality service backed by our guarantees. I can schedule a visit whenever it's convenient for you, would you like to book?"
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule an in-home service appointment\",\"follow_up_message\":\"Great, I can get a licensed technician out to you. Please share your ZIP code and preferred day, and I'll confirm your in-home service appointment along with a reminder text.\"},{\"intent\":\"request a quote for a water heater replacement\",\"follow_up_message\":\"Happy to help with that. Based on what you shared I can give a preliminary range, and a technician will provide an exact upfront quote on site, what ZIP code and day work for you to book the visit?\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "goal": "Qualify the customer's plumbing or drain issue, confirm we service their ZIP, and book an in-home service appointment with a licensed technician for an upfront quote.",
+        "bookingType": "in-home service appointment",
+        "offer": "Save with our online scheduling discount when you book today",
+        "providesEstimate": true,
+        "qualifyingQuestions": [
+          "What plumbing or drain issue are you experiencing right now?",
+          "Which fixture or unit is involved, and do you know its type or brand (for example a gas, electric, or tankless water heater)?",
+          "How many fixtures or drains are affected?",
+          "How soon do you need service, is this an emergency?",
+          "What's your ZIP code so I can confirm we service your area?"
+        ]
+      },
+      "serviceArea": ""
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "7/30/26 1:03 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "7/30/26 1:03 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "7/30/26 1:03 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Roto-Rooter Plumbing & Water Cleanup",
+      "callerName": "Michael Chen",
+      "callerPhone": "(805) 555-0142",
+      "campaign": "Emergency Plumber 24/7, Santa Barbara Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Service Appointment Lead",
+      "estimatedValue": "$385",
+      "googleSearch": "emergency plumber near me open now",
+      "websiteSearch": "24 hour plumber santa barbara",
+      "callingWebpage": "/plumbing/emergency-plumbing",
+      "products": "Emergency Plumbing Service, Leak Detection & Repair",
+      "cartId": "RR-7204K",
+      "serviceable": "Yes",
+      "email": "michael.chen.sb@email.com",
+      "street": "2847 San Roque Road",
+      "city": "Santa Barbara",
+      "state": "CA",
+      "zip": "93105",
+      "digitalJourney": "/home › /plumbing › /plumbing/emergency-plumbing › /schedule-service",
+      "intent": "Customer reports active water leak under kitchen sink discovered this morning, needs same-day diagnosis and repair.",
+      "coverage": "ZIP 93105 confirmed, Santa Barbara serviceable",
+      "switchIntent": "High urgency, water actively leaking, homeowner concerned about damage, wants technician dispatched within 2 hours.",
+      "greeting": "Hi Michael, thanks for calling Roto-Rooter Plumbing & Water Cleanup. I see you're dealing with a kitchen sink leak that needs attention today. We can dispatch a licensed technician to your Santa Barbara home within 2 hours to diagnose and repair it. Can I book that appointment for you right now?"
+    },
+    "smsScreenpop": {
+      "brandName": "Roto-Rooter Plumbing & Water Cleanup",
+      "callerName": "Jennifer Ramirez",
+      "callerPhone": "(512) 555-0289",
+      "campaign": "Water Heater Replacement, Austin Same Day",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Service Appointment Lead",
+      "estimatedValue": "$2,485",
+      "googleSearch": "water heater replacement near me cost",
+      "websiteSearch": "tankless water heater installation austin texas",
+      "callingWebpage": "/plumbing/water-heaters",
+      "products": "Water Heater Installation, Tankless Water Heater Upgrade",
+      "cartId": "RR-5819M",
+      "serviceable": "Yes",
+      "email": "j.ramirez.austin@email.com",
+      "street": "4521 Barton Hills Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78746",
+      "digitalJourney": "/home › /plumbing › /plumbing/water-heaters › /coupons",
+      "intent": "Homeowner's 11-year-old electric water heater has stopped heating, wants to upgrade to tankless system for efficiency and endless hot water.",
+      "coverage": "ZIP 78746 confirmed, Austin serviceable",
+      "appointment": "In-home service appointment with specialist. Thu Jul 17, 10:00 AM",
+      "greeting": "Hi Jennifer, this is Marcus from Roto-Rooter Plumbing & Water Cleanup. We have you scheduled for an in-home consultation and water heater installation quote this Thursday at 10 AM. Our specialist will walk through tankless options and financing. Any questions before then, just reply here."
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Roto-Rooter Plumbing & Water Cleanup",
+      "brandDomain": "www.rotorooter.com",
+      "brandIcon": "🔧",
+      "callerPhone": "+1 (805) 555-0142",
+      "callerLocation": "Santa Maria, CA",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Emergency Plumber 24/7 Near Me",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "emergency plumber near me",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "Home / Plumbing / Emergency Plumbing",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Water Heater Replacement, Drain Cleaning",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes, not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Santa Maria, CA",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "service_appointment_new",
+          "name": "Service Appointment, New Project"
+        },
+        {
+          "id": "existing_service_support",
+          "name": "Existing Service Support"
+        },
+        {
+          "id": "general_inquiry",
+          "name": "General Inquiry Queue"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there, thanks for calling Roto-Rooter. I'm an AI agent here to help get you connected with the right team. Are you experiencing a plumbing issue or looking to schedule service today?",
+          "sigs": [],
+          "q": [
+            33,
+            33,
+            34
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yeah, my water heater stopped working last night and there's no hot water in the house. I need someone to come out as soon as possible.",
+          "sigs": [
+            {
+              "c": "orange",
+              "t": "<strong>Water heater emergency</strong>, no hot water"
+            },
+            {
+              "c": "green",
+              "t": "<strong>Urgent timeline</strong>, same day needed"
+            }
+          ],
+          "q": [
+            65,
+            15,
+            20
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I understand, that's definitely frustrating. Water heater issues need quick attention. Is this a repair situation or are you thinking you might need a full replacement? And have you had your water heater serviced with us before?",
+          "sigs": [],
+          "q": [
+            72,
+            12,
+            16
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'm not sure if it can be repaired honestly. It's been about 11 years since we had it installed, so it might just be time for a new one. This is my first time calling Roto-Rooter.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New customer</strong>"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Replacement likely</strong>, age 11 years"
+            },
+            {
+              "c": "orange",
+              "t": "<strong>Same day service</strong> needed"
+            }
+          ],
+          "q": [
+            84,
+            8,
+            8
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "What kind of warranty or financing do you guys offer on new installations? I'd like to know what I'm looking at for costs.",
+          "sigs": [
+            {
+              "c": "purple",
+              "t": "Interested in <strong>financing options</strong>"
+            },
+            {
+              "c": "green",
+              "t": "Concerned about <strong>upfront pricing</strong>"
+            }
+          ],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. We install all major brands like Rheem and A.O. Smith, and we offer upfront pricing, same-day installation, and flexible financing options. I'm going to route you directly to our Service Appointment team. They'll confirm your address, check availability for today, and walk you through all the options. You're going to be in great hands.",
+          "sigs": [],
+          "q": [
+            96,
+            2,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Service Appointment Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"we'll get a technician out to you (Agent)\", \"book the appointment (Agent)\", \"schedule you for today (Agent)\", \"confirm your service window (Caller)\"])",
+          "createdAt": "11/12/24 9:14 am",
+          "updatedAt": "01/06/26 3:22 pm"
+        },
+        {
+          "name": "Competitor Discount Mentioned",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"ninety nine dollar drain special (Caller)\", \"the other company quoted (Caller)\", \"cheaper plumber down the road (Caller)\"])",
+          "createdAt": "12/03/24 10:41 am",
+          "updatedAt": "01/09/26 8:55 am"
+        },
+        {
+          "name": "Drain Cleaning Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"clogged drain (Caller)\", \"clean the whole pipe (Agent)\", \"sewer line backup (Caller)\", \"snake the drain (Agent)\"])",
+          "createdAt": "11/20/24 2:07 pm",
+          "updatedAt": "01/15/26 11:19 am"
+        },
+        {
+          "name": "Empathy and Reassurance (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Empathy and Reassurance] < 60 and duration > 45 sec",
+          "createdAt": "02/14/25 9:33 am",
+          "updatedAt": "01/10/26 4:48 pm"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"the upfront price would be (Agent)\", \"your estimate is (Agent)\", \"that would run you (Agent)\"])",
+          "createdAt": "10/28/24 1:16 pm",
+          "updatedAt": "12/30/25 10:02 am"
+        },
+        {
+          "name": "Schedule Service Close (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Schedule Service Close] < 70 and duration > 60 sec",
+          "createdAt": "03/05/25 8:50 am",
+          "updatedAt": "01/12/26 3:11 pm"
+        },
+        {
+          "name": "Service Appointment Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"when can you come out (Caller)\", \"what time works for you (Agent)\", \"same day availability (Agent)\", \"earliest appointment (Caller)\"])",
+          "createdAt": "11/05/24 3:44 pm",
+          "updatedAt": "01/07/26 9:27 am"
+        },
+        {
+          "name": "Upfront Pricing Explained (Quality)",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Upfront Pricing Explained] < 60 and duration > 45 sec",
+          "createdAt": "02/20/25 11:12 am",
+          "updatedAt": "01/11/26 2:36 pm"
+        },
+        {
+          "name": "Water Damage Restoration Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"flooded basement (Caller)\", \"water damage cleanup (Caller)\", \"standing water (Caller)\", \"emergency water removal (Agent)\"])",
+          "createdAt": "01/22/25 4:19 pm",
+          "updatedAt": "01/14/26 10:53 am"
+        },
+        {
+          "name": "Water Heater Replacement Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"no hot water (Caller)\", \"tankless water heater (Caller)\", \"replace my water heater (Caller)\", \"rust colored water (Caller)\"])",
+          "createdAt": "12/15/24 9:58 am",
+          "updatedAt": "01/13/26 1:40 pm"
+        }
+      ]
+    }
+  }
+}
