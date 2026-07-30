@@ -185,10 +185,29 @@ The three rules, and where each is actually enforced:
 greys out (opacity .38, still revealed on hover so its absence never reads as the
 feature missing) when the current page's stack is empty.
 
-⚠️ A page whose headings are HARDCODED in the component will accept an edit to
-the underlying data and show nothing (the Insights screen's "Summary Metrics" is a
-literal, so retitling `kpiGroups.0.title` there is a no-op on screen). If a label
-should be AI-editable, render it from the slice.
+**Headings that were literals are now DATA** — `usePageDataWithLabels(base, LABELS)`
+folds a screen's `LABELS` constant into the object registered as the page scope, so
+the assistant sees them at `labels.<key>`, edits store under the page key like any
+other, and undo covers them. No schema change and no engine phase, so every
+prospect already on disk gets it. Used by `InsightsDashboard` (all 13 headings and
+metric labels) and `MarketingDashboard` ("Sales Call Breakout Graph"). The final
+spread means an override saved before a label key existed falls back to the default
+instead of rendering `undefined`.
+
+⚠️ **A literal heading is worse than a missing feature**: the assistant accepts
+"rename this to X", writes the edit, and the screen does not budge — a silent
+no-op. If you add a heading a user might want renamed, put it in that screen's
+LABELS, not in the JSX.
+
+**What deliberately STAYS hardcoded** (audited: 334 user-visible literals across
+the screens, and these are the right ones to leave): Invoca's own product
+vocabulary — page names ("Call Review", "Agent Studio"), filter labels ("Filters",
+"Speaker", "Sort By:"), Call Detail rail sections ("SCORECARDS", "TRANSCRIPT"),
+table headers ("Name", "Shared Status"), ThoughtSpot footers ("UNIQUE COUNT",
+"TOTAL"), the dimension columns ("Marketing Source"), and workflow node labels
+("Triggered by"). Plus third-party chrome on the Google and ChatGPT screens, and
+the Launch screen (our tool, not the demo). That is the template, and rule 2 keeps
+the AI out of it. The six platform dashboards were already fully data-driven.
 
 ## Launch screen & live generation (the front door)
 `/` and `/launch` render `src/screens/Launch.tsx` (full-page, outside the AppShell).

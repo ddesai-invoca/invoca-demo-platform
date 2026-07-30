@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { DonutChart } from "../components/DonutChart";
-import { usePageData } from "../components/GeneratedTiles";
+import { usePageDataWithLabels } from "../components/GeneratedTiles";
 
 /* Insights & Analytics -> a saved dashboard (network 1847
    /insights/dashboard/<uuid>). Matched to the capture: breadcrumb + title, an
@@ -22,6 +22,33 @@ import { usePageData } from "../components/GeneratedTiles";
    The four sections are ONE component rendered four times, which is also how the
    real page behaves: the columns are identical and only the first column's
    dimension changes. */
+
+/* EVERY heading and metric label on this screen, as data.
+
+   These were literals, which made them invisible to the Ask AI drawer: it would
+   accept "rename Summary Metrics to Quarterly Summary", write the edit, and the
+   screen would not change. They are folded into the page's scope by
+   usePageDataWithLabels, so the assistant can edit any of them per page.
+
+   The ThoughtSpot table footers ("UNIQUE COUNT" / "TOTAL") and the column
+   dimensions ("Marketing Source" etc.) stay hardcoded on purpose: those are the
+   platform's own vocabulary, not this prospect's data, and rule 2 keeps the AI
+   out of the template. */
+const LABELS = {
+  summary: "Summary Metrics",
+  totalCalls: "Total Calls",
+  missed: "Missed Conversations",
+  conversations: "Total Conversations",
+  weeklyTrend: "Total Conversations Weekly Trend",
+  overTime: "Conversations/Metrics Over Time",
+  buyingIntent: "Buying Intent",
+  conversions: "Conversions",
+  xAxis: "Weekly Call Start Time",
+  byMedium: "Performance By Medium",
+  bySource: "Performance By Source",
+  byCampaign: "Performance By Campaign",
+  byPage: "Performance By Calling Page",
+};
 
 const K = (n: number) =>
   n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 2 : 2).replace(/\.?0+$/, "")}K` : String(n);
@@ -110,7 +137,7 @@ function TrendSparkline({ seed }: { seed: string }) {
    with round swatches, the y-axis title rotated up the left edge, an x-axis
    title, and dense weekly ticks across two years where most weeks sit near zero
    and a few spike hard. */
-function MetricsOverTime({ seed, series }: { seed: string; series: string[] }) {
+function MetricsOverTime({ seed, series, xAxisLabel }: { seed: string; series: string[]; xAxisLabel: string }) {
   const W = 1180, H = 470, padL = 92, padR = 300, padT = 22, padB = 74;
   const plotW = W - padL - padR, plotH = H - padT - padB;
   let h = 0;
@@ -160,7 +187,7 @@ function MetricsOverTime({ seed, series }: { seed: string; series: string[] }) {
           y={padT + plotH + 26} textAnchor="middle">{l}</text>
       ))}
       <text className="ind-axtitle" x={padL + plotW / 2} y={H - 16} textAnchor="middle">
-        Weekly Call Start Time
+        {xAxisLabel}
       </text>
 
       {series.map((name, i) => (
@@ -235,7 +262,9 @@ export function InsightsDashboard() {
   const { name } = useParams();
   /* Registers this page as the AI scope and returns the slice with any
      edits made ON THIS PAGE overlaid (see usePageData). */
-  const md = usePageData(profile.reports.marketingDashboard);
+  const view = usePageDataWithLabels(profile.reports.marketingDashboard, LABELS);
+  const md = view;
+  const L = view.labels;
   const find = (re: RegExp) => md.breakdowns.find((b) => re.test(b.title));
 
   const medium = toRows(find(/Medium/i));
@@ -272,15 +301,15 @@ export function InsightsDashboard() {
 
       <div className="ind-grid">
         <section className="ind-card">
-          <h2 className="ind-card-title">Summary Metrics</h2>
+          <h2 className="ind-card-title">{L.summary}</h2>
           <div className="ind-summary">
             <div className="ind-metrics">
-              <div><span className="ind-m-label">Total Calls</span><span className="ind-m-value">{totalCalls.toLocaleString()}</span></div>
-              <div><span className="ind-m-label">Missed Conversations</span><span className="ind-m-value">{missed.toLocaleString()}</span></div>
-              <div><span className="ind-m-label">Total Conversations</span><span className="ind-m-value">{conversations.toLocaleString()}</span></div>
+              <div><span className="ind-m-label">{L.totalCalls}</span><span className="ind-m-value">{totalCalls.toLocaleString()}</span></div>
+              <div><span className="ind-m-label">{L.missed}</span><span className="ind-m-value">{missed.toLocaleString()}</span></div>
+              <div><span className="ind-m-label">{L.conversations}</span><span className="ind-m-value">{conversations.toLocaleString()}</span></div>
             </div>
             <div className="ind-trend">
-              <span className="ind-m-label">Total Conversations Weekly Trend</span>
+              <span className="ind-m-label">{L.weeklyTrend}</span>
               <span className="ind-trend-value">0</span>
               <span className="ind-trend-sub">Week of {md.dateRange?.split("-")[1] ?? ""}</span>
               <span className="ind-trend-sub"><mark>0% (0)</mark> Week of {md.dateRange?.split("-")[0] ?? ""} ›</span>
@@ -290,27 +319,27 @@ export function InsightsDashboard() {
         </section>
 
         <section className="ind-card">
-          <h2 className="ind-card-title">Conversations/Metrics Over Time</h2>
-          <MetricsOverTime seed={profile.id} series={[
+          <h2 className="ind-card-title">{L.overTime}</h2>
+          <MetricsOverTime seed={profile.id} xAxisLabel={L.xAxis} series={[
             "Total Call Count", "Total Call Answered by Agent",
             "Total New Sales Call", "Total New Service Activation",
           ]} />
         </section>
 
         <section className="ind-card ind-rate">
-          <h2 className="ind-card-title">Buying Intent</h2>
+          <h2 className="ind-card-title">{L.buyingIntent}</h2>
           <span className="ind-m-value ind-big">{buyingIntent}%</span>
         </section>
         <section className="ind-card ind-rate">
-          <h2 className="ind-card-title">Conversions</h2>
+          <h2 className="ind-card-title">{L.conversions}</h2>
           <span className="ind-m-value ind-big">{conversions}%</span>
         </section>
       </div>
 
-      <PerfSection title="Performance By Medium" dimension="Marketing Medium" rows={medium} />
-      <PerfSection title="Performance By Source" dimension="Marketing Source" rows={source} />
-      <PerfSection title="Performance By Campaign" dimension="Marketing Campaign" rows={campaign} />
-      <PerfSection title="Performance By Calling Page" dimension="Calling Page" rows={page} />
+      <PerfSection title={L.byMedium} dimension="Marketing Medium" rows={medium} />
+      <PerfSection title={L.bySource} dimension="Marketing Source" rows={source} />
+      <PerfSection title={L.byCampaign} dimension="Marketing Campaign" rows={campaign} />
+      <PerfSection title={L.byPage} dimension="Calling Page" rows={page} />
     </div>
   );
 }

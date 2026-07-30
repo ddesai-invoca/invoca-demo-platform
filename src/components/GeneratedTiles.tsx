@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant, type GeneratedTile } from "../data/AiAssistantContext";
@@ -31,6 +31,31 @@ export function useDashboardData<T>(base: T): T {
    undo stack. `useDashboardData` stays exported so the six dashboards that
    already call it are untouched. */
 export const usePageData = useDashboardData;
+
+/* usePageDataWithLabels — for screens that carry a few headings as LITERALS.
+
+   A literal heading is invisible to the assistant: it will accept "rename this to
+   X", write the edit into the data, and the screen will not budge, because the
+   heading was never read from the data in the first place. That is a silent
+   no-op, which is the worst kind.
+
+   So the labels are folded INTO the object registered as the page's scope. The
+   assistant then sees them as editable data at `labels.<key>`, an edit is stored
+   under this page's key like any other, and undo covers it — all with no schema
+   change and no engine phase, so every prospect already on disk gets it.
+
+   The final spread is deliberate: an override saved BEFORE a new label key
+   existed (or before this existed at all) would not carry it, so defaults fill
+   the gaps rather than rendering `undefined`.
+
+   `labels` must be a module-level constant so its identity is stable. */
+export function usePageDataWithLabels<T extends object, L extends Record<string, string>>(
+  base: T, labels: L,
+): T & { labels: L } {
+  const merged = useMemo(() => ({ ...base, labels }), [base, labels]);
+  const eff = usePageData(merged) as T & { labels?: Partial<L> };
+  return { ...eff, labels: { ...labels, ...(eff.labels ?? {}) } };
+}
 
 /* A short text preview of a generated tile so the assistant can ground edits. */
 function previewOf(t: GeneratedTile): string {

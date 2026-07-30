@@ -2,11 +2,16 @@ import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { DashHeaderActions } from "../components/DashHeaderActions";
 import { DashTileMenu, DashTileToggle } from "../components/DashTileMenu";
-import { DashAssistant, useDashboardData } from "../components/GeneratedTiles";
+import { DashAssistant, usePageDataWithLabels } from "../components/GeneratedTiles";
 import { DonutChart } from "../components/DonutChart";
 import { LineChart } from "../components/LineChart";
 import { StackedBarChart } from "../components/StackedBarChart";
 import type { KpiGroup, Breakdown } from "../data/schema";
+
+/* The one heading on this screen that was a LITERAL. Everything else already
+   comes from the dashboard data, so the assistant could rename any other card
+   but silently no-op on this one. See usePageDataWithLabels. */
+const LABELS = { breakoutGraph: "Sales Call Breakout Graph" };
 
 function CardHead({ title }: { title: string }) {
   return (
@@ -74,7 +79,9 @@ function DonutBreakdown({ bd, total }: { bd: Breakdown; total: number }) {
 
 export function MarketingDashboard() {
   const { profile } = useProfile();
-  const d = useDashboardData(profile.reports.marketingDashboard);
+  const view = usePageDataWithLabels(profile.reports.marketingDashboard, LABELS);
+  const d = view;
+  const L = view.labels;
 
   // grand total call count drives donut percentages (share of all calls)
   const grandTotal = parseInt(
@@ -111,7 +118,7 @@ export function MarketingDashboard() {
           <div className="split-left"><KpiSection group={breakout} variant="grid" /></div>
           <section className="dash-card split-right">
             <div className="dash-card-head">
-              <span className="dash-card-title">Sales Call Breakout Graph</span>
+              <span className="dash-card-title">{L.breakoutGraph}</span>
               <DashTileToggle />
             </div>
             <div className="chart-wrap"><LineChart chart={d.salesCallBreakoutGraph} /></div>
