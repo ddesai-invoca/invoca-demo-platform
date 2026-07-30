@@ -38,6 +38,35 @@ the `demoLibraryApi()` plugin in `vite.config.ts` (dev) — keep them in sync.
 Routes: `GET /api/me`, `GET|POST /api/demos`, `GET|PATCH|DELETE /api/demos/:id`,
 `POST /api/demos/:id/duplicate`.
 
+### Checking the live deploy from outside the gate: `GET /api/status`
+`curl -s https://invoca-demo-platform.onrender.com/api/status | python3 -m json.tool`
+
+**PUBLIC** — registered ahead of the auth gate in `server.ts`, the same way
+`/healthz` is, because the whole point is answering "did my push actually reach
+the live site?" without signing in. One shared implementation in
+`engine/status.ts`, served by BOTH `server.ts` and a `statusApi()` Vite plugin so
+the two can't drift.
+
+Reports: `commit`/`commitShort`/`branch`/`service` (Render supplies
+`RENDER_GIT_COMMIT` etc. free — **null locally, which is how you tell a dev server
+from the real deploy**), `bootedAt`, `uptimeSeconds`, `node`, a demo **count**,
+`storage.persistent` (is the Render disk actually mounted, or are demos about to
+be lost on redeploy?), and `integrations` as **booleans**.
+
+⚠️ **It is public, so adding a field publishes it.** No prospect names, no demo
+ids, no emails, no key values — counts and booleans only. Anything naming a
+customer belongs behind the gate.
+
+⚠️ **Every key presence is passed IN by the caller, never read from
+`process.env` inside `status.ts`.** The first version read them directly and
+reported the Places and Mapbox keys as `false` on the dev server even though
+`.env` had both: Vite does not put `.env` into `process.env`, it exposes it via
+`loadEnv()`. A status endpoint that under-reports configuration is worse than
+none — it sends you hunting for a key that was already set.
+⚠️ `mapboxTokenInServerEnv` is named for what it measures: the frontend needs
+that token at **BUILD** time, so runtime presence does NOT prove the deployed
+bundle carries it.
+
 **Ownership** (server-enforced — the frontend lock is convenience only):
 - Anyone signed in can **list and view** every demo.
 - Only the **creator** can PATCH/DELETE theirs (others get a 403 telling them to duplicate).

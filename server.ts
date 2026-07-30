@@ -33,6 +33,7 @@ import { askAssistant } from "./engine/assistant.ts";
 import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
 import { handleDemoApi } from "./engine/demoApi.ts";
 import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
+import { deployStatus } from "./engine/status.ts";
 import { migrateDemoDashes } from "./engine/dashSweep.ts";
 import { applyDemoPatches } from "./engine/demoPatches.ts";
 
@@ -59,8 +60,21 @@ app.use(express.json({ limit: "2mb" }));
 // Health check for the host (Render etc.) — exempt from auth, always 200.
 app.get("/healthz", (_req, res) => res.type("text").send("ok"));
 
-// Google sign-in gate (@invoca.com only) — must run before the API + static
-// routes. No-op unless GOOGLE_CLIENT_ID/SECRET are set (so local runs stay open).
+/* PUBLIC DEPLOY STATUS — "did my push actually reach the live site?"
+
+   Registered BEFORE installAuth so it answers without a session, exactly like
+   /healthz. That is the point: the app is behind a Google gate, so there was no
+   way to confirm from outside that a deploy landed. The payload deliberately
+   carries no customer data and no secrets — see engine/status.ts. */
+app.get("/api/status", (_req, res) => res.json(deployStatus({
+  ttsProvider,
+  ttsKey: ttsProvider === "deepgram" ? !!deepgramKey : !!elevenKey,
+  anthropicKey: !!apiKey,
+  googlePlacesKey: !!process.env.GOOGLE_PLACES_API_KEY,
+  mapboxTokenInServerEnv: !!process.env.VITE_MAPBOX_TOKEN,
+  authGate: authEnabled,
+})));
+
 installAuth(app);
 
 /* Shared demo library (/api/me, /api/demos*). Returns null for any other route,

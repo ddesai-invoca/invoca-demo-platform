@@ -187,6 +187,43 @@ function ogImageApi(): Plugin {
   }
 }
 
+/* GET /api/status — the same public deploy-status payload the prod server serves,
+   from the same module, so the two can't drift. Locally the RENDER_* fields come
+   back null, which is exactly how you tell a dev server from the real deploy. */
+function statusApi(): Plugin {
+  return {
+    name: 'invoca-status-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if ((req.url || '').split('?')[0] !== '/api/status') return next()
+        try {
+          const { deployStatus } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/status.ts')).href)
+          const { authEnabled } = await import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href)
+          const env = loadEnv('development', process.cwd(), '')
+          const deepgram = env.DEEPGRAM_API_KEY, eleven = env.ELEVENLABS_API_KEY
+          const raw = (env.TTS_PROVIDER || '').toLowerCase()
+          const ttsProvider = raw === 'elevenlabs' || raw === 'deepgram' ? raw : deepgram ? 'deepgram' : 'elevenlabs'
+          res.statusCode = 200
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(deployStatus({
+            ttsProvider,
+            ttsKey: ttsProvider === 'deepgram' ? !!deepgram : !!eleven,
+            anthropicKey: !!env.ANTHROPIC_API_KEY,
+            googlePlacesKey: !!env.GOOGLE_PLACES_API_KEY,
+            mapboxTokenInServerEnv: !!env.VITE_MAPBOX_TOKEN,
+            authGate: authEnabled,
+          })))
+        } catch (e: any) {
+          console.error('[status] failed:', e)
+          res.statusCode = 500
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify({ ok: false, error: e?.message || 'status failed' }))
+        }
+      })
+    },
+  }
+}
+
 function demoLibraryApi(): Plugin {
   return {
     name: 'invoca-demo-library-api',
@@ -364,6 +401,7 @@ export default defineConfig(({ mode }) => {
       placeApi(),
       ogImageApi(),
       demoLibraryApi(),
+      statusApi(),
       chatApi(apiKey),
       assistantApi(apiKey),
       analyzeApi(apiKey),
