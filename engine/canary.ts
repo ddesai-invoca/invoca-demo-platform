@@ -213,12 +213,39 @@ export function readRuns(): CanaryRun[] {
    they are Invoca prospects is exactly the leak /api/status was careful about.
    `targetIndex` is enough to compare like with like. Timings, phase names and
    audit labels carry no customer data. */
+/* A run older than this means the canary has STOPPED running, which is itself a
+   problem worth waking up to. 26h gives the nightly run six hours of slack. */
+const MAX_AGE_HOURS = 26;
+
 export function toPublic() {
   const runs = readRuns();
   const latest = runs[0] ?? null;
+
+  /* ⚠️ SILENCE IS NOT SUCCESS. The first version computed needsAttention as
+     `!!latest && (…)`, so with no runs on record it reported FALSE — a clean bill
+     of health for a canary that had never run at all. A monitor whose "nothing
+     wrong" and "not working" look identical is worse than no monitor, because it
+     actively reassures you. Missing and stale are now failures in their own right. */
+  const ageHours = latest ? (Date.now() - Date.parse(latest.startedAt)) / 3_600_000 : null;
+  const missing = !latest;
+  const stale = ageHours !== null && Number.isFinite(ageHours) && ageHours > MAX_AGE_HOURS;
+
+  const reason =
+    missing ? "no canary run on record — it has never run, or the result store was reset"
+    : stale ? `last run was ${Math.round(ageHours!)}h ago (over ${MAX_AGE_HOURS}h) — the canary has stopped running`
+    : !latest!.ok ? `the generation failed: ${latest!.error ?? "unknown error"}`
+    : latest!.overBudget ? `took ${latest!.totalSeconds}s, over the ${BUDGET_SECONDS}s budget`
+    : latest!.audit.failures.length ? `${latest!.audit.failures.length} audit failure(s) — it ran but produced wrong data`
+    : null;
+
   return {
     ok: true,
     budgetSeconds: BUDGET_SECONDS,
+    /* Explicit, so a reader never has to infer "it didn't run" from a null. */
+    missing,
+    stale,
+    ageHours: ageHours === null ? null : +ageHours.toFixed(1),
+    reason,
     latest: latest && {
       startedAt: latest.startedAt,
       targetIndex: latest.targetIndex,
@@ -237,6 +264,6 @@ export function toPublic() {
       .filter((r) => latest && r.targetIndex === latest.targetIndex)
       .slice(0, 10)
       .map((r) => ({ startedAt: r.startedAt, totalSeconds: r.totalSeconds, ok: r.ok, commit: r.commit })),
-    needsAttention: !!latest && (!latest.ok || latest.overBudget || latest.audit.failures.length > 0),
+    needsAttention: reason !== null,
   };
 }
