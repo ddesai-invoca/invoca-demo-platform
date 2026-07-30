@@ -291,6 +291,47 @@ reported success and nothing appeared. When the flag is false the prompt forbids
 104px tall) can never be overlapped by a tall tree. That replaced a per-tree
 `min-height` override which only fixed the one hand-built tree it was written for.
 
+### Preview Workflow (SMS): the chat drawer that tests the same agent
+`components/WorkflowChatPreview.tsx`. On an SMS workflow page **Preview Workflow**
+slides in a right-side chat drawer — the SMS counterpart to the Voice page's
+call drawer. Before this the SMS button rendered and **did nothing** (`onClick`
+was `if (!isSms) …`).
+
+Matched to the real page (network 1847 `/ai_agents/edit/25/workflow/114`) from a
+SingleFile capture. It is an **embedded chat widget**, not a platform component, so
+its own stylesheet is the source of truth and the values are MEASURED:
+`.cloud{width:400px}` → 400px panel · header `h-[50px]` `rgb(231,233,235)` on
+`rgb(21,36,62)`, 6px top radius · host bubble white / guest bubble
+`rgb(231,233,235)`, both 6px radius, 16px, `px-4 py-2` · rows carry a 50px margin
+on the opposite side so a long line never spans the full width · textarea
+min-height 56px / max 128px, placeholder "Type your question" · footer
+`Last Updated: <date>` 13px `rgb(48,50,53)`. Header title is
+`Preview Workflow - <workflow> (Draft)`, with the capture's tabler-refresh
+**Reset Chat** and a close X. Positioned like its sibling `.vp-drawer`.
+
+⚠️ **It tests the SAME agent as the Preview Agent screen.** Both build their brain
+from `buildSmsBrain()` in **`src/data/smsBrain.ts`** (which also owns
+`askSmsAgent()` — the `/api/chat` call, its transient-failure backoff, and the
+markdown strip), so the questions, order and rules are identical **by
+construction**. Two local copies of that object would drift on the first edit, and
+an SE who tunes questions on one screen and sees different behaviour on the other
+has been shown a lie. Verified live: asked "i need a home insurance quote", the
+drawer replied with Goosehead's configured question 1 **verbatim**.
+
+⚠️ **It must NEVER call `usePageData`.** The workflow page has already registered
+its DIAGRAM as the AI scope and `registerScope` is last-write-wins, so a second
+registration here would silently repoint that page's sparkle from the tree to the
+agent config — killing "add a branch" with no visible cause. It reads the Preview
+Agent page's EFFECTIVE config via `effectiveData(`${profileId}::${SMS_AGENT_SCOPE_PATH}`)`,
+which registers nothing and still picks up edits made over there (right behaviour:
+two views of one agent). Verified: with the drawer open, the Ask AI drawer's scope
+still reads "…- SMS workflow".
+
+⚠️ It deliberately does **not** capture to the SMS Conversation Intelligence
+report. The iPhone Preview Agent does that and it is the demo's headline move; a
+second capture source would file the same conversation twice. This drawer is a test
+bench, not a demo beat.
+
 ### Preview Agent: the AI sets exactly what the phone asks
 The sparkle + undo sit **top-LEFT** on `/agent-studio/agent/preview` — that route
 renders outside the app shell, so there is no top bar to hang them on. Same

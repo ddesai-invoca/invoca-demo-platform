@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
+import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCall } from "./VoiceCall";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
@@ -192,6 +193,10 @@ export function AgentWorkflow() {
   const [voicePreview, setVoicePreview] = useState(false);
   const [inCall, setInCall] = useState(false);
   const closeVoice = () => { setVoicePreview(false); setInCall(false); };
+  /* Preview Workflow is channel-specific: Voice slides in the call drawer, SMS
+     opens the chat drawer that tests the same agent as the Preview Agent screen.
+     Until now the SMS button was inert — it rendered and did nothing. */
+  const [smsPreview, setSmsPreview] = useState(false);
 
   return (
     <AgentStudioLayout>
@@ -202,9 +207,16 @@ export function AgentWorkflow() {
             extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
                   : "/agent-studio/agent/preview",
             "_blank", "noopener")}>Preview Agent</button>}
-          <button className="wf-preview" onClick={() => { if (!isSms) setVoicePreview(true); }}>Preview Workflow</button>
+          <button className="wf-preview" onClick={() => isSms ? setSmsPreview(true) : setVoicePreview(true)}>Preview Workflow</button>
         </div>
       </div>
+      {isSms && smsPreview && (
+        <WorkflowChatPreview
+          workflowName={workflowName}
+          wfSlug={extra?.slug}
+          onClose={() => setSmsPreview(false)}
+        />
+      )}
       {!isSms && voicePreview && (
         <div className="vp-root">
           <div className="vp-backdrop" onClick={closeVoice} />

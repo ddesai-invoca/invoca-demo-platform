@@ -1699,3 +1699,70 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .ind-axtitle { font-size: 15px; font-weight: 600; fill: #1d2b4a; }
 .ind-axline { stroke: #c8cdd4; stroke-width: 1; }
 .ind-legend { font-size: 16px; fill: #1d2b4a; dominant-baseline: middle; }
+
+/* ---- Preview Workflow chat drawer (SMS workflow page) ---------------------
+   Values MEASURED from the real page's embedded chat widget (SingleFile capture
+   of network 1847 /ai_agents/edit/25/workflow/114), not eyeballed from the
+   screenshot: the widget ships its own stylesheet and it is the source of truth.
+     .cloud { width: 400px }                        -> panel width
+     header  h-[50px], rgb(231,233,235) on rgb(21,36,62), 6px top radius
+     bubbles radius 6px, 16px text, px-4 py-2; host white, guest rgb(231,233,235)
+     rows    host margin-right 50px / guest margin-left 50px (so a long line never
+             spans the full width and the two sides stay visually distinct)
+     input   textarea min-height 56px, max 128px, 16px, resize:none
+     footer  13px, rgb(48,50,53), centred
+   Positioned like .vp-drawer (its sibling on the Voice page) so the two previews
+   behave identically; only the width differs, per the widget's own CSS. */
+.wcp-drawer {
+  position: absolute; top: 20%; right: 0; bottom: 0; width: 400px; max-width: 92vw;
+  background: #fff; box-shadow: -8px 0 30px rgba(12, 0, 51, .18);
+  display: flex; flex-direction: column; box-sizing: border-box; overflow: hidden;
+  border-top-left-radius: 6px; z-index: 5;
+  animation: vp-slide-in 225ms cubic-bezier(0, 0, .2, 1);
+}
+.wcp-head {
+  display: flex; align-items: center; gap: 2px; height: 50px; flex: 0 0 50px;
+  padding: 0 6px 0 12px; background: rgb(231, 233, 235); color: rgb(21, 36, 62);
+  border-top-left-radius: 6px; border-top-right-radius: 6px;
+}
+.wcp-title { flex: 1; font-size: 14px; font-weight: 600; line-height: 1.25; }
+.wcp-icon {
+  background: none; border: none; cursor: pointer; padding: 6px; display: flex;
+  align-items: center; border-radius: 4px;
+}
+.wcp-icon:hover { background: rgba(21, 36, 62, .08); }
+
+.wcp-view { flex: 1; overflow-y: auto; padding: 16px 12px 8px; display: flex; flex-direction: column; }
+.wcp-row { display: flex; margin-bottom: 8px; }
+.wcp-row-host { flex-direction: row; justify-content: flex-start; align-items: flex-start; margin-right: 50px; }
+.wcp-row-guest { justify-content: flex-end; align-items: flex-end; margin-left: 50px; }
+.wcp-avatar { flex: 0 0 40px; width: 40px; height: 40px; border-radius: 50%; background: #e7e9eb;
+  display: flex; align-items: center; justify-content: center; }
+.wcp-bubble { border-radius: 6px; font-size: 16px; line-height: 1.5; padding: 8px 16px;
+  color: rgb(21, 36, 62); max-width: 100%; white-space: pre-wrap; word-break: break-word; }
+.wcp-host { background: #fff; margin-left: 8px; }
+.wcp-guest { background: rgb(231, 233, 235); margin-right: 8px; }
+
+/* Three-dot typing indicator, in the host bubble's own slot so the reply lands
+   exactly where the dots were rather than shifting the column. */
+.wcp-typing { display: inline-flex; align-items: center; gap: 4px; }
+.wcp-typing i { width: 6px; height: 6px; border-radius: 50%; background: #98a2b3;
+  animation: wcp-dot 1.2s infinite ease-in-out; }
+.wcp-typing i:nth-child(2) { animation-delay: .18s; }
+.wcp-typing i:nth-child(3) { animation-delay: .36s; }
+@keyframes wcp-dot { 0%, 60%, 100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+
+.wcp-error { margin: 4px 0 8px; font-size: 13px; color: #b42318; }
+
+.wcp-input { display: flex; align-items: flex-end; border-top: 1px solid #e7e9eb; background: #fff; }
+.wcp-input textarea {
+  flex: 1; min-height: 56px; max-height: 128px; border: none; outline: none; resize: none;
+  padding: 18px 8px 18px 16px; font: inherit; font-size: 16px; color: rgb(21, 36, 62);
+  background: transparent; font-family: inherit;
+}
+.wcp-send { background: none; border: none; cursor: pointer; color: #2666f9; padding: 16px;
+  display: flex; align-items: center; }
+.wcp-send:disabled { opacity: .38; cursor: default; }
+
+.wcp-foot { flex: 0 0 auto; text-align: center; font-size: 13px; color: rgb(48, 50, 53);
+  background: #fff; padding: 6px 10px 10px; }

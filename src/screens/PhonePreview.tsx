@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
+import { buildSmsBrain } from "../data/smsBrain";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 
 /* iPhone "Preview Agent" chat — modern iOS (dark mode) Messages mockup. The SE
@@ -132,17 +133,13 @@ function useBrain(wfSlug?: string | null) {
   const wf = wfSlug
     ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
     : undefined;
-  return {
-    customSystem: wf?.systemPrompt,
-    openingMessage: wf?.openingMessage,
-    agentLabel: wf?.label,
-    customerName: profile.customerName,
-    industry: profile.industry,
-    rules: ac?.brandConversationRules ?? [],
-    qaPairs: ac?.aiRecommendations?.find((r) => r.qaPairs?.length)?.qaPairs ?? [],
-    knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
-    playbook: ac?.smsPlaybook,
-  };
+  /* Shape comes from data/smsBrain.ts, shared with the SMS workflow page's
+     "Preview Workflow" chat drawer. Both are previews of ONE agent, so they must
+     ask the same questions in the same order; two local copies of this object
+     would drift on the first edit. What differs is only HOW each screen obtains
+     the config — this one registers an AI scope (it is the page whose drawer edits
+     the questions), the workflow drawer must not. See smsBrain.ts. */
+  return buildSmsBrain(profile, ac, wf);
 }
 
 /* mode "modal" = the in-app overlay (legacy); mode "page" = a standalone browser
