@@ -1,4 +1,5 @@
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* Signal — the "Manage Signals" grid, matched to the real Invoca page
    (network 1847 /manage_signals). Two hero cards over a MUI DataGrid.
@@ -51,7 +52,9 @@ function CardIcon({ glyph, size }: { glyph: string; size: { w: number; h: number
 
 export function SignalManager() {
   const { profile } = useProfile();
-  const d = profile.reports.signalManager;
+  /* Registers this page as the AI scope and returns the slice with any
+     edits made ON THIS PAGE overlaid (see usePageData). */
+  const d = usePageData(profile.reports.signalManager);
 
   if (!d) {
     return (

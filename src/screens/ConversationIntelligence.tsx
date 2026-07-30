@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { Pill } from "../components/Pill";
 import type { CITranscriptTurn } from "../data/schema";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* Bold + underline the signal-keyword phrases inside a transcript turn. */
 function Highlighted({ turn }: { turn: CITranscriptTurn }) {
@@ -44,7 +45,9 @@ const TABS = [
 
 export function ConversationIntelligence() {
   const { profile } = useProfile();
-  const d = profile.reports.conversationIntelligence;
+  /* Registers this page as the AI scope and returns the slice with any
+     edits made ON THIS PAGE overlaid (see usePageData). */
+  const d = usePageData(profile.reports.conversationIntelligence);
   const [tab, setTab] = useState("Analysis");
   if (!d) {
     return (

@@ -5,6 +5,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { Pill } from "../components/Pill";
 import { AgentStudioIcon } from "../components/nav";
 import type { VoiceConversation, VoiceInfo } from "../data/schema";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* AI Voice Conversation Intelligence — the voice sibling of the SMS report. Lists
    AI-voice phone calls (top ones active with transcript/signals/call metadata,
@@ -85,7 +86,9 @@ function CallInfoPanel({ info }: { info: VoiceInfo }) {
 export function VoiceConversationIntelligence() {
   const { profile } = useProfile();
   const { capturedFor } = useVoiceCapture();
-  const view = profile.reports.voiceConversationIntelligence;
+  /* Registers this page as the AI scope and returns the slice with any
+     edits made ON THIS PAGE overlaid (see usePageData). */
+  const view = usePageData(profile.reports.voiceConversationIntelligence);
 
   const captured = capturedFor(profile.id);
   const seed = view?.conversations ?? [];

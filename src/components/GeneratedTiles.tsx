@@ -25,6 +25,13 @@ export function useDashboardData<T>(base: T): T {
   return (eff ?? base) as T;
 }
 
+/* usePageData is the SAME hook under an honest name. Nothing in it is
+   dashboard-specific — the scope key comes from the route — so every platform
+   screen registers its slice this way and gets the Ask AI drawer plus its own
+   undo stack. `useDashboardData` stays exported so the six dashboards that
+   already call it are untouched. */
+export const usePageData = useDashboardData;
+
 /* A short text preview of a generated tile so the assistant can ground edits. */
 function previewOf(t: GeneratedTile): string {
   if (t.tileType === "kpi") return t.kpis.map((k) => `${k.label}: ${k.value}`).join(", ");

@@ -149,6 +149,47 @@ immediately re-save. On someone else's demo `readOnly` is true: `mutate`/`applyE
 `undo` no-op, and the Ask AI drawer shows a "view only" banner and declines any
 create/editData/editTile result.
 
+### Ask AI + Undo on EVERY page (top bar, hover-revealed)
+`TopBar.tsx` carries a sparkle (`auto_awesome`) and an undo, immediately left of
+the star. They **always occupy their layout space and only fade opacity**, which
+is what makes an invisible zone hoverable — `display:none`/`width:0` would leave
+nothing to aim at. Revealed on hover of `.tb-ai` and on `:focus-visible`, so they
+are not mouse-only, and absent from screenshots and live demos.
+
+Scope key is `${profileId}::${pathname}` — the SAME key the dashboards already
+used — so **nothing is dashboard-specific: a new screen gets both for free** by
+calling `usePageData(profile.reports.<slice>)` (an alias of `useDashboardData`;
+the six dashboards keep the old name). Opted in so far: digital-insights, the
+three CI reports, Call Review, Call Detail, agent config / knowledge / AI
+recommendations, Signal, and the Insights dashboard.
+
+The three rules, and where each is actually enforced:
+1. **Never spills to another page** — structural. Overrides are stored per page
+   key and only read back by that page. Verified: editing revenue on
+   `/dashboards/marketing` and a heading on `/insights/dashboard/...` produced TWO
+   separate override keys and TWO separate undo stacks.
+   ⚠️ **The guard that makes this true is in `AiAssistantDrawer`**:
+   `registerScope` is only called by screens that HAVE data and **nothing clears
+   it on navigation**, so `active` can still point at the last such screen. The
+   drawer therefore honours the scope ONLY when `active.key === ${profileId}::${pathname}`,
+   and otherwise treats the page as having nothing to edit. Without that check,
+   the top-bar sparkle on a list page would silently edit the dashboard you were
+   on two clicks ago — an invisible cross-page spill. Keep it.
+2. **Never CSS/design** — the prompt declines it (verified: "make the titles
+   bigger and the background navy" was refused with no override written and no
+   computed style changed), and structurally there is no path from an override to
+   CSS.
+3. **Data only** (metrics, titles, names, signals) — that is what `editData` does.
+
+**Undo is per page**, so it can never change a screen you are not looking at. It
+greys out (opacity .38, still revealed on hover so its absence never reads as the
+feature missing) when the current page's stack is empty.
+
+⚠️ A page whose headings are HARDCODED in the component will accept an edit to
+the underlying data and show nothing (the Insights screen's "Summary Metrics" is a
+literal, so retitling `kpiGroups.0.title` there is a no-op on screen). If a label
+should be AI-editable, render it from the slice.
+
 ## Launch screen & live generation (the front door)
 `/` and `/launch` render `src/screens/Launch.tsx` (full-page, outside the AppShell).
 An SE enters a prospect **name + URL** → **Launch** → the app POSTs to

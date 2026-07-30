@@ -1,5 +1,6 @@
 import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout, InfoDot } from "./AgentStudioLayout";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* Agent Studio → "Agent Settings" page. Names derive from the profile; the
    Brand Conversation Rules come from reports.agentConfig (engine-generated). */
@@ -18,7 +19,10 @@ function defaultRules(name: string): string[] {
 export function AgentConfig() {
   const { profile } = useProfile();
   const name = profile.customerName;
-  const configured = profile.reports.agentConfig?.brandConversationRules ?? [];
+  /* Registers this page as the AI scope and returns agentConfig with any
+     edits made ON THIS PAGE overlaid. */
+  const ac = usePageData(profile.reports.agentConfig);
+  const configured = ac?.brandConversationRules ?? [];
   const rules = configured.length ? configured : defaultRules(name);
 
   return (

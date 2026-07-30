@@ -1,7 +1,8 @@
 /* =============================================================================
-   assistant.ts — the "Ask AI" dashboard assistant (chat + edit + tile creation)
+   assistant.ts — the "Ask AI" page assistant (chat + edit + tile creation)
    -----------------------------------------------------------------------------
-   Powers the AI sparkle on every dashboard. Two scopes:
+   Powers the AI sparkle on the top bar of EVERY platform screen (and the
+   per-tile sparkles on dashboards). Two scopes:
      • DASHBOARD (header sparkle): ask about anything, edit any tile BY NAME,
        reshape the overall "story" (coherent multi-tile number/chart changes),
        or suggest scenarios the user can then apply.
@@ -11,7 +12,7 @@
    It returns ONE of four actions:
      • kind:"answer"    — a text answer about the data.
      • kind:"create"    — a NEW tile (KPI/line/bar/pie) to append to the page.
-     • kind:"editData"  — path-based edits to the dashboard's DATA (built-in
+     • kind:"editData"  — path-based edits to the page's DATA (built-in
                           tiles / the whole story). Never structure or styling.
      • kind:"editTile"  — a replacement spec for the focused AI-generated tile.
 
@@ -114,16 +115,16 @@ function buildSystem(input: AssistantInput): string {
             ? `To change this generated tile, return kind:"editTile" with the FULL updated tile spec in "tile" (same tileType unless the user asks to change it).`
             : `To change this tile, return kind:"editData" with path edits that target ONLY this tile's data in the JSON below.`,
         ].filter(Boolean).join("\n")
-      : `SCOPE: the whole "${input.dashboardTitle}" dashboard. The user may ask about any tile, edit a tile they NAME, or reshape the overall story across multiple tiles.`;
+      : `SCOPE: the whole "${input.dashboardTitle}" page. The user may ask about anything on it, edit a part they NAME, or reshape the overall story across several parts.`;
 
   return [
-    `You are the "Ask AI" assistant embedded in ${input.customerName}'s Invoca analytics dashboard.`,
+    `You are the "Ask AI" assistant embedded in a page of ${input.customerName}'s Invoca platform demo. The page may be a dashboard, a report, a call review, a signal list or an agent-configuration screen.`,
     scopeLine,
     ``,
     `Choose exactly ONE action ("kind"):`,
     `1. "answer" — answer a question, or SUGGEST scenario options for the user to pick from. Concise plain text in "answer" (no markdown). Leave edits [] and tile empty (tileType:"kpi", title:"", note:"", empty arrays).`,
     `2. "create" — the user asks to ADD / create / make a NEW tile. Fill "tile" (see tile rules) and put a short confirmation in "answer". Leave edits [].`,
-    `3. "editData" — the user asks to CHANGE existing dashboard data (a named/focused BUILT-IN tile's numbers, a chart's trend, a title/label, or the whole story). Return "edits": each { path, value } where path is a DOT-PATH into the DATA JSON below (numeric array indices), and value is the JSON-ENCODED replacement (e.g. "\\"84%\\"", "1250", "[70,80,90,85,95,100]", "\\"New Title\\""). Put a confirmation in "answer". Leave tile empty.`,
+    `3. "editData" — the user asks to CHANGE existing page data (a named/focused BUILT-IN tile's numbers, a chart's trend, a title/label, or the whole story). Return "edits": each { path, value } where path is a DOT-PATH into the DATA JSON below (numeric array indices), and value is the JSON-ENCODED replacement (e.g. "\\"84%\\"", "1250", "[70,80,90,85,95,100]", "\\"New Title\\""). Put a confirmation in "answer". Leave tile empty.`,
     `4. "editTile" — change the focused AI-GENERATED tile: return the FULL updated spec in "tile" and a confirmation in "answer". Leave edits [].`,
     ``,
     `TILE rules (kind create/editTile): pick tileType — "kpi" (2–4 headline numbers → kpis), "line" (trend over time → xLabels + series[].values), "bar" (comparison across categories → xLabels + series[].values), "pie" (share of a whole → slices). Give a clear title + one-line note. Leave the arrays you don't use empty.`,
@@ -135,7 +136,7 @@ function buildSystem(input: AssistantInput): string {
     `- For a "story" / scenario change, edit the KEY HEADLINE numbers that carry the story (the KPI tile values and the primary chart series) so it stays consistent — you do NOT need to touch every single value. Prefer ~5–15 focused edits over exhaustively rewriting every leaf.`,
     `- Be concise and professional.`,
     ``,
-    `DATA (current JSON for this dashboard):`,
+    `DATA (current JSON for this page):`,
     input.dataContext,
   ].join("\n");
 }

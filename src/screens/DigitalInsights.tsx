@@ -3,10 +3,13 @@ import { useProfile } from "../data/ProfileContext";
 import { BarChart } from "../components/BarChart";
 import { DataTable } from "../components/DataTable";
 import { Pill } from "../components/Pill";
+import { usePageData } from "../components/GeneratedTiles";
 
 export function DigitalInsights() {
   const { profile } = useProfile();
-  const r = profile.reports.digitalInsights;
+  /* Registers this page as the AI scope and returns the slice with any
+     edits made ON THIS PAGE overlaid (see usePageData). */
+  const r = usePageData(profile.reports.digitalInsights);
   const totalInteractions = r.chart.reduce((s, d) => s + d.value, 0);
 
   return (

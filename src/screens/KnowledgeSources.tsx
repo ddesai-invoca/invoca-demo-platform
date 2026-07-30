@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
 import type { CustomerProfile, KnowledgeSource } from "../data/schema";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* Fallback sources for profiles missing their own — derived from the brand's
    name + domain so the table always renders. Freshly generated prospects get
@@ -21,7 +22,10 @@ export function KnowledgeSources() {
   const { profile } = useProfile();
   const [search, setSearch] = useState("");
 
-  const configured = profile.reports.agentConfig?.knowledgeSources ?? [];
+  /* Registers this page as the AI scope and returns agentConfig with any
+     edits made ON THIS PAGE overlaid. */
+  const ac = usePageData(profile.reports.agentConfig);
+  const configured = ac?.knowledgeSources ?? [];
   const all = configured.length ? configured : defaultSources(profile);
   const rows = search.trim()
     ? all.filter((s) => s.name.toLowerCase().includes(search.trim().toLowerCase()))

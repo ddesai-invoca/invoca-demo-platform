@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import type { CallDetailScorecardRow } from "../data/schema";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* Call Detail — opened from the 4th (evaluated) call in Call Review. 3-column
    layout matched to Invoca's real Call Detail (call-review-flow): left rail
@@ -17,7 +18,9 @@ function StatusIcon({ status }: { status: CallDetailScorecardRow["status"] }) {
 
 export function CallDetail() {
   const { profile } = useProfile();
-  const d = profile.reports.callDetail;
+  /* Registers this page as the AI scope and returns the slice with any
+     edits made ON THIS PAGE overlaid (see usePageData). */
+  const d = usePageData(profile.reports.callDetail);
 
   const [reviewed, setReviewed] = useState(false);
   const [scoreOpen, setScoreOpen] = useState(false);

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
 import type { AiRecommendation, QaPair } from "../data/schema";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* "Edit AI Generated Q&A" modal — the top ~20 Q&A pairs from call-transcript
    data, scrollable. Opened by clicking the Qa pairs card. */
@@ -48,7 +49,10 @@ function defaultRecommendations(name: string): AiRecommendation[] {
 
 export function AiRecommendations() {
   const { profile } = useProfile();
-  const configured = profile.reports.agentConfig?.aiRecommendations ?? [];
+  /* Registers this page as the AI scope and returns agentConfig with any
+     edits made ON THIS PAGE overlaid. */
+  const ac = usePageData(profile.reports.agentConfig);
+  const configured = ac?.aiRecommendations ?? [];
   const initial = configured.length ? configured : defaultRecommendations(profile.customerName);
   const [items, setItems] = useState(initial);
   const [modalPairs, setModalPairs] = useState<QaPair[] | null>(null);

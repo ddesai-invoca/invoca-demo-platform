@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import type { CallReviewItem } from "../data/schema";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* Exact stat glyphs captured from the live Call Review card. */
 function ScorecardIcon() {
@@ -147,7 +148,9 @@ type AppliedFilter = { signalName: string; outcomes: Set<Outcome> };
 
 export function CallReview() {
   const { profile } = useProfile();
-  const r = profile.reports.callReview;
+  /* Registers this page as the AI scope and returns the slice with any
+     edits made ON THIS PAGE overlaid (see usePageData). */
+  const r = usePageData(profile.reports.callReview);
 
   const convSignal = `${profile.bookingTerm || "Appointment"}: Scheduled`;
   /* 10 signals shown; only the conversion one (top) is interactive for the demo. */

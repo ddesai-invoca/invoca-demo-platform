@@ -5,6 +5,7 @@ import { useSmsCapture } from "../data/SmsCaptureContext";
 import { Pill } from "../components/Pill";
 import { AgentStudioIcon } from "../components/nav";
 import type { SmsConversation, SmsInfo } from "../data/schema";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* The AI Agent glyph in the transcript/legend = the Invoca AI icon (same SVG as
    the sidebar Agent Studio icon), tinted Invoca purple (#855ede) — matches live. */
@@ -84,7 +85,9 @@ function SmsInfoPanel({ info }: { info: SmsInfo }) {
 export function SmsConversationIntelligence() {
   const { profile } = useProfile();
   const { capturedFor } = useSmsCapture();
-  const view = profile.reports.smsConversationIntelligence;
+  /* Registers this page as the AI scope and returns the slice with any
+     edits made ON THIS PAGE overlaid (see usePageData). */
+  const view = usePageData(profile.reports.smsConversationIntelligence);
 
   const captured = capturedFor(profile.id);
   const seed = view?.conversations ?? [];

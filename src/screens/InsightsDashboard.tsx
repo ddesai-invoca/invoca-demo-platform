@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { DonutChart } from "../components/DonutChart";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* Insights & Analytics -> a saved dashboard (network 1847
    /insights/dashboard/<uuid>). Matched to the capture: breadcrumb + title, an
@@ -232,7 +233,9 @@ function PerfSection({ title, dimension, rows }: { title: string; dimension: str
 export function InsightsDashboard() {
   const { profile } = useProfile();
   const { name } = useParams();
-  const md = profile.reports.marketingDashboard;
+  /* Registers this page as the AI scope and returns the slice with any
+     edits made ON THIS PAGE overlaid (see usePageData). */
+  const md = usePageData(profile.reports.marketingDashboard);
   const find = (re: RegExp) => md.breakdowns.find((b) => re.test(b.title));
 
   const medium = toRows(find(/Medium/i));

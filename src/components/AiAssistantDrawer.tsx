@@ -1,16 +1,37 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 
 /* The "Ask AI" drawer: slides in from the right over a dimmed backdrop. Scope is
-   set by which sparkle opened it — the whole dashboard (header) or one tile
-   (a tile's sparkle). The user can ask questions, edit data (numbers, trends,
-   titles, the overall story), or generate/replace tiles. Data only — never CSS.
-   Rendered once in AppShell. */
+   set by which sparkle opened it — the whole PAGE (the top-bar sparkle, on every
+   screen) or one tile (a tile's sparkle, on dashboards). The user can ask
+   questions, edit data (numbers, trends, titles, names, signals, the overall
+   story), or generate/replace tiles. Data only — never CSS or layout.
+   Rendered once in AppShell.
+
+   Edits are keyed per page, so nothing here can change another screen. */
 
 interface Msg { role: "user" | "assistant"; content: string; icon?: string }
 
 export function AiAssistantDrawer() {
-  const { open, closeDrawer, active, focus, effectiveData, applyEdits, addTile, replaceTile, readOnly, activeDemo } = useAiAssistant();
+  const { open, closeDrawer, active: registered, focus, effectiveData, applyEdits, addTile, replaceTile, readOnly, activeDemo } = useAiAssistant();
+  const { pathname } = useLocation();
+  const { profileId } = useProfile();
+
+  /* THE SCOPE MUST MATCH THE PAGE YOU ARE ON.
+
+     registerScope is only called by a screen that HAS editable data, and nothing
+     clears it on navigation — so `registered` can still point at the last such
+     screen. Left unchecked, opening this drawer from the top bar on a page with
+     no data (My Reports, Manage Dashboards, a workflow) would happily edit the
+     dashboard you were on two clicks ago. That is precisely the cross-page spill
+     rule 1 forbids, and it is invisible when it happens.
+
+     So the scope is only honoured when its key equals THIS page's key. Otherwise
+     the drawer treats the page as having nothing to edit. */
+  const pageKey = `${profileId}::${pathname}`;
+  const active = registered && registered.key === pageKey ? registered : null;
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -64,13 +85,13 @@ export function AiAssistantDrawer() {
         push(`This demo belongs to ${activeDemo?.creator.name ?? "someone else"}, so I can't change it. Duplicate it from the launch screen and I'll edit your copy.`, "lock");
       } else if (r?.kind === "create" && r.tile) {
         addTile(active.key, { id: (crypto?.randomUUID?.() ?? String(Date.now())), ...normalizeTile(r.tile) });
-        push(r.answer || `Added "${r.tile.title}" to the bottom of your dashboard.`, "add_chart");
+        push(r.answer || `Added "${r.tile.title}" to the bottom of the page.`, "add_chart");
       } else if (r?.kind === "editTile" && r.tile && focus?.id) {
         replaceTile(active.key, focus.id, normalizeTile(r.tile));
         push(r.answer || `Updated "${r.tile.title}".`, "auto_awesome");
       } else if (r?.kind === "editData" && Array.isArray(r.edits) && r.edits.length) {
         const n = applyEdits(active.key, r.edits);
-        push(n ? (r.answer || `Updated ${n} value${n > 1 ? "s" : ""} on the dashboard.`) : "I couldn't map that change to the dashboard data — try naming the tile or metric.", "auto_awesome");
+        push(n ? (r.answer || `Updated ${n} value${n > 1 ? "s" : ""} on this page.`) : "I couldn't map that change to anything on this page — try naming the metric, title or row you mean.", "auto_awesome");
       } else {
         push(r?.answer || "…");
       }
@@ -126,13 +147,26 @@ export function AiAssistantDrawer() {
                     "rename this to Booked Consultations". I edit the data only, never the styling.
                   </p>
                 </>
+              ) : !active ? (
+                /* No slice registered for this route — a list or template page.
+                   Say so plainly rather than accepting a message that would
+                   silently do nothing (send() returns early without a scope). */
+                <>
+                  <p className="aiad-empty-title">Nothing to edit on this page</p>
+                  <p className="aiad-empty-sub">
+                    This screen is a list or a template, so it has no demo data of its own.
+                    Open a dashboard, a report, Call Review or Signal and I can change the
+                    numbers, titles, names and signals there.
+                  </p>
+                </>
               ) : (
                 <>
-                  <p className="aiad-empty-title">Ask about this dashboard</p>
+                  <p className="aiad-empty-title">Ask about this page</p>
                   <p className="aiad-empty-sub">
-                    Ask a question, add a tile ("add a bar chart of calls by source"), edit a named tile
-                    ("bump Total Revenue to $1.2M"), or reshape the whole story ("show a strong Q4 turnaround").
-                    Ask for scenario ideas and I'll suggest a few. I change data only, never the styling.
+                    Ask a question, or change the data: "bump Total Revenue to $1.2M",
+                    "rename this signal to Quote Booked", "make Q4 trend up". On a dashboard I can
+                    add a tile too. I change this page's data only, never the styling, and never
+                    another page.
                   </p>
                 </>
               )}
@@ -149,8 +183,9 @@ export function AiAssistantDrawer() {
         </div>
 
         <div className="aiad-input">
-          <textarea ref={inputRef} value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={onKeyDown} rows={1} placeholder={placeholder} />
-          <button className="aiad-send" onClick={send} disabled={busy || !input.trim()} title="Send">
+          <textarea ref={inputRef} value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={onKeyDown} rows={1}
+            placeholder={active ? placeholder : "Nothing to edit on this page"} disabled={!active} />
+          <button className="aiad-send" onClick={send} disabled={!active || busy || !input.trim()} title="Send">
             <span className="material-icons">arrow_upward</span>
           </button>
         </div>
