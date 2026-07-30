@@ -72,7 +72,12 @@ export function AiAssistantDrawer() {
       const res = await fetch("/api/ai-assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customerName: active.customerName, dashboardTitle: effTitle, dataContext, question: q, focus, history }),
+        /* Tiles only exist where GeneratedTiles renders them — the platform
+           dashboards. Without this the model answered "add a branch to the
+           workflow" by creating a KPI tile, which that page never renders: the
+           edit looked like it succeeded and nothing appeared. */
+        body: JSON.stringify({ customerName: active.customerName, dashboardTitle: effTitle, dataContext, question: q, focus, history,
+          canCreateTiles: pathname.startsWith("/dashboards/") }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "Assistant failed.");

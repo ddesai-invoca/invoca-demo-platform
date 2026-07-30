@@ -35,6 +35,9 @@ export interface AssistantFocus {
 export interface AssistantInput {
   customerName: string;
   dashboardTitle: string;
+  /* False on any page that cannot render a generated tile (anything outside the
+     platform dashboards). Additions there must be data edits instead. */
+  canCreateTiles?: boolean;
   dataContext: string;                 // serialized (possibly already-edited) dashboard data
   question: string;
   focus?: AssistantFocus;
@@ -124,6 +127,9 @@ function buildSystem(input: AssistantInput): string {
     `Choose exactly ONE action ("kind"):`,
     `1. "answer" — answer a question, or SUGGEST scenario options for the user to pick from. Concise plain text in "answer" (no markdown). Leave edits [] and tile empty (tileType:"kpi", title:"", note:"", empty arrays).`,
     `2. "create" — the user asks to ADD / create / make a NEW tile. Fill "tile" (see tile rules) and put a short confirmation in "answer". Leave edits [].`,
+    ...(input.canCreateTiles === false ? [
+      `OVERRIDE: this page CANNOT render a new tile, so NEVER return kind "create" here. When the user asks to ADD something (a branch, a path, a question, a row of options), return kind "editData" instead: one edit whose path is the LIST it belongs to and whose value is that WHOLE list with the new item appended, copied from the DATA below and left otherwise identical. To REMOVE something, return the same list with that item left out.`,
+    ] : []),
     `3. "editData" — the user asks to CHANGE existing page data (a named/focused BUILT-IN tile's numbers, a chart's trend, a title/label, or the whole story). Return "edits": each { path, value } where path is a DOT-PATH into the DATA JSON below (numeric array indices), and value is the JSON-ENCODED replacement (e.g. "\\"84%\\"", "1250", "[70,80,90,85,95,100]", "\\"New Title\\""). Put a confirmation in "answer". Leave tile empty.`,
     `4. "editTile" — change the focused AI-GENERATED tile: return the FULL updated spec in "tile" and a confirmation in "answer". Leave edits [].`,
     ``,

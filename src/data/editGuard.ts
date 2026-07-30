@@ -50,11 +50,21 @@ export function getByPath(source: unknown, path: string): unknown {
    qualifying questions are exactly that. "Ask three questions instead of five" is
    a data change; refusing it would make the feature useless.
 
+   The same is true of a workflow DIAGRAM: on that screen the tree's shape is the
+   content, so "add a branch" and "remove that path" have to be allowed. The
+   renderer computes the layout from the branch list (components/WorkflowTree.tsx),
+   which is what makes that safe — a new branch positions itself and draws its own
+   connectors instead of landing on top of something.
+
    Matched against the edit PATH, so it stays narrow: only these lists may change
-   length, everything else is still blocked. */
+   length, everything else is still blocked. Node styling, sizes, colours and the
+   icon set are not data and remain out of reach. */
 const LENGTH_IS_CONTENT = [
   /qualifyingQuestions$/i,
   /\bquestions$/i,
+  /\bbranches$/i,          // a workflow diagram's branches ARE its content
+  /\bleaves$/i,            // ...and so are a branch's routing outcomes
+  /\bchips$/i,             // the signals collected on a leaf
 ];
 
 /**

@@ -200,6 +200,41 @@ The three rules, and where each is actually enforced:
 greys out (opacity .38, still revealed on hover so its absence never reads as the
 feature missing) when the current page's stack is empty.
 
+### The workflow diagram is DATA — the AI can reshape it
+`components/WorkflowTree.tsx` is ONE renderer for every Agent Studio flow diagram.
+It replaced four hand-positioned trees (SMS, Voice, the National Van Lines split,
+and the extra-workflow tree), each of which carried its own node coordinates and
+SVG line endpoints — which is why adding a branch used to mean writing a new
+component: **the geometry WAS the code**.
+
+Now the **layout is computed** from the model: every leaf takes a column, a branch
+centres over its own leaves, the connector bus spans only the outermost branches,
+and a second fork appears when a branch has more than one leaf. So "add a branch",
+"remove that path" and "split this into two teams" all just work.
+
+`deriveTree(profile, isSms, channelLabel)` reproduces what the old trees rendered,
+from `voiceCopy` — no schema change and no engine phase, so every prospect on disk
+gets an editable diagram. `SHAPE` holds per-prospect shape defaults (National Van
+Lines' two-team split, previously a 100-line component, is now a branch with two
+leaves). `extraTree` maps an extra workflow's flatter branches onto the same model.
+
+⚠️ **`editGuard` lets `branches`/`leaves`/`chips` change length.** On a workflow
+screen the tree's shape IS the content, so that exemption is deliberate — and it is
+only safe BECAUSE the layout is computed: a new branch positions itself and draws
+its own connectors instead of landing on top of something. Chart series and table
+rows are still blocked. Node styling, sizes, colours and the icon set are not data
+and remain out of reach, so rule 2 still holds.
+
+⚠️ **Tile creation is now dashboard-only** (`canCreateTiles` from the drawer,
+`pathname.startsWith("/dashboards/")`). Asked to "add a third branch", the model
+first answered by creating a KPI TILE — which a workflow page never renders, so it
+reported success and nothing appeared. When the flag is false the prompt forbids
+`kind:"create"` and requires an `editData` edit that appends to the right list.
+
+⚠️ `.wf-canvas` has `padding-bottom: 136px` so the zoom cluster (`bottom: 16px`,
+104px tall) can never be overlapped by a tall tree. That replaced a per-tree
+`min-height` override which only fixed the one hand-built tree it was written for.
+
 ### Preview Agent: the AI sets exactly what the phone asks
 The sparkle + undo sit **top-LEFT** on `/agent-studio/agent/preview` — that route
 renders outside the app shell, so there is no top bar to hang them on. Same

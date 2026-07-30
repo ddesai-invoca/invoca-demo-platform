@@ -961,12 +961,22 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 
 /* dotted canvas */
 .wf-canvas {
-  position: relative; min-height: 560px; border: 1px solid #e7eaee; border-radius: 8px; overflow: hidden;
+  /* padding-bottom reserves the strip the zoom cluster occupies (bottom: 16px,
+     104px tall). The tree is centred in the remaining space, so a tall tree can
+     never land on top of the controls. This replaces a per-tree min-height
+     override that only fixed the one hand-built tree it was written for — now the
+     branch count can be anything. */
+  position: relative; min-height: 560px; padding-bottom: 136px;
+  border: 1px solid #e7eaee; border-radius: 8px; overflow: hidden;
   background-color: #fff;
   background-image: radial-gradient(#d7dbe0 1.1px, transparent 1.1px);
   background-size: 20px 20px;
 }
 .wf-tree { position: relative; width: 760px; height: 470px; margin: 30px auto; }
+/* Reserves the SCALED footprint of a computed-layout tree so `margin: auto`
+   centres the box you can actually see. transform: scale() shrinks the paint and
+   not the layout box, which is what clipped the right-hand column before. */
+.wf-fit { position: relative; }
 .wf-lines { position: absolute; left: 0; top: 0; overflow: visible; }
 .wf-l { stroke: #c7ccd4; stroke-width: 2; fill: none; }
 .wf-l-green { stroke: #2fae4e; }
@@ -995,16 +1005,6 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 /* Voice tree matched to Invoca's real Voice workflow: 248px nodes, wider/taller
    canvas, MUI SVG icons (grey node icons, green/orange leaf actions), neutral chips. */
 .wf-voice { width: 560px; height: 560px; transform: scale(0.85); transform-origin: top center; }
-/* The three-leaf routing variant is 820x700 by design (three 248px leaf columns,
-   the measured Invoca node width) inside a ~641px canvas, so it scales to 0.72.
-   transform: scale() shrinks only the PAINT, never the layout box, so on its own
-   the tree still claimed 820px, `margin: auto` resolved to 0 and the third
-   column was clipped by the canvas's overflow: hidden. The wrapper reserves the
-   SCALED size (820*0.72 = 590, 700*0.72 = 504) and centres that, while the tree
-   scales from its top-left corner inside it. */
-.wf-split-fit { width: 590px; height: 504px; margin: 30px auto; }
-.wf-voice-split { width: 820px; height: 700px; margin: 0;
-  transform: scale(0.72); transform-origin: top left; }
 .wf-voice .wf-chips { flex-wrap: wrap; }
 .wf-voice .wf-chip { background: #f4f6f8; border-color: #d9dee4; color: #5b6577; }
 .wf-svg-ic { flex: none; }
@@ -1018,11 +1018,6 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
    never mattered; a four-branch nurture tree loses a whole node off the right
    edge. Allow horizontal scroll for those so every branch is reachable. */
 .wf-canvas-wide { overflow-x: auto; }
-/* The three-leaf routing tree is 534px tall with its margin, which reached the
-   zoom cluster (bottom: 16px, 104px tall) and sat under all three buttons. Same
-   family of problem as the minimap note above, fixed by giving the canvas the
-   room instead of hiding a control: 534 + 16 + 104 + 16 = 670. */
-.wf-canvas-split { min-height: 680px; }
 
 /* zoom controls + minimap */
 .wf-zoom { position: absolute; left: 16px; bottom: 16px; display: flex; flex-direction: column; border: 1px solid #d5d9de; border-radius: 8px; overflow: hidden; background: #fff; }
