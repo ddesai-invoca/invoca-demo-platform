@@ -59,6 +59,19 @@
 .tb-ai-btn-off { cursor: default; }
 .tb-ai:hover .tb-ai-btn-off { opacity: .38; }
 
+/* The Preview Agent tab has no top bar (it renders outside the app shell), so its
+   sparkle + undo sit in the top-LEFT corner over the dark phone page. Reuses
+   .tb-ai-btn for the fade/hover contract; only the placement and the colour
+   against a dark background differ. z-index clears the phone mockup. */
+.pp-ai {
+  position: fixed; top: 18px; left: 20px; z-index: 40;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.pp-ai .tb-ai-btn .material-icons { color: #fff; font-size: 22px; }
+.pp-ai .tb-ai-spark .material-icons { color: #8ab4f8; }
+.pp-ai:hover .tb-ai-btn, .pp-ai .tb-ai-btn:focus-visible { opacity: 1; }
+.pp-ai:hover .tb-ai-btn-off { opacity: .38; }
+
 .icon-badge { position: relative; display: inline-flex; align-items: center; }
 .icon-badge .count {
   position: absolute; top: -8px; right: -10px; background: var(--color-blue); color: #fff;

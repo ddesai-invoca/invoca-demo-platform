@@ -42,11 +42,27 @@ export function getByPath(source: unknown, path: string): unknown {
   return cur;
 }
 
+/* ARRAYS WHOSE LENGTH IS CONTENT, NOT LAYOUT.
+
+   The length rule exists because array length drives layout — a chart's series, a
+   table's rows, a KPI grid's columns. But some arrays are just a list of things,
+   and their length is the whole point of editing them: the Preview Agent's
+   qualifying questions are exactly that. "Ask three questions instead of five" is
+   a data change; refusing it would make the feature useless.
+
+   Matched against the edit PATH, so it stays narrow: only these lists may change
+   length, everything else is still blocked. */
+const LENGTH_IS_CONTENT = [
+  /qualifyingQuestions$/i,
+  /\bquestions$/i,
+];
+
 /**
  * True when replacing `before` with `after` would change the page's SHAPE rather
- * than its content — which rule 2 forbids.
+ * than its content — which rule 2 forbids. `path` is optional; when given, a
+ * list whose length is content (see above) may change length.
  */
-export function isStructuralChange(before: unknown, after: unknown): boolean {
+export function isStructuralChange(before: unknown, after: unknown, path?: string): boolean {
   const kb = kindOf(before), ka = kindOf(after);
   // A type flip is structural: the component renders one shape, not the other.
   // null <-> a value is allowed, since "no value" is a legitimate data state.
@@ -54,6 +70,7 @@ export function isStructuralChange(before: unknown, after: unknown): boolean {
   // Same-length array edits are the whole point ("make Q4 trend up"); a different
   // length adds or removes a row, series, column or tile.
   if (kb === "array" && ka === "array") {
+    if (path && LENGTH_IS_CONTENT.some((re) => re.test(path))) return false;
     return (before as unknown[]).length !== (after as unknown[]).length;
   }
   return false;

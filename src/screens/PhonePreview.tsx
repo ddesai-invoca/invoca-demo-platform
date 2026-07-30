@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
+import { usePageData } from "../components/GeneratedTiles";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 
 /* iPhone "Preview Agent" chat — modern iOS (dark mode) Messages mockup. The SE
@@ -117,9 +118,17 @@ function BatteryIcon() {
    workflow). When present its systemPrompt REPLACES the default SMS sales
    playbook — that's the whole point of a second SMS agent: same channel, a
    different job. Absent, nothing changes for any other prospect. */
+/* The brain reads the EFFECTIVE agent config, not the raw profile: this page
+   registers itself as the AI scope, so "ask for the ZIP code first" actually
+   changes what the phone asks on the next message rather than being a note in a
+   drawer. `title` gives the drawer a real scope label (agentConfig has none). */
 function useBrain(wfSlug?: string | null) {
   const { profile } = useProfile();
-  const ac = profile.reports.agentConfig;
+  const base = useMemo(() => ({
+    title: `Preview Agent — what the ${profile.customerName} SMS agent asks`,
+    ...(profile.reports.agentConfig ?? {}),
+  }), [profile.reports.agentConfig, profile.customerName]);
+  const ac = usePageData(base);
   const wf = wfSlug
     ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
     : undefined;

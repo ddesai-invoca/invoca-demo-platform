@@ -206,7 +206,7 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
       let val: unknown;
       try { val = JSON.parse(e.value); } catch { val = e.value; }
       const before = getByPath(nextData, e.path);
-      if (isStructuralChange(before, val)) {
+      if (isStructuralChange(before, val, e.path)) {
         blocked++;
         console.warn(`[ai] blocked a structural edit at "${e.path}" (data only — see editGuard.ts)`);
         continue;

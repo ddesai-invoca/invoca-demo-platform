@@ -200,6 +200,32 @@ The three rules, and where each is actually enforced:
 greys out (opacity .38, still revealed on hover so its absence never reads as the
 feature missing) when the current page's stack is empty.
 
+### Preview Agent: the AI sets exactly what the phone asks
+The sparkle + undo sit **top-LEFT** on `/agent-studio/agent/preview` — that route
+renders outside the app shell, so there is no top bar to hang them on. Same
+hover-to-reveal contract (`.pp-ai` reuses `.tb-ai-btn`), and `SmsPreviewPage`
+renders `<AiAssistantDrawer />` itself, because AppShell only renders it for
+in-shell screens and without that the sparkle opens nothing.
+
+**The edit reaches the LIVE agent**: `useBrain` in `PhonePreview.tsx` reads the
+EFFECTIVE agent config via `usePageData`, not `profile.reports.agentConfig`, so
+"ask for the ZIP code first" changes the very next reply rather than being a note
+in a panel. Scope key is the usual `<profileId>::<pathname>`, so these edits and
+their undo stack belong to this page alone.
+
+Two things had to change for "exactly what questions" to be literally true:
+- **`editGuard` lets question lists change length.** The array-length rule exists
+  because length drives layout, but a list of questions is content — "ask three
+  instead of five" is a data change, and blocking it made the feature useless.
+  `LENGTH_IS_CONTENT` matches the edit PATH so the exemption stays narrow; chart
+  series and table rows are still blocked.
+- **`engine/chat.ts` numbers the questions and forbids reordering.** They used to
+  be a bullet list under "adapt naturally to what the customer says", which read
+  as a menu: asked for ZIP → service → timing, the agent skipped straight to the
+  second question. Now numbered, with "IN THIS EXACT ORDER, do not skip, do not
+  reorder, do not add your own". Verified live: it asks the ZIP first, verbatim.
+  ⚠️ Node-cached — restart the dev server after editing that prompt.
+
 **Headings that were literals are now DATA** — `usePageDataWithLabels(base, LABELS)`
 folds a screen's `LABELS` constant into the object registered as the page scope, so
 the assistant sees them at `labels.<key>`, edits store under the page key like any

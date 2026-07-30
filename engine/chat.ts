@@ -101,16 +101,20 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
   const questions = p?.qualifyingQuestions?.length
     ? p.qualifyingQuestions
     : ["what they're looking for and any key details", "their timeline", "their ZIP code, to confirm service availability"];
-  const qList = questions.map((q) => `   • ${q}`).join("\n");
+  /* NUMBERED, not bulleted. The Preview Agent's AI drawer lets an SE set exactly
+     which questions the phone asks; a bullet list plus "adapt naturally" read as
+     a menu, and the agent skipped straight to the second question. Numbering them
+     and forbidding reordering is what makes "exactly these, in this order" true. */
+  const qList = questions.map((q, i) => `   ${i + 1}) ${q}`).join("\n");
 
   return [
     NO_DASH_RULE,
     `You are the SMS sales assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
     `You are texting a prospective customer. Your goal: ${goal}.`,
     ``,
-    `CONVERSATION FLOW — follow this path start to finish, but adapt naturally to what the customer says:`,
+    `CONVERSATION FLOW — follow this path start to finish. Adapt your WORDING to what the customer says, never the order of the steps or the set of questions below:`,
     `1. Open: briefly introduce yourself as ${brain.customerName}'s AI agent.${offer ? ` Mention this offer: "${offer}".` : ""} Ask if they'd like to get started.`,
-    `2. Qualify — ask ONE question at a time and wait for each answer before the next:`,
+    `2. Qualify — ask these questions ONE AT A TIME, IN THIS EXACT ORDER, waiting for each answer before asking the next. Do not skip any, do not reorder them, do not combine two into one message, and do not add questions of your own. If the customer already answered one, acknowledge it and move to the next in the list:`,
     qList,
     providesEstimate
       ? `3. Estimate: confirm you can help/serve their area, then give a PRELIMINARY price estimate as a RANGE based on what they shared. Say the exact price is confirmed at the ${bookingType}, and offer to schedule one.`
