@@ -175,10 +175,25 @@ The three rules, and where each is actually enforced:
    and otherwise treats the page as having nothing to edit. Without that check,
    the top-bar sparkle on a list page would silently edit the dashboard you were
    on two clicks ago — an invisible cross-page spill. Keep it.
-2. **Never CSS/design** — the prompt declines it (verified: "make the titles
-   bigger and the background navy" was refused with no override written and no
-   computed style changed), and structurally there is no path from an override to
-   CSS.
+2. **Never CSS/design/template** — enforced three ways, not one:
+   - **CSS is structurally impossible.** No data value reaches a `className` or a
+     `style` attribute (the few data-driven classNames are boolean toggles between
+     states the designer already built), and nothing renders data as raw HTML —
+     the single `dangerouslySetInnerHTML` is a hardcoded SVG in a no-props
+     component. Verified by grep, not assumed.
+   - **The prompt declines it** — "make the titles bigger and the background
+     navy" was refused, no override written, computed style unchanged.
+   - **`src/data/editGuard.ts` blocks SHAPE changes in code** (`applyEdits`).
+     ⚠️ This was prompt-only and is the one real hole the audit found: the model
+     was told not to change array lengths or value types, and `applyEdits` applied
+     whatever came back. Array length **is** layout — `gridTemplateColumns:
+     repeat(${tiles.length}, 1fr)` on the AI Messaging cards, a table's row count,
+     a chart's series and legend — so "add a series" was a template change wearing
+     a data costume, and a type flip (string → array) breaks the component. Both
+     are now dropped with a `[ai]` console warning. 12 unit cases cover it: same
+     length reshape allowed, add/remove/row-delete/type-flip blocked, null ↔ value
+     allowed (a legitimate data state). Same instruct-then-enforce pairing the dash
+     rule needed.
 3. **Data only** (metrics, titles, names, signals) — that is what `editData` does.
 
 **Undo is per page**, so it can never change a screen you are not looking at. It

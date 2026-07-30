@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { getByPath, isStructuralChange } from "./editGuard";
 
 /* Global state for the "Ask AI" dashboard assistant. Holds:
    • the drawer open state + its FOCUS (whole dashboard, or one tile);
@@ -187,17 +188,33 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
     });
   }, [readOnly]);
 
+  /* RULE 2 IS ENFORCED HERE, not only asked for in the prompt.
+
+     Every edit is checked against the value it replaces and dropped if it would
+     change the page's SHAPE rather than its content — a different array length
+     (which adds or removes a row, series, column or tile, and in places drives
+     the CSS grid itself) or a type flip (which breaks the component rendering
+     it). The prompt already forbids both; this is what makes it true when the
+     model does not listen. Same instruct-then-enforce pairing the dash rule
+     needed. See editGuard.ts. */
   const applyEdits = useCallback((key: string, edits: AssistantEdit[]): number => {
     const base = key in store.overrides ? store.overrides[key] : baseRef.current[key];
     if (base == null || readOnly) return 0;
     let nextData: unknown = base;
-    let applied = 0;
+    let applied = 0, blocked = 0;
     for (const e of edits) {
       let val: unknown;
       try { val = JSON.parse(e.value); } catch { val = e.value; }
+      const before = getByPath(nextData, e.path);
+      if (isStructuralChange(before, val)) {
+        blocked++;
+        console.warn(`[ai] blocked a structural edit at "${e.path}" (data only — see editGuard.ts)`);
+        continue;
+      }
       const after = setByPath(nextData, e.path, val);
       if (after !== nextData) { nextData = after; applied++; }
     }
+    if (blocked && !applied) console.warn(`[ai] all ${blocked} edit(s) were structural; nothing changed.`);
     if (applied) mutate(key, { override: nextData });
     return applied;
   }, [store.overrides, mutate, readOnly]);
