@@ -86,10 +86,15 @@ function VIcon({ d }: { d: string }) {
    treatments and collecting an Order Number. */
 function voiceCopy(p: ReturnType<typeof useProfile>["profile"]) {
   const q = p.reports.voiceRoutingDemo?.queues ?? [];
-  // Queue names carry a qualifier after a dash ("Consultation - LASIK New
-  // Patient"); the node title wants the head, so cut at the first dash.
+  /* Queue names carry a qualifier after a separator ("Consultation - LASIK New
+     Patient"); the node title wants the head, so cut at the first one.
+
+     COMMA included, not just dashes: the em-dash migration rewrote every queue
+     name from "Support - Existing Move" to "Support, Existing Move", so this
+     stopped trimming anything and the intent nodes started showing the whole
+     queue name. Splitting on both restores what the code always meant to do. */
   const head = (n?: string, fb = "") =>
-    (n ?? fb).split(/\s*[-–—]\s*/)[0].trim() || fb;
+    (n ?? fb).split(/\s*[-–—,]\s*/)[0].trim() || fb;
   const newQ = head(q[0]?.name, "New Inquiry");
   const supQ = head(q[1]?.name, "Existing Customer Support");
   // "patient" vs "customer" comes from the prospect's own queue wording rather

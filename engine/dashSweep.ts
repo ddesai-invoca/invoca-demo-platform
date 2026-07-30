@@ -82,6 +82,15 @@ export function migrateDemoDashes(dataDir: string): void {
       const count = { n: 0 };
       const next = sweepValue(rec, count);
       if (count.n) {
+        /* BUMP updatedAt. The frontend caches profiles in localStorage and only
+           refetches when the library's updatedAt is newer than the copy it cached
+           (see the SELF-HEAL note in DemoLibraryContext.tsx). Writing the file
+           WITHOUT touching updatedAt made this migration invisible to that check:
+           the server was correct and every already-loaded browser kept rendering
+           the old content forever. That is exactly the "Bill is still seeing the
+           old conversation" failure the self-heal was added to fix, and it could
+           never fire because nothing here moved the timestamp it watches. */
+        (next as { updatedAt?: string }).updatedAt = new Date().toISOString();
         fs.writeFileSync(file, JSON.stringify(next, null, 2) + "\n");
         changed++; total += count.n;
         console.log(`   ✎ ${name}: ${count.n} replacement(s)`);

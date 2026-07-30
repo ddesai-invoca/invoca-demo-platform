@@ -67,6 +67,19 @@ none — it sends you hunting for a key that was already set.
 that token at **BUILD** time, so runtime presence does NOT prove the deployed
 bundle carries it.
 
+### ⚠️ Any server-side write to a demo MUST bump `updatedAt`
+`DemoLibraryContext`'s self-heal only refetches when the library's `updatedAt` is
+newer than the copy the browser cached. Both boot migrations
+(`engine/dashSweep.ts`, `engine/demoPatches.ts`) wrote the file with a raw
+`fs.writeFileSync` and left `updatedAt` alone, which made **every server-side
+migration invisible to the very mechanism added to catch them** — the server was
+correct and each already-loaded browser kept rendering the old content forever.
+That is the "Bill is still seeing the old conversation" failure, and its real root
+cause: the self-heal could never fire because nothing moved the timestamp it
+watches. Both now bump it. If you add another writer, bump it too.
+Note the boot migrations run in **`server.ts` only** — the Vite dev server does
+not, so a local `.data` is only migrated once you actually run the prod entry.
+
 **Ownership** (server-enforced — the frontend lock is convenience only):
 - Anyone signed in can **list and view** every demo.
 - Only the **creator** can PATCH/DELETE theirs (others get a 403 telling them to duplicate).
