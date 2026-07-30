@@ -16,7 +16,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { CustomerProfile, DigitalInsightsReport, DashboardView, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
+import { CustomerProfile, DigitalInsightsReport, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
 import { sweepValue } from "./dashSweep.ts";
 
 const QM_SCORE_MEAN = 71;   // true mean of the agent scorecard series
@@ -359,31 +359,141 @@ function generateDigitalInsights(client: Anthropic, name: string, brandDomain: s
   );
 }
 
-export function generateDashboard(client: Anthropic, name: string, brief: string, bookingTerm: string, qualifiedCallTerm: string, conversionTerm: string, sc: Scale) {
-  return structured<z.infer<typeof DashboardView>>(
+/* ---- The Marketing Performance dashboard: THREE concurrent phases -----------
+
+   This was ONE structured call and it WAS the makespan: 180s of a 258s
+   generation, with all fifteen other phases sitting idle behind it (measured on
+   Roto-Rooter, 2026-07-30). It is by far the biggest output in the pipeline —
+   3 KPI groups, SIX breakdowns of 5 rows x 4 metric columns (120 cells) and two
+   multi-series charts — and `effort: "high"` has to hold every arithmetic rule in
+   scaleRules() across all of it in a single pass.
+
+   Splitting it is safe BECAUSE THE NUMBERS ARE PINNED BEFORE THE POOL STARTS:
+   buildScale() fixes total calls, total revenue, won sales, bookings and the
+   answer rate, and scaleRules() hands the SAME exact figures to every phase. The
+   three pieces therefore agree by construction, not by luck — which is the only
+   reason this can be parallel at all. If you ever make a dashboard number depend
+   on another phase's OUTPUT rather than on Scale, these have to merge back.
+
+   The split follows the real internal dependencies, so nothing that must match is
+   ever separated:
+     • core     — the KPI tiles and the breakout line chart that rolls up INTO them
+     • channels — the four marketing breakdowns (Source/Medium/Campaign/Search Term)
+     • segments — the Product Category breakdown AND the chart that plots the SAME
+                  categories, plus Region
+
+   ⚠️ `breakdowns` is ORDER-SENSITIVE, in two different ways. MarketingDashboard
+   splits the array BY FLAG — `filter(hasDonut)` renders the donut+table tiles in
+   ARRAY ORDER, and `find(!hasDonut)` pulls the single Product Category one out to
+   sit beside productCategoryGraph — while `prospectPlace.derive()` and
+   google-ads-demo.js look rows up BY TITLE. So position drives the visual sequence
+   of the donut tiles and the flag decides which section a breakdown lands in.
+   assembleDashboard below rebuilds the canonical order; do not append. */
+const DashboardCore = z.object({
+  title: z.string(),
+  dateRange: z.string(),
+  kpiGroups: z.array(KpiGroup),
+  salesCallBreakoutGraph: MultiSeriesChart,
+});
+const DashboardChannels = z.object({
+  /* Source, Medium, Campaign, Search Term — IN THAT ORDER. */
+  breakdowns: z.array(Breakdown),
+});
+/* Named rather than an array: these two are consumed at different positions in the
+   final order, and a positional array would make a silent swap possible. */
+const DashboardSegments = z.object({
+  productCategory: Breakdown,
+  productCategoryGraph: MultiSeriesChart,
+  region: Breakdown,
+});
+
+/* The metric columns every "Call Outcome Summary" breakdown shares. Built once so
+   the two breakdown phases cannot drift into different column sets — which would
+   render as a table whose headers don't match the one above it. */
+const metricCols = (conversionTerm: string) =>
+  `["Call Count","Quote Discussed (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"]`;
+
+export function generateDashboardCore(client: Anthropic, name: string, brief: string, bookingTerm: string, qualifiedCallTerm: string, conversionTerm: string, sc: Scale) {
+  return structured<z.infer<typeof DashboardCore>>(
     client,
-    DashboardView,
-    `Using this business brief, produce the Invoca "Marketing Performance Dashboard" for ${name}.\n\n` +
+    DashboardCore,
+    `Using this business brief, produce the KPI TILES and the breakout line chart of the Invoca "Marketing Performance Dashboard" for ${name}.\n\n` +
       `BRIEF:\n${brief}\n\n` +
-      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n${outcomeStory()}\n\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +
       `The metric labels below are a TEMPLATE — keep the same count/shape. Two conversion terms are GIVEN and MUST be used VERBATIM everywhere they appear: the sales-qualified inbound call is "${qualifiedCallTerm}", and a won revenue conversion is "${conversionTerm}". Re-skin only the OTHER outcome words that don't fit ${name} (e.g. "Warranty Call" → a real call type; "Quote Discussed" → "Estimate Discussed"/"Pricing Discussed"; "Unqualified Lead" → the fitting term). Keep "Call Count" and "Total Revenue (Sale Amount)" verbatim.\n\n` +
       `- title: "Marketing Performance Dashboard (${name})". dateRange: "${DATE_RANGE}".\n` +
       `- kpiGroups: exactly these 3, each 4 tiles (values as strings; percents like "84%"; currency like "${$(sc.revenue)}"; counts use commas):\n` +
       `  1) "Call Performance Summary": Call Count, ${qualifiedCallTerm} (Percent), ${conversionTerm} (Percent), Total Revenue (Sale Amount)\n` +
       `  2) "Non-Sales Inquiries": Call Count = ONLY the non-sales calls (${n(sc.nonSalesCalls)}, NOT the ${n(sc.calls)} total — repeating the total here is wrong), then three non-sales call types whose percents are shares of ALL calls and MUST sum to exactly ${100 - sc.salesPct}% (e.g. 8% + 5% + 3%), so sales + non-sales = 100%.\n` +
       `  3) "${qualifiedCallTerm} Breakout Metrics": ${qualifiedCallTerm} (Percent), Quote Discussed (Percent), Unqualified Lead (Percent), ${conversionTerm} (Percent)\n` +
-      `- breakdowns (in this order), each metricColumns=["Call Count","Quote Discussed (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"] with 5 rows ordered by Call Count DESCENDING. Source / Medium / Line of Business / Region / Product Category are COMPLETE partitions and must sum to exactly ${n(sc.calls)} calls and ${$(sc.revenue)}; Campaign / Search Term / Division are top-5 of a long tail and must sum to LESS:\n` +
-      `  • Calls by Source / "Source: Call Outcome Summary" / "Marketing Source" / hasDonut:true\n` +
-      `  • Calls by Medium / "Medium: Call Outcome Summary" / "Marketing Medium" / hasDonut:true\n` +
-      `  • Calls by Campaign / "Campaign: Call Outcome Summary" / "Marketing Campaign" / hasDonut:true\n` +
-      `  • Calls by Search Term / "Search Term: Call Outcome Summary" / "Marketing Search Term" / hasDonut:true\n` +
-      `  • Conversions by Product Category / "Conversions by Product Category" / "Product Category" / hasDonut:false, with metricColumns col 2 = "${bookingTerm} Set (Industry) (Percent)"\n` +
-      `  • Calls by Region / "Region Summary" / "Location Region" / hasDonut:true (US regions: South/West/Northeast/Midwest)\n` +
-      `- salesCallBreakoutGraph: yLabel "${qualifiedCallTerm} (Count)", xLabels the 6 dates, series in order "${qualifiedCallTerm} (Count)","Quote Discussed (Count)","Unqualified Lead (Count)","${conversionTerm} (Count)", each 6 daily counts (${qualifiedCallTerm} highest).\n` +
-      `- productCategoryGraph: yLabel "${conversionTerm} (Count)", xLabels the 6 dates, series = the SAME top product categories as the Product Category breakdown, each 6 daily ${conversionTerm} counts.\n` +
+      `- salesCallBreakoutGraph: yLabel "${qualifiedCallTerm} (Count)", xLabels EXACTLY ${JSON.stringify(WEEK_LABELS)}, series in order "${qualifiedCallTerm} (Count)","Quote Discussed (Count)","Unqualified Lead (Count)","${conversionTerm} (Count)", each one weekly count per label (${qualifiedCallTerm} highest). These series roll up INTO group 3's percents, so they must be consistent with them.\n` +
       `All numbers plausible for THIS business.`,
-    20000
+    8000
   );
+}
+
+export function generateDashboardChannels(client: Anthropic, name: string, brief: string, bookingTerm: string, conversionTerm: string, sc: Scale) {
+  return structured<z.infer<typeof DashboardChannels>>(
+    client,
+    DashboardChannels,
+    `Using this business brief, produce the FOUR marketing "Call Outcome Summary" breakdowns of the Invoca "Marketing Performance Dashboard" for ${name}.\n\n` +
+      `BRIEF:\n${brief}\n\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n${outcomeStory()}\n\n` +
+      `- breakdowns: EXACTLY these 4, IN THIS ORDER, each metricColumns=${metricCols(conversionTerm)} with 5 rows ordered by Call Count DESCENDING:\n` +
+      `  1) title "Calls by Source" / tableTitle "Source: Call Outcome Summary" / dimensionColumn "Marketing Source" / hasDonut:true\n` +
+      `  2) title "Calls by Medium" / tableTitle "Medium: Call Outcome Summary" / dimensionColumn "Marketing Medium" / hasDonut:true\n` +
+      `  3) title "Calls by Campaign" / tableTitle "Campaign: Call Outcome Summary" / dimensionColumn "Marketing Campaign" / hasDonut:true\n` +
+      `  4) title "Calls by Search Term" / tableTitle "Search Term: Call Outcome Summary" / dimensionColumn "Marketing Search Term" / hasDonut:true\n` +
+      `- Source and Medium are COMPLETE partitions of the month: each one's Call Count column must sum to EXACTLY ${n(sc.calls)} and its revenue column to EXACTLY ${$(sc.revenue)}.\n` +
+      `- Campaign and Search Term are the TOP 5 of a long tail, so each must sum to LESS than ${n(sc.calls)} calls and less than ${$(sc.revenue)} — never more, and never exactly the total.\n` +
+      `- Search Term rows must be phrases a real customer would TYPE INTO GOOGLE (lowercase, e.g. "emergency plumber near me"), not product names or transcript words.\n` +
+      `All numbers plausible for THIS business.`,
+    12000
+  );
+}
+
+export function generateDashboardSegments(client: Anthropic, name: string, brief: string, bookingTerm: string, conversionTerm: string, sc: Scale) {
+  return structured<z.infer<typeof DashboardSegments>>(
+    client,
+    DashboardSegments,
+    `Using this business brief, produce the Product Category and Region sections of the Invoca "Marketing Performance Dashboard" for ${name}.\n\n` +
+      `BRIEF:\n${brief}\n\n` +
+      `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n${outcomeStory()}\n\n` +
+      `- productCategory: title "Conversions by Product Category" / tableTitle "Conversions by Product Category" / dimensionColumn "Product Category" / hasDonut:false / 5 rows ordered by Call Count DESCENDING, rows = THIS business's real product or service categories. metricColumns=["Call Count","${bookingTerm} Set (Industry) (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"] (note column 2 differs from the other breakdowns).\n` +
+      `- region: title "Calls by Region" / tableTitle "Region Summary" / dimensionColumn "Location Region" / hasDonut:true / metricColumns=${metricCols(conversionTerm)} / 5 rows ordered by Call Count DESCENDING. Use US regions (South/West/Northeast/Midwest and one more).\n` +
+      `- BOTH are COMPLETE partitions of the month: each one's Call Count column must sum to EXACTLY ${n(sc.calls)} and its revenue column to EXACTLY ${$(sc.revenue)}.\n` +
+      `- productCategoryGraph: yLabel "${conversionTerm} (Count)", xLabels EXACTLY ${JSON.stringify(WEEK_LABELS)}, series = THE SAME product categories as productCategory's rows above, in the same order and named IDENTICALLY (this chart sits beside that table, so a name that differs reads as a bug), each one weekly ${conversionTerm} count per label.\n` +
+      `All numbers plausible for THIS business.`,
+    10000
+  );
+}
+
+/* Reassemble the three phases into the ONE DashboardView the screen expects.
+   `breakdowns` order is the contract: the dashboard renders them in order and both
+   prospectPlace.derive() and google-ads-demo.js look rows up by title. */
+export function assembleDashboard(
+  core: z.infer<typeof DashboardCore>,
+  channels: z.infer<typeof DashboardChannels>,
+  segments: z.infer<typeof DashboardSegments>,
+): z.infer<typeof DashboardView> {
+  /* Source, Medium, Campaign, Search Term, THEN Product Category, THEN Region —
+     the order the single-call version emitted. Pick the four channel breakdowns by
+     title so a model that reorders its own array still lands them correctly, and
+     fall back to positional order if a title was re-skinned unexpectedly. */
+  const want = [/source/i, /medium/i, /campaign/i, /search term/i];
+  const pool = [...channels.breakdowns];
+  const ordered = want.map((re, i) => {
+    const hit = pool.findIndex((b) => re.test(b.title));
+    return hit >= 0 ? pool.splice(hit, 1)[0] : pool[0] ?? channels.breakdowns[i];
+  }).filter(Boolean);
+  return {
+    title: core.title,
+    dateRange: core.dateRange,
+    kpiGroups: core.kpiGroups,
+    salesCallBreakoutGraph: core.salesCallBreakoutGraph,
+    breakdowns: [...ordered, segments.productCategory, segments.region],
+    productCategoryGraph: segments.productCategoryGraph,
+  };
 }
 
 function generateCallReview(client: Anthropic, name: string, brief: string, bookingTerm: string, sc: Scale) {
@@ -916,29 +1026,36 @@ export async function generateProfile(
     return new Promise<void>((res) => setTimeout(res, Math.floor(Math.random() * 350))).then(run).then(done, retry);
   };
 
+  /* Ordered LONGEST-PROCESSING-TIME FIRST, from the timings the CLI logs
+     (`[phase] <name>: <s>s`). Re-measure and re-sort if a phase's prompt grows —
+     a heavy phase that starts late tails the whole makespan, which is exactly the
+     failure the dashboard split above was fixing. */
   const [
-    dashboard, agentConfig, callReview, digitalInsights, conversationIntelligence,
-    opsDashboard, callDetail, voiceConversationIntelligence, smsConversationIntelligence, aiAgentConversion,
-    qualityManagement, voiceRoutingDemo, screenpops, aiMessagingImpact, qmInstantInsights,
-    signalManager,
+    dashChannels, dashSegments, opsDashboard, callReview, agentConfig, signalManager,
+    dashCore, digitalInsights, conversationIntelligence, callDetail, aiAgentConversion,
+    voiceConversationIntelligence, smsConversationIntelligence, aiMessagingImpact,
+    voiceRoutingDemo, screenpops, qualityManagement, qmInstantInsights,
   ] = await runPool([
-    () => phase("dashboard", () => generateDashboard(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale)),
-    () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm)),
+    () => phase("dashboardChannels", () => generateDashboardChannels(client, name, brief, bookingTerm, conversionTerm, scale)),
+    () => phase("dashboardSegments", () => generateDashboardSegments(client, name, brief, bookingTerm, conversionTerm, scale)),
+    () => phase("opsDashboard", () => generateOpsDashboard(client, name, brief, bookingTerm, customerNoun, scale)),
     () => phase("callReview", () => generateCallReview(client, name, brief, bookingTerm, scale)),
+    () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm)),
+    () => phase("signalManager", () => generateSignalManager(client, name, brief, bookingTerm)),
+    () => phase("dashboard", () => generateDashboardCore(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale)),
     () => phase("digitalInsights", () => generateDigitalInsights(client, name, brandDomain, brief, bookingTerm, scale)),
     () => phase("conversationIntelligence", () => generateConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
-    () => phase("opsDashboard", () => generateOpsDashboard(client, name, brief, bookingTerm, customerNoun, scale)),
     () => phase("callDetail", () => generateCallDetail(client, name, brief, bookingTerm)),
+    () => phase("aiAgentConversion", () => generateAiAgentConversionDashboard(client, name, brief, bookingTerm, customerNoun, qualifiedCallTerm, conversionTerm, scale)),
     () => phase("voiceConversationIntelligence", () => generateVoiceConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
     () => phase("smsConversationIntelligence", () => generateSmsConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
-    () => phase("aiAgentConversion", () => generateAiAgentConversionDashboard(client, name, brief, bookingTerm, customerNoun, qualifiedCallTerm, conversionTerm, scale)),
-    () => phase("qualityManagement", () => generateQualityManagement(client, name, brief, bookingTerm, scale)),
+    () => phase("aiMessagingImpact", () => generateAiMessagingImpact(client, name, brief, bookingTerm, customerNoun, scale)),
     () => phase("voiceRoutingDemo", () => generateVoiceRoutingDemo(client, name, brandDomain, brief, bookingTerm)),
     () => phase("screenpops", () => generateScreenpops(client, name, brief, bookingTerm, customerNoun)),
-    () => phase("aiMessagingImpact", () => generateAiMessagingImpact(client, name, brief, bookingTerm, customerNoun, scale)),
+    () => phase("qualityManagement", () => generateQualityManagement(client, name, brief, bookingTerm, scale)),
     () => phase("qmInstantInsights", () => generateQmInstantInsights(client, name, brief, scale)),
-    () => phase("signalManager", () => generateSignalManager(client, name, brief, bookingTerm)),
   ], CONCURRENCY);
+  const dashboard = assembleDashboard(dashCore, dashChannels, dashSegments);
 
   /* Gumloop leave-behinds → clickable rows in My Reports. All three are rendered
      from the data above (src/artifacts), so every prospect gets them complete. */

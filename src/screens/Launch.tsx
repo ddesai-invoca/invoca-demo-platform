@@ -18,7 +18,14 @@ const BUILD_STEPS: { key: string; label: string; weight: number }[] = [
   { key: "research", label: "Researching the business & website", weight: 10 },
   { key: "terms", label: "Identifying key metrics & terminology", weight: 3 },
   { key: "digitalInsights", label: "Digital Journey & Call Attribution report", weight: 1 },
+  /* The Marketing Performance dashboard is generated as THREE concurrent phases
+     (it used to be one call and was 70% of the wall clock — see the comment above
+     generateDashboardCore in engine/core.ts). Three rows, because each one has to
+     appear in the checklist or its progress is invisible; the labels name real
+     sections of that dashboard rather than leaking the engine's phase keys. */
   { key: "dashboard", label: "Marketing Performance dashboard", weight: 1 },
+  { key: "dashboardChannels", label: "Source, Medium & Campaign breakdowns", weight: 2 },
+  { key: "dashboardSegments", label: "Product Category & Region breakdowns", weight: 2 },
   { key: "opsDashboard", label: "Marketing & Operations dashboard", weight: 1 },
   { key: "aiAgentConversion", label: "AI Agent Conversion dashboard", weight: 1 },
   { key: "aiMessagingImpact", label: "AI Messaging Impact dashboard", weight: 1 },

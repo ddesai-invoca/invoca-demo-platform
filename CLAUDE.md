@@ -340,6 +340,35 @@ Flow of the pieces:
   3min, quality intact (17 report sections, rich re-skinned data, consistent terminology).**
   To add a phase: append a `() => phase(...)` thunk to the `runPool` array (place it by expected
   duration for LPT), add a slot to the destructure, and add it to the `reports:{}` assembly.
+  ⚡ **The Marketing Performance dashboard is THREE phases, not one (split 2026-07-30).**
+  As one call it WAS the makespan: **180s of a 258s generation**, with all fifteen other
+  phases idle behind it (measured on Roto-Rooter). It is the biggest output in the
+  pipeline — 3 KPI groups, SIX breakdowns of 5 rows × 4 metric columns (120 cells) and
+  two multi-series charts — and `effort:"high"` had to hold every arithmetic rule in
+  `scaleRules()` across all of it in one pass. Now:
+  `dashboard` (KPI tiles + the breakout line chart that rolls up into them) ·
+  `dashboardChannels` (Source/Medium/Campaign/Search Term) ·
+  `dashboardSegments` (Product Category + the chart plotting the SAME categories, + Region).
+  ⚠️ **This is only safe because the numbers are pinned BEFORE the pool starts.**
+  `buildScale()` fixes total calls, revenue, won sales, bookings and answer rate, and
+  `scaleRules()` hands the SAME figures to every phase, so the three pieces agree by
+  construction rather than by luck. **If you ever make a dashboard number depend on
+  another phase's OUTPUT instead of on `Scale`, these have to merge back.** The split
+  also follows the real internal dependencies, so nothing that must match is separated.
+  ⚠️ `breakdowns` is **order-sensitive, in two different ways**. `MarketingDashboard`
+  splits the array **by flag**: `filter(hasDonut)` renders the donut+table tiles in
+  **array order**, and `find(!hasDonut)` pulls the single Product Category one out to sit
+  beside `productCategoryGraph` — so on screen the donut sequence reads Source, Medium,
+  Campaign, Search Term, **Region**, with Product Category in its own section further
+  down, even though the array holds it fifth. Separately, `prospectPlace.derive()` and
+  `google-ads-demo.js` look rows up **by title**. `assembleDashboard()` rebuilds the
+  canonical array order (Source, Medium, Campaign, Search Term, Product Category, Region)
+  and matches the four channel breakdowns **by title** so a model that reorders its own
+  array still lands them right. Do not append.
+  Round-trip tested against all 9 real dashboards on disk: cut each into the three
+  slices, reassemble, byte-identical — plus a shuffled-array case.
+  ⚠️ A new phase key must also be added to **`BUILD_STEPS` in `Launch.tsx`** or its
+  progress is invisible on the live build checklist (and its weight missing from the bar).
   ⚠️ **Model param support:** `thinking:{type:"adaptive"}` and `output_config.effort`
   are **Opus-only** — `structured()` gates BOTH to `MODEL`; Haiku (FAST_MODEL) 400s on
   either. Strict structured-output schemas can't use `z.record()` (→ `additionalProperties`
