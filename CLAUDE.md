@@ -44,6 +44,28 @@ Routes: `GET /api/me`, `GET|POST /api/demos`, `GET|PATCH|DELETE /api/demos/:id`,
 - Anyone can **duplicate** someone else's → a copy owned by them, named
   `<prospect> (copy)` (both `prospect` and `profile.customerName`) so the library and
   the customer switcher never show two identical entries.
+- **PROJECT ADMINS can PATCH/DELETE every demo.** `ADMINS` in `engine/demoApi.ts`
+  (currently `ddesai@invoca.com`) **plus** anything in the `DEMO_ADMIN_EMAILS` env
+  var, comma separated. The env var is **additive on purpose**: replacing the list
+  would mean `DEMO_ADMIN_EMAILS=bill@invoca.com`, meant as "Bill too", silently
+  strips the project admin of access — the exact problem admin exists to fix. Read
+  at module load, so adding an admin on Render needs a **restart, not a redeploy**.
+  `owns()` and `isAdmin()` combine in ONE `canWrite()` helper so PATCH and DELETE
+  can't drift apart.
+  - **Admin is not ownership.** An admin write never reassigns `creator`; it sets
+    `updatedBy` instead, so the library still shows whose demo it is, the owner
+    keeps their rights, and the Launch row shows "· edited by <name>" when an
+    admin last touched it. That audit line is the counterpart to the extra power.
+  - The frontend gets `admin` from `GET /api/me` and `GET /api/demos` (the SERVER
+    decides — a client that lied would just collect 403s). `useDemoLibrary()`
+    exposes `admin` + `canManage(d)`; the Ask AI edit layer needed no change
+    because it already keys off the server's `canEdit`.
+  - Deleting someone else's demo is the one irreversible thing admin unlocks, so
+    the confirm dialog names the owner ("It belongs to A Colleague, and you are
+    deleting it as an admin").
+  - ⚠️ Off-gate local dev is `local@dev`, which is NOT an admin, so the admin path
+    cannot be exercised locally without temporarily adding it to `ADMINS`
+    (`.claude/launch.json` does NOT pass env vars through — verified).
 
 Identity comes from the Google sign-in gate (`googleAuth.ts` → `currentUser(req)`,
 `@invoca.com` only); off-gate local dev is `Local Dev <local@dev>`.

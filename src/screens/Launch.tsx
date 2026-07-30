@@ -111,12 +111,14 @@ interface Entry {
   creator?: { name: string; email: string };
   mine: boolean;
   inLibrary: boolean;
+  /* Name of the admin who last edited it, when that is not the creator. */
+  editedBy?: string;
   group: EntryGroup;
 }
 
 export function Launch() {
   const { profiles, addProfile, removeProfile, setProfileId } = useProfile();
-  const { demos, me, isMine, openDemo, createDemo, duplicateDemo, deleteDemo } = useDemoLibrary();
+  const { demos, me, admin, isMine, openDemo, createDemo, duplicateDemo, deleteDemo } = useDemoLibrary();
   const { hydrateDemo } = useAiAssistant();
   const navigate = useNavigate();
 
@@ -152,6 +154,11 @@ export function Launch() {
       return {
         id: d.id, name: d.prospect, industry: d.industry,
         creator: d.creator, mine, inLibrary: true,
+        /* Only set when an admin last edited someone else's demo, so the row can
+           say so. Comparing against the CREATOR (not against me) is what makes
+           it an audit line rather than a "you edited this" note. */
+        editedBy: d.updatedBy && d.updatedBy.email.toLowerCase() !== d.creator?.email?.toLowerCase()
+          ? d.updatedBy.name : undefined,
         group: (mine ? "mine" : "team") as EntryGroup,
       };
     }),
@@ -206,9 +213,12 @@ export function Launch() {
   }
 
   /* One prospect row. Ownership/state decides the meta line + which actions show:
-     mine → delete; someone else's → duplicate; local unpublished → publish. */
+     mine → delete; someone else's → duplicate; local unpublished → publish.
+     A project ADMIN also gets delete on other people's library demos, since the
+     server now accepts it. Duplicate stays available either way: making a copy is
+     still often what you want, even with the rights to edit in place. */
   function renderRow(e: Entry) {
-    const canDelete = e.inLibrary ? e.mine : !SEED_IDS.has(e.id);
+    const canDelete = e.inLibrary ? (e.mine || admin) : !SEED_IDS.has(e.id);
     return (
       <div key={e.id} className="prospect-option" onClick={() => openEntry(e)}>
         <div className="prospect-option-text">
@@ -216,6 +226,7 @@ export function Launch() {
           <span className="prospect-meta">
             {e.industry}
             {e.group === "team" && e.creator && <> · <span className="prospect-owner">{e.creator.name}</span></>}
+            {e.editedBy && <> · <span className="prospect-owner">edited by {e.editedBy}</span></>}
             {e.group === "mine" && !e.inLibrary && <> · <span className="prospect-owner">Not published</span></>}
           </span>
         </div>
@@ -432,6 +443,12 @@ export function Launch() {
             <h2 className="confirm-title">Delete this prospect?</h2>
             <p className="confirm-text">
               Are you sure you want to delete <strong>{pendingDelete.name}</strong>?
+              {/* Deleting a COLLEAGUE'S demo is the one irreversible thing admin
+                  rights unlock, so the dialog has to say whose it is. Without
+                  this the copy read identically to deleting your own. */}
+              {!pendingDelete.mine && pendingDelete.creator && (
+                <> It belongs to <strong>{pendingDelete.creator.name}</strong>, and you are deleting it as an admin.</>
+              )}
               {pendingDelete.inLibrary && " This removes it from the team library for everyone."} This can't be undone.
             </p>
             <div className="confirm-actions">

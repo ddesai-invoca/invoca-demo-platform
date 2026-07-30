@@ -7,6 +7,11 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
    who created it. Everyone can view any demo; only the creator can edit or delete
    theirs; anyone can duplicate someone else's to get an editable copy.
 
+   PROJECT ADMINS can edit and delete anyone's demo. `admin` comes from the
+   SERVER (it decides who is an admin, from DEMO_ADMIN_EMAILS) rather than being
+   worked out here, because this flag only unlocks UI — the API enforces the rule
+   independently, and a client that lied about it would just collect 403s.
+
    Degrades gracefully: if the library API isn't reachable (offline, or a static
    host with no backend), `available` goes false and the app falls back to the
    local/bundled profiles it has always used. */
@@ -25,6 +30,8 @@ export interface DemoSummary {
   creator: DemoCreator;
   createdAt: string;
   updatedAt: string;
+  /* Set only when someone other than the creator (an admin) last edited it. */
+  updatedBy?: DemoCreator;
 }
 
 export interface DemoCustomizations {
@@ -39,11 +46,15 @@ export interface LoadedDemo {
 
 interface Ctx {
   me: DemoCreator | null;
+  /** Project admin: may edit and delete every demo, not only their own. */
+  admin: boolean;
   demos: DemoSummary[];
   loading: boolean;
   available: boolean;
   refresh: () => Promise<void>;
   isMine: (d: { creator?: DemoCreator }) => boolean;
+  /** Mine OR I am an admin — i.e. the server will accept my writes. */
+  canManage: (d: { creator?: DemoCreator }) => boolean;
   openDemo: (id: string) => Promise<LoadedDemo | null>;
   createDemo: (profile: unknown, customizations?: DemoCustomizations) => Promise<DemoSummary | null>;
   duplicateDemo: (id: string) => Promise<DemoSummary | null>;
@@ -73,16 +84,18 @@ async function api<T>(path: string, init?: RequestInit): Promise<T | null> {
 
 export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   const [me, setMe] = useState<DemoCreator | null>(null);
+  const [admin, setAdmin] = useState(false);
   const [demos, setDemos] = useState<DemoSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [available, setAvailable] = useState(true);
 
   const refresh = useCallback(async () => {
-    const data = await api<{ demos: DemoSummary[]; user: DemoCreator }>("/api/demos");
+    const data = await api<{ demos: DemoSummary[]; user: DemoCreator; admin?: boolean }>("/api/demos");
     if (!data) { setAvailable(false); setLoading(false); return; }
     setAvailable(true);
     setDemos(data.demos ?? []);
     if (data.user) setMe(data.user);
+    setAdmin(!!data.admin);
     setLoading(false);
   }, []);
 
@@ -91,6 +104,11 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   const isMine = useCallback(
     (d: { creator?: DemoCreator }) => !!me && (d.creator?.email ?? "").toLowerCase() === me.email.toLowerCase(),
     [me],
+  );
+
+  const canManage = useCallback(
+    (d: { creator?: DemoCreator }) => admin || isMine(d),
+    [admin, isMine],
   );
 
   const openDemo = useCallback((id: string) => api<LoadedDemo>(`/api/demos/${id}`), []);
@@ -166,7 +184,7 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   }, [demos, profiles, openDemo, addProfile]);
 
   return (
-    <Ctx.Provider value={{ me, demos, loading, available, refresh, isMine, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations }}>
+    <Ctx.Provider value={{ me, admin, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations }}>
       {children}
     </Ctx.Provider>
   );

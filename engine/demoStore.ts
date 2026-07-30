@@ -52,6 +52,10 @@ export interface DemoRecord {
   creator: DemoCreator;
   createdAt: string;
   updatedAt: string;
+  /* Who last wrote to it. Only differs from `creator` when a project admin
+     edited someone else's demo; optional so records written before this existed
+     still load. */
+  updatedBy?: DemoCreator;
   profile: unknown;
   customizations: {
     overrides: Record<string, unknown>;
