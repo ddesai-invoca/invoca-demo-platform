@@ -67,6 +67,25 @@ none — it sends you hunting for a key that was already set.
 that token at **BUILD** time, so runtime presence does NOT prove the deployed
 bundle carries it.
 
+### Dashes in prospect data: swept at the SOURCE
+`generateProfile()` in `engine/core.ts` runs `sweepValue()` over the assembled
+profile before the final Zod parse, so the CLI, the dev endpoint, the prod
+endpoint and the library publish ALL get clean data with nobody remembering a
+script. `NO_DASH_RULE` in the prompt asks; this makes sure — the same
+instruct-then-enforce pairing as `stripDashes` for the live agents' replies.
+Prompt-only was not enough: the two most recently generated prospects arrived
+with 24 dash-joined clauses between them and were only caught weeks later by
+running `scripts/strip-dashes.ts` by hand, after both had been demoed.
+
+One rule set in `engine/dashSweep.ts`, used by three callers (generation, the boot
+migration, the script) so they cannot drift. **Em dashes are NOT banned outright,
+only in prose** — audited across all 11 profiles: every remaining em dash is a
+lone `—` table placeholder meaning "no value", which is real Invoca UI. Kept by
+design: placeholders, compound words ("Certified Pre-Owned", "Tempur-Pedic"),
+numeric ranges, and anything under a `dateRange`/`url`/`id`-style key
+("Jan 1, 2026 - Jan 31, 2026" must keep its dash).
+`npx tsx scripts/strip-dashes.ts --dry` re-audits at any time.
+
 ### ⚠️ Any server-side write to a demo MUST bump `updatedAt`
 `DemoLibraryContext`'s self-heal only refetches when the library's `updatedAt` is
 newer than the copy the browser cached. Both boot migrations

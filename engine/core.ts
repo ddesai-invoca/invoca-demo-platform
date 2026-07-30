@@ -17,6 +17,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { CustomerProfile, DigitalInsightsReport, DashboardView, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
+import { sweepValue } from "./dashSweep.ts";
 
 const QM_SCORE_MEAN = 71;   // true mean of the agent scorecard series
 const MODEL = "claude-opus-4-8";
@@ -962,6 +963,22 @@ export async function generateProfile(
     customerNoun,
     reports: { digitalInsights, marketingDashboard: dashboard, callReview, callDetail, opsDashboard, aiAgentConversion, aiMessagingImpact, qualityManagement, qmInstantInsights, conversationIntelligence, smsConversationIntelligence, voiceConversationIntelligence, agentConfig, voiceScreenpop: screenpops.voiceScreenpop, smsScreenpop: screenpops.smsScreenpop, voiceRoutingDemo, signalManager, gumloopArtifacts },
   };
+  /* DASH SWEEP AT THE SOURCE. NO_DASH_RULE tells the model not to join clauses
+     with a dash, and it mostly listens, but "mostly" is not a guarantee: the two
+     most recently generated prospects arrived with 24 of them between them, and
+     they were only caught because someone ran scripts/strip-dashes.ts by hand
+     weeks later. Two prospects had already been demoed with dash-joined copy.
+
+     Sweeping HERE, at the single point every profile passes through, means the
+     CLI, the dev endpoint, the prod endpoint and the library publish all get
+     clean data without anyone remembering a script. Same rules as the boot
+     migration and the script (engine/dashSweep.ts), so the three cannot drift:
+     table placeholders and numeric/date ranges keep their dash, prose does not.
+
+     This is the instruct-then-enforce pattern already used for the live agents'
+     replies (stripDashes in engine/chat.ts). The prompt asks; the code makes sure. */
+  const swept = sweepValue(profile, { n: 0 });
+
   // Final guardrail: validate against the canonical schema.
-  return CustomerProfile.parse(profile);
+  return CustomerProfile.parse(swept);
 }
