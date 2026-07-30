@@ -67,6 +67,59 @@ none — it sends you hunting for a key that was already set.
 that token at **BUILD** time, so runtime presence does NOT prove the deployed
 bundle carries it.
 
+### The nightly canary: `GET /api/canary` (PUBLIC) + a 2am self-check
+`engine/canary.ts` runs ONE full `generateProfile()` at ~2am Eastern, times every
+phase, audits the result, and **throws the profile away**. Armed from `server.ts`'s
+`scheduleCanary()`; `CANARY=off` disables it, `CANARY_HOUR_ET` moves it,
+`CANARY_ON_BOOT=1` runs one immediately for wiring checks.
+
+**Why it lives in the web process** and not in a cloud agent or a Render cron:
+`generateProfile()` needs `ANTHROPIC_API_KEY`, and the deployed service is the one
+place that already has it. That means **no new endpoint that bypasses the Google
+gate, and no secret handed to anything else** — the scheduled cloud agent that
+reacts to a regression only reads the PUBLIC result, so it needs no credential.
+(The rejected alternative was a token-guarded generate route, which would have
+required pasting that token into a routine's prompt.)
+
+⚠️ **The profile is NEVER persisted** — not to the demo library, not to
+`src/data/generated`. Only a small result record goes to `DATA_DIR/canary.json`
+(last 30 runs). "Generate then delete" leaves junk behind whenever the run dies
+between the two steps; this cannot, and it can never put a fake prospect in front
+of the team. Verified end to end: `generated/` file count unchanged after a run.
+
+⚠️ **Fixed rotating targets, deliberately not random.** Research time swings with
+site size (measured 60s vs 85s across two prospects) — far larger than any
+regression worth catching. Three stable sites rotate by day-of-year and each run is
+compared against `history` for **its own `targetIndex`**.
+
+⚠️ **`/api/canary` is PUBLIC** (registered before `installAuth`, like
+`/api/status`), so adding a field publishes it. `toPublic()` deliberately omits the
+target **names and URLs**: they are real companies, and a public endpoint implying
+they are Invoca prospects is the exact leak `/api/status` was careful about.
+`targetIndex` is enough to compare like with like.
+
+`prefixSeconds` is **measured** as `research + terms` (the serial pre-pool time,
+~40% of wall clock). It used to be derived as `total − longest phase`, which is
+only correct while a POOL phase is the longest — the moment research becomes the
+longest phase that formula silently reports nonsense. `slowestPhase` likewise
+excludes research/terms, since those are serial and don't bound the pool.
+
+The audit covers what **Zod does not**: the fields other screens silently fall back
+on (the Search Term row the Google Ads keyword needs, the Product Category its ad
+group needs, `smsPlaybook.qualifyingQuestions`, `brandDomain`, `bookingTerm`), the
+canonical breakdown order, the dashboard **arithmetic** (complete partitions summing
+to the call total, top-5s summing to less), and dash-joined prose. 13 checks on a
+current profile. Tested in BOTH directions — silent on good profiles and actually
+firing on 8 deliberately corrupted ones, because a check that never fires is
+indistinguishable from no check.
+
+Measured: 201.6s on a real run (budget 300s), 20 phases captured, 0 audit failures.
+
+**Reacting to a regression is a scheduled cloud agent**, not this code: it reads
+`/api/canary` and, if `needsAttention`, opens a **PULL REQUEST**. It must never push
+to `main` — main auto-deploys, and a 2am agent must not deploy. See
+[[invoca-demo-status-and-next-step]] in user memory for the routine id.
+
 ### Dashes in prospect data: swept at the SOURCE
 `generateProfile()` in `engine/core.ts` runs `sweepValue()` over the assembled
 profile before the final Zod parse, so the CLI, the dev endpoint, the prod

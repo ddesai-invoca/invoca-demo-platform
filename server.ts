@@ -34,6 +34,7 @@ import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
 import { handleDemoApi } from "./engine/demoApi.ts";
 import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
 import { deployStatus } from "./engine/status.ts";
+import { runCanary, recordRun, toPublic as canaryPublic, BUDGET_SECONDS } from "./engine/canary.ts";
 import { migrateDemoDashes } from "./engine/dashSweep.ts";
 import { applyDemoPatches } from "./engine/demoPatches.ts";
 
@@ -74,6 +75,17 @@ app.get("/api/status", (_req, res) => res.json(deployStatus({
   mapboxTokenInServerEnv: !!process.env.VITE_MAPBOX_TOKEN,
   authGate: authEnabled,
 })));
+
+/* PUBLIC NIGHTLY CANARY RESULT — timings + audit for the last generation run.
+
+   Registered BEFORE installAuth for the same reason /api/status is: the point is
+   to be readable without a session. That is what lets the scheduled cloud agent
+   react to a regression WITHOUT being handed any credential — the alternative
+   would have been a shared secret pasted into a routine prompt.
+
+   ⚠️ PUBLIC. engine/canary.ts::toPublic() decides what is safe to expose, and it
+   deliberately omits the target company names and URLs. Do not add them here. */
+app.get("/api/canary", (_req, res) => res.json(canaryPublic()));
 
 installAuth(app);
 
@@ -243,4 +255,78 @@ app.listen(PORT, () => {
      ownership. */
   applyDemoPatches(DATA_DIR);
   if (!apiKey) console.warn("⚠  ANTHROPIC_API_KEY not set — the AI features will return errors. Set it in the server environment (.env or host config).");
+  scheduleCanary();
 });
+
+/* ---- the nightly canary ----------------------------------------------------
+   Runs one full generation at ~2am Eastern, times it, audits it, and throws the
+   profile away (engine/canary.ts). It lives IN THE WEB PROCESS because this is
+   the only place ANTHROPIC_API_KEY already exists — no extra Render service, no
+   endpoint that bypasses the sign-in gate, and no secret handed to a cloud agent.
+
+   Why a 10-minute tick rather than a cron expression: the target is 2am EASTERN,
+   and Eastern is UTC-4 or UTC-5 depending on the season, so a fixed UTC cron
+   would drift by an hour twice a year. Asking the clock what hour it is in
+   America/New_York is DST-correct by construction. The ET DATE is the run key, so
+   the "did I already run today" check can't fire twice within one 2am hour.
+
+   ⚠️ Every failure path is swallowed. A canary that can take down the web service
+   the whole team demos on is far worse than no canary. */
+function scheduleCanary(): void {
+  if ((process.env.CANARY ?? "").toLowerCase() === "off") {
+    console.log("🐤 Nightly canary disabled (CANARY=off).");
+    return;
+  }
+  if (!apiKey) {
+    console.log("🐤 Nightly canary not armed — no ANTHROPIC_API_KEY.");
+    return;
+  }
+  const HOUR = Number(process.env.CANARY_HOUR_ET ?? 2);
+  const TICK_MS = 10 * 60 * 1000;
+  let running = false;
+  let lastRunDate = "";                     // ET calendar date of the last run
+
+  const etParts = () => {
+    const f = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "America/New_York", year: "numeric", month: "2-digit",
+      day: "2-digit", hour: "2-digit", hour12: false,
+    }).formatToParts(new Date());
+    const get = (t: string) => f.find((p) => p.type === t)?.value ?? "";
+    return { date: `${get("year")}-${get("month")}-${get("day")}`, hour: Number(get("hour")) };
+  };
+
+  const tick = async () => {
+    try {
+      const { date, hour } = etParts();
+      if (running || hour !== HOUR || date === lastRunDate) return;
+      running = true;
+      lastRunDate = date;                    // claim the slot BEFORE the await
+      console.log(`🐤 Canary starting (${date} ~${HOUR}:00 ET)…`);
+      const run = await runCanary(apiKey);
+      recordRun(run);
+      const verdict = !run.ok ? `FAILED: ${run.error}`
+        : run.overBudget ? `OVER BUDGET ${run.totalSeconds}s > ${BUDGET_SECONDS}s`
+        : run.audit.failures.length ? `${run.audit.failures.length} audit failure(s) in ${run.totalSeconds}s`
+        : `ok ${run.totalSeconds}s`;
+      console.log(`🐤 Canary done — ${verdict} (slowest: ${run.slowestPhase})`);
+    } catch (e) {
+      console.error("🐤 Canary tick failed (ignored):", e);
+    } finally {
+      running = false;
+    }
+  };
+
+  setInterval(tick, TICK_MS).unref?.();
+  console.log(`🐤 Nightly canary armed for ~${HOUR}:00 America/New_York (budget ${BUDGET_SECONDS}s).`);
+  /* Opt-in immediate run, for verifying the wiring without waiting for 2am. */
+  if ((process.env.CANARY_ON_BOOT ?? "") === "1") {
+    console.log("🐤 CANARY_ON_BOOT=1 — running once now.");
+    (async () => {
+      try {
+        const run = await runCanary(apiKey);
+        recordRun(run);
+        console.log(`🐤 Boot canary: ok=${run.ok} total=${run.totalSeconds}s audit_failures=${run.audit.failures.length}`);
+      } catch (e) { console.error("🐤 Boot canary failed (ignored):", e); }
+    })();
+  }
+}
