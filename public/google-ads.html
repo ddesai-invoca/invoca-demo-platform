@@ -764,6 +764,13 @@
   function toDemo(){ window.location.href = window.location.origin + '/dashboards'; }
   // Click the top-left Google Ads logo (or its cluster) -> Invoca dashboard
   document.addEventListener('click', function(e){
+    /* Never treat a click on the in-page AI as the logo. This listener is
+       capture-phase, so it runs BEFORE the assistant's own handlers and they
+       cannot stop it. Two real consequences without this guard: the drawer's
+       BACKDROP covers the top-left corner, so dismissing it there would navigate
+       out of the page mid-demo, and at a narrow window width the sparkle itself
+       can sit inside the x<255 region. */
+    if (e.target && e.target.closest && e.target.closest('.iga-zone,.iga-wrap')) return;
     var el = e.target && e.target.closest ? e.target.closest('a,[role="link"],[aria-label]') : null;
     var ariaHit = el && /google ads/i.test(el.getAttribute('aria-label') || '');
     if (ariaHit || (e.clientX < 255 && e.clientY < 60)) {
