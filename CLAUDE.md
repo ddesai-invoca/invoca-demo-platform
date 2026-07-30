@@ -68,10 +68,13 @@ that token at **BUILD** time, so runtime presence does NOT prove the deployed
 bundle carries it.
 
 ### The nightly canary: `GET /api/canary` (PUBLIC) + a 2am self-check
-`engine/canary.ts` runs ONE full `generateProfile()` at ~2am Eastern, times every
-phase, audits the result, and **throws the profile away**. Armed from `server.ts`'s
-`scheduleCanary()`; `CANARY=off` disables it, `CANARY_HOUR_ET` moves it,
-`CANARY_ON_BOOT=1` runs one immediately for wiring checks.
+`engine/canary.ts` runs ONE full `generateProfile()` at **~5am Eastern**, times
+every phase, audits the result, and **throws the profile away**. Armed from
+`server.ts`'s `scheduleCanary()`; `CANARY=off` disables it, `CANARY_HOUR_ET`
+overrides the hour, `CANARY_ON_BOOT=1` runs one immediately for wiring checks.
+⚠️ **Two claude.ai routines read `/api/canary` at 6:00 and 6:30 ET, i.e. AFTER
+this.** Moving the canary hour without moving them means they report on the
+PREVIOUS morning's run and a real failure goes unnoticed for a day.
 
 **Why it lives in the web process** and not in a cloud agent or a Render cron:
 `generateProfile()` needs `ANTHROPIC_API_KEY`, and the deployed service is the one

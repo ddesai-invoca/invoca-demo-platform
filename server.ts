@@ -281,7 +281,11 @@ function scheduleCanary(): void {
     console.log("🐤 Nightly canary not armed — no ANTHROPIC_API_KEY.");
     return;
   }
-  const HOUR = Number(process.env.CANARY_HOUR_ET ?? 2);
+  /* 5am Eastern. Override with CANARY_HOUR_ET. ⚠️ The two claude.ai routines that
+     read /api/canary are scheduled to fire AFTER this (6:00 and 6:30 ET); moving
+     this hour without moving them means they report on the PREVIOUS night's run
+     and a real failure goes unnoticed for a day. */
+  const HOUR = Number(process.env.CANARY_HOUR_ET ?? 5);
   const TICK_MS = 10 * 60 * 1000;
   let running = false;
   let lastRunDate = "";                     // ET calendar date of the last run
