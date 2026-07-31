@@ -287,6 +287,26 @@ first answered by creating a KPI TILE — which a workflow page never renders, s
 reported success and nothing appeared. When the flag is false the prompt forbids
 `kind:"create"` and requires an `editData` edit that appends to the right list.
 
+⚠️ **Connector endpoints are MEASURED from the nodes, never offsets.** They used to
+leave a node at `top + 54` (trigger/start) and `top + 108` (intent), and both were
+wrong — which surfaced as two bugs that looked unrelated:
+- **SMS** intent nodes are 43px and 64px tall (the title "Existing Customer Support"
+  wraps, "Consultation" does not), so real bottoms are 283/304 — but the line was
+  drawn `348 → 344`. **A 4px line pointing UPWARDS: no connector visible at all.**
+- **Voice** nodes are taller and the leaf row lower, so the same `+108` gave a
+  correctly-directed line that **started ~24px BELOW the node** — a stub floating in
+  space, attached to nothing.
+
+A hardcoded height cannot survive text that wraps, a re-skinned label, or the AI
+renaming a node — all of which this component exists to support. Each node now
+reports its own `offsetHeight` (layout effect for the first paint and model changes,
+plus a `ResizeObserver` for a later reflow that changes no prop), and every branch
+uses ITS OWN intent height. `offsetHeight` is the layout box, so the wrapper's
+`transform: scale()` doesn't distort it. `FALLBACK` covers only the frame before the
+first measurement. Verified on all three shapes: SMS `283/304 → 344`, Voice
+`428/446 → 528`, and the National Van Lines split `428 → 470` sub-bus → two
+`470 → 528` drops — zero gaps at the nodes, no inverted lines.
+
 ⚠️ `.wf-canvas` has `padding-bottom: 136px` so the zoom cluster (`bottom: 16px`,
 104px tall) can never be overlapped by a tall tree. That replaced a per-tree
 `min-height` override which only fixed the one hand-built tree it was written for.

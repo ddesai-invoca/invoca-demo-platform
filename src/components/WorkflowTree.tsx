@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 /* =============================================================================
    WorkflowTree — ONE data-driven renderer for every Agent Studio flow diagram
@@ -68,6 +68,26 @@ const toneClass = (t?: string) =>
 const toneLine = (t?: string) =>
   t === "green" ? " wf-l-green" : t === "orange" ? " wf-l-orange" : "";
 
+/* NODE HEIGHTS ARE MEASURED, NOT ASSUMED.
+
+   The connectors used to leave each node at a hardcoded offset — `top + 54` for
+   the trigger/start and `top + 108` for an intent node. Both were wrong, and the
+   two channels failed differently, which is why it read as two separate bugs:
+
+     SMS   intent nodes are 43px and 64px tall (the title "Existing Customer
+           Support" wraps, "Consultation" does not), so their real bottoms are 283
+           and 304 — but the line was drawn from 348 DOWN TO the leaf top at 344.
+           A 4px line pointing UPWARDS: nothing visible at all.
+     Voice intent nodes are taller (they carry a subtitle) and the leaf row is
+           lower, so the same +108 produced a correctly-directed line that STARTED
+           ~44px below the node — a stub floating in space, connected to nothing.
+
+   A hardcoded height cannot survive text that wraps, a re-skinned label, or the AI
+   renaming a node — all of which this component exists to support. So each node
+   reports its own height and the lines are drawn between real edges. Fallbacks
+   below only cover the single frame before the first measurement. */
+const FALLBACK = { trigger: 65, start: 65, intent: 64 };
+
 /* Row geometry per channel, matched to the two real pages. Voice nodes are 248px
    and carry a subtitle, so every row sits lower. */
 const GEO = {
@@ -133,15 +153,50 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
 
   const { ref, scale } = useFitScale(W);
 
+  /* Measure the nodes so the connectors can start and end on real edges. Layout
+     effect + ResizeObserver: the effect covers the first paint and any model
+     change, the observer covers a later reflow (a longer label wrapping to a
+     second line) that changes no prop. offsetHeight is the LAYOUT box, so the
+     wrapper's transform: scale() does not distort it. */
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const startRef = useRef<HTMLDivElement>(null);
+  const intentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [h, setH] = useState<{ trigger: number; start: number; intents: number[] }>(
+    { trigger: FALLBACK.trigger, start: FALLBACK.start, intents: [] });
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const next = {
+        trigger: triggerRef.current?.offsetHeight || FALLBACK.trigger,
+        start: startRef.current?.offsetHeight || FALLBACK.start,
+        intents: branches.map((_, i) => intentRefs.current[i]?.offsetHeight || FALLBACK.intent),
+      };
+      setH((prev) =>
+        prev.trigger === next.trigger && prev.start === next.start
+        && prev.intents.length === next.intents.length
+        && prev.intents.every((v, i) => v === next.intents[i]) ? prev : next);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    [triggerRef.current, startRef.current, ...intentRefs.current].forEach((el) => el && ro.observe(el));
+    return () => ro.disconnect();
+  }, [model, branches.length, scale]);
+
+  /* Real edges. Each branch uses ITS OWN intent height — on SMS two sibling nodes
+     differ by 21px purely because one title wraps. */
+  const triggerBottom = g.trigger + h.trigger;
+  const startBottom = g.start + h.start;
+  const intentBottom = (bi: number) => g.intent + (h.intents[bi] ?? FALLBACK.intent);
+
   return (
     <div className="wf-fit" ref={ref}
       style={{ width: W * scale, height: H * scale, margin: "24px auto" }}>
       <div className={"wf-tree" + (model.variant === "voice" ? " wf-voice" : "")}
         style={{ width: W, height: H, margin: 0, transform: `scale(${scale})`, transformOrigin: "top left" }}>
         <svg className="wf-lines" viewBox={`0 0 ${W} ${H}`} width={W} height={H} aria-hidden="true">
-          {/* trigger → start → the branch bus */}
-          <line x1={mid} y1={g.trigger + 54} x2={mid} y2={g.start} className="wf-l" />
-          <line x1={mid} y1={g.start + 54} x2={mid} y2={busY} className="wf-l" />
+          {/* trigger → start → the branch bus, from measured node bottoms */}
+          <line x1={mid} y1={triggerBottom} x2={mid} y2={g.start} className="wf-l" />
+          <line x1={mid} y1={startBottom} x2={mid} y2={busY} className="wf-l" />
           {branches.length > 1 && (
             <line x1={firstCx} y1={busY} x2={lastCx} y2={busY} className="wf-l" />
           )}
@@ -155,7 +210,7 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
                 {split ? (
                   <>
                     {/* second fork: stem, bus across this branch's leaves, drops */}
-                    <line x1={bx} y1={g.intent + 108} x2={bx} y2={g.subBus}
+                    <line x1={bx} y1={intentBottom(bi)} x2={bx} y2={g.subBus}
                       className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
                     <line x1={colX(own[0].i)} y1={g.subBus} x2={colX(own[own.length - 1].i)} y2={g.subBus}
                       className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
@@ -165,7 +220,7 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
                     ))}
                   </>
                 ) : (
-                  <line x1={bx} y1={g.intent + 108} x2={bx} y2={g.leaf}
+                  <line x1={bx} y1={intentBottom(bi)} x2={bx} y2={g.leaf}
                     className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
                 )}
               </g>
@@ -173,18 +228,21 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
           })}
         </svg>
 
-        <div className="wf-node wf-trigger" style={{ left: mid - g.triggerW / 2, top: g.trigger, width: g.triggerW }}>
+        <div className="wf-node wf-trigger" ref={triggerRef}
+          style={{ left: mid - g.triggerW / 2, top: g.trigger, width: g.triggerW }}>
           <div className="wf-node-title"><VIcon name="bolt" />Triggered by</div>
           <div className="wf-node-sub">{model.triggeredBy}</div>
         </div>
 
-        <div className="wf-node wf-start" style={{ left: mid - g.startW / 2, top: g.start, width: g.startW }}>
+        <div className="wf-node wf-start" ref={startRef}
+          style={{ left: mid - g.startW / 2, top: g.start, width: g.startW }}>
           <div className="wf-node-title"><VIcon name="chat" />Conversation Start</div>
           <div className="wf-node-sub">{model.startLabel}</div>
         </div>
 
         {branches.map((b, bi) => (
           <div className="wf-node wf-intent" key={`intent-${bi}`}
+            ref={(el) => { intentRefs.current[bi] = el; }}
             style={{ left: branchCx(bi) - g.nodeW / 2, top: g.intent, width: g.nodeW }}>
             <div className="wf-node-title"><VIcon name={b.icon ?? "altRoute"} />{b.title}</div>
             {b.subtitle ? <div className="wf-node-sub">{b.subtitle}</div> : null}
