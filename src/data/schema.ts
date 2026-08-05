@@ -39,6 +39,19 @@ export const InteractionRow = z.object({
   landingPageUrl: z.string(),
   websiteJourney: z.string(),       // "Home / Category / Subcategory"
   signals: z.array(z.boolean()),    // one per signalColumns entry (true = detected)
+  /* GENERALIZED LEADING CELLS — one string per DigitalInsightsReport.dimensionColumns
+     entry, in display order.
+
+     OPTIONAL and absent on every profile the engine generates: those render from the
+     six named fields above, exactly as before, so nothing on disk needs migrating.
+
+     It exists so the assistant can ADD, REMOVE, RENAME or REORDER the report's
+     leading columns. With only the six fixed fields there was nowhere for a seventh
+     column's values to live, and no way to place one to the LEFT of Marketing
+     Source — the refusal was the DATA being unable to express it, not just the guard
+     objecting. `signals` is untouched: those columns render as check/cancel icons,
+     not text, so they are not part of this list. */
+  cells: z.array(z.string()).optional(),
 });
 
 /* ---- Screen views --------------------------------------------------------- */

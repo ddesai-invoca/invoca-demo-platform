@@ -142,7 +142,12 @@
 .table-meta .links { margin-left: auto; display: flex; align-items: center; gap: 10px; }
 .table-meta .links .divider { color: #ced4da; }
 .table-scroll { background: transparent; border: none; overflow-x: auto; }
-table.report { border-collapse: collapse; width: 100%; white-space: nowrap; }
+/* min-width, NOT width. `width: 100%` pinned the table to the panel, so an added
+   column squeezed the existing ones thinner and the wrapper's overflow-x never had
+   anything to scroll — the table "didn't fit" instead of scrolling. min-width keeps
+   the full-width look at the default 9 columns and lets the table grow past the
+   panel once a column is added, at which point .table-scroll scrolls. */
+table.report { border-collapse: collapse; min-width: 100%; width: max-content; white-space: nowrap; }
 table.report thead th { font-size: var(--fs-th); font-weight: 600; color: var(--color-text); text-align: left; padding: 12px 30px 12px 20px; border-bottom: 1px solid var(--color-border); background: #fff; position: relative; vertical-align: top; }
 table.report thead th::after { content: "unfold_more"; font-family: "Material Icons"; font-size: 14px; color: #adb5bd; position: absolute; right: 10px; top: 12px; }
 table.report thead th.no-sort::after { content: ""; }

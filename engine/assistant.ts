@@ -57,11 +57,31 @@ export interface AssistantTile {
   slices: AssistantSlice[];
 }
 export interface AssistantEdit { path: string; value: string } // value is JSON-encoded
+/* A COLUMN OPERATION on the Digital Journey report's leading columns.
+
+   Deliberately NOT expressed as path edits. Asked to insert a column, the model was
+   told to copy every other cell across verbatim and simply would not: measured on
+   Avi & Co it rewrote "cpc" to "Google Ads", replaced real tracked URLs with invented
+   ones, wrote the literal placeholder "Home / Category / Subcategory" into a live
+   demo, and covered only 5 of 21 rows. That is a small model being asked to echo
+   ~126 long strings, which is the wrong job for it.
+
+   So it now supplies ONLY what it actually knows — where the column goes, what it is
+   called, and one value per row — and the CLIENT splices that into the existing
+   cells. Preservation is then guaranteed by construction rather than requested. */
+export interface AssistantColumnOp {
+  op: "insert" | "remove" | "rename" | "move" | "none";
+  index: number;        // position acted on (0-based, among the leading columns)
+  toIndex: number;      // move only; -1 otherwise
+  header: string;       // insert/rename only; "" otherwise
+  values: string[];     // insert only: one value per row, IN ROW ORDER; [] otherwise
+}
 export interface AssistantResult {
-  kind: "answer" | "create" | "editData" | "editTile";
+  kind: "answer" | "create" | "editData" | "editTile" | "editColumn";
   answer: string;
   edits: AssistantEdit[];
   tile: AssistantTile;
+  column: AssistantColumnOp;
 }
 
 const TILE_PROPS = {
@@ -83,14 +103,24 @@ const TILE_PROPS = {
   },
 };
 
+/* Every field required, because strict structured output has no optional keys; the
+   instructions say which to leave empty for each op. */
+const COLUMN_PROPS = {
+  op: { type: "string", enum: ["insert", "remove", "rename", "move", "none"] },
+  index: { type: "number" },
+  toIndex: { type: "number" },
+  header: { type: "string" },
+  values: { type: "array", items: { type: "string" } },
+};
+
 // Single object so the model always returns valid JSON; unused fields come back
 // empty per the instructions below.
 const RESULT_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["kind", "answer", "edits", "tile"],
+  required: ["kind", "answer", "edits", "tile", "column"],
   properties: {
-    kind: { type: "string", enum: ["answer", "create", "editData", "editTile"] },
+    kind: { type: "string", enum: ["answer", "create", "editData", "editTile", "editColumn"] },
     answer: { type: "string" },
     edits: {
       type: "array",
@@ -103,6 +133,7 @@ const RESULT_SCHEMA = {
       },
     },
     tile: { type: "object", additionalProperties: false, required: ["tileType", "title", "note", "kpis", "xLabels", "series", "slices"], properties: TILE_PROPS },
+    column: { type: "object", additionalProperties: false, required: ["op", "index", "toIndex", "header", "values"], properties: COLUMN_PROPS },
   },
 };
 
@@ -137,6 +168,13 @@ function buildSystem(input: AssistantInput): string {
     ``,
     `HARD RULES:`,
     `- You may ONLY change DATA values. Each edit path MUST point at a SCALAR leaf (a string or number, e.g. a tile value, a label, a title) OR a chart series' number array (e.g. "…series.0.values"), and when replacing an array you MUST keep the SAME length. NEVER replace or restructure an object, NEVER change the number of tiles/rows/series/xLabels, NEVER add or remove JSON keys, and NEVER touch layout, CSS, colors, or styling. A chart series keeps exactly one value per xLabel; a table row keeps one cell per column. If asked to restyle/recolor/resize/add-remove tiles-via-edit, DECLINE via "answer" (say you can change the data, and that adding a tile is a separate "create" action).`,
+    `- REPORT COLUMNS — when the page data has "dimensionColumns" and a "rows" array of interactions (the Digital Journey & Call Attribution Report), you CAN add, remove, rename or move its leading columns. Return kind:"editColumn" and fill "column" ONLY; leave "edits" empty.`,
+    `  DO NOT copy the other columns' values. You supply only the operation; the app splices it into the existing rows and every other value is preserved automatically.`,
+    `    insert — index = 0-based position the new column takes (0 puts it FIRST, left of everything). header = its name. toIndex = -1. values = ONE value per row, in the SAME order as "rows" in the DATA below. COUNT the rows and return exactly that many values. "values" MUST NOT be empty for an insert: an empty list produces a blank column and is a failed answer. This is the only part of the table you generate, so spend your effort here.`,
+    `    remove — index = the column to drop. header = "", values = [], toIndex = -1.`,
+    `    rename — index = the column, header = its new name. values = [], toIndex = -1.`,
+    `    move   — index = the column's current position, toIndex = where it should end up. header = "", values = [].`,
+    `  Values for an inserted column must fit THIS business and that specific row (a Location column on a retailer gets real cities or regions it serves, never "N/A" or a placeholder). Never touch "signalColumns" or a row's "signals": those render as check/cancel icons, not text. On any page WITHOUT "dimensionColumns", adding or removing a table column is not possible — say so in "answer" and return kind "answer".`,
     `- Base every number on the DATA below or on a coherent scenario the user requested. Keep values realistic and internally consistent (percentages that should sum ~100 do; totals match their parts).`,
     `- For chart series/bars, strip %/$ to plain numbers; kpi values may keep formatting.`,
     `- For a "story" / scenario change, edit the KEY HEADLINE numbers that carry the story (the KPI tile values and the primary chart series) so it stays consistent — you do NOT need to touch every single value. Prefer ~5–15 focused edits over exhaustively rewriting every leaf.`,

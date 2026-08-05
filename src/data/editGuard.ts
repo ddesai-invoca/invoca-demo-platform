@@ -65,6 +65,19 @@ const LENGTH_IS_CONTENT = [
   /\bbranches$/i,          // a workflow diagram's branches ARE its content
   /\bleaves$/i,            // ...and so are a branch's routing outcomes
   /\bchips$/i,             // the signals collected on a leaf
+  /* THE DIGITAL JOURNEY REPORT'S LEADING COLUMNS. Adding, removing, renaming or
+     moving one is a normal thing to want of a demo table ("put a Location column
+     before Marketing Source"), and it used to be declined as structural.
+
+     Safe because DataTable renders every row through leadingCells(), which pads and
+     truncates to the header count — so a row the assistant did not finish updating
+     shows a blank cell rather than a body misaligned against its headers.
+
+     Scoped deliberately: only this report's columns. The dashboards' breakdown
+     tables, every chart's series, xLabels and table ROW counts are all still
+     blocked, and column styling is not data and remains unreachable. */
+  /\bdimensionColumns$/i,  // the report's leading headers, in display order
+  /\bcells$/i,             // InteractionRow.cells — aligned to dimensionColumns
 ];
 
 /**
@@ -74,6 +87,15 @@ const LENGTH_IS_CONTENT = [
  */
 export function isStructuralChange(before: unknown, after: unknown, path?: string): boolean {
   const kb = kindOf(before), ka = kindOf(after);
+  /* CREATING an exempt list is allowed. `cells` is optional on a row and absent
+     until the first column edit, so the very first write is undefined -> array.
+     Without this the guard blocked EVERY row's cells while letting the header
+     change through, which added a correctly-placed column with all 21 values
+     silently dropped — a table that looked half-built for no visible reason. The
+     unit tests missed it because columnEdits() and isStructuralChange() were each
+     tested alone; the bug only exists in their COMPOSITION, on a row that has no
+     `cells` key yet. */
+  if (kb === "undefined" && ka === "array" && path && LENGTH_IS_CONTENT.some((re) => re.test(path))) return false;
   // A type flip is structural: the component renders one shape, not the other.
   // null <-> a value is allowed, since "no value" is a legitimate data state.
   if (kb !== ka && kb !== "null" && ka !== "null") return true;

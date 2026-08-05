@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
+import { columnEdits } from "../data/columnEdits";
 
 /* The "Ask AI" drawer: slides in from the right over a dimmed backdrop. Scope is
    set by which sparkle opened it — the whole PAGE (the top-bar sparkle, on every
@@ -86,7 +87,7 @@ export function AiAssistantDrawer() {
 
       /* Someone else's demo: still answer questions, but never mutate it. The
          server would reject the save anyway — this keeps the UI honest. */
-      if (readOnly && (r?.kind === "create" || r?.kind === "editTile" || r?.kind === "editData")) {
+      if (readOnly && (r?.kind === "create" || r?.kind === "editTile" || r?.kind === "editData" || r?.kind === "editColumn")) {
         push(`This demo belongs to ${activeDemo?.creator.name ?? "someone else"}, so I can't change it. Duplicate it from the launch screen and I'll edit your copy.`, "lock");
       } else if (r?.kind === "create" && r.tile) {
         addTile(active.key, { id: (crypto?.randomUUID?.() ?? String(Date.now())), ...normalizeTile(r.tile) });
@@ -94,6 +95,32 @@ export function AiAssistantDrawer() {
       } else if (r?.kind === "editTile" && r.tile && focus?.id) {
         replaceTile(active.key, focus.id, normalizeTile(r.tile));
         push(r.answer || `Updated "${r.tile.title}".`, "auto_awesome");
+      } else if (r?.kind === "editColumn" && r.column && r.column.op !== "none") {
+        /* THE APP does the splicing, not the model. It supplies only where the column
+           goes and (for an insert) one value per row; every other cell is copied from
+           the CURRENT effective data, so existing values cannot be paraphrased away.
+           See AssistantColumnOp in engine/assistant.ts for why. */
+        const edits = columnEdits(effectiveData(active.key), r.column);
+        if (!edits) {
+          push("This page's table doesn't support adding or removing columns.", "info");
+        } else {
+          const n = applyEdits(active.key, edits);
+          /* AN EMPTY COLUMN MUST NOT READ AS SUCCESS. The model is inconsistent about
+             filling `values`: the same request produced 20 values one run and NONE the
+             next, which added a correctly-placed but entirely blank column. Silence
+             there looks like the feature half-working, so say what actually landed and
+             tell the user retrying is worth it. */
+          const rowsFilled = r.column.op === "insert" ? (r.column.values ?? []).filter(Boolean).length : -1;
+          const total = edits.length - 1;
+          const msg = !n
+            ? "I couldn't apply that column change."
+            : rowsFilled === 0
+              ? `Added the "${r.column.header || "new"}" column, but I didn't generate any values for it — ask me again and I'll fill it in.`
+              : rowsFilled > 0 && rowsFilled < total
+                ? `${r.answer || "Added the column."} I filled ${rowsFilled} of ${total} rows; ask again to complete the rest.`
+                : (r.answer || "Updated the table's columns.");
+          push(msg, "auto_awesome");
+        }
       } else if (r?.kind === "editData" && Array.isArray(r.edits) && r.edits.length) {
         const n = applyEdits(active.key, r.edits);
         push(n ? (r.answer || `Updated ${n} value${n > 1 ? "s" : ""} on this page.`) : "I couldn't map that change to anything on this page — try naming the metric, title or row you mean.", "auto_awesome");

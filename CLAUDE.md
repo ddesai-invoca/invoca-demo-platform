@@ -123,6 +123,45 @@ Measured: 201.6s on a real run (budget 300s), 20 phases captured, 0 audit failur
 to `main` — main auto-deploys, and a 2am agent must not deploy. See
 [[invoca-demo-status-and-next-step]] in user memory for the routine id.
 
+### AI column editing — Digital Journey report ONLY
+The assistant can add / remove / rename / move the **leading columns** of the Digital
+Journey & Call Attribution Report, including inserting one to the LEFT of Marketing
+Source. Deliberately scoped to that ONE table: the dashboards' breakdown tables,
+chart series, xLabels and every table's ROW count are still blocked.
+
+⚠️ **The model does NOT emit the new rows.** It returns `kind:"editColumn"` with only
+`{op, index, toIndex, header, values}` — where the column goes and one value per row —
+and **`src/data/columnEdits.ts` splices it into the current data**. That is not
+fastidiousness: asked to emit full cell lists and copy the untouched columns verbatim,
+Haiku rewrote `cpc`→`Google Ads`, swapped real tracked URLs for invented ones, wrote
+the literal placeholder `Home / Category / Subcategory` into a live demo, renamed a
+header it was told to leave alone, and covered 5 of 21 rows. Prompting harder took it
+from 7 rows to 5. Splicing makes preservation **structural**.
+
+⚠️ `InteractionRow.cells` (optional) holds the generalized leading cells;
+`dimensionColumns` is the header list. Rows without `cells` fall back
+**header-driven** (`leadingCells` in `DataTable.tsx`): each header takes the field it
+NAMES, and an unmatched header renders empty. An earlier version padded at the end,
+which put Marketing Source under a new "Location" heading and shifted every value one
+column left — a table that reads as data rather than as a bug.
+
+⚠️ **Two bugs here existed only in the COMPOSITION of separately-passing parts**, so
+test the join, not just the pieces:
+- `editGuard` blocked every `rows.N.cells` edit because `cells` is absent until the
+  first column edit and `undefined → array` is a type flip. The header edit applied,
+  all 21 value edits were dropped, and you got a correctly-placed **empty** column.
+  Now `undefined → array` is allowed on `LENGTH_IS_CONTENT` paths only (array only —
+  `undefined → string` is still blocked, and the first fix was too broad until a test
+  caught it).
+- `table.report` was `width: 100%`, so extra columns squeezed rather than overflowed
+  and `.table-scroll`'s `overflow-x` had nothing to scroll. Now `min-width: 100%;
+  width: max-content` — same look at 9 columns, scrolls past that (measured: 2801px
+  table in a 1010px wrapper).
+
+⚠️ The drawer reports what actually landed ("I filled 20 of 21 rows"). An empty or
+partial column must never read as success — the model's `values` count varies run to
+run, and silence there looks like the feature half-working.
+
 ### Dashes in prospect data: swept at the SOURCE
 `generateProfile()` in `engine/core.ts` runs `sweepValue()` over the assembled
 profile before the final Zod parse, so the CLI, the dev endpoint, the prod
