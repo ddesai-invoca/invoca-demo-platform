@@ -123,6 +123,28 @@ Measured: 201.6s on a real run (budget 300s), 20 phases captured, 0 audit failur
 to `main` — main auto-deploys, and a 2am agent must not deploy. See
 [[invoca-demo-status-and-next-step]] in user memory for the routine id.
 
+### "Lead Form Performance Summary" — Marketing Performance dashboard
+A KPI card directly UNDER "Call Performance Summary", same 4-tile shape so the two
+read as a channel pair: Lead Form Count · the prospect's engagement-rate tile · the
+conversion percent · revenue.
+
+**Derived in the screen, folded into the registered page data** (so the assistant can
+edit its values and rename its labels like any built-in tile, and undo covers it). No
+schema slice and no engine phase, so all 19 profiles on disk get it.
+
+Anchors live in **`src/data/leadForms.ts`**, shared with the Location Comparison
+scorecard so the two screens cannot disagree about the form count:
+`aiMessagingImpact.aiLeadEngagement` → Form Submits + its engagement-rate tile, and
+`aiAgentConversion`'s "LEAD FORM (Conversions)" cards for revenue and conversion.
+⚠️ Conversion is **revenue-weighted** across those cohorts, not a straight mean — a
+plain average of 24/28/31% lets the smallest cohort drag the headline number.
+⚠️ The **conversion and revenue LABELS are read off the neighbouring call card's
+tiles**, so the pair stays consistent per vertical ("Watch Sold" for a watch dealer,
+"Policy Bound" for an insurer, "Move Booked" for a mover) instead of hardcoding one
+prospect's vocabulary. Returns null and the card is omitted when the anchors are
+missing. Sanity-checked across all 19 profiles: form revenue is always a fraction of
+call revenue, never larger.
+
 ### Location Performance Comparison (`/dashboards/location-comparison`)
 A per-location scorecard for the prospect's MANAGERS: a card per location, then the
 locations side by side — share of calls (donut), booking-rate ranking (HBarChart) and
