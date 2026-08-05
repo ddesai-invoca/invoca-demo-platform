@@ -123,6 +123,39 @@ Measured: 201.6s on a real run (budget 300s), 20 phases captured, 0 audit failur
 to `main` — main auto-deploys, and a 2am agent must not deploy. See
 [[invoca-demo-status-and-next-step]] in user memory for the routine id.
 
+### Location Performance Comparison (`/dashboards/location-comparison`)
+A per-location scorecard for the prospect's MANAGERS: a card per location, then the
+locations side by side — share of calls (donut), booking-rate ranking (HBarChart) and
+a full-width head-to-head table with a metric per ROW and a location per COLUMN, which
+is the orientation that lets a manager read one row and see who is ahead.
+
+**Derived, not generated.** Everything comes from `opsDashboard.locationHandling` plus
+the Marketing dashboard's KPI totals — no schema slice, no engine phase, so all 19
+profiles on disk get it immediately, generation stays at ~2m45s, and the numbers AGREE
+with the other dashboards instead of being a second conflicting set. Same approach as
+`InsightsDashboard`. Listed in Manage Dashboards only when `locationHandling.rows` is
+non-empty (every prospect currently has 4 rows).
+
+⚠️ **The reconciliation is the point.** `locationHandling` is a complete partition:
+measured on Avi & Co its rows sum to 5,943 calls = the Marketing dashboard's Call
+Count exactly. **Revenue is split by BOOKINGS, then normalised to the company total**
+(verified: the four parts sum to $21,628,598 to the dollar). Splitting by call volume
+instead would imply every location converts identically, which contradicts the booking
+rates printed right beside it — a 31% booker and a 19% booker would show the same
+revenue-per-call. Columns a prospect can add up have to add up.
+
+⚠️ **No new CSS**, per the request to keep the design identical: every class is one
+another dashboard already uses (`.dash-page` / `.dash-card` / `.kpi-grid` / `.kpi-tile`
+/ `.breakdown-row` / `.dash-table` / `.donut-wrap`), including `.aac-conv-grid` for the
+cards row. Its column count is set from the data (`repeat(min(n,4), 1fr)`) — the same
+pattern the AI Messaging cards use — so four locations sit on one row rather than
+leaving an orphan card under three.
+
+Columns are found by HEADER (`/call count/i`, `/not answered/i`, …), never by index, so
+the engine reordering `locationHandling.columns` cannot silently swap Calls for
+Voicemail. Headings go through `usePageDataWithLabels`, so the AI can rename any of
+them and the edit belongs to this page alone.
+
 ### AI column editing — Digital Journey report ONLY
 The assistant can add / remove / rename / move the **leading columns** of the Digital
 Journey & Call Attribution Report, including inserting one to the LEFT of Marketing

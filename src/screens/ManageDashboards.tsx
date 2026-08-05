@@ -60,6 +60,18 @@ export function ManageDashboards() {
           modified: "2/28/25 9:44 am",
         }]
       : []),
+    /* Only when the prospect actually HAS per-location call handling — the screen
+       derives entirely from it, so listing a dashboard that would open on an empty
+       state is worse than not listing it at all. */
+    ...(profile.reports.opsDashboard?.locationHandling?.rows?.length
+      ? [{
+          name: `Location Performance Comparison (${profile.customerName})`,
+          path: "/dashboards/location-comparison",
+          shared: ["All Users"],
+          owner: "You",
+          modified: "1/28/26 4:02 pm",
+        }]
+      : []),
   ];
 
   return (

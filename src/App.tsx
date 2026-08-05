@@ -18,6 +18,7 @@ import { AiAgentConversionDashboard } from "./screens/AiAgentConversionDashboard
 import { AiMessagingImpactDashboard } from "./screens/AiMessagingImpactDashboard";
 import { QualityManagementDashboard } from "./screens/QualityManagementDashboard";
 import { QmInstantInsightsDashboard } from "./screens/QmInstantInsightsDashboard";
+import { LocationComparisonDashboard } from "./screens/LocationComparisonDashboard";
 import { ManageDashboards } from "./screens/ManageDashboards";
 import { InsightsAnalytics } from "./screens/InsightsAnalytics";
 import { InsightsDashboard } from "./screens/InsightsDashboard";
@@ -112,6 +113,7 @@ export default function App() {
             <Route path="/dashboards/ai-messaging-impact" element={<AiMessagingImpactDashboard />} />
             <Route path="/dashboards/quality-management" element={<QualityManagementDashboard />} />
             <Route path="/dashboards/qm-instant-insights" element={<QmInstantInsightsDashboard />} />
+            <Route path="/dashboards/location-comparison" element={<LocationComparisonDashboard />} />
             <Route path="/call-review/detail" element={<CallDetail />} />
             {NAV.filter((item) => !STANDALONE.has(item.path)).map((item) => (
               <Route
