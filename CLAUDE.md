@@ -144,6 +144,24 @@ instead would imply every location converts identically, which contradicts the b
 rates printed right beside it — a 31% booker and a 19% booker would show the same
 revenue-per-call. Columns a prospect can add up have to add up.
 
+**Lead forms are per-location too**, derived from two real anchors rather than an
+invented call:form ratio — `aiMessagingImpact.aiLeadEngagement`'s **Form Submits**
+(Avi & Co: 1,247) and the sum of `aiAgentConversion`'s **LEAD FORM (Conversions)**
+revenue tiles ($6,346,140). Volume splits by call share (the only per-location signal
+the profile has); each location's forms convert at ITS OWN booking rate; form revenue
+follows form bookings. `apportion()` makes both columns sum EXACTLY to their published
+totals — verified 1,247 and $6,346,140 to the unit. If either anchor is missing the
+lead-form rows are simply omitted, because a fabricated form count beside real call
+counts is worse than none.
+
+⚠️ There is deliberately **no "Form Booked (Percent)" row**. Form bookings are derived
+FROM the call booking rate, so that row rendered identical to "Booked (Percent)" —
+two matching percentage rows imply two independent measurements when only one exists.
+Replaced with **Revenue per Lead Form**, which carries the same signal honestly.
+⚠️ Revenue is labelled **"Form-Attributed"**, never "Total": it is the lead-form
+channel cut, NOT an amount to add to the call revenue row above it. There is no totals
+row on this table, so nothing sums them.
+
 ⚠️ **No new CSS**, per the request to keep the design identical: every class is one
 another dashboard already uses (`.dash-page` / `.dash-card` / `.kpi-grid` / `.kpi-tile`
 / `.breakdown-row` / `.dash-table` / `.donut-wrap`), including `.aac-conv-grid` for the

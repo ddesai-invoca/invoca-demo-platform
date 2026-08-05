@@ -44,6 +44,10 @@ const LABELS = {
   booked: "Booked (Count)",
   revenue: "Total Revenue (Sale Amount)",
   revPerCall: "Revenue per Call",
+  forms: "Lead Forms (Count)",
+  revPerForm: "Revenue per Lead Form",
+  formsBooked: "Form Booked (Count)",
+  formRevenue: "Form-Attributed Revenue",
   metric: "Metric",
   best: "Top Location",
 };
@@ -67,6 +71,53 @@ interface Loc {
   booked: number;
   revenue: number;
   revPerCall: number;
+  /* Lead forms — only populated when the profile carries the two totals these are
+     derived from. Zero/absent otherwise, and the rows are dropped. */
+  forms: number;
+  formsBooked: number;
+  formRevenue: number;
+}
+
+/* LEAD-FORM TOTALS, taken from real anchors rather than a made-up call:form ratio.
+
+     Form Submits          aiMessagingImpact.aiLeadEngagement  (Avi & Co: 1,247)
+     Form-driven revenue   the sum of aiAgentConversion's "LEAD FORM (Conversions)"
+                           cards' revenue tiles                (Avi & Co: $6,346,140)
+
+   Neither is per-location — nothing in the profile is — so both are split across the
+   locations below. Returns nulls when either is missing, and the lead-form rows are
+   then simply not shown: a fabricated form count next to real call counts is worse
+   than an absent one. */
+function leadFormTotals(p: {
+  reports: { aiMessagingImpact?: unknown; aiAgentConversion?: unknown };
+}): { forms: number; revenue: number } | null {
+  const aim = p.reports.aiMessagingImpact as
+    { aiLeadEngagement?: { tiles?: { label: string; value: string }[] } } | undefined;
+  const submits = aim?.aiLeadEngagement?.tiles?.find((t) => /form submit/i.test(t.label))?.value;
+  const forms = num(submits);
+
+  const aac = p.reports.aiAgentConversion as
+    { conversionCards?: { title?: string; tiles?: { label: string; value: string }[] }[] } | undefined;
+  const revenue = (aac?.conversionCards ?? [])
+    .filter((c) => /lead form/i.test(c.title ?? ""))
+    .reduce((s, c) => s + num(c.tiles?.find((t) => /revenue/i.test(t.label))?.value), 0);
+
+  return forms > 0 && revenue > 0 ? { forms, revenue } : null;
+}
+
+/* Distribute a whole into shares that sum EXACTLY back to it. Rounding each share
+   independently loses or gains a few units, and "1,246 of 1,247 forms" in a demo is
+   the kind of thing someone totals up. The remainder goes to the largest share. */
+function apportion(total: number, weights: number[]): number[] {
+  const sum = weights.reduce((s, w) => s + w, 0);
+  if (!sum) return weights.map(() => 0);
+  const out = weights.map((w) => Math.round((w / sum) * total));
+  const drift = total - out.reduce((s, v) => s + v, 0);
+  if (drift !== 0) {
+    const biggest = weights.indexOf(Math.max(...weights));
+    out[biggest] += drift;
+  }
+  return out;
 }
 
 /* Find a column by HEADER rather than position — locationHandling's column order
@@ -79,6 +130,7 @@ function colIndex(headers: string[], re: RegExp): number {
 function deriveLocations(
   table: { columns?: string[]; rows?: { cells?: string[] }[] } | undefined,
   totalRevenue: number,
+  forms: { forms: number; revenue: number } | null,
 ): Loc[] {
   const headers = table?.columns ?? [];
   const rows = table?.rows ?? [];
@@ -115,9 +167,33 @@ function deriveLocations(
      31% booker and a 19% one. Splitting by bookings makes the better closer earn
      more, and normalising keeps the column adding up to the real total. */
   const totalBooked = base.reduce((s, l) => s + l.booked, 0);
-  return base.map((l) => {
+
+  /* LEAD FORMS, split across the same locations.
+
+     Volume goes by CALL SHARE — a boutique's share of inbound demand is the only
+     per-location signal the profile has, and it is a far better proxy than an
+     invented ratio. Each location's forms then convert at ITS OWN booking rate: the
+     operational quality that books 31% of callers books a similar share of form
+     leads, and it keeps the form column consistent with the call column beside it.
+     Form revenue follows form bookings, normalised to the real lead-form total.
+
+     apportion() makes both columns sum EXACTLY to their published totals. */
+  const formCounts = forms
+    ? apportion(forms.forms, base.map((l) => l.calls))
+    : base.map(() => 0);
+  const formsBooked = base.map((l, i) => Math.round(formCounts[i] * (l.bookingRate / 100)));
+  const formRevenues = forms ? apportion(forms.revenue, formsBooked) : base.map(() => 0);
+
+  return base.map((l, i) => {
     const revenue = totalBooked ? (l.booked / totalBooked) * totalRevenue : 0;
-    return { ...l, revenue, revPerCall: l.calls ? revenue / l.calls : 0 };
+    return {
+      ...l,
+      revenue,
+      revPerCall: l.calls ? revenue / l.calls : 0,
+      forms: formCounts[i],
+      formsBooked: formsBooked[i],
+      formRevenue: formRevenues[i],
+    };
   });
 }
 
@@ -147,7 +223,7 @@ export function LocationComparisonDashboard() {
   const base = {
     title: `${LABELS.title} (${profile.customerName})`,
     dateRange: md?.dateRange ?? "",
-    locations: deriveLocations(ops?.locationHandling, totalRevenue),
+    locations: deriveLocations(ops?.locationHandling, totalRevenue, leadFormTotals(profile)),
   };
   const view = usePageDataWithLabels(base, LABELS);
   const L = view.labels;
@@ -173,13 +249,32 @@ export function LocationComparisonDashboard() {
   /* Metric rows for the head-to-head table: locations across, metrics down. That
      orientation is the point of the screen — a manager reads one row to see who is
      ahead, rather than comparing numbers in different cards. */
+  const hasForms = locations.some((l) => l.forms > 0);
   const metrics: { label: string; cell: (l: Loc) => string; best: string }[] = [
     { label: L.calls, cell: (l) => int(l.calls), best: bestBy((l) => l.calls) },
+    /* Lead Forms sits directly beneath Call Count so the two demand volumes read
+       side by side, which is the comparison a manager actually makes. Its outcome
+       rows are grouped with the call outcomes further down. */
+    ...(hasForms ? [{ label: L.forms, cell: (l: Loc) => int(l.forms), best: bestBy((l) => l.forms) }] : []),
     { label: L.answerRate, cell: (l) => pct(l.answerRate), best: bestBy((l) => l.answerRate) },
     { label: L.voicemail, cell: (l) => pct(l.voicemail), best: locations.reduce((a, b) => (b.voicemail < a.voicemail ? b : a)).name },
     { label: L.bookingRate, cell: (l) => pct(l.bookingRate), best: bestBy((l) => l.bookingRate) },
     { label: L.booked, cell: (l) => int(l.booked), best: bestBy((l) => l.booked) },
+    ...(hasForms ? [
+      /* NOT a "Form Booked (Percent)" row. Form bookings are derived from each
+         location's CALL booking rate (the profile has no per-location form
+         conversion), so that row came out identical to "Booked (Percent)" above —
+         two matching percentage rows imply two independent measurements, and only
+         one exists. Revenue per form carries the same signal without the lie. */
+      { label: L.formsBooked, cell: (l: Loc) => int(l.formsBooked), best: bestBy((l) => l.formsBooked) },
+      { label: L.revPerForm, cell: (l: Loc) => usd(l.forms ? l.formRevenue / l.forms : 0),
+        best: bestBy((l) => (l.forms ? l.formRevenue / l.forms : 0)) },
+    ] : []),
     { label: L.revenue, cell: (l) => usd(l.revenue), best: bestBy((l) => l.revenue) },
+    /* Labelled "Form-Attributed" and NOT "Total", because it is the lead-form channel
+       cut from the AI Agent Conversion dashboard, not an amount to be added to the
+       call revenue above it. There is no totals row here, so nothing sums them. */
+    ...(hasForms ? [{ label: L.formRevenue, cell: (l: Loc) => usd(l.formRevenue), best: bestBy((l) => l.formRevenue) }] : []),
     { label: L.revPerCall, cell: (l) => usd(l.revPerCall), best: bestBy((l) => l.revPerCall) },
   ];
 
@@ -206,8 +301,10 @@ export function LocationComparisonDashboard() {
             <CardHead title={l.name} />
             <div className="kpi-grid">
               <Tile label={L.calls} value={int(l.calls)} />
+              {/* Lead Forms takes the second tile so each card shows BOTH demand
+                  volumes; the booked count is still a row in the scorecard. */}
+              <Tile label={hasForms ? L.forms : L.booked} value={hasForms ? int(l.forms) : int(l.booked)} />
               <Tile label={L.bookingRate} value={pct(l.bookingRate)} />
-              <Tile label={L.booked} value={int(l.booked)} />
               <Tile label={L.revenue} value={usd(l.revenue)} />
             </div>
           </section>
