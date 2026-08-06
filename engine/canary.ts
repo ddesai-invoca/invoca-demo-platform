@@ -113,6 +113,31 @@ export function auditProfile(p: any): { checks: number; failures: string[] } {
     }
   }
 
+  /* THE "VOLUME IS NOT VALUE" STORY, checked rather than merely asked for.
+
+     Every Call Outcome Summary is supposed to open on the highest-volume row with the
+     WORST conversion rate and close on the smallest with the BEST, because that
+     contrast is the SE's line: "your biggest channel is not your best channel."
+     Audited on disk, four older profiles had it exactly INVERTED on all six
+     breakdowns and two recent ones missed it on one each — a prompt-only rule that
+     was quietly not holding, and invisible until someone told that story on a call.
+
+     The conversion column is index 2 on every breakdown shape (col 1 is Quote
+     Discussed, or "<booking> Set (Industry)" on Product Category — reading col 1 by
+     mistake is how a first pass at this check mis-scored Product Category). */
+  for (const b of bds) {
+    const rows: { calls: number; conv: number }[] = (b.rows ?? []).map((r: any) => ({
+      calls: num(r.metrics?.[0]), conv: num(r.metrics?.[2]),
+    }));
+    if (rows.length < 3) continue;
+    const biggest = rows.reduce((a, r) => (r.calls > a.calls ? r : a));
+    const smallest = rows.reduce((a, r) => (r.calls < a.calls ? r : a));
+    const lo = Math.min(...rows.map((r) => r.conv));
+    const hi = Math.max(...rows.map((r) => r.conv));
+    check(`${b.title}: biggest row has the WORST conversion rate`, biggest.conv === lo);
+    check(`${b.title}: smallest row has the BEST conversion rate`, smallest.conv === hi);
+  }
+
   /* Prose dashes. A lone "—" is a legitimate empty-cell placeholder; a dash with
      real text around it is the AI-tell the sweep exists to remove. */
   let prose = 0;

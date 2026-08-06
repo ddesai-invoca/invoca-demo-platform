@@ -145,6 +145,32 @@ prospect's vocabulary. Returns null and the card is omitted when the anchors are
 missing. Sanity-checked across all 19 profiles: form revenue is always a fraction of
 call revenue, never larger.
 
+### The "volume is not value" story — now ENFORCED, not just asked for
+Every Call Outcome Summary must open on the highest-volume row with the WORST
+conversion rate and close on the smallest with the BEST, because that contrast is the
+SE's line: "your biggest channel is not your best channel."
+
+⚠️ **It was silently not holding, and in four profiles was exactly INVERTED** — the
+biggest row carried the BEST rate on all six breakdowns, so the tile said the opposite
+of the story. Audited 2026-08-05: autonation / continuing-life / key-whitman /
+orlando-health inverted on all 6, mattress-firm on 4, and two RECENT profiles missed it
+on one each (Product Category, Region). Prompt-only, nothing verified it, invisible
+until an SE told that story on a call.
+
+The likely cause was ambiguity: every breakdown has TWO percent columns and
+`outcomeStory()` said "the WORST rate" without saying which. It now names the
+**conversion column (index 2)** explicitly — col 1 is Quote Discussed, or
+"<booking> Set (Industry)" on Product Category — states the rule as "first row lowest,
+last row highest", says it applies to EVERY breakdown including Product Category and
+Region, and tells the model to re-read the column before returning.
+
+**Enforced by the canary**: 12 checks (both halves × 6 breakdowns). Same
+instruct-then-enforce pairing as the dashes and rule 2, and the fix is verified rather
+than assumed — regenerating AutoNation took it from **12 story failures to 0**, with
+every breakdown rising monotonically (Campaign 14→17→21→25→33%).
+⚠️ Reading column 1 by mistake is how a first pass at this check mis-scored Product
+Category; the conversion column is index 2 on every breakdown shape.
+
 ### Location Performance Comparison (`/dashboards/location-comparison`)
 A per-location scorecard for the prospect's MANAGERS: a card per location, then the
 locations side by side — share of calls (donut), booking-rate ranking (HBarChart) and

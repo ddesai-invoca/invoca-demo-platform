@@ -134,11 +134,29 @@ function scaleRules(s: Scale, bookingTerm: string): string {
   );
 }
 
-/* The "volume is not value" story the SE tells on every Call Outcome Summary. */
+/* The "volume is not value" story the SE tells on every Call Outcome Summary.
+
+   ⚠️ THIS WAS BEING IGNORED, and in the worst cases INVERTED. Audited across the ten
+   profiles on disk: four of them (autonation, continuing-life, key-whitman,
+   orlando-health) had the biggest row carrying the BEST rate on all six breakdowns —
+   exactly backwards, so the tile said "your biggest channel is also your best" and the
+   SE's line does not land. Two recent profiles still missed it on ONE breakdown each
+   (Product Category, Region).
+
+   The likely reason is ambiguity: every breakdown has TWO percent columns, so "the
+   WORST rate" did not say which one. It now names the column explicitly, spells out
+   the comparison as a rule about the first and last row of a descending table, and
+   says it applies to EVERY breakdown rather than leaving Product Category and Region
+   to be inferred. Paired with a canary check (engine/canary.ts) — prompt-only was not
+   holding, which is the same instruct-then-enforce lesson as the dashes and rule 2. */
 function outcomeStory(): string {
   return (
-    `STORY REQUIREMENT for every "Call Outcome Summary" table: include ONE row with a very HIGH call count but a clearly LOW conversion rate (the biggest row must have the WORST rate), and ONE row with a LOW call count but a clearly HIGH conversion rate (the smallest row must have the BEST rate) — a 3-5x spread between them. ` +
-    `That contrast is the point of the tile: it lets the seller say "your biggest channel is not your best channel." Order rows by Call Count descending, so the table visibly opens on high-volume/low-conversion and closes on low-volume/high-conversion.`
+    `STORY REQUIREMENT — applies to EVERY breakdown you produce, WITHOUT EXCEPTION, including Product Category and Region, not just the marketing channels:\n` +
+    `Rows are ordered by Call Count DESCENDING. The metric this rule is about is the CONVERSION column — the third column, "<conversion term> (Percent)" — NOT the "Quote Discussed" or "Set (Industry)" column beside it.\n` +
+    `- The FIRST row (the largest Call Count) MUST have the LOWEST conversion percent of all the rows in that table.\n` +
+    `- The LAST row (the smallest Call Count) MUST have the HIGHEST conversion percent of all the rows in that table.\n` +
+    `- Aim for roughly a 2-3x spread between those two, and let the middle rows fall between them.\n` +
+    `CHECK EACH TABLE BEFORE YOU RETURN IT: read the conversion column top to bottom and confirm it ends higher than it starts. Getting this backwards — biggest row with the best rate — breaks the whole point of the tile, which is the seller being able to say "your biggest channel is not your best channel." Revenue still scales with volume, so the biggest row can and should still hold the most revenue; it is the RATE that must be worst.`
   );
 }
 
