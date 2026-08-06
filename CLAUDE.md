@@ -222,6 +222,160 @@ the engine reordering `locationHandling.columns` cannot silently swap Calls for
 Voicemail. Headings go through `usePageDataWithLabels`, so the AI can rename any of
 them and the edit belongs to this page alone.
 
+### ⚠️ STANDING RULE for every Insights & Analytics screen: charts are interactive
+**Every chart on an Insights & Analytics report must do three things**, and this applies to
+reports built in future, not just the two that exist:
+
+1. **Highlight on hover, fade the rest.** Bars fade to `0.22`, donut slices to `0.16` (plus a
+   `0.28` halo just outside the hovered slice), phase bands to `0.14`. Multi-series charts
+   fade by SERIES, not by single bar — pointing at a teal bar keeps every teal bar saturated,
+   which isolates one metric across all rows. A heatmap is the exception: it **lightens** the
+   hovered cell (`brightness(1.14)`) instead of dimming its neighbours, because on a colour
+   ramp fading the others would change the very thing the colour encodes.
+2. **Show a metrics panel.** Always `.ind-tip` — one CSS definition shared by every chart on
+   every Insights screen, so they cannot drift. Positioned in PERCENTAGES of the chart's
+   viewBox inside a `position: relative` wrapper (`.ica-chartwrap`, `.ind-timewrap`,
+   `.ind-trendwrap`, `.donut-hoverwrap`); the svg scales with its column, so px drifts.
+   Flip the panel toward the middle of the chart past the midpoint so it stays in the card.
+3. **Open the interaction drawer on click** (`InteractionsDrawer` + `buildInteractions`),
+   with the tile name as the title and what was clicked as the metric.
+
+Every one of those fades **eases** — `transition: opacity 180ms ease`, one duration across all
+of them. ⚠️ Transition `opacity` ONLY, never `all`: the hover panels are positioned with
+left/top percentages and React reuses the same element as the pointer moves between bars, so
+transitioning position makes the panel glide across the chart a beat behind the cursor. The
+selectors are scoped so the six shared dashboards gain nothing — the donut's rule hangs off
+`.donut-hoverwrap`, which only exists when `hover` is passed.
+
+Bars sit `BAR_GAP = 4` units apart, and the two bars in a grouped row **touch** (the gap goes
+between groups) — a group is one row of data, so its bars belong together.
+
+Only the Summary Dashboard's FIRST bar sets `pinFirst`/`topCallHref`; no other chart offers a
+clickable call, because the demo has one transcript.
+
+### Insights & Analytics → Details Report (the flat call grid)
+`/insights/dashboard/Details Report` (`InsightsDetailsReport.tsx` + `src/data/detailsReport.ts`,
+`.idt-*`), from the capture "Insights & Analytics - Reports｜ Invoca for Healthcare 2.0"
+(8/6/2026, network 2160, dashboard 4f3a7106). One row per call, 17 columns, a UNIQUE COUNT
+footer under every column.
+
+**Only 7 headers survived the capture** — the grid is ThoughtSpot-rendered, so there is no
+body and no footer in the DOM. Five more come off the screenshot; the report scrolls further
+right than the screenshot reaches, so **columns 13+ are unknown** and the last five are named
+from headers verified on OTHER screens (the Digital Journey report, the Marketing dashboards).
+Add the real ones if a wider screenshot turns up; do not guess further.
+
+Chrome differences from the other two reports, all from the screenshot: **no Ask pill, no Add
+Tile** (kebab only), and the filter chip is **unset** — "Call Start Time (Select)" with a lock
+icon at the FAR RIGHT (`.idt-filters` overrides the justification; `.ind-filters` is untouched).
+Because the filter is unset the report spans ~2 years, not the dashboards' one month.
+
+No chart hover/drawer — the standing rule above is about CHARTS and this screen has none. Rows
+are deliberately inert; the one openable call belongs to the Summary Dashboard's first bar.
+
+Three traps this screen walked into, all fixed and all worth not repeating:
+- **`hash % (endMs - startMs)` silently does nothing** over a 2-year span: that is 65 billion
+  ms and a shifted 32-bit hash tops out near 134 million, so all 200 rows landed in the same
+  1.5 days. Spread by day and second-of-day separately.
+- **`MM/DD/YYYY` does not sort chronologically as a string** — "01/02/2024" compares before
+  "12/06/2023" — so the TIME PERIOD footer came out backwards. Each row carries its real
+  timestamp; the footer takes min/max off that.
+- **"Repeat Caller (Invoca)" must be decided walking FORWARD in time**, not in generation
+  order (which is hash order). Deciding it at generation and then sorting newest-first for
+  display left a caller's oldest call flagged as a repeat. Verified: each caller's first call
+  reads No, later ones Yes.
+
+It renders **200 rows and says 200**. The real one says "Showing 1,000 of many rows" and
+virtualises; 1,000 × 17 is 17,000 live cells, which stutters on a projector, and claiming
+1,000 while showing 200 is catchable by anyone who scrolls. The footer's UNIQUE COUNTs describe
+the WHOLE dataset (call record ids = the profile's own call total), which is consistent with a
+caption that says "of many rows".
+
+### Insights & Analytics → Connect AI (the agentic-rollout report)
+`/insights/dashboard/Connect AI` (`InsightsConnectAi.tsx` + `src/data/connectAi.ts`, `.ica-*`),
+from the capture "Insights & Analytics Connect AI｜ Invoca for Healthcare 2.0" (8/6/2026,
+network 2160, dashboard c925e7d5). `/insights/dashboard/:name` now goes through
+**`InsightsReport.tsx`**, which dispatches on the report name — the route stays one path
+because the real product's does. `Details Report` still falls through to the Summary
+Dashboard until its contents are defined.
+
+The report is ONE argument: rolling out the AI agent lifted answer rate and bookings. Every
+tile is the same month cut into **three phases** (Pre Agentic → Voice Agentic Only → Full
+Agentic). Derived, so no engine phase and no schema slice: volume and revenue come from
+`marketingDashboard` (the same rows Marketing Performance and the Summary Dashboard use),
+handle time from `callDetail`, the vertical-specific intent from `aiMessagingImpact`.
+
+**What is designed rather than measured** — and this is the honest bit: no profile records
+when a prospect switched the agent on, because it never happened. The rollout curve
+(answer rate 49→73→90%, booking rate 19→26→44%) is the capture's shape, jittered per
+prospect, with each phase's rate built as the previous plus a positive step so a jitter can
+never invert the story. What keeps it defensible is that the TOTALS it splits are real, and
+they reconcile on screen: the three phase revenues sum to the headline, the three
+appointment counts sum to "…: Scheduled", voice + messaging + phase 1 = total revenue, the
+intent heatmap partitions the Full phase's interactions, and the cancellation bars sum to
+the last tile. Verified all of those.
+
+Three places where the real dashboard is internally inconsistent and this one deliberately
+is not (a demo where a prospect can add the numbers up must survive it):
+- The capture's phase tile reads **34%** where its own table reads 25% for the same phase.
+  Here the tile and the table are the same computation, so they agree.
+- The last tile puts a **count** (27) under the label "Revenue Retained". Here it shows
+  actual revenue — cancellations saved × this month's revenue per booking — with the count
+  as a sub-label.
+- `signalsUnmet`/`signalsNa` (see below) — same class of problem, filed as an engine fix.
+
+Intents come from the booking term plus generic service intents (Reschedule, Cancel,
+Billing, General Info) plus ONE vertical topic, **not** from `commonTopicsChart` alone:
+those series are TOPICS, and for a blinds company they render "Blinds / Shades / Shutters"
+under a heading that says "Consumer Intents", which is wrong in a way prospects notice.
+
+`.ind-*` header/filter/card rules are reused READ-ONLY. Never edit one for this page — add
+an `.ica-*` override. Verified Summary Dashboard and Details Report are byte-identical
+after the route change (same KPIs 48,293 / 20,224 / 28,069, same donut labels with counts,
+trend + bar charts still present, no `.ica-page`).
+
+### Insights & Analytics: chart click → interaction drawer → ONE call
+Every datum on the Summary Dashboard drills in. Clicking a **bar**, a **weekly-trend
+point** or a **donut slice** opens the right-hand interaction drawer
+(`InteractionsDrawer.tsx` + `src/data/interactions.ts`), measured off the capture
+"Insights & Analytics drawer" (8/5/2026) — 800px paper, 225ms slide, 184px cards, exact
+badge fills for CALL `#122aa6` and SMS `#89005f` (LEAD's green is off a screenshot, not
+the capture). Rows are DERIVED: the summaries are the prospect's own Call Review
+summaries; ids, channel mix and durations are pure functions of profile + metric + date.
+
+**Exactly ONE card opens a call**: the top card of the drawer opened by the **first bar**
+(leftmost group, first series). That drawer sets `pinFirst` — which replaces its top card
+with the prospect's own `reports.callDetail` record, so the card and the page agree on id,
+duration and summary — plus `topCallHref`. Every other card is inert and has no pointer
+cursor. The reason is that the demo has ONE transcript: thirty cards opening the same
+transcript under thirty different ids is a lie, and a transcript per card would mean
+generating thirty of them. Widen this only by generating real per-call transcripts.
+
+The call page is **`/insights/call`** (`InsightsCallDetail.tsx`, `.icd-*`), from the
+capture "Insights & Analytics - Showing Call｜ Invoca for Forrester" (8/6/2026). It is NOT
+`/call-review/detail` — that is a different Invoca screen with its own `.cd-*` styles and
+is deliberately untouched. Both exist on purpose.
+
+Everything on it is derived from `reports.callDetail` (+ `digitalInsights.rows[0]` for
+attribution, `voiceScreenpop` for the caller), so no engine phase and no schema slice:
+- **Sentiment** counts genuinely positive vs trouble turns in the transcript and scores on
+  the RATIO. Bare "thank you" does NOT count as a positive moment (every polite call has
+  them; that is what the Proper Greeting / Helpful Agent scorecard signals measure) and
+  the score must not sit on its clamp — the first version read "Positive (74)" where 74
+  was the ceiling.
+- **Found Phrases** under a met signal are looked up IN THE TRANSCRIPT (signal name →
+  words ≥5 chars → first matching turn → the matched word plus two more), with the real
+  speaker and timestamp. A signal with no hits renders as a plain "Rule" signal and "No
+  spoken phrases found", which is what the capture shows for rule-only signals.
+- **Signal group badges use the LIST LENGTH**, not `signalsUnmet` / `signalsNa`: the engine
+  writes 26 and 25 for those on every generated prospect while the name arrays hold 5-15,
+  so the badge would contradict the list it expands. Filed as a separate engine fix;
+  `CallDetail.tsx` still shows the declared counts.
+- The **player is visual only** (no call audio exists, same as `CallDetail.tsx`); its
+  marker strip is one dot per transcript turn at that turn's own timestamp.
+- **Coaching** and **Deliveries** show honest empty states rather than invented records;
+  **Comments** renders the real `callDetail.comment`.
+
 ### AI column editing — Digital Journey report ONLY
 The assistant can add / remove / rename / move the **leading columns** of the Digital
 Journey & Call Attribution Report, including inserting one to the LEFT of Marketing
@@ -929,6 +1083,20 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   schema surfaces every screen that needs updating at compile time.
 - **⚠️ ALWAYS ASK the user which URL to read/build from before replicating any screen.**
   (Also saved in user memory.) Don't pick a screen/variant yourself.
+- **⚠️ A CHANGE FOR ONE SCREEN STAYS ON THAT SCREEN.** When the user asks for something on a
+  named tab ("on Insights & Analytics…", "on this dashboard…"), no other screen may change
+  look or behaviour — even when the fix lives in a component six screens share, and even when
+  the change would arguably improve them too. Widening the blast radius is a separate ask.
+  The pattern for shared components is **OPT-IN props defaulted to today's behaviour**:
+  `DonutChart` grew `colors`, `onSlice`, `slicePct`, `label` and `geom` this way, so Insights
+  gets a 740×340 box with `name - count (pct%)` labels, no inner percent, column-aligned
+  labels and a click-to-drawer, while the six dashboards keep 350×260, their inner percents,
+  name-only labels and no cursor. Same rule for CSS: scope it (`.ind-page .donut-svg`), never
+  edit the shared selector. THEN PROVE IT — load one of the other screens and assert the old
+  values (see the Insights donut work: viewBox, inside-percent count, label text, font size,
+  max-width and cursor all re-checked on `/dashboards/marketing`). Two earlier violations
+  were caught only because someone looked: an `.ind-split` change would have narrowed every
+  breakdown, and a label-alignment fix was moments from moving labels on all seven donuts.
 
 ## How a screen gets built (workflow) + environment
 The proven loop for replicating an Invoca screen (used for report, dashboard, Call

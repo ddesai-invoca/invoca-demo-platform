@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import type { Interaction, InteractionKind } from "../data/interactions";
 
 /* The right-hand "interaction details" drawer, opened by clicking a bar, a trend
@@ -46,6 +47,14 @@ export interface DrawerRequest {
   metric: string;
   count: number;
   date: string;
+  /* Pin the prospect's own call-detail record to the top card (see buildInteractions). */
+  pinFirst?: boolean;
+  /* Where the TOP card goes when clicked. Set on exactly ONE drawer — the first bar of
+     the bar chart — because the demo has one call transcript: thirty cards opening the
+     same transcript with thirty different ids would be a lie, and a per-card transcript
+     would mean generating thirty of them. The other cards deliberately stay inert
+     rather than looking clickable and doing nothing. */
+  topCallHref?: string;
 }
 
 export function InteractionsDrawer({ req, items, onClose }: {
@@ -77,10 +86,11 @@ export function InteractionsDrawer({ req, items, onClose }: {
         </div>
 
         <div className="idr-list">
-          {items.map((it) => {
+          {items.map((it, i) => {
             const k = KINDS[it.kind];
-            return (
-              <article className="idr-card" key={it.id}>
+            const href = i === 0 ? req.topCallHref : undefined;
+            const inner = (
+              <>
                 <div className="idr-card-head">
                   <div className="idr-kind">
                     <span className="idr-badge" style={{ background: k.fill }}>
@@ -100,8 +110,15 @@ export function InteractionsDrawer({ req, items, onClose }: {
                   </svg>
                   <span>{it.duration}</span>
                 </div>
-              </article>
+              </>
             );
+            /* The real cards are ALL cursor:pointer. Only the linked one is here, so
+               nothing else advertises an action it cannot perform. Written as two explicit
+               branches rather than a polymorphic component: `Link` requires `to`, so a
+               shared element with an optional `to` does not type. */
+            return href
+              ? <Link className="idr-card idr-card-link" key={it.id} to={href}>{inner}</Link>
+              : <article className="idr-card" key={it.id}>{inner}</article>;
           })}
         </div>
       </aside>

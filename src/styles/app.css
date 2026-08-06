@@ -1837,6 +1837,29 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
    width (the marker snaps to the nearest week, so there is no need to hit the dot). */
 .ind-timewrap rect, .ind-trendwrap, .ind-page .donut-svg path { cursor: pointer; }
 
+/* The Insights donut is the WIDE ThoughtSpot box (TS_GEOM), because its labels read
+   "Paid Search - 763 (15.65%)" on one line instead of just the name. Two consequences:
+
+   1. The 360px cap from the shared .donut-svg has to go, or the chart would sit in a
+      third of its column and the labels would shrink with it.
+   2. font-size on svg text is in USER UNITS, so 13 here is 13 of the viewBox's 740 —
+      the same ratio the real tile uses, which renders at ~12px once the donut column
+      reaches the reference's own ~610px.
+
+   overflow: visible is the safety net. The name is truncated at 13 characters, but a
+   prospect whose campaign names are unusually wide would otherwise lose a letter off
+   the left edge; spilling a few pixels into the tile's padding degrades far better
+   than clipping mid-word. */
+.ind-page .donut-svg { max-width: none; overflow: visible; }
+.ind-page .donut-ext-label { font-size: 13px; }
+
+/* Positioning context for the donut's hover panel. This wrapper only EXISTS when
+   DonutChart is given a `hover` prop, so the six dashboards still render a bare <svg>
+   with their own centring — see the opt-in rule in CLAUDE.md. The panel itself reuses
+   .ind-tip, shared with the bar chart and the weekly trend, so this dashboard's three
+   tooltips cannot drift apart. */
+.donut-hoverwrap { position: relative; }
+
 /* ---- Interaction details drawer --------------------------------------------
    MEASURED off Invoca's own markup, which does serialise (the drawer is MUI, not
    ThoughtSpot): capture "Insights & Analytics drawer｜ Invoca for Healthcare 2.0
@@ -1894,3 +1917,350 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .idr-dur { display: flex; align-items: center; gap: 4px; }
 .idr-dur svg { width: 14px; height: 14px; fill: #5b6577; flex-shrink: 0; }
 .idr-dur span { font-size: 16px; line-height: 20px; color: #5b6577; }
+
+/* ---- Insights & Analytics -> a single call (`/insights/call`) ---------------
+   Matched to the capture "Insights & Analytics - Showing Call｜ Invoca for Forrester
+   (8_6_2026 11:56:39 AM)" and its screenshots: a two-column body with the player and
+   transcript on the left and the Info panels on the right, panels bordered #e7e9eb at
+   radius 8 on white, tiny grey uppercase field labels above near-black values.
+
+   Its own .icd-* namespace. `/call-review/detail` is a DIFFERENT Invoca screen with its
+   own .cd-* styles and is deliberately untouched — see the one-screen-one-change rule in
+   CLAUDE.md. */
+/* ONLY THE RIGHT COLUMN SCROLLS. The page used to grow to the height of that column
+   (2,772px against an 816px viewport) and scroll as a whole, so reading the Info panels
+   dragged the left column up with them and left a tall band of white where the transcript
+   had ended. Bounding the page to its container and giving each column its own scroll
+   keeps the transcript and the header in place.
+
+   `main` is the app's scroll container with a definite height, so height:100% here is a
+   real number and overflow:hidden stops the outer scrollbar from appearing at all. */
+.icd-page { padding: 0; background: #fff; height: 100%; display: flex;
+  flex-direction: column; overflow: hidden; }
+.icd-head { flex: 0 0 auto; padding: 18px 24px 0; }
+.icd-back { display: inline-flex; align-items: center; gap: 6px; color: #2666f9;
+  font-size: 14px; text-decoration: none; }
+.icd-back:hover { text-decoration: underline; }
+.icd-back .material-icons { font-size: 18px; }
+.icd-head-row { display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; margin-top: 6px; }
+.icd-title { font-size: 26px; font-weight: 600; color: #1d2b4a; margin: 0; letter-spacing: -.4px; }
+.icd-pager { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #3d3d3d; }
+.icd-pager .material-icons { font-size: 20px; color: #5b6577; cursor: pointer; }
+.icd-disabled { opacity: .38; cursor: default !important; }
+.icd-callid { display: flex; align-items: center; gap: 8px; margin-top: 10px;
+  font-size: 15px; color: #15243e; }
+.icd-callid-ic { background: #122aa6; color: #fff; border-radius: 50%; font-size: 15px !important;
+  width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
+
+/* Two columns with a divider, as the capture has. The left column scrolls its own
+   transcript so the metadata panels on the right stay reachable. */
+/* min-height:0 on the row AND stretch on the columns — a grid item's default min-height
+   is auto, which lets it grow past the track and defeats an inner overflow:auto. Without
+   the two together the columns still push the page taller instead of scrolling. */
+.icd-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 14px;
+  flex: 1 1 0; min-height: 0; align-items: stretch; }
+/* The left column never scrolls as a unit; its TRANSCRIPT does (below), so the player,
+   the search box and the legend stay put the way they do on the real page. */
+.icd-left { padding: 8px 22px 0 24px; border-right: 1px solid #e7e9eb; min-width: 0;
+  display: flex; flex-direction: column; overflow: hidden; }
+.icd-right { padding: 8px 24px 24px 22px; min-width: 0; overflow-y: auto; }
+
+/* player — visual only, no audio exists */
+.icd-player { display: flex; align-items: center; gap: 10px; }
+.icd-p-ic, .icd-p-play { color: #5b6577; }
+.icd-p-ic { font-size: 20px !important; }
+.icd-p-play { font-size: 26px !important; }
+.icd-p-speed { display: inline-flex; align-items: center; font-size: 14px; color: #3d3d3d; }
+.icd-p-speed .material-icons { font-size: 18px; }
+.icd-p-time { font-size: 13px; color: #5b6577; }
+.icd-track { position: relative; flex: 1 1 0; height: 22px; }
+.icd-track::after { content: ""; position: absolute; left: 0; right: 0; top: 10px;
+  height: 2px; background: #d7dbe0; }
+.icd-track-start { position: absolute; left: 0; top: 5px; width: 12px; height: 12px;
+  border: 2px solid #f5793b; border-radius: 50%; background: #fff; z-index: 1; }
+/* One dot per transcript turn, placed at its own timestamp — so the strip matches the
+   conversation instead of being decorative. Agent turns teal, caller turns coral, the
+   two colours the capture's strip uses. */
+.icd-mark { position: absolute; top: 7px; width: 7px; height: 7px; border-radius: 50%; }
+.icd-mark-a { background: #17b3a3; }
+.icd-mark-c { background: #f5793b; }
+
+.icd-addcomment { display: flex; align-items: center; gap: 7px; margin-top: 12px;
+  font-size: 14px; color: #3d3d3d; }
+.icd-addcomment .material-icons { font-size: 18px; color: #5b6577; }
+.icd-legend { display: flex; justify-content: flex-end; gap: 18px; margin-top: 10px;
+  font-size: 13px; color: #5b6577; }
+.icd-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.icd-legend .material-icons { font-size: 17px; }
+.icd-lg-a { color: #f5793b; }
+.icd-lg-c { color: #5b6577; }
+
+.icd-search { display: flex; align-items: center; gap: 8px; margin-top: 8px;
+  border: 1px solid #cfd4da; border-radius: 4px; padding: 7px 10px; }
+.icd-search .material-icons { font-size: 19px; color: #5b6577; }
+.icd-search input { flex: 1 1 0; border: 0; outline: 0; font-size: 14px; font-family: inherit;
+  color: #15243e; background: transparent; }
+.icd-search-count { font-size: 13px; color: #8892a0; }
+.icd-search-sm { margin: 0 0 12px; padding: 6px 9px; }
+.icd-adv { display: inline-block; margin-top: 8px; font-size: 13px; color: #2666f9;
+  text-decoration: none; }
+.icd-adv:hover { text-decoration: underline; }
+
+/* Fills whatever the column has left rather than a fixed 620px, so the transcript ends
+   exactly where the divider does at any window height instead of leaving a gap under it. */
+.icd-transcript { margin-top: 14px; flex: 1 1 0; min-height: 0; overflow-y: auto;
+  padding-right: 6px; padding-bottom: 12px; }
+.icd-turn { display: grid; grid-template-columns: 42px 1fr; gap: 10px; margin-bottom: 14px; }
+.icd-turn-who { display: flex; flex-direction: column; align-items: center; }
+.icd-turn-who .material-icons { font-size: 18px; }
+.icd-turn-time { font-size: 11px; color: #8892a0; margin-top: 2px; }
+.icd-turn-text { margin: 0; font-size: 14px; line-height: 1.5; color: #15243e; }
+
+/* tabs */
+.icd-tabs { display: flex; gap: 22px; border-bottom: 1px solid #e7eaee; margin-bottom: 16px; }
+.icd-tab { display: inline-flex; align-items: center; gap: 6px; background: none; border: 0;
+  padding: 8px 2px 10px; font-family: inherit; font-size: 14px; color: #5b6577;
+  cursor: pointer; border-bottom: 2px solid transparent; }
+.icd-tab .material-icons { font-size: 17px; }
+.icd-tab-on { color: #2666f9; border-bottom-color: #2666f9; font-weight: 600; }
+
+/* panels */
+.icd-panel { border: 1px solid #e7e9eb; border-radius: 8px; padding: 16px 18px 18px;
+  margin-bottom: 14px; background: #fff; }
+.icd-panel-head { display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px; }
+.icd-panel-title { font-size: 17px; font-weight: 600; color: #1d2b4a; margin: 0; }
+.icd-panel-edit { font-size: 18px; color: #5b6577; cursor: pointer; }
+.icd-summary { margin: 0; font-size: 14px; line-height: 1.55; color: #15243e; }
+.icd-empty { margin: 0; font-size: 14px; color: #5b6577; }
+/* Paired panels, as the capture has them below the summary. They collapse to one column
+   on a narrow window so the fields never squash. */
+.icd-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.icd-pair > .icd-panel { margin-bottom: 14px; }
+@media (max-width: 1500px) { .icd-pair { grid-template-columns: 1fr; } }
+
+.icd-sent-score { font-size: 15px; color: #15243e; margin-bottom: 10px; }
+.icd-sent-moments { display: flex; gap: 26px; font-size: 14px; color: #3d3d3d; }
+.icd-sent-moments span { display: inline-flex; align-items: center; gap: 7px; }
+.icd-sent-moments .material-icons { font-size: 19px; }
+.icd-sent-pos { color: #2cbf58; }
+.icd-sent-neg { color: #e0393e; }
+
+/* signals */
+.icd-sg { border-top: 1px solid #eef0f2; }
+.icd-sg:first-of-type { border-top: 0; }
+.icd-sg-head { display: flex; align-items: center; gap: 9px; width: 100%; background: none;
+  border: 0; padding: 11px 0; font-family: inherit; font-size: 14px; cursor: pointer; }
+.icd-sg-label { font-weight: 600; color: #15243e; }
+.icd-sg-count { margin-left: auto; background: #f0f1f4; border-radius: 999px;
+  padding: 2px 10px; font-size: 12px; color: #3d3d3d; }
+.icd-sg-chev { font-size: 20px !important; color: #5b6577; }
+.icd-ic-met { color: #2cbf58; }
+.icd-ic-unmet { color: #e0393e; }
+.icd-ic-na { color: #8892a0; }
+.icd-sg-body { padding: 0 0 8px; }
+.icd-sig { border-top: 1px solid #f2f4f6; }
+.icd-sig-head { display: flex; align-items: center; gap: 8px; width: 100%; background: none;
+  border: 0; padding: 9px 0 9px 27px; font-family: inherit; cursor: pointer; text-align: left; }
+.icd-sig-name { font-size: 13px; color: #15243e; }
+.icd-sig-badges { margin-left: auto; display: flex; gap: 5px; flex-shrink: 0; }
+.icd-badge { background: #eef0f3; border-radius: 3px; padding: 2px 7px; font-size: 11px;
+  color: #5b6577; white-space: nowrap; }
+.icd-badge-combo { margin-left: 8px; }
+.icd-sig-body { padding: 0 0 12px 27px; }
+.icd-sig-type { font-size: 12px; color: #5b6577; margin-bottom: 8px; }
+.icd-phrases { width: 100%; border-collapse: collapse; font-size: 12px; }
+.icd-phrases th { text-align: left; font-weight: 600; color: #5b6577; padding: 5px 8px 5px 0;
+  border-bottom: 1px solid #e7eaee; }
+.icd-phrases td { padding: 5px 8px 5px 0; color: #15243e; border-bottom: 1px solid #f2f4f6; }
+.icd-nophrase { font-size: 12px; color: #8892a0; }
+
+/* call scoring */
+.icd-sc { border-top: 1px solid #eef0f2; }
+.icd-sc:first-of-type { border-top: 0; }
+.icd-sc-head { display: flex; align-items: center; gap: 12px; width: 100%; background: none;
+  border: 0; padding: 10px 0; font-family: inherit; cursor: pointer; text-align: left; }
+.icd-ring { width: 44px; height: 44px; flex-shrink: 0; }
+.icd-ring-bg { fill: none; stroke: #e7eaee; stroke-width: 4; }
+.icd-ring-fg { fill: none; stroke: #2666f9; stroke-width: 4; stroke-linecap: round; }
+.icd-ring-t { font-size: 11px; font-weight: 600; fill: #1d2b4a; }
+.icd-sc-name { font-size: 14px; color: #15243e; display: flex; align-items: center;
+  flex-wrap: wrap; gap: 2px; }
+.icd-sc-body { padding: 0 0 10px; }
+.icd-sc-row { display: flex; align-items: center; gap: 6px; padding: 7px 0 7px 56px;
+  border-top: 1px solid #f2f4f6; }
+.icd-sc-rname { font-size: 13px; color: #15243e; flex: 1 1 0; min-width: 0; }
+.icd-sc-pts { font-size: 12px; color: #5b6577; white-space: nowrap; }
+
+/* metadata fields */
+.icd-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+.icd-field { min-width: 0; }
+.icd-f-label { display: block; font-size: 10px; font-weight: 700; letter-spacing: .05em;
+  color: #8892a0; text-transform: uppercase; margin-bottom: 3px; }
+.icd-f-value { display: block; font-size: 13px; color: #15243e; overflow-wrap: anywhere; }
+.icd-sub { font-size: 14px; font-weight: 600; color: #15243e; margin: 16px 0 10px; }
+.icd-comment { font-size: 14px; color: #15243e; }
+.icd-comment-head { display: flex; gap: 12px; font-size: 12px; color: #5b6577; margin-bottom: 6px; }
+.icd-comment-head b { color: #15243e; }
+.icd-comment p { margin: 0; line-height: 1.5; }
+
+/* The ONE clickable interaction card (the drawer's top row on the first bar). Everything
+   else in that list stays inert, so only the card that leads somewhere looks like it. */
+.idr-card-link { cursor: pointer; text-decoration: none; color: inherit; display: flex; }
+.idr-card-link:hover { border-color: #2666f9; box-shadow: 0 2px 10px rgba(38, 102, 249, .12); }
+
+/* ---- Insights & Analytics -> Connect AI (`/insights/dashboard/Connect AI`) --------
+   Matched to the capture "Insights & Analytics Connect AI｜ Invoca for Healthcare 2.0"
+   (8/6/2026) and its screenshots. The header, filter chip and card shell are the .ind-*
+   rules from the Summary Dashboard, reused READ-ONLY so the two cannot drift; everything
+   below is new to this report. Never edit an .ind-* rule for this page — add an .ica-*
+   override instead (see the one-screen-one-change rule in CLAUDE.md). */
+
+/* Six KPI tiles across the top. auto-fit rather than a fixed six columns so they wrap into
+   two rows on a narrow window instead of squeezing "$268.57K" onto two lines. */
+.ica-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px; padding: 10px 24px 0; }
+.ica-kpi { display: flex; flex-direction: column; gap: 2px; margin: 0; }
+.ica-kpi-label { font-size: 14px; font-weight: 600; color: #15243e; }
+.ica-kpi-sub { font-size: 12px; color: #5b6577; }
+.ica-kpi-value { font-size: 34px; font-weight: 600; color: #1d2b4a; letter-spacing: -1px;
+  margin-top: 6px; }
+
+/* the daily phase curve */
+.ica-curve { display: block; width: 100%; margin-top: 6px; }
+.ica-tick { font-size: 13px; fill: #6b7280; }
+.ica-hbar-name { font-size: 13px; fill: #3d3d3d; }
+.ica-axis { stroke: #cfd4da; stroke-width: 1; }
+.ica-axtitle { font-size: 14px; font-weight: 600; fill: #1d2b4a; }
+.ica-legend { font-size: 14px; fill: #1d2b4a; dominant-baseline: middle; }
+.ica-pointlabel { font-size: 12px; fill: #3d3d3d; }
+.ica-barvalue { font-size: 12px; fill: #3d3d3d; dominant-baseline: middle; }
+.ica-hbars { display: block; width: 100%; }
+
+/* Two rows of three under the curve: phase revenue, then phase schedule rate. Divided by a
+   hairline rather than boxed, which is how the capture separates them from the chart. */
+.ica-phase-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  border-top: 1px solid #e7eaee; margin-top: 18px; padding-top: 16px; }
+.ica-phase { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.ica-phase-label { font-size: 13px; font-weight: 600; color: #15243e; }
+.ica-phase-sub { font-size: 12px; color: #5b6577; }
+.ica-phase-value { font-size: 30px; font-weight: 600; color: #1d2b4a; letter-spacing: -.8px;
+  margin-top: 4px; }
+
+/* Donut beside the two stacked medium tables. The tables carry six columns each, so the
+   donut takes the smaller share and the pair collapses on a narrow window. */
+.ica-split { display: grid; grid-template-columns: 1fr 1.45fr; gap: 24px; align-items: start; }
+.ica-split-even { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1250px) { .ica-split, .ica-split-even { grid-template-columns: 1fr; } }
+.ica-half { min-width: 0; }
+.ica-stack { min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+
+/* intent x entry-point heatmap */
+/* position: relative so the hover panel can sit over the grid. */
+.ica-heat { min-width: 0; position: relative; }
+/* NO GAP — the reference's field is continuous. 2px of white between every cell turned one
+   colour ramp into eighteen separate tiles. */
+.ica-heat-grid { display: grid; gap: 0; }
+.ica-heat-corner { font-size: 12px; font-weight: 700; color: #8892a0; letter-spacing: .04em;
+  text-transform: uppercase; align-self: end; padding-bottom: 6px; }
+.ica-heat-col { font-size: 12px; color: #5b6577; text-align: center; padding-bottom: 6px; }
+.ica-heat-rowname { font-size: 13px; color: #3d3d3d; display: flex; align-items: center;
+  padding-right: 10px; }
+/* border-right/-bottom in the cell's own colour keeps the cells touching while still
+   separating them by a hairline, which is what the reference shows. */
+.ica-heat-cell { display: flex; align-items: center; justify-content: center; height: 54px;
+  font-size: 14px; color: #15243e; cursor: pointer;
+  transition: filter 120ms ease, box-shadow 120ms ease; }
+/* LIGHTENS on hover rather than dimming its neighbours: on a colour ramp, fading the others
+   would change the very thing the colour encodes. */
+.ica-heat-cell-hot { filter: brightness(1.14) saturate(.82);
+  box-shadow: inset 0 0 0 2px rgba(21, 36, 62, .28); }
+.ica-heat-tip { left: 50%; top: 8px; transform: translateX(-50%); }
+.ica-heat-scale { display: grid; grid-template-columns: auto 1fr auto auto; gap: 8px;
+  align-items: center; margin-top: 14px; }
+.ica-heat-scale-t { font-size: 12px; color: #5b6577; }
+.ica-heat-ramp { height: 10px; border-radius: 2px;
+  background: linear-gradient(90deg, rgb(178,240,238), rgb(50,210,208)); }
+.ica-heat-scale-n { font-size: 12px; color: #5b6577; }
+
+.ica-saved { display: flex; flex-direction: column; align-items: flex-start;
+  max-width: 340px; }
+
+/* Wrapper so a chart's hover panel can be positioned over its svg, in percentages of the
+   viewBox (the svg scales with its column, so px would drift). Reuses .ind-tip, shared with
+   the Summary Dashboard's charts, so every hover panel in Insights & Analytics is one
+   definition and they cannot diverge. */
+.ica-chartwrap { position: relative; }
+/* The hovered day's marker on the phase curve — white ring so it reads against both the
+   band fill and the line. */
+.ica-curvedot { stroke: #fff; stroke-width: 3; }
+/* The phase row in the curve's panel carries the phase's own colour dot, as the reference's
+   "Rollout Phase: ● Pre Agentic" row does. */
+.ica-tip-phase { display: flex; align-items: center; gap: 7px; }
+.ica-tip-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+/* ---- Smooth fades across Insights & Analytics -------------------------------------
+   Every dim/highlight on these screens eases instead of snapping. One duration for all of
+   them so the Summary Dashboard's bars, the Connect AI bands and the donut all feel like the
+   same product.
+
+   ⚠️ opacity ONLY, never `transition: all`. The hover panels are positioned with left/top in
+   percentages and React reuses the same element as the pointer moves between bars, so
+   transitioning position would make the panel glide across the chart a beat behind the
+   cursor instead of tracking it. Same reason `filter` is listed explicitly on the heatmap
+   cell rather than being swept up by a shorthand.
+
+   These work on SVG `opacity` PRESENTATION ATTRIBUTES (which is how the charts set it, not
+   inline style) because a presentation attribute participates in the cascade, so changing it
+   is a style change the transition can pick up. */
+
+/* Summary Dashboard — grouped bars and their legend */
+.ind-timewrap rect, .ind-time g { transition: opacity 180ms ease; }
+
+/* Donut — scoped to .donut-hoverwrap, which only EXISTS when DonutChart is given a `hover`
+   prop. That keeps the six shared dashboards out of it by construction rather than by a
+   selector that happens not to match. */
+.donut-hoverwrap .donut-svg path,
+.donut-hoverwrap .donut-svg g { transition: opacity 180ms ease; }
+
+/* Connect AI — phase bands, their point labels, and both bar charts incl. legends */
+.ica-curve g, .ica-hbars g { transition: opacity 180ms ease; }
+.ica-pointlabel { transition: opacity 180ms ease; }
+
+/* Heatmap — the one that lightens rather than fades. */
+.ica-heat-cell { transition: filter 180ms ease, box-shadow 180ms ease; }
+
+/* The drawer's one clickable card. */
+.idr-card-link { transition: border-color 180ms ease, box-shadow 180ms ease; }
+
+/* ---- Insights & Analytics -> Details Report (`/insights/dashboard/Details Report`) ----
+   From the capture "Insights & Analytics - Reports｜ Invoca for Healthcare 2.0" (8/6/2026) and
+   its screenshot. The .ind-* header/filter/card chrome is reused READ-ONLY; this is only the
+   grid. */
+
+/* The lock sits at the FAR RIGHT of the filter row, as the capture shows, so the row becomes
+   a space-between flex instead of the left-packed one the other reports use. Scoped to
+   .idt-filters so .ind-filters itself is untouched on the other two screens. */
+.idt-filters { display: flex; align-items: center; justify-content: space-between; }
+.idt-lock { color: #5b6577; font-size: 20px; }
+
+/* Both axes scroll inside the card. max-height keeps the 200 rows from pushing the page
+   metres tall — the grid gets its own viewport, which is how the real one behaves. */
+.idt-wrap { overflow: auto; max-height: 620px; border: 1px solid #e7eaee; border-radius: 6px; }
+.idt-table { border-collapse: separate; border-spacing: 0; font-size: 13px;
+  width: max-content; min-width: 100%; }
+/* Header and footer STICK so the column names and the UNIQUE COUNT row stay readable while
+   scrolling 200 rows. Sticky needs a background of its own or the cells behind it show
+   through, and a z-index above the body cells. */
+.idt-table th { position: sticky; top: 0; z-index: 2; background: #fff;
+  text-align: left; font-weight: 600; color: #1d2b4a; padding: 12px 14px;
+  border-bottom: 1px solid #cfd4da; white-space: normal; min-width: 118px; vertical-align: bottom; }
+.idt-table th.idt-wide { min-width: 170px; }
+.idt-table td { padding: 11px 14px; border-bottom: 1px solid #eef0f2; color: #3d3d3d;
+  white-space: nowrap; }
+.idt-table tbody tr:hover td { background: #f7f9fc; }
+.idt-num { text-align: right; }
+.idt-table tfoot td { position: sticky; bottom: 0; z-index: 2; background: #fff;
+  border-top: 2px solid #15243e; border-bottom: 0; padding: 10px 14px; }
+.idt-table tfoot b { font-size: 15px; color: #15243e; display: block; }

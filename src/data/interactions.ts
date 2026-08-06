@@ -74,7 +74,14 @@ export function isoDate(d: string): string {
 
 export function buildInteractions(
   profile: CustomerProfile,
-  { metric, count, date }: { metric: string; count: number; date: string },
+  { metric, count, date, pinFirst }: {
+    metric: string; count: number; date: string;
+    /* Replace the top card with the prospect's OWN call-detail record, so the one card
+       that opens a detail page shows the same id, duration and summary that page does.
+       Without this the drawer would advertise a call the detail screen has never heard
+       of. Only the first bar's drawer sets it — see DrawerRequest.topCallHref. */
+    pinFirst?: boolean;
+  },
 ): Interaction[] {
   /* The prospect's own AI summaries. Every generated profile carries 15 of them;
      if a profile somehow has none, every card reads "No AI Summary available." —
@@ -126,5 +133,21 @@ export function buildInteractions(
 
   /* The real drawer comes back sorted by id ascending (018F, 05B5, 05BF, 07BD,
      0C85 ...), so the list is sorted rather than left in hash order. */
-  return rows.sort((a, b) => a.id.localeCompare(b.id));
+  rows.sort((a, b) => a.id.localeCompare(b.id));
+
+  /* REPLACES the top row rather than inserting one, so the count of cards and the ids
+     stay unique. Done after the sort, since the pinned call has to be the top card
+     whatever its id would have sorted to. */
+  const cd = profile.reports.callDetail;
+  if (pinFirst && cd && rows.length) {
+    rows[0] = {
+      kind: "call",
+      id: cd.callId,
+      date: isoDate(date),
+      summary: cd.aiSummary || null,
+      duration: cd.duration,
+    };
+  }
+
+  return rows;
 }

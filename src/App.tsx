@@ -21,7 +21,8 @@ import { QmInstantInsightsDashboard } from "./screens/QmInstantInsightsDashboard
 import { LocationComparisonDashboard } from "./screens/LocationComparisonDashboard";
 import { ManageDashboards } from "./screens/ManageDashboards";
 import { InsightsAnalytics } from "./screens/InsightsAnalytics";
-import { InsightsDashboard } from "./screens/InsightsDashboard";
+import { InsightsReport } from "./screens/InsightsReport";
+import { InsightsCallDetail } from "./screens/InsightsCallDetail";
 import { CallReview } from "./screens/CallReview";
 import { CallDetail } from "./screens/CallDetail";
 import { AgentStudio } from "./screens/AgentStudio";
@@ -95,7 +96,10 @@ export default function App() {
             {/* Reports nav → My Reports list; individual reports open from there */}
             {/* A saved Insights dashboard. The real URL carries a uuid; we pass
                 the name so the title matches the row that was clicked. */}
-            <Route path="/insights/dashboard/:name" element={<InsightsDashboard />} />
+            <Route path="/insights/dashboard/:name" element={<InsightsReport />} />
+            {/* The one call reachable from the interaction drawer. NOT the Call Review
+                detail page (/call-review/detail) — different Invoca screen, left alone. */}
+            <Route path="/insights/call" element={<InsightsCallDetail />} />
             <Route path="/reports/digital-insights" element={<DigitalInsights />} />
             <Route path="/reports/conversation-intelligence" element={<ConversationIntelligence />} />
             <Route path="/reports/sms-conversation-intelligence" element={<SmsConversationIntelligence />} />

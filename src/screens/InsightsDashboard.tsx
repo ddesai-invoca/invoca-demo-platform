@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
-import { DonutChart } from "../components/DonutChart";
+import { DonutChart, TS_GEOM, truncate } from "../components/DonutChart";
 import { usePageDataWithLabels } from "../components/GeneratedTiles";
 import { InteractionsDrawer, type DrawerRequest } from "../components/InteractionsDrawer";
 import { buildInteractions } from "../data/interactions";
@@ -78,6 +78,21 @@ function buildLabels(booking: string) {
 
 const K = (n: number) =>
   n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 2 : 2).replace(/\.?0+$/, "")}K` : String(n);
+
+/* ThoughtSpot prints the donut's percent to two decimals but drops trailing zeros —
+   the real tile reads "25.84%", "5.8%", "0.06%". Rounding through Number does that in
+   one step; a regex trailing-zero strip is the version that turns "100.00" into "1". */
+const PCT = (p: number) => `${+p.toFixed(2)}%`;
+
+/* The donut's outside label: "Paid Search - 763 (15.65%)", measured off the real
+   Performance By Medium tile. The percent is the slice's share of the grand total, so
+   the labels sum to 100% across the ring.
+
+   The NAME is truncated but the count and percent never are — a campaign name can run
+   40 characters, and losing the number to fit the name would defeat the point of
+   putting it there. */
+const donutLabel = (seg: { label: string; value: number }, pct: number) =>
+  `${truncate(seg.label, 13)} - ${K(seg.value)} (${PCT(pct)})`;
 
 interface Row { name: string; calls: number; answered: number; sales: number; activation: number }
 
@@ -222,7 +237,10 @@ function TrendArea({ values, dates, metricLabel, dateLabel, onPick }: {
 function MetricsOverTime({ seed, series, xAxisLabel, buckets, bucketDates, totals, onPick }: {
   seed: string; series: string[]; xAxisLabel: string;
   buckets: string[]; bucketDates: string[]; totals: number[];
-  onPick: (metric: string, value: number, bucket: number) => void;
+  /* `first` is true for the leftmost bar of the leftmost group — the one bar whose drawer
+     offers a clickable call. Reported by the chart rather than recomputed by the caller,
+     since the chart is what knows the drawing order. */
+  onPick: (metric: string, value: number, bucket: number, first: boolean) => void;
 }) {
   /* SIZED FOR THE TILE, not for the viewBox. The chart shares a half-width row, so at
      ~540px on screen the old 1180x470 box rendered barely 200px tall and the 300px
@@ -298,7 +316,7 @@ function MetricsOverTime({ seed, series, xAxisLabel, buckets, bucketDates, total
               opacity={dim ? 0.22 : 1}
               onMouseEnter={() => setHot({ si, bi })}
               onMouseLeave={() => setHot(null)}
-              onClick={() => onPick(series[si] ?? "", v, bi)} />;
+              onClick={() => onPick(series[si] ?? "", v, bi, si === 0 && bi === 0)} />;
           })}
           <text className="ind-tick" x={padL + bi * groupW + groupW / 2} y={padT + plotH + 20}
             textAnchor="middle">{b}</text>
@@ -356,6 +374,10 @@ function PerfSection({ title, dimension, rows, metrics, onPick }: {
   title: string; dimension: string; rows: Row[]; metrics: string[];
   onPick: (title: string, slice: string, value: number) => void;
 }) {
+  /* The hover panel's captions are the SAME strings the table beside it uses — the
+     metric is the first column header, the dimension is this section's own — so the two
+     halves of the tile can't name the same number differently. */
+  const hover = { metricLabel: metrics[0] ?? "Total Call Count", dimensionLabel: dimension, format: K };
   const total = (k: keyof Omit<Row, "name">) => rows.reduce((s, r) => s + r[k], 0);
   const shown = rows.slice(0, 8);
   return (
@@ -369,6 +391,10 @@ function PerfSection({ title, dimension, rows, metrics, onPick }: {
             total={total("calls")}
             colors={TS_COLORS}
             onSlice={(seg) => onPick(title, seg.label, seg.value)}
+            geom={TS_GEOM}
+            slicePct={false}
+            label={donutLabel}
+            hover={hover}
           />
         </div>
         <div className="ind-half">
@@ -461,13 +487,46 @@ export function InsightsDashboard() {
   const conversations = source.reduce((s, r) => s + r.answered, 0);
   const missed = totalCalls - conversations;
 
-  /* WEEKLY CONVERSATIONS for the trend tile. Declining across the window, which is
-     the shape the real tile shows, and the headline is the LAST bucket with a real
-     percent change against the one before it — the old tile hardcoded 0 and "0% (0)",
-     so it always read as no data. */
+  /* WEEKLY CONVERSATIONS for the trend tile, and the headline is the LAST bucket with a
+     real percent change against the one before it (the tile used to hardcode 0 and
+     "0% (0)", so it always read as no data).
+
+     THE SHAPE RISES AND FALLS. The weights were `1.35 - i * 0.2`, which is monotonically
+     decreasing by construction, so every prospect drew the same straight ramp down and
+     the headline delta was always negative. Real weekly volume wobbles.
+
+     Rather than adding noise to a trend and hoping it comes out non-monotonic, the shape
+     is picked from a table where EVERY ENTRY BOTH RISES AND FALLS (four of the six change
+     direction three times; the other two turn once, which reads as a build-and-fade
+     month). A random wobble can still land on five descending values, so the property is
+     guaranteed in code rather than asked for — the same approach the outcome story uses.
+
+     Each row is a multiplier on the average week, so the five values still sum to the
+     month's conversations whichever row is chosen. Deliberately not round, and the peak
+     is never the first or last week. */
+  const TREND_SHAPES = [
+    [0.95, 1.18, 0.88, 1.12, 0.87],
+    [0.88, 1.09, 1.24, 0.92, 0.87],
+    [1.14, 0.91, 1.21, 0.86, 0.88],
+    [0.86, 1.07, 0.93, 1.26, 0.88],
+    [1.09, 0.88, 1.16, 0.94, 0.93],
+    [0.91, 1.22, 0.94, 1.06, 0.87],
+  ];
+
   const trend = (() => {
-    const n = 5;
-    const weights = Array.from({ length: n }, (_, i) => 1.35 - i * 0.2);
+    /* Stable per prospect, so an SE revisiting a demo sees the same line.
+
+       ⚠️ Take the bucket from the HIGH bits (`>>> 16`), not from `Math.abs(h) % 6`. With
+       6 shapes and the eleven profiles on disk, the low bits put SIX of them on the same
+       shape — the very tell this table exists to remove, and the same modulo-bias trap
+       that made the Insights report view counts come out consecutive. Shifting first
+       spreads them across all six. */
+    let h = 2166136261;
+    for (const ch of profile.id) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); }
+    h ^= h >>> 13; h = Math.imul(h, 0x5bd1e995); h ^= h >>> 15;
+    const weights = TREND_SHAPES[(h >>> 16) % TREND_SHAPES.length]!;
+    const n = weights.length;
+
     const wSum = weights.reduce((a, b) => a + b, 0);
     const values = weights.map((w) => Math.round((w / wSum) * conversations));
     const latest = values[n - 1] ?? 0, prev = values[n - 2] ?? 0;
@@ -567,9 +626,17 @@ export function InsightsDashboard() {
           <MetricsOverTime seed={profile.id} xAxisLabel={L.xAxis}
             series={metricCols} buckets={weekBuckets} bucketDates={weekDates}
             totals={seriesTotals}
-            onPick={(metric, value, bi) => setDrawer({
+            onPick={(metric, value, bi, first) => setDrawer({
               title: L.overTime, metric: `${metric} · Week of ${weekBuckets[bi] ?? ""}`,
               count: value, date: weekDates[bi] ?? rangeStart,
+              /* ONLY the first bar's drawer offers a call to open, and its top card is
+                 pinned to the prospect's own call-detail record so the card and the page
+                 agree on the id, duration and summary. The demo has one transcript;
+                 thirty cards opening it under thirty different ids would be a lie. */
+              ...(first ? {
+                pinFirst: true,
+                topCallHref: `/insights/call?d=${encodeURIComponent(title)}&n=${value}`,
+              } : {}),
             })} />
         </section>
 
