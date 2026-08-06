@@ -85,6 +85,15 @@ export function auditProfile(p: any): { checks: number; failures: string[] } {
     Array.isArray(p?.reports?.agentConfig?.smsPlaybook?.qualifyingQuestions)
     && p.reports.agentConfig.smsPlaybook.qualifyingQuestions.length > 0);
   check("sponsored-link target (brandDomain)", !!p?.brandDomain);
+  /* The "Qa pairs" card on AI Recommendations opens a modal of these. agentConfig
+     .aiRecommendations is OPTIONAL, so a generation that omits it passes Zod
+     silently and the card renders looking normal but does nothing when clicked —
+     found on a real demo mid-session. The screen now falls back to derived pairs so
+     it is never dead, but a generation that skipped them is still a regression worth
+     knowing about at 5am rather than in front of a prospect. */
+  check("AI Recommendations has engine-generated Q&A pairs",
+    ((p?.reports?.agentConfig?.aiRecommendations ?? []) as any[])
+      .some((r) => (r?.qaPairs ?? []).length > 0));
 
   /* Canonical breakdown order — the dashboard's donut sequence and the Google
      Ads re-skin both depend on it (see assembleDashboard in core.ts). */
