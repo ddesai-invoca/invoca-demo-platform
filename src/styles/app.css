@@ -1653,7 +1653,14 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .ind-add .material-icons { font-size: 18px; }
 .ind-kebab { color: #5b6577; cursor: pointer; }
 
-.ind-filters { background: #fff; border-bottom: 1px solid #e7eaee; padding: 10px 24px 14px; }
+/* Save view sits LEFT of the filter chips, matching the capture: a plain grey
+   outline button, not an accent one — it is a neutral action beside the applied
+   filters, and colouring it blue would compete with Add Tile above. */
+.ind-filters { background: #fff; border-bottom: 1px solid #e7eaee; padding: 10px 24px 14px;
+  display: flex; align-items: center; gap: 10px; }
+.ind-saveview { background: #fff; border: 1px solid #cfd4da; border-radius: 4px;
+  font-family: inherit; font-size: 13px; color: #3d3d3d; padding: 7px 14px; cursor: pointer; }
+.ind-saveview:hover { background: #f5f6fa; }
 .ind-chip { background: #f0f1f4; border-radius: 999px; padding: 6px 14px; font-size: 13px;
   color: #3d3d3d; }
 .ind-chip b { font-weight: 700; }
@@ -1771,3 +1778,119 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 
 .wcp-foot { flex: 0 0 auto; text-align: center; font-size: 13px; color: rgb(48, 50, 53);
   background: #fff; padding: 6px 10px 10px; }
+
+/* ---- Insights & Analytics: the platform accent -----------------------------
+   The "New" button and the report-name links were #00acf1, which comes from the
+   `--color-blue` token ("Save / + / links"). The platform's ACCENT is #2666f9 — the
+   same blue as the dashboards' Add Tile button and the Manage Dashboards breadcrumb
+   — so these two were the older cyan while everything around them was the accent.
+
+   ⚠️ Scoped to .ia-page ON PURPOSE, not fixed on the token. `--color-blue` paints
+   Save buttons and links across Agent Studio and the reports, and `.md-new` is shared
+   with the Manage Dashboards page; changing either would repaint screens nobody asked
+   about. Manage Dashboards' own New button is still the old cyan — a deliberate
+   difference, not an oversight. */
+.ia-page .md-new { background: #2666f9; }
+.ia-page .md-col-name a { color: #2666f9; }
+
+/* Conversations/Metrics Over Time — grouped bars. Read off the screenshots of the
+   real tile (the SingleFile capture of this screen serialises only the Invoca
+   chrome, so there was no DOM to measure): faint gridlines, small grey ticks, a
+   dot legend on the right in near-black, and the axis titles already styled by
+   .ind-axtitle above. */
+/* A fixed-aspect svg cannot fill a forced height — it letterboxes. min-height here
+   produced 149px of dead space above the bars and 84px below, so the chart is sized by
+   its VIEWBOX RATIO against the tile width instead, and the tile is what got wider. */
+.ind-time { display: block; width: 100%; }
+
+.ind-time .ind-axis { stroke: #cfd4da; stroke-width: 1; }
+.ind-time .ind-tick { font-size: 13px; fill: #6b7280; }
+.ind-time .ind-legend-t { font-size: 13px; fill: #1d2b4a; dominant-baseline: middle; }
+
+/* Total Conversations Weekly Trend — the filled area chart. Bright blue line over a
+   pale blue fill, sized to the tile and stretched (preserveAspectRatio="none") the way
+   the reference shows it: the shape carries the message, exact aspect does not. */
+.ind-trendarea { display: block; width: 100%; height: 150px; margin-top: 14px; }
+.ind-trendarea-fill { fill: #cfe0fd; }
+.ind-trendarea-line { fill: none; stroke: #1a73f0; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+
+/* Weekly-trend hover: a point marker on the line and a dark tooltip, both only while
+   the pointer is over the chart. Read off the reference: near-black panel, white text,
+   the metric label in a lighter grey above its value, and a blue dot with a white ring
+   so it stays visible against both the line and the pale fill. */
+.ind-trendwrap { position: relative; }
+.ind-trenddot { fill: #1a73f0; stroke: #fff; stroke-width: 3; vector-effect: non-scaling-stroke; }
+.ind-tip {
+  position: absolute; z-index: 3; pointer-events: none;
+  background: #2f3a4a; color: #fff; border-radius: 4px; padding: 12px 16px;
+  font-size: 13px; line-height: 1.45; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(12, 0, 51, .22);
+}
+.ind-tip-k { color: #fff; font-weight: 600; }
+.ind-tip-v { color: #e7eaee; }
+.ind-tip-gap { margin-top: 10px; }
+/* Wrapper so the bar chart's tooltip can be positioned over the svg. */
+.ind-timewrap { position: relative; }
+
+/* Every clickable datum on this dashboard opens the interaction drawer, so the
+   pointer cursor is the affordance. The trend chart is clickable across its whole
+   width (the marker snaps to the nearest week, so there is no need to hit the dot). */
+.ind-timewrap rect, .ind-trendwrap, .ind-page .donut-svg path { cursor: pointer; }
+
+/* ---- Interaction details drawer --------------------------------------------
+   MEASURED off Invoca's own markup, which does serialise (the drawer is MUI, not
+   ThoughtSpot): capture "Insights & Analytics drawer｜ Invoca for Healthcare 2.0
+   (8_5_2026 11:53:49 PM)". The numbers below are that capture's computed values,
+   with the CSS variables resolved:
+     paper   -> 800px (--titan-tokens-drawer-width-md), padding 24px, right-anchored
+     slide   -> 225ms cubic-bezier(0,0,0.2,1)
+     scrim   -> rgba(0,0,0,.5)
+     card    -> height 184px, border 1px #e7e9eb, radius 8px, padding 16px
+     text    -> 16px/20px, secondary #5b6577, primary #15243e
+   min(800px, 92vw) is the one deliberate deviation: the browser pane is ~1000px
+   wide, and a hard 800px would cover the page it is drilling into. */
+.idr-root { position: fixed; inset: 0; z-index: 1200; }
+.idr-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .5); }
+.idr-panel {
+  position: fixed; top: 0; right: 0; height: 100%; width: min(800px, 92vw);
+  background: #fff; box-shadow: -10px 0 30px rgba(21, 36, 62, .22);
+  padding: 24px; display: flex; flex-direction: column; overflow: hidden;
+  animation: idr-in 225ms cubic-bezier(0, 0, .2, 1);
+}
+@keyframes idr-in { from { transform: translateX(100%); } to { transform: none; } }
+
+.idr-head { display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 16px; }
+.idr-headtext { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.idr-title { font-size: 16px; line-height: 20px; letter-spacing: .5px; color: #5b6577; }
+.idr-count { font-size: 16px; line-height: 20px; color: #5b6577; }
+/* Not in the real drawer — see DrawerRequest.metric. A quiet subtitle rather than
+   something competing with the tile name. Deliberately NOT uppercased: it carries a
+   date, and "WEEK OF JAN 08" shouts where "Week of Jan 08" just reads. */
+.idr-metric { font-size: 13px; font-weight: 700; color: #15243e; margin-top: 2px; }
+.idr-close { background: none; border: 0; padding: 6px; margin: -6px -6px 0 0;
+  color: #5b6577; cursor: pointer; border-radius: 50%; display: flex; }
+.idr-close:hover { background: #f0f1f4; }
+.idr-close svg { width: 24px; height: 24px; fill: currentColor; }
+
+.idr-list { flex: 1 1 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.idr-card { height: 184px; flex-shrink: 0; overflow: hidden; display: flex;
+  flex-direction: column; border: 1px solid #e7e9eb; border-radius: 8px; padding: 16px; }
+.idr-card-head { display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 6px; }
+.idr-kind { display: flex; align-items: center; gap: 8px; }
+.idr-badge { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; }
+.idr-badge svg { width: 16px; height: 16px; fill: #fff; }
+.idr-kind-label { text-transform: uppercase; font-size: 16px; line-height: 20px; color: #5b6577; }
+.idr-date { font-size: 16px; line-height: 20px; color: #15243e; }
+.idr-id { display: block; font-size: 16px; line-height: 20px; color: #15243e; margin-bottom: 4px; }
+/* The summary is the only elastic part of a fixed-height card: it takes the
+   leftover space and clamps to three lines, so the duration always sits on the
+   same baseline whether the card has a summary or not. */
+.idr-summary { flex: 1 1 0; overflow: hidden; }
+.idr-summary span { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden; font-size: 16px; line-height: 20px; color: #5b6577; }
+.idr-dur { display: flex; align-items: center; gap: 4px; }
+.idr-dur svg { width: 14px; height: 14px; fill: #5b6577; flex-shrink: 0; }
+.idr-dur span { font-size: 16px; line-height: 20px; color: #5b6577; }

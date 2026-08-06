@@ -11,28 +11,44 @@ import { Link } from "react-router-dom";
    inventing a parallel set: the two screens are the same table with different
    columns, and the real pair look the same too.
 
-   Rows are the platform's own dashboards, so this stays in step automatically as
-   dashboards are added, with no schema or engine change. The AUTHOR is the
+   Rows are the THREE Insights reports below — this screen is its own set of saved
+   reports, not a second index of the platform dashboards (which is what it used to
+   be, duplicating Manage Dashboards). The AUTHOR is the
    signed-in user (useDemoLibrary().me) rather than a hardcoded name — the real
    capture shows real Invoca employees, which would be wrong to bake into every
    prospect's demo. */
 
-const DASHBOARDS = [
-  { name: "Marketing Performance", path: "/dashboards/marketing" },
-  { name: "Marketing & Operations Performance", path: "/dashboards/marketing-ops" },
-  { name: "AI Agent Conversion", path: "/dashboards/ai-agent-conversion" },
-  { name: "AI Messaging Impact", path: "/dashboards/ai-messaging-impact" },
-  { name: "QM Actionable Insights", path: "/dashboards/quality-management" },
-  { name: "QM Instant Insights", path: "/dashboards/qm-instant-insights" },
+/* THE THREE Insights reports. This list previously mirrored the six platform
+   dashboards, which duplicated the Manage Dashboards page — Insights & Analytics is
+   its own set of saved reports, not a second index of the same things.
+
+   Each name becomes the route (/insights/dashboard/<name>), so these are the only
+   three reports this screen offers. Contents are defined per report; until each one
+   has its own, they all open the same Insights-style dashboard. */
+const REPORTS = [
+  { name: "Summary Dashboard" },
+  { name: "Details Report" },
+  { name: "Connect AI" },
 ];
 
 /* View counts are derived from the prospect id so they're stable per demo (an SE
-   revisiting sees the same numbers) but differ between prospects. Deliberately
-   not round, matching the platform-wide rule. */
+   revisiting sees the same numbers) but differ between prospects. Deliberately not
+   round, matching the platform-wide rule.
+
+   ⚠️ The hash has to AVALANCHE. The first version was `h = h*31 + ch` mod a prime,
+   and since the only difference between the seeds is the trailing index digit, the
+   outputs came out CONSECUTIVE — AutoNation's three reports read 137, 138, 139, and
+   four of five prospects did the same. Sequential view counts on a list of saved
+   reports read as generated just as plainly as round numbers do. FNV-1a plus a
+   final mixing step scatters adjacent indices. */
 function views(seed: string, i: number): number {
-  let h = 0;
-  for (const ch of `${seed}:${i}`) h = (h * 31 + ch.charCodeAt(0)) % 100003;
-  const v = 7 + (h % 137);
+  let h = 2166136261;
+  for (const ch of `${seed}#${i}`) {
+    h ^= ch.charCodeAt(0);
+    h = Math.imul(h, 16777619);
+  }
+  h ^= h >>> 13; h = Math.imul(h, 0x5bd1e995); h ^= h >>> 15;
+  const v = 12 + (Math.abs(h) % 180);
   return v % 10 === 0 ? v + 3 : v;
 }
 
@@ -45,7 +61,7 @@ export function InsightsAnalytics() {
      something that has been used rather than all-created-at-once. */
   const dates = ["07/28/2026", "07/28/2026", "07/27/2026", "07/24/2026", "07/21/2026", "07/16/2026"];
 
-  const rows = DASHBOARDS.map((d, i) => ({
+  const rows = REPORTS.map((d, i) => ({
     ...d, views: views(profile.id, i), author, modified: dates[i] ?? "07/16/2026",
   }));
 
@@ -72,7 +88,7 @@ export function InsightsAnalytics() {
         </thead>
         <tbody>
           {rows.map((r) => (
-            <tr key={r.path}>
+            <tr key={r.name}>
               {/* Opens the Insights-style saved dashboard, which is what the real
                   list does, rather than jumping to the platform dashboard. */}
               <td className="md-col-name">

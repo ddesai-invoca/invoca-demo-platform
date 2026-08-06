@@ -28,9 +28,15 @@ function truncate(s: string, n = 16): string {
 
 /* `colors` lets ONE screen override the palette without touching the six
    dashboards that rely on the Invoca default. Added for Insights & Analytics,
-   which is embedded ThoughtSpot and uses a different palette entirely. */
-export function DonutChart({ segments, total, colors = COLORS }: {
+   which is embedded ThoughtSpot and uses a different palette entirely.
+
+   `onSlice` is opt-in for the same reason: Insights & Analytics drills into an
+   interaction drawer when a slice is clicked, and the six dashboards do not. Left
+   undefined, the slices carry no handler and no pointer cursor, so nothing on those
+   screens gains a dead affordance. */
+export function DonutChart({ segments, total, colors = COLORS, onSlice }: {
   segments: DonutSegment[]; total: number; colors?: string[];
+  onSlice?: (segment: DonutSegment, index: number) => void;
 }) {
   const shownSum = segments.reduce((s, d) => s + d.value, 0) || 1;
   const grand = total || shownSum;
@@ -59,7 +65,8 @@ export function DonutChart({ segments, total, colors = COLORS }: {
 
         return (
           <g key={i}>
-            <path d={sector(a0, a1)} fill={colors[i % colors.length]} />
+            <path d={sector(a0, a1)} fill={colors[i % colors.length]}
+              onClick={onSlice ? () => onSlice(seg, i) : undefined} />
             {frac > 0.05 && (
               <text x={lx} y={ly + 4} textAnchor="middle" className="donut-pct">{pct}%</text>
             )}
