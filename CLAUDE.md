@@ -1166,6 +1166,20 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   The static `public/*.html` copies (Exchange, Google Ads) are outside React and never get it.
 - Invoca's **brand** green `#00b388` (from invoca.com), deliberately not the product blue: it
   is a link to our own docs, so it shouldn't read as part of the Invoca UI being demoed.
+- **Audience is everyone, including the CEO and any AE.** The page carries NO cost or spend
+  content, no internal risk register, no "things to check before presenting", and nothing about
+  who is blocked on what. Security specifics (e.g. which env vars gate sign-in and what happens
+  if one is cleared) stay in `CLAUDE.md` / `DEPLOY.md`, NOT on a broadly-readable page. Re-read
+  anything you add through the question "would I want an AE forwarding this?".
+- **Light theme only**, on Invoca's own brand tokens lifted from an invoca.com capture:
+  `#00b388` green, `#004030` deep green, `#0a231e` ink, sand `#f2f5e4` / `#f9f9f6` / `#f8faf1`,
+  `#626464` grey, Inter. There is deliberately no dark variant and no `[data-theme]` hook, so
+  every surface and ink is painted explicitly and the page holds its look on any host.
+- **Two hand-authored SVG diagrams**, no Mermaid: a 3-zone overview on tab 1, and a 4-layer
+  technical diagram on tab 2 (browser / express middleware order / engine / storage+external).
+  Zone label pills are hand-sized, so **re-measure `getBBox()` in the browser after editing any
+  label** -- text silently overran two pills the first time. Pair pills to text by BOTH x and y
+  when measuring; several share a coordinate and a one-axis match returns the wrong pair.
 - **The docs ship with the app.** `public/readme.html` is copied into `dist/` by the build and
   served by `express.static`, so `/readme.html` works on Render, on `npm run serve`, and in
   dev. No external host, no claude.ai account needed. Opens in a new tab so an SE mid-demo
