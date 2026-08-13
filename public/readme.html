@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="How the Invoca demo generator works, what it costs, and how to maintain it.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2300b388%22/><path d=%22M9 10h11M9 16h8M9 22h13%22 stroke=%22%23fff%22 stroke-width=%222.6%22 stroke-linecap=%22round%22/></svg>">
+<title>Invoca Demo Generator &mdash; Architecture &amp; Maintenance</title>
+
+<style>
+/* ==============================================================
+   Palette and type are Invoca's OWN brand tokens, lifted from a
+   capture of invoca.com/platform/invoca (8/13/2026):
+     --invoca-green #00b388 &middot; --deep-green #004030
+     --black-green  #0a231e &middot; --mint       #d1ffd1
+     --sand #f2f5e4 / sand-20 #f7f8f4 &middot; --salmon #ff7a66
+     --text-grey #626464   &middot; --border-color #1f21211a
+   Type is Inter at weight 500 with -0.02em tracking, which is what
+   invoca.com sets. No webfont URL: the Artifact CSP blocks font
+   CDNs, so this names Inter and falls back to the system face.
+   Light is the base; dark redefines TOKENS ONLY, never components.
+   ============================================================== */
+:root {
+  --ground:     #f9f9f6;   /* sand-10 */
+  --surface:    #ffffff;
+  --surface-2:  #f7f8f4;   /* sand-20 */
+  --sand:       #f2f5e4;
+  --ink:        #0a231e;   /* black-green */
+  --ink-2:      #3d5450;
+  --ink-3:      #626464;   /* text-grey */
+  --rule:       #1f21211f;
+  --rule-soft:  #1f212112;
+  --green:      #00b388;   /* invoca green */
+  --green-deep: #004030;
+  --green-hov:  #009974;
+  /* A DARK FIELD in both themes. Kept separate from --green-deep because that one is a
+     dark-green TEXT colour and inverts to pale mint in dark mode &mdash; using it as a background
+     behind white text made the masthead unreadable. Role, not hue, decides the token. */
+  --field:      #004030;
+  --field-ink:  #ffffff;
+  --field-ink-2:#cfe8dd;
+  --mint:       #e8f5ed;
+  --mint-2:     #d1ffd1;
+  --lime:       #8ee58e;
+  --salmon:     #ff7a66;
+  --salmon-sf:  #ffe9e5;
+  --amber:      #ffa25b;
+  --amber-sf:   #fff3e6;
+  --amber-ink:  #96551a;
+  --stop:       #cf2519;
+  --stop-sf:    #fbe3e7;
+  --code-bg:    #f2f5e4;
+  --code-ink:   #004030;
+  --figure-bg:  #ffffff;
+  --shadow:     0 1px 2px rgba(10,35,30,.04), 0 12px 32px -18px rgba(10,35,30,.18);
+  --shadow-lg:  0 2px 4px rgba(10,35,30,.05), 0 24px 48px -24px rgba(10,35,30,.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:     #071713;
+    --surface:    #0d2420;
+    --surface-2:  #102c26;
+    --sand:       #14332b;
+    --ink:        #e9f5ef;
+    --ink-2:      #a9c4bb;
+    --ink-3:      #86a099;
+    --rule:       #ffffff1f;
+    --rule-soft:  #ffffff10;
+    --green:      #2fd6ac;
+    --green-deep: #9fe8d1;
+    --green-hov:  #4ee0ba;
+    --field:      #04241d;
+    --field-ink:  #ffffff;
+    --field-ink-2:#bcdcd0;
+    --mint:       #10312a;
+    --mint-2:     #16463a;
+    --lime:       #8ee58e;
+    --salmon:     #ff9c8c;
+    --salmon-sf:  #3d1d18;
+    --amber:      #ffb374;
+    --amber-sf:   #3a2814;
+    --amber-ink:  #ffc38f;
+    --stop:       #ff8676;
+    --stop-sf:    #3d1519;
+    --code-bg:    #14332b;
+    --code-ink:   #9fe8d1;
+    --figure-bg:  #ffffff;   /* the figure keeps a paper ground on purpose */
+    --shadow:     0 1px 2px rgba(0,0,0,.35), 0 12px 32px -18px rgba(0,0,0,.6);
+    --shadow-lg:  0 2px 4px rgba(0,0,0,.4), 0 24px 48px -24px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"] {
+  --ground:     #071713;
+  --surface:    #0d2420;
+  --surface-2:  #102c26;
+  --sand:       #14332b;
+  --ink:        #e9f5ef;
+  --ink-2:      #a9c4bb;
+  --ink-3:      #86a099;
+  --rule:       #ffffff1f;
+  --rule-soft:  #ffffff10;
+  --green:      #2fd6ac;
+  --green-deep: #9fe8d1;
+  --green-hov:  #4ee0ba;
+  --field:      #04241d;
+  --field-ink:  #ffffff;
+  --field-ink-2:#bcdcd0;
+  --mint:       #10312a;
+  --mint-2:     #16463a;
+  --lime:       #8ee58e;
+  --salmon:     #ff9c8c;
+  --salmon-sf:  #3d1d18;
+  --amber:      #ffb374;
+  --amber-sf:   #3a2814;
+  --amber-ink:  #ffc38f;
+  --stop:       #ff8676;
+  --stop-sf:    #3d1519;
+  --code-bg:    #14332b;
+  --code-ink:   #9fe8d1;
+  --figure-bg:  #ffffff;
+  --shadow:     0 1px 2px rgba(0,0,0,.35), 0 12px 32px -18px rgba(0,0,0,.6);
+  --shadow-lg:  0 2px 4px rgba(0,0,0,.4), 0 24px 48px -24px rgba(0,0,0,.7);
+}
+
+* { box-sizing: border-box; }
+
+/* No element may scroll the page sideways; wide content (the diagram, tables,
+   code) scrolls inside its own overflow-x:auto container instead. */
+html, body { overflow-x: hidden; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: Inter, "Inter var", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.62;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 30px 100px; }
+
+/* -- masthead &mdash; Invoca's deep green field with the node motif -- */
+.mast {
+  background: var(--field); color: var(--field-ink);
+  padding: 62px 30px 54px; position: relative; overflow: hidden;
+}
+.mast-inner { max-width: 1060px; margin: 0 auto; position: relative; z-index: 1; }
+/* The dotted node field is Invoca's own graphic language, rendered as a
+   background-image rather than 200 hand-authored circles. */
+.mast::after {
+  content: ""; position: absolute; inset: 0; opacity: .5;
+  background-image: radial-gradient(circle, rgba(142,229,142,.45) 1.4px, transparent 1.5px);
+  background-size: 26px 26px;
+  mask-image: linear-gradient(105deg, transparent 42%, #000 100%);
+  -webkit-mask-image: linear-gradient(105deg, transparent 42%, #000 100%);
+}
+.kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--mint-2); margin: 0 0 20px;
+}
+.kicker::before {
+  content: ""; width: 20px; height: 2px; background: var(--lime); border-radius: 2px;
+}
+h1 {
+  font-size: clamp(32px, 4.8vw, 52px); line-height: 1.03; letter-spacing: -0.028em;
+  font-weight: 500; margin: 0 0 20px; text-wrap: balance; max-width: 21ch;
+  color: var(--field-ink);
+}
+h1 em { font-style: normal; color: var(--lime); }
+.standfirst {
+  font-size: 19px; line-height: 1.52; color: var(--field-ink-2); max-width: 60ch; margin: 0 0 30px;
+  font-weight: 400;
+}
+.mast-meta { display: flex; flex-wrap: wrap; gap: 10px 12px; }
+.chip {
+  display: inline-flex; align-items: baseline; gap: 7px;
+  background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px; padding: 6px 14px; font-size: 13px; color: var(--field-ink-2);
+}
+.chip b { font-weight: 600; color: var(--field-ink); font-variant-numeric: tabular-nums; }
+.chip a { color: var(--lime); text-decoration: none; }
+.chip a:hover { text-decoration: underline; }
+
+/* -- tabs --------------------------------------------------- */
+.tabs {
+  position: sticky; top: 0; z-index: 20; margin: 0 0 40px; padding: 0 30px;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
+}
+.tabs-inner { max-width: 1060px; margin: 0 auto; display: flex; gap: 4px; }
+.tab {
+  appearance: none; background: none; border: 0; cursor: pointer;
+  font-family: inherit; font-size: 14.5px; font-weight: 500; letter-spacing: -0.01em;
+  color: var(--ink-3); padding: 17px 20px 15px; border-bottom: 2px solid transparent;
+  display: flex; align-items: center; gap: 9px; transition: color .15s ease;
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--green-deep); border-bottom-color: var(--green); }
+.tab .tnum {
+  font-size: 11px; font-weight: 600; background: var(--rule-soft); color: var(--ink-3);
+  border-radius: 999px; padding: 2px 7px; font-variant-numeric: tabular-nums;
+}
+.tab[aria-selected="true"] .tnum { background: var(--mint); color: var(--green); }
+.panel[hidden] { display: none; }
+.panel-lede {
+  font-size: 15px; color: var(--ink-3); margin: 0 0 42px; padding: 14px 18px;
+  background: var(--surface-2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0;
+  max-width: 74ch;
+}
+.panel-lede strong { color: var(--ink); font-weight: 600; }
+
+/* -- sections ----------------------------------------------- */
+section { margin-bottom: 66px; scroll-margin-top: 76px; }
+.sec-head { display: flex; align-items: baseline; gap: 15px; margin: 0 0 9px; }
+.sec-num {
+  font-size: 12.5px; font-weight: 600; color: var(--green); letter-spacing: .05em;
+  font-variant-numeric: tabular-nums; flex-shrink: 0; padding-top: 7px;
+}
+h2 {
+  font-size: clamp(24px, 2.7vw, 32px); line-height: 1.14; letter-spacing: -0.024em;
+  font-weight: 500; margin: 0; text-wrap: balance;
+}
+.sec-rule { height: 1px; background: var(--rule); margin: 0 0 28px 43px; }
+h3 {
+  font-size: 18.5px; font-weight: 500; letter-spacing: -0.018em; margin: 40px 0 12px;
+  text-wrap: balance;
+}
+h4 { font-size: 15px; font-weight: 600; margin: 28px 0 8px; letter-spacing: -0.01em; }
+
+p { margin: 0 0 17px; max-width: 68ch; }
+.lede { font-size: 18px; line-height: 1.56; color: var(--ink-2); max-width: 62ch; }
+ul, ol { margin: 0 0 19px; padding-left: 23px; max-width: 68ch; }
+li { margin-bottom: 9px; }
+li > ul, li > ol { margin-top: 9px; }
+strong { font-weight: 600; }
+a { color: var(--green-hov); }
+
+code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .855em; background: var(--code-bg); color: var(--code-ink);
+  padding: 1.5px 5px; border-radius: 4px; white-space: nowrap;
+}
+pre {
+  background: var(--ink); border-radius: 10px; padding: 18px 20px;
+  overflow-x: auto; margin: 0 0 22px; font-size: 13.5px; line-height: 1.65;
+  box-shadow: var(--shadow);
+}
+pre code { background: none; padding: 0; color: #cfe8dd; white-space: pre; font-size: 1em; }
+pre code .cm { color: #7fa89c; }
+
+/* -- the figure --------------------------------------------- */
+.figure {
+  background: var(--figure-bg); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 30px 26px 22px; margin: 0 0 16px; overflow-x: auto; box-shadow: var(--shadow-lg);
+}
+.figure svg { display: block; width: 100%; min-width: 880px; height: auto; }
+figcaption {
+  font-size: 13px; color: var(--ink-3); margin: 0 0 40px; max-width: 74ch;
+}
+figcaption b { color: var(--ink-2); font-weight: 600; }
+
+/* -- tables ------------------------------------------------- */
+.tw {
+  overflow-x: auto; margin: 0 0 26px; border: 1px solid var(--rule);
+  border-radius: 12px; background: var(--surface);
+}
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 580px; }
+th {
+  text-align: left; font-weight: 600; font-size: 11.5px; letter-spacing: .075em;
+  text-transform: uppercase; color: var(--ink-3); padding: 13px 17px;
+  background: var(--surface-2); border-bottom: 1px solid var(--rule); white-space: nowrap;
+}
+td { padding: 13px 17px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-2); }
+td:first-child { color: var(--ink); font-weight: 500; }
+tbody tr:last-child td { border-bottom: 0; }
+td code { white-space: normal; }
+
+/* -- status pills ------------------------------------------- */
+.pill {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .05em;
+  text-transform: uppercase; padding: 3.5px 10px; border-radius: 999px; white-space: nowrap;
+}
+.p-ship { background: var(--mint); color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
+.p-prog { background: var(--amber-sf); color: var(--amber-ink); box-shadow: inset 0 0 0 1px var(--amber); }
+.p-warn { background: var(--salmon-sf); color: var(--salmon); box-shadow: inset 0 0 0 1px var(--salmon); }
+.p-stop { background: var(--stop-sf); color: var(--stop); box-shadow: inset 0 0 0 1px var(--stop); }
+.p-none { background: var(--rule-soft); color: var(--ink-3); box-shadow: inset 0 0 0 1px var(--rule); }
+
+/* -- callouts ----------------------------------------------- */
+.flag {
+  background: var(--salmon-sf); border-radius: 12px; padding: 22px 24px; margin: 0 0 28px;
+  box-shadow: inset 0 0 0 1px var(--salmon);
+}
+.flag-label {
+  display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--salmon); margin-bottom: 12px;
+}
+.flag-label svg { width: 15px; height: 15px; flex-shrink: 0; }
+.flag p, .flag li { color: var(--ink); max-width: 66ch; }
+.flag > :last-child { margin-bottom: 0; }
+
+.cost {
+  background: var(--field); color: var(--field-ink); border-radius: 14px;
+  padding: 26px 28px; margin: 30px 0; box-shadow: var(--shadow-lg);
+  position: relative; overflow: hidden;
+}
+.cost::after {
+  content: ""; position: absolute; right: -40px; top: -40px; width: 220px; height: 220px;
+  background-image: radial-gradient(circle, rgba(142,229,142,.4) 1.4px, transparent 1.5px);
+  background-size: 22px 22px; opacity: .45;
+}
+.cost h4 {
+  margin: 0 0 12px; color: var(--lime); font-size: 11.5px; letter-spacing: .1em;
+  text-transform: uppercase; font-weight: 600; position: relative; z-index: 1;
+}
+.cost p { color: var(--field-ink-2); max-width: 64ch; position: relative; z-index: 1; }
+.cost p:last-child { margin-bottom: 0; }
+.cost strong { color: var(--field-ink); }
+
+/* -- plain-language risk cards (non-technical tab) ---------- */
+.rgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(288px, 1fr)); gap: 16px; margin-bottom: 26px; }
+.rcard {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 12px;
+  padding: 20px 22px; box-shadow: var(--shadow);
+}
+.rcard h4 { margin: 10px 0 7px; font-size: 15.5px; }
+.rcard p { font-size: 14.5px; color: var(--ink-2); margin: 0; max-width: none; }
+.rsev {
+  font-size: 10.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase;
+}
+.rsev.hi { color: var(--stop); }
+.rsev.md { color: var(--amber-ink); }
+.rsev.lo { color: var(--green); }
+
+/* -- numbered risk list (technical tab) --------------------- */
+ol.risks { list-style: none; padding: 0; counter-reset: r; max-width: none; }
+ol.risks > li {
+  counter-increment: r; position: relative; padding: 0 0 0 48px; margin-bottom: 26px;
+  max-width: 74ch;
+}
+ol.risks > li::before {
+  content: counter(r); position: absolute; left: 0; top: 1px;
+  width: 28px; height: 28px; border-radius: 50%; background: var(--mint);
+  color: var(--green); box-shadow: inset 0 0 0 1px var(--green);
+  font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums;
+  display: flex; align-items: center; justify-content: center;
+}
+ol.risks strong { color: var(--ink); }
+
+.end {
+  border-top: 1px solid var(--rule); padding-top: 24px; margin-top: 14px;
+  font-size: 13.5px; color: var(--ink-3); max-width: 74ch;
+}
+
+:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+@media (max-width: 680px) {
+  .wrap { padding: 0 18px 70px; }
+  .mast { padding: 44px 18px 40px; }
+  .tabs { margin: 0 0 32px; padding: 0 18px; }
+  .sec-rule { margin-left: 0; }
+  .sec-head { gap: 10px; }
+  .tab { padding: 15px 12px 13px; font-size: 13.5px; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="mast">
+  <div class="mast-inner">
+    <p class="kicker">Internal tooling &middot; Architecture &amp; maintenance</p>
+    <h1>Invoca <em>Demo Generator</em></h1>
+    <p class="standfirst">
+      Turns a prospect's name and website into a complete, believable walkthrough of the Invoca
+      platform &mdash; re-skinned entirely to that prospect's business, without touching production
+      Invoca or waiting on anyone's access.
+    </p>
+    <div class="mast-meta">
+      <span class="chip"><b>Live</b> <a href="https://invoca-demo-platform.onrender.com/">invoca-demo-platform.onrender.com</a></span>
+      <span class="chip"><b>Access</b> Google sign-in, @invoca.com</span>
+      <span class="chip"><b>Deployed</b> <span id="s-commit">f9dfd49</span></span>
+      <span class="chip"><b class="s-demos">58</b> demos saved</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-inner" role="tablist" aria-label="Audience">
+    <button class="tab" id="t-biz" role="tab" aria-selected="true" aria-controls="p-biz">
+      <span class="tnum">1</span> The short version
+    </button>
+    <button class="tab" id="t-eng" role="tab" aria-selected="false" aria-controls="p-eng">
+      <span class="tnum">2</span> Technical detail
+    </button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ================== TAB 1 &mdash; NON-TECHNICAL ================== -->
+<div class="panel" id="p-biz" role="tabpanel" aria-labelledby="t-biz">
+
+  <p class="panel-lede">
+    <strong>No engineering background needed.</strong> What the tool does, how it works, what it
+    costs, what's shipped, and what could bite us. The second tab has the code-level detail for
+    whoever maintains it.
+  </p>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>What it is</h2></div>
+    <div class="sec-rule"></div>
+    <p class="lede">
+      An SE or Sales Rep types "Roto-Rooter" and its URL, waits a few minutes, and gets a working
+      set of Invoca screens &mdash; dashboards, call transcripts, AI agent configuration, Signal
+      management, Insights reports &mdash; where every number, campaign name, product category, agent
+      script and conversion label reads as though it came from that prospect's own Invoca account.
+    </p>
+    <p>
+      It exists because building a credible demo used to mean one of two things: showing a generic
+      sandbox that looked like nobody's business, or getting access to real customer data in the
+      live platform. This tool needs neither. It is a self-contained replica, so anyone on the team
+      can produce a prospect-specific demo in minutes without touching production Invoca and
+      without waiting on anyone else. The shared library currently holds
+      <strong><span class="s-demos">58</span> saved demos</strong>.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>How it fits together</h2></div>
+    <div class="sec-rule"></div>
+
+    <figure class="figure">
+      <svg viewBox="0 0 1140 730" role="img"
+           aria-label="Architecture: the browser signs in through a Google gate, the Render service serves the UI and API, the engine generates prospects, and external APIs are split into paid and no-cost groups.">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,1 L9,5 L0,9 z" fill="#00b388"/>
+          </marker>
+          <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+            <path d="M0,1 L9,5 L0,9 z" fill="#7f9a93"/>
+          </marker>
+          <filter id="sh" x="-30%" y="-30%" width="160%" height="180%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0a231e" flood-opacity="0.10"/>
+          </filter>
+          <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.1" fill="#00b388" opacity="0.28"/>
+          </pattern>
+        </defs>
+
+        <!-- zone: platform -->
+        <rect x="250" y="52" width="392" height="644" rx="18" fill="#f7f8f4" stroke="#1f21211f"/>
+        <rect x="272" y="38" width="250" height="28" rx="14" fill="#004030"/>
+        <text x="288" y="57" font-size="11.5" font-weight="600" letter-spacing="1.2" fill="#8ee58e">ONE SERVICE ON RENDER</text>
+
+        <!-- zone: no cost -->
+        <rect x="700" y="52" width="400" height="252" rx="18" fill="#e8f5ed" stroke="#00b388" stroke-opacity="0.45"/>
+        <rect x="722" y="38" width="212" height="28" rx="14" fill="#00b388"/>
+        <text x="738" y="57" font-size="11.5" font-weight="600" letter-spacing="1.2" fill="#ffffff">NO PER-CALL COST</text>
+
+        <!-- zone: paid -->
+        <rect x="700" y="344" width="400" height="352" rx="18" fill="#ffe9e5" stroke="#ff7a66" stroke-opacity="0.55"/>
+        <rect x="722" y="330" width="196" height="28" rx="14" fill="#ff7a66"/>
+        <text x="738" y="349" font-size="11.5" font-weight="600" letter-spacing="1.2" fill="#ffffff">APIs WE PAY FOR</text>
+
+        <!-- browser -->
+        <rect x="40" y="300" width="172" height="86" rx="12" fill="#0a231e" filter="url(#sh)"/>
+        <rect x="40" y="300" width="172" height="86" rx="12" fill="url(#dots)"/>
+        <text x="126" y="334" text-anchor="middle" font-size="14.5" font-weight="600" fill="#ffffff">SE / Sales Rep</text>
+        <text x="126" y="356" text-anchor="middle" font-size="12.5" fill="#9fd8c4">in a browser</text>
+
+        <!-- platform nodes -->
+        <g filter="url(#sh)">
+          <rect x="282" y="100" width="328" height="76" rx="11" fill="#ffffff" stroke="#1f21211f"/>
+          <rect x="282" y="200" width="328" height="76" rx="11" fill="#ffffff" stroke="#1f21211f"/>
+          <rect x="282" y="300" width="328" height="86" rx="11" fill="#ffffff" stroke="#00b388" stroke-width="1.8"/>
+          <rect x="282" y="410" width="328" height="86" rx="11" fill="#ffffff" stroke="#00b388" stroke-width="1.8"/>
+          <rect x="282" y="556" width="328" height="80" rx="11" fill="#ffffff" stroke="#1f21211f"/>
+        </g>
+
+        <text x="302" y="130" font-size="14.5" font-weight="600" fill="#0a231e">Sign-in gate</text>
+        <text x="302" y="152" font-size="12.5" fill="#626464">Google, @invoca.com only</text>
+
+        <text x="302" y="230" font-size="14.5" font-weight="600" fill="#0a231e">The screens</text>
+        <text x="302" y="252" font-size="12.5" fill="#626464">React app, served as static files</text>
+
+        <text x="302" y="330" font-size="14.5" font-weight="600" fill="#0a231e">API layer</text>
+        <text x="302" y="352" font-size="12.5" fill="#626464">holds every key &middot; the only thing</text>
+        <text x="302" y="370" font-size="12.5" fill="#626464">that calls a paid service</text>
+
+        <text x="302" y="440" font-size="14.5" font-weight="600" fill="#0a231e">Generation engine</text>
+        <text x="302" y="462" font-size="12.5" fill="#626464">18 phases, run in parallel</text>
+        <text x="302" y="480" font-size="12.5" fill="#626464">~20 AI calls per prospect</text>
+
+        <text x="302" y="586" font-size="14.5" font-weight="600" fill="#0a231e">Saved demos</text>
+        <text x="302" y="608" font-size="12.5" fill="#626464"><tspan class="s-demos">58</tspan> files on a permanent disk</text>
+
+        <!-- no-cost nodes -->
+        <g filter="url(#sh)">
+          <rect x="726" y="92" width="348" height="58" rx="10" fill="#ffffff" stroke="#00b388" stroke-opacity="0.4"/>
+          <rect x="726" y="164" width="348" height="58" rx="10" fill="#ffffff" stroke="#00b388" stroke-opacity="0.4"/>
+          <rect x="726" y="236" width="348" height="52" rx="10" fill="#ffffff" stroke="#00b388" stroke-opacity="0.4"/>
+        </g>
+        <text x="748" y="117" font-size="13.5" font-weight="600" fill="#0a231e">Google sign-in</text>
+        <text x="748" y="136" font-size="12" fill="#626464">confirms who you are &middot; free</text>
+        <text x="748" y="189" font-size="13.5" font-weight="600" fill="#0a231e">Mapbox</text>
+        <text x="748" y="208" font-size="12" fill="#626464">map tiles, in the browser &middot; free tier</text>
+        <text x="748" y="258" font-size="13.5" font-weight="600" fill="#0a231e">The prospect's own website</text>
+        <text x="748" y="276" font-size="12" fill="#626464">fetched once, for their logo</text>
+
+        <!-- paid nodes -->
+        <g filter="url(#sh)">
+          <rect x="726" y="384" width="348" height="82" rx="10" fill="#ffffff" stroke="#ff7a66" stroke-opacity="0.5"/>
+          <rect x="726" y="480" width="348" height="58" rx="10" fill="#ffffff" stroke="#ff7a66" stroke-opacity="0.5"/>
+          <rect x="726" y="552" width="348" height="58" rx="10" fill="#ffffff" stroke="#ff7a66" stroke-opacity="0.5"/>
+          <rect x="726" y="624" width="348" height="52" rx="10" fill="#ffffff" stroke="#ff7a66" stroke-opacity="0.28" stroke-dasharray="5 4"/>
+        </g>
+        <text x="748" y="410" font-size="13.5" font-weight="600" fill="#0a231e">Anthropic &middot; Claude</text>
+        <text x="748" y="429" font-size="12" fill="#626464">Opus writes a new prospect</text>
+        <text x="748" y="447" font-size="12" fill="#626464">Haiku runs everything interactive</text>
+        <text x="748" y="505" font-size="13.5" font-weight="600" fill="#0a231e">Google Places</text>
+        <text x="748" y="524" font-size="12" fill="#626464">real address &amp; rating &middot; 1 call per prospect</text>
+        <text x="748" y="577" font-size="13.5" font-weight="600" fill="#0a231e">Deepgram</text>
+        <text x="748" y="596" font-size="12" fill="#626464">the voice agent's speech &middot; per second</text>
+        <text x="748" y="647" font-size="13.5" font-weight="600" fill="#7f9a93">ElevenLabs</text>
+        <text x="748" y="665" font-size="12" fill="#8fa8a1">alternative voice provider &middot; not in use</text>
+
+        <!-- -- connectors -- -->
+        <!-- browser &rarr; gate -->
+        <path d="M212,343 H240 V138 H282" fill="none" stroke="#00b388" stroke-width="1.8" marker-end="url(#ah)"/>
+        <circle cx="240" cy="240" r="11" fill="#00b388"/>
+        <text x="240" y="244" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">1</text>
+
+        <!-- gate &#8644; google -->
+        <path d="M610,121 H726" fill="none" stroke="#00b388" stroke-width="1.8"
+              marker-start="url(#ah)" marker-end="url(#ah)"/>
+
+        <!-- gate &rarr; screens -->
+        <path d="M446,176 V200" fill="none" stroke="#00b388" stroke-width="1.8" marker-end="url(#ah)"/>
+        <circle cx="446" cy="188" r="11" fill="#00b388"/>
+        <text x="446" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">2</text>
+
+        <!-- screens &rarr; api -->
+        <path d="M446,276 V300" fill="none" stroke="#00b388" stroke-width="1.8" marker-end="url(#ah)"/>
+        <circle cx="446" cy="288" r="11" fill="#00b388"/>
+        <text x="446" y="292" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">3</text>
+
+        <!-- screens &rarr; mapbox -->
+        <path d="M610,238 H668 V193 H726" fill="none" stroke="#7f9a93" stroke-width="1.5" marker-end="url(#ah2)"/>
+
+        <!-- api &rarr; prospect site -->
+        <path d="M610,318 H690 V262 H726" fill="none" stroke="#7f9a93" stroke-width="1.5" marker-end="url(#ah2)"/>
+
+        <!-- api &rarr; engine -->
+        <path d="M446,386 V410" fill="none" stroke="#00b388" stroke-width="1.8" marker-end="url(#ah)"/>
+
+        <!-- api &#8644; saved demos -->
+        <path d="M282,364 H262 V596 H282" fill="none" stroke="#00b388" stroke-width="1.8"
+              marker-start="url(#ah)" marker-end="url(#ah)"/>
+
+        <!-- engine &rarr; saved demos -->
+        <path d="M446,496 V556" fill="none" stroke="#00b388" stroke-width="1.8" marker-end="url(#ah)"/>
+
+        <!-- shared trunk: api + engine &rarr; the paid services -->
+        <path d="M610,352 H668" fill="none" stroke="#ff7a66" stroke-width="1.8"/>
+        <path d="M610,452 H668" fill="none" stroke="#ff7a66" stroke-width="1.8"/>
+        <path d="M668,352 V653" fill="none" stroke="#ff7a66" stroke-width="1.8"/>
+        <path d="M668,425 H726" fill="none" stroke="#ff7a66" stroke-width="1.8" marker-end="url(#ah)"/>
+        <path d="M668,509 H726" fill="none" stroke="#ff7a66" stroke-width="1.8" marker-end="url(#ah)"/>
+        <path d="M668,581 H726" fill="none" stroke="#ff7a66" stroke-width="1.8" marker-end="url(#ah)"/>
+        <path d="M668,653 H726" fill="none" stroke="#ff7a66" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ah2)"/>
+        <circle cx="668" cy="425" r="3.4" fill="#ff7a66"/>
+        <circle cx="668" cy="509" r="3.4" fill="#ff7a66"/>
+        <circle cx="668" cy="581" r="3.4" fill="#ff7a66"/>
+
+        <!-- key -->
+        <g font-size="12" fill="#626464">
+          <line x1="40" y1="640" x2="70" y2="640" stroke="#00b388" stroke-width="1.8"/>
+          <text x="78" y="644">inside our control</text>
+          <line x1="40" y1="666" x2="70" y2="666" stroke="#ff7a66" stroke-width="1.8"/>
+          <text x="78" y="670">metered &mdash; we pay per call</text>
+          <line x1="40" y1="692" x2="70" y2="692" stroke="#7f9a93" stroke-width="1.5"/>
+          <text x="78" y="696">free / no per-call cost</text>
+        </g>
+      </svg>
+    </figure>
+    <figcaption>
+      <b>One server, three jobs:</b> check who you are, serve the screens, and be the only thing
+      that holds the paid API keys. The coral trunk on the right is the entire cost surface &mdash; every
+      dollar we spend leaves through those three arrows.
+    </figcaption>
+
+    <h3>Reading the diagram</h3>
+    <p>
+      <strong>There is one server, and it does three jobs.</strong> It checks who you are, it serves
+      the website, and it is the only thing that talks to the paid AI services. Nothing sensitive
+      ever sits in the browser &mdash; which matters, because the API keys we pay for live on that server
+      and nowhere else.
+    </p>
+    <p>
+      <strong>Signing in.</strong> The tool is not public. Opening the URL hands you to Google to
+      sign in, and it only lets you through if your email ends in <code>@invoca.com</code>. Google
+      charges nothing for this.
+    </p>
+    <p>
+      <strong>Generating a demo &mdash; this is where the money goes.</strong> You give it a prospect name
+      and website. The server then makes roughly <strong>20 separate requests to Anthropic's Claude
+      API</strong> for that one prospect: one quick call to settle the prospect's core vocabulary
+      (does this business book "appointments", "consultations", "tours", "test drives"?), then
+      <strong>18 requests running in parallel</strong>, each writing one screen's worth of content &mdash;
+      the marketing dashboard, the call transcripts, the AI agent's script, the Signal library, and
+      so on. It also makes <strong>one call to Google Places</strong> for the prospect's real
+      address and rating, and fetches their website once to grab a logo.
+    </p>
+    <p>
+      <strong>What costs money while you're demoing.</strong> Three features call Anthropic live: the
+      AI agent you can text or talk to, the "Ask AI" panel that re-words any screen on the fly, and
+      the transcript analyser. All three use <strong>Claude Haiku, the cheapest model</strong>,
+      specifically because they run interactively. Separately, the voice agent's speech comes from
+      <strong>Deepgram</strong>, the one integration billed per second of audio.
+    </p>
+
+    <div class="cost">
+      <h4>What this means for the spend</h4>
+      <p>
+        The bill scales with how many <strong>new prospects</strong> the team generates &mdash; not with
+        how many demos they give. A finished prospect is saved permanently, so that cost is paid
+        <strong>once per prospect, not once per demo</strong>; re-opening a saved demo later costs
+        nothing at all.
+      </p>
+      <p>
+        Ten SEs re-using the <span class="s-demos">58</span> demos already in the library generate <strong>zero new Anthropic
+        cost</strong>. The expensive model is used only during generation; everything interactive
+        deliberately uses the cheap one.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Where things stand</h2></div>
+    <div class="sec-rule"></div>
+    <div class="tw"><table>
+      <thead><tr><th>Feature</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Core generation engine</td><td><span class="pill p-ship">Shipped</span></td><td>18 phases in parallel, ~2m45s per prospect.</td></tr>
+        <tr><td>Six platform dashboards</td><td><span class="pill p-ship">Shipped</span></td><td>Marketing Performance, Marketing &amp; Ops, AI Agent Conversion, AI Messaging Impact, QM Actionable, QM Instant.</td></tr>
+        <tr><td>Shared team demo library</td><td><span class="pill p-ship">Shipped</span></td><td><span class="s-demos">58</span> demos, saved permanently, editable by their owner.</td></tr>
+        <tr><td>Sign-in restricted to Invoca</td><td><span class="pill p-ship">Shipped</span></td><td>Google sign-in, <code>@invoca.com</code> only.</td></tr>
+        <tr><td>"Ask AI" &mdash; re-word any screen live</td><td><span class="pill p-ship">Shipped</span></td><td>On every screen, with undo.</td></tr>
+        <tr><td>SMS &amp; voice Preview Agent</td><td><span class="pill p-ship">Shipped</span></td><td>Text or talk to the prospect's AI agent.</td></tr>
+        <tr><td>ChatGPT &amp; Google Ads screens</td><td><span class="pill p-ship">Shipped</span></td><td>Shows where the call starts, before Invoca sees it.</td></tr>
+        <tr><td>Nightly self-check</td><td><span class="pill p-ship">Shipped</span></td><td>Generates a throwaway prospect at 5am, verifies it, deletes it. Catches silent breakage.</td></tr>
+        <tr><td>Insights / Reporting 2.0 tab</td><td><span class="pill p-ship">Shipped Aug 6</span></td><td>Three reports plus a call-detail page with clickable charts. <em>Was listed as in progress &mdash; it shipped.</em></td></tr>
+        <tr><td>Signal tab rebuild</td><td><span class="pill p-prog">In progress</span></td><td>Five screens working locally, not yet live.</td></tr>
+        <tr><td>Voice agent</td><td><span class="pill p-warn">Needs a decision</span></td><td>Believed blocked on Deepgram access &mdash; but it looks like it is already working. See below.</td></tr>
+        <tr><td>Video enablement</td><td><span class="pill p-stop">No trace in the tool</span></td><td>Nothing in the codebase relates to video.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="flag">
+      <div class="flag-label">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 21h22L12 2zm0 6 6.5 11h-13L12 8zm-1 3v4h2v-4h-2zm0 5v2h2v-2h-2z"/></svg>
+        Three things to check before this is presented
+      </div>
+      <p>
+        <strong>1. We are not paying OpenAI.</strong> The "ChatGPT tile" in the demo is a
+        look-alike rebuild of the ChatGPT page &mdash; there is no ChatGPT integration and no OpenAI
+        spend anywhere in the tool. Worth knowing before it appears on a cost slide.
+      </p>
+      <p>
+        <strong>2. The voice agent looks like it already works.</strong> It has been described as
+        blocked pending Deepgram access, but the live service reports a working Deepgram key and the
+        speech path is fully wired. If something is blocked, it is not the key &mdash; worth pinning down,
+        because "blocked" and "already spending on Deepgram" are very different messages.
+      </p>
+      <p>
+        <strong>3. Two dates don't match the record.</strong> There are no changes dated Aug 7, so
+        "Signal Gold AI shipped Aug 7" has nothing behind it &mdash; that work is real but not yet
+        released. And nothing dated Aug 5 relates to video. If "video enablement" means a recorded
+        walkthrough <em>about</em> the tool, it should be described separately.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>What could bite us</h2></div>
+    <div class="sec-rule"></div>
+    <div class="rgrid">
+      <div class="rcard">
+        <span class="rsev hi">Act on this first</span>
+        <h4>The lock can fall off the door</h4>
+        <p>Sign-in is only enforced while two settings are present. If either is cleared by
+        accident, the tool keeps running &mdash; open to the public internet, with the whole demo
+        library readable. It is correctly locked today; the risk is a future mistake.</p>
+      </div>
+      <div class="rcard">
+        <span class="rsev hi">No backup</span>
+        <h4>All <span class="s-demos">58</span> demos live in one place</h4>
+        <p>Saved demos sit on a single disk with no backup that I can find. If it were lost, they
+        go with it. The ten built-in examples are stored with the code and would survive.</p>
+      </div>
+      <div class="rcard">
+        <span class="rsev md">Single owner</span>
+        <h4>One person knows how it works</h4>
+        <p>The tool has had one author. The conventions are written down and the second tab is a
+        real onboarding guide, but nothing is proven until a second person ships a change.</p>
+      </div>
+      <div class="rcard">
+        <span class="rsev md">Data quality</span>
+        <h4>A number that contradicts itself</h4>
+        <p>Every generated prospect claims 26 unmet call signals but lists only a handful. A
+        prospect who counts would notice. The fix is in flight; existing demos keep the old
+        numbers until regenerated.</p>
+      </div>
+      <div class="rcard">
+        <span class="rsev md">Unreleased work</span>
+        <h4>The Signal rebuild isn't saved</h4>
+        <p>Five screens exist only on one laptop, not committed to the repository. An accident
+        loses them.</p>
+      </div>
+      <div class="rcard">
+        <span class="rsev lo">Speed ceiling</span>
+        <h4>~2m45s per prospect is structural</h4>
+        <p>That's set by how many AI requests run at once, not by any one slow step. Going faster
+        means more simultaneous requests. Worth knowing before anyone promises "instant".</p>
+      </div>
+    </div>
+    <p style="font-size:14.5px;color:var(--ink-3)">
+      Full detail on all nine risks, including the four sample prospects that need regenerating,
+      is in the technical tab.
+    </p>
+  </section>
+</div>
+
+<!-- ================== TAB 2 &mdash; TECHNICAL ================== -->
+<div class="panel" id="p-eng" role="tabpanel" aria-labelledby="t-eng" hidden>
+
+  <p class="panel-lede">
+    <strong>Written for whoever maintains this.</strong> Every claim was read out of the codebase;
+    anything inferred rather than read is flagged <em>inferred, verify</em>. Source of truth is
+    commit <code>f9dfd49</code>.
+  </p>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Stack &amp; dependencies</h2></div>
+    <div class="sec-rule"></div>
+    <p>All versions read from <code>package.json</code>.</p>
+
+    <h3>Runtime</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Package</th><th>Version</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>react</code> / <code>react-dom</code></td><td>^19.2.7</td><td>The UI. Every screen is a component under <code>src/screens/</code>.</td></tr>
+        <tr><td><code>react-router-dom</code></td><td>^7.18.1</td><td>Routing; the route table is <code>src/App.tsx</code>.</td></tr>
+        <tr><td><code>@anthropic-ai/sdk</code></td><td>^0.111.0</td><td>The only AI SDK. Used by <code>engine/core.ts</code>, <code>chat.ts</code>, <code>assistant.ts</code>, <code>analyze.ts</code>.</td></tr>
+        <tr><td><code>express</code></td><td>^4.22.2</td><td>Production server (<code>server.ts</code>) &mdash; serves <code>dist/</code> and every <code>/api/*</code> route.</td></tr>
+        <tr><td><code>zod</code></td><td>^4.4.3</td><td>Validates generated data against <code>src/data/schema.ts</code>. This is what stops a malformed AI response reaching a screen.</td></tr>
+        <tr><td><code>tsx</code></td><td>^4.23.1</td><td>Runs the TypeScript server directly in production (<code>npm start</code>).</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Build &amp; dev</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Package</th><th>Version</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>vite</code></td><td>^8.1.1</td><td>Dev server and bundler. <code>vite.config.ts</code> also mounts dev copies of the <code>/api/*</code> endpoints so local dev has parity with production.</td></tr>
+        <tr><td><code>typescript</code></td><td>~6.0.2</td><td>Two configs &mdash; <code>tsconfig.app.json</code> (browser) and <code>tsconfig.node.json</code> (server/engine). <strong>Both must pass.</strong></td></tr>
+        <tr><td><code>@vitejs/plugin-react</code></td><td>^6.0.3</td><td>Fast refresh + JSX transform.</td></tr>
+        <tr><td><code>oxlint</code></td><td>^1.71.0</td><td>Linter (<code>npm run lint</code>).</td></tr>
+        <tr><td>Node</td><td>22.x</td><td>Pinned in <code>package.json</code> &rarr; <code>engines</code>.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Third-party APIs &mdash; what is actually called</h3>
+    <p>Verified by grepping every outbound <code>fetch</code> in <code>engine/</code> and <code>server.ts</code>.</p>
+    <div class="tw"><table>
+      <thead><tr><th>API</th><th>Called from</th><th>Cost model</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Anthropic &mdash; <code>claude-opus-4-8</code></td><td><code>engine/core.ts:23</code></td><td>per token, top tier</td><td><span class="pill p-ship">Live</span> generation only</td></tr>
+        <tr><td>Anthropic &mdash; <code>claude-haiku-4-5</code></td><td><code>core.ts:24</code>, <code>chat.ts:19</code>, <code>analyze.ts:12</code>, <code>assistant.ts:27</code></td><td>per token, cheapest</td><td><span class="pill p-ship">Live</span> all interactive AI</td></tr>
+        <tr><td>Google Places</td><td><code>engine/places.ts:86</code></td><td>per request</td><td><span class="pill p-ship">Live</span> 1 call / generation</td></tr>
+        <tr><td>Deepgram TTS</td><td><code>engine/tts.ts:47</code></td><td>per character</td><td><span class="pill p-warn">See flag</span></td></tr>
+        <tr><td>ElevenLabs TTS</td><td><code>engine/tts.ts:67</code></td><td>per character</td><td><span class="pill p-none">Available, not selected</span></td></tr>
+        <tr><td>Google OAuth</td><td><code>googleAuth.ts:101</code></td><td>free</td><td><span class="pill p-ship">Live</span></td></tr>
+        <tr><td>Mapbox</td><td>browser, <code>src/data/prospectPlace.ts</code></td><td>free tier</td><td><span class="pill p-ship">Live</span> only deliberately public key</td></tr>
+        <tr><td>The prospect's own website</td><td><code>engine/ogImage.ts:62</code></td><td>free</td><td><span class="pill p-ship">Live</span> homepage fetched once</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="flag">
+      <div class="flag-label">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 21h22L12 2zm0 6 6.5 11h-13L12 8zm-1 3v4h2v-4h-2zm0 5v2h2v-2h-2z"/></svg>
+        Two corrections to the brief for this document
+      </div>
+      <p>
+        <strong>1. There is no ChatGPT/OpenAI integration, and no OpenAI spend.</strong> A grep for
+        <code>openai</code>, <code>api.openai.com</code>, <code>gpt-4</code> and
+        <code>chat.completions</code> across <code>src/</code>, <code>engine/</code>,
+        <code>server.ts</code> and <code>package.json</code> returns nothing. The "ChatGPT tile" is
+        <code>src/screens/ChatGptAd.tsx</code> &mdash; a pixel-replica of <code>chatgpt.com</code> rebuilt
+        from a saved page capture, showing the prospect as a sponsored result, driven entirely by
+        the local profile plus Mapbox tiles.
+      </p>
+      <p>
+        <strong>2. Deepgram appears to be working, not blocked.</strong> The live service reports
+        <code>"ttsProvider":"deepgram","ttsKey":true</code>, so a key is set in the Render
+        environment and the path is wired end to end (<code>engine/tts.ts</code> &rarr;
+        <code>POST /api/tts</code> &rarr; <code>src/components/VoiceCall.tsx</code>). If the voice agent
+        is blocked, the blocker is <strong>not</strong> a missing key.
+      </p>
+    </div>
+
+    <h3>Authentication &mdash; what it actually is</h3>
+    <p>
+      <strong>The brief calls this "SSO"; the code implements Google OAuth 2.0 with a domain
+      allowlist.</strong> Not the same as Okta/SAML SSO, and worth stating precisely to a
+      security-minded audience.
+    </p>
+    <p>
+      From <code>googleAuth.ts</code>: a standard OAuth 2.0 authorization-code flow written against
+      Node's built-in <code>crypto</code> and <code>fetch</code> with <strong>no extra
+      dependencies</strong>. Scope <code>openid email profile</code>, a CSRF <code>state</code>
+      cookie, and on success a signed <code>HttpOnly</code> session cookie. Access requires the
+      email domain to match <code>ALLOWED_EMAIL_DOMAIN</code> (default <code>invoca.com</code>). The
+      gate turns on <strong>only when both</strong> <code>GOOGLE_CLIENT_ID</code> and
+      <code>GOOGLE_CLIENT_SECRET</code> are set &mdash; so a misconfigured deploy fails <em>open</em>. See
+      risk 1.
+    </p>
+    <p>
+      <code>/healthz</code>, <code>/api/status</code> and <code>/api/canary</code> are registered
+      <strong>before</strong> the gate and are public by design &mdash; counts, booleans and timings only,
+      never prospect names, demo IDs, emails or key values (<code>server.ts:62&ndash;88</code>).
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Core flows</h2></div>
+    <div class="sec-rule"></div>
+
+    <h3>Generating a new prospect</h3>
+    <p><strong>Entry point:</strong> <code>src/screens/Launch.tsx</code> &mdash; name + website URL.</p>
+    <ol>
+      <li><strong>Browser</strong> &mdash; <code>Launch.tsx:310</code> posts <code>{ name, url }</code> to <code>POST /api/generate</code>.</li>
+      <li><strong>Server</strong> &mdash; <code>server.ts:109</code> requires <code>ANTHROPIC_API_KEY</code>, calls <code>generateProfile()</code> (<code>engine/core.ts:994</code>).</li>
+      <li><strong>Vocabulary first</strong> &mdash; <code>generateTerms()</code> (<code>core.ts:339</code>), one fast Haiku call, fixes the canonical terms: <code>bookingTerm</code>, <code>customerNoun</code>, plus qualified-call and conversion terms. Everything downstream reuses these, which is what stops one screen saying "Appointment" while another says "Consultation".</li>
+      <li><strong>Numbers second</strong> &mdash; <code>buildScale()</code> / <code>scaleRules()</code> pin every canonical figure <em>before</em> content generation, so the 18 phases cannot disagree about call volume or revenue.</li>
+      <li><strong>18 phases in parallel</strong> &mdash; <code>runPool(tasks, CONCURRENCY = 6)</code> (<code>core.ts:220</code>, called at <code>core.ts:1056</code>), ordered longest-processing-time-first so a heavy phase never starts late. Phases: <code>dashboardChannels</code>, <code>dashboardSegments</code>, <code>opsDashboard</code>, <code>callReview</code>, <code>agentConfig</code>, <code>signalManager</code>, <code>dashboard</code>, <code>digitalInsights</code>, <code>conversationIntelligence</code>, <code>callDetail</code>, <code>aiAgentConversion</code>, <code>voiceConversationIntelligence</code>, <code>smsConversationIntelligence</code>, <code>aiMessagingImpact</code>, <code>voiceRoutingDemo</code>, <code>screenpops</code>, and two more.</li>
+      <li><strong>Enrichment</strong> &mdash; <code>engine/places.ts</code> for the real location, <code>engine/ogImage.ts</code> for the logo.</li>
+      <li><strong>Validation</strong> &mdash; parsed against <code>src/data/schema.ts</code>. A malformed phase fails here, not on screen.</li>
+      <li><strong>Persistence</strong> &mdash; <code>src/data/generated/&lt;slug&gt;.json</code> (<code>server.ts:128</code>) and, via the library, the Render disk.</li>
+    </ol>
+    <p><strong>Cost:</strong> ~20 Anthropic calls per prospect, once. Steps 3&ndash;5 are the entire AI spend of a generation.</p>
+
+    <h3>The bundled examples</h3>
+    <p>
+      Ten seeds ship in the repo at <code>src/data/generated/*.json</code> and load with zero API
+      calls: <code>autonation</code>, <code>continuing-life</code>, <code>goosehead-insurance</code>,
+      <code>key-whitman-eye-center</code>, <code>mattress-firm</code>,
+      <code>national-van-lines</code>, <code>orlando-health</code>,
+      <code>roto-rooter-plumbing-and-water-cleanup</code>, <code>surfside-healthcare</code>,
+      <code>vector-security</code>. An eleventh, <strong>Shady Blinds</strong>, is hand-authored
+      TypeScript (<code>src/data/profiles/shadyBlinds.ts</code>) and is the reference
+      implementation &mdash; when a screen is built, it is built against Shady Blinds first.
+    </p>
+    <p>
+      <code>Launch.tsx:155</code> separates <strong>samples</strong> (bundled, owned by nobody) from
+      library demos (owned by their creator). The active prospect lives in
+      <code>src/data/ProfileContext.tsx</code>, mirrored to <code>localStorage</code> under
+      <code>invoca-demo:activeId</code>. &#9888; The provider reads that key <strong>on mount only</strong>
+      &mdash; switching prospects needs a full reload, which is easy to get wrong when testing.
+    </p>
+    <p>
+      Vector Security shows per-prospect tuning: commits <code>2773cec</code> and
+      <code>d083a30</code> renamed its Google Ads keyword to a search-like phrase and its Digital
+      Insights signal to "Quote Discussed", because an alarm company quotes rather than books.
+    </p>
+
+    <h3>Editing, saving and re-opening</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Route</th><th>Method</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td><code>/api/me</code></td><td>GET</td><td>the signed-in user, and whether they are an admin</td></tr>
+        <tr><td><code>/api/demos</code></td><td>GET</td><td>summaries only, no heavy payload</td></tr>
+        <tr><td><code>/api/demos</code></td><td>POST</td><td>create; the caller becomes the creator</td></tr>
+        <tr><td><code>/api/demos/:id</code></td><td>GET</td><td>the full demo</td></tr>
+        <tr><td><code>/api/demos/:id</code></td><td>PATCH</td><td>update customizations &mdash; <strong>owner or admin only</strong></td></tr>
+        <tr><td><code>/api/demos/:id/duplicate</code></td><td>POST</td><td>copy as mine</td></tr>
+      </tbody>
+    </table></div>
+    <p>
+      Writes go through a single <code>canWrite()</code> check (<code>demoApi.ts:65</code>) so PATCH
+      and DELETE can never diverge in who they let through. The frontend lock is convenience only;
+      the server enforces it.
+    </p>
+    <p>
+      <strong>Storage</strong> &mdash; one JSON file per demo at <code>DATA_DIR/demos/&lt;id&gt;.json</code>,
+      written atomically (temp file then rename, <code>demoStore.ts:88</code>).
+      <code>DATA_DIR</code> resolves <code>$DATA_DIR</code> &rarr; <code>/data</code> (the mounted Render
+      disk) &rarr; a local fallback (<code>demoStore.ts:24&ndash;40</code>). Live service confirms
+      <code>storage.persistent: true</code>.
+    </p>
+    <p>
+      <strong>In-demo editing ("Ask AI")</strong> &mdash; the top-bar sparkle opens a drawer that edits the
+      current screen's data via <code>POST /api/ai-assistant</code> (<code>server.ts:154</code> &rarr;
+      <code>engine/assistant.ts</code>). Edits are keyed <code>${profileId}::${pathname}</code> in
+      <code>src/data/AiAssistantContext.tsx</code>, so an edit on one screen cannot leak to another.
+      <code>src/data/editGuard.ts</code> rejects structural changes while allowing content changes;
+      <code>engine/demoPatches.ts</code> applies the result. Re-opening replays saved customizations
+      over the base profile.
+    </p>
+
+    <h3>Live AI during a demo</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Feature</th><th>Endpoint</th><th>Module</th><th>Model</th></tr></thead>
+      <tbody>
+        <tr><td>SMS / voice agent conversation</td><td><code>POST /api/chat</code></td><td><code>engine/chat.ts</code></td><td>Haiku 4.5</td></tr>
+        <tr><td>Ask AI screen edits</td><td><code>POST /api/ai-assistant</code></td><td><code>engine/assistant.ts</code></td><td>Haiku 4.5</td></tr>
+        <tr><td>Transcript signal analysis</td><td><code>POST /api/analyze</code></td><td><code>engine/analyze.ts</code></td><td>Haiku 4.5</td></tr>
+        <tr><td>Voice agent speech</td><td><code>POST /api/tts</code></td><td><code>engine/tts.ts</code></td><td>Deepgram / ElevenLabs</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Maintenance guide</h2></div>
+    <div class="sec-rule"></div>
+    <p class="lede">For a second SE joining to help maintain this.</p>
+
+    <h3>Local setup</h3>
+<pre><code>git clone git@github.com:ddesai-invoca/invoca-demo-platform.git
+cd invoca-demo-platform
+npm install
+<span class="cm"># create .env (see below) &mdash; at minimum ANTHROPIC_API_KEY</span>
+npm run dev            <span class="cm"># localhost:5173 &mdash; Vite serves the UI AND dev /api/* routes</span></code></pre>
+    <p>
+      <code>vite.config.ts</code> mounts dev copies of <code>/api/generate</code>,
+      <code>/api/delete-profile</code>, <code>/api/chat</code>, <code>/api/place</code> and the demo
+      library, so local dev behaves like production. To exercise the <strong>production</strong>
+      server path: <code>npm run serve</code>.
+    </p>
+
+    <h3>Environment variables</h3>
+    <p>
+      Server-side only. <strong>Never prefix a secret with <code>VITE_</code></strong> &mdash; that puts
+      the value in the browser bundle. <code>VITE_MAPBOX_TOKEN</code> is the sole intentional
+      exception (a public map-tile token).
+    </p>
+    <div class="tw"><table>
+      <thead><tr><th>Variable</th><th>Required?</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>ANTHROPIC_API_KEY</code></td><td><strong>Yes</strong></td><td>All AI: generation, chat, Ask AI, analyze</td></tr>
+        <tr><td><code>GOOGLE_CLIENT_ID</code> + <code>GOOGLE_CLIENT_SECRET</code></td><td>For the gate</td><td>Both must be set, or the gate is off</td></tr>
+        <tr><td><code>SESSION_SECRET</code></td><td>With the gate</td><td>Signs the session cookie</td></tr>
+        <tr><td><code>BASE_URL</code></td><td>With the gate</td><td>Builds the OAuth redirect (<code>&lt;BASE_URL&gt;/auth/callback</code>)</td></tr>
+        <tr><td><code>ALLOWED_EMAIL_DOMAIN</code></td><td>No</td><td>Defaults to <code>invoca.com</code></td></tr>
+        <tr><td><code>GOOGLE_PLACES_API_KEY</code></td><td>For location</td><td><strong>Secret &mdash; no <code>VITE_</code> prefix</strong></td></tr>
+        <tr><td><code>DEEPGRAM_API_KEY</code> / <code>ELEVENLABS_API_KEY</code></td><td>For voice</td><td>Pick with <code>TTS_PROVIDER</code></td></tr>
+        <tr><td><code>DEEPGRAM_MODEL</code> / <code>ELEVENLABS_VOICE_ID</code> / <code>ELEVENLABS_MODEL_ID</code></td><td>No</td><td>Voice tuning</td></tr>
+        <tr><td><code>VITE_MAPBOX_TOKEN</code></td><td>Map screens</td><td>Public by design</td></tr>
+        <tr><td><code>DEMO_ADMIN_EMAILS</code></td><td>No</td><td>Who may edit any demo</td></tr>
+        <tr><td><code>DATA_DIR</code></td><td>No</td><td>Overrides the demo-storage path</td></tr>
+        <tr><td><code>CANARY</code> / <code>CANARY_HOUR_ET</code> / <code>CANARY_ON_BOOT</code></td><td>No</td><td>Nightly self-check</td></tr>
+      </tbody>
+    </table></div>
+    <p><code>.env</code> is git-ignored. Confirm before every commit that it has not been staged.</p>
+
+    <h3>Deploying</h3>
+    <p>
+      Render auto-deploys on push to <code>main</code>. There is <strong>no</strong>
+      <code>render.yaml</code> &mdash; the service is configured in Render's dashboard
+      (<em>inferred from the file's absence plus the <code>RENDER_*</code> env vars read in
+      <code>engine/status.ts</code>; verify in the Render UI</em>).
+    </p>
+<pre><code>npm run build                                             <span class="cm"># must pass</span>
+./node_modules/.bin/tsc --noEmit -p tsconfig.app.json     <span class="cm"># both configs</span>
+./node_modules/.bin/tsc --noEmit -p tsconfig.node.json
+git push origin main                                      <span class="cm"># triggers the deploy</span></code></pre>
+    <p><strong>Confirm the deploy by checking the commit SHA, not that the site responds:</strong></p>
+<pre><code>curl -s https://invoca-demo-platform.onrender.com/api/status</code></pre>
+    <p>
+      The old instance keeps answering <code>200</code> during a rollout, so an HTTP-status check
+      reports success while the previous build is still live. Compare <code>commitShort</code>
+      against what you pushed. <em>(This bit me twice &mdash; both times the check "passed" against the
+      old build.)</em>
+    </p>
+
+    <h3>Adding a screen or a vertical</h3>
+    <ul>
+      <li><strong>A new screen:</strong> ask which live Invoca URL to replicate, save a SingleFile capture, build from measured values. Screens in <code>src/screens/</code>, styles in <code>src/styles/app.css</code> under a per-screen class prefix.</li>
+      <li><strong>A new vertical:</strong> nothing to add. Generation is prompt-driven and vertical-agnostic &mdash; the <code>reskin()</code> directive in <code>engine/core.ts</code> re-skins every label from the prospect's brief. A vertical needs code only when it needs a <em>screen</em> that does not exist yet.</li>
+      <li><strong>The rule that matters most:</strong> a change for one screen must not alter any other. Shared components take opt-in props defaulted to current behaviour, CSS is scoped per screen, and you verify by loading another screen and asserting the old values. Documented in <code>CLAUDE.md</code> under <em>Conventions</em>.</li>
+    </ul>
+
+    <h3>Common failure points</h3>
+    <ol>
+      <li><strong><code>tsc</code> / <code>tsx</code> "not found"</strong> &mdash; wrong directory. <code>cd</code> to the repo root first.</li>
+      <li><strong>An engine prompt edit does nothing</strong> &mdash; engine modules are dynamically imported and Node-cached. <strong>Restart the dev server.</strong> (The CLI is a fresh process and doesn't need it.)</li>
+      <li><strong>Run both typecheck configs</strong> &mdash; a change can pass the app config and break the node one.</li>
+      <li><strong>Deploy verification</strong> &mdash; check the SHA, not the status code.</li>
+      <li><strong>Switching prospects while testing</strong> &mdash; <code>ProfileContext</code> reads the active id on mount, so a <code>pushState</code> navigation keeps the old profile. Reload.</li>
+      <li><strong>Nightly canary</strong> &mdash; <code>engine/canary.ts</code> generates a throwaway prospect at ~5am ET, checks it against a time budget and data-quality rules, deletes it, and publishes the result at <code>GET /api/canary</code>. <code>missing</code>/<code>stale</code> mean <em>no result</em>, which is deliberately <strong>not</strong> reported as healthy.</li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Open questions &amp; risks</h2></div>
+    <div class="sec-rule"></div>
+
+    <ol class="risks">
+      <li>
+        <strong>The sign-in gate fails open.</strong> The gate is active only when <em>both</em>
+        <code>GOOGLE_CLIENT_ID</code> and <code>GOOGLE_CLIENT_SECRET</code> are present
+        (<code>googleAuth.ts</code>, <code>DEPLOY.md</code>). If either is cleared or mistyped in
+        Render, the app keeps serving &mdash; <strong>unauthenticated, to the public internet</strong>,
+        with the whole demo library readable. It reports <code>authGate: true</code> today, so this
+        is a latent misconfiguration risk, not a present exposure. Should fail closed.
+      </li>
+      <li>
+        <strong>The Signal rebuild is uncommitted.</strong> Five screens' worth of work (four new
+        screens plus a nav change and a 158&nbsp;KB image asset) exists only in the working tree. An
+        accidental <code>git checkout</code> loses it.
+      </li>
+      <li>
+        <strong>Generated profiles carry a known data inconsistency.</strong> Every
+        engine-generated prospect writes <code>signalsUnmet: 26</code> and
+        <code>signalsNa: 25</code> while listing only 5&ndash;15 signal names, so the badge contradicts
+        the list it expands &mdash; and the identical 26/25 across all ten profiles is itself a giveaway.
+        The new Insights call page counts the list instead; the older
+        <code>src/screens/CallDetail.tsx</code> still shows the declared number. <strong>The <span class="s-demos">58</span>
+        demos already saved keep the bad values until regenerated.</strong>
+      </li>
+      <li>
+        <strong>Phrase data in the Semantic Signal Library is uneven, and the file says so.</strong>
+        Only one template drawer was open in the source capture, so <em>Ask for Appointment</em> has
+        all 44 real phrases, two more have partial lists from screenshots, and <strong>the other 12
+        templates' phrases were authored rather than captured</strong>. Each entry carries a
+        <code>captured: true/false</code> flag (<code>src/data/semanticSignals.ts</code>). Low risk &mdash;
+        generic conversational phrases, not customer data &mdash; but they are not Invoca's official
+        library content.
+      </li>
+      <li>
+        <strong>Four sample prospects violate a rule we otherwise enforce.</strong> The "volume is
+        not value" story (the highest-volume row must show the <em>worst</em> conversion rate) is
+        enforced in prompts and checked by the canary, but <code>continuing-life</code>,
+        <code>key-whitman-eye-center</code>, <code>orlando-health</code> and
+        <code>mattress-firm</code> predate the fix and still read inverted. They need regenerating.
+      </li>
+      <li>
+        <strong>The generation floor is structural.</strong> ~2m45s per prospect is set by
+        <code>CONCURRENCY = 6</code> against 18 phases, not by any single slow call. Faster means
+        raising concurrency (more simultaneous Anthropic requests, i.e. rate-limit exposure) or
+        cutting phases.
+      </li>
+      <li>
+        <strong>Single point of failure on one person's knowledge.</strong> The conventions that
+        keep this maintainable &mdash; measure from captures, derive rather than invent, one screen's
+        change stays in its screen &mdash; are in <code>CLAUDE.md</code>, but the tool has had one author.
+        This guide is the mitigation; a second maintainer shipping a screen is the test of it.
+      </li>
+      <li>
+        <strong>Deployment config lives only in Render's dashboard.</strong> With no
+        <code>render.yaml</code>, the service definition is not version-controlled and cannot be
+        recreated from the code alone. <em>(Inferred from the file's absence &mdash; verify in the Render
+        UI.)</em>
+      </li>
+      <li>
+        <strong>Demo storage is a mounted disk, not a database.</strong> One JSON file per demo on
+        Render's persistent disk. Writes are atomic and it reports <code>persistent: true</code>,
+        but there is no evidence in the repo of a <strong>backup</strong>. If the disk were lost,
+        all <span class="s-demos">58</span> saved demos go with it. The ten bundled samples live in git and would survive.
+      </li>
+    </ol>
+  </section>
+</div>
+
+<footer class="end">
+  Source of truth is the codebase at commit <code>f9dfd49</code>.
+  A Markdown copy lives in the repo at <code>ARCHITECTURE.md</code>. Palette and type are Invoca's
+  own brand tokens, taken from a capture of invoca.com.
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    tab.focus();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { select(tab); });
+    /* Arrow keys move between tabs, which is what a tablist is expected to do. */
+    tab.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      select(tabs[(i + d + tabs.length) % tabs.length]);
+    });
+  });
+})();
+
+/* Keep the two masthead counters honest. The doc is served by the same express app that
+   exposes /api/status (public, counts and booleans only -- no prospect names or demo ids),
+   so it can read its own deployment rather than carrying numbers that rot. Silent no-op on
+   failure: a stale-but-plausible printed number beats an error or a blank chip. */
+(function liveStats() {
+  fetch("/api/status", { headers: { accept: "application/json" } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d) return;
+      /* commitShort is null off Render (local `npm run serve`), so keep the printed SHA. */
+      if (d.commitShort) {
+        var c = document.getElementById("s-commit");
+        if (c) c.textContent = d.commitShort;
+      }
+      /* Every printed count, prose and diagram alike, comes from this one number --
+         a wired masthead next to hardcoded prose reads as a contradiction. */
+      if (typeof d.demos === "number" && d.demos > 0) {
+        var els = document.querySelectorAll(".s-demos");
+        for (var i = 0; i < els.length; i++) els[i].textContent = String(d.demos);
+      }
+    })
+    .catch(function () { /* offline, or opened as a file:// copy -- leave the print as-is */ });
+})();
+</script>
+
+</body>
+</html>

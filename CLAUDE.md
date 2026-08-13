@@ -1156,20 +1156,28 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
 - The Exchange page loads GT America font + logos from Invoca's CDN (needs internet).
 - These render the **desktop layout at ≥992px** (they're the real responsive pages).
 
-## Readme button (the docs link, bottom-right of every screen)
+## Read.Me button + the in-app docs
 - `src/components/ReadmeButton.tsx`, rendered once by `src/layout/AppShell.tsx` so it appears
   on every in-app screen. Fixed bottom-right pill, `.readme-fab` in `app.css`.
-- Invoca's **brand** green `#00b388` (from invoca.com), deliberately not the product blue —
-  it's a link *out* of the replica to our own docs and shouldn't read as part of the Invoca UI.
-- Opens the published write-up in a new tab (`target="_blank" rel="noopener noreferrer"`).
-  Two audiences, one page: a "The short version" tab and a "Technical detail" tab.
-  **The URL is a hardcoded constant** — the typechecker and build can't verify it. If the
-  link dies, republish the doc and edit `README_URL`. Source of truth: `ARCHITECTURE.md`.
-- Hidden (`opacity: 0; pointer-events: none`) whenever an overlay is open, keyed off the
-  real open-state selectors via `.app:has(...)`: `.aiad--open` (Ask AI, z-3000) and the
-  z-1200 full-viewport drawers `.idr-root` / `.sdr-root` / `.vp-root`. Those all cover the
-  button by z-order anyway; this stops it glowing through a translucent backdrop. **If you
-  add a new overlay, add its selector here** — otherwise the button shows through it.
+- Invoca's **brand** green `#00b388` (from invoca.com), deliberately not the product blue: it
+  is a link to our own docs, so it shouldn't read as part of the Invoca UI being demoed.
+- **The docs ship with the app.** `public/readme.html` is copied into `dist/` by the build and
+  served by `express.static`, so `/readme.html` works on Render, on `npm run serve`, and in
+  dev. No external host, no claude.ai account needed. Opens in a new tab so an SE mid-demo
+  doesn't lose their place. Two tabs inside it: "The short version" and "Technical detail".
+- **It reads its own deployment.** A small inline script fetches `/api/status` (public, counts
+  and booleans only) and fills the commit SHA and *every* printed demo count. The count is a
+  **class** (`.s-demos`, 8 instances incl. one SVG `<tspan>`), not an id -- wiring only the
+  masthead left the prose saying 58 while the chip said 9. Writes are guarded: off Render
+  `commitShort` is null, so the printed SHA stands. Update that printed SHA when it drifts.
+- `.mast` / `.tabs` sit **outside** `.wrap`, so they must not carry `.wrap`'s negative inset
+  margins -- `margin: 0 -30px` there pushed 60px past the viewport and scrolled the whole page
+  sideways. They're full-bleed already; padding alone gets the look.
+- Hidden (`opacity: 0; pointer-events: none`) whenever an overlay is open, keyed off the real
+  open-state selectors via `.app:has(...)`: `.aiad--open` (Ask AI, z-3000) and the z-1200
+  full-viewport drawers `.idr-root` / `.sdr-root` / `.vp-root`. **Add new overlays here.**
+- Not on the Launch screen (`/`) -- that renders outside `AppShell`.
+- `ARCHITECTURE.md` is the Markdown source of truth; keep it and `readme.html` in sync.
 
 ## Conventions & decisions
 - **Data-driven**: never hard-code screen data in components; put it in the profile/schema.
