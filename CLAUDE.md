@@ -1175,7 +1175,16 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   `#00b388` green, `#004030` deep green, `#0a231e` ink, sand `#f2f5e4` / `#f9f9f6` / `#f8faf1`,
   `#626464` grey, Inter. There is deliberately no dark variant and no `[data-theme]` hook, so
   every surface and ink is painted explicitly and the page holds its look on any host.
-- **Two hand-authored SVG diagrams**, no Mermaid: a 3-zone overview on tab 1, and a 4-layer
+- **Three tabs**: "The short version" (leadership), "Technical detail" (maintainers), and
+  "How was this created" (the toolchain, in plain language: Claude Code, GitHub, Render,
+  Anthropic API, Deepgram/ElevenLabs, Google sign-in, Google Places, Mapbox).
+- **No demo count anywhere.** It used to be printed in four places and filled from
+  `/api/status`; it is gone from the masthead, the prose, the diagram and the status table.
+  The live script still fills the commit SHA only. Don't reintroduce a count.
+- `engine/places.ts` fetches **storefront photo, rating, address AND reviews** (fields list at
+  `places.ts:59-68`, photo via a second endpoint), specifically for the ChatGPT placement.
+  Describing it as "address and rating" undersells it and is what the doc said at first.
+- **Three hand-authored SVG diagrams**, no Mermaid: a 3-zone overview on tab 1, and a 4-layer
   technical diagram on tab 2 (browser / express middleware order / engine / storage+external).
   Zone label pills are hand-sized, so **re-measure `getBBox()` in the browser after editing any
   label** -- text silently overran two pills the first time. Pair pills to text by BOTH x and y

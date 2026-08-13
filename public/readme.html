@@ -262,7 +262,6 @@ footer {
       <span class="chip"><b>Live</b> <a href="https://invoca-demo-platform.onrender.com/">invoca-demo-platform.onrender.com</a></span>
       <span class="chip"><b>Access</b> Google sign-in, @invoca.com</span>
       <span class="chip"><b>Deployed</b> <span id="s-commit">c89d995</span></span>
-      <span class="chip"><b class="s-demos">58</b> demos saved</span>
     </div>
   </div>
 </div>
@@ -274,6 +273,9 @@ footer {
     </button>
     <button class="tab" id="t-eng" role="tab" aria-selected="false" aria-controls="p-eng">
       <span class="tnum">2</span> Technical detail
+    </button>
+    <button class="tab" id="t-how" role="tab" aria-selected="false" aria-controls="p-how">
+      <span class="tnum">3</span> How was this created
     </button>
   </div>
 </div>
@@ -297,8 +299,8 @@ footer {
       sandbox that looked like nobody's business, or getting access to real customer data in the
       live platform. This tool needs neither. It is a self-contained replica, so anyone on the team
       can produce a prospect-specific demo in minutes without touching production Invoca and
-      without waiting on anyone else. The shared library currently holds
-      <strong><span class="s-demos">58</span> saved demos</strong>, and re-opening one is instant.
+      without waiting on anyone else. Finished demos are saved to a shared library the whole
+      team can open, and re-opening one is instant.
     </p>
     <div class="kgrid">
       <div class="kcard">
@@ -404,7 +406,7 @@ footer {
         <circle cx="352" cy="523" r="13" fill="#8ee58e"/>
         <text x="352" y="528" font-size="12" font-weight="700" fill="#0a231e" text-anchor="middle">5</text>
         <text x="380" y="517" font-size="14.5" font-weight="600" fill="#ffffff">Saved demos</text>
-        <text x="380" y="539" font-size="12.5" fill="#9fc4b8"><tspan class="s-demos">58</tspan> on a permanent disk, reopened instantly</text>
+        <text x="380" y="539" font-size="12.5" fill="#9fc4b8">kept on a permanent disk, reopened instantly</text>
 
         <!-- ---------- services it calls ---------- -->
         <rect x="838" y="100" width="254" height="62" rx="10" fill="#ffffff" stroke="#c9d2cd"/>
@@ -417,7 +419,7 @@ footer {
 
         <rect x="838" y="252" width="254" height="62" rx="10" fill="#ffffff" stroke="#c9d2cd"/>
         <text x="858" y="278" font-size="13.5" font-weight="600" fill="#0a231e">Google Places</text>
-        <text x="858" y="298" font-size="12" fill="#626464">their real address and rating</text>
+        <text x="858" y="298" font-size="12" fill="#626464">storefront photo, rating, address</text>
 
         <rect x="838" y="328" width="254" height="62" rx="10" fill="#ffffff" stroke="#c9d2cd"/>
         <text x="858" y="354" font-size="13.5" font-weight="600" fill="#0a231e">The prospect's website</text>
@@ -503,7 +505,7 @@ footer {
       <tbody>
         <tr><td>Core generation engine</td><td><span class="pill p-ship">Shipped</span></td><td>18 phases in parallel, about two and a half minutes per prospect.</td></tr>
         <tr><td>Six platform dashboards</td><td><span class="pill p-ship">Shipped</span></td><td>Marketing Performance, Marketing &amp; Ops, AI Agent Conversion, AI Messaging Impact, QM Actionable, QM Instant.</td></tr>
-        <tr><td>Shared team demo library</td><td><span class="pill p-ship">Shipped</span></td><td><span class="s-demos">58</span> demos, saved permanently, editable by their owner.</td></tr>
+        <tr><td>Shared team demo library</td><td><span class="pill p-ship">Shipped</span></td><td>Saved permanently, editable by their owner, open to the whole team.</td></tr>
         <tr><td>Sign-in restricted to Invoca</td><td><span class="pill p-ship">Shipped</span></td><td>Google sign-in, <code>@invoca.com</code> only.</td></tr>
         <tr><td>"Ask AI": re-word any screen live</td><td><span class="pill p-ship">Shipped</span></td><td>On every screen, with undo.</td></tr>
         <tr><td>SMS &amp; voice Preview Agent</td><td><span class="pill p-ship">Shipped</span></td><td>Text or talk to the prospect's AI agent, in their own voice and vocabulary.</td></tr>
@@ -675,7 +677,7 @@ footer {
         </g>
 
         <text x="632" y="768" font-size="12.5" font-weight="600" fill="#0a231e">places.ts</text>
-        <text x="632" y="788" font-size="11" fill="#626464">real address, rating</text>
+        <text x="632" y="788" font-size="11" fill="#626464">photo, rating, address</text>
         <text x="808" y="768" font-size="12.5" font-weight="600" fill="#0a231e">ogImage.ts</text>
         <text x="808" y="788" font-size="11" fill="#626464">logo from homepage</text>
         <text x="984" y="768" font-size="12.5" font-weight="600" fill="#0a231e">tts.ts</text>
@@ -752,7 +754,7 @@ footer {
       <tbody>
         <tr><td>Anthropic, <code>claude-opus-4-8</code></td><td><code>engine/core.ts:23</code></td><td><span class="pill p-ship">Live</span> generation only</td></tr>
         <tr><td>Anthropic, <code>claude-haiku-4-5</code></td><td><code>core.ts:24</code>, <code>chat.ts:19</code>, <code>analyze.ts:12</code>, <code>assistant.ts:27</code></td><td><span class="pill p-ship">Live</span> all interactive AI</td></tr>
-        <tr><td>Google Places</td><td><code>engine/places.ts:86</code></td><td><span class="pill p-ship">Live</span> one call per generation</td></tr>
+        <tr><td>Google Places</td><td><code>engine/places.ts:86</code>, photo via a second endpoint</td><td><span class="pill p-ship">Live</span> one call per generation</td></tr>
         <tr><td>Deepgram TTS</td><td><code>engine/tts.ts:47</code></td><td><span class="pill p-ship">Live</span> the selected provider</td></tr>
         <tr><td>ElevenLabs TTS</td><td><code>engine/tts.ts:67</code></td><td><span class="pill p-none">Available, not selected</span></td></tr>
         <tr><td>Google OAuth</td><td><code>googleAuth.ts:101</code></td><td><span class="pill p-ship">Live</span></td></tr>
@@ -802,7 +804,7 @@ footer {
       <li><strong>Vocabulary first</strong>: <code>generateTerms()</code> (<code>core.ts:339</code>), one fast Haiku call, fixes the canonical terms <code>bookingTerm</code> and <code>customerNoun</code> plus the qualified-call and conversion terms. Everything downstream reuses these, which is what stops one screen saying "Appointment" while another says "Consultation".</li>
       <li><strong>Numbers second</strong>: <code>buildScale()</code> / <code>scaleRules()</code> pin every canonical figure <em>before</em> content generation, so the 18 phases cannot disagree about call volume or revenue.</li>
       <li><strong>18 phases in parallel</strong>: <code>runPool(tasks, CONCURRENCY = 6)</code> (<code>core.ts:220</code>, called at <code>core.ts:1056</code>), ordered longest-processing-time-first so a heavy phase never starts late.</li>
-      <li><strong>Enrichment</strong>: <code>engine/places.ts</code> for the real location, <code>engine/ogImage.ts</code> for the logo.</li>
+      <li><strong>Enrichment</strong>: <code>engine/places.ts</code> for the real storefront photo, rating and address used by the ChatGPT placement, <code>engine/ogImage.ts</code> for the logo.</li>
       <li><strong>Validation</strong>: parsed against <code>src/data/schema.ts</code>. A malformed phase fails here, not on screen.</li>
       <li><strong>Persistence</strong>: <code>src/data/generated/&lt;slug&gt;.json</code> (<code>server.ts:128</code>) and, via the library, the Render disk.</li>
     </ol>
@@ -1015,6 +1017,124 @@ git push origin main                                      <span class="cm"># tri
   </section>
 </div>
 
+<!-- ================== TAB 3: HOW WAS THIS CREATED ================== -->
+<div class="panel" id="p-how" role="tabpanel" aria-labelledby="t-how" hidden>
+
+  <p class="lede">
+    Nothing here was built from scratch. The tool is assembled out of standard, off-the-shelf
+    services, each doing one job. That is what let it go from an idea to something the team uses
+    without a platform team, a data centre, or a procurement cycle.
+  </p>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>How it gets built and published</h2></div>
+    <div class="sec-rule"></div>
+
+    <figure class="figure">
+      <svg viewBox="0 0 1080 250" role="img"
+           aria-label="Three steps: Claude Code writes the code, GitHub stores it, and Render publishes it to the live website that the team opens.">
+        <defs>
+          <marker id="h-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#00b388"/>
+          </marker>
+          <filter id="h-sh" x="-14%" y="-14%" width="128%" height="128%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0a231e" flood-opacity="0.10"/>
+          </filter>
+        </defs>
+
+        <g filter="url(#h-sh)">
+          <rect x="20" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#a5dfc9"/>
+          <rect x="300" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#d8ded9"/>
+          <rect x="580" y="60" width="228" height="120" rx="13" fill="#ffffff" stroke="#d8ded9"/>
+          <rect x="860" y="60" width="200" height="120" rx="13" fill="#0a231e"/>
+        </g>
+
+        <circle cx="48" cy="90" r="14" fill="#00b388"/>
+        <text x="48" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+        <text x="76" y="95" font-size="15" font-weight="600" fill="#0a231e">Claude Code</text>
+        <text x="44" y="128" font-size="12.5" fill="#626464">Writes the code, working from</text>
+        <text x="44" y="148" font-size="12.5" fill="#626464">captures of the real Invoca</text>
+        <text x="44" y="168" font-size="12.5" fill="#626464">screens being replicated.</text>
+
+        <circle cx="328" cy="90" r="14" fill="#00b388"/>
+        <text x="328" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+        <text x="356" y="95" font-size="15" font-weight="600" fill="#0a231e">GitHub</text>
+        <text x="324" y="128" font-size="12.5" fill="#626464">Stores the code. Every change</text>
+        <text x="324" y="148" font-size="12.5" fill="#626464">is recorded, so anything can</text>
+        <text x="324" y="168" font-size="12.5" fill="#626464">be traced or undone.</text>
+
+        <circle cx="608" cy="90" r="14" fill="#00b388"/>
+        <text x="608" y="95" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+        <text x="636" y="95" font-size="15" font-weight="600" fill="#0a231e">Render</text>
+        <text x="604" y="128" font-size="12.5" fill="#626464">Hosts the website. A change</text>
+        <text x="604" y="148" font-size="12.5" fill="#626464">saved to GitHub publishes</text>
+        <text x="604" y="168" font-size="12.5" fill="#626464">itself within a few minutes.</text>
+
+        <text x="884" y="103" font-size="15" font-weight="600" fill="#ffffff">The live tool</text>
+        <text x="884" y="132" font-size="12.5" fill="#9fc4b8">What the team opens</text>
+        <text x="884" y="152" font-size="12.5" fill="#9fc4b8">in their browser.</text>
+
+        <path d="M248,120 H294" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
+        <path d="M528,120 H574" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
+        <path d="M808,120 H854" fill="none" stroke="#00b388" stroke-width="2" marker-end="url(#h-ah)"/>
+
+        <text x="20" y="228" font-size="12" fill="#8a9490">No servers to manage: each step is a managed service doing one job.</text>
+      </svg>
+    </figure>
+    <figcaption>
+      <b>Three steps, then it is live.</b> There is no manual deployment and no release process to
+      coordinate: saving a change is what publishes it.
+    </figcaption>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>What the demo uses to run</h2></div>
+    <div class="sec-rule"></div>
+    <p>
+      Each of these does one specific job inside a demo. They are all standard services with
+      published, documented interfaces, so none of them required anything custom to be built.
+    </p>
+    <div class="kgrid">
+      <div class="kcard">
+        <span class="ktag">The content</span>
+        <h4>Anthropic API (Claude)</h4>
+        <p>Writes the whole prospect: dashboards, transcripts, campaign names, the agent's script.
+        It also powers the in-demo "Ask AI" panel, which re-words any screen on the spot.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The voice</span>
+        <h4>Deepgram and ElevenLabs</h4>
+        <p>Give the prospect's AI agent a speaking voice, so you can hold a real conversation with
+        it on a call rather than only exchanging text.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The front door</span>
+        <h4>Google sign-in</h4>
+        <p>Restricts the tool to <code>@invoca.com</code> accounts. Anyone outside Invoca who
+        opens the link is turned away at sign-in.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The real details</span>
+        <h4>Google Places</h4>
+        <p>Supplies the prospect's genuine storefront photo, star rating and address, which is what
+        makes the generated ChatGPT ad screen look like the real listing.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">The maps</span>
+        <h4>Mapbox</h4>
+        <p>Draws any map that appears in a demo, including the location shown alongside the
+        prospect in the ChatGPT placement.</p>
+      </div>
+      <div class="kcard">
+        <span class="ktag">Why it matters</span>
+        <h4>Everything is replaceable</h4>
+        <p>Each service is reached through a small, isolated piece of code. Swapping one out, as
+        already happens between the two voice providers, is a contained change.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
 </div>
 
 <footer>
@@ -1051,7 +1171,7 @@ git push origin main                                      <span class="cm"># tri
   select(0);
 })();
 
-/* Keep the printed counters honest. The doc is served by the same express app that
+/* Keep the printed commit honest. The doc is served by the same express app that
    exposes /api/status (public, counts and booleans only, no prospect names or demo
    ids), so it can read its own deployment rather than carrying numbers that rot.
    Silent no-op on failure: a stale-but-plausible printed number beats a blank chip. */
@@ -1064,12 +1184,6 @@ git push origin main                                      <span class="cm"># tri
       if (d.commitShort) {
         var c = document.getElementById("s-commit");
         if (c) c.textContent = d.commitShort;
-      }
-      /* Every printed count, prose and diagram alike, comes from this one number.
-         A wired masthead next to hardcoded prose reads as a contradiction. */
-      if (typeof d.demos === "number" && d.demos > 0) {
-        var els = document.querySelectorAll(".s-demos");
-        for (var i = 0; i < els.length; i++) els[i].textContent = String(d.demos);
       }
     })
     .catch(function () { /* offline, or opened as a file:// copy: leave the print as-is */ });
