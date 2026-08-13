@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { usePageData } from "../components/GeneratedTiles";
 
@@ -114,9 +115,11 @@ export function SignalManager() {
           <input type="text" placeholder="" />
         </div>
         <div className="sg-toolbar-right">
-          <button className="sg-new">
+          {/* Opens the source type-select (/signal/new), which is what the real
+              "New Signal" does — it goes to /manage_signals/type-select. */}
+          <Link className="sg-new" to="/signal/new">
             <span className="material-icons">add</span>New Signal
-          </button>
+          </Link>
           <button className="sg-bulk" disabled>Bulk Actions</button>
         </div>
       </div>
@@ -141,7 +144,13 @@ export function SignalManager() {
             {rows.map((s) => (
               <tr key={s.name}>
                 <td className="sg-check"><span className="sg-box" /></td>
-                <td><a className="sg-name" href="#" onClick={(e) => e.preventDefault()}>{s.name}</a></td>
+                {/* Every signal row opens the rule editor, carrying its own name so the
+                    editor's title is the row that was clicked. */}
+                <td>
+                  <Link className="sg-name" to={`/signal/rule?name=${encodeURIComponent(s.name)}`}>
+                    {s.name}
+                  </Link>
+                </td>
                 <td><span className="sg-chip">{s.status}</span></td>
                 <td className="sg-wrap">{s.types}</td>
                 <td>{s.usedIn}</td>

@@ -937,7 +937,121 @@ public/
 | Google Search results | `/google-search` | Profile-driven (React) | ✅ dark-theme google.com/search with the PROSPECT in the top sponsored slot, opened from the green **Network** chip in the top bar (`TopBar.tsx`; the chip is a button, the `<select>` beside it is still the customer switcher). Matched to a SingleFile capture, measured off the rendered DOM: page `#22242a`, text `#e8e8e8`, link `#99c3ff`, place action `#a8c7fa`, hairline `#444746`, pill `#2c2e35`, search pill `#4d5156` 694x52 r26, results column x=122 w=652, result title 22/28, sitelink 18/26, place name 18/24, Places head 28/36, local pack 876 wide with a 438 map column. Sections in capture order: location chip, Sponsored Results (4 ads, stacked sitelink rows on the first), Places pack (list + Mapbox night map with pins, prospect repeated as a Sponsored place), organic results, a SECOND Sponsored Results block (inline chips + visits line), more organic, People also search for, Goooogle pager, footer. **Clicking the prospect's ad opens their site with the paid parameters**: `oppref` + `utm_source=google` + `utm_medium=cpc` + `utm_campaign=<their top campaign from the Marketing Performance dashboard>` + `utm_term=<the query>` + `utm_content` + a deterministic `gclid`. Only the prospect's ad is a real link; the rivals are inert by design. The ad's call extension uses the reserved **555** exchange with the prospect's own area code, so it reads local but cannot ring a real business. The search box is editable and Enter re-renders the wording (and `utm_term`) without pretending to search. The logo goes back to where the SE came from. "Google Sans" is not bundled, so headings fall back to Roboto/Arial |
 | All other nav items | various | Placeholder | ⏳ not built |
 
+### Signal → Semantic Signal Library (`/signal/new/semantic`)
+`SemanticSignalLibrary.tsx` + `.ssl-*`, from the capture "Semantic Signals｜ Invoca For
+Telecom 2.0" (8/6/2026; real URL `/manage_signals/semantic_signal/template`). Reached from
+Semantic Signal's SELECT on the type-select. Fifteen template cards, each with a speaker chip
+(Agent/Caller), the Invoca publisher mark, a 3-line-clamped description and an Activate button.
+
+Measured, since this page serialises in full: grid 1/2/3 columns at 0/600/900px with a 24px
+gap; card `min-height: 280px` / `max-height: 400px` with the MUI elevation-1 shadow and a
+`translateY` lift on hover; title 20px/28px with `flex: 1` (that is what pushes the speaker
+chip right); speaker `rgb(102,112,142)`; body clamped to 3 lines; Activate pushed right with
+`margin-left: auto`.
+
+**THE 15 TEMPLATES ARE INVOCA'S OWN and must NOT be re-skinned per prospect.** This is the
+platform's stock library — identical in every account — and the descriptions are Invoca
+product copy. The prospect's own signals live on Manage Signals, which IS profile-driven. The
+publisher mark is inlined SVG (`#02B388`), not the capture's base64 `<img>`.
+
+The search box filters on name AND description, so "resistance" finds Objection Handling and
+"hold" finds Put On Hold. A title-only filter would be a prop. Activate returns to Manage
+Signals until the activation flow is built (and it stops propagation, or it would also open
+the drawer on its way past).
+
+**Hover LIFTS AND TINTS** — `translateY(-0.25rem)` with `background-color: rgb(212,224,254)`
+(titan blue-10), `rgb(176,205,255)` on active. Both are the capture's own values; the lift
+alone was half the effect.
+
+**Clicking a tile opens a 500px right drawer** (`.sdr-*`, capture "Semantic Signals 2"):
+title, publisher, description, Spoken By, Suggested Use, the phrase list, and a sticky
+Close/Activate footer the list scrolls under. Same MuiDrawer chrome as the Insights
+interaction drawer but the SMALL width token — 500px against that one's 800px.
+
+⚠️ **PHRASE PROVENANCE IS UNEVEN — see the note atop `src/data/semanticSignals.ts`.** Only
+ONE drawer was open when the capture was saved, so "Ask for Appointment" has all 44 of its
+real phrases; "Ask for Sale" and "Competitor Mention" have the 13 and 14 visible in the
+screenshots (real, but cut off by the viewport); the other **12 templates' phrases are
+AUTHORED, not captured**, and their Suggested Use is inferred. Replace any list marked
+`captured: false` when a real drawer capture turns up.
+
+### Signal → Edit Rule Signal (`/signal/rule`)
+`EditRuleSignal.tsx` + `.ers-*`, from the captures "Edit Rule Signal" (one condition) and
+"Edit Rule Signal 2" (four, plus the advanced section), both 8/6/2026; real URL
+`/manage_signals/rule_signal/edit/<id>`. **Every signal row on Manage Signals opens it**,
+carrying its own name in `?name=`, so a Shady Blinds row titled "Consultation Booked
+(Conversion)" heads the editor with that, not the capture's "Appointment Booked".
+
+Measured: terminals are literally `border: 2px solid rgb(38,102,249)`; chips 16px radius; the
+join select 70px; the value box 1px `rgb(208,211,216)` at 4px radius. **All 31 terminals are
+verbatim** in three groups (Call Details 21, Reported Data 5, Invoca Platform Details 5) —
+Invoca's rule-builder vocabulary, identical in every account, NOT re-skinned.
+
+**The rail actually builds the rule.** Clicking a terminal appends a condition with an "and"
+join (switchable to "or"); the × removes one; TEXT renders the same rule as a sentence. Two
+things that only show up once it is interactive:
+- Deleting the FIRST condition must strip the new head's join, or the rule renders with a
+  dangling "and" in front of it.
+- A value box renders **only for a condition that has a value**. In the capture just Spoken
+  Phrases does; the other three chips sit bare with the next "and" straight after. Rendering
+  an empty box for every condition also wrapped the row a condition early.
+
+### Signal → New: the source type-select (`/signal/new`)
+`SignalTypeSelect.tsx` + `.sts-*`, from the capture "Signal /new signal.html" (the real URL
+is `/manage_signals/type-select`). Reached from **New Signal** on Manage Signals, which is
+now a `<Link>`. Three cards — Semantic Signal (with the NEW! corner ribbon), Signal AI Studio
+(Recommended), Rule-based Signal — over a divider and a Cancel button.
+
+This page is Invoca's own MUI markup and serialises in full, so every value is measured:
+lede 24px/36px `rgb(81,133,250)` with 32px below; cards 3px radius, 1px border, no shadow;
+ribbon a 110px square clipping a `-45deg` band in `#5185fa` at `700 15px/1` uppercase.
+
+**The illustrations are Invoca's own icon sprite**, lifted out of the capture to
+`public/signal-sprite.png` — 4468×236 drawn at `background-size: 2234px`, i.e. a 2x asset, so
+the capture's `background-position` values are used verbatim (`-706px 0` splash, `-1618px
+-27px` semantic, `-1859px -31px` AI, `-2051px -27px` rules). Using the sprite beats cropping
+four images by hand, and the rest of the platform's illustrations are in it if a later Signal
+screen needs one.
+
+Nothing here is re-skinned per prospect: every word is Invoca product copy describing Invoca
+features, and no customer data appears on the page.
+
+⚠️ The grid is `repeat(auto-fit, minmax(290px, 1fr))`, not `repeat(3, 1fr)` with a
+breakpoint. Two reasons: a fixed three-up squeezes the text column to ~160px on a narrow
+window, and **grid only equalises card heights within a ROW** — when it wrapped to one column
+the cards stopped matching and the three SELECT links fell out of line. At the reference's
+width all three sit in one row at 517px and their SELECTs share a baseline.
+
+SELECT and Cancel both return to `/signal` for now; point each SELECT at its builder as those
+screens arrive.
+
 ### Sidebar (left nav)
+**Signal opens a FLYOUT, it does not navigate.** A `NavItem` with a `submenu` renders as a
+`<button>` instead of a `NavLink` and opens a dark panel beside the rail — measured off the
+capture "Signal /Singal Box.html": 230px wide, `left: 82px`, `#2c3951`, radius 5, shadow
+`0 2px 4px rgba(12,0,51,.2)`, 12px bottom padding only; heading 20px/28px bold uppercase at
+`24px 24px 12px`; links 16px/16px at `6px 24px`. Signal is the only item with one today; any
+item can have one.
+
+Three things that are easy to get wrong here:
+- The panel must be **`position: fixed`**, anchored to the button's own rect. `.nav-scroll`
+  is `overflow-x: hidden`, so anything positioned inside the rail is clipped at 86px.
+- It **follows its rail item as the rail scrolls.** Reading the button's top once at click
+  time leaves the panel behind the moment the nav scrolls, so a `useLayoutEffect` re-reads
+  the rect on the SCROLL CONTAINER's scroll event (`.nav-scroll` scrolls, not the window)
+  plus window scroll and resize. Layout effect, not effect, so it is never painted at a
+  stale offset. Verified delta 0 at every scroll position across the rail's full range.
+- The outside-click listener runs on **`pointerdown` in the capture phase**. On bubble, a
+  second click of the Signal item would close the panel here and immediately reopen it in the
+  button's own onClick.
+- `button.nav-item` needs the browser's button styling removed so it sits flush with the
+  `<a>` items; everything else comes from the shared `.nav-item` rule so the two cannot drift.
+
+The parent highlights for any route beneath it (`/signal/discovery` keeps Signal green), and
+navigating closes the panel. Destinations: Manage Signals -> `/signal` (SignalManager, real),
+Signal AI Studio -> `/signal/ai-studio` and Signal Discovery -> `/signal/discovery`, both
+**Placeholders awaiting captures**.
+
 Matched **exactly** to the live network 2751 nav: **14 items** in order —
 Dashboards, Call Review, Agent Studio, Profiles, Campaigns, Lead Forms (NEW),
 Publishers, Promo Numbers, Reports, Integrations, Signal, Score, Labs, Settings.
@@ -1041,6 +1155,21 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
    (Processing scripts were run from scratch; not committed — re-create as needed.)
 - The Exchange page loads GT America font + logos from Invoca's CDN (needs internet).
 - These render the **desktop layout at ≥992px** (they're the real responsive pages).
+
+## Readme button (the docs link, bottom-right of every screen)
+- `src/components/ReadmeButton.tsx`, rendered once by `src/layout/AppShell.tsx` so it appears
+  on every in-app screen. Fixed bottom-right pill, `.readme-fab` in `app.css`.
+- Invoca's **brand** green `#00b388` (from invoca.com), deliberately not the product blue —
+  it's a link *out* of the replica to our own docs and shouldn't read as part of the Invoca UI.
+- Opens the published write-up in a new tab (`target="_blank" rel="noopener noreferrer"`).
+  Two audiences, one page: a "The short version" tab and a "Technical detail" tab.
+  **The URL is a hardcoded constant** — the typechecker and build can't verify it. If the
+  link dies, republish the doc and edit `README_URL`. Source of truth: `ARCHITECTURE.md`.
+- Hidden (`opacity: 0; pointer-events: none`) whenever an overlay is open, keyed off the
+  real open-state selectors via `.app:has(...)`: `.aiad--open` (Ask AI, z-3000) and the
+  z-1200 full-viewport drawers `.idr-root` / `.sdr-root` / `.vp-root`. Those all cover the
+  button by z-order anyway; this stops it glowing through a translucent backdrop. **If you
+  add a new overlay, add its selector here** — otherwise the button shows through it.
 
 ## Conventions & decisions
 - **Data-driven**: never hard-code screen data in components; put it in the profile/schema.

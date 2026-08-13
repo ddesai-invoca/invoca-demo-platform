@@ -44,6 +44,11 @@ export function LabsIcon(): ReactNode {
   );
 }
 
+export interface NavSubItem {
+  label: string;
+  path: string;
+}
+
 export interface NavItem {
   label: string;
   icon?: string;          // Material Icons ligature
@@ -51,6 +56,11 @@ export interface NavItem {
   path: string;           // route
   badge?: string;
   pinBottom?: boolean;    // Settings sits at the bottom of the rail
+  /* A flyout panel instead of a direct link. The real nav opens one for Signal:
+     clicking the rail item does NOT navigate, it opens a dark panel beside the rail
+     whose items are the real destinations. Any nav item can have one; only Signal
+     does today. See Sidebar.tsx and the .navsub-* rules. */
+  submenu?: NavSubItem[];
 }
 
 /* The Invoca left-nav for network 2751 (Invoca for Home Services), matched
@@ -69,7 +79,17 @@ export const NAV: NavItem[] = [
   { label: "Promo Numbers", icon: "dialpad",               path: "/promo-numbers" },
   { label: "Reports",       icon: "equalizer",             path: "/reports" },
   { label: "Integrations",  icon: "device_hub",            path: "/integrations" },
-  { label: "Signal",        icon: "explore",               path: "/signal" },
+  /* Signal opens a submenu rather than navigating — see NavItem.submenu. `path` stays
+     /signal because it is still the parent route (Manage Signals lives there) and the
+     rail item highlights for anything beneath it. */
+  {
+    label: "Signal", icon: "explore", path: "/signal",
+    submenu: [
+      { label: "Manage Signals", path: "/signal" },
+      { label: "Signal AI Studio", path: "/signal/ai-studio" },
+      { label: "Signal Discovery", path: "/signal/discovery" },
+    ],
+  },
   { label: "Score",         icon: "assignment_turned_in",  path: "/score" },
   { label: "Labs",          svg: LabsIcon,                 path: "/labs" },
   { label: "Settings",      icon: "settings",              path: "/settings" },

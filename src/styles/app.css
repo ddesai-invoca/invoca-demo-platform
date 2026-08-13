@@ -1561,7 +1561,9 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .sg-toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 .sg-new { display: inline-flex; align-items: center; gap: 4px; height: 38px; padding: 0 18px 0 12px;
   background: #2666f9; color: #fff; border: none; border-radius: 4px; font-family: inherit;
-  font-size: 14px; font-weight: 700; cursor: pointer; }
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  /* It is an <a> now (it navigates to /signal/new), so the anchor underline goes. */
+  text-decoration: none; }
 .sg-new .material-icons { font-size: 20px; }
 .sg-bulk { height: 38px; padding: 0 18px; background: #eef0f3; color: #a1a7b2; border: none;
   border-radius: 4px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: default; }
@@ -2264,3 +2266,336 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .idt-table tfoot td { position: sticky; bottom: 0; z-index: 2; background: #fff;
   border-top: 2px solid #15243e; border-bottom: 0; padding: 10px 14px; }
 .idt-table tfoot b { font-size: 15px; color: #15243e; display: block; }
+
+/* ---- Left-rail submenu flyout (Signal) ---------------------------------------
+   MEASURED off the capture "Signal /Singal Box.html": panel 230px wide, 82px from the
+   left edge, #2c3951, white, radius 5px, shadow 0 2px 4px rgba(12,0,51,.2), padding only
+   at the bottom (12px). Heading 20px/28px bold uppercase padded 24px 24px 12px; links
+   16px/16px padded 6px 24px. */
+
+/* A submenu parent is a <button>, not an <a>, so it needs the browser's button styling
+   removed to sit flush with the <a> items beside it. Everything else comes from the
+   shared .nav-item rule, so the two kinds of rail item cannot drift apart. */
+button.nav-item {
+  background: none; border: 0; border-left: 4px solid transparent;
+  font-family: inherit; width: 100%;
+}
+
+.navsub {
+  position: fixed; left: 82px; z-index: 1039;
+  width: 230px; padding: 0 0 12px; border-radius: 5px;
+  background: #2c3951; color: #fff;
+  box-shadow: 0 2px 4px rgba(12, 0, 51, .2);
+  /* The real panel scrolls rather than running off the bottom of a short window. */
+  max-height: calc(100vh - 104px); overflow-y: auto;
+}
+.navsub-head {
+  margin: 0; padding: 24px 24px 12px; background: #2c3951;
+  font-size: 20px; line-height: 28px; font-weight: 700; text-transform: uppercase;
+  cursor: default; position: sticky; top: 0; overflow-wrap: break-word;
+}
+.navsub-link {
+  display: block; width: 100%; text-align: left;
+  background: none; border: 0; font-family: inherit;
+  padding: 6px 24px; color: #fff; font-size: 16px; line-height: 16px; font-weight: 400;
+  cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/* The capture's own hover cascade is three overridden Bootstrap rules deep and does not
+   resolve cleanly, so this is read off the screenshot instead: a lighter navy than the
+   panel, text stays white. Change it if a cleaner capture ever settles the question. */
+.navsub-link:hover, .navsub-link:focus-visible { background: #3b4a66; outline: none; }
+
+/* ---- Signal → New: source type select (`/signal/new`) --------------------------
+   MEASURED off the capture "Signal /new signal.html" — this page is Invoca's own MUI
+   markup and serialises in full, so every number here is its computed value. */
+.sts-page { background: #fff; min-height: 100%; }
+.sts-head { padding: 14px 24px 0; }
+.sts-title { margin: 4px 0; font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; }
+.sts-head { border-bottom: 1px solid #e7e9eb; }
+.sts-body { padding: 24px; }
+/* The outer card and the three type cards share a shape: 3px radius, 1px border, NO
+   shadow. MUI calls them Paper elevation-1 but the capture overrides the shadow away. */
+.sts-card { border: 1px solid #e7e9eb; border-radius: 3px; padding: 24px; background: #fff; }
+.sts-lede { margin: 0 0 32px; font-size: 24px; line-height: 36px; font-weight: 400;
+  color: rgb(81, 133, 250); }
+
+/* Three across with a 32px gutter (the capture's Grid spacing-4 on an 8px unit).
+   auto-fit rather than a hard `repeat(3, 1fr)` plus a breakpoint: the real page runs at
+   ~1900px where three cards are ~430px each, and a fixed three-up squeezes the text column
+   to ~160px on a narrow window. This degrades 3 -> 2 -> 1 on its own.
+   ⚠️ The cards only equalise in height while they SHARE A ROW (grid stretches items in a
+   row; a one-per-row layout has nothing to stretch against), so the wrap point matters for
+   more than width. */
+.sts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 32px; }
+/* position: relative anchors the NEW! ribbon; the card is a row so the icon sits beside
+   the text, and stretches to the tallest of the three. */
+.sts-type { position: relative; display: flex; height: 100%; overflow: hidden;
+  border: 1px solid #e7e9eb; border-radius: 3px; background: #fff; }
+.sts-type-body { display: flex; flex-direction: column; flex: 1 1 0; min-width: 0; }
+.sts-type-content { padding: 24px; }
+.sts-type-title { margin: 0 0 8px; font-size: 20px; line-height: 28px; font-weight: 400;
+  color: #15243e; }
+.sts-type-text { margin: 0; font-size: 16px; line-height: 20px; color: #15243e; }
+/* margin-top:auto pins the action to the bottom so all three SELECTs line up however
+   long the copy runs. */
+.sts-type-actions { display: flex; align-items: center; margin-top: auto; padding: 8px 16px 16px; }
+.sts-select { background: none; border: 0; cursor: pointer; font-family: inherit;
+  font-weight: 500; font-size: 15px; line-height: 1.75; letter-spacing: normal;
+  color: #2666f9; padding: 6px 8px; border-radius: 4px; }
+.sts-select:hover { background: rgba(38, 102, 249, .06); }
+
+/* The NEW! corner ribbon: a 110px square that clips a band rotated through the corner. */
+.sts-ribbon { position: absolute; width: 110px; height: 110px; overflow: hidden;
+  top: 0; left: 0; pointer-events: none; z-index: 1; }
+.sts-ribbon span { position: absolute; display: block; width: 200px; right: -35px; top: 25px;
+  transform: rotate(-45deg); padding: 10px 0; background: #5185fa; color: #fff;
+  font: 700 15px/1 Lato, sans-serif; text-transform: uppercase; text-align: center;
+  box-shadow: 0 2px 4px #f3f4f5; text-shadow: 0 1px 1px #f3f4f5; }
+
+/* ONE SPRITE for all three illustrations plus the pale splash behind them, lifted from
+   the capture to public/signal-sprite.png. The image is 4468x236 and is drawn at
+   background-size 2234px — i.e. it is a 2x asset — so the background-positions below are
+   the capture's CSS values used verbatim. */
+.sig-sprite { display: block; background-image: url("/signal-sprite.png");
+  background-size: 2234px auto; background-repeat: no-repeat; }
+.sts-icon { align-self: center; flex-shrink: 0; }
+.sig-splash { width: 128px; height: 118px; background-position: -706px 0; }
+.sig-semantic { height: 64px; width: 46px; background-position: -1618px -27px; margin: 27px auto; }
+.sig-ai { height: 56px; width: 64px; background-position: -1859px -31px; margin: 27px auto; }
+.sig-rules { height: 61px; width: 64px; background-position: -2051px -27px; margin: 27px auto; }
+
+.sts-divider { border-bottom: 1px solid #e7e9eb; margin-top: 32px; }
+.sts-cancel { margin-top: 24px; background: none; cursor: pointer; font-family: inherit;
+  font-weight: 500; font-size: 14px; line-height: 1.75; letter-spacing: normal;
+  color: #2666f9; border: 1px solid rgba(38, 102, 249, .5); border-radius: 4px;
+  padding: 5px 15px; }
+.sts-cancel:hover { background: rgba(38, 102, 249, .06); border-color: #2666f9; }
+
+/* ---- Signal → Semantic Signal Library (`/signal/new/semantic`) ------------------
+   MEASURED off the capture "Semantic Signals｜ Invoca For Telecom 2.0" (8/6/2026), which
+   is Invoca's own MUI markup and serialises in full. */
+.ssl-page { background: #fff; min-height: 100%; }
+.ssl-head { display: flex; align-items: center; gap: 10px; padding: 14px 24px 12px;
+  border-bottom: 1px solid #e7e9eb; }
+.ssl-title { margin: 0; font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; }
+.ssl-about { display: inline-flex; align-items: center; gap: 5px; color: #2666f9;
+  font-size: 13px; text-decoration: none; }
+.ssl-about:hover { text-decoration: underline; }
+.ssl-about .material-icons { font-size: 16px; }
+.ssl-body { padding: 24px; }
+
+.ssl-search { display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+  border: 1px solid #cfd4da; border-radius: 3px; padding: 8px 12px; background: #fff; }
+.ssl-search:focus-within { border-color: #2666f9; }
+.ssl-search .material-icons { font-size: 20px; color: #66708e; }
+.ssl-search input { flex: 1 1 0; border: 0; outline: 0; font-family: inherit; font-size: 16px;
+  line-height: 1.4375em; color: #15243e; background: transparent; }
+
+/* 1 / 2 / 3 columns at 0 / 600 / 900px with a 24px gap — the capture's own breakpoints. */
+.ssl-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+@media (min-width: 600px) { .ssl-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .ssl-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* min-height 280 / max-height 400 is what gives the library its even rows even though the
+   descriptions run to very different lengths. */
+.ssl-card { display: flex; flex-direction: column; min-height: 280px; max-height: 400px;
+  height: 100%; border: 1px solid #e7e9eb; border-radius: 3px; background: #fff;
+  overflow: hidden; cursor: pointer; transform: translateY(0);
+  transition: transform .2s ease-in, box-shadow .2s ease-in;
+  box-shadow: rgba(0,0,0,.2) 0 3px 1px -2px, rgba(0,0,0,.14) 0 2px 2px 0, rgba(0,0,0,.12) 0 1px 5px 0; }
+/* Hover LIFTS AND TINTS, both straight out of the capture: `translateY(-0.25rem)` with
+   `background-color: rgb(212,224,254)` (titan blue-10) and a slightly deeper shadow. Pressing
+   goes one step darker to blue-20. The lift alone was missing half the effect. */
+.ssl-card:hover { transform: translateY(-0.25rem); background-color: rgb(212, 224, 254);
+  box-shadow: rgba(0,0,0,.2) 0 3px 3px -2px, rgba(0,0,0,.14) 0 3px 4px 0, rgba(0,0,0,.12) 0 1px 8px 0; }
+.ssl-card:active { background-color: rgb(176, 205, 255); }
+.ssl-card-content { padding: 24px; }
+.ssl-card-head { display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px; }
+/* flex:1 on the title is what pushes the speaker chip to the right edge. */
+.ssl-card-title { flex: 1 1 0; margin: 0 16px 0 0; font-size: 20px; line-height: 28px;
+  font-weight: 400; color: #15243e; }
+.ssl-speaker-ic { width: 24px; height: 24px; fill: rgb(102, 112, 142); flex-shrink: 0; }
+.ssl-speaker { margin-left: 8px; font-size: 16px; line-height: 20px; color: rgb(102, 112, 142);
+  white-space: nowrap; }
+.ssl-publisher { display: flex; align-items: center; }
+.ssl-mark { width: 16px; height: 16px; flex-shrink: 0; }
+.ssl-publisher span { padding-left: 8px; font-size: 16px; line-height: 20px; color: #15243e; }
+/* Clamped to three lines, as the capture is — the longest descriptions would otherwise
+   push past the card's max-height. */
+.ssl-card-text { margin: 0; padding-top: 8px; font-size: 16px; line-height: 20px; color: #15243e;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+/* margin-top:auto floors the action row; margin-left:auto pushes the button right. */
+.ssl-card-actions { display: flex; align-items: center; padding: 24px; margin-top: auto; }
+.ssl-activate { margin-left: auto; cursor: pointer; font-family: inherit; font-weight: 500;
+  font-size: 14px; line-height: 1.75; letter-spacing: normal; padding: 5px 15px;
+  color: #2666f9; background: none; border: 1px solid rgba(38, 102, 249, .5); border-radius: 4px; }
+.ssl-activate:hover { background: rgba(38, 102, 249, .06); border-color: #2666f9; }
+.ssl-empty { margin: 24px 0 0; font-size: 15px; color: #5b6577; }
+
+/* ---- Semantic Signal template drawer -------------------------------------------
+   MEASURED off the capture "Semantic Signals 2" (8/6/2026). Same MuiDrawer chrome as the
+   Insights interaction drawer but the SMALL width token: 500px against that one's 800px,
+   24px padding, 225ms cubic-bezier(0,0,.2,1) slide, rgba(0,0,0,.5) scrim. */
+.sdr-root { position: fixed; inset: 0; z-index: 1200; }
+.sdr-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .5); }
+.sdr-panel { position: fixed; top: 0; right: 0; height: 100%; width: min(500px, 94vw);
+  background: #fff; box-shadow: -10px 0 30px rgba(21, 36, 62, .22);
+  display: flex; flex-direction: column; overflow: hidden;
+  animation: sdr-in 225ms cubic-bezier(0, 0, .2, 1); }
+@keyframes sdr-in { from { transform: translateX(100%); } to { transform: none; } }
+/* The body scrolls under a footer that stays put — 44 phrases do not fit a laptop. */
+.sdr-scroll { flex: 1 1 0; min-height: 0; overflow-y: auto; padding: 24px 24px 8px; }
+.sdr-title { margin: 0; padding-bottom: 16px; font-size: 20px; line-height: 28px;
+  font-weight: 400; color: #15243e; }
+.sdr-publisher { display: flex; align-items: center; margin-bottom: 6px; }
+.sdr-mark { width: 16px; height: 16px; flex-shrink: 0; }
+.sdr-publisher span { padding-left: 8px; font-size: 16px; line-height: 20px; color: #15243e; }
+.sdr-desc { margin: 0 0 14px; font-size: 16px; line-height: 20px; color: #15243e; }
+.sdr-row { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.sdr-row-use { margin-top: 4px; }
+.sdr-label { font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; }
+.sdr-value { font-size: 16px; line-height: 20px; color: #15243e; }
+.sdr-info { font-size: 20px; color: #66708e; }
+.sdr-phrases-head { margin: 20px 0 4px; font-size: 16px; line-height: 20px; font-weight: 700;
+  color: #15243e; }
+/* Each phrase is a bordered row: 8px 16px with a hairline under it. */
+.sdr-phrases { list-style: none; margin: 0; padding: 0; }
+.sdr-phrases li { padding: 8px 16px; font-size: 14px; line-height: 20px; color: rgb(21, 36, 62);
+  border-bottom: 1px solid #e7e9eb; }
+.sdr-foot { display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px; border-top: 1px solid #e7e9eb; background: #fff;
+  box-shadow: 0 -2px 4px rgba(12, 0, 51, .06); }
+.sdr-close { background: none; border: 0; cursor: pointer; font-family: inherit;
+  font-weight: 500; font-size: 14px; line-height: 1.75; color: #2666f9; padding: 6px 8px;
+  border-radius: 4px; }
+.sdr-close:hover { background: rgba(38, 102, 249, .06); }
+.sdr-activate { cursor: pointer; font-family: inherit; font-weight: 500; font-size: 14px;
+  line-height: 1.75; padding: 6px 16px; border: 0; border-radius: 4px;
+  background: #2666f9; color: #fff; }
+.sdr-activate:hover { background: #1c53e9; }
+
+/* ---- Signal → Edit Rule Signal (`/signal/rule`) ---------------------------------
+   MEASURED off the captures "Edit Rule Signal" and "Edit Rule Signal 2" (8/6/2026), which
+   are Invoca's own MUI markup and serialise in full. */
+.ers-page { background: #fff; min-height: 100%; padding-bottom: 90px; }
+.ers-head { padding: 14px 24px 12px; border-bottom: 1px solid #e7e9eb; }
+.ers-title { margin: 0; font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; }
+.ers-body { padding: 20px 24px 0; max-width: 1120px; }
+.ers-label { display: flex; align-items: center; gap: 6px; margin: 18px 0 6px;
+  font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; }
+.ers-info { font-size: 17px; color: #8892a0; }
+.ers-input, .ers-textarea, .ers-select { width: 100%; box-sizing: border-box;
+  font-family: inherit; font-size: 16px; line-height: 1.4375em; color: #15243e;
+  background: #fff; border: 1px solid #cfd4da; border-radius: 3px; padding: 9px 12px; }
+.ers-textarea { min-height: 96px; resize: vertical; }
+.ers-input:focus, .ers-textarea:focus, .ers-select:focus { outline: none; border-color: #2666f9; }
+.ers-select-sm { max-width: 290px; }
+
+/* The builder: a fixed rail of terminals beside a canvas that takes the rest. */
+.ers-builder { display: grid; grid-template-columns: 320px 1fr; gap: 0;
+  border-top: 1px solid #e7e9eb; border-bottom: 1px solid #e7e9eb; margin-top: 22px; }
+.ers-rail { padding: 20px 24px; border-right: 1px solid #e7e9eb; max-height: 470px;
+  overflow-y: auto; }
+.ers-rail-lede { margin: 0 0 12px; font-size: 16px; line-height: 20px; color: #15243e; }
+.ers-search { margin-bottom: 18px; }
+.ers-group { margin-bottom: 16px; }
+.ers-group-title { display: block; font-size: 16px; line-height: 20px; font-weight: 700;
+  color: #15243e; margin-bottom: 8px; }
+.ers-group-rule { border: 0; border-top: 1px solid #e7e9eb; margin: 0 0 10px; }
+.ers-terminals { list-style: none; margin: 0; padding: 0; display: flex;
+  flex-direction: column; gap: 8px; }
+/* The capture's terminals really are a 2px blue outline — that is the rail's whole look. */
+.ers-terminal { width: 100%; text-align: left; cursor: pointer; font-family: inherit;
+  font-size: 16px; line-height: 20px; color: #15243e; background: #fff;
+  border: 2px solid rgb(38, 102, 249); border-radius: 4px; padding: 8px 12px; }
+.ers-terminal:hover { background: rgb(212, 224, 254); }
+
+.ers-canvas-wrap { padding: 20px 24px; min-width: 0; }
+.ers-toggle { display: flex; justify-content: flex-end; margin-bottom: 16px; }
+.ers-toggle-btn { cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500;
+  letter-spacing: .02em; padding: 6px 12px; background: #fff; color: #5b6577;
+  border: 1px solid #cfd4da; }
+.ers-toggle-btn:first-child { border-radius: 4px 0 0 4px; }
+.ers-toggle-btn:last-child { border-radius: 0 4px 4px 0; border-left: 0; }
+.ers-toggle-on { background: #eef0f3; color: #15243e; }
+.ers-canvas { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  min-height: 320px; align-content: flex-start; }
+.ers-canvas-text { align-items: flex-start; }
+.ers-canvas-text code { font-size: 15px; line-height: 1.7; color: #15243e; }
+.ers-expr { display: inline-flex; align-items: center; gap: 8px; }
+/* Chip + white value box, the pair the capture repeats for every condition. */
+.ers-chip { display: inline-flex; align-items: center; gap: 2px; border-radius: 16px;
+  padding: 3px 4px 3px 9px; font-size: 13px; line-height: 18px; white-space: nowrap;
+  color: #15243e; background: rgb(212, 224, 254); border: 1px solid rgb(38, 102, 249); }
+.ers-chip-x { display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+  background: none; }
+.ers-chip-x svg { width: 15px; height: 15px; fill: rgba(21, 36, 62, .55); }
+.ers-chip-x:hover svg { fill: #15243e; }
+.ers-value { display: inline-flex; align-items: center; min-height: 30px;
+  background: #fff; border: 1px solid rgb(208, 211, 216); border-radius: 4px;
+  padding: 4px 8px; cursor: pointer; color: rgb(21, 36, 62); font-size: 16px; line-height: 20px; }
+/* The join select is 70px in the capture — just wide enough for "and". */
+.ers-join { width: 78px; font-family: inherit; font-size: 15px; color: #15243e;
+  background: #fff; border: 1px solid #cfd4da; border-radius: 3px; padding: 6px 8px; }
+
+.ers-advanced { margin: 28px 0 4px; font-size: 14px; font-weight: 700; letter-spacing: .04em;
+  color: #15243e; }
+.ers-sub { margin: 22px 0 8px; font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; }
+.ers-money { display: flex; align-items: center; gap: 8px; max-width: 1000px;
+  border: 1px solid #cfd4da; border-radius: 3px; padding: 9px 12px; }
+.ers-money span { color: #5b6577; }
+.ers-money input { flex: 1 1 0; border: 0; outline: 0; font-family: inherit; font-size: 16px;
+  color: #15243e; }
+.ers-check { display: flex; align-items: center; gap: 10px; font-size: 16px; color: #15243e; }
+.ers-docs { display: inline-block; margin: 22px 0 8px; font-size: 15px; color: #2666f9;
+  text-decoration: none; }
+.ers-docs:hover { text-decoration: underline; }
+.ers-empty { margin: 0; font-size: 15px; color: #5b6577; }
+
+/* Sticky action bar, as the capture has it. */
+.ers-foot { position: sticky; bottom: 0; display: flex; align-items: center;
+  justify-content: space-between; padding: 14px 24px; margin-top: 26px;
+  background: #fff; border-top: 1px solid #e7e9eb; box-shadow: 0 -2px 4px rgba(12,0,51,.06); }
+.ers-foot-right { display: flex; align-items: center; gap: 12px; }
+.ers-back, .ers-cancel { cursor: pointer; font-family: inherit; font-weight: 500;
+  font-size: 14px; line-height: 1.75; color: #2666f9; background: none; border-radius: 4px; }
+.ers-back { border: 0; padding: 6px 8px; }
+.ers-cancel { border: 1px solid rgba(38, 102, 249, .5); padding: 5px 15px; }
+.ers-back:hover, .ers-cancel:hover { background: rgba(38, 102, 249, .06); }
+.ers-save { cursor: pointer; font-family: inherit; font-weight: 500; font-size: 14px;
+  line-height: 1.75; padding: 6px 18px; border: 0; border-radius: 4px;
+  background: #2666f9; color: #fff; }
+.ers-save:hover { background: #1c53e9; }
+
+/* ---- Readme button (floating, bottom-right of every in-app screen) -------------
+   Invoca's own brand green (--invoca-green #00b388 on invoca.com), not the product
+   blue, because this is a link OUT of the replica to our own documentation — it should
+   not read as part of the Invoca UI being demoed. */
+.readme-fab {
+  position: fixed; right: 22px; bottom: 22px; z-index: 900;
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 42px; padding: 0 18px 0 15px; border-radius: 999px;
+  background: #00b388; color: #fff; text-decoration: none;
+  font-family: inherit; font-size: 14px; font-weight: 600; letter-spacing: -.01em;
+  box-shadow: 0 2px 4px rgba(10,35,30,.12), 0 12px 28px -10px rgba(0,179,136,.55);
+  transition: background .16s ease, transform .16s ease, box-shadow .16s ease;
+}
+.readme-fab:hover {
+  background: #009974; transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(10,35,30,.14), 0 16px 34px -10px rgba(0,179,136,.65);
+}
+.readme-fab:active { transform: translateY(0); }
+.readme-fab svg {
+  width: 17px; height: 17px; fill: none; stroke: currentColor;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+}
+/* Every overlay in the app sits above z-900 and covers the viewport (.aiad z-3000,
+   .idr-/.sdr-/.vp-root z-1200), so the button can never be clicked through one. Hide it
+   outright anyway rather than letting it glow through a translucent backdrop. */
+.app:has(.aiad--open) .readme-fab,
+.app:has(.idr-root) .readme-fab,
+.app:has(.sdr-root) .readme-fab,
+.app:has(.vp-root) .readme-fab { opacity: 0; pointer-events: none; }
+@media (max-width: 640px) { .readme-fab { right: 14px; bottom: 14px; } }

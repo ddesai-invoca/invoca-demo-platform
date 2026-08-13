@@ -31,6 +31,9 @@ import { KnowledgeSources } from "./screens/KnowledgeSources";
 import { AiRecommendations } from "./screens/AiRecommendations";
 import { AgentWorkflow } from "./screens/AgentWorkflow";
 import { SignalManager } from "./screens/SignalManager";
+import { SignalTypeSelect } from "./screens/SignalTypeSelect";
+import { SemanticSignalLibrary } from "./screens/SemanticSignalLibrary";
+import { EditRuleSignal } from "./screens/EditRuleSignal";
 import { Launch } from "./screens/Launch";
 import { SmsPreviewPage } from "./screens/SmsPreviewPage";
 import { ChatGptAd } from "./screens/ChatGptAd";
@@ -119,6 +122,13 @@ export default function App() {
             <Route path="/dashboards/qm-instant-insights" element={<QmInstantInsightsDashboard />} />
             <Route path="/dashboards/location-comparison" element={<LocationComparisonDashboard />} />
             <Route path="/call-review/detail" element={<CallDetail />} />
+            {/* Signal's flyout offers three destinations. Manage Signals is /signal
+                (SignalManager, via the NAV loop below); these two are not built yet. */}
+            <Route path="/signal/rule" element={<EditRuleSignal />} />
+            <Route path="/signal/new" element={<SignalTypeSelect />} />
+            <Route path="/signal/new/semantic" element={<SemanticSignalLibrary />} />
+            <Route path="/signal/ai-studio" element={<Placeholder name="Signal AI Studio" />} />
+            <Route path="/signal/discovery" element={<Placeholder name="Signal Discovery" />} />
             {NAV.filter((item) => !STANDALONE.has(item.path)).map((item) => (
               <Route
                 key={item.path}
