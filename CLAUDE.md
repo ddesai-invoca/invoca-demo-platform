@@ -1157,8 +1157,13 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
 - These render the **desktop layout at ≥992px** (they're the real responsive pages).
 
 ## Read.Me button + the in-app docs
-- `src/components/ReadmeButton.tsx`, rendered once by `src/layout/AppShell.tsx` so it appears
-  on every in-app screen. Fixed bottom-right pill, `.readme-fab` in `app.css`.
+- `src/components/ReadmeButton.tsx`, mounted **once in `App.tsx`** inside `<BrowserRouter>`
+  but outside `<Routes>`, so it covers Launch and every shell screen without two copies
+  drifting. Fixed bottom-right pill, `.readme-fab` in `app.css`.
+- It reads the path to stay OFF the prospect-facing screens (`HIDE_ON`): `/google-search`,
+  `/integrations/chatgpt`, `/agent-studio/agent/preview`. Those are staged to look like
+  somebody else's product; an internal docs button on them breaks the illusion mid-demo.
+  The static `public/*.html` copies (Exchange, Google Ads) are outside React and never get it.
 - Invoca's **brand** green `#00b388` (from invoca.com), deliberately not the product blue: it
   is a link to our own docs, so it shouldn't read as part of the Invoca UI being demoed.
 - **The docs ship with the app.** `public/readme.html` is copied into `dist/` by the build and
@@ -1174,9 +1179,14 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   margins -- `margin: 0 -30px` there pushed 60px past the viewport and scrolled the whole page
   sideways. They're full-bleed already; padding alone gets the look.
 - Hidden (`opacity: 0; pointer-events: none`) whenever an overlay is open, keyed off the real
-  open-state selectors via `.app:has(...)`: `.aiad--open` (Ask AI, z-3000) and the z-1200
+  open-state selectors via **`body:has(...)`**: `.aiad--open` (Ask AI, z-3000) and the z-1200
   full-viewport drawers `.idr-root` / `.sdr-root` / `.vp-root`. **Add new overlays here.**
-- Not on the Launch screen (`/`) -- that renders outside `AppShell`.
+  It must be `body:has()`, not `.app:has()` -- the button is mounted above `.app`, so an
+  `.app`-scoped selector silently stops matching.
+- **Two different demo counts, both correct.** `/api/status.demos` is `listDemos().length`,
+  the shared library on the server disk -- that is what the doc prints. The Launch picker's
+  "My demos" adds locally-registered profiles that were never published, so it reads higher.
+  Don't "fix" one to match the other.
 - `ARCHITECTURE.md` is the Markdown source of truth; keep it and `readme.html` in sync.
 
 ## Conventions & decisions

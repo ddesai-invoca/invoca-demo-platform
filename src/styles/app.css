@@ -2594,8 +2594,8 @@ button.nav-item {
 /* Every overlay in the app sits above z-900 and covers the viewport (.aiad z-3000,
    .idr-/.sdr-/.vp-root z-1200), so the button can never be clicked through one. Hide it
    outright anyway rather than letting it glow through a translucent backdrop. */
-.app:has(.aiad--open) .readme-fab,
-.app:has(.idr-root) .readme-fab,
-.app:has(.sdr-root) .readme-fab,
-.app:has(.vp-root) .readme-fab { opacity: 0; pointer-events: none; }
+body:has(.aiad--open) .readme-fab,
+body:has(.idr-root) .readme-fab,
+body:has(.sdr-root) .readme-fab,
+body:has(.vp-root) .readme-fab { opacity: 0; pointer-events: none; }
 @media (max-width: 640px) { .readme-fab { right: 14px; bottom: 14px; } }

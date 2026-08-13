@@ -39,6 +39,7 @@ import { SmsPreviewPage } from "./screens/SmsPreviewPage";
 import { ChatGptAd } from "./screens/ChatGptAd";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
+import { ReadmeButton } from "./components/ReadmeButton";
 import { NAV } from "./components/nav";
 
 /* Some screens are EXACT static copies of real pages (the Invoca Exchange and
@@ -138,6 +139,9 @@ export default function App() {
             ))}
           </Route>
         </Routes>
+        {/* Outside <Routes> so it renders on every screen, Launch included -- but inside
+            <BrowserRouter>, because it reads the path to stay off the prospect-facing pages. */}
+        <ReadmeButton />
       </BrowserRouter>
       </AiAssistantProvider>
       </VoiceCaptureProvider>

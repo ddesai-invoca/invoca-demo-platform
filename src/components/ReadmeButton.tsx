@@ -1,4 +1,6 @@
-/* The floating "Read.Me" button, bottom-right of every in-app screen.
+import { useLocation } from "react-router-dom";
+
+/* The floating "Read.Me" button, bottom-right.
 
    Opens the full documentation: what the tool is, how it works, what it costs, and the
    maintenance guide. Two audiences share one page -- a "The short version" tab for anyone
@@ -10,12 +12,26 @@
    of truth at ARCHITECTURE.md in sync when the docs change. */
 const README_URL = "/readme.html";
 
+/* Mounted once at the app root, so it covers the Launch screen and everything inside the
+   shell without two copies drifting apart. The exception is the screens we show a PROSPECT:
+   the fake Google results page, the ChatGPT sponsored placement and the SMS preview are
+   staged to look like somebody else's product, and an internal docs button floating on top
+   would break the illusion mid-demo. */
+const HIDE_ON = [
+  "/google-search",
+  "/integrations/chatgpt",
+  "/agent-studio/agent/preview",
+];
+
 export function ReadmeButton() {
+  const { pathname } = useLocation();
+  if (HIDE_ON.includes(pathname)) return null;
+
   return (
     <a
       className="readme-fab"
       href={README_URL}
-      /* New tab, so clicking the docs never loses the demo the SE is mid-way through. */
+      /* New tab, so reading the docs never loses the demo the SE is mid-way through. */
       target="_blank"
       rel="noopener noreferrer"
       title="How this tool works, what it costs, and how to maintain it"
