@@ -1242,37 +1242,15 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
 
 ## Read.Me button + the in-app docs
 - `src/components/ReadmeButton.tsx`, mounted **once in `App.tsx`** inside `<BrowserRouter>`
-  but outside `<Routes>`, so it covers Launch and every shell screen without two copies
-  drifting. Fixed bottom-right pill, `.readme-fab` in `app.css`.
-- It reads the path to stay OFF the prospect-facing screens (`HIDE_ON`): `/google-search`,
-  `/integrations/chatgpt`, `/agent-studio/agent/preview`. Those are staged to look like
-  somebody else's product; an internal docs button on them breaks the illusion mid-demo.
-  The static `public/*.html` copies (Exchange, Google Ads) are outside React and never get it.
-- Invoca's **brand** green `#00b388` (from invoca.com), deliberately not the product blue: it
-  is a link to our own docs, so it shouldn't read as part of the Invoca UI being demoed.
-- **Audience is everyone, including the CEO and any AE.** The page carries NO cost or spend
-  content, no internal risk register, no "things to check before presenting", and nothing about
-  who is blocked on what. Security specifics (e.g. which env vars gate sign-in and what happens
-  if one is cleared) stay in `CLAUDE.md` / `DEPLOY.md`, NOT on a broadly-readable page. Re-read
-  anything you add through the question "would I want an AE forwarding this?".
-- **Light theme only**, on Invoca's own brand tokens lifted from an invoca.com capture:
-  `#00b388` green, `#004030` deep green, `#0a231e` ink, sand `#f2f5e4` / `#f9f9f6` / `#f8faf1`,
-  `#626464` grey, Inter. There is deliberately no dark variant and no `[data-theme]` hook, so
-  every surface and ink is painted explicitly and the page holds its look on any host.
-- **Three tabs**: "The short version" (leadership), "Technical detail" (maintainers), and
-  "How was this created" (the toolchain, in plain language: Claude Code, GitHub, Render,
-  Anthropic API, Deepgram/ElevenLabs, Google sign-in, Google Places, Mapbox).
-- **No demo count anywhere.** It used to be printed in four places and filled from
-  `/api/status`; it is gone from the masthead, the prose, the diagram and the status table.
-  The live script still fills the commit SHA only. Don't reintroduce a count.
-- `engine/places.ts` fetches **storefront photo, rating, address AND reviews** (fields list at
-  `places.ts:59-68`, photo via a second endpoint), specifically for the ChatGPT placement.
-  Describing it as "address and rating" undersells it and is what the doc said at first.
-- **Three hand-authored SVG diagrams**, no Mermaid: a 3-zone overview on tab 1, and a 4-layer
-  technical diagram on tab 2 (browser / express middleware order / engine / storage+external).
-  Zone label pills are hand-sized, so **re-measure `getBBox()` in the browser after editing any
-  label** -- text silently overran two pills the first time. Pair pills to text by BOTH x and y
-  when measuring; several share a coordinate and a one-axis match returns the wrong pair.
+  but outside `<Routes>`. Fixed bottom-right pill, `.readme-fab` in `app.css`.
+- **It renders ONLY on the launch form** (`SHOW_ON = ["/", "/launch"]`). Everything past
+  that form is a replica of Invoca's product shown to a prospect, and a floating
+  internal-docs button on a dashboard reads as ours rather than theirs. The launch form is
+  the one screen that IS our tool. It is an ALLOW-list, not a deny-list, so a new route
+  defaults to not carrying it.
+- There are deliberately **no overlay-hide CSS rules** for it. `.aiad`, `.idr-root`,
+  `.sdr-root` and `.vp-root` all live inside the app shell, which the launch form is not
+  part of, so those selectors could never match. Don't re-add them.
 - **The docs ship with the app.** `public/readme.html` is copied into `dist/` by the build and
   served by `express.static`, so `/readme.html` works on Render, on `npm run serve`, and in
   dev. No external host, no claude.ai account needed. Opens in a new tab so an SE mid-demo

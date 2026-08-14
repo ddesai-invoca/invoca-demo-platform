@@ -12,20 +12,22 @@ import { useLocation } from "react-router-dom";
    of truth at ARCHITECTURE.md in sync when the docs change. */
 const README_URL = "/readme.html";
 
-/* Mounted once at the app root, so it covers the Launch screen and everything inside the
-   shell without two copies drifting apart. The exception is the screens we show a PROSPECT:
-   the fake Google results page, the ChatGPT sponsored placement and the SMS preview are
-   staged to look like somebody else's product, and an internal docs button floating on top
-   would break the illusion mid-demo. */
-const HIDE_ON = [
-  "/google-search",
-  "/integrations/chatgpt",
-  "/agent-studio/agent/preview",
-];
+/* THE LAUNCH FORM ONLY, never inside the platform.
+
+   It started out on every screen, and that was wrong: everything past the launch form is
+   a replica of Invoca's product, shown to a prospect. A floating internal-docs button
+   sitting on top of a dashboard is not part of what we are demoing, and it reads as ours
+   rather than theirs. The launch form is the one screen that IS our tool, so that is
+   where the docs belong.
+
+   An allow-list rather than a deny-list on purpose: a new route should default to NOT
+   carrying it, and the old deny-list would have quietly added the button to every screen
+   built from here on. */
+const SHOW_ON = ["/", "/launch"];
 
 export function ReadmeButton() {
   const { pathname } = useLocation();
-  if (HIDE_ON.includes(pathname)) return null;
+  if (!SHOW_ON.includes(pathname)) return null;
 
   return (
     <a

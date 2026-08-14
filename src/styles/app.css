@@ -2591,13 +2591,10 @@ button.nav-item {
   width: 17px; height: 17px; fill: none; stroke: currentColor;
   stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
 }
-/* Every overlay in the app sits above z-900 and covers the viewport (.aiad z-3000,
-   .idr-/.sdr-/.vp-root z-1200), so the button can never be clicked through one. Hide it
-   outright anyway rather than letting it glow through a translucent backdrop. */
-body:has(.aiad--open) .readme-fab,
-body:has(.idr-root) .readme-fab,
-body:has(.sdr-root) .readme-fab,
-body:has(.vp-root) .readme-fab { opacity: 0; pointer-events: none; }
+/* No overlay rules here any more. The button renders ONLY on the launch form, and every
+   overlay that used to cover it (.aiad, .idr-/.sdr-/.vp-root) lives inside the app shell,
+   which the launch form is not part of. Keeping selectors that can no longer match makes
+   the next reader think they are load-bearing. */
 @media (max-width: 640px) { .readme-fab { right: 14px; bottom: 14px; } }
 
 /* ---- Ask AI: the Preview Agent's question list -------------------------------
