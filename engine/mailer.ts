@@ -18,7 +18,8 @@
    SMTP_APP_PASSWORD the app runs exactly as before and a would-be email is
    logged instead of sent. The feature works end to end without it; only the
    notification is silent. That is what lets this ship before the credential
-   exists, and it is why `configured` is reported on /api/status.
+   exists, and it is why /api/status reports `integrations.emailConfigured` — a
+   BOOLEAN, never the address, since that endpoint is public.
    ============================================================================= */
 
 import nodemailer from "nodemailer";

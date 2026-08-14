@@ -211,6 +211,7 @@ function statusApi(): Plugin {
             anthropicKey: !!env.ANTHROPIC_API_KEY,
             googlePlacesKey: !!env.GOOGLE_PLACES_API_KEY,
             mapboxTokenInServerEnv: !!env.VITE_MAPBOX_TOKEN,
+            emailConfigured: !!(env.SMTP_USER && env.SMTP_APP_PASSWORD),
             authGate: authEnabled,
           })))
         } catch (e: any) {

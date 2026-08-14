@@ -33,6 +33,7 @@ import { askAssistant } from "./engine/assistant.ts";
 import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
 import { handleDemoApi, isAdmin } from "./engine/demoApi.ts";
 import { handleFeedbackApi } from "./engine/feedbackApi.ts";
+import { mailConfigured } from "./engine/mailer.ts";
 import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
 import { deployStatus } from "./engine/status.ts";
 import { runCanary, recordRun, toPublic as canaryPublic, BUDGET_SECONDS } from "./engine/canary.ts";
@@ -79,6 +80,7 @@ app.get("/api/status", (_req, res) => res.json(deployStatus({
   googlePlacesKey: !!process.env.GOOGLE_PLACES_API_KEY,
   mapboxTokenInServerEnv: !!process.env.VITE_MAPBOX_TOKEN,
   authGate: authEnabled,
+  emailConfigured: mailConfigured(),
 })));
 
 /* PUBLIC NIGHTLY CANARY RESULT — timings + audit for the last generation run.

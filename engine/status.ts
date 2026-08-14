@@ -39,6 +39,7 @@ export interface StatusInput {
   googlePlacesKey: boolean;
   mapboxTokenInServerEnv: boolean;
   authGate: boolean;
+  emailConfigured: boolean;
 }
 
 export function deployStatus(input: StatusInput) {
@@ -63,6 +64,11 @@ export function deployStatus(input: StatusInput) {
     storage: { persistent: isPersistent(DATA_DIR), error: storageError },
     integrations: {
       anthropicKey: input.anthropicKey,
+      /* Whether feedback completion emails can send. A BOOLEAN, never the address:
+         this endpoint is public, so it reports that a thing is configured, never
+         what it is configured to. Lets you confirm SMTP landed after a Render
+         restart without signing in or mailing a colleague to find out. */
+      emailConfigured: input.emailConfigured,
       googlePlacesKey: input.googlePlacesKey,
       /* The frontend needs the Mapbox token at BUILD time, so its presence in the
          SERVER env does not prove the deployed bundle carries it. Named for what
