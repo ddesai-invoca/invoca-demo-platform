@@ -1170,7 +1170,15 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   `"quoted, fields"`), a single run-on paragraph split on `?`, dedupe, and a
   `MAX_QUESTIONS` cap that is **reported, never silent**.
 - **Preview Workflow has its OWN sparkle**, in the chat drawer's header beside Reset,
-  with its own undo. It edits the SMS agent (greeting + questions). The workflow page's
+  with its own undo. **Both are hidden until the header is hovered** (`.wcp-icon-hover`,
+  `focus-within` for the keyboard): Reset and Close are part of the real Invoca widget,
+  the sparkle and undo are ours, so at rest the replica matches the capture. They hold
+  their layout space and only fade, or the header reflows under the cursor.
+- **It opens the drawer on the LEFT** (`side: "left"` on the focus). The chat is on the
+  right and the whole point is watching it pick the edit up, so the drawer must not cover
+  it: no backdrop (which would dim AND swallow clicks on the chat), `pointer-events` only
+  on the panel, and a width of `min(420px, max(300px, calc(100vw - 412px)))` so it yields
+  to the 400px chat instead of sliding under it. Verified side by side at 766px. It edits the SMS agent (greeting + questions). The workflow page's
   top-bar sparkle edits the DIAGRAM and nothing else. Two different things, two buttons:
   one button doing both was the confusing version.
 - **How a preview's sparkle gets its own scope**: `openDrawer({ scope: "agent", key,

@@ -36,6 +36,11 @@ export interface AssistantFocus {
   preview?: string;   // short text preview of the tile
   key?: string;       // scope "agent": the scope key its data lives under
   questionPath?: string; // scope "agent": where the question list sits in it
+  /* Open on the LEFT, with no backdrop. For a drawer opened FROM something the user
+     needs to keep watching: the preview chat lives on the right, and the whole point
+     of editing the agent is seeing the chat pick the change up. A right-hand drawer
+     would cover it and a backdrop would dim and block it. */
+  side?: "left";
 }
 
 export interface AssistantEdit { path: string; value: string }

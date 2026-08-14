@@ -2729,3 +2729,34 @@ button.nav-item {
 .wcp-icon-ai .material-icons { color: #2666f9; }
 .wcp-icon-off { opacity: .35; cursor: default; }
 .wcp-icon-off:hover { background: none; }
+
+/* ---- Ask AI on the LEFT, opened from a preview the user needs to keep watching ----
+   The Preview Workflow chat sits on the right, and the reason to edit the agent is to
+   watch that chat pick the change up. A right-hand drawer would land on top of it. */
+.aiad--left .aiad-panel {
+  right: auto; left: 0;
+  box-shadow: 8px 0 30px rgba(0,0,0,.18);
+  transform: translateX(-100%);
+  /* Never wide enough to cover the chat it exists to let you watch. The preview
+     drawer is 400px on the right, so this yields to it on a narrow window rather
+     than sliding underneath: 420px when there is room, shrinking to fit, and never
+     below 300px (past which the question list stops being usable and a little
+     overlap is the better trade). */
+  width: min(420px, max(300px, calc(100vw - 412px)));
+}
+.aiad--left.aiad--open .aiad-panel { transform: translateX(0); }
+/* Only the panel takes clicks, so the chat on the right stays live while this is open. */
+.aiad--left.aiad--open { pointer-events: none; }
+.aiad--left .aiad-panel { pointer-events: auto; }
+
+/* ---- The chat's AI pair: hidden until hover ----------------------------------------
+   Reset and close are part of the real Invoca widget; the sparkle and undo are OURS.
+   Keeping them invisible until the header is hovered leaves the replica looking like
+   the capture at rest. They hold their layout space and only fade, which is what keeps
+   the invisible zone hoverable, and focus-visible reveals them for the keyboard. */
+.wcp-icon-hover { opacity: 0; transition: opacity .16s ease; }
+.wcp-head:hover .wcp-icon-hover,
+.wcp-head:focus-within .wcp-icon-hover { opacity: 1; }
+.wcp-icon-hover:focus-visible { opacity: 1; }
+/* Disabled undo still dims further, so "nothing to undo" reads on hover. */
+.wcp-head:hover .wcp-icon-hover.wcp-icon-off { opacity: .35; }

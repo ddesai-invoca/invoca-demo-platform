@@ -195,16 +195,16 @@ export function WorkflowChatPreview({ workflowName, wfSlug, onClose }: {
             stays on the workflow DIAGRAM, which is a different thing entirely, and
             one button doing both was the confusing part. */}
         <button
-          className="wcp-icon wcp-icon-ai"
+          className="wcp-icon wcp-icon-ai wcp-icon-hover"
           onClick={() => openDrawer({ scope: "agent", key: agentKey, questionPath: QUESTIONS_PATH,
-                                      label: `${profile.customerName} SMS agent` })}
+                                      label: `${profile.customerName} SMS agent`, side: "left" })}
           title="Ask AI - change what this agent says"
           aria-label="Ask AI to change what this agent says"
         >
           <span className="material-icons">auto_awesome</span>
         </button>
         <button
-          className={"wcp-icon" + (canUndo(agentKey) && !readOnly ? "" : " wcp-icon-off")}
+          className={"wcp-icon wcp-icon-hover" + (canUndo(agentKey) && !readOnly ? "" : " wcp-icon-off")}
           onClick={() => canUndo(agentKey) && !readOnly && undo(agentKey)}
           disabled={!canUndo(agentKey) || readOnly}
           title={canUndo(agentKey) && !readOnly ? "Undo the last AI change to this agent" : "Nothing to undo"}

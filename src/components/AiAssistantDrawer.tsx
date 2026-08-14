@@ -227,8 +227,11 @@ export function AiAssistantDrawer() {
   const placeholder = focus?.scope === "tile" ? "Ask about or change this tile…" : "Ask, edit a tile, or reshape the story…";
 
   return (
-    <div className={"aiad" + (open ? " aiad--open" : "")} aria-hidden={!open}>
-      <div className="aiad-backdrop" onClick={closeDrawer} />
+    <div className={"aiad" + (open ? " aiad--open" : "") + (focus?.side === "left" ? " aiad--left" : "")} aria-hidden={!open}>
+      {/* No backdrop on the left-hand variant: it exists so the user can watch the
+          thing it edits, and a backdrop would both dim that and swallow clicks on it.
+          Escape and the close button still dismiss it. */}
+      {focus?.side !== "left" && <div className="aiad-backdrop" onClick={closeDrawer} />}
       <aside className="aiad-panel" role="dialog" aria-label="Ask AI">
         <header className="aiad-head">
           <div className="aiad-title">
