@@ -1344,6 +1344,22 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   Don't "fix" one to match the other.
 - `ARCHITECTURE.md` is the Markdown source of truth; keep it and `readme.html` in sync.
 
+## `.env` and the dev server (a silent-config trap)
+- `vite.config.ts` reads `.env` with `loadEnv()`, which returns an OBJECT and does **not**
+  populate `process.env`. The API plugins are handed the few values they need explicitly,
+  but the **engine modules they dynamically import read `process.env` directly**
+  (`DEMO_ADMIN_EMAILS` in `demoApi`, `SMTP_*` in `mailer`, `DATA_DIR` in `demoStore`).
+  Under `npm run dev` all of those were empty regardless of what `.env` said.
+- Symptoms are silent, which is why this cost time: admin-only UI simply never appeared
+  locally, and a completion email would never have sent while the code looked correct.
+- Fixed at the top of `defineConfig`: every `loadEnv` key is copied onto `process.env`
+  unless a real shell variable already set it (so `FOO=1 npm run dev` still wins).
+- `npm start` / `npm run serve` were never affected: they use
+  `node --env-file-if-exists=.env`, which populates `process.env` properly.
+- **Engine changes need a dev-server RESTART**, not just a save: those modules are
+  dynamically imported and Node-cached. A stale one answers new routes with the old
+  shape, which is how `?summary=1` came back as a full list.
+
 ## Generation: optional fields become REQUIRED (a real bug, twice bitten)
 - `toSchema()` in `engine/core.ts` runs `sanitize()`, which sets
   `required = Object.keys(properties)` on every object. That is deliberate (strict

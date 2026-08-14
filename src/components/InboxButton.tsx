@@ -29,7 +29,11 @@ export function InboxButton() {
     let alive = true;
     fetch("/api/feedback?summary=1")
       .then((r) => (r.ok ? r.json() : null))
-      .then((d) => { if (alive && d?.admin) setSum(d); })
+      /* Shape-checked, not just truthy. A server still running a cached older
+         module answers this URL with the FULL list shape, which has `admin` but no
+         `open`, and reading `.open.feedback` off that throws and takes the launch
+         page down with it. Render nothing rather than crash. */
+      .then((d) => { if (alive && d?.admin && d?.open) setSum(d); })
       /* A failure here means no button, which is the right degradation: the board
          is still at /feedback and nothing else on the launch page is affected. */
       .catch(() => { /* stay hidden */ });
@@ -38,7 +42,7 @@ export function InboxButton() {
 
   if (!sum) return null;
 
-  const open = sum.open.feedback + sum.open.feature;
+  const open = (sum.open?.feedback ?? 0) + (sum.open?.feature ?? 0);
   const title = open
     ? `${open} open (${sum.open.feedback} feedback, ${sum.open.feature} feature) of ${sum.total}`
     : `Nothing open, ${sum.total} in total`;

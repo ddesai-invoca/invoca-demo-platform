@@ -427,6 +427,21 @@ function ttsApi(cfg: TtsSettings): Plugin {
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
+
+  /* PUT .env ON process.env FOR THE DEV SERVER.
+
+     loadEnv() returns an object; it does NOT populate process.env. The API plugins
+     below are handed the values they need explicitly, but the ENGINE modules they
+     dynamically import read process.env directly (DEMO_ADMIN_EMAILS in demoApi,
+     SMTP_* in mailer, DATA_DIR in demoStore). Under `npm run dev` those were always
+     empty, so an admin-only feature was invisible locally and a completion email
+     would never have sent no matter what .env said — both failing silently, which is
+     the worst way for configuration to be wrong.
+
+     A real shell variable still wins, so `FOO=1 npm run dev` overrides .env. */
+  for (const [k, v] of Object.entries(env)) {
+    if (v !== undefined && process.env[k] === undefined) process.env[k] = v
+  }
   const apiKey = env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY
   const deepgramKey = env.DEEPGRAM_API_KEY || process.env.DEEPGRAM_API_KEY
   const deepgramModel = env.DEEPGRAM_MODEL || process.env.DEEPGRAM_MODEL
