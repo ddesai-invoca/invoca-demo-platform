@@ -194,6 +194,7 @@ function buildSystem(input: AssistantInput): string {
       `  "smsPlaybook.greeting" is the ONLY path for the opening message. NEVER write a greeting into "brandConversationRules", a qualifying question, or any other field because it looks like a plausible home for one. Those are different things and overwriting them corrupts the page.`,
       `  When the user changes the USE CASE, rewrite the greeting AND the questions together. The greeting has to carry the use case on its own, because it is often the only message a prospect reads: a re-engagement opener references the earlier conversation and asks if they are still interested, a first-contact opener introduces the business and any current offer. An opener that would fit any situation equally well is a failed answer.`,
       `  Keep it to 1-3 short sentences of plain text, no markdown and no emoji, and end by inviting a reply.`,
+      `  ADDRESS THE CUSTOMER BY NAME. The greeting must contain the literal token {name}, which the app replaces with the real customer's first name at send time. Write "Hi {name}," and NEVER a specific name like "Hi Sarah,": a hard-coded name is wrong for every other customer this demo is shown to. Keep the token exactly as {name}, in the first sentence.`,
     ] : []),
     `- Be concise and professional.`,
     ``,

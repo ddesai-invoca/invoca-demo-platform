@@ -1198,6 +1198,14 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   sentence, because splicing it mid-sentence needs the first letter lowercased and that
   mangles "72 Hour Sale" and brand names. Side effect: the opening line is now identical
   on every run, where the model used to improvise it per load.
+- **The greeting addresses the customer by name** via a literal `{name}` token, resolved by
+  `resolveGreeting()` in `smsBrain.ts` from `reports.voiceScreenpop.callerName` (falls back
+  to "there"). That name is deliberate: the SMS thread and the Voice Screenpop then name the
+  SAME customer instead of inventing a second one. The token is STORED, never the resolved
+  name, so a demo shown against a different caller still addresses the right person.
+  The drawer shows the RESOLVED text (it must match the phone) but sends the RAW token to
+  the model, and the prompt forbids a hard-coded first name. One resolver, called by both
+  the phone and the drawer, or the two drift on the fallback.
 - **Three traps, all hit while building this:**
   1. `editGuard` blocked the FIRST greeting write. `undefined -> string` is a type flip, and
      the field does not exist until someone sets it. Fixed with `CREATABLE_WHEN_ABSENT`

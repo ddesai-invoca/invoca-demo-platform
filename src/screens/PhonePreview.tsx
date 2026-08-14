@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
-import { buildSmsBrain } from "../data/smsBrain";
+import { buildSmsBrain, resolveGreeting } from "../data/smsBrain";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 
@@ -238,9 +238,7 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
          time an SE runs the demo. {name} takes the screenpop caller's first
          name so it's a real person from the rest of the story. */
       if (brain.openingMessage) {
-        const first = (profile.reports.voiceScreenpop?.callerName ?? "").split(/\s+/)[0];
-        setMessages([{ role: "assistant",
-          content: brain.openingMessage.replace(/\{name\}/g, first || "there") }]);
+        setMessages([{ role: "assistant", content: resolveGreeting(brain.openingMessage, profile) }]);
         return;
       }
       setBusy(true);

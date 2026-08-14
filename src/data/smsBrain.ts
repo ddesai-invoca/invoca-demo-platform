@@ -73,7 +73,25 @@ export function defaultGreeting(customerName: string, playbook: AgentConfigView[
   const booking = playbook?.bookingType?.trim() || "appointment";
   const offer = playbook?.offer?.trim() ?? "";
   const offerSentence = offer ? ` ${/[.!?]$/.test(offer) ? offer : offer + "."}` : "";
-  return `Hi, I'm ${customerName}'s AI assistant. I can help you book ${aOrAn(booking)} ${booking}.${offerSentence} Would you like to get started?`;
+  /* {name} is resolved at render by resolveGreeting(). Kept as a TOKEN in the
+     stored text rather than a baked-in name so the greeting stays portable: the
+     same demo re-opened against a different caller still addresses the right
+     person, and an SE editing it can move the name around. */
+  return `Hi {name}, I'm ${customerName}'s AI assistant. I can help you book ${aOrAn(booking)} ${booking}.${offerSentence} Would you like to get started?`;
+}
+
+/* THE ONE PLACE {name} IS RESOLVED.
+
+   The caller comes from the Voice Screenpop, deliberately: that is a real person
+   from elsewhere in this prospect's story, so the SMS thread and the screenpop
+   name the same customer instead of inventing a second one.
+
+   Both the phone and the Ask AI drawer call this, so the row in the drawer shows
+   the exact text the phone sends. Two copies of this substitution would drift the
+   moment one of them handled the fallback differently. */
+export function resolveGreeting(text: string, profile: Profile): string {
+  const first = (profile.reports.voiceScreenpop?.callerName ?? "").split(/\s+/)[0];
+  return text.replace(/\{name\}/g, first || "there");
 }
 
 /** The `brain` POST body for /api/chat. `wf` is an extra workflow (e.g. a nurture

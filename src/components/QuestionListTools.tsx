@@ -64,11 +64,14 @@ const USE_CASES = [
   },
 ];
 
-export function QuestionListTools({ greeting, questions, readOnly, onReplace, onPrompt }: {
-  /* The agent's first text. Either what someone set, or the derived default from
-     smsBrain.ts, so this row is never empty and always matches what the phone
-     actually sends. */
+export function QuestionListTools({ greeting, greetingRaw, questions, readOnly, onReplace, onPrompt }: {
+  /* The agent's first text, with {name} already resolved, so this row reads as
+     exactly what the phone sends. Either what someone set or the derived default. */
   greeting: string;
+  /* The same text with the {name} TOKEN intact. This is what goes to the model:
+     handing it the resolved version gets a literal first name baked into the
+     stored greeting, which then addresses the wrong person on the next demo. */
+  greetingRaw: string;
   questions: string[];
   readOnly: boolean;
   /** Apply a new list locally. `note` describes where it came from, for the log. */
@@ -153,7 +156,7 @@ export function QuestionListTools({ greeting, questions, readOnly, onReplace, on
             <button
               className="aiq-q aiq-q-greeting" disabled={readOnly}
               title={readOnly ? "This demo is read-only" : "Change the opening message"}
-              onClick={() => onPrompt(`Change the agent's opening message (currently "${greeting}") to: `)}
+              onClick={() => onPrompt(`Change the agent's opening message (currently "${greetingRaw}", where {name} is the customer's first name) to: `)}
             >
               <span className="material-icons aiq-greeting-icon">sms</span>
               <span className="aiq-text">{greeting}</span>

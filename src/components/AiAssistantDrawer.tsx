@@ -6,7 +6,7 @@ import { columnEdits } from "../data/columnEdits";
 import { getByPath } from "../data/editGuard";
 import { QuestionListTools } from "./QuestionListTools";
 import { stripGeneratedDashes, GREETING_PATH } from "../data/questionImport";
-import { defaultGreeting } from "../data/smsBrain";
+import { defaultGreeting, resolveGreeting } from "../data/smsBrain";
 
 /* The "Ask AI" drawer: slides in from the right over a dimmed backdrop. Scope is
    set by which sparkle opened it — the whole PAGE (the top-bar sparkle, on every
@@ -22,7 +22,7 @@ interface Msg { role: "user" | "assistant"; content: string; icon?: string }
 export function AiAssistantDrawer() {
   const { open, closeDrawer, active: registered, focus, effectiveData, applyEdits, addTile, replaceTile, readOnly, activeDemo } = useAiAssistant();
   const { pathname } = useLocation();
-  const { profileId } = useProfile();
+  const { profileId, profile } = useProfile();
 
   /* THE SCOPE MUST MATCH THE PAGE YOU ARE ON.
 
@@ -64,8 +64,13 @@ export function AiAssistantDrawer() {
   const greeting = useMemo(() => {
     if (!active || !questionPath) return null;
     const data = effectiveData(active.key) as any;
-    return (getByPath(data, GREETING_PATH) as string) || defaultGreeting(active.customerName, data?.smsPlaybook);
-  }, [active, questionPath, effectiveData]);
+    /* RAW keeps the {name} token, which is what the model must edit and keep.
+       DISPLAY resolves it, so the row reads as the text the phone actually sends.
+       Showing the raw token would have the SE reading "Hi {name}," on screen;
+       sending the resolved one would have the model bake a literal first name in. */
+    const raw = (getByPath(data, GREETING_PATH) as string) || defaultGreeting(active.customerName, data?.smsPlaybook);
+    return { raw, display: resolveGreeting(raw, profile) };
+  }, [active, questionPath, effectiveData, profile]);
   const scopeLabel = focus?.scope === "tile" ? (focus.label || "This tile") : effTitle;
 
   // Fresh chat each time the drawer opens (scope may differ).
@@ -107,7 +112,7 @@ export function AiAssistantDrawer() {
       if (questionPath && greeting && eff && typeof eff === "object") {
         const cur = eff as any;
         if (!cur.smsPlaybook?.greeting) {
-          eff = { ...cur, smsPlaybook: { ...(cur.smsPlaybook ?? {}), greeting } };
+          eff = { ...cur, smsPlaybook: { ...(cur.smsPlaybook ?? {}), greeting: greeting.raw } };
         }
       }
       let dataContext = "";
@@ -235,7 +240,8 @@ export function AiAssistantDrawer() {
               updates, which is the only confirmation that it actually landed. */}
           {questions && (
             <QuestionListTools
-              greeting={greeting ?? ""}
+              greeting={greeting?.display ?? ""}
+              greetingRaw={greeting?.raw ?? ""}
               questions={questions}
               readOnly={readOnly}
               onReplace={(next, note) => {
