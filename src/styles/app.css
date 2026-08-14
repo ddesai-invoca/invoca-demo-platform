@@ -2721,3 +2721,11 @@ button.nav-item {
   font-size: 13px; line-height: 1.3;
 }
 .wcp-restart svg { width: 15px; height: 15px; flex: none; }
+
+/* The Preview Workflow chat's OWN AI + undo, beside its reset. Matched to the
+   embedded widget's header (its stylesheet is the source of truth), so they read as
+   part of that widget rather than as platform chrome dropped on top. */
+.wcp-icon .material-icons { font-size: 19px; color: #15243e; }
+.wcp-icon-ai .material-icons { color: #2666f9; }
+.wcp-icon-off { opacity: .35; cursor: default; }
+.wcp-icon-off:hover { background: none; }

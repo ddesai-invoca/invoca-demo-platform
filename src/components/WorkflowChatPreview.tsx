@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
+import { QUESTIONS_PATH } from "../data/questionImport";
 import type { AgentConfigView } from "../data/schema";
 
 /* =============================================================================
@@ -75,17 +76,28 @@ export function WorkflowChatPreview({ workflowName, wfSlug, onClose }: {
   onClose: () => void;
 }) {
   const { profile, profileId } = useProfile();
-  const { effectiveData } = useAiAssistant();
+  const { effectiveData, registerBase, openDrawer, undo, canUndo, readOnly } = useAiAssistant();
 
   /* The SMS agent's questions live under the PREVIEW AGENT page's scope, so an
      edit made there governs this drawer too. Falls back to the profile's own
      config when that page has never been opened (nothing registered, no
      override). Never registers a scope — see the header note. */
+  /* The scope the SMS agent's data lives under. Owned by the Preview Agent tab, but
+     the agent is the same one either preview talks to, so this drawer's sparkle
+     edits it too. */
+  const agentKey = `${profileId}::${SMS_AGENT_SCOPE_PATH}`;
+  /* applyEdits refuses a key with no base, so an SE who opens this chat without ever
+     visiting the Preview Agent tab would make edits that silently did nothing.
+     registerBase fills that gap WITHOUT making it the active scope, which a second
+     registerScope would do, repointing this page's sparkle away from the diagram. */
+  useEffect(() => { registerBase(agentKey, profile.reports.agentConfig); },
+    [agentKey, profile.reports.agentConfig, registerBase]);
+
   const agentConfig = useMemo(() => {
-    const edited = effectiveData(`${profileId}::${SMS_AGENT_SCOPE_PATH}`) as
+    const edited = effectiveData(agentKey) as
       (AgentConfigView & { title?: string }) | undefined;
     return (edited ?? profile.reports.agentConfig) as AgentConfigView | undefined;
-  }, [effectiveData, profileId, profile.reports.agentConfig]);
+  }, [effectiveData, agentKey, profile.reports.agentConfig]);
 
   const wf = wfSlug
     ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
@@ -178,6 +190,28 @@ export function WorkflowChatPreview({ workflowName, wfSlug, onClose }: {
       aria-label={`Preview Workflow ${workflowName}`}>
       <div className="wcp-head">
         <span className="wcp-title">Preview Workflow - {workflowName} (Draft)</span>
+        {/* THIS drawer's AI, not the page's. It edits what the SMS agent says: the
+            opening message and the qualifying questions. The page's own sparkle
+            stays on the workflow DIAGRAM, which is a different thing entirely, and
+            one button doing both was the confusing part. */}
+        <button
+          className="wcp-icon wcp-icon-ai"
+          onClick={() => openDrawer({ scope: "agent", key: agentKey, questionPath: QUESTIONS_PATH,
+                                      label: `${profile.customerName} SMS agent` })}
+          title="Ask AI - change what this agent says"
+          aria-label="Ask AI to change what this agent says"
+        >
+          <span className="material-icons">auto_awesome</span>
+        </button>
+        <button
+          className={"wcp-icon" + (canUndo(agentKey) && !readOnly ? "" : " wcp-icon-off")}
+          onClick={() => canUndo(agentKey) && !readOnly && undo(agentKey)}
+          disabled={!canUndo(agentKey) || readOnly}
+          title={canUndo(agentKey) && !readOnly ? "Undo the last AI change to this agent" : "Nothing to undo"}
+          aria-label="Undo the last AI change to this agent"
+        >
+          <span className="material-icons">undo</span>
+        </button>
         <button className="wcp-icon" onClick={reset} title="Reset Chat" aria-label="Reset chat">
           <RefreshIcon />
         </button>

@@ -23,11 +23,19 @@ export interface GeneratedTile {
 }
 
 export interface AssistantFocus {
-  scope: "dashboard" | "tile";
+  /* "agent" is opened by a PREVIEW's own sparkle, not the page's. The page sparkle
+     always edits the page you are looking at; the agent lives in a different scope
+     and is shared by both previews, so the two must not be the same button. This
+     focus carries the scope with it, which is what lets a chat drawer sitting on the
+     workflow page edit the agent while the page's own sparkle still edits the
+     diagram. */
+  scope: "dashboard" | "tile" | "agent";
   tileKind?: "builtin" | "generated";
   id?: string;        // generated-tile id (tileKind "generated")
-  label?: string;     // tile title
+  label?: string;     // tile title, or the agent's name in the heading
   preview?: string;   // short text preview of the tile
+  key?: string;       // scope "agent": the scope key its data lives under
+  questionPath?: string; // scope "agent": where the question list sits in it
 }
 
 export interface AssistantEdit { path: string; value: string }
@@ -38,15 +46,7 @@ export interface AssistantEdit { path: string; value: string }
    list" would light them up on Agent Config, AI Recommendations and Knowledge
    Sources too. Only the page whose JOB is those questions passes this, which keeps
    the change to the one screen it was asked for. */
-interface Scope {
-  key: string; customerName: string; baseTitle: string;
-  questionPath?: string;
-  /* The scope key the QUESTIONS live under, when that is not this page's own key.
-     The workflow page's scope is its DIAGRAM, but the agent it previews is the same
-     one the Preview Agent tab owns, so its question tools have to edit that page's
-     data. Absent means "my own key", which is the Preview Agent tab's case. */
-  questionKey?: string;
-}
+interface Scope { key: string; customerName: string; baseTitle: string; questionPath?: string }
 interface Snapshot { override: unknown | undefined; tiles: GeneratedTile[] }
 
 interface AiAssistantCtx {
@@ -55,7 +55,7 @@ interface AiAssistantCtx {
   openDrawer: (focus?: AssistantFocus) => void;
   closeDrawer: () => void;
   active: Scope | null;
-  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; questionKey?: string }) => void;
+  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string }) => void;
   /* Make a key EDITABLE without making it the active scope. applyEdits refuses a
      key with no base, so a page editing another page's data must ensure that base
      exists first; a second registerScope would do it but is last-write-wins and
@@ -175,13 +175,12 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const openDrawer = useCallback((f?: AssistantFocus) => { setFocus(f ?? null); setOpen(true); }, []);
   const closeDrawer = useCallback(() => setOpen(false), []);
 
-  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; questionKey?: string }) => {
+  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string }) => {
     baseRef.current[s.key] = s.baseData;
     setActive((prev) => (
-      prev && prev.key === s.key && prev.baseTitle === s.baseTitle
-        && prev.questionPath === s.questionPath && prev.questionKey === s.questionKey
+      prev && prev.key === s.key && prev.baseTitle === s.baseTitle && prev.questionPath === s.questionPath
         ? prev
-        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath, questionKey: s.questionKey }
+        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath }
     ));
   }, []);
 

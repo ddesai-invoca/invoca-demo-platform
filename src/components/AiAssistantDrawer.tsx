@@ -36,7 +36,19 @@ export function AiAssistantDrawer() {
      So the scope is only honoured when its key equals THIS page's key. Otherwise
      the drawer treats the page as having nothing to edit. */
   const pageKey = `${profileId}::${pathname}`;
-  const active = registered && registered.key === pageKey ? registered : null;
+  /* AN "AGENT" FOCUS BRINGS ITS OWN SCOPE.
+
+     Opened by the sparkle inside a preview chat, not by the page's. The SMS agent is
+     shared by both previews and is not the workflow page's data, so it cannot be the
+     page scope: the page sparkle has to keep editing the diagram. Synthesising the
+     scope here means everything downstream (the question tools, applyEdits, the undo
+     stack, the model context) works unchanged and there is still only ever ONE scope
+     in play per drawer opening. */
+  const agentFocus = focus?.scope === "agent" && focus.key ? focus : null;
+  const active = agentFocus
+    ? { key: agentFocus.key!, customerName: profile.customerName,
+        baseTitle: agentFocus.label ?? "SMS agent", questionPath: agentFocus.questionPath }
+    : (registered && registered.key === pageKey ? registered : null);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -53,11 +65,7 @@ export function AiAssistantDrawer() {
      tools. Read from the EFFECTIVE data so the list re-renders the moment the
      assistant or an import changes it. */
   const questionPath = focus?.scope === "tile" ? undefined : active?.questionPath;
-  /* The questions may live under ANOTHER page's key. The workflow page's own scope
-     is its diagram, but the agent it previews is the Preview Agent tab's agent, and
-     there is only one of it: an edit made from either place has to land in the same
-     data or the two previews start showing different agents. */
-  const qKey = active ? (active.questionKey ?? active.key) : "";
+  const qKey = active ? active.key : "";
   const questions = useMemo(() => {
     if (!active || !questionPath) return null;
     const v = getByPath(effectiveData(qKey), questionPath);
@@ -76,7 +84,9 @@ export function AiAssistantDrawer() {
     const raw = (getByPath(data, GREETING_PATH) as string) || defaultGreeting(active.customerName, data?.smsPlaybook);
     return { raw, display: resolveGreeting(raw, profile) };
   }, [active, questionPath, qKey, effectiveData, profile]);
-  const scopeLabel = focus?.scope === "tile" ? (focus.label || "This tile") : effTitle;
+  const scopeLabel = focus?.scope === "tile" ? (focus.label || "This tile")
+    : agentFocus ? (agentFocus.label || "SMS agent")
+    : effTitle;
 
   // Fresh chat each time the drawer opens (scope may differ).
   useEffect(() => { if (open) { setMessages([]); setError(""); } }, [open, key, focus]);
@@ -120,8 +130,7 @@ export function AiAssistantDrawer() {
            agent is not in this page's data at all, so the model would have nothing
            to edit. Fold the playbook in beside the page's own data: the model then
            sees both, and the paths it is told to use resolve. */
-        const foreign = qKey !== active.key ? (effectiveData(qKey) as any)?.smsPlaybook : undefined;
-        const playbook = { ...(foreign ?? cur.smsPlaybook ?? {}) };
+        const playbook = { ...(cur.smsPlaybook ?? {}) };
         if (!playbook.greeting) playbook.greeting = greeting.raw;
         eff = { ...cur, smsPlaybook: playbook };
       }
@@ -199,14 +208,7 @@ export function AiAssistantDrawer() {
               } catch { return e; }
             })
           : r.edits;
-        /* SPLIT BY PATH. Anything under smsPlaybook belongs to the shared agent,
-           which may be another page's scope; everything else is this page's own
-           data. Applying the whole batch to one key would either drop the agent
-           edits or write a playbook into the workflow diagram. */
-        const agentEdits = qKey !== active.key ? edits.filter((e: any) => /^smsPlaybook\b/.test(e.path)) : [];
-        const pageEdits = qKey !== active.key ? edits.filter((e: any) => !/^smsPlaybook\b/.test(e.path)) : edits;
-        const n = (pageEdits.length ? applyEdits(active.key, pageEdits) : 0)
-                + (agentEdits.length ? applyEdits(qKey, agentEdits) : 0);
+        const n = applyEdits(active.key, edits);
         push(n ? (r.answer || `Updated ${n} value${n > 1 ? "s" : ""} on this page.`) : "I couldn't map that change to anything on this page — try naming the metric, title or row you mean.", "auto_awesome");
       } else {
         push(r?.answer || "…");
