@@ -1302,6 +1302,17 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   mismatched array is damage, not data, so it falls back to the named fields. This is
   what makes demos ALREADY saved with the bad array render correctly, including live ones
   nobody is going to re-generate.
+- **Four layers now stop this recurring**, because the schema omit alone is one edit away
+  from being undone:
+  1. `DIGITAL_INSIGHTS_GEN` omits app-owned fields from the generation schema.
+  2. `stripAppOwnedFields()` deletes them from the result anyway, whatever comes back.
+  3. `auditProfile()` (engine/canary.ts) has four Digital Journey checks: canonical
+     dimension columns, no app-owned `cells`, signals aligned to signalColumns, and no
+     blank marketing values. The nightly canary runs them on a fresh prospect.
+  4. `npm run audit` runs those SAME rules over every seed in `src/data/generated` and
+     every local demo in `.data/demos`, exits non-zero on failure, needs no network.
+     Run it before a push that touches the engine or the report.
+  Each check was verified to FAIL on its own broken shape, not merely to pass on good data.
 - Switching profiles in a test: `invoca-demo:activeId` is a **raw string**, not JSON.
   `JSON.stringify(id)` writes `"autonation"` with quotes, no profile matches, and the app
   silently falls back to Shady Blinds, so the test "passes" against the wrong prospect.

@@ -374,6 +374,18 @@ const DIGITAL_INSIGHTS_GEN = DigitalInsightsReport.extend({
   rows: z.array(InteractionRow.omit({ cells: true })),
 });
 
+/* AND STRIP IT ANYWAY, whatever comes back.
+
+   The omit above is the fix; this is the seatbelt. A model can return a field the
+   schema did not ask for, a future edit can widen the type by accident, and the cost
+   of this line is nothing while the cost of missing it was 39 demos in the shared
+   library rendering an interaction count under "Marketing Source".
+
+   Any field the APP owns rather than the model gets deleted here. */
+function stripAppOwnedFields(r: z.infer<typeof DigitalInsightsReport>): z.infer<typeof DigitalInsightsReport> {
+  return { ...r, rows: r.rows.map(({ cells, ...row }) => row) };
+}
+
 function generateDigitalInsights(client: Anthropic, name: string, brandDomain: string, brief: string, bookingTerm: string, sc: Scale) {
   return structured<z.infer<typeof DigitalInsightsReport>>(
     client,
@@ -1076,7 +1088,7 @@ export async function generateProfile(
     () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm)),
     () => phase("signalManager", () => generateSignalManager(client, name, brief, bookingTerm)),
     () => phase("dashboard", () => generateDashboardCore(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale)),
-    () => phase("digitalInsights", () => generateDigitalInsights(client, name, brandDomain, brief, bookingTerm, scale)),
+    () => phase("digitalInsights", async () => stripAppOwnedFields(await generateDigitalInsights(client, name, brandDomain, brief, bookingTerm, scale))),
     () => phase("conversationIntelligence", () => generateConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
     () => phase("callDetail", () => generateCallDetail(client, name, brief, bookingTerm)),
     () => phase("aiAgentConversion", () => generateAiAgentConversionDashboard(client, name, brief, bookingTerm, customerNoun, qualifiedCallTerm, conversionTerm, scale)),

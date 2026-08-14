@@ -146,6 +146,40 @@ export function auditProfile(p: any): { checks: number; failures: string[] } {
     if (Array.isArray(v)) return v.forEach(walk);
     if (v && typeof v === "object") return Object.values(v).forEach(walk);
   })(p);
+  /* THE DIGITAL JOURNEY REPORT'S COLUMNS.
+
+     Added after a silent regression that reached 39 demos in the shared library: an
+     app-owned field (InteractionRow.cells, written by columnEdits when a column is
+     added) was optional in the schema, and toSchema()'s sanitize() marks every
+     property required, so generation forced the model to invent one. It produced two
+     or four strings against six dimension columns, the table preferred that array
+     over the named fields, and every affected demo showed an interaction count under
+     "Marketing Source" and revenue under "Marketing Medium".
+
+     Nothing caught it. It shipped on Aug 4 and was found by eye on Aug 13, by which
+     point most of the library carried it. These four checks are what would have
+     failed at 5am on Aug 5. */
+  const dj = p?.reports?.digitalInsights;
+  const DIMS = ["Marketing Source", "Marketing Medium", "Marketing Campaign",
+                "Marketing Search Term", "Full Landing Page URL", "Website Journey"];
+  const djRows: any[] = dj?.rows ?? [];
+  check("Digital Journey: canonical dimension columns",
+    JSON.stringify(dj?.dimensionColumns ?? []) === JSON.stringify(DIMS));
+  /* `cells` is written by the APP, never by generation. Present here means the
+     generation schema has drifted back to asking for it. */
+  check("Digital Journey: rows carry no app-owned `cells`",
+    djRows.length > 0 && djRows.every((r) => r.cells === undefined));
+  /* Each row's signals are positional against signalColumns; a length mismatch puts
+     every tick under the wrong heading. */
+  check("Digital Journey: signals aligned to signalColumns",
+    djRows.length > 0 && djRows.every((r) => (r.signals ?? []).length === (dj?.signalColumns ?? []).length));
+  /* A blank named field renders as an empty cell under a real heading, which reads
+     as missing data rather than as a bug. */
+  check("Digital Journey: every row has its marketing values",
+    djRows.length > 0 && djRows.every((r) =>
+      ["marketingSource", "marketingMedium", "marketingCampaign", "landingPageUrl", "websiteJourney"]
+        .every((f) => String(r[f] ?? "").trim().length > 0)));
+
   check(`no dash-joined prose (found ${prose})`, prose === 0);
 
   return { checks, failures: fail };
