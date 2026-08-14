@@ -30,7 +30,9 @@ So the host must be able to **run Node.js** (a VPS with SSH, or a Node platform)
 | `ANTHROPIC_API_KEY` | **Required.** All AI: chat, Ask AI, analyze, generation |
 | `ELEVENLABS_API_KEY` | Premium Voice-agent TTS (ElevenLabs) |
 | `DEEPGRAM_API_KEY` | Premium Voice-agent TTS (Deepgram) — alternative to ElevenLabs |
-| `SMTP_USER` | Your @invoca.com address — feedback completion emails are sent FROM it |
+| `GMAIL_REFRESH_TOKEN` | Feedback completion emails via the Gmail API. Minted once at `/auth/gmail` (admin only) |
+| `GMAIL_SENDER` | The address those emails send AS, e.g. `ddesai@invoca.com` |
+| `SMTP_USER` | Fallback only. Your @invoca.com address, if app passwords are allowed |
 | `SMTP_APP_PASSWORD` | Google **app password** (16 chars, needs 2-Step Verification). Not your account password |
 | `TTS_PROVIDER` | Optional: `deepgram` or `elevenlabs` (auto-detected otherwise) |
 | `PORT` | Optional: port to listen on (default `3000`; Render sets this automatically) |

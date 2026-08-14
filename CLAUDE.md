@@ -1296,8 +1296,21 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
 - **Query params must be DECODED.** `qs()` returning a raw value made `image%2Fpng` fail the
   allow-list, so every image upload 415'd while `name` (decoded separately) looked fine.
   It decodes now, and splits on the FIRST `=` only.
-- **Email**: `engine/mailer.ts`, Google Workspace SMTP, sent FROM `SMTP_USER` (your own
-  address) TO the submitter's sign-in address. Chosen over a transactional provider: no
+- **Email**: `engine/mailer.ts`, sent FROM your own address TO the submitter's sign-in
+  address. TWO routes, tried in order:
+  1. **Gmail API** (what is actually used). Invoca's Workspace **blocks app passwords**
+     ("The setting you are looking for is not available for your account"), so SMTP was a
+     dead end. This reuses the SIGN-IN OAuth client plus a refresh token minted once at
+     **`/auth/gmail`** (admin only). That route reuses the EXISTING `/auth/callback`
+     redirect URI, distinguished by a `gmail:` state prefix, so nothing new has to be
+     registered in the Cloud Console beyond adding the `gmail.send` scope.
+     - `access_type=offline` **and** `prompt=consent` are both required. Without the
+       prompt Google reuses a prior grant and returns no refresh token at all, which is
+       the classic "it worked but there is no token" dead end. The callback says so
+       explicitly if it happens.
+     - The token is shown ONCE on a page and never written to disk or logged.
+     - Access tokens are cached until a minute before expiry; no background refresher.
+  2. **SMTP app password**, kept for a tenant that allows them. Chosen over a transactional provider: no
   vendor, no DNS verification, and a reply lands in a real inbox.
   - `SMTP_APP_PASSWORD` is a Google **app password**, not the account password.
   - **Unconfigured is a supported state.** No SMTP vars means the feature works end to end

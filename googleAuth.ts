@@ -17,6 +17,9 @@
    ============================================================================= */
 
 import crypto from "node:crypto";
+/* One admin list for the whole app: the same people who can triage feedback are the
+   ones who may connect the sending account. A second list here would drift. */
+import { isAdmin } from "./engine/demoApi.ts";
 import type { Express, Request, Response, NextFunction } from "express";
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "";
@@ -71,6 +74,41 @@ export function currentUser(req: { headers: { cookie?: string } }): SessionUser 
   return { email: session.email, name: session.name || session.email.split("@")[0] };
 }
 
+/* Shown once, to an admin, on their own screen. The token is a credential, so the
+   page says so plainly, tells them where it goes, and offers the revoke link. It is
+   never logged: a credential in a log file outlives every intention to remove it. */
+function gmailTokenPage(account: string, refreshToken: string): string {
+  const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return `<!doctype html><meta charset="utf-8"><title>Gmail connected</title>
+<style>
+ body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#f7f8f4;color:#0a231e;margin:0;padding:48px 20px;line-height:1.6}
+ .w{max-width:640px;margin:0 auto;background:#fff;border:1px solid #e6e9e5;border-radius:14px;padding:28px 30px}
+ h1{margin:0 0 6px;font-size:22px;letter-spacing:-.02em}
+ p{margin:0 0 14px;color:#3d4d48}
+ code{background:#f4f6f2;border:1px solid #e6e9e5;border-radius:5px;padding:2px 6px;font-size:13px}
+ .tok{display:block;word-break:break-all;background:#0a231e;color:#9fe8d1;padding:14px 16px;border-radius:10px;font:13px ui-monospace,SFMono-Regular,Menlo,monospace;margin:0 0 16px}
+ .warn{background:#fff9e8;border:1px solid #e0b050;color:#7a5a10;border-radius:10px;padding:12px 15px;font-size:14px}
+ ol{color:#3d4d48;padding-left:20px} li{margin:0 0 8px}
+ a{color:#00a87f}
+</style>
+<div class="w">
+  <h1>Gmail connected</h1>
+  <p>Mail will send as <b>${esc(account)}</b>.</p>
+  <p><b>This is the refresh token. It is shown once and never stored here.</b></p>
+  <code class="tok">${esc(refreshToken)}</code>
+  <div class="warn">Treat it like a password: anyone holding it can send mail as this account.
+  Revoke it any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</div>
+  <ol>
+    <li>In Render, open the service, then <b>Environment</b>.</li>
+    <li>Add <code>GMAIL_REFRESH_TOKEN</code> = the value above.</li>
+    <li>Add <code>GMAIL_SENDER</code> = <code>${esc(account)}</code>.</li>
+    <li><b>Restart the service</b>, then check
+        <code>/api/status</code> shows <code>"emailConfigured": true</code>.</li>
+  </ol>
+  <p><a href="/">Back to the launch page</a></p>
+</div>`;
+}
+
 export function installAuth(app: Express) {
   if (!authEnabled) return;
   app.set("trust proxy", 1); // Render & other proxies terminate TLS → correct req.protocol/req.secure
@@ -91,6 +129,39 @@ export function installAuth(app: Express) {
     res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
   });
 
+  /* ---- ONE-TIME GMAIL CONSENT ------------------------------------------------
+     Invoca's Workspace blocks app passwords, so completion emails go through the
+     Gmail API instead. That needs a REFRESH TOKEN for the sending account, which
+     only exists if that account consents once with access_type=offline.
+
+     Deliberately reuses the EXISTING /auth/callback redirect URI, distinguished by
+     a state prefix, so nothing has to be registered in the Google Cloud Console
+     beyond adding the gmail.send scope to the consent screen.
+
+     Admin-gated: this mints a credential that can send mail as whoever runs it. */
+  app.get("/auth/gmail", (req: Request, res: Response) => {
+    const who = currentUser(req);
+    if (!isAdmin(who)) {
+      return res.status(403).send(deniedPage("Only an admin can connect the sending account."));
+    }
+    const state = "gmail:" + crypto.randomBytes(16).toString("hex");
+    res.setHeader("Set-Cookie", `oauth_state=${state}; HttpOnly; Path=/; Max-Age=600; SameSite=Lax${secure(req) ? "; Secure" : ""}`);
+    const params = new URLSearchParams({
+      client_id: CLIENT_ID,
+      redirect_uri: `${baseUrl(req)}/auth/callback`,
+      response_type: "code",
+      scope: "openid email profile https://www.googleapis.com/auth/gmail.send",
+      hd: ALLOWED_DOMAIN,
+      state,
+      /* offline + consent is what actually returns a refresh token. Without
+         prompt=consent Google reuses a prior grant and returns none, which is the
+         classic "it worked but there is no refresh_token" dead end. */
+      access_type: "offline",
+      prompt: "consent",
+    });
+    res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
+  });
+
   app.get("/auth/callback", async (req: Request, res: Response) => {
     try {
       const cookies = parseCookies(req.headers.cookie);
@@ -105,6 +176,22 @@ export function installAuth(app: Express) {
       });
       const tok: any = await tokenRes.json();
       if (!tok?.id_token) return res.status(403).send(deniedPage("Google sign-in failed."));
+
+      /* The Gmail consent leg: show the refresh token ONCE so it can be pasted
+         into the host's environment, then stop. It is deliberately not written to
+         disk — the environment is where every other credential in this app lives,
+         and a token sitting in a data directory is a copy nobody remembers. */
+      if (state.startsWith("gmail:")) {
+        const claims2: any = JSON.parse(Buffer.from(tok.id_token.split(".")[1], "base64url").toString());
+        const acct = String(claims2.email || "").toLowerCase();
+        res.setHeader("Set-Cookie", `oauth_state=; Path=/; Max-Age=0`);
+        if (!tok.refresh_token) {
+          return res.status(400).send(deniedPage(
+            "Google did not return a refresh token. That usually means the grant already existed: " +
+            "remove this app at <b>myaccount.google.com/permissions</b> and run <b>/auth/gmail</b> again."));
+        }
+        return res.send(gmailTokenPage(acct, tok.refresh_token));
+      }
 
       // The id_token came straight from Google's TLS token endpoint, so we can
       // trust its claims without re-fetching Google's public keys.
