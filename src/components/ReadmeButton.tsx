@@ -1,5 +1,3 @@
-import { useLocation } from "react-router-dom";
-
 /* The floating "Read.Me" button, bottom-right.
 
    Opens the full documentation: what the tool is, how it works, what it costs, and the
@@ -12,23 +10,11 @@ import { useLocation } from "react-router-dom";
    of truth at ARCHITECTURE.md in sync when the docs change. */
 const README_URL = "/readme.html";
 
-/* THE LAUNCH FORM ONLY, never inside the platform.
-
-   It started out on every screen, and that was wrong: everything past the launch form is
-   a replica of Invoca's product, shown to a prospect. A floating internal-docs button
-   sitting on top of a dashboard is not part of what we are demoing, and it reads as ours
-   rather than theirs. The launch form is the one screen that IS our tool, so that is
-   where the docs belong.
-
-   An allow-list rather than a deny-list on purpose: a new route should default to NOT
-   carrying it, and the old deny-list would have quietly added the button to every screen
-   built from here on. */
-const SHOW_ON = ["/", "/launch"];
-
+/* WHERE IT APPEARS is decided by LaunchCorner in App.tsx, which owns the whole
+   bottom-right stack: the launch form only, never inside the platform. Everything past
+   that form is a replica of Invoca's product shown to a prospect, and our own buttons do
+   not belong on top of it. */
 export function ReadmeButton() {
-  const { pathname } = useLocation();
-  if (!SHOW_ON.includes(pathname)) return null;
-
   return (
     <a
       className="readme-fab"

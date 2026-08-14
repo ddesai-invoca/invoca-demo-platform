@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ProfileProvider } from "./data/ProfileContext";
 import { SmsCaptureProvider } from "./data/SmsCaptureContext";
 import { VoiceCaptureProvider } from "./data/VoiceCaptureContext";
@@ -40,6 +40,8 @@ import { ChatGptAd } from "./screens/ChatGptAd";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { ReadmeButton } from "./components/ReadmeButton";
+import { FeedbackButton } from "./components/FeedbackButton";
+import { FeedbackBoard } from "./screens/FeedbackBoard";
 import { NAV } from "./components/nav";
 
 /* Some screens are EXACT static copies of real pages (the Invoca Exchange and
@@ -64,6 +66,21 @@ const BUILT: Record<string, ReactNode> = {
 /* Standalone screens render OUTSIDE the app shell (their own full-page chrome). */
 const STANDALONE = new Set(["/integrations"]);
 
+/* The bottom-right pair on the launch form. Same allow-list as ReadmeButton: past
+   the launch form every screen is a replica of Invoca's product shown to a
+   prospect, and neither of these belongs on top of that. */
+const CORNER_ON = ["/", "/launch", "/feedback"];
+function LaunchCorner() {
+  const { pathname } = useLocation();
+  if (!CORNER_ON.includes(pathname)) return null;
+  return (
+    <div className="corner-stack">
+      <FeedbackButton />
+      <ReadmeButton />
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <ProfileProvider>
@@ -76,6 +93,11 @@ export default function App() {
           {/* Launch screen (new prospect / revisit) — full-page, outside the shell */}
           <Route path="/" element={<Launch />} />
           <Route path="/launch" element={<Launch />} />
+
+          {/* Feedback board. Full-page like Launch (outside the shell): it is about
+              the TOOL, not about a prospect's demo, so wrapping it in the Invoca
+              replica chrome would misrepresent what you are looking at. */}
+          <Route path="/feedback" element={<FeedbackBoard />} />
 
           {/* Standalone full-page routes (no sidebar/topbar) — exact static copies */}
           <Route path="/integrations" element={<StaticRedirect to="/invoca-exchange.html" />} />
@@ -140,8 +162,9 @@ export default function App() {
           </Route>
         </Routes>
         {/* Outside <Routes> so it renders on every screen, Launch included -- but inside
-            <BrowserRouter>, because it reads the path to stay off the prospect-facing pages. */}
-        <ReadmeButton />
+            <BrowserRouter>, because they read the path to stay off the prospect-facing
+            pages. Both live in one fixed corner stack so they cannot overlap. */}
+        <LaunchCorner />
       </BrowserRouter>
       </AiAssistantProvider>
       </VoiceCaptureProvider>

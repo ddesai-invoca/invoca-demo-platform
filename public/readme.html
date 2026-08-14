@@ -924,7 +924,8 @@ npm run dev            <span class="cm"># localhost:5173 - Vite serves the UI AN
         <tr><td><code>DEEPGRAM_API_KEY</code> / <code>ELEVENLABS_API_KEY</code></td><td>For voice</td><td>Pick with <code>TTS_PROVIDER</code></td></tr>
         <tr><td><code>DEEPGRAM_MODEL</code> / <code>ELEVENLABS_VOICE_ID</code> / <code>ELEVENLABS_MODEL_ID</code></td><td>No</td><td>Voice tuning</td></tr>
         <tr><td><code>VITE_MAPBOX_TOKEN</code></td><td>Map screens</td><td>Public by design</td></tr>
-        <tr><td><code>DEMO_ADMIN_EMAILS</code></td><td>No</td><td>Who may edit any demo</td></tr>
+        <tr><td><code>DEMO_ADMIN_EMAILS</code></td><td>No</td><td>Who may edit any demo, and who can triage feedback</td></tr>
+        <tr><td><code>SMTP_USER</code> + <code>SMTP_APP_PASSWORD</code></td><td>For feedback emails</td><td>Sends the "your request is done" note. A Google <strong>app password</strong>, not an account password</td></tr>
         <tr><td><code>DATA_DIR</code></td><td>No</td><td>Overrides the demo-storage path</td></tr>
         <tr><td><code>CANARY</code> / <code>CANARY_HOUR_ET</code> / <code>CANARY_ON_BOOT</code></td><td>No</td><td>Nightly self-check</td></tr>
       </tbody>

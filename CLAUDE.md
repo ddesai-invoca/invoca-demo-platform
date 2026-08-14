@@ -1249,6 +1249,34 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   `brief` (a paragraph, not the label) because a one-word label lets the model invent
   its own meaning, and `engine/assistant.ts` states the nurture definition too.
 
+## Feedback & feature requests
+- **Button**: `src/components/FeedbackButton.tsx`, beside Read.Me in the `LaunchCorner`
+  stack (`App.tsx`). Opens a modal rather than routing away: someone has a thought about
+  the tool WHILE using it, and making them leave the page is how you get no feedback.
+- **Board**: `/feedback` (`src/screens/FeedbackBoard.tsx`), full-page outside the shell,
+  because it is about the TOOL, not a prospect's demo.
+- **Visibility is server-side** (`engine/feedbackApi.ts`): a submitter sees only their own
+  items, an admin (`isAdmin`, same list as the demo library) sees all and can change
+  status. The list is filtered BEFORE serialising, so someone else's text never reaches a
+  browser that shouldn't have it. A client-side filter would be a suggestion.
+- **The submitter comes from the SESSION**, never the request body. No name/email fields to
+  fill in or spoof, and the completion email always has a real address.
+- **Storage**: `engine/feedbackStore.ts`, one JSON per item under `DATA_DIR/feedback/`,
+  atomic write, same Render disk as the demos. No database for a handful of items a week.
+- **Email**: `engine/mailer.ts`, Google Workspace SMTP, sent FROM `SMTP_USER` (your own
+  address) TO the submitter's sign-in address. Chosen over a transactional provider: no
+  vendor, no DNS verification, and a reply lands in a real inbox.
+  - `SMTP_APP_PASSWORD` is a Google **app password**, not the account password.
+  - **Unconfigured is a supported state.** No SMTP vars means the feature works end to end
+    and the would-be email is logged. `emailEnabled` is reported by the API so the form
+    and the board never PROMISE an email that cannot be sent.
+  - Fires only on entering a `TERMINAL` status (currently just `Complete`), and only once:
+    `notifiedAt` is stamped on a successful send, so re-saving cannot mail twice. It is NOT
+    stamped on a failed send, so an item completed before SMTP existed still notifies later.
+  - `sendMail` never throws. A notification failure must not fail the status change that
+    triggered it, or the admin sees an error for an item that already saved.
+  - The title is user text and goes into HTML email: it is escaped (verified).
+
 ## Read.Me button + the in-app docs
 - `src/components/ReadmeButton.tsx`, mounted **once in `App.tsx`** inside `<BrowserRouter>`
   but outside `<Routes>`. Fixed bottom-right pill, `.readme-fab` in `app.css`.

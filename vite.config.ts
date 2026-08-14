@@ -224,6 +224,42 @@ function statusApi(): Plugin {
   }
 }
 
+/* Dev-side twin of the production feedback mount, so the board and the form work
+   against `npm run dev` exactly as they do live. Email is unconfigured locally
+   unless SMTP_* is in .env, in which case a would-be send is logged. */
+function feedbackApi(): Plugin {
+  return {
+    name: 'invoca-feedback-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        const url = req.url || ''
+        if (!url.startsWith('/api/feedback')) return next()
+        try {
+          let raw = ''
+          if (req.method !== 'GET' && req.method !== 'DELETE') for await (const chunk of req) raw += chunk
+          const [{ handleFeedbackApi }, { currentUser }, { isAdmin }] = await Promise.all([
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/feedbackApi.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/demoApi.ts')).href),
+          ])
+          const user = currentUser(req)
+          const base = process.env.BASE_URL || 'http://localhost:5173'
+          const result = await handleFeedbackApi(req.method || 'GET', url, raw ? JSON.parse(raw) : undefined, user, isAdmin(user), base)
+          if (!result) return next()
+          res.statusCode = result.status
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(result.body))
+        } catch (e: any) {
+          console.error('[feedback] failed:', e)
+          res.statusCode = 500
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify({ error: e?.message || 'Feedback request failed.' }))
+        }
+      })
+    },
+  }
+}
+
 function demoLibraryApi(): Plugin {
   return {
     name: 'invoca-demo-library-api',
@@ -401,6 +437,7 @@ export default defineConfig(({ mode }) => {
       placeApi(),
       ogImageApi(),
       demoLibraryApi(),
+    feedbackApi(),
       statusApi(),
       chatApi(apiKey),
       assistantApi(apiKey),

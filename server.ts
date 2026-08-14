@@ -31,7 +31,8 @@ import { analyzeSms } from "./engine/analyze.ts";
 import { synthesize } from "./engine/tts.ts";
 import { askAssistant } from "./engine/assistant.ts";
 import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
-import { handleDemoApi } from "./engine/demoApi.ts";
+import { handleDemoApi, isAdmin } from "./engine/demoApi.ts";
+import { handleFeedbackApi } from "./engine/feedbackApi.ts";
 import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
 import { deployStatus } from "./engine/status.ts";
 import { runCanary, recordRun, toPublic as canaryPublic, BUDGET_SECONDS } from "./engine/canary.ts";
@@ -88,6 +89,24 @@ app.get("/api/status", (_req, res) => res.json(deployStatus({
 app.get("/api/canary", (_req, res) => res.json(canaryPublic()));
 
 installAuth(app);
+
+/* Feedback and feature requests (/api/feedback*). Registered BEFORE the demo
+   library only because both return null for a path they do not own; the order
+   between them is arbitrary. Behind the auth gate, so `currentUser` is a real
+   person and the completion email has somewhere honest to go. */
+app.use(async (req, res, next) => {
+  if (!req.path.startsWith("/api/feedback")) return next();
+  try {
+    const user = currentUser(req);
+    const base = process.env.BASE_URL || `${req.protocol}://${req.get("host")}`;
+    const result = await handleFeedbackApi(req.method, req.path, req.body, user, isAdmin(user), base);
+    if (!result) return next();
+    res.status(result.status).json(result.body);
+  } catch (e: any) {
+    console.error("[feedback] failed:", e);
+    res.status(500).json({ error: e?.message || "Feedback request failed." });
+  }
+});
 
 /* Shared demo library (/api/me, /api/demos*). Returns null for any other route,
    so the AI endpoints below still get their turn. Same handler as the dev server. */

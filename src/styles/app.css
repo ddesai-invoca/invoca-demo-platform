@@ -2574,7 +2574,6 @@ button.nav-item {
    blue, because this is a link OUT of the replica to our own documentation — it should
    not read as part of the Invoca UI being demoed. */
 .readme-fab {
-  position: fixed; right: 22px; bottom: 22px; z-index: 900;
   display: inline-flex; align-items: center; gap: 8px;
   height: 42px; padding: 0 18px 0 15px; border-radius: 999px;
   background: #00b388; color: #fff; text-decoration: none;
@@ -2595,7 +2594,7 @@ button.nav-item {
    overlay that used to cover it (.aiad, .idr-/.sdr-/.vp-root) lives inside the app shell,
    which the launch form is not part of. Keeping selectors that can no longer match makes
    the next reader think they are load-bearing. */
-@media (max-width: 640px) { .readme-fab { right: 14px; bottom: 14px; } }
+
 
 /* ---- Ask AI: the Preview Agent's question list -------------------------------
    Only rendered when a page opts in by registering a questionPath (today just the
@@ -2760,3 +2759,168 @@ button.nav-item {
 .wcp-icon-hover:focus-visible { opacity: 1; }
 /* Disabled undo still dims further, so "nothing to undo" reads on hover. */
 .wcp-head:hover .wcp-icon-hover.wcp-icon-off { opacity: .35; }
+
+/* ==== The launch form's bottom-right corner: Feedback + Read.Me ==============
+   One fixed stack owns the corner so the two can never overlap or fight over
+   z-index, and adding a third later is one line rather than another set of
+   coordinates to keep in sync. */
+.corner-stack {
+  position: fixed; right: 22px; bottom: 22px; z-index: 900;
+  display: flex; align-items: center; gap: 10px;
+}
+@media (max-width: 640px) { .corner-stack { right: 14px; bottom: 14px; } }
+
+/* Feedback sits beside Read.Me but reads as secondary: this is the tool's own
+   green on white, not a second filled pill competing with it. */
+.fb-fab {
+  appearance: none; cursor: pointer; font: inherit;
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 42px; padding: 0 18px 0 15px; border-radius: 999px;
+  background: #fff; color: #00816a; border: 1px solid #a5dfc9;
+  font-size: 14px; font-weight: 600; letter-spacing: -.01em;
+  box-shadow: 0 2px 4px rgba(10,35,30,.10), 0 12px 28px -12px rgba(10,35,30,.30);
+  transition: background .16s ease, transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.fb-fab:hover {
+  background: #f4fbf8; border-color: #00b388; transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(10,35,30,.12), 0 16px 34px -12px rgba(10,35,30,.34);
+}
+.fb-fab:active { transform: translateY(0); }
+.fb-fab .material-icons { font-size: 18px; }
+
+/* ---- the form ------------------------------------------------------------- */
+.fb-overlay {
+  position: fixed; inset: 0; z-index: 1400; background: rgba(10,35,30,.42);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+  animation: fb-fade .16s ease-out;
+}
+@keyframes fb-fade { from { opacity: 0 } to { opacity: 1 } }
+.fb-modal {
+  width: 560px; max-width: 100%; max-height: 88vh; overflow-y: auto;
+  background: #fff; border-radius: 14px; padding: 20px 22px 18px;
+  box-shadow: 0 24px 60px -20px rgba(10,35,30,.45);
+  animation: fb-rise .2s cubic-bezier(.4,0,.2,1);
+}
+@keyframes fb-rise { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
+.fb-head { display: flex; align-items: center; justify-content: space-between; margin: 0 0 16px; }
+.fb-title { font-size: 17px; font-weight: 600; color: #0a231e; letter-spacing: -.015em; }
+.fb-x { appearance: none; border: 0; background: none; cursor: pointer; color: #6b7280; padding: 4px; border-radius: 6px; display: flex; }
+.fb-x:hover { background: #f3f4f6; color: #0a231e; }
+
+.fb-kind { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 16px; }
+.fb-kind-btn {
+  appearance: none; cursor: pointer; font: inherit; text-align: left;
+  border: 1px solid #e5e7eb; background: #fff; border-radius: 10px; padding: 11px 13px;
+  display: flex; flex-direction: column; gap: 3px;
+  transition: border-color .16s ease, background .16s ease, box-shadow .16s ease;
+}
+.fb-kind-btn:hover { border-color: #a5dfc9; background: #fafdfb; }
+.fb-kind-on { border-color: #00b388; background: #f4fbf8; box-shadow: 0 0 0 3px rgba(0,179,136,.10); }
+.fb-kind-label { font-size: 14px; font-weight: 600; color: #0a231e; }
+.fb-kind-hint { font-size: 12px; color: #6b7280; line-height: 1.35; }
+
+.fb-field { display: block; margin: 0 0 14px; }
+.fb-field > span { display: block; font-size: 12px; font-weight: 600; color: #4b5563; margin: 0 0 5px; }
+.fb-field input, .fb-field textarea {
+  width: 100%; font: inherit; font-size: 14px; color: #0a231e;
+  border: 1px solid #d7dce5; border-radius: 9px; padding: 9px 11px; background: #fff; resize: vertical;
+}
+.fb-field input:focus, .fb-field textarea:focus {
+  outline: none; border-color: #00b388; box-shadow: 0 0 0 3px rgba(0,179,136,.12);
+}
+.fb-error { margin: 0 0 12px; font-size: 13px; color: #b42318; }
+
+.fb-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 4px; }
+.fb-actions-right { display: inline-flex; gap: 8px; }
+.fb-link { font-size: 13px; color: #00a87f; text-decoration: none; }
+.fb-link:hover { text-decoration: underline; }
+.fb-primary {
+  appearance: none; border: 0; cursor: pointer; font: inherit; font-size: 14px; font-weight: 600;
+  background: #00b388; color: #fff; border-radius: 9px; padding: 9px 18px; transition: background .16s ease;
+}
+.fb-primary:hover:not(:disabled) { background: #009974; }
+.fb-primary:disabled { opacity: .55; cursor: default; }
+.fb-secondary {
+  appearance: none; cursor: pointer; font: inherit; font-size: 14px;
+  background: #fff; color: #4b5563; border: 1px solid #d7dce5; border-radius: 9px; padding: 9px 16px;
+}
+.fb-secondary:hover { background: #f6f7f9; }
+
+.fb-done { text-align: center; padding: 14px 8px 8px; }
+.fb-done-icon { font-size: 40px; color: #00b388; }
+.fb-done p { margin: 10px 0 18px; color: #3d4d48; font-size: 14.5px; }
+.fb-done-actions { display: flex; gap: 8px; justify-content: center; }
+
+/* ==== the board (/feedback) ================================================= */
+.fbb-page { min-height: 100vh; background: #f7f8f4; padding: 40px 24px 80px; }
+.fbb-wrap { max-width: 860px; margin: 0 auto; }
+.fbb-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin: 0 0 26px; }
+.fbb-eyebrow {
+  margin: 0 0 6px; font-size: 11.5px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #00816a;
+}
+.fbb-h1 { margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.028em; color: #0a231e; }
+.fbb-back { font-size: 13.5px; color: #00a87f; text-decoration: none; white-space: nowrap; padding-top: 22px; }
+.fbb-back:hover { text-decoration: underline; }
+
+.fbb-warn {
+  display: flex; gap: 9px; align-items: flex-start; margin: 0 0 20px;
+  background: #fff9e8; border: 1px solid #e0b050; border-radius: 10px; padding: 11px 14px;
+  font-size: 13.5px; color: #7a5a10; line-height: 1.5;
+}
+.fbb-warn .material-icons { font-size: 18px; flex: none; }
+.fbb-warn code { background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 4px; font-size: 12.5px; }
+
+.fbb-filters { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 20px; }
+.fbb-chip {
+  appearance: none; cursor: pointer; font: inherit; font-size: 13px;
+  background: #fff; border: 1px solid #e0e4de; border-radius: 999px; padding: 6px 13px; color: #3d4d48;
+  transition: border-color .16s ease, background .16s ease;
+}
+.fbb-chip b { font-weight: 700; color: #0a231e; margin-left: 3px; }
+.fbb-chip:hover { border-color: #a5dfc9; }
+.fbb-chip-on { border-color: #00b388; background: #f4fbf8; }
+
+.fbb-list { display: flex; flex-direction: column; gap: 12px; }
+.fbb-card {
+  background: #fff; border: 1px solid #e6e9e5; border-radius: 12px; padding: 18px 20px;
+  box-shadow: 0 1px 2px rgba(10,35,30,.04);
+}
+.fbb-card-top { display: flex; align-items: center; gap: 8px; margin: 0 0 9px; }
+.fbb-kind { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+.fbb-kind-fb { background: #eef2ff; color: #3b4ea8; }
+.fbb-kind-feat { background: #f4fbf8; color: #00816a; }
+.fbb-status { font-size: 11.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid; }
+.fbb-new { background: #f6f7f9; color: #4b5563; border-color: #dfe3e8; }
+.fbb-review { background: #eef2ff; color: #3b4ea8; border-color: #c3ccf0; }
+.fbb-planned { background: #fff9e8; color: #7a5a10; border-color: #e5c98a; }
+.fbb-progress { background: #fff4e8; color: #9a5a12; border-color: #edc191; }
+.fbb-done { background: #edfaf3; color: #0a6b52; border-color: #a5dfc9; }
+.fbb-declined { background: #fdf1f0; color: #99352c; border-color: #f0bdb7; }
+.fbb-notified { margin-left: auto; color: #00a87f; display: flex; }
+.fbb-notified .material-icons { font-size: 17px; }
+
+.fbb-card-title { margin: 0 0 6px; font-size: 16.5px; font-weight: 600; color: #0a231e; letter-spacing: -.015em; }
+.fbb-card-body { margin: 0 0 11px; font-size: 14px; color: #3d4d48; line-height: 1.55; white-space: pre-wrap; }
+.fbb-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: #6b7280; }
+.fbb-who { font-weight: 600; color: #3d4d48; }
+.fbb-page code { background: #f4f6f2; padding: 1px 5px; border-radius: 4px; font-size: 11.5px; }
+.fbb-note { margin: 11px 0 0; font-size: 13.5px; color: #3d4d48; background: #f8faf1; border-left: 3px solid #00b388; border-radius: 0 8px 8px 0; padding: 9px 12px; }
+
+.fbb-admin { display: flex; align-items: center; gap: 12px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px dashed #e6e9e5; }
+.fbb-admin label { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: #4b5563; }
+.fbb-admin select { font: inherit; font-size: 13.5px; padding: 6px 9px; border: 1px solid #d7dce5; border-radius: 8px; background: #fff; color: #0a231e; }
+.fbb-busy, .fbb-hint { font-size: 12.5px; color: #6b7280; }
+
+.fbb-empty, .fbb-error { font-size: 14px; color: #6b7280; }
+.fbb-error { color: #b42318; }
+.fbb-empty-card { background: #fff; border: 1px solid #e6e9e5; border-radius: 12px; padding: 42px 24px; text-align: center; }
+.fbb-empty-card .material-icons { font-size: 34px; color: #a5dfc9; }
+.fbb-empty-title { margin: 10px 0 4px; font-size: 16px; font-weight: 600; color: #0a231e; }
+.fbb-empty-sub { margin: 0 auto; max-width: 46ch; font-size: 13.5px; color: #6b7280; line-height: 1.55; }
+
+.fbb-toast {
+  position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 1500;
+  background: #0a231e; color: #fff; font-size: 13.5px; padding: 11px 18px; border-radius: 999px;
+  box-shadow: 0 10px 30px -10px rgba(10,35,30,.6);
+}
