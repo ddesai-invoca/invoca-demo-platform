@@ -7,6 +7,8 @@ import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCall } from "./VoiceCall";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
+import { QUESTIONS_PATH } from "../data/questionImport";
+import { SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
    in the left sub-nav. Template flow (Conversation Start → classify intent →
@@ -170,7 +172,7 @@ function extraTree(
 
 
 export function AgentWorkflow() {
-  const { profile } = useProfile();
+  const { profile, profileId } = useProfile();
   const { channel } = useParams();
   /* The route param is a slug, not just sms|voice: extra workflows add their
      own (e.g. "sms-nurture"). Resolve those first so they don't fall through to
@@ -189,7 +191,14 @@ export function AgentWorkflow() {
     title: `${workflowName} workflow`,
     ...(extra ? extraTree(extra) : deriveTree(profile, isSms, channelLabel)),
   }), [extra, profile, isSms, channelLabel, workflowName]);
-  const tree = usePageData(baseTree);
+  /* This page's OWN scope stays the diagram (that is what its sparkle edits). The
+     question tools are pointed at the Preview Agent tab's scope, because the agent
+     previewed here is that same agent: one of them, edited from either screen. */
+  const tree = usePageData(baseTree, {
+    questionPath: QUESTIONS_PATH,
+    questionKey: `${profileId}::${SMS_AGENT_SCOPE_PATH}`,
+    questionBase: profile.reports.agentConfig,
+  });
   const [voicePreview, setVoicePreview] = useState(false);
   const [inCall, setInCall] = useState(false);
   const closeVoice = () => { setVoicePreview(false); setInCall(false); };

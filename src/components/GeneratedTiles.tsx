@@ -13,21 +13,33 @@ import type { MultiSeriesChart } from "../data/schema";
    data (base + any AI edits overlaid). Call it unconditionally at the top of the
    component (before the null-guard), like any hook. */
 export interface PageDataOptions {
-  /* Dot-path to a list of questions this page OWNS, which turns on the drawer's
-     paste / import / rewrite tools. Opt-in: omitted everywhere else, so no other
-     screen changes. See AiAssistantContext's Scope. */
+  /* Dot-path to a list of questions whose tools this page exposes, which turns on
+     the drawer's paste / import / rewrite controls. Opt-in: omitted everywhere
+     else, so no other screen changes. See AiAssistantContext's Scope. */
   questionPath?: string;
+  /* The scope key those questions live under, when it is not this page's own.
+     `questionBase` seeds it so the edit is not silently refused on a page the user
+     has never opened. */
+  questionKey?: string;
+  questionBase?: unknown;
 }
 export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { pathname } = useLocation();
   const { profileId, profile } = useProfile();
-  const { registerScope, effectiveData } = useAiAssistant();
+  const { registerScope, registerBase, effectiveData } = useAiAssistant();
   const key = `${profileId}::${pathname}`;
   const questionPath = opts?.questionPath;
+  const questionKey = opts?.questionKey;
+  const questionBase = opts?.questionBase;
   useEffect(() => {
     if (base == null) return;
-    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath });
-  }, [key, base, profile.customerName, registerScope, questionPath]);
+    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, questionKey });
+  }, [key, base, profile.customerName, registerScope, questionPath, questionKey]);
+  /* Editing another page's data needs that page to HAVE a base, or applyEdits
+     returns 0 and the change vanishes without a word. */
+  useEffect(() => {
+    if (questionKey && questionBase != null) registerBase(questionKey, questionBase);
+  }, [questionKey, questionBase, registerBase]);
   const eff = effectiveData(key);
   return (eff ?? base) as T;
 }

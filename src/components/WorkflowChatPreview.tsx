@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
-import { buildSmsBrain, askSmsAgent, SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
+import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
 import type { AgentConfigView } from "../data/schema";
 
 /* =============================================================================
@@ -102,6 +102,28 @@ export function WorkflowChatPreview({ workflowName, wfSlug, onClose }: {
      reset button deliberately re-run it. */
   const greeted = useRef(false);
   const [resetKey, setResetKey] = useState(0);
+  /* Brief, above the composer. Same reasoning as the iPhone preview: a thread that
+     vanishes silently reads as a lost conversation rather than a picked-up edit. */
+  const [restarted, setRestarted] = useState(false);
+
+  /* RESTART WHEN THE AGENT CHANGES. The greeting effect deliberately does not
+     depend on `brain` (that would re-greet on every render), so this compares a
+     serialised copy instead and restarts only when the substance moves: the
+     questions, the greeting, the rules. Without it an SE could edit the questions
+     from this very drawer and watch the chat carry on asking the old ones. */
+  const brainSig = useMemo(() => JSON.stringify(brain), [brain]);
+  const lastSig = useRef<string | null>(null);
+  useEffect(() => {
+    if (lastSig.current === null) { lastSig.current = brainSig; return; }
+    if (lastSig.current === brainSig) return;
+    lastSig.current = brainSig;
+    setMessages([]); setInput(""); setError(null); setBusy(false);
+    greeted.current = false;
+    setResetKey((k) => k + 1);
+    setRestarted(true);
+    const t = setTimeout(() => setRestarted(false), 3200);
+    return () => clearTimeout(t);
+  }, [brainSig]);
 
   useEffect(() => {
     if (greeted.current) return;
@@ -110,8 +132,7 @@ export function WorkflowChatPreview({ workflowName, wfSlug, onClose }: {
       /* An extra workflow scripts its own opening line — a nurture agent's first
          message has to read identically every time an SE runs the demo. */
       if (brain.openingMessage) {
-        const first = (profile.reports.voiceScreenpop?.callerName ?? "").split(/\s+/)[0];
-        setMessages([{ role: "assistant", content: brain.openingMessage.replace(/\{name\}/g, first || "there") }]);
+        setMessages([{ role: "assistant", content: resolveGreeting(brain.openingMessage, profile) }]);
         return;
       }
       setBusy(true);
@@ -188,6 +209,13 @@ export function WorkflowChatPreview({ workflowName, wfSlug, onClose }: {
         )}
         {error && <div className="wcp-error">{error}</div>}
       </div>
+
+      {restarted && (
+        <div className="wcp-restart" role="status">
+          <RefreshIcon />
+          Agent updated, chat restarted
+        </div>
+      )}
 
       <div className="wcp-input">
         <textarea

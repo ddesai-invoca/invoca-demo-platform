@@ -38,7 +38,15 @@ export interface AssistantEdit { path: string; value: string }
    list" would light them up on Agent Config, AI Recommendations and Knowledge
    Sources too. Only the page whose JOB is those questions passes this, which keeps
    the change to the one screen it was asked for. */
-interface Scope { key: string; customerName: string; baseTitle: string; questionPath?: string }
+interface Scope {
+  key: string; customerName: string; baseTitle: string;
+  questionPath?: string;
+  /* The scope key the QUESTIONS live under, when that is not this page's own key.
+     The workflow page's scope is its DIAGRAM, but the agent it previews is the same
+     one the Preview Agent tab owns, so its question tools have to edit that page's
+     data. Absent means "my own key", which is the Preview Agent tab's case. */
+  questionKey?: string;
+}
 interface Snapshot { override: unknown | undefined; tiles: GeneratedTile[] }
 
 interface AiAssistantCtx {
@@ -47,7 +55,12 @@ interface AiAssistantCtx {
   openDrawer: (focus?: AssistantFocus) => void;
   closeDrawer: () => void;
   active: Scope | null;
-  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string }) => void;
+  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; questionKey?: string }) => void;
+  /* Make a key EDITABLE without making it the active scope. applyEdits refuses a
+     key with no base, so a page editing another page's data must ensure that base
+     exists first; a second registerScope would do it but is last-write-wins and
+     would silently repoint this page's sparkle. Never overwrites an existing base. */
+  registerBase: (key: string, data: unknown) => void;
   effectiveData: (key: string) => unknown;
   tilesFor: (key: string) => GeneratedTile[];
   applyEdits: (key: string, edits: AssistantEdit[]) => number;
@@ -162,13 +175,21 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const openDrawer = useCallback((f?: AssistantFocus) => { setFocus(f ?? null); setOpen(true); }, []);
   const closeDrawer = useCallback(() => setOpen(false), []);
 
-  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string }) => {
+  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; questionKey?: string }) => {
     baseRef.current[s.key] = s.baseData;
     setActive((prev) => (
-      prev && prev.key === s.key && prev.baseTitle === s.baseTitle && prev.questionPath === s.questionPath
+      prev && prev.key === s.key && prev.baseTitle === s.baseTitle
+        && prev.questionPath === s.questionPath && prev.questionKey === s.questionKey
         ? prev
-        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath }
+        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath, questionKey: s.questionKey }
     ));
+  }, []);
+
+  const registerBase = useCallback((key: string, data: unknown) => {
+    /* Fill only. The owning page registers a richer object (it carries a title for
+       the drawer heading); clobbering that here, just because the user reached the
+       workflow page second, would quietly drop it. */
+    if (data != null && !(key in baseRef.current)) baseRef.current[key] = data;
   }, []);
 
   const effectiveData = useCallback((key: string) => (key in store.overrides ? store.overrides[key] : baseRef.current[key]), [store.overrides]);
@@ -255,7 +276,7 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   }, [readOnly]);
 
   return (
-    <Ctx.Provider value={{ open, focus, openDrawer, closeDrawer, active, registerScope, effectiveData, tilesFor, applyEdits, addTile, replaceTile, removeTile, undo, canUndo, undoDepth, activeDemo, hydrateDemo, readOnly }}>
+    <Ctx.Provider value={{ open, focus, openDrawer, closeDrawer, active, registerScope, registerBase, effectiveData, tilesFor, applyEdits, addTile, replaceTile, removeTile, undo, canUndo, undoDepth, activeDemo, hydrateDemo, readOnly }}>
       {children}
     </Ctx.Provider>
   );

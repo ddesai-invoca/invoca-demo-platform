@@ -1169,6 +1169,21 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   CSV/TSV with or without a header (finds a `question`/`prompt`/`ask` column, honours
   `"quoted, fields"`), a single run-on paragraph split on `?`, dedupe, and a
   `MAX_QUESTIONS` cap that is **reported, never silent**.
+- **Preview Workflow has all of it too**, because it previews the SAME agent. Its drawer
+  shows the same greeting + question tools, its chat restarts on a config change
+  (`.wcp-restart`), and it uses the shared `resolveGreeting`.
+- **The workflow page edits TWO scopes, deliberately.** Its own scope stays the DIAGRAM
+  (its sparkle adds and renames branches); the question tools point at the Preview Agent
+  tab's key via `questionKey`, since there is only one agent and an edit from either
+  screen must land in the same data. The drawer splits an `editData` batch by path:
+  anything under `smsPlaybook` goes to `questionKey`, everything else to the page's own
+  key. Verified both directions: a pasted list lands in the agent scope and leaves the
+  tree untouched, and "rename the first branch" still edits the diagram.
+- `registerBase(key, data)` seeds a foreign scope's base WITHOUT making it active.
+  `applyEdits` returns 0 for a key with no base, so editing a page the user has never
+  opened would silently do nothing; a second `registerScope` would fix that but is
+  last-write-wins and would repoint this page's sparkle from the tree to the agent.
+  It fills only, never overwrites: the owning page registers a richer object.
 - **The tools are OPT-IN via the scope's `questionPath`** (`usePageData(base, { questionPath })`).
   Four screens register `agentConfig` -- Agent Config, AI Recommendations, Knowledge
   Sources and this preview -- so all four have a question list in their data. Gating on

@@ -53,24 +53,29 @@ export function AiAssistantDrawer() {
      tools. Read from the EFFECTIVE data so the list re-renders the moment the
      assistant or an import changes it. */
   const questionPath = focus?.scope === "tile" ? undefined : active?.questionPath;
+  /* The questions may live under ANOTHER page's key. The workflow page's own scope
+     is its diagram, but the agent it previews is the Preview Agent tab's agent, and
+     there is only one of it: an edit made from either place has to land in the same
+     data or the two previews start showing different agents. */
+  const qKey = active ? (active.questionKey ?? active.key) : "";
   const questions = useMemo(() => {
     if (!active || !questionPath) return null;
-    const v = getByPath(effectiveData(active.key), questionPath);
+    const v = getByPath(effectiveData(qKey), questionPath);
     return Array.isArray(v) ? (v as unknown[]).map(String) : null;
-  }, [active, questionPath, effectiveData]);
+  }, [active, questionPath, qKey, effectiveData]);
 
   /* The SAME derivation the phone uses, so the row shows the text actually being
      sent rather than a second, subtly different version of it. */
   const greeting = useMemo(() => {
     if (!active || !questionPath) return null;
-    const data = effectiveData(active.key) as any;
+    const data = effectiveData(qKey) as any;
     /* RAW keeps the {name} token, which is what the model must edit and keep.
        DISPLAY resolves it, so the row reads as the text the phone actually sends.
        Showing the raw token would have the SE reading "Hi {name}," on screen;
        sending the resolved one would have the model bake a literal first name in. */
     const raw = (getByPath(data, GREETING_PATH) as string) || defaultGreeting(active.customerName, data?.smsPlaybook);
     return { raw, display: resolveGreeting(raw, profile) };
-  }, [active, questionPath, effectiveData, profile]);
+  }, [active, questionPath, qKey, effectiveData, profile]);
   const scopeLabel = focus?.scope === "tile" ? (focus.label || "This tile") : effTitle;
 
   // Fresh chat each time the drawer opens (scope may differ).
@@ -111,9 +116,14 @@ export function AiAssistantDrawer() {
          the opted-in page; every other page's context is untouched. */
       if (questionPath && greeting && eff && typeof eff === "object") {
         const cur = eff as any;
-        if (!cur.smsPlaybook?.greeting) {
-          eff = { ...cur, smsPlaybook: { ...(cur.smsPlaybook ?? {}), greeting: greeting.raw } };
-        }
+        /* On a page whose questions live elsewhere (the workflow diagram), the
+           agent is not in this page's data at all, so the model would have nothing
+           to edit. Fold the playbook in beside the page's own data: the model then
+           sees both, and the paths it is told to use resolve. */
+        const foreign = qKey !== active.key ? (effectiveData(qKey) as any)?.smsPlaybook : undefined;
+        const playbook = { ...(foreign ?? cur.smsPlaybook ?? {}) };
+        if (!playbook.greeting) playbook.greeting = greeting.raw;
+        eff = { ...cur, smsPlaybook: playbook };
       }
       let dataContext = "";
       try { const j = JSON.stringify(eff); dataContext = j.length > 12000 ? j.slice(0, 12000) + "…(truncated)" : j; } catch { /* ignore */ }
@@ -189,7 +199,14 @@ export function AiAssistantDrawer() {
               } catch { return e; }
             })
           : r.edits;
-        const n = applyEdits(active.key, edits);
+        /* SPLIT BY PATH. Anything under smsPlaybook belongs to the shared agent,
+           which may be another page's scope; everything else is this page's own
+           data. Applying the whole batch to one key would either drop the agent
+           edits or write a playbook into the workflow diagram. */
+        const agentEdits = qKey !== active.key ? edits.filter((e: any) => /^smsPlaybook\b/.test(e.path)) : [];
+        const pageEdits = qKey !== active.key ? edits.filter((e: any) => !/^smsPlaybook\b/.test(e.path)) : edits;
+        const n = (pageEdits.length ? applyEdits(active.key, pageEdits) : 0)
+                + (agentEdits.length ? applyEdits(qKey, agentEdits) : 0);
         push(n ? (r.answer || `Updated ${n} value${n > 1 ? "s" : ""} on this page.`) : "I couldn't map that change to anything on this page — try naming the metric, title or row you mean.", "auto_awesome");
       } else {
         push(r?.answer || "…");
@@ -245,7 +262,7 @@ export function AiAssistantDrawer() {
               questions={questions}
               readOnly={readOnly}
               onReplace={(next, note) => {
-                const n = applyEdits(active!.key, [{ path: questionPath!, value: JSON.stringify(next) }]);
+                const n = applyEdits(qKey, [{ path: questionPath!, value: JSON.stringify(next) }]);
                 setMessages((prev) => [...prev, {
                   role: "assistant",
                   content: n ? `${note} The agent asks them from its next message.` : "I couldn't apply that list.",
