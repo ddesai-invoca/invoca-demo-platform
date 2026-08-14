@@ -57,6 +57,10 @@ const ttsProvider: "deepgram" | "elevenlabs" =
   providerRaw === "elevenlabs" || providerRaw === "deepgram" ? (providerRaw as any) : deepgramKey ? "deepgram" : "elevenlabs";
 
 const app = express();
+/* Attachment uploads are RAW BYTES, so their parser is registered before the JSON
+   one: express.json would otherwise reject a PNG as malformed JSON. Scoped to the
+   upload path only, and capped, so nothing else changes. */
+app.use("/api/feedback/:id/files", express.raw({ type: "*/*", limit: "12mb" }));
 app.use(express.json({ limit: "2mb" }));
 
 // Health check for the host (Render etc.) — exempt from auth, always 200.
@@ -99,8 +103,12 @@ app.use(async (req, res, next) => {
   try {
     const user = currentUser(req);
     const base = process.env.BASE_URL || `${req.protocol}://${req.get("host")}`;
-    const result = await handleFeedbackApi(req.method, req.path, req.body, user, isAdmin(user), base);
+    const result = await handleFeedbackApi(req.method, req.originalUrl, req.body, user, isAdmin(user), base);
     if (!result) return next();
+    if (result.binary) {
+      res.status(result.status).set(result.binary.headers).send(result.binary.buffer);
+      return;
+    }
     res.status(result.status).json(result.body);
   } catch (e: any) {
     console.error("[feedback] failed:", e);

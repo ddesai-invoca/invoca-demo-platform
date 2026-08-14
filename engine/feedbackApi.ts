@@ -18,13 +18,41 @@
 
 import {
   listFeedback, getFeedback, saveFeedback, deleteFeedback, newFeedbackId,
+  saveAttachment, readAttachment, deleteAttachments,
+  isAllowedType, isInlineSafeImage, MAX_FILE_BYTES, MAX_FILES,
   STATUSES, TERMINAL, type FeedbackRecord, type FeedbackStatus, type FeedbackUser,
 } from "./feedbackStore.ts";
 import { sendMail, completionEmail, mailConfigured } from "./mailer.ts";
 
-export interface ApiResult { status: number; body: unknown }
+export interface ApiResult {
+  status: number;
+  body: unknown;
+  /* Set for a file download: the caller writes these instead of JSON. Kept on the
+     same result shape so both servers mount this handler identically. */
+  binary?: { buffer: Buffer; headers: Record<string, string> };
+}
 const ok = (body: unknown): ApiResult => ({ status: 200, body });
 const err = (status: number, error: string): ApiResult => ({ status, body: { error } });
+
+/* Read one query param. DECODES the value, which is the whole point: an
+   undecoded `image%2Fpng` silently failed the media-type allow-list and every
+   image upload came back 415. Splitting on the FIRST "=" only, because a value
+   may legitimately contain one. */
+function qs(urlPath: string, key: string): string | null {
+  const q = urlPath.split("?")[1];
+  if (!q) return null;
+  for (const pair of q.split("&")) {
+    const eq = pair.indexOf("=");
+    const k = eq < 0 ? pair : pair.slice(0, eq);
+    const v = eq < 0 ? "" : pair.slice(eq + 1);
+    if (safeDecode(k) === key) return safeDecode(v);
+  }
+  return null;
+}
+/** decodeURIComponent throws on a stray "%"; a malformed param is not a crash. */
+function safeDecode(s: string): string {
+  try { return decodeURIComponent(s.replace(/\+/g, " ")); } catch { return s; }
+}
 
 const MAX_TITLE = 140;
 const MAX_BODY = 4000;
@@ -85,6 +113,68 @@ export async function handleFeedbackApi(
     return err(405, "Method not allowed.");
   }
 
+  /* ---- attachments -------------------------------------------------------
+     POST   /api/feedback/:id/files?name=…   raw bytes, one call per file
+     GET    /api/feedback/:id/files/:file    stream it back                   */
+  const fm = /^\/api\/feedback\/([^/]+)\/files(?:\/([^/]+))?$/.exec(p);
+  if (fm) {
+    const [, fid, fname] = fm;
+    const item = getFeedback(fid);
+    if (!item) return err(404, "Not found.");
+    const isOwner = (item.submitter?.email || "").toLowerCase() === (user.email || "").toLowerCase();
+    if (!isAdmin && !isOwner) return err(403, "Not yours.");
+
+    if (method === "POST") {
+      /* Only the submitter may attach, and only while it is theirs to attach to.
+         An admin adding files to someone else's report would be confusing rather
+         than useful. */
+      if (!isOwner) return err(403, "Only the submitter can attach files.");
+      const buf: Buffer = Buffer.isBuffer(body) ? body : Buffer.from([]);
+      if (!buf.length) return err(400, "Empty file.");
+      if (buf.length > MAX_FILE_BYTES) return err(413, `Files must be under ${MAX_FILE_BYTES / 1024 / 1024}MB.`);
+      const existing = item.attachments ?? [];
+      if (existing.length >= MAX_FILES) return err(400, `Up to ${MAX_FILES} files.`);
+      const name = String(qs(urlPath, "name") || "file");
+      const type = String(qs(urlPath, "type") || "application/octet-stream").toLowerCase();
+      /* Type is checked against an allow-list rather than a block-list: the set of
+         things a browser will execute is not knowable in advance. */
+      if (!isAllowedType(type)) return err(415, "That file type is not accepted.");
+      const stored = saveAttachment(item.id, existing.length, name, buf);
+      item.attachments = [...existing, { name: name.slice(0, 120), type, size: buf.length, file: stored }];
+      item.updatedAt = new Date().toISOString();
+      saveFeedback(item);
+      return ok({ item });
+    }
+
+    if (method === "GET" && fname) {
+      const att = (item.attachments ?? []).find((a) => a.file === fname);
+      if (!att) return err(404, "Not found.");
+      const buffer = readAttachment(item.id, att.file);
+      if (!buffer) return err(404, "Not found.");
+      /* THE SERVING RULES, which are the whole security story for uploads:
+           • nosniff, so a browser cannot decide a .txt is really HTML.
+           • Only real raster images render inline. Everything else, INCLUDING SVG,
+             is forced to download, because an SVG rendered inline on this origin
+             can run script and read the session.
+           • The download name is the sanitised on-disk one, quoted. */
+      const inline = isInlineSafeImage(att.type);
+      return {
+        status: 200, body: null,
+        binary: {
+          buffer,
+          headers: {
+            "Content-Type": inline ? att.type : "application/octet-stream",
+            "Content-Length": String(buffer.length),
+            "X-Content-Type-Options": "nosniff",
+            "Content-Disposition": `${inline ? "inline" : "attachment"}; filename="${att.file}"`,
+            "Cache-Control": "private, max-age=300",
+          },
+        },
+      };
+    }
+    return err(405, "Method not allowed.");
+  }
+
   const m = /^\/api\/feedback\/([^/]+)$/.exec(p);
   if (!m) return err(404, "Not found.");
   const rec = getFeedback(m[1]);
@@ -135,6 +225,7 @@ export async function handleFeedbackApi(
 
   if (method === "DELETE") {
     if (!isAdmin) return err(403, "Only an admin can delete.");
+    deleteAttachments(rec.id);   // no orphaned files on disk
     return ok({ deleted: deleteFeedback(rec.id) });
   }
 

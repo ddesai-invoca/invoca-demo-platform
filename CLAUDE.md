@@ -1249,8 +1249,13 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   `brief` (a paragraph, not the label) because a one-word label lets the model invent
   its own meaning, and `engine/assistant.ts` states the nurture definition too.
 
-## Feedback & feature requests
-- **Button**: `src/components/FeedbackButton.tsx`, beside Read.Me in the `LaunchCorner`
+## Feedback / Support & feature requests
+- The launch-form button is **Support** (`.fb-fab`); inside, the two kinds are
+  **Feedback / Support** and **Feature request**. The board splits them into TABS,
+  because one is "something is broken" and the other is a backlog: mixed together you
+  read past the wrong kind to find the one you came for. Each tab shows its own count
+  and how many are still open.
+- **Button**: `src/components/FeedbackButton.tsx` ("Support"), beside Read.Me in the `LaunchCorner`
   stack (`App.tsx`). Opens a modal rather than routing away: someone has a thought about
   the tool WHILE using it, and making them leave the page is how you get no feedback.
 - **Board**: `/feedback` (`src/screens/FeedbackBoard.tsx`), full-page outside the shell,
@@ -1263,6 +1268,22 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   fill in or spoof, and the completion email always has a real address.
 - **Storage**: `engine/feedbackStore.ts`, one JSON per item under `DATA_DIR/feedback/`,
   atomic write, same Render disk as the demos. No database for a handful of items a week.
+- **Attachments** (up to 5, 10MB each) land in `DATA_DIR/feedback-files/<id>/`. Uploaded as
+  RAW BYTES to `POST /api/feedback/:id/files?name=&type=`, one call per file, after the item
+  exists. Not base64 in the JSON: it inflates a third and two screenshots would blow the
+  body limit. A failed upload does NOT fail the submission; the names are reported instead.
+  - `server.ts` registers `express.raw()` for that path BEFORE `express.json()`, or a PNG
+    is rejected as malformed JSON. The Vite dev twin concatenates **Buffers**, never
+    strings, which would corrupt every byte above 0x7F.
+  - **Serving is the security story.** The stored filename is rebuilt from scratch
+    (`safeName`) and resolve-checked, so `../../../server.ts` becomes `2-server.ts` inside
+    the item's own directory (verified). Types are an ALLOW-list. Downloads set `nosniff`,
+    and only RASTER images are `inline` — **SVG is deliberately served as a download**,
+    because an inline SVG on this origin can run script and read the session.
+  - Only the submitter can attach; only the submitter or an admin can download.
+- **Query params must be DECODED.** `qs()` returning a raw value made `image%2Fpng` fail the
+  allow-list, so every image upload 415'd while `name` (decoded separately) looked fine.
+  It decodes now, and splits on the FIRST `=` only.
 - **Email**: `engine/mailer.ts`, Google Workspace SMTP, sent FROM `SMTP_USER` (your own
   address) TO the submitter's sign-in address. Chosen over a transactional provider: no
   vendor, no DNS verification, and a reply lands in a real inbox.
@@ -1474,3 +1495,8 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
 - **Dev server** is long-running; if navigation fails, restart `npm run dev`.
 - Reference: the original single-page report clone lives at `/Users/ddesai/invoca-report-clone/`
   (plain HTML/JS) — the proof-of-concept before this React platform.
+
+- ⚠️ **`.fbb-page` is the board's full-page wrapper** (`min-height: 100vh`). Reusing that
+  class name for a small meta span gave it a viewport-tall minimum, stretched the flex row
+  it sat in, and left a ~900px hole in every card with a `page` value. The meta span is
+  `.fbb-from`. Check for an existing class before reusing a name in `app.css`.

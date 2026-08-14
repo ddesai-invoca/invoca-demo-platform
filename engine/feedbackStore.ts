@@ -15,6 +15,29 @@ import path from "node:path";
 import { DATA_DIR } from "./demoStore.ts";
 
 const FEEDBACK_DIR = path.join(DATA_DIR, "feedback");
+const FILES_DIR = path.join(DATA_DIR, "feedback-files");
+
+/* WHAT MAY BE UPLOADED.
+
+   A screenshot is the single most useful thing someone can attach to "this looks
+   wrong", so images lead the list. Everything else is capped and stored, never
+   executed: see readAttachment's caller in feedbackApi for the serving rules. */
+export const MAX_FILE_BYTES = 10 * 1024 * 1024;   // 10MB each
+export const MAX_FILES = 5;
+const ALLOWED = new Set([
+  "image/png", "image/jpeg", "image/gif", "image/webp", "image/heic", "image/svg+xml",
+  "application/pdf", "text/plain", "text/csv",
+  "application/zip",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+]);
+/* SVG is an image people genuinely paste, and it is also a script container. It is
+   accepted for storage but NEVER served with its own type; the API downgrades it to
+   an attachment download so a browser cannot execute it on our origin. */
+export const isInlineSafeImage = (type: string) =>
+  type.startsWith("image/") && type !== "image/svg+xml";
+export const isAllowedType = (type: string) => ALLOWED.has((type || "").toLowerCase());
 
 export type FeedbackKind = "feedback" | "feature";
 
@@ -29,6 +52,13 @@ export type FeedbackStatus = (typeof STATUSES)[number];
 export const TERMINAL: FeedbackStatus[] = ["Complete"];
 
 export interface FeedbackUser { email: string; name: string }
+
+export interface Attachment {
+  name: string;      // the ORIGINAL name, shown to humans, never used as a path
+  type: string;      // validated against ALLOWED on upload
+  size: number;
+  file: string;      // the sanitised on-disk name
+}
 
 export interface FeedbackRecord {
   id: string;
@@ -50,6 +80,7 @@ export interface FeedbackRecord {
   notifiedAt?: string;
   /* Optional note from whoever triaged it; shown to the submitter. */
   note?: string;
+  attachments?: Attachment[];
 }
 
 function ensureDir() {
@@ -97,4 +128,46 @@ export function deleteFeedback(id: string): boolean {
   if (!isValidFeedbackId(id)) return false;
   try { fs.unlinkSync(path.join(FEEDBACK_DIR, `${id}.json`)); return true; }
   catch { return false; }
+}
+
+
+/* ---- attachments ------------------------------------------------------------
+
+   Stored beside the records, one directory per item, so deleting an item can take
+   its files with it and nothing orphans.
+
+   THE FILENAME IS NEVER TRUSTED. The name a browser sends is attacker-controlled:
+   "../../server.ts" or a 300-character unicode string are both things you receive
+   eventually. The stored name is rebuilt from scratch (index + sanitised stem +
+   sanitised extension), and the original is kept only as a display label. */
+function safeName(name: string, index: number): string {
+  const base = (name || "file").split(/[\\/]/).pop() || "file";     // strip any path
+  const dot = base.lastIndexOf(".");
+  const stem = (dot > 0 ? base.slice(0, dot) : base).replace(/[^a-zA-Z0-9._-]/g, "_").slice(0, 60) || "file";
+  const ext = (dot > 0 ? base.slice(dot + 1) : "").replace(/[^a-zA-Z0-9]/g, "").slice(0, 10);
+  return `${index}-${stem}${ext ? "." + ext : ""}`;
+}
+
+export function saveAttachment(id: string, index: number, name: string, data: Buffer): string {
+  const dir = path.join(FILES_DIR, id);
+  fs.mkdirSync(dir, { recursive: true });
+  const file = safeName(name, index);
+  /* resolve() then a prefix check: belt and braces against a traversal that somehow
+     survived safeName. Writing outside the item's own directory is never valid. */
+  const full = path.resolve(dir, file);
+  if (!full.startsWith(path.resolve(dir) + path.sep)) throw new Error("Invalid file name.");
+  fs.writeFileSync(full, data);
+  return file;
+}
+
+export function readAttachment(id: string, file: string): Buffer | null {
+  const dir = path.resolve(FILES_DIR, id);
+  const full = path.resolve(dir, file);
+  if (!full.startsWith(dir + path.sep)) return null;   // traversal attempt
+  try { return fs.readFileSync(full); } catch { return null; }
+}
+
+/** Remove an item's whole file directory. Called when the item is deleted. */
+export function deleteAttachments(id: string): void {
+  try { fs.rmSync(path.join(FILES_DIR, id), { recursive: true, force: true }); } catch { /* nothing to do */ }
 }

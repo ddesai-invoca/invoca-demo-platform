@@ -16,11 +16,12 @@ import { Link } from "react-router-dom";
    person's text must not be in the payload at all.
    ============================================================================= */
 
+interface Attachment { name: string; type: string; size: number; file: string }
 interface Item {
   id: string; kind: "feedback" | "feature"; title: string; body: string;
   page?: string; status: string; createdAt: string; updatedAt: string;
   submitter: { name: string; email: string };
-  note?: string; notifiedAt?: string;
+  note?: string; notifiedAt?: string; attachments?: Attachment[];
 }
 
 const TONE: Record<string, string> = {
@@ -45,6 +46,10 @@ export function FeedbackBoard() {
   const [busyId, setBusyId] = useState("");
   const [toast, setToast] = useState("");
   const [filter, setFilter] = useState<string>("All");
+  /* Feedback/support and feature requests are triaged differently: one is "is
+     something broken", the other is a backlog. Mixing them in one list means
+     reading past the wrong kind to find the one you came for. */
+  const [tab, setTab] = useState<"feedback" | "feature">("feedback");
 
   const load = useCallback(async () => {
     try {
@@ -85,8 +90,14 @@ export function FeedbackBoard() {
     finally { setBusyId(""); }
   }
 
-  const shown = filter === "All" ? items : items.filter((i) => i.status === filter);
-  const counts = statuses.map((s) => [s, items.filter((i) => i.status === s).length] as const);
+  const ofKind = items.filter((i) => i.kind === tab);
+  const shown = filter === "All" ? ofKind : ofKind.filter((i) => i.status === filter);
+  const counts = statuses.map((s) => [s, ofKind.filter((i) => i.status === s).length] as const);
+  const nFeedback = items.filter((i) => i.kind === "feedback").length;
+  const nFeature = items.filter((i) => i.kind === "feature").length;
+  /* An open item is one nobody has finished with. Surfaced per tab so the split
+     answers "what still needs me?" at a glance. */
+  const open = (k: string) => items.filter((i) => i.kind === k && i.status !== "Complete" && i.status !== "Declined").length;
 
   return (
     <div className="fbb-page">
@@ -109,10 +120,25 @@ export function FeedbackBoard() {
           </div>
         )}
 
-        {statuses.length > 0 && items.length > 0 && (
+        {items.length > 0 && (
+          <div className="fbb-tabs" role="tablist" aria-label="Submission type">
+            {([["feedback", "Feedback / Support", nFeedback], ["feature", "Feature requests", nFeature]] as const)
+              .map(([k, label, n]) => (
+                <button key={k} role="tab" aria-selected={tab === k}
+                  className={"fbb-tab" + (tab === k ? " fbb-tab-on" : "")}
+                  onClick={() => { setTab(k as "feedback" | "feature"); setFilter("All"); }}>
+                  {label}
+                  <span className="fbb-tab-n">{n}</span>
+                  {open(k) > 0 && <span className="fbb-tab-open" title={`${open(k)} still open`}>{open(k)} open</span>}
+                </button>
+              ))}
+          </div>
+        )}
+
+        {statuses.length > 0 && ofKind.length > 0 && (
           <div className="fbb-filters">
             <button className={"fbb-chip" + (filter === "All" ? " fbb-chip-on" : "")}
-              onClick={() => setFilter("All")}>All <b>{items.length}</b></button>
+              onClick={() => setFilter("All")}>All <b>{ofKind.length}</b></button>
             {counts.filter(([, n]) => n > 0).map(([s, n]) => (
               <button key={s} className={"fbb-chip" + (filter === s ? " fbb-chip-on" : "")}
                 onClick={() => setFilter(s)}>{s} <b>{n}</b></button>
@@ -128,10 +154,14 @@ export function FeedbackBoard() {
             <span className="material-icons">campaign</span>
             <p className="fbb-empty-title">Nothing here yet</p>
             <p className="fbb-empty-sub">
-              Use the Feedback button on the launch page to send something. You'll see it here,
+              Use the Support button on the launch page to send something. You'll see it here,
               and {emailEnabled ? "you'll get an email once it's done." : "its status will update here."}
             </p>
           </div>
+        )}
+
+        {!loading && items.length > 0 && shown.length === 0 && (
+          <p className="fbb-empty">Nothing here{filter === "All" ? "" : ` with status "${filter}"`}.</p>
         )}
 
         <div className="fbb-list">
@@ -152,8 +182,28 @@ export function FeedbackBoard() {
               <div className="fbb-meta">
                 {admin && <span className="fbb-who">{i.submitter.name}</span>}
                 <span>{when(i.createdAt)}</span>
-                {i.page && i.page !== "/" && <span className="fbb-page">from <code>{i.page}</code></span>}
+                {i.page && i.page !== "/" && <span className="fbb-from">from <code>{i.page}</code></span>}
               </div>
+
+              {(i.attachments?.length ?? 0) > 0 && (
+                <div className="fbb-atts">
+                  {i.attachments!.map((a) => {
+                    const href = `/api/feedback/${i.id}/files/${encodeURIComponent(a.file)}`;
+                    /* Only raster images preview inline. SVG is served as a download
+                       by the API precisely so it cannot run here, so it gets the
+                       file treatment too. */
+                    const isImg = a.type.startsWith("image/") && a.type !== "image/svg+xml";
+                    return (
+                      <a key={a.file} className={"fbb-att" + (isImg ? " fbb-att-img" : "")}
+                        href={href} target="_blank" rel="noopener noreferrer" title={a.name}>
+                        {isImg
+                          ? <img src={href} alt={a.name} loading="lazy" />
+                          : <><span className="material-icons">description</span><span>{a.name}</span></>}
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
 
               {i.note && <p className="fbb-note"><b>Note:</b> {i.note}</p>}
 

@@ -235,8 +235,12 @@ function feedbackApi(): Plugin {
         const url = req.url || ''
         if (!url.startsWith('/api/feedback')) return next()
         try {
-          let raw = ''
-          if (req.method !== 'GET' && req.method !== 'DELETE') for await (const chunk of req) raw += chunk
+          /* Uploads are binary: collect Buffers and concat, never string-concat,
+             which would corrupt every byte above 0x7F. */
+          const chunks: Buffer[] = []
+          if (req.method !== 'GET' && req.method !== 'DELETE') for await (const c of req) chunks.push(Buffer.from(c))
+          const rawBuf = Buffer.concat(chunks)
+          const isUpload = /\/api\/feedback\/[^/]+\/files/.test(url)
           const [{ handleFeedbackApi }, { currentUser }, { isAdmin }] = await Promise.all([
             import(pathToFileURL(path.resolve(process.cwd(), 'engine/feedbackApi.ts')).href),
             import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
@@ -244,8 +248,15 @@ function feedbackApi(): Plugin {
           ])
           const user = currentUser(req)
           const base = process.env.BASE_URL || 'http://localhost:5173'
-          const result = await handleFeedbackApi(req.method || 'GET', url, raw ? JSON.parse(raw) : undefined, user, isAdmin(user), base)
+          const parsed = isUpload ? rawBuf : (rawBuf.length ? JSON.parse(rawBuf.toString('utf8')) : undefined)
+          const result = await handleFeedbackApi(req.method || 'GET', url, parsed, user, isAdmin(user), base)
           if (!result) return next()
+          if (result.binary) {
+            res.statusCode = result.status
+            for (const [k, v] of Object.entries(result.binary.headers)) res.setHeader(k, v as string)
+            res.end(result.binary.buffer)
+            return
+          }
           res.statusCode = result.status
           res.setHeader('Content-Type', 'application/json')
           res.end(JSON.stringify(result.body))

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /* =============================================================================
-   FeedbackButton — "Send feedback", beside Read.Me on the launch form
+   FeedbackButton — the "Support" button, beside Read.Me on the launch form
    -----------------------------------------------------------------------------
    Opens a small form rather than routing away: someone with a thought about the
    tool has it WHILE they are using it, and making them leave the page to file it
@@ -20,11 +20,14 @@ export function FeedbackButton() {
   const [kind, setKind] = useState<Kind>("feedback");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [files, setFiles] = useState<File[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
+  const [attachWarning, setAttachWarning] = useState("");
   const [emailEnabled, setEmailEnabled] = useState(true);
   const titleRef = useRef<HTMLInputElement>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   /* Ask the server whether a completion email can actually be sent, so the form
@@ -49,7 +52,7 @@ export function FeedbackButton() {
     /* Reset only after a successful send. A failed submit keeps what they typed,
        because losing a paragraph of considered feedback to a network blip is the
        fastest way to never receive it again. */
-    if (sent) { setTitle(""); setBody(""); setSent(false); setKind("feedback"); }
+    if (sent) { setTitle(""); setBody(""); setFiles([]); setSent(false); setKind("feedback"); }
   }
 
   async function submit() {
@@ -65,8 +68,23 @@ export function FeedbackButton() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "Could not send that.");
+
+      /* Files go up AFTER the item exists, one raw-bytes POST each. Deliberately
+         not base64 in the JSON: it inflates by a third and a couple of screenshots
+         would blow the body limit. A file that fails to attach does NOT fail the
+         submission, because losing the written report to a flaky upload is the
+         worse outcome; the failures are named instead. */
+      const failed: string[] = [];
+      for (const f of files) {
+        try {
+          const q = `name=${encodeURIComponent(f.name)}&type=${encodeURIComponent(f.type || "application/octet-stream")}`;
+          const up = await fetch(`/api/feedback/${data.item.id}/files?${q}`, { method: "POST", body: f });
+          if (!up.ok) failed.push(f.name);
+        } catch { failed.push(f.name); }
+      }
+      setAttachWarning(failed.length ? `Sent, but ${failed.join(", ")} did not attach.` : "");
       setSent(true);
-      setTitle(""); setBody("");
+      setTitle(""); setBody(""); setFiles([]);
     } catch (e: any) {
       setError(e?.message || "Could not send that.");
     } finally {
@@ -77,17 +95,17 @@ export function FeedbackButton() {
   return (
     <>
       <button className="fb-fab" onClick={() => setOpen(true)}
-        title="Send feedback or request a feature">
-        <span className="material-icons">campaign</span>
-        Feedback
+        title="Get support, send feedback, or request a feature">
+        <span className="material-icons">support_agent</span>
+        Support
       </button>
 
       {open && (
         <div className="fb-overlay" onClick={close}>
-          <div className="fb-modal" role="dialog" aria-modal="true" aria-label="Send feedback"
+          <div className="fb-modal" role="dialog" aria-modal="true" aria-label="Support"
             onClick={(e) => e.stopPropagation()}>
             <div className="fb-head">
-              <span className="fb-title">{sent ? "Thanks, got it" : "Send feedback"}</span>
+              <span className="fb-title">{sent ? "Thanks, got it" : "Support"}</span>
               <button className="fb-x" onClick={close} aria-label="Close">
                 <span className="material-icons">close</span>
               </button>
@@ -101,6 +119,7 @@ export function FeedbackButton() {
                     ? "You'll get an email from me when it's done."
                     : "I'll pick it up from the board."}
                 </p>
+                {attachWarning && <p className="fb-warn-line">{attachWarning}</p>}
                 <div className="fb-done-actions">
                   <button className="fb-secondary" onClick={() => { setSent(false); }}>Send another</button>
                   <button className="fb-primary" onClick={() => { setOpen(false); setSent(false); navigate("/feedback"); }}>
@@ -111,7 +130,7 @@ export function FeedbackButton() {
             ) : (
               <>
                 <div className="fb-kind" role="radiogroup" aria-label="What kind">
-                  {([["feedback", "Feedback", "Something is off, confusing, or wrong"],
+                  {([["feedback", "Feedback / Support", "Something is broken, confusing, or you need a hand"],
                      ["feature", "Feature request", "Something you wish it did"]] as const).map(([k, label, hint]) => (
                     <button key={k} role="radio" aria-checked={kind === k}
                       className={"fb-kind-btn" + (kind === k ? " fb-kind-on" : "")}
@@ -137,6 +156,45 @@ export function FeedbackButton() {
                     placeholder={kind === "feature" ? "What would it do, and when would you use it?"
                                                     : "What happened, what did you expect, and where?"} />
                 </label>
+
+                {/* ATTACHMENTS. A screenshot is the most useful thing someone can
+                    give you for "this looks wrong", so it is one click away. */}
+                <div className="fb-files">
+                  <button className="fb-attach" onClick={() => fileRef.current?.click()}>
+                    <span className="material-icons">attach_file</span>
+                    Attach a file or screenshot
+                  </button>
+                  <input
+                    ref={fileRef} type="file" multiple hidden
+                    accept="image/*,.pdf,.txt,.csv,.zip,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                    onChange={(e) => {
+                      const picked = Array.from(e.target.files ?? []);
+                      e.target.value = "";               // so the same file can be re-picked
+                      const tooBig = picked.filter((f) => f.size > 10 * 1024 * 1024);
+                      if (tooBig.length) setError(`${tooBig.map((f) => f.name).join(", ")}: over 10MB.`);
+                      const ok = picked.filter((f) => f.size <= 10 * 1024 * 1024);
+                      setFiles((prev) => [...prev, ...ok].slice(0, 5));
+                    }}
+                  />
+                  {files.length > 0 && (
+                    <ul className="fb-file-list">
+                      {files.map((f, i) => (
+                        <li key={i}>
+                          {f.type.startsWith("image/")
+                            ? <img src={URL.createObjectURL(f)} alt="" className="fb-thumb" />
+                            : <span className="material-icons fb-file-icon">description</span>}
+                          <span className="fb-file-name">{f.name}</span>
+                          <span className="fb-file-size">{(f.size / 1024).toFixed(0)} KB</span>
+                          <button className="fb-file-x" aria-label={`Remove ${f.name}`}
+                            onClick={() => setFiles((prev) => prev.filter((_, j) => j !== i))}>
+                            <span className="material-icons">close</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {files.length >= 5 && <p className="fb-file-cap">Up to 5 files.</p>}
+                </div>
 
                 {error && <p className="fb-error">{error}</p>}
 

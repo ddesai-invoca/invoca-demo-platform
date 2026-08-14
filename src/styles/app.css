@@ -2904,7 +2904,10 @@ button.nav-item {
 .fbb-card-body { margin: 0 0 11px; font-size: 14px; color: #3d4d48; line-height: 1.55; white-space: pre-wrap; }
 .fbb-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: #6b7280; }
 .fbb-who { font-weight: 600; color: #3d4d48; }
-.fbb-page code { background: #f4f6f2; padding: 1px 5px; border-radius: 4px; font-size: 11.5px; }
+/* NOT .fbb-page: that is the full-page wrapper with min-height:100vh, and reusing
+   the name gave this little meta span a viewport-tall minimum, which stretched the
+   whole flex row and left a 900px hole in every card that had one. */
+.fbb-from code { background: #f4f6f2; padding: 1px 5px; border-radius: 4px; font-size: 11.5px; }
 .fbb-note { margin: 11px 0 0; font-size: 13.5px; color: #3d4d48; background: #f8faf1; border-left: 3px solid #00b388; border-radius: 0 8px 8px 0; padding: 9px 12px; }
 
 .fbb-admin { display: flex; align-items: center; gap: 12px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px dashed #e6e9e5; }
@@ -2924,3 +2927,59 @@ button.nav-item {
   background: #0a231e; color: #fff; font-size: 13.5px; padding: 11px 18px; border-radius: 999px;
   box-shadow: 0 10px 30px -10px rgba(10,35,30,.6);
 }
+
+/* ---- attachments in the support form -------------------------------------- */
+.fb-files { margin: 0 0 14px; }
+.fb-attach {
+  appearance: none; cursor: pointer; font: inherit; font-size: 13px;
+  background: #fff; border: 1px dashed #c9d2cd; border-radius: 9px; padding: 9px 14px;
+  color: #3d4d48; display: inline-flex; align-items: center; gap: 7px;
+  transition: border-color .16s ease, background .16s ease, color .16s ease;
+}
+.fb-attach:hover { border-color: #00b388; background: #f7fdfa; color: #00816a; }
+.fb-attach .material-icons { font-size: 17px; }
+.fb-file-list { list-style: none; margin: 9px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.fb-file-list li {
+  display: flex; align-items: center; gap: 9px; font-size: 13px; color: #3d4d48;
+  background: #f8faf1; border: 1px solid #e6e9e5; border-radius: 8px; padding: 6px 8px;
+}
+.fb-thumb { width: 30px; height: 30px; object-fit: cover; border-radius: 5px; flex: none; }
+.fb-file-icon { font-size: 20px; color: #6b7280; flex: none; }
+.fb-file-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fb-file-size { font-size: 11.5px; color: #6b7280; flex: none; }
+.fb-file-x { appearance: none; border: 0; background: none; cursor: pointer; color: #9aa3b2; display: flex; padding: 2px; border-radius: 5px; }
+.fb-file-x:hover { background: #e8ece6; color: #b42318; }
+.fb-file-x .material-icons { font-size: 16px; }
+.fb-file-cap { margin: 7px 0 0; font-size: 12px; color: #6b7280; }
+.fb-warn-line { margin: -8px 0 14px; font-size: 13px; color: #7a5a10; }
+
+/* ---- board: the two submission types --------------------------------------- */
+.fbb-tabs { display: flex; gap: 6px; margin: 0 0 18px; border-bottom: 1px solid #e0e4de; }
+.fbb-tab {
+  appearance: none; cursor: pointer; font: inherit; font-size: 14px; font-weight: 500;
+  background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  padding: 10px 14px; color: #6b7280; display: inline-flex; align-items: center; gap: 8px;
+  transition: color .16s ease, border-color .16s ease;
+}
+.fbb-tab:hover { color: #0a231e; }
+.fbb-tab-on { color: #0a231e; font-weight: 600; border-bottom-color: #00b388; }
+.fbb-tab-n {
+  min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: #eef1ec;
+  color: #4b5563; font-size: 11.5px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.fbb-tab-on .fbb-tab-n { background: #d9f2e8; color: #00816a; }
+.fbb-tab-open { font-size: 11px; font-weight: 700; color: #9a5a12; background: #fff4e8; border-radius: 999px; padding: 2px 8px; }
+
+.fbb-atts { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+.fbb-att {
+  display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+  font-size: 12.5px; color: #3d4d48; background: #f8faf1;
+  border: 1px solid #e0e4de; border-radius: 8px; padding: 6px 10px; max-width: 220px;
+  transition: border-color .16s ease, background .16s ease;
+}
+.fbb-att:hover { border-color: #00b388; background: #f2fbf7; }
+.fbb-att .material-icons { font-size: 16px; color: #6b7280; }
+.fbb-att span:not(.material-icons) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fbb-att-img { padding: 0; overflow: hidden; border-radius: 9px; max-width: none; }
+.fbb-att-img img { display: block; width: 132px; height: 90px; object-fit: cover; }
