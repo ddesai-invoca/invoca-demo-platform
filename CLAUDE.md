@@ -1182,6 +1182,21 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   imported lists are NOT cleaned -- the user's own punctuation stays verbatim.
 - The list in the drawer reads from EFFECTIVE data, so it updates live and is the
   confirmation that an edit landed. Undo covers the local paths too.
+- **The phone restarts itself when the config changes.** `PhonePreview` compares a
+  serialised `brain` across renders; on a change it clears the thread, drops the
+  conversation identity (so the chat that already happened stays in the SMS report as
+  its own record rather than being overwritten), re-issues the greeting under the new
+  config, and flashes `.phone-restart` OUTSIDE the phone frame -- the screen itself has
+  to stay a believable iMessage mockup. Serialise the WHOLE brain: the questions live
+  under `brain.playbook`, and picking `brain.questions` / `goal` / `bookingType` reads
+  as `undefined` for all three, so the signature never changes and nothing restarts.
+- **NURTURE = RE-ENGAGEMENT.** Someone who was interested, then went quiet (stopped
+  replying, or a rep could not reach them); the agent picks that thread back up, finds
+  what stalled it, and still drives to a booking. It is NOT a cold opener and NOT a
+  no-booking newsletter. `schema.ts` already said this for the extra nurture workflows
+  ("re-engage prospects who went quiet after intake"). Each use-case chip carries a
+  `brief` (a paragraph, not the label) because a one-word label lets the model invent
+  its own meaning, and `engine/assistant.ts` states the nurture definition too.
 
 ## Read.Me button + the in-app docs
 - `src/components/ReadmeButton.tsx`, mounted **once in `App.tsx`** inside `<BrowserRouter>`

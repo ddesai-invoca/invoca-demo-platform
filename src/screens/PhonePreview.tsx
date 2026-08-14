@@ -166,6 +166,11 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
   const baseRef = useRef<ConvBase | null>(null);
   const analyzeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const analyzedForCount = useRef(0);
+  /* Shown briefly after an AI change restarts the thread, so the chat vanishing
+     reads as "it picked up your edit" rather than "it lost my conversation".
+     Deliberately OUTSIDE the phone frame: the screen itself has to stay a
+     believable iMessage mockup. */
+  const [restarted, setRestarted] = useState(false);
 
   async function ask(history: Msg[]): Promise<string> {
     // Retry transient failures (server 5xx / rate-limit / "overloaded") with a
@@ -189,6 +194,39 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
     }
     throw lastErr ?? new Error("Chat failed.");
   }
+
+  /* WHAT THE AGENT ASKS, as a comparable string. The Ask AI drawer edits this
+     page's config, and until now the phone kept whatever thread it opened with:
+     you changed the questions and the conversation on screen was still running
+     the old ones. Comparing a SERIALISED brain (not the object, which is rebuilt
+     every render) restarts the conversation exactly when its substance changes and
+     never on an unrelated re-render.
+
+     The whole brain, not a hand-picked set of fields: the questions live under
+     `playbook`, and my first attempt listed `brain.questions` / `goal` /
+     `bookingType`, none of which exist at the top level. Every one read as
+     undefined, so the signature was constant and the restart never fired. */
+  const brainSig = useMemo(() => JSON.stringify(brain), [brain]);
+  const lastSig = useRef<string | null>(null);
+
+  useEffect(() => {
+    /* First run is the initial open, which the mount effect below already does. */
+    if (lastSig.current === null) { lastSig.current = brainSig; return; }
+    if (lastSig.current === brainSig) return;
+    lastSig.current = brainSig;
+
+    /* A NEW conversation identity, so the chat that already happened stays in the
+       SMS report as its own record instead of being overwritten by the restart. */
+    baseRef.current = null;
+    analyzedForCount.current = 0;
+    started.current = false;
+    setMessages([]);
+    setInput("");
+    setError(null);
+    setRestarted(true);
+    const t = setTimeout(() => setRestarted(false), 3200);
+    return () => clearTimeout(t);
+  }, [brainSig]);
 
   useEffect(() => {
     if (started.current) return;
@@ -214,7 +252,9 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
         setBusy(false);
       }
     })();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    /* Re-runs after a restart clears `started`, which is what re-issues the
+       greeting under the NEW config. */
+  }, [messages.length === 0 ? brainSig : "open"]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -335,6 +375,12 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
         {/* Name the workflow being previewed, not just the customer — with two
             SMS agents "Reyes Law SMS agent" is ambiguous. */}
         <div className="phone-caption">
+          {restarted && (
+            <span className="phone-restart" role="status">
+              <span className="material-icons">autorenew</span>
+              Agent updated, conversation restarted
+            </span>
+          )}
           Live preview — {brain.agentLabel ?? `${profile.customerName} SMS agent`}
         </div>
     </>

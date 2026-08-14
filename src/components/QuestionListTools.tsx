@@ -26,13 +26,42 @@ import {
    header of data/questionImport.ts.
    ============================================================================= */
 
-/* Use cases worth one tap. Free text still works for anything else — these are a
-   shortcut, not the menu. */
+/* Use cases worth one tap. Free text still works for anything else, so this is a
+   shortcut rather than the menu.
+
+   `brief` is what the assistant is actually told, and it carries the whole weight
+   of the rewrite: a one-word label like "Nurture" means different things at
+   different companies, and the model will happily invent the wrong one. NURTURE
+   IN PARTICULAR: it is re-engagement, not a slow-burn newsletter. These people
+   were interested once and then went quiet, and the goal is still a booking. The
+   schema already says so for the extra nurture workflows ("re-engage prospects who
+   went quiet after intake", schema.ts) and this now matches it. */
 const USE_CASES = [
-  { label: "Book an appointment", hint: "qualify, then lock in a day and time" },
-  { label: "Nurture", hint: "no booking, keep them warm and learn their timeline" },
-  { label: "Qualify and route", hint: "work out who they are, then hand to the right team" },
-  { label: "Quote / estimate", hint: "gather what a price needs, then quote" },
+  {
+    label: "Book an appointment",
+    hint: "qualify, then lock in a day and time",
+    brief: "A new inbound lead. Qualify them on what they want, then drive to booking a specific day and time.",
+  },
+  {
+    label: "Nurture / re-engage",
+    hint: "they went quiet; check back in and win the booking",
+    brief:
+      "RE-ENGAGEMENT, not a cold opener. These people were interested at some point and then went quiet: " +
+      "they stopped replying, or a rep could never reach them. The AI agent is now picking that thread back up. " +
+      "So the questions should check whether they are STILL interested, find out what stalled it (timing, price, " +
+      "they went elsewhere, they were just busy), and clear that obstacle. The goal is still to get an appointment " +
+      "booked. Assume prior contact and reference it; never ask as though this were a first conversation.",
+  },
+  {
+    label: "Qualify and route",
+    hint: "work out who they are, then hand to the right team",
+    brief: "Work out who this person is and what they need, so the conversation can be handed to the right team or location.",
+  },
+  {
+    label: "Quote / estimate",
+    hint: "gather what a price needs, then quote",
+    brief: "Gather exactly what is needed to put a price together, then move toward giving them a quote.",
+  },
 ];
 
 export function QuestionListTools({ questions, readOnly, onReplace, onPrompt }: {
@@ -139,7 +168,7 @@ export function QuestionListTools({ questions, readOnly, onReplace, onPrompt }: 
                 <button
                   key={c.label} className="aiq-chip" disabled={readOnly} title={c.hint}
                   onClick={() => onPrompt(
-                    `Rewrite all of the agent's qualifying questions for this use case: ${c.label} (${c.hint}). ` +
+                    `Rewrite all of the agent's qualifying questions for this use case: ${c.label}.\n${c.brief}\n` +
                     `Keep them specific to this business and in a sensible order.`
                   )}
                 >

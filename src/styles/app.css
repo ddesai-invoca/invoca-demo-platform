@@ -2683,3 +2683,17 @@ body:has(.vp-root) .readme-fab { opacity: 0; pointer-events: none; }
 }
 .aiq-cancel:hover { background: #f3f4f6; }
 .aiq-problem { margin: 9px 0 0; font-size: 12.5px; color: #b42318; }
+
+/* Brief notice under the Preview Agent phone, shown when an AI change restarts
+   the thread. Outside the phone frame on purpose: the screen itself must stay a
+   believable iMessage mockup. */
+.phone-restart {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin: 0 0 8px; padding: 5px 12px 5px 9px; border-radius: 999px;
+  background: rgba(38,102,249,.16); border: 1px solid rgba(120,160,255,.38);
+  color: #cfe0ff; font-size: 12.5px; font-weight: 500; white-space: nowrap;
+  animation: phone-restart-in .22s ease-out;
+}
+.phone-restart .material-icons { font-size: 15px; }
+@keyframes phone-restart-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .phone-restart { animation: none; } }
