@@ -16,7 +16,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { CustomerProfile, DigitalInsightsReport, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
+import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
 import { sweepValue } from "./dashSweep.ts";
 
 const QM_SCORE_MEAN = 71;   // true mean of the agent scorecard series
@@ -359,10 +359,25 @@ export function generateTerms(client: Anthropic, name: string, brief: string) {
 
 /* The Digital Journey & Call Attribution report table — the heavy part of the old
    report call, now generated as its own pool phase (needs only brief + bookingTerm). */
+/* THE GENERATION SHAPE, which is NOT the storage shape.
+
+   toSchema()'s sanitize() marks every property required, because strict structured
+   output has no optionals. That is correct for real content and wrong for a field
+   the app writes later: `InteractionRow.cells` is written by columnEdits when a
+   column is added, and forcing it here made the model invent one. It produced two
+   metric-looking strings per row against six dimension columns, and the table then
+   rendered those instead of the six real values it had generated correctly.
+
+   Omitting it is the fix at source. Any row-level field the APP owns rather than the
+   model belongs in this omit list, not in the prompt. */
+const DIGITAL_INSIGHTS_GEN = DigitalInsightsReport.extend({
+  rows: z.array(InteractionRow.omit({ cells: true })),
+});
+
 function generateDigitalInsights(client: Anthropic, name: string, brandDomain: string, brief: string, bookingTerm: string, sc: Scale) {
   return structured<z.infer<typeof DigitalInsightsReport>>(
     client,
-    DigitalInsightsReport,
+    DIGITAL_INSIGHTS_GEN,
     `Using this business brief, produce the Invoca "Digital Journey & Call Attribution Report" table for ${name}.\n\n` +
       `BRIEF:\n${brief}\n\n` +
       `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +

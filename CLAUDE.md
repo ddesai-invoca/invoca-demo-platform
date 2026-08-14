@@ -1283,6 +1283,29 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   Don't "fix" one to match the other.
 - `ARCHITECTURE.md` is the Markdown source of truth; keep it and `readme.html` in sync.
 
+## Generation: optional fields become REQUIRED (a real bug, twice bitten)
+- `toSchema()` in `engine/core.ts` runs `sanitize()`, which sets
+  `required = Object.keys(properties)` on every object. That is deliberate (strict
+  structured output has no optionals) and it means **every `.optional()` field in a
+  generated type is forced onto the model**.
+- That is fine for content the model should invent, and **wrong for any field the APP
+  writes later**. `InteractionRow.cells` is written by `columnEdits` when a column is
+  added; forcing it made the model emit a 2-entry `cells` against 6 `dimensionColumns`,
+  and `leadingCells` preferred it, so the Digital Journey report rendered an interaction
+  count under "Marketing Source" and revenue under "Marketing Medium" while the six
+  correct values sat unused in the same row. Hit `autonation` (a bundled seed, in git)
+  and every demo generated after 2026-08-04.
+- **Fix pattern**: generate with a type that omits app-owned fields, e.g.
+  `DIGITAL_INSIGHTS_GEN = DigitalInsightsReport.extend({ rows: z.array(InteractionRow.omit({ cells: true })) })`.
+  Adding a new app-written row field? Add it to that omit list in the same commit.
+- **`leadingCells` now only trusts `cells` when `cells.length === headers.length`.** A
+  mismatched array is damage, not data, so it falls back to the named fields. This is
+  what makes demos ALREADY saved with the bad array render correctly, including live ones
+  nobody is going to re-generate.
+- Switching profiles in a test: `invoca-demo:activeId` is a **raw string**, not JSON.
+  `JSON.stringify(id)` writes `"autonation"` with quotes, no profile matches, and the app
+  silently falls back to Shady Blinds, so the test "passes" against the wrong prospect.
+
 ## Conventions & decisions
 - **Data-driven**: never hard-code screen data in components; put it in the profile/schema.
 - **Re-skin EVERY data point to the prospect's vertical.** No industry-specific wording is

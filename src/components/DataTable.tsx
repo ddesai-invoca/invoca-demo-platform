@@ -41,11 +41,18 @@ const HEADER_FIELD: [RegExp, keyof InteractionRow][] = [
    the model skipped is then visibly incomplete instead of quietly misaligned, and
    every value that IS shown is under the right column. */
 export function leadingCells(row: InteractionRow, headers: string[]): string[] {
-  if (row.cells?.length) {
-    const out = row.cells.slice(0, headers.length);
-    while (out.length < headers.length) out.push("");
-    return out;
-  }
+  /* `cells` is an EDIT-TIME field: columnEdits writes one value per header when a
+     column is added, removed or moved. It is only trustworthy when it still lines up
+     with the headers.
+
+     A mismatched array is not data, it is damage, and rendering it silently is how
+     this broke in the field: generation was forcing a 2-entry `cells` onto every row
+     (see engine/core.ts, DIGITAL_INSIGHTS_GEN) while dimensionColumns had 6, so the
+     table showed an interaction count under "Marketing Source", revenue under
+     "Marketing Medium", and four empty columns, with the six real values sitting
+     untouched in the row the whole time. Falling back to the named fields renders
+     those instead, which is right for every demo already saved with the bad array. */
+  if (row.cells?.length === headers.length) return row.cells.slice();
   return headers.map((h) => {
     const hit = HEADER_FIELD.find(([re]) => re.test(h));
     return hit ? String(row[hit[1]] ?? "") : "";
