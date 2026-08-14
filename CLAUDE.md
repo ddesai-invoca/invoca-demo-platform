@@ -1156,6 +1156,33 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
 - The Exchange page loads GT America font + logos from Invoca's CDN (needs internet).
 - These render the **desktop layout at ≥992px** (they're the real responsive pages).
 
+## Preview Agent: changing the agent's questions (4 ways)
+- The Ask AI drawer on `/agent-studio/agent/preview` can change
+  `smsPlaybook.qualifyingQuestions` four ways: **one by one**, **paste a list**,
+  **import a file**, **or name a use case** and let the assistant rewrite them all.
+- **The split is deliberate.** Paste and import are **local, no model call**
+  (`src/data/questionImport.ts` -> `parseQuestionList`). The user already typed the exact
+  words; sending them through Haiku to be echoed is the same mistake `AssistantColumnOp`
+  documents (it paraphrases, reorders, drops the tail). One-by-one and use-case ARE
+  judgement, so those go to the assistant.
+- `parseQuestionList` handles: numbered/bulleted lists, a `Questions` header line,
+  CSV/TSV with or without a header (finds a `question`/`prompt`/`ask` column, honours
+  `"quoted, fields"`), a single run-on paragraph split on `?`, dedupe, and a
+  `MAX_QUESTIONS` cap that is **reported, never silent**.
+- **The tools are OPT-IN via the scope's `questionPath`** (`usePageData(base, { questionPath })`).
+  Four screens register `agentConfig` -- Agent Config, AI Recommendations, Knowledge
+  Sources and this preview -- so all four have a question list in their data. Gating on
+  "the data has questions" would light up three screens nobody asked to change. Verified:
+  the tools appear on the preview only.
+- **`editGuard` already exempts `qualifyingQuestions`** from the array-length rule
+  (`LENGTH_IS_CONTENT`), which is what lets add/remove work here and nowhere else.
+- **Assistant-written questions get `stripGeneratedDashes()`** in the drawer before
+  `applyEdits`. `engine/chat.ts::stripDashes` only cleans the agent's live replies, so a
+  generated question kept its em dash ("stay in touch-text, email, or phone?"). Pasted and
+  imported lists are NOT cleaned -- the user's own punctuation stays verbatim.
+- The list in the drawer reads from EFFECTIVE data, so it updates live and is the
+  confirmation that an edit landed. Undo covers the local paths too.
+
 ## Read.Me button + the in-app docs
 - `src/components/ReadmeButton.tsx`, mounted **once in `App.tsx`** inside `<BrowserRouter>`
   but outside `<Routes>`, so it covers Launch and every shell screen without two copies

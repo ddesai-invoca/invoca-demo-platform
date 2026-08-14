@@ -2599,3 +2599,87 @@ body:has(.idr-root) .readme-fab,
 body:has(.sdr-root) .readme-fab,
 body:has(.vp-root) .readme-fab { opacity: 0; pointer-events: none; }
 @media (max-width: 640px) { .readme-fab { right: 14px; bottom: 14px; } }
+
+/* ---- Ask AI: the Preview Agent's question list -------------------------------
+   Only rendered when a page opts in by registering a questionPath (today just the
+   Preview Agent tab), so these rules cannot reach any other screen's drawer. */
+.aiq {
+  border: 1px solid #e5e7eb; border-radius: 10px; background: #fbfcfe;
+  padding: 12px 13px; margin: 0 0 14px;
+}
+.aiq-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.aiq-title {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #6b7280;
+}
+.aiq-count {
+  min-width: 19px; height: 19px; padding: 0 6px; border-radius: 999px;
+  background: #eef2ff; color: #2666f9; font-size: 11px; font-weight: 700; letter-spacing: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.aiq-actions { display: inline-flex; gap: 6px; }
+.aiq-btn {
+  appearance: none; border: 1px solid #d7dce5; background: #fff; border-radius: 7px;
+  font: inherit; font-size: 12px; font-weight: 600; color: #2c3444; cursor: pointer;
+  padding: 5px 9px 5px 7px; display: inline-flex; align-items: center; gap: 5px;
+  transition: background .16s ease, border-color .16s ease, color .16s ease;
+}
+.aiq-btn .material-icons { font-size: 15px; color: #6b7280; transition: color .16s ease; }
+.aiq-btn:hover:not(:disabled) { background: #f3f6fd; border-color: #b9c6e6; color: #2666f9; }
+.aiq-btn:hover:not(:disabled) .material-icons { color: #2666f9; }
+.aiq-btn:disabled { opacity: .5; cursor: default; }
+
+/* the list: each row is a button, because tapping one is how you edit it */
+.aiq-list { list-style: none; margin: 11px 0 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.aiq-q {
+  appearance: none; width: 100%; text-align: left; background: #fff; cursor: pointer;
+  border: 1px solid #e8ebf1; border-radius: 8px; padding: 8px 9px;
+  font: inherit; font-size: 13px; line-height: 1.45; color: #1f2937;
+  display: flex; align-items: flex-start; gap: 9px;
+  transition: border-color .16s ease, background .16s ease, box-shadow .16s ease;
+}
+.aiq-q:hover:not(:disabled) { border-color: #9db4ea; background: #f7faff; box-shadow: 0 1px 3px rgba(38,102,249,.08); }
+.aiq-q:disabled { cursor: default; }
+.aiq-num {
+  flex: none; width: 18px; height: 18px; border-radius: 5px; margin-top: 1px;
+  background: #eef2ff; color: #2666f9; font-size: 11px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.aiq-text { flex: 1; }
+/* Holds its space so the row never reflows on hover; only the opacity moves. */
+.aiq-pencil { font-size: 15px; color: #9aa3b2; opacity: 0; transition: opacity .16s ease; flex: none; margin-top: 1px; }
+.aiq-q:hover:not(:disabled) .aiq-pencil { opacity: 1; }
+.aiq-none { font-size: 13px; color: #6b7280; padding: 6px 2px; }
+
+.aiq-cases { margin: 12px 0 0; padding: 11px 0 0; border-top: 1px dashed #e5e7eb; }
+.aiq-cases-label { display: block; font-size: 12px; color: #6b7280; margin: 0 0 7px; }
+.aiq-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.aiq-chip {
+  appearance: none; border: 1px solid #d7dce5; background: #fff; border-radius: 999px;
+  font: inherit; font-size: 12px; color: #2c3444; cursor: pointer; padding: 5px 11px;
+  transition: background .16s ease, border-color .16s ease, color .16s ease;
+}
+.aiq-chip:hover:not(:disabled) { background: #eef2ff; border-color: #9db4ea; color: #2666f9; }
+.aiq-chip:disabled { opacity: .5; cursor: default; }
+
+.aiq-paste { margin: 11px 0 0; }
+.aiq-paste textarea {
+  width: 100%; border: 1px solid #d7dce5; border-radius: 8px; padding: 9px 10px;
+  font: inherit; font-size: 13px; line-height: 1.5; color: #1f2937; resize: vertical;
+  background: #fff;
+}
+.aiq-paste textarea:focus { outline: none; border-color: #2666f9; box-shadow: 0 0 0 3px rgba(38,102,249,.12); }
+.aiq-paste-foot { display: flex; gap: 7px; margin: 8px 0 0; }
+.aiq-apply {
+  appearance: none; border: 0; border-radius: 7px; background: #2666f9; color: #fff;
+  font: inherit; font-size: 12.5px; font-weight: 600; padding: 7px 13px; cursor: pointer;
+  transition: background .16s ease;
+}
+.aiq-apply:hover:not(:disabled) { background: #1b52d6; }
+.aiq-apply:disabled { opacity: .45; cursor: default; }
+.aiq-cancel {
+  appearance: none; border: 1px solid #d7dce5; border-radius: 7px; background: #fff;
+  font: inherit; font-size: 12.5px; color: #4b5563; padding: 7px 13px; cursor: pointer;
+}
+.aiq-cancel:hover { background: #f3f4f6; }
+.aiq-problem { margin: 9px 0 0; font-size: 12.5px; color: #b42318; }

@@ -3,6 +3,7 @@ import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
 import { buildSmsBrain } from "../data/smsBrain";
+import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 
 /* iPhone "Preview Agent" chat — modern iOS (dark mode) Messages mockup. The SE
@@ -129,7 +130,10 @@ function useBrain(wfSlug?: string | null) {
     title: `Preview Agent — what the ${profile.customerName} SMS agent asks`,
     ...(profile.reports.agentConfig ?? {}),
   }), [profile.reports.agentConfig, profile.customerName]);
-  const ac = usePageData(base);
+  /* Opt in to the drawer's question tools. This is the page whose whole purpose is
+     what the agent asks, so it is the one place the paste / import / use-case
+     controls belong. */
+  const ac = usePageData(base, { questionPath: QUESTIONS_PATH });
   const wf = wfSlug
     ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
     : undefined;

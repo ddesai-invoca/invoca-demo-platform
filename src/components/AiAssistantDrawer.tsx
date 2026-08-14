@@ -3,6 +3,9 @@ import { useLocation } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { columnEdits } from "../data/columnEdits";
+import { getByPath } from "../data/editGuard";
+import { QuestionListTools } from "./QuestionListTools";
+import { stripGeneratedDashes } from "../data/questionImport";
 
 /* The "Ask AI" drawer: slides in from the right over a dimmed backdrop. Scope is
    set by which sparkle opened it — the whole PAGE (the top-bar sparkle, on every
@@ -42,6 +45,18 @@ export function AiAssistantDrawer() {
   const key = active?.key ?? "";
 
   const effTitle = useMemo(() => (active ? ((effectiveData(active.key) as any)?.title ?? active.baseTitle) : ""), [active, effectiveData]);
+
+  /* THE QUESTION TOOLS ARE OPT-IN, and the opt-in is the scope's questionPath.
+     Four screens register `agentConfig`, so all four carry a question list in
+     their data; only the page that declared it owns those questions gets the
+     tools. Read from the EFFECTIVE data so the list re-renders the moment the
+     assistant or an import changes it. */
+  const questionPath = focus?.scope === "tile" ? undefined : active?.questionPath;
+  const questions = useMemo(() => {
+    if (!active || !questionPath) return null;
+    const v = getByPath(effectiveData(active.key), questionPath);
+    return Array.isArray(v) ? (v as unknown[]).map(String) : null;
+  }, [active, questionPath, effectiveData]);
   const scopeLabel = focus?.scope === "tile" ? (focus.label || "This tile") : effTitle;
 
   // Fresh chat each time the drawer opens (scope may differ).
@@ -78,7 +93,7 @@ export function AiAssistantDrawer() {
            workflow" by creating a KPI tile, which that page never renders: the
            edit looked like it succeeded and nothing appeared. */
         body: JSON.stringify({ customerName: active.customerName, dashboardTitle: effTitle, dataContext, question: q, focus, history,
-          canCreateTiles: pathname.startsWith("/dashboards/") }),
+          canCreateTiles: pathname.startsWith("/dashboards/"), questionPath }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "Assistant failed.");
@@ -122,7 +137,21 @@ export function AiAssistantDrawer() {
           push(msg, "auto_awesome");
         }
       } else if (r?.kind === "editData" && Array.isArray(r.edits) && r.edits.length) {
-        const n = applyEdits(active.key, r.edits);
+        /* INSTRUCT THEN ENFORCE, same as the agent's replies. The prompt asks for
+           no dashes and the model mostly complies; "mostly" is not something you
+           can demo on, so a question list the assistant wrote is cleaned here for
+           real. A list the USER pasted never reaches this branch. */
+        const edits = questionPath
+          ? r.edits.map((e: any) => {
+              if (e.path !== questionPath) return e;
+              try {
+                const v = JSON.parse(e.value);
+                if (!Array.isArray(v)) return e;
+                return { ...e, value: JSON.stringify(v.map((q) => stripGeneratedDashes(String(q)))) };
+              } catch { return e; }
+            })
+          : r.edits;
+        const n = applyEdits(active.key, edits);
         push(n ? (r.answer || `Updated ${n} value${n > 1 ? "s" : ""} on this page.`) : "I couldn't map that change to anything on this page — try naming the metric, title or row you mean.", "auto_awesome");
       } else {
         push(r?.answer || "…");
@@ -168,6 +197,24 @@ export function AiAssistantDrawer() {
         )}
 
         <div className="aiad-body" ref={listRef}>
+          {/* Always visible while the drawer is open on this page, not just on the
+              empty state: after the assistant rewrites a question the list below
+              updates, which is the only confirmation that it actually landed. */}
+          {questions && (
+            <QuestionListTools
+              questions={questions}
+              readOnly={readOnly}
+              onReplace={(next, note) => {
+                const n = applyEdits(active!.key, [{ path: questionPath!, value: JSON.stringify(next) }]);
+                setMessages((prev) => [...prev, {
+                  role: "assistant",
+                  content: n ? `${note} The agent asks them from its next message.` : "I couldn't apply that list.",
+                  icon: n ? "playlist_add_check" : "info",
+                }]);
+              }}
+              onPrompt={(text) => { setInput(text); inputRef.current?.focus(); }}
+            />
+          )}
           {messages.length === 0 && (
             <div className="aiad-empty">
               <span className="material-icons">auto_awesome</span>
@@ -193,13 +240,21 @@ export function AiAssistantDrawer() {
                 </>
               ) : (
                 <>
-                  <p className="aiad-empty-title">Ask about this page</p>
-                  <p className="aiad-empty-sub">
+                  <p className="aiad-empty-title">{questions ? "Change what this agent asks" : "Ask about this page"}</p>
+                  <p className="aiad-empty-sub">{questions ? (
+                    <>
+                      Tap a question above to change it, paste or import a whole list, or pick a use
+                      case and I'll rewrite them all. You can also just tell me: "drop the budget
+                      question", "ask for their ZIP first", "add one about financing".
+                    </>
+                  ) : (
+                    <>
                     Ask a question, or change the data: "bump Total Revenue to $1.2M",
                     "rename this signal to Quote Booked", "make Q4 trend up". On a dashboard I can
                     add a tile too. I change this page's data only, never the styling, and never
                     another page.
-                  </p>
+                    </>
+                  )}</p>
                 </>
               )}
             </div>

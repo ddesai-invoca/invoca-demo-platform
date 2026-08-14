@@ -32,7 +32,13 @@ export interface AssistantFocus {
 
 export interface AssistantEdit { path: string; value: string }
 
-interface Scope { key: string; customerName: string; baseTitle: string }
+/* `questionPath` is an OPT-IN. Four screens register `agentConfig` as their scope,
+   so every one of them has `smsPlaybook.qualifyingQuestions` sitting in its data;
+   keying the drawer's question tools off "the data happens to contain a question
+   list" would light them up on Agent Config, AI Recommendations and Knowledge
+   Sources too. Only the page whose JOB is those questions passes this, which keeps
+   the change to the one screen it was asked for. */
+interface Scope { key: string; customerName: string; baseTitle: string; questionPath?: string }
 interface Snapshot { override: unknown | undefined; tiles: GeneratedTile[] }
 
 interface AiAssistantCtx {
@@ -41,7 +47,7 @@ interface AiAssistantCtx {
   openDrawer: (focus?: AssistantFocus) => void;
   closeDrawer: () => void;
   active: Scope | null;
-  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown }) => void;
+  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string }) => void;
   effectiveData: (key: string) => unknown;
   tilesFor: (key: string) => GeneratedTile[];
   applyEdits: (key: string, edits: AssistantEdit[]) => number;
@@ -156,9 +162,13 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const openDrawer = useCallback((f?: AssistantFocus) => { setFocus(f ?? null); setOpen(true); }, []);
   const closeDrawer = useCallback(() => setOpen(false), []);
 
-  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown }) => {
+  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string }) => {
     baseRef.current[s.key] = s.baseData;
-    setActive((prev) => (prev && prev.key === s.key && prev.baseTitle === s.baseTitle ? prev : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle }));
+    setActive((prev) => (
+      prev && prev.key === s.key && prev.baseTitle === s.baseTitle && prev.questionPath === s.questionPath
+        ? prev
+        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath }
+    ));
   }, []);
 
   const effectiveData = useCallback((key: string) => (key in store.overrides ? store.overrides[key] : baseRef.current[key]), [store.overrides]);

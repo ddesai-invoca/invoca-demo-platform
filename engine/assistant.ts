@@ -41,6 +41,10 @@ export interface AssistantInput {
   dataContext: string;                 // serialized (possibly already-edited) dashboard data
   question: string;
   focus?: AssistantFocus;
+  /* Set only by a page that OWNS a question list (the Preview Agent tab). Turns
+     on the question-list rule below. Absent everywhere else, so no other screen's
+     assistant behaviour changes. */
+  questionPath?: string;
   history?: { role: "user" | "assistant"; content: string }[];
 }
 
@@ -178,6 +182,14 @@ function buildSystem(input: AssistantInput): string {
     `- Base every number on the DATA below or on a coherent scenario the user requested. Keep values realistic and internally consistent (percentages that should sum ~100 do; totals match their parts).`,
     `- For chart series/bars, strip %/$ to plain numbers; kpi values may keep formatting.`,
     `- For a "story" / scenario change, edit the KEY HEADLINE numbers that carry the story (the KPI tile values and the primary chart series) so it stays consistent — you do NOT need to touch every single value. Prefer ~5–15 focused edits over exhaustively rewriting every leaf.`,
+    ...(input.questionPath ? [
+      `- THE AGENT'S QUESTION LIST. "${input.questionPath}" in the DATA below is the ordered list of questions this SMS agent asks, one per message. Changing it is the main thing this page is for, so treat these as normal data edits and do NOT decline them.`,
+      `  Return kind:"editData" with ONE edit whose path is exactly "${input.questionPath}" and whose value is the COMPLETE new list as a JSON array of strings. Never edit a single element by index (no "${input.questionPath}.2") — always send the whole list.`,
+      `  This list MAY change length: adding, removing and reordering questions are all allowed here, unlike every other array on every other page.`,
+      `  Carry every question the user did not ask you to touch across VERBATIM, character for character. If they say "change question 3", questions 1, 2, 4… come back exactly as they are in the DATA. Rewording an untouched question is a bug, not an improvement.`,
+      `  Asked to rewrite the list for a USE CASE (booking, nurture, qualify-and-route, quoting), replace ALL of them with 4-6 questions that serve that goal, specific to THIS business's products and vocabulary, ordered so the easy ones come first. Never return generic questions that would fit any company.`,
+      `  Each question is one text message: a single question, conversational, under ~20 words, ending in "?".`,
+    ] : []),
     `- Be concise and professional.`,
     ``,
     `DATA (current JSON for this page):`,

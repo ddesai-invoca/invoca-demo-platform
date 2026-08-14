@@ -12,15 +12,22 @@ import type { MultiSeriesChart } from "../data/schema";
    registers the dashboard as the assistant's scope and returns the EFFECTIVE
    data (base + any AI edits overlaid). Call it unconditionally at the top of the
    component (before the null-guard), like any hook. */
-export function useDashboardData<T>(base: T): T {
+export interface PageDataOptions {
+  /* Dot-path to a list of questions this page OWNS, which turns on the drawer's
+     paste / import / rewrite tools. Opt-in: omitted everywhere else, so no other
+     screen changes. See AiAssistantContext's Scope. */
+  questionPath?: string;
+}
+export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { pathname } = useLocation();
   const { profileId, profile } = useProfile();
   const { registerScope, effectiveData } = useAiAssistant();
   const key = `${profileId}::${pathname}`;
+  const questionPath = opts?.questionPath;
   useEffect(() => {
     if (base == null) return;
-    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base });
-  }, [key, base, profile.customerName, registerScope]);
+    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath });
+  }, [key, base, profile.customerName, registerScope, questionPath]);
   const eff = effectiveData(key);
   return (eff ?? base) as T;
 }
