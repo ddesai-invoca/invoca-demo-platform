@@ -1260,6 +1260,18 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   the tool WHILE using it, and making them leave the page is how you get no feedback.
 - **Board**: `/feedback` (`src/screens/FeedbackBoard.tsx`), full-page outside the shell,
   because it is about the TOOL, not a prospect's demo.
+- **Getting there**: `InboxButton` in the corner stack, **admin only** (it renders null
+  otherwise, so a normal SE never sees it), with a badge of how many are still open. The
+  badge is the point as much as the button: a passive signal beats a board you forget.
+  It shows no badge at zero, because a permanent "0" trains you to stop reading it.
+  - Placement is **provisional** (the alternative was folding it into Support as a split
+    control). It is one line in `LaunchCorner` and its own component, so moving it is a
+    deletion plus a chevron, and nothing else in the feature knows where it lives.
+  - It fetches `GET /api/feedback?summary=1` -> counts only, 79 bytes vs 1.6KB for the full
+    list on four items. Rendering a badge must not download everyone's submissions, and
+    that gap grows with the backlog.
+  - The in-form link reads "See all submissions" for an admin and "See what I've sent" for
+    everyone else; same summary call decides.
 - **Visibility is server-side** (`engine/feedbackApi.ts`): a submitter sees only their own
   items, an admin (`isAdmin`, same list as the demo library) sees all and can change
   status. The list is filtered BEFORE serialising, so someone else's text never reaches a

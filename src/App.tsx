@@ -41,6 +41,7 @@ import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { ReadmeButton } from "./components/ReadmeButton";
 import { FeedbackButton } from "./components/FeedbackButton";
+import { InboxButton } from "./components/InboxButton";
 import { FeedbackBoard } from "./screens/FeedbackBoard";
 import { NAV } from "./components/nav";
 
@@ -75,6 +76,9 @@ function LaunchCorner() {
   if (!CORNER_ON.includes(pathname)) return null;
   return (
     <div className="corner-stack">
+      {/* Admin only, and it hides itself: see InboxButton. Provisional placement,
+          which is why it is one line here rather than woven into Support. */}
+      <InboxButton />
       <FeedbackButton />
       <ReadmeButton />
     </div>

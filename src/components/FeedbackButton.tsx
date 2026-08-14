@@ -26,6 +26,9 @@ export function FeedbackButton() {
   const [sent, setSent] = useState(false);
   const [attachWarning, setAttachWarning] = useState("");
   const [emailEnabled, setEmailEnabled] = useState(true);
+  /* An admin opening the board sees EVERYONE's, so "See what I've sent" is wrong
+     for them. Same fetch that tells us about email tells us this. */
+  const [admin, setAdmin] = useState(false);
   const titleRef = useRef<HTMLInputElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
@@ -34,8 +37,12 @@ export function FeedbackButton() {
      never promises one that will not arrive. */
   useEffect(() => {
     if (!open) return;
-    fetch("/api/feedback").then((r) => r.ok ? r.json() : null)
-      .then((d) => { if (d && typeof d.emailEnabled === "boolean") setEmailEnabled(d.emailEnabled); })
+    fetch("/api/feedback?summary=1").then((r) => r.ok ? r.json() : null)
+      .then((d) => {
+        if (!d) return;
+        if (typeof d.emailEnabled === "boolean") setEmailEnabled(d.emailEnabled);
+        setAdmin(!!d.admin);
+      })
       .catch(() => { /* leave the optimistic default */ });
   }, [open]);
 
@@ -123,7 +130,7 @@ export function FeedbackButton() {
                 <div className="fb-done-actions">
                   <button className="fb-secondary" onClick={() => { setSent(false); }}>Send another</button>
                   <button className="fb-primary" onClick={() => { setOpen(false); setSent(false); navigate("/feedback"); }}>
-                    See what I've sent
+                    {admin ? "See all submissions" : "See what I've sent"}
                   </button>
                 </div>
               </div>
@@ -201,7 +208,7 @@ export function FeedbackButton() {
                 <div className="fb-actions">
                   <a className="fb-link" href="/feedback"
                     onClick={(e) => { e.preventDefault(); setOpen(false); navigate("/feedback"); }}>
-                    See what I've sent
+                    {admin ? "See all submissions" : "See what I've sent"}
                   </a>
                   <span className="fb-actions-right">
                     <button className="fb-secondary" onClick={close}>Cancel</button>

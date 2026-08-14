@@ -74,6 +74,23 @@ export async function handleFeedbackApi(
   if (p === "/api/feedback") {
     if (method === "GET") {
       const all = listFeedback();
+      /* ?summary=1 → counts only. The admin's launch page wants a badge, and
+         shipping every submission's text to render a number would grow with the
+         backlog and put other people's reports in a payload that has no use for
+         them. */
+      if (qs(urlPath, "summary") !== null) {
+        const isOpen = (r: FeedbackRecord) => r.status !== "Complete" && r.status !== "Declined";
+        const visible = isAdmin ? all : all.filter(mine);
+        return ok({
+          admin: isAdmin,
+          emailEnabled: mailConfigured(),
+          total: visible.length,
+          open: {
+            feedback: visible.filter((r) => r.kind === "feedback" && isOpen(r)).length,
+            feature: visible.filter((r) => r.kind === "feature" && isOpen(r)).length,
+          },
+        });
+      }
       return ok({
         items: isAdmin ? all : all.filter(mine),
         admin: isAdmin,

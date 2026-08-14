@@ -2983,3 +2983,27 @@ button.nav-item {
 .fbb-att span:not(.material-icons) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .fbb-att-img { padding: 0; overflow: hidden; border-radius: 9px; max-width: none; }
 .fbb-att-img img { display: block; width: 132px; height: 90px; object-fit: cover; }
+
+/* Admin-only inbox, first in the corner stack. Quieter than Support: it is a
+   standing utility, not the thing we want people to click. */
+.inbox-fab {
+  appearance: none; cursor: pointer; font: inherit;
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 42px; padding: 0 15px; border-radius: 999px;
+  background: #fff; color: #3d4d48; border: 1px solid #d7dce5;
+  font-size: 14px; font-weight: 600; letter-spacing: -.01em;
+  box-shadow: 0 2px 4px rgba(10,35,30,.08), 0 12px 28px -12px rgba(10,35,30,.24);
+  transition: background .16s ease, transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.inbox-fab:hover {
+  background: #f6f8fa; border-color: #b9c6e6; transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(10,35,30,.10), 0 16px 34px -12px rgba(10,35,30,.30);
+}
+.inbox-fab:active { transform: translateY(0); }
+.inbox-fab .material-icons { font-size: 18px; color: #6b7280; }
+/* The count is the reason the button is there, so it carries the only colour. */
+.inbox-n {
+  min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px;
+  background: #ff7a66; color: #fff; font-size: 11.5px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+}
