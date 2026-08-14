@@ -50,12 +50,43 @@ export interface SmsBrain {
   playbook: AgentConfigView["smsPlaybook"] | undefined;
 }
 
+function aOrAn(word: string): string {
+  return /^[aeiou]/i.test(word.trim()) ? "an" : "a";
+}
+
+/* THE AGENT'S OPENING MESSAGE, when nothing has set one.
+
+   Derived, not generated: every profile already on disk predates the `greeting`
+   field, and an engine phase to add one would mean regenerating all of them. The
+   playbook already carries prospect-specific prose we can lean on, so this reads
+   as that business rather than as a template.
+
+   The `offer` is dropped in VERBATIM as its own sentence rather than folded into
+   one. Splicing it mid-sentence needs the first letter lowercased, which is fine
+   for "Save with..." and wrong for "72 Hour Sale..." or a brand name; a separate
+   sentence needs no case surgery and cannot mangle anyone's offer.
+
+   Side effect worth knowing: the opening line is now the SAME on every run. It
+   used to be improvised by the model each time the tab opened, so an SE could not
+   rehearse against it. */
+export function defaultGreeting(customerName: string, playbook: AgentConfigView["smsPlaybook"] | undefined): string {
+  const booking = playbook?.bookingType?.trim() || "appointment";
+  const offer = playbook?.offer?.trim() ?? "";
+  const offerSentence = offer ? ` ${/[.!?]$/.test(offer) ? offer : offer + "."}` : "";
+  return `Hi, I'm ${customerName}'s AI assistant. I can help you book ${aOrAn(booking)} ${booking}.${offerSentence} Would you like to get started?`;
+}
+
 /** The `brain` POST body for /api/chat. `wf` is an extra workflow (e.g. a nurture
  *  playbook) whose systemPrompt REPLACES the default sales flow. */
 export function buildSmsBrain(profile: Profile, ac: AgentConfig, wf?: ExtraWorkflow): SmsBrain {
   return {
     customSystem: wf?.systemPrompt,
-    openingMessage: wf?.openingMessage,
+    /* Precedence: an extra workflow's scripted line wins (it is the whole point of
+       that workflow), then whatever the SE or the AI set, then the derived default.
+       Always non-empty now, so the phone never improvises its own opener. */
+    openingMessage: wf?.openingMessage
+      || ac?.smsPlaybook?.greeting?.trim()
+      || defaultGreeting(profile.customerName, ac?.smsPlaybook),
     agentLabel: wf?.label,
     customerName: profile.customerName,
     industry: profile.industry,

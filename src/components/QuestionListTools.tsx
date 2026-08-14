@@ -40,7 +40,7 @@ const USE_CASES = [
   {
     label: "Book an appointment",
     hint: "qualify, then lock in a day and time",
-    brief: "A new inbound lead. Qualify them on what they want, then drive to booking a specific day and time.",
+    brief: "A new inbound lead texting in for the first time. Qualify them on what they want, then drive to booking a specific day and time.",
   },
   {
     label: "Nurture / re-engage",
@@ -64,7 +64,11 @@ const USE_CASES = [
   },
 ];
 
-export function QuestionListTools({ questions, readOnly, onReplace, onPrompt }: {
+export function QuestionListTools({ greeting, questions, readOnly, onReplace, onPrompt }: {
+  /* The agent's first text. Either what someone set, or the derived default from
+     smsBrain.ts, so this row is never empty and always matches what the phone
+     actually sends. */
+  greeting: string;
   questions: string[];
   readOnly: boolean;
   /** Apply a new list locally. `note` describes where it came from, for the log. */
@@ -140,8 +144,26 @@ export function QuestionListTools({ questions, readOnly, onReplace, onPrompt }: 
         </div>
       ) : (
         <>
+          {/* THE OPENING MESSAGE, above the numbered list and visually distinct.
+              It is the one thing a prospect always sees, and it is not a question,
+              so numbering it alongside them would misread the flow. Paste and
+              import replace the QUESTIONS only, which is why this sits apart. */}
+          <div className="aiq-greeting">
+            <span className="aiq-greeting-label">Opening message</span>
+            <button
+              className="aiq-q aiq-q-greeting" disabled={readOnly}
+              title={readOnly ? "This demo is read-only" : "Change the opening message"}
+              onClick={() => onPrompt(`Change the agent's opening message (currently "${greeting}") to: `)}
+            >
+              <span className="material-icons aiq-greeting-icon">sms</span>
+              <span className="aiq-text">{greeting}</span>
+              <span className="material-icons aiq-pencil">edit</span>
+            </button>
+          </div>
+
           {/* ONE BY ONE. The index goes in the prompt so the model never has to work
               out which question the user meant. */}
+          <span className="aiq-then">then it asks</span>
           <ol className="aiq-list">
             {questions.map((q, i) => (
               <li key={i}>
@@ -168,8 +190,10 @@ export function QuestionListTools({ questions, readOnly, onReplace, onPrompt }: 
                 <button
                   key={c.label} className="aiq-chip" disabled={readOnly} title={c.hint}
                   onClick={() => onPrompt(
-                    `Rewrite all of the agent's qualifying questions for this use case: ${c.label}.\n${c.brief}\n` +
-                    `Keep them specific to this business and in a sensible order.`
+                    `Rewrite this agent for a new use case: ${c.label}.\n${c.brief}\n` +
+                    `Change BOTH the opening message and all of the qualifying questions so they fit that use case. ` +
+                    `The opening message has to give it away on its own: someone reading only the first text should ` +
+                    `be able to tell which situation this is. Keep everything specific to this business.`
                   )}
                 >
                   {c.label}

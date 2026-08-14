@@ -515,6 +515,12 @@ export const AiRecommendation = z.object({
    content AND the thing being scheduled fit THIS business (a blinds co. books a
    consultation + quote; a dealership books a test drive; a gym books a tour). */
 export const SmsPlaybook = z.object({
+  /* The agent's FIRST message, verbatim. Optional: absent on every profile
+     generated before this existed, and smsBrain.ts derives a sensible one from
+     bookingType + offer in that case, so nothing needs regenerating. Present once
+     an SE edits it (or has the AI rewrite it for a use case), which is also what
+     makes the opening line identical every time they run the demo. */
+  greeting: z.string().optional(),
   goal: z.string(),                              // what the conversation drives toward
   bookingType: z.string(),                       // what to schedule, incl. modality: "virtual consultation" | "in-home estimate" | "showroom tour" | "test drive" | "appointment" …
   offer: z.string(),                             // incentive to book ("" if none)

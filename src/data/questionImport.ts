@@ -25,6 +25,9 @@
 /** Where the Preview Agent's questions live inside that page's registered scope. */
 export const QUESTIONS_PATH = "smsPlaybook.qualifyingQuestions";
 
+/** ...and its opening message, edited the same way and by the same drawer. */
+export const GREETING_PATH = "smsPlaybook.greeting";
+
 /* An agent that asks more than a dozen questions stops being a demo and starts
    being a form, and the phone screen has nowhere to put them. We keep the first
    MAX and REPORT the rest rather than silently swallowing them — a truncation the

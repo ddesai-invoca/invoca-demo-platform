@@ -5,7 +5,8 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { columnEdits } from "../data/columnEdits";
 import { getByPath } from "../data/editGuard";
 import { QuestionListTools } from "./QuestionListTools";
-import { stripGeneratedDashes } from "../data/questionImport";
+import { stripGeneratedDashes, GREETING_PATH } from "../data/questionImport";
+import { defaultGreeting } from "../data/smsBrain";
 
 /* The "Ask AI" drawer: slides in from the right over a dimmed backdrop. Scope is
    set by which sparkle opened it — the whole PAGE (the top-bar sparkle, on every
@@ -57,6 +58,14 @@ export function AiAssistantDrawer() {
     const v = getByPath(effectiveData(active.key), questionPath);
     return Array.isArray(v) ? (v as unknown[]).map(String) : null;
   }, [active, questionPath, effectiveData]);
+
+  /* The SAME derivation the phone uses, so the row shows the text actually being
+     sent rather than a second, subtly different version of it. */
+  const greeting = useMemo(() => {
+    if (!active || !questionPath) return null;
+    const data = effectiveData(active.key) as any;
+    return (getByPath(data, GREETING_PATH) as string) || defaultGreeting(active.customerName, data?.smsPlaybook);
+  }, [active, questionPath, effectiveData]);
   const scopeLabel = focus?.scope === "tile" ? (focus.label || "This tile") : effTitle;
 
   // Fresh chat each time the drawer opens (scope may differ).
@@ -82,7 +91,25 @@ export function AiAssistantDrawer() {
     setMessages((prev) => [...prev, { role: "user", content: q }]);
     setBusy(true);
     try {
-      const eff = effectiveData(active.key);
+      let eff = effectiveData(active.key);
+      /* SHOW THE MODEL THE GREETING IT CAN SEE ON SCREEN.
+
+         `smsPlaybook.greeting` is optional and absent on every profile generated
+         before it existed, so the page renders a DERIVED default while the data
+         has no such key. Asked to change the opening message, the model looked for
+         it, could not find it, and wrote the new greeting into
+         `brandConversationRules.0` instead: the request appeared to succeed, the
+         opener never changed, and a real brand rule was quietly overwritten.
+
+         So the derived value is injected into the copy sent for context. The model
+         then edits a field it can see, at the path it was told to use. Scoped to
+         the opted-in page; every other page's context is untouched. */
+      if (questionPath && greeting && eff && typeof eff === "object") {
+        const cur = eff as any;
+        if (!cur.smsPlaybook?.greeting) {
+          eff = { ...cur, smsPlaybook: { ...(cur.smsPlaybook ?? {}), greeting } };
+        }
+      }
       let dataContext = "";
       try { const j = JSON.stringify(eff); dataContext = j.length > 12000 ? j.slice(0, 12000) + "…(truncated)" : j; } catch { /* ignore */ }
       const res = await fetch("/api/ai-assistant", {
@@ -143,6 +170,12 @@ export function AiAssistantDrawer() {
            real. A list the USER pasted never reaches this branch. */
         const edits = questionPath
           ? r.edits.map((e: any) => {
+              if (e.path === GREETING_PATH) {
+                try {
+                  const v = JSON.parse(e.value);
+                  return typeof v === "string" ? { ...e, value: JSON.stringify(stripGeneratedDashes(v)) } : e;
+                } catch { return e; }
+              }
               if (e.path !== questionPath) return e;
               try {
                 const v = JSON.parse(e.value);
@@ -202,6 +235,7 @@ export function AiAssistantDrawer() {
               updates, which is the only confirmation that it actually landed. */}
           {questions && (
             <QuestionListTools
+              greeting={greeting ?? ""}
               questions={questions}
               readOnly={readOnly}
               onReplace={(next, note) => {

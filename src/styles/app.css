@@ -2697,3 +2697,19 @@ body:has(.vp-root) .readme-fab { opacity: 0; pointer-events: none; }
 .phone-restart .material-icons { font-size: 15px; }
 @keyframes phone-restart-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .phone-restart { animation: none; } }
+
+/* The opening message, above the numbered questions in the Ask AI drawer. Set
+   apart because it is not a question: numbering it alongside them would misread
+   the flow, and paste/import replace the questions only. */
+.aiq-greeting { margin: 11px 0 0; }
+.aiq-greeting-label {
+  display: block; font-size: 11px; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: #6b7280; margin: 0 0 5px;
+}
+.aiq-q-greeting { background: #f7faff; border-color: #dbe4f7; }
+.aiq-q-greeting:hover:not(:disabled) { background: #eff5ff; }
+.aiq-greeting-icon { font-size: 15px; color: #2666f9; flex: none; margin-top: 2px; }
+.aiq-then {
+  display: block; font-size: 11px; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: #6b7280; margin: 13px 0 5px;
+}

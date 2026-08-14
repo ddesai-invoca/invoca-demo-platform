@@ -80,6 +80,26 @@ const LENGTH_IS_CONTENT = [
   /\bcells$/i,             // InteractionRow.cells — aligned to dimensionColumns
 ];
 
+/* OPTIONAL FIELDS THAT MAY BE CREATED FROM ABSENT.
+
+   A type flip is normally structural, and `undefined -> string` is a type flip. But
+   an OPTIONAL field that no profile on disk carries yet is absent, not mis-typed,
+   and the first edit has to be allowed to create it or the feature is dead on
+   arrival for every existing demo.
+
+   The Preview Agent's greeting is exactly that: `smsPlaybook.greeting` was added
+   after all eleven profiles were generated, so the app shows a derived default
+   (smsBrain.ts) until someone sets one. Without this, the assistant's first
+   greeting rewrite was silently dropped, and the ONLY symptom was the model
+   cheerfully reporting a change that never happened.
+
+   Kept to a named list rather than a blanket "undefined is fine" rule, because
+   allowing arbitrary key creation is how the assistant starts inventing fields the
+   renderer never reads. */
+const CREATABLE_WHEN_ABSENT = [
+  /\bgreeting$/i,
+];
+
 /**
  * True when replacing `before` with `after` would change the page's SHAPE rather
  * than its content — which rule 2 forbids. `path` is optional; when given, a
@@ -96,6 +116,8 @@ export function isStructuralChange(before: unknown, after: unknown, path?: strin
      tested alone; the bug only exists in their COMPOSITION, on a row that has no
      `cells` key yet. */
   if (kb === "undefined" && ka === "array" && path && LENGTH_IS_CONTENT.some((re) => re.test(path))) return false;
+  /* Creating an optional field that simply does not exist yet (see above). */
+  if (kb === "undefined" && ka !== "undefined" && path && CREATABLE_WHEN_ABSENT.some((re) => re.test(path))) return false;
   // A type flip is structural: the component renders one shape, not the other.
   // null <-> a value is allowed, since "no value" is a legitimate data state.
   if (kb !== ka && kb !== "null" && ka !== "null") return true;

@@ -1190,6 +1190,25 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   to stay a believable iMessage mockup. Serialise the WHOLE brain: the questions live
   under `brain.playbook`, and picking `brain.questions` / `goal` / `bookingType` reads
   as `undefined` for all three, so the signature never changes and nothing restarts.
+- **The greeting is editable data too.** `smsPlaybook.greeting` (OPTIONAL in the schema,
+  so every existing profile and saved demo still parses). Precedence in `buildSmsBrain`:
+  an extra workflow's scripted `openingMessage`, then the stored greeting, then
+  `defaultGreeting()` derived from `bookingType` + `offer`. Derived rather than
+  engine-generated so nothing needs regenerating; the `offer` goes in VERBATIM as its own
+  sentence, because splicing it mid-sentence needs the first letter lowercased and that
+  mangles "72 Hour Sale" and brand names. Side effect: the opening line is now identical
+  on every run, where the model used to improvise it per load.
+- **Three traps, all hit while building this:**
+  1. `editGuard` blocked the FIRST greeting write. `undefined -> string` is a type flip, and
+     the field does not exist until someone sets it. Fixed with `CREATABLE_WHEN_ABSENT`
+     (narrow, named list). Same shape as the `cells` bug already documented there.
+  2. Even unblocked, the model wrote the new greeting to **`brandConversationRules.0`**,
+     overwriting a real brand rule, because `smsPlaybook.greeting` was NOT IN THE DATA it
+     was shown (it was derived). The drawer now injects the derived greeting into the
+     serialised context, so the model edits a field it can actually see. **If a value is
+     on screen but not in `dataContext`, the model will write it somewhere else.**
+  3. Both failures were SILENT and the model reported success both times. Never trust the
+     assistant's prose confirmation; assert against the data or the rendered value.
 - **NURTURE = RE-ENGAGEMENT.** Someone who was interested, then went quiet (stopped
   replying, or a rep could not reach them); the agent picks that thread back up, finds
   what stalled it, and still drives to a booking. It is NOT a cold opener and NOT a
