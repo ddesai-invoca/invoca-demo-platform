@@ -3228,7 +3228,13 @@ button.nav-item {
    hatched confidence interval + point tick, and "Save & Next Call" is outlined
    white rather than filled blue. Scoped .vl- so nothing here can reach another
    screen. */
-.vl-page { padding: 20px 24px 0; display: flex; flex-direction: column; min-height: 100%; }
+/* WHITE, not the shell's #f6f7f9. The live page paints white behind these panels
+   and the cards are delineated by their 2px borders alone; on grey the whole screen
+   read as one big card. Scoped to .vl-page so no other screen's background moves. */
+.vl-page {
+  padding: 20px 24px 0; display: flex; flex-direction: column; min-height: 100%;
+  background: #fff;
+}
 
 .vl-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
 .vl-eyebrow {
@@ -3256,10 +3262,17 @@ button.nav-item {
   padding: 8px 12px; border-radius: 3px; height: 36px; cursor: not-allowed;
 }
 
-.vl-body { display: flex; gap: 24px; align-items: flex-start; margin: 16px 0 0; }
+/* 60/40. Grid rather than flex+fixed-width so the two panels stay in proportion at
+   any window size: the prediction card is the half of the screen a prospect is
+   actually being walked through, and at a fixed 468px it shrank against the
+   transcript on a wide display. */
+.vl-body {
+  display: grid; grid-template-columns: 60fr 40fr; gap: 24px;
+  align-items: start; margin: 16px 0 0;
+}
 
 .vl-transcript {
-  flex: 1 1 auto; min-width: 0; background: #fff; border-radius: 3px;
+  min-width: 0; background: #fff; border-radius: 3px;
   border: 2px solid #e7e9eb; padding: 12px 16px 16px;
 }
 .vl-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -3299,7 +3312,7 @@ button.nav-item {
 .vl-convstart .material-icons { font-size: 20px; color: #15243e; }
 .vl-noturns { font-size: 14px; color: #5b6577; padding: 8px 0 0; }
 
-.vl-side { flex: 0 0 468px; max-width: 468px; }
+.vl-side { min-width: 0; }
 .vl-card {
   background: #fff; border: 2px solid #e7e9eb; border-radius: 3px; padding: 24px; margin-top: 4px;
 }
@@ -3338,7 +3351,12 @@ button.nav-item {
 
 /* "Predicted by AI" bracket, positioned over the button the AI actually chose. */
 .vl-pred { position: absolute; left: 0; right: 0; bottom: 100%; text-align: center; }
-.vl-pred-label { display: block; font-size: 16px; color: #15243e; line-height: 20px; }
+/* nowrap: on a narrow window the cell is ~113px against ~107px of text, and
+   allowing it to wrap pushed a second line up into the description above. It is
+   absolutely positioned, so overflowing the cell is harmless. */
+.vl-pred-label {
+  display: block; font-size: 16px; color: #15243e; line-height: 20px; white-space: nowrap;
+}
 .vl-pred-bracket { position: relative; display: block; height: 14px; }
 .vl-pred-bracket::before {
   content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: #5b6577;
@@ -3373,21 +3391,37 @@ button.nav-item {
 }
 
 /* Player + footer */
+/* TWO ROWS, as on the live page: the scrub bar spans the full width on its own
+   line, and the transport controls sit centred beneath it between the rate on the
+   left and the elapsed/total on the right. One row squeezed the bar between them. */
 .vl-player {
-  display: flex; align-items: center; gap: 16px; background: #fff; border: 2px solid #e7e9eb;
-  border-radius: 3px; padding: 10px 16px; margin: 20px 0 0;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  gap: 12px 16px; background: #fff; border: 2px solid #e7e9eb;
+  border-radius: 3px; padding: 12px 16px; margin: 20px 0 0;
 }
-.vl-rate { display: inline-flex; align-items: center; font-size: 14px; color: #15243e; }
+.vl-rate {
+  grid-column: 1; grid-row: 2; justify-self: start;
+  display: inline-flex; align-items: center; font-size: 14px; color: #15243e;
+}
 .vl-rate .material-icons { font-size: 20px; }
-.vl-pbar { position: relative; flex: 1; height: 4px; background: #e7e9eb; border-radius: 3px; }
+.vl-pbar {
+  grid-column: 1 / -1; grid-row: 1; position: relative; height: 4px;
+  background: #e7e9eb; border-radius: 3px;
+}
 .vl-pdot {
   position: absolute; left: 0; top: -5px; width: 14px; height: 14px; border-radius: 50%;
   background: #0aa06e;
 }
-.vl-pcontrols { display: inline-flex; align-items: center; gap: 14px; color: #5b6577; }
+.vl-pcontrols {
+  grid-column: 2; grid-row: 2; justify-self: center;
+  display: inline-flex; align-items: center; gap: 18px; color: #5b6577;
+}
 .vl-pcontrols .material-icons { font-size: 22px; }
 .vl-play { font-size: 30px !important; color: #15243e; }
-.vl-ptime { font-size: 14px; color: #5b6577; font-variant-numeric: tabular-nums; }
+.vl-ptime {
+  grid-column: 3; grid-row: 2; justify-self: end;
+  font-size: 14px; color: #5b6577; font-variant-numeric: tabular-nums;
+}
 
 .vl-foot {
   display: flex; align-items: center; justify-content: space-between;
