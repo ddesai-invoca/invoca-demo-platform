@@ -3131,3 +3131,93 @@ button.nav-item {
   opacity: .45; cursor: default; border-color: #cfd6de; color: #8a94a3;
 }
 .ssl-activate-off:hover { background: #fff; border-color: #cfd6de; color: #8a94a3; }
+
+/* ==== Signal AI Studio =======================================================
+   Measured off the live page 8/17/2026: page bg #f6f7f9 · h1 24px/400 · New AI
+   Model #2666f9 14px/500 radius 3 pad 8/12 · banner bg #d4e0fe ink #11228c 14px
+   radius 3 pad 5/12 · card white, 1px #e7e9eb, radius 5, shadow 0 2px 4px
+   rgba(12,0,51,.2), 12px gap · name 16px/700 · labels 16px/400 · Round chip
+   #e7e9eb / #5b6577 / 12px / radius 16 · action OUTLINED white, 1px
+   rgba(38,102,249,.5), ink #2666f9, 12px/500, pad 8/12, radius 3, 32px tall. */
+.sas-page { background: #f6f7f9; min-height: 100%; padding: 22px 24px 40px; color: #15243e; }
+.sas-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 16px; }
+.sas-h1 { margin: 0; font-size: 24px; font-weight: 400; color: #15243e; }
+.sas-new {
+  appearance: none; cursor: pointer; font: inherit; font-size: 14px; font-weight: 500;
+  background: #2666f9; color: #fff; border: 0; border-radius: 3px; padding: 8px 12px;
+  text-transform: capitalize; display: inline-flex; align-items: center; gap: 6px;
+}
+.sas-new:hover { background: #1b52d6; }
+.sas-new .material-icons { font-size: 18px; }
+
+.sas-banner {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: #d4e0fe; color: #11228c; font-size: 14px; line-height: 1.45;
+  border-radius: 3px; padding: 10px 12px; margin: 0 0 14px;
+}
+.sas-banner-i { font-size: 19px; flex: none; margin-top: 1px; }
+.sas-banner a { color: #11228c; text-decoration: underline; }
+.sas-banner-x {
+  appearance: none; border: 0; background: none; cursor: pointer; color: #11228c;
+  margin-left: auto; padding: 2px; display: flex; border-radius: 3px; flex: none;
+}
+.sas-banner-x:hover { background: rgba(17,34,140,.10); }
+.sas-banner-x .material-icons { font-size: 18px; }
+
+.sas-toolbar { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; }
+.sas-search {
+  flex: 1; display: flex; align-items: center; gap: 8px; background: #fff;
+  border: 1px solid #e7e9eb; border-radius: 3px; padding: 0 10px; height: 38px;
+}
+.sas-search .material-icons { font-size: 19px; color: #8a94a3; }
+.sas-search input { flex: 1; border: 0; outline: none; font: inherit; font-size: 14px; color: #15243e; background: none; }
+.sas-show { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #15243e; }
+.sas-show select {
+  font: inherit; font-size: 14px; color: #15243e; background: #fff;
+  border: 1px solid #e7e9eb; border-radius: 3px; padding: 8px 10px; height: 38px;
+}
+
+.sas-list { display: flex; flex-direction: column; gap: 12px; }
+.sas-card {
+  background: #fff; border: 1px solid #e7e9eb; border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(12,0,51,.2);
+  padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; align-items: center;
+  column-gap: 16px;
+}
+.sas-card-main { min-width: 0; }
+.sas-card-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 6px; }
+.sas-name { font-size: 16px; font-weight: 700; color: #15243e; }
+.sas-round {
+  background: #e7e9eb; color: #5b6577; font-size: 12px; border-radius: 16px; padding: 3px 11px;
+  white-space: nowrap;
+}
+/* The label line is a machine-label list, so it reads as code rather than prose. */
+.sas-labels { font-size: 16px; font-weight: 400; color: #15243e; word-break: break-word; }
+
+.sas-card-actions { display: inline-flex; align-items: center; gap: 6px; }
+.sas-kebab, .sas-chev {
+  appearance: none; border: 0; background: none; cursor: pointer; color: #5b6577;
+  padding: 4px; border-radius: 3px; display: flex;
+}
+.sas-kebab:hover, .sas-chev:hover { background: #f1f4f9; color: #15243e; }
+.sas-kebab .material-icons, .sas-chev .material-icons { font-size: 20px; }
+.sas-chev .material-icons { transition: transform .16s ease; }
+.sas-chev-open .material-icons { transform: rotate(180deg); }
+.sas-action {
+  appearance: none; cursor: pointer; font: inherit; font-size: 12px; font-weight: 500;
+  background: #fff; color: #2666f9; border: 1px solid rgba(38,102,249,.5);
+  border-radius: 3px; padding: 8px 12px; height: 32px; white-space: nowrap;
+}
+.sas-action:hover { background: #f3f7ff; border-color: #2666f9; }
+
+.sas-expand {
+  grid-column: 1 / -1; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid #eef0f3;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.sas-expand-label { font-size: 12px; font-weight: 700; color: #5b6577; text-transform: uppercase; letter-spacing: .05em; }
+.sas-chips { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.sas-chip {
+  background: #f1f4f9; border: 1px solid #e0e5ec; border-radius: 3px;
+  padding: 3px 9px; font-size: 13px; color: #15243e;
+}
+.sas-empty { font-size: 14px; color: #5b6577; }

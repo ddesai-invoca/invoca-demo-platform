@@ -1156,6 +1156,33 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
 - The Exchange page loads GT America font + logos from Invoca's CDN (needs internet).
 - These render the **desktop layout at ≥992px** (they're the real responsive pages).
 
+## Signal AI Studio
+- `src/screens/SignalAiStudio.tsx`, route `/signal/ai-studio` (replaced the Placeholder).
+  Reached from the Signal flyout's middle item. Real page: `/networks/2751/label_groups/manage`.
+- Values MEASURED off the live page 8/17/2026: page bg `#f6f7f9`; h1 24px/400; New AI Model
+  `#2666f9` 14px/500 radius 3 pad 8/12; info banner bg `#d4e0fe` ink `#11228c` 14px radius 3;
+  row card white, 1px `#e7e9eb`, radius 5, shadow `0 2px 4px rgba(12,0,51,.2)`, 12px gap;
+  model name 16px/700; label line 16px/400; Round chip `#e7e9eb` / `#5b6577` / 12px /
+  radius 16; action button **outlined** (white, `1px rgba(38,102,249,.5)`, ink `#2666f9`,
+  12px/500, 32px tall) -- the leaf holding "Label Calls" has NO chrome, it is on the
+  ancestor `<button>`, so measure the button not the text.
+- **The labels re-skin.** They are machine labels derived from `profile.bookingTerm`
+  (snake_cased WHOLE term, or "Test Drive" becomes `drive_set`): a dealership shows
+  `test_drive_set`, a plumber `service_appointment_set`. Row 4 is named from
+  `profile.networkName`, which is real per-prospect data ("Invoca for Automotive") and also
+  what the top bar's Network selector shows. Derived in the component: no schema change,
+  no engine phase, so every profile already on disk gets it.
+- **Creation dates are HASHED from the profile id, never `new Date()`.** The page shows
+  "Created on ..." timestamps; if they moved on every open, an SE could not rehearse
+  against the screen or screenshot it twice the same way. Anchored before the demo's
+  January 2026 window so a model reads as trained before the calls it scored. Verified
+  identical across reloads.
+- `Round 0` gets "Label Calls", a round-tripped model gets "Verify Labels". That is the
+  only thing driving which button appears.
+- The chevron expands to show the row's own labels as chips. What the real page reveals was
+  not captured, so it deliberately shows only what the row already knows rather than
+  inventing training statistics a prospect might ask us to explain.
+
 ## New Semantic Signal (the library's Activate flow)
 - `src/screens/SemanticSignalActivate.tsx`, route
   `/signal/new/semantic/activate?trackerId=146&standardDataFieldName=$.<name>`. The query

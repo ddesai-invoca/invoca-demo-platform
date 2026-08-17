@@ -34,6 +34,7 @@ import { SignalManager } from "./screens/SignalManager";
 import { SignalTypeSelect } from "./screens/SignalTypeSelect";
 import { SemanticSignalLibrary } from "./screens/SemanticSignalLibrary";
 import { SemanticSignalActivate } from "./screens/SemanticSignalActivate";
+import { SignalAiStudio } from "./screens/SignalAiStudio";
 import { EditRuleSignal } from "./screens/EditRuleSignal";
 import { Launch } from "./screens/Launch";
 import { SmsPreviewPage } from "./screens/SmsPreviewPage";
@@ -158,7 +159,7 @@ export default function App() {
             {/* Activating one of the library's templates. The real page identifies the
                 template by standardDataFieldName, so the query string matches it. */}
             <Route path="/signal/new/semantic/activate" element={<SemanticSignalActivate />} />
-            <Route path="/signal/ai-studio" element={<Placeholder name="Signal AI Studio" />} />
+            <Route path="/signal/ai-studio" element={<SignalAiStudio />} />
             <Route path="/signal/discovery" element={<Placeholder name="Signal Discovery" />} />
             {NAV.filter((item) => !STANDALONE.has(item.path)).map((item) => (
               <Route
