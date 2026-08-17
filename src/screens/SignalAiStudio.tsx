@@ -19,12 +19,15 @@ import { usePageData } from "../components/GeneratedTiles";
      action button  OUTLINED: white, 1px rgba(38,102,249,.5), ink rgb(38,102,249),
                     12px / 500, pad 8/12, radius 3px, 32px tall
 
-   THE LABELS RE-SKIN. On the capture (Home Services) they read
-   `appointment_set`, `appointment_opportunity, appointment_scheduled` — machine
-   labels built from that account's booking noun. So they are derived here from the
-   prospect's own `bookingTerm` rather than copied, which is why a dealership shows
-   `test_drive_set` and a plumber `service_appointment_set`. No schema change, no
-   engine phase: everything comes from fields the profile already has.
+   TWO MODELS, and the second one RE-SKINS. On the capture (Home Services) it read
+   `appointment_set` — a machine label built from that account's booking noun. So it
+   is derived here from the prospect's own `bookingTerm`, which is the same field the
+   platform renders as "<term> Booked (Conversion)" on every report: the label is
+   therefore always THAT prospect's lead conversion, `test_drive_set` for a
+   dealership and `estimate_set` for a mover. `sales_qualified_lead` above it is
+   deliberately NOT re-skinned — it is a generic qualification model and reads the
+   same in every account. No schema change, no engine phase: everything comes from
+   fields the profile already has.
    ============================================================================= */
 
 /* "Service Appointment" -> "service_appointment". Snake_case of the WHOLE term, not
@@ -72,17 +75,23 @@ export function SignalAiStudio() {
     const seed = hash(profile.id || profile.customerName || "x");
     return {
       title: "Signal AI Studio",
+      /* TWO MODELS, newest first, which is the real page's order.
+
+         The capture had four (it also carried a `quote, sales_call, service_call`
+         intent model and an account-named one), trimmed to the two that carry the
+         story: the lead-qualification model and the prospect's own lead
+         conversion. Keeping one of each ROUND state is deliberate — Round 0 still
+         needs its calls labelled, a round-tripped model is waiting on
+         verification — so both action buttons are still visible on screen.
+
+         `{noun}_set` IS the prospect's lead conversion: `bookingTerm` is the same
+         field the platform renders as "<term> Booked (Conversion)" everywhere else,
+         so a dealership reads `test_drive_set` and a mover `estimate_set`. */
       models: [
         { id: "m1", title: `Created on ${createdOn(seed, 71)}`, round: 0,
           labels: ["sales_qualified_lead"], action: "Label Calls" as const },
-        { id: "m2", title: `Created on ${createdOn(seed + 3, 191)}`, round: 0,
-          labels: ["quote", "sales_call", "service_call"], action: "Label Calls" as const },
-        { id: "m3", title: `Created on ${createdOn(seed + 7, 481)}`, round: 2,
+        { id: "m2", title: `Created on ${createdOn(seed + 7, 481)}`, round: 2,
           labels: [`${noun}_set`], action: "Verify Labels" as const },
-        /* The capture's fourth row is named after the ACCOUNT rather than a
-           timestamp, which is what a hand-named model looks like. */
-        { id: "m4", title: profile.networkName || profile.customerName, round: 0,
-          labels: [`${noun}_opportunity`, `${noun}_scheduled`], action: "Label Calls" as const },
       ] as Model[],
     };
   }, [profile]);

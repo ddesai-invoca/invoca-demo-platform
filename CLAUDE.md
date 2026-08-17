@@ -1166,12 +1166,22 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   radius 16; action button **outlined** (white, `1px rgba(38,102,249,.5)`, ink `#2666f9`,
   12px/500, 32px tall) -- the leaf holding "Label Calls" has NO chrome, it is on the
   ancestor `<button>`, so measure the button not the text.
-- **The labels re-skin.** They are machine labels derived from `profile.bookingTerm`
-  (snake_cased WHOLE term, or "Test Drive" becomes `drive_set`): a dealership shows
-  `test_drive_set`, a plumber `service_appointment_set`. Row 4 is named from
-  `profile.networkName`, which is real per-prospect data ("Invoca for Automotive") and also
-  what the top bar's Network selector shows. Derived in the component: no schema change,
-  no engine phase, so every profile already on disk gets it.
+- **TWO cards.** The live capture had four (it also carried a `quote, sales_call,
+  service_call` intent model and one named from `profile.networkName`); trimmed on request
+  to the two that carry the story. Keep one of each ROUND state so both action buttons stay
+  visible on screen.
+- **Card 2's label re-skins; card 1's deliberately does not.**
+  - Card 2 is `${snake(profile.bookingTerm)}_set` -- THAT PROSPECT'S LEAD CONVERSION.
+    `bookingTerm` is the same field the platform renders as "<term> Booked (Conversion)"
+    everywhere else, so this is the right source, not an approximation of one. Snake_case
+    the WHOLE term or "Test Drive" becomes `drive_set`. Verified across the library:
+    `consultation_set`, `estimate_set`, `quote_set`, `lifestyle_visit_set`,
+    `installation_appointment_set`, `service_appointment_set`, `appointment_set`.
+  - Card 1 stays `sales_qualified_lead` -- a generic qualification model that reads the
+    same in every Invoca account. Re-skinning it would invent an account-specific name for
+    something that is not account-specific.
+  - Derived in the component: no schema change, no engine phase, so every profile already
+    on disk gets it and generation time is unchanged.
 - **Creation dates are HASHED from the profile id, never `new Date()`.** The page shows
   "Created on ..." timestamps; if they moved on every open, an SE could not rehearse
   against the screen or screenshot it twice the same way. Anchored before the demo's
