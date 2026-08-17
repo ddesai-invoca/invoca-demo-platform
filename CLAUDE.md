@@ -1193,6 +1193,78 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   not captured, so it deliberately shows only what the row already knows rather than
   inventing training statistics a prospect might ask us to explain.
 
+## Verify Labels (Signal AI Studio > Verify Labels)
+- `src/screens/VerifyLabels.tsx` + `src/data/verifyCalls.ts`, route
+  `/signal/ai-studio/verify/:modelId?label=&name=&round=&p=`. Reached from the
+  "Verify Labels" button on a Signal AI Studio row. Real page:
+  `/networks/2160/label_groups/manage/verify_calls/532?round=5&folderId=...&callId=...`.
+  Only the row whose action IS "Verify Labels" navigates; "Label Calls" is a
+  different flow we have not built and stays inert.
+- Values MEASURED off a SingleFile save of the live page (8/17/2026). **Two of them
+  the screenshot actively misleads about, so do not re-derive either from an image:**
+  - The accuracy readout is NOT a percentage bar. Four layers: track `#e7e9eb` r5;
+    a darker `#b8bdc5` band covering only 80-100% (radius `0 5 5 0`); a HATCHED
+    confidence interval (`repeating-linear-gradient(135deg, rgba(38,102,249,.3)...)`,
+    1px `#2666f9`); a 1px point-estimate tick; and a chip labelling the interval.
+    Live values: interval 89.7->97.6%, tick 93.5%, chip "90%-98%".
+  - **"Save & Next Call" is OUTLINED white** (bg `#fff`, border
+    `1px rgba(38,102,249,.5)`, ink `#2666f9`), not the filled primary it looks like.
+    "Review Last Call" and "Train AI Model" are the disabled greys
+    (bg `#e7e9eb`, border `#d0d3d8`, ink `#a1a7b2`).
+- Other measured values: eyebrow `<a>` 12px/700 `#2666f9` **uppercased via CSS**
+  (DOM text is mixed case); h1 24px/400; card white `2px #e7e9eb` r3 w468 pad24;
+  "Signal Activated" chip bg `#abe5bc` ink `#0d5400` r16; T:/F: and description
+  16px/400 `#66708e`; segmented True/False/Not Sure = three JOINED outlined buttons
+  ~138x36 with **border-radius 0**, selected bg `#d4e0fe`, 20px icons; Verified
+  Calls bar 165x18 (live 47.5%); transcript turn rules 2px r5, **agent `#855ede`,
+  caller `#e4126f`**.
+- "Predicted by AI" is a bracket over WHICHEVER button the AI chose (the cell is
+  `position: relative`), not a fixed label. Bracket = top rule + two 14px end ticks
+  + a 10px centre stem in `#5b6577`.
+- **THE FIVE CALLS ARE DERIVED, NOT GENERATED.** Slots 1 and 3 are the profile's own
+  `reports.callDetail.transcript` and `reports.conversationIntelligence.transcript`
+  (real, prospect-specific, and `callDetail` already has this page's exact shape:
+  `speaker`/`time`/`text` with `****` redaction). The other three are templates
+  filled from `customerName`/`bookingTerm`, plus two fallbacks so a profile missing
+  either report still shows five. No engine phase: generation time is unchanged and
+  every one of the ~60 saved demos gets the screen. Adding a phase instead would
+  have left them all empty until regenerated.
+- **The AI is deliberately WRONG on call 4.** If it were right on all five the SE
+  clicks True five times, accuracy sits at 100%, and no prospect believes it. Call 4
+  is a price shopper using every scheduling phrase and committing to nothing; the AI
+  says True, the honest answer is False, and disagreeing visibly drops the interval
+  (verified: 82-99% -> 73-99%, back out of the grey target band).
+- Accuracy = **how often the human AGREED with the AI**; the human is ground truth,
+  so nothing stores a "real" answer. A 95% Wald interval on that rate, which is why
+  it narrows as calls are verified. Two deliberate departures: the variance is
+  floored so a perfect run still shows a band instead of a zero-width line, and the
+  ends clamp to [40, 99] so it cannot draw past the track.
+- **"Not Sure" advances but scores nothing** - no T/F, no accuracy move. You cannot
+  measure agreement against an answer the reviewer declined to give.
+- **"Review Last Call" UN-APPLIES its save** (`Saved` records carry the delta).
+  Without that, stepping back and re-saving counts the same call twice and quietly
+  inflates the accuracy an SE is standing in front of. Verified round-trip exact.
+- **`convStartIndex()` compares SECONDS, never strings.** Real data breaks string
+  equality both ways: the Shady Blinds seed has `convStart: "00:00"` and three saved
+  demos have `"00:16"` with no turn at exactly that second, so an exact match drew no
+  marker at all and did it silently. Index 0 IS a legitimate position (7 of 11
+  profiles have a first turn at 00:16, and a marker there says the record began 16s
+  before anyone spoke); only `00:00` is vacuous and suppressed. An earlier version
+  refused index 0 and so drew nothing on those 7.
+- `?p=<profileId>` stamps the owning prospect. **A model belongs to one account**, so
+  switching the network selector invalidates the label, name and hashed date: without
+  the guard the page showed `consultation_set` over National Van Lines' calls. On
+  mismatch it redirects to `/signal/ai-studio`.
+- Article agreement matters here: `labelDescription()` picks "a"/"an", or every
+  vowel-initial booking term reads "for a estimate" in a sentence a prospect is
+  looking straight at.
+- CSS trap: hover is written `.vl-seg-btn:not(.vl-seg-btn--on):hover`. As a plain
+  `:hover` it ties `--on` on specificity and wins by order, so the selected button
+  turned hover-blue under the pointer and read as unselected.
+- "Train AI Model" stays disabled with an explanatory `title`, matching the capture.
+  Ask AI is scoped to the label and its description only; transcripts are out of
+  scope because an edit could contradict the AI prediction shown beside them.
+
 ## New Semantic Signal (the library's Activate flow)
 - `src/screens/SemanticSignalActivate.tsx`, route
   `/signal/new/semantic/activate?trackerId=146&standardDataFieldName=$.<name>`. The query

@@ -3221,3 +3221,189 @@ button.nav-item {
   padding: 3px 9px; font-size: 13px; color: #15243e;
 }
 .sas-empty { font-size: 14px; color: #5b6577; }
+
+/* ---- Verify Labels (Signal AI Studio > Verify Labels) ---------------------
+   Every value here was measured off the saved live page (8/17/2026), including
+   the two the screenshot misleads about: the accuracy readout is a target band +
+   hatched confidence interval + point tick, and "Save & Next Call" is outlined
+   white rather than filled blue. Scoped .vl- so nothing here can reach another
+   screen. */
+.vl-page { padding: 20px 24px 0; display: flex; flex-direction: column; min-height: 100%; }
+
+.vl-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.vl-eyebrow {
+  font-size: 12px; font-weight: 700; color: #2666f9; text-transform: uppercase;
+  letter-spacing: .04em; text-decoration: none;
+}
+.vl-eyebrow:hover { text-decoration: underline; }
+.vl-h1 { font-size: 24px; font-weight: 400; color: #15243e; margin: 4px 0 6px; }
+.vl-sub { display: flex; align-items: center; gap: 14px; }
+.vl-round {
+  background: #e7e9eb; color: #5b6577; font-size: 12px; border-radius: 16px;
+  padding: 2px 12px; line-height: 16px;
+}
+.vl-about { display: inline-flex; align-items: center; gap: 5px; }
+.vl-about .material-icons { font-size: 16px; color: #5b6577; }
+.vl-about a { font-size: 14px; color: #2666f9; text-decoration: none; }
+.vl-about a:hover { text-decoration: underline; }
+
+.vl-head-right { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+.vl-verified-label { font-size: 16px; color: #15243e; white-space: nowrap; }
+.vl-verified { width: 165px; height: 18px; background: #e7e9eb; border-radius: 3px; overflow: hidden; }
+.vl-verified-fill { display: block; height: 100%; background: #2666f9; transition: width .25s ease; }
+.vl-train {
+  background: #e7e9eb; color: #a1a7b2; border: 0; font-size: 14px; font-weight: 500;
+  padding: 8px 12px; border-radius: 3px; height: 36px; cursor: not-allowed;
+}
+
+.vl-body { display: flex; gap: 24px; align-items: flex-start; margin: 16px 0 0; }
+
+.vl-transcript {
+  flex: 1 1 auto; min-width: 0; background: #fff; border-radius: 3px;
+  border: 2px solid #e7e9eb; padding: 12px 16px 16px;
+}
+.vl-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.vl-panel-title {
+  font-size: 16px; font-weight: 700; color: #15243e; display: inline-flex;
+  align-items: center; gap: 5px; padding: 5px 0;
+}
+.vl-i { font-size: 16px; color: #5b6577; }
+.vl-vcd {
+  display: inline-flex; align-items: center; gap: 6px; background: none; border: 0;
+  color: #1c53e9; font-size: 14px; font-weight: 500; padding: 8px 12px;
+  border-radius: 3px; cursor: pointer;
+}
+.vl-vcd:hover { background: #f3f7ff; }
+.vl-vcd .material-icons { font-size: 18px; }
+
+.vl-search {
+  display: flex; align-items: center; gap: 8px; border: 1px solid #d0d3d8;
+  border-radius: 3px; padding: 6px 10px; margin: 8px 0 12px;
+}
+.vl-search .material-icons { font-size: 20px; color: #5b6577; }
+.vl-search input { flex: 1; border: 0; outline: 0; font-size: 16px; color: #15243e; background: none; }
+
+.vl-turns { max-height: 46vh; overflow-y: auto; padding-right: 6px; }
+.vl-turn { display: grid; grid-template-columns: 66px 2px 1fr; gap: 0 14px; padding: 6px 0; }
+.vl-who { text-align: left; }
+.vl-speaker { display: block; font-size: 16px; color: #15243e; }
+.vl-time { display: block; font-size: 16px; color: #15243e; }
+/* Measured: 2px wide, radius 5, agent purple / caller magenta. */
+.vl-rule { width: 2px; border-radius: 5px; background: #855ede; }
+.vl-turn--caller .vl-rule { background: #e4126f; }
+.vl-text { font-size: 16px; color: #15243e; margin: 0; line-height: 1.5; }
+.vl-convstart {
+  display: flex; align-items: center; gap: 8px; font-size: 14px; color: #5b6577;
+  padding: 10px 0; border-top: 1px solid #eef0f3; margin-top: 6px;
+}
+.vl-convstart .material-icons { font-size: 20px; color: #15243e; }
+.vl-noturns { font-size: 14px; color: #5b6577; padding: 8px 0 0; }
+
+.vl-side { flex: 0 0 468px; max-width: 468px; }
+.vl-card {
+  background: #fff; border: 2px solid #e7e9eb; border-radius: 3px; padding: 24px; margin-top: 4px;
+}
+.vl-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.vl-label { font-size: 16px; font-weight: 700; color: #15243e; word-break: break-word; }
+.vl-kebab {
+  width: 40px; height: 40px; flex: 0 0 40px; border: 0; background: none; border-radius: 50%;
+  color: rgba(0,0,0,.54); cursor: pointer; display: grid; place-items: center; margin: -8px -8px 0 0;
+}
+.vl-kebab:hover { background: #f1f4f9; }
+.vl-kebab .material-icons { font-size: 24px; }
+.vl-activated {
+  display: inline-block; background: #abe5bc; color: #0d5400; font-size: 12px;
+  border-radius: 16px; padding: 2px 8px; line-height: 16px; margin: 8px 0 0;
+}
+.vl-tf { font-size: 16px; color: #66708e; margin: 10px 0 0; font-variant-numeric: tabular-nums; }
+.vl-desc { font-size: 16px; color: #66708e; margin: 8px 0 0; line-height: 1.35; }
+.vl-desc-tight { display: flex; align-items: center; gap: 6px; margin-top: 20px; }
+
+/* Segmented control: three JOINED outlined buttons, radius 0, collapsed borders. */
+.vl-seg { display: grid; grid-template-columns: repeat(3, 1fr); margin: 34px 0 0; }
+.vl-seg-cell { position: relative; display: block; }
+.vl-seg-btn {
+  width: 100%; height: 36px; display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; background: #fff; color: #2666f9; font-size: 14px; font-weight: 500;
+  border: 1px solid rgba(38,102,249,.5); border-radius: 0; padding: 8px 12px; cursor: pointer;
+}
+.vl-seg-cell + .vl-seg-cell .vl-seg-btn { border-left: 0; }
+/* Hover is scoped to the UNSELECTED buttons on purpose. Written as a plain
+   `.vl-seg-btn:hover` it has the same specificity as `--on` and is declared later,
+   so the selected button turned hover-blue while the pointer sat on it and read as
+   not selected at all. */
+.vl-seg-btn:not(.vl-seg-btn--on):hover { background: #f3f7ff; }
+.vl-seg-btn--on, .vl-seg-btn--on:hover { background: #d4e0fe; }
+.vl-seg-btn .material-icons { font-size: 20px; }
+
+/* "Predicted by AI" bracket, positioned over the button the AI actually chose. */
+.vl-pred { position: absolute; left: 0; right: 0; bottom: 100%; text-align: center; }
+.vl-pred-label { display: block; font-size: 16px; color: #15243e; line-height: 20px; }
+.vl-pred-bracket { position: relative; display: block; height: 14px; }
+.vl-pred-bracket::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: #5b6577;
+}
+.vl-pred-bracket i { position: absolute; top: 0; width: 2px; background: #5b6577; }
+.vl-pred-bracket i:nth-child(1) { left: 0; height: 14px; }
+.vl-pred-bracket i:nth-child(2) { left: calc(50% - 1px); height: 10px; }
+.vl-pred-bracket i:nth-child(3) { right: 0; height: 14px; }
+
+/* Accuracy: track, 80-100% target band, hatched interval, point tick, chip. */
+.vl-acc { position: relative; margin: 10px 0 30px; }
+.vl-acc-track { position: relative; height: 18px; background: #e7e9eb; border-radius: 5px; }
+.vl-acc-band {
+  position: absolute; left: 80%; width: 20%; top: 0; bottom: 0;
+  background: #b8bdc5; border-radius: 0 5px 5px 0;
+}
+.vl-acc-range {
+  position: absolute; top: 0; bottom: 0; border: 1px solid #2666f9;
+  background: repeating-linear-gradient(135deg,
+    rgba(38,102,249,.3) 0 3px, rgba(38,102,249,0) 3px 6px);
+  transition: left .25s ease, width .25s ease;
+}
+.vl-acc-tick {
+  position: absolute; top: 7px; width: 1px; height: 4px; background: #2666f9;
+  transition: left .25s ease;
+}
+.vl-acc-chip {
+  position: absolute; top: 20px; transform: translateX(-4px); background: #d4e0fe;
+  color: #11228c; font-size: 12px; border-radius: 16px; padding: 2px 8px;
+  line-height: 16px; white-space: nowrap; font-variant-numeric: tabular-nums;
+  transition: left .25s ease;
+}
+
+/* Player + footer */
+.vl-player {
+  display: flex; align-items: center; gap: 16px; background: #fff; border: 2px solid #e7e9eb;
+  border-radius: 3px; padding: 10px 16px; margin: 20px 0 0;
+}
+.vl-rate { display: inline-flex; align-items: center; font-size: 14px; color: #15243e; }
+.vl-rate .material-icons { font-size: 20px; }
+.vl-pbar { position: relative; flex: 1; height: 4px; background: #e7e9eb; border-radius: 3px; }
+.vl-pdot {
+  position: absolute; left: 0; top: -5px; width: 14px; height: 14px; border-radius: 50%;
+  background: #0aa06e;
+}
+.vl-pcontrols { display: inline-flex; align-items: center; gap: 14px; color: #5b6577; }
+.vl-pcontrols .material-icons { font-size: 22px; }
+.vl-play { font-size: 30px !important; color: #15243e; }
+.vl-ptime { font-size: 14px; color: #5b6577; font-variant-numeric: tabular-nums; }
+
+.vl-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0 20px; margin-top: auto;
+}
+.vl-foot-right { display: inline-flex; align-items: center; gap: 10px; }
+.vl-exit {
+  background: none; border: 0; color: #2666f9; font-size: 14px; font-weight: 500;
+  padding: 8px 12px; border-radius: 3px; height: 36px; cursor: pointer;
+}
+.vl-exit:hover { background: #f3f7ff; }
+.vl-review, .vl-save {
+  background: #fff; border: 1px solid rgba(38,102,249,.5); color: #2666f9; font-size: 14px;
+  font-weight: 500; padding: 8px 12px; border-radius: 3px; height: 36px; cursor: pointer;
+}
+.vl-review:hover:not(:disabled), .vl-save:hover:not(:disabled) { background: #f3f7ff; border-color: #2666f9; }
+.vl-review:disabled, .vl-save:disabled {
+  background: #e7e9eb; border-color: #d0d3d8; color: #a1a7b2; cursor: not-allowed;
+}

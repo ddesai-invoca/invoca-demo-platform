@@ -35,6 +35,7 @@ import { SignalTypeSelect } from "./screens/SignalTypeSelect";
 import { SemanticSignalLibrary } from "./screens/SemanticSignalLibrary";
 import { SemanticSignalActivate } from "./screens/SemanticSignalActivate";
 import { SignalAiStudio } from "./screens/SignalAiStudio";
+import { VerifyLabels } from "./screens/VerifyLabels";
 import { EditRuleSignal } from "./screens/EditRuleSignal";
 import { Launch } from "./screens/Launch";
 import { SmsPreviewPage } from "./screens/SmsPreviewPage";
@@ -160,6 +161,7 @@ export default function App() {
                 template by standardDataFieldName, so the query string matches it. */}
             <Route path="/signal/new/semantic/activate" element={<SemanticSignalActivate />} />
             <Route path="/signal/ai-studio" element={<SignalAiStudio />} />
+            <Route path="/signal/ai-studio/verify/:modelId" element={<VerifyLabels />} />
             <Route path="/signal/discovery" element={<Placeholder name="Signal Discovery" />} />
             {NAV.filter((item) => !STANDALONE.has(item.path)).map((item) => (
               <Route

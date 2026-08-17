@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { usePageData } from "../components/GeneratedTiles";
 
@@ -69,6 +70,7 @@ interface Model {
 
 export function SignalAiStudio() {
   const { profile } = useProfile();
+  const navigate = useNavigate();
 
   const base = useMemo(() => {
     const noun = snake(profile.bookingTerm || "appointment");
@@ -173,7 +175,24 @@ export function SignalAiStudio() {
               <button className="sas-kebab" aria-label="More actions">
                 <span className="material-icons">more_vert</span>
               </button>
-              <button className="sas-action" type="button">{m.action}</button>
+              {/* Only "Verify Labels" leads anywhere: it opens the verification
+                  screen for THIS row, carrying the row's own label, name and round
+                  so a refresh or a pasted link still resolves them. "Label Calls"
+                  is a different flow we have not built, so it stays inert rather
+                  than landing somewhere that does not match the button. */}
+              <button className="sas-action" type="button"
+                onClick={() => {
+                  if (m.action !== "Verify Labels") return;
+                  /* `p` stamps the owning prospect so the verify screen can tell
+                     when a network switch has invalidated these values. */
+                  const qs = new URLSearchParams({
+                    label: m.labels[0] ?? "", name: m.title, round: String(m.round),
+                    p: profile.id,
+                  });
+                  navigate(`/signal/ai-studio/verify/${m.id}?${qs}`);
+                }}>
+                {m.action}
+              </button>
               <button className={"sas-chev" + (open.has(m.id) ? " sas-chev-open" : "")}
                 aria-label={open.has(m.id) ? "Collapse" : "Expand"}
                 aria-expanded={open.has(m.id)}
