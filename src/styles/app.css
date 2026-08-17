@@ -3007,3 +3007,120 @@ button.nav-item {
   background: #ff7a66; color: #fff; font-size: 11.5px; font-weight: 700;
   display: inline-flex; align-items: center; justify-content: center;
 }
+
+/* ==== New Semantic Signal (the library's Activate flow) ======================
+   Values measured off the live page on 8/14/2026, not eyeballed:
+     rail 296px · tab min-height 48px, padding 12/16, 16px, selected #d4e0fe with a
+     2px #2666f9 indicator on the RIGHT · h1 24px/400 · label 16px/700 ·
+     input 16px, padding 6px 8px, radius 3px · Phrases 20px/700 ·
+     Save #2666f9, white, 14px/500, padding 8px 12px, radius 3px
+   All ink is rgb(21,36,62), the platform's text colour on these screens. */
+/* NO `scroll-behavior: smooth` here, deliberately. This container cannot smooth
+   scroll in the app's browser: `scrollTo({behavior:"smooth"})` is a silent no-op,
+   and setting the property made a plain `scrollTop` assignment a no-op too, so
+   nothing scrolled at all. The animation is a rAF tween in the component instead,
+   which is just repeated scrollTop writes and therefore always works. */
+.ssa-page { padding: 20px 0 0; color: #15243e; }
+.ssa-head {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding: 0 24px 14px; border-bottom: 1px solid #e7e9eb;
+}
+.ssa-h1 { margin: 0; font-size: 24px; font-weight: 400; color: #15243e; letter-spacing: normal; }
+.ssa-about { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; }
+.ssa-about .material-icons { font-size: 15px; color: #6b7684; }
+.ssa-about a { color: #2666f9; text-decoration: none; }
+.ssa-about a:hover { text-decoration: underline; }
+
+.ssa-body { display: flex; align-items: flex-start; }
+/* The rail is sticky so the tabs stay reachable down a 44-phrase form; on the real
+   page the whole viewport scrolls and they stay visible for the same reason. */
+.ssa-rail {
+  width: 296px; flex: 0 0 296px; display: flex; flex-direction: column;
+  padding: 18px 0 0; position: sticky; top: 0;
+}
+.ssa-tab {
+  appearance: none; border: 0; background: none; cursor: pointer; font: inherit;
+  font-size: 16px; font-weight: 400; color: #15243e; text-transform: none;
+  min-height: 48px; padding: 12px 16px; text-align: left;
+  display: flex; align-items: center; position: relative;
+  transition: background .14s ease;
+}
+.ssa-tab:hover { background: #f1f4f9; }
+.ssa-tab-on { background: #d4e0fe; }
+/* Indicator on the RIGHT edge, which is where MUI puts it for a vertical tab set
+   sitting to the left of its panels. */
+.ssa-tab-on::after {
+  content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 2px; background: #2666f9;
+}
+
+.ssa-form { flex: 1; min-width: 0; padding: 18px 24px 0; max-width: 980px; }
+.ssa-label {
+  display: block; font-size: 16px; font-weight: 700; color: #15243e; margin: 16px 0 5px;
+}
+.ssa-label:first-child { margin-top: 0; }
+.ssa-label-plain { font-weight: 700; margin: 20px 0 7px; }
+.ssa-i { font-size: 15px; color: #9e9e9e; vertical-align: -3px; margin-left: 3px; }
+
+.ssa-input, .ssa-textarea, .ssa-select {
+  font: inherit; font-size: 16px; color: #15243e; background: #fff;
+  border: 1px solid #cfd6de; border-radius: 3px; padding: 6px 8px;
+}
+.ssa-input { width: 343px; max-width: 100%; height: 35px; }
+.ssa-textarea { width: 488px; max-width: 100%; resize: vertical; line-height: 1.45; padding: 8px; }
+.ssa-select { width: 165px; height: 35px; }
+.ssa-select-wide { width: 316px; }
+.ssa-input:focus, .ssa-textarea:focus, .ssa-select:focus {
+  outline: none; border-color: #2666f9; box-shadow: 0 0 0 2px rgba(38,102,249,.15);
+}
+.ssa-money { display: flex; align-items: stretch; width: 488px; max-width: 100%; }
+.ssa-money-sign {
+  display: flex; align-items: center; padding: 0 10px; font-size: 16px; color: #6b7684;
+  border: 1px solid #cfd6de; border-right: 0; border-radius: 3px 0 0 3px; background: #fff;
+}
+.ssa-input-money { width: 100%; border-radius: 0 3px 3px 0; }
+
+.ssa-rule { height: 1px; background: #e7e9eb; margin: 24px 0 16px; }
+.ssa-suggested { margin: 0; font-size: 14px; color: #15243e; }
+.ssa-suggested b { font-weight: 700; }
+
+.ssa-section { margin-top: 26px; }
+.ssa-h2 { margin: 0 0 8px; font-size: 20px; font-weight: 700; color: #15243e; }
+/* Small caps for the Advanced Options divider, matching the screenshot — the live
+   DOM probe for this one hit the TAB, not the section heading, so this is the one
+   value taken from the picture rather than measured. */
+.ssa-h3 {
+  margin: 0 0 14px; font-size: 13px; font-weight: 700; color: #15243e;
+  text-transform: uppercase; letter-spacing: .06em;
+  padding-top: 22px; border-top: 1px solid #e7e9eb;
+}
+.ssa-help { margin: 0 0 16px; font-size: 14px; line-height: 1.5; color: #15243e; }
+
+.ssa-phrases { list-style: none; margin: 0; padding: 0; }
+.ssa-phrases li { margin: 0 0 4px; }
+.ssa-check {
+  display: inline-flex; align-items: flex-start; gap: 9px;
+  font-size: 14px; color: #15243e; cursor: pointer; line-height: 20px;
+}
+.ssa-check-loose { margin-top: 2px; }
+.ssa-check input[type="checkbox"] {
+  width: 16px; height: 16px; margin: 2px 0 0; accent-color: #2666f9; cursor: pointer; flex: none;
+}
+.ssa-count { margin: 12px 0 0; font-size: 13px; color: #6b7684; }
+
+.ssa-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 32px 0 0; padding: 14px 24px; border-top: 1px solid #e7e9eb; background: #fff;
+}
+.ssa-foot-right { display: inline-flex; gap: 8px; }
+.ssa-back, .ssa-cancel {
+  appearance: none; cursor: pointer; font: inherit; font-size: 14px; font-weight: 500;
+  background: none; border: 0; color: #2666f9; padding: 8px 12px; border-radius: 3px;
+}
+.ssa-cancel { border: 1px solid #cfd6de; color: #15243e; background: #fff; }
+.ssa-back:hover, .ssa-cancel:hover { background: #f1f4f9; }
+.ssa-save {
+  appearance: none; cursor: pointer; font: inherit; font-size: 14px; font-weight: 500;
+  background: #2666f9; color: #fff; border: 0; border-radius: 3px;
+  padding: 8px 12px; text-transform: capitalize;
+}
+.ssa-save:hover { background: #1b52d6; }

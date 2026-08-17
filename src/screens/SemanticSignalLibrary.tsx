@@ -139,10 +139,14 @@ export function SemanticSignalLibrary() {
                 <p className="ssl-card-text">{t.body}</p>
               </div>
               <div className="ssl-card-actions">
-                {/* The activation flow is not built yet, so this returns to Manage Signals
-                    rather than dead-ending. Point it at the builder when that screen lands. */}
+                {/* Matches the real link: the template is identified by
+                    standardDataFieldName ("$.Ask for Appointment"), so a refresh or a
+                    shared URL still resolves to the same signal. */}
                 <button className="ssl-activate" type="button"
-                  onClick={(e) => { e.stopPropagation(); navigate("/signal"); }}>Activate</button>
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/signal/new/semantic/activate?trackerId=146&standardDataFieldName=${encodeURIComponent("$." + t.name)}`);
+                  }}>Activate</button>
               </div>
             </article>
           ))}

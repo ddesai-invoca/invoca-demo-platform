@@ -1156,6 +1156,38 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
 - The Exchange page loads GT America font + logos from Invoca's CDN (needs internet).
 - These render the **desktop layout at ≥992px** (they're the real responsive pages).
 
+## New Semantic Signal (the library's Activate flow)
+- `src/screens/SemanticSignalActivate.tsx`, route
+  `/signal/new/semantic/activate?trackerId=146&standardDataFieldName=$.<name>`. The query
+  string matches the real page, so the template is identified the way Invoca identifies it
+  and a refresh or a pasted link still resolves.
+- Values MEASURED off the live page 8/14/2026, not eyeballed: rail 296px, MUI vertical tabs
+  48px min-height / 12-16 padding / 16px, selected `#d4e0fe` with a 2px `#2666f9` indicator
+  on the RIGHT edge, `text-transform: none`; h1 24px/400; label 16px/700; input 16px,
+  padding 6px 8px, radius 3px; Phrases 20px/700; Save `#2666f9` 14px/500. Ink `#15243e`.
+  The only value taken from the SCREENSHOT is the small-caps "ADVANCED OPTIONS" divider,
+  because the live DOM probe for it matched the TAB, not the section heading.
+- **The rail SCROLLS, it does not swap panels.** All three sections render at once and the
+  tabs jump to them, which is what the real page does. A tab-panel version looks identical
+  on load and is wrong the moment anyone clicks.
+- ⚠️ **Smooth scrolling cannot be used on `.main` in this app's browser.** Measured:
+  `scrollTo({behavior:"smooth"})` leaves `scrollTop` at 0 while a plain jump to 600 lands
+  at 600; setting CSS `scroll-behavior: smooth` then breaks the plain write as well, so
+  NOTHING scrolls; a rAF tween is no good either because rAF does not run when the pane is
+  not painting. The jump is a plain clamped `scrollTop` assignment. Don't "improve" it.
+- ⚠️ **Programmatic `scrollTop` fires no scroll event here**, so testing a scroll-spy by
+  assigning `scrollTop` proves nothing. Verify with real clicks or a real wheel gesture.
+- The spy listens at `document` with `capture: true` (scroll does not bubble) and resolves
+  the scroller on EVERY event: resolving it once in an effect ran before layout settled,
+  found nothing scrollable, and silently never attached.
+- **The last section is anchored to the bottom of the scroll.** It starts inside the final
+  viewport so it can never reach the top, and without that clamp clicking "Advanced
+  Options" jumped correctly and the scroll event immediately re-selected "Phrases", which
+  reads as the click having failed.
+- Phrases are NOT re-skinned per prospect: the stock library is identical in every Invoca
+  account (`data/semanticSignals.ts`). The live measurement confirmed all 44 "Ask for
+  Appointment" phrases match that file verbatim.
+
 ## Preview Agent: changing the agent's questions (4 ways)
 - The Ask AI drawer on `/agent-studio/agent/preview` can change
   `smsPlaybook.qualifyingQuestions` four ways: **one by one**, **paste a list**,
