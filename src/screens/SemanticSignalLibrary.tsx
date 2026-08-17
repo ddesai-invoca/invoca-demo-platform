@@ -139,12 +139,32 @@ export function SemanticSignalLibrary() {
                 <p className="ssl-card-text">{t.body}</p>
               </div>
               <div className="ssl-card-actions">
-                {/* Matches the real link: the template is identified by
+                {/* ONLY THE CAPTURED TEMPLATES ACTIVATE.
+
+                    Gated on `t.captured`, which today is exactly the top row (Ask for
+                    Appointment, Ask for Sale, Competitor Mention) — the three whose
+                    phrase lists came out of a real capture. The other twelve carry
+                    phrases AUTHORED IN THIS REPO (see data/semanticSignals.ts), and
+                    opening a form full of invented Invoca content in front of a
+                    prospect is worse than a button that politely declines.
+
+                    Deliberately the FLAG, not a list of three names: capture a real
+                    phrase list for another template, flip `captured: true`, and its
+                    button starts working with no change here.
+
+                    Matches the real link either way: the template is identified by
                     standardDataFieldName ("$.Ask for Appointment"), so a refresh or a
                     shared URL still resolves to the same signal. */}
-                <button className="ssl-activate" type="button"
+                <button
+                  className={"ssl-activate" + (t.captured ? "" : " ssl-activate-off")}
+                  type="button"
+                  disabled={!t.captured}
+                  title={t.captured
+                    ? `Activate ${t.name}`
+                    : "Not available in this demo yet"}
                   onClick={(e) => {
                     e.stopPropagation();
+                    if (!t.captured) return;
                     navigate(`/signal/new/semantic/activate?trackerId=146&standardDataFieldName=${encodeURIComponent("$." + t.name)}`);
                   }}>Activate</button>
               </div>

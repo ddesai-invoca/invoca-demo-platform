@@ -1187,6 +1187,14 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
 - Phrases are NOT re-skinned per prospect: the stock library is identical in every Invoca
   account (`data/semanticSignals.ts`). The live measurement confirmed all 44 "Ask for
   Appointment" phrases match that file verbatim.
+- **Only `captured: true` templates activate.** Today that is exactly the top row (Ask for
+  Appointment, Ask for Sale, Competitor Mention); the other twelve carry phrase lists
+  AUTHORED IN THIS REPO, and opening a form full of invented Invoca content in front of a
+  prospect is worse than a button that declines. Their button is visibly disabled, not
+  silently inert. Gated on the FLAG, not a list of names: capture a real list, flip
+  `captured: true`, and that card starts working with no component change.
+- Note the activation screen costs NO generation time. Its phrases are static template
+  data, so the gate is about provenance, not speed.
 
 ## Preview Agent: changing the agent's questions (4 ways)
 - The Ask AI drawer on `/agent-studio/agent/preview` can change

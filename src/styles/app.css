@@ -3124,3 +3124,10 @@ button.nav-item {
   padding: 8px 12px; text-transform: capitalize;
 }
 .ssa-save:hover { background: #1b52d6; }
+
+/* An un-captured template's Activate is visibly unavailable rather than silently
+   inert: a button that looks live and does nothing reads as a broken demo. */
+.ssl-activate-off {
+  opacity: .45; cursor: default; border-color: #cfd6de; color: #8a94a3;
+}
+.ssl-activate-off:hover { background: #fff; border-color: #cfd6de; color: #8a94a3; }
