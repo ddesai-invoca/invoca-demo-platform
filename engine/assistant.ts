@@ -31,7 +31,7 @@ export interface AssistantFocus {
   tileKind?: "builtin" | "generated";
   label?: string;    // the focused tile's title
   preview?: string;  // a short text preview of the focused tile (to disambiguate)
-  path?: string;     // the focused tile's own data path, when the tile knows it
+  path?: string | string[];  // the focused tile's data path(s), when the tile knows them
 }
 export interface AssistantInput {
   customerName: string;
@@ -159,8 +159,15 @@ function buildSystem(input: AssistantInput): string {
              rewrites the wrong tile. Telling it outright is cheaper and more reliable
              than any wording about being careful, and editGuard's constrainToFocus
              still enforces it if the model ignores this line. */
+          /* An ARRAY is not interpolatable. Some cards are a group of sibling fields
+             (`trendTitle` + `trendChip` + `trendChart`) rather than one subtree, and
+             `${f.path}` on an array produced the literal path
+             "trendTitle,trendChip,trendChart" — the model dutifully used it, every
+             edit fell outside the focus and was discarded. Formatted as a list. */
           f.path
-            ? `THIS TILE'S DATA IS AT "${f.path}" in the JSON below. EVERY edit path MUST begin with "${f.path}." — for example "${f.path}.title". Do NOT count tiles by their position on screen; the array order is not the render order. Any path outside "${f.path}" will be discarded.`
+            ? (Array.isArray(f.path)
+                ? `THIS TILE'S DATA IS SPREAD ACROSS THESE PATHS in the JSON below: ${f.path.map((x) => `"${x}"`).join(", ")}. EVERY edit path MUST begin with one of them — nothing else on the page belongs to this tile, and any other path will be discarded. Do NOT count tiles by their position on screen.`
+                : `THIS TILE'S DATA IS AT "${f.path}" in the JSON below. EVERY edit path MUST begin with "${f.path}." — for example "${f.path}.title". Do NOT count tiles by their position on screen; the array order is not the render order. Any path outside "${f.path}" will be discarded.`)
             : ``,
         ].filter(Boolean).join("\n")
       : `SCOPE: the whole "${input.dashboardTitle}" page. The user may ask about anything on it, edit a part they NAME, or reshape the overall story across several parts.`;

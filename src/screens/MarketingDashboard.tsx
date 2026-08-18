@@ -176,7 +176,9 @@ export function MarketingDashboard() {
           <section className="dash-card split-right">
             <div className="dash-card-head">
               <span className="dash-card-title">{L.breakoutGraph}</span>
-              <DashTileToggle />
+              {/* Heading is a UI label (L.breakoutGraph), not data, so it cannot be
+                  found by title -- named explicitly. The chart itself is editable. */}
+              <DashTileToggle path="salesCallBreakoutGraph" />
             </div>
             <div className="chart-wrap"><LineChart chart={d.salesCallBreakoutGraph} /></div>
           </section>

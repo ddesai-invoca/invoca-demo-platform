@@ -225,7 +225,12 @@ export function AiAssistantDrawer() {
         /* Say when part of it was refused rather than reporting a clean success:
            the user is focused on ONE tile and an edit aimed elsewhere is exactly the
            bug this guard exists to stop. */
-        const note = !n
+        /* "Couldn't map that" is the WRONG message when the truth is that the edits
+           were refused for being outside the focused tile: it sends the user off
+           rewording a request that was understood perfectly. Say which happened. */
+        const note = !n && pinned.dropped
+          ? `That change pointed outside the "${focus?.label ?? "focused"}" tile, so I didn't apply it. Ask from the page's own AI button to change something elsewhere.`
+          : !n
           ? "I couldn't map that change to anything on this page — try naming the metric, title or row you mean."
           : pinned.dropped
             ? `${r.answer || `Updated ${n} value${n > 1 ? "s" : ""}.`} I left ${pinned.dropped} change${pinned.dropped > 1 ? "s" : ""} out because ${pinned.dropped > 1 ? "they were" : "it was"} outside this tile.`

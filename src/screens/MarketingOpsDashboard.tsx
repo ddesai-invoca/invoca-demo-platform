@@ -7,11 +7,11 @@ import { HBarChart } from "../components/HBarChart";
 import { StackedBarChart } from "../components/StackedBarChart";
 import type { KpiGroup, OpsTable as OpsTableT } from "../data/schema";
 
-function CardHead({ title, toggle }: { title: string; toggle?: boolean }) {
+function CardHead({ title, toggle, path }: { title: string; toggle?: boolean; path?: string | string[] }) {
   return (
     <div className="dash-card-head">
       <span className="dash-card-title">{title}</span>
-      {toggle ? <DashTileToggle /> : <DashTileMenu />}
+      {toggle ? <DashTileToggle path={path as string} /> : <DashTileMenu path={path as string} />}
     </div>
   );
 }
@@ -100,7 +100,8 @@ export function MarketingOpsDashboard() {
       <OpsTable title={d.locationTitle} table={d.locationHandling} />
 
       <section className="dash-card">
-        <CardHead title="Top Reasons for No Booking" toggle />
+        {/* Literal heading, so it is named explicitly. */}
+        <CardHead title="Top Reasons for No Booking" toggle path="noBookingChart" />
         <div className="chart-wrap"><StackedBarChart chart={d.noBookingChart} height={204} /></div>
       </section>
 

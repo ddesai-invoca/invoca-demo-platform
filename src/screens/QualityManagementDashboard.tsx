@@ -13,11 +13,11 @@ import type { ConversionCard as ConversionCardT, QmBarPanel as QmBarPanelT, QmTa
    dash-table + HBarChart / StackedBarChart) plus the new BarLineChart.
    Data-driven from reports.qualityManagement, re-skinned per prospect. */
 
-function CardHead({ title, cadence }: { title: string; cadence?: string }) {
+function CardHead({ title, cadence, path }: { title: string; cadence?: string; path?: string | string[] }) {
   return (
     <div className="dash-card-head">
       <span className="dash-card-title">{title}</span>
-      {cadence ? <DashTileToggle label={cadence} /> : <DashTileMenu />}
+      {cadence ? <DashTileToggle label={cadence} path={path as string} /> : <DashTileMenu path={path as string} />}
     </div>
   );
 }
@@ -49,10 +49,10 @@ function KpiCard({ card }: { card: ConversionCardT }) {
   );
 }
 
-function BarPanel({ panel }: { panel: QmBarPanelT }) {
+function BarPanel({ panel, path }: { panel: QmBarPanelT; path?: string }) {
   return (
     <section className="dash-card">
-      <CardHead title={panel.title} />
+      <CardHead title={panel.title} path={path} />
       <Chips chips={panel.chips} />
       <HBarChart chart={panel.chart} />
       {panel.pager && (
@@ -62,10 +62,10 @@ function BarPanel({ panel }: { panel: QmBarPanelT }) {
   );
 }
 
-function TablePanel({ panel }: { panel: QmTablePanelT }) {
+function TablePanel({ panel, path }: { panel: QmTablePanelT; path?: string }) {
   return (
     <section className="dash-card">
-      <CardHead title={panel.title} />
+      <CardHead title={panel.title} path={path} />
       <Chips chips={panel.chips} />
       <div className="dash-table-scroll">
         <table className="dash-table">
@@ -126,7 +126,8 @@ export function QualityManagementDashboard() {
       <div className="qm-row qm-row-13">
         <BarPanel panel={d.callsNeedingReview} />
         <section className="dash-card">
-          <CardHead title="Highest Converting Agents" cadence="Weekly" />
+          {/* Literal heading, named explicitly. */}
+          <CardHead title="Highest Converting Agents" cadence="Weekly" path="highestConvertingAgents" />
           <div className="chart-wrap"><StackedBarChart chart={d.highestConvertingAgents} /></div>
         </section>
       </div>
@@ -142,8 +143,10 @@ export function QualityManagementDashboard() {
 
       {/* Row 5 — Bottom Quality Scores: bar (1/3) | table (2/3) */}
       <div className="qm-row qm-row-13">
-        <BarPanel panel={d.bottomByAgentBar} />
-        <TablePanel panel={d.bottomByAgentTable} />
+        {/* BOTH cards are headed "Bottom Quality Scores by Agent", so a title lookup
+            correctly refuses to choose; each is named explicitly instead. */}
+        <BarPanel panel={d.bottomByAgentBar} path="bottomByAgentBar" />
+        <TablePanel panel={d.bottomByAgentTable} path="bottomByAgentTable" />
       </div>
 
       {/* Row 6 — Top Quality Scores: bar (1/3) | table (2/3) */}

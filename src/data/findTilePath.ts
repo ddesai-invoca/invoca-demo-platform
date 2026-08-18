@@ -27,10 +27,31 @@
    on a node wins and the node is only recorded once. */
 const TITLE_KEYS = ["title", "tableTitle", "chartTitle", "name", "label", "heading"];
 
-export function findTilePath(data: unknown, title: string | undefined): string | undefined {
+/* A CARD IS NOT ALWAYS ONE SUBTREE.
+
+   Several screens store a card's heading as a `<stem>Title` field SIBLING to its
+   data rather than inside it: `trendTitle` + `trendChip` + `trendChart`,
+   `commonTopicsTitle` + `commonTopicsChart`, `locationTitle` + `locationHandling`.
+   The tile is the whole sibling GROUP, so a single path prefix cannot describe it —
+   which is why these cards resolved to nothing and kept the old guessing behaviour.
+
+   When the heading matches a `<stem>Title` key, the tile becomes every sibling whose
+   key starts with that stem. Returning the parent instead would pin the card to the
+   entire page and defeat rule 3. */
+function siblingGroup(obj: Record<string, unknown>, key: string, path: string): string[] | null {
+  if (!/Title$/.test(key) || key === "Title") return null;
+  const stem = key.slice(0, -"Title".length);
+  if (!stem) return null;
+  const keys = Object.keys(obj).filter((k) => k.startsWith(stem));
+  if (keys.length < 2) return null;              // just a title, nothing to group with
+  return keys.map((k) => (path ? `${path}.${k}` : k));
+}
+
+export function findTilePath(data: unknown, title: string | undefined): string | string[] | undefined {
   const want = (title ?? "").trim().toLowerCase();
   if (!want) return undefined;
   const hits: string[] = [];
+  const groups: string[][] = [];
 
   const walk = (node: unknown, path: string) => {
     if (node == null || typeof node !== "object") return;
@@ -48,10 +69,25 @@ export function findTilePath(data: unknown, title: string | undefined): string |
         break;
       }
     }
+    /* Any `<stem>Title` field, not only the fixed TITLE_KEYS list, so this picks up
+       trendTitle / commonTopicsTitle / webpagesTitle / locationTitle without each
+       one having to be named here. */
+    for (const k of Object.keys(obj)) {
+      const v = obj[k];
+      if (typeof v === "string" && /Title$/.test(k) && v.trim().toLowerCase() === want) {
+        const g = siblingGroup(obj, k, path);
+        if (g) groups.push(g);
+        break;
+      }
+    }
     for (const [k, v] of Object.entries(obj)) walk(v, path ? `${path}.${k}` : k);
   };
 
   walk(data, "");
   const uniq = [...new Set(hits)];
-  return uniq.length === 1 ? uniq[0] : undefined;
+  if (uniq.length === 1) return uniq[0];
+  /* A sibling group only counts when it is the ONLY interpretation, same
+     refuse-when-ambiguous rule as above. */
+  if (uniq.length === 0 && groups.length === 1) return groups[0];
+  return undefined;
 }

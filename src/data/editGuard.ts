@@ -189,15 +189,18 @@ export interface ConstrainResult { edits: { path: string; value: string }[]; rem
 
 export function constrainToFocus(
   edits: { path: string; value: string }[],
-  focusPath: string | undefined,
+  /* One prefix, or SEVERAL: some cards are a group of sibling fields
+     (`trendTitle` + `trendChart`) rather than one subtree. See findTilePath. */
+  focusPath: string | string[] | undefined,
   data: unknown,
 ): ConstrainResult {
-  if (!focusPath) return { edits, remapped: 0, dropped: 0 };
-  const inside = (p: string) => p === focusPath || p.startsWith(focusPath + ".");
-  /* Split a focus path into its container and index: "breakdowns.4" -> ["breakdowns","4"].
-     Only a container+index focus can be remapped onto; a focus that is not an array
-     element has no sibling to have been confused with. */
-  const m = /^(.*)\.(\d+)$/.exec(focusPath);
+  const focuses = (Array.isArray(focusPath) ? focusPath : focusPath ? [focusPath] : []).filter(Boolean);
+  if (!focuses.length) return { edits, remapped: 0, dropped: 0 };
+  const inside = (p: string) => focuses.some((f) => p === f || p.startsWith(f + "."));
+  /* Remapping a wrong index only makes sense for a single array-element focus; a
+     sibling group has no index to have been confused with. */
+  const m = focuses.length === 1 ? /^(.*)\.(\d+)$/.exec(focuses[0]) : null;
+  const focusOne = focuses[0];
   const out: { path: string; value: string }[] = [];
   let remapped = 0, dropped = 0;
 
@@ -207,8 +210,8 @@ export function constrainToFocus(
       const sib = new RegExp(`^${m[1].replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.(\\d+)\\.(.+)$`).exec(e.path);
       /* Same array, different element. Remap only if the same leaf actually exists
          on the focused element, so we never invent a key that was not there. */
-      if (sib && sib[1] !== m[2] && getByPath(data, `${focusPath}.${sib[2]}`) !== undefined) {
-        out.push({ path: `${focusPath}.${sib[2]}`, value: e.value });
+      if (sib && sib[1] !== m[2] && getByPath(data, `${focusOne}.${sib[2]}`) !== undefined) {
+        out.push({ path: `${focusOne}.${sib[2]}`, value: e.value });
         remapped++;
         continue;
       }

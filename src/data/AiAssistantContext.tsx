@@ -42,7 +42,7 @@ export interface AssistantFocus {
      the page as RENDERED and picks the wrong index wherever render order and array
      order disagree -- see constrainToFocus() in editGuard.ts for the case that
      forced this. */
-  path?: string;
+  path?: string | string[];
   /* Open on the LEFT, with no backdrop. For a drawer opened FROM something the user
      needs to keep watching: the preview chat lives on the right, and the whole point
      of editing the agent is seeing the chat pick the change up. A right-hand drawer
