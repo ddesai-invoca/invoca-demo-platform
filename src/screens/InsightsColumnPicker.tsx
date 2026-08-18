@@ -1,8 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
-import { buildCatalog, COLUMN_GROUPS } from "../data/insightsCatalog";
+import { columnGroupsFor, sidebarFor, type ReportKind } from "../data/insightsColumns";
 import { reportRows } from "../data/insightsTileData";
 
 /* =============================================================================
@@ -21,10 +21,24 @@ import { reportRows } from "../data/insightsTileData";
      a "Reorder columns" sidebar on the right, seeded with Call Record ID
      Back | Cancel | Create
 
-   THE COLUMN UNIVERSE IS BOTH CATALOGUES COMBINED. 371 is exactly 250 dimensions +
-   121 measures, which is what let me stop guessing: the picker offers everything the
-   drawers offer, grouped differently. Ours is 338 for the same reason the catalogues
-   are 231/109 — that account's own custom signals are not imported.
+   THE THREE REPORTS ARE NOT THE SAME SCREEN, which the first build got wrong by
+   giving all three one universe and one sidebar. Measured off saved captures of all
+   three live builders:
+
+     Details       20 groups, sidebar Reorder columns, seeded with Call Record ID
+     Summary       11 groups of MEASURES ONLY, and it adds a GROUP BY control,
+                   because a summary has to aggregate by something
+     Transactions  21 groups (Details + RingPool Details), seeded with
+                   Call Record ID AND Transaction ID
+
+   Group membership now comes from insightsColumns, extracted from those captures
+   rather than inferred from column names. The old keyword rules put Agent under
+   Contact Center Metrics and a third of the catalogue into "Short Text Fields";
+   both are wrong on the real page.
+
+   Our column totals run below that account's (233 vs 371) almost entirely in the
+   Signals group: it has 75 configured signals paired with (T/F) twins, and a prospect
+   has however many its own profile generated. That gap is the feature.
    ============================================================================= */
 
 const TITLES: Record<string, string> = {
@@ -32,56 +46,6 @@ const TITLES: Record<string, string> = {
   "summary-report": "Summary Report",
   "transactions-report": "Transactions Report",
 };
-
-/* Which accordion a column belongs to. Keyword rules over the combined catalogue,
-   ordered most-specific first — "Advertiser Campaign ID" must land in Advertiser
-   Campaign Details, not Advertiser Details.
-
-   HONEST LIMIT: the live capture gave the 20 group NAMES and the total column count,
-   but not which column sits in which group. These rules are inferred, and they are
-   right where it is checkable — Conversion Reporting Details lands 11 columns, Payout
-   Details 5 and Signal Details 2, matching the live counts exactly. Everything else is
-   a reasonable reading, so if the real membership is ever captured, correct it here
-   rather than assuming this is authoritative. "Short Text Fields" and "Long Text
-   Fields" are genuine catch-alls on the live page too, but a third of the catalogue
-   landing there was a sign the rules were too coarse, not that the bucket is that big. */
-function groupFor(col: string): string {
-  const c = col.toLowerCase();
-  if (/\(reported\)|sale amount/.test(c)) return "Conversion Reporting Details";
-  if (/advertiser campaign/.test(c)) return "Advertiser Campaign Details";
-  if (/advertiser/.test(c)) return "Advertiser Details";
-  if (/publisher/.test(c)) return "Publisher Details";
-  if (/^fees?$|earned|^paid$|payin|payout|call result/.test(c)) return "Payout Details";
-  if (/adwords/.test(c)) return "Adwords Details";
-  if (/^sms|sms /.test(c)) return "SMS Details";
-  if (/ivr|keypress/.test(c)) return "IVR Details";
-  if (/voice ai|ai agent|ai contained/.test(c)) return "Voice AI Details";
-  if (/sentiment/.test(c)) return "Sentiment";
-  if (/score|ranking/.test(c)) return "Scores";
-  if (/talk time|monolog|overtalk|silence|hold time|dead air|handle time|ccm:/.test(c))
-    return "Contact Center Metrics";
-  if (/signal/.test(c)) return "Signal Details";
-  if (/intent|outcome|inquiry type|call type|reason/.test(c)) return "Categories";
-  if (/google|microsoft|piwik|adobe|sa360|external|gbraid|wbraid|click id/.test(c))
-    return "External Call Details";
-  if (/transcript|summary|journey/.test(c)) return "Long Text Fields";
-  if (/invoca|record id|unique id/.test(c)) return "Invoca Data";
-  if (/duration|direction|start time|destination|caller id|phone|recorded|hours/.test(c))
-    return "Call Details";
-  if (/\(t\/f\)$/.test(c)) return "Signals";
-  /* Groupings a report is sliced by: marketing attribution, geography, org structure
-     and booking status all read as categories rather than loose text. */
-  if (/marketing |campaign|medium|^source$|search term|placement|media type/.test(c)) return "Categories";
-  if (/division|line of business|territory|^area$|^region|specialty|product category|service type|practice area/.test(c))
-    return "Categories";
-  if (/scheduled|status|action|appointment|consultation|estimate|booking|tour|visit|drive/.test(c))
-    return "Categories";
-  if (/city|zip|postal|province|state|latitude|longitude|geo location|address/.test(c)) return "Call Details";
-  if (/agent|evaluated by|reviewed by|handled by|^demo$|audience/.test(c)) return "Contact Center Metrics";
-  if (/url|calling page|landing page|website|language/.test(c)) return "Call Details";
-  if (/^member id|^interaction|ip address|network|lead score|rollout/.test(c)) return "Invoca Data";
-  return "Short Text Fields";
-}
 
 export function InsightsColumnPicker() {
   const navigate = useNavigate();
@@ -91,21 +55,38 @@ export function InsightsColumnPicker() {
   const name = TITLES[report ?? ""] ?? "Details Report";
   const DASH = "/insights/dashboard/Summary%20Dashboard";
 
-  const grouped = useMemo(() => {
-    const cat = buildCatalog(profile);
-    const all = [...new Set([...cat.dimensions, ...cat.measures])];
-    const map = new Map<string, string[]>(COLUMN_GROUPS.map((g) => [g, []]));
-    for (const col of all) (map.get(groupFor(col)) ?? map.get("Short Text Fields"))!.push(col);
-    /* Empty accordions are not rendered: the live page only shows groups it has
-       columns for, and an empty "Publisher Details" would read as a loading bug. */
-    return [...map.entries()].filter(([, cols]) => cols.length > 0);
-  }, [profile]);
+  const kind = (report ?? "details-report") as ReportKind;
+  const side = sidebarFor(kind);
 
-  /* Call Record ID is the live page's default selection — it is what sits in the
-     Reorder sidebar before you touch anything. */
-  const [picked, setPicked] = useState<string[]>(["Call Record ID"]);
+  const grouped = useMemo(
+    () => columnGroupsFor(profile, kind).map((g) => [g.name, g.columns] as const),
+    [profile, kind],
+  );
+
+  /* Seeded from the live page: Details starts with Call Record ID, Transactions with
+     Call Record ID and Transaction ID, Summary with nothing selected. */
+  const [picked, setPicked] = useState<string[]>(side.seeded);
   const [query, setQuery] = useState("");
-  const [open, setOpen] = useState<Set<string>>(new Set([COLUMN_GROUPS[0]]));
+  const [open, setOpen] = useState<Set<string>>(new Set([grouped[0]?.[0] ?? ""]));
+  /* Summary Report only: what the aggregate is broken out by. Dimensions come from
+     the Categories group, which is what the live Group By offers. */
+  const groupByOptions = useMemo(
+    () => columnGroupsFor(profile, "details-report")
+      .find((g) => g.name === "Categories")?.columns ?? [],
+    [profile],
+  );
+  const [groupBy, setGroupBy] = useState("");
+
+  /* ⚠️ The three reports share one route pattern, so React Router reuses this component
+     when only :report changes and `useState(side.seeded)` never re-runs. Without this,
+     opening Transactions after Details showed Details' single seeded column and Summary
+     showed one it should not have at all. Reset everything the report owns when it
+     changes; the seed is per report, not per mount. */
+  useEffect(() => {
+    setPicked(sidebarFor(kind).seeded);
+    setGroupBy("");
+    setQuery("");
+  }, [kind]);
 
   const q = query.trim().toLowerCase();
   const visible = (cols: string[]) => (q ? cols.filter((c) => c.toLowerCase().includes(q)) : cols);
@@ -172,6 +153,17 @@ export function InsightsColumnPicker() {
         </section>
 
         <aside className="icp-side">
+          {/* Group By is a Summary-only control. A details row is already one call, so
+              there is nothing to group; a summary has to aggregate by something. */}
+          {side.groupBy && (
+            <div className="icp-groupby">
+              <p className="icp-side-title">Group By</p>
+              <select value={groupBy} onChange={(e) => setGroupBy(e.target.value)}>
+                <option value="">Select a dimension</option>
+                {groupByOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+              </select>
+            </div>
+          )}
           <p className="icp-side-title">Reorder columns</p>
           {/* Order follows selection order, and each row can be nudged. Real drag and
               drop is not worth the risk on a demo screen: a dropped drag mid-pitch
@@ -199,13 +191,19 @@ export function InsightsColumnPicker() {
         <button className="icp-back" type="button" onClick={() => navigate("/insights/add-tile")}>Back</button>
         <span className="icp-foot-right">
           <button className="icp-cancel" type="button" onClick={() => navigate(DASH)}>Cancel</button>
-          <button className="icp-create" type="button" disabled={picked.length === 0}
+          <button className="icp-create" type="button"
+            disabled={picked.length === 0 || (side.groupBy && !groupBy)}
             onClick={() => {
+              /* A grouped summary leads with the thing it is grouped by, as the live
+                 report does, so the aggregate reads left to right. */
+              const cols = side.groupBy && groupBy ? [groupBy, ...picked.filter((c) => c !== groupBy)] : picked;
               addTile(`${profileId}::${DASH}`, {
                 id: `t${Date.now()}`, tileType: "table", title: name,
-                note: `${picked.length} column${picked.length === 1 ? "" : "s"}`,
+                note: side.groupBy && groupBy
+                  ? `by ${groupBy}, ${cols.length} column${cols.length === 1 ? "" : "s"}`
+                  : `${cols.length} column${cols.length === 1 ? "" : "s"}`,
                 kpis: [], xLabels: [], series: [], slices: [],
-                columns: picked, rows: reportRows(profile, picked),
+                columns: cols, rows: reportRows(profile, cols),
               });
               navigate(DASH);
             }}>

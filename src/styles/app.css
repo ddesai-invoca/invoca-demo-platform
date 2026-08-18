@@ -3581,20 +3581,36 @@ button.nav-item {
    of available width. */
 
 /* ---- Insights & Analytics tile "Configuration" drawer ---------------------
-   Measured off the LIVE drawer (8/18/2026): fixed right, 500px, z-1200, padding
-   16px 16px 0, H1 24/400, field label 16/400, combo 452x37, Create starts disabled.
+   Re-measured off a saved capture of the live drawer (8/18/2026). Corrections to the
+   first build, all from computed style:
 
-   THE SECTION HEADING: 12px with text-transform UPPERCASE — the source text is
-   "Data Display Options" in sentence case and the CSS shouts it. The Add Tile picker
-   one screen earlier is the opposite (20px, literal capitals, transform none), so the
-   two must not share a class. Scoped .icd-. */
-.icd-backdrop {
+     content inset   24px, not the drawer's own 16px padding — every field, label and
+                     heading sits at x = drawer + 24
+     field width     452 (not 100% of the padded box)
+     combo border    1px #e7e9eb, radius 4  (was #d0d3d8 / radius 3)
+     vertical rhythm title y20, Name label y91, Name input y116 h35,
+                     section heading y183 h16, field label y210, combo y235 h37
+     footer          pinned bottom, right-aligned, 24px from the right edge
+     section heading 12px with text-transform: uppercase (source text is sentence case)
+
+   ⚠️ PREFIXED .itc-, NOT .icd-. The drawer used to be .icd-, which is ALSO the Insights
+   call-detail screen's prefix (InsightsCallDetail.tsx), and three names collided outright:
+   icd-body, icd-field and icd-title. Call detail's .icd-body and .icd-field are flex
+   containers, so its rules squeezed this drawer's labels and section heading from 452px
+   wide down to 52.7 and stretched one label to 248px tall — which is a large part of why
+   the layout read as "off" even though the geometry here was measured correctly. Two
+   screens cannot share a prefix; keep this one .itc-.
+
+   THE DROPDOWN is a floating searchable popup, 450 wide, max-height 374.8px, radius 3,
+   options 32px tall at 6px 16px padding. A native <select> was the first build's most
+   visible error. Scoped .itc-. */
+.itc-backdrop {
   position: fixed; inset: 0; background: rgba(0, 0, 0, .5); z-index: 1199;
   opacity: 0; pointer-events: none; transition: opacity .2s ease;
 }
-.icd-backdrop--on { opacity: 1; pointer-events: auto; }
+.itc-backdrop--on { opacity: 1; pointer-events: auto; }
 
-.icd {
+.itc {
   position: fixed; top: 0; right: 0; bottom: 0; width: 500px; max-width: 94vw;
   background: #fff; z-index: 1200; display: flex; flex-direction: column;
   padding: 16px 16px 0; box-sizing: border-box;
@@ -3603,123 +3619,199 @@ button.nav-item {
               rgba(0,0,0,.12) 0 6px 30px 5px;
   transform: translateX(100%); transition: transform .22s cubic-bezier(.4, 0, .2, 1);
 }
-.icd--open { transform: translateX(0); }
-@media (prefers-reduced-motion: reduce) { .icd, .icd-backdrop { transition: none; } }
+.itc--open { transform: translateX(0); }
+@media (prefers-reduced-motion: reduce) { .itc, .itc-backdrop { transition: none; } }
 
-.icd-title { font-size: 24px; font-weight: 400; color: #15243e; margin: 4px 0; }
-.icd-body { flex: 1 1 auto; overflow-y: auto; padding: 8px 0 16px; }
+.itc-title { font-size: 24px; font-weight: 400; color: #15243e; margin: 4px 0 0; }
+/* 24px inset for the content, 8 beyond the panel's own 16 — measured, not guessed. */
+.itc-body { flex: 1 1 auto; overflow-y: auto; padding: 35px 8px 16px; }
 
-.icd-label { display: block; font-size: 16px; font-weight: 400; color: #15243e; margin: 0 0 4px; }
-.icd-optional { color: #5b6577; }
-/* 12px, uppercased by CSS — see the note above. */
-.icd-section {
-  font-size: 12px; font-weight: 400; color: #15243e; text-transform: uppercase;
-  margin: 22px 0 10px;
+.itc-label { display: block; font-size: 16px; line-height: 24px; font-weight: 400; color: #15243e; margin: 0 0 1px; }
+.itc-optional { color: #5b6577; }
+.itc-section {
+  /* line-height pinned to 16px: the browser default gives this 12px text an 18px box,
+     which pushed every field below it 2px down the drawer. */
+  font-size: 12px; line-height: 16px; font-weight: 400; color: #15243e;
+  text-transform: uppercase; margin: 32px 0 11px;
 }
 
-.icd-input, .icd-select {
-  width: 100%; height: 37px; box-sizing: border-box; font: inherit; font-size: 16px;
-  color: #15243e; background: #fff; border: 1px solid #d0d3d8; border-radius: 3px;
-  padding: 0 8px; margin: 0 0 8px;
+.itc-input {
+  width: 452px; max-width: 100%; height: 35px; box-sizing: border-box; font: inherit;
+  font-size: 16px; color: #15243e; background: #fff; border: 1px solid #e7e9eb;
+  border-radius: 3px; padding: 0 8px;
 }
-.icd-input:focus, .icd-select:focus { outline: 0; border-color: #2666f9; }
-.icd-field { margin: 0 0 14px; }
-.icd-add {
+.itc-input:focus { outline: 0; border-color: #2666f9; }
+.itc-field { margin: 0 0 14px; }
+
+/* combobox ------------------------------------------------------------------- */
+.itc-combo { position: relative; width: 452px; max-width: 100%; margin: 0 0 8px; }
+.itc-combo-field {
+  display: flex; align-items: center; height: 37px; box-sizing: border-box;
+  border: 1px solid #e7e9eb; border-radius: 4px; background: #fff; cursor: pointer;
+  padding: 0 4px 0 8px; font-size: 16px;
+}
+.itc-combo-field--open { border-color: #2666f9; }
+.itc-combo-input {
+  flex: 1; border: 0; outline: 0; background: none; font: inherit; font-size: 16px;
+  color: #15243e; min-width: 0; cursor: pointer;
+}
+.itc-combo-input::placeholder { color: #15243e; opacity: 1; }
+.itc-combo-caret { color: #5b6577; font-size: 24px; flex: 0 0 auto; }
+
+.itc-pop {
+  position: absolute; top: calc(100% + 4px); left: 0; width: 450px; max-width: 100%;
+  max-height: 375px; overflow-y: auto; background: #fff; border-radius: 3px;
+  padding: 8px 0; z-index: 1300;
+  box-shadow: rgba(0,0,0,.2) 0 2px 1px -1px, rgba(0,0,0,.14) 0 1px 1px 0,
+              rgba(0,0,0,.12) 0 1px 3px 0;
+}
+.itc-opt {
+  /* 32px total = 20px line box + 6px padding top and bottom. The default line-height for
+     16px text makes the row 36 and the whole list a scroll-length too long. */
+  min-height: 32px; display: flex; align-items: center; padding: 6px 16px;
+  font-size: 16px; line-height: 20px; color: #15243e; cursor: pointer;
+}
+.itc-opt:hover { background: #f1f4f9; }
+.itc-opt--on { background: #e7edfd; }
+.itc-opt--empty { color: #5b6577; font-style: italic; cursor: default; }
+
+.itc-add {
   background: none; border: 0; color: #2666f9; font: inherit; font-size: 14px;
   font-weight: 500; padding: 6px 8px; border-radius: 3px; cursor: pointer;
 }
-.icd-add:hover { background: #f3f7ff; }
+.itc-add:hover { background: #f3f7ff; }
 
-.icd-check { display: flex; align-items: center; gap: 8px; font-size: 16px; margin: 0 0 8px; }
-.icd-check input { width: 16px; height: 16px; accent-color: #2666f9; }
+.itc-check { display: flex; align-items: center; gap: 8px; font-size: 16px; margin: 0 0 8px; }
+.itc-check input { width: 16px; height: 16px; accent-color: #2666f9; }
 
-.icd-foot {
+.itc-foot {
   flex: 0 0 auto; display: flex; justify-content: flex-end; align-items: center; gap: 8px;
-  padding: 12px 0 16px;
+  padding: 12px 8px 24px;
 }
-.icd-cancel {
+.itc-cancel {
   background: none; border: 0; color: #2666f9; font: inherit; font-size: 14px;
   font-weight: 500; padding: 8px 12px; border-radius: 3px; height: 36px; cursor: pointer;
 }
-.icd-cancel:hover { background: #f3f7ff; }
-.icd-create {
+.itc-cancel:hover { background: #f3f7ff; }
+.itc-create {
   border: 0; font: inherit; font-size: 14px; font-weight: 500; padding: 8px 12px;
   border-radius: 3px; height: 36px; background: #2666f9; color: #fff; cursor: pointer;
 }
-.icd-create:hover:not(:disabled) { background: #1c53e9; }
-/* The live Create is greyed until the form is valid — measured, not assumed. */
-.icd-create:disabled { background: #e7e9eb; color: #a1a7b2; cursor: not-allowed; }
-
-/* Generated TABLE tile (the Report templates). Its own scroll box so a report with
-   many chosen columns never makes the page scroll sideways. */
-.gen-table-wrap { overflow-x: auto; max-width: 100%; }
-.gen-table { min-width: 100%; white-space: nowrap; }
-.gen-table th, .gen-table td { padding: 8px 12px; font-size: 13px; }
+.itc-create:hover:not(:disabled) { background: #1c53e9; }
+.itc-create:disabled { background: #e7e9eb; color: #a1a7b2; cursor: not-allowed; }
 
 /* ---- Insights & Analytics Report column picker -----------------------------
-   The three Report templates open this FULL PAGE, not the Configuration drawer:
-   "New Tile - <name>" / "Choose Your Columns" / 20 accordion groups over the combined
-   column universe / a "Reorder columns" sidebar / Back-Cancel-Create. Measured off the
-   live page. Scoped .icp-. */
+   The three Report templates open this FULL PAGE, not the Configuration drawer.
+   RE-MEASURED off saved captures of all three live builders (8/18/2026) at BOTH 1134
+   and 1920, which is what turned up most of these corrections:
+
+     surface      one WHITE paper, radius 3, no shadow — not a grey page of cards
+     layout       flex: main column (padding 24px 0 0 24px) + a 320px sidebar, gap 16
+     h1           24px/400, then 45px to the section heading
+     section      "Choose Your Columns" H2 20px/400
+     search       full-width, NO box around it (MUI standard), input 16px
+     bulk buttons MUI text buttons: 12px/500 #2666f9, padding 8px 12px, radius 3, h32
+                  — not the 13px plain links the first build used
+     group        accordion with a border-BOTTOM 1px #e7e9eb. The first build put the
+                  rule on TOP, which draws a line above the first group and none under
+                  the last; head min-height 48, label 13.2px/400
+     checkboxes   TWO columns below 1200px and THREE at or above it, 5px apart, each
+                  row 28px with 16px labels. Measured 653px -> 2 and 1439px -> 3, which
+                  rules OUT `auto-fill minmax()`: no single minimum satisfies both (it
+                  would have to be >359 and <=326 at the same time). It is a breakpoint,
+                  and a single-width measurement would have missed that.
+     sidebar      320px (not 260), NO card, NO border, transparent, padding-top 24;
+                  title 16px/700; each reorder row 53px tall at padding 12px 24px, 13.2px
+     footer       Cancel then Create, right-aligned
+
+   Scoped .icp-. */
 .icp-page {
-  background: #fff; min-height: 100%; padding: 24px;
+  background: #fff; min-height: 100%; padding: 24px 0 0 24px;
   font-family: Lato, Avenir, "Museo Sans", sans-serif; color: #15243e;
   display: flex; flex-direction: column;
 }
-.icp-h1 { font-size: 24px; font-weight: 400; color: #15243e; margin: 0 0 20px; }
+.icp-h1 { font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; margin: 0 0 45px; }
 
-/* Main + sidebar. The sidebar is fixed-width so the column grid takes the slack, and
-   it collapses under the columns on a narrow window rather than squeezing both. */
-.icp-body { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 24px; align-items: start; }
-@media (max-width: 1100px) { .icp-body { grid-template-columns: minmax(0, 1fr); } }
+/* Main + a fixed 320px sidebar, so the column grid takes the slack. Below 1100 the
+   sidebar drops under the columns rather than squeezing both to nothing. */
+.icp-body { display: flex; gap: 16px; align-items: flex-start; flex: 1 1 auto; }
+.icp-main { flex: 1 1 auto; min-width: 0; }
+@media (max-width: 1100px) { .icp-body { flex-direction: column; } }
 
-.icp-section { font-size: 20px; font-weight: 400; color: #15243e; margin: 0 0 12px; }
+.icp-section { font-size: 20px; line-height: 28px; font-weight: 400; color: #15243e; margin: 0 0 13px; }
+
+/* The live search has no box: a MUI standard field, so just the bottom rule. */
 .icp-search {
-  display: flex; align-items: center; gap: 8px; border: 1px solid #d0d3d8;
-  border-radius: 3px; padding: 6px 10px; margin: 0 0 10px;
+  display: flex; align-items: center; gap: 8px; border: 0; border-bottom: 1px solid #e7e9eb;
+  padding: 4px 0; margin: 0 0 14px;
 }
 .icp-search .material-icons { font-size: 20px; color: #5b6577; }
-.icp-search input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 15px; background: none; color: #15243e; }
+.icp-search input {
+  flex: 1; border: 0; outline: 0; font: inherit; font-size: 16px; background: none;
+  color: #15243e; padding: 0 4px; min-width: 0;
+}
 
-.icp-bulk { display: flex; gap: 14px; margin: 0 0 14px; }
+.icp-bulk { display: flex; gap: 8px; margin: 0 0 8px; }
 .icp-bulk button {
-  background: none; border: 0; color: #2666f9; font: inherit; font-size: 13px;
-  padding: 2px 0; cursor: pointer;
+  background: none; border: 2px solid transparent; border-radius: 3px; color: #2666f9;
+  font: inherit; font-size: 12px; font-weight: 500; padding: 8px 12px; height: 32px;
+  cursor: pointer;
 }
-.icp-bulk button:hover { text-decoration: underline; }
-.icp-bulk--group { margin: 8px 0 10px; }
+.icp-bulk button:hover { background: #f3f7ff; }
+.icp-bulk--group { margin: 0 0 4px; }
 
-.icp-group { border-top: 1px solid #e7e9eb; padding: 12px 0; }
+.icp-group { border-bottom: 1px solid #e7e9eb; }
 .icp-group-head {
-  width: 100%; display: flex; align-items: center; justify-content: space-between;
-  background: none; border: 0; font: inherit; font-size: 16px; font-weight: 400;
-  color: #15243e; cursor: pointer; padding: 4px 0;
+  width: 100%; min-height: 48px; display: flex; align-items: center;
+  justify-content: space-between; background: none; border: 0; font: inherit;
+  font-size: 13.2px; font-weight: 400; color: #15243e; cursor: pointer;
+  padding: 1px 24px 1px 0;
 }
-.icp-group-head .material-icons { font-size: 20px; color: #5b6577; }
-/* Three columns, as the live grid has it; collapses rather than crushing the labels. */
-.icp-cols { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px 16px; }
-.icp-col { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.35; }
-.icp-col input { margin-top: 2px; accent-color: #2666f9; flex: 0 0 auto; }
+.icp-group-head:hover { background: #fafbfc; }
+.icp-group-head .material-icons { font-size: 24px; color: #5b6577; }
 
-.icp-side { border: 1px solid #e7e9eb; border-radius: 3px; padding: 14px; position: sticky; top: 16px; }
-.icp-side-title { font-size: 16px; font-weight: 400; color: #15243e; margin: 0 0 10px; }
-.icp-order { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
-.icp-order li { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #15243e; }
-.icp-grip { font-size: 18px; color: #b8bdc5; flex: 0 0 auto; }
+/* Two columns, three from 1200px up — the breakpoint the live grid actually uses. */
+.icp-cols {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 5px;
+  padding: 0 24px 24px;
+}
+@media (min-width: 1200px) { .icp-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.icp-col {
+  display: flex; align-items: center; gap: 9px; height: 28px; font-size: 16px;
+  color: #15243e; min-width: 0;
+}
+.icp-col span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.icp-col input { width: 20px; height: 20px; accent-color: #2666f9; flex: 0 0 auto; margin: 0; }
+
+.icp-side { flex: 0 0 320px; width: 320px; padding: 24px 0 0; }
+.icp-side-title { font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; margin: 0 0 4px; }
+/* Group By is Summary-only; it sits above the reorder list with its own heading. */
+.icp-groupby { margin: 0 0 24px; }
+.icp-groupby select {
+  width: 100%; height: 37px; box-sizing: border-box; font: inherit; font-size: 16px;
+  color: #15243e; background: #fff; border: 1px solid #e7e9eb; border-radius: 4px;
+  padding: 0 8px; margin-top: 4px;
+}
+.icp-order { list-style: none; margin: 0; padding: 0; }
+.icp-order li {
+  display: flex; align-items: center; gap: 8px; min-height: 53px;
+  padding: 12px 24px 12px 0; font-size: 13.2px; color: #15243e; border-radius: 4px;
+}
+.icp-grip { font-size: 20px; color: #b8bdc5; flex: 0 0 auto; }
 .icp-order-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .icp-nudge {
   background: none; border: 0; color: #2666f9; cursor: pointer; padding: 2px;
   display: grid; place-items: center; border-radius: 3px;
 }
 .icp-nudge:disabled { color: #d0d3d8; cursor: default; }
-.icp-nudge .material-icons { font-size: 16px; }
+.icp-nudge .material-icons { font-size: 18px; }
 .icp-order-empty { color: #5b6577; font-style: italic; }
 
 .icp-foot {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: auto; padding: 20px 0 8px;
+  flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 24px 24px 0;
 }
-.icp-foot-right { display: inline-flex; gap: 8px; align-items: center; }
+.icp-foot-right { display: inline-flex; gap: 12px; align-items: center; }
 .icp-back, .icp-cancel {
   background: none; border: 0; color: #2666f9; font: inherit; font-size: 14px;
   font-weight: 500; padding: 8px 12px; border-radius: 3px; height: 36px; cursor: pointer;

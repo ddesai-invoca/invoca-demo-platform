@@ -29,6 +29,66 @@ import type { CustomerProfile } from "../data/schema";
    Size (Rank) offers measures, as on the real thing.
    ============================================================================= */
 
+/* THE DROPDOWN IS A FLOATING, SEARCHABLE POPUP — not a native <select>, which is what
+   the first build used and is the single most visible thing that was wrong. Measured
+   off the live drawer:
+
+     field    452 x 37, 1px #e7e9eb, radius 4, 16px text
+     popup    450 wide, max-height 374.8px, overflow-y auto, radius 3,
+              MUI shadow `rgba(0,0,0,.2) 0 2px 1px -1px, ...`, padding 8px 0
+     option   32px tall, padding 6px 16px, 16px/400 #15243e
+
+   It also renders in a PORTAL on the live page, which matters because a 375px popup
+   inside an overflow-y:auto drawer body would otherwise be clipped. Typing filters,
+   which is the only way 250 options is usable. */
+function OptionPicker({ value, options, onPick }: {
+  value: string; options: string[]; onPick: (o: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const wrap = useRef<HTMLDivElement | null>(null);
+
+  /* Close on an outside click or Escape. Without the outside click the popup stays up
+     while you interact with the rest of the form, which reads as a stuck menu. */
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e: MouseEvent) => { if (!wrap.current?.contains(e.target as Node)) setOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", onDoc);
+    window.addEventListener("keydown", onKey);
+    return () => { document.removeEventListener("mousedown", onDoc); window.removeEventListener("keydown", onKey); };
+  }, [open]);
+
+  const shown = q.trim()
+    ? options.filter((o) => o.toLowerCase().includes(q.trim().toLowerCase()))
+    : options;
+
+  return (
+    <div className="itc-combo" ref={wrap}>
+      <div className={"itc-combo-field" + (open ? " itc-combo-field--open" : "")}
+        onClick={() => setOpen((v) => !v)}>
+        <input className="itc-combo-input" value={open ? q : value}
+          placeholder={value || ""}
+          onChange={(e) => { setQ(e.target.value); setOpen(true); }}
+          onFocus={() => setOpen(true)} />
+        <span className="material-icons itc-combo-caret">{open ? "arrow_drop_up" : "arrow_drop_down"}</span>
+      </div>
+      {open && (
+        <div className="itc-pop" role="listbox">
+          {shown.map((o) => (
+            <div key={o} role="option" aria-selected={o === value}
+              className={"itc-opt" + (o === value ? " itc-opt--on" : "")}
+              onMouseDown={(e) => { e.preventDefault(); onPick(o); setQ(""); setOpen(false); }}>
+              {o}
+            </div>
+          ))}
+          {shown.length === 0 && <div className="itc-opt itc-opt--empty">No match</div>}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export interface CreatedTile { template: string; name: string; measures: string[]; dimensions: string[] }
 
 export function InsightsConfigDrawer({
@@ -91,46 +151,43 @@ export function InsightsConfigDrawer({
 
   return (
     <>
-      <div className={"icd-backdrop" + (open ? " icd-backdrop--on" : "")} onClick={onCancel} aria-hidden="true" />
-      <aside className={"icd" + (open ? " icd--open" : "")} role="dialog" aria-modal="true"
+      <div className={"itc-backdrop" + (open ? " itc-backdrop--on" : "")} onClick={onCancel} aria-hidden="true" />
+      <aside className={"itc" + (open ? " itc--open" : "")} role="dialog" aria-modal="true"
         aria-label="Configuration" inert={!open}>
-        <h1 className="icd-title">Configuration</h1>
+        <h1 className="itc-title">Configuration</h1>
 
-        <div className="icd-body">
-          <label className="icd-label" htmlFor="icd-name">Name</label>
-          <input id="icd-name" ref={nameRef} className="icd-input" value={name}
+        <div className="itc-body">
+          <label className="itc-label" htmlFor="itc-name">Name</label>
+          <input id="itc-name" ref={nameRef} className="itc-input" value={name}
             onChange={(e) => setName(e.target.value)} />
 
           {spec && spec.dataFields.length > 0 && (
-            <p className="icd-section">Data Display Options</p>
+            <p className="itc-section">Data Display Options</p>
           )}
 
           {spec?.dataFields.map((f, fi) => (
-            <div className="icd-field" key={f.label}>
-              <span className="icd-label">
+            <div className="itc-field" key={f.label}>
+              <span className="itc-label">
                 {f.label}
-                {f.optional && <span className="icd-optional"> (optional)</span>}
+                {f.optional && <span className="itc-optional"> (optional)</span>}
               </span>
               {(values[fi] ?? [""]).map((v, si) => (
-                <select key={si} className="icd-select" value={v}
-                  onChange={(e) => setSlot(fi, si, e.target.value)}>
-                  <option value="" />
-                  {optionsFor(f).map((o) => <option key={o} value={o}>{o}</option>)}
-                </select>
+                <OptionPicker key={si} value={v} options={optionsFor(f)}
+                  onPick={(o) => setSlot(fi, si, o)} />
               ))}
               {/* "+ Add" only where the live drawer has it: Multi-Line's Attributes and
                   the Calls-by templates' Categories. */}
               {f.repeatable && (
-                <button className="icd-add" type="button" onClick={() => addSlot(fi)}>Add</button>
+                <button className="itc-add" type="button" onClick={() => addSlot(fi)}>Add</button>
               )}
             </div>
           ))}
 
           {spec?.chartOptions?.length ? (
             <>
-              <p className="icd-section">Chart Display Options</p>
+              <p className="itc-section">Chart Display Options</p>
               {spec.chartOptions.map((o) => (
-                <label className="icd-check" key={o}>
+                <label className="itc-check" key={o}>
                   <input type="checkbox" checked={!!checks[o]}
                     onChange={(e) => setChecks((p) => ({ ...p, [o]: e.target.checked }))} />
                   <span>{o}</span>
@@ -140,9 +197,9 @@ export function InsightsConfigDrawer({
           ) : null}
         </div>
 
-        <div className="icd-foot">
-          <button className="icd-cancel" type="button" onClick={onCancel}>Cancel</button>
-          <button className="icd-create" type="button" disabled={!ready} onClick={submit}
+        <div className="itc-foot">
+          <button className="itc-cancel" type="button" onClick={onCancel}>Cancel</button>
+          <button className="itc-create" type="button" disabled={!ready} onClick={submit}
             title={ready ? "" : "Choose a name and every required option first"}>
             Create
           </button>
