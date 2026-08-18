@@ -1417,6 +1417,54 @@ for surveying layout when scrolling will not: `resize_window` to something like
 1600x4000 and the frame lays out every tile at once. The screenshot is downscaled at
 that size, so it is good for INVENTORY and useless for colour or geometry.
 
+## The `ts-` component layer (built 8/18/2026)
+`src/components/ts/` + `src/styles/ts.css`, with the palette in `src/data/tsPalette.ts`
+and the tokens in `src/tokens/thoughtspot.css`. Import from `components/ts` (the barrel),
+never the individual files. Gallery bench at **`/ts-gallery`** — every template on one
+page with capture-shaped data, so the layer can be checked side by side at two widths.
+Nothing links to it and no prospect sees it.
+
+Components: `TsTile` (frame + HTML legend) · `TsLine` (single, multi, area) · `TsColumn`
+(grouped and stacked) · `TsBar` (horizontal) · `TsDualAxis` · `TsPie` (pie and donut) ·
+`TsKpi` / `TsMetric` / `TsTrend` · `TsTable` (with the heat map).
+
+**Why a separate layer rather than more opt-in props on `DonutChart`.** The Dashboards
+components had already grown `colors`, `onSlice`, `slicePct`, `label` and `geom` for
+Insights' benefit, and the tab still looked like Dashboards because apart from one donut
+it WAS Dashboards. A `.ts-` prefix in its own stylesheet makes "changes stay in their
+tab" structural instead of a matter of care. Do not put `.dash-`, `.kpi-` or `.ind-`
+selectors in `ts.css`.
+
+Every value is measured. The ones most likely to be "tidied" back to wrong:
+- **NO GRIDLINES.** Every grid path in the capture is `stroke: none`. Dashboards draws
+  #e7e9eb ones, so the instinct is to add them. Their absence is a big part of the look.
+- **The legend is HTML**, 212px on the right, 12px CIRCULAR swatches, 24px rows, 12px
+  `#777e8b`. In-svg legend text would scale with the chart.
+- **Pies carry outside data labels with leader lines** reading `Label - count (pct%)` at
+  12px `#5b6577` (16 labels, 16 connectors in the capture). Columns and lines carry
+  NONE. Leaving the pie labels off made the donuts read as a different chart.
+  ⚠️ Labels are pushed apart per side to a 16px minimum: nine slices put several
+  mid-angles within a couple of degrees and the small-slice labels stack illegibly.
+- **Columns are 22 wide with a 5px gap, square corners.** A group nearly fills its band
+  (103 of 111 measured), so the fit rule is "band minus an 8px gutter", NOT a fraction
+  of the band — capping at 0.72 gave 17.2/3.9 where the measured 22/5 fitted fine.
+- **KPI value ink is `#1d232f`, its label `#15243e`.** Two different inks in one tile,
+  because Invoca overrides the label colour and the big number falls back to
+  ThoughtSpot's own. Using one for both reads as slightly off.
+- Tiles: 8px radius, 1px `#e7e9eb`, AND a faint `0 2px 4px rgba(0,0,0,.05)` — both.
+- Donut hole is exactly 50% of the outer radius; plot inset is 68/15 on every cartesian
+  chart; lines are 2px; area fill is the line colour at 20%.
+
+All series data goes through `fitValues`/`fitCells`, so the renderers stay TOTAL and the
+AI can edit values without crashing one — the precondition the four standing AI rules
+put on any `LENGTH_IS_CONTENT` path.
+
+Verified after building: 22/5 bars, 0 gridlines, 212px legend with 12px round swatches,
+axis 12px `#5b6577` on `#e0e0e0` lines, slice order continuing into the blue tint at
+slice 9, table 11.9px Helvetica with a 13/700 header, 40 heat cells normalised per
+column. Dashboards re-checked unchanged: 4px radius, two-layer shadow, 21 cards, donut
+350x260, KPI 48,293, and its 12 gridlines still present.
+
 ## INSIGHTS & ANALYTICS — the standing architecture (agreed 8/18/2026)
 Context for every I&A screen we build. Not yet implemented; this is the contract.
 

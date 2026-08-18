@@ -24,6 +24,7 @@ import { InsightsAnalytics } from "./screens/InsightsAnalytics";
 import { InsightsReport } from "./screens/InsightsReport";
 import { InsightsAddTile } from "./screens/InsightsAddTile";
 import { InsightsColumnPicker } from "./screens/InsightsColumnPicker";
+import { TsGallery } from "./screens/TsGallery";
 import { InsightsCallDetail } from "./screens/InsightsCallDetail";
 import { CallReview } from "./screens/CallReview";
 import { CallDetail } from "./screens/CallDetail";
@@ -136,6 +137,7 @@ export default function App() {
                 detail page (/call-review/detail) — different Invoca screen, left alone. */}
             <Route path="/insights/add-tile" element={<InsightsAddTile />} />
             <Route path="/insights/add-tile/:report" element={<InsightsColumnPicker />} />
+            <Route path="/ts-gallery" element={<TsGallery />} />
             <Route path="/insights/call" element={<InsightsCallDetail />} />
             <Route path="/reports/digital-insights" element={<DigitalInsights />} />
             <Route path="/reports/conversation-intelligence" element={<ConversationIntelligence />} />
