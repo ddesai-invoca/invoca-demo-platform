@@ -7,6 +7,7 @@ import { DonutChart } from "../components/DonutChart";
 import { StackedBarChart } from "../components/StackedBarChart";
 import type { KpiGroup, Breakdown, ConversionCard as ConversionCardT } from "../data/schema";
 import { fitCells } from "../components/chartFit";
+import { tileId } from "../data/tileId";
 
 /* AI Agent Conversion Dashboard (3rd dashboard). Reuses the shared dashboard
    template (the dash-card / breakdown / kpi styling + DonutChart + StackedBarChart),
@@ -17,7 +18,7 @@ import { fitCells } from "../components/chartFit";
    and constrainToFocus() in editGuard.ts for why it is needed. */
 function CardHead({ title, path }: { title: string; path?: string }) {
   return (
-    <div className="dash-card-head">
+    <div className="dash-card-head" data-tile={tileId(path)}>
       <span className="dash-card-title">{title}</span>
       <DashTileMenu path={path} />
     </div>
@@ -156,7 +157,7 @@ export function AiAgentConversionDashboard() {
             <OutcomeTable bd={productCategory} />
           </section>
           <section className="dash-card">
-            <div className="dash-card-head">
+            <div className="dash-card-head" data-tile="productCategoryGraph">
               <span className="dash-card-title">{productCategory.title}</span>
               {/* The CHART card reads productCategoryGraph, NOT the breakdown, even
                   though the two cards share a heading. Pinning it to the breakdown

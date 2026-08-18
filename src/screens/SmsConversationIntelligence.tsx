@@ -5,7 +5,7 @@ import { useSmsCapture } from "../data/SmsCaptureContext";
 import { Pill } from "../components/Pill";
 import { AgentStudioIcon } from "../components/nav";
 import type { SmsConversation, SmsInfo } from "../data/schema";
-import { usePageData } from "../components/GeneratedTiles";
+import { usePageData, DashAssistant } from "../components/GeneratedTiles";
 
 /* The AI Agent glyph in the transcript/legend = the Invoca AI icon (same SVG as
    the sidebar Agent Studio icon), tinted Invoca purple (#855ede) — matches live. */
@@ -241,6 +241,10 @@ export function SmsConversationIntelligence() {
             {tab === "comments" && <div className="sci-empty">No comments on this conversation.</div>}
           </div>
         </aside>
+      {/* Renders any tile the AI added on this page, and the hidden-tile rules.
+          Without it both were silent no-ops here: the tile was stored and never
+          drawn, and "remove that tile" reported success and changed nothing. */}
+      <DashAssistant />
       </div>
     </div>
   );

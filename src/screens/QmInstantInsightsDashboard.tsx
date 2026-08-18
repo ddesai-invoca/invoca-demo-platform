@@ -5,16 +5,17 @@ import { DashTileMenu, DashTileToggle } from "../components/DashTileMenu";
 import { DashAssistant, useDashboardData } from "../components/GeneratedTiles";
 import { BarLineChart } from "../components/BarLineChart";
 import type { ConversionCard as ConversionCardT, QmTablePanel as QmTablePanelT, QmBarLine } from "../data/schema";
+import { tileId } from "../data/tileId";
 
 /* QM Instant Insights dashboard (6th dashboard): "QM | Instant Insights
    Dashboard". Reuses the shared dashboard template (dash-card / kpi / aac-chip /
    dash-table) + BarLineChart. Data-driven from reports.qmInstantInsights. */
 
-function CardHead({ title, cadence }: { title: string; cadence?: string }) {
+function CardHead({ title, cadence, path }: { title: string; cadence?: string; path?: string }) {
   return (
-    <div className="dash-card-head">
+    <div className="dash-card-head" data-tile={tileId(path)}>
       <span className="dash-card-title">{title}</span>
-      {cadence ? <DashTileToggle label={cadence} /> : <DashTileMenu />}
+      {cadence ? <DashTileToggle label={cadence} path={path} /> : <DashTileMenu path={path} />}
     </div>
   );
 }
@@ -24,10 +25,10 @@ function Chips({ chips }: { chips: string[] }) {
   return <div className="aac-chips">{chips.map((c) => <span className="aac-chip" key={c}>{c}</span>)}</div>;
 }
 
-function KpiCard({ card }: { card: ConversionCardT }) {
+function KpiCard({ card, path }: { card: ConversionCardT; path?: string }) {
   return (
     <section className="dash-card">
-      <CardHead title={card.title} />
+      <CardHead title={card.title} path={path} />
       <Chips chips={card.chips} />
       <div className="kpi-row">
         {card.tiles.map((t, i) => (

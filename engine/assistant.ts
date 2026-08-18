@@ -123,7 +123,7 @@ const COLUMN_PROPS = {
 const RESULT_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["kind", "answer", "edits", "tile", "column"],
+  required: ["kind", "answer", "edits", "tile", "column", "visibility"],
   properties: {
     kind: { type: "string", enum: ["answer", "create", "editData", "editTile", "editColumn"] },
     answer: { type: "string" },
@@ -139,6 +139,17 @@ const RESULT_SCHEMA = {
     },
     tile: { type: "object", additionalProperties: false, required: ["tileType", "title", "note", "kpis", "xLabels", "series", "slices"], properties: TILE_PROPS },
     column: { type: "object", additionalProperties: false, required: ["op", "index", "toIndex", "header", "values"], properties: COLUMN_PROPS },
+    /* HIDING A TILE. The target is the tile's HEADING as shown on screen, never a
+       data path: the model has no reliable way to know a path, and the client already
+       resolves a heading to one (findTilePath) for rule 3. Keeping this separate from
+       `edits` also means hiding is not a data change and cannot be confused with one. */
+    visibility: {
+      type: "object", additionalProperties: false, required: ["op", "target"],
+      properties: {
+        op: { type: "string", enum: ["none", "hide", "show"] },
+        target: { type: "string" },
+      },
+    },
   },
 };
 
@@ -182,20 +193,28 @@ function buildSystem(input: AssistantInput): string {
     ...(input.canCreateTiles === false ? [
       `OVERRIDE: this page CANNOT render a new tile, so NEVER return kind "create" here. When the user asks to ADD something (a branch, a path, a question, a row of options), return kind "editData" instead: one edit whose path is the LIST it belongs to and whose value is that WHOLE list with the new item appended, copied from the DATA below and left otherwise identical. To REMOVE something, return the same list with that item left out.`,
     ] : []),
+    `3b. "setVisibility" — the user asks to REMOVE or RESTORE a whole tile ("remove the lead form tile", "drop this card", "put the region tile back"). Return "visibility": { op:"hide"|"show", target:"<the tile's exact heading as shown>" }. This HIDES a tile, it never deletes data, so it is always reversible. Leave edits [] and tile empty.`,
     `3. "editData" — the user asks to CHANGE existing page data (a named/focused BUILT-IN tile's numbers, a chart's trend, a title/label, or the whole story). Return "edits": each { path, value } where path is a DOT-PATH into the DATA JSON below (numeric array indices), and value is the JSON-ENCODED replacement (e.g. "\\"84%\\"", "1250", "[70,80,90,85,95,100]", "\\"New Title\\""). Put a confirmation in "answer". Leave tile empty.`,
     `4. "editTile" — change the focused AI-GENERATED tile: return the FULL updated spec in "tile" and a confirmation in "answer". Leave edits [].`,
     ``,
     `TILE rules (kind create/editTile): pick tileType — "kpi" (2–4 headline numbers → kpis), "line" (trend over time → xLabels + series[].values), "bar" (comparison across categories → xLabels + series[].values), "pie" (share of a whole → slices). Give a clear title + one-line note. Leave the arrays you don't use empty.`,
     ``,
     `HARD RULES:`,
-    `- You may ONLY change DATA values. Each edit path MUST point at a SCALAR leaf (a string or number, e.g. a tile value, a label, a title) OR a chart series' number array (e.g. "…series.0.values"), and when replacing an array you MUST keep the SAME length. NEVER replace or restructure an object, NEVER change the number of tiles/rows/series/xLabels, NEVER add or remove JSON keys, and NEVER touch layout, CSS, colors, or styling. A chart series keeps exactly one value per xLabel; a table row keeps one cell per column. If asked to restyle/recolor/resize/add-remove tiles-via-edit, DECLINE via "answer" (say you can change the data, and that adding a tile is a separate "create" action).`,
-    `- REPORT COLUMNS — when the page data has "dimensionColumns" and a "rows" array of interactions (the Digital Journey & Call Attribution Report), you CAN add, remove, rename or move its leading columns. Return kind:"editColumn" and fill "column" ONLY; leave "edits" empty.`,
+    `- YOU MAY add and remove COLUMNS, TILES, chart SERIES, pie SLICES and axis POINTS, and change any number, percentage, label or title. "Show a massive dip on Jan 5th" means editing that series' value at that index.`,
+    `- YOU MAY NEVER change CSS, fonts, colours, spacing, or WHICH KIND of chart a built-in tile is (a line stays a line, a pie stays a pie). Those are not data. If asked, DECLINE via "answer" and say what you can change instead.`,
+    /* This line used to forbid every length change, which now CONTRADICTS the two
+       capability lines above it. A self-contradicting prompt is worse than either
+       rule alone: asked to add a column the model read the prohibition and refused,
+       so "add a Total Calls column" came back as a plain answer. Rewritten to state
+       the one thing that is still absolutely true — data only, never presentation. */
+    `- You may ONLY change DATA values, never PRESENTATION. Each edit path MUST point at a scalar leaf (a value, a label, a title) or an array of numbers. When you add or remove a chart series, a slice, an axis point or a table column, keep the SHAPE consistent: one value per axis point, one cell per column. NEVER add or remove JSON keys, never replace an object with something of a different type, and never touch layout, CSS, colours, fonts or styling. If asked to restyle, recolour, resize, or change WHICH KIND of chart a built-in tile is, DECLINE via "answer" and offer what you can do instead.`,
+    `- TABLE COLUMNS — you CAN add, remove, rename or move a table's columns. Two shapes qualify: the Digital Journey report ("dimensionColumns" + "rows" of interactions) and a dashboard breakdown table ("metricColumns" + "rows" with "metrics"). Return kind:"editColumn" and fill "column" ONLY; leave "edits" empty. When the user is focused on ONE table, the column op applies to THAT table.`,
     `  DO NOT copy the other columns' values. You supply only the operation; the app splices it into the existing rows and every other value is preserved automatically.`,
     `    insert — index = 0-based position the new column takes (0 puts it FIRST, left of everything). header = its name. toIndex = -1. values = ONE value per row, in the SAME order as "rows" in the DATA below. COUNT the rows and return exactly that many values. "values" MUST NOT be empty for an insert: an empty list produces a blank column and is a failed answer. This is the only part of the table you generate, so spend your effort here.`,
     `    remove — index = the column to drop. header = "", values = [], toIndex = -1.`,
     `    rename — index = the column, header = its new name. values = [], toIndex = -1.`,
     `    move   — index = the column's current position, toIndex = where it should end up. header = "", values = [].`,
-    `  Values for an inserted column must fit THIS business and that specific row (a Location column on a retailer gets real cities or regions it serves, never "N/A" or a placeholder). Never touch "signalColumns" or a row's "signals": those render as check/cancel icons, not text. On any page WITHOUT "dimensionColumns", adding or removing a table column is not possible — say so in "answer" and return kind "answer".`,
+    `  Values for an inserted column must fit THIS business and that specific row (a Location column on a retailer gets real cities or regions it serves, never "N/A" or a placeholder). Never touch "signalColumns" or a row's "signals": those render as check/cancel icons, not text. On a page with NEITHER "dimensionColumns" nor "metricColumns", a column change is not possible — say so in "answer" and return kind "answer".`,
     `- Base every number on the DATA below or on a coherent scenario the user requested. Keep values realistic and internally consistent (percentages that should sum ~100 do; totals match their parts).`,
     `- For chart series/bars, strip %/$ to plain numbers; kpi values may keep formatting.`,
     `- For a "story" / scenario change, edit the KEY HEADLINE numbers that carry the story (the KPI tile values and the primary chart series) so it stays consistent — you do NOT need to touch every single value. Prefer ~5–15 focused edits over exhaustively rewriting every leaf.`,

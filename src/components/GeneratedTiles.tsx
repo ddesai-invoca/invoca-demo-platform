@@ -117,13 +117,43 @@ function TileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => voi
 export function DashAssistant() {
   const { pathname } = useLocation();
   const { profileId } = useProfile();
-  const { tilesFor, removeTile } = useAiAssistant();
+  const { tilesFor, removeTile, hiddenFor } = useAiAssistant();
   const key = `${profileId}::${pathname}`;
   const tiles = tilesFor(key);
-  if (!tiles.length) return null;
+  const hidden = hiddenFor(key);
+  if (!tiles.length && !hidden.length) return null;
   return (
-    <div className="gen-tiles">
-      {tiles.map((t) => <TileCard key={t.id} tile={t} onRemove={() => removeTile(key, t.id)} />)}
-    </div>
+    <>
+      <HiddenTileStyles hidden={hidden} />
+      {tiles.length > 0 && (
+        <div className="gen-tiles">
+          {tiles.map((t) => <TileCard key={t.id} tile={t} onRemove={() => removeTile(key, t.id)} />)}
+        </div>
+      )}
+    </>
   );
+}
+
+/* HIDING A BUILT-IN TILE.
+
+   Every card head already carries `data-tile` with the tile's data path (the id rule
+   3 gives it), so a card is removed from view with one generated rule per hidden
+   tile rather than a wrapper component threaded through ~77 cards on 12 screens.
+
+   This is app-authored CSS keyed off app state, NOT the assistant writing CSS: the
+   model only ever returns a tile id to hide, and rule 1 still holds — no data value
+   reaches a class name, a colour or a font.
+
+   `display: none` (rather than unmounting) is deliberate: the tile's DATA is
+   untouched, so Undo and "put it back" are free, and a grid re-flows around a
+   display:none child instead of leaving a hole. */
+function HiddenTileStyles({ hidden }: { hidden: string[] }) {
+  if (!hidden.length) return null;
+  const css = hidden
+    /* Escaped because a path is interpolated into a selector: a quote or backslash in
+       an id would otherwise end the attribute selector early and the rule would
+       either do nothing or match more than intended. */
+    .map((t) => `.dash-card:has(> .dash-card-head[data-tile="${t.replace(/["\\]/g, "\\$&")}"]) { display: none; }`)
+    .join("\n");
+  return <style>{css}</style>;
 }

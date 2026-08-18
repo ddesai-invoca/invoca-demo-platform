@@ -7,6 +7,8 @@ import { getByPath , constrainToFocus } from "../data/editGuard";
 import { QuestionListTools } from "./QuestionListTools";
 import { stripGeneratedDashes, GREETING_PATH } from "../data/questionImport";
 import { defaultGreeting, resolveGreeting } from "../data/smsBrain";
+import { findTilePath } from "../data/findTilePath";
+import { tileId } from "../data/tileId";
 
 /* The "Ask AI" drawer: slides in from the right over a dimmed backdrop. Scope is
    set by which sparkle opened it — the whole PAGE (the top-bar sparkle, on every
@@ -20,7 +22,7 @@ import { defaultGreeting, resolveGreeting } from "../data/smsBrain";
 interface Msg { role: "user" | "assistant"; content: string; icon?: string }
 
 export function AiAssistantDrawer() {
-  const { open, closeDrawer, active: registered, focus, effectiveData, applyEdits, addTile, replaceTile, readOnly, activeDemo } = useAiAssistant();
+  const { open, closeDrawer, active: registered, focus, effectiveData, applyEdits, addTile, replaceTile, hideTile, showTile, readOnly, activeDemo } = useAiAssistant();
   const { pathname } = useLocation();
   const { profileId, profile } = useProfile();
 
@@ -144,7 +146,12 @@ export function AiAssistantDrawer() {
            workflow" by creating a KPI tile, which that page never renders: the
            edit looked like it succeeded and nothing appeared. */
         body: JSON.stringify({ customerName: active.customerName, dashboardTitle: effTitle, dataContext, question: q, focus, history,
-          canCreateTiles: pathname.startsWith("/dashboards/"), questionPath }),
+          /* The Reports tab renders GeneratedTiles too, so "add a tile" belongs there
+             as well; it was gated to /dashboards/ only. Still false everywhere else,
+             because a page that cannot render a generated tile must be told so or the
+             model answers an "add" request with a tile nobody ever sees. */
+          canCreateTiles: pathname.startsWith("/dashboards/") || pathname.startsWith("/reports/"),
+          questionPath }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || "Assistant failed.");
@@ -166,7 +173,7 @@ export function AiAssistantDrawer() {
            goes and (for an insert) one value per row; every other cell is copied from
            the CURRENT effective data, so existing values cannot be paraphrased away.
            See AssistantColumnOp in engine/assistant.ts for why. */
-        const edits = columnEdits(effectiveData(active.key), r.column);
+        const edits = columnEdits(effectiveData(active.key), r.column, focus?.path);
         if (!edits) {
           push("This page's table doesn't support adding or removing columns.", "info");
         } else {
@@ -186,6 +193,27 @@ export function AiAssistantDrawer() {
                 ? `${r.answer || "Added the column."} I filled ${rowsFilled} of ${total} rows; ask again to complete the rest.`
                 : (r.answer || "Updated the table's columns.");
           push(msg, "auto_awesome");
+        }
+      } else if (r?.visibility && (r.visibility.op === "hide" || r.visibility.op === "show")) {
+        /* HIDE / SHOW A WHOLE TILE.
+
+           The model returns the tile's HEADING; the id is resolved here with the same
+           lookup rule 3 uses, so there is exactly one notion of "which tile" in the
+           app. When the user is focused on a tile, that focus wins over the heading:
+           "remove this tile" has no heading in it at all. */
+        const target = r.visibility.target || focus?.label || "";
+        const resolved = focus?.path ?? findTilePath(effectiveData(active.key), target);
+        const id = tileId(resolved);
+        if (!id) {
+          push(`I couldn't tell which tile "${target}" is. Open that tile's own AI button and ask again, or name its heading exactly.`, "info");
+        } else if (r.visibility.op === "hide") {
+          hideTile(active.key, id);
+          /* Says it is reversible, because "removed" sounds permanent and an SE needs
+             to know the data is still there before doing this in front of a prospect. */
+          push(`${r.answer || `Removed the "${target}" tile from this page.`} Undo, or ask me to put it back, and it returns with its data intact.`, "auto_awesome");
+        } else {
+          showTile(active.key, id);
+          push(r.answer || `Put the "${target}" tile back.`, "auto_awesome");
         }
       } else if (r?.kind === "editData" && Array.isArray(r.edits) && r.edits.length) {
         /* INSTRUCT THEN ENFORCE, same as the agent's replies. The prompt asks for

@@ -7,6 +7,7 @@ import { HBarChart } from "../components/HBarChart";
 import { StackedBarChart } from "../components/StackedBarChart";
 import { BarLineChart } from "../components/BarLineChart";
 import type { ConversionCard as ConversionCardT, QmBarPanel as QmBarPanelT, QmTablePanel as QmTablePanelT, QmBarLine } from "../data/schema";
+import { tileId } from "../data/tileId";
 
 /* Quality Management dashboard (5th dashboard): "QM | Actionable Insights
    Dashboard". Reuses the shared dashboard template (dash-card / kpi / aac-chip /
@@ -15,7 +16,7 @@ import type { ConversionCard as ConversionCardT, QmBarPanel as QmBarPanelT, QmTa
 
 function CardHead({ title, cadence, path }: { title: string; cadence?: string; path?: string | string[] }) {
   return (
-    <div className="dash-card-head">
+    <div className="dash-card-head" data-tile={tileId(path)}>
       <span className="dash-card-title">{title}</span>
       {cadence ? <DashTileToggle label={cadence} path={path as string} /> : <DashTileMenu path={path as string} />}
     </div>
@@ -32,10 +33,10 @@ function Chips({ chips }: { chips: string[] }) {
 }
 
 /* KPI card: title + filter chips + tiles (reuses the conversion-card layout). */
-function KpiCard({ card }: { card: ConversionCardT }) {
+function KpiCard({ card, path }: { card: ConversionCardT; path?: string }) {
   return (
     <section className="dash-card">
-      <CardHead title={card.title} />
+      <CardHead title={card.title} path={path} />
       <Chips chips={card.chips} />
       <div className="kpi-row">
         {card.tiles.map((t, i) => (

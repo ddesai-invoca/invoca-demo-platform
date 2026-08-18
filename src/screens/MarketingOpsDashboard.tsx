@@ -6,10 +6,11 @@ import { DashAssistant, useDashboardData } from "../components/GeneratedTiles";
 import { HBarChart } from "../components/HBarChart";
 import { StackedBarChart } from "../components/StackedBarChart";
 import type { KpiGroup, OpsTable as OpsTableT } from "../data/schema";
+import { tileId } from "../data/tileId";
 
 function CardHead({ title, toggle, path }: { title: string; toggle?: boolean; path?: string | string[] }) {
   return (
-    <div className="dash-card-head">
+    <div className="dash-card-head" data-tile={tileId(path)}>
       <span className="dash-card-title">{title}</span>
       {toggle ? <DashTileToggle path={path as string} /> : <DashTileMenu path={path as string} />}
     </div>

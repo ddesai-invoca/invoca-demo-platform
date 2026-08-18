@@ -5,7 +5,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { Pill } from "../components/Pill";
 import { AgentStudioIcon } from "../components/nav";
 import type { VoiceConversation, VoiceInfo } from "../data/schema";
-import { usePageData } from "../components/GeneratedTiles";
+import { usePageData, DashAssistant } from "../components/GeneratedTiles";
 
 /* AI Voice Conversation Intelligence — the voice sibling of the SMS report. Lists
    AI-voice phone calls (top ones active with transcript/signals/call metadata,
@@ -242,6 +242,10 @@ export function VoiceConversationIntelligence() {
             {tab === "comments" && <div className="sci-empty">No comments on this call.</div>}
           </div>
         </aside>
+      {/* Renders any tile the AI added on this page, and the hidden-tile rules.
+          Without it both were silent no-ops here: the tile was stored and never
+          drawn, and "remove that tile" reported success and changed nothing. */}
+      <DashAssistant />
       </div>
     </div>
   );

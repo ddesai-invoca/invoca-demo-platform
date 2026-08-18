@@ -5,6 +5,7 @@ import { DashTileMenu } from "../components/DashTileMenu";
 import { DashAssistant, usePageDataWithLabels } from "../components/GeneratedTiles";
 import { DonutChart } from "../components/DonutChart";
 import { HBarChart } from "../components/HBarChart";
+import { tileId } from "../data/tileId";
 
 /* =============================================================================
    Location Performance Comparison — a per-location scorecard for managers
@@ -199,7 +200,7 @@ function deriveLocations(
 
 function CardHead({ title }: { title: string }) {
   return (
-    <div className="dash-card-head">
+    <div className="dash-card-head" data-tile={tileId(title)}>
       <span className="dash-card-title">{title}</span>
       <DashTileMenu />
     </div>

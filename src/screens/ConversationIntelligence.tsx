@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { Pill } from "../components/Pill";
 import type { CITranscriptTurn } from "../data/schema";
-import { usePageData } from "../components/GeneratedTiles";
+import { usePageData, DashAssistant } from "../components/GeneratedTiles";
 
 /* Bold + underline the signal-keyword phrases inside a transcript turn. */
 function Highlighted({ turn }: { turn: CITranscriptTurn }) {
@@ -235,6 +235,10 @@ export function ConversationIntelligence() {
             </div>
           )}
         </aside>
+      {/* Renders any tile the AI added on this page, and the hidden-tile rules.
+          Without it both were silent no-ops here: the tile was stored and never
+          drawn, and "remove that tile" reported success and changed nothing. */}
+      <DashAssistant />
       </div>
     </div>
   );

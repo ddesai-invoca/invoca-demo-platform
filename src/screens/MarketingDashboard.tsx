@@ -9,6 +9,7 @@ import { StackedBarChart } from "../components/StackedBarChart";
 import { leadFormFacts } from "../data/leadForms";
 import type { KpiGroup, Breakdown } from "../data/schema";
 import { fitCells } from "../components/chartFit";
+import { tileId } from "../data/tileId";
 
 /* The one heading on this screen that was a LITERAL. Everything else already
    comes from the dashboard data, so the assistant could rename any other card
@@ -23,7 +24,7 @@ const LABELS = {
    unchanged; passing it pins this card's AI edits to this card. */
 function CardHead({ title, path }: { title: string; path?: string }) {
   return (
-    <div className="dash-card-head">
+    <div className="dash-card-head" data-tile={tileId(path)}>
       <span className="dash-card-title">{title}</span>
       <DashTileMenu path={path} />
     </div>
@@ -174,7 +175,7 @@ export function MarketingDashboard() {
         <div className="split-row">
           <div className="split-left"><KpiSection group={breakout} variant="grid" /></div>
           <section className="dash-card split-right">
-            <div className="dash-card-head">
+            <div className="dash-card-head" data-tile="salesCallBreakoutGraph">
               <span className="dash-card-title">{L.breakoutGraph}</span>
               {/* Heading is a UI label (L.breakoutGraph), not data, so it cannot be
                   found by title -- named explicitly. The chart itself is editable. */}
@@ -198,7 +199,7 @@ export function MarketingDashboard() {
             <OutcomeTable bd={productCategory} />
           </section>
           <section className="dash-card">
-            <div className="dash-card-head">
+            <div className="dash-card-head" data-tile="productCategoryGraph">
               <span className="dash-card-title">{productCategory.title}</span>
               {/* The CHART card reads productCategoryGraph, NOT the breakdown, even
                   though the two cards share a heading. Pinning it to the breakdown

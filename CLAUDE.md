@@ -1193,6 +1193,66 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   not captured, so it deliberately shows only what the row already knows rather than
   inventing training statistics a prospect might ask us to explain.
 
+## THE FOUR STANDING AI-BUTTON RULES (Dashboards tab + Reports tab)
+These are the user's standing rules, not a one-off request. `npm run audit:ai` checks
+them statically; it has caught a real regression already, so run it after touching any
+dashboard, report, the drawer, the guard or the prompt.
+
+**Rule 1 — presentation is NEVER editable.** CSS, fonts, colours, spacing, and WHICH
+KIND of chart a built-in tile is. Structurally true, not just prompted: no data value
+reaches a `className` or `style` (the only data-driven classes are boolean toggles
+between designed states), and chart type is chosen in JSX. The prompt also declines
+restyle and change-the-chart-type requests, verified live.
+
+**Rule 2 — all the DATA is editable.** Numbers, percentages, titles, chart values
+("show a massive dip on Jan 5th" -> that series' value at that index), add/remove a
+COLUMN, add/remove a TILE, add/remove a chart SERIES, pie SLICE or axis POINT.
+- Length used to be blocked because length drives layout. The safety MOVED, it did not
+  disappear: `chartFit.ts` (fitValues/fitCells) makes renderers TOTAL, and only then
+  does `editGuard`'s LENGTH_IS_CONTENT allow those shapes. **Do not add a pattern to
+  that list until the renderer can survive the wrong length.** It stays an allow-list;
+  TYPE changes are blocked everywhere, always.
+- `fitValues` returns null for an EMPTY series and the caller skips it: a new series
+  must not draw a flat line along y=0, which reads as a real measurement of zero.
+- Column ops cover BOTH table shapes -- `dimensionColumns`/`cells` (Digital Journey)
+  and `metricColumns`/`metrics` (dashboard breakdowns) -- via `resolveTableShape`,
+  and take the FOCUSED table's path so a breakdown edits its own columns.
+- "Delete a tile" HIDES it (`hidden` per scope key, keyed by tile id) and never
+  destroys data, so Undo and "put it back" are free. `HiddenTileStyles` emits one
+  `:has()` rule per hidden tile; that is app CSS keyed off app state, not the model
+  writing CSS.
+
+**Rule 3 — a tile's own AI button changes ONLY that tile.**
+- The tile declares its id/path; `findTilePath` derives it from the page data when a
+  screen does not, and REFUSES when a heading is ambiguous rather than guessing.
+- A card is not always one subtree: `<stem>Title` siblings (`trendTitle` +
+  `trendChip` + `trendChart`) resolve to the sibling GROUP, so focus paths can be a
+  LIST. An explicit prop always beats the lookup, and must, wherever two cards share
+  a heading but read different data (Product Category table vs its graph).
+- `constrainToFocus` ENFORCES it: keep what is inside, remap a same-container
+  wrong-index edit onto the focused tile, DROP the rest and say so.
+- **When you filter or reorder a list before rendering, keep the original index**
+  (`map((b,i)=>({b,i}))`). Building a path from a filtered index is the original bug.
+
+**Rule 4 — the header AI button applies to the whole page.** Scope `dashboard`.
+
+### Traps this cost us, do not re-learn them
+- **A self-contradicting prompt is worse than either rule.** Adding "you MAY add
+  columns" while leaving "NEVER change the number of rows/series" made the model pick
+  the prohibition, and "add a Total Calls column" came back as a plain answer. The
+  canary now fails if the old line reappears.
+- **Interpolating an array into the prompt.** Widening `path` to `string | string[]`
+  told the model its data lived at `"trendTitle,trendChip,trendChart"`; every edit was
+  then discarded for being outside the focus.
+- **"I couldn't map that change" vs "I refused it."** Reporting confusion when the
+  truth is refusal sends the user off rewording a request that was understood.
+- **The Reports screens did not render `<DashAssistant />`.** Both "add a tile" and
+  hiding were silent no-ops there until it was added.
+- **Measure against the profile you rendered.** A coverage figure comparing Shady
+  Blinds headings to Big O Tires data read 57/77 when the truth was 68/77.
+- `Lead Form Performance Summary` is computed by `deriveLeadFormGroup`, not stored, so
+  it has no node and cannot be edited or pinned. Expected, not a bug.
+
 ## Ask AI: focused edits must land on the focused tile
 - **The bug, for the record.** Renaming the "Conversions by Product Category" tile
   with the AI silently failed: the drawer said "Updated the tile title", that tile

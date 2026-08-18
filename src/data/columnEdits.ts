@@ -23,22 +23,58 @@ import type { AssistantColumnOp } from "../../engine/assistant";
 import { leadingCells } from "../components/DataTable";
 import type { AssistantEdit } from "../../engine/assistant";
 
-interface ReportLike {
-  dimensionColumns?: string[];
-  rows?: { cells?: string[]; [k: string]: unknown }[];
+/* TWO TABLE SHAPES QUALIFY.
+
+   The Digital Journey report keeps its headers in `dimensionColumns` and a row's cells
+   in `cells`; a dashboard breakdown keeps them in `metricColumns` and `metrics`. The
+   splice is identical and only the field names differ, so the shape is resolved once
+   here. `basePath` is how a FOCUSED breakdown gets its own column changed instead of
+   whichever table happens to come first on the page. */
+interface Shape { headersPath: string; cellsKey: string; rowsPath: string; headers: string[]; rows: Record<string, unknown>[] }
+
+export function resolveTableShape(data: unknown, basePath?: string): Shape | null {
+  const at = (obj: unknown, path?: string): unknown =>
+    !path ? obj : path.split(".").reduce<unknown>(
+      (cur, k) => (cur && typeof cur === "object" ? (cur as Record<string, unknown>)[k] : undefined), obj);
+  const node = at(data, basePath) as Record<string, unknown> | undefined;
+  if (!node || typeof node !== "object") return null;
+  const pre = basePath ? basePath + "." : "";
+  if (Array.isArray(node.dimensionColumns) && (node.dimensionColumns as string[]).length && Array.isArray(node.rows)) {
+    return { headersPath: pre + "dimensionColumns", cellsKey: "cells", rowsPath: pre + "rows",
+             headers: node.dimensionColumns as string[], rows: node.rows as Record<string, unknown>[] };
+  }
+  if (Array.isArray(node.metricColumns) && (node.metricColumns as string[]).length && Array.isArray(node.rows)) {
+    return { headersPath: pre + "metricColumns", cellsKey: "metrics", rowsPath: pre + "rows",
+             headers: node.metricColumns as string[], rows: node.rows as Record<string, unknown>[] };
+  }
+  return null;
 }
 
 /** Edits for the op, or null when this page has no such table. */
-export function columnEdits(data: unknown, col: AssistantColumnOp): AssistantEdit[] | null {
-  const d = data as ReportLike | null | undefined;
-  const headers = d?.dimensionColumns;
-  const rows = d?.rows;
-  if (!Array.isArray(headers) || !headers.length || !Array.isArray(rows)) return null;
+export function columnEdits(
+  data: unknown,
+  col: AssistantColumnOp,
+  /* The FOCUSED table, when there is one. Without it a breakdown's column change
+     resolved against the page root, found no table there, and reported "this page's
+     table doesn't support columns" on a page full of tables. */
+  basePath?: string | string[],
+): AssistantEdit[] | null {
+  const first = Array.isArray(basePath) ? basePath[0] : basePath;
+  /* Try the focused node, then the page root, so a page-level request still works. */
+  const shape = resolveTableShape(data, first) ?? resolveTableShape(data, undefined);
+  if (!shape) return null;
+  const { headers, rows, headersPath, cellsKey, rowsPath } = shape;
 
   /* Every row's CURRENT cells, via the same reader the table renders with, so the
      starting point is exactly what is on screen — including the header-driven
-     fallback for rows that have no `cells` yet. */
-  const current = rows.map((r) => leadingCells(r as never, headers));
+     fallback for rows that have no cell list yet. */
+  const current = rows.map((r) =>
+    cellsKey === "cells"
+      ? leadingCells(r as never, headers)
+      : (Array.isArray((r as Record<string, unknown>).metrics)
+          ? ((r as Record<string, unknown>).metrics as string[]).slice(0, headers.length)
+          : []
+        ).concat(Array(Math.max(0, headers.length - (((r as Record<string, unknown>).metrics as string[])?.length ?? 0))).fill("—")));
 
   const clamp = (n: number, max: number) => Math.max(0, Math.min(Math.trunc(n), max));
   let nextHeaders: string[];
@@ -90,7 +126,7 @@ export function columnEdits(data: unknown, col: AssistantColumnOp): AssistantEdi
      the touched ones) is what stops a half-migrated table: from here on every row
      carries an explicit cell list aligned to the headers. */
   return [
-    { path: "dimensionColumns", value: JSON.stringify(nextHeaders) },
-    ...nextRows.map((cells, i) => ({ path: `rows.${i}.cells`, value: JSON.stringify(cells) })),
+    { path: headersPath, value: JSON.stringify(nextHeaders) },
+    ...nextRows.map((cells, i) => ({ path: `${rowsPath}.${i}.${cellsKey}`, value: JSON.stringify(cells) })),
   ];
 }

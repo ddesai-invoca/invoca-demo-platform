@@ -6,6 +6,7 @@ import { DashAssistant, useDashboardData } from "../components/GeneratedTiles";
 import { LineChart } from "../components/LineChart";
 import { StackedBarChart } from "../components/StackedBarChart";
 import type { AimKpiCard as AimKpiCardT } from "../data/schema";
+import { tileId } from "../data/tileId";
 
 /* AI Messaging Impact on Lead Capture & Revenue (Human vs AI) — 4th dashboard.
    Reuses the shared dashboard template (dash-card / kpi tiles + LineChart +
@@ -13,12 +14,12 @@ import type { AimKpiCard as AimKpiCardT } from "../data/schema";
    Month), an AI-assisted appointment trend line, AI opportunity/nurture tiles,
    and a re-skinned "Common Topics" stacked bar. Data-driven per prospect. */
 
-function KpiCard({ card }: { card: AimKpiCardT }) {
+function KpiCard({ card, path }: { card: AimKpiCardT; path?: string }) {
   return (
     <section className={"dash-card aim-card" + (card.chip ? " aim-card--chip" : "")}>
-      <div className="dash-card-head">
+      <div className="dash-card-head" data-tile={tileId(path)}>
         <span className="dash-card-title">{card.title}</span>
-        <DashTileMenu />
+        <DashTileMenu path={path} />
       </div>
       {card.chip && <div className="aim-chips"><span className="aac-chip">{card.chip}</span></div>}
       <div className="kpi-row" style={{ gridTemplateColumns: `repeat(${card.tiles.length}, 1fr)` }}>
@@ -71,9 +72,9 @@ export function AiMessagingImpactDashboard() {
 
       {/* AI-Assisted Appointment Trend (line) */}
       <section className="dash-card aim-card aim-card--chip">
-        <div className="dash-card-head">
+        <div className="dash-card-head" data-tile="trendTitle|trendChip|trendChart">
           <span className="dash-card-title">{d.trendTitle}</span>
-          <DashTileToggle />
+          <DashTileToggle path={["trendTitle", "trendChip", "trendChart"] as unknown as string} />
         </div>
         <div className="aim-chips"><span className="aac-chip">{d.trendChip}</span></div>
         <div className="chart-wrap"><LineChart chart={d.trendChart} height={190} /></div>
@@ -87,9 +88,9 @@ export function AiMessagingImpactDashboard() {
 
       {/* Common Topics (stacked bar, re-skinned) */}
       <section className="dash-card">
-        <div className="dash-card-head">
+        <div className="dash-card-head" data-tile="commonTopicsTitle|commonTopicsChart">
           <span className="dash-card-title">{d.commonTopicsTitle}</span>
-          <DashTileToggle />
+          <DashTileToggle path={["commonTopicsTitle", "commonTopicsChart"] as unknown as string} />
         </div>
         <div className="chart-wrap"><StackedBarChart chart={d.commonTopicsChart} height={190} /></div>
       </section>

@@ -3,7 +3,7 @@ import { useProfile } from "../data/ProfileContext";
 import { BarChart } from "../components/BarChart";
 import { DataTable } from "../components/DataTable";
 import { Pill } from "../components/Pill";
-import { usePageData } from "../components/GeneratedTiles";
+import { usePageData, DashAssistant } from "../components/GeneratedTiles";
 
 export function DigitalInsights() {
   const { profile } = useProfile();
@@ -63,6 +63,10 @@ export function DigitalInsights() {
         signalColumns={r.signalColumns}
         rows={r.rows}
       />
+      {/* Renders any tile the AI added on this page, and the hidden-tile rules.
+          Without it both were silent no-ops here: the tile was stored and never
+          drawn, and "remove that tile" reported success and changed nothing. */}
+      <DashAssistant />
     </div>
   );
 }

@@ -59,7 +59,10 @@ export interface AssistantEdit { path: string; value: string }
    Sources too. Only the page whose JOB is those questions passes this, which keeps
    the change to the one screen it was asked for. */
 interface Scope { key: string; customerName: string; baseTitle: string; questionPath?: string }
-interface Snapshot { override: unknown | undefined; tiles: GeneratedTile[] }
+/* `hidden` is part of the snapshot so Undo restores a tile you removed. Hiding is
+   never destructive: the data stays exactly where it was and only the card stops
+   rendering, which is what makes "put it back" free. */
+interface Snapshot { override: unknown | undefined; tiles: GeneratedTile[]; hidden: string[] }
 
 interface AiAssistantCtx {
   open: boolean;
@@ -79,6 +82,9 @@ interface AiAssistantCtx {
   addTile: (key: string, tile: GeneratedTile) => void;
   replaceTile: (key: string, id: string, tile: Omit<GeneratedTile, "id">) => void;
   removeTile: (key: string, id: string) => void;
+  hideTile: (key: string, target: string) => void;
+  showTile: (key: string, target: string) => void;
+  hiddenFor: (key: string) => string[];
   undo: (key: string) => void;
   canUndo: (key: string) => boolean;
   undoDepth: (key: string) => number;
@@ -101,15 +107,17 @@ const UNDO_CAP = 50;
 interface Persisted {
   overrides: Record<string, unknown>;
   tiles: Record<string, GeneratedTile[]>;
+  /* Per scope key, the tile ids (their data paths) the SE has removed from view. */
+  hidden: Record<string, string[]>;
   undo: Record<string, Snapshot[]>;
 }
 function load(): Persisted {
   try {
     const raw = localStorage.getItem(LS);
     const o = raw ? JSON.parse(raw) : {};
-    return { overrides: o.overrides ?? {}, tiles: o.tiles ?? {}, undo: o.undo ?? {} };
+    return { overrides: o.overrides ?? {}, tiles: o.tiles ?? {}, hidden: o.hidden ?? {}, undo: o.undo ?? {} };
   } catch {
-    return { overrides: {}, tiles: {}, undo: {} };
+    return { overrides: {}, tiles: {}, hidden: {}, undo: {} };
   }
 }
 
@@ -214,10 +222,14 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const readOnly = !!activeDemo && !activeDemo.canEdit;
 
   // Push the current (override, tiles) as one undo step, then apply `mutate`.
-  const mutate = useCallback((key: string, next: { override?: unknown | undefined; tiles?: GeneratedTile[] }) => {
+  const mutate = useCallback((key: string, next: { override?: unknown | undefined; tiles?: GeneratedTile[]; hidden?: string[] }) => {
     if (readOnly) return;
     setStore((prev) => {
-      const snap: Snapshot = { override: key in prev.overrides ? prev.overrides[key] : undefined, tiles: prev.tiles[key] ?? [] };
+      const snap: Snapshot = {
+        override: key in prev.overrides ? prev.overrides[key] : undefined,
+        tiles: prev.tiles[key] ?? [],
+        hidden: prev.hidden[key] ?? [],
+      };
       const undoStack = [...(prev.undo[key] ?? []), snap].slice(-UNDO_CAP);
       const overrides = { ...prev.overrides };
       if ("override" in next) {
@@ -226,9 +238,28 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
       }
       const tiles = { ...prev.tiles };
       if (next.tiles) tiles[key] = next.tiles;
-      return { overrides, tiles, undo: { ...prev.undo, [key]: undoStack } };
+      const hidden = { ...prev.hidden };
+      if (next.hidden) hidden[key] = next.hidden;
+      return { overrides, tiles, hidden, undo: { ...prev.undo, [key]: undoStack } };
     });
   }, [readOnly]);
+
+  /* HIDE, NOT DELETE. `target` is the tile's data path — the same id rule 3 already
+     gives every card — so "remove the lead form tile" needs no new identity scheme.
+     Idempotent both ways so a repeated request is not an error. */
+  const hideTile = useCallback((key: string, target: string) => {
+    const cur = store.hidden[key] ?? [];
+    if (cur.includes(target)) return;
+    mutate(key, { hidden: [...cur, target] });
+  }, [store.hidden, mutate]);
+
+  const showTile = useCallback((key: string, target: string) => {
+    const cur = store.hidden[key] ?? [];
+    if (!cur.includes(target)) return;
+    mutate(key, { hidden: cur.filter((t) => t !== target) });
+  }, [store.hidden, mutate]);
+
+  const hiddenFor = useCallback((key: string): string[] => store.hidden[key] ?? [], [store.hidden]);
 
   /* RULE 2 IS ENFORCED HERE, not only asked for in the prompt.
 
@@ -282,12 +313,19 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
       const overrides = { ...prev.overrides };
       if (snap.override === undefined) delete overrides[key];
       else overrides[key] = snap.override;
-      return { overrides, tiles: { ...prev.tiles, [key]: snap.tiles }, undo: { ...prev.undo, [key]: stack.slice(0, -1) } };
+      /* Restores `hidden` as well, or Undo would bring a tile's data back while the
+         card stayed invisible. `?? []` covers snapshots taken before hiding existed. */
+      return {
+        overrides,
+        tiles: { ...prev.tiles, [key]: snap.tiles },
+        hidden: { ...prev.hidden, [key]: snap.hidden ?? [] },
+        undo: { ...prev.undo, [key]: stack.slice(0, -1) },
+      };
     });
   }, [readOnly]);
 
   return (
-    <Ctx.Provider value={{ open, focus, openDrawer, closeDrawer, active, registerScope, registerBase, effectiveData, tilesFor, applyEdits, addTile, replaceTile, removeTile, undo, canUndo, undoDepth, activeDemo, hydrateDemo, readOnly }}>
+    <Ctx.Provider value={{ open, focus, openDrawer, closeDrawer, active, registerScope, registerBase, effectiveData, tilesFor, applyEdits, addTile, replaceTile, removeTile, hideTile, showTile, hiddenFor, undo, canUndo, undoDepth, activeDemo, hydrateDemo, readOnly }}>
       {children}
     </Ctx.Provider>
   );
