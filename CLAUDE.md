@@ -1193,6 +1193,54 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   not captured, so it deliberately shows only what the row already knows rather than
   inventing training statistics a prospect might ask us to explain.
 
+## INSIGHTS & ANALYTICS — the standing architecture (agreed 8/18/2026)
+Context for every I&A screen we build. Not yet implemented; this is the contract.
+
+### Two phases
+- **Phase 1** = everything the platform already generates (`research -> terms -> an
+  18-phase concurrency-6 pool` in `engine/core.ts`). It ends where it does today and
+  the SE starts using the platform immediately.
+- **Phase 2** = Insights & Analytics, kicked off when Phase 1 SAVES, and it runs
+  **SERVER-SIDE against the saved demo**. Not in the browser: closing the tab or
+  navigating away must not leave a half-generated tab, it runs ONCE per demo, and a
+  colleague opening that demo later finds it finished.
+- Opening the tab mid-run shows a PROGRESS BAR; opening it after shows the tab. The
+  existing `progress({ phase, status })` callback already feeds a real percentage, so
+  the bar reports actual phases rather than a timer.
+
+### The data pool
+- I&A derives from the PHASE-1 DATA. It never invents a parallel universe: 10
+  campaign sources in the pool means 10 rows on screen, 48,293 calls means 48,293,
+  and every filter narrows that same pool.
+- **MINT ONCE, THEN REUSE FOREVER.** Phase 2 mints the dimensions the pool lacks
+  (measured against a real profile: repeat callers, monologue duration,
+  commitment-to-help, words of interest, facility, specialty, transfer rate).
+- **MINT ON DEMAND, THEN PERSIST.** When someone later asks for something Phase 2
+  did not mint -- "top locations by call volume", say -- generate it THEN, write it
+  back, and read it from there ever after. The rule is that a number never changes
+  once it has been shown: asking twice, or building a tile from an answer, must agree.
+  A per-answer invention that returns 34% and then 41% is the failure this avoids.
+- **RE-SKIN EVERY DIMENSION PER INDUSTRY**, the way `bookingTerm` already works.
+  "Specialty" is a product line for a retailer and a service type for a plumber;
+  "facility" is a showroom or store; "insurance type" is a finance/payment method.
+  A blinds company must never show "Medicare".
+
+### Ask AI in this tab
+- Creates DASHBOARDS, creates and removes TILES, edits any data (numbers,
+  percentages, titles, charts), and answers questions about the data. The four
+  standing AI-button rules above apply unchanged -- skeleton, CSS, fonts and colours
+  are never editable, and a tile's own button only ever changes that tile.
+- **ANSWERS DEFAULT TO A TABLE.** Paragraph, line and pie only when asked for.
+- The visualisation TEMPLATES the user supplies are the foundation: new tiles and
+  assets are produced by editing those templates, not by inventing a look per answer.
+
+### Open point to settle before building the write-back
+Minting on demand WRITES to a saved demo, and demo editing is server-enforced
+(creator or admin). An SE asking a question on a colleague's demo cannot write to it.
+Planned default unless told otherwise: persist to the demo when the asker may edit it,
+otherwise keep the minted dimension in that session's override layer so their view is
+still self-consistent, and never silently fail.
+
 ## THE FOUR STANDING AI-BUTTON RULES (Dashboards tab + Reports tab)
 These are the user's standing rules, not a one-off request. `npm run audit:ai` checks
 them statically; it has caught a real regression already, so run it after touching any
