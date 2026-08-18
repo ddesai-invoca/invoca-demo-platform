@@ -7,6 +7,8 @@ import { LineChart } from "./LineChart";
 import { StackedBarChart } from "./StackedBarChart";
 import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
+import { TsTile, TsLine, TsColumn, TsPie, TsTable, TsKpi, TsMetric, legendFor, pieLegend,
+  TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE } from "./ts";
 import { fitCells } from "./chartFit";
 
 /* useDashboardData — each dashboard calls this with its BASE data slice. It
@@ -130,9 +132,76 @@ function TileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => voi
   );
 }
 
+/* ---------------------------------------------------------------------------
+   TsTileCard — the SAME GeneratedTile, drawn with the ThoughtSpot layer.
+   ---------------------------------------------------------------------------
+   Used only where a screen asks for it (`<DashAssistant variant="ts" />`), which
+   today is Insights & Analytics. `TileCard` above is untouched, so the six
+   Dashboards keep their own card and their own charts to the pixel.
+
+   ⚠️ THE AI IDENTITY MUST STAY BYTE-IDENTICAL to TileCard's: the same `data-genid`
+   and the same `DashTileAi` focus object. Those are what rule 3 (a tile's own
+   button edits only that tile) and "remove this tile" key off. Rendering the tile
+   differently while quietly changing its id is the silent-no-op failure this repo
+   has already been bitten by twice.
+   --------------------------------------------------------------------------- */
+function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => void }) {
+  /* A generated tile may arrive with no xLabels (the AI supplies values only), so
+     categories fall back to positions rather than leaving the axis blank. */
+  const len = Math.max(...tile.series.map((x) => x.values.length), tile.xLabels.length, 0);
+  const categories = tile.xLabels.length ? tile.xLabels
+    : Array.from({ length: len }, (_, i) => String(i + 1));
+  const series = tile.series.length ? tile.series.map((x) => ({ name: x.name, values: x.values }))
+    : [{ name: tile.title, values: [] }];
+
+  const legend =
+    tile.tileType === "pie" ? pieLegend(tile.slices)
+    : tile.tileType === "bar" ? legendFor(series, TS_SERIES_COLUMN)
+    : tile.tileType === "line" ? legendFor(series, TS_SERIES_LINE)
+    : undefined;
+
+  const actions = (
+    <>
+      <span className="ts-gen-badge" title="AI-generated tile">
+        <span className="material-icons">auto_awesome</span>AI
+      </span>
+      <DashTileAi focus={{ scope: "tile", tileKind: "generated", id: tile.id, label: tile.title, preview: previewOf(tile) }} />
+      <span className="material-icons ts-gen-remove" title="Remove tile" onClick={onRemove}>close</span>
+    </>
+  );
+
+  return (
+    <TsTile title={tile.title} actions={actions} dataGenId={tile.id}
+      legend={legend && legend.length > 1 ? legend : undefined}
+      className={tile.tileType === "table" ? "ts-span-2" : undefined}>
+      {tile.tileType === "kpi" && (
+        <div className="ts-kpi-row">
+          {tile.kpis.map((k, i) => <TsMetric key={i} label={k.label} value={k.value} />)}
+          {tile.kpis.length === 0 ? <TsKpi value="—" /> : null}
+        </div>
+      )}
+      {tile.tileType === "line" && (
+        <TsLine categories={categories} series={series} showLegend={false}
+          w={TS_SIZE.line.w} h={420} />
+      )}
+      {tile.tileType === "bar" && (
+        <TsColumn categories={categories} series={series} showLegend={false}
+          w={TS_SIZE.column.w} h={TS_SIZE.column.h} />
+      )}
+      {tile.tileType === "pie" && (
+        <TsPie slices={tile.slices} showLegend={false} />
+      )}
+      {tile.tileType === "table" && (
+        <TsTable columns={tile.columns ?? []} rows={tile.rows ?? []} />
+      )}
+      {tile.note && tile.tileType !== "kpi" ? <div className="ts-gen-note">{tile.note}</div> : null}
+    </TsTile>
+  );
+}
+
 /* Drop <DashAssistant /> at the bottom of each dashboard to render its AI tiles.
    Scope registration + edit overlay come from useDashboardData() at the top. */
-export function DashAssistant() {
+export function DashAssistant({ variant = "dash" }: { variant?: "dash" | "ts" } = {}) {
   const { pathname } = useLocation();
   const { profileId } = useProfile();
   const { tilesFor, removeTile, hiddenFor } = useAiAssistant();
@@ -140,12 +209,13 @@ export function DashAssistant() {
   const tiles = tilesFor(key);
   const hidden = hiddenFor(key);
   if (!tiles.length && !hidden.length) return null;
+  const Card = variant === "ts" ? TsTileCard : TileCard;
   return (
     <>
       <HiddenTileStyles hidden={hidden} />
       {tiles.length > 0 && (
-        <div className="gen-tiles">
-          {tiles.map((t) => <TileCard key={t.id} tile={t} onRemove={() => removeTile(key, t.id)} />)}
+        <div className={variant === "ts" ? "ts-gen-tiles" : "gen-tiles"}>
+          {tiles.map((t) => <Card key={t.id} tile={t} onRemove={() => removeTile(key, t.id)} />)}
         </div>
       )}
     </>

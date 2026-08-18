@@ -17,15 +17,25 @@ export interface TsTileProps {
   description?: string;
   /** Right-hand legend entries; renders ThoughtSpot's HTML legend when present. */
   legend?: Array<{ label: string; color: string }>;
+  /** Controls pinned to the title row (the AI sparkle, a remove button). Optional so
+      a plain tile stays exactly as it was before this existed. */
+  actions?: ReactNode;
   children: ReactNode;
   className?: string;
+  /** Passed through for the AI layer's tile identity; see GeneratedTiles. */
+  dataGenId?: string;
 }
 
 /** White, 8px radius, 1px #e7e9eb AND a faint shadow: ThoughtSpot sets both. */
-export function TsTile({ title, description, legend, children, className }: TsTileProps) {
+export function TsTile({
+  title, description, legend, actions, children, className, dataGenId,
+}: TsTileProps) {
   return (
-    <section className={"ts-tile" + (className ? " " + className : "")}>
-      <h2 className="ts-tile-title">{title}</h2>
+    <section className={"ts-tile" + (className ? " " + className : "")} data-genid={dataGenId}>
+      <div className="ts-tile-head">
+        <h2 className="ts-tile-title">{title}</h2>
+        {actions ? <span className="ts-tile-actions">{actions}</span> : null}
+      </div>
       {description ? <p className="ts-tile-desc">{description}</p> : null}
       <div className="ts-tile-body">
         <div className="ts-tile-viz">{children}</div>

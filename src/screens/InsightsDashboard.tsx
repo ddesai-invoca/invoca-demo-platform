@@ -682,7 +682,7 @@ export function InsightsDashboard() {
       {/* Renders any tile created from the Add Tile picker. Without this the tile is
           stored under this page's scope key and never drawn — the same silent success
           the Reports tab had. */}
-      <DashAssistant />
+      <DashAssistant variant="ts" />
 
       {/* Always mounted so it can transition OUT as well as in. */}
       {/* WHAT THE DRAWER IS GIVEN IS WHAT THE SCREEN SHOWS.

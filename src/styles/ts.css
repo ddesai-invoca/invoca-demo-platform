@@ -55,6 +55,29 @@
   font-size: 13px; line-height: 1.43; color: var(--ts-var-viz-description-color);
   margin: 0; padding-top: 3px;
 }
+.ts-tile-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.ts-tile-head .ts-tile-title { flex: 1 1 auto; min-width: 0; }
+/* Tile controls sit at the top right and only appear on hover, the same contract the
+   rest of the app uses so a screenshot of a tile is clean. */
+.ts-tile-actions {
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 4px;
+  opacity: 0; transition: opacity 150ms ease;
+}
+.ts-tile:hover .ts-tile-actions, .ts-tile:focus-within .ts-tile-actions { opacity: 1; }
+.ts-gen-badge {
+  display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 600;
+  color: #855ede; border: 1px solid #d4e0fe; border-radius: 999px; padding: 1px 7px 1px 5px;
+}
+.ts-gen-badge .material-icons { font-size: 13px; }
+.ts-gen-remove {
+  color: #5b6577; cursor: pointer; font-size: 18px; border-radius: 3px; padding: 2px;
+}
+.ts-gen-remove:hover { background: var(--ts-var-list-hover-background); }
+/* Generated tiles sit in the same two-column grid as the built-in ones. */
+.ts-gen-tiles { display: grid; gap: 20px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 20px; }
+@media (max-width: 1100px) { .ts-gen-tiles { grid-template-columns: minmax(0, 1fr); } }
+.ts-gen-note { font-size: 12px; color: #777e8b; padding-top: 6px; }
+
 .ts-tile-body { display: flex; align-items: stretch; gap: 0; min-width: 0; }
 .ts-tile-viz { flex: 1 1 auto; min-width: 0; }
 
@@ -135,6 +158,11 @@
   font-variant-numeric: tabular-nums;
 }
 .ts-kpi { padding: 4px 0 8px; }
+/* A KPI tile's metrics sit side by side and wrap, rather than in a fixed-column grid:
+   the AI decides how many there are, and `repeat(n, 1fr)` would be layout driven by
+   data, which rule 1 keeps out of reach. */
+.ts-kpi-row { display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 4px 0 8px; }
+.ts-kpi-row .ts-metric + .ts-metric { margin-top: 0; }
 
 .ts-trend { position: relative; }
 .ts-trend-period { font-size: 16px; line-height: 22px; color: #777e8b; }
@@ -146,7 +174,13 @@
 /* ---- tables -------------------------------------------------------------- */
 
 .ts-tablewrap { overflow-x: auto; min-width: 0; }
-.ts-table {
+/* ⚠️ WRITTEN AS `.ts-tablewrap .ts-table` FOR SPECIFICITY, not for tidiness. app.css
+   carries `.ind-page table { font-family: inherit }` (0,1,1), which beats a bare
+   `.ts-table` (0,1,0) and forced this table into Lato on the Insights dashboard even
+   though the rule below says otherwise. Verified: it rendered "Lato, Avenir" until
+   this selector went to 0,2,0. Relying on ts.css being imported after app.css would
+   only tie, and a tie is decided by import order — too fragile to build on. */
+.ts-tablewrap .ts-table {
   /* NOT Lato. ThoughtSpot's table CSS sets this family explicitly and it wins over
      the inherited root family; charts on the same page are Lato. */
   font-family: optimo-plain, "Helvetica Neue", Helvetica, Arial, sans-serif;

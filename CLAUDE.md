@@ -1459,6 +1459,28 @@ All series data goes through `fitValues`/`fitCells`, so the renderers stay TOTAL
 AI can edit values without crashing one — the precondition the four standing AI rules
 put on any `LENGTH_IS_CONTENT` path.
 
+**New tiles from Add Tile render through this layer**; the existing Insights screens
+still use their own charts. `DashAssistant` gained a `variant` prop (`"dash"` by
+default, `"ts"` on `InsightsDashboard`) and `TsTileCard` draws the SAME
+`GeneratedTile` with the ThoughtSpot components. `TileCard` is untouched, so the six
+Dashboards keep their card and charts to the pixel. Both Add Tile paths land here: the
+Configuration drawer (via `buildTile`) and the Report column picker.
+⚠️ **`TsTileCard` keeps the AI identity byte-identical** — same `data-genid`, same
+`DashTileAi` focus object. Those are what rule 3 and "remove this tile" key off, and
+re-rendering a tile while quietly changing its id is the silent-no-op this repo has
+already been bitten by twice. Verified end to end: a table tile and a line tile both
+built through the real flows, rendered with `.ts-table` / `.ts-svg`, zero `.dash-card`
+leakage, and remove still works.
+
+⚠️ **`.ind-page table { font-family: inherit }` IN app.css BEATS A BARE `.ts-table`.**
+Specificity 0,1,1 against 0,1,0, so the ThoughtSpot table rendered in **Lato** on the
+Insights dashboard while `ts.css` plainly said optimo-plain. Written as
+`.ts-tablewrap .ts-table` (0,2,0) to win outright — relying on `ts.css` importing after
+`app.css` would only TIE, and a tie decided by import order is too fragile. This is the
+cross-screen interference the one-prefix-per-screen rule warns about, showing up through
+a bare TAG selector rather than a shared class name, so grepping prefixes would not have
+caught it. Check computed style on the real screen, not just in the gallery.
+
 Verified after building: 22/5 bars, 0 gridlines, 212px legend with 12px round swatches,
 axis 12px `#5b6577` on `#e0e0e0` lines, slice order continuing into the blue tint at
 slice 9, table 11.9px Helvetica with a 13/700 header, 40 heat cells normalised per
