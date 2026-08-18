@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams, Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { DonutChart, TS_GEOM, truncate } from "../components/DonutChart";
 import { usePageDataWithLabels } from "../components/GeneratedTiles";
@@ -440,6 +440,7 @@ function PerfSection({ title, dimension, rows, metrics, onPick }: {
 export function InsightsDashboard() {
   const { profile } = useProfile();
   const { name } = useParams();
+  const navigate = useNavigate();
   /* Registers this page as the AI scope and returns the slice with any
      edits made ON THIS PAGE overlaid (see usePageData). */
   /* Labels carry the prospect's own booking term, so the chart legend and every
@@ -451,7 +452,11 @@ export function InsightsDashboard() {
   const L = view.labels;
   /* The "Ask" drawer's own open state. Kept separate from the interactions drawer
      below: they are different surfaces and must never be open at once by accident. */
-  const [askOpen, setAskOpen] = useState(false);
+  /* `?ask=1` opens the drawer on arrival. That is what makes "Build With AI" on the
+     Add Tile picker a real hand-off rather than a card that returns you to a
+     dashboard with nothing visibly different. */
+  const [params] = useSearchParams();
+  const [askOpen, setAskOpen] = useState(params.get("ask") === "1");
 
   const find = (re: RegExp) => md.breakdowns.find((b) => re.test(b.title));
   const metricCols = [L.mCalls, L.mAnswered, L.mDiscussed, L.mScheduled];
@@ -584,7 +589,9 @@ export function InsightsDashboard() {
           <button className="ind-ask" onClick={() => setAskOpen(true)}>
             <span className="material-icons">auto_awesome</span>Ask
           </button>
-          <button className="ind-add"><span className="material-icons">add</span>Add Tile</button>
+          <button className="ind-add" onClick={() => navigate("/insights/add-tile")}>
+            <span className="material-icons">add</span>Add Tile
+          </button>
           <span className="material-icons ind-kebab">more_vert</span>
         </div>
       </div>
