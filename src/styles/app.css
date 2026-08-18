@@ -1628,13 +1628,19 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
    full-width "Performance By ..." sections below, each a donut beside a table
    with a UNIQUE COUNT / TOTAL footer. */
 /* Insights & Analytics is embedded THOUGHTSPOT, not Invoca UI, which is why this
-   screen looks different from every other one. Its font stack is
-   optimo-plain first (the real page's; the font file is NOT in the capture, so
-   this resolves to Helvetica Neue exactly as the real page does when ThoughtSpot's
-   CDN font is unavailable) and its tiles use a hairline border rather than
-   Invoca's two-layer shadow. Scoped to .ind-page so nothing else is affected. */
-.ind-page { padding: 0 0 40px;
-  font-family: optimo-plain, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+   screen looks different from every other one. Its tiles use a hairline border
+   rather than Invoca's two-layer shadow. Scoped to .ind-page so nothing else is
+   affected.
+
+   ⚠️ THE FONT IS LATO, AND THIS RULE USED TO GET IT WRONG. It asked for
+   optimo-plain and fell back to Helvetica Neue, on the theory that optimo-plain is
+   "the real page's font". optimo-plain is ThoughtSpot's DEFAULT, and Invoca
+   overrides it: the live embed config sets every --ts-var-*-font-family to
+   `Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif` (read from
+   window._tsEmbedSDK.embedConfig — see src/tokens/thoughtspot.css). So the real
+   Insights tab renders in the SAME face as the rest of the platform, while every
+   screen here was rendering in Helvetica. Now taken from the token. */
+.ind-page { padding: 0 0 40px; font-family: var(--ts-var-root-font-family); }
 .ind-page h1, .ind-page h2, .ind-page h3, .ind-page table, .ind-page button,
 .ind-page input { font-family: inherit; }
 .ind-head { display: flex; align-items: flex-start; justify-content: space-between;

@@ -1,0 +1,145 @@
+/* =============================================================================
+   thoughtspot.css — the REAL Insights & Analytics design system.
+   -----------------------------------------------------------------------------
+   These are not measured, inferred or eyeballed. All 90 values were read from the
+   LIVE page (8/18/2026) at
+
+     window._tsEmbedSDK.embedConfig.customizations.style.customCSS.variables
+
+   i.e. the exact `--ts-var-*` map Invoca hands to the ThoughtSpot embed. That is the
+   authoritative source, and it is worth knowing how to get back to it, because the
+   obvious route does not work: Insights & Analytics is a CROSS-ORIGIN iframe
+   (invoca.thoughtspot.cloud), so nothing inside it can be read by script and no
+   measuring of the rendered charts is possible. The config lives in the PARENT
+   window, which is readable. Look there, not in the frame.
+
+   THREE THINGS THIS CORRECTED, all of which had been wrong for a while:
+
+   1. THE FONT IS LATO, not optimo-plain. Every *-font-family token is
+      `Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif`. optimo-plain is
+      ThoughtSpot's own default and Invoca overrides it, so the Insights tab uses the
+      SAME face as the rest of the platform. Our .ind-page stack asked for
+      optimo-plain and fell back to Helvetica Neue, so every Insights screen was
+      rendering in Helvetica while the real one rendered in Lato.
+   2. TILES ARE 8px RADIUS WITH A 1px #e7e9eb BORDER AND NO SHADOW. The Dashboards
+      tab is 4px radius with a two-layer shadow and no border. That single difference
+      is most of why the two tabs read as different products.
+   3. THE LIVEBOARD PAGE IS WHITE (#ffffff), not the platform's #f6f7f9 grey. The
+      Dashboards tab is grey-page-with-white-cards; Insights is white-on-white
+      separated by borders.
+
+   ⚠️ THE CHART SERIES PALETTE IS NOT IN HERE. There is no chartColorPalettes key in
+   the embed config, so the series colours (the greens, teal and blue on the column
+   charts) are set in ThoughtSpot ADMIN, not passed by the host. They cannot be read
+   from the parent and cannot be measured through the iframe. Get them from a
+   SingleFile capture of a liveboard and record them below when you do.
+   ============================================================================= */
+
+:root {
+
+  /* ---- ROOT / PAGE ---- */
+  --ts-var-root-background: #ffffff;
+  --ts-var-root-color: #15243e;
+  --ts-var-root-secondary-color: #5b6577;
+  --ts-var-root-font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-application-color: #15243e;
+  --ts-var-nav-background: #ffffff;
+  --ts-var-nav-color: #15243e;
+  --ts-var-liveboard-layout-background: #ffffff;
+
+  /* ---- TILE (the biggest difference from the Dashboards tab) ---- */
+  --ts-var-liveboard-tile-background: #ffffff;
+  --ts-var-liveboard-tile-border-color: #e7e9eb;
+  --ts-var-liveboard-tile-border-radius: 8px;
+  --ts-var-viz-background: #ffffff;
+  --ts-var-viz-border-radius: 8px;
+  --ts-var-viz-title-color: #15243e;
+  --ts-var-viz-title-font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-viz-description-color: #5b6577;
+  --ts-var-viz-legend-hover-background: #d4e0fe;
+  --ts-var-liveboard-header-font-color: #15243e;
+  --ts-var-liveboard-group-border-color: #e7e9eb;
+  --ts-var-liveboard-group-title-font-color: #15243e;
+  --ts-var-liveboard-group-description-font-color: #5b6577;
+  --ts-var-liveboard-group-tile-title-font-color: #15243e;
+  --ts-var-liveboard-group-tile-description-font-color: #5b6577;
+  --ts-var-liveboard-notetitle-heading-font-color: #15243e;
+  --ts-var-liveboard-notetitle-body-font-color: #5b6577;
+  --ts-var-liveboard-cross-filter-layout-background: #d4e0fe;
+
+  /* ---- CHART AXES ---- */
+  --ts-var-axis-data-label-color: #5b6577;
+  --ts-var-axis-data-label-font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-axis-title-color: #5b6577;
+  --ts-var-axis-title-font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+
+  /* ---- BUTTONS ---- */
+  --ts-var-button--icon-border-radius: 100px;
+  --ts-var-button--primary--active-background: #1643d5;
+  --ts-var-button--primary--font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-button--primary--hover-background: #1c53e9;
+  --ts-var-button--primary-background: #2666f9;
+  --ts-var-button--primary-color: #ffffff;
+  --ts-var-button--secondary--active-background: #e7e9eb;
+  --ts-var-button--secondary--font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-button--secondary--hover-background: #e7e9eb;
+  --ts-var-button--secondary-background: #f3f4f5;
+  --ts-var-button--secondary-color: #5b6577;
+  --ts-var-button--tertiary--active-background: #e7e9eb;
+  --ts-var-button--tertiary--hover-background: #e7e9eb;
+  --ts-var-button--tertiary-background: #f3f4f5;
+  --ts-var-button--tertiary-color: #5b6577;
+  --ts-var-button-border-radius: 3px;
+
+  /* ---- CHECKBOX ---- */
+  --ts-var-checkbox-active-color: #2666f9;
+  --ts-var-checkbox-background-color: #ffffff;
+  --ts-var-checkbox-border-color: #e7e9eb;
+  --ts-var-checkbox-checked-color: #2666f9;
+  --ts-var-checkbox-checked-disabled: #a1a7b2;
+  --ts-var-checkbox-error-border: #e4131b;
+  --ts-var-checkbox-hover-border: #2666f9;
+
+  /* ---- CHIPS / FILTER CHIPS ---- */
+  --ts-var-chip--active-background: #d4e0fe;
+  --ts-var-chip--active-color: #15243e;
+  --ts-var-chip--hover-background: #e7e9eb;
+  --ts-var-chip--hover-color: #5b6577;
+  --ts-var-chip-background: #e7e9eb;
+  --ts-var-chip-color: #5b6577;
+  --ts-var-chip-title-font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-parameter-chip-text-color: #15243e;
+
+  /* ---- MENUS / LISTS / DIALOGS ---- */
+  --ts-var-dialog-body-background: #ffffff;
+  --ts-var-dialog-body-color: #15243e;
+  --ts-var-dialog-footer-background: #ffffff;
+  --ts-var-dialog-header-background: #ffffff;
+  --ts-var-dialog-header-color: #15243e;
+  --ts-var-list-hover-background: #d4e0fe;
+  --ts-var-list-selected-background: #d4e0fe;
+  --ts-var-menu--hover-background: #d4e0fe;
+  --ts-var-menu-background: #ffffff;
+  --ts-var-menu-color: #15243e;
+  --ts-var-menu-font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-menu-selected-text-color: #15243e;
+  --ts-var-menu-separator-background: #e7e9eb;
+  --ts-var-segment-control-hover-background: #d4e0fe;
+
+  /* ---- SEARCH / ANSWER PANELS ---- */
+  --ts-var-answer-data-panel-background-color: #ffffff;
+  --ts-var-answer-edit-panel-background-color: #ffffff;
+  --ts-var-search-auto-complete-background: #ffffff;
+  --ts-var-search-auto-complete-font-color: #15243e;
+  --ts-var-search-auto-complete-subtext-font-color: #5b6577;
+  --ts-var-search-bar-auto-complete-hover-background: #d4e0fe;
+  --ts-var-search-bar-background: #ffffff;
+  --ts-var-search-bar-navigation-help-text-background: #ffffff;
+  --ts-var-search-bar-text-font-color: #15243e;
+  --ts-var-search-bar-text-font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-search-bar-text-font-style: normal;
+  --ts-var-search-data-button-background: #ffffff;
+  --ts-var-search-data-button-font-color: #15243e;
+  --ts-var-search-data-button-font-family: Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif;
+  --ts-var-search-navigation-button-background: #ffffff;
+}

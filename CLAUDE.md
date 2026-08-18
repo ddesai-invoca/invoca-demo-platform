@@ -1318,6 +1318,64 @@ account, so this costs one extra call per width. Claude in Chrome cannot help he
 it only exposes tabs inside its own tab group, so it cannot read a tab the user
 already had open.
 
+## INSIGHTS & ANALYTICS IS A CROSS-ORIGIN IFRAME — where the design system actually lives
+The tab is an `<iframe>` on **invoca.thoughtspot.cloud** (1224x790 at a 1312 viewport).
+Nothing inside it is reachable: no DOM, no computed styles, no SVG geometry, and
+**the mouse wheel and Page Down do not scroll it** from the browser pane. A capture of
+the page does not serialise its contents either, which is the real reason the earlier
+Details Report note says "no body and no footer in the DOM".
+
+**But the design system is not inside the frame — it is in the PARENT window**, and it
+is exact rather than measured:
+
+    window._tsEmbedSDK.embedConfig.customizations.style.customCSS.variables   // 90 tokens
+    window._tsEmbedSDK.embedConfig.customizations.style.customCSS.rules_UNSTABLE  // 51 rules
+
+All 90 are saved verbatim in **`src/tokens/thoughtspot.css`** (loaded from `main.tsx`),
+so any Insights screen can say `var(--ts-var-liveboard-tile-border-radius)` rather than
+hardcoding a guess. Re-read that object whenever the real page is restyled.
+⚠️ Do NOT `JSON.stringify` the SDK object — it holds DOM nodes with React fibers and
+throws on the circular structure. Walk it and skip anything `instanceof Node`.
+
+**Three things this proved wrong**, each of which had been in this file or the CSS:
+1. **The font is Lato, not optimo-plain.** Every `*-font-family` token is
+   `Lato, Avenir, Avenir-Book, "Museo Sans", sans-serif`. optimo-plain is ThoughtSpot's
+   DEFAULT and Invoca overrides it, so Insights uses the SAME face as the rest of the
+   platform. `.ind-page` asked for optimo-plain and fell back to Helvetica Neue, so
+   every Insights screen was rendering in **Helvetica**. Now `var(--ts-var-root-font-family)`.
+2. **Tiles are 8px radius with a 1px `#e7e9eb` border and NO shadow.** The Dashboards
+   tab is 4px radius with a two-layer shadow and no border. That one difference is most
+   of why the two tabs read as different products.
+3. **The liveboard page is WHITE** (`--ts-var-liveboard-layout-background: #ffffff`),
+   not the platform's `#f6f7f9`. Dashboards is grey-page-with-white-cards; Insights is
+   white-on-white separated by borders.
+
+Other values worth knowing, all from the token map: viz title `#15243e` / description
+`#5b6577`; **axis data labels AND axis titles are both `#5b6577`**; every hover and
+selected state across menus, lists, chips and legends is `#d4e0fe`; buttons
+`#2666f9` -> hover `#1c53e9` -> active `#1643d5` at radius 3, secondary/tertiary
+`#f3f4f5` on `#5b6577`; icon buttons are radius **100px**; checkboxes `#2666f9` checked,
+border `#e7e9eb`, hover border `#2666f9`, disabled `#a1a7b2`, error `#e4131b`; chips
+`#e7e9eb`/`#5b6577` going to `#d4e0fe`/`#15243e` when active.
+
+`rules_UNSTABLE` is chrome surgery, not chart styling: it hides ThoughtSpot's own
+header, edit button and logo, makes the filter bar sticky, and fully specifies the
+**"Ask" / Spotter pill** —
+`linear-gradient(135deg, #ccf8f2 0%, #e5fbf8 38%, #e9f0fe 72%, #e7e0f9 100%)`,
+`1px solid #d4e0fe`, radius `3.5rem`, text `#007e73`, hovering to
+`#99f2e4 -> #ccf8f2 -> #d4e0fe -> #e7e0f9` with text `#009788`, and a sparkle drawn as
+a `::before` data-URI SVG.
+
+⚠️ **THE CHART SERIES PALETTE IS NOT IN THE EMBED CONFIG.** There is no
+`chartColorPalettes` key, so series colours are set in ThoughtSpot ADMIN. They cannot be
+read from the parent and cannot be measured through the frame. They need a SingleFile
+capture (with frames saved) to pin down; until then do not invent them.
+
+**A tall viewport DOES render the whole liveboard**, which is the one trick that works
+for surveying layout when scrolling will not: `resize_window` to something like
+1600x4000 and the frame lays out every tile at once. The screenshot is downscaled at
+that size, so it is good for INVENTORY and useless for colour or geometry.
+
 ## INSIGHTS & ANALYTICS — the standing architecture (agreed 8/18/2026)
 Context for every I&A screen we build. Not yet implemented; this is the contract.
 
