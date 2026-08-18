@@ -1223,6 +1223,69 @@ Dedupe FIRST (group the srcs and count unique assets) so the shared files are ob
 before any are written. These are Invoca's own icons in Invoca's own internal tool, so
 extracting them verbatim is correct; approximating them is not.
 
+## ONE CSS PREFIX PER SCREEN (standing rule)
+Two screens sharing a class prefix is a bug that presents as "the design is off", which
+is the worst possible symptom because it sends you re-measuring geometry that is already
+correct. The tile Configuration drawer and the Insights CALL DETAIL screen both used
+`.icd-`, and three names collided outright: **`icd-body`, `icd-field`, `icd-title`**.
+Call detail's `.icd-body`/`.icd-field` are flex containers and its `.icd-title` is
+26px/600, so the drawer's 452px fields measured **52.7px wide**, one label came out
+**248px tall**, and its 24px/400 title was overridden. Every value in the drawer's own
+CSS was right.
+
+The drawer is now **`.itc-`**. Before adding a screen's styles, grep for the prefix:
+
+    comm -12 <(grep -o 'xyz-[a-z-]*' A.tsx | sort -u) <(grep -o 'xyz-[a-z-]*' B.tsx | sort -u)
+
+⚠️ A prefix rename must also catch the **BARE base class**. `.icd` -> `.itc` is not
+covered by replacing `icd-`, so the panel kept `className="icd"` against a stylesheet
+that only defined `.itc` and the drawer rendered with no styling at all.
+
+## Insights & Analytics: the three Reports are DIFFERENT surfaces
+`src/data/insightsColumns.ts` holds the measured group -> column membership, extracted by
+walking the accordions in saved captures of all three live builders. Do not infer
+grouping from column names: the keyword rules that preceded this put Agent under Contact
+Center Metrics and a third of the catalogue into "Short Text Fields".
+
+| Report | Groups | Sidebar |
+|---|---|---|
+| Details | 20 | Reorder columns, seeded with Call Record ID |
+| Summary | 11, **measures only** | **Group By** + Reorder, seeded with nothing |
+| Transactions | 21 (Details + RingPool Details) | Reorder, seeded with Call Record ID **and** Transaction ID |
+
+⚠️ **A SUMMARY COUNTS BOOLEAN FLAGS**, which is why Summary first came out two groups
+short. Live Summary shows Signals with 75 columns and Voice AI with 5 — signal names and
+"Voice AI Agent Engaged" and friends. None reads as a metric, but a summary counts them.
+The tell is STRUCTURAL, not lexical: each has a `<name> (T/F)` twin in its own group, so
+`countableFlags()` finds them from the group's own contents and therefore works for a
+prospect's generated signals without naming any of them.
+
+⚠️ **Our column totals are LOWER than the captured account's and that is correct**
+(234 v 371). Almost all of the difference is Signals: that healthcare account has 75
+configured signals (150 entries with twins), Shady Blinds has 11. Do not "fix" it by
+padding the list with that account's signals — the whole point is deriving from the
+prospect. Scores is the same story.
+
+⚠️ **The checkbox grid is a BREAKPOINT, not `auto-fill minmax()`.** Measured 653px -> 2
+columns and 1439px -> 3. No single minimum satisfies both (it would have to be >359 and
+<=326 simultaneously), so it is MUI's lg breakpoint: 3 columns at >=1200px, 2 below.
+A single-width measurement cannot tell these apart, which is the whole reason for the
+two-width rule below.
+
+⚠️ **The three reports share ONE route pattern**, so React Router reuses the component
+when only `:report` changes and `useState(sidebarFor(kind).seeded)` never re-runs.
+Transactions showed Details' single seeded column and Summary showed one it should not
+have had at all. Reset on `kind` change, and test by navigating in an order built to
+expose stale state (details -> transactions -> summary -> details), not by loading each
+report fresh.
+
+The Configuration drawer's dropdown is a **floating searchable popup**, not a native
+`<select>`: paper 450 wide, max-height 375, radius 3, MUI shadow, padding 8px 0; options
+32px tall (20px line box + 6px padding — the default line-height makes them 36) at
+padding 6px 16px, 16px/400. Typing filters, which is the only way 250 options is usable.
+Drawer content insets **24px** (8 beyond the panel's own 16), fields **452** wide, combo
+`h=37` border `1px #e7e9eb` radius 4.
+
 ## MEASURE AT MORE THAN ONE WIDTH (standing rule for every replica)
 A single-width measurement is not a measurement. The Add Tile picker was built from
 a 1134px viewport and looked right there; at 1920 the real page shows FIVE columns,
