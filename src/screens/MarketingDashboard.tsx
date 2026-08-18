@@ -8,6 +8,7 @@ import { LineChart } from "../components/LineChart";
 import { StackedBarChart } from "../components/StackedBarChart";
 import { leadFormFacts } from "../data/leadForms";
 import type { KpiGroup, Breakdown } from "../data/schema";
+import { fitCells } from "../components/chartFit";
 
 /* The one heading on this screen that was a LITERAL. Everything else already
    comes from the dashboard data, so the assistant could rename any other card
@@ -59,7 +60,11 @@ function OutcomeTable({ bd }: { bd: Breakdown }) {
           {bd.rows.map((r, i) => (
             <tr key={i}>
               <td>{r.name}</td>
-              {r.metrics.map((m, j) => <td key={j}>{m}</td>)}
+              {/* Fitted to the header count, not mapped raw: the assistant can add
+                  and remove columns now, and a row it did not finish updating must
+                  show a blank cell rather than a body misaligned against its
+                  headers. Same discipline as DataTable's leading cells. */}
+              {fitCells(r.metrics, bd.metricColumns.length).map((m, j) => <td key={j}>{m}</td>)}
             </tr>
           ))}
         </tbody>

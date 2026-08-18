@@ -6,6 +6,7 @@ import { DashAssistant, useDashboardData } from "../components/GeneratedTiles";
 import { DonutChart } from "../components/DonutChart";
 import { StackedBarChart } from "../components/StackedBarChart";
 import type { KpiGroup, Breakdown, ConversionCard as ConversionCardT } from "../data/schema";
+import { fitCells } from "../components/chartFit";
 
 /* AI Agent Conversion Dashboard (3rd dashboard). Reuses the shared dashboard
    template (the dash-card / breakdown / kpi styling + DonutChart + StackedBarChart),
@@ -73,7 +74,11 @@ function OutcomeTable({ bd }: { bd: Breakdown }) {
           {bd.rows.map((r, i) => (
             <tr key={i}>
               <td>{r.name}</td>
-              {r.metrics.map((m, j) => <td key={j}>{m}</td>)}
+              {/* Fitted to the header count, not mapped raw: the assistant can add
+                  and remove columns now, and a row it did not finish updating must
+                  show a blank cell rather than a body misaligned against its
+                  headers. Same discipline as DataTable's leading cells. */}
+              {fitCells(r.metrics, bd.metricColumns.length).map((m, j) => <td key={j}>{m}</td>)}
             </tr>
           ))}
         </tbody>

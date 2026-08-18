@@ -1,4 +1,5 @@
 import type { MultiSeriesChart } from "../data/schema";
+import { fitValues } from "./chartFit";
 
 const SERIES_COLORS = ["#2666f9", "#ff7045", "#f3cb00", "#00d1b4", "#a182e5"];
 
@@ -15,10 +16,17 @@ export function LineChart({ chart, height = 340, colors = SERIES_COLORS }: {
   const W = 900, H = height, padL = 56, padR = 20, padT = 48, padB = 36;
   const plotW = W - padL - padR;
   const plotH = H - padT - padB;
-  const maxVal = Math.max(...chart.series.flatMap((s) => s.values), 1);
+  const n = chart.xLabels.length;
+  /* FIT EVERY SERIES TO THE AXIS FIRST. The assistant can add and remove series and
+     axis points now, so a series' length is no longer guaranteed to match xLabels;
+     mapping raw values would draw points past the right edge. Series with nothing in
+     them are dropped rather than flat-lined along zero. See chartFit.ts. */
+  const fitted = chart.series
+    .map((s) => ({ ...s, values: fitValues(s.values, n) }))
+    .filter((s): s is typeof s & { values: number[] } => s.values !== null);
+  const maxVal = Math.max(...fitted.flatMap((s) => s.values), 1);
   const yMax = niceMax(maxVal);
   const ticks = 5;
-  const n = chart.xLabels.length;
   // Thin x-axis labels when there are many points so they don't overlap
   // (the line + markers still render for every point).
   const labelEvery = Math.max(1, Math.ceil(n / 15));
@@ -29,8 +37,8 @@ export function LineChart({ chart, height = 340, colors = SERIES_COLORS }: {
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="line-svg" width="100%">
       {/* legend */}
-      {chart.series.map((s, i) => {
-        const cols = chart.series.length;
+      {fitted.map((s, i) => {
+        const cols = fitted.length;
         const slotW = plotW / cols;
         const lx = padL + slotW * i + 10;
         // Truncate to fit the slot so long series names don't overlap the next one.
@@ -64,7 +72,7 @@ export function LineChart({ chart, height = 340, colors = SERIES_COLORS }: {
           : null
       )}
       {/* lines + markers */}
-      {chart.series.map((s, si) => {
+      {fitted.map((s, si) => {
         const color = colors[si % colors.length];
         const pts = s.values.map((v, i) => `${x(i)},${y(v)}`).join(" ");
         return (

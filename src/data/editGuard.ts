@@ -78,6 +78,34 @@ const LENGTH_IS_CONTENT = [
      blocked, and column styling is not data and remains unreachable. */
   /\bdimensionColumns$/i,  // the report's leading headers, in display order
   /\bcells$/i,             // InteractionRow.cells — aligned to dimensionColumns
+
+  /* DASHBOARD AND REPORT CONTENT — added when the standing AI rules were set:
+     the assistant may add and remove COLUMNS, TILES, chart SERIES, pie SLICES and
+     axis POINTS across the Dashboards and Reports tabs.
+
+     This is a deliberate trade. Length was blocked because it drives layout, and
+     that is still true — so the safety MOVED rather than disappeared: every shape
+     listed here now renders through a total function that pads and truncates
+     (fitValues / fitCells in components/chartFit.ts, DataTable's leadingCells), so a
+     half-finished edit shows a gap instead of a line drawn off the plot or a body
+     misaligned against its headers. Do not add a pattern here until the thing that
+     renders it can survive the wrong length.
+
+     It stays an ALLOW-LIST, not a blanket permission: anything not named is still
+     refused, so a bespoke renderer nobody has hardened cannot be reshaped by a
+     stray edit. TYPE changes remain blocked everywhere and unconditionally. */
+  /\bseries$/i,           // a chart's series list
+  /\bvalues$/i,           // one series' points, i.e. the x-axis length
+  /\bxLabels$/i,          // the axis points themselves
+  /\bslices$/i,           // pie/donut slices
+  /\bsegments$/i,         // donut segments
+  /\bbars$/i,             // horizontal bar rows
+  /\bmetricColumns$/i,    // a breakdown table's headers
+  /\bmetrics$/i,          // one row's cells, aligned to metricColumns
+  /\bheaders$/i,          // generic table headers
+  /\brows$/i,             // table rows (the donut derives from these, consistently)
+  /\btiles$/i,            // KPI tiles in a group
+  /\bkpis$/i,             // numbers inside a generated KPI tile
 ];
 
 /* OPTIONAL FIELDS THAT MAY BE CREATED FROM ABSENT.
