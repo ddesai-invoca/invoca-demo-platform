@@ -65,12 +65,22 @@ function OptionPicker({ value, options, onPick }: {
 
   return (
     <div className="itc-combo" ref={wrap}>
+      {/* ⚠️ TOGGLE ON MOUSEDOWN, NOT CLICK, and do NOT open on focus. The first version
+          did both and the first click appeared to do nothing: the event order is
+          mousedown -> focus -> click, so focus opened the popup and the click handler
+          then toggled the already-open state straight back to closed. The second click
+          worked only because the input was already focused and fired no focus event.
+          Mousedown runs before focus, so one handler owns the state and the first click
+          behaves like every later one. */}
       <div className={"itc-combo-field" + (open ? " itc-combo-field--open" : "")}
-        onClick={() => setOpen((v) => !v)}>
+        onMouseDown={() => setOpen((v) => !v)}>
         <input className="itc-combo-input" value={open ? q : value}
           placeholder={value || ""}
           onChange={(e) => { setQ(e.target.value); setOpen(true); }}
-          onFocus={() => setOpen(true)} />
+          /* Keyboard users get no mousedown, so ArrowDown / Enter opens the list. */
+          onKeyDown={(e) => {
+            if (e.key === "ArrowDown" || e.key === "Enter") { e.preventDefault(); setOpen(true); }
+          }} />
         <span className="material-icons itc-combo-caret">{open ? "arrow_drop_up" : "arrow_drop_down"}</span>
       </div>
       {open && (

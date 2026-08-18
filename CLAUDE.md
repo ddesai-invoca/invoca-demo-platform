@@ -1286,6 +1286,16 @@ padding 6px 16px, 16px/400. Typing filters, which is the only way 250 options is
 Drawer content insets **24px** (8 beyond the panel's own 16), fields **452** wide, combo
 `h=37` border `1px #e7e9eb` radius 4.
 
+⚠️ **The combobox toggles on `mousedown`, and must NOT also open on focus.** With
+`onClick` toggling and `onFocus` opening, the FIRST click looked dead: the order is
+mousedown -> focus -> click, so focus opened the popup and the click handler toggled it
+straight shut; the second click worked only because the input was already focused and
+fired no focus event. Mousedown runs before focus, so one handler owns the state. A
+keyboard user gets no mousedown, so ArrowDown / Enter opens the list instead.
+⚠️ This class of bug is invisible to `el.click()` and synthetic events, which skip the
+focus step entirely. Verify a toggle with REAL clicks at real coordinates — the same
+lesson the Google Ads back-nav note records.
+
 ## MEASURE AT MORE THAN ONE WIDTH (standing rule for every replica)
 A single-width measurement is not a measurement. The Add Tile picker was built from
 a 1134px viewport and looked right there; at 1920 the real page shows FIVE columns,
