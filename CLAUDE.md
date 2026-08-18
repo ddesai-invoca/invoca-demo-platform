@@ -1193,6 +1193,28 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   not captured, so it deliberately shows only what the row already knows rather than
   inventing training statistics a prospect might ask us to explain.
 
+## MEASURE AT MORE THAN ONE WIDTH (standing rule for every replica)
+A single-width measurement is not a measurement. The Add Tile picker was built from
+a 1134px viewport and looked right there; at 1920 the real page shows FIVE columns,
+not two, and the card's description sits below the icon rather than beside it. Both
+were invisible at the width I checked.
+
+Before believing any layout:
+- measure the live page at a NARROW and a WIDE viewport (1134 and 1920 are the two
+  used here; a third in between pins down a fluid grid);
+- solve for the authored rule rather than hard-coding what one width happened to
+  show. Three data points -- 983px available -> 2 columns, 1349 -> 4, 1769 -> 5 --
+  identify `repeat(auto-fill, minmax(320px, 1fr))` uniquely;
+- check whether a card's HEIGHT is fixed or content-driven. Add Tile's cards measure
+  144 tall narrow and 164 wide, because the description rewraps; a fixed height would
+  clip on a wide screen;
+- re-measure the replica at the SAME widths and compare numbers, not screenshots.
+
+The Browser pane can resize (`resize_window`) and is already signed in to the live
+account, so this costs one extra call per width. Claude in Chrome cannot help here:
+it only exposes tabs inside its own tab group, so it cannot read a tab the user
+already had open.
+
 ## INSIGHTS & ANALYTICS — the standing architecture (agreed 8/18/2026)
 Context for every I&A screen we build. Not yet implemented; this is the contract.
 

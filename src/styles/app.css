@@ -3541,18 +3541,30 @@ button.nav-item {
 .iat-h1 { font-size: 24px; font-weight: 400; color: #15243e; margin: 0 0 28px; }
 .iat-section { font-size: 20px; font-weight: 400; color: #15243e; margin: 0 0 16px; }
 
-.iat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 32px; }
+/* THE GRID IS FLUID, and a fixed two columns was the bug: on a wide window the real
+   page shows FIVE. Measured across three widths on the live page —
+   983px available -> 2 columns, 1349 -> 4, 1769 -> 5 — which `minmax(320px, 1fr)`
+   is the only floor to satisfy (318..325 fits all three; 320 is the round value).
+   Both sections share it, so the two CUSTOM cards sit in the first two columns of the
+   same track rather than stretching to half the page. */
+.iat-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px; margin: 0 0 32px;
+}
+/* Height is CONTENT-driven, not fixed: the live card measures 144 tall at a narrow
+   window and 164 at a wide one, because the description rewraps as the column
+   narrows. Grid stretches every card in a row to match the tallest. */
 .iat-card {
-  display: flex; align-items: flex-start; gap: 12px; text-align: left;
-  min-height: 144px; padding: 24px; background: #fff; border: 2px solid #e7e9eb;
+  display: flex; flex-direction: column; gap: 12px; text-align: left;
+  padding: 24px; background: #fff; border: 2px solid #e7e9eb;
   border-radius: 3px; cursor: pointer; font: inherit; color: inherit;
 }
+.iat-card-top { display: flex; align-items: center; gap: 12px; }
 .iat-card:hover { border-color: #b8bdc5; }
 /* The one tinted card: Build With AI sits on lavender. */
 .iat-card--ai { background: #f3effb; }
 .iat-card--ai:hover { border-color: #c9b8e8; }
 .iat-icon { font-size: 40px; flex: 0 0 40px; line-height: 40px; }
-.iat-card-text { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .iat-card-title { font-size: 16px; font-weight: 700; color: #15243e; }
 .iat-card-desc { font-size: 16px; font-weight: 400; color: #15243e; line-height: 1.35; }
 
@@ -3563,4 +3575,5 @@ button.nav-item {
 }
 .iat-back:hover { background: #f3f7ff; }
 
-@media (max-width: 900px) { .iat-grid { grid-template-columns: 1fr; } }
+/* No media query needed: auto-fill already collapses to one column below ~336px
+   of available width. */

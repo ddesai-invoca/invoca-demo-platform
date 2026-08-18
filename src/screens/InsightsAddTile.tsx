@@ -9,16 +9,23 @@ import { useNavigate } from "react-router-dom";
      content surface  #fff, NO radius, fills the shell's content area
      h1 "Add Tile"    24px / 400 / #15243e
      section label    20px / 400 / #15243e
-     grid             2 columns, 16px gap
-     card             484 x 144, white, 2px solid #e7e9eb, radius 3, NO shadow,
-                      cursor pointer; inner flex, gap 12, padding 24
+     grid             repeat(auto-fill, minmax(320px, 1fr)), 16px gap — FLUID.
+                      Measured at three widths: 983px available -> 2 columns,
+                      1349 -> 4, 1769 -> 5. A fixed 2-column grid is wrong the
+                      moment the window is anything but narrow.
+     card             white, 2px solid #e7e9eb, radius 3, NO shadow, cursor pointer,
+                      padding 24, flex COLUMN with a 12px gap. Height is content-
+                      driven (144 narrow, 164 wide, as the description rewraps).
      icon             40 x 40 at (26, 26) inside the card
      card title       16px / 700 / #15243e
      card description 16px / 400 / #15243e
      "Back"           text button, ink #2666f9, 14px/500, pad 8/12, radius 3
      font             Lato (Invoca's own, as everywhere outside the ThoughtSpot embed)
 
-   TWO THINGS THE SCREENSHOT GETS WRONG, both verified by computed style:
+   THREE THINGS A SCREENSHOT GETS WRONG, all verified by computed style. The third
+   is the one that actually broke the first build of this screen, and the lesson is
+   general: A SINGLE-WIDTH MEASUREMENT IS NOT A MEASUREMENT. Check a narrow and a
+   wide viewport before believing any layout.
 
      • "CUSTOM" and "TEMPLATES" are NOT small uppercase labels. They compute to
        20px/400 with `text-transform: none` — the words are simply typed in capitals.
@@ -27,6 +34,12 @@ import { useNavigate } from "react-router-dom";
      • The card description is NOT grey. It computes to #15243e, the same ink as the
        title; only the weight differs. It reads grey because it sits at 400 next
        to a 700 title.
+
+     • The card is a COLUMN, not an icon beside a stacked title and description.
+       At one width the difference is a subtle indent; at 1920, where the columns
+       narrow to 341px, the indent visibly eats the description. Its first child is
+       a centred row of [icon, title]; the description is a separate child at the
+       card's own left padding.
 
    The real icons are 40x40 <img> assets. Those are Invoca's artwork and are not
    ours to copy, so each card uses a Material Icon chosen to match the shape and
@@ -90,11 +103,18 @@ export function InsightsAddTile() {
         if (t.title === "Build With AI") navigate("/insights/dashboard/Summary%20Dashboard?ask=1");
         else back();
       }}>
-      <span className="material-icons iat-icon" style={{ color: t.tone }}>{t.icon}</span>
-      <span className="iat-card-text">
+      {/* THE CARD IS A COLUMN, not an icon beside a stacked title+description.
+          Measured on the live page: the card is flex-column with a 12px gap; its
+          first child is a centred ROW of [40px icon, title], and the description is
+          the SECOND child at the card's own left padding, spanning the full width.
+          Nesting the description beside the icon indents it under the title, which is
+          what made this look wrong — most obviously on a wide window, where the
+          columns narrow and the indent eats the text. */}
+      <span className="iat-card-top">
+        <span className="material-icons iat-icon" style={{ color: t.tone }}>{t.icon}</span>
         <span className="iat-card-title">{t.title}</span>
-        <span className="iat-card-desc">{t.desc}</span>
       </span>
+      <span className="iat-card-desc">{t.desc}</span>
     </button>
   );
 
