@@ -1487,6 +1487,73 @@ slice 9, table 11.9px Helvetica with a 13/700 header, 40 heat cells normalised p
 column. Dashboards re-checked unchanged: 4px radius, two-layer shadow, 21 cards, donut
 350x260, KPI 48,293, and its 12 gridlines still present.
 
+## Build With AI -> "Create Tile with AI" (the question-to-tile drawer)
+`src/components/InsightsCreateTileAi.tsx` (`.icta-`) + `src/data/insightsQuestions.ts`.
+**Build With AI** on Add Tile opens its OWN drawer there; it used to navigate to
+`${DASH}?ask=1`, which threw the SE onto a different screen and into the general Ask
+drawer, which EDITS a page rather than creating a tile.
+
+⚠️ **PROVENANCE: SCREENSHOT, NOT CAPTURE.** The HTML supplied with the request was the
+earlier Data Display Options capture (byte-identical, 845,047 bytes) with no "Create
+Tile with AI" markup in it. So layout and copy are read off the screenshot — 814px
+panel, 22px/400 title, 30px/700 hero, the composer well, the 36px send circle — while
+every colour, font and radius comes from the measured `--ts-var-*` tokens. Re-measure
+from a capture with the drawer OPEN when one exists.
+The resting state is deliberately bare (hero + composer only, as the screenshot shows);
+the question catalogue sits behind a collapsed "Need ideas?".
+
+**A QUESTION RESOLVES TO A TEMPLATE CHOICE, NOT A DRAWING.** `resolveQuestion` returns
+`{template, name, measures, dimensions}` and hands it to `buildTile` — the same function
+the Configuration drawer uses — so an AI tile is byte-identical in shape to a hand-built
+one and inherits the ts- geometry for free. That is the standing architecture's rule
+that answers come from editing the TEMPLATES.
+
+**It is deterministic and local, no model call.** `parseQuestionList` already set the
+precedent, but the binding reason is the architecture's "a number never changes once
+shown": a per-answer model call returning 34% then 41% for the same question is exactly
+what that forbids. Verified: the same question twice produces byte-identical tiles.
+
+⚠️ **Questions are TOKENISED and the catalogue is FILTERED per prospect.** The examples
+came from a healthcare account (Facility, Specialty, Medicare, Insurance Type).
+`{BOOKING}/{LOCATION}/{CATEGORY}/{PAYMENT}` resolve through `vocabFor`, and
+`questionsFor()` then drops any question this prospect's data cannot answer. Measured:
+Shady Blinds offers 46/47 under a "Consultations" category, AutoNation offers 46/47
+under "Test Drives", and every offered question resolves on both. Offering a chip that
+answers "I could not match that" is worse than not offering it.
+
+### The matcher, and four wrong turns it took
+Getting phrase -> measure right took four iterations, each of which LOOKED right:
+1. **Overlap alone, plus a `?? "Call Count"` fallback.** Every unmatched question became
+   a confident Call Count tile: "Appointments by Facility" on a blinds account and
+   "purple monkey dishwasher" both produced one. A tile answering a question nobody
+   asked is the worst outcome available, because it looks right. Fallback removed;
+   the count is used only when a DIMENSION resolved and no measure was named.
+2. **Coverage measured on the QUESTION.** Sounded equivalent, was not: questions carry
+   words no measure name contains ("volume", "avg", "channel", "hour"), so 15 of 47
+   catalogue questions started declining. Coverage is measured on the OPTION.
+3. **Rejecting an all-generic overlap.** Refused "Total Call Count" — whose only
+   significant word is the generic "call" — against the measure literally named Call
+   Count. The rule is narrower: if the question named a SPECIFIC word, the match must
+   contain one. "Appointment Conversion Rate" names "appointment", which "Publisher
+   Conversion Rate Ranking" lacks, so that similarity is refused.
+4. **Plural-only stemming.** "Answer Rate" could not reach the measure "Answered".
+   Stem drops a trailing "s", then "ed", then "e", applied to both sides.
+
+Also: parenthetical qualifiers are excluded from the coverage denominator, because
+"(Sale Amount)" and "(Seconds)" are not part of what a metric is called — counting them
+put "Total Revenue" at 0.41 against "Revenue (Sale Amount)", just under the bar. And a
+question naming only a DIMENSION ("Not Completed Reason Breakdown") becomes a count by
+that dimension, which is what a pie already is.
+
+⚠️ **The catalogue IS the regression test.** Every listed question is one that resolves,
+so a matcher change that breaks one shows up immediately. Run
+`npx tsx` over `questionsFor` + `resolveQuestion` after touching any of it.
+
+Verified end to end with the drawer: typing "Revenue by Marketing Campaign" resolved to
+a Stacked Bar of Revenue (Sale Amount) by Marketing Campaign, and "Add to dashboard"
+landed a tile rendering through the ts- layer (22px `#2CBF58` bars, 0 gridlines, no
+`.dash-card` leakage).
+
 ## INSIGHTS & ANALYTICS — the standing architecture (agreed 8/18/2026)
 Context for every I&A screen we build. Not yet implemented; this is the contract.
 

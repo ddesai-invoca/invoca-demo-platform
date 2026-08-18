@@ -206,3 +206,129 @@
   border-top: 1px solid #eaedf2;
 }
 .ts-table-empty { color: #777e8b; font-style: italic; }
+
+/* ---- "Build With AI" -> Create Tile with AI drawer -------------------------
+   Scoped .icta-. LAYOUT AND COPY are read off a screenshot (the HTML supplied was
+   the earlier dropdown capture and carries none of this markup); every COLOUR,
+   FONT and RADIUS below comes from the measured --ts-var-* tokens and is exact.
+   Approximate, screenshot-derived: the 814px panel width, the ~30px hero title,
+   the composer well and the 36px send button. Re-measure from a capture with the
+   drawer open when one exists. */
+.icta-backdrop {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, .5); z-index: 1199;
+  opacity: 0; pointer-events: none; transition: opacity .2s ease;
+}
+.icta-backdrop--on { opacity: 1; pointer-events: auto; }
+
+.icta {
+  position: fixed; top: 0; right: 0; bottom: 0; width: 814px; max-width: 96vw;
+  background: var(--ts-var-liveboard-tile-background); z-index: 1200;
+  display: flex; flex-direction: column; box-sizing: border-box;
+  font-family: var(--ts-var-root-font-family); color: var(--ts-var-root-color);
+  box-shadow: rgba(0,0,0,.2) 0 8px 10px -5px, rgba(0,0,0,.14) 0 16px 24px 2px,
+              rgba(0,0,0,.12) 0 6px 30px 5px;
+  transform: translateX(100%); transition: transform .22s cubic-bezier(.4, 0, .2, 1);
+}
+.icta--open { transform: translateX(0); }
+@media (prefers-reduced-motion: reduce) { .icta, .icta-backdrop { transition: none; } }
+
+.icta-head {
+  flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 24px 0;
+}
+.icta-title { font-size: 22px; font-weight: 400; margin: 0; color: var(--ts-var-root-color); }
+.icta-close {
+  background: none; border: 0; cursor: pointer; color: var(--ts-var-root-secondary-color);
+  display: grid; place-items: center; border-radius: var(--ts-var-button--icon-border-radius);
+  width: 32px; height: 32px;
+}
+.icta-close:hover { background: var(--ts-var-list-hover-background); }
+
+/* The hero is vertically centred in the empty state, which is what makes the
+   drawer read as an invitation rather than a form. */
+.icta-body { flex: 1 1 auto; overflow-y: auto; display: flex; flex-direction: column; padding: 0 24px; }
+.icta-hero { margin: auto 0; text-align: center; padding: 0 32px; }
+.icta-hero-title {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-size: 30px; font-weight: 700; margin: 0 0 14px; color: var(--ts-var-root-color);
+}
+.icta-sparkle { width: 34px; height: 34px; flex: 0 0 auto; }
+.icta-hero-sub {
+  font-size: 15px; line-height: 21px; color: var(--ts-var-root-secondary-color);
+  margin: 0; max-width: 520px; margin-left: auto; margin-right: auto;
+}
+
+.icta-turns { list-style: none; margin: 0; padding: 16px 0 0; }
+.icta-turn { margin: 0 0 18px; }
+.icta-q {
+  font-size: 15px; font-weight: 600; color: var(--ts-var-root-color);
+  background: var(--ts-var-list-hover-background); border-radius: 12px 12px 12px 4px;
+  padding: 9px 14px; display: inline-block; max-width: 82%;
+}
+.icta-a { padding: 10px 2px 0; }
+.icta-a-line { font-size: 15px; line-height: 21px; margin: 0; }
+.icta-a-why {
+  font-size: 13px; color: var(--ts-var-root-secondary-color); margin: 4px 0 10px;
+  font-family: optimo-plain, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.icta-a--none .icta-a-line { color: var(--ts-var-root-secondary-color); }
+.icta-add {
+  background: var(--ts-var-button--primary-background); color: var(--ts-var-button--primary-color);
+  border: 0; border-radius: var(--ts-var-button-border-radius); font: inherit;
+  font-size: 14px; font-weight: 500; padding: 8px 12px; height: 36px; cursor: pointer;
+}
+.icta-add:hover { background: var(--ts-var-button--primary--hover-background); }
+
+/* Collapsed by default: the real drawer's resting state shows no chips. */
+.icta-ideas { flex: 0 0 auto; padding: 0 24px; }
+.icta-ideas-toggle {
+  display: inline-flex; align-items: center; gap: 2px; background: none; border: 0;
+  color: var(--ts-var-button--primary-background); font: inherit; font-size: 13px;
+  font-weight: 500; cursor: pointer; padding: 6px 4px;
+}
+.icta-ideas-toggle .material-icons { font-size: 18px; }
+.icta-ideas-body { max-height: 40vh; overflow-y: auto; padding: 4px 0 8px; }
+.icta-cat { margin: 0 0 12px; }
+.icta-cat-head {
+  display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700;
+  text-transform: uppercase; color: var(--ts-var-root-secondary-color); margin: 0 0 6px;
+}
+.icta-cat-head .material-icons { font-size: 16px; }
+.icta-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.icta-chip {
+  background: var(--ts-var-chip-background); color: var(--ts-var-chip-color);
+  border: 0; border-radius: 16px; font: inherit; font-size: 12px; padding: 5px 12px;
+  cursor: pointer;
+}
+.icta-chip:hover { background: var(--ts-var-chip--hover-background); color: var(--ts-var-chip--hover-color); }
+
+/* The composer well sits at the bottom with Reset above the field, as the
+   screenshot shows. */
+.icta-composer {
+  flex: 0 0 auto; margin: 8px 20px 20px; padding: 10px 12px 12px;
+  background: var(--ts-var-button--secondary-background); border-radius: 14px;
+}
+.icta-reset {
+  display: flex; align-items: center; gap: 4px; margin-left: auto; background: none;
+  border: 0; color: var(--ts-var-root-secondary-color); font: inherit; font-size: 13px;
+  cursor: pointer; padding: 2px 6px; border-radius: 3px;
+}
+.icta-reset .material-icons { font-size: 15px; }
+.icta-reset:disabled { opacity: .45; cursor: default; }
+.icta-field {
+  display: flex; align-items: center; gap: 8px; background: #fff;
+  border-radius: 22px; padding: 4px 4px 4px 16px; margin-top: 8px;
+}
+.icta-input {
+  flex: 1; border: 0; outline: 0; background: none; font: inherit; font-size: 15px;
+  color: var(--ts-var-root-color); min-width: 0; height: 36px;
+}
+.icta-input::placeholder { color: var(--ts-var-root-secondary-color); }
+.icta-send {
+  flex: 0 0 auto; width: 36px; height: 36px; border: 0; border-radius: 50%;
+  background: var(--ts-var-button--primary-background); color: #fff; cursor: pointer;
+  display: grid; place-items: center;
+}
+.icta-send .material-icons { font-size: 18px; }
+.icta-send:hover:not(:disabled) { background: var(--ts-var-button--primary--hover-background); }
+.icta-send:disabled { background: #a1a7b2; cursor: not-allowed; }

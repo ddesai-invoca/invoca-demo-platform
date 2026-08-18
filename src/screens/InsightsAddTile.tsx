@@ -5,6 +5,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { TEMPLATE_SPECS } from "../data/insightsCatalog";
 import { buildTile } from "../data/insightsTileData";
 import { InsightsConfigDrawer } from "../components/InsightsConfigDrawer";
+import { InsightsCreateTileAi } from "../components/InsightsCreateTileAi";
 
 /* =============================================================================
    InsightsAddTile — what "+ Add Tile" opens on an Insights & Analytics dashboard.
@@ -127,6 +128,7 @@ export function InsightsAddTile() {
   const navigate = useNavigate();
   const { profile, profileId } = useProfile();
   const { addTile } = useAiAssistant();
+  const [asking, setAsking] = useState(false);
   /* Which template's Configuration drawer is open, or null. */
   const [configuring, setConfiguring] = useState<string | null>(null);
   /* Where "Back" returns to. The dashboard is the only place this screen is
@@ -145,7 +147,11 @@ export function InsightsAddTile() {
              a chart template -> the Configuration drawer, right here
              a Report template -> a full-page column picker (not built yet), so it
                                   still returns rather than opening the wrong surface. */
-        if (t.title === "Build With AI") { navigate(`${DASH}?ask=1`); return; }
+        /* Build With AI opens its OWN drawer here, on Add Tile. It used to navigate
+           to the dashboard with ?ask=1, which opened the general Ask drawer on a
+           different screen — the SE lost the picker they were standing on, and the
+           drawer they landed in edits the page rather than creating a tile. */
+        if (t.title === "Build With AI") { setAsking(true); return; }
         const spec = TEMPLATE_SPECS[t.title];
         if (spec?.surface === "drawer") { setConfiguring(t.title); return; }
         /* The Reports go to their own FULL PAGE, matching the live route shape
@@ -190,6 +196,19 @@ export function InsightsAddTile() {
       <div className="iat-foot">
         <button className="iat-back" type="button" onClick={back}>Back</button>
       </div>
+
+      <InsightsCreateTileAi
+        open={asking}
+        profile={profile}
+        onClose={() => setAsking(false)}
+        onCreate={(choice) => {
+          /* Same path a hand-built tile takes: buildTile from the phase-1 pool, the
+             dashboard's own ENCODED scope key, then navigate so the SE sees it. */
+          addTile(`${profileId}::${DASH}`, { ...buildTile(profile, choice), id: `t${Date.now()}` });
+          setAsking(false);
+          navigate(DASH);
+        }}
+      />
 
       <InsightsConfigDrawer
         template={configuring}
