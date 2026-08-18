@@ -28,11 +28,41 @@
       Dashboards tab is grey-page-with-white-cards; Insights is white-on-white
       separated by borders.
 
-   ⚠️ THE CHART SERIES PALETTE IS NOT IN HERE. There is no chartColorPalettes key in
-   the embed config, so the series colours (the greens, teal and blue on the column
-   charts) are set in ThoughtSpot ADMIN, not passed by the host. They cannot be read
-   from the parent and cannot be measured through the iframe. Get them from a
-   SingleFile capture of a liveboard and record them below when you do.
+   THE CHART SERIES PALETTE IS NOT IN HERE, and it does not belong in CSS: it is an
+   8-hue x 5-step system now measured and living in `src/data/tsPalette.ts`.
+
+   ⚠️ TWO LAYERS DECIDE EVERY CHART VALUE, and you need both. Invoca overrides only
+   the 90 tokens below; ThoughtSpot's own CSS uses a WIDER set with built-in
+   fallbacks, e.g. `var(--ts-var-chart-y-axis-line-color, #e0e0e0)`. Where Invoca
+   overrides, the override wins; everywhere else ThoughtSpot's default applies. So
+   axis LABELS are Invoca's #5b6577, while axis LINES are ThoughtSpot's #e0e0e0 and
+   legend TEXT is ThoughtSpot's #777e8b. Reading only the 90 gives you the wrong
+   answer for anything they do not name.
+
+   Chart-layer facts, measured from the Highcharts SVG in the capture:
+
+     ROOT             1rem = 14px in ThoughtSpot, so .5714285714rem = 8px. Convert
+                      every rem in their CSS by /14, not /16.
+     axis lines       #e0e0e0 (x and y, ThoughtSpot default, not overridden)
+     axis labels      12px Lato, #5b6577
+     legend text      12px, #777e8b
+     plot inset       x=68, y=15 on every cartesian chart measured
+     line width       2px; no point markers at rest
+     area fill        the line colour at 20% alpha
+     column bars      22px wide, 5px apart inside a group, SQUARE corners (no rx)
+     bar (horizontal) 56px thick
+     tile             white, radius 8px, 1px #e7e9eb, plus ThoughtSpot's own faint
+                      `0 2px 4px rgba(0,0,0,.05)` — a border AND a soft shadow
+     tile title       2rem (28px) tall, line-height 1.33, padding-top 5px, #15243e
+     tile description line-height 1.43, padding-top 3px
+     viz padding      12px 16px
+     TABLE            font-size 11.9px; header 13px/700 #15243e, 48px tall;
+                      body #333333, rows ~50px, cell rule 1px #eaedf2, zebra/header
+                      fill #f6f8fa, secondary text #777e8b
+     ⚠️ TABLES DO NOT USE LATO. ThoughtSpot's table CSS sets the family explicitly
+     to `optimo-plain, "Helvetica Neue", Helvetica, Arial`, which beats the inherited
+     Lato from --ts-var-root-font-family. Charts are Lato, tables are Helvetica. Both
+     were read from the same captured document, so this is not a capture artefact.
    ============================================================================= */
 
 :root {

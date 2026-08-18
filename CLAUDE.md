@@ -1366,10 +1366,51 @@ header, edit button and logo, makes the filter bar sticky, and fully specifies t
 `#99f2e4 -> #ccf8f2 -> #d4e0fe -> #e7e0f9` with text `#009788`, and a sparkle drawn as
 a `::before` data-URI SVG.
 
-⚠️ **THE CHART SERIES PALETTE IS NOT IN THE EMBED CONFIG.** There is no
-`chartColorPalettes` key, so series colours are set in ThoughtSpot ADMIN. They cannot be
-read from the parent and cannot be measured through the frame. They need a SingleFile
-capture (with frames saved) to pin down; until then do not invent them.
+### Reading inside the frame: the SingleFile capture route (this WORKS)
+The series palette and all chart geometry are not in the embed config, but a SingleFile
+capture does serialise the frame. How to get at it:
+
+1. SingleFile saves the frame into a **`srcdoc` attribute** on `#_thoughtspot-embed`
+   (9.4MB of it). The rendered Highcharts SVG, the tables and the inline heatmap
+   colours are all in there.
+2. **Do NOT try to read it through the iframe.** Its `sandbox` attribute omits
+   `allow-same-origin`, so `contentDocument` is null. Stripping the sandbox to get in
+   is both the wrong instinct and blocked as a security bypass.
+3. **Extract the `srcdoc` to its own file instead**: unescape the attribute, strip
+   `<script>` tags (saved SPA pages re-hydrate and blank themselves; the DOM you want
+   is already serialised), write it to `public/__m/ts.html`, and open that. Now
+   everything is same-origin and every computed style is readable.
+4. Vite needs a restart to serve a new `public/` file, and avoid `&` in the name.
+
+That capture yielded 12 charts: 1 area sparkline, 1 grouped column (4 series), 4 pies,
+1 single line, 1 multi-line (3 series), 1 dual-axis (column + line), 1 horizontal bar,
+plus KPI/metric tiles and 28 tables.
+
+**The palette is a SYSTEM, not a list** — 8 hues x 5 steps = 40 colours, in
+`src/data/tsPalette.ts`. A chart takes the first n BASE hues; a donut needing more than
+8 slices continues into the tints of hues already used, which is why big donuts show
+pale and dark relatives of earlier slices. Approximating this is what makes a replica
+read as "close but off".
+⚠️ **Series order differs BY CHART TYPE.** Lines and areas start at blue
+(#2666F9, #00DEBC, #FFD800); the grouped column starts at GREEN
+(#2CBF58, #FFD800, #00DEBC, #2666F9), confirmed against its own legend swatches. There
+is no single global sequence.
+
+**The "show heat map" table ramp** is a pale cyan lerp, #f8fdfe -> #b5ecf2, and it is
+normalised **per COLUMN**. `heatColor(v, min, max)` reproduces all 16 sampled stops to
+within 2/255.
+⚠️ Pass that column's own bounds. Checking it against the whole table's range (1..825,
+where 825 is another column's value) made a correct function look broken — the test was
+wrong, not the code, which is the usual direction of travel here.
+
+**Two layers decide every chart value.** Invoca overrides only the 90 tokens; ThoughtSpot's
+own CSS uses a wider set with fallbacks (`var(--ts-var-chart-y-axis-line-color, #e0e0e0)`).
+Override wins where it exists, ThoughtSpot's default applies everywhere else — so axis
+LABELS are Invoca's `#5b6577` while axis LINES are `#e0e0e0` and legend TEXT is `#777e8b`.
+⚠️ **1rem = 14px in ThoughtSpot**, so convert their rem values by /14. `.5714…rem` is 8px.
+⚠️ **Charts are Lato, TABLES ARE NOT.** ThoughtSpot's table CSS sets
+`optimo-plain, "Helvetica Neue", Helvetica, Arial` explicitly, which beats the inherited
+Lato. Both read off the same captured document, so it is not an artefact.
 
 **A tall viewport DOES render the whole liveboard**, which is the one trick that works
 for surveying layout when scrolling will not: `resize_window` to something like
