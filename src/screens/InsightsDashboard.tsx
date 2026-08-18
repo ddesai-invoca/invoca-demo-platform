@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useNavigate, useParams, useSearchParams, Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { DonutChart, TS_GEOM, truncate } from "../components/DonutChart";
-import { usePageDataWithLabels } from "../components/GeneratedTiles";
+import { usePageDataWithLabels, DashAssistant } from "../components/GeneratedTiles";
 import { InteractionsDrawer, type DrawerRequest } from "../components/InteractionsDrawer";
 import { buildInteractions } from "../data/interactions";
 import { InsightsAskDrawer } from "../components/InsightsAskDrawer";
@@ -678,6 +678,11 @@ export function InsightsDashboard() {
       {drawer && (
         <InteractionsDrawer req={drawer} items={items} onClose={() => setDrawer(null)} />
       )}
+
+      {/* Renders any tile created from the Add Tile picker. Without this the tile is
+          stored under this page's scope key and never drawn — the same silent success
+          the Reports tab had. */}
+      <DashAssistant />
 
       {/* Always mounted so it can transition OUT as well as in. */}
       {/* WHAT THE DRAWER IS GIVEN IS WHAT THE SCREEN SHOWS.

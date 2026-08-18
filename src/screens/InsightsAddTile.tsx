@@ -1,4 +1,10 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useProfile } from "../data/ProfileContext";
+import { useAiAssistant } from "../data/AiAssistantContext";
+import { TEMPLATE_SPECS } from "../data/insightsCatalog";
+import { buildTile } from "../data/insightsTileData";
+import { InsightsConfigDrawer } from "../components/InsightsConfigDrawer";
 
 /* =============================================================================
    InsightsAddTile — what "+ Add Tile" opens on an Insights & Analytics dashboard.
@@ -115,11 +121,17 @@ function AiSparkle() {
   );
 }
 
+const DASH = "/insights/dashboard/Summary%20Dashboard";
+
 export function InsightsAddTile() {
   const navigate = useNavigate();
-  /* Where "Back" and every card return to. The dashboard is the only place this
-     screen is reachable from, so there is one destination. */
-  const back = () => navigate("/insights/dashboard/Summary%20Dashboard");
+  const { profile, profileId } = useProfile();
+  const { addTile } = useAiAssistant();
+  /* Which template's Configuration drawer is open, or null. */
+  const [configuring, setConfiguring] = useState<string | null>(null);
+  /* Where "Back" returns to. The dashboard is the only place this screen is
+     reachable from, so there is one destination. */
+  const back = () => navigate(DASH);
 
   const Card = ({ t, accent }: { t: Tile; accent?: boolean }) => (
     <button className={"iat-card" + (accent ? " iat-card--ai" : "")} type="button"
@@ -128,8 +140,15 @@ export function InsightsAddTile() {
            The template cards are the visual picker only until each template is
            built, so they return to the dashboard rather than silently doing
            nothing under the cursor. */
-        if (t.title === "Build With AI") navigate("/insights/dashboard/Summary%20Dashboard?ask=1");
-        else back();
+        /* Three destinations, matching the live site exactly:
+             Build With AI  -> the Ask drawer we already have
+             a chart template -> the Configuration drawer, right here
+             a Report template -> a full-page column picker (not built yet), so it
+                                  still returns rather than opening the wrong surface. */
+        if (t.title === "Build With AI") { navigate(`${DASH}?ask=1`); return; }
+        const spec = TEMPLATE_SPECS[t.title];
+        if (spec?.surface === "drawer") { setConfiguring(t.title); return; }
+        back();
       }}>
       {/* THE CARD IS A COLUMN, not an icon beside a stacked title+description.
           Measured on the live page: the card is flex-column with a 12px gap; its
@@ -165,6 +184,27 @@ export function InsightsAddTile() {
       <div className="iat-foot">
         <button className="iat-back" type="button" onClick={back}>Back</button>
       </div>
+
+      <InsightsConfigDrawer
+        template={configuring}
+        profile={profile}
+        onCancel={() => setConfiguring(null)}
+        onCreate={(c) => {
+          /* Build the tile from the PHASE-1 POOL and register it on the dashboard's
+             own scope key, so it is waiting there when we navigate back — the same
+             key GeneratedTiles reads. */
+          /* The key MUST use the ENCODED path. React Router reports
+             "/insights/dashboard/Summary%20Dashboard", and GeneratedTiles builds its
+             scope key from that pathname verbatim — a decoded space here stores the
+             tile under a key nobody reads, and it would never appear. Derived from
+             DASH so the two can't drift. */
+          addTile(`${profileId}::${DASH}`, {
+            ...buildTile(profile, c), id: `t${Date.now()}`,
+          });
+          setConfiguring(null);
+          navigate(DASH);
+        }}
+      />
     </div>
   );
 }
