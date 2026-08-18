@@ -158,7 +158,10 @@ export function AiAgentConversionDashboard() {
           <section className="dash-card">
             <div className="dash-card-head">
               <span className="dash-card-title">{productCategory.title}</span>
-              <DashTileToggle path={`breakdowns.${productCategoryAt!.i}`} />
+              {/* The CHART card reads productCategoryGraph, NOT the breakdown, even
+                  though the two cards share a heading. Pinning it to the breakdown
+                  would silently drop every edit to the graph's own series. */}
+              <DashTileToggle path="productCategoryGraph" />
             </div>
             <div className="chart-wrap"><StackedBarChart chart={d.productCategoryGraph} /></div>
           </section>
