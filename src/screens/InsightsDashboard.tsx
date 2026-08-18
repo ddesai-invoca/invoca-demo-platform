@@ -5,6 +5,7 @@ import { DonutChart, TS_GEOM, truncate } from "../components/DonutChart";
 import { usePageDataWithLabels } from "../components/GeneratedTiles";
 import { InteractionsDrawer, type DrawerRequest } from "../components/InteractionsDrawer";
 import { buildInteractions } from "../data/interactions";
+import { InsightsAskDrawer } from "../components/InsightsAskDrawer";
 
 /* Insights & Analytics -> a saved dashboard (network 1847
    /insights/dashboard/<uuid>). Matched to the capture: breadcrumb + title, an
@@ -448,6 +449,10 @@ export function InsightsDashboard() {
     profile.reports.marketingDashboard, buildLabels(profile.bookingTerm || "Appointment"));
   const md = view;
   const L = view.labels;
+  /* The "Ask" drawer's own open state. Kept separate from the interactions drawer
+     below: they are different surfaces and must never be open at once by accident. */
+  const [askOpen, setAskOpen] = useState(false);
+
   const find = (re: RegExp) => md.breakdowns.find((b) => re.test(b.title));
   const metricCols = [L.mCalls, L.mAnswered, L.mDiscussed, L.mScheduled];
 
@@ -576,7 +581,9 @@ export function InsightsDashboard() {
           <h1 className="ind-title">{title}</h1>
         </div>
         <div className="ind-actions">
-          <button className="ind-ask"><span className="material-icons">auto_awesome</span>Ask</button>
+          <button className="ind-ask" onClick={() => setAskOpen(true)}>
+            <span className="material-icons">auto_awesome</span>Ask
+          </button>
           <button className="ind-add"><span className="material-icons">add</span>Add Tile</button>
           <span className="material-icons ind-kebab">more_vert</span>
         </div>
@@ -664,6 +671,34 @@ export function InsightsDashboard() {
       {drawer && (
         <InteractionsDrawer req={drawer} items={items} onClose={() => setDrawer(null)} />
       )}
+
+      {/* Always mounted so it can transition OUT as well as in. */}
+      {/* WHAT THE DRAWER IS GIVEN IS WHAT THE SCREEN SHOWS.
+
+          Passing the registered page data alone was not enough: this screen COMPUTES
+          its headline figures (Total Calls, Missed Conversations, Buying Intent,
+          Conversions, the weekly trend) rather than reading them as named fields, so
+          asked about the "missed conversation rate" the assistant answered that no
+          such metric exists while 20,224 was on screen beside it. Anything a prospect
+          can point at has to be in the context. */}
+      <InsightsAskDrawer
+        open={askOpen}
+        onClose={() => setAskOpen(false)}
+        pageTitle="Summary Dashboard"
+        data={{
+          onScreenSummary: {
+            [L.totalCalls]: totalCalls,
+            [L.missed]: missed,
+            [L.conversations]: conversations,
+            missedRatePercent: totalCalls ? +((missed / totalCalls) * 100).toFixed(2) : 0,
+            [L.buyingIntent]: `${buyingIntent}%`,
+            [L.conversions]: `${conversions}%`,
+            [L.weeklyTrend]: { latest: trend.latest, change: trend.pct, delta: trend.delta },
+          },
+          ...md,
+        }}
+        customerName={profile.customerName}
+      />
     </div>
   );
 }

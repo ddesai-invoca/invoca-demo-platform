@@ -3441,3 +3441,87 @@ button.nav-item {
 .vl-review:disabled, .vl-save:disabled {
   background: #e7e9eb; border-color: #d0d3d8; color: #a1a7b2; cursor: not-allowed;
 }
+
+/* ---- Insights & Analytics "Ask" drawer -----------------------------------
+   Measured off the SingleFile save (8/17/2026): fixed right, 800px wide, MUI
+   elevation-16 shadow, rgba(0,0,0,.5) backdrop, 72px header, h2 20px/400.
+   The font is Invoca's Lato, NOT the ThoughtSpot optimo-plain the rest of this
+   screen uses — the drawer is Invoca chrome wrapping a ThoughtSpot iframe.
+   Scoped .iad- so nothing here reaches another screen. */
+.iad-backdrop {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, .5); z-index: 1199;
+  opacity: 0; pointer-events: none; transition: opacity .22s ease;
+}
+.iad-backdrop--on { opacity: 1; pointer-events: auto; }
+
+.iad {
+  position: fixed; top: 0; right: 0; bottom: 0; width: 800px; max-width: 92vw;
+  background: #fff; z-index: 1200; display: flex; flex-direction: column;
+  font-family: Lato, Avenir, "Museo Sans", sans-serif; color: #15243e;
+  box-shadow: rgba(0,0,0,.2) 0 8px 10px -5px, rgba(0,0,0,.14) 0 16px 24px 2px,
+              rgba(0,0,0,.12) 0 6px 30px 5px;
+  /* Slides in from the right, which is the whole ask. Transform rather than
+     `right`, so it composites instead of laying out every frame. */
+  transform: translateX(100%); transition: transform .24s cubic-bezier(.4, 0, .2, 1);
+}
+.iad--open { transform: translateX(0); }
+/* Respect a reduced-motion preference: the drawer still appears, it just does not
+   travel. */
+@media (prefers-reduced-motion: reduce) {
+  .iad { transition: none; }
+  .iad-backdrop { transition: none; }
+}
+
+.iad-head {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px; padding: 16px 24px; flex: 0 0 auto;
+}
+.iad-title { font-size: 20px; font-weight: 400; color: #15243e; margin: 0; }
+.iad-close {
+  width: 40px; height: 40px; display: grid; place-items: center; border: 0;
+  background: none; color: #8a919e; border-radius: 50%; cursor: pointer;
+}
+.iad-close:hover { background: #f1f4f9; color: #15243e; }
+
+.iad-body { flex: 1 1 auto; overflow-y: auto; display: flex; padding: 0 24px; }
+.iad-empty { margin: auto; text-align: center; max-width: 560px; padding-bottom: 40px; }
+.iad-empty-h {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-size: 30px; font-weight: 700; color: #15243e; margin: 0 0 14px;
+}
+.iad-spark { font-size: 30px; color: #2666f9; }
+.iad-empty-sub { font-size: 15px; line-height: 1.6; color: #5b6577; margin: 0; }
+
+.iad-thread { width: 100%; display: flex; flex-direction: column; gap: 12px; padding: 8px 0 24px; }
+.iad-msg { margin: 0; font-size: 15px; line-height: 1.55; border-radius: 12px; padding: 10px 14px; max-width: 86%; }
+.iad-msg--user { align-self: flex-end; background: #2666f9; color: #fff; }
+.iad-msg--ai { align-self: flex-start; background: #f1f4f9; color: #15243e; }
+.iad-msg--busy { color: #5b6577; font-style: italic; }
+
+.iad-composer { flex: 0 0 auto; padding: 12px 24px 24px; }
+.iad-reset {
+  display: inline-flex; align-items: center; gap: 6px; margin: 0 0 8px auto;
+  background: none; border: 0; color: #5b6577; font: inherit; font-size: 13px;
+  cursor: pointer; padding: 4px 8px; border-radius: 4px;
+}
+.iad-composer { display: flex; flex-direction: column; align-items: stretch; }
+.iad-reset { align-self: flex-end; }
+.iad-reset:hover:not(:disabled) { background: #f1f4f9; color: #15243e; }
+.iad-reset:disabled { opacity: .45; cursor: default; }
+.iad-reset .material-icons { font-size: 16px; }
+
+.iad-field {
+  display: flex; align-items: center; gap: 8px; border: 1px solid #2666f9;
+  border-radius: 26px; padding: 6px 6px 6px 18px; background: #fff;
+}
+.iad-field input {
+  flex: 1; border: 0; outline: 0; background: none; font: inherit; font-size: 15px;
+  color: #15243e; padding: 8px 0;
+}
+.iad-send {
+  width: 40px; height: 40px; flex: 0 0 40px; border: 0; border-radius: 50%;
+  background: #2666f9; color: #fff; display: grid; place-items: center; cursor: pointer;
+}
+.iad-send:hover:not(:disabled) { background: #1c53e9; }
+.iad-send:disabled { background: #b8bdc5; cursor: default; }
+.iad-send .material-icons { font-size: 20px; }
