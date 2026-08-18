@@ -203,7 +203,11 @@ export function AiAssistantDrawer() {
            "remove this tile" has no heading in it at all. */
         const target = r.visibility.target || focus?.label || "";
         const resolved = focus?.path ?? findTilePath(effectiveData(active.key), target);
-        const id = tileId(resolved);
+        /* Falls back to the HEADING when no path resolves, which is exactly what a
+           card with no path stamps as its own `data-tile`. Keeping the two in step is
+           what makes every card hideable without threading a path through all ~35
+           call sites; a mismatch here would silently hide nothing. */
+        const id = tileId(resolved) ?? (target || undefined);
         if (!id) {
           push(`I couldn't tell which tile "${target}" is. Open that tile's own AI button and ask again, or name its heading exactly.`, "info");
         } else if (r.visibility.op === "hide") {

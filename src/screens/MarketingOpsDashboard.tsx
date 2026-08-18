@@ -10,7 +10,7 @@ import { tileId } from "../data/tileId";
 
 function CardHead({ title, toggle, path }: { title: string; toggle?: boolean; path?: string | string[] }) {
   return (
-    <div className="dash-card-head" data-tile={tileId(path)}>
+    <div className="dash-card-head" data-tile={tileId(path) ?? title}>
       <span className="dash-card-title">{title}</span>
       {toggle ? <DashTileToggle path={path as string} /> : <DashTileMenu path={path as string} />}
     </div>

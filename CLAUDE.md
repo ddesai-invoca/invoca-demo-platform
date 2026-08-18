@@ -1250,8 +1250,20 @@ COLUMN, add/remove a TILE, add/remove a chart SERIES, pie SLICE or axis POINT.
   hiding were silent no-ops there until it was added.
 - **Measure against the profile you rendered.** A coverage figure comparing Shady
   Blinds headings to Big O Tires data read 57/77 when the truth was 68/77.
-- `Lead Form Performance Summary` is computed by `deriveLeadFormGroup`, not stored, so
-  it has no node and cannot be edited or pinned. Expected, not a bug.
+- **`Lead Form Performance Summary` IS editable** — an earlier note here claiming it
+  was not was wrong. It is computed by `deriveLeadFormGroup`, but MarketingDashboard
+  FOLDS the derived group into the data it registers (`leadFormSummary`), so edits
+  target `leadFormSummary.*`, the override sits on top of the re-derived value, and
+  they persist. The claim came from measuring `findTilePath` against the raw profile
+  instead of the object the page registers — check the registered data, not the seed.
+  Verified live: Lead Form Count 24,867 -> 31,402, and its labels and title too.
+- **A card with no `path` uses its HEADING as its tile id.** `data-tile={tileId(path)
+  ?? title}` on the head, and the drawer resolves hide targets with the same fallback.
+  Both sides must agree or hiding silently does nothing; the canary checks that. This
+  is what makes every card hideable without threading a path through ~35 call sites.
+- Source-text checks are not runtime checks: `data-tile={tileId(path)}` LOOKS tagged
+  but React omits the attribute when no path is passed, so those cards could not be
+  hidden while every file read as correct. The fallback above closes it.
 
 ## Ask AI: focused edits must land on the focused tile
 - **The bug, for the record.** Renaming the "Conversions by Product Category" tile

@@ -24,17 +24,17 @@ const LABELS = {
    unchanged; passing it pins this card's AI edits to this card. */
 function CardHead({ title, path }: { title: string; path?: string }) {
   return (
-    <div className="dash-card-head" data-tile={tileId(path)}>
+    <div className="dash-card-head" data-tile={tileId(path) ?? title}>
       <span className="dash-card-title">{title}</span>
       <DashTileMenu path={path} />
     </div>
   );
 }
 
-function KpiSection({ group, variant = "row" }: { group: KpiGroup; variant?: "row" | "grid" }) {
+function KpiSection({ group, variant = "row", path }: { group: KpiGroup; variant?: "row" | "grid"; path?: string }) {
   return (
     <section className="dash-card">
-      <CardHead title={group.title} />
+      <CardHead title={group.title} path={path} />
       <div className={variant === "grid" ? "kpi-grid" : "kpi-row"}>
         {group.tiles.map((t, i) => (
           <div className="kpi-tile" key={i}>
@@ -165,15 +165,17 @@ export function MarketingDashboard() {
         <button className="pill-outline">More Filters</button>
       </div>
 
-      {callPerf && <KpiSection group={callPerf} />}
+      {callPerf && <KpiSection group={callPerf} path="kpiGroups.0" />}
       {/* directly under Call Performance Summary, as its lead-form counterpart */}
-      {view.leadFormSummary && <KpiSection group={view.leadFormSummary} />}
-      {nonSales && <KpiSection group={nonSales} />}
+      {/* Its data is the DERIVED group folded into the page data above, so it edits
+          and hides like any built-in tile. */}
+      {view.leadFormSummary && <KpiSection group={view.leadFormSummary} path="leadFormSummary" />}
+      {nonSales && <KpiSection group={nonSales} path="kpiGroups.1" />}
 
       {/* Sales Call Breakout Metrics (2x2) + line graph */}
       {breakout && (
         <div className="split-row">
-          <div className="split-left"><KpiSection group={breakout} variant="grid" /></div>
+          <div className="split-left"><KpiSection group={breakout} variant="grid" path="kpiGroups.2" /></div>
           <section className="dash-card split-right">
             <div className="dash-card-head" data-tile="salesCallBreakoutGraph">
               <span className="dash-card-title">{L.breakoutGraph}</span>

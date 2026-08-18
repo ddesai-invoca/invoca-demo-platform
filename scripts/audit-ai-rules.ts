@@ -50,6 +50,15 @@ console.log("\nRule 3 — every card head carries a tile id");
     if (untagged > 0) bad(`${f}: ${untagged} card head(s) with no data-tile — focused edits there can hit another tile`);
   }
   if (!fail) ok("all card heads are tagged");
+  /* A card with no path stamps its HEADING as the id instead; the drawer must fall
+     back the same way or hiding those cards silently does nothing. */
+  {
+    const drawer = fs.readFileSync("src/components/AiAssistantDrawer.tsx", "utf8");
+    const anyFallback = files.some((f) => read(f).includes("tileId(path) ?? title"));
+    anyFallback && drawer.includes("tileId(resolved) ?? (target")
+      ? ok("heads and the drawer agree on the heading fallback id")
+      : bad("the heading fallback is wired on only one side — hiding will no-op");
+  }
 }
 
 console.log("\nRule 3 — filtered lists keep their original index");

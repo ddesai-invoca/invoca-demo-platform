@@ -18,7 +18,7 @@ import { tileId } from "../data/tileId";
    and constrainToFocus() in editGuard.ts for why it is needed. */
 function CardHead({ title, path }: { title: string; path?: string }) {
   return (
-    <div className="dash-card-head" data-tile={tileId(path)}>
+    <div className="dash-card-head" data-tile={tileId(path) ?? title}>
       <span className="dash-card-title">{title}</span>
       <DashTileMenu path={path} />
     </div>

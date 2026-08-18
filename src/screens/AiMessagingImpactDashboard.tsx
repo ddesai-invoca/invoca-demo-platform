@@ -17,7 +17,7 @@ import { tileId } from "../data/tileId";
 function KpiCard({ card, path }: { card: AimKpiCardT; path?: string }) {
   return (
     <section className={"dash-card aim-card" + (card.chip ? " aim-card--chip" : "")}>
-      <div className="dash-card-head" data-tile={tileId(path)}>
+      <div className="dash-card-head" data-tile={tileId(path) ?? card.title}>
         <span className="dash-card-title">{card.title}</span>
         <DashTileMenu path={path} />
       </div>
