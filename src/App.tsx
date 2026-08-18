@@ -23,6 +23,7 @@ import { ManageDashboards } from "./screens/ManageDashboards";
 import { InsightsAnalytics } from "./screens/InsightsAnalytics";
 import { InsightsReport } from "./screens/InsightsReport";
 import { InsightsAddTile } from "./screens/InsightsAddTile";
+import { InsightsColumnPicker } from "./screens/InsightsColumnPicker";
 import { InsightsCallDetail } from "./screens/InsightsCallDetail";
 import { CallReview } from "./screens/CallReview";
 import { CallDetail } from "./screens/CallDetail";
@@ -134,6 +135,7 @@ export default function App() {
             {/* The one call reachable from the interaction drawer. NOT the Call Review
                 detail page (/call-review/detail) — different Invoca screen, left alone. */}
             <Route path="/insights/add-tile" element={<InsightsAddTile />} />
+            <Route path="/insights/add-tile/:report" element={<InsightsColumnPicker />} />
             <Route path="/insights/call" element={<InsightsCallDetail />} />
             <Route path="/reports/digital-insights" element={<DigitalInsights />} />
             <Route path="/reports/conversation-intelligence" element={<ConversationIntelligence />} />

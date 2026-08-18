@@ -148,6 +148,12 @@ export function InsightsAddTile() {
         if (t.title === "Build With AI") { navigate(`${DASH}?ask=1`); return; }
         const spec = TEMPLATE_SPECS[t.title];
         if (spec?.surface === "drawer") { setConfiguring(t.title); return; }
+        /* The Reports go to their own FULL PAGE, matching the live route shape
+           (.../new_tile/details-report), not to a drawer. */
+        if (spec?.surface === "columns") {
+          navigate(`/insights/add-tile/${t.title.toLowerCase().replace(/\s+/g, "-")}`);
+          return;
+        }
         back();
       }}>
       {/* THE CARD IS A COLUMN, not an icon beside a stacked title+description.

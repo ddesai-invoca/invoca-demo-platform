@@ -99,7 +99,9 @@ const fmt = (n: number, money: boolean, pct: boolean) =>
 /* Deterministic spread of a total across n buckets, weighted so the first buckets are
    larger — real breakdowns are never uniform, and a flat bar chart looks synthetic. */
 function spread(total: number, n: number, seed: number): number[] {
-  const w = Array.from({ length: n }, (_, i) => 100 - i * (60 / Math.max(n, 1)) + ((seed >> i) % 17));
+  /* `>>>` again: a signed shift on the unsigned hash can go negative, and a negative
+     jitter here would shrink or invert a bar's weight rather than vary it. */
+  const w = Array.from({ length: n }, (_, i) => 100 - i * (60 / Math.max(n, 1)) + ((seed >>> i) % 17));
   const sum = w.reduce((a, b) => a + b, 0);
   return w.map((x) => Math.max(1, Math.round((x / sum) * total)));
 }
@@ -188,4 +190,72 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
         xLabels: labels, series: series(labels) };
     }
   }
+}
+
+/* Plausible filler for reported contact columns. Deliberately generic and obviously
+   sample-like (no real people), and indexed deterministically so a row keeps its
+   identity between rebuilds. */
+const STREETS = ["Maple St", "Oak Ave", "Cedar Ln", "Main St", "Park Blvd", "Elm Dr", "Pine Way"];
+const STATES = ["CA", "TX", "FL", "NY", "IL", "OH", "GA", "NC", "PA", "AZ"];
+const FIRST = ["Jordan", "Avery", "Riley", "Morgan", "Casey", "Quinn", "Rowan", "Sasha"];
+const LAST = ["Bennett", "Alvarez", "Okafor", "Nguyen", "Kowalski", "Rivera", "Haddad", "Moreau"];
+
+/* ---- rows for a Report tile ------------------------------------------------
+   One row per interaction, with every cell answered from the pool where the pool can
+   answer: a dimension cycles its real values, a measure is formatted at the right
+   magnitude, a (T/F) signal reads True/False. Everything is keyed off the profile id
+   and the row index, so the same chosen columns always produce the same table — the
+   rule that a number never changes once shown applies to report rows too. */
+export function reportRows(profile: CustomerProfile, columns: string[], count = 8): string[][] {
+  const base = hash(profile.id + "::report");
+  return Array.from({ length: count }, (_, i) =>
+    columns.map((col, j) => cellFor(profile, col, i, base + i * 131 + j * 17)));
+}
+
+function cellFor(profile: CustomerProfile, col: string, row: number, seed: number): string {
+  const c = col.toLowerCase();
+  if (/\(t\/f\)$/.test(c)) return (seed % 3 === 0) ? "False" : "True";
+  if (/record id|unique id|interaction id/.test(c)) {
+    const hex = seed.toString(16).toUpperCase().padStart(8, "0").slice(0, 8);
+    return `${hex.slice(0, 4)}-${hex.slice(4)}${(row + 17).toString(16).toUpperCase()}`;
+  }
+  if (/start time|datetime|date of birth|existing .* time/.test(c)) {
+    /* Inside the demo's own January 2026 window, so a report never disagrees with the
+       date filter shown above it. */
+    return `1/${1 + (seed % 28)}/26 ${1 + (seed % 12)}:${String(seed % 60).padStart(2, "0")} ${seed % 2 ? "PM" : "AM"}`;
+  }
+  if (/phone|callback number/.test(c)) return `(${200 + (seed % 700)}) ${100 + (seed % 900)}-${String(seed % 10000).padStart(4, "0")}`;
+  /* REPORTED CONTACT FIELDS need to read like contact details. Without these the
+     minted-dimension fallback produced "Address (Reported) A", which is the sort of
+     placeholder a prospect spots immediately in a row-level report. */
+  if (/address 2/.test(c)) return (seed % 3 === 0) ? `Apt ${1 + (seed % 40)}` : "";
+  if (/address/.test(c)) return `${100 + (seed % 8900)} ${STREETS[seed % STREETS.length]}`;
+  if (/country/.test(c)) return "United States";
+  if (/state or province|^state/.test(c)) return STATES[seed % STATES.length];
+  if (/name \(reported\)|consumer name|first name|last name|^name$/.test(c)) {
+      /* UNSIGNED shift. `seed` is a >>>0 hash so it can exceed 2^31, where a signed >>
+       goes negative, negative % length stays negative, and the lookup returns
+       undefined — which rendered as the literal "Jordan undefined" in a report row. */
+    const f = FIRST[seed % FIRST.length], l = LAST[(seed >>> 3) % LAST.length];
+    return /first name/.test(c) ? f : /last name/.test(c) ? l : `${f} ${l}`;
+  }
+  if (/ip address/.test(c)) return `${10 + (seed % 240)}.${seed % 256}.${(seed >>> 4) % 256}.${(seed >>> 8) % 256}`;
+  if (/url|calling page|landing page/.test(c)) {
+    const path = ["/", "/contact", "/services", "/locations", "/quote"][seed % 5];
+    return `${profile.brandDomain || "example.com"}${path}`;
+  }
+  if (/email/.test(c)) return `caller${row + 1}@example.com`;
+  if (/zip|postal/.test(c)) return String(10000 + (seed % 89999));
+  if (/duration|time|monolog|silence|overtalk|hold/.test(c)) {
+    const s = 20 + (seed % 400);
+    return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+  }
+  if (/revenue|sale amount|fees|earned|paid/.test(c)) return `$${(200 + (seed % 4800)).toLocaleString("en-US")}`;
+  if (/count|messages|keypresses/.test(c)) return String(1 + (seed % 40));
+  if (/score|ranking/.test(c)) return String(50 + (seed % 50));
+  /* A dimension the pool knows: cycle its real values so a Marketing Source column
+     shows this prospect's actual sources rather than filler. */
+  const vals = dimensionValues(profile, col);
+  if (vals.length && !/^{/.test(vals[0]) && !vals[0].startsWith(col)) return vals[row % vals.length];
+  return vals.length ? vals[row % vals.length] : `${col} ${row + 1}`;
 }

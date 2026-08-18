@@ -3649,3 +3649,85 @@ button.nav-item {
 .icd-create:hover:not(:disabled) { background: #1c53e9; }
 /* The live Create is greyed until the form is valid — measured, not assumed. */
 .icd-create:disabled { background: #e7e9eb; color: #a1a7b2; cursor: not-allowed; }
+
+/* Generated TABLE tile (the Report templates). Its own scroll box so a report with
+   many chosen columns never makes the page scroll sideways. */
+.gen-table-wrap { overflow-x: auto; max-width: 100%; }
+.gen-table { min-width: 100%; white-space: nowrap; }
+.gen-table th, .gen-table td { padding: 8px 12px; font-size: 13px; }
+
+/* ---- Insights & Analytics Report column picker -----------------------------
+   The three Report templates open this FULL PAGE, not the Configuration drawer:
+   "New Tile - <name>" / "Choose Your Columns" / 20 accordion groups over the combined
+   column universe / a "Reorder columns" sidebar / Back-Cancel-Create. Measured off the
+   live page. Scoped .icp-. */
+.icp-page {
+  background: #fff; min-height: 100%; padding: 24px;
+  font-family: Lato, Avenir, "Museo Sans", sans-serif; color: #15243e;
+  display: flex; flex-direction: column;
+}
+.icp-h1 { font-size: 24px; font-weight: 400; color: #15243e; margin: 0 0 20px; }
+
+/* Main + sidebar. The sidebar is fixed-width so the column grid takes the slack, and
+   it collapses under the columns on a narrow window rather than squeezing both. */
+.icp-body { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 24px; align-items: start; }
+@media (max-width: 1100px) { .icp-body { grid-template-columns: minmax(0, 1fr); } }
+
+.icp-section { font-size: 20px; font-weight: 400; color: #15243e; margin: 0 0 12px; }
+.icp-search {
+  display: flex; align-items: center; gap: 8px; border: 1px solid #d0d3d8;
+  border-radius: 3px; padding: 6px 10px; margin: 0 0 10px;
+}
+.icp-search .material-icons { font-size: 20px; color: #5b6577; }
+.icp-search input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 15px; background: none; color: #15243e; }
+
+.icp-bulk { display: flex; gap: 14px; margin: 0 0 14px; }
+.icp-bulk button {
+  background: none; border: 0; color: #2666f9; font: inherit; font-size: 13px;
+  padding: 2px 0; cursor: pointer;
+}
+.icp-bulk button:hover { text-decoration: underline; }
+.icp-bulk--group { margin: 8px 0 10px; }
+
+.icp-group { border-top: 1px solid #e7e9eb; padding: 12px 0; }
+.icp-group-head {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  background: none; border: 0; font: inherit; font-size: 16px; font-weight: 400;
+  color: #15243e; cursor: pointer; padding: 4px 0;
+}
+.icp-group-head .material-icons { font-size: 20px; color: #5b6577; }
+/* Three columns, as the live grid has it; collapses rather than crushing the labels. */
+.icp-cols { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px 16px; }
+.icp-col { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.35; }
+.icp-col input { margin-top: 2px; accent-color: #2666f9; flex: 0 0 auto; }
+
+.icp-side { border: 1px solid #e7e9eb; border-radius: 3px; padding: 14px; position: sticky; top: 16px; }
+.icp-side-title { font-size: 16px; font-weight: 400; color: #15243e; margin: 0 0 10px; }
+.icp-order { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.icp-order li { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #15243e; }
+.icp-grip { font-size: 18px; color: #b8bdc5; flex: 0 0 auto; }
+.icp-order-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.icp-nudge {
+  background: none; border: 0; color: #2666f9; cursor: pointer; padding: 2px;
+  display: grid; place-items: center; border-radius: 3px;
+}
+.icp-nudge:disabled { color: #d0d3d8; cursor: default; }
+.icp-nudge .material-icons { font-size: 16px; }
+.icp-order-empty { color: #5b6577; font-style: italic; }
+
+.icp-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto; padding: 20px 0 8px;
+}
+.icp-foot-right { display: inline-flex; gap: 8px; align-items: center; }
+.icp-back, .icp-cancel {
+  background: none; border: 0; color: #2666f9; font: inherit; font-size: 14px;
+  font-weight: 500; padding: 8px 12px; border-radius: 3px; height: 36px; cursor: pointer;
+}
+.icp-back:hover, .icp-cancel:hover { background: #f3f7ff; }
+.icp-create {
+  border: 0; font: inherit; font-size: 14px; font-weight: 500; padding: 8px 12px;
+  border-radius: 3px; height: 36px; background: #2666f9; color: #fff; cursor: pointer;
+}
+.icp-create:hover:not(:disabled) { background: #1c53e9; }
+.icp-create:disabled { background: #e7e9eb; color: #a1a7b2; cursor: not-allowed; }

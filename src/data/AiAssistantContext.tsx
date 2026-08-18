@@ -13,13 +13,22 @@ import { getByPath, isStructuralChange } from "./editGuard";
 
 export interface GeneratedTile {
   id: string;
-  tileType: "kpi" | "line" | "bar" | "pie";
+  /* "table" is the Report templates' tile: Details / Summary / Transactions are
+     tables, not charts. */
+  tileType: "kpi" | "line" | "bar" | "pie" | "table";
   title: string;
   note: string;
   kpis: { label: string; value: string }[];
   xLabels: string[];
   series: { name: string; values: number[] }[];
   slices: { label: string; value: number }[];
+  /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
+     (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
+     generated type REQUIRED, so adding these there would force the assistant to
+     invent a table on every kpi/line/bar/pie it creates. The column picker fills
+     them; the model never touches them. */
+  columns?: string[];
+  rows?: string[][];
 }
 
 export interface AssistantFocus {

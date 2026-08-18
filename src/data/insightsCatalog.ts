@@ -49,12 +49,16 @@ export interface Vocab {
 export function vocabFor(profile: CustomerProfile): Vocab {
   const ind = (profile.industry || "").toLowerCase();
   const has = (...w: string[]) => w.some((x) => ind.includes(x));
+  /* MOST SPECIFIC VERTICAL FIRST. Shady Blinds' industry reads "Window treatments &
+     home services", so a generic "home service" test placed earlier won and gave it
+     "Branch" where "Showroom" is the truer word for a blinds retailer. Order matters
+     whenever an industry string names two verticals. */
   const location =
-    has("health", "medical", "clinic", "hospital", "dental", "care") ? "Facility"
-    : has("retail", "tire", "store", "mattress", "shop") ? "Store"
-    : has("home service", "plumb", "hvac", "roof", "restoration", "clean") ? "Branch"
+    has("health", "medical", "clinic", "hospital", "dental") ? "Facility"
     : has("blind", "window", "furnish", "design", "showroom") ? "Showroom"
+    : has("retail", "tire", "store", "mattress", "shop") ? "Store"
     : has("senior", "living", "resort", "community") ? "Community"
+    : has("home service", "plumb", "hvac", "roof", "restoration", "clean") ? "Branch"
     : "Location";
   const category =
     has("health", "medical", "clinic", "hospital", "dental") ? "Specialty"

@@ -7,6 +7,7 @@ import { LineChart } from "./LineChart";
 import { StackedBarChart } from "./StackedBarChart";
 import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
+import { fitCells } from "./chartFit";
 
 /* useDashboardData — each dashboard calls this with its BASE data slice. It
    registers the dashboard as the assistant's scope and returns the EFFECTIVE
@@ -107,6 +108,23 @@ function TileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => voi
       {tile.tileType === "line" && <div className="chart-wrap"><LineChart chart={asChart} height={240} /></div>}
       {tile.tileType === "bar" && <div className="chart-wrap"><StackedBarChart chart={asChart} height={240} /></div>}
       {tile.tileType === "pie" && <div className="donut-wrap"><DonutChart segments={tile.slices} total={pieTotal} /></div>}
+      {tile.tileType === "table" && (
+        /* Scrolls in its own box: a Details Report can carry dozens of chosen columns
+           and the page itself must never scroll sideways. Cells are padded/truncated
+           to the header count by the same discipline as every other table here. */
+        <div className="gen-table-wrap">
+          <table className="dash-table gen-table">
+            <thead><tr>{(tile.columns ?? []).map((c) => <th key={c}>{c}</th>)}</tr></thead>
+            <tbody>
+              {(tile.rows ?? []).map((row, i) => (
+                <tr key={i}>
+                  {fitCells(row, (tile.columns ?? []).length).map((cell, j) => <td key={j}>{cell}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
       {tile.note && tile.tileType !== "kpi" && <div className="gen-note">{tile.note}</div>}
     </section>
   );
