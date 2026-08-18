@@ -36,6 +36,13 @@ export interface AssistantFocus {
   preview?: string;   // short text preview of the tile
   key?: string;       // scope "agent": the scope key its data lives under
   questionPath?: string; // scope "agent": where the question list sits in it
+  /* The focused tile's OWN data path, e.g. "breakdowns.4". Optional: a tile that
+     does not declare one behaves exactly as before, with the model locating the
+     path itself. Supplying it removes the guess, because the model reasons about
+     the page as RENDERED and picks the wrong index wherever render order and array
+     order disagree -- see constrainToFocus() in editGuard.ts for the case that
+     forced this. */
+  path?: string;
   /* Open on the LEFT, with no backdrop. For a drawer opened FROM something the user
      needs to keep watching: the preview chat lives on the right, and the whole point
      of editing the agent is seeing the chat pick the change up. A right-hand drawer

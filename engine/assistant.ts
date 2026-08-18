@@ -31,6 +31,7 @@ export interface AssistantFocus {
   tileKind?: "builtin" | "generated";
   label?: string;    // the focused tile's title
   preview?: string;  // a short text preview of the focused tile (to disambiguate)
+  path?: string;     // the focused tile's own data path, when the tile knows it
 }
 export interface AssistantInput {
   customerName: string;
@@ -152,6 +153,15 @@ function buildSystem(input: AssistantInput): string {
           f.tileKind === "generated"
             ? `To change this generated tile, return kind:"editTile" with the FULL updated tile spec in "tile" (same tileType unless the user asks to change it).`
             : `To change this tile, return kind:"editData" with path edits that target ONLY this tile's data in the JSON below.`,
+          /* THE EXACT PATH, when the tile knows it. Do not make the model count
+             array positions: it reasons about the page as RENDERED, and where render
+             order and array order disagree it picks the neighbouring index and
+             rewrites the wrong tile. Telling it outright is cheaper and more reliable
+             than any wording about being careful, and editGuard's constrainToFocus
+             still enforces it if the model ignores this line. */
+          f.path
+            ? `THIS TILE'S DATA IS AT "${f.path}" in the JSON below. EVERY edit path MUST begin with "${f.path}." — for example "${f.path}.title". Do NOT count tiles by their position on screen; the array order is not the render order. Any path outside "${f.path}" will be discarded.`
+            : ``,
         ].filter(Boolean).join("\n")
       : `SCOPE: the whole "${input.dashboardTitle}" page. The user may ask about anything on it, edit a part they NAME, or reshape the overall story across several parts.`;
 

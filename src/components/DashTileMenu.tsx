@@ -16,7 +16,7 @@ function cleanTitle(el: Element | null): string | undefined {
 
 /* The hover-revealed AI sparkle. Pass an explicit `focus` (generated tiles), or
    omit it to derive the focus from the enclosing built-in tile's DOM. */
-export function DashTileAi({ focus }: { focus?: AssistantFocus }) {
+export function DashTileAi({ focus, path }: { focus?: AssistantFocus; path?: string }) {
   const { openDrawer } = useAiAssistant();
   const onClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
@@ -24,26 +24,28 @@ export function DashTileAi({ focus }: { focus?: AssistantFocus }) {
     const card = (e.currentTarget as HTMLElement).closest(".dash-card");
     const label = cleanTitle(card?.querySelector(".dash-card-title") ?? null);
     const preview = card ? (card.textContent || "").replace(/\s+/g, " ").trim().slice(0, 220) : undefined;
-    openDrawer({ scope: "tile", tileKind: "builtin", label, preview });
+    /* `path` is opt-in. A tile that passes it gets its edits pinned to itself; one
+       that does not is unchanged. */
+    openDrawer({ scope: "tile", tileKind: "builtin", label, preview, path });
   };
   return <span className="material-icons dash-ai-tile" title="Ask AI" onClick={onClick}>auto_awesome</span>;
 }
 
 /* Sparkle + kebab — KPI cards, tables, any non-chart tile. */
-export function DashTileMenu() {
+export function DashTileMenu({ path }: { path?: string } = {}) {
   return (
     <span className="dash-tile-actions">
-      <DashTileAi />
+      <DashTileAi path={path} />
       <span className="material-icons dash-more">more_vert</span>
     </span>
   );
 }
 
 /* Sparkle + cadence dropdown — chart/graph tiles (Daily / Weekly / …). */
-export function DashTileToggle({ label = "Daily" }: { label?: string }) {
+export function DashTileToggle({ label = "Daily", path }: { label?: string; path?: string }) {
   return (
     <span className="dash-tile-actions">
-      <DashTileAi />
+      <DashTileAi path={path} />
       <span className="chart-toggle">{label} <span className="material-icons">expand_more</span></span>
     </span>
   );

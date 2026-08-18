@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { columnEdits } from "../data/columnEdits";
-import { getByPath } from "../data/editGuard";
+import { getByPath , constrainToFocus } from "../data/editGuard";
 import { QuestionListTools } from "./QuestionListTools";
 import { stripGeneratedDashes, GREETING_PATH } from "../data/questionImport";
 import { defaultGreeting, resolveGreeting } from "../data/smsBrain";
@@ -208,8 +208,29 @@ export function AiAssistantDrawer() {
               } catch { return e; }
             })
           : r.edits;
-        const n = applyEdits(active.key, edits);
-        push(n ? (r.answer || `Updated ${n} value${n > 1 ? "s" : ""} on this page.`) : "I couldn't map that change to anything on this page — try naming the metric, title or row you mean.", "auto_awesome");
+        /* PIN A FOCUSED EDIT TO THE FOCUSED TILE. The model reasons about the page
+           as rendered, so wherever render order and array order disagree it returns
+           a neighbouring index and silently rewrites the WRONG tile while reporting
+           success. constrainToFocus remaps that onto the tile the user actually
+           clicked and drops anything it cannot place. No-op for tiles that do not
+           declare a path. */
+        const pinned = constrainToFocus(edits, focus?.path, effectiveData(active.key));
+        if (pinned.remapped) {
+          console.warn(`[ai] remapped ${pinned.remapped} edit(s) onto the focused tile "${focus?.path}"`);
+        }
+        if (pinned.dropped) {
+          console.warn(`[ai] dropped ${pinned.dropped} edit(s) that fell outside the focused tile "${focus?.path}"`);
+        }
+        const n = applyEdits(active.key, pinned.edits);
+        /* Say when part of it was refused rather than reporting a clean success:
+           the user is focused on ONE tile and an edit aimed elsewhere is exactly the
+           bug this guard exists to stop. */
+        const note = !n
+          ? "I couldn't map that change to anything on this page — try naming the metric, title or row you mean."
+          : pinned.dropped
+            ? `${r.answer || `Updated ${n} value${n > 1 ? "s" : ""}.`} I left ${pinned.dropped} change${pinned.dropped > 1 ? "s" : ""} out because ${pinned.dropped > 1 ? "they were" : "it was"} outside this tile.`
+            : (r.answer || `Updated ${n} value${n > 1 ? "s" : ""} on this page.`);
+        push(note, "auto_awesome");
       } else {
         push(r?.answer || "…");
       }

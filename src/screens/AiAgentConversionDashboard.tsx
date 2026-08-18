@@ -12,11 +12,13 @@ import type { KpiGroup, Breakdown, ConversionCard as ConversionCardT } from "../
    with one new pattern: the six "conversion" cards (title + filter chips + 2 tiles).
    Data-driven from reports.aiAgentConversion, re-skinned per prospect. */
 
-function CardHead({ title }: { title: string }) {
+/* Optional `path` pins this card's AI edits to this card; see MarketingDashboard
+   and constrainToFocus() in editGuard.ts for why it is needed. */
+function CardHead({ title, path }: { title: string; path?: string }) {
   return (
     <div className="dash-card-head">
       <span className="dash-card-title">{title}</span>
-      <DashTileMenu />
+      <DashTileMenu path={path} />
     </div>
   );
 }
@@ -80,7 +82,7 @@ function OutcomeTable({ bd }: { bd: Breakdown }) {
   );
 }
 
-function DonutBreakdown({ bd }: { bd: Breakdown }) {
+function DonutBreakdown({ bd, path }: { bd: Breakdown; path?: string }) {
   const segments = bd.rows.map((r) => ({ label: r.name, value: parseInt(r.metrics[0].replace(/[^\d]/g, "")) || 0 }));
   // Donut % labels are share of the grand total (incl. a long tail of other
   // rows); fall back to the sum of shown rows when no donutTotal is given.
@@ -88,11 +90,11 @@ function DonutBreakdown({ bd }: { bd: Breakdown }) {
   return (
     <div className="breakdown-row">
       <section className="dash-card breakdown-donut">
-        <CardHead title={bd.title} />
+        <CardHead title={bd.title} path={path} />
         <div className="donut-wrap"><DonutChart segments={segments} total={total} /></div>
       </section>
       <section className="dash-card breakdown-table">
-        <CardHead title={bd.tableTitle} />
+        <CardHead title={bd.tableTitle} path={path} />
         <OutcomeTable bd={bd} />
       </section>
     </div>
@@ -106,8 +108,13 @@ export function AiAgentConversionDashboard() {
     return <div className="dash-page"><div className="placeholder"><h2>No dashboard data</h2><p className="muted">This dashboard isn't set up for {profile.customerName} yet.</p></div></div>;
   }
 
-  const donutBreakdowns = d.breakdowns.filter((b) => b.hasDonut);
-  const productCategory = d.breakdowns.find((b) => !b.hasDonut);
+  /* Same trap as the Marketing dashboard: the donut breakdowns render first and the
+     table-only one LAST, so screen position and array index disagree and the AI, left
+     to find the path itself, edits the neighbouring tile. Keep the real index. */
+  const indexed = d.breakdowns.map((b, i) => ({ b, i }));
+  const donutBreakdowns = indexed.filter((x) => x.b.hasDonut);
+  const productCategoryAt = indexed.find((x) => !x.b.hasDonut);
+  const productCategory = productCategoryAt?.b;
 
   return (
     <div className="dash-page aac-page">
@@ -134,19 +141,19 @@ export function AiAgentConversionDashboard() {
       </div>
 
       {/* Donut + outcome-table breakdowns (Source / Medium / Campaign / Search Term) */}
-      {donutBreakdowns.map((b, i) => <DonutBreakdown key={i} bd={b} />)}
+      {donutBreakdowns.map(({ b, i }) => <DonutBreakdown key={i} bd={b} path={`breakdowns.${i}`} />)}
 
       {/* Conversions by Product Category: table (left) + stacked bar (right) */}
       {productCategory && (
         <div className="breakdown-row breakdown-prodcat">
           <section className="dash-card breakdown-table">
-            <CardHead title={productCategory.title} />
+            <CardHead title={productCategory.title} path={`breakdowns.${productCategoryAt!.i}`} />
             <OutcomeTable bd={productCategory} />
           </section>
           <section className="dash-card">
             <div className="dash-card-head">
               <span className="dash-card-title">{productCategory.title}</span>
-              <DashTileToggle />
+              <DashTileToggle path={`breakdowns.${productCategoryAt!.i}`} />
             </div>
             <div className="chart-wrap"><StackedBarChart chart={d.productCategoryGraph} /></div>
           </section>

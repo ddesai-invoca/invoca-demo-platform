@@ -1193,6 +1193,40 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   not captured, so it deliberately shows only what the row already knows rather than
   inventing training statistics a prospect might ask us to explain.
 
+## Ask AI: focused edits must land on the focused tile
+- **The bug, for the record.** Renaming the "Conversions by Product Category" tile
+  with the AI silently failed: the drawer said "Updated the tile title", that tile
+  did not change, and "Calls by Region" got renamed instead. Reproduced 6/6 against
+  the real endpoint, focused and named alike -- deterministic, not flaky.
+- **Cause: render order is not array order.** MarketingDashboard did
+  `filter(b => b.hasDonut)` and rendered those first, then the one table-only
+  breakdown LAST. So Product Category is 6th on screen but index 4 in the array, and
+  index 5 renders 5th. The model reasons about the page as RENDERED, counted the
+  tile it could see, and returned `breakdowns.5.title`. It landed on the single tile
+  whose screen position disagrees with its index -- i.e. exactly the one being edited.
+- **Two things I checked first that were NOT the cause**, so nobody re-checks them:
+  the 12,000-char `dataContext` truncation in AiAssistantDrawer (the payload is only
+  ~6KB and the title sits at offset ~4,200 in all 20 profiles), and the prompt, which
+  explicitly permits editing "a title/label".
+- **Fix, in three parts:**
+  1. The tile declares its own path. `AssistantFocus.path`, an OPT-IN prop threaded
+     `CardHead -> DashTileMenu/DashTileToggle -> DashTileAi`. Tiles that pass nothing
+     behave exactly as before.
+  2. The prompt is told the path outright ("THIS TILE'S DATA IS AT ... every edit
+     path MUST begin with it; do NOT count tiles by screen position"). 4/4 correct
+     after, vs 0/6 before.
+  3. `constrainToFocus()` in editGuard.ts ENFORCES it, because instructing is not
+     guaranteeing: an edit already inside the focused path is kept; a same-container
+     wrong-index edit is REMAPPED onto the focused tile when that leaf exists there;
+     anything else is DROPPED and the drawer says so rather than reporting a clean
+     success. 7 unit tests including the negatives (never invents a key, no-ops
+     without a path).
+- **Keep the index when you filter.** Any dashboard that reorders or filters an array
+  before rendering must carry the original index (`map((b,i)=>({b,i}))`) and pass
+  `path={`breakdowns.${i}`}`. Done for MarketingDashboard and
+  AiAgentConversionDashboard, which share the layout. A new screen that filters
+  without doing this reintroduces the bug silently.
+
 ## Verify Labels (Signal AI Studio > Verify Labels)
 - `src/screens/VerifyLabels.tsx` + `src/data/verifyCalls.ts`, route
   `/signal/ai-studio/verify/:modelId?label=&name=&round=&p=`. Reached from the

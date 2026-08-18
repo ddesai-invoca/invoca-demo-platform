@@ -18,11 +18,13 @@ const LABELS = {
   leadFormCount: "Lead Form Count",
 };
 
-function CardHead({ title }: { title: string }) {
+/* `path` is the card's own data path. Optional, so heads that do not pass one are
+   unchanged; passing it pins this card's AI edits to this card. */
+function CardHead({ title, path }: { title: string; path?: string }) {
   return (
     <div className="dash-card-head">
       <span className="dash-card-title">{title}</span>
-      <DashTileMenu />
+      <DashTileMenu path={path} />
     </div>
   );
 }
@@ -66,16 +68,16 @@ function OutcomeTable({ bd }: { bd: Breakdown }) {
   );
 }
 
-function DonutBreakdown({ bd, total }: { bd: Breakdown; total: number }) {
+function DonutBreakdown({ bd, total, path }: { bd: Breakdown; total: number; path?: string }) {
   const segments = bd.rows.map((r) => ({ label: r.name, value: parseInt(r.metrics[0].replace(/[^\d]/g, "")) || 0 }));
   return (
     <div className="breakdown-row">
       <section className="dash-card breakdown-donut">
-        <CardHead title={bd.title} />
+        <CardHead title={bd.title} path={path} />
         <div className="donut-wrap"><DonutChart segments={segments} total={total} /></div>
       </section>
       <section className="dash-card breakdown-table">
-        <CardHead title={bd.tableTitle} />
+        <CardHead title={bd.tableTitle} path={path} />
         <OutcomeTable bd={bd} />
       </section>
     </div>
@@ -130,8 +132,15 @@ export function MarketingDashboard() {
   ) || 0;
 
   const [callPerf, nonSales, breakout] = d.kpiGroups;
-  const donutBreakdowns = d.breakdowns.filter((b) => b.hasDonut);
-  const productCategory = d.breakdowns.find((b) => !b.hasDonut);
+  /* Indices are kept alongside each breakdown because THE RENDER ORDER IS NOT THE
+     ARRAY ORDER: the donut ones are drawn first and the table-only Product Category
+     one last, so the tile that is 6th on screen is index 4 in the data. Filtering
+     without keeping the index is what left the AI guessing, and it guessed the
+     screen position -- renaming "Calls by Region" instead. */
+  const indexed = d.breakdowns.map((b, i) => ({ b, i }));
+  const donutBreakdowns = indexed.filter((x) => x.b.hasDonut);
+  const productCategoryAt = indexed.find((x) => !x.b.hasDonut);
+  const productCategory = productCategoryAt?.b;
 
   return (
     <div className="dash-page">
@@ -170,19 +179,21 @@ export function MarketingDashboard() {
       )}
 
       {/* Donut + table breakdowns */}
-      {donutBreakdowns.map((b, i) => <DonutBreakdown key={i} bd={b} total={grandTotal} />)}
+      {donutBreakdowns.map(({ b, i }) => (
+        <DonutBreakdown key={i} bd={b} total={grandTotal} path={`breakdowns.${i}`} />
+      ))}
 
       {/* Conversions by Product Category: table (left) + stacked bar (right) */}
       {productCategory && (
         <div className="breakdown-row breakdown-prodcat">
           <section className="dash-card breakdown-table">
-            <CardHead title={productCategory.title} />
+            <CardHead title={productCategory.title} path={`breakdowns.${productCategoryAt!.i}`} />
             <OutcomeTable bd={productCategory} />
           </section>
           <section className="dash-card">
             <div className="dash-card-head">
               <span className="dash-card-title">{productCategory.title}</span>
-              <DashTileToggle />
+              <DashTileToggle path={`breakdowns.${productCategoryAt!.i}`} />
             </div>
             <div className="chart-wrap"><StackedBarChart chart={d.productCategoryGraph} /></div>
           </section>

@@ -129,3 +129,63 @@ export function isStructuralChange(before: unknown, after: unknown, path?: strin
   }
   return false;
 }
+
+/* =============================================================================
+   FOCUSED EDITS MUST LAND ON THE FOCUSED TILE.
+   -----------------------------------------------------------------------------
+   When an SE clicks the sparkle ON a tile, the model still has to find that tile's
+   path in the data by itself, and it reasons about the page as RENDERED. Where the
+   two disagree it picks the wrong index, and the failure is silent: the drawer says
+   "Updated the tile title", the focused tile is untouched, and a DIFFERENT tile
+   quietly gets renamed.
+
+   That is not hypothetical. On the Marketing dashboard the breakdowns render as
+   `filter(hasDonut)` first and the one table-only breakdown LAST, so the Product
+   Category tile is 6th on screen but index 4 in the array, and index 5 ("Calls by
+   Region") renders 5th. Asked to rename Product Category the model returned
+   `breakdowns.5.title` on 6 of 6 attempts, focused and named alike, and renamed
+   Calls by Region instead.
+
+   So the tile now declares its own path and this narrows every edit to it:
+
+     • already inside the focused tile -> kept
+     • same container, WRONG index, and the same leaf exists under the focused
+       path -> REMAPPED onto the focused tile (`breakdowns.5.title` ->
+       `breakdowns.4.title`). This is the off-by-one above, and remapping is safe
+       because it strictly narrows to the tile the user explicitly pointed at.
+     • anything else -> DROPPED, so a focused edit can never touch another tile.
+
+   Only applies when a path is supplied. Tiles that do not declare one behave
+   exactly as before. */
+export interface ConstrainResult { edits: { path: string; value: string }[]; remapped: number; dropped: number }
+
+export function constrainToFocus(
+  edits: { path: string; value: string }[],
+  focusPath: string | undefined,
+  data: unknown,
+): ConstrainResult {
+  if (!focusPath) return { edits, remapped: 0, dropped: 0 };
+  const inside = (p: string) => p === focusPath || p.startsWith(focusPath + ".");
+  /* Split a focus path into its container and index: "breakdowns.4" -> ["breakdowns","4"].
+     Only a container+index focus can be remapped onto; a focus that is not an array
+     element has no sibling to have been confused with. */
+  const m = /^(.*)\.(\d+)$/.exec(focusPath);
+  const out: { path: string; value: string }[] = [];
+  let remapped = 0, dropped = 0;
+
+  for (const e of edits) {
+    if (inside(e.path)) { out.push(e); continue; }
+    if (m) {
+      const sib = new RegExp(`^${m[1].replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.(\\d+)\\.(.+)$`).exec(e.path);
+      /* Same array, different element. Remap only if the same leaf actually exists
+         on the focused element, so we never invent a key that was not there. */
+      if (sib && sib[1] !== m[2] && getByPath(data, `${focusPath}.${sib[2]}`) !== undefined) {
+        out.push({ path: `${focusPath}.${sib[2]}`, value: e.value });
+        remapped++;
+        continue;
+      }
+    }
+    dropped++;
+  }
+  return { edits: out, remapped, dropped };
+}
