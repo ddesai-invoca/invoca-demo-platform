@@ -150,7 +150,10 @@ export function AiAssistantDrawer() {
              as well; it was gated to /dashboards/ only. Still false everywhere else,
              because a page that cannot render a generated tile must be told so or the
              model answers an "add" request with a tile nobody ever sees. */
-          canCreateTiles: pathname.startsWith("/dashboards/") || pathname.startsWith("/reports/"),
+          /* Insights & Analytics added: its dashboard renders DashAssistant with the ts-
+             variant, so a tile created there is actually drawn. */
+          canCreateTiles: pathname.startsWith("/dashboards/") || pathname.startsWith("/reports/")
+            || pathname.startsWith("/insights/"),
           questionPath }),
       });
       const data = await res.json();

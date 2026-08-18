@@ -1545,6 +1545,35 @@ put "Total Revenue" at 0.41 against "Revenue (Sale Amount)", just under the bar.
 question naming only a DIMENSION ("Not Completed Reason Breakdown") becomes a count by
 that dimension, which is what a pie already is.
 
+### The Insights Ask drawer can create tiles now (it used to refuse)
+`InsightsAskDrawer` hardcoded `canCreateTiles: false`, with the reason "this screen
+registers its data but does not render GeneratedTiles, so a tile created here would be
+stored and never drawn". **That reason expired** the moment `InsightsDashboard` started
+rendering `<DashAssistant variant="ts" />`: asked for "Bar chart of Call Count by
+Marketing Medium" the assistant answered "This page cannot add new tiles", a refusal
+that was correct when written and became a bug when the surface arrived. Now `true`, and
+`/insights/` is in `AiAssistantDrawer`'s `canCreateTiles` list too so the top-bar sparkle
+can create there as well.
+⚠️ **A `create` result must be PLACED, not just described.** The drawer only read
+`result.answer`, so a model "create" would have been reported and never rendered — the
+silent-success shape this repo keeps hitting. It now calls `addTile` on the page's own
+encoded scope key.
+
+**Explicit chart requests take the DETERMINISTIC path** (`resolveQuestion` + `buildTile`,
+no model call), gated on `WANTS_TILE` so "how many calls did we get?" is still answered
+rather than turned into a tile. Verified live: the exact question from the refusal now
+builds a 6-bar column of the prospect's own mediums (cpc, Organic, Bing, Brochure,
+Facebook, Instagram) at 22px `#2CBF58` with 0 gridlines.
+
+⚠️ **A NAMED chart type overrides the inferred shape.** "Create a pie chart of Call
+Count by Marketing Source" hit the "X by Y" rule and returned a column: the user said
+pie. `NAMED_TYPE` wins, except where the question names a surface with its own template
+("Calls by Hour"), which says more about the data than "bar" says about the drawing.
+⚠️ **The request wrapper must be stripped BEFORE matching, not just before titling.**
+Left in, "line" and "chart" count as significant words the measure has to contain, so
+"show me a line chart of Call Volume Over Time" matched nothing at all. Stripping it also
+gives the tile a clean heading, since the chart type is already visible in the chart.
+
 ⚠️ **The catalogue IS the regression test.** Every listed question is one that resolves,
 so a matcher change that breaks one shows up immediately. Run
 `npx tsx` over `questionsFor` + `resolveQuestion` after touching any of it.

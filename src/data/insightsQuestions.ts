@@ -260,9 +260,35 @@ const GEO = /\b(geo|map|region|state|territory|location)\b.*\b(heat|map)\b|\bgeo
  * different question — the same "refused, not confused" distinction the assistant
  * drawer already draws.
  */
+/* An explicitly named chart type, which OVERRIDES the inferred template. Asked for
+   "a pie chart of Call Count by Marketing Source" the shape rules would otherwise see
+   "X by Y" and return a column: the user said pie, so it is a pie. */
+const NAMED_TYPE: Array<[RegExp, string]> = [
+  [/\b(pie|donut|doughnut)\b/i, "Pie Chart"],
+  [/\b(stacked)\b/i, "Stacked Bar"],
+  [/\b(dual\s*y-?axis|two axis)\b/i, "Dual Y-Axis"],
+  [/\b(bar|column)\b/i, "Stacked Bar"],
+  [/\bmulti-?line\b/i, "Multi-Line Chart Over Time"],
+  [/\bline\b/i, "Single Line Chart Over Time"],
+  [/\bgeo|heat\s*map\b/i, "Geo Heatmap"],
+  [/\bkpi\b/i, "KPI"],
+  [/\bmetric\b/i, "Metric"],
+];
+
+/* The request wrapper: "create a", "show me a bar chart of", and so on.
+   ⚠️ IT MUST BE STRIPPED BEFORE MATCHING, not just before titling. Left in, "line" and
+   "chart" are treated as significant words the measure has to contain, so
+   "show me a line chart of Call Volume Over Time" matched nothing at all. */
+const stripWrapper = (q: string) => q
+  .replace(/^\s*(?:please\s+)?(?:can you\s+)?(?:create|add|build|make|show me|give me|visuali[sz]e)\s+(?:a|an|the)?\s*/i, "")
+  .replace(/^\s*(?:bar|column|line|multi-?line|pie|donut|doughnut|stacked bar|stacked|dual\s*y-?axis|kpi|metric|table|geo\s*heat\s*map)\s*(?:chart|graph|tile|map)?\s*(?:of|for|showing)?\s*/i, "")
+  .replace(/\s+/g, " ").trim();
+
 export function resolveQuestion(profile: CustomerProfile, question: string): TileChoices | null {
-  const q = question.trim();
-  if (q.length < 3) return null;
+  const raw = question.trim();
+  if (raw.length < 3) return null;
+  const named = NAMED_TYPE.find(([re]) => re.test(raw))?.[1] ?? null;
+  const q = stripWrapper(raw) || raw;
   const cat = buildCatalog(profile);
 
   /* "X by Y" splits the measure from the dimension. Everything before the LAST
@@ -304,50 +330,58 @@ export function resolveQuestion(profile: CustomerProfile, question: string): Til
     }
   }
 
-  const name = q.replace(/\s+/g, " ");
+  /* `q` is already the wrapper-stripped text, which is also the right TITLE: the chart
+     type is visible in the chart, so it does not belong in the heading. */
+  const name = q;
   const dims = dimension ? [dimension] : impliedDim ? [impliedDim] : [];
+
+  /* An explicitly named type wins over every inferred shape, except where the question
+     names a surface with its own template (by hour / by day of week), which is a
+     stronger statement about the data than "bar" is about the drawing. */
+  const withNamed = (c: TileChoices): TileChoices =>
+    named && !HOUR.test(raw) && !DOW.test(raw) ? { ...c, template: named } : c;
 
   /* Order matters: the most specific shape wins. "Calls by Hour" is a time question
      AND a by-dimension question, and it has its own template. */
-  if (HOUR.test(q)) return { template: "Calls by Hour", name, measures: [measure], dimensions: dims };
-  if (DOW.test(q)) return { template: "Calls by Day of Week", name, measures: [measure], dimensions: dims };
-  if (GEO.test(q)) return { template: "Geo Heatmap", name, measures: [measure], dimensions: dims };
-  if (FUNNEL.test(q)) return { template: "Stacked Bar", name, measures: [measure], dimensions: dims };
+  if (HOUR.test(q)) return withNamed({ template: "Calls by Hour", name, measures: [measure], dimensions: dims });
+  if (DOW.test(q)) return withNamed({ template: "Calls by Day of Week", name, measures: [measure], dimensions: dims });
+  if (GEO.test(q)) return withNamed({ template: "Geo Heatmap", name, measures: [measure], dimensions: dims });
+  if (FUNNEL.test(q)) return withNamed({ template: "Stacked Bar", name, measures: [measure], dimensions: dims });
 
   if (TIME.test(q)) {
     if (DUAL.test(q) || (second && RATE.test(q))) {
-      return { template: "Dual Y-Axis", name, measures: [measure, second ?? measure], dimensions: dims };
+      return withNamed({ template: "Dual Y-Axis", name, measures: [measure, second ?? measure], dimensions: dims });
     }
-    return {
+    return withNamed({
       template: second ? "Multi-Line Chart Over Time" : "Single Line Chart Over Time",
       name, measures: second ? [measure, second] : [measure], dimensions: dims,
-    };
+    });
   }
 
   if (BREAKDOWN.test(q) && !dimension) {
     /* A breakdown with no named dimension is a share-of-whole question, which is
        what the pie template is for. */
-    return { template: "Pie Chart", name, measures: [measure], dimensions: dims };
+    return withNamed({ template: "Pie Chart", name, measures: [measure], dimensions: dims });
   }
 
   if (dimension) {
     /* Two measures against one dimension stack; one measure is a plain column. */
-    return {
+    return withNamed({
       template: "Stacked Bar", name,
       measures: second ? [measure, second] : [measure], dimensions: [dimension],
-    };
+    });
   }
 
-  if (BREAKDOWN.test(q)) return { template: "Pie Chart", name, measures: [measure], dimensions: dims };
+  if (BREAKDOWN.test(q)) return withNamed({ template: "Pie Chart", name, measures: [measure], dimensions: dims });
 
   /* A bare measure with no dimension and no time is a single number. RATE gets the
      KPI treatment (number plus its change) because a rate is only interesting
      against a previous period; RANKED without a dimension has nothing to rank, so
      it also falls back to the number. */
   if (RATE.test(q) || RANKED.test(q)) {
-    return { template: "KPI", name, measures: [measure], dimensions: dims };
+    return withNamed({ template: "KPI", name, measures: [measure], dimensions: dims });
   }
-  return { template: "Metric", name, measures: [measure], dimensions: dims };
+  return withNamed({ template: "Metric", name, measures: [measure], dimensions: dims });
 }
 
 /** A one-line account of what the resolver decided, shown in the drawer so the SE

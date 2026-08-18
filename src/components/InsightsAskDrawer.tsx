@@ -1,4 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useProfile } from "../data/ProfileContext";
+import { useAiAssistant, type GeneratedTile } from "../data/AiAssistantContext";
+import { buildTile } from "../data/insightsTileData";
+import { resolveQuestion } from "../data/insightsQuestions";
 
 /* =============================================================================
    InsightsAskDrawer — what the "Ask" button on Insights & Analytics opens.
@@ -30,6 +35,12 @@ import { useEffect, useRef, useState } from "react";
 
 interface Msg { role: "user" | "ai"; text: string }
 
+/* An explicit request for a VISUALISATION, as opposed to a question about the data.
+   Only these take the deterministic path: "show me the answer rate" is a question and
+   must still be answered, not silently turned into a tile. */
+const WANTS_TILE =
+  /\b(create|add|build|make|new tile|bar chart|column chart|line chart|pie chart|donut|table|kpi|metric|graph of|chart of|trend of|visuali[sz]e)\b/i;
+
 export function InsightsAskDrawer({
   open, onClose, pageTitle, data, customerName,
 }: {
@@ -43,6 +54,19 @@ export function InsightsAskDrawer({
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [busy, setBusy] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const { pathname } = useLocation();
+  const { profile, profileId } = useProfile();
+  const { addTile } = useAiAssistant();
+
+  /* The page's own scope key, so a tile lands where DashAssistant reads it. Built from
+     the ENCODED pathname, as the Add Tile flows are: React Router reports
+     "/insights/dashboard/Summary%20Dashboard" and the store keys off that verbatim. */
+  const scopeKey = `${profileId}::${pathname}`;
+
+  const place = (tile: Omit<GeneratedTile, "id">, said: string) => {
+    addTile(scopeKey, { ...tile, id: `t${Date.now()}` });
+    setMsgs((m) => [...m, { role: "ai", text: said }]);
+  };
 
   /* Esc closes, and focus lands in the composer on open: this drawer exists to be
      typed into, so making an SE click the field first is a wasted beat on stage. */
@@ -61,23 +85,56 @@ export function InsightsAskDrawer({
     setMsgs((m) => [...m, { role: "user", text }]);
     setBusy(true);
     try {
+      /* ---- the deterministic path -------------------------------------------
+         An explicit chart request goes through `resolveQuestion` + `buildTile`, the
+         same pair Build With AI uses, so the tile comes out of the PHASE-1 POOL with
+         the measured ThoughtSpot geometry and the same question always yields the
+         same numbers. No model call, which is also why it is instant.
+
+         ⚠️ This is gated on WANTS_TILE. Sending every message down here would turn
+         "how many calls did we get?" into a tile instead of an answer. */
+      if (WANTS_TILE.test(text)) {
+        const choice = resolveQuestion(profile, text);
+        if (choice) {
+          place(buildTile(profile, choice),
+            `Added a ${choice.template} showing ${choice.measures.join(" and ")}`
+            + `${choice.dimensions.length ? ` by ${choice.dimensions[0]}` : ""}.`);
+          return;
+        }
+      }
+
       let dataContext = "";
       try { const j = JSON.stringify(data); dataContext = j.length > 12000 ? j.slice(0, 12000) + "…(truncated)" : j; } catch { /* ignore */ }
       const res = await fetch("/api/ai-assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        /* canCreateTiles is FALSE on purpose. This screen registers its data but does
-           not render GeneratedTiles, so a tile "created" here would be stored and
-           never drawn — the silent success that the Reports tab had. Until the tile
-           surface exists on this screen, the drawer answers the question instead of
-           pretending to build something. */
+        /* ⚠️ canCreateTiles is TRUE now, and it used to be hardcoded false with the
+           reason "this screen does not render GeneratedTiles, so a tile created here
+           would be stored and never drawn". THAT REASON IS GONE: the Insights
+           dashboard renders `<DashAssistant variant="ts" />`, so there is a real tile
+           surface. Leaving the flag false made the assistant answer "This page cannot
+           add new tiles" to a direct request — a refusal that was true when written
+           and became a bug the moment the surface existed. If you ever remove that
+           renderer, set this back. */
         body: JSON.stringify({
           customerName, dashboardTitle: pageTitle, dataContext,
-          question: text, focus: null, history: [], canCreateTiles: false,
+          question: text, focus: null, history: [], canCreateTiles: true,
         }),
       });
       const d = await res.json();
       if (!res.ok) throw new Error(d?.error || "Ask failed.");
+      /* A "create" result has to be PLACED, not just described. Reporting the model's
+         confirmation without calling addTile is the silent-success failure this repo
+         keeps hitting: the drawer says "I added it" and nothing appears. */
+      if (d?.result?.kind === "create" && d.result.tile) {
+        const t = d.result.tile;
+        place({
+          tileType: t.tileType ?? "bar", title: t.title || text, note: t.note ?? "",
+          kpis: t.kpis ?? [], xLabels: t.xLabels ?? [], series: t.series ?? [],
+          slices: t.slices ?? [], columns: t.columns, rows: t.rows,
+        }, d.result.answer || "Added that tile.");
+        return;
+      }
       setMsgs((m) => [...m, { role: "ai", text: d?.result?.answer || "…" }]);
     } catch (e: unknown) {
       setMsgs((m) => [...m, { role: "ai", text: e instanceof Error ? e.message : "Something went wrong." }]);
