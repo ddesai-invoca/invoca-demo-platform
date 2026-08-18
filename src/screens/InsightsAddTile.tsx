@@ -41,51 +41,79 @@ import { useNavigate } from "react-router-dom";
        a centred row of [icon, title]; the description is a separate child at the
        card's own left padding.
 
-   The real icons are 40x40 <img> assets. Those are Invoca's artwork and are not
-   ours to copy, so each card uses a Material Icon chosen to match the shape and
-   colour of the original. That is the one deliberate divergence on this screen.
+   THE ICONS ARE THE REAL ONES. They are 40x40 base64 SVGs embedded in the live page;
+   they are Invoca's own artwork in Invoca's own internal tool, so they are extracted
+   verbatim into public/icons/add-tile/ rather than approximated. Substituting Material
+   Icons, as the first version did, was wrong: the real set has its own palette
+   (#1643D5 #5185FA #2666F9 #7DA3FB #B0CDFF, #2CBF58, #33E5C9, #FFD800, axis #5B6577),
+   only TEN unique files cover the fourteen cards, and Build With AI's sparkle is
+   gradient-filled. None of that survives a lookalike.
    ============================================================================= */
 
-interface Tile { title: string; desc: string; icon: string; tone: string }
+/* `icon` is a file in public/icons/add-tile/, pulled from the live page. Several are
+   SHARED, exactly as the real product shares them: one line icon across Single and
+   Multi-Line, one clock icon across Calls by Hour and Day of Week, and one table icon
+   across all three Reports. Giving each its own glyph, which is what I did first, is
+   wrong in a way that is obvious side by side. */
+interface Tile { title: string; desc: string; icon: string }
 
 /* Copy is verbatim from the live page, em dashes included. The house rule against
    dashes covers GENERATED demo prose, not replicated product chrome: changing
    Invoca's own wording would make the replica wrong. */
 const CUSTOM: Tile[] = [
-  { title: "Build With AI", icon: "auto_awesome", tone: "#7b5ea7",
+  { title: "Build With AI", icon: "", 
     desc: "Explore your data without a visualization in mind. Describe your question and AI builds the chart." },
-  { title: "Custom Tile", icon: "bar_chart", tone: "#2666f9",
+  { title: "Custom Tile", icon: "custom-tile",
     desc: "Build exactly what you need — choose your own data, layout, and visual style with no preset constraints." },
 ];
 
 const TEMPLATES: Tile[] = [
-  { title: "Single Line Chart Over Time", icon: "show_chart", tone: "#2666f9",
+  { title: "Single Line Chart Over Time", icon: "line",
     desc: "Track how a single measure changes across a time period to quickly spot trends, dips, or growth at a glance." },
-  { title: "Multi-Line Chart Over Time", icon: "multiline_chart", tone: "#2666f9",
+  { title: "Multi-Line Chart Over Time", icon: "line",
     desc: "Analyze how different measures change over time to reveal patterns and their relationships." },
-  { title: "Pie Chart", icon: "pie_chart", tone: "#0aa06e",
+  { title: "Pie Chart", icon: "pie",
     desc: "Understand how parts contribute to the whole, simplifying proportions and distribution." },
-  { title: "Stacked Bar", icon: "stacked_bar_chart", tone: "#2666f9",
+  { title: "Stacked Bar", icon: "stacked-bar",
     desc: "Compare totals by category and see the breakdown of each segment—great for identifying size and composition." },
-  { title: "Dual Y-Axis", icon: "insert_chart", tone: "#0aa06e",
+  { title: "Dual Y-Axis", icon: "dual-axis",
     desc: "Compares two data scales (like revenue and percentage) on one chart with left and right vertical axes." },
-  { title: "Geo Heatmap", icon: "public", tone: "#e4126f",
+  { title: "Geo Heatmap", icon: "geo-heatmap",
     desc: "Map data by location to quickly identify regional concentrations, hotspots, or gaps." },
-  { title: "KPI", icon: "trending_up", tone: "#2666f9",
+  { title: "KPI", icon: "kpi",
     desc: "Show a key performance indicator with its trend over time to quickly assess if you're on track, ahead, or behind." },
-  { title: "Metric", icon: "looks_one", tone: "#0aa06e",
+  { title: "Metric", icon: "metric",
     desc: "Show a single, key number for a quick glance at what matters most." },
-  { title: "Calls by Hour", icon: "schedule", tone: "#2666f9",
+  { title: "Calls by Hour", icon: "calls-by-time",
     desc: "Shows call volume by hour so you can spot your busiest and slowest times at a glance." },
-  { title: "Calls by Day of Week", icon: "date_range", tone: "#0aa06e",
+  { title: "Calls by Day of Week", icon: "calls-by-time",
     desc: "Analyze how calls are distributed across the week, broken down day by day." },
-  { title: "Details Report", icon: "list_alt", tone: "#5b6577",
+  { title: "Details Report", icon: "report",
     desc: "Offers a granular, row-level view of raw data for a look at the individual records behind your numbers." },
-  { title: "Summary Report", icon: "summarize", tone: "#5b6577",
+  { title: "Summary Report", icon: "report",
     desc: "Get a condensed, aggregated view of your data in a table that highlights the most important figure." },
-  { title: "Transactions Report", icon: "receipt_long", tone: "#5b6577",
+  { title: "Transactions Report", icon: "report",
     desc: "Offers a granular view of transaction data to look at individual events." },
 ];
+
+/* BUILD WITH AI'S SPARKLE IS GRADIENT-FILLED, not a flat colour — the live page keeps
+   a hidden <defs> holding a teal -> blue -> purple linearGradient and paints the icon
+   with url(#...). The glyph itself is Material's auto_awesome, so only the fill was
+   ever wrong. A flat purple looks plausible alone and clearly duller side by side. */
+function AiSparkle() {
+  return (
+    <svg className="iat-icon" width={40} height={40} viewBox="0 0 24 24" aria-hidden="true">
+      <defs>
+        <linearGradient id="iat-ai" x1="1" y1="1" x2="0" y2="0">
+          <stop offset="0" stopColor="#66ebd7" />
+          <stop offset="0.5" stopColor="#7da3fb" />
+          <stop offset="1" stopColor="#a182e5" />
+        </linearGradient>
+      </defs>
+      <path fill="url(#iat-ai)" d="m19 9 1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25z" />
+    </svg>
+  );
+}
 
 export function InsightsAddTile() {
   const navigate = useNavigate();
@@ -111,7 +139,9 @@ export function InsightsAddTile() {
           what made this look wrong — most obviously on a wide window, where the
           columns narrow and the indent eats the text. */}
       <span className="iat-card-top">
-        <span className="material-icons iat-icon" style={{ color: t.tone }}>{t.icon}</span>
+        {t.icon
+          ? <img className="iat-icon" src={`/icons/add-tile/${t.icon}.svg`} alt="" width={40} height={40} />
+          : <AiSparkle />}
         <span className="iat-card-title">{t.title}</span>
       </span>
       <span className="iat-card-desc">{t.desc}</span>

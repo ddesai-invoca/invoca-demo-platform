@@ -1193,6 +1193,36 @@ Server-side `curl` gets a different A/B variant than a real browser, so:
   not captured, so it deliberately shows only what the row already knows rather than
   inventing training statistics a prospect might ask us to explain.
 
+## USE THE REAL ICONS (standing rule for every replica)
+Never substitute a lookalike glyph. Material Icons stood in for the Add Tile picker's
+artwork and it was wrong in four ways at once, none of which a screenshot shows:
+
+- **The real set has its own palette** -- #1643D5 #5185FA #2666F9 #7DA3FB #B0CDFF,
+  #2CBF58 green, #33E5C9 teal, #FFD800 yellow, #5B6577 axis grey. Flat single-colour
+  Material glyphs read as a different product.
+- **Icons are SHARED.** Fourteen Add Tile cards use only TEN files: one line icon
+  across Single and Multi-Line, one clock across Calls by Hour and Day of Week, one
+  table across all three Reports. Giving each card its own glyph invents distinctions
+  the product does not make.
+- **Some are gradient-filled.** Build With AI paints Material's auto_awesome path with
+  a hidden `<defs>` linearGradient (#66ebd7 -> #7da3fb -> #a182e5). Flat purple looks
+  plausible alone and clearly duller side by side.
+- **viewBoxes differ** (most are 48x48; calls-by-time is 25x24), so sizing has to come
+  from CSS rather than the file.
+
+HOW TO EXTRACT THEM. On the live page the icons are `<img>` elements whose `src` is a
+base64 data URI. Read the srcs with `javascript_tool`, then decode to real files:
+
+    printf '%s' "<base64>" | base64 -d > public/icons/<screen>/<name>.svg
+
+Verify the decoded byte count against the length the page reports -- a truncated tool
+result would otherwise write a silently broken file. For anything over ~8KB of base64,
+fetch it in halves and concatenate; one 14KB string risks being clipped.
+
+Dedupe FIRST (group the srcs and count unique assets) so the shared files are obvious
+before any are written. These are Invoca's own icons in Invoca's own internal tool, so
+extracting them verbatim is correct; approximating them is not.
+
 ## MEASURE AT MORE THAN ONE WIDTH (standing rule for every replica)
 A single-width measurement is not a measurement. The Add Tile picker was built from
 a 1134px viewport and looked right there; at 1920 the real page shows FIVE columns,

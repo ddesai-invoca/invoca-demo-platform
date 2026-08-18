@@ -3564,7 +3564,9 @@ button.nav-item {
 /* The one tinted card: Build With AI sits on lavender. */
 .iat-card--ai { background: #f3effb; }
 .iat-card--ai:hover { border-color: #c9b8e8; }
-.iat-icon { font-size: 40px; flex: 0 0 40px; line-height: 40px; }
+/* The real assets are 40x40 and carry their own colours, so nothing here tints
+   them. `flex: 0 0 40px` stops a wide card stretching the icon. */
+.iat-icon { width: 40px; height: 40px; flex: 0 0 40px; display: block; }
 .iat-card-title { font-size: 16px; font-weight: 700; color: #15243e; }
 .iat-card-desc { font-size: 16px; font-weight: 400; color: #15243e; line-height: 1.35; }
 
