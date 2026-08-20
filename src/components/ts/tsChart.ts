@@ -86,10 +86,22 @@ export function niceScale(
      instead of collapsing onto the axis. */
   const span = max - min || Math.max(1, Math.abs(max) * 0.2);
   const step = niceStep(span / count);
-  const lo = Math.floor(min / step) * step;
+
+  /* ⚠️ THE FLOOR IS THE EXACT MINIMUM, so the lowest point SITS ON the x axis. Flooring
+     to the tick below (the obvious reading of the captured 100..550 axis) leaves up to a
+     full step of gap, and with a coarse step that is very visible: a $4.74M minimum
+     floored to $4M sat 12% up the axis, and 2:32 floored to 2:30 sat 8% up. Both read as
+     the line hovering.
+     The TICKS above are still round, so the axis labels stay readable; the bottom label
+     is the real minimum. A nice tick sitting almost on top of that label is dropped,
+     since two labels a few pixels apart is worse than one. */
+  const lo = min;
   const hi = Math.ceil((max + span * 0.05) / step) * step;
-  const ticks: number[] = [];
-  for (let v = lo; v <= hi + step / 2; v += step) ticks.push(+v.toFixed(6));
+  const ticks: number[] = [lo];
+  for (let v = Math.ceil(lo / step) * step; v <= hi + step / 2; v += step) {
+    if (v - lo < step * 0.35) continue;          // too close to the floor label
+    ticks.push(+v.toFixed(6));
+  }
   return { min: lo, max: hi, ticks };
 }
 

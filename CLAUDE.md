@@ -1613,12 +1613,18 @@ no captured axis uses anywhere.
 column's five weekly dates all sit inside one month, so a 4-month rule there would print
 one label and drop the rest. Gated on `> 12` categories.
 
-⚠️ **THE Y AXIS DOES NOT START AT ZERO ON A LINE CHART.** The real tile's axis reads
-100..550 for data spanning ~103..490, so the line uses the full plot height instead of
-hugging the top third. `niceScale(min, max, zeroBased)` reverse-engineers it: the step
-comes from the DATA RANGE (not the max), the floor is the min snapped DOWN to a tick, and
-the top is the max plus ~5% headroom snapped UP. Reproduces their 100 / 550 / ten-ticks-by-50
-exactly, and puts our tile's first point 1% off the plot floor.
+⚠️ **THE Y AXIS DOES NOT START AT ZERO ON A LINE CHART, AND THE LOWEST POINT SITS ON THE
+X AXIS.** The floor is the EXACT data minimum, not the tick below it. Flooring to a tick
+is the obvious reading of the captured 100..550 axis and it leaves up to a full step of
+gap — measured, a $4.74M minimum floored to $4M sat **12% up the axis** and 2:32 floored
+to 2:30 sat 8% up, both of which read as the line hovering. `niceScale(min, max,
+zeroBased)`: step from the DATA RANGE (not the max), floor = the min itself, top = max
+plus ~5% headroom snapped UP to a tick. Verified 0px gap on every tile.
+
+The TICKS above the floor are still round (`$6M $7M $8M …`) so the axis stays readable,
+and the bottom label is the real minimum. A nice tick landing within 35% of a step of
+that floor label is DROPPED — two labels a few pixels apart is worse than one, which is
+why the Revenue axis reads `$4.7M $6M $7M …` with no `$5M`.
 
 ⚠️ **BARS, COLUMNS AND AREAS KEEP A ZERO BASELINE.** A bar's length and an area's fill
 ARE the magnitude, so a non-zero floor overstates every difference — the captured column
