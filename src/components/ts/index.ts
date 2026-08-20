@@ -3,8 +3,8 @@
    this folder does not touch every screen that uses it. */
 export { TsTile, TsLegend, TsTip, TsAxes, useTsHover, useCartesian } from "./TsShell";
 export type { TsTileProps, TsHover, TsAxesProps } from "./TsShell";
-export { TsLine, TsColumn, TsBar, TsDualAxis, TsPie, legendFor, pieLegend } from "./TsCharts";
-export type { TsSeries, TsSlice } from "./TsCharts";
+export { TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, legendFor, pieLegend } from "./TsCharts";
+export type { TsSeries, TsSlice, TsAxisSeries } from "./TsCharts";
 export { TsKpi, TsMetric, TsTrend } from "./TsKpi";
 export { TsTable } from "./TsTable";
 export type { TsTableProps } from "./TsTable";

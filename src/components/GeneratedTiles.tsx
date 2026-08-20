@@ -7,9 +7,9 @@ import { LineChart } from "./LineChart";
 import { StackedBarChart } from "./StackedBarChart";
 import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
-import { TsTile, TsLine, TsColumn, TsPie, TsTable, TsKpi, TsMetric, legendFor, pieLegend,
-  TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE } from "./ts";
-import { formatTick, type MeasureKind } from "../data/insightsMeasures";
+import { TsTile, TsLine, TsMultiLine, TsColumn, TsPie, TsTable, TsKpi, TsMetric, legendFor,
+  pieLegend, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE } from "./ts";
+import { axisTitleFor, formatTick, type MeasureKind } from "../data/insightsMeasures";
 import { fitCells } from "./chartFit";
 
 /* useDashboardData — each dashboard calls this with its BASE data slice. It
@@ -155,10 +155,15 @@ function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => v
   const series = tile.series.length ? tile.series.map((x) => ({ name: x.name, values: x.values }))
     : [{ name: tile.title, values: [] }];
 
+  /* ⚠️ THE LEGEND USES THE SAME TITLE FORM AS THE AXIS. The capture's legend reads
+     "Total Call Count" and "Answered by Agent (%)", i.e. exactly its axis titles — a
+     legend showing the bare measure name beside an axis that says "Total …" reads as
+     two different things. */
   const legend =
     tile.tileType === "pie" ? pieLegend(tile.slices)
     : tile.tileType === "bar" ? legendFor(series, TS_SERIES_COLUMN)
-    : tile.tileType === "line" ? legendFor(series, TS_SERIES_LINE)
+    : tile.tileType === "line"
+      ? legendFor(series.map((s) => ({ ...s, name: axisTitleFor(s.name) })), TS_SERIES_LINE)
     : undefined;
 
   const actions = (
@@ -181,7 +186,19 @@ function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => v
           {tile.kpis.length === 0 ? <TsKpi value="—" /> : null}
         </div>
       )}
-      {tile.tileType === "line" && (
+      {/* More than one series means the Multi-Line template: one axis PER series. */}
+      {tile.tileType === "line" && series.length > 1 && (
+        <TsMultiLine categories={categories} xTitle={tile.xTitle} dashTail={tile.dashTail}
+          series={series.map((s, i) => {
+            const kind = (tile.seriesKinds?.[i] ?? tile.valueKind) as MeasureKind | undefined;
+            return {
+              ...s,
+              title: axisTitleFor(s.name),
+              tickFormat: kind ? (v: number) => formatTick(v, kind) : undefined,
+            };
+          })} />
+      )}
+      {tile.tileType === "line" && series.length <= 1 && (
         <TsLine categories={categories} series={series} showLegend={false}
           xTitle={tile.xTitle} yTitle={tile.yTitle} dashTail={tile.dashTail}
           tickFormat={tile.valueKind

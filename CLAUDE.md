@@ -1520,8 +1520,16 @@ the aggregation word. Verified across all 108 of Shady Blinds' measures.
 
 | kind | additive | series | tick | title |
 |---|---|---|---|---|
-| count, money, flag | yes | partition of a total | `6.1K`, `$4.7M` | **Total** |
-| percent, duration, score, rank | no | level per period | `71%`, `2:43`, `82`, `#7` | **Average** |
+| count, money, flag | yes | partition of a total | `6.1K`, `$4.7M` | **Total** `<measure>` |
+| percent, duration, score, rank | no | level per period | `71%`, `2:43`, `82`, `#7` | `<measure>`, **no prefix** |
+
+⚠️ **"Average" was WRONG and a capture corrected it.** The multi-line capture's own axis
+titles and legend read `Total Call Count` for the count but `Answered by Agent (%)` and
+`Appointment: Scheduled (%)` VERBATIM for the percents. ThoughtSpot prefixes an additive
+aggregation and leaves everything else exactly as the measure is named, so
+`aggregationWord` returns `""` for the non-additive kinds. Percent is the only
+non-additive kind a capture has actually shown; duration, score and rank follow by
+inference, not by separate measurement.
 
 Classified by NAME SHAPE plus a short override list, not by enumerating 108 measures —
 that is what makes it survive the next generated prospect, whose measures do not exist
@@ -1553,6 +1561,11 @@ are dead code.
 measure, so "Connected Duration" can exceed "Duration" if a chart shows both. Harmless
 while a line chart shows ONE measure; if Multi-Line ever plots two durations together,
 they need a shared anchor.
+
+**Multi-Line makes this reachable now** (it plots several measures at once), but each
+series gets its OWN axis and scale, so two durations no longer have to agree to look
+right — the contradiction would only be in the numbers, not the picture. Still worth a
+shared anchor if an SE ever puts "Duration" and "Connected Duration" side by side.
 
 ## Template: "Single Line Chart Over Time" (measured 8/20/2026)
 Re-measured from a capture of the REAL tile, and the first build was wrong in seven ways.
@@ -1648,8 +1661,58 @@ the capture has `<label id=measure-label><span>Attribute</span></label>`. The `i
 independently confirms the `kind: "measure"` classification, which was originally inferred
 from live option COUNTS — two signals agreeing.
 
-Multi-Line still uses the five-week window on purpose: only the single-line template has
-been measured, and widening a chart nobody has verified would be a guess.
+## Template: "Multi-Line Chart Over Time" (measured 8/20/2026)
+`TsMultiLine` in `src/components/ts/TsCharts.tsx` + `buildTile`'s
+`"Multi-Line Chart Over Time"` case. Measured from a capture holding four of them (2, 3
+and 4 series, plus a 4-series percent variant), so every number below has at least two
+independent confirmations.
+
+**It INHERITS the frozen single-line design** — canvas, plot insets, no gridlines, tick
+count 8, the exact-minimum y floor, HTML axis titles, the dotted partial tail, the tile
+frame, the window from the dashboard filter. Three things are genuinely new:
+
+| | how |
+|---|---|
+| several lines | `#2666F9`, `#00DEBC`, `#FFD800`, `#2CBF58` in order, from `TS_SERIES_LINE` |
+| an axis PER series | series 0 on the left, 1..n stacked rightward, **each on its own scale** |
+| the legend | top-**right**, `align-self: flex-start`, 204px, 24px rows, 12px round dots |
+
+⚠️ **EVERY SERIES GETS ITS OWN Y AXIS AND ITS OWN SCALE — they are not shared.** Measured
+axis lines at x = 68 / 555 / 607 / 672: the left axis, then the plot's right edge, then
++52, then +65. So the first right-hand axis sits ON the plot edge and each further one
+steps out 65px, which is what `TS_RIGHT_FIRST_PAD` / `TS_RIGHT_FIRST_GAP` /
+`TS_RIGHT_NEXT_GAP` and `rightInsetFor()` / `rightAxisX()` encode. The plot therefore
+NARROWS as series are added: measured 626 / 561 / 487 for 2 / 3 / 4 series, and we render
+620 / 555 / 490 — the 6px is our own wider `6.1K` tick label, i.e. the content-derived
+left inset doing its job, not a layout error.
+
+Right-hand tick labels are `anchor="start"` 15px outside their axis line; their rotated
+HTML titles sit a further 38px out for the first and 51px for the rest.
+
+⚠️ **A FLAT SERIES COLLAPSES TO ONE TICK, IT DOES NOT DRAW AN AXIS OF ZEROS.** The
+capture's all-zero series rendered a single `0` label at mid-height with the line across
+the middle. `niceScale` returns `{min: v-1, max: v+1, ticks: [v]}` for a flat series so a
+measure with no variation in the window still reads as a level rather than as an empty
+axis.
+
+⚠️ **THE LEGEND IS TOP-ALIGNED, and `align-self: center` was a guess I had to unlearn.**
+Measured y = 0 against the tile body on all four charts. It is asserted in the
+non-regression check (`legendTopAligned: 0`), because vertical centring looks perfectly
+reasonable in isolation.
+
+⚠️ **THE LEGEND USES THE AXIS TITLE FORM, not the bare measure name.** The capture's
+legend reads `Total Call Count` and `Answered by Agent (%)` — character for character its
+axis titles. Showing `Call Count` in the legend beside an axis that says `Total Call
+Count` reads as two different measures.
+
+⚠️ **`TsMultiLine` is a SIBLING of `TsLine`, deliberately not an overload.** `TsLine` is
+signed off as the frozen single-line template; adding multi-axis branches inside it would
+put the reference implementation one bad conditional away from changing. `TsTileCard`
+picks by `series.length > 1`. The single-line path is untouched — re-verified after this
+build: 2 axis lines, 0 gridlines.
+
+Multi-Line uses the same five-week window as single-line, from the same
+`marketingDashboard.dateRange` field, so every tile on a dashboard still covers one period.
 
 ## Build With AI -> "Create Tile with AI" (the question-to-tile drawer)
 `src/components/InsightsCreateTileAi.tsx` (`.icta-`) + `src/data/insightsQuestions.ts`.

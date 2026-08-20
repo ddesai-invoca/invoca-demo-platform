@@ -82,9 +82,12 @@ export function niceScale(
     const t = niceTicks(Math.max(0, max), count);
     return { min: 0, max: t.max, ticks: t.ticks };
   }
-  /* A flat series has no range to divide; give it symmetric room so it sits mid-plot
-     instead of collapsing onto the axis. */
-  const span = max - min || Math.max(1, Math.abs(max) * 0.2);
+  /* ⚠️ A FLAT SERIES GETS ONE TICK AND SITS MID-PLOT. The capture's revenue series is
+     all zeros, and its axis shows a single "0" label at half height with the line drawn
+     across the middle — not collapsed onto the floor. Padding symmetrically around the
+     value reproduces both. */
+  if (max === min) return { min: min - 1, max: min + 1, ticks: [min] };
+  const span = max - min;
   const step = niceStep(span / count);
 
   /* ⚠️ THE FLOOR IS THE EXACT MINIMUM, so the lowest point SITS ON the x axis. Flooring
@@ -178,6 +181,29 @@ export function calendarTicks(labels: string[], everyMonths = 4): number[] {
   });
   return out.length ? out : labels.map((_, i) => i);
 }
+
+/* ---------------------------------------------------------------------------
+   Right-hand axis columns (the multi-line template)
+   ---------------------------------------------------------------------------
+   Measured on the 4-series capture (viewBox 740x704, plot x=68 w=487):
+     axis lines at x = 555 (the plot's right edge), 607, 672 — gaps of 52 then 65
+     labels 15px right of each line, text-anchor start
+     total right inset 185, and the plot width shrank 626 -> 561 -> 487 as series were
+     added, i.e. 54 for the first right axis and ~65 for each one after.
+   The first gap really is narrower than the rest; using one average for both put the
+   outer axes ~13px off. FIRST_GAP/NEXT_GAP reproduce all three positions exactly and
+   degrade sensibly for a fifth series. */
+export const TS_RIGHT_FIRST_PAD = 54;
+export const TS_RIGHT_FIRST_GAP = 52;
+export const TS_RIGHT_NEXT_GAP = 65;
+
+/** Total width the right-hand axes need for `n` of them. */
+export const rightInsetFor = (n: number): number =>
+  n <= 0 ? TS_PLOT.right : TS_RIGHT_FIRST_PAD + TS_RIGHT_NEXT_GAP * (n - 1);
+
+/** x of the k-th right axis line, k = 0 being the one on the plot's own edge. */
+export const rightAxisX = (plotRight: number, k: number): number =>
+  plotRight + (k === 0 ? 0 : TS_RIGHT_FIRST_GAP + TS_RIGHT_NEXT_GAP * (k - 1));
 
 export type Plot = { x: number; y: number; w: number; h: number };
 

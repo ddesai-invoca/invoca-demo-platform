@@ -68,11 +68,18 @@ export const isAdditive = (k: MeasureKind): boolean =>
   k === "count" || k === "money" || k === "flag";
 
 /**
- * The word in front of the axis title. The capture reads "Total Call Count" because a
- * count genuinely is additive; "Total Agent Handle Time" would be a nonsense figure.
+ * The word in front of the axis title.
+ *
+ * ⚠️ NON-ADDITIVE MEASURES GET NO PREFIX AT ALL — corrected from "Average" once a
+ * capture showed one. The multi-line capture's own axis titles and legend read
+ * "Total Call Count" for the count and "Answered by Agent (%)" / "Appointment:
+ * Scheduled (%)" verbatim for the percents. So ThoughtSpot prefixes an additive
+ * aggregation and leaves everything else as the measure is named.
+ * Percent is the only non-additive kind a capture has shown; duration, score and rank
+ * follow the same rule by inference, not by separate measurement.
  */
 export const aggregationWord = (k: MeasureKind): string =>
-  isAdditive(k) ? "Total" : "Average";
+  isAdditive(k) ? "Total" : "";
 
 /**
  * The axis title. ⚠️ Does not double the word: the measure "Total Messages" was coming
@@ -81,6 +88,7 @@ export const aggregationWord = (k: MeasureKind): string =>
  */
 export const axisTitleFor = (measure: string): string => {
   const word = aggregationWord(kindOf(measure));
+  if (!word) return measure;
   return new RegExp(`^(total|average|avg)\\b`, "i").test(measure) ? measure : `${word} ${measure}`;
 };
 

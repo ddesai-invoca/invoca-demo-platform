@@ -28,6 +28,9 @@ export interface GeneratedTile {
   yTitle?: string;
   /* Dot the final segment: a new tile's last period is incomplete. */
   dashTail?: boolean;
+  /* One kind PER SERIES, for a multi-line tile where each series has its own axis and
+     therefore its own units. */
+  seriesKinds?: string[];
   /* What KIND of number this tile holds, so the axis ticks carry $ / % / m:ss.
      A plain string rather than the MeasureKind union: this type is serialised into a
      saved demo, and a stored value outside the union must not fail to parse. */

@@ -282,10 +282,33 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
         valueKind: kindOf(primary), dashTail: win ? win.partialTail : false,
       };
     }
+    case "Multi-Line Chart Over Time": {
+      /* Same filtered window as the single line, but EVERY measure gets its own series
+         built independently — each has its own axis on screen, so each partitions or
+         levels according to its own kind. Building them off one shared magnitude is
+         what would flatten a percent series against a revenue one. */
+      const built = c.measures.map((m) => {
+        const win = filteredWeeks(profile, m);
+        return {
+          name: m,
+          values: win ? win.values
+            : spread(Math.round(measureScale(profile, m).max), weekLabels(profile).length, seed),
+          partial: win ? win.partialTail : false,
+        };
+      });
+      const labels = filteredWeeks(profile, c.measures[0] ?? "Call Count")?.labels
+        ?? weekLabels(profile);
+      return {
+        tileType: "line", title: c.name, note: "", kpis: [], slices: [],
+        xLabels: labels,
+        series: built.map((b) => ({ name: b.name, values: b.values })),
+        seriesKinds: c.measures.map((m) => kindOf(m)),
+        xTitle: "Weekly Call Start Time",
+        dashTail: built.some((b) => b.partial),
+      };
+    }
     default: {
-      /* Multi-Line still lands here on the five-week window. Left deliberately: only
-         the single-line template has been measured against a capture so far, and
-         widening the span on a chart nobody has verified would be a guess. */
+      /* Any other line-ish template falls back to the five-week window. */
       const labels = weekLabels(profile);
       return { tileType: "line", title: c.name, note, kpis: [], slices: [],
         xLabels: labels, series: series(labels) };
