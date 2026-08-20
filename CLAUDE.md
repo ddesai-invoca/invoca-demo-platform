@@ -1487,6 +1487,40 @@ slice 9, table 11.9px Helvetica with a 13/700 header, 40 heat cells normalised p
 column. Dashboards re-checked unchanged: 4px radius, two-layer shadow, 21 cards, donut
 350x260, KPI 48,293, and its 12 gridlines still present.
 
+## ⚠️ STANDING RULE: the completed template IS the design, and only DATA varies
+Agreed 2026-08-20, and it applies to every Insights & Analytics template as each one is
+finished. **"Single Line Chart Over Time" is the first completed template and is the
+reference.** Once a template is signed off:
+
+- **The look is FROZEN.** Canvas and plot insets, the absence of gridlines, tick counts
+  and step progression, the zoomed y floor, HTML axis titles at 12px/600, the dotted
+  partial tail, the tile frame, the hover-fade and the interaction drawer. None of it is
+  a per-tile decision and none of it is editable by the AI (rule 1).
+- **Only the DATA changes**, driven by the attribute the SE picks: the values, their
+  magnitude, their format, and the axis title that names them.
+- **The window is NOT the attribute's business.** It comes from the dashboard's filter
+  (`marketingDashboard.dateRange`), so every tile on a dashboard covers the same period.
+
+⚠️ **What "only the data changes" actually requires, and does NOT yet hold.** Measured
+2026-08-20 across seven attributes: the template apportions EVERY attribute as if it
+were an additive count, which is right for Call Count (48,293 exactly) and Answered, and
+wrong for everything else:
+
+| attribute | got | why it is wrong |
+|---|---|---|
+| Revenue (Sale Amount) | 4,744,086..8,907,516 | renders bare, needs `$` on the ticks |
+| Publisher Conversion **Rate** | 13..23 summing to 100 | a rate does not SUM across weeks; each week has its own |
+| Agent **Handle Time** | 55..99 summing to 420 | an average per call, not a monthly total of 420 seconds |
+| Sentiment **Score** | 58..99 summing to 420 | a score does not sum either |
+
+So a measure needs a KIND (count / money / percent / rate / duration / score / flag)
+that decides three things: whether the series is a PARTITION of a total or a
+PER-BUCKET level, the tick format (`$6K`, `71%`, `4:04`), and the aggregation word in
+the axis title (**"Total"** only for additive measures, "Average" for the rest — the
+capture says "Total Call Count" because a count genuinely is additive). That is the
+"template for each data point" work, and it is the blocking dependency for this rule
+being true rather than aspirational.
+
 ## Template: "Single Line Chart Over Time" (measured 8/20/2026)
 Re-measured from a capture of the REAL tile, and the first build was wrong in seven ways.
 `buildTile`'s `"Single Line Chart Over Time"` case + `weeklySpan()` in
