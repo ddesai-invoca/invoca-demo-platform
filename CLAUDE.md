@@ -1587,6 +1587,14 @@ buckets are genuinely smaller, the values sum to EXACTLY the prospect's own call
 (verified 48,293), and the last week being partial is also why the final segment is
 dotted.
 
+⚠️ **THE Y TITLE IS CENTRED BY TRANSFORM ORDER, AND THE ORDER IS EASY TO GET BACKWARDS.**
+Written `rotate(180deg) translateY(-50%)` the translate applies FIRST and the rotation
+then flips its direction, so the -50% that should centre the label becomes +50% and the
+title sits **154px below** the plot centre (measured; the computed matrix read +76.97
+instead of -76.97). It must be `translateY(-50%) rotate(180deg)` — rotate in place about
+the centre, then translate in the final space. Verify by comparing the label's centre
+against the plot's, not by eye: a title that is merely low still looks plausible.
+
 ⚠️ **AXIS TITLES ARE HTML, NOT SVG TEXT.** `axis-label-title`, 12px/**600**/`#5b6577`.
 No `.highcharts-axis-title` exists in ANY captured chart's svg, so this was wrong on
 every ts chart, not just this one. They live in `TsAxisTitles` and are positioned in

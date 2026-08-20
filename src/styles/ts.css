@@ -123,11 +123,17 @@
   font-size: 12px; font-weight: 600; color: var(--ts-var-axis-title-color);
 }
 .ts-axis-xtitle { bottom: 2px; transform: translateX(-50%); }
+/* ⚠️ TRANSFORM ORDER IS LOAD-BEARING HERE. Written `rotate(180deg) translateY(-50%)`
+   the translate is applied FIRST and the rotation then flips its direction, so the
+   -50% meant to centre the label became +50% and the title sat 154px BELOW the plot
+   centre — measured, and the computed matrix showed the translate as +76.97 instead of
+   -76.97. Rotating first (in place, about the centre) and translating in the final
+   space is what actually centres it on the `top` anchor. */
 .ts-axis-ytitle {
-  left: 1%; writing-mode: vertical-rl; transform: rotate(180deg) translateY(-50%);
+  left: 1%; writing-mode: vertical-rl; transform: translateY(-50%) rotate(180deg);
   transform-origin: center;
 }
-.ts-axis-ytitle--right { left: auto; right: 1%; transform: rotate(0deg) translateY(-50%); }
+.ts-axis-ytitle--right { left: auto; right: 1%; transform: translateY(-50%); }
 /* ThoughtSpot's own default, which Invoca does not override. */
 .ts-axis-line { stroke-width: 1; fill: none; }
 
