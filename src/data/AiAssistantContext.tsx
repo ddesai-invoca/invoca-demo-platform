@@ -28,6 +28,10 @@ export interface GeneratedTile {
   yTitle?: string;
   /* Dot the final segment: a new tile's last period is incomplete. */
   dashTail?: boolean;
+  /* What KIND of number this tile holds, so the axis ticks carry $ / % / m:ss.
+     A plain string rather than the MeasureKind union: this type is serialised into a
+     saved demo, and a stored value outside the union must not fail to parse. */
+  valueKind?: string;
   /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
      (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
      generated type REQUIRED, so adding these there would force the assistant to

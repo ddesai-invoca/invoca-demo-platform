@@ -9,6 +9,7 @@ import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
 import { TsTile, TsLine, TsColumn, TsPie, TsTable, TsKpi, TsMetric, legendFor, pieLegend,
   TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE } from "./ts";
+import { formatTick, type MeasureKind } from "../data/insightsMeasures";
 import { fitCells } from "./chartFit";
 
 /* useDashboardData — each dashboard calls this with its BASE data slice. It
@@ -183,6 +184,8 @@ function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => v
       {tile.tileType === "line" && (
         <TsLine categories={categories} series={series} showLegend={false}
           xTitle={tile.xTitle} yTitle={tile.yTitle} dashTail={tile.dashTail}
+          tickFormat={tile.valueKind
+            ? (v) => formatTick(v, tile.valueKind as MeasureKind) : undefined}
           w={TS_SIZE.line.w} h={TS_SIZE.line.h} />
       )}
       {tile.tileType === "bar" && (

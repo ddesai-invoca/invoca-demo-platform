@@ -1,4 +1,7 @@
 import type { CustomerProfile } from "./schema";
+import {
+  axisTitleFor, formatMeasure, isAdditive, kindOf, magnitudeOf, type MeasureKind,
+} from "./insightsMeasures";
 import type { GeneratedTile } from "./AiAssistantContext";
 
 /* =============================================================================
@@ -17,13 +20,6 @@ import type { GeneratedTile } from "./AiAssistantContext";
 type Reports = Partial<CustomerProfile["reports"]>;
 
 /* ---- the pool's headline scale --------------------------------------------- */
-function totalCalls(profile: CustomerProfile): number {
-  const r = profile.reports as Reports;
-  const tile = r.marketingDashboard?.kpiGroups?.[0]?.tiles?.find((t) => /call count/i.test(t.label));
-  const n = parseInt((tile?.value ?? "0").replace(/[^\d]/g, ""), 10);
-  return n || 20000;
-}
-
 function hash(s: string): number {
   let h = 0x811c9dc5;
   for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
@@ -80,21 +76,18 @@ export function dimensionValues(profile: CustomerProfile, dimension: string): st
 }
 
 /* ---- a measure's magnitude -------------------------------------------------
-   Percent-ish measures stay in 0..100; counts and money scale off the prospect's own
-   call volume, so a tile never contradicts the dashboards beside it. */
-function measureScale(profile: CustomerProfile, measure: string): { max: number; pct: boolean; money: boolean } {
-  const calls = totalCalls(profile);
-  const m = measure.toLowerCase();
-  if (/revenue|sale amount|fees|earned|paid/.test(m)) return { max: Math.round(calls * 780), pct: false, money: true };
-  if (/time|duration|monolog|hold|silence|overtalk|offset/.test(m)) return { max: 420, pct: false, money: false };
-  if (/score|ranking/.test(m)) return { max: 100, pct: true, money: false };
-  if (/count|messages|interaction/.test(m)) return { max: calls, pct: false, money: false };
-  /* A signal flag used as a measure is a COUNT of calls carrying it. */
-  return { max: Math.round(calls * 0.62), pct: false, money: false };
+   Now an adapter over `magnitudeOf` in insightsMeasures, which owns the KIND of every
+   measure. Kept as a shim because the pie/bar/stacked cases below all ask "how big is
+   this measure" and none of them care how the answer is derived. */
+function measureScale(profile: CustomerProfile, measure: string): {
+  max: number; pct: boolean; money: boolean; kind: MeasureKind;
+} {
+  const g = magnitudeOf(profile, measure);
+  return {
+    max: isAdditive(g.kind) ? g.total : g.level,
+    pct: g.kind === "percent", money: g.kind === "money", kind: g.kind,
+  };
 }
-
-const fmt = (n: number, money: boolean, pct: boolean) =>
-  pct ? `${n}%` : money ? `$${n.toLocaleString("en-US")}` : n.toLocaleString("en-US");
 
 /* Deterministic spread of a total across n buckets, weighted so the first buckets are
    larger — real breakdowns are never uniform, and a flat bar chart looks synthetic. */
@@ -168,10 +161,27 @@ function filteredWeeks(profile: CustomerProfile, measure: string): Window | null
   }
   if (!labels.length) return null;
 
-  /* Weight = in-range days, nudged by a small seeded wobble so the line is not a
-     perfectly straight staircase. Modest (+/-8%): with five points a big jitter reads
-     as noise rather than as a week being busier. */
-  const weights = days.map((d, i) => d * (1 + (((seed + hash("b" + i)) >>> 7) % 16 - 8) / 100));
+  const wobble = (i: number) => 1 + (((seed + hash("b" + i)) >>> 7) % 16 - 8) / 100;
+
+  /* ⚠️ A NON-ADDITIVE MEASURE IS A LEVEL PER WEEK, NOT A PARTITION. Apportioning a
+     conversion RATE across five weeks produced 13, 19, 21, 24, 23 "summing to" 100,
+     which claims the rate was 13% in week one. A rate, a duration, a score and a rank
+     each have their own value in every week, and a short week does not make the
+     average handle time shorter — so in-range days weight the COUNT case only. */
+  if (!isAdditive(sc.kind)) {
+    const level = Math.max(0.1, sc.max);
+    const values = days.map((_, i) => {
+      const v = level * wobble(i);
+      /* Percents and scores are bounded; a wobble must not push one past 100. */
+      const cap = sc.kind === "percent" || sc.kind === "score" ? 99 : Infinity;
+      return Math.min(cap, sc.kind === "percent" ? +v.toFixed(1) : Math.round(v));
+    });
+    return { labels, values, partialTail: days[days.length - 1] < 7 };
+  }
+
+  /* Weight = in-range days, nudged by the same small wobble so the line is not a
+     perfectly straight staircase. */
+  const weights = days.map((d, i) => d * wobble(i));
   const total = Math.max(1, Math.round(sc.max));
   const sum = weights.reduce((a, b) => a + b, 0);
   const exact = weights.map((w) => (w / sum) * total);
@@ -218,7 +228,7 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
       /* Metric is a single number; KPI pairs it with its trend, which is the only
          difference between the two templates on the live drawer. */
       const v = Math.round(sc.max * 0.58);
-      const kpis = [{ label: primary, value: fmt(v, sc.money, sc.pct) }];
+      const kpis = [{ label: primary, value: formatMeasure(v, sc.kind) }];
       if (c.template === "KPI") kpis.push({ label: "vs. prior period", value: `+${4 + (seed % 12)}%` });
       return { tileType: "kpi", title: c.name, note, kpis, xLabels: [], series: [], slices: [] };
     }
@@ -268,8 +278,8 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
       return {
         tileType: "line", title: c.name, note: "", kpis: [], slices: [],
         xLabels: labels, series: [{ name: primary, values }],
-        yTitle: `Total ${primary}`, xTitle: "Weekly Call Start Time",
-        dashTail: win ? win.partialTail : false,
+        yTitle: axisTitleFor(primary), xTitle: "Weekly Call Start Time",
+        valueKind: kindOf(primary), dashTail: win ? win.partialTail : false,
       };
     }
     default: {

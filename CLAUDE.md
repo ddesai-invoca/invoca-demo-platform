@@ -1513,13 +1513,46 @@ wrong for everything else:
 | Agent **Handle Time** | 55..99 summing to 420 | an average per call, not a monthly total of 420 seconds |
 | Sentiment **Score** | 58..99 summing to 420 | a score does not sum either |
 
-So a measure needs a KIND (count / money / percent / rate / duration / score / flag)
-that decides three things: whether the series is a PARTITION of a total or a
-PER-BUCKET level, the tick format (`$6K`, `71%`, `4:04`), and the aggregation word in
-the axis title (**"Total"** only for additive measures, "Average" for the rest — the
-capture says "Total Call Count" because a count genuinely is additive). That is the
-"template for each data point" work, and it is the blocking dependency for this rule
-being true rather than aspirational.
+**BUILT — `src/data/insightsMeasures.ts` (2026-08-20).** Every measure has a KIND
+(count / money / flag / percent / duration / score / rank) which decides three things:
+whether a series PARTITIONS a total or carries a LEVEL per period, the tick format, and
+the aggregation word. Verified across all 108 of Shady Blinds' measures.
+
+| kind | additive | series | tick | title |
+|---|---|---|---|---|
+| count, money, flag | yes | partition of a total | `6.1K`, `$4.7M` | **Total** |
+| percent, duration, score, rank | no | level per period | `71%`, `2:43`, `82`, `#7` | **Average** |
+
+Classified by NAME SHAPE plus a short override list, not by enumerating 108 measures —
+that is what makes it survive the next generated prospect, whose measures do not exist
+yet. A long override list means the families are miscut.
+
+⚠️ **FAMILY ORDER MATTERS, and three real measures prove it.** Rank is tested BEFORE
+money and percent, and the `X: gt Y` threshold shape before duration:
+- "Publisher Commissions **Ranking**" contains "commission" -> money by a naive rule
+- "Publisher Conversion **Rate** Ranking" contains "rate" -> percent by a naive rule
+- "**Duration**: gt 1-minute" contains "duration" -> a duration, when it counts calls
+
+⚠️ **Three defects the classification report caught, all invisible in a type check:**
+- **Same-family money printed the SAME figure.** "Earned" and "Paid" both came out
+  $2,636,798 and "Fees" matched "Advertiser Fees" to the dollar, because the share was a
+  constant per branch and the seed went unused. A seeded +/-15% spread fixes it; Revenue
+  stays EXACT so it still agrees with the dashboards.
+- **"Total Total Messages."** The measure is named "Total Messages", so the prefix
+  doubled. `axisTitleFor` skips the word when the name already starts with one.
+- **IVR Duration read longer than the call.** The sliver band (monologue, silence,
+  overtalk, dead air, hold, offset) needed `ivr` in it, or a 30-second IVR leg rendered
+  at 5:34 against a 2:35 call.
+
+⚠️ Percent and flag are UNEXERCISED by Shady Blinds — its catalogue has no rate measure
+(which is why the question resolver maps "Answer Rate" onto the count "Answered") and no
+`(T/F)` measures. Both were verified against synthetic names instead; do not assume they
+are dead code.
+
+⚠️ **A known limit, recorded rather than papered over:** levels are independent per
+measure, so "Connected Duration" can exceed "Duration" if a chart shows both. Harmless
+while a line chart shows ONE measure; if Multi-Line ever plots two durations together,
+they need a shared anchor.
 
 ## Template: "Single Line Chart Over Time" (measured 8/20/2026)
 Re-measured from a capture of the REAL tile, and the first build was wrong in seven ways.

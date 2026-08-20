@@ -109,6 +109,9 @@ export interface TsAxesProps {
   right?: { max: number; ticks: number[]; title?: string; format?: (v: number) => string };
   /** Explicit tick indices for the category axis; used for calendar-aligned dates. */
   tickAt?: number[];
+  /** How a value-axis tick prints. Defaults to the plain compact form, so a tile that
+      does not know its measure's kind behaves exactly as before. */
+  tickFormat?: (v: number) => string;
 }
 
 /**
@@ -118,6 +121,7 @@ export interface TsAxesProps {
  */
 export function TsAxes({
   plot: p, categories, yMax, yMin = 0, yTicks, horizontal, right, tickAt,
+  tickFormat = tsTick,
 }: TsAxesProps) {
   const yPos = (t: number) => {
     const span = yMax - yMin;
@@ -139,7 +143,7 @@ export function TsAxes({
         const y = yPos(t);
         return (
           <text key={t} className="ts-axis-label" x={p.x - 10} y={y + 4} textAnchor="end">
-            {tsTick(t)}
+            {tickFormat(t)}
           </text>
         );
       })}
@@ -147,7 +151,7 @@ export function TsAxes({
         const x = p.x + (yMax > 0 ? (t / yMax) * p.w : 0);
         return (
           <text key={t} className="ts-axis-label" x={x} y={p.y + p.h + 20} textAnchor="middle">
-            {tsTick(t)}
+            {tickFormat(t)}
           </text>
         );
       })}

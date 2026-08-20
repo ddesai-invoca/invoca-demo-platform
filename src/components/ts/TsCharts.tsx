@@ -36,12 +36,14 @@ const LEGEND_W = 212;
 
 export function TsLine({
   categories, series, w = TS_SIZE.line.w, h = TS_SIZE.line.h, xTitle, yTitle,
-  area = false, showLegend = true, dashTail = false, onSelect,
+  area = false, showLegend = true, dashTail = false, tickFormat, onSelect,
 }: {
   categories: string[]; series: TsSeries[]; w?: number; h?: number;
   xTitle?: string; yTitle?: string; area?: boolean; showLegend?: boolean;
   /** Dot the final segment, as the real chart does for an incomplete period. */
   dashTail?: boolean;
+  /** Value-axis tick formatter, so money keeps its $ and a duration reads m:ss. */
+  tickFormat?: (v: number) => string;
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
   const hv = useTsHover();
@@ -69,7 +71,7 @@ export function TsLine({
     <div className="ts-chartwrap">
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         <TsAxes plot={p} categories={categories} yMax={yMax} yMin={yMin} yTicks={ticks}
-          tickAt={tickAt} />
+          tickAt={tickAt} tickFormat={tickFormat} />
         {fitted.map((s, si) => {
           const color = TS_SERIES_LINE[si % TS_SERIES_LINE.length];
           const pts = s.values.map((v, i) => [b.centre(i), yOf(p, v, yMax, yMin)] as [number, number]);
@@ -96,7 +98,8 @@ export function TsLine({
                     hv.setActiveSeries(si);
                     hv.setHover({
                       xPct: ((cx - 0) / w) * 100, yPct: (cy / h) * 100,
-                      rows: [[s.name, tsNum(s.values[i])], [xTitle ?? "Category", categories[i]]],
+                      rows: [[s.name, (tickFormat ?? tsNum)(s.values[i])],
+                             [xTitle ?? "Category", categories[i]]],
                     });
                   }}
                   onMouseLeave={hv.clear}
