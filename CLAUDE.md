@@ -1494,16 +1494,31 @@ Re-measured from a capture of the REAL tile, and the first build was wrong in se
 
 | | first build | the real tile |
 |---|---|---|
-| points | 5 week buckets | **112 weekly**, ~07/2024 to 01/2026 |
+| points | 5 week buckets, "Wk 1" labels | **5 week-start dates**, `MM/DD/YYYY` |
 | y ticks | `8,000` | **`8K`** compact from 1,000 up |
 | tick count | 6 | **8** (`0..8K by 1K`) |
-| x labels | every bucket | **6, calendar-aligned every 4 months**, `MM/DD/YYYY` |
+| x labels | "Jan 1-4" | **`12/29/2025` … `01/26/2026`**, Monday-aligned |
 | axis titles | none | **`Total <measure>` + `Weekly Call Start Time`** |
 | last segment | solid | **dotted**, `stroke-dasharray: 2,2` |
 | under the chart | "Call Count over the reporting period" | **nothing** |
 
-⚠️ **A NEW TILE CARRIES NO DATE FILTER**, which is why it spans two years while the
-dashboards show one month — the same reason the Details Report spans ~2 years.
+⚠️ **A TILE HONOURS THE DASHBOARD'S FILTER — do not re-derive this.** The first rebuild
+spanned TWO YEARS, reasoning from a capture whose tile ran 07/2024 to 08/2026 and
+concluding "a new tile carries no date filter". Wrong: our Summary Dashboard shows a chip
+reading `Call Start Time Between (01/01/2026 <= 01/31/2026)`, and a tile plotting two
+years under that chip contradicts the filter a prospect is reading. The captured tile was
+built somewhere the filter was not applied.
+
+The window comes from `marketingDashboard.dateRange` — **the same field the chip renders
+from** — so the two can never disagree. Corroborated by the grouped-column capture, whose
+x axis reads 12/29/2025, 01/05/2026, 01/12/2026, 01/19/2026, 01/26/2026: five
+Monday-aligned WEEK-START dates for a one-month filter.
+
+⚠️ **Buckets are weighted by IN-RANGE DAYS**, which is what makes it a complete partition:
+Jan 1-31 is 4 + 7 + 7 + 7 + 6 = 31 days across five Monday weeks, so the first and last
+buckets are genuinely smaller, the values sum to EXACTLY the prospect's own call total
+(verified 48,293), and the last week being partial is also why the final segment is
+dotted.
 
 ⚠️ **AXIS TITLES ARE HTML, NOT SVG TEXT.** `axis-label-title`, 12px/**600**/`#5b6577`.
 No `.highcharts-axis-title` exists in ANY captured chart's svg, so this was wrong on
@@ -1523,17 +1538,19 @@ no captured axis uses anywhere.
 column's five weekly dates all sit inside one month, so a 4-month rule there would print
 one label and drop the rest. Gated on `> 12` categories.
 
-**The data reconciles and does not look synthetic**, which took two fixes:
-- The last FOUR weekly points are re-apportioned to sum to exactly `callTotal * 28/31`
-  (the days they cover), largest-remainder rounded. Ramp-and-wobble alone landed 44,192
-  against a 48,293 month — close enough to look right, wrong enough to be caught.
-- ⚠️ **The weekly jitter MUST be correlated week to week.** A fresh hash per week is
-  uncorrelated and at +/-14% renders as a perfect SAWTOOTH climbing the chart. It is now
-  a 3-week moving average plus annual seasonality and a late-December dip; measured 42%
-  direction flips against a sawtooth's ~100%.
-⚠️ **The capture's own SHAPE is deliberately not copied.** That tenant shows two lone
-spikes to 7K with almost nothing between them, which reads as broken data rather than a
-business.
+⚠️ **Kept from the two-year attempt, because it will matter again for any long series:
+a fresh hash per bucket is UNCORRELATED and renders as a perfect SAWTOOTH.** Over 112
+weekly points at +/-14% it drew a metronome climbing the chart, which reads as synthetic
+at a glance. If a long span is ever wanted, smooth the jitter across neighbours (a 3-week
+moving average measured 42% direction flips against a sawtooth's ~100%) rather than
+raising or lowering its amplitude. The five-bucket window keeps a modest +/-8% wobble,
+since with five points a large jitter reads as noise rather than as a busy week.
+
+⚠️ **`{ label: "Attribute", kind: "measure" }` IS CORRECT — do not "fix" it.** The field
+looks mislabelled (it offers measures under the word "Attribute") and is verbatim right:
+the capture has `<label id=measure-label><span>Attribute</span></label>`. The `id` also
+independently confirms the `kind: "measure"` classification, which was originally inferred
+from live option COUNTS — two signals agreeing.
 
 Multi-Line still uses the five-week window on purpose: only the single-line template has
 been measured, and widening a chart nobody has verified would be a guess.
