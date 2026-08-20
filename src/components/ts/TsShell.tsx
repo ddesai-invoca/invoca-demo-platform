@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { TS_AXIS_LABEL, TS_AXIS_LINE, TS_PLOT, niceTicks, plotOf, tsNum, type Plot } from "./tsChart";
+import { TS_AXIS_LINE, niceTicks, plotOf, tsTick, type Plot } from "./tsChart";
 
 /* =============================================================================
    TsShell — the pieces every ThoughtSpot tile shares: the tile frame, the HTML
@@ -101,12 +101,12 @@ export interface TsAxesProps {
   categories: string[];
   yMax: number;
   yTicks: number[];
-  xTitle?: string;
-  yTitle?: string;
   /** Horizontal charts put categories on the y axis and values along the x. */
   horizontal?: boolean;
   /** A second value axis on the right, for the dual-axis template. */
   right?: { max: number; ticks: number[]; title?: string; format?: (v: number) => string };
+  /** Explicit tick indices for the category axis; used for calendar-aligned dates. */
+  tickAt?: number[];
 }
 
 /**
@@ -115,7 +115,7 @@ export interface TsAxesProps {
  * matching the product.
  */
 export function TsAxes({
-  plot: p, categories, yMax, yTicks, xTitle, yTitle, horizontal, right,
+  plot: p, categories, yMax, yTicks, horizontal, right, tickAt,
 }: TsAxesProps) {
   const everyNth = (n: number, total: number) => {
     /* Category labels crowd on a narrow tile; thin them rather than rotating,
@@ -124,6 +124,7 @@ export function TsAxes({
     return total <= max ? 1 : Math.ceil(total / max) === n ? 1 : Math.ceil(total / max);
   };
   const stride = everyNth(1, categories.length);
+  const explicit = tickAt ? new Set(tickAt) : null;
 
   return (
     <g className="ts-axes" aria-hidden="true">
@@ -132,7 +133,7 @@ export function TsAxes({
         const y = p.y + p.h - (yMax > 0 ? (t / yMax) * p.h : 0);
         return (
           <text key={t} className="ts-axis-label" x={p.x - 10} y={y + 4} textAnchor="end">
-            {tsNum(t)}
+            {tsTick(t)}
           </text>
         );
       })}
@@ -140,7 +141,7 @@ export function TsAxes({
         const x = p.x + (yMax > 0 ? (t / yMax) * p.w : 0);
         return (
           <text key={t} className="ts-axis-label" x={x} y={p.y + p.h + 20} textAnchor="middle">
-            {tsNum(t)}
+            {tsTick(t)}
           </text>
         );
       })}
@@ -150,14 +151,14 @@ export function TsAxes({
         const y = p.y + p.h - (right.max > 0 ? (t / right.max) * p.h : 0);
         return (
           <text key={"r" + t} className="ts-axis-label" x={p.x + p.w + 10} y={y + 4} textAnchor="start">
-            {(right.format ?? tsNum)(t)}
+            {(right.format ?? tsTick)(t)}
           </text>
         );
       })}
 
       {/* category axis */}
       {categories.map((c, i) => {
-        if (i % stride !== 0) return null;
+        if (explicit ? !explicit.has(i) : i % stride !== 0) return null;
         if (horizontal) {
           const band = p.h / Math.max(1, categories.length);
           return (
@@ -180,27 +181,42 @@ export function TsAxes({
       <path className="ts-axis-line" d={`M ${p.x} ${p.y} L ${p.x} ${p.y + p.h}`} stroke={TS_AXIS_LINE} />
       <path className="ts-axis-line" d={`M ${p.x} ${p.y + p.h} L ${p.x + p.w} ${p.y + p.h}`} stroke={TS_AXIS_LINE} />
 
-      {/* axis titles */}
+      {/* ⚠️ NO AXIS TITLES IN HERE. They are HTML — see TsAxisTitles. Measured: no
+          `.highcharts-axis-title` exists in any captured chart's svg, and the real
+          titles are `axis-label-title` divs at 12px/600. In the svg they would scale
+          with the viewBox, which is the same reason the legend is HTML. */}
+    </g>
+  );
+}
+
+/**
+ * Axis titles, as HTML overlaying the chart box.
+ *
+ * Positioned in PERCENTAGES of the wrapper for the same reason the hover panel is: the
+ * svg scales with its column, so a px offset drifts the moment the tile is not exactly
+ * its measured width. Measured on the real tile (846x633): the y title sits at x=9 and
+ * the x title's centre lands on the plot centre.
+ */
+export function TsAxisTitles({
+  xTitle, yTitle, rightTitle, plot, w, h,
+}: { xTitle?: string; yTitle?: string; rightTitle?: string; plot: Plot; w: number; h: number }) {
+  if (!xTitle && !yTitle && !rightTitle) return null;
+  const centrePct = ((plot.x + plot.w / 2) / w) * 100;
+  const midPct = ((plot.y + plot.h / 2) / h) * 100;
+  return (
+    <>
       {yTitle ? (
-        <text className="ts-axis-title" transform={`translate(16 ${p.y + p.h / 2}) rotate(-90)`}
-          textAnchor="middle" fill={TS_AXIS_LABEL}>
-          {yTitle}
-        </text>
+        <span className="ts-axis-ytitle" style={{ top: `${midPct}%` }}>{yTitle}</span>
       ) : null}
       {xTitle ? (
-        <text className="ts-axis-title" x={p.x + p.w / 2} y={p.y + p.h + TS_PLOT.bottom - 8}
-          textAnchor="middle" fill={TS_AXIS_LABEL}>
-          {xTitle}
-        </text>
+        <span className="ts-axis-xtitle" style={{ left: `${centrePct}%` }}>{xTitle}</span>
       ) : null}
-      {right?.title ? (
-        <text className="ts-axis-title"
-          transform={`translate(${p.x + p.w + 52} ${p.y + p.h / 2}) rotate(90)`}
-          textAnchor="middle" fill={TS_AXIS_LABEL}>
-          {right.title}
-        </text>
+      {rightTitle ? (
+        <span className="ts-axis-ytitle ts-axis-ytitle--right" style={{ top: `${midPct}%` }}>
+          {rightTitle}
+        </span>
       ) : null}
-    </g>
+    </>
   );
 }
 

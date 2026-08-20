@@ -22,6 +22,12 @@ export interface GeneratedTile {
   xLabels: string[];
   series: { name: string; values: number[] }[];
   slices: { label: string; value: number }[];
+  /* Axis titles, rendered as HTML beside the chart (the real ones are not svg text).
+     Same optional-and-absent-from-TILE_PROPS contract as the table fields below. */
+  xTitle?: string;
+  yTitle?: string;
+  /* Dot the final segment: a new tile's last period is incomplete. */
+  dashTail?: boolean;
   /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
      (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
      generated type REQUIRED, so adding these there would force the assistant to

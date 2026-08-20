@@ -113,10 +113,21 @@
   font-family: var(--ts-var-axis-data-label-font-family);
   font-size: 12px; fill: var(--ts-var-axis-data-label-color);
 }
-.ts-axis-title {
+/* AXIS TITLES ARE HTML, not svg text — measured `axis-label-title`, 12px/600 #5b6577.
+   Positioned in PERCENTAGES so they track a scaling svg, the same reason the hover
+   panel is. The y title is rotated with writing-mode rather than a transform so it
+   still reserves its own width in the layout box. */
+.ts-axis-xtitle, .ts-axis-ytitle {
+  position: absolute; pointer-events: none; white-space: nowrap;
   font-family: var(--ts-var-axis-title-font-family);
-  font-size: 12px; fill: var(--ts-var-axis-title-color);
+  font-size: 12px; font-weight: 600; color: var(--ts-var-axis-title-color);
 }
+.ts-axis-xtitle { bottom: 2px; transform: translateX(-50%); }
+.ts-axis-ytitle {
+  left: 1%; writing-mode: vertical-rl; transform: rotate(180deg) translateY(-50%);
+  transform-origin: center;
+}
+.ts-axis-ytitle--right { left: auto; right: 1%; transform: rotate(0deg) translateY(-50%); }
 /* ThoughtSpot's own default, which Invoca does not override. */
 .ts-axis-line { stroke-width: 1; fill: none; }
 

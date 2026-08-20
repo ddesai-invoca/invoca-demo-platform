@@ -18,9 +18,12 @@
    avoids.
    ============================================================================= */
 
-/* Plot-area insets, identical on every cartesian chart measured (plot x=68, y=15).
-   `right` is the no-legend value; a chart with a legend hands that space to it. */
-export const TS_PLOT = { left: 68, top: 15, bottom: 54, right: 8 } as const;
+/* Plot-area insets. `left` is a FALLBACK only — see `plotOf`.
+   ⚠️ THE LEFT INSET IS CONTENT-DERIVED, NOT FIXED. An earlier note here claimed 68 on
+   every cartesian chart; re-measuring a chart whose y labels read "8K" gave 62, against
+   68 where they read "600". The axis TITLES are not in the svg at all (they are HTML,
+   see TsAxisTitles), so the only thing setting the left inset is the widest y label. */
+export const TS_PLOT = { left: 68, top: 15, bottom: 54, right: 3 } as const;
 
 export const TS_AXIS_LINE = "#e0e0e0";      // ThoughtSpot's default, NOT overridden
 export const TS_AXIS_LABEL = "#5b6577";     // Invoca's override, applied
@@ -39,7 +42,9 @@ export const TS_DONUT_INNER = 0.5;          // inner/outer radius, measured 62.2
 export const TS_SIZE = {
   column: { w: 634.5, h: 449 },
   pie: { w: 563, h: 402 },
-  line: { w: 1538, h: 633 },
+  /* Measured on the real single-line tile: 846x633 with the plot 781x564. */
+  line: { w: 846, h: 633 },
+  wide: { w: 1538, h: 633 },
   bar: { w: 846, h: 633 },
   spark: { w: 398, h: 157 },
 } as const;
@@ -48,20 +53,28 @@ export const TS_SIZE = {
    Scales and ticks
    --------------------------------------------------------------------------- */
 
-/** A "nice" axis maximum and its tick stops, so 0..583 reads 0..600 by 100. */
-export function niceTicks(max: number, count = 6): { max: number; ticks: number[] } {
+/**
+ * A "nice" axis maximum and its tick stops, so 0..583 reads 0..600 by 100.
+ *
+ * ⚠️ COUNT IS 8, AND 2.5 IS NOT AN ALLOWED STEP. Both come from the captures rather
+ * than taste: the single-line chart's axis reads 0..8K by 1K (9 labels) off a ~7.4K
+ * max, and the column chart reads 0..600 by 100 (7 labels) off a ~503 max. A count of
+ * 8 reproduces BOTH; a count of 6 gave the line chart 2.5K steps, and no captured axis
+ * anywhere uses a 2.5 step.
+ */
+export function niceTicks(max: number, count = 8): { max: number; ticks: number[] } {
   if (!isFinite(max) || max <= 0) return { max: 1, ticks: [0, 1] };
   const raw = max / count;
   const mag = Math.pow(10, Math.floor(Math.log10(raw)));
   const norm = raw / mag;
-  const step = (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 2.5 ? 2.5 : norm <= 5 ? 5 : 10) * mag;
+  const step = (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 5 ? 5 : 10) * mag;
   const top = Math.ceil(max / step) * step;
   const ticks: number[] = [];
   for (let v = 0; v <= top + step / 2; v += step) ticks.push(+v.toFixed(6));
   return { max: top, ticks };
 }
 
-/** Compact axis/label formatting, matching what the real charts print. */
+/** Compact formatting for a VALUE (tooltips, KPI numbers). */
 export function tsNum(v: number): string {
   if (!isFinite(v)) return "";
   const a = Math.abs(v);
@@ -70,14 +83,59 @@ export function tsNum(v: number): string {
   return v % 1 === 0 ? v.toLocaleString("en-US") : v.toFixed(1);
 }
 
+/**
+ * Formatting for an AXIS TICK, which is compact from 1,000 up — measured: the y axis
+ * reads 0, 1K, 2K … 8K, where `tsNum` would print "1,000". Ticks are round by
+ * construction (niceTicks), so a fraction only appears on a sub-10 axis.
+ */
+export function tsTick(v: number): string {
+  if (!isFinite(v)) return "";
+  const a = Math.abs(v);
+  if (a >= 1_000_000) return +(v / 1_000_000).toFixed(1) + "M";
+  if (a >= 1_000) return +(v / 1000).toFixed(a % 1000 === 0 ? 0 : 1) + "K";
+  return String(+v.toFixed(1));
+}
+
+/** Widest tick label decides the left inset, so long numbers are never clipped. */
+export function leftInsetFor(ticks: number[]): number {
+  const widest = ticks.reduce((n, t) => Math.max(n, tsTick(t).length), 1);
+  /* Measured: "8K" (2 chars) -> 62, "600" (3) -> 68. ~6px per character off a 50px base,
+     which reproduces both and degrades sensibly for "1.2M". */
+  return Math.round(50 + widest * 6);
+}
+
+/**
+ * Which of a series of DATE labels get a tick. The real axis is calendar-aligned, not
+ * every-nth-point: over 112 weekly points it printed 6 labels, one per 4-month
+ * boundary (09/01/2024, 01/01/2025, 05/01/2025, …). Evenly spacing indices lands close
+ * but drifts off the month, which reads as arbitrary next to a real date axis.
+ */
+export function calendarTicks(labels: string[], everyMonths = 4): number[] {
+  const month = (s: string) => {
+    const d = new Date(s);
+    return isNaN(d.getTime()) ? null : d.getFullYear() * 12 + d.getMonth();
+  };
+  const first = labels.map(month).find((m): m is number => m !== null);
+  if (first === undefined) return labels.map((_, i) => i);
+  const out: number[] = [];
+  let prev: number | null = null;
+  labels.forEach((l, i) => {
+    const m = month(l);
+    if (m === null) return;
+    if (m !== prev && (m - first) % everyMonths === 0) out.push(i);
+    prev = m;
+  });
+  return out.length ? out : labels.map((_, i) => i);
+}
+
 export type Plot = { x: number; y: number; w: number; h: number };
 
 /** The plot rect for a canvas, reserving `legendW` on the right when there is one. */
-export function plotOf(w: number, h: number, legendW = 0): Plot {
+export function plotOf(w: number, h: number, legendW = 0, left: number = TS_PLOT.left): Plot {
   return {
-    x: TS_PLOT.left,
+    x: left,
     y: TS_PLOT.top,
-    w: Math.max(1, w - TS_PLOT.left - (legendW || TS_PLOT.right)),
+    w: Math.max(1, w - left - (legendW || TS_PLOT.right)),
     h: Math.max(1, h - TS_PLOT.top - TS_PLOT.bottom),
   };
 }

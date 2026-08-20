@@ -182,7 +182,8 @@ function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => v
       )}
       {tile.tileType === "line" && (
         <TsLine categories={categories} series={series} showLegend={false}
-          w={TS_SIZE.line.w} h={420} />
+          xTitle={tile.xTitle} yTitle={tile.yTitle} dashTail={tile.dashTail}
+          w={TS_SIZE.line.w} h={TS_SIZE.line.h} />
       )}
       {tile.tileType === "bar" && (
         <TsColumn categories={categories} series={series} showLegend={false}
@@ -194,7 +195,9 @@ function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => v
       {tile.tileType === "table" && (
         <TsTable columns={tile.columns ?? []} rows={tile.rows ?? []} />
       )}
-      {tile.note && tile.tileType !== "kpi" ? <div className="ts-gen-note">{tile.note}</div> : null}
+      {/* ⚠️ NO NOTE. The real tile's description is empty — `descriptionPresent` was
+          false in the capture — and ours was printing "Call Count over the reporting
+          period" under every chart, which is our invention, not the product's. */}
     </TsTile>
   );
 }

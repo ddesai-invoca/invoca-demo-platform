@@ -1487,6 +1487,57 @@ slice 9, table 11.9px Helvetica with a 13/700 header, 40 heat cells normalised p
 column. Dashboards re-checked unchanged: 4px radius, two-layer shadow, 21 cards, donut
 350x260, KPI 48,293, and its 12 gridlines still present.
 
+## Template: "Single Line Chart Over Time" (measured 8/20/2026)
+Re-measured from a capture of the REAL tile, and the first build was wrong in seven ways.
+`buildTile`'s `"Single Line Chart Over Time"` case + `weeklySpan()` in
+`src/data/insightsTileData.ts`.
+
+| | first build | the real tile |
+|---|---|---|
+| points | 5 week buckets | **112 weekly**, ~07/2024 to 01/2026 |
+| y ticks | `8,000` | **`8K`** compact from 1,000 up |
+| tick count | 6 | **8** (`0..8K by 1K`) |
+| x labels | every bucket | **6, calendar-aligned every 4 months**, `MM/DD/YYYY` |
+| axis titles | none | **`Total <measure>` + `Weekly Call Start Time`** |
+| last segment | solid | **dotted**, `stroke-dasharray: 2,2` |
+| under the chart | "Call Count over the reporting period" | **nothing** |
+
+⚠️ **A NEW TILE CARRIES NO DATE FILTER**, which is why it spans two years while the
+dashboards show one month — the same reason the Details Report spans ~2 years.
+
+⚠️ **AXIS TITLES ARE HTML, NOT SVG TEXT.** `axis-label-title`, 12px/**600**/`#5b6577`.
+No `.highcharts-axis-title` exists in ANY captured chart's svg, so this was wrong on
+every ts chart, not just this one. They live in `TsAxisTitles` and are positioned in
+PERCENTAGES, the same reason the legend is HTML and the hover panel uses percentages.
+
+⚠️ **THE LEFT PLOT INSET IS CONTENT-DERIVED.** An earlier note here said "68 on every
+cartesian chart". Re-measuring gave **62** where the y labels read `8K` and 68 where they
+read `600` — it tracks the widest tick label. `leftInsetFor()` reproduces both exactly.
+
+⚠️ **`niceTicks` count is 8 and 2.5 is NOT an allowed step.** Both from captures, not
+taste: count 8 reproduces the line chart's `0..8K by 1K` (9 labels) AND the column
+chart's `0..600 by 100` (7 labels). At count 6 the line chart drew **2.5K** steps, which
+no captured axis uses anywhere.
+
+⚠️ **Calendar ticks only apply when there are enough points to thin.** The grouped
+column's five weekly dates all sit inside one month, so a 4-month rule there would print
+one label and drop the rest. Gated on `> 12` categories.
+
+**The data reconciles and does not look synthetic**, which took two fixes:
+- The last FOUR weekly points are re-apportioned to sum to exactly `callTotal * 28/31`
+  (the days they cover), largest-remainder rounded. Ramp-and-wobble alone landed 44,192
+  against a 48,293 month — close enough to look right, wrong enough to be caught.
+- ⚠️ **The weekly jitter MUST be correlated week to week.** A fresh hash per week is
+  uncorrelated and at +/-14% renders as a perfect SAWTOOTH climbing the chart. It is now
+  a 3-week moving average plus annual seasonality and a late-December dip; measured 42%
+  direction flips against a sawtooth's ~100%.
+⚠️ **The capture's own SHAPE is deliberately not copied.** That tenant shows two lone
+spikes to 7K with almost nothing between them, which reads as broken data rather than a
+business.
+
+Multi-Line still uses the five-week window on purpose: only the single-line template has
+been measured, and widening a chart nobody has verified would be a guess.
+
 ## Build With AI -> "Create Tile with AI" (the question-to-tile drawer)
 `src/components/InsightsCreateTileAi.tsx` (`.icta-`) + `src/data/insightsQuestions.ts`.
 **Build With AI** on Add Tile opens its OWN drawer there; it used to navigate to

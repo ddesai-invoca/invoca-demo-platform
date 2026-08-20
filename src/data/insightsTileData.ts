@@ -110,6 +110,86 @@ function spread(total: number, n: number, seed: number): number[] {
 const DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const HOURS = Array.from({ length: 12 }, (_, i) => `${(i * 2) || 12}${i * 2 < 12 ? "am" : "pm"}`);
 
+/* ---- the two-year weekly span a NEW tile shows -----------------------------
+   A tile created from Add Tile carries NO date filter, so it plots the whole dataset,
+   not the dashboards' one month. Measured on the real single-line tile: 112 weekly
+   points running ~07/2024 to ~08/2026, y axis topping out at 8K.
+
+   ⚠️ THE RECENT MONTH RECONCILES WITH THE DASHBOARDS. The last four weekly points sum
+   to the prospect's own call total scaled to the 28 days they cover, and history ramps
+   up to it — so an SE can point at the
+   right-hand end and it agrees with the 48,293 on the Summary Dashboard. Inventing a
+   second, unrelated volume for this chart is the "parallel universe" the standing
+   architecture rules out.
+   ⚠️ The capture's own shape is NOT copied. That account is a demo tenant: two lone
+   spikes to 7K with almost nothing between them, which reads as broken data rather
+   than a business. This ramps with weekly jitter instead. */
+const SPAN_WEEKS = 112;
+const WEEKS_IN_MONTH = 31 / 7;
+
+function weeklySpan(profile: CustomerProfile, measure: string): { labels: string[]; values: number[] } {
+  const sc = measureScale(profile, measure);
+  const seed = hash(profile.id + "::span::" + measure);
+  /* The demo window ends 1/31/2026, which is the date every other screen shows. */
+  const end = new Date(Date.UTC(2026, 0, 31));
+  const labels: string[] = [];
+  const values: number[] = [];
+  const recentWeekly = sc.max / WEEKS_IN_MONTH;
+
+  /* ⚠️ THE JITTER MUST BE CORRELATED WEEK TO WEEK. A fresh hash per week is
+     uncorrelated, and at +/-14% that renders as a perfect SAWTOOTH — a mechanical
+     zigzag climbing the chart, which reads as synthetic at a glance and was the first
+     thing wrong with this tile. Averaging each week's jitter with its two neighbours
+     makes consecutive weeks move together, which is what real volume does. */
+  const rawJitter = Array.from({ length: SPAN_WEEKS }, (_, i) =>
+    (((seed + hash("w" + i)) >>> 7) % 200) / 100 - 1);          // -1 .. +1
+  const smooth = rawJitter.map((_, i) => {
+    const a = rawJitter[Math.max(0, i - 1)], b = rawJitter[i];
+    const c = rawJitter[Math.min(SPAN_WEEKS - 1, i + 1)];
+    return (a + b + c) / 3;
+  });
+
+  for (let i = SPAN_WEEKS - 1; i >= 0; i--) {
+    const d = new Date(end.getTime() - i * 7 * 86400000);
+    labels.push(`${String(d.getUTCMonth() + 1).padStart(2, "0")}/`
+      + `${String(d.getUTCDate()).padStart(2, "0")}/${d.getUTCFullYear()}`);
+    const k = SPAN_WEEKS - 1 - i;
+    /* A slightly convex ramp from ~35% of today's weekly rate, so growth reads as
+       accelerating rather than as a ruler drawn across the chart. */
+    const t = k / (SPAN_WEEKS - 1);
+    const ramp = 0.35 + 0.65 * (0.35 * t + 0.65 * t * t);
+    /* Annual seasonality, +/-10%, so the two years rhyme with each other. */
+    const season = 1 + 0.1 * Math.sin((k / 52) * Math.PI * 2);
+    /* Late-December weeks dip, as every real business does. */
+    const holiday = d.getUTCMonth() === 11 && d.getUTCDate() >= 20 ? 0.72 : 1;
+    const value = recentWeekly * ramp * season * holiday * (1 + 0.11 * smooth[k]);
+    values.push(Math.max(1, Math.round(value)));
+  }
+
+  /* ⚠️ RECONCILE THE TAIL EXACTLY, do not just aim at it. The ramp-and-wobble alone
+     landed the last four weeks at 44,192 against a 48,293 month — close enough to look
+     right and wrong enough for a prospect to catch. The final FOUR weekly points cover
+     28 of the month's 31 days, so they are re-apportioned to sum to exactly
+     `max * 28/31`, proportions preserved, largest-remainder rounded. */
+  const TAIL = 4;
+  if (values.length >= TAIL && sc.max > 0) {
+    const target = Math.round(sc.max * (28 / 31));
+    const tail = values.slice(-TAIL);
+    const sum = tail.reduce((a, b) => a + b, 0);
+    if (sum > 0) {
+      const exact = tail.map((v) => (v / sum) * target);
+      const floors = exact.map(Math.floor);
+      let left = target - floors.reduce((a, b) => a + b, 0);
+      const order = exact
+        .map((v, i) => ({ i, frac: v - Math.floor(v) }))
+        .sort((a, b) => b.frac - a.frac);
+      for (const o of order) { if (left <= 0) break; floors[o.i] += 1; left -= 1; }
+      floors.forEach((v, k) => { values[values.length - TAIL + k] = Math.max(1, v); });
+    }
+  }
+  return { labels, values };
+}
+
 function weekLabels(profile: CustomerProfile): string[] {
   const r = profile.reports as Reports;
   const x = r.marketingDashboard?.salesCallBreakoutGraph?.xLabels;
@@ -182,9 +262,21 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
       return { tileType: "bar", title: c.name, note: `${primary} by region`, kpis: [], slices: [],
         xLabels: vals, series: series(vals) };
     }
+    case "Single Line Chart Over Time": {
+      /* The full two-year weekly span, because a new tile carries no date filter.
+         Axis titles match the real tile: "Total <measure>" on the left and
+         "Weekly Call Start Time" underneath, and the final week is dotted. */
+      const span = weeklySpan(profile, primary);
+      return {
+        tileType: "line", title: c.name, note: "", kpis: [], slices: [],
+        xLabels: span.labels, series: [{ name: primary, values: span.values }],
+        yTitle: `Total ${primary}`, xTitle: "Weekly Call Start Time", dashTail: true,
+      };
+    }
     default: {
-      /* Single- and Multi-Line both land here; the only difference is how many
-         measures the drawer collected. */
+      /* Multi-Line still lands here on the five-week window. Left deliberately: only
+         the single-line template has been measured against a capture so far, and
+         widening the span on a chart nobody has verified would be a guess. */
       const labels = weekLabels(profile);
       return { tileType: "line", title: c.name, note, kpis: [], slices: [],
         xLabels: labels, series: series(labels) };

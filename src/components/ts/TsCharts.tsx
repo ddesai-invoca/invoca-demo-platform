@@ -2,9 +2,10 @@ import { fitValues } from "../chartFit";
 import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SLICE_COLORS, areaFill } from "../../data/tsPalette";
 import {
   TS_AREA_ALPHA, TS_BAR_THICK, TS_COLUMN_GAP, TS_COLUMN_W, TS_DONUT_INNER, TS_LINE_W, TS_SIZE,
-  areaPath, bands, linePath, niceTicks, plotOf, slicePath, sliceAngles, tsNum, yOf,
+  areaPath, bands, calendarTicks, leftInsetFor, linePath, niceTicks, plotOf, slicePath,
+  sliceAngles, tsNum, yOf,
 } from "./tsChart";
-import { TsAxes, TsTip, useTsHover } from "./TsShell";
+import { TsAxes, TsAxisTitles, TsTip, useTsHover } from "./TsShell";
 
 /* =============================================================================
    TsCharts — the seven ThoughtSpot chart templates, drawn to measured geometry.
@@ -35,10 +36,12 @@ const LEGEND_W = 212;
 
 export function TsLine({
   categories, series, w = TS_SIZE.line.w, h = TS_SIZE.line.h, xTitle, yTitle,
-  area = false, showLegend = true, onSelect,
+  area = false, showLegend = true, dashTail = false, onSelect,
 }: {
   categories: string[]; series: TsSeries[]; w?: number; h?: number;
   xTitle?: string; yTitle?: string; area?: boolean; showLegend?: boolean;
+  /** Dot the final segment, as the real chart does for an incomplete period. */
+  dashTail?: boolean;
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
   const hv = useTsHover();
@@ -48,15 +51,19 @@ export function TsLine({
     .filter((s): s is { name: string; values: number[] } => s.values !== null);
   const max = Math.max(1, ...fitted.flatMap((s) => s.values));
   const legendW = showLegend && fitted.length > 1 ? LEGEND_W : 0;
-  const p = plotOf(w, h, legendW);
   const { max: yMax, ticks } = niceTicks(max);
+  const p = plotOf(w, h, legendW, leftInsetFor(ticks));
   const b = bands(p, n);
+  /* Date labels get calendar-aligned ticks, but ONLY when there are enough points to
+     need thinning. The grouped column's five weekly dates all sit inside one month, so
+     a 4-month rule there would print exactly one label and drop the rest. */
+  const tickAt = categories.length > 12 && /\d{1,2}\/\d{1,2}\/\d{2,4}/.test(categories[0] ?? "")
+    ? calendarTicks(categories) : undefined;
 
   return (
     <div className="ts-chartwrap">
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
-        <TsAxes plot={p} categories={categories} yMax={yMax} yTicks={ticks}
-          xTitle={xTitle} yTitle={yTitle} />
+        <TsAxes plot={p} categories={categories} yMax={yMax} yTicks={ticks} tickAt={tickAt} />
         {fitted.map((s, si) => {
           const color = TS_SERIES_LINE[si % TS_SERIES_LINE.length];
           const pts = s.values.map((v, i) => [b.centre(i), yOf(p, v, yMax)] as [number, number]);
@@ -66,8 +73,16 @@ export function TsLine({
               {area ? (
                 <path d={areaPath(pts, p.y + p.h)} fill={areaFill(color, TS_AREA_ALPHA)} stroke="none" />
               ) : null}
-              <path d={linePath(pts)} fill="none" stroke={color} strokeWidth={TS_LINE_W}
-                strokeLinejoin="round" strokeLinecap="round" />
+              {/* The last segment is DOTTED: the real chart re-draws the series with
+                  `stroke-dasharray: 2,2` clipped to the final period, because that
+                  period is still incomplete. Drawing the tail as its own short dashed
+                  path is visually identical without needing a clip. */}
+              <path d={linePath(dashTail ? pts.slice(0, -1) : pts)} fill="none" stroke={color}
+                strokeWidth={TS_LINE_W} strokeLinejoin="round" strokeLinecap="round" />
+              {dashTail && pts.length > 1 ? (
+                <path d={linePath(pts.slice(-2))} fill="none" stroke={color}
+                  strokeWidth={TS_LINE_W} strokeDasharray="2,2" strokeLinecap="round" />
+              ) : null}
               {pts.map(([cx, cy], i) => (
                 <circle key={i} cx={cx} cy={cy} r={10} fill="transparent"
                   className={onSelect ? "ts-hit ts-hit--click" : "ts-hit"}
@@ -85,6 +100,7 @@ export function TsLine({
           );
         })}
       </svg>
+      <TsAxisTitles xTitle={xTitle} yTitle={yTitle} plot={p} w={w} h={h} />
       <TsTip hover={hv.hover} />
     </div>
   );
@@ -109,8 +125,8 @@ export function TsColumn({
     ? Math.max(1, ...categories.map((_, i) => fitted.reduce((t, s) => t + s.values[i], 0)))
     : Math.max(1, ...fitted.flatMap((s) => s.values));
   const legendW = showLegend && fitted.length > 1 ? LEGEND_W : 0;
-  const p = plotOf(w, h, legendW);
   const { max: yMax, ticks } = niceTicks(max);
+  const p = plotOf(w, h, legendW, leftInsetFor(ticks));
   const b = bands(p, n);
 
   /* Measured: bars are 22 wide with a 5px gap INSIDE a group, and a group fills
@@ -128,8 +144,7 @@ export function TsColumn({
   return (
     <div className="ts-chartwrap">
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
-        <TsAxes plot={p} categories={categories} yMax={yMax} yTicks={ticks}
-          xTitle={xTitle} yTitle={yTitle} />
+        <TsAxes plot={p} categories={categories} yMax={yMax} yTicks={ticks} />
         {categories.map((cat, ci) => {
           const cx = b.centre(ci);
           const totalW = stacked ? barW : fitted.length * barW + (fitted.length - 1) * gap;
@@ -165,6 +180,7 @@ export function TsColumn({
           );
         })}
       </svg>
+      <TsAxisTitles xTitle={xTitle} yTitle={yTitle} plot={p} w={w} h={h} />
       <TsTip hover={hv.hover} />
     </div>
   );
@@ -191,7 +207,7 @@ export function TsBar({
   return (
     <div className="ts-chartwrap">
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
-        <TsAxes plot={p} categories={categories} yMax={xMax} yTicks={ticks} xTitle={xTitle} horizontal />
+        <TsAxes plot={p} categories={categories} yMax={xMax} yTicks={ticks} horizontal />
         {vals.map((v, i) => {
           const barW = xMax > 0 ? (v / xMax) * p.w : 0;
           const y = p.y + band * (i + 0.5) - thick / 2;
@@ -212,6 +228,7 @@ export function TsBar({
           );
         })}
       </svg>
+      <TsAxisTitles xTitle={xTitle} plot={p} w={w} h={h} />
       <TsTip hover={hv.hover} />
     </div>
   );
@@ -242,7 +259,6 @@ export function TsDualAxis({
     <div className="ts-chartwrap">
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         <TsAxes plot={p} categories={categories} yMax={left.max} yTicks={left.ticks}
-          xTitle={xTitle} yTitle={yTitle}
           right={{ max: right.max, ticks: right.ticks, title: rightTitle, format: rightFormat }} />
         {cols.map((v, i) => {
           const yTop = yOf(p, v, left.max);
@@ -283,6 +299,7 @@ export function TsDualAxis({
           );
         })()}
       </svg>
+      <TsAxisTitles xTitle={xTitle} yTitle={yTitle} rightTitle={rightTitle} plot={p} w={w} h={h} />
       <TsTip hover={hv.hover} />
     </div>
   );
