@@ -2204,6 +2204,31 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
   changes are shared CSS and apply to everyone.
 
 ## Deferred polish (TODO)
+0. **ZERO-DOWNTIME DEPLOYS (agreed 2026-08-20, parked mid-session).** Goal: a push must
+   not interrupt the live site, even for someone hitting refresh mid-deploy.
+   ⚠️ **The blocker is the PERSISTENT DISK, not the plan or the health check.** The
+   service is on Render Starter and `/api/status` reports `storage.persistent: true`.
+   A Render disk attaches to ONE instance at a time, so the old instance must stop to
+   release it before the new one boots; zero-downtime deploys are unavailable while a
+   disk is mounted. Do not re-investigate the health check.
+   Two code-side aggravators, both still open: `server.ts` has **no SIGTERM handler**,
+   so in-flight requests are dropped the moment Render stops it; and the boot
+   migrations are **synchronous `fs` loops over 117 demos** running right after
+   `listen`, blocking the event loop and delaying `/healthz`.
+   Two routes, user picked neither yet:
+   - **A (structural):** move demo storage off the disk (Postgres or S3/R2 behind
+     `engine/demoStore.ts`, already a narrow read/write/list interface), then remove
+     the disk and get real rolling deploys.
+   - **B (recommended first, no infra change):** a service worker caching the app
+     shell + hashed bundle so a refresh mid-deploy loads from cache, API retry with
+     backoff, plus the SIGTERM and non-blocking-boot fixes.
+   ⚠️ **The single bundle is load-bearing for this.** The build is one 1.84MB JS file
+   with NO code splitting, which is why an already-loaded browser survives a deploy
+   today. Introducing code splitting without solving stale-chunk 404s would create a
+   white-screen-mid-demo failure that zero-downtime deploys do not fix.
+   For "I say push and it deploys": a **Render Deploy Hook URL** in git-ignored `.env`
+   (single-purpose; cannot read env vars or delete services), then poll `/api/status`
+   until `commitShort` matches. A full Render API key was declined as too broad.
 1. **Engine revenue-example leak**: the generation prompt uses "$945,910" as an example,
    and generated customers copy it verbatim as Total Revenue. Fix in `engine/generate.ts`
    (dashboard prompt) — use a placeholder or instruct it to compute from calls × rate × price.
