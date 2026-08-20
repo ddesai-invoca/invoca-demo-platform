@@ -62,6 +62,45 @@ export const TS_SIZE = {
  * 8 reproduces BOTH; a count of 6 gave the line chart 2.5K steps, and no captured axis
  * anywhere uses a 2.5 step.
  */
+/**
+ * A scale that does NOT start at zero, for LINE and AREA charts — measured off the real
+ * tile, whose axis reads 100..550 by 50 for data spanning ~103..490. Reverse-engineered
+ * from that: step from the DATA RANGE (not the max), the bottom is the min floored to a
+ * tick, and the top is the max plus ~5% headroom ceiled to a tick. Reproduces 100 and
+ * 550 exactly, ten ticks, with the line starting at the very bottom of the plot.
+ *
+ * ⚠️ ZERO-BASED IS STILL RIGHT FOR BARS AND COLUMNS. A bar's length IS its value, so a
+ * non-zero baseline overstates every difference — the capture's column chart runs 0..600
+ * even though its smallest group is ~48. `zeroBased` is therefore a parameter, not a
+ * global preference: lines and areas zoom, bars never do.
+ */
+export function niceScale(
+  min: number, max: number, zeroBased: boolean, count = 8,
+): { min: number; max: number; ticks: number[] } {
+  if (!isFinite(min) || !isFinite(max)) return { min: 0, max: 1, ticks: [0, 1] };
+  if (zeroBased) {
+    const t = niceTicks(Math.max(0, max), count);
+    return { min: 0, max: t.max, ticks: t.ticks };
+  }
+  /* A flat series has no range to divide; give it symmetric room so it sits mid-plot
+     instead of collapsing onto the axis. */
+  const span = max - min || Math.max(1, Math.abs(max) * 0.2);
+  const step = niceStep(span / count);
+  const lo = Math.floor(min / step) * step;
+  const hi = Math.ceil((max + span * 0.05) / step) * step;
+  const ticks: number[] = [];
+  for (let v = lo; v <= hi + step / 2; v += step) ticks.push(+v.toFixed(6));
+  return { min: lo, max: hi, ticks };
+}
+
+/** The 1 / 2 / 5 / 10 progression both captured axes use. 2.5 is deliberately absent. */
+function niceStep(raw: number): number {
+  if (!isFinite(raw) || raw <= 0) return 1;
+  const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const norm = raw / mag;
+  return (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 5 ? 5 : 10) * mag;
+}
+
 export function niceTicks(max: number, count = 8): { max: number; ticks: number[] } {
   if (!isFinite(max) || max <= 0) return { max: 1, ticks: [0, 1] };
   const raw = max / count;
@@ -146,9 +185,13 @@ export function bands(p: Plot, n: number): { centre: (i: number) => number; widt
   return { centre: (i: number) => p.x + width * (i + 0.5), width };
 }
 
-/** y for a value, given a nice max. */
-export function yOf(p: Plot, v: number, max: number): number {
-  const t = max > 0 ? Math.min(1, Math.max(0, v / max)) : 0;
+/**
+ * y for a value on a scale. `min` defaults to 0, so every zero-based caller is
+ * unchanged; a zoomed line axis passes its own floor.
+ */
+export function yOf(p: Plot, v: number, max: number, min = 0): number {
+  const span = max - min;
+  const t = span > 0 ? Math.min(1, Math.max(0, (v - min) / span)) : 0;
   return p.y + p.h - t * p.h;
 }
 

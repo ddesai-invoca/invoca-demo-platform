@@ -100,6 +100,8 @@ export interface TsAxesProps {
   /** Category labels along the value-independent axis. */
   categories: string[];
   yMax: number;
+  /** Axis floor. Defaults to 0, so every zero-based caller is untouched. */
+  yMin?: number;
   yTicks: number[];
   /** Horizontal charts put categories on the y axis and values along the x. */
   horizontal?: boolean;
@@ -115,8 +117,12 @@ export interface TsAxesProps {
  * matching the product.
  */
 export function TsAxes({
-  plot: p, categories, yMax, yTicks, horizontal, right, tickAt,
+  plot: p, categories, yMax, yMin = 0, yTicks, horizontal, right, tickAt,
 }: TsAxesProps) {
+  const yPos = (t: number) => {
+    const span = yMax - yMin;
+    return p.y + p.h - (span > 0 ? ((t - yMin) / span) * p.h : 0);
+  };
   const everyNth = (n: number, total: number) => {
     /* Category labels crowd on a narrow tile; thin them rather than rotating,
        because the real charts do not rotate. */
@@ -130,7 +136,7 @@ export function TsAxes({
     <g className="ts-axes" aria-hidden="true">
       {/* value axis */}
       {!horizontal && yTicks.map((t) => {
-        const y = p.y + p.h - (yMax > 0 ? (t / yMax) * p.h : 0);
+        const y = yPos(t);
         return (
           <text key={t} className="ts-axis-label" x={p.x - 10} y={y + 4} textAnchor="end">
             {tsTick(t)}

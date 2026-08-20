@@ -1538,6 +1538,21 @@ no captured axis uses anywhere.
 column's five weekly dates all sit inside one month, so a 4-month rule there would print
 one label and drop the rest. Gated on `> 12` categories.
 
+⚠️ **THE Y AXIS DOES NOT START AT ZERO ON A LINE CHART.** The real tile's axis reads
+100..550 for data spanning ~103..490, so the line uses the full plot height instead of
+hugging the top third. `niceScale(min, max, zeroBased)` reverse-engineers it: the step
+comes from the DATA RANGE (not the max), the floor is the min snapped DOWN to a tick, and
+the top is the max plus ~5% headroom snapped UP. Reproduces their 100 / 550 / ten-ticks-by-50
+exactly, and puts our tile's first point 1% off the plot floor.
+
+⚠️ **BARS, COLUMNS AND AREAS KEEP A ZERO BASELINE.** A bar's length and an area's fill
+ARE the magnitude, so a non-zero floor overstates every difference — the captured column
+chart runs 0..600 even though its smallest group is ~48. `zeroBased` is a parameter, not
+a preference: lines zoom, everything whose size encodes the value does not.
+⚠️ A zoom that RESOLVES to zero is not a broken zoom. The gallery's sample spans 87..503,
+and 87 floored at a step of 100 is 0 — so that bench chart still reads 0..600 and is
+correct. Check the arithmetic before "fixing" it.
+
 ⚠️ **Kept from the two-year attempt, because it will matter again for any long series:
 a fresh hash per bucket is UNCORRELATED and renders as a perfect SAWTOOTH.** Over 112
 weekly points at +/-14% it drew a metronome climbing the chart, which reads as synthetic

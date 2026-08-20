@@ -2,8 +2,8 @@ import { fitValues } from "../chartFit";
 import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SLICE_COLORS, areaFill } from "../../data/tsPalette";
 import {
   TS_AREA_ALPHA, TS_BAR_THICK, TS_COLUMN_GAP, TS_COLUMN_W, TS_DONUT_INNER, TS_LINE_W, TS_SIZE,
-  areaPath, bands, calendarTicks, leftInsetFor, linePath, niceTicks, plotOf, slicePath,
-  sliceAngles, tsNum, yOf,
+  areaPath, bands, calendarTicks, leftInsetFor, linePath, niceScale, niceTicks, plotOf,
+  slicePath, sliceAngles, tsNum, yOf,
 } from "./tsChart";
 import { TsAxes, TsAxisTitles, TsTip, useTsHover } from "./TsShell";
 
@@ -50,8 +50,13 @@ export function TsLine({
     .map((s) => ({ name: s.name, values: fitValues(s.values, n) }))
     .filter((s): s is { name: string; values: number[] } => s.values !== null);
   const max = Math.max(1, ...fitted.flatMap((s) => s.values));
+  const min = Math.min(...fitted.flatMap((s) => s.values), max);
   const legendW = showLegend && fitted.length > 1 ? LEGEND_W : 0;
-  const { max: yMax, ticks } = niceTicks(max);
+  /* ⚠️ A LINE ZOOMS, AN AREA DOES NOT. The real tile's axis starts near the data floor
+     (100 for a ~103 minimum) so the line uses the full height instead of hugging the
+     top. An AREA's fill encodes magnitude the way a bar's length does, so zooming one
+     would overstate every difference — same reason columns keep a zero baseline. */
+  const { min: yMin, max: yMax, ticks } = niceScale(min, max, area);
   const p = plotOf(w, h, legendW, leftInsetFor(ticks));
   const b = bands(p, n);
   /* Date labels get calendar-aligned ticks, but ONLY when there are enough points to
@@ -63,10 +68,11 @@ export function TsLine({
   return (
     <div className="ts-chartwrap">
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
-        <TsAxes plot={p} categories={categories} yMax={yMax} yTicks={ticks} tickAt={tickAt} />
+        <TsAxes plot={p} categories={categories} yMax={yMax} yMin={yMin} yTicks={ticks}
+          tickAt={tickAt} />
         {fitted.map((s, si) => {
           const color = TS_SERIES_LINE[si % TS_SERIES_LINE.length];
-          const pts = s.values.map((v, i) => [b.centre(i), yOf(p, v, yMax)] as [number, number]);
+          const pts = s.values.map((v, i) => [b.centre(i), yOf(p, v, yMax, yMin)] as [number, number]);
           const dim = hv.activeSeries !== null && hv.activeSeries !== si;
           return (
             <g key={s.name} className="ts-series" opacity={dim ? 0.22 : 1}>
