@@ -194,11 +194,11 @@ function TsTileCard({ tile, onRemove, onPick }: {
       /* A multi-line chart puts one y axis per series, so it is the only tile here that
          needs the legend out of the way when it gets narrow. */
       needsWidth={tile.tileType === "line" && series.length > 1}
-      /* ⚠️ A PIE SPANS THE ROW, like a table. Its outside labels need ~250px a side on top
-         of a ~280px donut, so ~800px of chart — and the measured tile IS 847 wide. In a
-         half-width tile (584px at a 1500px viewport) the left-hand labels ran off the
-         canvas. */
-      className={tile.tileType === "table" || tile.tileType === "pie" ? "ts-span-2" : undefined}>
+      /* ⚠️ A PIE IS ONE COLUMN, the same width as the line charts — asked for explicitly
+         2026-08-20 after a span-2 version was tried and rejected as too big. It is narrower
+         than the 847px tile the template was measured on, so the DATA LABELS shrink to fit
+         (see pieLabelText / fitPieLabel); the donut geometry itself is untouched. */
+      className={tile.tileType === "table" ? "ts-span-2" : undefined}>
       {tile.tileType === "kpi" && (
         <div className="ts-kpi-row">
           {tile.kpis.map((k, i) => <TsMetric key={i} label={k.label} value={k.value} />)}

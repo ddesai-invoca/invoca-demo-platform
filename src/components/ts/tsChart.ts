@@ -336,13 +336,38 @@ export function pieOrder<T extends { label: string }>(slices: T[]): T[] {
   });
 }
 
-/** `Name - count (pct%)`, the name cut at 30 characters. */
-export function pieLabelText(label: string, value: number, total: number): string {
-  const name = label.length > TS_PIE_LABEL_CHARS
-    ? label.slice(0, TS_PIE_LABEL_CHARS) + "\u2026" : label;
+/**
+ * `Name - count (pct%)`, the name cut at 30 characters.
+ *
+ * `maxChars` shortens the NAME further when the tile is narrower than the 847px canvas
+ * this was measured on — the suffix is never cut, because "…" where the number should be
+ * is worse than a shorter name. 30 remains the ceiling, so a wide tile is unaffected.
+ */
+export function pieLabelText(
+  label: string, value: number, total: number, maxChars = TS_PIE_LABEL_CHARS,
+): string {
+  const cap = Math.max(4, Math.min(TS_PIE_LABEL_CHARS, maxChars));
+  const name = label.length > cap ? label.slice(0, cap) + "\u2026" : label;
   /* ⚠️ TRAILING ZEROS ARE STRIPPED — the capture reads "1.7%", not "1.70%". */
   const pct = total > 0 ? +((value / total) * 100).toFixed(2) : 0;
   return `${name} - ${tsNum(value)} (${pct}%)`;
+}
+
+/**
+ * How many characters of the NAME fit between a label's anchor and the canvas edge.
+ *
+ * ⚠️ THIS EXISTS BECAUSE OUR TILE IS NARROWER THAN THE CAPTURE. The measured tile is 847
+ * wide and even there 11 of 33 labels hit the 30-character cap; in a one-column tile
+ * (~584px at a 1500px viewport) a 30-character label ran clean off the canvas. Same 6px
+ * per character as `leftInsetFor` uses for tick labels, both being 12px Lato.
+ */
+export function fitPieLabel(
+  label: string, value: number, total: number, x: number, w: number, right: boolean,
+): string {
+  const room = right ? w - x - 8 : x - 8;
+  const suffix = ` - ${tsNum(value)} (${total > 0 ? +((value / total) * 100).toFixed(2) : 0}%)`;
+  const forName = Math.floor(room / 6) - suffix.length;
+  return pieLabelText(label, value, total, forName);
 }
 
 export type Plot = { x: number; y: number; w: number; h: number };

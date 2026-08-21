@@ -14,7 +14,7 @@ export {
   niceTicks, tsNum, tsTick, plotOf, bands, yOf, slicePath, sliceAngles, linePath, areaPath,
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX,
   nearestIndex, TS_TRACKER_W,
-  piePlot, pieOrder, pieLabelText, TS_PIE_GAP_DEG, TS_PIE_LABEL_CHARS,
+  piePlot, pieOrder, pieLabelText, fitPieLabel, TS_PIE_GAP_DEG, TS_PIE_LABEL_CHARS,
 } from "./tsChart";
 export { TS_HUES, TS_SERIES_LINE, TS_SERIES_COLUMN, TS_SLICE_COLORS, TS_PIE_COLORS, TS_PIE_ACTIVE_COLORS, heatColor, areaFill }
   from "../../data/tsPalette";

@@ -4,7 +4,7 @@ import {
   TS_AREA_ALPHA, TS_BAR_THICK, TS_COLUMN_GAP, TS_COLUMN_W, TS_LINE_W, TS_SIZE,
   areaPath, bands, calendarTicks, leftInsetFor, linePath, niceScale, niceTicks, plotOf,
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX, nearestIndex, TS_TRACKER_W,
-  piePlot, pieOrder, pieLabelText, TS_PIE_GAP_DEG,
+  piePlot, pieOrder, fitPieLabel, TS_PIE_GAP_DEG,
   slicePath, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
 import { TsAxes, TsAxisTitles, TsTip, TsPointMarker, useTsHover, useTsBox } from "./TsShell";
@@ -569,9 +569,15 @@ export function TsPie({
         x: p.cx + Math.cos(mid) * (rOut + 12),
         y: p.cy + Math.sin(mid) * (rOut + 12),
         ax: p.cx + Math.cos(mid) * rOut, ay: p.cy + Math.sin(mid) * rOut,
-        text: pieLabelText(clean[i].label, clean[i].value, total),
+        text: "",   // filled below, once the side and x are known
       };
     });
+    /* The text is fitted to the room between each label and the canvas edge, which depends
+       on the side and the x it ended up at — so it is computed here, not above. */
+    for (const r of raw) {
+      const anchorX = r.right ? r.x + 14 : r.x - 14;
+      r.text = fitPieLabel(clean[r.i].label, clean[r.i].value, total, anchorX, w, r.right);
+    }
     /* Labels are pushed apart per side: with 33 slices several mid-angles land within a
        degree of each other and un-separated labels stack into an illegible smudge. */
     for (const side of [true, false]) {
@@ -627,8 +633,15 @@ export function TsPie({
             <g key={l.i} className="ts-series" opacity={dim ? 0.16 : 1}>
               <path d={`M ${l.ax} ${l.ay} Q ${cxc} ${l.y} ${l.x} ${l.y} L ${elbow} ${l.y}`}
                 fill="none" stroke={colour} strokeWidth={2} strokeLinecap="round" />
+              {/* ⚠️ THE FULL TEXT LIVES IN A <title>. Our tile is one column wide (the same
+                  as the line charts, asked for explicitly) where the measured 847px canvas
+                  is not, so names elide hard — "Buil… - 3,794". The real chart does the
+                  same thing at its own width and keeps the untruncated string reachable;
+                  that is the doubled label text visible in the capture's DOM. Without this
+                  a viewer has no way to read a name the layout had to cut. */}
               <text className="ts-pie-label" x={l.right ? elbow + 4 : elbow - 4} y={l.y + 4}
                 textAnchor={l.right ? "start" : "end"}>
+                <title>{`${clean[l.i].label} - ${tsNum(clean[l.i].value)} (${+((clean[l.i].value / total) * 100).toFixed(2)}%)`}</title>
                 {l.text}
               </text>
             </g>
