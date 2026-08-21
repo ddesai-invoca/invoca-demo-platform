@@ -186,11 +186,19 @@ function TsTileCard({ tile, onRemove, onPick }: {
 
   return (
     <TsTile title={tile.title} actions={actions} dataGenId={tile.id}
-      legend={legend && legend.length > 1 ? legend : undefined}
+      /* ⚠️ A PIE TILE HAS NO LEGEND — its outside data labels already name every slice, so
+         a legend says everything twice AND steals 212px the labels need, which pushed the
+         donut right and clipped the left-hand labels. Confirmed against the real tile
+         2026-08-20: no legend, labels only. */
+      legend={tile.tileType !== "pie" && legend && legend.length > 1 ? legend : undefined}
       /* A multi-line chart puts one y axis per series, so it is the only tile here that
          needs the legend out of the way when it gets narrow. */
       needsWidth={tile.tileType === "line" && series.length > 1}
-      className={tile.tileType === "table" ? "ts-span-2" : undefined}>
+      /* ⚠️ A PIE SPANS THE ROW, like a table. Its outside labels need ~250px a side on top
+         of a ~280px donut, so ~800px of chart — and the measured tile IS 847 wide. In a
+         half-width tile (584px at a 1500px viewport) the left-hand labels ran off the
+         canvas. */
+      className={tile.tileType === "table" || tile.tileType === "pie" ? "ts-span-2" : undefined}>
       {tile.tileType === "kpi" && (
         <div className="ts-kpi-row">
           {tile.kpis.map((k, i) => <TsMetric key={i} label={k.label} value={k.value} />)}

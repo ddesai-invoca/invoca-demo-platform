@@ -1707,18 +1707,31 @@ leaves a partially-covered pixel that blends to the white background and reads a
 white line, so measurement and appearance agree. Do not "fix" it by adding a 1px white
 stroke.
 
-⚠️ **THE COLOUR SEQUENCE IS UNRESOLVED — TWO CAPTURES DISAGREE ON SLICE 0.** The 33-slice
+⚠️ **NO LEGEND, AND A PIE SPANS THE ROW.** Both confirmed against the real tile
+2026-08-20. The outside labels already name every slice, so a legend says everything twice
+AND steals 212px the labels need. `TsTileCard` had to be fixed separately from the gallery —
+fixing only the bench left every GENERATED pie with a legend, which is what the user
+screenshotted. The tile also carries `ts-span-2` like a table: the labels need ~250px a side
+on top of a ~280px donut, so ~800px of chart, and the measured tile IS 847 wide. In a
+half-width tile (584px at a 1500px viewport) the left-hand labels ran off the canvas.
+
+⚠️ **THE COLOUR SEQUENCE IS UNRESOLVED — THREE CAPTURES NOW DISAGREE ON SLICE 0.** The 33-slice
 donut starts GREY: hue-major, grey → orange → purple → green → yellow → teal → blue, steps
 `[0,3,1,4,2]` within each hue so every block ends on its base colour and the last slice lands
 on `#2666F9`. Grey and orange skip their darkest step (`#53575f`, `#994329`), which is what
 makes it 4 + 4 + 5×5 = **exactly 33** for 33 slices — every colour used, so nothing is known
 about a 34th. That is `TS_PIE_COLORS`, and it matches all 33 measured fills exactly.
-But an earlier small pie ran the step-major order and reached a blue TINT by slice 9, i.e. it
-started BLUE. So index 0 is not fixed and one capture cannot say what varies.
-**Pending a capture of a SMALL pie from the same dashboard**, `TS_PIE_ACTIVE_COLORS` points
-at the blue-first `TS_SLICE_COLORS`, because our own pies carry 5–9 slices (the case that
-order was measured on) and grey-first renders such a pie almost entirely grey and orange.
-Agreed with the user 2026-08-20. Flip that one line when the capture lands.
+An earlier small pie ran the step-major order and reached a blue TINT by slice 9, i.e. it
+started BLUE. And a THIRD pie, from a different tenant, gives `{Null}` a dark maroon.
+
+✅ **THAT SETTLES IT: THE COLOUR IS NOT DERIVABLE, so stop trying.** Position 0 is grey in
+one, blue in another and dark red in a third, so it is not positional. It is not a label hash
+either — `{Null}` is the same string in two of them and gets different colours. It is not
+value-rank: `{Null}` is the largest slice in both and still differs. The remaining
+explanation is per-visualisation colour configuration saved on the tile, which no rule of
+ours can reproduce. `TS_PIE_ACTIVE_COLORS` therefore stays on the blue-first
+`TS_SLICE_COLORS` permanently, and the pending small-pie capture is NO LONGER NEEDED.
+`TS_PIE_COLORS` is kept only as the measured record of that one 33-slice tile.
 
 ## Template: "Multi-Line Chart Over Time" (measured 8/20/2026)
 `TsMultiLine` in `src/components/ts/TsCharts.tsx` + `buildTile`'s
