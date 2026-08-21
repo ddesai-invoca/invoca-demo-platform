@@ -2711,6 +2711,20 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
      actually succeeded would duplicate a demo or re-send a delete. Plus a bounded 3s poll
      while the library is unavailable, so a page loaded mid-deploy heals itself instead of
      waiting for someone to refresh.
+   ✅ **THE DRAIN IS LIVE (`5e00316`, 2026-08-20).** Split out and pushed on its own,
+   deliberately: it changes no client behaviour and adds no caching, so a misbehaving
+   deploy after it cannot be it. ⚠️ The commit that first contained it (`b4d0708`) also
+   carried sw.js, the registration and the retry — pushing "the drain" by that ref would
+   have shipped the service worker in its broken-first-load state, with the precache fix
+   stranded in the NEXT commit. Check what a commit actually contains before pushing it as
+   one thing.
+   ⚠️ **PRODUCTION ONLY, FOUND ON THIS DEPLOY: `/sw.js` RETURNS 302, BEHIND THE AUTH GATE.**
+   The auth middleware is registered before `express.static`, so the worker SCRIPT is
+   gated. Harmless for a signed-in user — registration happens after the app loads, and a
+   same-origin fetch carries the session — but it cannot be reproduced locally, where the
+   gate is off and it returns 200. It also means a browser's periodic worker-update fetch
+   fails once a session expires, leaving the OLD worker in place; the kill switch would not
+   land on such a client until it signs in again.
    ✅ **VERIFIED IN REAL CHROME (2026-08-20).** `register()` OK, worker `activated`,
    `shell-v1` holding `/index.html` and `assets-v1` holding both hashed assets. Getting
    there exposed two things worth keeping:
