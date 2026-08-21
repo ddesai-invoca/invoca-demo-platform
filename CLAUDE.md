@@ -2711,7 +2711,35 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
      actually succeeded would duplicate a demo or re-send a delete. Plus a bounded 3s poll
      while the library is unavailable, so a page loaded mid-deploy heals itself instead of
      waiting for someone to refresh.
-   ⚠️ **STILL UNVERIFIED, and needs a real browser:** service-worker REGISTRATION. The
+   ✅ **VERIFIED IN REAL CHROME (2026-08-20).** `register()` OK, worker `activated`,
+   `shell-v1` holding `/index.html` and `assets-v1` holding both hashed assets. Getting
+   there exposed two things worth keeping:
+   ⚠️ **PRECACHE ON INSTALL — the first version cached nothing there and that was wrong.**
+   It assumed the first load would populate the caches lazily. It does not: the navigation
+   that REGISTERS a worker, and the bundle fetch it triggers, both complete before the
+   worker exists, so there is nothing to intercept, and `clients.claim()` cannot
+   retroactively cache what already loaded. Observed: worker active, Cache Storage EMPTY.
+   Install now fetches the shell and parses the hashed asset names out of its HTML — the
+   names ARE knowable from inside sw.js, contrary to the comment the first version carried.
+   ⚠️ **A DEPLOYED sw.js CHANGE IS NOT PICKED UP BY A RELOAD ALONE.** An already-registered
+   worker keeps serving until the browser re-checks the script. This looked exactly like
+   "the fix does not work" — an old worker was installed and caching nothing, and only an
+   explicit `register()` from the console pulled the new file. Consequence for deploys: the
+   FIRST deploy carrying a service-worker change is itself unprotected, and clients pick the
+   change up on a later navigation. When testing a sw.js edit, Unregister first.
+   ⚠️ **Three of the four failures while building the test suite were IN THE SUITE, not the
+   worker** — a stub `fetch` that could not resolve `"/index.html"` (a real worker resolves
+   against scope; `new URL(relative)` throws, and the precache died inside its own `try`);
+   awaiting the lifecycle HANDLER instead of the promise it hands to `event.waitUntil()`, so
+   assertions ran before the precache finished; and measuring cache-first against an asset
+   install had already precached, which passed while proving nothing. An early "10/10
+   passed" was partly passing because it never reached the code it claimed to test.
+   ⚠️ **Claude in Chrome cannot verify this — it is not a localhost problem.** Navigation and
+   JS are refused on `localhost`, on `127.0.0.1`, AND on the production onrender.com domain,
+   so it is the extension's per-site permission layer, not Chrome and not a hostname rule.
+   The in-app Browser pane cannot register a worker at all. Verification here has to be a
+   human in DevTools, or the domain granted in the extension.
+   The self-heal poll in DemoLibraryContext is still only verified by construction: The
    in-app browser pane fails with "unknown error occurred when fetching the script" even
    though the server returns 200 `application/javascript`, and the Chrome tool refuses
    localhost. The logic is tested; the registration is not. Check once on the deployed

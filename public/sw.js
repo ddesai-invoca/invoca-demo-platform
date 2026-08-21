@@ -40,11 +40,46 @@ const SHELL_KEY = "/index.html";
 /* Never let these reach a cache. */
 const BYPASS = [/^\/api\//, /^\/auth\//, /^\/healthz$/, /^\/sw\.js$/];
 
+/* ⚠️ PRECACHE ON INSTALL, AND DO NOT GO BACK TO CACHING LAZILY. The first version of
+   this cached nothing here, reasoning that the bundle's hashed name is unknowable from
+   inside this file and the first load would populate the caches. It does not: the
+   navigation that REGISTERS a worker, and the bundle fetch it triggers, both complete
+   before the worker exists, so there is nothing to intercept. `clients.claim()` takes
+   control of the page but cannot retroactively cache what already loaded. Observed in
+   Chrome: worker active, Cache Storage EMPTY, and it stayed that way until a second
+   load. That is exactly backwards for the case this exists for — open the app, a deploy
+   lands, refresh, and nothing had been cached.
+   The hashed name IS knowable: read it out of the shell HTML. */
 self.addEventListener("install", (event) => {
   if (KILL) return;
-  /* Nothing is precached: the bundle's name is content-hashed and this file has no
-     way to know it. The first successful load populates both caches. */
-  event.waitUntil(self.skipWaiting());
+  event.waitUntil((async () => {
+    try {
+      const res = await fetch(SHELL_KEY, { cache: "no-store" });
+      const type = res.headers.get("content-type") || "";
+      /* Same guard as the runtime path: only a same-origin 200 HTML response is the
+         shell. `res.type !== "basic"` is what rejects a sign-in redirect that fetch has
+         quietly followed off to accounts.google.com. */
+      if (res.ok && res.type === "basic" && type.includes("text/html")) {
+        const html = await res.clone().text();
+        await (await caches.open(SHELL_CACHE)).put(SHELL_KEY, res);
+        const refs = [...html.matchAll(/(?:src|href)="(\/assets\/[^"]+)"/g)].map((m) => m[1]);
+        if (refs.length) {
+          const assets = await caches.open(ASSET_CACHE);
+          await Promise.all(refs.map(async (p) => {
+            try {
+              const r = await fetch(p, { cache: "no-store" });
+              if (r.ok && r.type === "basic") await assets.put(p, r);
+            } catch { /* one asset failing must not fail the install */ }
+          }));
+        }
+      }
+    } catch {
+      /* Offline at install time: nothing to precache. The runtime handlers still fill
+         the caches on the next successful load, so this is a degraded start, not a
+         broken one. */
+    }
+    await self.skipWaiting();
+  })());
 });
 
 self.addEventListener("activate", (event) => {
