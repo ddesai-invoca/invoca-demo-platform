@@ -367,13 +367,28 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
         xLabels: DOW, series: series(DOW) };
     }
     case "Dual Y-Axis": {
-      /* No dual-axis renderer exists, so this draws both measures as bars on one
-         axis. Recorded rather than silently approximated: a second axis is a renderer
-         change, not data, and inventing one here would break the no-template-changes
-         rule the AI edits live under. */
-      const labels = weekLabels(profile);
-      return { tileType: "bar", title: c.name, note, kpis: [], slices: [],
-        xLabels: labels, series: series(labels) };
+      /* ⚠️ LEFT MEASURE = BARS, RIGHT MEASURE = LINE. Proven by a pair of captures with the
+         two measures swapped: whichever is on the left drives the teal columns and its axis,
+         whichever is on the right drives the blue line and its axis. The drawer's fields are
+         literally named "Measure (Left Side)" and "Measure (Right Side)".
+         This case used to draw BOTH measures as bars on one axis, with a note saying no
+         dual-axis renderer existed. TsDualAxis has been measured and rebuilt, so it does. */
+      const leftM = c.measures[0] ?? "Call Count";
+      const rightM = c.measures[1] ?? c.measures[0] ?? "Answered by Agent";
+      const winL = filteredWeeks(profile, leftM);
+      const winR = filteredWeeks(profile, rightM);
+      const labels = winL ? winL.labels : weekLabels(profile);
+      return { tileType: "dual", title: c.name, note: "", kpis: [], slices: [],
+        xLabels: labels,
+        series: [
+          { name: leftM, values: winL ? winL.values : spread(Math.round(measureScale(profile, leftM).max * 0.55), labels.length, seed) },
+          { name: rightM, values: winR ? winR.values : spread(Math.round(measureScale(profile, rightM).max * 0.55), labels.length, seed + 7) },
+        ],
+        seriesKinds: [kindOf(leftM), kindOf(rightM)],
+        yTitle: axisTitleFor(leftM),
+        rightTitle: axisTitleFor(rightM),
+        xTitle: "Weekly Call Start Time",
+        dashTail: winL ? winL.partialTail : false };
     }
     case "Geo Heatmap": {
       /* Same honesty: there is no map renderer. The prospect's real geography from the

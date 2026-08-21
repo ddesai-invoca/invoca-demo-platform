@@ -15,7 +15,11 @@ export interface GeneratedTile {
   id: string;
   /* "table" is the Report templates' tile: Details / Summary / Transactions are
      tables, not charts. */
-  tileType: "kpi" | "line" | "bar" | "pie" | "table";
+  /**
+   * ⚠️ "dual" IS DELIBERATELY ABSENT FROM TILE_PROPS in engine/assistant.ts, like the render
+   * hints below. Only buildTile sets it, from the Dual Y-Axis template's two measure fields.
+   */
+  tileType: "kpi" | "line" | "bar" | "pie" | "table" | "dual";
   title: string;
   note: string;
   kpis: { label: string; value: string }[];
@@ -45,6 +49,8 @@ export interface GeneratedTile {
    * cannot set it.
    */
   horizontal?: boolean;
+  /** Right-hand axis title for the dual-axis template — the LINE measure. */
+  rightTitle?: string;
   /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
      (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
      generated type REQUIRED, so adding these there would force the assistant to

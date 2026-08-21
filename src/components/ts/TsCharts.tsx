@@ -5,6 +5,8 @@ import {
   areaPath, bands, calendarTicks, leftInsetFor, linePath, niceScale, niceTicks, plotOf,
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX, nearestIndex, TS_TRACKER_W,
   piePlot, pieOrder, fitPieLabel, TS_PIE_GAP_DEG,
+  TS_DUAL_PLOT, TS_DUAL_BAR_FILL, TS_DUAL_LINE, TS_DUAL_BAR_STROKE, TS_DUAL_BAR_STROKE_W,
+  dualBarWidth, dateTickIndices,
   barLeftInset, barThickness, TS_BAR_PLOT, TS_BAR_LABEL_GAP, TS_BAR_VALUE_GAP, tsTick,
   slicePath, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
@@ -471,29 +473,43 @@ export function TsDualAxis({
   const n = categories.length;
   const cols = fitValues(columnSeries.values, n) ?? [];
   const lines = fitValues(lineSeries.values, n) ?? [];
-  const p = plotOf(w, h, LEGEND_W);
+  /* ⚠️ THE RIGHT INSET IS 68, NOT THE 212px LEGEND WIDTH. The legend is HTML outside the
+     svg, so `plotOf(w, h, LEGEND_W)` was shrinking the plot by 144px for space nothing
+     occupies. Measured insets are symmetric: the right axis needs the same room as the
+     left. */
+  const p = {
+    x: TS_DUAL_PLOT.left, y: TS_DUAL_PLOT.top,
+    w: Math.max(1, w - TS_DUAL_PLOT.left - TS_DUAL_PLOT.right),
+    h: Math.max(1, h - TS_DUAL_PLOT.top - TS_DUAL_PLOT.bottom),
+  };
   const left = niceTicks(Math.max(1, ...cols));
   const right = niceTicks(Math.max(1, ...lines));
   const b = bands(p, n);
+  /* Date labels thin by WIDTH here, not by month — see dateTickIndices. */
+  const tickAt = /\d{1,2}\/\d{1,2}\/\d{2,4}/.test(categories[0] ?? "")
+    ? dateTickIndices(n, p.w) : undefined;
   /* ⚠️ THE SAME MEASURED FIT RULE AS TsColumn — this used to be
      `min(TS_COLUMN_W * 4, b.width * 0.55)`, an 88px cap and a 55%-of-band heuristic that
      predated the measured 22/5 rule and was never brought in line. It rendered an 88px
      column beside the grouped chart's 22px one, in the same layer, off the same capture.
      (It was 82px on screen before the charts were drawn 1:1, so this is a pre-existing
      defect that 1:1 exposed rather than caused.) One series, so the group IS one bar. */
-  const barW = TS_COLUMN_W * Math.min(1, Math.max(0.1, b.width - 8) / TS_COLUMN_W);
+  const barW = dualBarWidth(b.width);
 
   return (
     <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
+        {/* No axis lines: the capture computes `stroke: none` on all three. */}
         <TsAxes plot={p} categories={categories} yMax={left.max} yTicks={left.ticks}
+          tickAt={tickAt} showLines={false}
           right={{ max: right.max, ticks: right.ticks, title: rightTitle, format: rightFormat }} />
         {cols.map((v, i) => {
           const yTop = yOf(p, v, left.max);
           const dim = hv.activeSeries !== null && hv.activeSeries !== 0;
           return (
             <rect key={i} x={b.centre(i) - barW / 2} y={yTop} width={barW}
-              height={Math.max(0, p.y + p.h - yTop)} fill={TS_SERIES_LINE[1]}
+              height={Math.max(0, p.y + p.h - yTop)} fill={TS_DUAL_BAR_FILL}
+              stroke={TS_DUAL_BAR_STROKE} strokeWidth={TS_DUAL_BAR_STROKE_W}
               opacity={dim ? 0.22 : 1}
               className={onSelect ? "ts-bar ts-bar--click" : "ts-bar"}
               onMouseEnter={() => {
@@ -510,7 +526,7 @@ export function TsDualAxis({
           const dim = hv.activeSeries !== null && hv.activeSeries !== 1;
           return (
             <g opacity={dim ? 0.22 : 1}>
-              <path d={linePath(pts)} fill="none" stroke={TS_SERIES_LINE[0]}
+              <path d={linePath(pts)} fill="none" stroke={TS_DUAL_LINE}
                 strokeWidth={hv.activeSeries === 1 ? TS_LINE_W + 1 : TS_LINE_W}
                 strokeLinejoin="round" strokeLinecap="round" />
               {hv.activeSeries === 1 && hv.activePoint !== null && pts[hv.activePoint] ? (

@@ -1663,6 +1663,61 @@ the capture has `<label id=measure-label><span>Attribute</span></label>`. The `i
 independently confirms the `kind: "measure"` classification, which was originally inferred
 from live option COUNTS — two signals agreeing.
 
+## Template: "Dual Y-Axis" (measured 8/21/2026)
+`TsDualAxis` + `TS_DUAL_*` / `dualBarWidth` / `dateTickIndices` in `tsChart.ts`.
+
+⚠️ **LEFT MEASURE = BARS, RIGHT MEASURE = LINE.** Proven, not assumed: the capture holds TWO
+of these tiles with the measures swapped, and whichever sits on the left drives the teal
+columns and the left axis while whichever sits on the right drives the blue line and the
+right axis. The drawer's fields are already named "Measure (Left Side)" / "Measure (Right
+Side)".
+
+| | measured (two charts, 14 categories) |
+|---|---|
+| canvas | **664.913 x 634.93**, drawn 1:1 |
+| plot | left **68**, right **68**, top **15**, bottom **55** |
+| bars | **#00DEBC** teal, width `round(band * 0.8)` — band 37.79 → **30** |
+| bar stroke | **#ffffff at 0.5px** — a thin white gap between columns |
+| line | **#2666F9** at 2px, point markers at **opacity 0** (invisible until hover) |
+| left axis labels | 15px left of the plot (x=53 for a plot at 68) |
+| right axis labels | 15px right of the plot (x=612 for a plot edge at 597) |
+| axis titles | HTML 12px/600 `#5b6577` — bar measure left, line measure right, rotated |
+
+⚠️ **THE RIGHT INSET IS 68, NOT THE 212px LEGEND WIDTH.** `plotOf(w, h, LEGEND_W)` was
+reserving the legend's width INSIDE the svg, shrinking the plot by 144px for space nothing
+occupies — the legend is HTML, a `TsTile` sibling. The measured insets are symmetric because
+the right axis needs the same room as the left.
+
+⚠️ **NO AXIS LINES AND NO GRIDLINES** — every such element computes to `stroke: none`, the
+same as the horizontal-bar template and unlike the line templates, which DO paint a visible
+`#e0e0e0` axis line. `TsAxes` gained `showLines` for exactly this; it defaults to true so the
+line templates are untouched.
+
+⚠️ **X LABELS THIN BY WIDTH, NOT BY CALENDAR.** The capture prints 7 of 14 weekly dates —
+every SECOND one, anchored to the LAST index (03/30 is shown, 12/29 is not). `calendarTicks`
+thins on month boundaries, which is right for 112 weekly points and wrong here.
+`dateTickIndices` derives the step from label width: 14 labels of ~70px need 980px in a 529px
+plot, so step = ceil(980/529) = 2, which reproduces the captured set exactly. Our own 5-week
+filter window needs no thinning and shows all five.
+
+⚠️ **A DUAL TILE OPTS INTO `needsWidth`.** It carries a right-hand axis AND a legend, so in a
+one-column tile the legend's 212px squeezed the plot until the date labels thinned down to
+two of five. The container query drops the legend below the chart under 700px — the same
+mechanism multi-line uses.
+
+⚠️ **`round`, WHERE THE HORIZONTAL BAR MEASURED `ceil`.** Band 37.79 gives a 30px bar here
+(round → 30, ceil → 31); the horizontal chart's band 52.667 gives 43 (round → 42, ceil → 43).
+One pixel, measured differently on each, and deliberately left as two rules rather than
+forced into one that matches neither.
+
+⚠️ **UNVERIFIED: whether the bar width is capped.** Only one capture exists, with 14
+categories. Our own 5-week window gives band ~80 and therefore ~64px bars, which is wider
+than anything measured. The grouped-column template DOES cap at 22px; this one shows no
+evidence either way.
+
+`tileType: "dual"` is a new member of the union and, like the render hints, is deliberately
+absent from `TILE_PROPS` in `engine/assistant.ts` — only `buildTile` sets it.
+
 ## Template: "Stacked Bar" (really a HORIZONTAL BAR, measured 8/21/2026)
 `TsBar` + `barLeftInset` / `barThickness` / `TS_BAR_PLOT` in `tsChart.ts`.
 

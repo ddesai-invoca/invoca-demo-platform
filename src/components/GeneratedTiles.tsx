@@ -7,8 +7,9 @@ import { LineChart } from "./LineChart";
 import { StackedBarChart } from "./StackedBarChart";
 import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
-import { TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsPie, TsTable, TsKpi, TsMetric, legendFor,
-  pieLegend, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE } from "./ts";
+import { TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, TsTable, TsKpi, TsMetric, legendFor,
+  pieLegend, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE,
+  TS_DUAL_BAR_FILL, TS_DUAL_LINE } from "./ts";
 import { axisTitleFor, formatTick, kindOf, type MeasureKind } from "../data/insightsMeasures";
 import { fitCells } from "./chartFit";
 import { InteractionsDrawer, type DrawerRequest } from "./InteractionsDrawer";
@@ -170,6 +171,11 @@ function TsTileCard({ tile, onRemove, onPick }: {
   const legend =
     tile.tileType === "pie" ? pieLegend(tile.slices)
     : tile.tileType === "bar" ? legendFor(series, TS_SERIES_COLUMN)
+    : tile.tileType === "dual"
+      ? [
+          { label: axisTitleFor(series[0]?.name ?? ""), color: TS_DUAL_BAR_FILL },
+          { label: axisTitleFor(series[1]?.name ?? series[0]?.name ?? ""), color: TS_DUAL_LINE },
+        ]
     : tile.tileType === "line"
       ? legendFor(series.map((s) => ({ ...s, name: axisTitleFor(s.name) })), TS_SERIES_LINE)
     : undefined;
@@ -194,7 +200,11 @@ function TsTileCard({ tile, onRemove, onPick }: {
         && legend && legend.length > 1 ? legend : undefined}
       /* A multi-line chart puts one y axis per series, so it is the only tile here that
          needs the legend out of the way when it gets narrow. */
-      needsWidth={tile.tileType === "line" && series.length > 1}
+      /* Multi-line and dual-axis both carry a right-hand axis AND a legend, so in a narrow
+         tile the legend's 212px squeezes the plot until the date labels thin away — the
+         dual-axis capture shows all of its dates. `needsWidth` drops the legend below the
+         chart under 700px; see the container query in ts.css. */
+      needsWidth={(tile.tileType === "line" && series.length > 1) || tile.tileType === "dual"}
       /* ⚠️ A PIE IS ONE COLUMN, the same width as the line charts — asked for explicitly
          2026-08-20 after a span-2 version was tried and rejected as too big. It is narrower
          than the 847px tile the template was measured on, so the DATA LABELS shrink to fit
@@ -237,6 +247,18 @@ function TsTileCard({ tile, onRemove, onPick }: {
       {tile.tileType === "bar" && !tile.horizontal && (
         <TsColumn categories={categories} series={series} showLegend={false}
           w={TS_SIZE.column.w} h={TS_SIZE.column.h} onSelect={onPick} />
+      )}
+      {/* ⚠️ LEFT MEASURE = BARS, RIGHT = LINE. series[0] is the left one by construction in
+          buildTile; swapping them swaps which axis each belongs to, which is exactly what
+          the two captures demonstrate. */}
+      {tile.tileType === "dual" && (
+        <TsDualAxis categories={categories}
+          columnSeries={series[0] ?? { name: "", values: [] }}
+          lineSeries={series[1] ?? series[0] ?? { name: "", values: [] }}
+          xTitle={tile.xTitle} yTitle={tile.yTitle} rightTitle={tile.rightTitle}
+          rightFormat={tile.seriesKinds?.[1]
+            ? (v) => formatTick(v, tile.seriesKinds![1] as MeasureKind) : undefined}
+          onSelect={onPick} />
       )}
       {tile.tileType === "pie" && (
         <TsPie slices={tile.slices} showLegend={false}

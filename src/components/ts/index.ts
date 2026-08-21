@@ -16,6 +16,7 @@ export {
   nearestIndex, TS_TRACKER_W,
   piePlot, pieOrder, pieLabelText, fitPieLabel, TS_PIE_GAP_DEG, TS_PIE_LABEL_CHARS,
   barLeftInset, barThickness, TS_BAR_PLOT,
+  TS_DUAL_PLOT, TS_DUAL_BAR_FILL, TS_DUAL_LINE, dualBarWidth, dateTickIndices,
 } from "./tsChart";
 export { TS_HUES, TS_SERIES_LINE, TS_SERIES_COLUMN, TS_SLICE_COLORS, TS_PIE_COLORS, TS_PIE_ACTIVE_COLORS, heatColor, areaFill }
   from "../../data/tsPalette";

@@ -149,6 +149,8 @@ export interface TsAxesProps {
   horizontal?: boolean;
   /** A second value axis on the right, for the dual-axis template. */
   right?: { max: number; ticks: number[]; title?: string; format?: (v: number) => string };
+  /** Paint the axis lines. False for templates whose captures show `stroke: none`. */
+  showLines?: boolean;
   /** Explicit tick indices for the category axis; used for calendar-aligned dates. */
   tickAt?: number[];
   /** How a value-axis tick prints. Defaults to the plain compact form, so a tile that
@@ -163,7 +165,7 @@ export interface TsAxesProps {
  */
 export function TsAxes({
   plot: p, categories, yMax, yMin = 0, yTicks, horizontal, right, tickAt,
-  tickFormat = tsTick,
+  tickFormat = tsTick, showLines = true,
 }: TsAxesProps) {
   const yPos = (t: number) => {
     const span = yMax - yMin;
@@ -230,8 +232,15 @@ export function TsAxes({
       })}
 
       {/* axis lines: #e0e0e0, ThoughtSpot's own default */}
-      <path className="ts-axis-line" d={`M ${p.x} ${p.y} L ${p.x} ${p.y + p.h}`} stroke={TS_AXIS_LINE} />
-      <path className="ts-axis-line" d={`M ${p.x} ${p.y + p.h} L ${p.x + p.w} ${p.y + p.h}`} stroke={TS_AXIS_LINE} />
+      {/* ⚠️ NOT EVERY TEMPLATE PAINTS THESE. The line templates carry a visible #e0e0e0
+          axis line; the horizontal-bar and dual-axis captures compute `stroke: none` on the
+          same elements. `showLines={false}` is how a caller says so. */}
+      {showLines ? (
+        <>
+          <path className="ts-axis-line" d={`M ${p.x} ${p.y} L ${p.x} ${p.y + p.h}`} stroke={TS_AXIS_LINE} />
+          <path className="ts-axis-line" d={`M ${p.x} ${p.y + p.h} L ${p.x + p.w} ${p.y + p.h}`} stroke={TS_AXIS_LINE} />
+        </>
+      ) : null}
 
       {/* ⚠️ NO AXIS TITLES IN HERE. They are HTML — see TsAxisTitles. Measured: no
           `.highcharts-axis-title` exists in any captured chart's svg, and the real

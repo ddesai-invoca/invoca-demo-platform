@@ -278,6 +278,52 @@ export function nearestIndex(pts: Array<[number, number]>, x: number): number {
 }
 
 /* ---------------------------------------------------------------------------
+   The Dual Y-Axis template
+   ---------------------------------------------------------------------------
+   Measured 2026-08-21 on two of them at ~665x635, drawn 1:1. Left axis drives the BARS,
+   right axis drives the LINE — proven by a pair of captures with the measures swapped.
+
+   Plot: left 68, RIGHT 68 (symmetric, because the right axis needs the same room as the
+   left), top 15, bottom 55. ⚠️ The right inset is NOT the 212px legend width: the legend is
+   HTML outside the svg, so reserving LEGEND_W inside it shrank the plot by 144px.
+
+   Bars #00DEBC teal with a 0.5px #ffffff stroke; line #2666F9 at 2px with its point markers
+   at opacity 0 (invisible until hover). No axis lines and no gridlines — every such element
+   computes to `stroke: none`. */
+export const TS_DUAL_PLOT = { left: 68, right: 68, top: 15, bottom: 55 } as const;
+export const TS_DUAL_BAR_FILL = "#00DEBC";
+export const TS_DUAL_LINE = "#2666F9";
+export const TS_DUAL_BAR_STROKE = "#ffffff";
+export const TS_DUAL_BAR_STROKE_W = 0.5;
+
+/**
+ * Bar width for the dual-axis columns.
+ *
+ * ⚠️ `round(band * 0.8)`, where the HORIZONTAL bar template measured `ceil`. Band 37.79 gave
+ * a 30px bar here (round -> 30, ceil -> 31), while the horizontal chart's band 52.667 gave
+ * 43 (round -> 42, ceil -> 43). One pixel, measured differently on each, and not worth
+ * forcing into one rule — the honest thing is two rules that each match their own capture.
+ */
+export const dualBarWidth = (band: number): number => Math.max(1, Math.round(band * 0.8));
+
+/**
+ * Which date labels to print so they do not collide.
+ *
+ * ⚠️ THIS IS A WIDTH RULE, NOT THE CALENDAR RULE. `calendarTicks` thins by month boundary,
+ * which is right for 112 weekly points but wrong here: the capture shows 7 of 14 weekly
+ * dates — every SECOND one — and they are anchored to the LAST index (03/30 is shown), not
+ * the first. 14 labels of ~70px need 980px in a 529px plot, so the step is ceil(980/529) = 2,
+ * which reproduces the captured set exactly.
+ */
+export function dateTickIndices(count: number, plotW: number, labelChars = 10): number[] {
+  const need = count * (labelChars * 6 + 10);
+  const step = Math.max(1, Math.ceil(need / Math.max(1, plotW)));
+  const out: number[] = [];
+  for (let i = count - 1; i >= 0; i -= step) out.unshift(i);
+  return out;
+}
+
+/* ---------------------------------------------------------------------------
    The pie / donut template
    ---------------------------------------------------------------------------
    Measured on a 33-slice capture at 847x635: centre (420.458, 300.000), outer radius
