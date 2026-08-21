@@ -2725,6 +2725,41 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
    gate is off and it returns 200. It also means a browser's periodic worker-update fetch
    fails once a session expires, leaving the OLD worker in place; the kill switch would not
    land on such a client until it signs in again.
+   ✅ **VERIFIED END TO END BY THE USER IN CHROME, AGAINST A REALLY DEAD ORIGIN** (server
+   killed, not DevTools offline emulation): the app reloads and renders WITH ITS DESIGN
+   INTACT. That is the whole goal of route B.
+   ⚠️ **CACHING ONLY `/assets/*` WAS NOT ENOUGH, and the failure looked worse than an error
+   page.** The first working version rendered the app during an outage but UNSTYLED —
+   `/fonts/lato-400.woff2`, `/fonts/lato-700.woff2`, `/fonts/material-icons.woff2`,
+   `/logo.png` and `/favicon.svg` all hit ERR_CONNECTION_REFUSED, so every icon showed as
+   its literal name ("more_vert", "add", "file_download") and the type fell back. The
+   comment in sw.js had asserted the browser's HTTP cache would cover them; it does not.
+   The precache list is now DERIVED — the hashed assets from the shell HTML, then the fonts
+   and sprites from `url(...)` inside the built CSS — so it stays correct as those change.
+   Only `/logo.png` and `/icons.svg` are named explicitly, because JS reaches them.
+   Fonts and images additionally use STALE-WHILE-REVALIDATE: they are not content-hashed,
+   so cache-first would pin a stale logo forever and network-first breaks in an outage.
+   Deliberately NOT applied to non-hashed .js/.css, where a stale copy could disagree with
+   the bundle.
+   ⚠️ **STALE HASHED ASSETS ACCUMULATED FOREVER.** `activate` only dropped caches by NAME,
+   so `assets-v1` held every bundle ever served — observed three, including
+   `index-BRVdQA4i.js` from an earlier build, at ~1.85MB each. Left alone that creeps toward
+   the storage quota until `put()` starts failing, which would look like the worker randomly
+   breaking weeks later. Install now derives the complete set this build needs and deletes
+   any other `/assets/*` entry; non-hashed files are left alone since they are cached at
+   runtime rather than install.
+   ⚠️ **BOTH OF THOSE BUGS CAME FROM THE USER'S SCREENSHOTS, NOT THE TEST SUITE** — and
+   getting the suite to 23 checks took SIX bugs in the harness itself (a stub `fetch` that
+   could not resolve relative URLs; awaiting the lifecycle handler instead of the promise it
+   hands to `event.waitUntil()`; asserting against caches a previous test had cleared, twice;
+   a missing `waitUntil` on the fake fetch event; and one check that passed while asserting
+   only a fetch count). Treat a green suite here as weak evidence until a human has looked
+   at the real thing.
+   ⚠️ **A `sw.js` CHANGE NEEDS Unregister + CACHE DELETE, NOT A RELOAD.** Hit three times
+   tonight. `caches.delete()` matters as much as unregistering: unregistering leaves Cache
+   Storage intact, so a check reading the caches still sees the old contents. DevTools →
+   Application → Service workers → **"Update on reload"** is the switch to leave on while
+   iterating.
    ✅ **VERIFIED IN REAL CHROME (2026-08-20).** `register()` OK, worker `activated`,
    `shell-v1` holding `/index.html` and `assets-v1` holding both hashed assets. Getting
    there exposed two things worth keeping:

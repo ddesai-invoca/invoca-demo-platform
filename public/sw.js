@@ -62,15 +62,52 @@ self.addEventListener("install", (event) => {
       if (res.ok && res.type === "basic" && type.includes("text/html")) {
         const html = await res.clone().text();
         await (await caches.open(SHELL_CACHE)).put(SHELL_KEY, res);
-        const refs = [...html.matchAll(/(?:src|href)="(\/assets\/[^"]+)"/g)].map((m) => m[1]);
-        if (refs.length) {
-          const assets = await caches.open(ASSET_CACHE);
-          await Promise.all(refs.map(async (p) => {
-            try {
-              const r = await fetch(p, { cache: "no-store" });
-              if (r.ok && r.type === "basic") await assets.put(p, r);
-            } catch { /* one asset failing must not fail the install */ }
-          }));
+        /* ⚠️ PRECACHE THE CHROME, NOT JUST /assets. Caching only the hashed bundle made
+           the app render during an outage but UNSTYLED: Lato and Material Icons both
+           404'd, so every icon showed as its literal name ("more_vert", "add") and the
+           logo was gone. The original comment here claimed the browser's HTTP cache would
+           cover fonts and images. It does not — observed with a dead origin.
+           The list is DERIVED, not hard-coded: the hashed assets come out of the shell
+           HTML, and the fonts and sprites come out of `url(...)` inside the built CSS, so
+           it stays correct when those files change. Only the two files reached from JS
+           rather than HTML/CSS are named explicitly. */
+        const assets = await caches.open(ASSET_CACHE);
+        const fromHtml = [...html.matchAll(/(?:src|href)="(\/[^"]+)"/g)]
+          .map((m) => m[1])
+          .filter((u) => !u.startsWith("/api") && !u.startsWith("/auth"));
+        const CHROME = ["/logo.png", "/icons.svg"];
+        const queue = [...new Set([...fromHtml, ...CHROME])];
+        const seen = new Set();
+        const take = async (u) => {
+          if (seen.has(u)) return;
+          seen.add(u);
+          try {
+            const r = await fetch(u, { cache: "no-store" });
+            if (!r.ok || r.type !== "basic") return;
+            /* A stylesheet names the fonts and images the design needs — follow it. */
+            if ((r.headers.get("content-type") || "").includes("text/css")) {
+              const css = await r.clone().text();
+              const nested = [...css.matchAll(/url\(\s*["']?(\/[^"')]+)["']?\s*\)/g)].map((m) => m[1]);
+              await assets.put(u, r);
+              await Promise.all(nested.map(take));
+              return;
+            }
+            await assets.put(u, r);
+          } catch { /* one file failing must not fail the install */ }
+        };
+        await Promise.all(queue.map(take));
+
+        /* ⚠️ PRUNE WHAT THIS BUILD NO LONGER REFERENCES. Observed in Chrome: assets-v1
+           holding THREE bundles — the current one plus `index-BRVdQA4i.js` from an
+           earlier build. `activate` only drops whole caches by NAME, so hashed assets
+           accumulated inside a surviving cache indefinitely, ~1.85MB each, and would
+           eventually push the origin's storage quota until `put()` started failing.
+           `seen` is the complete set this build actually needs, so anything else under
+           /assets/ is dead. Non-hashed files (fonts, logo) are LEFT ALONE — they are not
+           in `seen` when a page requested them at runtime rather than install. */
+        for (const req of await assets.keys()) {
+          const path = new URL(req.url).pathname;
+          if (path.startsWith("/assets/") && !seen.has(path)) await assets.delete(req);
         }
       }
     } catch {
@@ -142,7 +179,25 @@ self.addEventListener("fetch", (event) => {
       return res;
     })());
   }
-  /* Everything else (fonts, icons, the standalone artifact pages) is left alone —
-     the browser's own HTTP cache already handles them, and every extra thing cached
-     here is another thing that can go stale. */
+  /* ⚠️ FONTS AND IMAGES: STALE-WHILE-REVALIDATE, not "left alone". These are NOT
+     content-hashed, so cache-first would pin a stale logo forever and network-first
+     would fail during an outage — which is exactly what made the app render unstyled.
+     Serving the cached copy immediately and refreshing it in the background behind the
+     response gives an offline-proof design that still updates on its own.
+     Deliberately limited to fonts and images: a non-hashed .js or .css served stale
+     could disagree with the bundle, which is a worse failure than a stale icon. */
+  if (/\.(woff2?|ttf|otf|png|jpe?g|gif|svg|webp|ico)$/i.test(url.pathname)) {
+    event.respondWith((async () => {
+      const cache = await caches.open(ASSET_CACHE);
+      const hit = await cache.match(req);
+      const update = fetch(req)
+        .then((res) => { if (res.ok && res.type === "basic") cache.put(req, res.clone()); return res; })
+        .catch(() => null);
+      if (hit) { event.waitUntil(update); return hit; }
+      const res = await update;
+      if (res) return res;
+      throw new Error("offline and not cached: " + url.pathname);
+    })());
+    return;
+  }
 });

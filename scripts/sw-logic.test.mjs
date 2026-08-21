@@ -20,7 +20,13 @@ class FakeCache {
     const key = new URL(typeof reqOrUrl === "string" ? reqOrUrl : reqOrUrl.url, ORIGIN).pathname;
     return this.map.get(key);
   }
-  async keys() { return [...this.map.keys()]; }
+  async keys() { return [...this.map.keys()].map((k) => ({ url: ORIGIN + k })); }
+  async delete(reqOrUrl) {
+    const key = new URL(typeof reqOrUrl === "string" ? reqOrUrl : reqOrUrl.url, ORIGIN).pathname;
+    const had = this.map.delete(key);
+    if (had) log.push(`DEL ${this.name} ${key}`);
+    return had;
+  }
 }
 const cacheStore = new Map();
 globalThis.caches = {
@@ -54,9 +60,14 @@ globalThis.fetch = async (req) => {
     const r = mkRes("", { status: 302, type: "text/html" });
     return r;
   }
+  if (p.endsWith(".css")) return mkRes(
+    "@font-face{src:url(/fonts/lato-400.woff2)}.x{background:url(/signal-sprite.png)}",
+    { type: "text/css" });
+  if (/\.(woff2|png|svg)$/.test(p)) return mkRes("BINARY", { type: "font/woff2" });
   if (p.startsWith("/assets/")) return mkRes("BUNDLE", { type: "application/javascript" });
   return mkRes('<html><script src="/assets/index-abc.js"></script>'
-    + '<link rel="stylesheet" href="/assets/index-def.css"></html>');
+    + '<link rel="stylesheet" href="/assets/index-def.css">'
+    + '<link rel="icon" href="/favicon.svg"></html>');
 };
 
 const handlers = {};
@@ -86,9 +97,21 @@ async function drive(path, { mode = "navigate", origin = ORIGIN } = {}) {
   const req = new Request(origin + path);
   Object.defineProperty(req, "mode", { value: mode });
   let promise = null;
-  handlers.fetch({ request: req, respondWith: (p) => { promise = p; } });
+  const pending = [];
+  /* ⚠️ A FETCH EVENT HAS waitUntil TOO. The stale-while-revalidate path uses it to
+     refresh the cache behind the response; without it here the handler threw and the
+     failure read as "the font is not cached". */
+  handlers.fetch({
+    request: req,
+    respondWith: (p) => { promise = p; },
+    waitUntil: (p) => { pending.push(p); },
+  });
   if (!promise) return { passedThrough: true };
-  try { return { res: await promise }; } catch (e) { return { threw: e.message }; }
+  try {
+    const res = await promise;
+    await Promise.allSettled(pending);      // let the background refresh finish
+    return { res };
+  } catch (e) { return { threw: e.message }; }
 }
 
 const results = [];
@@ -169,6 +192,59 @@ r = await drive("/healthz", { mode: "cors" });
 check("/healthz passes through", r.passedThrough === true, JSON.stringify(r));
 r = await drive("/sw.js", { mode: "no-cors" });
 check("/sw.js passes through", r.passedThrough === true, JSON.stringify(r));
+
+/* ⚠️ RE-INSTALL FIRST. The auth-redirect check above calls cacheStore.clear() and does
+   not restore it, so anything asserted after it runs against EMPTY caches and fails for
+   the wrong reason. That mistake has now been made four separate times in this file. */
+netMode = "up";
+cacheStore.clear();
+await lifecycle("install");
+
+/* 8. THE REGRESSION THE USER FOUND: the app rendered during an outage but UNSTYLED,
+      because only /assets was cached. Fonts, the logo and the sprites must survive too. */
+check("install follows the CSS and precaches its fonts",
+  [...cacheStore.get("assets-v1")?.map.keys() ?? []].includes("/fonts/lato-400.woff2"),
+  [...(cacheStore.get("assets-v1")?.map.keys() ?? [])].join(", "));
+check("install precaches images named by the CSS",
+  [...cacheStore.get("assets-v1")?.map.keys() ?? []].includes("/signal-sprite.png"),
+  [...(cacheStore.get("assets-v1")?.map.keys() ?? [])].join(", "));
+check("install precaches the favicon and the JS-referenced chrome",
+  ["/favicon.svg", "/logo.png", "/icons.svg"].every((u) =>
+    [...(cacheStore.get("assets-v1")?.map.keys() ?? [])].includes(u)),
+  [...(cacheStore.get("assets-v1")?.map.keys() ?? [])].join(", "));
+
+/* A stale bundle from a previous build must be pruned, not kept forever. */
+{
+  const assets = cacheStore.get("assets-v1");
+  assets.map.set("/assets/index-OLDBUILD.js", mkRes("STALE"));
+  log.length = 0;
+  await lifecycle("install");
+  check("install prunes a hashed asset this build no longer references",
+    !assets.map.has("/assets/index-OLDBUILD.js"), log.join(" | "));
+  check("install keeps the assets this build DOES reference",
+    assets.map.has("/assets/index-abc.js") && assets.map.has("/fonts/lato-400.woff2"),
+    [...assets.map.keys()].join(", "));
+}
+
+netMode = "down";
+r = await drive("/fonts/lato-400.woff2", { mode: "no-cors" });
+check("ORIGIN DOWN: a font is still served from cache (the unstyled-app bug)",
+  !!r.res && (await r.res.text()) === "BINARY", r.threw || JSON.stringify(r));
+r = await drive("/logo.png", { mode: "no-cors" });
+check("ORIGIN DOWN: the logo is still served from cache", !!r.res, r.threw || JSON.stringify(r));
+netMode = "up";
+
+/* A non-hashed file must REVALIDATE, or a stale logo would be pinned forever. */
+fetchCalls = 0;
+const rv = await drive("/logo.png", { mode: "no-cors" });
+check("a cached image is served AND revalidated in the background",
+  !!rv.res && fetchCalls === 1, `res=${!!rv.res} fetches=${fetchCalls} ${rv.threw ?? ""}`);
+
+/* ⚠️ Non-hashed JS/CSS must NOT take the stale-while-revalidate path. */
+netMode = "down";
+r = await drive("/google-ads-demo.js", { mode: "no-cors" });
+check("a non-hashed .js is NOT served stale", r.passedThrough === true, JSON.stringify(r));
+netMode = "up";
 
 let bad = 0;
 for (const t of results) { if (!t.pass) bad++; console.log(`${t.pass ? "PASS" : "FAIL"}  ${t.name}${t.pass ? "" : "\n      -> " + t.detail}`); }
