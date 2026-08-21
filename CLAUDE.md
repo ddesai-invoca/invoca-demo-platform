@@ -1710,6 +1710,24 @@ mechanism multi-line uses.
 One pixel, measured differently on each, and deliberately left as two rules rather than
 forced into one that matches neither.
 
+⚠️ **HOVERING A BAR BRIGHTENS THAT BAR; ITS NEIGHBOURS DO NOT CHANGE.** Reported against the
+real tile. The hovered column lightens and the line fades to 0.22, while the sibling columns
+stay exactly as they were — dimming them too would read as "the others are inactive" rather
+than "this is the one".
+⚠️ **THE BRIGHTEN AMOUNT IS HIGHCHARTS' DOCUMENTED DEFAULT, NOT A MEASUREMENT — and it cannot
+be measured from a capture.** SingleFile strips the scripts, so the hover state never runs in
+the extracted frame; there is no hover fill in the DOM to read. ThoughtSpot renders Highcharts
+10.2.0 (the capture says so), whose `plotOptions.column.states.hover.brightness` defaults to
+0.1, i.e. each channel moves by 255*0.1. `#00DEBC` → **#1AF8D6**, which matches the brighter
+aqua in the reference screenshot. `brighten()` lives in tsPalette.ts.
+
+⚠️ **THE TOOLTIP USES THE AXIS-TITLE FORM AND THE MEASURE'S OWN FORMAT.** The reference reads
+"Total Call Count: 426"; ours read "Revenue (Sale Amount): 7.4M" — no "Total" and no "$". The
+same defect the multi-line LEGEND had, surfacing again in a different place. Fixed here by
+`axisTitleFor(name)` plus a `leftFormat` prop, which also gives the left axis its `$0 … $10M`
+ticks. ⚠️ **STILL OPEN ELSEWHERE:** the single-line and multi-line tooltips print the bare
+measure name, so they have the same gap.
+
 ⚠️ **UNVERIFIED: whether the bar width is capped.** Only one capture exists, with 14
 categories. Our own 5-week window gives band ~80 and therefore ~64px bars, which is wider
 than anything measured. The grouped-column template DOES cap at 22px; this one shows no

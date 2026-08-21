@@ -87,6 +87,23 @@ export const TS_PIE_COLORS: string[] = (() => {
   return out;
 })();
 
+/**
+ * Brighten a hex colour, as Highcharts brightens a hovered column.
+ *
+ * ⚠️ THE 0.1 IS HIGHCHARTS' DOCUMENTED DEFAULT (`plotOptions.column.states.hover.brightness`),
+ * NOT A VALUE READ OFF THE CAPTURE — and it cannot be, because a SingleFile capture has its
+ * scripts stripped, so the hover state never runs in the extracted frame. ThoughtSpot renders
+ * Highcharts 10.2.0 (the capture says so), so the default applies unless they override it.
+ * Highcharts' own maths: each channel moves by `255 * amount`, clamped.
+ * #00DEBC -> #1AF8D6, which matches the brighter aqua in the reference screenshot.
+ */
+export function brighten(hex: string, amount = 0.1): string {
+  const n = parseInt(hex.replace("#", ""), 16);
+  const ch = [(n >> 16) & 255, (n >> 8) & 255, n & 255]
+    .map((c) => Math.max(0, Math.min(255, Math.round(c + 255 * amount))));
+  return "#" + ch.map((c) => c.toString(16).padStart(2, "0")).join("").toUpperCase();
+}
+
 /* An area fill is its line colour at 20% — measured as rgba(38,102,249,0.2)
    against a #2666F9 stroke. */
 export const areaFill = (hex: string, alpha = 0.2): string => {

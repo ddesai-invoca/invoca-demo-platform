@@ -256,6 +256,8 @@ function TsTileCard({ tile, onRemove, onPick }: {
           columnSeries={series[0] ?? { name: "", values: [] }}
           lineSeries={series[1] ?? series[0] ?? { name: "", values: [] }}
           xTitle={tile.xTitle} yTitle={tile.yTitle} rightTitle={tile.rightTitle}
+          leftFormat={tile.seriesKinds?.[0]
+            ? (v) => formatTick(v, tile.seriesKinds![0] as MeasureKind) : undefined}
           rightFormat={tile.seriesKinds?.[1]
             ? (v) => formatTick(v, tile.seriesKinds![1] as MeasureKind) : undefined}
           onSelect={onPick} />

@@ -1,5 +1,6 @@
 import { fitValues } from "../chartFit";
-import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_PIE_ACTIVE_COLORS, areaFill } from "../../data/tsPalette";
+import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_PIE_ACTIVE_COLORS, areaFill, brighten } from "../../data/tsPalette";
+import { axisTitleFor } from "../../data/insightsMeasures";
 import {
   TS_AREA_ALPHA, TS_COLUMN_GAP, TS_COLUMN_W, TS_LINE_W, TS_SIZE,
   areaPath, bands, calendarTicks, leftInsetFor, linePath, niceScale, niceTicks, plotOf,
@@ -460,10 +461,12 @@ export function TsBar({
 
 export function TsDualAxis({
   categories, columnSeries, lineSeries, w: wIn = TS_SIZE.line.w, h: hIn = TS_SIZE.line.h,
-  xTitle, yTitle, rightTitle, rightFormat, onSelect,
+  xTitle, yTitle, rightTitle, leftFormat, rightFormat, onSelect,
 }: {
   categories: string[]; columnSeries: TsSeries; lineSeries: TsSeries;
   w?: number; h?: number; xTitle?: string; yTitle?: string; rightTitle?: string;
+  /** Left-axis (bar) tick + tooltip format, so a money measure keeps its `$`. */
+  leftFormat?: (v: number) => string;
   rightFormat?: (v: number) => string;
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
@@ -501,21 +504,32 @@ export function TsDualAxis({
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         {/* No axis lines: the capture computes `stroke: none` on all three. */}
         <TsAxes plot={p} categories={categories} yMax={left.max} yTicks={left.ticks}
-          tickAt={tickAt} showLines={false}
+          tickAt={tickAt} showLines={false} tickFormat={leftFormat}
           right={{ max: right.max, ticks: right.ticks, title: rightTitle, format: rightFormat }} />
         {cols.map((v, i) => {
           const yTop = yOf(p, v, left.max);
           const dim = hv.activeSeries !== null && hv.activeSeries !== 0;
+          /* ⚠️ THE HOVERED BAR BRIGHTENS; ITS NEIGHBOURS DO NOT CHANGE. Reported against the
+             real tile: hovering a column lightens THAT column (and the line fades), which is
+             Highcharts' column hover state. Siblings staying put is the point — dimming them
+             too would read as "the others are inactive" rather than "this is the one". */
+          const on = hv.activeSeries === 0 && hv.activePoint === i;
           return (
             <rect key={i} x={b.centre(i) - barW / 2} y={yTop} width={barW}
-              height={Math.max(0, p.y + p.h - yTop)} fill={TS_DUAL_BAR_FILL}
+              height={Math.max(0, p.y + p.h - yTop)}
+              fill={on ? brighten(TS_DUAL_BAR_FILL) : TS_DUAL_BAR_FILL}
               stroke={TS_DUAL_BAR_STROKE} strokeWidth={TS_DUAL_BAR_STROKE_W}
               opacity={dim ? 0.22 : 1}
               className={onSelect ? "ts-bar ts-bar--click" : "ts-bar"}
               onMouseEnter={() => {
                 hv.setActiveSeries(0);
+                hv.setActivePoint(i);
+                /* ⚠️ THE TOOLTIP USES THE AXIS-TITLE FORM AND THE MEASURE'S OWN FORMAT.
+                   The reference reads "Total Call Count: 426"; ours read "Revenue (Sale
+                   Amount): 7.4M" — no "Total", no "$". The same defect the legend had. */
                 hv.setHover({ xPct: (b.centre(i) / w) * 100, yPct: (yTop / h) * 100,
-                  rows: [[columnSeries.name, tsNum(v)], [xTitle ?? "Category", categories[i]]] });
+                  rows: [[axisTitleFor(columnSeries.name), (leftFormat ?? tsNum)(v)],
+                         [xTitle ?? "Category", categories[i]]] });
               }}
               onMouseLeave={hv.clear}
               onClick={onSelect ? () => onSelect(columnSeries.name, categories[i], v) : undefined} />
@@ -544,7 +558,7 @@ export function TsDualAxis({
                   hv.setActiveSeries(1);
                   hv.setActivePoint(i);
                   hv.setHover({ xPct: (pts[i][0] / w) * 100, yPct: (pts[i][1] / h) * 100,
-                    rows: [[lineSeries.name, (rightFormat ?? tsNum)(lines[i])],
+                    rows: [[axisTitleFor(lineSeries.name), (rightFormat ?? tsNum)(lines[i])],
                            [xTitle ?? "Category", categories[i]]] });
                 }}
                 onMouseLeave={hv.clear}
