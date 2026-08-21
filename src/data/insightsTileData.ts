@@ -137,6 +137,20 @@ function parseRange(profile: CustomerProfile): { start: Date; end: Date } | null
   return start && end && end >= start ? { start, end } : null;
 }
 
+/**
+ * The dashboard window's START, as `YYYY-MM-DD`.
+ *
+ * Exported so the interactions drawer dates its cards from the SAME field the filter chip
+ * and every tile's x axis come from (`marketingDashboard.dateRange`). A drawer opened from a
+ * tile that has no time axis — a pie slice, a day-of-week column — has no date of its own,
+ * and the real drawer gives every card one date rather than inventing per-card dates.
+ */
+export function rangeStartIso(profile: CustomerProfile): string {
+  const r = parseRange(profile);
+  if (!r) return "";
+  return r.start.toISOString().slice(0, 10);
+}
+
 const DAY = 86400000;
 
 function filteredWeeks(profile: CustomerProfile, measure: string): Window | null {
@@ -202,6 +216,25 @@ function weekLabels(profile: CustomerProfile): string[] {
 }
 
 /* ---- the builder ---------------------------------------------------------- */
+/**
+ * How many INTERACTIONS sit behind a datum in the window bucket named `label`.
+ *
+ * ⚠️ THE CLICKED VALUE IS NOT AN INTERACTION COUNT UNLESS THE MEASURE IS ONE. Clicking a
+ * revenue point opened the drawer reading "8,907,516 interactions" — the dollar figure used
+ * as a card count. Only `count` and `flag` measures are numbers of calls; money, percent,
+ * duration, score and rank are not, and those drawers need the bucket's own call count.
+ * Falls back to the prospect's total when the label is not a window bucket (a pie slice, a
+ * day of week), which is the same shape the built-in donuts use.
+ */
+export function interactionsAt(profile: CustomerProfile, label: string): number {
+  const win = filteredWeeks(profile, "Call Count");
+  if (win) {
+    const i = win.labels.indexOf(label);
+    if (i >= 0) return win.values[i];
+  }
+  return magnitudeOf(profile, "Call Count").total;
+}
+
 export interface TileChoices {
   template: string;
   name: string;

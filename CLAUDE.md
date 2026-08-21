@@ -1858,6 +1858,39 @@ was confirmed end to end. For a SCREENSHOT of a live hover, note the screenshot 
 itself moves the pointer and clears the state; freeze it first by stopping `mouseout` /
 `pointerout` in the capture phase, then reload to undo.
 
+## Clicking a datum opens the interactions drawer (8/20/2026)
+`DashAssistant` (ts variant) owns the drawer; `TsTileCard` passes `onPick` to every chart.
+
+Every data point on a generated Insights tile opens the same `InteractionsDrawer` the
+built-in cards use, and **the top card always links to the call summary**.
+
+⚠️ **`topCallHref` USED TO BE SET ON EXACTLY ONE DRAWER** — the bar chart's first bar —
+reasoning that thirty cards opening one transcript under thirty different ids would be a
+lie. Requested changed 8/20/2026, and `pinFirst` is what makes it honest: it REPLACES the
+top card with the prospect's own `callDetail` record, so the card and the detail page always
+agree on id, duration and summary. Verified end to end — drawer card `0597-627F62F2570D`
+opens `/insights/call?...` showing the same id, its AI summary, a 19-turn transcript and a
+pager matching the drawer's count. All three built-in sites (weekly trend, every bar, the
+four donuts) now link too; a non-first bar was checked specifically, since that was the
+case with no link before.
+
+⚠️ **THE HEADER COUNTS INTERACTIONS, NOT THE MEASURE — and this is easy to get wrong
+because the built-in cards never hit it.** They only ever pass call counts. A ts tile's
+clicked series can be money, a percent, a duration or a score, and passing the value
+straight through made a revenue click read **"8,907,516 interactions"** with 30 cards. Only
+`count` and `flag` measures ARE numbers of calls; everything else uses `interactionsAt()`,
+which reads the bucket's own call count from the same window machinery every tile uses.
+Verified: clicking Call Count and clicking Revenue in the same week both report 11,415.
+
+The card date comes from the category when it is a `MM/DD/YYYY` bucket and from
+`rangeStartIso()` otherwise — a pie slice or a day-of-week column has no date of its own,
+which is the same choice the built-in donuts make.
+
+⚠️ **THE DRAWER IS ON THE `ts` VARIANT ONLY.** The same `DashAssistant` renders the
+Dashboards tab's generated tiles, which have their own card design and no drawer. Verified
+after this change: `/dashboards/marketing` has 21 dash-cards, zero `.idr-root`. The
+`/ts-gallery` bench stays inert too — it uses `TsTile` directly and passes no `onSelect`.
+
 ## Charts are drawn 1:1 (the whole ts- layer, 8/20/2026)
 `useTsBox` in `TsShell.tsx` + `.ts-chartwrap--fill` in `ts.css`.
 

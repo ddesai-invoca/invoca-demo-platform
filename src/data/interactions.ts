@@ -76,10 +76,10 @@ export function buildInteractions(
   profile: CustomerProfile,
   { metric, count, date, pinFirst }: {
     metric: string; count: number; date: string;
-    /* Replace the top card with the prospect's OWN call-detail record, so the one card
-       that opens a detail page shows the same id, duration and summary that page does.
-       Without this the drawer would advertise a call the detail screen has never heard
-       of. Only the first bar's drawer sets it — see DrawerRequest.topCallHref. */
+    /* Replace the top card with the prospect's OWN call-detail record, so the card that
+       opens a detail page shows the same id, duration and summary that page does. Without
+       this the drawer would advertise a call the detail screen has never heard of. Set on
+       every drawer now that the top call always links — see DrawerRequest.topCallHref. */
     pinFirst?: boolean;
   },
 ): Interaction[] {

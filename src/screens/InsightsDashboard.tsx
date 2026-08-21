@@ -624,6 +624,8 @@ export function InsightsDashboard() {
                 onPick={(i) => setDrawer({
                   title: L.weeklyTrend, metric: `${L.conversations} · Week of ${weekBuckets[i] ?? ""}`,
                   count: trend.values[i] ?? 0, date: weekDates[i] ?? rangeStart,
+                  pinFirst: true,
+                  topCallHref: `/insights/call?d=${encodeURIComponent(title)}&n=${trend.values[i] ?? 0}`,
                 })} />
             </div>
           </div>
@@ -640,17 +642,17 @@ export function InsightsDashboard() {
           <MetricsOverTime seed={profile.id} xAxisLabel={L.xAxis}
             series={metricCols} buckets={weekBuckets} bucketDates={weekDates}
             totals={seriesTotals}
-            onPick={(metric, value, bi, first) => setDrawer({
+            onPick={(metric, value, bi) => setDrawer({
               title: L.overTime, metric: `${metric} · Week of ${weekBuckets[bi] ?? ""}`,
               count: value, date: weekDates[bi] ?? rangeStart,
-              /* ONLY the first bar's drawer offers a call to open, and its top card is
-                 pinned to the prospect's own call-detail record so the card and the page
-                 agree on the id, duration and summary. The demo has one transcript;
-                 thirty cards opening it under thirty different ids would be a lie. */
-              ...(first ? {
-                pinFirst: true,
-                topCallHref: `/insights/call?d=${encodeURIComponent(title)}&n=${value}`,
-              } : {}),
+              /* ⚠️ EVERY drawer, not just the first bar's. This used to be first-bar-only,
+                 reasoning that thirty cards opening one transcript under thirty different
+                 ids would be a lie — but `pinFirst` is exactly what removes that problem:
+                 it REPLACES the top card with the prospect's own call-detail record, so
+                 the card and the detail page always agree on id, duration and summary.
+                 Requested 8/20/2026: the top call should always open the summary. */
+              pinFirst: true,
+              topCallHref: `/insights/call?d=${encodeURIComponent(title)}&n=${value}`,
             })} />
         </section>
 
@@ -672,6 +674,8 @@ export function InsightsDashboard() {
           <PerfSection key={t} metrics={metricCols} title={t} dimension={dim} rows={rows}
             onPick={(tile, slice, value) => setDrawer({
               title: tile, metric: `${L.mCalls} · ${slice}`, count: value, date: rangeStart,
+              pinFirst: true,
+              topCallHref: `/insights/call?d=${encodeURIComponent(title)}&n=${value}`,
             })} />
         ))}
 

@@ -49,11 +49,13 @@ export interface DrawerRequest {
   date: string;
   /* Pin the prospect's own call-detail record to the top card (see buildInteractions). */
   pinFirst?: boolean;
-  /* Where the TOP card goes when clicked. Set on exactly ONE drawer — the first bar of
-     the bar chart — because the demo has one call transcript: thirty cards opening the
-     same transcript with thirty different ids would be a lie, and a per-card transcript
-     would mean generating thirty of them. The other cards deliberately stay inert
-     rather than looking clickable and doing nothing. */
+  /* Where the TOP card goes when clicked. Set on EVERY drawer as of 8/20/2026 (requested:
+     the top call should always open the summary). It was once first-bar-only, reasoning
+     that thirty cards opening one transcript under thirty different ids would be a lie —
+     but `pinFirst` is what removes that: it replaces the top card with the prospect's own
+     call-detail record, so the card and the detail page always agree on id, duration and
+     summary. The remaining cards still stay inert rather than looking clickable and doing
+     nothing, because the demo has one transcript. */
   topCallHref?: string;
 }
 

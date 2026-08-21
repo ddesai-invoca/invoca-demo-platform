@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant, type GeneratedTile } from "../data/AiAssistantContext";
@@ -9,8 +9,11 @@ import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
 import { TsTile, TsLine, TsMultiLine, TsColumn, TsPie, TsTable, TsKpi, TsMetric, legendFor,
   pieLegend, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE } from "./ts";
-import { axisTitleFor, formatTick, type MeasureKind } from "../data/insightsMeasures";
+import { axisTitleFor, formatTick, kindOf, type MeasureKind } from "../data/insightsMeasures";
 import { fitCells } from "./chartFit";
+import { InteractionsDrawer, type DrawerRequest } from "./InteractionsDrawer";
+import { buildInteractions, isoDate } from "../data/interactions";
+import { rangeStartIso, interactionsAt } from "../data/insightsTileData";
 
 /* useDashboardData — each dashboard calls this with its BASE data slice. It
    registers the dashboard as the assistant's scope and returns the EFFECTIVE
@@ -146,7 +149,12 @@ function TileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => voi
    differently while quietly changing its id is the silent-no-op failure this repo
    has already been bitten by twice.
    --------------------------------------------------------------------------- */
-function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => void }) {
+function TsTileCard({ tile, onRemove, onPick }: {
+  tile: GeneratedTile; onRemove: () => void;
+  /* Clicking a datum opens the interactions drawer, the same contract the built-in cards
+     on this dashboard already use. Optional so the /ts-gallery bench renders inert. */
+  onPick?: (seriesName: string, category: string, value: number) => void;
+}) {
   /* A generated tile may arrive with no xLabels (the AI supplies values only), so
      categories fall back to positions rather than leaving the axis blank. */
   const len = Math.max(...tile.series.map((x) => x.values.length), tile.xLabels.length, 0);
@@ -199,21 +207,22 @@ function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => v
               title: axisTitleFor(s.name),
               tickFormat: kind ? (v: number) => formatTick(v, kind) : undefined,
             };
-          })} />
+          })} onSelect={onPick} />
       )}
       {tile.tileType === "line" && series.length <= 1 && (
         <TsLine categories={categories} series={series} showLegend={false}
           xTitle={tile.xTitle} yTitle={tile.yTitle} dashTail={tile.dashTail}
           tickFormat={tile.valueKind
             ? (v) => formatTick(v, tile.valueKind as MeasureKind) : undefined}
-          w={TS_SIZE.line.w} h={TS_SIZE.line.h} />
+          w={TS_SIZE.line.w} h={TS_SIZE.line.h} onSelect={onPick} />
       )}
       {tile.tileType === "bar" && (
         <TsColumn categories={categories} series={series} showLegend={false}
-          w={TS_SIZE.column.w} h={TS_SIZE.column.h} />
+          w={TS_SIZE.column.w} h={TS_SIZE.column.h} onSelect={onPick} />
       )}
       {tile.tileType === "pie" && (
-        <TsPie slices={tile.slices} showLegend={false} />
+        <TsPie slices={tile.slices} showLegend={false}
+          onSelect={onPick ? (label, value) => onPick(label, label, value) : undefined} />
       )}
       {tile.tileType === "table" && (
         <TsTable columns={tile.columns ?? []} rows={tile.rows ?? []} />
@@ -229,11 +238,23 @@ function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => v
    Scope registration + edit overlay come from useDashboardData() at the top. */
 export function DashAssistant({ variant = "dash" }: { variant?: "dash" | "ts" } = {}) {
   const { pathname } = useLocation();
-  const { profileId } = useProfile();
+  const { profileId, profile } = useProfile();
   const { tilesFor, removeTile, hiddenFor } = useAiAssistant();
   const key = `${profileId}::${pathname}`;
   const tiles = tilesFor(key);
   const hidden = hiddenFor(key);
+
+  /* ⚠️ THE DRAWER IS ON THE `ts` VARIANT ONLY. The same DashAssistant renders the
+     Dashboards tab's generated tiles, which have their own card design and no drawer;
+     opening one there would change a tab nobody asked about. */
+  const [drawer, setDrawer] = useState<DrawerRequest | null>(null);
+  const items = useMemo(
+    () => (drawer ? buildInteractions(profile, drawer) : []),
+    [profile, drawer],
+  );
+  /* `d` is the DASHBOARD's name, matching the built-in cards' own links. */
+  const dashName = decodeURIComponent(pathname.split("/").pop() ?? "");
+
   if (!tiles.length && !hidden.length) return null;
   const Card = variant === "ts" ? TsTileCard : TileCard;
   return (
@@ -241,9 +262,39 @@ export function DashAssistant({ variant = "dash" }: { variant?: "dash" | "ts" } 
       <HiddenTileStyles hidden={hidden} />
       {tiles.length > 0 && (
         <div className={variant === "ts" ? "ts-gen-tiles" : "gen-tiles"}>
-          {tiles.map((t) => <Card key={t.id} tile={t} onRemove={() => removeTile(key, t.id)} />)}
+          {tiles.map((t) => (
+            <Card key={t.id} tile={t} onRemove={() => removeTile(key, t.id)}
+              {...(variant === "ts" ? {
+                onPick: (seriesName: string, category: string, value: number) => setDrawer({
+                  title: t.title,
+                  metric: `${axisTitleFor(seriesName)} · ${category}`,
+                  /* ⚠️ THE HEADER COUNTS INTERACTIONS, NOT THE MEASURE. Clicking a revenue
+                     point read "8,907,516 interactions" — the dollar figure used as a card
+                     count. Only a count or flag measure IS a number of calls. */
+                  count: ["count", "flag"].includes(kindOf(seriesName))
+                    ? value : interactionsAt(profile, category),
+                  /* A date category dates the cards; anything else (a pie slice, a day of
+                     week) has no date of its own, so the window's start is used — the same
+                     choice the built-in donuts make. */
+                  date: /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(category)
+                    ? isoDate(category) : rangeStartIso(profile),
+                  /* ⚠️ EVERY drawer pins its top card and offers the call. `pinFirst`
+                     REPLACES the top card with the prospect's own call-detail record, so
+                     the card and the detail page agree on id, duration and summary — which
+                     is what makes "always linked" honest rather than thirty ids opening one
+                     transcript. */
+                  pinFirst: true,
+                  topCallHref: `/insights/call?d=${encodeURIComponent(dashName)}&n=${
+                    ["count", "flag"].includes(kindOf(seriesName))
+                      ? value : interactionsAt(profile, category)}`,
+                }),
+              } : {})} />
+          ))}
         </div>
       )}
+      {variant === "ts" && drawer ? (
+        <InteractionsDrawer req={drawer} items={items} onClose={() => setDrawer(null)} />
+      ) : null}
     </>
   );
 }
