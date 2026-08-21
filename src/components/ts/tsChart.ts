@@ -48,7 +48,8 @@ export const TS_SIZE = {
   wide: { w: 1538, h: 633 },
   /* Re-measured off the horizontal-bar capture: 956x707, drawn 1:1. */
   bar: { w: 956, h: 707 },
-  spark: { w: 398, h: 157 },
+  /* Re-measured off the KPI capture: 453x178, drawn 1:1. */
+  spark: { w: 453, h: 178 },
 } as const;
 
 /* ---------------------------------------------------------------------------

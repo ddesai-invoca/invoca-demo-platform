@@ -1663,6 +1663,47 @@ the capture has `<label id=measure-label><span>Attribute</span></label>`. The `i
 independently confirms the `kind: "measure"` classification, which was originally inferred
 from live option COUNTS — two signals agreeing.
 
+## Templates: "KPI" and "Metric" (measured 8/21/2026)
+`TsTrend` / `TsKpi` in `TsKpi.tsx`. Both share `tileType: "kpi"`; a KPI carries `trend` and
+a Metric does not, which is the only difference between the two templates.
+
+| | measured |
+|---|---|
+| value | **32px / 700** `#1d232f` — NOT `.ts-metric-value`'s 28px |
+| period ("Week of …") | 14px / 400 `#777e8b` |
+| delta percentage | 14px / 400 **`#F04152`** with a down arrow |
+| absolute delta "(29)" | 14px / **700** `#777e8b` |
+| comparison period | 14px / 400 `#777e8b` |
+| trailing chevron | 16px `#777e8b` (`rd-icon-chevron-right`) |
+| sparkline | **453 x 178**, area `rgba(38,102,249,0.2)`, line `#2666F9` at 2px |
+| axes / gridlines / footer | none visible |
+
+⚠️ **THE DELTA ROW IS THREE DIFFERENT TREATMENTS, NOT ONE COLOURED STRING.** Only the
+percentage is red; the absolute delta is grey and BOLD; the comparison period is grey and
+regular. The previous version coloured the whole row, which dragged "(29) Week of …" red
+along with it. The real markup confirms it — `kpi-module__difflabel` carries an inline
+`color:rgb(240,65,82)` while `kpi-module__base` and `kpi-module__timeBucket` do not.
+
+⚠️ **THE ARROW IS A TINTED DIV, NOT A GLYPH.** `kpi-module__arrowDown` with
+`aria-label="Decrease"` and a CSS `filter` recolouring it. Reproduced with a text arrow plus
+the same `aria-label`, since the semantics are what matter and the glyph is 13px either way.
+
+⚠️ **THE INCREASE COLOUR IS UNVERIFIED.** The capture only ever showed a DECREASE, so the
+red is measured and the green (`#0d7a3e`) is a choice. A capture of a rising KPI would settle
+it. Likewise unverified: whether ThoughtSpot ever treats a fall as GOOD — for a measure like
+abandoned calls, down is good, and this colours purely by direction.
+
+⚠️ **THE DELTA IS DERIVED FROM THE SERIES, NOT INVENTED.** The old build printed a random
+`+{4 + seed % 12}%` beside a number with no series behind it, so the figure and the trend
+could not agree — there was no trend. It is now the last bucket against the one before, over
+the same `filteredWeeks` window every time-series template uses, so a KPI's headline equals
+the last point of a Single Line tile on the same measure. A zero baseline yields 0% rather
+than an infinity.
+
+⚠️ **THE GREY RECTANGLE IN THE CAPTURE IS NOT PART OF THE TEMPLATE.** It is a second
+`arearange` series filled `rgba(116,126,140,0.3)` with no stroke — the user said to ignore
+it, and a first pass at measuring grabbed it instead of the real blue `area-series`.
+
 ## Template: "Geo Heatmap" (measured 8/21/2026)
 `TsGeoMap` (Leaflet + Mapbox raster tiles) + `geoPoints` in `insightsTileData.ts`.
 

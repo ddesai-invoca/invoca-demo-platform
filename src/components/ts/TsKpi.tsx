@@ -63,11 +63,23 @@ export function TsTrend({
 
   return (
     <div className="ts-trend">
-      <div className="ts-metric-value">{value}</div>
+      <div className="ts-trend-value">{value}</div>
       <div className="ts-trend-period">{period}</div>
-      <div className={"ts-trend-delta" + (down ? " ts-trend-delta--down" : "")}>
-        <span className="ts-trend-arrow">{down ? "▼" : "▲"}</span>
-        {Math.abs(delta).toFixed(2)}% ({previous}) {previousPeriod}
+      {/* ⚠️ THREE DIFFERENT TREATMENTS ON ONE LINE, not one coloured string. Measured:
+          the PERCENTAGE is red (#F04152) at 14px/400 with an arrow; the absolute delta
+          "(29)" is grey #777e8b at 14px/**700**; the comparison period is grey 14px/400.
+          The previous version coloured the whole line red, which dragged "(29) Week of …"
+          red with it. A trailing chevron closes the row. */}
+      <div className="ts-trend-delta">
+        <span className={"ts-trend-pct" + (down ? " ts-trend-pct--down" : " ts-trend-pct--up")}>
+          <span className="ts-trend-arrow" aria-label={down ? "Decrease" : "Increase"}>
+            {down ? "↓" : "↑"}
+          </span>
+          {Math.abs(delta).toFixed(2)}%
+        </span>
+        <span className="ts-trend-base">({previous})</span>
+        <span className="ts-trend-bucket">{previousPeriod}</span>
+        <span className="ts-trend-chev material-icons" aria-hidden="true">chevron_right</span>
       </div>
       {pts.length > 1 ? (
         <svg className="ts-spark" viewBox={`0 0 ${w} ${h}`} role="img" aria-label="Trend">

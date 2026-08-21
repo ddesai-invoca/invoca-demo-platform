@@ -7,7 +7,7 @@ import { LineChart } from "./LineChart";
 import { StackedBarChart } from "./StackedBarChart";
 import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
-import { TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, TsGeoMap, TsTable, TsKpi, TsMetric, legendFor,
+import { TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, TsGeoMap, TsTable, TsKpi, TsMetric, TsTrend, legendFor,
   pieLegend, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE,
   TS_DUAL_BAR_FILL, TS_DUAL_LINE } from "./ts";
 import { axisTitleFor, formatTick, kindOf, type MeasureKind } from "../data/insightsMeasures";
@@ -211,7 +211,13 @@ function TsTileCard({ tile, onRemove, onPick }: {
          than the 847px tile the template was measured on, so the DATA LABELS shrink to fit
          (see pieLabelText / fitPieLabel); the donut geometry itself is untouched. */
       className={tile.tileType === "table" ? "ts-span-2" : undefined}>
-      {tile.tileType === "kpi" && (
+      {/* ⚠️ KPI AND METRIC ARE THE SAME tileType. A KPI carries `trend` and renders the
+          headline + sparkline card; a Metric has no trend and stays the bare number, which
+          is the only documented difference between the two templates. */}
+      {tile.tileType === "kpi" && tile.trend && (
+        <TsTrend {...tile.trend} spark={series[0]?.values ?? []} />
+      )}
+      {tile.tileType === "kpi" && !tile.trend && (
         <div className="ts-kpi-row">
           {tile.kpis.map((k, i) => <TsMetric key={i} label={k.label} value={k.value} />)}
           {tile.kpis.length === 0 ? <TsKpi value="—" /> : null}

@@ -303,11 +303,29 @@
 .ts-kpi-row { display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 4px 0 8px; }
 .ts-kpi-row .ts-metric + .ts-metric { margin-top: 0; }
 
+/* The KPI card. Every number below is measured off the capture, and the sizes are NOT
+   the ones this used to carry (value 28px, rows 16px). */
 .ts-trend { position: relative; }
-.ts-trend-period { font-size: 16px; line-height: 22px; color: #777e8b; }
-.ts-trend-delta { font-size: 16px; line-height: 22px; color: #0d7a3e; }
-.ts-trend-delta--down { color: #f04152; }
-.ts-trend-arrow { margin-right: 4px; font-size: 12px; }
+/* 32px/700 #1d232f — bigger than .ts-metric-value's 28px, which is a different tile. */
+.ts-trend-value {
+  font-size: 32px; font-weight: 700; line-height: 40px; color: #1d232f;
+  font-variant-numeric: tabular-nums;
+}
+.ts-trend-period { font-size: 14px; line-height: 20px; color: #777e8b; }
+/* ⚠️ THE ROW IS NOT ONE COLOUR. Only the percentage is red; the absolute delta is grey
+   and BOLD, and the comparison period is grey and regular. */
+.ts-trend-delta {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 14px; line-height: 20px; color: #777e8b;
+}
+.ts-trend-pct { display: inline-flex; align-items: center; }
+.ts-trend-pct--down { color: #f04152; }
+/* ⚠️ UNVERIFIED: the capture only ever showed a DECREASE, so the increase colour is a
+   choice, not a measurement. ThoughtSpot's own green is used rather than inventing one. */
+.ts-trend-pct--up { color: #0d7a3e; }
+.ts-trend-arrow { margin-right: 2px; font-size: 13px; line-height: 1; }
+.ts-trend-base { font-weight: 700; }
+.ts-trend-chev { font-size: 16px; color: #777e8b; }
 .ts-spark { display: block; width: 100%; height: auto; margin-top: 8px; }
 
 /* ---- tables -------------------------------------------------------------- */

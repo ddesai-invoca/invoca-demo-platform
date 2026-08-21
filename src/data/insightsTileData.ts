@@ -398,14 +398,40 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
   });
 
   switch (c.template) {
-    case "KPI":
     case "Metric": {
-      /* Metric is a single number; KPI pairs it with its trend, which is the only
-         difference between the two templates on the live drawer. */
+      /* A single number, and that is the whole template — the only difference from KPI. */
       const v = Math.round(sc.max * 0.58);
-      const kpis = [{ label: primary, value: formatMeasure(v, sc.kind) }];
-      if (c.template === "KPI") kpis.push({ label: "vs. prior period", value: `+${4 + (seed % 12)}%` });
-      return { tileType: "kpi", title: c.name, note, kpis, xLabels: [], series: [], slices: [] };
+      return { tileType: "kpi", title: c.name, note: "", xLabels: [], series: [], slices: [],
+        kpis: [{ label: primary, value: formatMeasure(v, sc.kind) }] };
+    }
+    case "KPI": {
+      /* ⚠️ THE KPI IS THE LAST BUCKET AGAINST THE ONE BEFORE IT, over the dashboard's own
+         window — not an invented "+7% vs prior period". The old build printed a random
+         percentage next to a number with no series behind it, so the figure and the trend
+         could not agree because there was no trend.
+         `filteredWeeks` is the same window machinery every time-series template uses, so
+         the KPI's last point equals the last point of a Single Line tile on the same
+         measure. */
+      const win = filteredWeeks(profile, primary);
+      const labels = win ? win.labels : weekLabels(profile);
+      const vals = win
+        ? win.values
+        : spread(Math.round(sc.max * 0.55), labels.length, seed);
+      const last = vals[vals.length - 1] ?? 0;
+      const prev = vals[vals.length - 2] ?? 0;
+      /* A percentage against a zero baseline is not a percentage; show the level instead. */
+      const pct = prev > 0 ? ((last - prev) / prev) * 100 : 0;
+      return { tileType: "kpi", title: c.name, note: "", xLabels: labels, slices: [],
+        series: [{ name: primary, values: vals }],
+        kpis: [{ label: primary, value: formatMeasure(last, sc.kind) }],
+        trend: {
+          value: formatMeasure(last, sc.kind),
+          period: `Week of ${labels[labels.length - 1] ?? ""}`,
+          delta: +pct.toFixed(2),
+          previous: formatMeasure(prev, sc.kind),
+          previousPeriod: `Week of ${labels[labels.length - 2] ?? ""}`,
+        },
+        valueKind: kindOf(primary) };
     }
     case "Pie Chart": {
       const vals = dimensionValues(profile, c.dimensions[0] ?? "Marketing Source").slice(0, 6);

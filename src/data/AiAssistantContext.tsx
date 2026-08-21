@@ -58,6 +58,16 @@ export interface GeneratedTile {
    * should be able to invent — a wrong lat/lon puts a prospect's calls in the ocean.
    */
   geo?: Array<{ lat: number; lon: number; value: number; label?: string }>;
+  /**
+   * KPI headline: the last bucket, the period, and the change against the bucket before.
+   *
+   * ⚠️ Absent from TILE_PROPS like the other render hints. The delta is DERIVED from the
+   * series, so letting the assistant set it would allow a percentage that contradicts the
+   * sparkline beneath it.
+   */
+  trend?: {
+    value: string; period: string; delta: number; previous: string; previousPeriod: string;
+  };
   /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
      (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
      generated type REQUIRED, so adding these there would force the assistant to
