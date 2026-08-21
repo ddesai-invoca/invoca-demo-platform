@@ -311,7 +311,13 @@ export function piePlot(w: number, h: number): { cx: number; cy: number; r: numb
 }
 
 /**
- * Slice order for the pie template.
+ * Category order for the pie AND the horizontal bar template.
+ *
+ * ⚠️ MEASURED ON BOTH. The bar capture reads {Null}, Billboard, Connected TV, Direct Mail,
+ * Display, Email, Organic, Paid Search, Print, Social Media, Television, direct — the same
+ * code-unit sort, with lowercase `direct` landing after `Television` because 'd' (100) is
+ * above every uppercase letter. So the longest bar sits MID-LIST, not first: order and
+ * magnitude are independent here.
  *
  * ⚠️ ALPHABETICAL, NOT BY VALUE — measured, and the opposite of what a chart library
  * defaults to. In the capture the 1-call slice sits 18th and the 155-call slice 23rd, so
@@ -329,7 +335,7 @@ export function piePlot(w: number, h: number): { cx: number; cy: number; r: numb
  * `{Null}` is pinned first: by code unit `{` (123) would otherwise sort it after every
  * lowercase letter, and it is the null bucket, not a category.
  */
-export function pieOrder<T extends { label: string }>(slices: T[]): T[] {
+export function categoryOrder<T extends { label: string }>(slices: T[]): T[] {
   const isNull = (l: string) => /^\{null\}$/i.test(l.trim());
   return [...slices].sort((a, b) => {
     if (isNull(a.label) !== isNull(b.label)) return isNull(a.label) ? -1 : 1;
@@ -477,3 +483,6 @@ export const linePath = (pts: Array<[number, number]>): string =>
 
 export const areaPath = (pts: Array<[number, number]>, baseY: number): string =>
   pts.length ? `${linePath(pts)} L ${pts[pts.length - 1][0]} ${baseY} L ${pts[0][0]} ${baseY} Z` : "";
+
+/** Back-compat alias: the pie called this first. Same collation, measured on both charts. */
+export const pieOrder = categoryOrder;

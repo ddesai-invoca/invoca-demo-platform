@@ -1,3 +1,4 @@
+import { categoryOrder } from "../components/ts/tsChart";
 import type { CustomerProfile } from "./schema";
 import {
   axisTitleFor, formatMeasure, isAdditive, kindOf, magnitudeOf, type MeasureKind,
@@ -235,6 +236,64 @@ export function interactionsAt(profile: CustomerProfile, label: string): number 
   return magnitudeOf(profile, "Call Count").total;
 }
 
+/**
+ * A dimension's REAL breakdown — labels with the prospect's own long-tailed values.
+ *
+ * ⚠️ THE SYNTHETIC SPREAD MADE EVERY BAR THE SAME LENGTH. `series()` generated values in a
+ * ~1.6x band, so a Marketing Source chart drew five near-identical bars and told no story;
+ * the real dashboard runs 21,732 down to 4,225 (5.1x) and the reference capture runs 660
+ * down to 3 (220x). The dashboard's own breakdown rows already hold those numbers, and
+ * `dimensionValues` was throwing them away and keeping only the names.
+ *
+ * Two paths, both derive-don't-generate:
+ *  - the measure MATCHES a metric column -> use that column verbatim, so the tile and the
+ *    dashboard cannot disagree
+ *  - otherwise -> use the first column as the SHAPE and apportion the measure's own
+ *    magnitude across it, which keeps the long tail at the right order of magnitude
+ * Returns null when the dimension has no breakdown, so callers keep their fallback.
+ */
+export function dimensionBreakdown(
+  profile: CustomerProfile, dimension: string, measure: string,
+): { labels: string[]; values: number[] } | null {
+  const r = profile.reports as Reports;
+  const d = dimension.toLowerCase();
+  const bd = (r.marketingDashboard?.breakdowns ?? []).find((b) =>
+    b.dimensionColumn?.toLowerCase() === d || b.title?.toLowerCase().includes(d.replace(/^marketing\s+/, "")));
+  if (!bd || !bd.rows?.length) return null;
+
+  const num = (v: string) => Number(String(v ?? "").replace(/[^\d.-]/g, "")) || 0;
+  const norm = (t: string) => t.toLowerCase().replace(/^total\s+/, "").trim();
+  const labels = bd.rows.map((x) => x.name);
+
+  const col = (bd.metricColumns ?? []).findIndex((c) => norm(c) === norm(measure));
+  if (col >= 0) return { labels, values: bd.rows.map((x) => num(x.metrics?.[col] ?? "")) };
+
+  /* Shape from the first column, magnitude from the measure. */
+  const weights = bd.rows.map((x) => num(x.metrics?.[0] ?? ""));
+  const sum = weights.reduce((a, b) => a + b, 0);
+  if (sum <= 0) return null;
+  const g = magnitudeOf(profile, measure);
+
+  if (!isAdditive(g.kind)) {
+    /* A rate or a duration is a LEVEL per category, not a share of a total. Bigger
+       categories skew slightly high, which is what the real tables show. */
+    const max = Math.max(...weights);
+    return {
+      labels,
+      values: weights.map((wt) => +(g.level * (0.82 + 0.36 * (wt / max))).toFixed(1)),
+    };
+  }
+  /* Largest-remainder, so the bars sum to exactly the measure's own total. */
+  const exact = weights.map((wt) => (g.total * wt) / sum);
+  const out = exact.map((v) => Math.floor(v));
+  let left = g.total - out.reduce((a, b) => a + b, 0);
+  const order = exact
+    .map((v, i) => ({ i, frac: v - Math.floor(v) }))
+    .sort((a, b) => b.frac - a.frac);
+  for (const o of order) { if (left <= 0) break; out[o.i] += 1; left -= 1; }
+  return { labels, values: out };
+}
+
 export interface TileChoices {
   template: string;
   name: string;
@@ -279,11 +338,21 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
          series. Category labels are never truncated — the left inset grows instead — so a
          long list stays readable. */
       const dim = c.dimensions[0] ?? "Marketing Source";
-      const vals = dimensionValues(profile, dim).slice(0, 40);
-      const sc = measureScale(profile, primary);
+      /* ⚠️ REAL BREAKDOWN VALUES, NOT A SPREAD. The synthetic version drew five bars within
+         a ~1.6x band, which reads as fake; the prospect's own by-source rows run 21,732 down
+         to 4,225 and the reference capture runs 660 down to 3. See dimensionBreakdown. */
+      const real = dimensionBreakdown(profile, dim, primary);
+      const labels = real ? real.labels : dimensionValues(profile, dim).slice(0, 40);
+      const values = real
+        ? real.values
+        : spread(Math.round(measureScale(profile, primary).max * 0.55), labels.length, seed);
+      /* ⚠️ CATEGORIES SORT ALPHABETICALLY, the same code-unit order as the pie — measured on
+         the bar capture too. The biggest bar therefore sits mid-list; do not "helpfully"
+         sort by value. */
+      const rows = categoryOrder(labels.map((label, i) => ({ label, v: values[i] ?? 0 })));
       return { tileType: "bar", title: c.name, note: "", kpis: [], slices: [],
-        xLabels: vals,
-        series: [{ name: primary, values: spread(Math.round(sc.max * 0.55), vals.length, seed) }],
+        xLabels: rows.map((r) => r.label),
+        series: [{ name: primary, values: rows.map((r) => r.v) }],
         horizontal: true,
         yTitle: dim,
         xTitle: axisTitleFor(primary),

@@ -1697,6 +1697,31 @@ paints; the line templates DO carry a visible `#e0e0e0` axis line, so `TsAxes` m
 reused here. The "Showing N of N data points" text sits outside the svg's visible box, and
 the reference screenshot shows none — while the PIE does show one.
 
+⚠️ **CATEGORIES SORT ALPHABETICALLY — the SAME code-unit order as the pie, measured on the
+bar capture too.** It reads {Null}, Billboard, Connected TV, Direct Mail, Display, Email,
+Organic, Paid Search, Print, Social Media, Television, direct — lowercase `direct` last
+because 'd' (100) is above every uppercase letter. So the LONGEST BAR SITS MID-LIST: order
+and magnitude are independent, and sorting by value would be wrong. `categoryOrder` in
+tsChart.ts serves both charts (`pieOrder` is an alias).
+
+⚠️ **VALUES COME FROM THE REAL BREAKDOWN, NOT A SPREAD** (`dimensionBreakdown`). The
+synthetic `series()` generated values inside a ~1.6x band, so five near-identical bars told
+no story; the prospect's own by-source rows run 21,732 down to 4,225 (5.1x) and the reference
+capture runs 660 down to 3 (220x). `dimensionValues` was reading the row NAMES out of
+`marketingDashboard.breakdowns` and discarding the numbers sitting right beside them.
+Two paths, both derive-don't-generate:
+- the measure MATCHES a metric column -> that column verbatim, so the tile and the dashboard
+  cannot disagree. Call Count totals **48,293**, the prospect's real call total.
+- otherwise -> the first column as the SHAPE, with the measure's own magnitude apportioned
+  across it by largest remainder (additive kinds) or a level per category skewed by weight
+  (percent / duration / score / rank).
+
+⚠️ **"KEEP PAID SEARCH BIGGEST" HOLDS FOR COUNTS BUT NOT FOR REVENUE, AND THAT IS THE REAL
+DATA.** Call Count and Answered both peak on Paid Search (21,732 / 12,605). Revenue peaks on
+**Email** at $11,850,511, because Email converts far better (93% quote discussed, 71%
+purchase) on fewer calls. Forcing Paid Search to the top there would contradict the
+prospect's own dashboard — and the Email story is the more interesting one to demo.
+
 ⚠️ **THREE TEMPLATES SHARE `tileType: "bar"`** — Stacked Bar, Calls by Hour and Calls by Day
 of Week — and only Stacked Bar is horizontal. `GeneratedTile.horizontal` tells them apart at
 render time; it is optional and deliberately absent from `TILE_PROPS`, like the other render
