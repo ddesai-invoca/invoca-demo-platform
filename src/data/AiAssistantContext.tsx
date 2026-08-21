@@ -19,7 +19,7 @@ export interface GeneratedTile {
    * ⚠️ "dual" IS DELIBERATELY ABSENT FROM TILE_PROPS in engine/assistant.ts, like the render
    * hints below. Only buildTile sets it, from the Dual Y-Axis template's two measure fields.
    */
-  tileType: "kpi" | "line" | "bar" | "pie" | "table" | "dual";
+  tileType: "kpi" | "line" | "bar" | "pie" | "table" | "dual" | "geo";
   title: string;
   note: string;
   kpis: { label: string; value: string }[];
@@ -51,6 +51,13 @@ export interface GeneratedTile {
   horizontal?: boolean;
   /** Right-hand axis title for the dual-axis template — the LINE measure. */
   rightTitle?: string;
+  /**
+   * Map points for the Geo Heatmap.
+   *
+   * ⚠️ Also absent from TILE_PROPS: coordinates are geography, not a value the assistant
+   * should be able to invent — a wrong lat/lon puts a prospect's calls in the ocean.
+   */
+  geo?: Array<{ lat: number; lon: number; value: number; label?: string }>;
   /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
      (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
      generated type REQUIRED, so adding these there would force the assistant to

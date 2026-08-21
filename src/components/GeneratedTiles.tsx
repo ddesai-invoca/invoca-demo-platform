@@ -7,7 +7,7 @@ import { LineChart } from "./LineChart";
 import { StackedBarChart } from "./StackedBarChart";
 import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
-import { TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, TsTable, TsKpi, TsMetric, legendFor,
+import { TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, TsGeoMap, TsTable, TsKpi, TsMetric, legendFor,
   pieLegend, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE,
   TS_DUAL_BAR_FILL, TS_DUAL_LINE } from "./ts";
 import { axisTitleFor, formatTick, kindOf, type MeasureKind } from "../data/insightsMeasures";
@@ -196,7 +196,8 @@ function TsTileCard({ tile, onRemove, onPick }: {
          a legend says everything twice AND steals 212px the labels need, which pushed the
          donut right and clipped the left-hand labels. Confirmed against the real tile
          2026-08-20: no legend, labels only. */
-      legend={tile.tileType !== "pie" && !(tile.tileType === "bar" && tile.horizontal)
+      legend={tile.tileType !== "pie" && tile.tileType !== "geo"
+        && !(tile.tileType === "bar" && tile.horizontal)
         && legend && legend.length > 1 ? legend : undefined}
       /* A multi-line chart puts one y axis per series, so it is the only tile here that
          needs the legend out of the way when it gets narrow. */
@@ -263,6 +264,11 @@ function TsTileCard({ tile, onRemove, onPick }: {
           rightFormat={tile.seriesKinds?.[1]
             ? (v) => formatTick(v, tile.seriesKinds![1] as MeasureKind) : undefined}
           onSelect={onPick} />
+      )}
+      {tile.tileType === "geo" && (
+        <TsGeoMap points={tile.geo ?? []}
+          valueLabel={tile.yTitle ?? "Total Call Count"}
+          onSelect={onPick ? (label, v) => onPick(series[0]?.name ?? "Value", label, v) : undefined} />
       )}
       {tile.tileType === "pie" && (
         <TsPie slices={tile.slices} showLegend={false}

@@ -152,6 +152,13 @@ export function rangeStartIso(profile: CustomerProfile): string {
   return r.start.toISOString().slice(0, 10);
 }
 
+/** Deterministic string hash, so a prospect's map never moves between sessions. */
+function hashStr(t: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return h >>> 0;
+}
+
 const DAY = 86400000;
 
 function filteredWeeks(profile: CustomerProfile, measure: string): Window | null {
@@ -294,6 +301,82 @@ export function dimensionBreakdown(
   return { labels, values: out };
 }
 
+/* ---------------------------------------------------------------------------
+   Geo Heatmap points
+   ---------------------------------------------------------------------------
+   ⚠️ NO PROFILE CARRIES PER-CALL COORDINATES, so unlike every other template this one
+   cannot read its geography off the prospect's data. The reference tile shows ~200 dots
+   clustered hard on real metros — Los Angeles, the Bay Area, New York, Chicago, Atlanta,
+   Houston, South Florida — and sparse in between, which is simply where people are.
+   So: REAL metro coordinates and REAL population weights, with the MEASURE's own total
+   apportioned across them. The geography is true, the volumes are the prospect's, and
+   only the scatter inside a metro is invented.
+
+   Seeded off the profile id, so a prospect's map is identical in every session — an SE
+   demoing the same account twice must not see the dots move. */
+const US_METROS: Array<[string, number, number, number]> = [
+  // name, lat, lon, weight (roughly metro population, millions)
+  ["New York", 40.7128, -74.006, 19.8], ["Los Angeles", 34.0522, -118.2437, 13.2],
+  ["Chicago", 41.8781, -87.6298, 9.5], ["Dallas", 32.7767, -96.797, 7.6],
+  ["Houston", 29.7604, -95.3698, 7.1], ["Washington", 38.9072, -77.0369, 6.3],
+  ["Philadelphia", 39.9526, -75.1652, 6.2], ["Atlanta", 33.749, -84.388, 6.1],
+  ["Miami", 25.7617, -80.1918, 6.1], ["Phoenix", 33.4484, -112.074, 4.9],
+  ["Boston", 42.3601, -71.0589, 4.9], ["San Francisco", 37.7749, -122.4194, 4.7],
+  ["Riverside", 33.9806, -117.3755, 4.6], ["Detroit", 42.3314, -83.0458, 4.3],
+  ["Seattle", 47.6062, -122.3321, 4.0], ["Minneapolis", 44.9778, -93.265, 3.7],
+  ["San Diego", 32.7157, -117.1611, 3.3], ["Tampa", 27.9506, -82.4572, 3.2],
+  ["Denver", 39.7392, -104.9903, 3.0], ["Baltimore", 39.2904, -76.6122, 2.8],
+  ["St. Louis", 38.627, -90.1994, 2.8], ["Orlando", 28.5383, -81.3792, 2.7],
+  ["Charlotte", 35.2271, -80.8431, 2.7], ["San Antonio", 29.4241, -98.4936, 2.6],
+  ["Portland", 45.5152, -122.6784, 2.5], ["Sacramento", 38.5816, -121.4944, 2.4],
+  ["Pittsburgh", 40.4406, -79.9959, 2.3], ["Las Vegas", 36.1699, -115.1398, 2.3],
+  ["Austin", 30.2672, -97.7431, 2.3], ["Cincinnati", 39.1031, -84.512, 2.2],
+  ["Kansas City", 39.0997, -94.5786, 2.2], ["Columbus", 39.9612, -82.9988, 2.1],
+  ["Cleveland", 41.4993, -81.6944, 2.1], ["Indianapolis", 39.7684, -86.1581, 2.1],
+  ["Nashville", 36.1627, -86.7816, 2.0], ["Virginia Beach", 36.8529, -75.978, 1.8],
+  ["Providence", 41.824, -71.4128, 1.7], ["Milwaukee", 43.0389, -87.9065, 1.6],
+  ["Jacksonville", 30.3322, -81.6557, 1.6], ["Oklahoma City", 35.4676, -97.5164, 1.4],
+  ["Raleigh", 35.7796, -78.6382, 1.4], ["Memphis", 35.1495, -90.049, 1.3],
+  ["Richmond", 37.5407, -77.436, 1.3], ["New Orleans", 29.9511, -90.0715, 1.3],
+  ["Salt Lake City", 40.7608, -111.891, 1.2], ["Birmingham", 33.5186, -86.8104, 1.1],
+  ["Buffalo", 42.8864, -78.8784, 1.1], ["Tucson", 32.2226, -110.9747, 1.0],
+  ["Boise", 43.615, -116.2023, 0.8], ["Albuquerque", 35.0844, -106.6504, 0.9],
+  ["Omaha", 41.2565, -95.9345, 0.9], ["Anchorage", 61.2181, -149.9003, 0.4],
+];
+
+/**
+ * Points for the Geo Heatmap, weighted to real metros and totalling the measure.
+ *
+ * Each metro gets one to four dots depending on its weight, scattered within ~35km so a
+ * big metro reads as a cluster rather than one fat blob — which is what the reference
+ * shows around Los Angeles and New York.
+ */
+export function geoPoints(
+  profile: CustomerProfile, measure: string,
+): Array<{ lat: number; lon: number; value: number; label: string }> {
+  const g = magnitudeOf(profile, measure);
+  const total = g.total > 0 ? g.total : Math.max(1, Math.round(g.level * 40));
+  let seed = hashStr(profile.id + "::geo::" + measure);
+  const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+
+  const raw: Array<{ lat: number; lon: number; w: number; label: string }> = [];
+  for (const [name, lat, lon, weight] of US_METROS) {
+    const dots = weight > 8 ? 4 : weight > 4 ? 3 : weight > 1.6 ? 2 : 1;
+    for (let d = 0; d < dots; d++) {
+      /* ~0.32deg is roughly 35km of latitude — a metro's spread, not a state's. */
+      const jl = d === 0 ? 0 : (rnd() - 0.5) * 0.64;
+      const jo = d === 0 ? 0 : (rnd() - 0.5) * 0.8;
+      raw.push({ lat: lat + jl, lon: lon + jo, w: (weight / dots) * (0.6 + rnd() * 0.8), label: name });
+    }
+  }
+  const sum = raw.reduce((a, b) => a + b.w, 0);
+  return raw.map((r) => ({
+    lat: +r.lat.toFixed(4), lon: +r.lon.toFixed(4),
+    value: Math.max(1, Math.round((total * r.w) / sum)),
+    label: r.label,
+  }));
+}
+
 export interface TileChoices {
   template: string;
   name: string;
@@ -391,11 +474,15 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
         dashTail: winL ? winL.partialTail : false };
     }
     case "Geo Heatmap": {
-      /* Same honesty: there is no map renderer. The prospect's real geography from the
-         pool, drawn as bars, beats a fake map. */
-      const vals = dimensionValues(profile, "Region").slice(0, 6);
-      return { tileType: "bar", title: c.name, note: `${primary} by region`, kpis: [], slices: [],
-        xLabels: vals, series: series(vals) };
+      /* There IS a map renderer now (TsGeoMap, Leaflet + Mapbox tiles). This used to
+         fall back to bars-by-region with a note saying no map existed. */
+      const pts = geoPoints(profile, primary);
+      return { tileType: "geo", title: c.name, note: "", kpis: [], slices: [],
+        xLabels: pts.map((p) => p.label),
+        series: [{ name: primary, values: pts.map((p) => p.value) }],
+        geo: pts,
+        yTitle: axisTitleFor(primary),
+        valueKind: kindOf(primary) };
     }
     case "Single Line Chart Over Time": {
       /* Weekly buckets INSIDE the dashboard's own filter window. Axis titles match the

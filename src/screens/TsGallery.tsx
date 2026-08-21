@@ -1,6 +1,6 @@
 import {
   TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, TsTable, TsKpi,
-  TsMetric, TsTrend,
+  TsMetric, TsTrend, TsGeoMap,
   legendFor, tsTick, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE,
 } from "../components/ts";
 
@@ -80,6 +80,21 @@ const BAR_CATEGORIES = ["{Null}", "Billboard", "Connected TV", "Direct Mail", "D
   "Email", "Organic", "Paid Search", "Print", "Social Media", "Television", "direct"];
 const BAR_VALUES = [101, 177, 254, 182, 34, 115, 315, 660, 134, 57, 148, 3];
 
+/* A handful of real metros, deliberately including Anchorage: the initial view must fit
+   EVERY dot, and Alaska is what catches a fit computed before the container has a size. */
+const GEO_POINTS = [
+  { lat: 40.7128, lon: -74.006, value: 1738, label: "New York" },
+  { lat: 34.0522, lon: -118.2437, value: 1160, label: "Los Angeles" },
+  { lat: 41.8781, lon: -87.6298, value: 834, label: "Chicago" },
+  { lat: 29.7604, lon: -95.3698, value: 623, label: "Houston" },
+  { lat: 33.749, lon: -84.388, value: 535, label: "Atlanta" },
+  { lat: 25.7617, lon: -80.1918, value: 402, label: "Miami" },
+  { lat: 37.7749, lon: -122.4194, value: 412, label: "San Francisco" },
+  { lat: 47.6062, lon: -122.3321, value: 351, label: "Seattle" },
+  { lat: 39.7392, lon: -104.9903, value: 263, label: "Denver" },
+  { lat: 61.2181, lon: -149.9003, value: 35, label: "Anchorage" },
+];
+
 export function TsGallery() {
   return (
     <div className="ts-page">
@@ -157,6 +172,12 @@ export function TsGallery() {
             lineSeries={{ name: "Appointment Rate", values: [63, 50, 50, 49, 49] }}
             xTitle="Weekly Call Start Time" yTitle="Total Call Count"
             rightTitle="Appointment Rate" rightFormat={(v) => v + "%"} />
+        </TsTile>
+
+        {/* The map is on the bench too, so a regression in it cannot hide. Fixed points
+            rather than a profile's, for the same reason as every other specimen here. */}
+        <TsTile className="ts-span-2" title="Geo Heatmap">
+          <TsGeoMap points={GEO_POINTS} valueLabel="Total Call Count" />
         </TsTile>
 
         <TsTile title="Calls by Hour">

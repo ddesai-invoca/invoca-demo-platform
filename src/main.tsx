@@ -1,5 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+/* Leaflet needs its own stylesheet or its tile panes stack in the corner.
+   Imported BEFORE ours so .ts-geo overrides can win. */
+import 'leaflet/dist/leaflet.css'
 import './tokens/tokens.css'
 import './tokens/thoughtspot.css'
 import './styles/app.css'

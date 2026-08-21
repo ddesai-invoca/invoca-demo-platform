@@ -7,6 +7,8 @@ export { TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, legendFor, pie
 export type { TsSeries, TsSlice, TsAxisSeries } from "./TsCharts";
 export { TsKpi, TsMetric, TsTrend } from "./TsKpi";
 export { TsTable } from "./TsTable";
+export { TsGeoMap } from "./TsGeoMap";
+export type { TsGeoPoint } from "./TsGeoMap";
 export type { TsTableProps } from "./TsTable";
 export {
   TS_PLOT, TS_SIZE, TS_AXIS_LINE, TS_AXIS_LABEL, TS_LEGEND_TEXT,

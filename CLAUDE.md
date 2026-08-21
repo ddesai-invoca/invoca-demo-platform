@@ -1663,6 +1663,52 @@ the capture has `<label id=measure-label><span>Attribute</span></label>`. The `i
 independently confirms the `kind: "measure"` classification, which was originally inferred
 from live option COUNTS — two signals agreeing.
 
+## Template: "Geo Heatmap" (measured 8/21/2026)
+`TsGeoMap` (Leaflet + Mapbox raster tiles) + `geoPoints` in `insightsTileData.ts`.
+
+⚠️ **THE REAL TILE IS OPENLAYERS, NOT MAPBOX GL.** The capture carries `ol-viewport`,
+`ol-layer`, `ol-zoom`, `ol-zoom-in` — OpenLayers — drawing **Mapbox raster tiles**, which is
+where the "© Mapbox © OpenStreetMap / Improve this map" attribution comes from. Mapbox
+supplies the tiles; it is not the map library. That is also why the +/− buttons are square
+and dark rather than Mapbox GL's rounded pair.
+
+⚠️ **WE USE LEAFLET, DELIBERATELY, AND IT IS A BUNDLE DECISION.** The app ships as ONE
+bundle with NO code splitting — load-bearing for the service worker — so anything added
+loads on every screen. Measured: Leaflet took the bundle 1,855,972 → 2,010,239 bytes raw,
+**+154KB raw / ~+43KB gzipped**. OpenLayers is ~120–180KB gzipped even tree-shaken, and
+mapbox-gl ~900KB, for a map nobody can tell apart once the tiles are the same. Agreed with
+the user 2026-08-21 after laying out all three options.
+
+| | how |
+|---|---|
+| tiles | `mapbox/light-v11` at `@2x` (the captured canvas carried a 1.111 device-pixel transform) |
+| initial view | `fitBounds` over every point, `maxZoom: 9`, 28px padding |
+| dots | palette red `#E4131B` at 0.7 opacity, radius 4–13 scaled by **√(value/max)** |
+| hovered dot | a `#1d232f` ring and 0.9 opacity, as the reference shows |
+| zoom control | square, `#1d232f`, white glyphs, 26px, top-left |
+| tooltip | the shared dark panel: coordinate caption + `lat, lon` to 4dp, then the measure caption + value |
+| legend | none |
+
+⚠️ **THE DOT COLOUR IS READ FROM A SCREENSHOT, NOT MEASURED — the only template where that
+is true.** OpenLayers renders its vector layer to a CANVAS, so no DOM node carries a fill.
+Every other template's colours came off the DOM.
+
+⚠️ **`fitBounds` MUST RUN AFTER THE CONTAINER HAS A SIZE.** Inside a flex tile the map div
+is 0x0 on first paint, so an immediate fit computes against nothing and lands on a wrong
+zoom — observed: Alaska stayed off-screen even though its dot was inside the bounds.
+`invalidateSize` alone does NOT re-fit, it only re-measures, so the fit is held in a ref and
+re-run from a ResizeObserver. That also handles the window being resized mid-demo.
+
+⚠️ **NO PROFILE CARRIES PER-CALL COORDINATES**, so this is the one template whose geography
+cannot come from the prospect. `geoPoints` uses REAL metro coordinates and REAL population
+weights, apportioning the MEASURE's own total across them — so the geography is true, the
+volumes are the prospect's, and only the scatter inside a metro is invented. Seeded off the
+profile id, so an SE demoing the same account twice never sees the dots move.
+
+⚠️ **VERIFYING A LEAFLET DOT: IT IS A `<path>`, NOT A `<circle>`.** `circleMarker` renders
+arc commands (`d="M…a13,13 0 1,0 26,0…"`), so reading an `r` attribute returns nothing and a
+naive check reports radius 0 for a perfectly good dot. That cost a wrong diagnosis.
+
 ## Template: "Dual Y-Axis" (measured 8/21/2026)
 `TsDualAxis` + `TS_DUAL_*` / `dualBarWidth` / `dateTickIndices` in `tsChart.ts`.
 
