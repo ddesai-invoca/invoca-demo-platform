@@ -74,6 +74,12 @@ const MULTI_SERIES = [
       Math.floor(v / 60) + ":" + String(Math.round(v) % 60).padStart(2, "0") },
 ];
 
+/* The capture's own 12 Marketing Source categories and shape, so the bench compares
+   directly against it. */
+const BAR_CATEGORIES = ["{Null}", "Billboard", "Connected TV", "Direct Mail", "Display",
+  "Email", "Organic", "Paid Search", "Print", "Social Media", "Television", "direct"];
+const BAR_VALUES = [101, 177, 254, 182, 34, 115, 315, 660, 134, 57, 148, 3];
+
 export function TsGallery() {
   return (
     <div className="ts-page">
@@ -158,8 +164,22 @@ export function TsGallery() {
             seriesName="Total Call Count" w={TS_SIZE.bar.w} h={520} />
         </TsTile>
 
-        <TsTile title="Stacked Bar" legend={legendFor(CALL_SERIES.slice(2), TS_SERIES_COLUMN)}>
-          <TsColumn categories={DOW} series={CALL_SERIES.slice(2)} stacked
+        {/* ⚠️ THE "Stacked Bar" TEMPLATE IS A HORIZONTAL SINGLE-SERIES BAR CHART — nothing
+            is stacked, despite the name in the Add Tile list. This specimen used to draw
+            stacked vertical columns, which is a different chart entirely. Long category
+            labels on purpose: the left inset is content-derived and must be seen growing. */}
+        <TsTile className="ts-span-2" title="Stacked Bar">
+          <TsBar categories={BAR_CATEGORIES} values={BAR_VALUES}
+            seriesName="Total Call Count" yTitle="Marketing Source"
+            xTitle="Total Call Count" />
+        </TsTile>
+
+        {/* The VERTICAL counterpart, kept beside it on purpose: "bar" tiles split into a
+            horizontal Stacked Bar and vertical Calls by Hour / Day of Week, and the bench
+            has to show both or a regression in one hides behind the other. */}
+        <TsTile title="Calls by Day of Week (vertical column)"
+          legend={legendFor(CALL_SERIES.slice(2), TS_SERIES_COLUMN)}>
+          <TsColumn categories={DOW} series={CALL_SERIES.slice(2)}
             xTitle="Day of Week" yTitle="Appointments" showLegend={false} />
         </TsTile>
 

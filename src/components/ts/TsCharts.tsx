@@ -1,10 +1,11 @@
 import { fitValues } from "../chartFit";
 import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_PIE_ACTIVE_COLORS, areaFill } from "../../data/tsPalette";
 import {
-  TS_AREA_ALPHA, TS_BAR_THICK, TS_COLUMN_GAP, TS_COLUMN_W, TS_LINE_W, TS_SIZE,
+  TS_AREA_ALPHA, TS_COLUMN_GAP, TS_COLUMN_W, TS_LINE_W, TS_SIZE,
   areaPath, bands, calendarTicks, leftInsetFor, linePath, niceScale, niceTicks, plotOf,
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX, nearestIndex, TS_TRACKER_W,
   piePlot, pieOrder, fitPieLabel, TS_PIE_GAP_DEG,
+  barLeftInset, barThickness, TS_BAR_PLOT, TS_BAR_LABEL_GAP, TS_BAR_VALUE_GAP, tsTick,
   slicePath, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
 import { TsAxes, TsAxisTitles, TsTip, TsPointMarker, useTsHover, useTsBox } from "./TsShell";
@@ -378,11 +379,21 @@ export function TsColumn({
 
 /* ---- horizontal bar ------------------------------------------------------- */
 
+/* ---- the "Stacked Bar" template ------------------------------------------------
+   ⚠️ NOTHING IS STACKED. The Add Tile list calls it "Stacked Bar"; the real tile draws ONE
+   blue series as horizontal bars, categories down the left. Re-measured 2026-08-21 off two
+   of them; see tsChart.ts for the geometry and the three surprises (no axis lines, no
+   gridlines, no footer). */
 export function TsBar({
-  categories, values, w: wIn = TS_SIZE.bar.w, h: hIn = TS_SIZE.bar.h, xTitle, seriesName = "Value", onSelect,
+  categories, values, w: wIn = TS_SIZE.bar.w, h: hIn = TS_SIZE.bar.h,
+  xTitle, yTitle, seriesName = "Value", onSelect,
 }: {
   categories: string[]; values: number[]; w?: number; h?: number;
-  xTitle?: string; seriesName?: string;
+  /** Value-axis title, centred under the plot. */
+  xTitle?: string;
+  /** CATEGORY-axis title, rotated down the left. */
+  yTitle?: string;
+  seriesName?: string;
   onSelect?: (category: string, value: number) => void;
 }) {
   const box = useTsBox(wIn, hIn);
@@ -391,15 +402,31 @@ export function TsBar({
   const n = categories.length;
   const vals = fitValues(values, n) ?? [];
   if (!vals.length) return <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style} />;
-  const p = plotOf(w, h, 0);
+
+  const left = barLeftInset(categories, w);
+  const p = {
+    x: left, y: TS_BAR_PLOT.top,
+    w: Math.max(1, w - left - TS_BAR_PLOT.right),
+    h: Math.max(1, h - TS_BAR_PLOT.top - TS_BAR_PLOT.bottom),
+  };
   const { max: xMax, ticks } = niceTicks(Math.max(1, ...vals));
   const band = p.h / Math.max(1, n);
-  const thick = Math.min(TS_BAR_THICK, band * 0.8);
+  const thick = barThickness(band);
+  const tickX = (v: number) => p.x + (xMax > 0 ? (v / xMax) * p.w : 0);
 
   return (
     <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
-        <TsAxes plot={p} categories={categories} yMax={xMax} yTicks={ticks} horizontal />
+        {/* ⚠️ NO TsAxes. This template paints no axis line and no gridline — both compute
+            to `stroke: none` in the capture — so the axes here are labels only. */}
+        {categories.map((c, i) => (
+          <text key={"c" + i} className="ts-axis-label" x={p.x - TS_BAR_LABEL_GAP}
+            y={p.y + band * (i + 0.5) + 4} textAnchor="end">{c}</text>
+        ))}
+        {ticks.map((t) => (
+          <text key={"v" + t} className="ts-axis-label" x={tickX(t)}
+            y={p.y + p.h + TS_BAR_VALUE_GAP} textAnchor="middle">{tsTick(t)}</text>
+        ))}
         {vals.map((v, i) => {
           const barW = xMax > 0 ? (v / xMax) * p.w : 0;
           const y = p.y + band * (i + 0.5) - thick / 2;
@@ -412,7 +439,7 @@ export function TsBar({
                 hv.setActiveSeries(i);
                 hv.setHover({
                   xPct: ((p.x + barW) / w) * 100, yPct: (y / h) * 100,
-                  rows: [[seriesName, tsNum(v)], ["Category", categories[i]]],
+                  rows: [[seriesName, tsNum(v)], [yTitle ?? "Category", categories[i]]],
                 });
               }}
               onMouseLeave={hv.clear}
@@ -420,7 +447,8 @@ export function TsBar({
           );
         })}
       </svg>
-      <TsAxisTitles xTitle={xTitle} plot={p} w={w} h={h} />
+      {/* Both titles are HTML at 12px/600 — measured, same as every other ts template. */}
+      <TsAxisTitles xTitle={xTitle} yTitle={yTitle} plot={p} w={w} h={h} />
       <TsTip hover={hv.hover} />
     </div>
   );

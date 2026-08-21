@@ -32,7 +32,7 @@ export const TS_AXIS_FONT = 12;
 
 export const TS_COLUMN_W = 22;              // bar width in a grouped column chart
 export const TS_COLUMN_GAP = 5;             // gap BETWEEN bars inside one group
-export const TS_BAR_THICK = 56;             // horizontal bar thickness
+export const TS_BAR_THICK = 56;             // legacy cap, unused by TsBar — see barThickness()
 export const TS_LINE_W = 2;
 export const TS_AREA_ALPHA = 0.2;
 export const TS_DONUT_INNER = 0.5;          // inner/outer, measured twice: 62.225/124.45 and 103/206
@@ -46,7 +46,8 @@ export const TS_SIZE = {
   /* Measured on the real single-line tile: 846x633 with the plot 781x564. */
   line: { w: 846, h: 633 },
   wide: { w: 1538, h: 633 },
-  bar: { w: 846, h: 633 },
+  /* Re-measured off the horizontal-bar capture: 956x707, drawn 1:1. */
+  bar: { w: 956, h: 707 },
   spark: { w: 398, h: 157 },
 } as const;
 
@@ -369,6 +370,50 @@ export function fitPieLabel(
   const forName = Math.floor(room / 6) - suffix.length;
   return pieLabelText(label, value, total, forName);
 }
+
+/* ---------------------------------------------------------------------------
+   The "Stacked Bar" template — which is a HORIZONTAL BAR chart, single series
+   ---------------------------------------------------------------------------
+   ⚠️ THE NAME LIES. The tile is called "Stacked Bar" in the Add Tile list, and the real
+   thing draws one blue series as horizontal bars: categories down the left, values along
+   the bottom. Nothing is stacked. Measured on two of them at 956x707.
+
+   Plot: top 20, bottom 55, right 3, left CONTENT-DERIVED (125 with 12-char category
+   labels, 309 with 40-char ones).
+
+   ⚠️ NO AXIS LINES AND NO GRIDLINES. Both exist as elements and both compute to
+   `stroke: none`, so neither paints — unlike the line templates, which DO carry a visible
+   `#e0e0e0` axis line. Do not reuse TsAxes here.
+
+   ⚠️ NO FOOTER. The "Showing N of N data points" text sits outside the svg's visible box
+   on this template, and the reference screenshot shows none. The pie DOES show one. */
+export const TS_BAR_PLOT = { top: 20, bottom: 55, right: 3 } as const;
+/** Category labels sit this far left of the plot, right-aligned. */
+export const TS_BAR_LABEL_GAP = 15;
+/** Value labels sit this far below the plot. */
+export const TS_BAR_VALUE_GAP = 20;
+
+/**
+ * Left inset, from the widest category label.
+ *
+ * ⚠️ CATEGORY LABELS ARE NEVER TRUNCATED HERE — the inset grows instead, the opposite of
+ * the pie. Measured: 12-char labels gave 125, 40-char labels gave 309. `48 + chars * 6.5`
+ * reproduces both within a pixel. Clamped to 45% of the width so a pathological label
+ * cannot squeeze the bars away.
+ */
+export function barLeftInset(labels: string[], w: number): number {
+  const widest = labels.reduce((n, l) => Math.max(n, l.length), 1);
+  return Math.min(Math.round(48 + widest * 6.5), Math.round(w * 0.45));
+}
+
+/**
+ * Bar thickness for a category band.
+ *
+ * ⚠️ `ceil(band * 0.8)`, WITH NO ABSOLUTE CAP. Measured twice: band 52.667 -> 43 and band
+ * 19.152 -> 16, and ceil reproduces both exactly where round gives 42 and 15. The old
+ * `min(56, band * 0.8)` would wrongly pin a chart with few categories to 56.
+ */
+export const barThickness = (band: number): number => Math.max(1, Math.ceil(band * 0.8));
 
 export type Plot = { x: number; y: number; w: number; h: number };
 

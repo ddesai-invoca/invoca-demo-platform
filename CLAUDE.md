@@ -1663,6 +1663,50 @@ the capture has `<label id=measure-label><span>Attribute</span></label>`. The `i
 independently confirms the `kind: "measure"` classification, which was originally inferred
 from live option COUNTS — two signals agreeing.
 
+## Template: "Stacked Bar" (really a HORIZONTAL BAR, measured 8/21/2026)
+`TsBar` + `barLeftInset` / `barThickness` / `TS_BAR_PLOT` in `tsChart.ts`.
+
+⚠️ **THE NAME LIES AND THIS IS THE WHOLE POINT.** The Add Tile list calls it "Stacked Bar"
+and its blurb says "see the breakdown of each segment". The real tile draws **ONE blue
+series as HORIZONTAL bars** — categories down the left, values along the bottom. Nothing is
+stacked, and there is no second series to stack. The previous build drew stacked VERTICAL
+columns, which is a different chart entirely.
+
+| | measured (two charts, 12 and 33 categories) |
+|---|---|
+| canvas | **956 x 707**, drawn 1:1 |
+| plot | top **20**, bottom **55**, right **3**, left content-derived |
+| left inset | **125** with 12-char labels, **309** with 40-char ones → `48 + chars * 6.5` reproduces both within 1px |
+| bar thickness | `ceil(band * 0.8)` — band 52.667 → **43**, band 19.152 → **16** |
+| fill | **#2666F9**, single series, no stroke |
+| category labels | right-aligned (`anchor=end`) **15px** left of the plot, 12px Lato 400 `#5b6577` |
+| value labels | **20px** below the plot, centred on their tick |
+| axis titles | HTML 12px/**600** `#5b6577` — category rotated left, value centred below |
+
+⚠️ **CATEGORY LABELS ARE NEVER TRUNCATED — the inset grows instead.** 40-character campaign
+names print in full and the plot starts at 309. That is the OPPOSITE of the pie, which caps
+its labels at 30 characters and keeps the ring where it is. Do not "unify" the two.
+
+⚠️ **`ceil`, NOT `round`.** Both measured thicknesses come out wrong with `round` (42 and
+15) and exactly right with `ceil` (43 and 16). The old `min(TS_BAR_THICK=56, band * 0.8)`
+also wrongly pinned a few-category chart to 56.
+
+⚠️ **NO AXIS LINES, NO GRIDLINES, NO FOOTER — all three differ from other templates.** The
+axis-line and grid-line elements exist and BOTH compute to `stroke: none`, so neither
+paints; the line templates DO carry a visible `#e0e0e0` axis line, so `TsAxes` must not be
+reused here. The "Showing N of N data points" text sits outside the svg's visible box, and
+the reference screenshot shows none — while the PIE does show one.
+
+⚠️ **THREE TEMPLATES SHARE `tileType: "bar"`** — Stacked Bar, Calls by Hour and Calls by Day
+of Week — and only Stacked Bar is horizontal. `GeneratedTile.horizontal` tells them apart at
+render time; it is optional and deliberately absent from `TILE_PROPS`, like the other render
+hints. The `/ts-gallery` bench now carries BOTH a horizontal Stacked Bar and a vertical
+column specimen, because a regression in one would otherwise hide behind the other.
+
+Verified on the real Add Tile path, not just the bench: `isHorizontal: true`, thickness 58
+at band 72.4 (= `ceil(57.92)`), `#2666F9`, 0 axis lines, 0 gridlines, no legend, both axis
+titles present.
+
 ## Template: "Pie Chart" (really a DONUT, measured 8/20/2026)
 `TsPie` + `piePlot` / `pieOrder` / `pieLabelText` in `tsChart.ts`, `TS_PIE_COLORS` in
 `tsPalette.ts`. Measured off a 33-slice capture; the first build was wrong in six ways.

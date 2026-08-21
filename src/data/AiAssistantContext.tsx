@@ -35,6 +35,16 @@ export interface GeneratedTile {
      A plain string rather than the MeasureKind union: this type is serialised into a
      saved demo, and a stored value outside the union must not fail to parse. */
   valueKind?: string;
+  /**
+   * A "bar" tile drawn as HORIZONTAL bars rather than vertical columns.
+   *
+   * ⚠️ THREE TEMPLATES SHARE `tileType: "bar"` — Stacked Bar, Calls by Hour and Calls by
+   * Day of Week — and only Stacked Bar is the horizontal one (measured 2026-08-21). Without
+   * this flag they cannot be told apart at render time. Optional, and deliberately absent
+   * from TILE_PROPS in engine/assistant.ts like the other render hints, so the assistant
+   * cannot set it.
+   */
+  horizontal?: boolean;
   /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
      (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
      generated type REQUIRED, so adding these there would force the assistant to

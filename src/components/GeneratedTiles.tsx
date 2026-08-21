@@ -7,7 +7,7 @@ import { LineChart } from "./LineChart";
 import { StackedBarChart } from "./StackedBarChart";
 import { DonutChart } from "./DonutChart";
 import type { MultiSeriesChart } from "../data/schema";
-import { TsTile, TsLine, TsMultiLine, TsColumn, TsPie, TsTable, TsKpi, TsMetric, legendFor,
+import { TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsPie, TsTable, TsKpi, TsMetric, legendFor,
   pieLegend, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE } from "./ts";
 import { axisTitleFor, formatTick, kindOf, type MeasureKind } from "../data/insightsMeasures";
 import { fitCells } from "./chartFit";
@@ -190,7 +190,8 @@ function TsTileCard({ tile, onRemove, onPick }: {
          a legend says everything twice AND steals 212px the labels need, which pushed the
          donut right and clipped the left-hand labels. Confirmed against the real tile
          2026-08-20: no legend, labels only. */
-      legend={tile.tileType !== "pie" && legend && legend.length > 1 ? legend : undefined}
+      legend={tile.tileType !== "pie" && !(tile.tileType === "bar" && tile.horizontal)
+        && legend && legend.length > 1 ? legend : undefined}
       /* A multi-line chart puts one y axis per series, so it is the only tile here that
          needs the legend out of the way when it gets narrow. */
       needsWidth={tile.tileType === "line" && series.length > 1}
@@ -224,7 +225,16 @@ function TsTileCard({ tile, onRemove, onPick }: {
             ? (v) => formatTick(v, tile.valueKind as MeasureKind) : undefined}
           w={TS_SIZE.line.w} h={TS_SIZE.line.h} onSelect={onPick} />
       )}
-      {tile.tileType === "bar" && (
+      {/* ⚠️ "Stacked Bar" is the HORIZONTAL one and nothing is stacked — see the
+          `horizontal` note on GeneratedTile. Calls by Hour / Day of Week keep the vertical
+          column renderer. */}
+      {tile.tileType === "bar" && tile.horizontal && (
+        <TsBar categories={categories} values={series[0]?.values ?? []}
+          seriesName={series[0]?.name ?? "Value"}
+          xTitle={tile.xTitle} yTitle={tile.yTitle}
+          onSelect={onPick ? (cat, v) => onPick(series[0]?.name ?? "Value", cat, v) : undefined} />
+      )}
+      {tile.tileType === "bar" && !tile.horizontal && (
         <TsColumn categories={categories} series={series} showLegend={false}
           w={TS_SIZE.column.w} h={TS_SIZE.column.h} onSelect={onPick} />
       )}

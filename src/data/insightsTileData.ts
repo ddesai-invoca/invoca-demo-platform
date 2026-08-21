@@ -272,9 +272,22 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
         slices: vals.map((label, i) => ({ label, value: nums[i] })) };
     }
     case "Stacked Bar": {
-      const vals = dimensionValues(profile, c.dimensions[0] ?? "Marketing Source").slice(0, 6);
-      return { tileType: "bar", title: c.name, note, kpis: [], slices: [],
-        xLabels: vals, series: series(vals) };
+      /* ⚠️ NOTHING IS STACKED, AND IT IS HORIZONTAL. Measured 2026-08-21: one blue series
+         drawn as horizontal bars, categories down the left. The old build sliced to 6
+         categories and drew every chosen measure as its own series; the real charts show
+         ALL of them (12 for Marketing Source, 33 for Marketing Campaign) and exactly one
+         series. Category labels are never truncated — the left inset grows instead — so a
+         long list stays readable. */
+      const dim = c.dimensions[0] ?? "Marketing Source";
+      const vals = dimensionValues(profile, dim).slice(0, 40);
+      const sc = measureScale(profile, primary);
+      return { tileType: "bar", title: c.name, note: "", kpis: [], slices: [],
+        xLabels: vals,
+        series: [{ name: primary, values: spread(Math.round(sc.max * 0.55), vals.length, seed) }],
+        horizontal: true,
+        yTitle: dim,
+        xTitle: axisTitleFor(primary),
+        valueKind: kindOf(primary) };
     }
     case "Calls by Hour": {
       return { tileType: "bar", title: c.name, note: `${primary} by hour of day`, kpis: [], slices: [],
