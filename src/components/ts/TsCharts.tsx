@@ -6,7 +6,7 @@ import {
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX,
   slicePath, sliceAngles, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
-import { TsAxes, TsAxisTitles, TsTip, useTsHover, useTsBox } from "./TsShell";
+import { TsAxes, TsAxisTitles, TsTip, TsPointMarker, useTsHover, useTsBox } from "./TsShell";
 
 /* =============================================================================
    TsCharts — the seven ThoughtSpot chart templates, drawn to measured geometry.
@@ -79,6 +79,8 @@ export function TsLine({
           const color = TS_SERIES_LINE[si % TS_SERIES_LINE.length];
           const pts = s.values.map((v, i) => [b.centre(i), yOf(p, v, yMax, yMin)] as [number, number]);
           const dim = hv.activeSeries !== null && hv.activeSeries !== si;
+          /* Highcharts' `lineWidthPlus` default, which is what ThoughtSpot renders. */
+          const lw = hv.activeSeries === si ? TS_LINE_W + 1 : TS_LINE_W;
           return (
             <g key={s.name} className="ts-series" opacity={dim ? 0.22 : 1}>
               {area ? (
@@ -89,16 +91,20 @@ export function TsLine({
                   period is still incomplete. Drawing the tail as its own short dashed
                   path is visually identical without needing a clip. */}
               <path d={linePath(dashTail ? pts.slice(0, -1) : pts)} fill="none" stroke={color}
-                strokeWidth={TS_LINE_W} strokeLinejoin="round" strokeLinecap="round" />
+                strokeWidth={lw} strokeLinejoin="round" strokeLinecap="round" />
               {dashTail && pts.length > 1 ? (
                 <path d={linePath(pts.slice(-2))} fill="none" stroke={color}
-                  strokeWidth={TS_LINE_W} strokeDasharray="2,2" strokeLinecap="round" />
+                  strokeWidth={lw} strokeDasharray="2,2" strokeLinecap="round" />
+              ) : null}
+              {hv.activeSeries === si && hv.activePoint !== null && pts[hv.activePoint] ? (
+                <TsPointMarker x={pts[hv.activePoint][0]} y={pts[hv.activePoint][1]} color={color} />
               ) : null}
               {pts.map(([cx, cy], i) => (
                 <circle key={i} cx={cx} cy={cy} r={10} fill="transparent"
                   className={onSelect ? "ts-hit ts-hit--click" : "ts-hit"}
                   onMouseEnter={() => {
                     hv.setActiveSeries(si);
+                    hv.setActivePoint(i);
                     hv.setHover({
                       xPct: ((cx - 0) / w) * 100, yPct: (cy / h) * 100,
                       rows: [[s.name, (tickFormat ?? tsNum)(s.values[i])],
@@ -219,19 +225,26 @@ export function TsMultiLine({
             return [b.centre(i), y] as [number, number];
           });
           const dim = hv.activeSeries !== null && hv.activeSeries !== si;
+          /* The hovered series thickens by 1px — Highcharts' `lineWidthPlus` default, which
+             is what ThoughtSpot renders, and what the reference screenshots show. */
+          const lw = hv.activeSeries === si ? TS_LINE_W + 1 : TS_LINE_W;
           return (
             <g key={s.name} className="ts-series" opacity={dim ? 0.22 : 1}>
               <path d={linePath(dashTail ? pts.slice(0, -1) : pts)} fill="none" stroke={colour}
-                strokeWidth={TS_LINE_W} strokeLinejoin="round" strokeLinecap="round" />
+                strokeWidth={lw} strokeLinejoin="round" strokeLinecap="round" />
               {dashTail && pts.length > 1 ? (
                 <path d={linePath(pts.slice(-2))} fill="none" stroke={colour}
-                  strokeWidth={TS_LINE_W} strokeDasharray="2,2" strokeLinecap="round" />
+                  strokeWidth={lw} strokeDasharray="2,2" strokeLinecap="round" />
+              ) : null}
+              {hv.activeSeries === si && hv.activePoint !== null && pts[hv.activePoint] ? (
+                <TsPointMarker x={pts[hv.activePoint][0]} y={pts[hv.activePoint][1]} color={colour} />
               ) : null}
               {pts.map(([cx, cy], i) => (
                 <circle key={i} cx={cx} cy={cy} r={10} fill="transparent"
                   className={onSelect ? "ts-hit ts-hit--click" : "ts-hit"}
                   onMouseEnter={() => {
                     hv.setActiveSeries(si);
+                    hv.setActivePoint(i);
                     hv.setHover({
                       xPct: (cx / w) * 100, yPct: (cy / h) * 100,
                       rows: [[s.name, fmtOf(si)(s.values[i])],
@@ -451,12 +464,18 @@ export function TsDualAxis({
           const dim = hv.activeSeries !== null && hv.activeSeries !== 1;
           return (
             <g opacity={dim ? 0.22 : 1}>
-              <path d={linePath(pts)} fill="none" stroke={TS_SERIES_LINE[0]} strokeWidth={TS_LINE_W}
+              <path d={linePath(pts)} fill="none" stroke={TS_SERIES_LINE[0]}
+                strokeWidth={hv.activeSeries === 1 ? TS_LINE_W + 1 : TS_LINE_W}
                 strokeLinejoin="round" strokeLinecap="round" />
+              {hv.activeSeries === 1 && hv.activePoint !== null && pts[hv.activePoint] ? (
+                <TsPointMarker x={pts[hv.activePoint][0]} y={pts[hv.activePoint][1]}
+                  color={TS_SERIES_LINE[0]} />
+              ) : null}
               {pts.map(([cx, cy], i) => (
                 <circle key={i} cx={cx} cy={cy} r={10} fill="transparent" className="ts-hit"
                   onMouseEnter={() => {
                     hv.setActiveSeries(1);
+                    hv.setActivePoint(i);
                     hv.setHover({ xPct: (cx / w) * 100, yPct: (cy / h) * 100,
                       rows: [[lineSeries.name, (rightFormat ?? tsNum)(lines[i])],
                              [xTitle ?? "Category", categories[i]]] });

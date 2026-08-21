@@ -1834,6 +1834,13 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
   font-size: 13px; line-height: 1.45; min-width: 150px;
   box-shadow: 0 4px 14px rgba(12, 0, 51, .22);
 }
+/* ⚠️ DO NOT SWAP THESE WITHOUT A CAPTURE. The comment above describes "the metric label in
+   a lighter grey above its value", which reads like the opposite of what these rules do,
+   and the reference screenshots are not legible enough to settle 400 vs 600 in white text
+   on a dark panel. Left as measured. Note the reach before changing them: `.ind-tip` is
+   also rendered by DonutChart, which appears on MarketingDashboard,
+   AiAgentConversionDashboard and LocationComparisonDashboard — so this is NOT an
+   Insights-only rule, and editing it changes the Dashboards tab too. */
 .ind-tip-k { color: #fff; font-weight: 600; }
 .ind-tip-v { color: #e7eaee; }
 .ind-tip-gap { margin-top: 10px; }

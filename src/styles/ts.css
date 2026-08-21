@@ -214,18 +214,27 @@
 
 /* ---- the hover panel ----------------------------------------------------- */
 
+/* ⚠️ THE SAME DARK PANEL AS `.ind-tip`, WHICH WAS MEASURED OFF THE REFERENCE. This started
+   life as a white two-column panel with the key left and the value right — a guess, and
+   the only tooltip on this tab that did not match the others. Every value here (#2f3a4a,
+   4px radius, 12px/16px padding, 13px/1.45, the 10px gap between pairs) comes from
+   `.ind-tip` in app.css, so the templates and the summary cards on one dashboard cannot
+   drift apart. */
 .ts-tip {
   position: absolute; z-index: 5; pointer-events: none;
-  transform: translate(10px, -50%);
-  background: #fff; border: 1px solid var(--ts-var-liveboard-tile-border-color);
-  border-radius: 4px; box-shadow: 0 2px 8px rgba(12, 0, 51, .16);
-  padding: 8px 10px; min-width: 140px;
-  font-family: var(--ts-var-root-font-family); font-size: 12px;
+  transform: translate(14px, -50%);
+  background: #2f3a4a; color: #fff; border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(12, 0, 51, .22);
+  padding: 12px 16px; min-width: 150px;
+  font-family: var(--ts-var-root-font-family); font-size: 13px; line-height: 1.45;
 }
-.ts-tip--flip { transform: translate(calc(-100% - 10px), -50%); }
-.ts-tip-row { display: flex; justify-content: space-between; gap: 12px; line-height: 18px; }
-.ts-tip-k { color: #777e8b; }
-.ts-tip-v { color: var(--ts-var-root-color); font-weight: 600; }
+.ts-tip--flip { transform: translate(calc(-100% - 14px), -50%); }
+/* Label and value weights copied from `.ind-tip` EXACTLY, so the two tooltips on one
+   dashboard cannot differ. (Whether ThoughtSpot has them this way round is unsettled —
+   see the note on `.ind-tip-k` in app.css. If it ever changes, change both.) */
+.ts-tip-k { color: #fff; font-weight: 600; }
+.ts-tip-v { color: #e7eaee; }
+.ts-tip-gap { margin-top: 10px; }
 
 /* ---- number tiles -------------------------------------------------------- */
 

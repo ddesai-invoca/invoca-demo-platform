@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { TS_AXIS_LINE, niceTicks, plotOf, tsTick, type Plot } from "./tsChart";
 
 /* =============================================================================
@@ -89,22 +89,50 @@ export function TsTip({ hover }: { hover: TsHover | null }) {
       className={"ts-tip" + (flip ? " ts-tip--flip" : "")}
       style={{ left: `${hover.xPct}%`, top: `${hover.yPct}%` }}
     >
-      {hover.rows.map(([k, v]) => (
-        <div className="ts-tip-row" key={k}>
-          <span className="ts-tip-k">{k}</span>
-          <span className="ts-tip-v">{v}</span>
-        </div>
+      {/* ⚠️ STACKED `label:` THEN VALUE, NOT A KEY-LEFT/VALUE-RIGHT ROW. This tooltip was
+          originally a white two-column panel, which was a guess. The reference — and the
+          `.ind-tip` on this same tab, which was measured off it — puts the label on its own
+          line with a trailing colon, the value beneath it, and a gap before the next pair. */}
+      {hover.rows.map(([k, v], i) => (
+        <Fragment key={k}>
+          <div className={"ts-tip-k" + (i > 0 ? " ts-tip-gap" : "")}>{k}:</div>
+          <div className="ts-tip-v">{v}</div>
+        </Fragment>
       ))}
     </div>
   );
 }
 
-/** Shared hover state, so every chart fades and reports the same way. */
+/**
+ * Shared hover state, so every chart fades and reports the same way.
+ *
+ * `activePoint` is the hovered POINT index within `activeSeries`, which a line chart needs
+ * to draw its marker. Kept separate from `activeSeries` so the charts that only fade
+ * (columns, bars, pie) are untouched and simply never set it.
+ */
 export function useTsHover() {
   const [hover, setHover] = useState<TsHover | null>(null);
   const [activeSeries, setActiveSeries] = useState<number | null>(null);
-  const clear = () => { setHover(null); setActiveSeries(null); };
-  return { hover, setHover, activeSeries, setActiveSeries, clear };
+  const [activePoint, setActivePoint] = useState<number | null>(null);
+  const clear = () => { setHover(null); setActiveSeries(null); setActivePoint(null); };
+  return { hover, setHover, activeSeries, setActiveSeries, activePoint, setActivePoint, clear };
+}
+
+/**
+ * The marker on a hovered line point: a halo, then the dot with a white ring.
+ *
+ * Values follow `.ind-trenddot`, which was measured off the reference (series colour, 3px
+ * white ring), plus the faint colour halo the reference screenshots show around it. Drawn
+ * as a component so all three line templates mark a point identically.
+ */
+export function TsPointMarker({ x, y, color }: { x: number; y: number; color: string }) {
+  return (
+    <g className="ts-marker" aria-hidden="true">
+      <circle cx={x} cy={y} r={9} fill={color} opacity={0.25} />
+      <circle cx={x} cy={y} r={4.5} fill={color} stroke="#fff" strokeWidth={3}
+        vectorEffect="non-scaling-stroke" />
+    </g>
+  );
 }
 
 /* ---- the axes ------------------------------------------------------------- */

@@ -1,7 +1,7 @@
 /* The ThoughtSpot component layer for Insights & Analytics.
    Import from here, not from the individual files, so a future re-organisation of
    this folder does not touch every screen that uses it. */
-export { TsTile, TsLegend, TsTip, TsAxes, useTsHover, useCartesian, useTsBox } from "./TsShell";
+export { TsTile, TsLegend, TsTip, TsAxes, TsPointMarker, useTsHover, useCartesian, useTsBox } from "./TsShell";
 export type { TsTileProps, TsHover, TsAxesProps } from "./TsShell";
 export { TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, legendFor, pieLegend } from "./TsCharts";
 export type { TsSeries, TsSlice, TsAxisSeries } from "./TsCharts";

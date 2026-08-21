@@ -1785,6 +1785,52 @@ viewBox while the HTML axis titles stayed 12px, so ticks and titles drifted apar
 tiles in one row rendered different text sizes. Fixed by drawing at 1:1; see the next
 section.
 
+## Hover on every ts- template (8/20/2026)
+`TsTip` + `useTsHover` + `TsPointMarker` in `TsShell.tsx`, `.ts-tip` in `ts.css`.
+
+Every chart template answers a hover the same way: a dark tooltip, the hovered series at
+full strength, everything else faded. Verified across all of them:
+
+| template | tooltip | fade | point marker |
+|---|---|---|---|
+| Single Line | dark | one series | yes |
+| Multi-Line | dark | 1 / 0.22 / 0.22 | yes |
+| Dual Y-Axis | dark | bars 0.22 | yes (line) |
+| Grouped Column, Stacked Bar, Calls by Hour | dark | 1 / 0.22 | no |
+| Pie, Donut | dark | 1 / 0.16 | no |
+
+KPI, Metric and the table templates have no hover: there is no data point to hover, and
+ThoughtSpot does not put a tooltip on a table cell.
+
+⚠️ **THE TOOLTIP IS `.ind-tip`, COPIED VALUE FOR VALUE — do not restyle it independently.**
+`.ts-tip` began as a white two-column panel (key left, value right), which was a guess and
+the only tooltip on the tab that did not match the others. `.ind-tip` was measured off the
+reference, so `.ts-tip` now takes every value from it: `#2f3a4a`, 4px radius, `12px 16px`
+padding, 13px/1.45, and a stacked `label:` / value pair with a 10px gap before the next.
+Verified identical: computed style and row weights match character for character on a
+dashboard showing both.
+
+⚠️ **`.ind-tip` IS NOT INSIGHTS-ONLY. `DonutChart` renders it, and DonutChart appears on
+MarketingDashboard, AiAgentConversionDashboard and LocationComparisonDashboard.** I changed
+`.ind-tip-k/-v` believing them inverted and had to revert it: that edit reached three
+Dashboards screens, which the one-screen rule forbids. The claim was also weaker than I
+stated — the reference screenshots cannot settle 400 vs 600 in white text on a dark panel.
+Left as measured, with the reach recorded at the rule. **If it is ever settled, change both
+tooltips together.**
+
+**The hovered line thickens by 1px and gets a marker.** `TS_LINE_W + 1` is Highcharts'
+`lineWidthPlus` default, and Highcharts is what ThoughtSpot renders. The marker follows
+`.ind-trenddot` (series colour, 3px white ring) plus the faint colour halo the reference
+screenshots show. `activePoint` was added to `useTsHover` for it, separate from
+`activeSeries` so the fade-only charts are untouched.
+
+⚠️ **VERIFYING HOVER: `computer{action:"hover"}` DOES NOT REACH REACT on these svg children
+— it produced no tooltip at a coordinate where `elementFromPoint` returned the hit circle.**
+A real `left_click` does (its genuine mouseover fires first), and that is how the behaviour
+was confirmed end to end. For a SCREENSHOT of a live hover, note the screenshot action
+itself moves the pointer and clears the state; freeze it first by stopping `mouseout` /
+`pointerout` in the capture phase, then reload to undo.
+
 ## Charts are drawn 1:1 (the whole ts- layer, 8/20/2026)
 `useTsBox` in `TsShell.tsx` + `.ts-chartwrap--fill` in `ts.css`.
 
