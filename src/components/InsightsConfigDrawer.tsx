@@ -99,7 +99,11 @@ function OptionPicker({ value, options, onPick }: {
   );
 }
 
-export interface CreatedTile { template: string; name: string; measures: string[]; dimensions: string[] }
+export interface CreatedTile {
+  template: string; name: string; measures: string[]; dimensions: string[];
+  /** Ticked "Chart Display Options" — e.g. "Show heatmap". */
+  options?: string[];
+}
 
 export function InsightsConfigDrawer({
   template, profile, onCancel, onCreate,
@@ -156,7 +160,10 @@ export function InsightsConfigDrawer({
         (f.kind === "measure" ? measures : dimensions).push(v);
       }
     });
-    onCreate({ template, name: name.trim(), measures, dimensions });
+    /* ⚠️ THE CHART-OPTION CHECKBOXES WERE COLLECTED AND THEN DROPPED, so "Show heatmap"
+       was decorative — ticking it changed nothing. Passed through now. */
+    onCreate({ template, name: name.trim(), measures, dimensions,
+      options: Object.keys(checks).filter((k) => checks[k]) });
   };
 
   return (

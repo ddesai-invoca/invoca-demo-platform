@@ -1663,6 +1663,48 @@ the capture has `<label id=measure-label><span>Attribute</span></label>`. The `i
 independently confirms the `kind: "measure"` classification, which was originally inferred
 from live option COUNTS — two signals agreeing.
 
+## Templates: "Calls by Hour" / "Calls by Day of Week" (measured 8/21/2026)
+`timePivot` in `insightsTileData.ts` + `TsTable`'s `heatScope` / `heatMax` / `pivotHeader`.
+
+⚠️ **THESE ARE PIVOT TABLES, NOT BAR CHARTS.** Rows are the chosen dimension, columns are
+the 24 hours (or 7 days), plus a row-total column AND a column-total row. The previous build
+drew a vertical column chart per hour — a different visualisation entirely.
+
+```
+header 1:  <measure>            | <column dimension>  (spans the rest)
+header 2:  <row dimension>      | 0 1 2 … 23 | <measure>
+body:      <dimension value>    | value per hour, BLANK where zero | row total
+footer:    <measure>            | total per hour                   | grand total
+```
+Values abbreviate (1.62K, 42.05K) via `formatHero`. Header cells sit on `#F6F8FA`, the
+totals-column header on `#F5F5F5`.
+
+⚠️ **THE HEAT SCALE IS GLOBAL AND SATURATES — the Details Report's is PER COLUMN.** Both are
+measured, so `TsTable` gained `heatScope`, defaulting to `"column"` so the report is
+untouched. The proof it is not per-column: this pivot's 24 column maxima carry **20 different
+colours**, where per-column normalisation would give every one of them the same darkest
+shade. And it clamps rather than stretching — measured t reaches 1 at ~4,320 while the grand
+total is 42,050, so several large values share `#B5ECF2`. `heatMax` is that saturation point,
+set to the largest per-hour total (4,730 against the measured 4,320 — a 9% difference,
+invisible).
+
+⚠️ **`numOf` HAD TO LEARN K/M/B, and this was a silent bug.** The pivot renders "1.63K" /
+"21.73K"; every one of those failed `numOf`'s digits-only test, so the ONLY cells that took a
+colour were the plain ones under 1,000 — all the small ones — and the grid came out
+near-white with "845" as its darkest cell. Sorting cells by heat is what exposed it; a glance
+at the screenshot would not have.
+
+⚠️ **"Show heatmap" WAS A DECORATIVE CHECKBOX.** `InsightsConfigDrawer` collected the
+chart-display options into state and then dropped them on submit — `onCreate` only carried
+template/name/measures/dimensions. `CreatedTile.options` and `TileChoices.options` now carry
+them, which is what makes the user's two variants (with and without heat) actually differ.
+
+⚠️ **THE HOUR SHAPE IS BIMODAL ON PURPOSE.** Real call traffic peaks late morning and again
+early evening and is near-dead overnight; a flat spread would make "spot your busiest and
+slowest times" meaningless, which is the template's whole stated purpose. Row weights come
+from the REAL breakdown, so a pivot and a Stacked Bar on the same dimension agree — Paid
+Search totals 21.73K in both, and the grand total is the prospect's own 48.3K.
+
 ## Templates: "KPI" and "Metric" (measured 8/21/2026)
 
 **Metric** is the number and NOTHING else — the captured card's entire text content is

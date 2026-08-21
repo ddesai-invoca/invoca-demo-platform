@@ -335,6 +335,13 @@
 
 /* ---- tables -------------------------------------------------------------- */
 
+/* A pivot's first header row. Measured: header cells sit on #F6F8FA, and the totals-column
+   header on #F5F5F5. */
+.ts-pivot-head th {
+  background: #f6f8fa; font-weight: 600; color: #1d232f;
+  text-align: left; white-space: nowrap;
+}
+
 .ts-tablewrap { overflow-x: auto; min-width: 0; }
 /* ⚠️ WRITTEN AS `.ts-tablewrap .ts-table` FOR SPECIFICITY, not for tidiness. app.css
    carries `.ind-page table { font-family: inherit }` (0,1,1), which beats a bare

@@ -68,6 +68,20 @@ export interface GeneratedTile {
   trend?: {
     value: string; period: string; delta: number; previous: string; previousPeriod: string;
   };
+  /** Totals row for a pivot table. */
+  tableFooter?: string[];
+  /** Whether the pivot paints its heat ramp — the template's "Show heatmap" option. */
+  heatmap?: boolean;
+  /**
+   * ⚠️ "table" NORMALISES THE RAMP ACROSS THE WHOLE GRID; "column" per column. The Details
+   * Report measured per-column, the Calls-by-Hour pivot measured global, so this is a real
+   * per-template difference and not a preference.
+   */
+  heatScope?: "column" | "table";
+  /** Saturation point for a table-scoped ramp — it clamps rather than stretching. */
+  heatMax?: number;
+  /** The pivot's first header row: the measure, then the column dimension's name. */
+  pivotHeader?: { measure: string; columnDimension: string };
   /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
      (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
      generated type REQUIRED, so adding these there would force the assistant to

@@ -101,8 +101,6 @@ function spread(total: number, n: number, seed: number): number[] {
 }
 
 /* ---- weekly / hourly / daily axes ----------------------------------------- */
-const DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-const HOURS = Array.from({ length: 12 }, (_, i) => `${(i * 2) || 12}${i * 2 < 12 ? "am" : "pm"}`);
 
 /* ---- the weekly buckets INSIDE the dashboard's filter ----------------------
    ⚠️ A TILE HONOURS THE DASHBOARD'S FILTER. The first build of this spanned two years,
@@ -382,6 +380,76 @@ export interface TileChoices {
   name: string;
   measures: string[];       // Attribute / Measure / Size (Rank) / Measure L+R
   dimensions: string[];     // Category / Categories
+  /** Ticked chart-display options, e.g. "Show heatmap". */
+  options?: string[];
+}
+
+/* ---------------------------------------------------------------------------
+   The "Calls by Hour" / "Calls by Day of Week" pivot
+   ---------------------------------------------------------------------------
+   ⚠️ THESE ARE PIVOT TABLES, NOT BAR CHARTS. Measured 2026-08-21: rows are the chosen
+   dimension, columns are the 24 hours (or 7 days), plus a row-total column AND a
+   column-total row. The previous build drew a vertical column chart per hour, which is a
+   different visualisation entirely.
+
+   Structure, read off the capture:
+     header 1:  <measure name>          | <column dimension name>
+     header 2:  <row dimension name>    | 0 1 2 … 23 | <measure name>
+     body:      <dimension value>       | value per hour, BLANK where zero | row total
+     footer:    <measure name>          | total per hour                   | grand total
+   Values abbreviate (1.62K, 42.05K) — the same hero/compact format.
+   Header cells sit on #F6F8FA; the totals column header on #F5F5F5. */
+const HOURS_24 = Array.from({ length: 24 }, (_, i) => String(i));
+const DOW_7 = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+/**
+ * Hour-of-day shape: real call traffic is bimodal, peaking late morning and again in the
+ * early evening, and near-dead overnight. A flat spread would make "spot your busiest and
+ * slowest times" meaningless, which is the whole point of the template.
+ */
+const HOUR_WEIGHT = [
+  0.8, 0.9, 0.7, 1.7, 1.0, 2.1, 3.9, 7.5, 6.0, 8.2, 5.7, 6.4,
+  6.7, 6.4, 5.5, 4.7, 3.9, 2.7, 2.5, 1.4, 7.7, 11.2, 2.0, 0.7,
+];
+const DOW_WEIGHT = [1.0, 1.02, 0.98, 0.95, 0.9, 0.42, 0.33];
+
+export function timePivot(
+  profile: CustomerProfile, measure: string, dimension: string, unit: "hour" | "dow",
+): { columns: string[]; rows: string[][]; footer: string[]; heatMax: number } {
+  const cols = unit === "hour" ? HOURS_24 : DOW_7;
+  const weights = unit === "hour" ? HOUR_WEIGHT : DOW_WEIGHT;
+  const g = magnitudeOf(profile, measure);
+  const total = g.total > 0 ? g.total : Math.max(1, Math.round(g.level * 40));
+
+  /* Row weights come from the REAL breakdown when the dimension has one, so a pivot and a
+     Stacked Bar on the same dimension agree. */
+  const real = dimensionBreakdown(profile, dimension, measure);
+  const names = real ? real.labels : dimensionValues(profile, dimension).slice(0, 20);
+  const rowW = real
+    ? real.values
+    : names.map((_, i) => 1 + ((hashStr(profile.id + names[i]) % 100) / 100));
+  const rowSum = rowW.reduce((a, b) => a + b, 0) || 1;
+  const colSum = weights.reduce((a, b) => a + b, 0) || 1;
+
+  const grid = names.map((_, ri) =>
+    weights.map((w) => Math.round((total * (rowW[ri] / rowSum) * (w / colSum)))));
+
+  const fmt = (v: number) => (v > 0 ? formatHero(v, g.kind) : "");
+  const rows = names.map((n, ri) => [
+    n, ...grid[ri].map(fmt),
+    formatHero(grid[ri].reduce((a, b) => a + b, 0), g.kind),
+  ]);
+  const colTotals = cols.map((_, ci) => grid.reduce((a, r) => a + r[ci], 0));
+  const footer = [axisTitleFor(measure), ...colTotals.map((v) => formatHero(v, g.kind)),
+    formatHero(colTotals.reduce((a, b) => a + b, 0), g.kind)];
+
+  /* ⚠️ THE HEAT SCALE IS GLOBAL AND SATURATES. Measured: column maxima carry 20 DIFFERENT
+     colours, so it is not per-column; and the ramp reaches its darkest at ~4,320 while the
+     grand total is 42,050, so it clamps rather than stretching to the biggest number. The
+     largest per-hour total is the scale that reproduces it closely (measured 4,320 against
+     that rule's 4,730 — a 9% difference, invisible). */
+  return { columns: [dimension, ...cols, axisTitleFor(measure)], rows, footer,
+    heatMax: Math.max(1, ...colTotals) };
 }
 
 export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<GeneratedTile, "id"> {
@@ -470,13 +538,21 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
         xTitle: axisTitleFor(primary),
         valueKind: kindOf(primary) };
     }
-    case "Calls by Hour": {
-      return { tileType: "bar", title: c.name, note: `${primary} by hour of day`, kpis: [], slices: [],
-        xLabels: HOURS, series: series(HOURS) };
-    }
+    case "Calls by Hour":
     case "Calls by Day of Week": {
-      return { tileType: "bar", title: c.name, note: `${primary} by day of week`, kpis: [], slices: [],
-        xLabels: DOW, series: series(DOW) };
+      /* ⚠️ A PIVOT TABLE, not a column chart — see timePivot. "Show heatmap" is a real
+         checkbox on this template and now reaches here; it used to be collected by the
+         drawer and dropped. */
+      const unit = c.template === "Calls by Hour" ? "hour" : "dow";
+      const dim = c.dimensions[0] ?? "Marketing Source";
+      const pv = timePivot(profile, primary, dim, unit);
+      return { tileType: "table", title: c.name, note: "", kpis: [], slices: [],
+        xLabels: [], series: [],
+        columns: pv.columns, rows: pv.rows, tableFooter: pv.footer,
+        heatmap: (c.options ?? []).includes("Show heatmap"),
+        heatScope: "table", heatMax: pv.heatMax,
+        pivotHeader: { measure: axisTitleFor(primary), columnDimension:
+          unit === "hour" ? "Hour of day Call Start Time" : "Day of week Call Start Time" } };
     }
     case "Dual Y-Axis": {
       /* ⚠️ LEFT MEASURE = BARS, RIGHT MEASURE = LINE. Proven by a pair of captures with the
