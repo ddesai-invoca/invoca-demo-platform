@@ -6,7 +6,7 @@ import {
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX,
   slicePath, sliceAngles, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
-import { TsAxes, TsAxisTitles, TsTip, useTsHover, useVbScale } from "./TsShell";
+import { TsAxes, TsAxisTitles, TsTip, useTsHover, useVbBox } from "./TsShell";
 
 /* =============================================================================
    TsCharts — the seven ThoughtSpot chart templates, drawn to measured geometry.
@@ -146,12 +146,12 @@ export function TsMultiLine({
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
   const hv = useTsHover();
-  const { ref, scale } = useVbScale(w);
+  const { ref, scale, ratio } = useVbBox(w, h);
   const n = categories.length;
   const fitted = series
     .map((s) => ({ ...s, values: fitValues(s.values, n) }))
     .filter((s): s is TsAxisSeries & { values: number[] } => s.values !== null);
-  if (!fitted.length) return <div className="ts-chartwrap" ref={ref} />;
+  if (!fitted.length) return <div className="ts-chartwrap ts-chartwrap--fill" ref={ref} />;
 
   /* One scale per series, each zoomed to its own floor so every line uses the full
      height of the plot rather than being squashed by a neighbour's magnitude. */
@@ -167,11 +167,16 @@ export function TsMultiLine({
     fitted.slice(1).map((_, k) => scales[k + 1].ticks.map((t) => fmtOf(k + 1)(t))),
     titleBand,
   );
+  /* ⚠️ THE VIEWBOX HEIGHT TRACKS THE WRAPPER, it is not the `h` prop. The x axis has to
+     reach the bottom of the tile even when the grid stretched this tile for a taller
+     neighbour, and with a fixed height the svg's height came from its WIDTH — so the 212px
+     the legend takes made this chart shorter than a legend-less one beside it. */
+  const vbH = Math.max(1, Math.round(w * ratio));
   const p: typeof TS_PLOT & { x: number; y: number; w: number; h: number } = {
     ...TS_PLOT,
     x: leftInset, y: TS_PLOT.top,
     w: Math.max(1, w - leftInset - ra.inset),
-    h: Math.max(1, h - TS_PLOT.top - TS_PLOT.bottom),
+    h: Math.max(1, vbH - TS_PLOT.top - TS_PLOT.bottom),
   };
   const b = bands(p, n);
   const plotRight = p.x + p.w;
@@ -179,8 +184,8 @@ export function TsMultiLine({
     ? calendarTicks(categories) : undefined;
 
   return (
-    <div className="ts-chartwrap" ref={ref}>
-      <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
+    <div className="ts-chartwrap ts-chartwrap--fill" ref={ref}>
+      <svg className="ts-svg" viewBox={`0 0 ${w} ${vbH}`} role="img">
         {/* the category axis and the LEFT value axis */}
         <TsAxes plot={p} categories={categories} yMin={scales[0].min} yMax={scales[0].max}
           yTicks={scales[0].ticks} tickAt={tickAt} tickFormat={fmtOf(0)} />
@@ -230,7 +235,7 @@ export function TsMultiLine({
                   onMouseEnter={() => {
                     hv.setActiveSeries(si);
                     hv.setHover({
-                      xPct: (cx / w) * 100, yPct: (cy / h) * 100,
+                      xPct: (cx / w) * 100, yPct: (cy / vbH) * 100,
                       rows: [[s.name, fmtOf(si)(s.values[i])],
                              [xTitle ?? "Category", categories[i]]],
                     });
@@ -245,12 +250,12 @@ export function TsMultiLine({
 
       {/* Titles are HTML, like every other chart here. Each right axis gets its own,
           sitting at the right edge of its column. */}
-      <TsAxisTitles xTitle={xTitle} yTitle={fitted[0].title} plot={p} w={w} h={h} />
+      <TsAxisTitles xTitle={xTitle} yTitle={fitted[0].title} plot={p} w={w} h={vbH} />
       {fitted.slice(1).map((s, k) => (
         <span key={"t" + s.name} className="ts-axis-ytitle ts-axis-ytitle--extra"
           style={{
             left: `${((plotRight + ra.titleAt[k]) / w) * 100}%`,
-            top: `${((p.y + p.h / 2) / h) * 100}%`,
+            top: `${((p.y + p.h / 2) / vbH) * 100}%`,
           }}>
           {s.title ?? s.name}
         </span>

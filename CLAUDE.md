@@ -1743,6 +1743,51 @@ build: 2 axis lines, 0 gridlines.
 Multi-Line uses the same five-week window as single-line, from the same
 `marketingDashboard.dateRange` field, so every tile on a dashboard still covers one period.
 
+⚠️ **THE CHART FILLS THE TILE; ITS HEIGHT IS NOT DERIVED FROM ITS WIDTH.** Reported: the
+x axis stopped well short of the bottom of the tile where the real instance reaches it.
+Cause: `.ts-svg { height: auto }` derives the svg's height from its WIDTH through the
+viewBox, so a chart that gives 212px to a legend is proportionally SHORTER than the
+legend-less chart beside it, and the grid stretches both tiles to the taller one. Measured
+in the reported pairing: single-line's x title sat 15px off the tile bottom, multi-line's
+sat **114px** off.
+
+ThoughtSpot sizes its chart to the container box in BOTH dimensions. `useVbBox` measures
+the wrapper and the viewBox HEIGHT is derived from the real aspect ratio, so the geometry
+stretches without distorting text. After the fix both x titles sit at 15px, and the
+multi-line svg went 310x292 -> 310x391.
+
+Two CSS facts, each of which cost a wrong attempt and both recorded in `ts.css`:
+- **`height: 100%`, not `align-items: stretch`.** The wrapper's parent is `.ts-tile-viz`,
+  an intermediate BLOCK, so the body's stretch never reaches it — measured tile 445, body
+  391, wrapper still 292. A percentage height resolves against `.ts-tile-viz`, which the
+  flex row DID stretch.
+- **The intrinsic height is a `padding-top` spacer, not `aspect-ratio`.** `aspect-ratio`
+  makes a flex item's cross size definite, so nothing can grow it afterwards. Some
+  intrinsic height is required or the wrapper and the svg size off each other and collapse
+  to zero.
+
+`.ts-tile` also became a flex column so the body can receive the height the grid gives the
+tile. A no-op for a tile that is already the tallest in its row.
+
+⚠️ **THE FALLBACK IS THE MEASURED BASELINE, and that is what makes this safe.** When a tile
+is NOT stretched, `.ts-tile-viz` is auto-height, the percentage cannot resolve, and the
+wrapper falls back to the spacer — verified on `/ts-gallery`, where the span-2 multi-line
+tile still renders viewBox exactly `748 704`. So the signed-off geometry is untouched
+wherever nothing is stretching the tile.
+
+Scope: `.ts-tile` / `.ts-chartwrap` appear only in the ts layer, `GeneratedTiles` and the
+gallery. Dashboards re-checked after this change — 21 `dash-card`s, 4px radius, `display:
+block`, zero `.ts-tile` — so this stayed inside the Insights tab.
+
+⚠️ **STILL OPEN, and it is the same root cause as the title-band conversion:** svg text
+scales with the viewBox while the HTML axis titles stay 12px, so in a narrow tile the tick
+labels render smaller than the titles (measured 13.5px ticks against 12px titles at scale
+0.937, and much further apart at 0.5). ThoughtSpot avoids it by rendering at 1:1. Fixing it
+means making the viewBox WIDTH the measured pixel width too — at which point every measured
+constant (left inset 68, the 15px label offset, the gaps) means literally what it was
+measured as, since the capture was 748 CSS px wide. Not done: it changes the frozen
+single-line template's geometry model and needs to be a deliberate call, not a side effect.
+
 ## Build With AI -> "Create Tile with AI" (the question-to-tile drawer)
 `src/components/InsightsCreateTileAi.tsx` (`.icta-`) + `src/data/insightsQuestions.ts`.
 **Build With AI** on Add Tile opens its OWN drawer there; it used to navigate to

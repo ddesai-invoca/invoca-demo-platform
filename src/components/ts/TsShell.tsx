@@ -231,32 +231,40 @@ export function TsAxisTitles({
 }
 
 /**
- * How many CSS pixels one viewBox unit is worth in THIS tile.
+ * The wrapper's real geometry, for a chart that has to FILL its tile.
  *
- * ⚠️ NEEDED BECAUSE THE AXIS TITLES ARE HTML AND THE CHART IS AN SVG. The svg scales with
- * its column but the title stays 12px, so a chart that wants to reserve room for a title
- * cannot use a constant: at half width a title's 18px band costs 30 viewBox units. Any
- * geometry that has to clear a title converts through this.
+ * Returns:
+ *  - `scale`  — CSS pixels per viewBox unit. ⚠️ NEEDED BECAUSE THE AXIS TITLES ARE HTML
+ *    AND THE CHART IS AN SVG: the svg scales with its column but a title stays 12px, so
+ *    at half width a title's 18px band costs 30 viewBox units. Any geometry that has to
+ *    clear a title converts through this.
+ *  - `ratio`  — the wrapper's height / width. ⚠️ THE VIEWBOX HEIGHT IS DERIVED FROM THIS
+ *    rather than fixed, which is what lets the chart reach the bottom of a tile the grid
+ *    stretched for a taller neighbour. With a fixed viewBox the svg's height comes from
+ *    its width, so giving 212px to a legend made the chart proportionally shorter than a
+ *    legend-less one beside it and the difference showed up as dead space.
  *
- * Returns 1 before the first measurement, which is the 1:1 case the template was measured
- * at — so the first paint is never worse than the old fixed-constant behaviour.
+ * Both default to the 1:1, 748x704 case the template was measured at, so the first paint
+ * is never worse than the fixed-box behaviour it replaces.
  */
-export function useVbScale(vbWidth: number): { ref: React.RefObject<HTMLDivElement | null>; scale: number } {
+export function useVbBox(vbWidth: number, vbHeight: number): {
+  ref: React.RefObject<HTMLDivElement | null>; scale: number; ratio: number;
+} {
   const ref = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+  const [box, setBox] = useState({ scale: 1, ratio: vbHeight / vbWidth });
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
     const read = () => {
-      const px = el.clientWidth;
-      if (px > 0) setScale(px / vbWidth);
+      const w = el.clientWidth, h = el.clientHeight;
+      if (w > 0 && h > 0) setBox({ scale: w / vbWidth, ratio: h / w });
     };
     read();
     const ro = new ResizeObserver(read);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [vbWidth]);
-  return { ref, scale };
+  }, [vbWidth, vbHeight]);
+  return { ref, scale: box.scale, ratio: box.ratio };
 }
 
 /** Shared setup every cartesian chart repeats: plot rect plus nice y ticks. */
