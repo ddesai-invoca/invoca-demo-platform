@@ -241,6 +241,8 @@ function TsTileCard({ tile, onRemove, onPick }: {
       {tile.tileType === "bar" && tile.horizontal && (
         <TsBar categories={categories} values={series[0]?.values ?? []}
           seriesName={series[0]?.name ?? "Value"}
+          valueFormat={tile.valueKind
+            ? (v) => formatTick(v, tile.valueKind as MeasureKind) : undefined}
           xTitle={tile.xTitle} yTitle={tile.yTitle}
           onSelect={onPick ? (cat, v) => onPick(series[0]?.name ?? "Value", cat, v) : undefined} />
       )}

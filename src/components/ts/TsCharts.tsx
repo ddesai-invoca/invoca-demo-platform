@@ -121,7 +121,8 @@ export function TsLine({
                   hv.setActivePoint(i);
                   hv.setHover({
                     xPct: (pts[i][0] / w) * 100, yPct: (pts[i][1] / h) * 100,
-                    rows: [[s.name, (tickFormat ?? tsNum)(s.values[i])],
+                    /* The axis-title form, so the tooltip and the axis agree. */
+                    rows: [[axisTitleFor(s.name), (tickFormat ?? tsNum)(s.values[i])],
                            [xTitle ?? "Category", categories[i]]],
                   });
                 }}
@@ -267,7 +268,7 @@ export function TsMultiLine({
                   hv.setActivePoint(i);
                   hv.setHover({
                     xPct: (pts[i][0] / w) * 100, yPct: (pts[i][1] / h) * 100,
-                    rows: [[s.name, fmtOf(si)(s.values[i])],
+                    rows: [[axisTitleFor(s.name), fmtOf(si)(s.values[i])],
                            [xTitle ?? "Category", categories[i]]],
                   });
                 }}
@@ -363,7 +364,7 @@ export function TsColumn({
                       hv.setActiveSeries(si);
                       hv.setHover({
                         xPct: ((x + barW / 2) / w) * 100, yPct: (y / h) * 100,
-                        rows: [[s.name, tsNum(v)], [xTitle ?? "Category", cat]],
+                        rows: [[axisTitleFor(s.name), tsNum(v)], [xTitle ?? "Category", cat]],
                       });
                     }}
                     onMouseLeave={hv.clear}
@@ -389,9 +390,11 @@ export function TsColumn({
    gridlines, no footer). */
 export function TsBar({
   categories, values, w: wIn = TS_SIZE.bar.w, h: hIn = TS_SIZE.bar.h,
-  xTitle, yTitle, seriesName = "Value", onSelect,
+  xTitle, yTitle, seriesName = "Value", valueFormat, onSelect,
 }: {
   categories: string[]; values: number[]; w?: number; h?: number;
+  /** Value tick + tooltip format, so a money measure keeps its `$`. */
+  valueFormat?: (v: number) => string;
   /** Value-axis title, centred under the plot. */
   xTitle?: string;
   /** CATEGORY-axis title, rotated down the left. */
@@ -428,7 +431,7 @@ export function TsBar({
         ))}
         {ticks.map((t) => (
           <text key={"v" + t} className="ts-axis-label" x={tickX(t)}
-            y={p.y + p.h + TS_BAR_VALUE_GAP} textAnchor="middle">{tsTick(t)}</text>
+            y={p.y + p.h + TS_BAR_VALUE_GAP} textAnchor="middle">{(valueFormat ?? tsTick)(t)}</text>
         ))}
         {vals.map((v, i) => {
           const barW = xMax > 0 ? (v / xMax) * p.w : 0;
@@ -442,7 +445,8 @@ export function TsBar({
                 hv.setActiveSeries(i);
                 hv.setHover({
                   xPct: ((p.x + barW) / w) * 100, yPct: (y / h) * 100,
-                  rows: [[seriesName, tsNum(v)], [yTitle ?? "Category", categories[i]]],
+                  rows: [[axisTitleFor(seriesName), (valueFormat ?? tsNum)(v)],
+                         [yTitle ?? "Category", categories[i]]],
                 });
               }}
               onMouseLeave={hv.clear}
@@ -670,6 +674,9 @@ export function TsPie({
                   hv.setHover({
                     xPct: ((p.cx + Math.cos(mid) * rOut * 0.8) / w) * 100,
                     yPct: ((p.cy + Math.sin(mid) * rOut * 0.8) / h) * 100,
+                    /* ⚠️ NO axisTitleFor HERE. A pie's tooltip label is a DIMENSION VALUE
+                       ("Paid Search"), not a measure, and axisTitleFor would render it
+                       "Total Paid Search". Every other chart's first row IS a measure. */
                     rows: [[clean[i].label, tsNum(clean[i].value)],
                            ["Share", ((clean[i].value / total) * 100).toFixed(1) + "%"]],
                   });

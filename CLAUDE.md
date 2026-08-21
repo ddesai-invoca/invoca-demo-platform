@@ -1725,8 +1725,16 @@ aqua in the reference screenshot. `brighten()` lives in tsPalette.ts.
 "Total Call Count: 426"; ours read "Revenue (Sale Amount): 7.4M" — no "Total" and no "$". The
 same defect the multi-line LEGEND had, surfacing again in a different place. Fixed here by
 `axisTitleFor(name)` plus a `leftFormat` prop, which also gives the left axis its `$0 … $10M`
-ticks. ⚠️ **STILL OPEN ELSEWHERE:** the single-line and multi-line tooltips print the bare
-measure name, so they have the same gap.
+ticks. ✅ **NOW CONSISTENT ACROSS EVERY TEMPLATE.** Single-line, multi-line, grouped column and the
+horizontal bar all use `axisTitleFor(name)` too, so a tooltip and its axis can never disagree.
+⚠️ **EXCEPT THE PIE, AND DELIBERATELY.** A pie's tooltip label is a DIMENSION VALUE ("Paid
+Search"), not a measure, and `axisTitleFor` would render it "Total Paid Search" — `kindOf`
+defaults an unrecognised name to `count`. Every other chart's first tooltip row IS a measure.
+Verified across all nine bench tiles: the measure charts read "Total Call Count:", the pie and
+donut read "Affiliate:" / "Direct:", and the dual-axis line reads "Appointment Rate:" with NO
+prefix because percent is non-additive — three different correct outcomes from one rule.
+The horizontal bar also gained a `valueFormat` prop, so a money Stacked Bar keeps its `$` on
+both the ticks and the tooltip.
 
 ⚠️ **UNVERIFIED: whether the bar width is capped.** Only one capture exists, with 14
 categories. Our own 5-week window gives band ~80 and therefore ~64px bars, which is wider
