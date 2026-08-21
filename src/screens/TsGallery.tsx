@@ -132,7 +132,7 @@ export function TsGallery() {
             duration axis (`2:32`). Fixed right-axis gaps put the money title on top of its
             own tick labels and across the next axis line, and a specimen with narrow
             labels would not have shown it. Keep the wide labels here. */}
-        <TsTile className="ts-span-2" title="Multi-Line Chart Over Time"
+        <TsTile className="ts-span-2" title="Multi-Line Chart Over Time" needsWidth
           legend={legendFor(MULTI_SERIES, TS_SERIES_LINE)}>
           <TsMultiLine categories={WEEKS} series={MULTI_SERIES}
             xTitle="Weekly Call Start Time" />

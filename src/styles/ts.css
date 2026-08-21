@@ -48,6 +48,8 @@
      tile that is already the tallest in its row. */
   display: flex;
   flex-direction: column;
+  /* Named so the chart can respond to THIS tile's width, not the viewport's. */
+  container: ts-tile / inline-size;
 }
 
 /* 2rem at ThoughtSpot's 14px root = 28px, line-height 1.33, padding-top 5px. */
@@ -110,51 +112,57 @@
   font-size: 12px; color: #777e8b; overflow: hidden; text-overflow: ellipsis;
   white-space: nowrap; min-width: 0;
 }
-@media (max-width: 700px) {
-  .ts-tile-body { flex-direction: column; }
-  .ts-legend { flex-basis: auto; width: 100%; padding-top: 8px; }
-}
+/* The legend drops under the chart in a narrow tile — see the `@container ts-tile` rule
+   below. This used to be a viewport media query at the same 700px; the container query
+   subsumes it (a narrow viewport also means a narrow tile) and is right in the case the
+   viewport query got wrong: a half-width tile on a wide screen. */
 
 /* ---- charts -------------------------------------------------------------- */
 
 .ts-chartwrap { position: relative; min-width: 0; }
 .ts-svg { display: block; width: 100%; height: auto; overflow: visible; }
 
-/* ---- charts that FILL the tile instead of keeping a fixed aspect ratio -----
-   ⚠️ REPORTED DEFECT: the multi-line chart's x axis stopped well short of the bottom of
-   the tile, where the real instance reaches it. Cause: `height: auto` above derives the
-   svg's height from its WIDTH through the viewBox, so a chart that gives 212px to a
-   legend is proportionally SHORTER than a legend-less chart beside it — and the grid
-   stretches both tiles to the taller one, leaving the gap.
+/* ---- the chart box: drawn 1:1, filling the tile ---------------------------
+   ⚠️ THE SVG IS DRAWN AT THE CONTAINER'S PIXEL SIZE, NOT SCALED. ThoughtSpot's charts are
+   Highcharts, which sets the viewBox to the container's exact pixel size, so the capture's
+   `748 704` was PIXELS and every constant measured off it is a pixel measurement. See
+   useTsBox. Two consequences for this stylesheet:
 
-   ThoughtSpot sizes its chart to the container box in BOTH dimensions. To do the same
-   without distorting text, the component measures the wrapper and sets the viewBox HEIGHT
-   from the real aspect ratio (see useVbBox); this pair lets the box grow.
+   ⚠️ 1. `height: 100%`, NOT `align-items: stretch`. The wrapper's parent is `.ts-tile-viz`,
+   an intermediate BLOCK, so the body's stretch never reaches the wrapper — measured tile
+   445, body 391, wrapper still 292. A percentage height resolves against `.ts-tile-viz`,
+   which the flex row DID stretch.
 
-   `aspect-ratio` is what stops it collapsing: the svg's height now comes from the wrapper,
-   so the wrapper needs an intrinsic height of its own or the two size off each other and
-   resolve to zero. It is the floor, not the height — a stretched tile overrides it. */
-/* Two things had to be true here, and each one cost a wrong attempt:
-
-   ⚠️ 1. `height: 100%`, NOT `align-items: stretch`. The chart wrapper's parent is
-   `.ts-tile-viz`, an intermediate BLOCK, so the body's `stretch` never reaches the
-   wrapper — measured: tile 445, body 391, wrapper still 292. A percentage height resolves
-   against `.ts-tile-viz`, which the flex row did stretch, and lands at 391. When the tile
-   is NOT stretched, `.ts-tile-viz` is auto-height, the percentage cannot resolve, and the
-   wrapper falls back to the intrinsic height below — which is exactly the wanted default.
-
-   ⚠️ 2. THE INTRINSIC HEIGHT IS A `padding-top` SPACER, NOT `aspect-ratio`.
-   `aspect-ratio: 748/704` makes a flex item's cross size definite, so nothing can grow it
-   afterwards. A percentage `padding-top` on a pseudo-element gives the same intrinsic
-   height while leaving `height` auto. Some intrinsic height is required: the svg's height
-   now comes from the wrapper, so without it the two size off each other and collapse to
-   zero. */
+   ⚠️ 2. THE INTRINSIC HEIGHT IS A `padding-top` SPACER, NOT `aspect-ratio`. `aspect-ratio`
+   makes a flex item's cross size definite, so nothing can grow it afterwards. The spacer
+   gives the same intrinsic height while leaving `height` auto. It is REQUIRED: the svg's
+   height comes from this box, so without it the two size off each other and collapse to
+   zero. `--ts-ar` is the template's own measured ratio, set per chart by useTsBox, so each
+   chart keeps its natural height when nothing is stretching the tile. */
 .ts-chartwrap--fill { flex: 1 1 auto; height: 100%; }
 .ts-chartwrap--fill::before {
-  content: ""; display: block; padding-top: calc(704 / 748 * 100%);
+  content: ""; display: block; padding-top: calc(var(--ts-ar, .941) * 100%);
 }
 .ts-chartwrap--fill > .ts-svg {
   position: absolute; inset: 0; width: 100%; height: 100%;
+}
+
+/* ⚠️ AT 1:1 A NARROW TILE RUNS OUT OF ROOM INSTEAD OF SHRINKING, so the legend moves under
+   the chart before that happens. A multi-axis chart needs ~68px of left inset plus ~65px
+   per right axis; in a two-column grid at 1500px the body is 522px and the legend was
+   taking 212 of it, leaving 310. This is a CONTAINER query, not a viewport one: what
+   matters is how wide THIS tile is, and two tiles in one row can differ.
+
+   ⚠️ SCOPED TO `--needs-width`, NOT ALL TILES. Unscoped, this moved the legend on the pie,
+   donut and column tiles as well — measured: their legends went from 0 to 452/456/480px
+   below the body top. They were signed off with a right-hand legend and have no right-hand
+   axes to make room for. Only a chart with right-hand axes opts in. */
+@container ts-tile (max-width: 700px) {
+  .ts-tile--needs-width > .ts-tile-body { flex-direction: column; }
+  .ts-tile--needs-width > .ts-tile-body > .ts-legend {
+    flex-basis: auto; width: 100%; padding-top: 8px;
+    flex-direction: row; flex-wrap: wrap; column-gap: 16px;
+  }
 }
 
 .ts-axis-label {

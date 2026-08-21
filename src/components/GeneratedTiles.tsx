@@ -179,6 +179,9 @@ function TsTileCard({ tile, onRemove }: { tile: GeneratedTile; onRemove: () => v
   return (
     <TsTile title={tile.title} actions={actions} dataGenId={tile.id}
       legend={legend && legend.length > 1 ? legend : undefined}
+      /* A multi-line chart puts one y axis per series, so it is the only tile here that
+         needs the legend out of the way when it gets narrow. */
+      needsWidth={tile.tileType === "line" && series.length > 1}
       className={tile.tileType === "table" ? "ts-span-2" : undefined}>
       {tile.tileType === "kpi" && (
         <div className="ts-kpi-row">

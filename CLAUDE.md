@@ -1481,7 +1481,9 @@ cross-screen interference the one-prefix-per-screen rule warns about, showing up
 a bare TAG selector rather than a shared class name, so grepping prefixes would not have
 caught it. Check computed style on the real screen, not just in the gallery.
 
-Verified after building: 22/5 bars, 0 gridlines, 212px legend with 12px round swatches,
+Verified after building: 22/5 bars (⚠️ read as VIEWBOX units at the time — see "Charts are
+drawn 1:1"; the same bars rendered at 14.8 real px in that tile), 0 gridlines, 212px legend
+with 12px round swatches,
 axis 12px `#5b6577` on `#e0e0e0` lines, slice order continuing into the blue tint at
 slice 9, table 11.9px Helvetica with a 13/700 header, 40 heat cells normalised per
 column. Dashboards re-checked unchanged: 4px radius, two-layer shadow, 21 cards, donut
@@ -1703,14 +1705,13 @@ put its title 7px INSIDE its own tick labels and straddling the next axis line �
 reported defect. This is the same mistake `leftInsetFor` exists to avoid on the left, 40
 lines up in the same file.
 
-⚠️ **THE TITLE'S COST IS IN CSS PIXELS AND THE CHART IS IN VIEWBOX UNITS — convert, or the
-error grows as the tile narrows.** Axis titles are HTML at a fixed 12px (`TsAxisTitles`)
-laid over an svg that SCALES with its column. A rotated title's 18px band therefore costs
-`18 / scale` viewBox units: measured **16 units at scale 1.12 and 35.5 at scale 0.508**,
-same title. Reserving a flat 18 is why the collision was invisible in a wide bench tile
-and obvious in a half-width dashboard tile. `useVbScale()` (TsShell) measures the wrapper
-with a ResizeObserver and returns 1 before the first paint, which is the 1:1 case the
-template was measured at.
+⚠️ **THE TITLE BAND IS ITS MEASURED 18px — RESOLVED BY DRAWING 1:1.** Historical, because
+it explains the shape of the bug: the titles are HTML at a fixed 12px, and while the svg
+scaled with its column a title's 18px band cost `18 / scale` viewBox units — measured **16
+units at scale 1.12 and 35.5 at 0.508**, same title. Reserving a flat 18 is why the
+collision was invisible in a wide bench tile and obvious in a half-width dashboard tile.
+Charts are now drawn at 1:1 (see "Charts are drawn 1:1" below) so the band is simply 18 and
+the conversion is gone.
 
 Verified at two widths after the fix — every title clears its own labels and the next axis
 line: at scale 1.12, gaps of 2.6 / 7.1px past the labels and 6px before the next line; at
@@ -1779,14 +1780,81 @@ Scope: `.ts-tile` / `.ts-chartwrap` appear only in the ts layer, `GeneratedTiles
 gallery. Dashboards re-checked after this change — 21 `dash-card`s, 4px radius, `display:
 block`, zero `.ts-tile` — so this stayed inside the Insights tab.
 
-⚠️ **STILL OPEN, and it is the same root cause as the title-band conversion:** svg text
-scales with the viewBox while the HTML axis titles stay 12px, so in a narrow tile the tick
-labels render smaller than the titles (measured 13.5px ticks against 12px titles at scale
-0.937, and much further apart at 0.5). ThoughtSpot avoids it by rendering at 1:1. Fixing it
-means making the viewBox WIDTH the measured pixel width too — at which point every measured
-constant (left inset 68, the 15px label offset, the gaps) means literally what it was
-measured as, since the capture was 748 CSS px wide. Not done: it changes the frozen
-single-line template's geometry model and needs to be a deliberate call, not a side effect.
+✅ **RESOLVED — this was recorded here as open and is now done.** svg text scaled with the
+viewBox while the HTML axis titles stayed 12px, so ticks and titles drifted apart and two
+tiles in one row rendered different text sizes. Fixed by drawing at 1:1; see the next
+section.
+
+## Charts are drawn 1:1 (the whole ts- layer, 8/20/2026)
+`useTsBox` in `TsShell.tsx` + `.ts-chartwrap--fill` in `ts.css`.
+
+**Every ts chart's svg viewBox is the container's PIXEL size. It is not a fixed box that
+scales.** ThoughtSpot's charts are Highcharts, which always sets the viewBox to the
+container's exact pixel size — so the capture's `748 704` WAS its pixel size, and every
+constant measured off it (the 68px left inset, the 15px tick offset, the 18px title band,
+the 22/5 bars, the axis gaps) is a PIXEL measurement.
+
+⚠️ **THE OLD FIXED-VIEWBOX MODEL MADE THOSE CONSTANTS TRUE AT EXACTLY ONE WIDTH, and it
+caused three separate reported or measured defects before it was replaced:**
+- a title reserved 18 units where it needed 30, so it landed on its own tick labels and
+  across the next axis line
+- a multi-line chart could not reach the bottom of its tile
+- two tiles in the SAME ROW rendered **16px and 13.5px** tick labels, because each scaled
+  by its own width
+
+**Verification, which is the real argument for it.** At each template's own measured canvas
+the constants now land exactly:
+
+| pinned canvas | measured | capture |
+|---|---|---|
+| single line 846x633 | plot top **15**, bottom **579** (=633-54), height **564** | 564 |
+| single line 846x633 | plot left **68** (`600` ticks) | 62 for `8K`; 843-62 = **781** |
+| grouped column 634.5x449 | bar **22**, gap **5**, rendering at **21.98 real px** | 22 / 5 |
+
+The single-line plot width reads 775 against the capture's 781 for the documented reason:
+our specimen's widest tick is `600` (inset 68) where the capture's was `8K` (inset 62).
+Content-derived, as designed.
+
+⚠️ **"THE BARS ARE 22" WAS NOT A PIXEL CHECK BEFORE THIS.** It read `getAttribute("width")`,
+a viewBox number. In the tile it was measured in, a 634.5-wide viewBox rendered into a 427px
+box, so those 22 units were **14.8 real pixels**. Any invariant asserted in viewBox units
+only meant something at 1:1. Pin the canvas and assert rendered pixels.
+
+⚠️ **1:1 REQUIRES AN EXPLICIT HEIGHT, because the svg can no longer derive one.** With
+`height: auto` the svg's height came from its width through the viewBox; now the viewBox
+comes from the box, so the two would size off each other and collapse to zero. Hence
+`height: 100%` plus a `padding-top` spacer carrying the template's own measured ratio
+(`--ts-ar`, set per chart by `useTsBox`). Both details, and the two wrong attempts that
+found them, are recorded at the rule itself in `ts.css`.
+
+⚠️ **AT 1:1 A NARROW TILE RUNS OUT OF ROOM INSTEAD OF SHRINKING.** This is the real cost and
+it is handled, not hoped about: a `@container ts-tile (max-width: 700px)` query moves the
+legend under the chart, which hands back the 212px it was taking. Measured on a 560px tile:
+the chart went 314px -> 526px. It is a CONTAINER query because what matters is how wide
+THIS tile is, and two tiles in one row differ. It replaced a viewport media query at the
+same 700px, which got exactly the half-width-tile-on-a-wide-screen case wrong.
+
+⚠️ **AND IT IS SCOPED TO `needsWidth`, WHICH IT HAD TO BE.** Unscoped it moved the legend on
+the pie, donut and column tiles too — measured, their legends went from 0 to 452/456/480px
+below the body top. Those were signed off with a right-hand legend and have no right-hand
+axes to make room for. Only a chart with right-hand axes opts in, which today means
+multi-line.
+
+**A tile with the legend below is still FULLY used — do not read the gap as dead space.** On
+the reported pairing the multi-line chart is 624 tall plus a 32px legend row = 656, exactly
+the single-line's 656 svg. The original bug was 114px of nothing; 47px of legend is not the
+same thing.
+
+⚠️ **A PRE-EXISTING DEFECT 1:1 EXPOSED, fixed in the same pass.** `TsDualAxis` computed its
+column width as `min(TS_COLUMN_W * 4, b.width * 0.55)` — an 88px cap and a 55%-of-band
+heuristic predating the measured 22/5 fit rule, never brought in line when `TsColumn` was
+corrected. It drew an **88px** column beside the grouped chart's 22px one, in the same
+layer, off the same capture. It rendered at 82px on screen before 1:1, so 1:1 did not cause
+it. Now uses TsColumn's rule and measures 22.
+
+Scope: `.ts-tile` / `.ts-chartwrap` appear only in the ts layer, `GeneratedTiles` and the
+gallery. Dashboards re-verified after this change — 21 `dash-card`s, 4px radius, `display:
+block`, 14 svgs, 22 `chart-axis`, 25 `bar-label`s, KPI 48,293, and zero `ts-` elements.
 
 ## Build With AI -> "Create Tile with AI" (the question-to-tile drawer)
 `src/components/InsightsCreateTileAi.tsx` (`.icta-`) + `src/data/insightsQuestions.ts`.

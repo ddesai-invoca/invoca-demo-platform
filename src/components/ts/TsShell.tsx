@@ -15,6 +15,17 @@ import { TS_AXIS_LINE, niceTicks, plotOf, tsTick, type Plot } from "./tsChart";
 export interface TsTileProps {
   title: string;
   description?: string;
+  /**
+   * This tile holds a chart that needs horizontal room — in practice one with RIGHT-HAND
+   * AXES, which cost ~65px each on top of the left inset. Only such a tile drops its
+   * legend below the chart when it gets narrow.
+   *
+   * ⚠️ OPT-IN, AND IT HAS TO BE. The narrow-tile rule started out unscoped and moved the
+   * legend on the pie, donut and column tiles too — measured: their legends went from 0 to
+   * 452/456/480px below the body top. Those were signed off with a right-hand legend and
+   * they have no right-hand axes to make room for.
+   */
+  needsWidth?: boolean;
   /** Right-hand legend entries; renders ThoughtSpot's HTML legend when present. */
   legend?: Array<{ label: string; color: string }>;
   /** Controls pinned to the title row (the AI sparkle, a remove button). Optional so
@@ -28,10 +39,13 @@ export interface TsTileProps {
 
 /** White, 8px radius, 1px #e7e9eb AND a faint shadow: ThoughtSpot sets both. */
 export function TsTile({
-  title, description, legend, actions, children, className, dataGenId,
+  title, description, legend, actions, children, className, dataGenId, needsWidth = false,
 }: TsTileProps) {
   return (
-    <section className={"ts-tile" + (className ? " " + className : "")} data-genid={dataGenId}>
+    <section
+      className={"ts-tile" + (needsWidth ? " ts-tile--needs-width" : "")
+        + (className ? " " + className : "")}
+      data-genid={dataGenId}>
       <div className="ts-tile-head">
         <h2 className="ts-tile-title">{title}</h2>
         {actions ? <span className="ts-tile-actions">{actions}</span> : null}
@@ -231,40 +245,52 @@ export function TsAxisTitles({
 }
 
 /**
- * The wrapper's real geometry, for a chart that has to FILL its tile.
+ * The chart's box, IN CSS PIXELS, so the svg can be drawn 1:1.
  *
- * Returns:
- *  - `scale`  — CSS pixels per viewBox unit. ⚠️ NEEDED BECAUSE THE AXIS TITLES ARE HTML
- *    AND THE CHART IS AN SVG: the svg scales with its column but a title stays 12px, so
- *    at half width a title's 18px band costs 30 viewBox units. Any geometry that has to
- *    clear a title converts through this.
- *  - `ratio`  — the wrapper's height / width. ⚠️ THE VIEWBOX HEIGHT IS DERIVED FROM THIS
- *    rather than fixed, which is what lets the chart reach the bottom of a tile the grid
- *    stretched for a taller neighbour. With a fixed viewBox the svg's height comes from
- *    its width, so giving 212px to a legend made the chart proportionally shorter than a
- *    legend-less one beside it and the difference showed up as dead space.
+ * ⚠️ WHY 1:1 AND NOT A SCALED viewBox. ThoughtSpot's charts are Highcharts, which always
+ * sets the viewBox to the container's exact pixel size — the capture's `748 704` WAS its
+ * pixel size. So every constant measured off that capture (the 68px left inset, the 15px
+ * tick offset, the 18px title band, the axis gaps) is a PIXEL measurement, and a fixed
+ * viewBox that scales only makes them true at one width. Two visible defects came out of
+ * that gap before this: a title reserved 18 units when it needed 30, and two tiles in the
+ * same row rendered 16px and 13.5px tick labels because each scaled by its own width.
+ * Drawing at 1:1 makes the constants mean what they were measured as, and makes every
+ * tile's text the same size.
  *
- * Both default to the 1:1, 748x704 case the template was measured at, so the first paint
- * is never worse than the fixed-box behaviour it replaces.
+ * `fallbackW`/`fallbackH` are the template's measured dimensions. They are used for the
+ * first paint and, through `style`, as the box's intrinsic aspect ratio — which is what
+ * gives a tile its natural height when nothing is stretching it.
  */
-export function useVbBox(vbWidth: number, vbHeight: number): {
-  ref: React.RefObject<HTMLDivElement | null>; scale: number; ratio: number;
+export function useTsBox(fallbackW: number, fallbackH: number): {
+  ref: React.RefObject<HTMLDivElement | null>;
+  w: number; h: number; style: React.CSSProperties;
 } {
   const ref = useRef<HTMLDivElement>(null);
-  const [box, setBox] = useState({ scale: 1, ratio: vbHeight / vbWidth });
+  const [box, setBox] = useState<{ w: number; h: number } | null>(null);
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
     const read = () => {
-      const w = el.clientWidth, h = el.clientHeight;
-      if (w > 0 && h > 0) setBox({ scale: w / vbWidth, ratio: h / w });
+      const w = Math.round(el.clientWidth), h = Math.round(el.clientHeight);
+      if (w > 0 && h > 0) {
+        setBox((prev) => (prev && prev.w === w && prev.h === h ? prev : { w, h }));
+      }
     };
     read();
     const ro = new ResizeObserver(read);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [vbWidth, vbHeight]);
-  return { ref, scale: box.scale, ratio: box.ratio };
+  }, []);
+  return {
+    ref,
+    w: box ? box.w : fallbackW,
+    h: box ? box.h : fallbackH,
+    /* The intrinsic height, as a ratio the stylesheet turns into a padding-top spacer.
+       ⚠️ NOT `aspect-ratio`: that makes a flex item's cross size definite and nothing can
+       stretch it afterwards. Some intrinsic height is required either way, because the
+       svg's height now comes from this box. */
+    style: { ["--ts-ar" as string]: String(fallbackH / fallbackW) } as React.CSSProperties,
+  };
 }
 
 /** Shared setup every cartesian chart repeats: plot rect plus nice y ticks. */

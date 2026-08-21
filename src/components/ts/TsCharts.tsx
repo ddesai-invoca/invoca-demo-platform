@@ -6,7 +6,7 @@ import {
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX,
   slicePath, sliceAngles, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
-import { TsAxes, TsAxisTitles, TsTip, useTsHover, useVbBox } from "./TsShell";
+import { TsAxes, TsAxisTitles, TsTip, useTsHover, useTsBox } from "./TsShell";
 
 /* =============================================================================
    TsCharts — the seven ThoughtSpot chart templates, drawn to measured geometry.
@@ -36,7 +36,7 @@ const LEGEND_W = 212;
 /* ---- line, multi-line and area -------------------------------------------- */
 
 export function TsLine({
-  categories, series, w = TS_SIZE.line.w, h = TS_SIZE.line.h, xTitle, yTitle,
+  categories, series, w: wIn = TS_SIZE.line.w, h: hIn = TS_SIZE.line.h, xTitle, yTitle,
   area = false, showLegend = true, dashTail = false, tickFormat, onSelect,
 }: {
   categories: string[]; series: TsSeries[]; w?: number; h?: number;
@@ -47,6 +47,8 @@ export function TsLine({
   tickFormat?: (v: number) => string;
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
+  const box = useTsBox(wIn, hIn);
+  const { w, h } = box;
   const hv = useTsHover();
   const n = categories.length;
   const fitted = series
@@ -69,7 +71,7 @@ export function TsLine({
     ? calendarTicks(categories) : undefined;
 
   return (
-    <div className="ts-chartwrap">
+    <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         <TsAxes plot={p} categories={categories} yMax={yMax} yMin={yMin} yTicks={ticks}
           tickAt={tickAt} tickFormat={tickFormat} />
@@ -139,19 +141,20 @@ export interface TsAxisSeries extends TsSeries {
  *   3. The legend is TOP-right, one 12px round swatch per series.
  */
 export function TsMultiLine({
-  categories, series, w = 748, h = 704, xTitle, dashTail = false, onSelect,
+  categories, series, w: wIn = 748, h: hIn = 704, xTitle, dashTail = false, onSelect,
 }: {
   categories: string[]; series: TsAxisSeries[]; w?: number; h?: number;
   xTitle?: string; dashTail?: boolean;
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
+  const box = useTsBox(wIn, hIn);
+  const { w, h } = box;
   const hv = useTsHover();
-  const { ref, scale, ratio } = useVbBox(w, h);
   const n = categories.length;
   const fitted = series
     .map((s) => ({ ...s, values: fitValues(s.values, n) }))
     .filter((s): s is TsAxisSeries & { values: number[] } => s.values !== null);
-  if (!fitted.length) return <div className="ts-chartwrap ts-chartwrap--fill" ref={ref} />;
+  if (!fitted.length) return <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style} />;
 
   /* One scale per series, each zoomed to its own floor so every line uses the full
      height of the plot rather than being squashed by a neighbour's magnitude. */
@@ -159,24 +162,19 @@ export function TsMultiLine({
   const leftInset = leftInsetFor(scales[0].ticks);
   const fmtOf = (i: number) => fitted[i].tickFormat ?? tsNum;
 
-  /* The right-hand axes are laid out from the labels they will actually print, and from
-     the title's cost in VIEWBOX units — see rightAxisLayout. A fixed reservation put a
-     `$4.7M` axis's title on top of its own labels and across the next axis line. */
-  const titleBand = TS_TITLE_BAND_PX / (scale || 1);
+  /* The right-hand axes are laid out from the labels they will actually print — a fixed
+     reservation put a `$4.7M` axis's title on top of its own labels and across the next
+     axis line. Drawing 1:1 means the title band is simply its measured 18px; it used to
+     need a `/ scale` conversion, and getting that wrong was the original defect. */
   const ra = rightAxisLayout(
     fitted.slice(1).map((_, k) => scales[k + 1].ticks.map((t) => fmtOf(k + 1)(t))),
-    titleBand,
+    TS_TITLE_BAND_PX,
   );
-  /* ⚠️ THE VIEWBOX HEIGHT TRACKS THE WRAPPER, it is not the `h` prop. The x axis has to
-     reach the bottom of the tile even when the grid stretched this tile for a taller
-     neighbour, and with a fixed height the svg's height came from its WIDTH — so the 212px
-     the legend takes made this chart shorter than a legend-less one beside it. */
-  const vbH = Math.max(1, Math.round(w * ratio));
   const p: typeof TS_PLOT & { x: number; y: number; w: number; h: number } = {
     ...TS_PLOT,
     x: leftInset, y: TS_PLOT.top,
     w: Math.max(1, w - leftInset - ra.inset),
-    h: Math.max(1, vbH - TS_PLOT.top - TS_PLOT.bottom),
+    h: Math.max(1, h - TS_PLOT.top - TS_PLOT.bottom),
   };
   const b = bands(p, n);
   const plotRight = p.x + p.w;
@@ -184,8 +182,8 @@ export function TsMultiLine({
     ? calendarTicks(categories) : undefined;
 
   return (
-    <div className="ts-chartwrap ts-chartwrap--fill" ref={ref}>
-      <svg className="ts-svg" viewBox={`0 0 ${w} ${vbH}`} role="img">
+    <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
+      <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         {/* the category axis and the LEFT value axis */}
         <TsAxes plot={p} categories={categories} yMin={scales[0].min} yMax={scales[0].max}
           yTicks={scales[0].ticks} tickAt={tickAt} tickFormat={fmtOf(0)} />
@@ -235,7 +233,7 @@ export function TsMultiLine({
                   onMouseEnter={() => {
                     hv.setActiveSeries(si);
                     hv.setHover({
-                      xPct: (cx / w) * 100, yPct: (cy / vbH) * 100,
+                      xPct: (cx / w) * 100, yPct: (cy / h) * 100,
                       rows: [[s.name, fmtOf(si)(s.values[i])],
                              [xTitle ?? "Category", categories[i]]],
                     });
@@ -250,12 +248,12 @@ export function TsMultiLine({
 
       {/* Titles are HTML, like every other chart here. Each right axis gets its own,
           sitting at the right edge of its column. */}
-      <TsAxisTitles xTitle={xTitle} yTitle={fitted[0].title} plot={p} w={w} h={vbH} />
+      <TsAxisTitles xTitle={xTitle} yTitle={fitted[0].title} plot={p} w={w} h={h} />
       {fitted.slice(1).map((s, k) => (
         <span key={"t" + s.name} className="ts-axis-ytitle ts-axis-ytitle--extra"
           style={{
             left: `${((plotRight + ra.titleAt[k]) / w) * 100}%`,
-            top: `${((p.y + p.h / 2) / vbH) * 100}%`,
+            top: `${((p.y + p.h / 2) / h) * 100}%`,
           }}>
           {s.title ?? s.name}
         </span>
@@ -268,13 +266,15 @@ export function TsMultiLine({
 /* ---- grouped and stacked column ------------------------------------------- */
 
 export function TsColumn({
-  categories, series, w = TS_SIZE.column.w, h = TS_SIZE.column.h, xTitle, yTitle,
+  categories, series, w: wIn = TS_SIZE.column.w, h: hIn = TS_SIZE.column.h, xTitle, yTitle,
   stacked = false, showLegend = true, onSelect,
 }: {
   categories: string[]; series: TsSeries[]; w?: number; h?: number;
   xTitle?: string; yTitle?: string; stacked?: boolean; showLegend?: boolean;
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
+  const box = useTsBox(wIn, hIn);
+  const { w, h } = box;
   const hv = useTsHover();
   const n = categories.length;
   const fitted = series
@@ -301,7 +301,7 @@ export function TsColumn({
   const gap = TS_COLUMN_GAP * scale;
 
   return (
-    <div className="ts-chartwrap">
+    <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         <TsAxes plot={p} categories={categories} yMax={yMax} yTicks={ticks} />
         {categories.map((cat, ci) => {
@@ -348,23 +348,25 @@ export function TsColumn({
 /* ---- horizontal bar ------------------------------------------------------- */
 
 export function TsBar({
-  categories, values, w = TS_SIZE.bar.w, h = TS_SIZE.bar.h, xTitle, seriesName = "Value", onSelect,
+  categories, values, w: wIn = TS_SIZE.bar.w, h: hIn = TS_SIZE.bar.h, xTitle, seriesName = "Value", onSelect,
 }: {
   categories: string[]; values: number[]; w?: number; h?: number;
   xTitle?: string; seriesName?: string;
   onSelect?: (category: string, value: number) => void;
 }) {
+  const box = useTsBox(wIn, hIn);
+  const { w, h } = box;
   const hv = useTsHover();
   const n = categories.length;
   const vals = fitValues(values, n) ?? [];
-  if (!vals.length) return <div className="ts-chartwrap" />;
+  if (!vals.length) return <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style} />;
   const p = plotOf(w, h, 0);
   const { max: xMax, ticks } = niceTicks(Math.max(1, ...vals));
   const band = p.h / Math.max(1, n);
   const thick = Math.min(TS_BAR_THICK, band * 0.8);
 
   return (
-    <div className="ts-chartwrap">
+    <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         <TsAxes plot={p} categories={categories} yMax={xMax} yTicks={ticks} horizontal />
         {vals.map((v, i) => {
@@ -396,7 +398,7 @@ export function TsBar({
 /* ---- dual Y-axis (column + line) ------------------------------------------ */
 
 export function TsDualAxis({
-  categories, columnSeries, lineSeries, w = TS_SIZE.line.w, h = TS_SIZE.line.h,
+  categories, columnSeries, lineSeries, w: wIn = TS_SIZE.line.w, h: hIn = TS_SIZE.line.h,
   xTitle, yTitle, rightTitle, rightFormat, onSelect,
 }: {
   categories: string[]; columnSeries: TsSeries; lineSeries: TsSeries;
@@ -404,6 +406,8 @@ export function TsDualAxis({
   rightFormat?: (v: number) => string;
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
+  const box = useTsBox(wIn, hIn);
+  const { w, h } = box;
   const hv = useTsHover();
   const n = categories.length;
   const cols = fitValues(columnSeries.values, n) ?? [];
@@ -412,10 +416,16 @@ export function TsDualAxis({
   const left = niceTicks(Math.max(1, ...cols));
   const right = niceTicks(Math.max(1, ...lines));
   const b = bands(p, n);
-  const barW = Math.min(TS_COLUMN_W * 4, b.width * 0.55);
+  /* ⚠️ THE SAME MEASURED FIT RULE AS TsColumn — this used to be
+     `min(TS_COLUMN_W * 4, b.width * 0.55)`, an 88px cap and a 55%-of-band heuristic that
+     predated the measured 22/5 rule and was never brought in line. It rendered an 88px
+     column beside the grouped chart's 22px one, in the same layer, off the same capture.
+     (It was 82px on screen before the charts were drawn 1:1, so this is a pre-existing
+     defect that 1:1 exposed rather than caused.) One series, so the group IS one bar. */
+  const barW = TS_COLUMN_W * Math.min(1, Math.max(0.1, b.width - 8) / TS_COLUMN_W);
 
   return (
-    <div className="ts-chartwrap">
+    <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         <TsAxes plot={p} categories={categories} yMax={left.max} yTicks={left.ticks}
           right={{ max: right.max, ticks: right.ticks, title: rightTitle, format: rightFormat }} />
@@ -467,16 +477,18 @@ export function TsDualAxis({
 /* ---- pie and donut -------------------------------------------------------- */
 
 export function TsPie({
-  slices, w = TS_SIZE.pie.w, h = TS_SIZE.pie.h, donut = true, showLegend = true,
+  slices, w: wIn = TS_SIZE.pie.w, h: hIn = TS_SIZE.pie.h, donut = true, showLegend = true,
   dataLabels = true, onSelect,
 }: {
   slices: TsSlice[]; w?: number; h?: number; donut?: boolean; showLegend?: boolean;
   dataLabels?: boolean;
   onSelect?: (label: string, value: number) => void;
 }) {
+  const box = useTsBox(wIn, hIn);
+  const { w, h } = box;
   const hv = useTsHover();
   const clean = slices.filter((s) => isFinite(s.value) && s.value > 0);
-  if (!clean.length) return <div className="ts-chartwrap" />;
+  if (!clean.length) return <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style} />;
   const legendW = showLegend ? LEGEND_W : 0;
   const cx = (w - legendW) / 2;
   const cy = h / 2;
@@ -516,7 +528,7 @@ export function TsPie({
   })() : [];
 
   return (
-    <div className="ts-chartwrap">
+    <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         {angles.map((a, i) => {
           const color = TS_SLICE_COLORS[i % TS_SLICE_COLORS.length];
