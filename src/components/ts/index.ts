@@ -13,6 +13,7 @@ export {
   TS_COLUMN_W, TS_COLUMN_GAP, TS_BAR_THICK, TS_LINE_W, TS_DONUT_INNER,
   niceTicks, tsNum, tsTick, plotOf, bands, yOf, slicePath, sliceAngles, linePath, areaPath,
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX,
+  nearestIndex, TS_TRACKER_W,
 } from "./tsChart";
 export { TS_HUES, TS_SERIES_LINE, TS_SERIES_COLUMN, TS_SLICE_COLORS, heatColor, areaFill }
   from "../../data/tsPalette";

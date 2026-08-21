@@ -3,7 +3,7 @@ import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SLICE_COLORS, areaFill } from "../
 import {
   TS_AREA_ALPHA, TS_BAR_THICK, TS_COLUMN_GAP, TS_COLUMN_W, TS_DONUT_INNER, TS_LINE_W, TS_SIZE,
   areaPath, bands, calendarTicks, leftInsetFor, linePath, niceScale, niceTicks, plotOf,
-  rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX,
+  rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX, nearestIndex, TS_TRACKER_W,
   slicePath, sliceAngles, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
 import { TsAxes, TsAxisTitles, TsTip, TsPointMarker, useTsHover, useTsBox } from "./TsShell";
@@ -99,21 +99,32 @@ export function TsLine({
               {hv.activeSeries === si && hv.activePoint !== null && pts[hv.activePoint] ? (
                 <TsPointMarker x={pts[hv.activePoint][0]} y={pts[hv.activePoint][1]} color={color} />
               ) : null}
-              {pts.map(([cx, cy], i) => (
-                <circle key={i} cx={cx} cy={cy} r={10} fill="transparent"
-                  className={onSelect ? "ts-hit ts-hit--click" : "ts-hit"}
-                  onMouseEnter={() => {
-                    hv.setActiveSeries(si);
-                    hv.setActivePoint(i);
-                    hv.setHover({
-                      xPct: ((cx - 0) / w) * 100, yPct: (cy / h) * 100,
-                      rows: [[s.name, (tickFormat ?? tsNum)(s.values[i])],
-                             [xTitle ?? "Category", categories[i]]],
-                    });
-                  }}
-                  onMouseLeave={hv.clear}
-                  onClick={onSelect ? () => onSelect(s.name, categories[i], s.values[i]) : undefined} />
-              ))}
+              {/* ⚠️ ONE TRACKER FOR THE WHOLE LINE, not a hit circle per point. Point-only
+                  targets meant hovering the line BETWEEN two points did nothing; this
+                  snaps to the nearest point wherever the line is hovered. */}
+              <path className={onSelect ? "ts-track ts-track--click" : "ts-track"}
+                d={linePath(pts)} fill="none" stroke="transparent" strokeWidth={TS_TRACKER_W}
+                strokeLinejoin="round" strokeLinecap="round"
+                onMouseMove={(e) => {
+                  /* The SVG's own rect is the reference, not the path's bbox — the path's
+                     box starts at its leftmost point, not at the svg origin. At 1:1 one
+                     user unit is one CSS px, so this needs no viewBox conversion. */
+                  const svg = e.currentTarget.ownerSVGElement;
+                  if (!svg) return;
+                  const i = nearestIndex(pts, e.clientX - svg.getBoundingClientRect().left);
+                  hv.setActiveSeries(si);
+                  hv.setActivePoint(i);
+                  hv.setHover({
+                    xPct: (pts[i][0] / w) * 100, yPct: (pts[i][1] / h) * 100,
+                    rows: [[s.name, (tickFormat ?? tsNum)(s.values[i])],
+                           [xTitle ?? "Category", categories[i]]],
+                  });
+                }}
+                onMouseLeave={hv.clear}
+                onClick={onSelect ? () => {
+                  const i = hv.activePoint ?? 0;
+                  onSelect(s.name, categories[i], s.values[i]);
+                } : undefined} />
             </g>
           );
         })}
@@ -239,21 +250,27 @@ export function TsMultiLine({
               {hv.activeSeries === si && hv.activePoint !== null && pts[hv.activePoint] ? (
                 <TsPointMarker x={pts[hv.activePoint][0]} y={pts[hv.activePoint][1]} color={colour} />
               ) : null}
-              {pts.map(([cx, cy], i) => (
-                <circle key={i} cx={cx} cy={cy} r={10} fill="transparent"
-                  className={onSelect ? "ts-hit ts-hit--click" : "ts-hit"}
-                  onMouseEnter={() => {
-                    hv.setActiveSeries(si);
-                    hv.setActivePoint(i);
-                    hv.setHover({
-                      xPct: (cx / w) * 100, yPct: (cy / h) * 100,
-                      rows: [[s.name, fmtOf(si)(s.values[i])],
-                             [xTitle ?? "Category", categories[i]]],
-                    });
-                  }}
-                  onMouseLeave={hv.clear}
-                  onClick={onSelect ? () => onSelect(s.name, categories[i], s.values[i]) : undefined} />
-              ))}
+              {/* One tracker for the whole line — see the note in TsLine. */}
+              <path className={onSelect ? "ts-track ts-track--click" : "ts-track"}
+                d={linePath(pts)} fill="none" stroke="transparent" strokeWidth={TS_TRACKER_W}
+                strokeLinejoin="round" strokeLinecap="round"
+                onMouseMove={(e) => {
+                  const svg = e.currentTarget.ownerSVGElement;
+                  if (!svg) return;
+                  const i = nearestIndex(pts, e.clientX - svg.getBoundingClientRect().left);
+                  hv.setActiveSeries(si);
+                  hv.setActivePoint(i);
+                  hv.setHover({
+                    xPct: (pts[i][0] / w) * 100, yPct: (pts[i][1] / h) * 100,
+                    rows: [[s.name, fmtOf(si)(s.values[i])],
+                           [xTitle ?? "Category", categories[i]]],
+                  });
+                }}
+                onMouseLeave={hv.clear}
+                onClick={onSelect ? () => {
+                  const i = hv.activePoint ?? 0;
+                  onSelect(s.name, categories[i], s.values[i]);
+                } : undefined} />
             </g>
           );
         })}
@@ -471,18 +488,25 @@ export function TsDualAxis({
                 <TsPointMarker x={pts[hv.activePoint][0]} y={pts[hv.activePoint][1]}
                   color={TS_SERIES_LINE[0]} />
               ) : null}
-              {pts.map(([cx, cy], i) => (
-                <circle key={i} cx={cx} cy={cy} r={10} fill="transparent" className="ts-hit"
-                  onMouseEnter={() => {
-                    hv.setActiveSeries(1);
-                    hv.setActivePoint(i);
-                    hv.setHover({ xPct: (cx / w) * 100, yPct: (cy / h) * 100,
-                      rows: [[lineSeries.name, (rightFormat ?? tsNum)(lines[i])],
-                             [xTitle ?? "Category", categories[i]]] });
-                  }}
-                  onMouseLeave={hv.clear}
-                  onClick={onSelect ? () => onSelect(lineSeries.name, categories[i], lines[i]) : undefined} />
-              ))}
+              {/* One tracker for the whole line — see the note in TsLine. */}
+              <path className={onSelect ? "ts-track ts-track--click" : "ts-track"}
+                d={linePath(pts)} fill="none" stroke="transparent" strokeWidth={TS_TRACKER_W}
+                strokeLinejoin="round" strokeLinecap="round"
+                onMouseMove={(e) => {
+                  const svg = e.currentTarget.ownerSVGElement;
+                  if (!svg) return;
+                  const i = nearestIndex(pts, e.clientX - svg.getBoundingClientRect().left);
+                  hv.setActiveSeries(1);
+                  hv.setActivePoint(i);
+                  hv.setHover({ xPct: (pts[i][0] / w) * 100, yPct: (pts[i][1] / h) * 100,
+                    rows: [[lineSeries.name, (rightFormat ?? tsNum)(lines[i])],
+                           [xTitle ?? "Category", categories[i]]] });
+                }}
+                onMouseLeave={hv.clear}
+                onClick={onSelect ? () => {
+                  const i = hv.activePoint ?? 0;
+                  onSelect(lineSeries.name, categories[i], lines[i]);
+                } : undefined} />
             </g>
           );
         })()}

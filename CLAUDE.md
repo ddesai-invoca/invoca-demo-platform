@@ -1824,6 +1824,33 @@ tooltips together.**
 screenshots show. `activePoint` was added to `useTsHover` for it, separate from
 `activeSeries` so the fade-only charts are untouched.
 
+⚠️ **HOVER TARGETS ON A LINE ARE ONE TRACKER PATH, NOT A CIRCLE PER POINT.** Point-only
+targets meant hovering the line BETWEEN two points did nothing — a user had to find a data
+point. Each line series now carries an invisible tracker: the same path geometry with a
+transparent `TS_TRACKER_W` (14px) stroke and `pointer-events: stroke`, which hit-tests the
+stroke region regardless of paint. `onMouseMove` picks the nearest point with
+`nearestIndex()` and sets series + point + tooltip. This is Highcharts' `stickyTracking`,
+which is what ThoughtSpot renders. Applies to Single Line, Multi-Line and the Dual Y-Axis
+line; the column, bar and pie templates keep hovering their own shapes and gained no
+tracker.
+
+⚠️ **THE POINTER-TO-DATA CONVERSION IS `e.clientX - svgRect.left`, AND IT IS ONLY THAT
+SIMPLE BECAUSE CHARTS ARE DRAWN 1:1** — one user unit is one CSS pixel. Two traps: the
+reference must be the SVG's rect, NOT the path's (`getBoundingClientRect` on the path starts
+at its leftmost point, and compensating for that by hand was the first, wrong version); and
+if the svg ever scales again this needs the viewBox conversion restored. `nearestIndex`
+carries the warning.
+
+Verified by probing mid-segment rather than at points: at 15% and 45% between two points the
+tooltip reports the earlier one, at 55% and 85% the later one — the crossover sits exactly
+at the midpoint — while the hovered series shows strokes `2,3,2` and opacity `0.22,1,0.22`
+and the marker appears.
+
+⚠️ **CLICK-TO-SELECT ON A LINE NOW USES `hv.activePoint`,** since there is no per-point
+element to carry the index. Correct by construction — `onMouseMove` always sets the point
+before a click can land — but UNEXERCISED: no caller passes `onSelect` to a ts- chart yet.
+Check it when the interaction drawer is wired to Insights tiles.
+
 ⚠️ **VERIFYING HOVER: `computer{action:"hover"}` DOES NOT REACH REACT on these svg children
 — it produced no tooltip at a coordinate where `elementFromPoint` returned the hit circle.**
 A real `left_click` does (its genuine mouseover fires first), and that is how the behaviour

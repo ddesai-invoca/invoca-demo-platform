@@ -165,6 +165,12 @@
   }
 }
 
+/* The invisible tracker over each line: hovering anywhere along the line activates that
+   series and snaps to its nearest point. `pointer-events: stroke` hit-tests the stroke
+   region regardless of paint, so a transparent stroke still catches the pointer. */
+.ts-track { pointer-events: stroke; }
+.ts-track--click { cursor: pointer; }
+
 .ts-axis-label {
   font-family: var(--ts-var-axis-data-label-font-family);
   font-size: 12px; fill: var(--ts-var-axis-data-label-color);

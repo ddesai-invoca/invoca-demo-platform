@@ -244,6 +244,37 @@ export function rightAxisLayout(tickLabels: string[][], titleBand: number): Righ
   return { inset: tickLabels.length ? x : TS_PLOT.right, lineAt, titleAt };
 }
 
+/* ---------------------------------------------------------------------------
+   Line trackers — hovering anywhere ALONG a line, not just on its points
+   --------------------------------------------------------------------------- */
+
+/**
+ * Width of the invisible tracker stroke laid over a line.
+ *
+ * The point-only hit circles meant a user had to find a data point; hovering the line
+ * between two points did nothing. Highcharts gives each series a tracker path and snaps to
+ * the nearest point (`stickyTracking`, `tooltip.snap` = 10), which is what ThoughtSpot
+ * renders. 14 gives 7px either side of a 2px line — enough to catch the line comfortably
+ * without swallowing a neighbouring series.
+ */
+export const TS_TRACKER_W = 14;
+
+/**
+ * Index of the point nearest an x position, in svg user units.
+ *
+ * ⚠️ CALLERS CAN PASS `clientX - svgRect.left` DIRECTLY, but only because charts are drawn
+ * 1:1 — one user unit is one CSS pixel. If the svg ever scales again this needs the
+ * viewBox conversion back.
+ */
+export function nearestIndex(pts: Array<[number, number]>, x: number): number {
+  let best = 0, bestD = Infinity;
+  for (let i = 0; i < pts.length; i++) {
+    const d = Math.abs(pts[i][0] - x);
+    if (d < bestD) { bestD = d; best = i; }
+  }
+  return best;
+}
+
 export type Plot = { x: number; y: number; w: number; h: number };
 
 /** The plot rect for a canvas, reserving `legendW` on the right when there is one. */
