@@ -35,8 +35,11 @@ export interface TsGeoPoint {
 
 const DOT = TS_HUES.red[2];               // #E4131B
 const DOT_OPACITY = 0.7;                  // overlapping dots darken, as the reference shows
-const DOT_MIN = 4;
-const DOT_MAX = 13;
+/* ⚠️ SMALLER THAN THE FIRST PASS (was 4–13), asked for 2026-08-21. At 4–13 a big metro
+   read as a blob rather than a cluster, and adjacent dots merged into one shape — the
+   reference keeps them individually distinguishable even where they overlap. */
+const DOT_MIN = 2.5;
+const DOT_MAX = 8;
 
 /* Mapbox's own light style, the same tiles the reference uses. `@2x` because the
    captured canvas carried a 1.111 device-pixel transform — the real tile serves

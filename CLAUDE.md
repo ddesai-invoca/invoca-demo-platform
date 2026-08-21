@@ -1683,11 +1683,15 @@ the user 2026-08-21 after laying out all three options.
 |---|---|
 | tiles | `mapbox/light-v11` at `@2x` (the captured canvas carried a 1.111 device-pixel transform) |
 | initial view | `fitBounds` over every point, `maxZoom: 9`, 28px padding |
-| dots | palette red `#E4131B` at 0.7 opacity, radius 4–13 scaled by **√(value/max)** |
+| dots | palette red `#E4131B` at 0.7 opacity, radius **2.5–8** scaled by **√(value/max)** |
 | hovered dot | a `#1d232f` ring and 0.9 opacity, as the reference shows |
 | zoom control | square, `#1d232f`, white glyphs, 26px, top-left |
 | tooltip | the shared dark panel: coordinate caption + `lat, lon` to 4dp, then the measure caption + value |
 | legend | none |
+
+⚠️ **DOT SIZE WAS REDUCED FROM 4–13 TO 2.5–8** (asked for 2026-08-21): at the larger size a
+big metro read as one blob and adjacent dots merged, where the reference keeps them
+individually visible even overlapping.
 
 ⚠️ **THE DOT COLOUR IS READ FROM A SCREENSHOT, NOT MEASURED — the only template where that
 is true.** OpenLayers renders its vector layer to a CANVAS, so no DOM node carries a fill.
