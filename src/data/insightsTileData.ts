@@ -1,7 +1,7 @@
 import { categoryOrder } from "../components/ts/tsChart";
 import type { CustomerProfile } from "./schema";
 import {
-  axisTitleFor, formatMeasure, isAdditive, kindOf, magnitudeOf, type MeasureKind,
+  axisTitleFor, formatHero, formatMeasure, isAdditive, kindOf, magnitudeOf, type MeasureKind,
 } from "./insightsMeasures";
 import type { GeneratedTile } from "./AiAssistantContext";
 
@@ -399,10 +399,13 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
 
   switch (c.template) {
     case "Metric": {
-      /* A single number, and that is the whole template — the only difference from KPI. */
+      /* ⚠️ THE NUMBER AND NOTHING ELSE — no label under it, no period, no sparkline. The
+         captured card's entire text content is "42.05K". Passing a label would render one
+         where the reference has none.
+         The value ABBREVIATES: 42,050 prints "42.05K". See formatHero. */
       const v = Math.round(sc.max * 0.58);
       return { tileType: "kpi", title: c.name, note: "", xLabels: [], series: [], slices: [],
-        kpis: [{ label: primary, value: formatMeasure(v, sc.kind) }] };
+        kpis: [{ label: "", value: formatHero(v, sc.kind) }] };
     }
     case "KPI": {
       /* ⚠️ THE KPI IS THE LAST BUCKET AGAINST THE ONE BEFORE IT, over the dashboard's own
@@ -423,9 +426,9 @@ export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<Genera
       const pct = prev > 0 ? ((last - prev) / prev) * 100 : 0;
       return { tileType: "kpi", title: c.name, note: "", xLabels: labels, slices: [],
         series: [{ name: primary, values: vals }],
-        kpis: [{ label: primary, value: formatMeasure(last, sc.kind) }],
+        kpis: [{ label: primary, value: formatHero(last, sc.kind) }],
         trend: {
-          value: formatMeasure(last, sc.kind),
+          value: formatHero(last, sc.kind),
           period: `Week of ${labels[labels.length - 1] ?? ""}`,
           delta: +pct.toFixed(2),
           previous: formatMeasure(prev, sc.kind),

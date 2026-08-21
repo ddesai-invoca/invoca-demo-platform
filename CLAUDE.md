@@ -1664,6 +1664,29 @@ independently confirms the `kind: "measure"` classification, which was originall
 from live option COUNTS — two signals agreeing.
 
 ## Templates: "KPI" and "Metric" (measured 8/21/2026)
+
+**Metric** is the number and NOTHING else — the captured card's entire text content is
+`42.05K`. No label beneath it, no period, no sparkline, no legend. Value 32px/700 `#1d232f`
+at line-height **37px**, carrying the same `kpi-module__hero` class as a KPI's value.
+
+⚠️ **THE HERO NUMBER ABBREVIATES, and none of the three existing formatters did it.** 42,050
+prints **"42.05K"** — `formatMeasure` gives "42,050" and `formatTick` gives "42.1K" (one
+decimal). So the hero is its own format (`formatHero`): compact from 1,000, up to TWO
+decimals, trailing zeros stripped — the same stripping the pie's percentages showed. A
+duration deliberately does NOT compact; "2.05K" seconds means nothing.
+
+⚠️ **TWO PARTS OF THAT ARE INFERRED FROM ONE SAMPLE, and are flagged in the code:**
+1. The two-decimal rule rests on the single value 42.05K. A captured 42,000 would settle
+   whether it prints "42K" or "42.00K"; stripping is the assumption.
+2. Whether a KPI's hero abbreviates too. Its captured value was "7", identical either way.
+   They share `kpi-module__hero`, which is why it is applied to both — a class name, not a
+   measurement. It changes a KPI headline from "9,502" to "9.5K".
+
+⚠️ **`.ts-kpi .ts-kpi-value` IS 0,2,0 ON PURPOSE.** A single-class `.ts-kpi-value` ties with
+`.ts-trend-value` and loses on source order, rendering the KPI's 40px line-height where the
+Metric capture measures 37.
+
+
 `TsTrend` / `TsKpi` in `TsKpi.tsx`. Both share `tileType: "kpi"`; a KPI carries `trend` and
 a Metric does not, which is the only difference between the two templates.
 

@@ -135,6 +135,40 @@ export function formatTick(v: number, kind: MeasureKind): string {
   }
 }
 
+/**
+ * The HERO number on a KPI or Metric tile.
+ *
+ * ⚠️ IT ABBREVIATES. Measured: a Metric showing 42,050 prints **"42.05K"**, not "42,050"
+ * (which `formatMeasure` gives) and not "42.1K" (which `formatTick` gives — one decimal).
+ * So the hero is its own format: compact from 1,000 up, up to TWO decimals, trailing zeros
+ * stripped — the same stripping the pie's percentages showed ("1.7%", not "1.70%").
+ *
+ * ⚠️ TWO THINGS HERE ARE INFERRED, NOT MEASURED, and both from a single sample:
+ *  1. The two-decimal rule comes from one value, 42.05K. A number that happened to be
+ *     42,000 would settle whether it prints "42K" or "42.00K"; stripping is the assumption.
+ *  2. Whether a KPI's hero abbreviates too. Its captured value was "7", which looks
+ *     identical either way. They share the `kpi-module__hero` class, which is the reason
+ *     for applying it to both — a class name, not a measurement.
+ */
+export function formatHero(v: number, kind: MeasureKind): string {
+  if (!isFinite(v)) return "";
+  const compact = (n: number): string => {
+    const a = Math.abs(n);
+    if (a >= 1_000_000_000) return `${+(n / 1_000_000_000).toFixed(2)}B`;
+    if (a >= 1_000_000) return `${+(n / 1_000_000).toFixed(2)}M`;
+    if (a >= 1_000) return `${+(n / 1000).toFixed(2)}K`;
+    return String(+n.toFixed(2));
+  };
+  switch (kind) {
+    case "money": return `$${compact(v)}`;
+    case "percent": return `${+v.toFixed(2)}%`;
+    /* A duration stays m:ss — "2.05K" seconds means nothing to a reader. */
+    case "duration": return formatMeasure(v, kind);
+    case "rank": return `#${Math.round(v)}`;
+    default: return compact(v);
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Magnitude — where a measure's numbers come from
    --------------------------------------------------------------------------- */

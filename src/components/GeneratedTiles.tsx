@@ -217,7 +217,13 @@ function TsTileCard({ tile, onRemove, onPick }: {
       {tile.tileType === "kpi" && tile.trend && (
         <TsTrend {...tile.trend} spark={series[0]?.values ?? []} />
       )}
-      {tile.tileType === "kpi" && !tile.trend && (
+      {/* A Metric is ONE number with no label. Only a multi-entry kpis array (which the AI
+          assistant can produce) falls back to the labelled row. */}
+      {tile.tileType === "kpi" && !tile.trend && tile.kpis.length === 1 && !tile.kpis[0].label && (
+        <TsKpi value={tile.kpis[0].value} />
+      )}
+      {tile.tileType === "kpi" && !tile.trend
+        && !(tile.kpis.length === 1 && !tile.kpis[0].label) && (
         <div className="ts-kpi-row">
           {tile.kpis.map((k, i) => <TsMetric key={i} label={k.label} value={k.value} />)}
           {tile.kpis.length === 0 ? <TsKpi value="—" /> : null}

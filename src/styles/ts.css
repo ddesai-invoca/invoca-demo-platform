@@ -296,7 +296,12 @@
   font-size: 28px; font-weight: 700; line-height: 33px; color: #1d232f;
   font-variant-numeric: tabular-nums;
 }
+/* The Metric card hugs its number: 32px/37 hero plus the tile's own padding, which
+   is the 82px content box the capture measures. */
 .ts-kpi { padding: 4px 0 8px; }
+/* ⚠️ 0,2,0 SPECIFICITY ON PURPOSE. `.ts-kpi-value` alone ties with `.ts-trend-value` and
+   loses on source order, rendering the KPI's 40px where the Metric capture measures 37. */
+.ts-kpi .ts-kpi-value { line-height: 37px; }
 /* A KPI tile's metrics sit side by side and wrap, rather than in a fixed-column grid:
    the AI decides how many there are, and `repeat(n, 1fr)` would be layout driven by
    data, which rule 1 keeps out of reach. */

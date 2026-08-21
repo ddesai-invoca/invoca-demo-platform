@@ -29,11 +29,19 @@ export function TsMetric({ label, value }: { label: string; value: string }) {
 }
 
 /** The single big number a KPI template renders on its own. */
+/**
+ * The Metric template: one number, nothing else.
+ *
+ * ⚠️ 32px/700 #1d232f at line-height 37, the SAME hero size as a KPI's value — measured,
+ * both carrying `kpi-module__hero`. It is NOT `.ts-metric-value`'s 28px, which belongs to
+ * the multi-number KPI row. And the captured card's whole text content is the number: a
+ * label renders nothing where the reference shows nothing.
+ */
 export function TsKpi({ value, label }: { value: string; label?: string }) {
   return (
     <div className="ts-kpi">
       {label ? <div className="ts-metric-label">{label}</div> : null}
-      <div className="ts-metric-value ts-kpi-value">{value}</div>
+      <div className="ts-trend-value ts-kpi-value">{value}</div>
     </div>
   );
 }
