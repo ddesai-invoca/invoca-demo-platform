@@ -64,8 +64,12 @@ const app = express();
 app.use("/api/feedback/:id/files", express.raw({ type: "*/*", limit: "12mb" }));
 app.use(express.json({ limit: "2mb" }));
 
-// Health check for the host (Render etc.) — exempt from auth, always 200.
-app.get("/healthz", (_req, res) => res.type("text").send("ok"));
+/* Health check for the host (Render etc.) — exempt from auth.
+   503 once we are DRAINING, so the host stops routing new requests at us while the
+   in-flight ones finish. See the shutdown handler at the bottom of this file. */
+let draining = false;
+app.get("/healthz", (_req, res) =>
+  draining ? res.status(503).type("text").send("draining") : res.type("text").send("ok"));
 
 /* PUBLIC DEPLOY STATUS — "did my push actually reach the live site?"
 
@@ -270,7 +274,7 @@ app.post("/api/delete-profile", (req, res) => {
 app.use(express.static(DIST));
 app.get("*", (_req, res) => res.sendFile(path.join(DIST, "index.html")));
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Invoca demo running on http://localhost:${PORT}`);
   console.log(authEnabled ? "🔒 Google sign-in gate is ON (restricted by email domain)." : "🔓 Auth gate OFF — set GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET to require sign-in.");
   console.log(`📁 Demo library: ${DATA_DIR}${isPersistent(DATA_DIR) ? "" : "  (⚠ not a persistent disk — demos are lost on redeploy)"}`);
@@ -286,6 +290,43 @@ app.listen(PORT, () => {
   if (!apiKey) console.warn("⚠  ANTHROPIC_API_KEY not set — the AI features will return errors. Set it in the server environment (.env or host config).");
   scheduleCanary();
 });
+
+/* ---- graceful shutdown -----------------------------------------------------
+   Render stops an instance by sending SIGTERM and waiting before SIGKILL. With no
+   handler, the default SIGTERM behaviour kills the process immediately and every
+   in-flight request dies with it — a generation stream, a PATCH being saved, an
+   artifact being fetched — which is the sharp edge of a deploy for anyone actually
+   using the site at that moment.
+
+   ⚠️ THIS DOES NOT SHORTEN THE DEPLOY WINDOW and is not meant to. The window exists
+   because a Render disk attaches to one instance at a time (see CLAUDE.md TODO 0);
+   this only makes the START of the window clean instead of abrupt.
+
+   `closeIdleConnections()` matters: `server.close()` alone waits for keep-alive
+   sockets that are sitting idle between requests, so a browser with an open
+   connection and nothing in flight would hold the drain open for the full timeout.
+   Idle sockets are dropped at once; only real in-flight requests hold us. */
+const DRAIN_TIMEOUT_MS = Number(process.env.DRAIN_TIMEOUT_MS ?? 10_000);
+
+function shutdown(signal: string): void {
+  if (draining) return;                       // SIGTERM then SIGINT must not double-run
+  draining = true;
+  console.log(`↩  ${signal} — draining (health check now 503, ${DRAIN_TIMEOUT_MS}ms budget).`);
+  server.closeIdleConnections?.();
+  server.close(() => {
+    console.log("✓  in-flight requests finished — exiting cleanly.");
+    process.exit(0);
+  });
+  /* A request that never ends (an open SSE generation stream) must not hold the
+     process past the host's patience, or SIGKILL lands anyway and we gained nothing. */
+  setTimeout(() => {
+    console.warn("⚠  drain timed out — forcing exit.");
+    process.exit(0);
+  }, DRAIN_TIMEOUT_MS).unref?.();
+}
+
+process.on("SIGTERM", () => shutdown("SIGTERM"));
+process.on("SIGINT", () => shutdown("SIGINT"));
 
 /* ---- the nightly canary ----------------------------------------------------
    Runs one full generation at ~2am Eastern, times it, audits it, and throws the
