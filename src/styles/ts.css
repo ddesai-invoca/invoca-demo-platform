@@ -177,6 +177,12 @@
 }
 /* Pie data labels: `Label - count (pct%)`, 12px #5b6577. Columns and lines have NO
    data labels, which is why this rule is pie-only. */
+/* "Showing N of N data points" — measured at x=13, y=615 in an 847x635 canvas, same
+   12px/#5b6577 as the data labels. */
+.ts-pie-footer {
+  font-family: var(--ts-var-axis-data-label-font-family);
+  font-size: 12px; fill: var(--ts-var-axis-data-label-color);
+}
 .ts-pie-label {
   font-family: var(--ts-var-axis-data-label-font-family);
   font-size: 12px; fill: var(--ts-var-axis-data-label-color);

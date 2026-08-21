@@ -1,7 +1,7 @@
 import {
   TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, TsTable, TsKpi,
   TsMetric, TsTrend,
-  legendFor, pieLegend, tsTick, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE,
+  legendFor, tsTick, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE,
 } from "../components/ts";
 
 /* =============================================================================
@@ -115,12 +115,15 @@ export function TsGallery() {
         <TsTile title="Buying Intent"><TsKpi value="69.16%" /></TsTile>
         <TsTile title="Conversions"><TsKpi value="55.46%" /></TsTile>
 
-        <TsTile title="Performance By Medium (Donut)" legend={pieLegend(MEDIUM_SLICES)}>
-          <TsPie slices={MEDIUM_SLICES} showLegend={false} w={TS_SIZE.pie.w} h={TS_SIZE.pie.h} />
+        {/* ⚠️ NO LEGEND. The measured pie tile has none — the outside data labels replace
+            it, and a legend beside them says everything twice while stealing 212px the
+            labels need. These two carried one until the 33-slice capture was measured. */}
+        <TsTile className="ts-span-2" title="Performance By Medium (Donut)">
+          <TsPie slices={MEDIUM_SLICES} w={TS_SIZE.pie.w} h={TS_SIZE.pie.h} />
         </TsTile>
 
-        <TsTile title="Performance By Medium (Pie)" legend={pieLegend(MEDIUM_SLICES.slice(0, 5))}>
-          <TsPie slices={MEDIUM_SLICES.slice(0, 5)} donut={false} showLegend={false} />
+        <TsTile className="ts-span-2" title="Performance By Medium (Pie)">
+          <TsPie slices={MEDIUM_SLICES.slice(0, 5)} donut={false} />
         </TsTile>
 
         <TsTile className="ts-span-2" title="Single Line Chart Over Time">

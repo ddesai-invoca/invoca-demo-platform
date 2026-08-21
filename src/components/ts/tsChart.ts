@@ -35,13 +35,14 @@ export const TS_COLUMN_GAP = 5;             // gap BETWEEN bars inside one group
 export const TS_BAR_THICK = 56;             // horizontal bar thickness
 export const TS_LINE_W = 2;
 export const TS_AREA_ALPHA = 0.2;
-export const TS_DONUT_INNER = 0.5;          // inner/outer radius, measured 62.225/124.45
+export const TS_DONUT_INNER = 0.5;          // inner/outer, measured twice: 62.225/124.45 and 103/206
 
 /* Default canvases, from the capture: column 634.5x449, pie 563x402,
    line 1538x633, bar 846x633, sparkline 398x157. */
 export const TS_SIZE = {
   column: { w: 634.5, h: 449 },
-  pie: { w: 563, h: 402 },
+  /* Re-measured off the 33-slice donut capture: 847x635, drawn 1:1. */
+  pie: { w: 847, h: 635 },
   /* Measured on the real single-line tile: 846x633 with the plot 781x564. */
   line: { w: 846, h: 633 },
   wide: { w: 1538, h: 633 },
@@ -273,6 +274,75 @@ export function nearestIndex(pts: Array<[number, number]>, x: number): number {
     if (d < bestD) { bestD = d; best = i; }
   }
   return best;
+}
+
+/* ---------------------------------------------------------------------------
+   The pie / donut template
+   ---------------------------------------------------------------------------
+   Measured on a 33-slice capture at 847x635: centre (420.458, 300.000), outer radius
+   206, inner 103. The centre is NOT the canvas centre — cx is 3px left of w/2 and cy
+   sits above h/2, which leaves the room the footer line needs. Expressed as fractions
+   of the measured canvas so it holds at other sizes. */
+export const TS_PIE_CX_FRAC = 420.458 / 847;   // 0.49641
+export const TS_PIE_CY_FRAC = 300.0 / 635;     // 0.47244
+export const TS_PIE_R_FRAC = 206 / 635;        // 0.32441, tied to HEIGHT
+
+/** Gap between adjacent slices, in degrees. */
+export const TS_PIE_GAP_DEG = 0.057;
+/** A data label's name is cut to this many characters, then an ellipsis. */
+export const TS_PIE_LABEL_CHARS = 30;
+
+/**
+ * Where the donut sits in a box of `w` x `h`.
+ *
+ * The radius comes from HEIGHT (`TS_PIE_R_FRAC`), clamped only so the ring cannot leave
+ * the box. ⚠️ DO NOT CLAMP IT BY LABEL WIDTH. The first version reserved 250px a side for
+ * labels and produced r = 173.5 at the measured canvas instead of 206. The labels are not
+ * outside the ring's column — they overlap it and run to the canvas edge, which is exactly
+ * why 11 of the capture's 33 are truncated.
+ */
+export function piePlot(w: number, h: number): { cx: number; cy: number; r: number; rIn: number } {
+  const cx = w * TS_PIE_CX_FRAC;
+  const cy = h * TS_PIE_CY_FRAC;
+  const fits = Math.min(cx, w - cx, cy, h - cy) - 8;
+  const r = Math.max(30, Math.min(h * TS_PIE_R_FRAC, fits));
+  return { cx, cy, r, rIn: r * TS_DONUT_INNER };
+}
+
+/**
+ * Slice order for the pie template.
+ *
+ * ⚠️ ALPHABETICAL, NOT BY VALUE — measured, and the opposite of what a chart library
+ * defaults to. In the capture the 1-call slice sits 18th and the 155-call slice 23rd, so
+ * size plays no part.
+ *
+ * ⚠️ AND IT IS A CODE-UNIT COMPARE, NOT `localeCompare`. Checked against all 32 non-null
+ * labels: a plain `<` sort reproduces the captured sequence exactly, `localeCompare` does
+ * not — it diverges on the FIRST element. Three cases show why the difference is real, not
+ * academic:
+ *   - `“Stronger Every Day”` sorts LAST (U+201C is above every ASCII letter); localeCompare
+ *     treats the quote as ignorable punctuation and files it under S.
+ *   - `Hear Better` before `Heart & Lung` (space 32 < 't').
+ *   - `The Sinus-Allergy` before `The transformational` ('S' 83 < 't' 116) — a
+ *     case-SENSITIVE ordering that a locale compare deliberately undoes.
+ * `{Null}` is pinned first: by code unit `{` (123) would otherwise sort it after every
+ * lowercase letter, and it is the null bucket, not a category.
+ */
+export function pieOrder<T extends { label: string }>(slices: T[]): T[] {
+  const isNull = (l: string) => /^\{null\}$/i.test(l.trim());
+  return [...slices].sort((a, b) => {
+    if (isNull(a.label) !== isNull(b.label)) return isNull(a.label) ? -1 : 1;
+    return a.label < b.label ? -1 : a.label > b.label ? 1 : 0;
+  });
+}
+
+/** `Name - count (pct%)`, the name cut at 30 characters. */
+export function pieLabelText(label: string, value: number, total: number): string {
+  const name = label.length > TS_PIE_LABEL_CHARS
+    ? label.slice(0, TS_PIE_LABEL_CHARS) + "\u2026" : label;
+  /* ⚠️ TRAILING ZEROS ARE STRIPPED — the capture reads "1.7%", not "1.70%". */
+  const pct = total > 0 ? +((value / total) * 100).toFixed(2) : 0;
+  return `${name} - ${tsNum(value)} (${pct}%)`;
 }
 
 export type Plot = { x: number; y: number; w: number; h: number };

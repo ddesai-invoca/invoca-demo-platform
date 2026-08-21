@@ -48,6 +48,45 @@ export const TS_SLICE_COLORS: string[] = (() => {
   return out;
 })();
 
+/* ---------------------------------------------------------------------------
+   THE PIE / DONUT SEQUENCE — measured off a 33-slice capture, and it is NOT the
+   step-major order above.
+   -----------------------------------------------------------------------------
+   It is HUE-MAJOR, hues running grey -> orange -> purple -> green -> yellow -> teal
+   -> blue, and within each hue the steps run [0, 3, 1, 4, 2] — darkest, light, mid,
+   lightest, BASE. So each hue block ENDS on its base colour, and the last slice of
+   the chart lands on #2666F9, the brand blue.
+
+   ⚠️ GREY AND ORANGE SKIP THEIR DARKEST STEP (#53575f and #994329). That is not a
+   transcription slip — all 33 fills were read off the DOM and those two are absent,
+   which is what makes the sequence 4 + 4 + 5x5 = exactly 33.
+
+   ⚠️ THE CAPTURE HAD EXACTLY 33 SLICES AND EXACTLY 33 COLOURS, so every colour was
+   used and NOTHING is known about what a 34th slice would get. Wrapping with `%` is a
+   guess; a capture with more categories than this would settle it. Do not present the
+   tail as measured. */
+/* ⚠️ WHICH PALETTE THE PIE ACTUALLY USES — UNRESOLVED, AND DELIBERATELY SO.
+   Two captures disagree about slice 0:
+     - the 33-slice donut measured 2026-08-20 starts GREY (TS_PIE_COLORS below)
+     - an earlier small pie ran the step-major order and reached a blue TINT by slice 9,
+       i.e. it started BLUE (TS_SLICE_COLORS above)
+   So index 0 is not a fixed colour and one capture cannot say what varies — slice count,
+   chart config, or something else. Until a SMALL pie from the same dashboard is captured,
+   this points at the previously-verified blue-first order, because our own pies carry 5-9
+   slices (the case that order was measured on) and the grey-first sequence renders such a
+   pie almost entirely grey and orange. Flip that one line when the second capture lands. */
+
+const PIE_HUE_ORDER = ["grey", "orange", "purple", "green", "yellow", "teal", "blue"] as const;
+export const TS_PIE_COLORS: string[] = (() => {
+  const out: string[] = [];
+  for (const h of PIE_HUE_ORDER) {
+    /* grey and orange omit step 0 — see the warning above. */
+    const steps = h === "grey" || h === "orange" ? [3, 1, 4, 2] : [0, 3, 1, 4, 2];
+    for (const step of steps) out.push(TS_HUES[h][step]);
+  }
+  return out;
+})();
+
 /* An area fill is its line colour at 20% — measured as rgba(38,102,249,0.2)
    against a #2666F9 stroke. */
 export const areaFill = (hex: string, alpha = 0.2): string => {
@@ -89,3 +128,11 @@ export function heatColor(value: number, min: number, max: number): string {
   };
   return `rgb(${mix(16)},${mix(8)},${mix(0)})`;
 }
+
+/**
+ * The sequence TsPie actually draws with.
+ *
+ * ⚠️ SWAP THIS ONE LINE to `TS_PIE_COLORS` if the pending small-pie capture shows slice 0
+ * is grey. See the note above TS_PIE_COLORS for why it is unresolved.
+ */
+export const TS_PIE_ACTIVE_COLORS: string[] = TS_SLICE_COLORS;

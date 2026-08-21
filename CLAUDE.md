@@ -1663,6 +1663,63 @@ the capture has `<label id=measure-label><span>Attribute</span></label>`. The `i
 independently confirms the `kind: "measure"` classification, which was originally inferred
 from live option COUNTS — two signals agreeing.
 
+## Template: "Pie Chart" (really a DONUT, measured 8/20/2026)
+`TsPie` + `piePlot` / `pieOrder` / `pieLabelText` in `tsChart.ts`, `TS_PIE_COLORS` in
+`tsPalette.ts`. Measured off a 33-slice capture; the first build was wrong in six ways.
+
+| | measured |
+|---|---|
+| canvas | **847 x 635**, drawn 1:1 (was 563x402) |
+| centre | **(420.458, 300)** — NOT the canvas centre; cx is 3px left of w/2 and cy sits above h/2, leaving room for the footer |
+| radii | outer **206**, inner **103** — exactly 0.5, confirming `TS_DONUT_INNER` a second time |
+| start | 12 o'clock, clockwise |
+| slice gap | **0.057°**, and **NO stroke** |
+| label | `Name - count (pct%)`, name cut at **30 chars + …** |
+| percentage | 2dp with **trailing zeros stripped** — the capture reads `1.7%`, not `1.70%` |
+| label type | 12px Lato 400, `#5b6577` |
+| connector | **2px, coloured to match its slice**, and it CURVES (a cubic, not an elbow) |
+| legend | **none** — the outside labels replace it |
+| footer | `Showing N of N data points` at x=13, y=615 |
+
+⚠️ **SLICES ARE ORDERED ALPHABETICALLY, NOT BY VALUE.** The 1-call slice sits 18th and the
+155-call slice 23rd, so size plays no part — the opposite of what a chart library defaults
+to.
+
+⚠️ **AND IT IS A CODE-UNIT COMPARE, NOT `localeCompare`.** Verified against all 32 non-null
+labels: a plain `<` sort reproduces the captured sequence exactly; `localeCompare` diverges
+on the FIRST element. My code comment originally claimed localeCompare "reproduces it on its
+own", which was wrong. Three cases show the difference is real:
+- `“Stronger Every Day”` sorts LAST (U+201C is above every ASCII letter); localeCompare
+  treats the quote as ignorable and files it under S.
+- `Hear Better` before `Heart & Lung` (space 32 < `t`).
+- `The Sinus-Allergy` before `The transformational` (`S` 83 < `t` 116) — case-SENSITIVE,
+  which a locale compare deliberately undoes.
+`{Null}` is pinned first: by code unit `{` (123) would sort it after every lowercase letter.
+
+⚠️ **DO NOT CLAMP THE RADIUS BY LABEL WIDTH.** The first `piePlot` reserved 250px a side for
+labels and produced r = 173.5 at the measured canvas instead of 206. The labels are not
+outside the ring's column — they overlap it and run to the canvas edge, which is exactly why
+11 of the capture's 33 are truncated. The only clamp is an overflow guard.
+
+⚠️ **THE VISIBLE WHITE SEPARATION IS THE 0.057° GAP, NOT A BORDER.** The captured slices
+carry no `stroke` attribute and no CSS stroke rule — checked both. At high DPI a 0.2px gap
+leaves a partially-covered pixel that blends to the white background and reads as a thin
+white line, so measurement and appearance agree. Do not "fix" it by adding a 1px white
+stroke.
+
+⚠️ **THE COLOUR SEQUENCE IS UNRESOLVED — TWO CAPTURES DISAGREE ON SLICE 0.** The 33-slice
+donut starts GREY: hue-major, grey → orange → purple → green → yellow → teal → blue, steps
+`[0,3,1,4,2]` within each hue so every block ends on its base colour and the last slice lands
+on `#2666F9`. Grey and orange skip their darkest step (`#53575f`, `#994329`), which is what
+makes it 4 + 4 + 5×5 = **exactly 33** for 33 slices — every colour used, so nothing is known
+about a 34th. That is `TS_PIE_COLORS`, and it matches all 33 measured fills exactly.
+But an earlier small pie ran the step-major order and reached a blue TINT by slice 9, i.e. it
+started BLUE. So index 0 is not fixed and one capture cannot say what varies.
+**Pending a capture of a SMALL pie from the same dashboard**, `TS_PIE_ACTIVE_COLORS` points
+at the blue-first `TS_SLICE_COLORS`, because our own pies carry 5–9 slices (the case that
+order was measured on) and grey-first renders such a pie almost entirely grey and orange.
+Agreed with the user 2026-08-20. Flip that one line when the capture lands.
+
 ## Template: "Multi-Line Chart Over Time" (measured 8/20/2026)
 `TsMultiLine` in `src/components/ts/TsCharts.tsx` + `buildTile`'s
 `"Multi-Line Chart Over Time"` case. Measured from a capture holding four of them (2, 3

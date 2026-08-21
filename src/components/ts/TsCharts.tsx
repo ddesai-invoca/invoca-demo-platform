@@ -1,10 +1,11 @@
 import { fitValues } from "../chartFit";
-import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SLICE_COLORS, areaFill } from "../../data/tsPalette";
+import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_PIE_ACTIVE_COLORS, areaFill } from "../../data/tsPalette";
 import {
-  TS_AREA_ALPHA, TS_BAR_THICK, TS_COLUMN_GAP, TS_COLUMN_W, TS_DONUT_INNER, TS_LINE_W, TS_SIZE,
+  TS_AREA_ALPHA, TS_BAR_THICK, TS_COLUMN_GAP, TS_COLUMN_W, TS_LINE_W, TS_SIZE,
   areaPath, bands, calendarTicks, leftInsetFor, linePath, niceScale, niceTicks, plotOf,
   rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX, nearestIndex, TS_TRACKER_W,
-  slicePath, sliceAngles, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
+  piePlot, pieOrder, pieLabelText, TS_PIE_GAP_DEG,
+  slicePath, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
 import { TsAxes, TsAxisTitles, TsTip, TsPointMarker, useTsHover, useTsBox } from "./TsShell";
 
@@ -519,50 +520,62 @@ export function TsDualAxis({
 
 /* ---- pie and donut -------------------------------------------------------- */
 
+/* ---- the pie / donut template -------------------------------------------------
+   Re-measured 2026-08-20 off a 33-slice capture, and the first build was wrong in six
+   ways. Canvas 847x635 drawn 1:1; centre (420.458, 300); outer radius 206, hole exactly
+   half of it. See tsChart.ts for the geometry, ordering and label rules. */
 export function TsPie({
-  slices, w: wIn = TS_SIZE.pie.w, h: hIn = TS_SIZE.pie.h, donut = true, showLegend = true,
+  slices, w: wIn = TS_SIZE.pie.w, h: hIn = TS_SIZE.pie.h, donut = true, showLegend = false,
   dataLabels = true, onSelect,
 }: {
-  slices: TsSlice[]; w?: number; h?: number; donut?: boolean; showLegend?: boolean;
+  slices: TsSlice[]; w?: number; h?: number; donut?: boolean;
+  /** ⚠️ Defaults to FALSE: the measured tile has NO legend — the labels replace it. */
+  showLegend?: boolean;
   dataLabels?: boolean;
   onSelect?: (label: string, value: number) => void;
 }) {
   const box = useTsBox(wIn, hIn);
   const { w, h } = box;
   const hv = useTsHover();
-  const clean = slices.filter((s) => isFinite(s.value) && s.value > 0);
-  if (!clean.length) return <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style} />;
+  const positive = slices.filter((s) => isFinite(s.value) && s.value > 0);
+  if (!positive.length) return <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style} />;
+  /* ⚠️ ALPHABETICAL, `{Null}` FIRST — measured, not the incoming order. */
+  const clean = pieOrder(positive);
   const legendW = showLegend ? LEGEND_W : 0;
-  const cx = (w - legendW) / 2;
-  const cy = h / 2;
-  /* Measured 124.45 outer in a 563x402 box, and the hole is exactly half of it. */
-  const rOut = Math.min((w - legendW) / 2, h / 2) * 0.62;
-  const rIn = donut ? rOut * TS_DONUT_INNER : 0;
-  const angles = sliceAngles(clean.map((s) => s.value));
+  const p = piePlot(w - legendW, h);
+  const rOut = p.r;
+  const rIn = donut ? p.rIn : 0;
   const total = clean.reduce((t, s) => t + s.value, 0);
 
-  /* OUTSIDE DATA LABELS WITH LEADER LINES. The capture's pies carry 16 labels and 16
-     connectors reading `Label - count (pct%)` at 12px #5b6577; the column and line
-     charts carry NONE. Leaving them off made the donuts read as a different chart.
+  /* Angles from 12 o'clock, clockwise, with the measured gap taken off each slice's END
+     so the sequence still closes at 360. */
+  const GAP = (TS_PIE_GAP_DEG * Math.PI) / 180;
+  const arcs = (() => {
+    let acc = -Math.PI / 2;                      // -90deg = 12 o'clock in svg terms
+    return clean.map((s) => {
+      const span = (s.value / total) * Math.PI * 2;
+      const a0 = acc;
+      acc += span;
+      return { a0, a1: Math.max(a0 + GAP * 0.5, acc - GAP) };
+    });
+  })();
 
-     Labels are laid out per SIDE and then pushed apart so they cannot overlap: a pie
-     with nine slices puts several mid-angles within a few degrees of each other, and
-     un-separated labels stack into an illegible smudge exactly where the small slices
-     are. Sort by y, then walk down enforcing a minimum gap. */
   const LABEL_GAP = 16;
   const labels = dataLabels ? (() => {
-    const raw = angles.map((a, i) => {
+    const raw = arcs.map((a, i) => {
       const mid = (a.a0 + a.a1) / 2;
       return {
         i, right: Math.cos(mid) >= 0,
-        x: cx + Math.cos(mid) * (rOut + 12),
-        y: cy + Math.sin(mid) * (rOut + 12),
-        ax: cx + Math.cos(mid) * rOut, ay: cy + Math.sin(mid) * rOut,
-        text: `${clean[i].label} - ${tsNum(clean[i].value)} (${((clean[i].value / total) * 100).toFixed(2)}%)`,
+        x: p.cx + Math.cos(mid) * (rOut + 12),
+        y: p.cy + Math.sin(mid) * (rOut + 12),
+        ax: p.cx + Math.cos(mid) * rOut, ay: p.cy + Math.sin(mid) * rOut,
+        text: pieLabelText(clean[i].label, clean[i].value, total),
       };
     });
+    /* Labels are pushed apart per side: with 33 slices several mid-angles land within a
+       degree of each other and un-separated labels stack into an illegible smudge. */
     for (const side of [true, false]) {
-      const col = raw.filter((r) => r.right === side).sort((p, q) => p.y - q.y);
+      const col = raw.filter((r) => r.right === side).sort((q, r) => q.y - r.y);
       for (let k = 1; k < col.length; k++) {
         if (col[k].y - col[k - 1].y < LABEL_GAP) col[k].y = col[k - 1].y + LABEL_GAP;
       }
@@ -573,25 +586,26 @@ export function TsPie({
   return (
     <div className="ts-chartwrap ts-chartwrap--fill" ref={box.ref} style={box.style}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
-        {angles.map((a, i) => {
-          const color = TS_SLICE_COLORS[i % TS_SLICE_COLORS.length];
+        {arcs.map((a, i) => {
+          const color = TS_PIE_ACTIVE_COLORS[i % TS_PIE_ACTIVE_COLORS.length];
           const dim = hv.activeSeries !== null && hv.activeSeries !== i;
           const on = hv.activeSeries === i;
           return (
-            <g key={clean[i].label}>
-              {/* a thin halo just outside the hovered slice, as the Insights rule asks */}
+            <g key={clean[i].label + i}>
               {on ? (
-                <path d={slicePath(cx, cy, rOut + 8, rOut + 2, a.a0, a.a1)} fill={color} opacity={0.28} />
+                <path d={slicePath(p.cx, p.cy, rOut + 8, rOut + 2, a.a0, a.a1)} fill={color} opacity={0.28} />
               ) : null}
-              <path d={slicePath(cx, cy, rOut, rIn, a.a0, a.a1)} fill={color}
+              {/* ⚠️ NO STROKE. The visible separation is the 0.057deg gap above; the
+                  captured slices carry no stroke attribute and no CSS stroke rule. */}
+              <path d={slicePath(p.cx, p.cy, rOut, rIn, a.a0, a.a1)} fill={color}
                 opacity={dim ? 0.16 : 1}
                 className={onSelect ? "ts-slice ts-slice--click" : "ts-slice"}
                 onMouseEnter={() => {
                   const mid = (a.a0 + a.a1) / 2;
                   hv.setActiveSeries(i);
                   hv.setHover({
-                    xPct: ((cx + Math.cos(mid) * rOut * 0.8) / w) * 100,
-                    yPct: ((cy + Math.sin(mid) * rOut * 0.8) / h) * 100,
+                    xPct: ((p.cx + Math.cos(mid) * rOut * 0.8) / w) * 100,
+                    yPct: ((p.cy + Math.sin(mid) * rOut * 0.8) / h) * 100,
                     rows: [[clean[i].label, tsNum(clean[i].value)],
                            ["Share", ((clean[i].value / total) * 100).toFixed(1) + "%"]],
                   });
@@ -604,10 +618,15 @@ export function TsPie({
         {labels.map((l) => {
           const dim = hv.activeSeries !== null && hv.activeSeries !== l.i;
           const elbow = l.right ? l.x + 10 : l.x - 10;
+          /* ⚠️ THE CONNECTOR IS ITS SLICE'S COLOUR at 2px, and it CURVES — measured on
+             6/6 slices, and the captured path is a cubic, not an elbow. A 1px grey line
+             was the earlier guess. */
+          const colour = TS_PIE_ACTIVE_COLORS[l.i % TS_PIE_ACTIVE_COLORS.length];
+          const cxc = l.right ? l.x - 5 : l.x + 5;
           return (
             <g key={l.i} className="ts-series" opacity={dim ? 0.16 : 1}>
-              <path d={`M ${l.ax} ${l.ay} L ${l.x} ${l.y} L ${elbow} ${l.y}`}
-                fill="none" stroke={TS_SLICE_COLORS[l.i % TS_SLICE_COLORS.length]} strokeWidth={1} />
+              <path d={`M ${l.ax} ${l.ay} Q ${cxc} ${l.y} ${l.x} ${l.y} L ${elbow} ${l.y}`}
+                fill="none" stroke={colour} strokeWidth={2} strokeLinecap="round" />
               <text className="ts-pie-label" x={l.right ? elbow + 4 : elbow - 4} y={l.y + 4}
                 textAnchor={l.right ? "start" : "end"}>
                 {l.text}
@@ -615,13 +634,20 @@ export function TsPie({
             </g>
           );
         })}
+        {/* Measured verbatim at x=13, y=615, 12px #5b6577 — the real tile states its
+            slice count under the chart. */}
+        <text className="ts-pie-footer" x={13} y={h - 20}>
+          {`Showing ${clean.length} of ${clean.length} data points`}
+        </text>
       </svg>
       <TsTip hover={hv.hover} />
     </div>
   );
 }
 
+/* Ordered and coloured exactly as TsPie draws them, or a legend swatch would name the
+   wrong slice. */
 export const pieLegend = (slices: TsSlice[]) =>
-  slices.filter((s) => s.value > 0).map((s, i) => ({
-    label: s.label, color: TS_SLICE_COLORS[i % TS_SLICE_COLORS.length],
+  pieOrder(slices.filter((s) => s.value > 0)).map((s, i) => ({
+    label: s.label, color: TS_PIE_ACTIVE_COLORS[i % TS_PIE_ACTIVE_COLORS.length],
   }));
