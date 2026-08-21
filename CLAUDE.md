@@ -2679,28 +2679,59 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
   changes are shared CSS and apply to everyone.
 
 ## Deferred polish (TODO)
-0. **ZERO-DOWNTIME DEPLOYS (agreed 2026-08-20, parked mid-session).** Goal: a push must
-   not interrupt the live site, even for someone hitting refresh mid-deploy.
-   ⚠️ **The blocker is the PERSISTENT DISK, not the plan or the health check.** The
-   service is on Render Starter and `/api/status` reports `storage.persistent: true`.
-   A Render disk attaches to ONE instance at a time, so the old instance must stop to
-   release it before the new one boots; zero-downtime deploys are unavailable while a
-   disk is mounted. Do not re-investigate the health check.
-   Two code-side aggravators, both still open: `server.ts` has **no SIGTERM handler**,
-   so in-flight requests are dropped the moment Render stops it; and the boot
-   migrations are **synchronous `fs` loops over 117 demos** running right after
-   `listen`, blocking the event loop and delaying `/healthz`.
-   Two routes, user picked neither yet:
-   - **A (structural):** move demo storage off the disk (Postgres or S3/R2 behind
-     `engine/demoStore.ts`, already a narrow read/write/list interface), then remove
-     the disk and get real rolling deploys.
-   - **B (recommended first, no infra change):** a service worker caching the app
-     shell + hashed bundle so a refresh mid-deploy loads from cache, API retry with
-     backoff, plus the SIGTERM and non-blocking-boot fixes.
-   ⚠️ **The single bundle is load-bearing for this.** The build is one 1.84MB JS file
-   with NO code splitting, which is why an already-loaded browser survives a deploy
-   today. Introducing code splitting without solving stale-chunk 404s would create a
-   white-screen-mid-demo failure that zero-downtime deploys do not fix.
+0. **ZERO-DOWNTIME DEPLOYS — route B built 2026-08-20, ONE CHECK OUTSTANDING.**
+   Goal: a push must not interrupt the live site, even for someone hitting refresh
+   mid-deploy.
+   ⚠️ **The blocker is the PERSISTENT DISK, not the plan or the health check.** A Render
+   disk attaches to ONE instance at a time, so the old instance must stop to release it
+   before the new one boots. **MEASURED on the 2026-08-20 deploy: ~40 seconds where the
+   origin answered nothing at all** (two consecutive 20s polls got no response; the new
+   instance reported 42s uptime when it answered). Do not re-investigate the health check.
+   Route B (no infra change) is now built:
+   - **SIGTERM/SIGINT drain in `server.ts`.** `/healthz` returns 503 once draining, idle
+     keep-alive sockets are dropped at once (`closeIdleConnections`, or an idle browser
+     socket holds the drain open for the whole budget), in-flight requests finish, and a
+     10s `DRAIN_TIMEOUT_MS` forces exit so an open SSE stream cannot outlast the host's
+     patience. **Proven:** SIGTERM sent 1.2s into a throttled 3.5s bundle download — the
+     download completed WHOLE (1,850,317 bytes, HTTP 200) while a NEW request during the
+     drain was refused, so the test could have failed.
+   - **`public/sw.js` + prod-only registration in `main.tsx`.** Navigations are
+     network-first and cache the shell; `/assets/*` is cache-first (safe only because the
+     names are content-hashed); `/api/*`, `/auth/*`, `/healthz` are never cached. A
+     refresh inside the window renders the cached shell instead of the browser error page.
+     `npm run test:sw` drives the real handlers against stubs — 10 checks including the two
+     traps that would hurt production: a 302 auth redirect must NOT become the shell, and
+     nothing under `/api` may ever be cached. Verified the suite FAILS when the guard is
+     removed. **KILL switch at the top of sw.js** — set `KILL = true` and deploy to make
+     every client unregister and drop its caches. Do that instead of deleting the file;
+     deleting it leaves registered workers running forever.
+   - **GET-only retry + self-heal in `DemoLibraryContext`.** Three retries with backoff,
+     and ⚠️ **only for idempotent requests** — the same `api()` helper also carries
+     createDemo/duplicateDemo/deleteDemo/saveCustomizations, and a retried POST that
+     actually succeeded would duplicate a demo or re-send a delete. Plus a bounded 3s poll
+     while the library is unavailable, so a page loaded mid-deploy heals itself instead of
+     waiting for someone to refresh.
+   ⚠️ **STILL UNVERIFIED, and needs a real browser:** service-worker REGISTRATION. The
+   in-app browser pane fails with "unknown error occurred when fetching the script" even
+   though the server returns 200 `application/javascript`, and the Chrome tool refuses
+   localhost. The logic is tested; the registration is not. Check once on the deployed
+   site: DevTools → Application → Service Workers shows sw.js activated, then Network →
+   Offline → reload should still render the app. The self-heal poll is likewise only
+   verified by construction — the poll correctly stays idle while the library is
+   reachable, which is also why it could not be exercised without an actual outage.
+   ⚠️ **THE SINGLE BUNDLE IS LOAD-BEARING, AND THE SERVICE WORKER MAKES IT MORE SO.** The
+   build is one hashed JS file with NO code splitting, so a cached shell and a cached
+   bundle are always a consistent pair. Introduce code splitting and a cached shell could
+   ask for a lazy chunk that was never cached and no longer exists — a white screen
+   mid-demo, worse than the problem this solves.
+   ✅ **CORRECTED: the boot migrations were NOT a problem.** This file previously called
+   them "synchronous fs loops over 117 demos" delaying `/healthz`. Both are marker-guarded
+   and the markers were written 2026-07-29, so they cost **0.1ms and 0.3ms** (timed). The
+   117-demo loop ran once, months ago. Nothing to fix; do not "optimise" it.
+   Route **A (structural)** is still the real fix if the window must go to zero: move demo
+   storage off the disk (Postgres or S3/R2 behind `engine/demoStore.ts`, already a narrow
+   read/write/list interface), then remove the disk and get real rolling deploys. Requires
+   the user to provision the store — the assistant cannot create accounts or keys.
    For "I say push and it deploys": a **Render Deploy Hook URL** in git-ignored `.env`
    (single-purpose; cannot read env vars or delete services), then poll `/api/status`
    until `commitShort` matches. A full Render API key was declined as too broad.

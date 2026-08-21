@@ -64,22 +64,50 @@ interface Ctx {
 
 const Ctx = createContext<Ctx | null>(null);
 
+/* ⚠️ RETRIES ARE GET-ONLY, AND THAT IS NOT A DETAIL. This one helper also carries
+   createDemo, duplicateDemo, deleteDemo and saveCustomizations. A retried POST that
+   actually succeeded server-side but looked like a network failure would duplicate a
+   demo or re-send a delete, so only requests with no side effect are ever repeated.
+
+   Why retry at all: a deploy takes the origin away for ~40s (a Render disk detaches
+   before the new instance boots — CLAUDE.md TODO 0), and the first thing a freshly
+   loaded page does is ask for the library. A short backoff rides out a blip; the
+   longer outage is handled by the self-heal poll in the provider below, because
+   blocking a page load for 40s would be worse than showing a state that recovers. */
+const GET_RETRIES = 3;
+const RETRY_BASE_MS = 400;
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 async function api<T>(path: string, init?: RequestInit): Promise<T | null> {
-  try {
-    const res = await fetch(path, {
-      ...init,
-      headers: init?.body ? { "Content-Type": "application/json", ...(init?.headers ?? {}) } : init?.headers,
-    });
-    if (!res.ok) {
-      // 403 (not yours) is an expected outcome, not a crash — callers handle null.
-      if (res.status !== 403) console.warn(`[library] ${path} → ${res.status}`);
+  const idempotent = !init?.method || init.method.toUpperCase() === "GET";
+  const attempts = idempotent ? GET_RETRIES + 1 : 1;
+
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    const last = attempt === attempts - 1;
+    try {
+      const res = await fetch(path, {
+        ...init,
+        headers: init?.body ? { "Content-Type": "application/json", ...(init?.headers ?? {}) } : init?.headers,
+      });
+      /* A 5xx during a deploy is the same situation as a refused connection — the
+         instance is going away. 4xx is an answer, so it is never retried. */
+      if (res.status >= 500 && !last) {
+        await sleep(RETRY_BASE_MS * 2 ** attempt);
+        continue;
+      }
+      if (!res.ok) {
+        // 403 (not yours) is an expected outcome, not a crash — callers handle null.
+        if (res.status !== 403) console.warn(`[library] ${path} → ${res.status}`);
+        return null;
+      }
+      return (await res.json()) as T;
+    } catch (e) {
+      if (!last) { await sleep(RETRY_BASE_MS * 2 ** attempt); continue; }
+      console.warn(`[library] ${path} unreachable:`, e);
       return null;
     }
-    return (await res.json()) as T;
-  } catch (e) {
-    console.warn(`[library] ${path} unreachable:`, e);
-    return null;
   }
+  return null;
 }
 
 export function DemoLibraryProvider({ children }: { children: ReactNode }) {
@@ -100,6 +128,20 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => { void refresh(); }, [refresh]);
+
+  /* SELF-HEAL AFTER A DEPLOY. The library being unreachable is almost always a deploy
+     in progress (~40s of no origin while a Render disk moves — CLAUDE.md TODO 0), not a
+     permanent failure. Without this, a page loaded inside that window stays stuck on the
+     unavailable state until someone thinks to refresh — in front of a customer.
+     Polling only while `available` is false, so a healthy session never polls at all.
+     Bounded, because a genuinely dead backend should not be retried forever. */
+  const healAttempts = useRef(0);
+  useEffect(() => {
+    if (available) { healAttempts.current = 0; return; }
+    if (healAttempts.current >= 40) return;            // ~2 min at 3s
+    const t = setTimeout(() => { healAttempts.current += 1; void refresh(); }, 3000);
+    return () => clearTimeout(t);
+  }, [available, refresh]);
 
   const isMine = useCallback(
     (d: { creator?: DemoCreator }) => !!me && (d.creator?.email ?? "").toLowerCase() === me.email.toLowerCase(),

@@ -15,7 +15,8 @@
     "serve": "npm run build && npm start",
     "generate": "node --env-file-if-exists=.env engine/generate.ts",
     "audit": "node --env-file-if-exists=.env --import tsx scripts/audit-seeds.ts",
-    "audit:ai": "tsx scripts/audit-ai-rules.ts"
+    "audit:ai": "tsx scripts/audit-ai-rules.ts",
+    "test:sw": "node scripts/sw-logic.test.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.111.0",
