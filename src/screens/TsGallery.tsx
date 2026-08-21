@@ -1,6 +1,7 @@
 import {
-  TsTile, TsLine, TsColumn, TsBar, TsDualAxis, TsPie, TsTable, TsKpi, TsMetric, TsTrend,
-  legendFor, pieLegend, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE,
+  TsTile, TsLine, TsMultiLine, TsColumn, TsBar, TsDualAxis, TsPie, TsTable, TsKpi,
+  TsMetric, TsTrend,
+  legendFor, pieLegend, tsTick, TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SIZE,
 } from "../components/ts";
 
 /* =============================================================================
@@ -60,6 +61,19 @@ const DOW_TABLE = {
   footer: ["TOTAL", "", "2,364", "2,135", "859", "$494,175"],
 };
 
+/* One count, one money and one duration measure — the three kinds a multi-line tile
+   actually mixes, and the widest tick labels the right-axis layout has to clear. */
+const MULTI_SERIES = [
+  { name: "Total Call Count", values: [6100, 10200, 11450, 11050, 9200],
+    title: "Total Call Count", tickFormat: (v: number) => tsTick(v) },
+  { name: "Total Revenue (Sale Amount)", values: [4744086, 6100000, 7250000, 8900000, 6400000],
+    title: "Total Revenue (Sale Amount)", tickFormat: (v: number) => "$" + tsTick(v) },
+  { name: "Agent Handle Time", values: [152, 168, 160, 175, 155],
+    title: "Agent Handle Time",
+    tickFormat: (v: number) =>
+      Math.floor(v / 60) + ":" + String(Math.round(v) % 60).padStart(2, "0") },
+];
+
 export function TsGallery() {
   return (
     <div className="ts-page">
@@ -114,10 +128,14 @@ export function TsGallery() {
             xTitle="Weekly Call Start Time" yTitle="Total Call Count" showLegend={false} />
         </TsTile>
 
+        {/* ⚠️ THE HARD CASE ON PURPOSE: a money axis (`$4.7M`, five characters) beside a
+            duration axis (`2:32`). Fixed right-axis gaps put the money title on top of its
+            own tick labels and across the next axis line, and a specimen with narrow
+            labels would not have shown it. Keep the wide labels here. */}
         <TsTile className="ts-span-2" title="Multi-Line Chart Over Time"
-          legend={legendFor(CALL_SERIES.slice(0, 3), TS_SERIES_LINE)}>
-          <TsLine categories={WEEKS} series={CALL_SERIES.slice(0, 3)}
-            xTitle="Weekly Call Start Time" yTitle="Call Measures" showLegend={false} />
+          legend={legendFor(MULTI_SERIES, TS_SERIES_LINE)}>
+          <TsMultiLine categories={WEEKS} series={MULTI_SERIES}
+            xTitle="Weekly Call Start Time" />
         </TsTile>
 
         <TsTile className="ts-span-2" title="Dual Y-Axis"

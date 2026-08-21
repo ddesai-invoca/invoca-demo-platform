@@ -188,22 +188,61 @@ export function calendarTicks(labels: string[], everyMonths = 4): number[] {
    Measured on the 4-series capture (viewBox 740x704, plot x=68 w=487):
      axis lines at x = 555 (the plot's right edge), 607, 672 — gaps of 52 then 65
      labels 15px right of each line, text-anchor start
-     total right inset 185, and the plot width shrank 626 -> 561 -> 487 as series were
-     added, i.e. 54 for the first right axis and ~65 for each one after.
-   The first gap really is narrower than the rest; using one average for both put the
-   outer axes ~13px off. FIRST_GAP/NEXT_GAP reproduce all three positions exactly and
-   degrade sensibly for a fifth series. */
-export const TS_RIGHT_FIRST_PAD = 54;
-export const TS_RIGHT_FIRST_GAP = 52;
-export const TS_RIGHT_NEXT_GAP = 65;
+     the rotated title then sits in the space between those labels and the NEXT axis line
 
-/** Total width the right-hand axes need for `n` of them. */
-export const rightInsetFor = (n: number): number =>
-  n <= 0 ? TS_PLOT.right : TS_RIGHT_FIRST_PAD + TS_RIGHT_NEXT_GAP * (n - 1);
+   ⚠️ THE GAPS ARE CONTENT-DERIVED, EXACTLY LIKE `leftInsetFor`. The first version of this
+   froze 52 and 65 as constants and explained the difference as "the first gap really is
+   narrower than the rest". It is not: the capture's first right axis had the single label
+   `0` and its second had `91%`, and the gap is just wide enough for that axis's own
+   labels plus its title. One rule reproduces both:
 
-/** x of the k-th right axis line, k = 0 being the one on the plot's own edge. */
-export const rightAxisX = (plotRight: number, k: number): number =>
-  plotRight + (k === 0 ? 0 : TS_RIGHT_FIRST_GAP + TS_RIGHT_NEXT_GAP * (k - 1));
+     gap = 15 (label offset) + widestChars * 6 + 7 + titleBand + 6
+       "0"   -> 15 +  6 + 7 + 18 + 6 = 52   (measured 52)
+       "91%" -> 15 + 18 + 7 + 18 + 6 = 64   (measured 65)
+
+   With the constants, a `$4.7M` axis put its title 7px INSIDE its own tick labels and
+   straddling the next axis line, which is the defect this replaces.
+
+   ⚠️ `titleBand` IS IN VIEWBOX UNITS AND IS NOT 18. The title is HTML at a fixed 12px
+   (see TsAxisTitles) laid over an svg that SCALES with its column, so its 18px band costs
+   `18 / scale` viewBox units — 30 units in a half-width tile. Reserving a flat 18 is what
+   made the shortfall grow as the tile got narrower. Callers pass the measured band. */
+export const TS_RIGHT_LABEL_GAP = 15;
+/** A rotated 12px title occupies its line-height across. CSS px — convert before use. */
+export const TS_TITLE_BAND_PX = 18;
+/** Measured: ~7px between the tick labels and the title, ~6px before the next axis line. */
+export const TS_RIGHT_TITLE_PAD = 7;
+export const TS_RIGHT_CLEAR = 6;
+
+export interface RightAxisLayout {
+  /** Total width to reserve to the right of the plot. */
+  inset: number;
+  /** x of each right axis line, relative to the plot's right edge (lineAt[0] is 0). */
+  lineAt: number[];
+  /** x where each axis's rotated title starts, relative to the plot's right edge. */
+  titleAt: number[];
+}
+
+/**
+ * Lay out the right-hand axes from the tick labels they will actually print.
+ *
+ * `tickLabels` is one array of FORMATTED labels per right axis, so a `$4.7M` column gets
+ * the room it needs and a `0` column does not take room it does not need.
+ * `titleBand` is the title's width in VIEWBOX units (see the warning above).
+ */
+export function rightAxisLayout(tickLabels: string[][], titleBand: number): RightAxisLayout {
+  const lineAt: number[] = [];
+  const titleAt: number[] = [];
+  let x = 0;
+  for (const labels of tickLabels) {
+    const widest = labels.reduce((n, l) => Math.max(n, l.length), 1);
+    const labelEnd = TS_RIGHT_LABEL_GAP + widest * 6;
+    lineAt.push(x);
+    titleAt.push(x + labelEnd + TS_RIGHT_TITLE_PAD);
+    x += labelEnd + TS_RIGHT_TITLE_PAD + titleBand + TS_RIGHT_CLEAR;
+  }
+  return { inset: tickLabels.length ? x : TS_PLOT.right, lineAt, titleAt };
+}
 
 export type Plot = { x: number; y: number; w: number; h: number };
 

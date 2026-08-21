@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { TS_AXIS_LINE, niceTicks, plotOf, tsTick, type Plot } from "./tsChart";
 
 /* =============================================================================
@@ -228,6 +228,35 @@ export function TsAxisTitles({
       ) : null}
     </>
   );
+}
+
+/**
+ * How many CSS pixels one viewBox unit is worth in THIS tile.
+ *
+ * ⚠️ NEEDED BECAUSE THE AXIS TITLES ARE HTML AND THE CHART IS AN SVG. The svg scales with
+ * its column but the title stays 12px, so a chart that wants to reserve room for a title
+ * cannot use a constant: at half width a title's 18px band costs 30 viewBox units. Any
+ * geometry that has to clear a title converts through this.
+ *
+ * Returns 1 before the first measurement, which is the 1:1 case the template was measured
+ * at — so the first paint is never worse than the old fixed-constant behaviour.
+ */
+export function useVbScale(vbWidth: number): { ref: React.RefObject<HTMLDivElement | null>; scale: number } {
+  const ref = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const read = () => {
+      const px = el.clientWidth;
+      if (px > 0) setScale(px / vbWidth);
+    };
+    read();
+    const ro = new ResizeObserver(read);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [vbWidth]);
+  return { ref, scale };
 }
 
 /** Shared setup every cartesian chart repeats: plot rect plus nice y ticks. */

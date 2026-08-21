@@ -3,9 +3,10 @@ import { TS_SERIES_COLUMN, TS_SERIES_LINE, TS_SLICE_COLORS, areaFill } from "../
 import {
   TS_AREA_ALPHA, TS_BAR_THICK, TS_COLUMN_GAP, TS_COLUMN_W, TS_DONUT_INNER, TS_LINE_W, TS_SIZE,
   areaPath, bands, calendarTicks, leftInsetFor, linePath, niceScale, niceTicks, plotOf,
-  rightAxisX, rightInsetFor, slicePath, sliceAngles, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
+  rightAxisLayout, TS_RIGHT_LABEL_GAP, TS_TITLE_BAND_PX,
+  slicePath, sliceAngles, TS_AXIS_LINE, TS_PLOT, tsNum, yOf,
 } from "./tsChart";
-import { TsAxes, TsAxisTitles, TsTip, useTsHover } from "./TsShell";
+import { TsAxes, TsAxisTitles, TsTip, useTsHover, useVbScale } from "./TsShell";
 
 /* =============================================================================
    TsCharts — the seven ThoughtSpot chart templates, drawn to measured geometry.
@@ -145,31 +146,40 @@ export function TsMultiLine({
   onSelect?: (seriesName: string, category: string, value: number) => void;
 }) {
   const hv = useTsHover();
+  const { ref, scale } = useVbScale(w);
   const n = categories.length;
   const fitted = series
     .map((s) => ({ ...s, values: fitValues(s.values, n) }))
     .filter((s): s is TsAxisSeries & { values: number[] } => s.values !== null);
-  if (!fitted.length) return <div className="ts-chartwrap" />;
+  if (!fitted.length) return <div className="ts-chartwrap" ref={ref} />;
 
   /* One scale per series, each zoomed to its own floor so every line uses the full
      height of the plot rather than being squashed by a neighbour's magnitude. */
   const scales = fitted.map((s) => niceScale(Math.min(...s.values), Math.max(...s.values), false));
   const leftInset = leftInsetFor(scales[0].ticks);
-  const rightAxes = fitted.length - 1;
+  const fmtOf = (i: number) => fitted[i].tickFormat ?? tsNum;
+
+  /* The right-hand axes are laid out from the labels they will actually print, and from
+     the title's cost in VIEWBOX units — see rightAxisLayout. A fixed reservation put a
+     `$4.7M` axis's title on top of its own labels and across the next axis line. */
+  const titleBand = TS_TITLE_BAND_PX / (scale || 1);
+  const ra = rightAxisLayout(
+    fitted.slice(1).map((_, k) => scales[k + 1].ticks.map((t) => fmtOf(k + 1)(t))),
+    titleBand,
+  );
   const p: typeof TS_PLOT & { x: number; y: number; w: number; h: number } = {
     ...TS_PLOT,
     x: leftInset, y: TS_PLOT.top,
-    w: Math.max(1, w - leftInset - rightInsetFor(rightAxes)),
+    w: Math.max(1, w - leftInset - ra.inset),
     h: Math.max(1, h - TS_PLOT.top - TS_PLOT.bottom),
   };
   const b = bands(p, n);
   const plotRight = p.x + p.w;
   const tickAt = n > 12 && /\d{1,2}\/\d{1,2}\/\d{2,4}/.test(categories[0] ?? "")
     ? calendarTicks(categories) : undefined;
-  const fmtOf = (i: number) => fitted[i].tickFormat ?? tsNum;
 
   return (
-    <div className="ts-chartwrap">
+    <div className="ts-chartwrap" ref={ref}>
       <svg className="ts-svg" viewBox={`0 0 ${w} ${h}`} role="img">
         {/* the category axis and the LEFT value axis */}
         <TsAxes plot={p} categories={categories} yMin={scales[0].min} yMax={scales[0].max}
@@ -178,7 +188,7 @@ export function TsMultiLine({
         {/* one axis line + labels per right-hand series */}
         {fitted.slice(1).map((s, k) => {
           const sc = scales[k + 1];
-          const x = rightAxisX(plotRight, k);
+          const x = plotRight + ra.lineAt[k];
           return (
             <g key={"axis" + s.name} aria-hidden="true">
               <path className="ts-axis-line" d={`M ${x} ${p.y} L ${x} ${p.y + p.h}`} stroke={TS_AXIS_LINE} />
@@ -186,7 +196,8 @@ export function TsMultiLine({
                 const span = sc.max - sc.min;
                 const y = p.y + p.h - (span > 0 ? ((t - sc.min) / span) * p.h : p.h / 2);
                 return (
-                  <text key={t} className="ts-axis-label" x={x + 15} y={y + 4} textAnchor="start">
+                  <text key={t} className="ts-axis-label" x={x + TS_RIGHT_LABEL_GAP} y={y + 4}
+                    textAnchor="start">
                     {fmtOf(k + 1)(t)}
                   </text>
                 );
@@ -238,7 +249,7 @@ export function TsMultiLine({
       {fitted.slice(1).map((s, k) => (
         <span key={"t" + s.name} className="ts-axis-ytitle ts-axis-ytitle--extra"
           style={{
-            left: `${((rightAxisX(plotRight, k) + (k === 0 ? 38 : 51)) / w) * 100}%`,
+            left: `${((plotRight + ra.titleAt[k]) / w) * 100}%`,
             top: `${((p.y + p.h / 2) / h) * 100}%`,
           }}>
           {s.title ?? s.name}

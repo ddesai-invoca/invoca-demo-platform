@@ -1679,15 +1679,44 @@ frame, the window from the dashboard filter. Three things are genuinely new:
 
 ⚠️ **EVERY SERIES GETS ITS OWN Y AXIS AND ITS OWN SCALE — they are not shared.** Measured
 axis lines at x = 68 / 555 / 607 / 672: the left axis, then the plot's right edge, then
-+52, then +65. So the first right-hand axis sits ON the plot edge and each further one
-steps out 65px, which is what `TS_RIGHT_FIRST_PAD` / `TS_RIGHT_FIRST_GAP` /
-`TS_RIGHT_NEXT_GAP` and `rightInsetFor()` / `rightAxisX()` encode. The plot therefore
-NARROWS as series are added: measured 626 / 561 / 487 for 2 / 3 / 4 series, and we render
-620 / 555 / 490 — the 6px is our own wider `6.1K` tick label, i.e. the content-derived
-left inset doing its job, not a layout error.
++52, then +65. The first right-hand axis sits ON the plot edge. The plot NARROWS as series
+are added: measured 626 / 561 / 487 for 2 / 3 / 4 series.
 
-Right-hand tick labels are `anchor="start"` 15px outside their axis line; their rotated
-HTML titles sit a further 38px out for the first and 51px for the rest.
+Right-hand tick labels are `anchor="start"` 15px outside their axis line, and the rotated
+title then sits in the space between those labels and the NEXT axis line.
+
+⚠️ **THOSE GAPS ARE CONTENT-DERIVED, NOT CONSTANTS — and freezing them as 52 and 65 was a
+real bug the user caught.** The first version explained the difference as "the first gap
+really is narrower than the rest". It is not. The capture's first right axis printed the
+single label `0` and its second printed `91%`; each gap is just wide enough for that
+axis's own labels plus its title. One rule reproduces both:
+
+```
+gap = 15 (label offset) + widestChars * 6 + 7 + titleBand + 6
+  "0"   -> 15 +  6 + 7 + 18 + 6 = 52   (measured 52)
+  "91%" -> 15 + 18 + 7 + 18 + 6 = 64   (measured 65)
+```
+
+`rightAxisLayout()` in `tsChart.ts` takes the FORMATTED labels each right axis will print
+and returns the line and title positions. With the frozen constants, a `$4.7M` money axis
+put its title 7px INSIDE its own tick labels and straddling the next axis line — the
+reported defect. This is the same mistake `leftInsetFor` exists to avoid on the left, 40
+lines up in the same file.
+
+⚠️ **THE TITLE'S COST IS IN CSS PIXELS AND THE CHART IS IN VIEWBOX UNITS — convert, or the
+error grows as the tile narrows.** Axis titles are HTML at a fixed 12px (`TsAxisTitles`)
+laid over an svg that SCALES with its column. A rotated title's 18px band therefore costs
+`18 / scale` viewBox units: measured **16 units at scale 1.12 and 35.5 at scale 0.508**,
+same title. Reserving a flat 18 is why the collision was invisible in a wide bench tile
+and obvious in a half-width dashboard tile. `useVbScale()` (TsShell) measures the wrapper
+with a ResizeObserver and returns 1 before the first paint, which is the 1:1 case the
+template was measured at.
+
+Verified at two widths after the fix — every title clears its own labels and the next axis
+line: at scale 1.12, gaps of 2.6 / 7.1px past the labels and 6px before the next line; at
+0.508, 2.5 / 7.1 and 6. The `/ts-gallery` specimen deliberately mixes a count, a money and
+a duration measure so the widest label case (`$4.7M` beside `2:32`) is always on the bench;
+a specimen with narrow labels would not have shown this.
 
 ⚠️ **A FLAT SERIES COLLAPSES TO ONE TICK, IT DOES NOT DRAW AN AXIS OF ZEROS.** The
 capture's all-zero series rendered a single `0` label at mid-height with the line across
