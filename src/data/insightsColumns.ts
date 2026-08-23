@@ -41,7 +41,18 @@ import { vocabFor } from "./insightsCatalog";
 
 /* One line per group: "Group\tCol~Col~Col". Kept in the captured order, which is the
    order the accordions render in, and stored as text rather than 400 array literals so
-   the capture stays legible and diffable against a future re-capture. */
+   the capture stays legible and diffable against a future re-capture.
+
+   ⚠️ THE EXTRACTION MISSED THE ANSWERED FAMILY, and a later capture proved it. The
+   Details Report TILE captured 8/23/2026 renders `Total Call Not Answered`,
+   `Total Answered by Agent` and their `(%)` companions, none of which this table offered —
+   so an SE could not have built the tile the real report shows. `Call Not Answered`,
+   `Answered` and `Answered by Agent` (with their `(T/F)` twins) are now in **Call Details**
+   beside `Call Count`. Their EXISTENCE is proven by that tile; the GROUP is inferred from
+   the family they belong to, since the tile does not show the builder. Correct it if a
+   capture of the Details builder scrolled to that accordion turns up.
+   ⚠️ Adding to this table widens all three pickers at once, which is right — these are
+   real product columns that were simply missing — but it is why the counts below moved. */
 const TABLE = `
 Conversion Reporting Details	Address (Reported)~Address 2 (Reported)~Revenue (Sale Amount)~Cell Phone (Reported)~Country (Reported)~Email Address (Reported)~Home Phone (Reported)~Name (Reported)~City (Reported)~State or Province (Reported)~Zip Code (Reported)
 Payout Details	Advertiser Fees~Earned~Paid~Fees~Call Result~Margin
@@ -50,7 +61,7 @@ Advertiser Details	Advertiser ID (From Network)~Advertiser~Matching Advertiser P
 Publisher Details	Publisher Volume Ranking~Publisher Campaign ID~Publisher Commissions Ranking~Publisher Conversion Rate Ranking~Publisher ID~Original Publisher ID (From Network)~Matching Publisher Payout Policies
 Invoca Data	Original Publisher~Call Direction
 Contact Center Metrics	Agent Handle Time~Agent Monolog~Agent Talk Time~Caller Talk Time~Overtalk Time~Silence Time
-Call Details	Call Record ID~Transaction ID~Best Location Latitude~Best Location Longitude~Call Count~Call Segment Path~Source~Caller ID~City~Corrected At~Destination Phone Number~During Hours~End of Call Reason~Media Type~Phone Type~Number Pool Number Type~Order ID~Payin Conditions~Payout Conditions~Promo Number Description~Qualified Regions~Recorded~Recording~Region (Invoca)~Repeat Caller (Invoca)~Call Start Time~Call Start Time (Destination)~Transaction Count~Type~Transfer Type~Verified Zip Code~Promo Number ID
+Call Details	Call Record ID~Transaction ID~Best Location Latitude~Best Location Longitude~Call Count~Call Not Answered~Call Not Answered (T/F)~Answered~Answered (T/F)~Answered by Agent~Answered by Agent (T/F)~Call Segment Path~Source~Caller ID~City~Corrected At~Destination Phone Number~During Hours~End of Call Reason~Media Type~Phone Type~Number Pool Number Type~Order ID~Payin Conditions~Payout Conditions~Promo Number Description~Qualified Regions~Recorded~Recording~Region (Invoca)~Repeat Caller (Invoca)~Call Start Time~Call Start Time (Destination)~Transaction Count~Type~Transfer Type~Verified Zip Code~Promo Number ID
 IVR Details	Avg Call Duration~Total Call Duration~Connected Duration (seconds)~Avg Connect Duration~Total Connect Duration~Duration (seconds)~IVR Duration (seconds)~Avg IVR Duration~Total IVR Duration~Key 1~Key 2~Key 3~Key 4~Total KeyPresses
 Signal Details	Signal Names~Signal Name
 Adwords Details	AdWords Ad~AdWords Ad Group~AdWords Ad Group ID~AdWords Ad ID~AdWords Keyword Match Type~AdWords Campaign~AdWords Campaign ID~AdWords Keywords~AdWords Keywords ID

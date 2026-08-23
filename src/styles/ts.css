@@ -431,6 +431,78 @@
 }
 .ts-tablewrap .ts-table--pivot tfoot td:first-child { color: #777e8b; }
 
+/* ---- the REPORT grid (Details / Summary / Transactions) ----------------------
+   ⚠️ A THIRD TABLE RENDERER, not a variant of the other two. The Details Report tile is
+   **ag-Grid** (`ag-theme-alpine`, `ag-root-wrapper`) where the pivot is DevExtreme, and
+   they are typeset differently: this one is **12px LATO `#15243E`**, the pivot 11.9px
+   optimo-plain `#333`. Charts on the same page are Lato too, so this table is the one that
+   does NOT need the optimo-plain override — which is why it has to say so explicitly,
+   or the base `.ts-table` rule wins and the grid renders in the wrong face. */
+.ts-tablewrap .ts-table--report {
+  font-family: var(--ts-var-root-font-family); font-size: 12px;
+}
+/* ⚠️ THE BODY SCROLLS INSIDE THE TILE; THE TILE DOES NOT GROW TO THE ROW COUNT. Measured
+   on the capture: tile 703 tall, `.ag-body-viewport` **477** with `overflow-y: auto` over
+   16,925px of virtualised rows, header 49 above it and the aggregation row 65 below. Ours
+   was 8,958px tall — 200 rows at 31px with nothing capping it — which made the dashboard
+   scroll for nine screens and pushed every tile below it out of sight. 48 + 477 + 64. */
+.ts-tablewrap--report { max-height: 589px; overflow: auto; }
+/* The header and the aggregation row stay put while the rows move under them, which is
+   what the pinned rows do on the real grid. Both need an OPAQUE ground or the scrolling
+   rows read straight through them. */
+.ts-tablewrap--report .ts-table--report thead th { position: sticky; top: 0; z-index: 2; background: #fff; }
+.ts-tablewrap--report .ts-table--report .ts-report-agg td {
+  position: sticky; bottom: 0; z-index: 2; background: #fff;
+}
+.ts-tablewrap .ts-table--report th {
+  font-size: 12px; font-weight: 700; color: #15243e; line-height: 16px;
+  height: 48px; padding: 0 16px; background: none;
+  border-bottom: 1px solid #eaedf2; border-right: 1px solid #eaedf2;
+  /* Header labels WRAP — "Answered by Agent (T/F)" sits on two lines in the capture, which
+     is why a 23-character header does not force its column wide. */
+  white-space: normal; vertical-align: middle;
+}
+.ts-tablewrap .ts-table--report td {
+  font-size: 12px; color: #15243e; line-height: 16px;
+  /* ⚠️ `height: auto` IS THE POINT, and it has to say so: the base `.ts-table td` pins
+     50px, which silently held every row at 50 against a measured 31 — the rule looked
+     complete because it set the padding and the line box and never mentioned height.
+     Row height is CONTENT-driven here: measured 31px for one line and 47 / 63 where a
+     campaign name or a website journey wraps to two or three, i.e. 31 + 16 per extra line.
+     ⚠️ 7px, where the capture's cell reads 8px. ag-Grid pins its own row height (31) BELOW
+     the natural content box its padding implies (8 + 16 + 8 + 1 = 33), so copying the
+     padding reproduces neither height. 7 + 16 + 7 + 1 lands on 31, 47 and 63 exactly —
+     the visible geometry, off by a pixel on a value nobody can see. */
+  height: auto; padding: 7px 16px;
+  white-space: pre-wrap; vertical-align: top;
+  /* ⚠️ THE COLUMN CAP IS WHAT MAKES CELLS WRAP AT ALL. Measured: five of the capture's
+     twelve columns are exactly 201.6px while the rest are narrower and content-fitted, so
+     that is a ceiling, not a fixed width — and it is the ceiling that puts a long campaign
+     name or website journey onto two lines. Without it every column grows to its widest
+     value, no row ever wraps, and the grid loses the multi-line texture that makes it read
+     as real records. `max-width` works here because the table is `width: max-content`
+     (auto layout), where it participates in the column calculation. */
+  max-width: 202px;
+  border-bottom: 1px solid #dde2eb; border-right: 1px solid #eaedf2;
+  border-top: 0;
+}
+.ts-tablewrap .ts-table--report tbody tr:hover td { background: none; }
+/* The pinned aggregation row: 64px, its own top rule, and BOTH lines right-aligned in
+   every column — including the dimension columns, whose data cells are left-aligned. */
+.ts-table--report .ts-report-agg td {
+  height: 64px; padding: 0 16px; text-align: right; vertical-align: middle;
+  border-top: 1px solid #eaedf2; border-bottom: 0;
+}
+.ts-table--report .ts-agg-label,
+.ts-table--report .ts-agg-value { display: block; white-space: nowrap; }
+.ts-table--report .ts-agg-label { font-size: 12px; font-weight: 400; color: #777e8b; line-height: 16px; }
+.ts-table--report .ts-agg-value { font-size: 16px; font-weight: 700; color: #15243e; line-height: 24px; }
+/* "Showing 200 of many rows", under the grid rather than inside it. */
+.ts-table-caption {
+  font-family: var(--ts-var-root-font-family); font-size: 12px; color: #777e8b;
+  padding-top: 4px;
+}
+
 /* ---- "Build With AI" -> Create Tile with AI drawer -------------------------
    Scoped .icta-. LAYOUT AND COPY are read off a screenshot (the HTML supplied was
    the earlier dropdown capture and carries none of this markup); every COLOUR,

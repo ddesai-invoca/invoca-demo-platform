@@ -1261,7 +1261,7 @@ The tell is STRUCTURAL, not lexical: each has a `<name> (T/F)` twin in its own g
 prospect's generated signals without naming any of them.
 
 ⚠️ **Our column totals are LOWER than the captured account's and that is correct**
-(234 v 371). Almost all of the difference is Signals: that healthcare account has 75
+(240 v 371). Almost all of the difference is Signals: that healthcare account has 75
 configured signals (150 entries with twins), Shady Blinds has 11. Do not "fix" it by
 padding the list with that account's signals — the whole point is deriving from the
 prospect. Scores is the same story.
@@ -1784,6 +1784,143 @@ count. Rows read Email, Organic, **Paid Search**, Print, Social Media — the bi
 Untouched afterwards: Details Report (`.idt-table`, 200 rows, 13/600 Lato, UNIQUE COUNT
 footer), the gallery's two plain table tiles (13/700 at 48px, 50px rows, 40 per-column heat
 cells) and `/dashboards/marketing` (21 dash-cards, 4px radius, KPI 48,293, zero `ts-`).
+
+## Template: "Details Report" (the row-level grid, measured 8/23/2026)
+`reportRows` / `reportHeaders` / `reportFooter` / `reportCaption` in `insightsTileData.ts`,
+`TsTable`'s `reportFooter` + `caption`, `.ts-table--report` in `ts.css`. Built through
+`InsightsColumnPicker`, not the Configuration drawer.
+
+⚠️ **NOT THE SAME SURFACE AS `/insights/dashboard/Details Report`.** That SCREEN is
+`.idt-*`, 17 columns, its own CSS, and is deliberately untouched here. This is the Add Tile
+TEMPLATE. Both exist on purpose, and this capture does NOT settle the screen's columns —
+see the open item at the end.
+
+⚠️ **A THIRD TABLE RENDERER.** The Details Report tile is **ag-Grid** (`ag-theme-alpine`,
+`ag-root-wrapper`, `.ag-header-cell`, a pinned `.ag-floating-bottom` row); the Calls-by-Hour
+pivot is **DevExtreme**; the plain table tile is a third thing again. They are typeset
+differently, so `.ts-table` could not just be reused:
+
+| | Details Report (ag-Grid) | pivot (DevExtreme) | plain table tile |
+|---|---|---|---|
+| face | **12px Lato `#15243E`** | 11.9px optimo-plain `#333` | 11.9px optimo-plain |
+| header | 12px/**700**, 48px, wraps | 11.9px/400, 50 + 53px | 13px/700, 48px |
+| row height | **31px, content-driven** (47 / 63 wrapped) | 26.86px fixed | 50px |
+| rules | col `#EAEDF2`, row **`#DDE2EB`** | col `#DDD`, row `#EAEDF2` | row `#EAEDF2` |
+| cell inset | 16px | 6px | 12px |
+
+⚠️ **THE AGGREGATION ROW HAS THREE DIFFERENT LABELS, and the column's own kind picks which.**
+Measured on the pinned bottom row: `UNIQUE COUNT` over every dimension (and over
+`Answered by Agent (T/F)`, whose value is 2), `TOTAL` over the additive measures (42.96K,
+15.35K, 20.02K), and **`TABLE AGGREGATE`** over the percentages (49%, 64%). That is the
+additive / non-additive split `insightsMeasures` already draws, appearing in the product's
+own vocabulary — a rate cannot be summed down a column, so it is recomputed over the table
+and the label says so. Label 12px `#777E8B` above a **16px/700** value, both right-aligned
+even under a left-aligned dimension column.
+
+⚠️ **A `(T/F)` COLUMN IS A DIMENSION HERE.** `kindOf` calls it `flag`, which is additive, so
+keying the label off the kind alone prints TOTAL under a column of "true"/"false". The
+catalogue decides: `(T/F)` twins are dimensions and the measure is the `Total <name>` sibling.
+
+⚠️ **HEADERS ARE THE AGGREGATED FORM OF THE MEASURE.** The grid reads `Total Call Count`
+where the builder's 371-column checkbox list offers `Call Count` — so the prefix is applied
+at render, and this is a third independent confirmation of `axisTitleFor` after the axis
+titles and the legend. Percentages carry no prefix, which is `aggregationWord` returning ""
+for a non-additive kind. Only catalogue MEASURES go through it: `kindOf` defaults an unknown
+name to `count`, so a dimension would print "Total Marketing Source".
+
+⚠️ **ONE ROW IS ONE CALL, AND THE COLUMNS OF A ROW HAVE TO AGREE.** This was the biggest
+correction. Every cell used to be minted from its own (column, row) seed, so a count column
+printed "15" and "26" per row — a monthly total sitting in a row-level report — and the
+answered flag, the answered count and the answered percentage in one row were three
+independent inventions. The capture's rows fall into exactly four shapes:
+
+```
+(T/F)    Count   Not Answered   Not Ans (%)   Answered   Ans (%)    n
+{Null}     1          0           {Null}         0       {Null}     1
+false      1          1            100%          0         0%      10
+true       1          0             0%           1        100%     18
+true       1          1            100%          1        100%      5
+```
+- **Total Call Count is 1 on every row**, so the footer's TOTAL is the row count and the
+  column adds up for anyone who checks.
+- **A percentage is 0% or 100%**, never between — a rate over one call is binary — and it is
+  `{Null}`, not 0%, when the call carries no agent-leg data. Note the flagless row prints
+  `0` for the counts but `{Null}` for the percentages.
+- **The fourth shape is real**: 5 of 34 rows are answered by an agent AND counted as not
+  answered, so both percentages read 100%. Reproduced at that rate; without it the two
+  percentage columns are perfect complements and read as computed rather than observed.
+- `(T/F)` is **lowercase** "true"/"false". Ours was "True"/"False".
+
+⚠️ **ATTRIBUTION COMES FROM `digitalInsights.rows`, WHOLE.** Cycling source, medium, campaign
+and search term independently produced rows like "Medium: Bing, Source: Organic" next to
+"Medium: cpc, Source: Paid Search" — one coherent, one contradictory, from the same code, and
+a marketer reads that instantly. `InteractionRow` already holds a coherent tuple per
+interaction, so the row is taken whole; the Details Report and the Digital Journey report now
+show the same attribution rather than two conflicting sets. It also supplies **Website
+Journey**, which was rendering the literal placeholder **"Website Journey A"** — no regex
+matched that column so it fell through to the minted-dimension fallback, the same failure the
+REPORTED CONTACT FIELDS note was written about. `websiteJourney` is documented as
+"Home / Category / Subcategory", exactly the capture's shape.
+
+⚠️ **THE BODY SCROLLS INSIDE THE TILE.** Measured: tile 703 tall, `.ag-body-viewport` **477**
+with `overflow-y: auto` over 16,925px of virtualised rows, header 49 above and the pinned row
+65 below. Ours came out **8,958px tall** — 200 rows at 31px with nothing capping it — which
+made the dashboard scroll for nine screens and pushed every tile below it out of sight. Now
+`max-height: 589px` (48 + 477 + 64) with the header and aggregation row `position: sticky`,
+both needing an opaque ground or the rows read through them.
+
+⚠️ **THE 202px COLUMN CAP IS WHAT MAKES CELLS WRAP.** Five of the capture's twelve columns are
+exactly 201.6px and the rest are narrower and content-fitted, so it is a ceiling, not a fixed
+width — and it is the ceiling that puts a long campaign name or journey onto two lines.
+Without it every column grows to its widest value and no row ever wraps.
+
+⚠️ **`height: auto` HAD TO BE SAID OUT LOUD.** The base `.ts-table td` pins 50px, so every
+row sat at 50 against a measured 31 while the `--report` rule looked complete (it set the
+padding and the line box and never mentioned height). And the padding is **7px** where the
+capture's cell reads 8: ag-Grid pins its row height (31) BELOW the content box its own padding
+implies (8+16+8+1 = 33), so copying the padding reproduces neither height. 7+16+7+1 lands on
+31 / 47 / 63 exactly.
+
+⚠️ **"Showing 1,000 of many rows" — WE RENDER 200 AND SAY 200**, the same call the Details
+Report screen already made: 1,000 rows times a dozen columns is 12,000 live cells in a tile,
+and claiming 1,000 while showing 200 is catchable by anyone who scrolls. It stays honest
+because the footer aggregates describe the whole dataset, which is what "of many rows" means.
+The caption sits OUTSIDE the scroller — inside it, it landed at the bottom of 8,958px of rows.
+
+⚠️ **THE CAPTURE'S OWN PERCENTAGES DO NOT RECONCILE and ours deliberately do.** Its
+15.35K/42.96K is 36% printed as 49%, and 20.02K/42.96K is 47% printed as 64% — evidently over
+a smaller non-null denominator that is not on screen. Reproducing an inconsistency a prospect
+can check with a calculator is worse than being self-consistent.
+
+⚠️ **THE BUILDER EXTRACTION WAS MISSING THE ANSWERED FAMILY.** The tile renders
+`Total Call Not Answered` and `Total Answered by Agent`, neither of which `insightsColumns`
+offered — so the captured tile was not buildable. `Call Not Answered`, `Answered` and
+`Answered by Agent` (with `(T/F)` twins) are now in **Call Details** beside `Call Count`;
+their existence is proven by the tile, the GROUP is inferred from the family. Column totals
+moved 234 → 240.
+
+⚠️ **OPEN, and deliberately not guessed:** the capture also shows `Call Not Answered (%)` and
+`Answered by Agent (%)` beside their `Total …` columns, and **no `(%)` name exists anywhere in
+the 371 extracted builder columns**. Either the report derives a percentage companion per
+conditional measure, or our accordion walk missed those names. We render exactly what the SE
+picked and invent no companion column — a rule guessed from one sample would put columns
+nobody asked for into the tile. Settle it with a capture of the Details builder scrolled to
+the Call Details group.
+⚠️ Also open: the SCREEN at `/insights/dashboard/Details Report` still shows **17** columns,
+five of them guessed and five borrowed from other screens (see its own section). This capture
+gives a definitive **12** for the TILE. They may legitimately differ — the screen is a saved
+report someone configured — so the screen was left alone rather than rewritten off a
+different surface's capture.
+
+Verified through the real picker with the capture's own 9 picks: headers carry the Total
+prefix, 200 rows all 31px, 2 of 10 columns capped at 202 with 164 rows wrapping to 47,
+aggregation row 64px reading UNIQUE COUNT 48,293 / 6 / 15 / 7 / 5 / 18 / 2 then TOTAL 48.29K /
+18.35K / 28.01K, caption present, wrapper 589px over 8,936px of scroll with header and footer
+sticky at offset 0. Row shapes came out 3% / 30% / 52% / 15% against the capture's 3% / 29% /
+53% / 15%. Untouched afterwards: the Details Report SCREEN (17 cols, 200 rows, 13/600 Lato,
+42.5px rows), both pivot tiles (27px rows, optimo-plain, heat intact), the gallery's two plain
+table tiles (13/700 at 48px, 50px rows, 40 per-column heat cells) and `/dashboards/marketing`
+(21 dash-cards, 4px radius, KPI 48,293, 7 donuts, zero `ts-`). `npm run audit:ai` all green.
 
 ## Templates: "KPI" and "Metric" (measured 8/21/2026)
 

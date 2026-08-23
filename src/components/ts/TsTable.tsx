@@ -48,6 +48,17 @@ export interface TsTableProps {
   heatMax?: number;
   /** A pivot's extra first header row: the measure, then the column dimension's name. */
   pivotHeader?: { measure: string; columnDimension: string };
+  /**
+   * A Report tile's pinned aggregation row: a grey label over a large value, per column.
+   *
+   * ⚠️ THE REPORT TABLE IS A THIRD RENDERER, not a variant of the other two. Measured:
+   * the Details Report tile is **ag-Grid** in 12px LATO `#15243E`; the Calls-by-Hour pivot
+   * is DevExtreme in 11.9px optimo-plain `#333`. Passing this switches the chrome to
+   * `--report`, the same way `pivotHeader` switches it to `--pivot`.
+   */
+  reportFooter?: { label: string; value: string }[];
+  /** `Showing 200 of many rows`, printed under the grid. */
+  caption?: string;
 }
 
 /** Digits, currency, percentages and thousands separators all count as numeric. */
@@ -68,6 +79,7 @@ const numOf = (s: string): number | null => {
 
 export function TsTable({
   columns, rows, heatmap, footer, alignRight, onRow, heatScope = "column", heatMax, pivotHeader,
+  reportFooter, caption,
 }: TsTableProps) {
   const n = columns.length;
   const body = useMemo(() => rows.map((r) => fitCells(r, n)), [rows, n]);
@@ -120,9 +132,19 @@ export function TsTable({
     return parts.length ? parts.join(" ") : undefined;
   };
 
+  const variant = pivotHeader ? " ts-table--pivot" : reportFooter ? " ts-table--report" : "";
+
   return (
-    <div className="ts-tablewrap">
-      <table className={pivotHeader ? "ts-table ts-table--pivot" : "ts-table"}>
+    /* ⚠️ A FRAGMENT, because the caption sits OUTSIDE the scroller. Inside it, the caption
+       landed at the bottom of 8,958px of rows and could only be read by scrolling to the
+       end — the capture has it under the grid, always visible. Every other table passes no
+       caption, so the fragment renders exactly one child and their DOM is unchanged. */
+    <>
+    {/* The wrapper carries the variant too: a Report grid scrolls its BODY inside a fixed
+        height (measured 477px in the capture) with the header and the aggregation row
+        pinned, and only the wrapper can own that. */}
+    <div className={`ts-tablewrap${reportFooter ? " ts-tablewrap--report" : ""}`}>
+      <table className={`ts-table${variant}`}>
         <thead>
           {/* ⚠️ A PIVOT HAS TWO HEADER ROWS. The first names the MEASURE over the row-label
               column and the COLUMN DIMENSION over everything else — "Total Call Count" then
@@ -175,7 +197,25 @@ export function TsTable({
             </tr>
           </tfoot>
         ) : null}
+        {/* ⚠️ THE AGGREGATION ROW IS TWO LINES PER CELL, and both are RIGHT-ALIGNED even
+            under a left-aligned dimension column — measured, and it is what makes the row
+            read as a row of figures rather than as another data row. The label is 12px
+            `#777E8B`, the value 16px/700 `#15243E`. */}
+        {reportFooter && reportFooter.length ? (
+          <tfoot className="ts-report-agg">
+            <tr>
+              {Array.from({ length: n }, (_, i) => reportFooter[i]).map((f, i) => (
+                <td key={i}>
+                  <span className="ts-agg-label">{f?.label ?? ""}</span>
+                  <span className="ts-agg-value">{f?.value ?? ""}</span>
+                </td>
+              ))}
+            </tr>
+          </tfoot>
+        ) : null}
       </table>
     </div>
+    {caption ? <div className="ts-table-caption">{caption}</div> : null}
+    </>
   );
 }

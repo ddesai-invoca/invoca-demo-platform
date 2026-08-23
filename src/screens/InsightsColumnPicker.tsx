@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { columnGroupsFor, sidebarFor, type ReportKind } from "../data/insightsColumns";
-import { reportRows } from "../data/insightsTileData";
+import { reportCaption, reportFooter, reportHeaders, reportRows } from "../data/insightsTileData";
 
 /* =============================================================================
    InsightsColumnPicker — what the three Report templates open.
@@ -36,7 +36,7 @@ import { reportRows } from "../data/insightsTileData";
    Contact Center Metrics and a third of the catalogue into "Short Text Fields";
    both are wrong on the real page.
 
-   Our column totals run below that account's (233 vs 371) almost entirely in the
+   Our column totals run below that account's (240 vs 371) almost entirely in the
    Signals group: it has 75 configured signals paired with (T/F) twins, and a prospect
    has however many its own profile generated. That gap is the feature.
    ============================================================================= */
@@ -197,13 +197,23 @@ export function InsightsColumnPicker() {
               /* A grouped summary leads with the thing it is grouped by, as the live
                  report does, so the aggregate reads left to right. */
               const cols = side.groupBy && groupBy ? [groupBy, ...picked.filter((c) => c !== groupBy)] : picked;
+              const rows = reportRows(profile, cols);
               addTile(`${profileId}::${DASH}`, {
                 id: `t${Date.now()}`, tileType: "table", title: name,
-                note: side.groupBy && groupBy
-                  ? `by ${groupBy}, ${cols.length} column${cols.length === 1 ? "" : "s"}`
-                  : `${cols.length} column${cols.length === 1 ? "" : "s"}`,
+                /* ⚠️ NO NOTE. The captured tile's header carries the title and nothing
+                   else — `descriptionPresent` is false — where this printed
+                   "12 columns" under it, which is our invention rather than the
+                   product's. The column count is visible in the grid. */
+                note: "",
                 kpis: [], xLabels: [], series: [], slices: [],
-                columns: cols, rows: reportRows(profile, cols),
+                /* Headers are the AGGREGATED form of a measure ("Total Call Count"), which
+                   is what the capture prints; rows and the footer are computed from the
+                   picked names, since those are what the catalogue and `kindOf` know. */
+                columns: reportHeaders(profile, cols), rows,
+                /* The pinned aggregation row and the row caption are what make this read
+                   as the real Report tile rather than a bare grid; both are measured. */
+                reportFooter: reportFooter(profile, cols, rows),
+                caption: reportCaption(rows.length),
               });
               navigate(DASH);
             }}>

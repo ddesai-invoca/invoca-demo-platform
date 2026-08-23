@@ -3,6 +3,7 @@ import type { CustomerProfile } from "./schema";
 import {
   axisTitleFor, formatHero, formatMeasure, isAdditive, kindOf, magnitudeOf, type MeasureKind,
 } from "./insightsMeasures";
+import { buildCatalog } from "./insightsCatalog";
 import type { GeneratedTile } from "./AiAssistantContext";
 
 /* =============================================================================
@@ -672,18 +673,244 @@ const LAST = ["Bennett", "Alvarez", "Okafor", "Nguyen", "Kowalski", "Rivera", "H
 /* ---- rows for a Report tile ------------------------------------------------
    One row per interaction, with every cell answered from the pool where the pool can
    answer: a dimension cycles its real values, a measure is formatted at the right
-   magnitude, a (T/F) signal reads True/False. Everything is keyed off the profile id
+   magnitude, a (T/F) signal reads true/false. Everything is keyed off the profile id
    and the row index, so the same chosen columns always produce the same table — the
    rule that a number never changes once shown applies to report rows too. */
-export function reportRows(profile: CustomerProfile, columns: string[], count = 8): string[][] {
+export function reportRows(profile: CustomerProfile, columns: string[], count = REPORT_ROWS): string[][] {
   const base = hash(profile.id + "::report");
-  return Array.from({ length: count }, (_, i) =>
-    columns.map((col, j) => cellFor(profile, col, i, base + i * 131 + j * 17)));
+  return Array.from({ length: count }, (_, i) => {
+    const shape = rowShape(base + i * 7919);
+    return columns.map((col, j) => cellFor(profile, col, i, base + i * 131 + j * 17, shape));
+  });
 }
 
-function cellFor(profile: CustomerProfile, col: string, row: number, seed: number): string {
+/**
+ * ONE ROW IS ONE CALL, and the columns of that row have to agree with each other.
+ *
+ * ⚠️ THIS IS THE CORRECTION THE CAPTURE FORCED. Every cell used to be minted from its own
+ * (column, row) seed, so a count column printed "15" and "26" per row — a monthly total
+ * sitting in a row-level report — and the answered flag, the answered count and the
+ * answered percentage in the same row were three independent inventions that could and did
+ * contradict each other. The capture's own rows fall into exactly four shapes:
+ *
+ *     (T/F)   Total Call Count   Not Answered   Not Ans (%)   Answered   Ans (%)   n
+ *     {Null}         1                0           {Null}         0        {Null}    1
+ *     false          1                1            100%          0          0%     10
+ *     true           1                0             0%           1        100%     18
+ *     true           1                1            100%          1        100%      5
+ *
+ * Three things that only that table shows:
+ *   - **Total Call Count is 1 on every row.** The measure is a count of calls and the row
+ *     IS one call, so the footer's TOTAL is the row count, which is what makes the column
+ *     add up for anyone who checks.
+ *   - **A percentage is 0% or 100%**, never anything between — a rate over a single call is
+ *     binary — and it is `{Null}`, not 0%, when the call carries no agent-leg data at all.
+ *     Note the flagless row prints 0 for the counts but `{Null}` for the percentages.
+ *   - **The fourth shape is real**: 5 of 34 rows are answered by an agent AND counted as not
+ *     answered, so both percentages read 100%. It reads like a call that rang out and was
+ *     picked up on a later leg. Kept at that measured rate, because without it the two
+ *     percentage columns are perfect complements and look computed rather than observed.
+ */
+/** What the product prints for a missing value, verbatim — not an em dash, not blank. */
+const NULL_CELL = "{Null}";
+
+interface RowShape {
+  /** Marketing attribution: false renders every marketing dimension as `{Null}`. */
+  attributed: boolean;
+  /** The agent-leg flag. `null` is the capture's `{Null}` row. */
+  flag: boolean | null;
+  answered: 0 | 1;
+  notAnswered: 0 | 1;
+}
+
+/**
+ * The ATTRIBUTION cells of a report row, read from the Digital Journey report.
+ *
+ * ⚠️ THE ATTRIBUTION COLUMNS MUST AGREE WITH EACH OTHER, and cycling each one
+ * independently is what broke that. Source, medium, campaign and search term were each
+ * picked from their own dimension list by the row index, which produced rows like
+ * "Medium: Bing, Source: Organic" and "Medium: cpc, Source: Paid Search" side by side —
+ * one coherent, one contradictory, from the same code. A marketer reads that instantly.
+ * `digitalInsights.rows` already holds a COHERENT tuple per interaction, generated
+ * together for this prospect, so the row is taken whole. Side benefit worth as much as the
+ * fix: the Details Report and the Digital Journey report now show the same attribution
+ * instead of two conflicting sets.
+ *
+ * ⚠️ IT ALSO SUPPLIES Website Journey, WHICH USED TO RENDER "Website Journey A". No regex
+ * in `cellFor` matched that column, so it fell through to the minted-dimension fallback —
+ * the same literal-placeholder failure the REPORTED CONTACT FIELDS note below was written
+ * about. `InteractionRow.websiteJourney` is documented as "Home / Category / Subcategory",
+ * which is exactly the shape the capture prints ("Home / Surgery / Orthopedics").
+ */
+function attribution(profile: CustomerProfile, col: string, row: number): string | null {
+  const rows = profile.reports.digitalInsights?.rows ?? [];
+  if (!rows.length) return null;
+  const r = rows[row % rows.length];
+  /* The report's own placeholder for "not applicable" is an em dash; in this grid the
+     product prints {Null}. Same absence, two surfaces, two vocabularies. */
+  const v = (s: string | undefined) => (!s || s === "—" ? NULL_CELL : s);
+  if (/search term/.test(col)) return v(r.marketingSearchTerm);
+  if (/campaign/.test(col)) return v(r.marketingCampaign);
+  if (/medium/.test(col)) return v(r.marketingMedium);
+  if (/source/.test(col)) return v(r.marketingSource);
+  if (/website journey/.test(col)) return v(r.websiteJourney);
+  if (/landing page|calling page/.test(col)) return v(r.landingPageUrl);
+  return null;
+}
+
+function rowShape(seed: number): RowShape {
+  const r = (n: number, shift: number) => (seed >>> shift) % n;
+  /* ~3% of rows carry no agent-leg data (1 of the capture's 34), and ~15% of the rest have
+     no marketing attribution — the capture's rows 1, 4 and 5 are all-{Null}. */
+  const flagless = r(34, 0) === 0;
+  const flag = flagless ? null : r(100, 3) < 68;      // 18 + 5 of 33 answered ≈ 68%
+  const answered: 0 | 1 = flag ? 1 : 0;
+  /* An unanswered call always counts as not answered; an answered one does 5/23 of the
+     time, which is the capture's own fourth shape. */
+  const notAnswered: 0 | 1 = flagless ? 0 : flag ? (r(23, 9) < 5 ? 1 : 0) : 1;
+  return { attributed: flagless ? false : r(100, 15) >= 15, flag, answered, notAnswered };
+}
+
+/**
+ * How many rows a Report TILE renders.
+ *
+ * ⚠️ THE REAL TILE SAYS "Showing 1,000 of many rows" AND WE RENDER 200, DELIBERATELY —
+ * the same call the Details Report SCREEN already made, for the same two reasons: 1,000
+ * rows times a dozen chosen columns is 12,000 live cells inside a dashboard tile, which
+ * stutters on a projector; and claiming 1,000 while showing 200 is catchable by anyone who
+ * scrolls. The caption says what is actually rendered. It stays honest because the FOOTER
+ * aggregates describe the whole dataset, not the rendered slice, which is exactly what
+ * "of many rows" means.
+ */
+export const REPORT_ROWS = 200;
+
+/** `Showing 200 of many rows`, the caption the capture prints under the grid. */
+export const reportCaption = (rows: number): string =>
+  `Showing ${rows.toLocaleString("en-US")} of many rows`;
+
+/**
+ * The pinned aggregation row under a Report tile.
+ *
+ * ⚠️ THREE DIFFERENT LABELS, AND THE COLUMN'S OWN KIND PICKS WHICH. Read off the capture:
+ *
+ *     UNIQUE COUNT      every dimension — and `Answered by Agent (T/F)`, whose value is 2
+ *     TOTAL             the additive measures (42.96K, 15.35K, 20.02K)
+ *     TABLE AGGREGATE   the percentages (49%, 64%)
+ *
+ * The percentages are the interesting confirmation: a rate cannot be summed down a column,
+ * so ThoughtSpot recomputes it over the whole table and says so in the label. That is the
+ * additive / non-additive split `insightsMeasures` already draws, showing up in the
+ * product's own vocabulary.
+ *
+ * ⚠️ A `(T/F)` COLUMN IS A DIMENSION HERE, NOT A FLAG MEASURE. `kindOf` calls it `flag`,
+ * which is additive, so keying the label off the kind alone would print TOTAL under a
+ * column of "true"/"false". The catalogue is what decides: `(T/F)` twins live in
+ * `dimensions`, and the additive measure is its "Total <name>" sibling.
+ *
+ * ⚠️ THE CAPTURE'S OWN PERCENTAGES DO NOT RECONCILE and ours deliberately do. Its
+ * 15.35K/42.96K is 36%, printed as 49%, and 20.02K/42.96K is 47%, printed as 64% — both
+ * percentages are evidently over some smaller non-null denominator that is not on screen.
+ * Reproducing an inconsistency a prospect can spot with a calculator is worse than being
+ * self-consistent, so ours come from `magnitudeOf`, the same source every other tile uses.
+ */
+/**
+ * A Report's column HEADERS: a measure is printed in its aggregated form, a dimension
+ * verbatim.
+ *
+ * ⚠️ MEASURED, AND IT IS THE SAME `axisTitleFor` EVERY CHART ALREADY USES. The capture's
+ * headers read `Total Call Count` / `Total Answered by Agent` where the builder's checkbox
+ * list — 371 columns of it, extracted into `insightsColumns` — offers `Call Count` and
+ * `Answered by Agent`. So the aggregation prefix is applied at RENDER, exactly as it is on
+ * an axis title and in a legend, and this is a third independent confirmation of that rule.
+ * The percentages carry no prefix, which is `aggregationWord` returning "" for a
+ * non-additive kind.
+ *
+ * ⚠️ ONLY CATALOGUE MEASURES GO THROUGH IT. `kindOf` defaults an unrecognised name to
+ * `count`, so running a dimension through `axisTitleFor` prints "Total Marketing Source" —
+ * the same trap the pie's tooltip label documents.
+ *
+ * ⚠️ OPEN: the capture also shows `Call Not Answered (%)` and `Answered by Agent (%)`
+ * beside their `Total …` columns, and NO `(%)` name exists anywhere in the 371 extracted
+ * builder columns. So either the report derives a percentage companion per conditional
+ * measure, or the builder offers `(%)` names our accordion walk missed. We render exactly
+ * what the SE picked and do not invent a companion column — a rule guessed from one sample
+ * would put columns nobody asked for into the tile. Settle it with a capture of the
+ * Details Report builder scrolled to the Call Details group.
+ */
+export function reportHeaders(profile: CustomerProfile, columns: string[]): string[] {
+  const measures = new Set(buildCatalog(profile).measures);
+  return columns.map((c) => (measures.has(c) && !/\(t\/f\)$/i.test(c) ? axisTitleFor(c) : c));
+}
+
+export function reportFooter(
+  profile: CustomerProfile, columns: string[], rows?: string[][],
+): { label: string; value: string }[] {
+  const measures = new Set(buildCatalog(profile).measures);
+  /* Through `magnitudeOf` rather than reading the dashboard directly, so an id column's
+     UNIQUE COUNT is the same call total every other tile partitions. */
+  const calls = magnitudeOf(profile, "Call Count").total;
+  return columns.map((col, ci) => {
+    if (measures.has(col) && !/\(t\/f\)$/i.test(col)) {
+      const g = magnitudeOf(profile, col);
+      return isAdditive(g.kind)
+        ? { label: "TOTAL", value: formatHero(g.total, g.kind) }
+        : { label: "TABLE AGGREGATE", value: formatMeasure(g.level, g.kind) };
+    }
+    /* A dimension's UNIQUE COUNT. An id column is unique per call by definition, so it
+       reports the prospect's own call total — which is what the capture's 42,963 is
+       against its 42.96K of calls. A `(T/F)` column has exactly two values. */
+    /* ⚠️ COUNT WHAT THE COLUMN ACTUALLY RENDERS, not what `dimensionValues` lists. Website
+       Journey is assembled from the Digital Journey rows rather than being a dimension with
+       a value list, so the list route reported 5 where the column shows far more. Counting
+       the rendered cells (excluding {Null}, which is the absence of a value, not one of
+       them) is right for every dimension and cannot drift from the grid beside it. */
+    const seen = rows
+      ? new Set(rows.map((r) => r[ci]).filter((v) => v && v !== NULL_CELL)).size
+      : 0;
+    const n = /record id|unique id|interaction id|transaction id/i.test(col) ? calls
+      : /\(t\/f\)$/i.test(col) ? 2
+      : Math.max(1, seen, dimensionValues(profile, col).length);
+    return { label: "UNIQUE COUNT", value: n.toLocaleString("en-US") };
+  });
+}
+
+function cellFor(
+  profile: CustomerProfile, col: string, row: number, seed: number, shape?: RowShape,
+): string {
   const c = col.toLowerCase();
-  if (/\(t\/f\)$/.test(c)) return (seed % 3 === 0) ? "False" : "True";
+  /* ⚠️ LOWERCASE. The capture prints "true" / "false"; this returned "True" / "False". */
+  if (/\(t\/f\)$/.test(c)) {
+    if (!shape) return (seed % 3 === 0) ? "false" : "true";
+    /* The answered flag drives its own column so the (T/F), the count and the percentage
+       in one row cannot disagree; any OTHER (T/F) signal is its own coin toss. */
+    if (/answered by agent/.test(c)) return shape.flag === null ? NULL_CELL : String(shape.flag);
+    return shape.flag === null ? NULL_CELL : (seed % 3 === 0) ? "false" : "true";
+  }
+  if (shape) {
+    const k = kindOf(col);
+    /* A row-level report shows ONE call, so an additive count is an indicator, not a
+       total: the base call count is 1 and every conditional count is 0 or 1. */
+    if (k === "count" || k === "flag") {
+      if (/^(total )?call count$/.test(c)) return "1";
+      if (/not answered/.test(c)) return String(shape.notAnswered);
+      if (/answered/.test(c)) return String(shape.answered);
+    }
+    /* And a rate over a single call is binary — 0% or 100%, or {Null} when the call
+       carries no agent-leg data at all. */
+    if (k === "percent") {
+      if (shape.flag === null) return NULL_CELL;
+      if (/not answered/.test(c)) return shape.notAnswered ? "100%" : "0%";
+      if (/answered/.test(c)) return shape.answered ? "100%" : "0%";
+      return (seed % 100) < 50 ? "100%" : "0%";
+    }
+    /* An unattributed call has no campaign, medium, source, term or journey — a third of
+       the capture's visible rows are {Null} across all five. */
+    if (!shape.attributed && /marketing |website journey|search term|campaign|medium|source/.test(c)) {
+      return NULL_CELL;
+    }
+  }
+  const attrib = attribution(profile, c, row);
+  if (attrib !== null) return attrib;
   if (/record id|unique id|interaction id/.test(c)) {
     const hex = seed.toString(16).toUpperCase().padStart(8, "0").slice(0, 8);
     return `${hex.slice(0, 4)}-${hex.slice(4)}${(row + 17).toString(16).toUpperCase()}`;

@@ -290,7 +290,8 @@ function TsTileCard({ tile, onRemove, onPick }: {
         <TsTable columns={tile.columns ?? []} rows={tile.rows ?? []}
           footer={tile.tableFooter} heatmap={tile.heatmap}
           heatScope={tile.heatScope} heatMax={tile.heatMax}
-          pivotHeader={tile.pivotHeader} />
+          pivotHeader={tile.pivotHeader}
+          reportFooter={tile.reportFooter} caption={tile.caption} />
       )}
       {/* ⚠️ NO NOTE. The real tile's description is empty — `descriptionPresent` was
           false in the capture — and ours was printing "Call Count over the reporting

@@ -82,6 +82,14 @@ export interface GeneratedTile {
   heatMax?: number;
   /** The pivot's first header row: the measure, then the column dimension's name. */
   pivotHeader?: { measure: string; columnDimension: string };
+  /**
+   * A Report tile's pinned aggregation row — UNIQUE COUNT / TOTAL / TABLE AGGREGATE per
+   * column, decided by the column's own kind. Its presence also selects the ag-Grid
+   * chrome, which is a different typeface and row height from the pivot's.
+   */
+  reportFooter?: { label: string; value: string }[];
+  /** "Showing 200 of many rows", printed under a Report grid. */
+  caption?: string;
   /* OPTIONAL ON PURPOSE, and deliberately absent from the model's output schema
      (TILE_PROPS in engine/assistant.ts). `toSchema()` marks every property of a
      generated type REQUIRED, so adding these there would force the assistant to
