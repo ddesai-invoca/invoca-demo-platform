@@ -391,6 +391,27 @@ export function categoryOrder<T extends { label: string }>(slices: T[]): T[] {
 }
 
 /**
+ * Row order for a PIVOT (Calls by Hour / Calls by Day of Week).
+ *
+ * ⚠️ A PIVOT COLLATES BY LOCALE, WHERE THE PIE AND BAR MEASURED CODE UNITS. Both are
+ * measurements, so they stay two functions — do not "unify" them. Verified against the
+ * Day-of-Week capture's 51 Marketing Source rows: a plain `localeCompare` reproduces the
+ * whole sequence including `{Null}` at index 0, and a code-unit sort diverges at index 6
+ * (it puts `CTV` before `ChatGPT`). Four rows in that capture make the difference visible
+ * rather than academic:
+ *   - `direct` before `Direct`, and `Meta` before `META` — case is only a TERTIARY
+ *     difference under locale collation, and lowercase wins the tie. By code unit every
+ *     uppercase letter sorts before every lowercase one, so `Direct` would lead.
+ *   - `duckduckgo.com` between `Display Network` and `Email`, and `umassmemorial.org`
+ *     between `Television` and `Zocdoc` — a code-unit sort exiles both to the end.
+ * `{Null}` needs no pinning here: ICU orders `{` ahead of letters on its own, which is
+ * exactly where the capture puts it (unlike the code-unit path, which has to pin it).
+ */
+export function pivotOrder<T extends { label: string }>(rows: T[]): T[] {
+  return [...rows].sort((a, b) => a.label.localeCompare(b.label));
+}
+
+/**
  * `Name - count (pct%)`, the name cut at 30 characters.
  *
  * `maxChars` shortens the NAME further when the tile is narrower than the 847px canvas

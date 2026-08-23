@@ -88,9 +88,15 @@ export function TsTable({
      that saturation point. Default stays "column" so the Details Report is untouched. */
   const tableRange = useMemo(() => {
     if (heatScope !== "table") return null;
-    const nums = body.flatMap((r) => r.map(numOf)).filter((v): v is number => v !== null);
+    /* ⚠️ THE FOOTER IS PART OF THE RAMP, not exempt from it. Measured on the Day-of-Week
+       capture: all 367 non-blank cells fit ONE linear ramp, the per-day totals among them,
+       and the grand total is one of only three cells that reach the darkest colour. The
+       first version tinted the body alone, which left the row a prospect's eye goes to
+       first — the totals — as the one row carrying no signal. */
+    const cells = [...body, ...(footer && footer.length ? [footer] : [])];
+    const nums = cells.flatMap((r) => r.map(numOf)).filter((v): v is number => v !== null);
     return { min: 0, max: heatMax ?? (nums.length ? Math.max(...nums) : 0) };
-  }, [heatScope, heatMax, body]);
+  }, [heatScope, heatMax, body, footer]);
 
   const heatCols = useMemo(() => {
     if (!heatmap) return new Set<number>();
@@ -103,9 +109,20 @@ export function TsTable({
     return new Set(stats.map((s, i) => (s.numeric ? i : -1)).filter((i) => i >= 0));
   }, [alignRight, stats]);
 
+  /* A pivot's LAST column is its row-total column, and the capture prints it bold on a
+     #F5F5F5 ground — the same treatment as the totals row. Structural rather than a
+     guess: the column only exists because `timePivot` appends it. */
+  const totalCol = pivotHeader ? n - 1 : -1;
+  const cellCls = (ci: number) => {
+    const parts = [];
+    if (rightCols.has(ci)) parts.push("ts-td--right");
+    if (ci === totalCol) parts.push("ts-td--total");
+    return parts.length ? parts.join(" ") : undefined;
+  };
+
   return (
     <div className="ts-tablewrap">
-      <table className="ts-table">
+      <table className={pivotHeader ? "ts-table ts-table--pivot" : "ts-table"}>
         <thead>
           {/* ⚠️ A PIVOT HAS TWO HEADER ROWS. The first names the MEASURE over the row-label
               column and the COLUMN DIMENSION over everything else — "Total Call Count" then
@@ -119,7 +136,7 @@ export function TsTable({
           ) : null}
           <tr>
             {columns.map((c, i) => (
-              <th key={c + i} className={rightCols.has(i) ? "ts-td--right" : undefined}>{c}</th>
+              <th key={c + i} className={cellCls(i)}>{c}</th>
             ))}
           </tr>
         </thead>
@@ -133,7 +150,7 @@ export function TsTable({
                 const rng = tableRange ?? st;
                 const bg = v !== null && rng ? heatColor(v, rng.min, rng.max) : undefined;
                 return (
-                  <td key={ci} className={rightCols.has(ci) ? "ts-td--right" : undefined}
+                  <td key={ci} className={cellCls(ci)}
                     style={bg ? { background: bg } : undefined}>
                     {cell}
                   </td>
@@ -148,9 +165,13 @@ export function TsTable({
         {footer && footer.length ? (
           <tfoot>
             <tr>
-              {fitCells(footer, n).map((f, i) => (
-                <td key={i} className={rightCols.has(i) ? "ts-td--right" : undefined}>{f}</td>
-              ))}
+              {fitCells(footer, n).map((f, i) => {
+                const v = heatCols.has(i) ? numOf(f) : null;
+                const bg = v !== null && tableRange ? heatColor(v, tableRange.min, tableRange.max) : undefined;
+                return (
+                  <td key={i} className={cellCls(i)} style={bg ? { background: bg } : undefined}>{f}</td>
+                );
+              })}
             </tr>
           </tfoot>
         ) : null}

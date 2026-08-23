@@ -1663,7 +1663,7 @@ the capture has `<label id=measure-label><span>Attribute</span></label>`. The `i
 independently confirms the `kind: "measure"` classification, which was originally inferred
 from live option COUNTS — two signals agreeing.
 
-## Templates: "Calls by Hour" / "Calls by Day of Week" (measured 8/21/2026)
+## Templates: "Calls by Hour" / "Calls by Day of Week" (measured 8/21, re-measured 8/23/2026)
 `timePivot` in `insightsTileData.ts` + `TsTable`'s `heatScope` / `heatMax` / `pivotHeader`.
 
 ⚠️ **THESE ARE PIVOT TABLES, NOT BAR CHARTS.** Rows are the chosen dimension, columns are
@@ -1684,9 +1684,30 @@ measured, so `TsTable` gained `heatScope`, defaulting to `"column"` so the repor
 untouched. The proof it is not per-column: this pivot's 24 column maxima carry **20 different
 colours**, where per-column normalisation would give every one of them the same darkest
 shade. And it clamps rather than stretching — measured t reaches 1 at ~4,320 while the grand
-total is 42,050, so several large values share `#B5ECF2`. `heatMax` is that saturation point,
-set to the largest per-hour total (4,730 against the measured 4,320 — a 9% difference,
-invisible).
+total is 42,050, so several large values share `#B5ECF2`.
+
+⚠️ **THE SATURATION POINT IS `heatMax`, AND THE DAY-OF-WEEK CAPTURE PINNED IT PROPERLY.**
+Fitted against all 367 non-blank cells of that grid, `t = min(1, v / 8024)` reproduces every
+one to a mean **0.185/255 per channel** — so the ramp is linear from ZERO with a hard clamp,
+not a stretch to the max and not a curve. But **8,024 matches nothing on screen**, so the
+rule is a proxy. Every candidate, scored against that same fit:
+
+| candidate | value | err/channel |
+|---|---|---|
+| largest BODY cell (totals excluded) | 7,580 | 0.224 ← **what we use** |
+| 2nd largest row total | 7,870 | 0.200 |
+| free-fit optimum | 8,024 | 0.185 |
+| largest column total | 10,440 | 0.399 ← what we used before |
+| grand total | 42,960 | 1.106 |
+
+The surface is shallow, so anything in 7.6K-8.6K is indistinguishable; the largest body cell
+is the one that is both close and principled, and it explains the capture's signature exactly
+— **only 3 of 367 cells saturate, and all three are aggregates**, because a sum is
+necessarily larger than the largest thing summed.
+⚠️ On OUR data more cells flatten at the top (12 of 48), and that is arithmetic, not a bug:
+the capture splits its total across 51 sources so each body cell is tiny beside the totals,
+where Shady Blinds has 5 and each row total is only ~5x its cells. The reference screenshot
+shows its own footer row saturating too, so the character matches.
 
 ⚠️ **`numOf` HAD TO LEARN K/M/B, and this was a silent bug.** The pivot renders "1.63K" /
 "21.73K"; every one of those failed `numOf`'s digits-only test, so the ONLY cells that took a
@@ -1704,6 +1725,65 @@ early evening and is near-dead overnight; a flat spread would make "spot your bu
 slowest times" meaningless, which is the template's whole stated purpose. Row weights come
 from the REAL breakdown, so a pivot and a Stacked Bar on the same dimension agree — Paid
 Search totals 21.73K in both, and the grand total is the prospect's own 48.3K.
+The DAY shape is the same idea: a gentle Mon-to-Fri decline with a clear weekend drop.
+⚠️ The capture's own day shape is nothing like that — **Saturday is its biggest day at
+10.44K** against ~5K weekdays. That is one healthcare account's data, not the template, and
+copying it would give every prospect a Saturday spike nobody can explain.
+
+⚠️ **ROWS ARE SORTED ALPHABETICALLY, AND THEY WERE NOT BEFORE.** The Day-of-Week capture runs
+{Null}, Billboard, Bing, … Zocdoc across 51 rows, so the biggest row sits mid-list and the
+breakdown's own value order must not survive into the pivot. Both pivots shared this defect
+because both go through `timePivot`.
+
+⚠️ **A PIVOT COLLATES BY LOCALE WHERE THE PIE AND BAR MEASURED CODE UNITS.** Both are
+measurements and they stay two functions (`pivotOrder` v `categoryOrder`) — do not unify
+them. Verified: `localeCompare` reproduces all 51 captured rows including `{Null}` at index 0,
+and a code-unit sort diverges at index 6 (`CTV` before `ChatGPT`). Four rows make the
+difference visible rather than academic: `direct` before `Direct` and `Meta` before `META`
+(case is only a tertiary difference under locale collation, and lowercase wins the tie),
+plus `duckduckgo.com` filed under D and `umassmemorial.org` under U, where a code-unit sort
+exiles both to the end. `{Null}` needs no pinning here — ICU puts `{` ahead of letters by
+itself, which is exactly where the capture has it.
+
+⚠️ **THE PIVOT'S CHROME IS NOT THE TABLE TILE'S, and the two were sharing one rule set.**
+`.ts-table--pivot` (opt-in, set only when `pivotHeader` is passed) carries the measured pivot
+values; the three Report table tiles keep their own. Rows are the headline difference — 27px
+against a table tile's 50px, which is why a 51-row pivot rendered nearly twice the real
+height.
+
+| | pivot (measured) | plain table tile (measured earlier) |
+|---|---|---|
+| header | 11.9px / **400** / `#777E8B`, centred | 13px / **700** / root ink, left |
+| header height | band 1 **50**, band 2 **53** | 48 |
+| row height | **26.86** | 50 |
+| body ink | `#333` (row LABELS are `#777E8B`) | `#333` |
+| column rules | 1px `#DDD` from column 1 rightwards | none |
+| row rules | 1px `#EAEDF2` | 1px `#EAEDF2` |
+| totals column + footer | **700 on `#F5F5F5`** | footer 700 on `#F6F8FA` |
+
+⚠️ **THE FIRST HEADER BAND IS 400/`#777E8B`, NOT 600/`#1d232f`** — the old value was inferred
+from the table tile's header rather than read off a pivot. Only the `#F6F8FA` ground sets the
+band apart; every header cell in the grid is the same size and weight.
+
+⚠️ **THE FOOTER IS PART OF THE HEAT RAMP.** All 367 non-blank cells fit one ramp, per-day
+totals included, and the grand total is one of the three that saturate. `TsTable` tinted the
+body only, which left the row a prospect looks at first as the one row carrying no signal.
+
+⚠️ **TWO CSS TRAPS, both found by reading the RENDERED tile rather than the stylesheet.**
+- `.ts-pivot-head th` is (0,1,1) and loses to `.ts-tablewrap .ts-table--pivot th` (0,2,1), so
+  the first band rendered transparent and centred while both rules read correctly in
+  isolation. The band restates its own ground and alignment.
+- **`line-height` is load-bearing on the row height.** `height` cannot shrink a row below its
+  content box, so 27px plus the default line box rendered 28.84 against the measured 26.86.
+  The measured height INCLUDES the 1px row rule, so the line box has to be 16.
+
+Verified on the real Add Tile path, both variants, at the same time: heat tile 48/48 value
+cells on the cyan ramp with the totals column and footer tinted; plain tile 0 heat and
+exactly **13** cells on `#F5F5F5` (5 total-column + 8 footer), which is the capture's own
+count. Rows read Email, Organic, **Paid Search**, Print, Social Media — the biggest mid-list.
+Untouched afterwards: Details Report (`.idt-table`, 200 rows, 13/600 Lato, UNIQUE COUNT
+footer), the gallery's two plain table tiles (13/700 at 48px, 50px rows, 40 per-column heat
+cells) and `/dashboards/marketing` (21 dash-cards, 4px radius, KPI 48,293, zero `ts-`).
 
 ## Templates: "KPI" and "Metric" (measured 8/21/2026)
 

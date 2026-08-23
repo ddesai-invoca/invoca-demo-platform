@@ -1,4 +1,4 @@
-import { categoryOrder } from "../components/ts/tsChart";
+import { categoryOrder, pivotOrder } from "../components/ts/tsChart";
 import type { CustomerProfile } from "./schema";
 import {
   axisTitleFor, formatHero, formatMeasure, isAdditive, kindOf, magnitudeOf, type MeasureKind,
@@ -424,10 +424,17 @@ export function timePivot(
   /* Row weights come from the REAL breakdown when the dimension has one, so a pivot and a
      Stacked Bar on the same dimension agree. */
   const real = dimensionBreakdown(profile, dimension, measure);
-  const names = real ? real.labels : dimensionValues(profile, dimension).slice(0, 20);
-  const rowW = real
+  const rawNames = real ? real.labels : dimensionValues(profile, dimension).slice(0, 20);
+  const rawW = real
     ? real.values
-    : names.map((_, i) => 1 + ((hashStr(profile.id + names[i]) % 100) / 100));
+    : rawNames.map((_, i) => 1 + ((hashStr(profile.id + rawNames[i]) % 100) / 100));
+  /* ⚠️ ROWS ARE SORTED, AND THE BREAKDOWN THEY COME FROM IS NOT. Measured on the
+     Day-of-Week capture: its 51 rows run {Null}, Billboard, Bing, … Zocdoc, so the biggest
+     row sits mid-list and the dashboard's own value order must not survive into the pivot.
+     `pivotOrder` is LOCALE collation, deliberately not the pie's code-unit sort. */
+  const sorted = pivotOrder(rawNames.map((label, i) => ({ label, w: rawW[i] ?? 0 })));
+  const names = sorted.map((s) => s.label);
+  const rowW = sorted.map((s) => s.w);
   const rowSum = rowW.reduce((a, b) => a + b, 0) || 1;
   const colSum = weights.reduce((a, b) => a + b, 0) || 1;
 
@@ -443,13 +450,29 @@ export function timePivot(
   const footer = [axisTitleFor(measure), ...colTotals.map((v) => formatHero(v, g.kind)),
     formatHero(colTotals.reduce((a, b) => a + b, 0), g.kind)];
 
-  /* ⚠️ THE HEAT SCALE IS GLOBAL AND SATURATES. Measured: column maxima carry 20 DIFFERENT
-     colours, so it is not per-column; and the ramp reaches its darkest at ~4,320 while the
-     grand total is 42,050, so it clamps rather than stretching to the biggest number. The
-     largest per-hour total is the scale that reproduces it closely (measured 4,320 against
-     that rule's 4,730 — a 9% difference, invisible). */
+  /* ⚠️ THE HEAT SCALE IS GLOBAL, LINEAR FROM ZERO, AND SATURATES. Fitted on the
+     Day-of-Week capture against all 367 non-blank cells: `t = min(1, v / 8024)` reproduces
+     every one to a mean 0.185/255 per channel, which is well inside a rounding step. So it
+     is not per-column (the Details Report's rule) and it does not stretch to the grand
+     total — only 3 of 367 cells reach the darkest colour.
+
+     ⚠️ 8,024 IS NOT DERIVABLE FROM ANYTHING ON SCREEN, so the rule below is the closest
+     honest proxy rather than the real thing. Checked every candidate against the same fit:
+
+         largest body cell     7,580   err 0.224   <- what we use
+         2nd largest row total 7,870   err 0.200
+         free-fit optimum      8,024   err 0.185
+         largest column total 10,440   err 0.399   <- what we used before
+         grand total          42,960   err 1.106
+
+     The error surface is shallow, so anything in 7.6K-8.6K is indistinguishable; the
+     largest BODY cell (totals row and column excluded) is the one that is both close and
+     principled. It also explains the capture's signature exactly: the only cells that
+     saturate are aggregates, because a sum is necessarily larger than the largest thing
+     summed — grand total, biggest row total, biggest column total, three cells. */
+  const bodyMax = Math.max(1, ...grid.flat());
   return { columns: [dimension, ...cols, axisTitleFor(measure)], rows, footer,
-    heatMax: Math.max(1, ...colTotals) };
+    heatMax: bodyMax };
 }
 
 export function buildTile(profile: CustomerProfile, c: TileChoices): Omit<GeneratedTile, "id"> {
