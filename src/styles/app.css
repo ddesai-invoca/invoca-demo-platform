@@ -3921,25 +3921,71 @@ button.nav-item {
 .ndm-create:hover { background: #1c53e9; }
 .ndm-create:disabled { background: #e7e9eb; color: #a1a7b2; cursor: default; }
 
-/* The empty dashboard. `.ind-*` header rules are reused READ-ONLY, per the Connect AI note. */
-.ied-desc { font-size: 13px; color: #5b6577; margin: 0 0 8px; }
-.ied-empty {
-  display: flex; flex-direction: column; align-items: center; gap: 16px;
-  padding: 48px 0 40px;
+/* =============================================================================
+   The empty dashboard. `.ind-*` header rules are reused READ-ONLY, per the Connect AI
+   note. Every value below is MEASURED off the capture "Creating | Invoca for Healthcare
+   2.0" (8/23/2026) — that screen is Invoca's own React rendered as a `ts-embed__overlay`
+   in the HOST page, so it serialises in full and nothing here is read off a screenshot.
+   Confirmed at three widths (900 / 1262 / 1920).
+   ============================================================================= */
+
+/* ⚠️ THE LIVEBOARD TITLE IS 24/36/400, NOT `.ind-title`'s 28/42/600. Measured
+   `24px/36px` `#15243E` at the same 24px inset as the crumb. Scoped to `.ied-page` — the
+   shared `.ind-title` also dresses the Summary Dashboard and Connect AI, and a change for
+   this screen must not touch those. OPEN: those two are probably 24/36 as well, since all
+   three are the same liveboard header, but this capture is of THIS dashboard and cannot
+   settle it. Re-measure them from their own captures before widening. */
+.ied-page .ind-title { font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; }
+
+/* ⚠️ UNMEASURED, AND THE ONLY THING ON THIS SCREEN THAT IS. The captured dashboard has no
+   description, so the capture cannot say where one goes or how it is set — and concluding
+   "the product never shows one" from a dashboard that has none would be an inference, not
+   a measurement. It is aligned to the title and takes the liveboard's own description ink
+   (`#5b6577`); it previously sat at the page's left edge, 24px out from the title. */
+.ied-desc { font-size: 13px; color: #5b6577; margin: 0 0 8px; padding: 0 24px; }
+
+/* ⚠️ THE CONTENT IS A CENTRED COLUMN, AND THAT IS THE WHOLE SHAPE OF THIS SCREEN.
+   Measured: `flex-direction: column; align-items: center; gap: 24px; padding: 24px` on a
+   container the full width of the content area. Both children are then centred and sized
+   by their own content — which is why the empty block is 320 wide and the templates panel
+   is 1074 wide with air either side, rather than either of them spanning the page. Getting
+   this wrong is what made the first build read as "not the same screen" while every colour
+   and font in it was already right. */
+.ied-body {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 24px; padding: 24px;
 }
+
+/* The empty block: 320 x 310.5 measured, and it decomposes exactly —
+   220 art + 16 + 20 copy + 6.5 + 12 + 36 button. */
+.ied-empty { display: flex; flex-direction: column; align-items: center; width: 320px; }
 .ied-art { width: 320px; height: 220px; display: block; }
-.ied-copy { font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; margin: 0; text-align: center; }
+/* 296 wide inside 320, i.e. 12px either side. */
+.ied-copy {
+  font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e;
+  text-align: center; width: 296px; margin: 16px 0 6.5px;
+}
+.ied-empty .ied-addtile { margin-top: 12px; }
 .ied-addtile {
   display: inline-flex; align-items: center; gap: 6px;
   background: #2666f9; color: #fff; border: 0; border-radius: 3px;
   font: inherit; font-size: 14px; font-weight: 500; height: 36px; padding: 8px 12px;
   cursor: pointer;
 }
-.ied-addtile:hover { background: #1c53e9; }
+/* ⚠️ MEASURED HOVER AND PRESSED, from the capture's own tokens rather than the general
+   button note: `--titan-tokens-background-primary-bold-hover` is #1335BF and `-pressed` is
+   #122AA6. The capture caught the cursor OVER the centre Add Tile, which is why that button
+   serialised at #1335BF while the header's identical one read #2666F9 — the resting colour
+   is #2666F9 for both, and the odd one out was the hover state, not a second design. */
+.ied-addtile:hover { background: #1335bf; }
+.ied-addtile:active { background: #122aa6; }
 .ied-addtile .material-icons { font-size: 18px; }
-.ied-templates {
+
+/* The panel is CENTRED by a full-width row, not sized by one. */
+.ied-templates { display: flex; justify-content: center; width: 100%; }
+.ied-panel {
   background: #f5f6fa; border: 1px solid #e7e9eb; border-radius: 8px;
-  margin: 0 0 40px;
+  max-width: 100%; box-sizing: border-box;
 }
 /* ⚠️ UPPERCASED IN CSS. The heading's text content is "Dashboard Templates"; rendering the
    literal "DASHBOARD TEMPLATES" would be wrong the moment anyone selects or searches it. */
@@ -3947,13 +3993,22 @@ button.nav-item {
   font-size: 16px; line-height: 20px; font-weight: 400; color: #15243e;
   text-transform: uppercase; margin: 0; padding: 24px 0 24px 24px;
 }
+/* ⚠️ THREE FIXED 320px COLUMNS AND A 32px GAP — not `auto-fit minmax()`. Measured
+   `320px 320px 320px` at 900, 1262 AND 1920, so the cards never stretch and never reflow;
+   the panel's 1074 is just this grid plus its padding and border. `align-items: start` is
+   load-bearing: the cards are content-height and DIFFER (124 / 124 / 164 measured, the
+   third because its copy runs to four lines), where stretching made all three equal.
+   ⚠️ Below ~840px of panel the third card overflows the panel's right edge. That is the
+   real page's own behaviour at 900px, measured, not a bug to fix here. */
 .ied-cards {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px; padding: 0 24px 24px;
+  display: grid; grid-template-columns: repeat(3, 320px);
+  align-items: start; gap: 32px; padding: 0 24px 24px;
 }
+/* ⚠️ 2px BORDER AND 8px RADIUS, and no shadow at all despite the MUI `elevation1` class —
+   measured `box-shadow: none`. A 1px border at 4px radius reads as a Dashboards-tab card. */
 .ied-card {
-  background: #fff; border: 1px solid #e7e9eb; border-radius: 4px;
-  padding: 24px; min-height: 120px; box-sizing: border-box;
+  background: #fff; border: 2px solid #e7e9eb; border-radius: 8px;
+  padding: 24px; box-sizing: border-box;
 }
 .ied-card-title { font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; margin: 0 0 12px; }
 .ied-card-body { font-size: 16px; line-height: 20px; font-weight: 400; color: #15243e; margin: 0; }

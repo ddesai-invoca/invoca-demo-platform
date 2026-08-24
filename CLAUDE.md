@@ -1297,13 +1297,72 @@ below is measured off the rendered DOM rather than a screenshot.
 | footer | buttons 36 tall; Cancel OUTLINED (`1px rgba(38,102,249,.5)`, ink `#2666F9`) |
 | Create | **disabled until the name has content** — the capture's is `disabled` with both fields empty. Description is optional |
 
-| empty state | measured |
+### The empty state, RE-MEASURED 8/23/2026 — the first build had the layout wrong
+The first pass had every colour, font and radius right and still did not read as the same
+screen, because the SHAPE was wrong. Re-measured off the capture "Creating | Invoca for
+Healthcare 2.0", which is Invoca's own React rendered as a **`ts-embed__overlay` in the HOST
+page** — so it serialises in full and nothing here comes off a screenshot. Confirmed at
+**three widths (900 / 1262 / 1920)**.
+
+⚠️ **THE CONTENT IS ONE CENTRED COLUMN, AND THAT IS THE WHOLE SHAPE.** Measured
+`flex-direction: column; align-items: center; gap: 24px; padding: 24px` on a container the
+full width of the content area. Both children are therefore sized by their own content and
+centred — the empty block is **320** wide and the panel **1074**, with air either side.
+Rendered as full-width siblings instead, the panel spans the page and drags the cards with
+it, which is exactly what looked wrong.
+
+| empty block (320 x 310.5) | measured |
 |---|---|
-| illustration | 320 x 220 (viewBox 0 0 300 204) |
-| copy | "Use a template or add a tile to get started.", 16/700 `#15243E`, centred |
-| Add Tile | `#2666F9`, 14/500, padding 8px 12px, radius 3, 36 tall |
-| panel | `#F5F6FA`, 1px `#E7E9EB`, radius 8; heading padding `24px 0 24px 24px` |
-| card | 316 x 120, padding 24; title 16/700 with 12px under it; body 16/400 |
+| illustration | 320 x 220 (an inline `<svg>` in the real page) |
+| copy | **296** wide, `700 16px/20px` `#15243E`, centred, `margin: 16px 0 6.5px` |
+| Add Tile | **98.6 x 36**, `margin-top: 12px`, padding 8px 12px, radius 3, `#2666F9` |
+
+It decomposes exactly: 220 + 16 + 20 + 6.5 + 12 + 36 = **310.5**.
+
+| templates | measured |
+|---|---|
+| wrapper | full width, `display: flex; justify-content: center` — this is what centres it |
+| panel | **1074** wide, `max-width: 100%`, `#F5F6FA`, 1px `#E7E9EB`, radius 8 |
+| heading | 16/20 `#15243E`, `text-transform: uppercase`, padding `24px 0 24px 24px`, 68 tall |
+| cards grid | **`320px 320px 320px`**, gap **32**, `align-items: start`, padding `0 24px 24px` |
+| card | **320** wide, **2px** `#E7E9EB`, radius **8**, `box-shadow: none`, padding 24 |
+| card heights | **124 / 124 / 164** — content-driven and DIFFERENT |
+| card title / body | `700 16/20` with 12px under it / `16/20`, both `#15243E` |
+
+⚠️ **THREE FIXED 320px COLUMNS, NOT `auto-fit minmax()`.** The grid computes
+`320px 320px 320px` at 900, 1262 AND 1920, so the cards never stretch and never reflow, and
+the panel's 1074 is just this grid plus its padding and border (960 + 64 + 48 + 2).
+`align-items: start` is load-bearing — stretching made all three cards the same height where
+the real third one grows to 164 for its fourth line of copy.
+⚠️ **BELOW ~840px OF PANEL THE THIRD CARD OVERFLOWS THE PANEL'S RIGHT EDGE.** Measured at a
+900px viewport on the real page: the panel clamps to `max-width: 100%` while the grid stays
+3 x 320. That is the product's own behaviour, reproduced rather than "fixed".
+⚠️ **NO SHADOW, DESPITE THE MUI `elevation1` CLASS** — measured `box-shadow: none`. A 1px
+border at 4px radius reads as a Dashboards-tab card instead.
+⚠️ **The real cards are `cursor: pointer`; ours deliberately are not.** They are inert here
+(see above), and a pointer cursor on a card that does nothing is the same lie the interaction
+drawer's inert cards already avoid.
+
+⚠️ **THE LIVEBOARD TITLE IS 24/36/400, where the shared `.ind-title` is 28/42/600.** Scoped
+to `.ied-page` so the Summary Dashboard and Connect AI are untouched (re-verified: both still
+`600 28px/42px` `#1D2B4A`). **OPEN:** those two are probably 24/36 as well — all three are
+the same liveboard header — but this capture is of THIS dashboard and cannot settle it.
+Re-measure from their own captures before widening.
+⚠️ **THE DESCRIPTION IS THE ONE UNMEASURED THING ON THIS SCREEN.** The captured dashboard has
+none, so the capture cannot say where one goes; concluding "the product never shows one" from
+a dashboard that has none would be an inference, not a measurement. It is aligned to the
+title (it previously sat 24px out, at the page's left edge) and takes the liveboard's own
+description ink `#5b6577`.
+
+⚠️ **#1335BF WAS A HOVER STATE, NOT A SECOND DESIGN.** The centre Add Tile serialised at
+`rgb(19,53,191)` while the header's identically-classed one read `#2666F9` — the capture
+caught the cursor over it. Resolving the emotion rules gives
+`--titan-tokens-background-primary-bold-hover: #1335BF` and `-pressed: #122AA6`, so the
+resting colour is `#2666F9` for both and the hover/active values are now measured rather than
+taken from the general button note's `#1c53e9`/`#1643d5`.
+
+Verified after the rebuild: a **30-property diff against the measured spec came back empty**
+at 1262, and the panel stays 1074-and-centred with 320px cards at 1920.
 
 ⚠️ **THE DESTINATION DASHBOARD WAS HARDCODED, AND THAT WAS THE REAL BUG IN THIS FEATURE.**
 Both Add Tile screens carried `const DASH = "/insights/dashboard/Summary%20Dashboard"` and

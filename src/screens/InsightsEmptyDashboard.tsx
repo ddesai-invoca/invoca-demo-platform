@@ -97,7 +97,11 @@ export function InsightsEmptyDashboard({ dashboard }: { dashboard: InsightsDashb
       {dashboard.description ? <p className="ied-desc">{dashboard.description}</p> : null}
 
       {empty ? (
-        <>
+        /* ⚠️ ONE CENTRED COLUMN holding both blocks, which is what the capture measures:
+           `align-items: center` with a 24px gap, so each child is sized by its own content
+           and centred. Rendering them as full-width siblings of the header — the first
+           attempt — stretched the panel across the page and the cards with it. */
+        <div className="ied-body">
           <div className="ied-empty">
             <img className="ied-art" src="/insights-empty.svg" alt="" width={320} height={220} />
             <p className="ied-copy">{data.labels.emptyCopy}</p>
@@ -106,18 +110,20 @@ export function InsightsEmptyDashboard({ dashboard }: { dashboard: InsightsDashb
             </button>
           </div>
 
-          <section className="ied-templates">
-            <h2 className="ied-templates-head">{data.labels.templatesHeading}</h2>
-            <div className="ied-cards">
-              {TEMPLATES.map((t) => (
-                <article className="ied-card" key={t.name}>
-                  <h3 className="ied-card-title">{t.name}</h3>
-                  <p className="ied-card-body">{t.body}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-        </>
+          <div className="ied-templates">
+            <section className="ied-panel">
+              <h2 className="ied-templates-head">{data.labels.templatesHeading}</h2>
+              <div className="ied-cards">
+                {TEMPLATES.map((t) => (
+                  <article className="ied-card" key={t.name}>
+                    <h3 className="ied-card-title">{t.name}</h3>
+                    <p className="ied-card-body">{t.body}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
       ) : null}
 
       {/* Tiles added from Add Tile land here, so the dashboard fills up in place — the
