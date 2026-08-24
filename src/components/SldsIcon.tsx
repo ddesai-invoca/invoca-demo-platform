@@ -37,13 +37,18 @@ const PATHS: Record<string, string> = {
   "calendar-tile": "M76 42H24a2 2 0 00-2 2v30a6 6 0 006 6h44a6 6 0 006-6V44a2 2 0 00-2-2M40 70a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm0-14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm14 14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm0-14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm14 14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm0-14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm4-30h-5v-2c0-2.2-1.8-4-4-4s-4 1.8-4 4v2H41v-2c0-2.2-1.8-4-4-4s-4 1.8-4 4v2h-5a6 6 0 00-6 6v2c0 1.1.9 2 2 2h52a2 2 0 002-2v-2a6 6 0 00-6-6",
   /* The view-picker calendar — a 52-unit box. */
   "calendar-sm": "M46.5 20h-41c-.8 0-1.5.7-1.5 1.5V46a4 4 0 004 4h36a4 4 0 004-4V21.5c0-.8-.7-1.5-1.5-1.5M19 42c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm10 10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm10 10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm5-25h-5V5a3 3 0 00-3-3 3 3 0 00-3 3v2H19V5a3 3 0 00-3-3 3 3 0 00-3 3v2H8a4 4 0 00-4 4v2.5c0 .8.7 1.5 1.5 1.5h41c.8 0 1.5-.7 1.5-1.5V11a4 4 0 00-4-4",
-  /* ⚠️ THE SALESFORCE CLOUD, AUTHORED — neither capture carries the logo image (its `<img>`
-     serialises as `class="icon noicon"` with no src). Drawn as the mark's real silhouette:
-     three lobes over a flat base, which is what distinguishes it from a generic cloud.
-     Replace it the moment a capture carries the asset. */
-  cloud: "M196 96c19-20 45-32 74-32 39 0 73 22 91 54a112 112 0 0135-6c60 0 109 49 109 109s-49 109-109 109H150C93 330 47 284 47 227c0-40 23-75 56-92a94 94 0 01-1-11c0-52 42-94 94-94",
-  /* ⚠️ ALSO AUTHORED, for the same reason: the profile avatar's `<img alt="User">` has no
-     src in either capture. SLDS's default is a white head-and-shoulders on the user's
+  /* ⚠️ THE SALESFORCE CLOUD IS AUTHORED, AND IT IS NOT FOR WANT OF LOOKING. Searched both
+     captures for it: no `<img>` with a src, no `background-image`, no `<svg>`, no sprite —
+     the top-left corner holds only skip links. Every data URI in the Calendar capture is
+     accounted for (17 svg: the SLDS illustrations and entity glyphs; 14 png: the object
+     icons and the Salesblazer banner). Lightning's own script adds `noicon` to that `<img>`
+     when the fetch fails, which is exactly what SingleFile left behind, so the asset was
+     never in the saved page to extract. Drawn to the real mark instead: FOUR lobes over a
+     flat base with the small step at the lower left, on a 520 grid so it sits in the same
+     box as the extracted icons. Replace it if a capture ever carries the file. */
+  cloud: "M337 116c26-27 62-44 102-44 53 0 100 30 124 74a141 141 0 0157-12c78 0 141 64 141 143s-63 143-141 143H201C133 420 78 364 78 296c0-42 21-79 53-102a115 115 0 01-4-29c0-63 51-115 115-115 34 0 65 15 86 38z",
+  /* ⚠️ ALSO AUTHORED, for the same reason and confirmed the same way: the profile avatar's
+     `<img alt="User">` carries no src in either capture. SLDS's default is a white head-and-shoulders on the user's
      colour, and the measured circle is #1B96FF at 32px. */
   user: "M260 270a105 105 0 10-105-105 105 105 0 00105 105m0 40c-79 0-190 40-190 120v30c0 11 9 20 20 20h340c11 0 20-9 20-20v-30c0-80-111-120-190-120",
   /* ⚠️ AUTHORED, like `cloud` and `user` above: the "Invoca Call Log" object's own glyph

@@ -120,7 +120,10 @@ export function SalesforceCalendar() {
 
       {/* ---- page header ---- */}
       <div className="sfc-head">
-        <span className="sfc-head-icon"><SldsIcon name="calendar" size={20} /></span>
+        {/* ⚠️ `calendar-tile`, NOT `calendar` — the glyph WAS extracted, and referencing a name
+            that is not in PATHS made SldsIcon return null, so the tile rendered as an empty
+            purple square. A missing key fails silently; there is no such icon as "calendar". */}
+        <span className="sfc-head-icon"><SldsIcon name="calendar-tile" size={32} /></span>
         <div className="sfc-head-text">
           <p className="sfc-head-kicker">Calendar</p>
           <h1 className="sfc-head-range">{rangeLabel}</h1>
@@ -131,7 +134,7 @@ export function SalesforceCalendar() {
           <span className="sfc-btn">Today</span>
           <span className="sfc-icobtn"><SldsIcon name="refresh" size={14} /></span>
           <span className="sfc-icobtn sfc-icobtn--split">
-            <SldsIcon name="calendar" size={14} />
+            <SldsIcon name="calendar-sm" size={14} />
             <SldsIcon name="triangledown" size={12} />
           </span>
           <span className="sfc-btn sfc-btn--new">New Event</span>

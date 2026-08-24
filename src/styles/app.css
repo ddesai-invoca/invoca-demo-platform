@@ -4231,7 +4231,9 @@ button.nav-item {
 
 /* ---- global header: 50 tall ---------------------------------------------- */
 .sfh-globalhead { display: flex; align-items: center; height: 50px; padding: 0 12px; background: #fff; }
+/* #00A1E0 is Salesforce's own blue. The mark is wider than tall, so it is sized by width. */
 .sfh-logo { display: flex; align-items: center; margin-right: 12px; color: #00a1e0; }
+.sfh-logo svg { width: 38px; height: 27px; }
 /* ⚠️ THE SEARCH BORDER IS #747474, not #C9C9C9 — measured on the button that wraps it. */
 .sfh-search {
   display: flex; align-items: center; gap: 8px; width: 400px; height: 32px; margin: 0 auto;
@@ -4438,13 +4440,16 @@ button.nav-item {
 .sfc-root { display: flex; flex-direction: column; height: 100%; background: #fff; }
 
 /* page header: 69.5 tall over a 1px rule */
+/* ⚠️ THE HEADER BAND IS #F3F3F3, NOT WHITE — measured on `.slds-page-header_joined`. */
 .sfc-head {
   display: flex; align-items: center; gap: 12px; height: 69.5px; padding: 0 16px;
-  border-bottom: 1px solid #c9c9c9; background: #fff; flex: 0 0 auto;
+  border-bottom: 1px solid #c9c9c9; background: #f3f3f3; flex: 0 0 auto;
 }
+/* ⚠️ THE EVENT OBJECT'S OWN PURPLE IS #CB65FF, measured off `.slds-icon-standard-event`,
+   with a 32px WHITE glyph filling the tile — not the muted lavender I had guessed. */
 .sfc-head-icon {
   display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
-  flex: 0 0 32px; border-radius: 4px; background: #a094ed; color: #fff;
+  flex: 0 0 32px; border-radius: 4px; background: #cb65ff; color: #fff;
 }
 .sfc-head-text { flex: 1 1 auto; min-width: 0; }
 .sfc-head-kicker { font-size: 13px; line-height: 19.5px; color: #181818; margin: 0; }
@@ -4507,16 +4512,24 @@ button.nav-item {
 }
 /* A non-past column has NO background rule in Lightning, so it stays white. */
 .sfc-col--past { background: #f3f3f3; }
-/* ⚠️ THE HOUR LINES ARE A BACKGROUND GRADIENT, NOT BORDERED CELLS: one 1px line of
-   rgba(0,0,0,.1) every 2.08333% of 1920 = every 40px, i.e. every HALF hour. Drawing white
-   1px borders every 80px (the first build) is the wrong colour at half the frequency. */
+/* ⚠️ THERE ARE **TWO** GRIDLINE LAYERS, and that is why the hours read darker than the
+   half-hours. Both are background gradients, on `.eventList` and its `::before`:
+     half-hour  `rgba(0,0,0,.1)` at **1px**,    size 100% 2.08333%  (= every 40px)
+     hour       `#C9C9C9`        at **1.25px**, size 100% 4.16667%  (= every 80px)
+   The first build drew only the half-hour layer, so every line was the same weight. The
+   ::before is the one that has to sit UNDER the chips, hence z-index 0 on both. */
 .sfc-eventlist {
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; z-index: 0;
   background-image: linear-gradient(rgba(0, 0, 0, .1) 1px, rgba(0, 0, 0, 0) 1.01px);
   background-size: 100% 2.08333%;
 }
+.sfc-eventlist::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background-image: linear-gradient(#c9c9c9 1.25px, rgba(0, 0, 0, 0) 1.26px);
+  background-size: 100% 4.16667%;
+}
 /* calc(100% - 0.75rem) — the chip column is the day minus 12px. */
-.sfc-eventwrap { position: absolute; top: 0; left: 0; width: calc(100% - 0.75rem); height: 100%; }
+.sfc-eventwrap { position: absolute; top: 0; left: 0; width: calc(100% - 0.75rem); height: 100%; z-index: 1; }
 
 /* ⚠️ THE CHIP: #5A93B1, radius 4, padding 2px 4px 0, and a 1px padding-bottom on its
    container, which is what leaves the hairline between stacked events. */

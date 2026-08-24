@@ -36,7 +36,7 @@ export function SfGlobalHeader() {
   return (
     <header className="sfh-globalhead">
       <span className="sfh-logo" aria-label="Salesforce">
-        <SldsIcon name="cloud" size={30} />
+        <SldsIcon name="cloud" size={38} />
       </span>
 
       <div className="sfh-search">

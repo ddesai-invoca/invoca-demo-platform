@@ -1167,6 +1167,38 @@ measurement cannot reveal:
 | mini day | td `padding: 4px` around a **32px circle** (`line-height: 32px`, `border-radius: 50%`) |
 | mini today | `background: #F3F3F3` **plus** `box-shadow: 0 0 0 1px #C9C9C9` — a filled circle with a ring, not a ring alone |
 
+⚠️ **THERE ARE *TWO* GRIDLINE LAYERS, which is why the hours read darker than the
+half-hours.** Both are background gradients, and reading only the first is why the grid looked
+uniform:
+
+| layer | gradient | size | effect |
+|---|---|---|---|
+| `.eventList` | `rgba(0,0,0,.1)` at **1px** | `100% 2.08333%` | every 40px — the half-hour |
+| `.eventList::before` | **`#C9C9C9` at 1.25px** | `100% 4.16667%` | every 80px — the hour, darker AND thicker |
+
+The chips need a `z-index` above both, since the `::before` sits at 0.
+
+⚠️ **THE PAGE-HEADER BAND IS `#F3F3F3`, NOT WHITE** (`.slds-page-header_joined`), and the
+Event object's tile is **`#CB65FF`** with a 32px white glyph — not the muted lavender I first
+guessed.
+
+⚠️ **WHY THE TILE ICON WAS MISSING, AND IT WAS NOT AN EXTRACTION PROBLEM: I referenced a name
+that does not exist.** The glyph was extracted correctly as `calendar-tile` (a 100-unit box);
+the markup asked for `name="calendar"`, `PATHS["calendar"]` was undefined, and `SldsIcon`
+returns `null` — so the tile rendered as an empty purple square with no error anywhere. Same
+for the view picker (`calendar-sm`). **A missing icon key fails SILENTLY**; if a glyph is
+absent, check the key before re-extracting the asset.
+
+⚠️ **WHY THE SALESFORCE CLOUD CANNOT BE EXTRACTED, verified rather than assumed.** Searched
+both captures: no `<img>` with a src, no `background-image`, no `<svg>`, no sprite — the
+top-left corner holds only skip links and a `pointer` div. Every data URI in the Calendar
+capture is accounted for (17 svg: the SLDS illustrations and entity glyphs; 14 png: the object
+icons and the Salesblazer banner). Lightning's own script adds `noicon` to that `<img>` when
+the fetch fails, which is exactly what SingleFile left behind — **the asset was never in the
+saved page**. Same for the profile avatar. Both are therefore authored, flagged in
+`SldsIcon.tsx`, and are the ONLY two authored marks on these screens. To get them verbatim
+we would need the file itself (or a capture whose fetch of it succeeded).
+
 ⚠️ **THE FIRST BUILD'S GRIDLINES WERE WRONG THREE WAYS AT ONCE** — white instead of 10%
 black, every 80px instead of 40, and drawn as bordered cells instead of a background
 gradient. Any one of those reads as "the lines are off".
