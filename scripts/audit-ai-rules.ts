@@ -92,5 +92,54 @@ console.log("\nRules 2 + 4 — the capabilities are wired");
     : ok("prompt does not contradict itself on length");
 }
 
+/* =============================================================================
+   THE SMS WORKFLOW'S FOUR NODE NAMES ARE PRODUCT CHROME.
+   -----------------------------------------------------------------------------
+   The real Invoca page does not let a user rename the trigger, the conversation-start node
+   or the two intent nodes, so the template must always read "Triggered by",
+   "Conversation Start", "Sales Inquiry" and "Need Support" — for every prospect, including
+   ones generated later. The tree is derived at RENDER time with no schema slice and no
+   engine phase, so that is true by construction today; these checks stop it drifting back.
+
+   The failure being guarded against is specific and has happened once: the intent titles
+   were derived from each prospect's routing queues (`voiceCopy`), so Shady Blinds read
+   "Design Consultation / Existing Order" where the product always shows the same two words.
+   ============================================================================= */
+console.log("\nThe SMS workflow template's node names are locked");
+{
+  const wf = fs.readFileSync("src/screens/AgentWorkflow.tsx", "utf8");
+  const tree = fs.readFileSync("src/components/WorkflowTree.tsx", "utf8");
+  const guard = fs.readFileSync("src/data/editGuard.ts", "utf8");
+  const ctx = fs.readFileSync("src/data/AiAssistantContext.tsx", "utf8");
+
+  /* The two literals live in the renderer and were never per-prospect. */
+  tree.includes(">Triggered by<") && tree.includes(">Conversation Start<")
+    ? ok('"Triggered by" and "Conversation Start" are renderer literals')
+    : bad("the trigger / conversation-start titles are no longer literals in WorkflowTree");
+
+  /* The SMS block must use the constants, not the prospect's queue names. */
+  const sms = wf.slice(wf.indexOf("if (isSms)"), wf.indexOf("const shaped = SHAPE"));
+  sms.includes("title: SMS_SALES") && sms.includes("title: SMS_SUPPORT")
+    ? ok("the SMS intents come from the fixed constants")
+    : bad("the SMS intent titles are not the fixed constants");
+  /\btitle:\s*c\.(newQ|supQ)\b/.test(sms)
+    ? bad("an SMS intent title is derived from the prospect's queues again (c.newQ / c.supQ)")
+    : ok("no SMS intent title is derived from a prospect queue");
+  sms.includes("locked: true")
+    ? ok("the SMS intent nodes are marked locked")
+    : bad("the SMS intent nodes are not marked locked — the AI could rename them");
+  wf.includes('SMS_TRIGGER = "0 Campaigns, 0 Forms, and 0 Inbound SMS"')
+    ? ok("the trigger line names inbound SMS")
+    : bad("the SMS trigger line is not the product's wording");
+
+  /* Locked must be ENFORCED, not merely declared — otherwise a rename is a silent no-op. */
+  guard.includes("export function isLockedEdit")
+    ? ok("isLockedEdit exists")
+    : bad("isLockedEdit is gone");
+  ctx.includes("isLockedEdit(nextData")
+    ? ok("applyEdits refuses a locked rename (counted as blocked, so the drawer says so)")
+    : bad("isLockedEdit is defined but never called — a locked rename would silently no-op");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");
 process.exit(fail ? 1 : 0);

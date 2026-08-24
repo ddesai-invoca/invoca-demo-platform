@@ -591,6 +591,18 @@ on the NODE rather than in a path pattern, so the rule travels with the data.
 rather than chrome. Verified: `branches.N.title` is refused on both intents while
 `branches.0.leaves.0.title`, `...action` and `triggeredBy` are all still allowed.
 
+⚠️ **IT APPLIES TO EVERY PROSPECT, INCLUDING ONES GENERATED LATER, BY CONSTRUCTION.** The
+tree is derived at RENDER time from constants — no schema slice, no engine phase, nothing in
+`engine/` writes these names (checked). So a prospect generated next month gets them without
+regenerating anything. `npm run audit:ai` now enforces it with **7 checks**: the two renderer
+literals, the intents coming from the constants, no intent title derived from `c.newQ`/`c.supQ`
+again, the `locked` flag present, the trigger line's wording, and `isLockedEdit` being both
+defined AND called. Verified each fires on its own broken shape.
+⚠️ One narrow exception, and it is correct: **EXTRA agent workflows** (`extraWorkflows` in the
+schema) keep their own authored branch names, because they are different workflows with
+different intents — a nurture flow's node is not "Sales Inquiry". The two renderer literals
+still apply to them.
+
 ⚠️ **SCOPED TO THE SMS TEMPLATE.** The VOICE tree's intents still derive from the prospect's
 real queues and keep their caller-intent subtitles, because those were measured off Invoca's
 own Voice workflow page — re-verified after this change (AutoNation still reads "Test Drive" /
