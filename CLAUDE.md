@@ -2084,6 +2084,77 @@ sticky at offset 0. Row shapes came out 3% / 30% / 52% / 15% against the capture
 table tiles (13/700 at 48px, 50px rows, 40 per-column heat cells) and `/dashboards/marketing`
 (21 dash-cards, 4px radius, KPI 48,293, 7 donuts, zero `ts-`). `npm run audit:ai` all green.
 
+## Template: "Summary Report" (measured 8/23/2026)
+`summaryRows` in `insightsTileData.ts`, the `summary-report` branch in
+`InsightsColumnPicker`. It reuses the Details Report's grid wholesale — same ag-Grid chrome,
+same 145-202 column band, same 2px black header rule, same pinned aggregation row. What
+differs is the BODY.
+
+⚠️ **A SUMMARY IS THE AGGREGATE, NOT A SLICE OF ROWS.** Measured: seven measure columns, ONE
+body row, and every number in it repeated under `TOTAL` in the pinned row — 42.96K / 6.03K /
+1.46K / 172 / 8 / 1.76K / 19.73K in both. So it cannot go through `reportRows`, which mints
+one row per call. `summaryRows` builds the row from the same `magnitudeOf` the footer uses,
+which is what makes the two agree by construction rather than by luck (asserted).
+
+⚠️ **THE CAPTION COUNTS ITS ROWS: "Showing 1 of 1 row"**, singular — where the Details Report
+says "Showing 1,000 of many rows". A summary shows everything it has; a details grid shows a
+slice. `reportCaption` takes an optional total and agrees the noun with it.
+⚠️ `upgradeReportTile` re-derives the caption, so it has to know which report it is looking
+at — deriving it blind overwrote the picker's "1 of 1 row" with "1 of many rows". The title is
+the only thing on a stored tile carrying that.
+
+⚠️ **GROUP BY IS OPTIONAL, and Create used to be disabled without it.** This file previously
+said "a summary has to aggregate by something". The capture is a summary of NOTHING — no
+dimension column, one row of totals — so the ungrouped case is the product's own default and
+was unreachable in our picker. The option now reads "None". The GROUPED shape (one row per
+dimension value) is implemented but **unmeasured**; no capture sets a Group By.
+
+### Two corrections to the measure model, both from this capture
+⚠️ **"Total Total Messages" IS WHAT THE PRODUCT PRINTS.** `axisTitleFor` used to suppress the
+prefix when the measure already began with "Total"/"Average", on the grounds that doubling read
+as a bug. The capture's second column header is exactly `Total Total Messages` for the measure
+named `Total Messages`, so the guard was a departure from the real site and is gone. Blast
+radius is one measure — the only catalogue name starting with an aggregation word.
+
+⚠️ **A NAME ENDING IN "(Seconds)" IS ADDITIVE, NOT A DURATION.** `AI Agent Answer Offset
+(Seconds)` and `AI Agent Handle Time (Seconds)` both carry the **Total** prefix, both print
+compactly (1.76K, 19.73K — not 29:20) and both are labelled `TOTAL`. The duration family would
+have made them non-additive and dropped the prefix. This replaces an INFERENCE with a
+measurement: the note at `aggregationWord` records that duration was never captured, only
+percent was. A bare time measure ("Agent Handle Time", "Hold Time") has no unit in its name and
+stays a duration — an average per call, where this is a quantity of seconds. Verified the
+gallery's multi-line specimen still renders `$4.7M` beside `2:32`, so the widest-label case is
+intact.
+
+⚠️ **`pick()` HAD FIVE POSSIBLE VALUES, and a one-row report is where that finally showed.**
+`lo + (seed % ((hi - lo) * 10)) / 10` over the count branch's 0.18-0.72 band yields exactly
+0.18 / 0.28 / 0.38 / 0.48 / 0.58, so differently-named measures collided constantly — three of
+seven Summary columns came out 18.35K and two more 28.01K. Invisible in a Details Report, where
+every measure column is a column of 1s; unmissable with one number per measure side by side.
+Now 1,000 steps. Same defect the money branch's seeded spread already existed to prevent.
+
+⚠️ **AND THE COUNT SHARE IS LOG-UNIFORM NOW, not a linear 0.18-0.72 band.** The capture spans
+**8 to 42.96K on one row** — Voice AI Agent Opt In at 8, Engaged at 172, Answered By AI Voice
+Agent at 1.46K — because a pilot feature and a call count are not the same order of thing. A
+linear band put every count measure between a fifth and three quarters of the call total, so a
+row of them read as the same number over and over. `Answered` and `not answered` stay anchored
+to plausible rates, since those are the two a prospect checks against the dashboards.
+
+⚠️ **THE REFERENCE'S 87px OF EMPTY BODY IS ITS TILE SLOT, NOT THE TEMPLATE.** Its grid box is
+**234** for a single 31px row (2 + 49 header + 118 body + 65 aggregation), and the tile is 336
+where the Details tiles are 703 — the SE sized that tile taller than its content. Ours is
+content-height under the 601 cap, so a 1-row summary renders compactly at ~154. Also worth
+noting against the Details Report section above: 601 is that tile's slot, not a universal — a
+tile in a smaller slot gets a smaller grid box.
+
+Verified through the real picker with the capture's own seven measures and no Group By: headers
+identical including `Total Total Messages`, one body row, all seven footer cells `TOTAL`, body
+values equal to footer values, caption `Showing 1 of 1 row`, header 49 / row 31 / aggregation
+65 / title-to-grid 27 — diff empty. Non-regression: the 46-question catalogue still resolves
+0 failures, the gallery's 9 charts keep 0 gridlines and no axis title doubled, Calls-by-Hour
+still totals 48.3K, a Stacked Bar still totals 48,293, and `/dashboards/marketing` is unchanged
+(21 cards, KPI 48,293).
+
 ## Templates: "KPI" and "Metric" (measured 8/21/2026)
 
 **Metric** is the number and NOTHING else — the captured card's entire text content is

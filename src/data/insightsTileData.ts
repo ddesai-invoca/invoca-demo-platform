@@ -784,9 +784,56 @@ function rowShape(seed: number): RowShape {
  */
 export const REPORT_ROWS = 200;
 
-/** `Showing 200 of many rows`, the caption the capture prints under the grid. */
-export const reportCaption = (rows: number): string =>
-  `Showing ${rows.toLocaleString("en-US")} of many rows`;
+/**
+ * The caption under a Report grid.
+ *
+ * ⚠️ TWO FORMS, BOTH MEASURED. The Details Report prints "Showing 1,000 of many rows" — it is
+ * showing a slice of a dataset whose size it does not state. The Summary Report prints
+ * "Showing 1 of 1 row", singular, because every row it has is on screen. So the total is
+ * passed when it is known, and the noun agrees with it.
+ */
+export const reportCaption = (rows: number, total?: number): string =>
+  total === undefined
+    ? `Showing ${rows.toLocaleString("en-US")} of many rows`
+    : `Showing ${rows.toLocaleString("en-US")} of ${total.toLocaleString("en-US")} row${total === 1 ? "" : "s"}`;
+
+/**
+ * The body of a Summary Report: measures aggregated, one row.
+ *
+ * ⚠️ THE SINGLE ROW AND THE AGGREGATION ROW HOLD THE SAME NUMBERS, and the capture is
+ * explicit about it — all seven columns read 42.96K / 6.03K / 1.46K / 172 / 8 / 1.76K /
+ * 19.73K in the body and again under TOTAL in the pinned row. That is what the template IS:
+ * "a condensed, aggregated view that highlights the most important figure". So the row is
+ * built from the same `magnitudeOf` the footer uses rather than from a second computation,
+ * which is what makes them agree by construction instead of by luck.
+ *
+ * With a Group By the summary breaks into one row per dimension value — the dimension leads
+ * (the picker puts it first) and each measure is apportioned across the rows. ⚠️ UNMEASURED:
+ * the capture has no Group By set, so the grouped shape follows the Details Report's own
+ * apportionment rules rather than a captured example.
+ */
+export function summaryRows(
+  profile: CustomerProfile, columns: string[], groupBy?: string,
+): string[][] {
+  const measures = new Set(buildCatalog(profile).measures);
+  const cell = (col: string, share = 1): string => {
+    const raw = measures.has(col) ? col
+      : measures.has(col.replace(/^Total /, "")) ? col.replace(/^Total /, "") : null;
+    if (!raw) return "";
+    const g = magnitudeOf(profile, raw);
+    return isAdditive(g.kind)
+      ? formatHero(Math.round(g.total * share), g.kind)
+      : formatMeasure(g.level, g.kind);
+  };
+  if (!groupBy) return [columns.map((c) => cell(c))];
+
+  const real = dimensionBreakdown(profile, groupBy, columns.find((c) => c !== groupBy) ?? "Call Count");
+  const labels = real ? real.labels : dimensionValues(profile, groupBy);
+  const weights = real ? real.values : labels.map(() => 1);
+  const sum = weights.reduce((a, b) => a + b, 0) || 1;
+  return pivotOrder(labels.map((label, i) => ({ label, w: weights[i] ?? 0 })))
+    .map(({ label, w }) => columns.map((c) => (c === groupBy ? label : cell(c, w / sum))));
+}
 
 const REPORT_TITLES = new Set(["Details Report", "Summary Report", "Transactions Report"]);
 
@@ -825,9 +872,15 @@ export function upgradeReportTile<T extends GeneratedTile>(profile: CustomerProf
      and the stale check did not fire (it had a footer, just an outdated one). Deriving them
      costs nothing and means the next format correction lands everywhere. Rows are NOT
      re-derived for a current tile — those stay authoritative, so an AI edit survives. */
+  /* ⚠️ A SUMMARY'S CAPTION COUNTS ITS ROWS; a details grid's does not. Re-deriving the caption
+     blind overwrote the picker's "Showing 1 of 1 row" with "Showing 1 of many rows" — the
+     re-derivation is right (it is what lets a format fix reach existing tiles) but it has to
+     know which report it is looking at, and the title is the only thing carrying that. */
+  const summary = tile.title === "Summary Report";
   return {
     ...tile, note: "", columns: stale ? reportHeaders(profile, cols) : cols, rows,
-    reportFooter: reportFooter(profile, cols, rows), caption: reportCaption(rows.length),
+    reportFooter: reportFooter(profile, cols, rows),
+    caption: summary ? reportCaption(rows.length, rows.length) : reportCaption(rows.length),
   };
 }
 

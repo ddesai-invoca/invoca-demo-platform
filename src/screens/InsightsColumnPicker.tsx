@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { columnGroupsFor, sidebarFor, type ReportKind } from "../data/insightsColumns";
-import { reportCaption, reportFooter, reportHeaders, reportRows } from "../data/insightsTileData";
+import { reportCaption, reportFooter, reportHeaders, reportRows, summaryRows } from "../data/insightsTileData";
 
 /* =============================================================================
    InsightsColumnPicker — what the three Report templates open.
@@ -153,13 +153,18 @@ export function InsightsColumnPicker() {
         </section>
 
         <aside className="icp-side">
-          {/* Group By is a Summary-only control. A details row is already one call, so
-              there is nothing to group; a summary has to aggregate by something. */}
+          {/* Group By is a Summary-only control: a details row is already one call, so there
+              is nothing to group.
+              ⚠️ AND IT IS OPTIONAL. Create used to be disabled until a dimension was chosen,
+              on the reasoning that "a summary has to aggregate by something". The Summary
+              Report capture is a summary of NOTHING — seven measure columns, no dimension, a
+              single row of totals — so an ungrouped summary is the product's own default and
+              was unreachable here. The option now reads "None". */}
           {side.groupBy && (
             <div className="icp-groupby">
               <p className="icp-side-title">Group By</p>
               <select value={groupBy} onChange={(e) => setGroupBy(e.target.value)}>
-                <option value="">Select a dimension</option>
+                <option value="">None</option>
                 {groupByOptions.map((o) => <option key={o} value={o}>{o}</option>)}
               </select>
             </div>
@@ -192,12 +197,18 @@ export function InsightsColumnPicker() {
         <span className="icp-foot-right">
           <button className="icp-cancel" type="button" onClick={() => navigate(DASH)}>Cancel</button>
           <button className="icp-create" type="button"
-            disabled={picked.length === 0 || (side.groupBy && !groupBy)}
+            disabled={picked.length === 0}
             onClick={() => {
               /* A grouped summary leads with the thing it is grouped by, as the live
                  report does, so the aggregate reads left to right. */
               const cols = side.groupBy && groupBy ? [groupBy, ...picked.filter((c) => c !== groupBy)] : picked;
-              const rows = reportRows(profile, cols);
+              /* ⚠️ A SUMMARY IS NOT A SLICE OF ROWS, IT IS THE AGGREGATE. Measured: seven
+                 measure columns, ONE body row holding each measure's total, and the pinned
+                 row repeating those same numbers under TOTAL. So it cannot go through
+                 `reportRows`, which mints one row per call. */
+              const rows = kind === "summary-report"
+                ? summaryRows(profile, cols, groupBy || undefined)
+                : reportRows(profile, cols);
               addTile(`${profileId}::${DASH}`, {
                 id: `t${Date.now()}`, tileType: "table", title: name,
                 /* ⚠️ NO NOTE. The captured tile's header carries the title and nothing
@@ -213,7 +224,11 @@ export function InsightsColumnPicker() {
                 /* The pinned aggregation row and the row caption are what make this read
                    as the real Report tile rather than a bare grid; both are measured. */
                 reportFooter: reportFooter(profile, cols, rows),
-                caption: reportCaption(rows.length),
+                /* A summary shows every row it has, so the caption states the total and its
+                   noun agrees: "Showing 1 of 1 row". A details grid shows a slice. */
+                caption: kind === "summary-report"
+                  ? reportCaption(rows.length, rows.length)
+                  : reportCaption(rows.length),
               });
               navigate(DASH);
             }}>

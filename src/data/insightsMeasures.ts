@@ -41,6 +41,16 @@ export type MeasureKind =
 const OVERRIDES: Array<[RegExp, MeasureKind]> = [
   /* "…: gt 1-minute" counts the calls past a threshold. */
   [/:\s*(gt|lt|gte|lte|>=|<=|>|<)\s/i, "count"],
+  /* ⚠️ A NAME ENDING IN "(Seconds)" IS A RAW SECONDS FIELD, AND IT SUMS. Measured on the
+     Summary Report capture: `AI Agent Answer Offset (Seconds)` and `AI Agent Handle Time
+     (Seconds)` both carry the **Total** prefix, both print compactly (1.76K, 19.73K rather
+     than mm:ss) and both are labelled **TOTAL** in the aggregation row. The duration family
+     below would have made them non-additive, printed them as 29:20 and dropped the prefix.
+     This replaces an INFERENCE with a measurement — the note at `aggregationWord` records
+     that duration was never itself captured, only percent was.
+     A bare time measure ("Agent Handle Time", "Hold Time") has no unit in its name and stays
+     a duration: that is an average per call, where this is a quantity of seconds. */
+  [/\(seconds?\)\s*$/i, "count"],
   /* Invoca's scorecard line items ("(QA) Proper Greeting", "BASE SKILLS", "Introduction",
      "Problem Resolution") are counted as calls where the signal was MET, the same way
      every other signal in this app behaves. Only a name literally ending in "Score" is
@@ -82,14 +92,19 @@ export const aggregationWord = (k: MeasureKind): string =>
   isAdditive(k) ? "Total" : "";
 
 /**
- * The axis title. ⚠️ Does not double the word: the measure "Total Messages" was coming
- * out as "Total Total Messages", and a measure already named "Average …" would read the
- * same way.
+ * The axis title.
+ *
+ * ⚠️ IT DOES DOUBLE THE WORD, AND THAT IS THE PRODUCT'S OWN BEHAVIOUR. This used to suppress
+ * the prefix when the measure already began with "Total"/"Average", on the grounds that
+ * "Total Total Messages" read as a bug. The Summary Report capture prints exactly that — its
+ * second column header is **"Total Total Messages"** for the measure named "Total Messages" —
+ * so the prefix is applied unconditionally and the guard was a departure from the real site.
+ * Blast radius is one measure: "Total Messages" is the only name in the catalogue starting
+ * with an aggregation word.
  */
 export const axisTitleFor = (measure: string): string => {
   const word = aggregationWord(kindOf(measure));
-  if (!word) return measure;
-  return new RegExp(`^(total|average|avg)\\b`, "i").test(measure) ? measure : `${word} ${measure}`;
+  return word ? `${word} ${measure}` : measure;
 };
 
 /* ---------------------------------------------------------------------------
@@ -211,7 +226,13 @@ export function magnitudeOf(profile: CustomerProfile, measure: string): Magnitud
   const kind = kindOf(measure);
   const calls = callTotal(profile);
   const seed = hash(profile.id + "::" + measure);
-  const pick = (lo: number, hi: number) => lo + (seed % Math.max(1, Math.round((hi - lo) * 10))) / 10;
+  /* ⚠️ 1,000 STEPS, NOT `(hi - lo) * 10`. The old form gave the count branch's 0.18-0.72 band
+     exactly FIVE possible values (0.18 / 0.28 / 0.38 / 0.48 / 0.58), so differently-named
+     measures collided constantly. Invisible in a Details Report, where every measure column is
+     a column of 1s — and glaring in a Summary Report, which puts one number per measure side
+     by side on a single row: three of seven columns came out 18.35K and two more 28.01K. Same
+     defect the money branch's seeded spread already exists to prevent. */
+  const pick = (lo: number, hi: number) => lo + ((seed % 1000) / 1000) * (hi - lo);
 
   switch (kind) {
     case "money": {
@@ -251,7 +272,26 @@ export function magnitudeOf(profile: CustomerProfile, measure: string): Magnitud
     case "count":
     default: {
       /* A signal is met on a fraction of calls; the call count itself is the whole. */
-      const share = /^call count$|^interaction count$|^interaction$/i.test(measure) ? 1 : pick(0.18, 0.72);
+      if (/^call count$|^interaction count$|^interaction$/i.test(measure)) {
+        return { kind, total: Math.max(1, calls), level: 0 };
+      }
+      /* Answered and its complement are the two a prospect actually checks against the
+         dashboards, so they are anchored to a plausible answer rate rather than left to the
+         seed. Everything else is a signal or a feature counter. */
+      if (/\bnot answered\b/i.test(measure)) {
+        return { kind, total: Math.max(1, Math.round(calls * pick(0.24, 0.42))), level: 0 };
+      }
+      if (/\banswer(ed)?\b/i.test(measure) && !/ai|voice ai|messaging/i.test(measure)) {
+        return { kind, total: Math.max(1, Math.round(calls * pick(0.55, 0.78))), level: 0 };
+      }
+      /* ⚠️ A LOG-UNIFORM SHARE, spanning four orders of magnitude. The old 0.18-0.72 band put
+         every count measure between a fifth and three quarters of the call total, so a row of
+         them read as the same number over and over. The Summary Report capture spans
+         **8 to 42.96K** on one row — Voice AI Agent Opt In at 8, Engaged at 172, Answered By
+         AI Voice Agent at 1.46K — because a pilot feature and a call count are not the same
+         order of thing. Log-uniform reproduces that spread; a linear band cannot. */
+      const t = (seed % 1000) / 1000;
+      const share = 0.0002 * Math.pow(0.85 / 0.0002, t);
       return { kind, total: Math.max(1, Math.round(calls * share)), level: 0 };
     }
   }
