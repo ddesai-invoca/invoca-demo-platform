@@ -1148,11 +1148,31 @@ element boxes, the flex/grid rules, the icon paths — instead of reading values
 | tile heights off | height fell out of the content | fixed **333** (row 1) / **370.5** / **396.5** |
 | in-tile spacing wrong | one 16px padding, everything centred | three bands: 32 header (`12px 16px 0` + 12 margin), body inset 12, 57 footer behind a 1px rule |
 
-⚠️ **THE LAYOUT IS A WRAPPING FLEX OF FIXED 457.7px CARDS, NOT A BREAKPOINT GRID.** Measured
-at two widths: the real page puts **3 per row at 1500** (3 x 457.7 + gaps = the banner's own
-1421) and **4 at 1920**. A `repeat(4, 1fr)` grid is wrong at both — it squeezes at 1500 and
-stretches at 1920. Fixed width plus wrap reproduces both for free, and this is the
-measure-at-more-than-one-width rule catching a third screen.
+⚠️ **THE CARDS FLEX BETWEEN ~442 AND ~458 — CORRECTED AGAIN.** Two passes got this wrong in
+opposite directions: first a `repeat(4, 1fr)` grid, then a FIXED 457.7px basis. Measured:
+**457.7 wide / 3 per row at 1500** and **442.3 wide / 4 per row at 1920**. `flex: 1 1 440px`
+with a **24px** gap reproduces both exactly — at 1500 only three 440s fit so each grows to
+(1421-48)/3 = 457.7, at 1920 four fit and each settles at (1837-72)/4 = 442. A fixed basis is
+right at one width and wrong at the other, which is precisely what measuring at a single
+width cannot tell you.
+
+⚠️ **THE SECOND ROW'S TILES ARE 396.5 TALL, NOT 370.5** — measured directly on Today's
+Events, Today's Tasks and My Goals rather than read off the mixed list of ten `.slds-card`
+heights (that list includes nested cards, which is how 370.5 got picked).
+
+⚠️ **THREE SLDS ILLUSTRATIONS WERE MISSING ENTIRELY, and they are `<img>` not `<svg>`** —
+which is why an svg inventory of the capture found 34 icons and none of them. Extracted
+verbatim to `public/icons/salesforce/`: `illus-events.svg` (257x108), `illus-tasks.svg`
+(256x90) and `goals-rings.svg` (**127x126**). That last one matters most: **My Goals' four
+circles are ONE illustration**, and two passes hand-built them out of spans, getting the
+size, the overlap and the avatar glyph wrong every time.
+
+⚠️ **THE TOP-RIGHT CONTROLS ARE BORDERED 32px BUTTONS, and the two are different variants:**
+round on My Goals (`border-radius: 240px`) and square on Today's Tasks (radius 4), both
+`1px solid #747474` at x=393.3 y=13. Drawing either as a bare glyph is a large part of why
+the tile chrome read as wrong.
+⚠️ **"Set goals" IS A PILL INSIDE THE BODY** — 90.3 x 32 at radius 240, `#0176D3`, centred —
+and My Goals has NO `.slds-card__footer` at all, where every other tile does.
 
 ⚠️ **EVERY SLDS ICON IS ON A 520 GRID, filled not stroked.** Dropping one of those paths into
 a 24-unit viewBox renders an invisible speck. `SldsIcon` sets `fill: currentColor` so callers

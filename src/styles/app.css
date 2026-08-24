@@ -4272,7 +4272,7 @@ button.nav-item {
 .sfh-barpencil { display: flex; align-items: center; padding: 0 12px; color: #747474; flex: 0 0 auto; }
 
 /* ---- page + banner ------------------------------------------------------- */
-.sfh-page { padding: 0 12px 12px; }
+.sfh-page { padding: 0 32px 12px; }
 .sfh-banner { display: flex; align-items: baseline; gap: 12px; height: 55px; padding-left: 20px; }
 /* ⚠️ 300 28px/49px — the 49px line box is what makes the band 55 tall. */
 .sfh-h1 { font-size: 28px; font-weight: 300; line-height: 49px; color: #181818; margin: 0; }
@@ -4284,21 +4284,37 @@ button.nav-item {
    THREE cards per row (3 x 457.7 + gaps = the banner's own 1421 width) and at 1920 it fits
    four. A `repeat(4, 1fr)` grid gets both widths wrong: it squeezes four in at 1500 and
    stretches them at 1920. Fixed width + wrap reproduces both for free. */
-.sfh-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
+/* ⚠️ THE CARDS FLEX, they are not a fixed width — measured 457.7 at a 1500 viewport and
+   442.3 at 1920. `flex: 1 1 440px` with a 24px gap reproduces BOTH exactly: at 1500 only
+   three 440s fit, so each grows to (1421-48)/3 = 457.7; at 1920 four fit and each settles at
+   (1837-72)/4 = 442. A fixed 457.7px basis (the previous attempt) is right at one width and
+   wrong at the other. */
+.sfh-grid { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
 
 /* ⚠️ THREE MEASURED BANDS AND A FIXED HEIGHT: 1 + 32 header + 12 margin + 230 body
    + 57 footer + 1 = 333 on a row-1 card. The second row measures 370.5, i.e. a 267.5 body.
    The first build had one 16px padding and let the height fall out of the content, which is
    why every tile was the wrong size. */
 .sfh-card {
-  display: flex; flex-direction: column; height: 333px; flex: 0 0 457.7px; max-width: 100%;
+  display: flex; flex-direction: column; height: 333px;
+  flex: 1 1 440px; max-width: 458px;
   background: #fff; border: 1px solid #c9c9c9; border-radius: 4px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 }
-.sfh-card--tall { height: 370.5px; }
-/* Measured 396.5 — the tallest of the three row heights. */
+/* ⚠️ 396.5, NOT 370.5 — measured on Today's Events, Today's Tasks and My Goals directly. */
+.sfh-card--tall { height: 396.5px; }
 .sfh-card--sb { height: 396.5px; }
-.sfh-card-head { height: 32px; padding: 12px 16px 0; margin-bottom: 12px; flex: 0 0 auto; }
+.sfh-card-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+  height: 32px; padding: 12px 16px 0; margin-bottom: 12px; flex: 0 0 auto;
+}
+/* 32 square, 1px #747474 — round on My Goals, square on Today's Tasks. */
+.sfh-iconbtn {
+  display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
+  flex: 0 0 32px; margin-top: -6px; border: 1px solid #747474; border-radius: 4px;
+  color: #747474; background: #fff;
+}
+.sfh-iconbtn--round { border-radius: 240px; }
 .sfh-card-title { font-size: 16px; line-height: 20px; font-weight: 700; color: #181818; margin: 0; }
 /* The body is inset 12 either side — 1 less than the header's 16, which is why the subtitle
    sits 4px left of the title. */
@@ -4343,15 +4359,17 @@ button.nav-item {
 .sfh-warn-icon { color: #a96404; }
 
 /* ---- second-row tiles ---------------------------------------------------- */
-.sfh-empty { font-size: 13px; line-height: 19.5px; color: #444; margin: 40px auto 0; text-align: center; }
-.sfh-goalgear { position: absolute; right: 16px; top: 12px; color: #747474; }
-.sfh-card--tall { position: relative; }
-.sfh-goals { display: grid; grid-template-columns: repeat(2, 48px); gap: 8px; margin: 12px auto 0; }
-.sfh-goal-c {
-  width: 48px; height: 48px; border-radius: 100%; background: #f3f3f3; color: #747474;
-  display: flex; align-items: center; justify-content: center; font-size: 15px;
+/* The illustration sits above centred copy, with 24px under it (measured margin-bottom). */
+.sfh-illus { display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 12px; }
+.sfh-illus img { display: block; margin-bottom: 24px; }
+.sfh-empty { font-size: 13px; line-height: 19.5px; color: #181818; margin: 0; text-align: center; }
+.sfh-goalwrap { display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 52px; }
+.sfh-goalart { display: block; margin-bottom: 12px; }
+/* ⚠️ A PILL, not a full-width button: 90.3 x 32 at radius 240. */
+.sfh-pillbtn {
+  height: 32px; line-height: 30px; padding: 0 16px; border-radius: 240px;
+  background: #0176d3; color: #fff; font-size: 13px; border: 1px solid #0176d3;
 }
-.sfh-goal-c--on { background: #5867e8; color: #fff; }
 
 /* ⚠️ THE OBJECT TILE IS 32 SQUARE AT RADIUS 4 with the object's own colour, and the glyph is
    a 32px image inside it — the capture's colours verbatim. */

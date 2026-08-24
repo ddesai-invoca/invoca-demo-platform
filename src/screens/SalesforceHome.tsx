@@ -85,14 +85,24 @@ function Legend({ rows }: { rows: { tone: Tone; text: string }[] }) {
    (padding 12/16/0 plus 12 of margin), a body inset 12 either side, and a 57px footer behind
    a 1px rule. The first build used a single 16px padding and centred everything, which is
    why the spacing read wrong on every tile. */
-function Card({ title, subtitle, action, tall, children }: {
+function Card({ title, subtitle, action, tall, control, children }: {
   title: string; subtitle?: string; action?: React.ReactNode; tall?: boolean;
+  /* ⚠️ THE TOP-RIGHT CONTROL IS A BORDERED 32px BUTTON, measured at x=393.3 y=13 with
+     `1px solid #747474`. It is ROUND on My Goals (`border-radius: 240px`) and SQUARE on
+     Today's Tasks (radius 4) — two different SLDS button variants, and drawing either as a
+     bare glyph is what made the first two passes read as not-Salesforce. */
+  control?: { icon: string; round?: boolean };
   children: React.ReactNode;
 }) {
   return (
     <article className={"sfh-card" + (tall ? " sfh-card--tall" : "")}>
       <div className="sfh-card-head">
         <h2 className="sfh-card-title">{title}</h2>
+        {control ? (
+          <span className={"sfh-iconbtn" + (control.round ? " sfh-iconbtn--round" : "")}>
+            <SldsIcon name={control.icon} size={14} />
+          </span>
+        ) : null}
       </div>
       <div className="sfh-card-body">
         {subtitle ? <p className="sfh-card-sub">{subtitle}</p> : null}
@@ -226,24 +236,37 @@ export function SalesforceHome() {
             </div>
           </Card>
 
+          {/* ⚠️ THE FOUR GOAL CIRCLES ARE ONE ILLUSTRATION, 127 x 126, not four DOM circles.
+              The first two passes hand-built them out of spans, which is why their size,
+              overlap and the avatar glyph were all wrong. Extracted verbatim.
+              ⚠️ AND "Set goals" IS A PILL INSIDE THE BODY (90.3 x 32, radius 240,
+              centred at y=343.5), NOT a full-width footer button — this card has no
+              `.slds-card__footer` at all. */}
           <Card title="My Goals"
             subtitle="Set personal weekly or monthly goals for emails, calls, and meetings."
-            tall action={<span className="sfh-btn sfh-btn--brand">Set goals</span>}>
-            <span className="sfh-goalgear"><SldsIcon name="settings" size={14} /></span>
-            <div className="sfh-goals" aria-hidden="true">
-              <span className="sfh-goal-c"><SldsIcon name="add" size={14} /></span>
-              <span className="sfh-goal-c">&#10003;</span>
-              <span className="sfh-goal-c sfh-goal-c--on">&#9733;</span>
-              <span className="sfh-goal-c" />
+            tall control={{ icon: "settings", round: true }}>
+            <div className="sfh-goalwrap">
+              <img className="sfh-goalart" src="/icons/salesforce/goals-rings.svg" alt=""
+                width={127} height={126} />
+              <span className="sfh-pillbtn">Set goals</span>
             </div>
           </Card>
 
+          {/* ⚠️ THE EMPTY STATES CARRY SLDS ILLUSTRATIONS — 257x108 and 256x90, both
+              extracted verbatim. Leaving them out is why these two tiles looked bare. */}
           <Card title="Today's Events" tall action={<Btn>View Calendar</Btn>}>
-            <p className="sfh-empty">Looks like you&rsquo;re free and clear the rest of the day.</p>
+            <div className="sfh-illus">
+              <img src="/icons/salesforce/illus-events.svg" alt="" width={257} height={108} />
+              <p className="sfh-empty">Looks like you&rsquo;re free and clear the rest of the day.</p>
+            </div>
           </Card>
 
-          <Card title="Today's Tasks" tall action={<Btn>View All</Btn>}>
-            <p className="sfh-empty">Nothing due today. Be a go-getter, and check back soon.</p>
+          <Card title="Today's Tasks" tall control={{ icon: "chevrondown" }}
+            action={<Btn>View All</Btn>}>
+            <div className="sfh-illus">
+              <img src="/icons/salesforce/illus-tasks.svg" alt="" width={256} height={90} />
+              <p className="sfh-empty">Nothing due today. Be a go-getter, and check back soon.</p>
+            </div>
           </Card>
 
           <Card title="Recent Records" tall action={<Btn>View All</Btn>}>
