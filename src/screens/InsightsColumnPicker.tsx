@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
+import { dashboardFrom } from "../data/insightsDashboards";
 import { columnGroupsFor, sidebarFor, type ReportKind } from "../data/insightsColumns";
 import { reportCaption, reportFooter, reportHeaders, reportRows, summaryRows } from "../data/insightsTileData";
 
@@ -74,7 +75,12 @@ export function InsightsColumnPicker() {
   const { profile, profileId } = useProfile();
   const { addTile } = useAiAssistant();
   const name = TITLES[report ?? ""] ?? "Details Report";
-  const DASH = "/insights/dashboard/Summary%20Dashboard";
+  /* ⚠️ THE DASHBOARD THIS TILE BELONGS TO COMES FROM `?to=`, handed over by Add Tile.
+     It was hardcoded to the Summary Dashboard, so a Report built from an SE's own
+     dashboard was stored under the Summary Dashboard's key and never appeared where
+     they were standing. See `dashboardFrom` for why the value is validated. */
+  const search = useLocation().search;
+  const dash = dashboardFrom(search);
 
   const kind = (report ?? "details-report") as ReportKind;
   const side = sidebarFor(kind);
@@ -292,9 +298,9 @@ export function InsightsColumnPicker() {
       </div>
 
       <div className="icp-foot">
-        <button className="icp-back" type="button" onClick={() => navigate("/insights/add-tile")}>Back</button>
+        <button className="icp-back" type="button" onClick={() => navigate(`/insights/add-tile?to=${encodeURIComponent(dash)}`)}>Back</button>
         <span className="icp-foot-right">
-          <button className="icp-cancel" type="button" onClick={() => navigate(DASH)}>Cancel</button>
+          <button className="icp-cancel" type="button" onClick={() => navigate(dash)}>Cancel</button>
           <button className="icp-create" type="button"
             disabled={picked.length === 0}
             onClick={() => {
@@ -311,7 +317,7 @@ export function InsightsColumnPicker() {
                    and only one transaction per call carries the call leg, so the Total Call
                    Count column reads 0 or 1 rather than always 1. */
                 : reportRows(profile, cols, { transactions: kind === "transactions-report" });
-              addTile(`${profileId}::${DASH}`, {
+              addTile(`${profileId}::${dash}`, {
                 id: `t${Date.now()}`, tileType: "table", title: name,
                 /* ⚠️ NO NOTE. The captured tile's header carries the title and nothing
                    else — `descriptionPresent` is false — where this printed
@@ -332,7 +338,7 @@ export function InsightsColumnPicker() {
                   ? reportCaption(rows.length, rows.length)
                   : reportCaption(rows.length),
               });
-              navigate(DASH);
+              navigate(dash);
             }}>
             Create
           </button>

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { dashboardFrom } from "../data/insightsDashboards";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { TEMPLATE_SPECS } from "../data/insightsCatalog";
 import { buildTile } from "../data/insightsTileData";
@@ -122,8 +123,6 @@ function AiSparkle() {
   );
 }
 
-const DASH = "/insights/dashboard/Summary%20Dashboard";
-
 export function InsightsAddTile() {
   const navigate = useNavigate();
   const { profile, profileId } = useProfile();
@@ -131,9 +130,17 @@ export function InsightsAddTile() {
   const [asking, setAsking] = useState(false);
   /* Which template's Configuration drawer is open, or null. */
   const [configuring, setConfiguring] = useState<string | null>(null);
-  /* Where "Back" returns to. The dashboard is the only place this screen is
-     reachable from, so there is one destination. */
-  const back = () => navigate(DASH);
+  /* ⚠️ THE DESTINATION DASHBOARD COMES FROM `?to=`, IT IS NOT A CONSTANT. It used to be
+     hardcoded to the Summary Dashboard, which was accidentally right while that was the
+     only dashboard with an Add Tile button — and silently wrong the moment an SE could
+     create their own: a tile built from a new dashboard was stored against the Summary
+     Dashboard's key, so the new one stayed empty and the tile turned up on a screen
+     nobody was looking at. Exactly the silent-success shape this repo keeps hitting.
+     `dashboardFrom` validates the parameter, so a hand-edited URL cannot point the
+     tile store at an arbitrary key. */
+  const dash = dashboardFrom(useLocation().search);
+  /* Where "Back" returns to — the dashboard the SE came from. */
+  const back = () => navigate(dash);
 
   const Card = ({ t, accent }: { t: Tile; accent?: boolean }) => (
     <button className={"iat-card" + (accent ? " iat-card--ai" : "")} type="button"
@@ -157,7 +164,10 @@ export function InsightsAddTile() {
         /* The Reports go to their own FULL PAGE, matching the live route shape
            (.../new_tile/details-report), not to a drawer. */
         if (spec?.surface === "columns") {
-          navigate(`/insights/add-tile/${t.title.toLowerCase().replace(/\s+/g, "-")}`);
+          /* Carry the destination on, or the picker lands its Report tile on the
+             Summary Dashboard whatever the SE clicked Add Tile from. */
+          navigate(`/insights/add-tile/${t.title.toLowerCase().replace(/\s+/g, "-")}`
+            + `?to=${encodeURIComponent(dash)}`);
           return;
         }
         back();
@@ -204,9 +214,9 @@ export function InsightsAddTile() {
         onCreate={(choice) => {
           /* Same path a hand-built tile takes: buildTile from the phase-1 pool, the
              dashboard's own ENCODED scope key, then navigate so the SE sees it. */
-          addTile(`${profileId}::${DASH}`, { ...buildTile(profile, choice), id: `t${Date.now()}` });
+          addTile(`${profileId}::${dash}`, { ...buildTile(profile, choice), id: `t${Date.now()}` });
           setAsking(false);
-          navigate(DASH);
+          navigate(dash);
         }}
       />
 
@@ -222,12 +232,12 @@ export function InsightsAddTile() {
              "/insights/dashboard/Summary%20Dashboard", and GeneratedTiles builds its
              scope key from that pathname verbatim — a decoded space here stores the
              tile under a key nobody reads, and it would never appear. Derived from
-             DASH so the two can't drift. */
-          addTile(`${profileId}::${DASH}`, {
+             `dash` so the two can't drift. */
+          addTile(`${profileId}::${dash}`, {
             ...buildTile(profile, c), id: `t${Date.now()}`,
           });
           setConfiguring(null);
-          navigate(DASH);
+          navigate(dash);
         }}
       />
     </div>

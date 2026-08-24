@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useNavigate, useParams, useSearchParams, Link } from "react-router-dom";
+import { useLocation, useNavigate, useParams, useSearchParams, Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { DonutChart, TS_GEOM, truncate } from "../components/DonutChart";
 import { usePageDataWithLabels, DashAssistant } from "../components/GeneratedTiles";
@@ -441,6 +441,10 @@ export function InsightsDashboard() {
   const { profile } = useProfile();
   const { name } = useParams();
   const navigate = useNavigate();
+  /* Add Tile carries the dashboard it was clicked on, so a built tile lands here. For the
+     Summary Dashboard this is the same string Add Tile used to hardcode; it matters for any
+     other report name that falls through to this screen. */
+  const addTileHref = `/insights/add-tile?to=${encodeURIComponent(useLocation().pathname)}`;
   /* Registers this page as the AI scope and returns the slice with any
      edits made ON THIS PAGE overlaid (see usePageData). */
   /* Labels carry the prospect's own booking term, so the chart legend and every
@@ -589,7 +593,7 @@ export function InsightsDashboard() {
           <button className="ind-ask" onClick={() => setAskOpen(true)}>
             <span className="material-icons">auto_awesome</span>Ask
           </button>
-          <button className="ind-add" onClick={() => navigate("/insights/add-tile")}>
+          <button className="ind-add" onClick={() => navigate(addTileHref)}>
             <span className="material-icons">add</span>Add Tile
           </button>
           <span className="material-icons ind-kebab">more_vert</span>

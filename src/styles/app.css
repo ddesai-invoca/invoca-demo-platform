@@ -3866,3 +3866,94 @@ button.nav-item {
 }
 .icp-create:hover:not(:disabled) { background: #1c53e9; }
 .icp-create:disabled { background: #e7e9eb; color: #a1a7b2; cursor: not-allowed; }
+
+/* ---- "New Dashboard" modal + a created dashboard's empty state ---------------
+   Measured off the two captures (8/23/2026). The modal is Invoca's own MUI dialog and the
+   empty state is Invoca's own React — neither is inside the ThoughtSpot iframe, so every
+   value here was read off the rendered DOM rather than a screenshot. */
+.ndm-backdrop {
+  position: fixed; inset: 0; z-index: 3200;
+  background: rgba(0, 0, 0, .5);
+  display: grid; place-items: center;
+}
+.ndm-paper {
+  width: 500px; max-width: calc(100vw - 32px); min-height: 422px;
+  box-sizing: border-box; background: #fff; border-radius: 3px;
+  /* MUI elevation, verbatim. */
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, .2), 0 24px 38px 3px rgba(0, 0, 0, .14),
+              0 9px 46px 8px rgba(0, 0, 0, .12);
+  display: flex; flex-direction: column;
+  font-family: var(--font-body, Lato), sans-serif; color: #15243e;
+}
+/* Title band: text at 12,12, then a 1px rule with the content starting at y=52. */
+.ndm-title {
+  font-size: 20px; line-height: 28px; font-weight: 400; color: #15243e;
+  margin: 0; padding: 12px; border-bottom: 1px solid #e7e9eb;
+}
+.ndm-body { padding: 16px 13.6px; flex: 1 1 auto; }
+.ndm-label {
+  display: block; font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e;
+  padding-bottom: 2px;
+}
+.ndm-label--desc { padding-top: 16px; }
+.ndm-field {
+  display: block; width: 384px; max-width: 100%; box-sizing: border-box;
+  font: inherit; font-size: 16px; color: #15243e;
+  background: #fff; border: 1px solid #e7e9eb; border-radius: 3px;
+  height: 40px; padding: 8.5px 14px;
+}
+/* The Description control is taller — 56 against the Name field's 40. */
+.ndm-field--desc { height: 56px; padding: 16.5px 14px; resize: vertical; }
+.ndm-field:focus { outline: none; border-color: #2666f9; }
+.ndm-foot {
+  display: flex; justify-content: flex-end; gap: 12px; align-items: center;
+  padding: 12px 13.6px 16px;
+}
+/* ⚠️ THE PLATFORM'S OWN BUTTON PAIR, not new values — the same measurements Verify Labels
+   records: an outlined white secondary, and a disabled primary in #E7E9EB on #A1A7B2. */
+.ndm-cancel, .ndm-create {
+  font: inherit; font-size: 14px; height: 36px; padding: 8px 12px;
+  border-radius: 3px; cursor: pointer;
+}
+.ndm-cancel { background: #fff; border: 1px solid rgba(38, 102, 249, .5); color: #2666f9; }
+.ndm-cancel:hover { background: #f3f7ff; }
+.ndm-create { background: #2666f9; border: 0; color: #fff; font-weight: 500; }
+.ndm-create:hover { background: #1c53e9; }
+.ndm-create:disabled { background: #e7e9eb; color: #a1a7b2; cursor: default; }
+
+/* The empty dashboard. `.ind-*` header rules are reused READ-ONLY, per the Connect AI note. */
+.ied-desc { font-size: 13px; color: #5b6577; margin: 0 0 8px; }
+.ied-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  padding: 48px 0 40px;
+}
+.ied-art { width: 320px; height: 220px; display: block; }
+.ied-copy { font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; margin: 0; text-align: center; }
+.ied-addtile {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #2666f9; color: #fff; border: 0; border-radius: 3px;
+  font: inherit; font-size: 14px; font-weight: 500; height: 36px; padding: 8px 12px;
+  cursor: pointer;
+}
+.ied-addtile:hover { background: #1c53e9; }
+.ied-addtile .material-icons { font-size: 18px; }
+.ied-templates {
+  background: #f5f6fa; border: 1px solid #e7e9eb; border-radius: 8px;
+  margin: 0 0 40px;
+}
+/* ⚠️ UPPERCASED IN CSS. The heading's text content is "Dashboard Templates"; rendering the
+   literal "DASHBOARD TEMPLATES" would be wrong the moment anyone selects or searches it. */
+.ied-templates-head {
+  font-size: 16px; line-height: 20px; font-weight: 400; color: #15243e;
+  text-transform: uppercase; margin: 0; padding: 24px 0 24px 24px;
+}
+.ied-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px; padding: 0 24px 24px;
+}
+.ied-card {
+  background: #fff; border: 1px solid #e7e9eb; border-radius: 4px;
+  padding: 24px; min-height: 120px; box-sizing: border-box;
+}
+.ied-card-title { font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; margin: 0 0 12px; }
+.ied-card-body { font-size: 16px; line-height: 20px; font-weight: 400; color: #15243e; margin: 0; }

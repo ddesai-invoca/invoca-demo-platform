@@ -1279,6 +1279,89 @@ have had at all. Reset on `kind` change, and test by navigating in an order buil
 expose stale state (details -> transactions -> summary -> details), not by loading each
 report fresh.
 
+## Creating a dashboard: New -> name + description -> an empty dashboard (8/23/2026)
+`src/data/insightsDashboards.ts` (the store), `src/components/NewDashboardModal.tsx`
+(`.ndm-*`), `src/screens/InsightsEmptyDashboard.tsx` (`.ied-*`), and the `?to=` plumbing in
+`InsightsAddTile` / `InsightsColumnPicker` / `InsightsDashboard`. **+ New** on Insights &
+Analytics opens the modal; Create lands on the new, empty dashboard, and Add Tile there fills
+it in place. Both captures are Invoca's own React (no ThoughtSpot iframe), so every value
+below is measured off the rendered DOM rather than a screenshot.
+
+| modal | measured |
+|---|---|
+| backdrop | `rgba(0,0,0,.5)` |
+| paper | 500 x 422, white, radius 3, MUI elevation shadow |
+| title | "New Dashboard", Lato 20/400 `#15243E` at 12,12; 1px `#E7E9EB` under the band |
+| label | Lato **16/700** `#15243E` |
+| field | **384** wide, radius 3, 1px `#E7E9EB` — Name 40 tall, Description 56 |
+| footer | buttons 36 tall; Cancel OUTLINED (`1px rgba(38,102,249,.5)`, ink `#2666F9`) |
+| Create | **disabled until the name has content** — the capture's is `disabled` with both fields empty. Description is optional |
+
+| empty state | measured |
+|---|---|
+| illustration | 320 x 220 (viewBox 0 0 300 204) |
+| copy | "Use a template or add a tile to get started.", 16/700 `#15243E`, centred |
+| Add Tile | `#2666F9`, 14/500, padding 8px 12px, radius 3, 36 tall |
+| panel | `#F5F6FA`, 1px `#E7E9EB`, radius 8; heading padding `24px 0 24px 24px` |
+| card | 316 x 120, padding 24; title 16/700 with 12px under it; body 16/400 |
+
+⚠️ **THE DESTINATION DASHBOARD WAS HARDCODED, AND THAT WAS THE REAL BUG IN THIS FEATURE.**
+Both Add Tile screens carried `const DASH = "/insights/dashboard/Summary%20Dashboard"` and
+built every tile against it. That was accidentally right while the Summary Dashboard was the
+only screen with an Add Tile button, and silently wrong the moment an SE could create their
+own: the tile was stored under the Summary Dashboard's key, so the new dashboard stayed empty
+and the tile turned up on a screen nobody was looking at. Now `?to=<path>` is carried from
+the button, through Add Tile, through the Report column picker (and its Back), to the
+`addTile` key — verified end to end with real clicks: a Details Report built from
+`Q3 Marketing Review` landed under `shady-blinds::/insights/dashboard/Q3%20Marketing%20Review`
+while the Summary Dashboard's own 5 tiles were untouched.
+⚠️ **`dashboardFrom` VALIDATES the parameter** rather than trusting it. The return value is
+half of a tile-store key, so an unchecked `?to=` would let a hand-edited URL write tiles
+against any key it liked. Only `/insights/dashboard/<name>` is accepted; anything else falls
+back to the Summary Dashboard. It also decodes once and re-encodes the name, so the key
+matches `location.pathname` whether the caller passed the path raw or encoded.
+
+⚠️ **THE EMPTY STATE IS A STATE, NOT THE SCREEN.** The illustration and the templates panel
+are gated on `tilesFor(key).length === 0` — the SAME key `DashAssistant` renders from, so the
+two cannot disagree. Without the gate a dashboard reads "add a tile to get started" directly
+above the tile you just added, which is indistinguishable from the add having failed.
+
+⚠️ **PER PROSPECT, NO TTL.** Keyed by profile id like the SMS and Voice capture stores
+(verified: switching to `autonation` empties the list and the created dashboard does not
+leak), but with no expiry — a captured conversation is a session artifact, a dashboard
+somebody named is not. Consequence, stated rather than discovered later: localStorage means
+per browser, so a built dashboard does NOT follow a demo to a colleague. Move it into the
+demo record if sharing one ever matters.
+
+⚠️ **`InsightsReport` CHECKS THE SE'S OWN DASHBOARDS FIRST**, so a new one named "Details
+Report" opens as theirs rather than vanishing behind the seeded report.
+
+⚠️ **THE ILLUSTRATION IS INVOCA'S OWN, extracted verbatim** to `public/insights-empty.svg`
+(170 paths, 103,377 bytes) per the use-the-real-icons rule, referenced as an `<img>` rather
+than inlined — at ~100KB it would otherwise land in the single bundle every screen loads.
+⚠️ **SingleFile WRITES UNQUOTED ATTRIBUTES, AND AN SVG IN AN `<img>` IS PARSED AS XML.** It
+rendered as a broken image until the attribute values were quoted; `xml.etree` reported
+"not well-formed (invalid token): line 1, column 17", which is the fastest way to check one.
+⚠️ **THE HEADER STRUCTURE IS `InsightsDashboard`'s, COPIED EXACTLY** — a div holding
+`.ind-crumb` + `.ind-title`, then a sibling `.ind-actions`. Inventing `.ind-titlerow` and
+`.ind-breadcrumb`, neither of which exists, right-aligned the title and wrapped the buttons
+underneath. The `.ind-*` rules are reused READ-ONLY, per the Connect AI note.
+
+⚠️ **THE THREE DASHBOARD TEMPLATES CARDS ARE INERT, DELIBERATELY.** Their names and copy are
+the product's, but the capture shows only the cards, not what any of them builds. Wiring them
+means inventing three dashboard layouts and presenting them as Invoca's — the same call the
+Semantic Signal library makes for its uncaptured phrase lists. Give me the tile list for each
+and they become real.
+⚠️ Also unwired: `useInsightsDashboards().remove` exists and nothing calls it. The kebab is
+the obvious home for Delete; it was not part of the ask, so there is no half-built menu.
+
+Non-regression after this: Summary Dashboard 48,293 / 20,224 / 28,069 with its 5 generated
+tiles and 11 charts, Details Report screen still 17 columns / 200 rows / 13px Lato, Connect
+AI 10 charts, `/dashboards/marketing` 21 dash-cards at 4px radius with KPI 48,293 and 7
+donuts and **zero `ts-` or `ied-` elements**, `npm run audit:ai` all green. (`npm run audit`
+reports 8 of 20 demos passing — verified identical with these changes stashed, so those are
+pre-existing generated-profile failures, not this work.)
+
 ### The column picker: expanded by default, and the list is DRAGGABLE (8/23/2026)
 Two captures of the live builder — one with the groups open, one closed — measured directly,
 because that page is Invoca's own React and serialises in full (no ThoughtSpot iframe).

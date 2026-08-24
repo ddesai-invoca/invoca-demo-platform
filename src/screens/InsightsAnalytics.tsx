@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useDemoLibrary } from "../data/DemoLibraryContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { NewDashboardModal } from "../components/NewDashboardModal";
+import { listDate, useInsightsDashboards } from "../data/insightsDashboards";
 
 /* Insights & Analytics — Invoca's newer landing list for saved dashboards, which
    sits ABOVE Dashboards in the nav (network 1847 /insights). Matched to the
@@ -53,23 +56,39 @@ function views(seed: string, i: number): number {
 }
 
 export function InsightsAnalytics() {
-  const { profile } = useProfile();
+  const { profile, profileId } = useProfile();
   const { me } = useDemoLibrary();
   const author = me?.name ?? "Demo User";
+  const navigate = useNavigate();
+  /* Dashboards this SE has created, newest first. See insightsDashboards for why they
+     live in their own store rather than in the AI layer. */
+  const { items: created, create } = useInsightsDashboards(profileId);
+  const [newOpen, setNewOpen] = useState(false);
 
   /* Dates walk backwards from the most recently touched, so the list reads like
      something that has been used rather than all-created-at-once. */
   const dates = ["07/28/2026", "07/28/2026", "07/27/2026", "07/24/2026", "07/21/2026", "07/16/2026"];
 
-  const rows = REPORTS.map((d, i) => ({
-    ...d, views: views(profile.id, i), author, modified: dates[i] ?? "07/16/2026",
-  }));
+  /* ⚠️ CREATED DASHBOARDS LEAD THE LIST. The capture shows the two test dashboards above
+     the seeded reports, and the newest thing an SE made is what they are about to open. Their
+     view count is a real 1 rather than a hashed number — nobody has looked at it yet, and the
+     capture's "test 2" reads exactly 1. */
+  const rows = [
+    ...created.map((d) => ({
+      name: d.name, views: 1, author, modified: listDate(d.createdAt), created: true,
+    })),
+    ...REPORTS.map((d, i) => ({
+      ...d, views: views(profile.id, i), author, modified: dates[i] ?? "07/16/2026", created: false,
+    })),
+  ];
 
   return (
     <div className="md-page ia-page">
       <div className="md-head">
         <h1 className="md-title">Insights &amp; Analytics</h1>
-        <button className="md-new"><span className="material-icons">add</span>New</button>
+        <button className="md-new" type="button" onClick={() => setNewOpen(true)}>
+          <span className="material-icons">add</span>New
+        </button>
       </div>
 
       <div className="md-search">
@@ -101,6 +120,17 @@ export function InsightsAnalytics() {
           ))}
         </tbody>
       </table>
+
+      {newOpen && (
+        <NewDashboardModal
+          onCancel={() => setNewOpen(false)}
+          onCreate={(name, description) => {
+            const d = create(name, description);
+            setNewOpen(false);
+            /* Straight onto the new dashboard, which is what Create does on the real page. */
+            navigate(`/insights/dashboard/${encodeURIComponent(d.name)}`);
+          }} />
+      )}
 
       <div className="ia-pager">
         <span>Rows per page:</span>
