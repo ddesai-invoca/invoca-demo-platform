@@ -71,8 +71,16 @@ const BADGE: Record<State, string> = {
   integrated: "Integrated", ready: "Ready To Integrate", learn: "Learn More",
 };
 
+/* ⚠️ ChatGPT Ads AND Google Ads SIT HERE, NOT IN THE LIBRARY — moved on request 8/24/2026
+   because this demo HAS both journeys built (the captured Google Ads console and the ChatGPT
+   sponsored-ad screen), so "Integrated" is the true state for this account rather than
+   "Learn More". A deliberate departure from the capture, where both are library cards; the
+   captured account has neither built. They keep their alphabetical position, which is how
+   the live INTEGRATED list is ordered. */
 const INTEGRATED: Card[] = [
+  { name: "ChatGPT Ads", state: "integrated", icon: "chatgpt-ads.png", to: "/integrations/chatgpt" },
   { name: "Custom Webhooks", state: "integrated", icon: "custom-webhooks.svg" },
+  { name: "Google Ads", state: "integrated", icon: "google-ads.png", to: "/integrations/google-ads" },
   { name: "Invoca APIs", state: "integrated", icon: "invoca-apis.svg" },
   { name: "Sales Cloud", state: "integrated", icon: "sales-cloud.png" },
 ];
@@ -89,7 +97,6 @@ const LIBRARY: Card[] = [
   { name: "Adobe Experience Platform", state: "learn", icon: "adobe-experience-platform.png" },
   { name: "Agent Voice ID", state: "learn", icon: "agent-voice-id.png" },
   { name: "CDK CRM", state: "learn", icon: "cdk-crm.jpg" },
-  { name: "ChatGPT Ads", state: "learn", icon: "chatgpt-ads.png", to: "/integrations/chatgpt" },
   { name: "Contentsquare", state: "learn", icon: "contentsquare.png" },
   { name: "Criteo", state: "learn", icon: "criteo.png" },
   { name: "DealerSocket", state: "learn", icon: "dealersocket.jpg" },
@@ -98,7 +105,6 @@ const LIBRARY: Card[] = [
   { name: "Facebook Conversions API", state: "learn", icon: "facebook-conversions-api.png" },
   { name: "Fortellis", state: "learn", icon: "fortellis.jpg" },
   { name: "Freshpaint", state: "learn", icon: "freshpaint.png" },
-  { name: "Google Ads", state: "ready", icon: "google-ads.png", to: "/integrations/google-ads" },
   { name: "Google Analytics 4", state: "learn", icon: "google-analytics-4.png" },
   { name: "Google Campaign Manager", state: "learn", icon: "google-campaign-manager.png" },
   { name: "Google Local Services Ads (LSA)", state: "learn", icon: "google-local-services-ads-lsa.png" },
@@ -165,7 +171,10 @@ export function Integrations() {
 
   return (
     <div className="itg-page">
-      <h1 className="itg-h1">Integrations</h1>
+      {/* The h1 sits in its own band with a 1px rule under it — see `.itg-head`. */}
+      <div className="itg-head">
+        <h1 className="itg-h1">Integrations</h1>
+      </div>
 
       <div className="itg-search">
         <span className="material-icons itg-search-icon">search</span>

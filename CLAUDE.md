@@ -1154,6 +1154,21 @@ reached from the real screen instead of the marketing page. **ChatGPT Ads** rout
 | badge | 10px/10px, padding 6.5, radius 100px, `text-transform: capitalize` |
 | grid | 30px gutter, 30px row gap; **4 cols >= 1400, 3 >= 1200, 2 >= 576, 1 below** |
 
+⚠️ **THE PAGE IS WHITE AND CARRIES A THIN RULE UNDER THE HEADER** (both added on request
+8/24/2026, both measured off the live page): the content surface is the app shell's
+`.site-content.card` — `#fff`, `1px solid rgba(0,0,0,.125)`, `border-radius: 5px 0 0 0`, inset
+21px — and the header band is `padding: 20px 0` with `border-bottom: 1px solid #E7E9EB` and
+39px of margin under it, which is exactly the 60px the h1 sits above the search box. Ours
+painted no background, so the body's `#f6f7f9` showed through behind the cards.
+
+⚠️ **ChatGPT Ads AND Google Ads ARE IN THE *INTEGRATED* SECTION, a deliberate departure from
+the capture** (requested 8/24/2026). Both are library "Learn More" / "Ready To Integrate"
+cards on the live page because that account has neither journey built; this demo HAS both (the
+captured Ads console and the ChatGPT sponsored-ad screen), so Integrated is the true state
+here. They keep alphabetical position, which is how the live INTEGRATED list is ordered, and
+they are removed from LIBRARY so neither appears twice. Still the only two cards that
+navigate.
+
 ⚠️ **THE COLOURED LEFT EDGE IS AN 8px DIV, NOT A BORDER**, and one palette dresses both it
 and the badge chip: integrated `#ABE5BC`/`#0D5400`, ready `#B0CDFF`/`#003399`, learnMore
 `#E7E0F9`/`#440066`. EVERY tile has a stripe including Learn More — the lilac is quiet enough
@@ -1418,6 +1433,16 @@ to `.ied-page` so the Summary Dashboard and Connect AI are untouched (re-verifie
 `600 28px/42px` `#1D2B4A`). **OPEN:** those two are probably 24/36 as well — all three are
 the same liveboard header — but this capture is of THIS dashboard and cannot settle it.
 Re-measure from their own captures before widening.
+⚠️ **CORRECTED 8/24/2026 — the scoping note below was too cautious and one claim in it was
+WRONG.** It said the Dashboards tab is "measured grey-page-with-white-cards" and so must not
+be whitened. `.dash-page` has carried `background: var(--color-white)` since the INITIAL
+COMMIT, with the comment "matches the live screen" — the Dashboards tab was always white, and
+the `#f6f7f9` in the page-chrome note is the body behind it, not the dashboard surface. The
+white is now on `.ind-page` + `.idt-page`, covering all four Insights screens. Audited every
+`*-page` wrapper in app.css for a painted background: the only one left unpainted was
+`.ssa-page` (Semantic Signal Activate), whose two siblings `.sts-page` and `.ssl-page` are
+both `#fff` — fixed. `.sas-page` (Signal AI Studio) stays `#f6f7f9` because that IS measured.
+
 ⚠️ **THE PAGE IS WHITE, AND NOT PAINTING IT WAS A VISIBLE BUG.** Measured: the whole content
 area is `rgb(255,255,255)` (`ts-embed__overlay`), which is what
 `--ts-var-liveboard-layout-background` says and what the very first Insights note in this file

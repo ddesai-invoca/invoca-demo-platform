@@ -3033,7 +3033,13 @@ button.nav-item {
    and setting the property made a plain `scrollTop` assignment a no-op too, so
    nothing scrolled at all. The animation is a rAF tween in the component instead,
    which is just repeated scrollTop writes and therefore always works. */
-.ssa-page { padding: 20px 0 0; color: #15243e; }
+/* ⚠️ WHITE, like its two siblings. This was the one page wrapper in the app painting no
+   background at all, so the body's #f6f7f9 showed through while `.sts-page` (the type-select
+   it is reached from) and `.ssl-page` (the library) are both #fff. Found by auditing every
+   `*-page` rule for a painted background, not by looking at the screen.
+   ⚠️ NOT `.sas-page` (Signal AI Studio) — that one is #f6f7f9 by MEASUREMENT off the live
+   page, so it stays grey. */
+.ssa-page { background: #fff; min-height: 100%; padding: 20px 0 0; color: #15243e; }
 .ssa-head {
   display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
   padding: 0 24px 14px; border-bottom: 1px solid #e7e9eb;
@@ -3937,15 +3943,19 @@ button.nav-item {
    settle it. Re-measure them from their own captures before widening. */
 .ied-page .ind-title { font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; }
 
-/* ⚠️ THE LIVEBOARD PAGE IS WHITE, NOT THE PLATFORM'S #F6F7F9. Measured on the capture: the
-   whole content area is `rgb(255,255,255)` (`ts-embed__overlay`), which is also what
-   `--ts-var-liveboard-layout-background` says. This screen painted nothing, so the app
-   body's grey showed through and only the cards and panel read as surfaces.
-   `min-height` is what stops the grey reappearing below a short page.
-   ⚠️ Scoped to `.ied-page` on purpose. The other Insights screens almost certainly have
-   the same grey, since none of them paints a background either — but each is signed off
-   and widening this is its own pass. */
-.ied-page { background: var(--ts-var-liveboard-layout-background, #fff); min-height: 100%; }
+/* ⚠️ THE PLATFORM'S CONTENT SURFACE IS WHITE, NOT THE BODY'S #F6F7F9 — and this now covers
+   EVERY Insights & Analytics screen, not just the empty dashboard. Two independent
+   measurements agree: the liveboard's own
+   `--ts-var-liveboard-layout-background` is `#ffffff`, and the live Integrations page paints
+   `rgb(255,255,255)` on the app shell's `.site-content.card` wrapper. These screens painted
+   no background at all, so the body's grey showed through and only the cards read as
+   surfaces. `min-height` stops the grey reappearing below a short page.
+   ⚠️ Widened from `.ied-page` to `.ind-page` on request 8/24/2026. `.ind-page` is
+   Insights-only (verified: InsightsDashboard, InsightsConnectAi, InsightsDetailsReport and
+   InsightsEmptyDashboard, nothing else), so this does not reach the Dashboards tab — which
+   is MEASURED grey-page-with-white-cards and would lose all card separation on white, since
+   those cards carry a shadow and no border. */
+.ind-page, .idt-page { background: var(--ts-var-liveboard-layout-background, #fff); min-height: 100%; }
 
 /* ⚠️ THE CONTENT IS A CENTRED COLUMN, AND THAT IS THE WHOLE SHAPE OF THIS SCREEN.
    Measured: `flex-direction: column; align-items: center; gap: 24px; padding: 24px` on a
@@ -4124,13 +4134,23 @@ button.nav-item {
    Integrations (the in-platform page). Measured off the LIVE page 8/24/2026.
    Own prefix `.itg-`; the old exact-copy marketing page is untouched static HTML.
    ============================================================================= */
-.itg-page { padding: 24px; }
+/* ⚠️ WHITE, and inset 21px — measured off the live page's `.site-content.card`, the app
+   shell's own content surface (white, 1px rgba(0,0,0,.125), 5px top-left radius). Our page
+   painted nothing, so the body's #f6f7f9 showed through behind the cards. */
+.itg-page {
+  background: #fff; border: 1px solid rgba(0, 0, 0, .125); border-radius: 5px 0 0 0;
+  padding: 0 21px 24px; min-height: 100%; box-sizing: border-box;
+}
+/* ⚠️ THE THIN RULE UNDER THE HEADER IS MEASURED: the header band is `padding: 20px 0` with
+   `border-bottom: 1px solid #E7E9EB` and 39px of margin under it, which is exactly the 60px
+   the h1 sits above the search box. */
+.itg-head { padding: 20px 0; border-bottom: 1px solid #e7e9eb; margin-bottom: 39px; }
 .itg-h1 { font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; margin: 0; }
 
 /* 274 x 36, and the icon sits inside the field rather than beside it. */
 .itg-search {
   display: flex; align-items: center; gap: 4px; width: 274px; height: 36px;
-  box-sizing: border-box; margin: 60px 0 30px; padding: 0 8px;
+  box-sizing: border-box; margin: 0 0 30px; padding: 0 8px;
   background: #fff; border: 1px solid #e7e9eb; border-radius: 3px;
 }
 .itg-search-icon { font-size: 24px; color: #66708e; }
