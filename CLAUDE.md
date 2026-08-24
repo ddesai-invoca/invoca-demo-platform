@@ -1167,6 +1167,18 @@ measurement cannot reveal:
 | mini day | td `padding: 4px` around a **32px circle** (`line-height: 32px`, `border-radius: 50%`) |
 | mini today | `background: #F3F3F3` **plus** `box-shadow: 0 0 0 1px #C9C9C9` — a filled circle with a ring, not a ring alone |
 
+⚠️ **THE DAY HEADERS MUST LIVE INSIDE THE SCROLLER, and this was a real misalignment.** As a
+sibling ABOVE the scroll box, the header row shared the box's width but not its **16px
+scrollbar**, so the seven header cells were each 2.1px wider than the seven day columns and the
+vertical ticks drifted — measured **12.9px out by Saturday**, which is exactly the "misaligned
+lines" a screenshot shows. The fix is structural, not arithmetic: the scroller is the outer
+`.sfc-grid`, the header row sits inside it as `position: sticky; top: 0` with its own white
+ground, and both rows then resolve against one content width. Verified 0.00px x- and
+width-delta on all seven columns, and the header stays pinned at scrollTop 600.
+⚠️ Do NOT "fix" this by padding the header by a scrollbar width — that number is
+platform- and setting-dependent (overlay scrollbars measure 0) and the two rows go out of
+alignment again the moment the grid stops scrolling.
+
 ⚠️ **THERE ARE *TWO* GRIDLINE LAYERS, which is why the hours read darker than the
 half-hours.** Both are background gradients, and reading only the first is why the grid looked
 uniform:

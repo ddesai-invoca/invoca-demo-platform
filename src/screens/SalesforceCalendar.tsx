@@ -144,8 +144,14 @@ export function SalesforceCalendar() {
 
       <div className="sfc-split">
         {/* ---- the week grid ---- */}
-        <div className="sfc-grid">
-          {/* The GMT label lives in the 80px ruler; the header row is padded to clear it. */}
+        {/* ⚠️ THE DAY HEADERS LIVE *INSIDE* THE SCROLLER, pinned with `position: sticky`, and
+            that is a correctness fix rather than a style choice. As a sibling above the scroll
+            box they shared its width but NOT its 16px scrollbar, so the seven header cells
+            were each 2.1px wider than the seven columns and the vertical ticks drifted —
+            12.9px out by Saturday. Inside the same scroll container both rows get the same
+            content width, so the columns line up structurally instead of by arithmetic. It
+            also matches the real page, where the headers stay put while the grid scrolls. */}
+        <div className="sfc-grid" ref={body}>
           <div className="sfc-dayheads-wrap">
             <span className="sfc-gmt">GMT &minus;7</span>
             <div className="sfc-dayheads">
@@ -155,7 +161,7 @@ export function SalesforceCalendar() {
             </div>
           </div>
 
-          <div className="sfc-body" ref={body}>
+          <div className="sfc-body">
             <div className="sfc-hours">
               {HOURS.map((h) => (
                 <span className="sfc-hour" key={h}><span>{h}</span></span>

@@ -4478,14 +4478,16 @@ button.nav-item {
 .sfc-btn { padding: 0 12px; }
 
 .sfc-split { flex: 1 1 auto; display: flex; min-height: 0; }
-/* ⚠️ THE GRID CARRIES THE 1px RIGHT RULE, both on the header row and the scroller. */
-.sfc-grid { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; }
-
-/* ---- day headers: 55 tall, padded 80 to clear the time ruler ------------- */
-.sfc-dayheads {
-  display: flex; height: 55px; flex: 0 0 auto; padding-left: 80px;
+/* ⚠️ THE SCROLLER IS `.sfc-grid` ITSELF, with the header row inside it as a sticky block.
+   Scrolling the OUTER box is what makes the header cells and the day columns share one
+   content width — see the note in the screen. */
+.sfc-grid {
+  flex: 1 1 auto; min-width: 0; overflow-y: auto;
   border-right: 1px solid #c9c9c9; box-sizing: border-box;
 }
+
+/* ---- day headers: 55 tall, padded 80 to clear the time ruler ------------- */
+.sfc-dayheads { display: flex; height: 55px; padding-left: 80px; box-sizing: border-box; }
 .sfc-dayhead {
   position: relative; flex: 1 1 0; text-align: center; font-size: 13px; line-height: 40px;
   font-weight: 400; color: #181818; white-space: nowrap; overflow: hidden;
@@ -4501,13 +4503,11 @@ button.nav-item {
 .sfc-gmt {
   position: absolute; left: 19px; top: 0; font-size: 11px; line-height: 40px; color: #757575;
 }
-.sfc-dayheads-wrap { position: relative; flex: 0 0 auto; }
+/* Pinned at the top of the scroller, with its own ground so rows cannot show through. */
+.sfc-dayheads-wrap { position: sticky; top: 0; z-index: 2; background: #fff; }
 
 /* ---- the scrolling body ------------------------------------------------- */
-.sfc-body {
-  flex: 1 1 auto; display: flex; overflow-y: auto; min-height: 0;
-  border-right: 1px solid #c9c9c9; box-sizing: border-box;
-}
+.sfc-body { display: flex; }
 /* ⚠️ 80px WIDE, and the columns hang 20px below the top (margin-top: 40/2). */
 .sfc-hours { width: 80px; min-width: 80px; max-width: 80px; height: 1920px; margin-top: 20px;
   position: relative; }
