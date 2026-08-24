@@ -3190,6 +3190,24 @@ the serial prefix and swings with site size, so a big multi-page prospect is wha
 over. The budget is not a comfortable margin — which is the real argument for keeping Insights
 out of phase 1, not a theoretical one.
 
+**MEASURED END TO END 8/24/2026, and the decision holds.** One full generation, timed phase
+by phase, profile discarded (`runCanary`, target index 2):
+
+| | |
+|---|---|
+| total | **151.8s** = 2m32s, **51% of the 300s budget**, 148s of headroom |
+| phases | **20** — research + terms + the 18-phase pool. **Zero Insights phases** |
+| serial prefix | 67.4s (research 58.6 + terms 8.8), **44% of wall clock** |
+| pool | 494.9s of work compressed into 84.4s wall = **5.86x** on CONCURRENCY 6 |
+| slowest | `opsDashboard` 70.1s, then callReview 60.2, dashboardChannels 55.5, agentConfig 46.4 |
+| audit | 30 checks, **0 failures** |
+
+⚠️ **THE POOL IS WITHIN 2.3% OF OPTIMAL, SO THERE IS NOTHING LEFT TO WIN THERE.** The floor is
+`max(longest phase 70.1, work/6 = 82.5) = 82.5s` and it ran in 84.4 — the LPT ordering is doing
+its job. Any further speedup has to come from **research** (the serial prefix) or from splitting
+`opsDashboard`, the way the Marketing dashboard was already split. Adding an Insights phase to
+the pool would cost close to its full duration in wall clock, because the pool is saturated.
+
 **`npm run audit:phases`** (also run by `npm run audit`) is the enforcement, because
 "Insights costs nothing" is only true while nobody has added a phase for it, and the standing
 architecture below describes a Phase 2 that WILL mint dimensions server-side. The cheapest way
