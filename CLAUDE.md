@@ -1869,10 +1869,43 @@ made the dashboard scroll for nine screens and pushed every tile below it out of
 `max-height: 589px` (48 + 477 + 64) with the header and aggregation row `position: sticky`,
 both needing an opaque ground or the rows read through them.
 
-⚠️ **THE 202px COLUMN CAP IS WHAT MAKES CELLS WRAP.** Five of the capture's twelve columns are
-exactly 201.6px and the rest are narrower and content-fitted, so it is a ceiling, not a fixed
-width — and it is the ceiling that puts a long campaign name or journey onto two lines.
-Without it every column grows to its widest value and no row ever wraps.
+⚠️ **COLUMNS LIVE IN A BAND, 145 TO 202, AND BOTH ENDS MATTER.** Measured across all twelve
+captured columns: 144.7, 146.7, 158.3, 183.5, 195.1, 195.3, 201.2 and 201.6 five times.
+Nothing is narrower than ~145 even where the values are "true" and "false", and nothing is
+wider than ~202 even for a 44-character search term.
+- The **ceiling** is what makes cells wrap at all. Without it every column grows to its widest
+  value, no row wraps, and the grid loses the multi-line texture that is most of what makes it
+  read as real records.
+- The **floor** is what the first pass missed, and it is why the user reported the tile still
+  "doesn't look anything like the real site" with every colour and rule already correct.
+  Content-fitted columns came out 118 to 202 — a spread the real grid never shows — so the
+  narrow ones read as cramped and the wide ones as bloated beside them.
+
+⚠️ **THREE MORE THINGS THAT FIRST PASS MISSED, all only visible side by side with the live tile:**
+1. **The grid is a bordered box.** `.ag-root-wrapper` carries 1px `#EAEDF2` on all four sides.
+   Ours had every rule BETWEEN cells and no outline, so the columns ran into the tile's white.
+2. **The scrollbars are always visible**, and on macOS ours were not there at all — a grid
+   571px wider than its tile gave no hint that it scrolled. ⚠️ **Do NOT set `scrollbar-width` /
+   `scrollbar-color` alongside the `::-webkit-scrollbar` rules**: the standard properties make
+   Chrome take the standard path, which on macOS is an overlay scrollbar that fades and
+   reserves no gutter — measured 0px, so the `::-webkit-` rules were dead while both looked
+   correct in the stylesheet. Removing them gives the measured 8px gutter. The thumb colours
+   are READ OFF THE LIVE SCREENSHOT, not measured — the grid is cross-origin, so there is no
+   computed style to take them from (same caveat as the Geo Heatmap's dot colour).
+3. **The Call Record ID format is four hex, a dash, then TWELVE** — `DD11-82B03247078E`,
+   `0000-1856E2CB3EF7`. Ours produced `CFB8-ECB711`, four and SIX. Six characters short
+   sounds cosmetic and is not: at the report's column widths the real id wraps onto two lines
+   and ours sat on one, so the first column had visibly the wrong shape. A 32-bit hash is only
+   8 hex digits, so the tail is a second hash. (The Details Report SCREEN's own generator was
+   already 4-12, which is independent corroboration.)
+
+⚠️ **THE LIVE TILE'S COLUMNS ARE NARROWER THAN THE CAPTURE'S** — ~124-147px at a ~1030px tile
+against the capture's 145-202 at 1742 — so ag-Grid shrinks below the floor when the tile is
+narrow. Not reproduced: a fixed band plus horizontal scroll is the same behaviour at the width
+the template was measured at, and the alternative is reverse-engineering ag-Grid's flex
+algorithm off screenshots. Same for the tile HEIGHT: the live tile shows only ~4 rows because
+that dashboard gives it a short slot, where the captured one is 703 tall. Height is
+layout-driven on the real thing; our 589 is the measured full-width case.
 
 ⚠️ **`height: auto` HAD TO BE SAID OUT LOUD.** The base `.ts-table td` pins 50px, so every
 row sat at 50 against a measured 31 while the `--report` rule looked complete (it set the

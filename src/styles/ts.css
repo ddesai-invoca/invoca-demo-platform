@@ -446,7 +446,31 @@
    16,925px of virtualised rows, header 49 above it and the aggregation row 65 below. Ours
    was 8,958px tall — 200 rows at 31px with nothing capping it — which made the dashboard
    scroll for nine screens and pushed every tile below it out of sight. 48 + 477 + 64. */
-.ts-tablewrap--report { max-height: 589px; overflow: auto; }
+/* ⚠️ AND THE GRID IS A BORDERED BOX. `.ag-root-wrapper` carries a 1px #EAEDF2 border on all
+   four sides, which is what reads as the frame around the grid on the real tile — ours had
+   the rules between cells but no outline, so the columns ran into the tile's white. The
+   caption sits OUTSIDE this box. */
+.ts-tablewrap--report {
+  max-height: 589px; overflow: auto; border: 1px solid #eaedf2;
+}
+/* ⚠️ THE SCROLLBARS ARE ALWAYS VISIBLE ON THE REAL GRID, and on macOS ours were not there
+   at all — overlay scrollbars fade out, so a grid 550px wider than its tile gave no hint
+   that it scrolled. The live tile shows a persistent grey rounded thumb along the bottom
+   and down the right of the grid, and it is a real part of how the tile reads.
+   ⚠️ These two colours are READ OFF THE LIVE SCREENSHOT, not measured: the grid is a
+   cross-origin iframe, so there is no computed style to take them from. Same provenance
+   caveat as the Geo Heatmap's dot colour. */
+.ts-tablewrap--report::-webkit-scrollbar { width: 8px; height: 8px; }
+.ts-tablewrap--report::-webkit-scrollbar-track { background: transparent; }
+.ts-tablewrap--report::-webkit-scrollbar-thumb {
+  background: #c1c7d0; border-radius: 4px;
+}
+.ts-tablewrap--report::-webkit-scrollbar-thumb:hover { background: #a1a7b2; }
+/* ⚠️ NO `scrollbar-width` / `scrollbar-color` HERE. Setting the standard properties makes
+   Chrome take the standard path, which on macOS is an OVERLAY scrollbar that fades out and
+   reserves no space — measured: 0px of gutter, so the persistent bar never appeared and the
+   `::-webkit-` rules above were dead. Leaving them off is what keeps the classic,
+   always-visible scrollbar the real grid shows. */
 /* The header and the aggregation row stay put while the rows move under them, which is
    what the pinned rows do on the real grid. Both need an OPAQUE ground or the scrolling
    rows read straight through them. */
@@ -475,14 +499,26 @@
      the visible geometry, off by a pixel on a value nobody can see. */
   height: auto; padding: 7px 16px;
   white-space: pre-wrap; vertical-align: top;
-  /* ⚠️ THE COLUMN CAP IS WHAT MAKES CELLS WRAP AT ALL. Measured: five of the capture's
-     twelve columns are exactly 201.6px while the rest are narrower and content-fitted, so
-     that is a ceiling, not a fixed width — and it is the ceiling that puts a long campaign
-     name or website journey onto two lines. Without it every column grows to its widest
-     value, no row ever wraps, and the grid loses the multi-line texture that makes it read
-     as real records. `max-width` works here because the table is `width: max-content`
-     (auto layout), where it participates in the column calculation. */
-  max-width: 202px;
+  /* ⚠️ COLUMNS LIVE IN A BAND, 145 TO 202, and BOTH ends of it matter. Measured across all
+     twelve of the capture's columns: 144.7, 146.7, 158.3, 183.5, 195.1, 195.3, 201.2 and
+     201.6 five times. Nothing is narrower than ~145 even when its values are "true" and
+     "false", and nothing is wider than ~202 even for a 44-character search term.
+     - The CEILING is what makes cells wrap at all. Without it every column grows to its
+       widest value, no row wraps, and the grid loses the multi-line texture that is most of
+       what makes it read as real records.
+     - The FLOOR is what the first pass missed, and it is why the grid still did not look
+       like the real one: content-fitted columns came out 118 to 202, a spread the real grid
+       never shows. The narrow ones read as cramped and the wide ones as bloated beside
+       them, so the whole thing looked like a different table even with every colour and
+       rule correct.
+     Both work because the table is `width: max-content` (auto layout), where min- and
+     max-width participate in the column calculation.
+     ⚠️ The LIVE tile at a ~1030px tile width shows ~124-147px columns, i.e. narrower than
+     the capture's band, so ag-Grid clearly shrinks its columns below the floor when the
+     tile is narrow. We do not reproduce that: a fixed band plus horizontal scroll is the
+     same behaviour at the width the template was measured at, and the alternative is
+     reverse-engineering ag-Grid's flex algorithm from screenshots. */
+  min-width: 145px; max-width: 202px;
   border-bottom: 1px solid #dde2eb; border-right: 1px solid #eaedf2;
   border-top: 0;
 }

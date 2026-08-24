@@ -912,8 +912,16 @@ function cellFor(
   const attrib = attribution(profile, c, row);
   if (attrib !== null) return attrib;
   if (/record id|unique id|interaction id/.test(c)) {
-    const hex = seed.toString(16).toUpperCase().padStart(8, "0").slice(0, 8);
-    return `${hex.slice(0, 4)}-${hex.slice(4)}${(row + 17).toString(16).toUpperCase()}`;
+    /* ⚠️ FOUR HEX, DASH, TWELVE HEX. Measured off the capture — `DD11-82B03247078E`,
+       `0000-1856E2CB3EF7`, `00C4-DF5652EB3FF7` — where this produced `CFB8-ECB711`, four
+       and SIX. Six characters short sounds cosmetic and is not: at the report's column
+       widths the real id wraps onto two lines and ours sat on one, so the first column of
+       the grid had visibly the wrong shape. A 32-bit hash is only 8 hex digits, so the
+       tail is a second hash of the row to fill the remaining four. */
+    const a = seed.toString(16).toUpperCase().padStart(8, "0").slice(0, 8);
+    const b = hash(`${seed}:${row}:id`).toString(16).toUpperCase().padStart(8, "0").slice(0, 8);
+    const hex = (a + b).slice(0, 16);
+    return `${hex.slice(0, 4)}-${hex.slice(4)}`;
   }
   if (/start time|datetime|date of birth|existing .* time/.test(c)) {
     /* Inside the demo's own January 2026 window, so a report never disagrees with the
