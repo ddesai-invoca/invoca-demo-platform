@@ -1452,6 +1452,71 @@ donuts and **zero `ts-` or `ied-` elements**, `npm run audit:ai` all green. (`np
 reports 8 of 20 demos passing — verified identical with these changes stashed, so those are
 pre-existing generated-profile failures, not this work.)
 
+### A template card opens "Dashboard Configuration" (measured LIVE 8/24/2026)
+`DashboardConfigDrawer.tsx` (`.dcd-`) + `dashboardTemplates.ts`. Clicking **Lead Conversion
+Dashboard** slides in an 800px right drawer. Measured off the LIVE page with the drawer open
+(same-origin, Invoca's own React), so every value is a computed style:
+
+| | measured |
+|---|---|
+| backdrop | `rgba(0,0,0,.5)` |
+| paper | 800 wide, anchored RIGHT, white, `transform 225ms cubic-bezier(0,0,.2,1)` |
+| title | "Dashboard Configuration", 20/28 `#15243E` |
+| Name | label 16/23, field 752 x 35 radius 3, **pre-filled with the dashboard's own name** |
+| lede | "Select the data that best fits these categories.", 16/20 |
+| category | label **700** 16/20 (28 tall) · field 752 x 35 · help **ITALIC** 16/20 |
+| between | **40px** from one help line to the next label |
+| footer | 62 tall = 12 + 36 + 12 **over a 2px `#E7E9EB` top border** |
+| footer buttons | right-aligned, **8px** apart, inset a further **16px** (Save ends 40 from the paper edge) |
+| Save | **disabled on open**, `#E7E9EB` on `#A1A7B2` |
+| dropdown | 752 wide, max-height **374.4**, radius 3, padding 8px 0; option 32 tall, 6px 16px, 16/20 |
+
+⚠️ **FIVE CATEGORIES, TWO OPTION LISTS — read off the comboboxes' React props, not by
+opening one menu.** The three *Metric* fields share ONE list (that account's **75** Signals)
+and the two *Marketing* fields share ANOTHER (its **96** marketing data fields). Opening a
+single dropdown and generalising would have invented three lists that do not exist. Reading
+`memoizedProps.options` off the fiber got all five in one call and proved the sharing.
+
+⚠️ **BOTH LISTS ARE RE-SKINNED, because both are account data.** The captured lists name
+Facility / Medicare / Patient Type / Specialty. Ours come from the prospect's own catalogue:
+the Metric fields from the **Signals** group minus its `(T/F)` twins (a metric picker is not
+a column picker), the Marketing fields from **Categories + Short Text Fields + Long Text
+Fields**. Shady Blinds gets 13 and 85 against the account's 75 and 96 — lower, and correct,
+the same call the 240-v-371 column note makes. Verified zero healthcare leakage.
+
+⚠️ **`Interaction Count` and `Transfer` ARE APPENDED AFTER the alphabetical run** in the
+Signals list — measured, and it looks like a sorting bug until you check.
+
+⚠️ **THE MARKETING LIST IS IN THE PRODUCT'S ORDER, NOT ALPHABETICAL.** "Calling Page" comes
+BEFORE "Call Intent" and "Masked Caller ID" sits between "Call Type" and "Consumer Name", so
+it sorts on an internal field key. `MARKETING_ORDER` pins the captured sequence (product
+chrome, like the column groups themselves) and orders the prospect's own fields by it.
+⚠️ **RESOLVE THE `{TOKEN}`s, DO NOT PATTERN-MATCH THEM.** The first version turned each
+token into `.+` and took the first match, which breaks two ways: a bare `{LOCATION}` becomes
+`^.+$` and matches ANY column, and two entries can claim the same column and strand the
+other. Measured: six Shady Blinds fields (Consultation Status, Customer Type, Product
+Category, Showroom, Showroom Type, Showroom Zip) fell out of position into the alphabetical
+tail. Resolving through the same `vocabFor` the column table uses puts all six back (indices
+4 / 61 / 75 / 25 / 30 / 32).
+
+⚠️ **ONE CARD IS LIVE, TWO ARE INERT.** All three live cards are `cursor: pointer`, but only
+Lead Conversion's drawer is captured; the other two keep `fields: null` and no pointer, since
+reusing these five categories for an SMS dashboard would put invented labels in front of a
+prospect.
+⚠️ **WHAT SAVE BUILDS IS UNMEASURED AND WAS NOT GUESSED — saving on the live page would have
+written to a real customer's dashboard, which is not ours to do.** Save stores the five
+choices and closes. Give me a capture of a built Lead Conversion Dashboard and the layout
+becomes real.
+⚠️ Save enables only when ALL five are answered. Measured `disabled` with four of five empty;
+whether ONE empty is enough to disable it is not measured, and five-of-five is the reading
+that fits the drawer's own instruction.
+
+Verified end to end with real clicks: a **21-property diff against the spec came back empty**
+(the last 2px led to the footer's border-top), the Signals dropdown shows Shady Blinds' own 13
+signals with the captured popup geometry, filling all five flipped Save from `#E7E9EB` to
+`#2666F9`, and Escape closes. Untouched: Add Tile (15 cards, no `.dcd-` leak) and
+`/dashboards/marketing` (21 cards, 4px radius, KPI 48,293, 7 donuts).
+
 ### The column picker: expanded by default, and the list is DRAGGABLE (8/23/2026)
 Two captures of the live builder — one with the groups open, one closed — measured directly,
 because that page is Invoca's own React and serialises in full (no ThoughtSpot iframe).

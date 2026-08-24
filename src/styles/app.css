@@ -4015,3 +4015,107 @@ button.nav-item {
 }
 .ied-card-title { font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; margin: 0 0 12px; }
 .ied-card-body { font-size: 16px; line-height: 20px; font-weight: 400; color: #15243e; margin: 0; }
+
+/* =============================================================================
+   "Dashboard Configuration" — the drawer a DASHBOARD TEMPLATES card opens.
+   Measured off the LIVE page 8/24/2026 with the drawer open (Invoca's own React,
+   same-origin), so every number here is a computed style rather than a screenshot
+   estimate. Own prefix per the one-prefix-per-screen rule: the tile Configuration
+   drawer is `.itc-` and its paper is 452 wide where this one is 800.
+   ============================================================================= */
+.dcd-root { position: fixed; inset: 0; z-index: 1200; }
+.dcd-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .5); }
+/* 225ms cubic-bezier(0,0,.2,1) is MUI's own drawer easing, measured off the paper. */
+.dcd-paper {
+  position: absolute; top: 0; right: 0; height: 100%; width: 800px; max-width: 100%;
+  background: #fff; display: flex; flex-direction: column;
+  box-shadow: 0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14),
+              0 6px 30px 5px rgba(0,0,0,.12);
+  animation: dcd-in 225ms cubic-bezier(0, 0, .2, 1);
+}
+@keyframes dcd-in { from { transform: translateX(100%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .dcd-paper { animation: none; } }
+
+/* ⚠️ THE BODY SCROLLS AND THE FOOTER DOES NOT. Measured: content 826 tall over 915 of
+   scroll with the 62px footer outside it, so Save is reachable without scrolling. */
+.dcd-body { flex: 1; overflow-y: auto; padding: 24px; }
+.dcd-title { font-size: 20px; line-height: 28px; font-weight: 400; color: #15243e; margin: 0; }
+.dcd-name-label {
+  display: block; font-size: 16px; line-height: 23px; color: #15243e; margin: 30px 0 2px;
+}
+.dcd-name {
+  display: block; width: 100%; height: 35px; box-sizing: border-box;
+  font: inherit; font-size: 16px; color: #15243e;
+  border: 1px solid #e7e9eb; border-radius: 3px; padding: 0 8px;
+}
+.dcd-lede {
+  display: block; font-size: 16px; line-height: 20px; color: #15243e; margin: 32px 0;
+}
+/* 40px between one category's italic help and the next label. */
+.dcd-field + .dcd-field { margin-top: 40px; }
+.dcd-label {
+  display: block; font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e;
+  height: 28px;
+}
+/* ⚠️ ITALIC, and it carries the 16/20 body size rather than a small-print size. */
+.dcd-help {
+  display: block; font-size: 16px; line-height: 20px; font-style: italic; color: #15243e;
+  margin-top: 4px;
+}
+
+.dcd-combo { position: relative; }
+.dcd-combo-field {
+  display: flex; align-items: center; height: 35px; box-sizing: border-box;
+  border: 1px solid #e7e9eb; border-radius: 3px; background: #fff; cursor: pointer;
+}
+.dcd-combo-field--open { border-color: #2666f9; }
+.dcd-combo-input {
+  flex: 1; min-width: 0; border: 0; outline: 0; background: none;
+  font: inherit; font-size: 16px; color: #15243e; padding: 0 8px; cursor: inherit;
+}
+.dcd-combo-caret { font-size: 24px; color: rgba(0, 0, 0, .54); padding-right: 2px; }
+/* 750 wide against the field's 752 because the popup sits inside the field's border. */
+.dcd-pop {
+  position: absolute; left: 0; right: 0; top: calc(100% + 2px); z-index: 2;
+  max-height: 374.4px; overflow-y: auto; background: #fff; border-radius: 3px;
+  padding: 8px 0;
+  box-shadow: rgba(0,0,0,.2) 0 2px 1px -1px, rgba(0,0,0,.14) 0 1px 1px 0,
+              rgba(0,0,0,.12) 0 1px 3px 0;
+}
+.dcd-opt {
+  padding: 6px 16px; font-size: 16px; line-height: 20px; color: #15243e; cursor: pointer;
+}
+.dcd-opt:hover { background: #d4e0fe; }
+.dcd-opt--on { background: #d4e0fe; }
+.dcd-opt--empty { color: #777e8b; cursor: default; }
+.dcd-opt--empty:hover { background: none; }
+
+/* ⚠️ A 2px TOP BORDER, which is where the footer's 62 comes from — 12 + 36 + 12 is 60,
+   and chasing that 2px is what found the divider. And the button row is its own flex box
+   inset a further 16px, with an 8px gap (not 12), so Save ends 40px from the paper's
+   right edge: measured `justify-content: flex-end; padding: 0 16px` with
+   `margin-left: 8px` on Save. */
+.dcd-foot {
+  display: flex; justify-content: flex-end; align-items: center; gap: 8px;
+  padding: 12px 40px 12px 24px; background: #fff; border-top: 2px solid #e7e9eb;
+  box-sizing: content-box;
+}
+.dcd-cancel, .dcd-save {
+  font: inherit; font-size: 14px; font-weight: 500; height: 36px; padding: 8px 12px;
+  border-radius: 3px; cursor: pointer;
+}
+.dcd-cancel { background: #fff; border: 1px solid rgba(38, 102, 249, .5); color: #2666f9; }
+.dcd-cancel:hover { background: #f3f7ff; }
+.dcd-save { background: #2666f9; border: 0; color: #fff; }
+.dcd-save:hover { background: #1335bf; }
+.dcd-save:disabled { background: #e7e9eb; color: #a1a7b2; cursor: default; }
+
+/* A template card that actually opens its drawer. `all: unset` would drop the box
+   model the `.ied-card` rule sets, so only the button chrome is reset. */
+.ied-card--on {
+  font: inherit; text-align: left; cursor: pointer;
+  /* The live cards lift on hover the way the Semantic Signal library's do; not
+     measured here, so it is the platform's own titan blue-10 and nothing more. */
+  transition: background-color 120ms ease;
+}
+.ied-card--on:hover { background: #f3f7ff; }

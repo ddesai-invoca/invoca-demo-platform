@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DashAssistant, usePageDataWithLabels } from "../components/GeneratedTiles";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
+import { DASHBOARD_TEMPLATES, type DashboardTemplate } from "../data/dashboardTemplates";
+import { DashboardConfigDrawer } from "../components/DashboardConfigDrawer";
 import type { InsightsDashboard } from "../data/insightsDashboards";
 
 /* =============================================================================
@@ -29,29 +32,24 @@ import type { InsightsDashboard } from "../data/insightsDashboards";
    as an `<img>`, NOT inlined: at ~100KB it would otherwise land in the single bundle that
    every screen loads.
 
-   ⚠️ THE THREE TEMPLATE CARDS ARE INERT, DELIBERATELY. Their names and copy are the
-   product's, but the capture shows only the cards — not what any of them builds. Wiring
-   them means inventing three dashboard layouts and presenting them as Invoca's, which is
-   the same call the Semantic Signal library makes for its uncaptured phrase lists. They
-   render because they are part of this screen; give me the tile list for each and they
-   become real.
+   ⚠️ ONE OF THE THREE TEMPLATE CARDS IS LIVE. "Lead Conversion Dashboard" opens the
+   measured "Dashboard Configuration" drawer (`DashboardConfigDrawer` +
+   `dashboardTemplates.ts`); the other two stay inert because their drawers have not been
+   captured, and reusing Lead Conversion's five categories for an SMS dashboard would put
+   invented labels in front of a prospect. What SAVE builds is still open for all three —
+   saving on the live account would have written to a real customer's dashboard.
    ============================================================================= */
-
-const TEMPLATES = [
-  { name: "Lead Conversion Dashboard",
-    body: "Monitor essential sales metrics, team results, and revenue patterns." },
-  { name: "SMS Metrics Dashboard",
-    body: "Monitor SMS metrics and performance." },
-  { name: "Marketing Summary",
-    body: "Analyze marketing channel performance, call volume, and lead conversion across mediums, sources, campaigns, and pages." },
-];
 
 const LABELS = {
   emptyCopy: "Use a template or add a tile to get started.",
   templatesHeading: "Dashboard Templates",
 } as const;
 
-export function InsightsEmptyDashboard({ dashboard }: { dashboard: InsightsDashboard }) {
+export function InsightsEmptyDashboard({ dashboard, onTemplateSave }: {
+  dashboard: InsightsDashboard;
+  /** Called with the SE's five choices when the configuration drawer is saved. */
+  onTemplateSave?: (name: string, picks: Record<string, string>) => void;
+}) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { profile, profileId } = useProfile();
@@ -70,6 +68,9 @@ export function InsightsEmptyDashboard({ dashboard }: { dashboard: InsightsDashb
   /* Add Tile carries THIS dashboard, so what gets built lands here rather than on the
      Summary Dashboard, which is where a hardcoded destination used to put it. */
   const addTileHref = `/insights/add-tile?to=${encodeURIComponent(pathname)}`;
+
+  /* Which template card's Dashboard Configuration drawer is open, or null. */
+  const [configuring, setConfiguring] = useState<DashboardTemplate | null>(null);
 
   return (
     <div className="ind-page ied-page">
@@ -117,11 +118,22 @@ export function InsightsEmptyDashboard({ dashboard }: { dashboard: InsightsDashb
             <section className="ied-panel">
               <h2 className="ied-templates-head">{data.labels.templatesHeading}</h2>
               <div className="ied-cards">
-                {TEMPLATES.map((t) => (
-                  <article className="ied-card" key={t.name}>
-                    <h3 className="ied-card-title">{t.name}</h3>
-                    <p className="ied-card-body">{t.body}</p>
-                  </article>
+                {DASHBOARD_TEMPLATES.map((t) => (
+                  /* ⚠️ A CARD IS A BUTTON ONLY WHERE ITS DRAWER IS CAPTURED. The live cards
+                     are all `cursor: pointer`, but only Lead Conversion's configuration is
+                     measured. The other two stay inert rather than opening a drawer whose
+                     categories we would have to invent, and they carry no pointer cursor,
+                     so nothing implies they work. */
+                  t.fields
+                    ? <button className="ied-card ied-card--on" key={t.name} type="button"
+                        onClick={() => setConfiguring(t)}>
+                        <h3 className="ied-card-title">{t.name}</h3>
+                        <p className="ied-card-body">{t.body}</p>
+                      </button>
+                    : <article className="ied-card" key={t.name}>
+                        <h3 className="ied-card-title">{t.name}</h3>
+                        <p className="ied-card-body">{t.body}</p>
+                      </article>
                 ))}
               </div>
             </section>
@@ -132,6 +144,17 @@ export function InsightsEmptyDashboard({ dashboard }: { dashboard: InsightsDashb
       {/* Tiles added from Add Tile land here, so the dashboard fills up in place — the
           same `variant="ts"` assistant every other Insights screen uses, keyed to this
           route, so its tiles belong to THIS dashboard and no other. */}
+      {/* ⚠️ SAVE STORES THE CHOICES AND CLOSES. What a template BUILDS is the one thing
+          the capture cannot show — saving on the live account would have written to a
+          real customer's dashboard — so no tile layout is invented here. */}
+      <DashboardConfigDrawer
+        template={configuring}
+        profile={profile}
+        dashboardName={dashboard.name}
+        onCancel={() => setConfiguring(null)}
+        onSave={(name, picks) => { setConfiguring(null); onTemplateSave?.(name, picks); }}
+      />
+
       <DashAssistant variant="ts" />
       <span hidden>{profile.id}</span>
     </div>
