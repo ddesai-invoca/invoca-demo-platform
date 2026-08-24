@@ -8,8 +8,27 @@ import { bookedEvent } from "../data/salesforceEvent";
 /* =============================================================================
    Salesforce — Calendar (week view). Screen 2 of the Sales Cloud flow.
    -----------------------------------------------------------------------------
-   What the Calendar tab opens. Measured off a SingleFile capture of the live Calendar
-   (8/24/2026), so every value is a computed style:
+   What the Calendar tab opens. REBUILT 8/24/2026 from Lightning's OWN AUTHORED CSS RULES,
+   read out of the capture's stylesheet rather than inferred from computed boxes — the grid's
+   line colour, line frequency, column shading and vertical offsets are all in rules that a
+   box-by-box measurement cannot show. The corrections that mattered:
+
+     time ruler    80px wide (the first build used 60)
+     columns       1920 tall with `margin-top: 20px`, `border-left 1px #C9C9C9`
+                     (the first build had #E5E5E5 and no offset)
+     shading       ONLY `.pastDay` is shaded #F3F3F3; today and future have no rule at all,
+                     so they are white
+     gridlines     a background GRADIENT — 1px rgba(0,0,0,.1) every 40px, i.e. every HALF
+                     hour. The first build drew white 1px borders every 80px: wrong colour,
+                     half the frequency, and the wrong mechanism
+     hour label    offset -10px with a WHITE ground, so it interrupts the line
+     day header    55 tall on a 40px line, with a ::after column tick starting at 40px
+     chip column   `calc(100% - 0.75rem)`, chip padding-bottom 1px
+
+   Still measured off computed boxes: page header 69.5 over a 1px #C9C9C9 rule; kicker
+   13/19.5 over the range at 700 18/22.5; buttons 32 tall, 1px #747474, radius 4, ink
+   #0176D3; GMT 11px/40 #757575; chip #5A93B1 radius 4 padding 2px 4px 0; rail 304 wide;
+   rail heading 700 16/24; mini td 40 holding a 32px circle.
 
      page header   69.5 tall, border-bottom 1px #C9C9C9
      "Calendar"    13/19.5 #181818 over the range at 700 18px/22.5
@@ -54,12 +73,13 @@ export function SalesforceCalendar() {
   /* ⚠️ THE WEEK IS DERIVED FROM THE DEMO'S OWN CLOCK, and the appointment is placed INSIDE
      it — the capture shows Aug 2-8 because that SE had navigated back, which is that
      session's state, not the screen's design. Sunday-based to match the grid. */
-  const { weekStart, todayIso } = useMemo(() => {
+  const { weekStart, todayIso, todayMidnight } = useMemo(() => {
     const now = new Date();
     const s = new Date(now);
     s.setDate(now.getDate() - now.getDay());
     s.setHours(0, 0, 0, 0);
-    return { weekStart: s, todayIso: now.toDateString() };
+    const mid = new Date(now); mid.setHours(0, 0, 0, 0);
+    return { weekStart: s, todayIso: now.toDateString(), todayMidnight: mid };
   }, []);
 
   const dayOf = (i: number) => {
@@ -87,7 +107,7 @@ export function SalesforceCalendar() {
       const d = new Date(gridStart);
       d.setDate(gridStart.getDate() + i);
       return { d, inMonth: d.getMonth() === anchor.getMonth(),
-        inWeek: d >= first && d <= last, isToday: d.toDateString() === todayIso };
+        isToday: d.toDateString() === todayIso };
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weekStart, todayIso]);
@@ -122,32 +142,47 @@ export function SalesforceCalendar() {
       <div className="sfc-split">
         {/* ---- the week grid ---- */}
         <div className="sfc-grid">
-          <div className="sfc-dayheads">
+          {/* The GMT label lives in the 80px ruler; the header row is padded to clear it. */}
+          <div className="sfc-dayheads-wrap">
             <span className="sfc-gmt">GMT &minus;7</span>
-            {DAYS.map((d, i) => (
-              <span className="sfc-dayhead" key={d}>{d} {dayOf(i).getDate()}</span>
-            ))}
+            <div className="sfc-dayheads">
+              {DAYS.map((d, i) => (
+                <span className="sfc-dayhead" key={d}>{d} {dayOf(i).getDate()}</span>
+              ))}
+            </div>
           </div>
 
           <div className="sfc-body" ref={body}>
             <div className="sfc-hours">
-              {HOURS.map((h) => <span className="sfc-hour" key={h}>{h}</span>)}
+              {HOURS.map((h) => (
+                <span className="sfc-hour" key={h}><span>{h}</span></span>
+              ))}
             </div>
             <div className="sfc-cols">
-              {DAYS.map((d, i) => (
-                <div className="sfc-col" key={d}>
-                  {HOURS.map((h) => <div className="sfc-slot" key={h} />)}
-                  {i === ev.dayIndex ? (
-                    /* ⚠️ 81px FOR ONE HOUR against an 80px pitch — measured, and it is what
-                       makes the chip sit flush over its slot's rule rather than 1px shy. */
-                    <div className="sfc-event"
-                      style={{ top: ev.startHour * HOUR_PX, height: ev.hours * HOUR_PX + 1 }}>
-                      <span className="sfc-event-title">{ev.title}</span>
-                      <span className="sfc-event-time">{ev.timeLabel}</span>
+              {DAYS.map((d, i) => {
+                /* ⚠️ ONLY A PAST DAY IS SHADED. Lightning styles `.pastDay` and leaves the
+                   base column with no background at all, so today and future days are
+                   white — measured from the ABSENCE of a rule, which a computed box on a
+                   capture of an all-past week could never have told me. */
+                const past = dayOf(i) < todayMidnight;
+                return (
+                  <div className={"sfc-col" + (past ? " sfc-col--past" : "")} key={d}>
+                    {/* the half-hour gridlines are this layer's background gradient */}
+                    <div className="sfc-eventlist" />
+                    <div className="sfc-eventwrap">
+                      {i === ev.dayIndex ? (
+                        <div className="sfc-event"
+                          style={{ top: ev.startHour * HOUR_PX, height: ev.hours * HOUR_PX }}>
+                          <span className="sfc-event-box">
+                            <span className="sfc-event-title">{ev.title}</span>
+                            <span className="sfc-event-time">{ev.timeLabel}</span>
+                          </span>
+                        </div>
+                      ) : null}
                     </div>
-                  ) : null}
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -166,13 +201,12 @@ export function SalesforceCalendar() {
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
               <span className="sfc-mini-dow" key={d}>{d}</span>
             ))}
-            {monthCells.map(({ d, inMonth, inWeek, isToday }) => (
+            {monthCells.map(({ d, inMonth, isToday }) => (
               <span key={d.toISOString()}
                 className={"sfc-mini-cell"
                   + (inMonth ? "" : " sfc-mini-cell--out")
-                  + (inWeek ? " sfc-mini-cell--week" : "")
                   + (isToday ? " sfc-mini-cell--today" : "")}>
-                {d.getDate()}
+                <span className="sfc-mini-day">{d.getDate()}</span>
               </span>
             ))}
           </div>

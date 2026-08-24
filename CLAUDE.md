@@ -1146,6 +1146,38 @@ What the **Calendar** tab opens; measured off a capture of the live week view.
 | event chip | `#5A93B1`, radius 4, padding `2px 4px 0`, 81 tall for one hour; title `700 12px` and time `12px`, both `#181818` with **`line-height: normal`** |
 | right rail | 304 wide, white; heading `700 16/24`; mini cell 40 square, out-of-month `#C9C9C9`; swatch 16 at radius 8 |
 
+⚠️ **THE GRID WAS REBUILT FROM LIGHTNING'S OWN AUTHORED CSS, and that is the lesson.** The
+first pass measured computed boxes and got the grid visibly wrong; the fix was reading the
+capture's STYLESHEET (`document.styleSheets` → `cssRules`, filtered for `calendarDay`,
+`eventList`, `forceCalendarTimeRuler`, `slds-datepicker`). Line colour, line frequency,
+column shading and the vertical offsets are all expressed in rules that a box-by-box
+measurement cannot reveal:
+
+| | authored rule |
+|---|---|
+| time ruler | `min/max-width: 80px` (the first build used 60) |
+| day headers | `padding-left: 80px` |
+| column | `height: calc(480px*4)` = 1920, **`margin-top: calc(40px/2)`** = 20, `border-left: 1px #C9C9C9` |
+| shading | **only** `.calendarDay.pastDay` is shaded; the base column has NO background rule |
+| **gridlines** | `background: linear-gradient(rgba(0,0,0,.1) 1px, transparent 1.01px) / 100% 2.08333%` on `.eventList` — 1px at 10% black every **40px**, i.e. every HALF hour |
+| hour label | `.label { top: -10px; background: #fff }` — it interrupts the line |
+| day header | `line-height: 40px`, `font-weight: normal`, cell 55 tall, and a `::after` drawing the column tick from `top: 40px` |
+| grid edges | `.calendarRow, .calendarDayHeaders { border-right: 1px #C9C9C9 }` |
+| chip column | `.eventListContainer { width: calc(100% - 0.75rem) }` → 144.141px in a 157.1 column |
+| mini day | td `padding: 4px` around a **32px circle** (`line-height: 32px`, `border-radius: 50%`) |
+| mini today | `background: #F3F3F3` **plus** `box-shadow: 0 0 0 1px #C9C9C9` — a filled circle with a ring, not a ring alone |
+
+⚠️ **THE FIRST BUILD'S GRIDLINES WERE WRONG THREE WAYS AT ONCE** — white instead of 10%
+black, every 80px instead of 40, and drawn as bordered cells instead of a background
+gradient. Any one of those reads as "the lines are off".
+⚠️ **TODAY AND FUTURE COLUMNS ARE WHITE, and that came from the ABSENCE of a rule.** The
+capture's week is entirely in the past, so every column computed to `#F3F3F3` and a
+computed-style reading would have shaded the whole grid forever. Only `.pastDay` has a
+background; the base class has none.
+⚠️ **`display: block` ON THE CHIP IS LOAD-BEARING.** It is a `<span>`, and `height: 100%`
+does nothing on an inline box — the chip collapsed to a 4px sliver with its text spilling
+across the column.
+
 ⚠️ **THE EVENT IS THE APPOINTMENT THE SMS AGENT BOOKED, and it prefers a LIVE capture.**
 `bookedEvent()` takes the newest conversation from `SmsCaptureContext` (what the Preview
 Agent just wrote) and falls back to the profile's seeded SMS conversation, so the calendar is

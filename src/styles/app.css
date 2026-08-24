@@ -4414,7 +4414,26 @@ button.nav-item {
 
 /* =============================================================================
    Salesforce Calendar, week view (`.sfc-`) — screen 2 of the Sales Cloud flow.
-   Measured off a capture of the live Calendar (8/24/2026).
+   -----------------------------------------------------------------------------
+   REBUILT 8/24/2026 from Lightning's OWN AUTHORED RULES, read out of the capture's
+   stylesheet rather than inferred from computed boxes. That is the difference between
+   "close" and exact here — the grid's lines, colours and offsets are all in rules that a
+   box-by-box measurement cannot show you:
+
+     .forceCalendarTimeRuler            min/max-width 80px
+     .calendarDayHeaders                padding-left 80px
+     .calendarDay                       height calc(480px*4) = 1920, margin-top 20px,
+                                          border-left 1px #C9C9C9
+     .calendarDay.pastDay               background #F3F3F3  (a NON-past column has no rule,
+                                          so it stays transparent = white)
+     .calendarRow/.calendarDayHeaders   border-right 1px #C9C9C9
+     .calendarDayHeader                 line-height 40px, centred, font-weight normal
+     .calendarDayHeader::after          border-left 1px #C9C9C9 from top:40px to bottom
+     .forceCalendarTimeRuler .label     top -10px, background #fff
+     .forceCalendarTimeRuler .block     height 4.16667%  (= 80px, one hour)
+     .eventList                         background: linear-gradient(rgba(0,0,0,.1) 1px,
+                                          transparent 1.01px) / 100% 2.08333%
+     .eventListContainer                width calc(100% - 0.75rem)
    ============================================================================= */
 .sfc-root { display: flex; flex-direction: column; height: 100%; background: #fff; }
 
@@ -4423,7 +4442,6 @@ button.nav-item {
   display: flex; align-items: center; gap: 12px; height: 69.5px; padding: 0 16px;
   border-bottom: 1px solid #c9c9c9; background: #fff; flex: 0 0 auto;
 }
-/* The tile glyph is white on the Event object's purple. */
 .sfc-head-icon {
   display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
   flex: 0 0 32px; border-radius: 4px; background: #a094ed; color: #fff;
@@ -4439,59 +4457,91 @@ button.nav-item {
 }
 .sfc-nudge, .sfc-icobtn { width: 32px; color: #747474; }
 .sfc-icobtn--split { width: 46px; }
-/* The list-view toggle is the one that reads as pressed: white glyph on brand blue. */
 .sfc-icobtn--on { background: #0176d3; border-color: #0176d3; color: #fff; }
 .sfc-btn { padding: 0 12px; }
-.sfc-btn--new { padding: 0 14px; }
 
 .sfc-split { flex: 1 1 auto; display: flex; min-height: 0; }
+/* ⚠️ THE GRID CARRIES THE 1px RIGHT RULE, both on the header row and the scroller. */
 .sfc-grid { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; }
 
-/* day headers: the time gutter, then seven equal columns */
-.sfc-dayheads { display: flex; height: 40px; flex: 0 0 auto; border-bottom: 1px solid #c9c9c9; }
-.sfc-gmt { width: 60px; flex: 0 0 60px; font-size: 11px; line-height: 40px; color: #757575;
-  padding-left: 19px; box-sizing: border-box; }
-.sfc-dayhead {
-  flex: 1 1 0; text-align: center; font-size: 13px; line-height: 40px; color: #181818;
-  border-left: 1px solid #e5e5e5;
+/* ---- day headers: 55 tall, padded 80 to clear the time ruler ------------- */
+.sfc-dayheads {
+  display: flex; height: 55px; flex: 0 0 auto; padding-left: 80px;
+  border-right: 1px solid #c9c9c9; box-sizing: border-box;
 }
+.sfc-dayhead {
+  position: relative; flex: 1 1 0; text-align: center; font-size: 13px; line-height: 40px;
+  font-weight: 400; color: #181818; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* ⚠️ THE COLUMN SEPARATOR IN THE HEADER IS A ::after THAT STARTS 40px DOWN — the short tick
+   under each day label, not a full-height border. */
+.sfc-dayhead::after {
+  content: ""; position: absolute; left: 0; top: 40px; bottom: 0;
+  border-left: 1px solid #c9c9c9;
+}
+/* GMT sits in the 80px ruler, on the header's own 40px line. */
+.sfc-gmt {
+  position: absolute; left: 19px; top: 0; font-size: 11px; line-height: 40px; color: #757575;
+}
+.sfc-dayheads-wrap { position: relative; flex: 0 0 auto; }
 
-/* ⚠️ 80px PER HOUR — 24 rows, so the body is 1920 tall and scrolls. */
-.sfc-body { flex: 1 1 auto; display: flex; overflow-y: auto; min-height: 0; background: #f3f3f3; }
-.sfc-hours { width: 60px; flex: 0 0 60px; }
-.sfc-hour {
-  display: block; height: 80px; font-size: 13px; line-height: 19.5px; color: #444;
-  padding-left: 23px; box-sizing: border-box; transform: translateY(-9px);
+/* ---- the scrolling body ------------------------------------------------- */
+.sfc-body {
+  flex: 1 1 auto; display: flex; overflow-y: auto; min-height: 0;
+  border-right: 1px solid #c9c9c9; box-sizing: border-box;
+}
+/* ⚠️ 80px WIDE, and the columns hang 20px below the top (margin-top: 40/2). */
+.sfc-hours { width: 80px; min-width: 80px; max-width: 80px; height: 1920px; margin-top: 20px;
+  position: relative; }
+.sfc-hour { display: block; height: 80px; position: relative; }
+/* ⚠️ THE LABEL IS OFFSET -10px AND HAS A WHITE GROUND so it interrupts the gridline. */
+.sfc-hour span {
+  position: absolute; top: -10px; right: 8px; background: #fff; padding: 0 2px;
+  font-size: 13px; line-height: 19.5px; color: #444;
 }
 .sfc-cols { flex: 1 1 auto; display: flex; min-width: 0; }
-.sfc-col { flex: 1 1 0; position: relative; border-left: 1px solid #e5e5e5; }
-/* The slot rules are WHITE on the grey ground, which is what gives the grid its look. */
-.sfc-slot { height: 80px; border-bottom: 1px solid #fff; box-sizing: border-box; }
-
-/* ⚠️ THE EVENT CHIP: #5A93B1 at radius 4, padding 2px 4px 0, title 700 12px and time 12px
-   both in #181818 — the ink does NOT go white on this fill. */
-.sfc-event {
-  position: absolute; left: 4px; right: 7px; background: #5a93b1; border-radius: 4px;
-  padding: 2px 4px 0; box-sizing: border-box; overflow: hidden;
+.sfc-col {
+  position: relative; flex: 1 1 0; height: 1920px; margin-top: 20px;
+  border-left: 1px solid #c9c9c9;
 }
-/* ⚠️ `line-height: normal` — the capture reports the chip's type as `700 12px` and `12px`
-   with no line box of its own, and pinning 16px pushes the time line 2px low. */
+/* A non-past column has NO background rule in Lightning, so it stays white. */
+.sfc-col--past { background: #f3f3f3; }
+/* ⚠️ THE HOUR LINES ARE A BACKGROUND GRADIENT, NOT BORDERED CELLS: one 1px line of
+   rgba(0,0,0,.1) every 2.08333% of 1920 = every 40px, i.e. every HALF hour. Drawing white
+   1px borders every 80px (the first build) is the wrong colour at half the frequency. */
+.sfc-eventlist {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, .1) 1px, rgba(0, 0, 0, 0) 1.01px);
+  background-size: 100% 2.08333%;
+}
+/* calc(100% - 0.75rem) — the chip column is the day minus 12px. */
+.sfc-eventwrap { position: absolute; top: 0; left: 0; width: calc(100% - 0.75rem); height: 100%; }
+
+/* ⚠️ THE CHIP: #5A93B1, radius 4, padding 2px 4px 0, and a 1px padding-bottom on its
+   container, which is what leaves the hairline between stacked events. */
+.sfc-event {
+  position: absolute; left: 1px; right: 0; box-sizing: border-box; padding-bottom: 1px;
+}
+/* ⚠️ `display: block` IS LOAD-BEARING — this is a `<span>`, and `height: 100%` does nothing
+   on an inline box, so the chip collapsed to a 4px sliver with its text spilling out. */
+.sfc-event-box {
+  display: block; height: 100%; background: #5a93b1; border-radius: 4px; padding: 2px 4px 0;
+  box-sizing: border-box; overflow: hidden; cursor: default;
+}
 .sfc-event-title {
   display: block; font-size: 12px; font-weight: 700; line-height: normal; color: #181818;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .sfc-event-time { display: block; font-size: 12px; line-height: normal; color: #181818; }
 
-/* right rail: 304 wide, white */
+/* ---- right rail --------------------------------------------------------- */
 .sfc-rail {
   width: 304px; flex: 0 0 304px; background: #fff; padding: 12px 16px; overflow-y: auto;
   box-sizing: border-box;
 }
 .sfc-mini-head { display: flex; align-items: center; gap: 8px; height: 32px; }
 .sfc-mini-nudge { color: #0176d3; display: flex; }
-/* ⚠️ THE MINI HEADER'S ARROWS ARE THE SAME TRIANGLE ROTATED — the capture's own left/right
-   triangles were not serialised separately, so `triangledown` is turned rather than a second
-   pair of paths invented. */
 .sfc-mini-nudge:first-child svg { transform: rotate(90deg); }
 .sfc-mini-nudge:nth-child(3) svg { transform: rotate(-90deg); }
 .sfc-mini-month { flex: 1 1 auto; text-align: center; font-size: 13px; color: #181818; }
@@ -4500,23 +4550,20 @@ button.nav-item {
   border: 1px solid #c9c9c9; border-radius: 4px; font-size: 13px; color: #181818;
 }
 .sfc-mini { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 8px; }
-.sfc-mini-dow { text-align: center; font-size: 12px; line-height: 24px; color: #444; }
-/* 40 x 40 cells, out-of-month days at #C9C9C9. */
-.sfc-mini-cell {
-  height: 40px; line-height: 40px; text-align: center; font-size: 12px; color: #181818;
+/* thead th: padding 8, weight 400, #444 */
+.sfc-mini-dow { text-align: center; font-size: 12px; padding: 8px 0; font-weight: 400; color: #444; }
+/* ⚠️ THE CELL IS A 40px td HOLDING A 32px CIRCLE (padding 4 + 32), not a 40px block. */
+.sfc-mini-cell { padding: 4px; display: flex; justify-content: center; }
+.sfc-mini-day {
+  width: 32px; height: 32px; line-height: 32px; text-align: center; font-size: 12px;
+  border-radius: 50%; color: #181818;
 }
-.sfc-mini-cell--out { color: #c9c9c9; }
-.sfc-mini-cell--week { background: #f3f3f3; }
-/* Today is a ring, not a fill. */
-.sfc-mini-cell--today {
-  font-weight: 700;
-  background-image: radial-gradient(circle at 50% 50%, transparent 12px, #c9c9c9 12px, #c9c9c9 13px, transparent 13px);
-}
-.sfc-rail-sec {
-  display: flex; align-items: center; justify-content: space-between; margin-top: 24px;
-}
+.sfc-mini-cell--out .sfc-mini-day { color: #c9c9c9; }
+/* ⚠️ TODAY IS A GREY FILL WITH A 1px RING — `background #F3F3F3` plus
+   `box-shadow: 0 0 0 1px #C9C9C9`, not the ring alone. */
+.sfc-mini-cell--today .sfc-mini-day { background: #f3f3f3; box-shadow: 0 0 0 1px #c9c9c9; }
+.sfc-rail-sec { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; }
 .sfc-rail-head { font-size: 16px; font-weight: 700; line-height: 24px; color: #181818; margin: 0; }
 .sfc-cal-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-/* 16px swatch at radius 8 — measured. */
 .sfc-swatch { width: 16px; height: 16px; flex: 0 0 16px; border-radius: 8px; background: #0b827c; }
 .sfc-cal-name { flex: 1 1 auto; font-size: 13px; color: #181818; }
