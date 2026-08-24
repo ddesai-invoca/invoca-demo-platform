@@ -1,59 +1,61 @@
 import { useProfile } from "../data/ProfileContext";
+import { SldsIcon } from "../components/SldsIcon";
 
 /* =============================================================================
    Salesforce — Seller Home. Screen 1 of the Sales Cloud flow.
    -----------------------------------------------------------------------------
    Reached from the **Sales Cloud** tile on Integrations. Real URL
-   `invocaforhealthcare.lightning.force.com/lightning/page/home`. Measured off a SingleFile
-   capture (8/24/2026), which serialises Lightning's own SLDS stylesheet, so every value
-   below is a computed style rather than a screenshot estimate.
+   `lightning.force.com/lightning/page/home`. REBUILT 8/24/2026 after the first pass was
+   reported wrong on six counts; everything below is measured off the capture's rendered DOM
+   rather than inferred, and each correction is called out where it lives.
 
-     global header   50 tall
-     nav bar         40 tall, white, 3px #0070D2 bottom border
-     page            #F3F3F3 behind white cards
-     "Seller Home"   the banner heading, with the greeting beside it at 300 13/49 #444444
-     card            457.7 x 333, white, radius 4, 1px #C9C9C9,
-                       shadow `0 2px 2px rgba(0,0,0,.1)`
-     card title      700 16/20 #181818; subtitle 13/19.5
-     hero value      300 28/35 #2E2E2E over a 13/19.5 label
-     donut           150 x 150, circle r=72, stroke-width 6, track #E5E5E5
-     legend dot      10px circle; pill radius 4, padding 4px 9.6px, 26 tall
-     footer button   full width, 32 tall, 1px #747474, radius 4, ink #0176D3
-     42px between legend rows
-
-   ⚠️ A REACT REPLICA, NOT AN EXACT-COPY PAGE, and that is a departure from the
-   third-party-console convention (Google Ads and the Invoca Exchange are saved HTML). The
-   reason is the FLOW: the next screens have to show the appointment the SMS AI agent just
-   booked and open it with the conversation's own values, so these screens need prospect
-   data and real navigation. A 1.6MB Lightning document can do neither.
-
-   ⚠️ THE CAPTURED ORG IS EMPTY — $0 pipeline, 0 contacts, 0 leads, 5 accounts with no
-   activity — and that is reproduced rather than filled in. This is the SE's own Salesforce,
-   not the prospect's, so inventing a pipeline here would be inventing Invoca's numbers, and
-   the one thing on this screen that IS the demo (the Invoca call records under Recent
-   Records) is derived from the prospect instead.
-
-   ⚠️ THE THREE LEGEND PALETTES ARE MEASURED PAIRS, not one colour at two opacities:
-     open   dot #06A59A  pill #ACF3E4  ink #056764
-     won    dot #0D9DDA  pill #CFE9FE  ink #05628A
-     lost   dot #FE5C4C  pill #FEDED8  ink #BA0517
+     face          the SYSTEM stack (`-apple-system, system-ui, "Segoe UI", Roboto, …`),
+                     13px base, ink #181818 — Lightning embeds no webfont here
+     global header 50 tall
+     context bar   40 tall, white, 3px #0070D2 bottom rule, padding-left 24
+     nav item      37 tall, link 13/19.5 #181818, padding 0 12
+     page          #F3F3F3
+     h1            "Seller Home" 300 28px/49px #181818
+     card          457.7 wide, 333 tall (row 1), white, radius 4, 1px #C9C9C9,
+                     shadow `0 2px 2px rgba(0,0,0,.1)`
+       header      32 tall, padding 12px 16px 0, then 12 of margin
+       body        inset 12 either side, 230 tall on a row-1 card
+       footer      57 tall, padding 12px 16px, border-top 1px #C9C9C9
+       button      423.7 x 32, padding 0 16
+     ring          150 x 150, circle r=72 stroke-width 6; value +48.8 from the ring top,
+                     label +83.8
+     legend        rows on a 42px pitch, 10px dot then the pill 12px later
    ============================================================================= */
 
-/* Tabs verbatim from the capture's nav, in order. `Calendar` is where this flow goes next.
-   ⚠️ The capture's DOM also carries an "<X> List" entry per tab — those are the dropdown
-   items, not tabs, and counting them gives 20 where the bar shows 16. */
+/* ⚠️ CORRECTION 1 — THE ICONS ARE REAL SLDS GLYPHS, not Material ligatures. See
+   `SldsIcon.tsx`: every path is serialised out of the capture, on SLDS's 520 grid. */
+
+/* ⚠️ CORRECTION 2 — THE FACE IS THE SYSTEM STACK AND THE H1 IS 300 28px/49px. The first
+   build had a 24px/400 h1 and let the platform's Lato leak in. The 49px line box on a 28px
+   glyph is what gives the banner its 55px height and sits the greeting on its baseline. */
+
+/* ⚠️ CORRECTION 3 — THE CONTEXT BAR SPANS THE FULL WIDTH. Measured: the bar is the viewport
+   width and `.navCenter` inside it is `flex: 1 1 0%`, so the tab strip fills everything
+   between the app name and the pencil. The first build let the strip size to its content. */
+
+/* ⚠️ CORRECTION 4 — THE ACTIVE TAB IS A PALE BLUE WASH, NOT AN UNDERLINE.
+   `slds-is-active` computes to `background: rgba(0,112,210,.1)` with NO bottom border, and
+   its label stays #181818 at weight 400. The first build drew a 3px brand underline and
+   turned the label blue and bold, which is a different product's tab entirely. */
+
 const TABS = [
   "Home", "Opportunities", "Leads", "Tasks", "Files", "Accounts", "Contacts", "Campaigns",
   "Dashboards", "Reports", "Chatter", "Groups", "Calendar", "People", "Cases", "Forecasts",
 ];
-/** Which tabs carry a dropdown chevron in the capture. Chatter and Forecasts do not. */
-const NO_CHEVRON = new Set(["Home", "Chatter", "Forecasts"]);
+/** Chatter and Forecasts carry no dropdown in the capture; everything else does. */
+const NO_CHEVRON = new Set(["Chatter", "Forecasts"]);
 
-type Tone = "open" | "won" | "lost";
+type Tone = "open" | "won" | "lost" | "none";
 
-function Ring({ value, label, tone }: { value: string; label: string; tone?: Tone }) {
-  /* 150x150 with r=72 and a 6px stroke, so the ring sits just inside the box. A full ring
-     is what the capture draws — nothing here is a partial arc. */
+/* ⚠️ CORRECTION 5 — THE RING IS ONE FULL CIRCLE, r=72 at stroke-width 6 inside a 150 box,
+   with its value and label positioned from the ring's own top (+48.8 / +83.8) rather than
+   centred by flexbox. Plan My Accounts' ring is the lost coral; the rest are the track. */
+function Ring({ value, label, tone = "none" }: { value: string; label: string; tone?: Tone }) {
   const stroke = tone === "lost" ? "#FE5C4C" : "#E5E5E5";
   return (
     <div className="sfh-ring">
@@ -79,83 +81,100 @@ function Legend({ rows }: { rows: { tone: Tone; text: string }[] }) {
   );
 }
 
-function Card({ title, subtitle, children, action }: {
-  title: string; subtitle?: string; children: React.ReactNode; action?: React.ReactNode;
+/* ⚠️ CORRECTION 6 — THE CARD IS THREE MEASURED BANDS, not one padded block: a 32px header
+   (padding 12/16/0 plus 12 of margin), a body inset 12 either side, and a 57px footer behind
+   a 1px rule. The first build used a single 16px padding and centred everything, which is
+   why the spacing read wrong on every tile. */
+function Card({ title, subtitle, action, tall, children }: {
+  title: string; subtitle?: string; action?: React.ReactNode; tall?: boolean;
+  children: React.ReactNode;
 }) {
   return (
-    <article className="sfh-card">
-      <h2 className="sfh-card-title">{title}</h2>
-      {subtitle ? <p className="sfh-card-sub">{subtitle}</p> : null}
-      <div className="sfh-card-body">{children}</div>
+    <article className={"sfh-card" + (tall ? " sfh-card--tall" : "")}>
+      <div className="sfh-card-head">
+        <h2 className="sfh-card-title">{title}</h2>
+      </div>
+      <div className="sfh-card-body">
+        {subtitle ? <p className="sfh-card-sub">{subtitle}</p> : null}
+        <div className="sfh-card-content">{children}</div>
+      </div>
       {action ? <div className="sfh-card-foot">{action}</div> : null}
     </article>
   );
 }
 
+/* Inert: the capture's buttons open Salesforce list views, which are not in this flow. */
 const Btn = ({ children }: { children: React.ReactNode }) => (
-  /* Inert: the capture's buttons open Salesforce list views, which are not part of this
-     flow. Only the Calendar tab navigates, so nothing else takes a pointer. */
   <span className="sfh-btn">{children}</span>
 );
 
 export function SalesforceHome() {
   const { profile } = useProfile();
 
-  /* ⚠️ RECENT RECORDS IS THE ONE DATA-BEARING TILE, and it is the prospect's own: the
-     caller from the Voice Screenpop plus real Invoca call record ids, so the record an SE
-     opens here is the same call the rest of the demo talks about. The capture's own rows
-     are that account's (`Michael Pierce`, `INVOCA-000257…`), which name a real person. */
+  /* Recent Records is the one data-bearing tile, and it is the prospect's own — the capture's
+     rows name a real person in that org. The object kinds and their tile colours ARE the
+     capture's: Opportunity #FF5D2D, Contact #9602C7, custom Invoca Call Log #8b85f9. */
   const caller = profile.reports.voiceScreenpop?.callerName ?? "Jessica Harper";
-  /* `callDetail.callId` and the CI report's first call id — the same two calls the Call
-     Detail and Conversation Intelligence screens open, so an SE clicking a record here is
-     looking at a call the rest of the demo already knows about. */
   const ids = [
     profile.reports.callDetail?.callId,
     profile.reports.conversationIntelligence?.calls?.[0]?.id,
+    profile.reports.conversationIntelligence?.calls?.[1]?.id,
   ].filter(Boolean) as string[];
   const recents = [
-    { icon: "contact", label: caller },
-    { icon: "lead", label: caller },
-    ...ids.map((id) => ({ icon: "call" as const, label: `INVOCA-${id.replace(/\W/g, "").slice(0, 8)}` })),
+    { kind: "opportunity" as const, label: caller },
+    { kind: "contact" as const, label: caller },
+    ...ids.map((id) => ({ kind: "call" as const,
+      label: `INVOCA-${id.replace(/\W/g, "").slice(0, 8).toUpperCase()}` })),
   ].slice(0, 5);
 
   return (
     <div className="sfh-root">
-      {/* Global header. The search field is decorative here — the flow uses the Calendar
-          tab, and a Salesforce global search we cannot answer would be a dead end. */}
-      <div className="sfh-globalhead">
-        <span className="sfh-cloud" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="34" height="34">
-            <path fill="#00A1E0" d="M10 6a4 4 0 0 1 3.5 2.1A3.4 3.4 0 0 1 19 11a3 3 0 0 1-.6 5.9H7.5A4.5 4.5 0 0 1 6.6 8 4 4 0 0 1 10 6z" />
+      <header className="sfh-globalhead">
+        {/* The Salesforce cloud mark. The capture's own logo `<img>` carries NO src (it
+            serialised as `class="icon noicon"`), so this is drawn to shape — the one mark on
+            this screen that is not verbatim. */}
+        <span className="sfh-logo" aria-label="Salesforce">
+          <svg viewBox="0 0 60 42" width="36" height="26" aria-hidden="true">
+            <path fill="#00A1E0" d="M25 9a11 11 0 0118 3 13 13 0 0117 12 12 12 0 01-12 12H20A11 11 0 018 25a11 11 0 016-10 13 13 0 0111-6z" />
           </svg>
         </span>
-        <div className="sfh-search"><span className="material-icons">search</span>Search...</div>
+
+        <div className="sfh-search">
+          <SldsIcon name="search" size={14} className="sfh-search-icon" />
+          <span className="sfh-search-ph">Search...</span>
+        </div>
+
         <div className="sfh-globalicons">
-          {["star", "add", "cloud", "help", "settings", "notifications"].map((i) => (
-            <span className="material-icons" key={i}>{i === "star" ? "star" : i}</span>
-          ))}
+          <span className="sfh-gi sfh-gi--star">&#9733;</span>
+          <span className="sfh-gi sfh-gi--tri"><SldsIcon name="triangledown" size={12} /></span>
+          <span className="sfh-gi sfh-gi--add"><SldsIcon name="add" size={16} /></span>
+          <span className="sfh-gi"><SldsIcon name="guidance" size={20} /></span>
+          <span className="sfh-gi"><SldsIcon name="help" size={20} /></span>
+          <span className="sfh-gi"><SldsIcon name="setup" size={20} /></span>
+          <span className="sfh-gi"><SldsIcon name="notification" size={20} /></span>
           <span className="sfh-avatar" />
         </div>
-      </div>
+      </header>
 
-      {/* App nav. */}
-      <nav className="sfh-nav">
-        <span className="material-icons sfh-waffle">apps</span>
+      <nav className="sfh-bar">
+        <span className="sfh-waffle" aria-hidden="true">
+          {Array.from({ length: 9 }, (_, i) => <i key={i} />)}
+        </span>
         <span className="sfh-app">Sales</span>
+        {/* flex: 1 — this is what makes the strip span the bar. */}
         <ul className="sfh-tabs">
           {TABS.map((t) => (
             <li className={"sfh-tab" + (t === "Home" ? " sfh-tab--on" : "")} key={t}>
-              {/* ⚠️ EVERY TAB IS INERT UNTIL ITS SCREEN EXISTS, Calendar included. Calendar
-                  is the next step in this flow and there is no `*` catch-all in the router,
-                  so linking it before screen 2 lands would put a BLANK page mid-demo behind
-                  a tab that looks live. Flip it to a Link to /salesforce/calendar in the
-                  same commit that adds the screen. */}
+              {/* ⚠️ EVERY TAB IS INERT UNTIL ITS SCREEN EXISTS, Calendar included — there is
+                  no `*` catch-all in the router, so a link now would put a blank page
+                  mid-demo behind a tab that looks live. */}
               <span className="sfh-tab-link">{t}</span>
-              {NO_CHEVRON.has(t) ? null : <span className="material-icons sfh-chev">expand_more</span>}
+              {NO_CHEVRON.has(t) ? null
+                : <SldsIcon name="chevrondown" size={14} className="sfh-tab-chev" />}
             </li>
           ))}
         </ul>
-        <span className="material-icons sfh-pencil">edit</span>
+        <span className="sfh-barpencil"><SldsIcon name="pencil" size={14} /></span>
       </nav>
 
       <div className="sfh-page">
@@ -185,7 +204,8 @@ export function SalesforceHome() {
             ]} />
           </Card>
 
-          <Card title="Grow Relationships" subtitle="Contacts owned by me and created in the last 90 days"
+          <Card title="Grow Relationships"
+            subtitle="Contacts owned by me and created in the last 90 days"
             action={<Btn>View Contacts</Btn>}>
             <Ring value="0" label="Contacts" />
             <Legend rows={[
@@ -198,47 +218,81 @@ export function SalesforceHome() {
           <Card title="Build Pipeline" subtitle="Leads owned by me and created in the last 30 days"
             action={<Btn>View Leads</Btn>}>
             <Ring value="0" label="Leads" />
-            {/* The capture shows a lone grey dot and a warning triangle here, not a legend. */}
-            <div className="sfh-warn">
+            {/* The capture shows a lone grey dot and the amber warning glyph here, not a
+                three-row legend. */}
+            <div className="sfh-warnrow">
               <span className="sfh-dot sfh-dot--none" />
-              <span className="material-icons sfh-warn-icon">warning</span>
+              <SldsIcon name="warning" size={24} className="sfh-warn-icon" />
             </div>
           </Card>
 
-          <Card title="My Goals" subtitle="Set personal weekly or monthly goals for emails, calls, and meetings."
-            action={<span className="sfh-btn sfh-btn--brand">Set goals</span>}>
+          <Card title="My Goals"
+            subtitle="Set personal weekly or monthly goals for emails, calls, and meetings."
+            tall action={<span className="sfh-btn sfh-btn--brand">Set goals</span>}>
+            <span className="sfh-goalgear"><SldsIcon name="settings" size={14} /></span>
             <div className="sfh-goals" aria-hidden="true">
-              <span className="sfh-goal-c">+</span>
+              <span className="sfh-goal-c"><SldsIcon name="add" size={14} /></span>
               <span className="sfh-goal-c">&#10003;</span>
               <span className="sfh-goal-c sfh-goal-c--on">&#9733;</span>
               <span className="sfh-goal-c" />
             </div>
           </Card>
 
-          <Card title="Today's Events" action={<Btn>View Calendar</Btn>}>
+          <Card title="Today's Events" tall action={<Btn>View Calendar</Btn>}>
             <p className="sfh-empty">Looks like you&rsquo;re free and clear the rest of the day.</p>
           </Card>
 
-          <Card title="Today's Tasks" action={<Btn>View All</Btn>}>
+          <Card title="Today's Tasks" tall action={<Btn>View All</Btn>}>
             <p className="sfh-empty">Nothing due today. Be a go-getter, and check back soon.</p>
           </Card>
 
-          <Card title="Recent Records" action={<Btn>View All</Btn>}>
+          <Card title="Recent Records" tall action={<Btn>View All</Btn>}>
             <ul className="sfh-recents">
               {recents.map((r, i) => (
                 <li className="sfh-recent" key={r.label + i}>
-                  <span className={"sfh-rec-icon sfh-rec-icon--" + r.icon}>
-                    <span className="material-icons">
-                      {r.icon === "call" ? "call" : r.icon === "lead" ? "badge" : "workspace_premium"}
-                    </span>
+                  <span className={"sfh-ent sfh-ent--" + r.kind}>
+                    {r.kind === "call"
+                      ? <SldsIcon name="call" size={20} className="sfh-ent-glyph" />
+                      : <img src={`/icons/salesforce/${r.kind}.png`} alt="" width={32} height={32} />}
                   </span>
                   <span className="sfh-rec-label">{r.label}</span>
                 </li>
               ))}
             </ul>
           </Card>
+          {/* ⚠️ THE SALESBLAZER CARD IS PART OF THE PAGE and was missing from the first
+              build. Its banner image is extracted verbatim (a webp data URI in the capture);
+              the copy is Salesforce's own marketing text, not re-skinned, and both links are
+              inert — they open salesforce.com in the real page. */}
+          <article className="sfh-card sfh-card--sb">
+            <div className="sfh-card-head"><h2 className="sfh-card-title">Salesblazer</h2></div>
+            <div className="sfh-card-body">
+              <img className="sfh-sb-img" src="/icons/salesforce/salesblazer.webp" alt=""
+                width={423} height={100} />
+              <p className="sfh-sb-head">
+                How Salesforce Migrated 30,000+ Sellers to Spiff, a Single Comp Management Tool
+                <SldsIcon name="newwindow" size={16} className="sfh-sb-ext" />
+              </p>
+              <p className="sfh-sb-body">
+                A methodical, six-step approach with broad buy-in and phased rollout ensured
+                success.
+              </p>
+              <p className="sfh-sb-read">9 minute read</p>
+            </div>
+            <div className="sfh-card-foot">
+              <span className="sfh-btn">
+                Join the Community
+                <SldsIcon name="newwindow" size={16} className="sfh-sb-ext" />
+              </span>
+            </div>
+          </article>
         </div>
       </div>
+
+      <footer className="sfh-todo">
+        <SldsIcon name="todo" size={14} className="sfh-todo-icon" />
+        <span>To Do List</span>
+      </footer>
     </div>
   );
 }

@@ -1132,7 +1132,44 @@ named company's mouth. `derive` also rejects any rival name sharing two
 significant words with the prospect (that is what stopped "Orlando Health
 Systems" appearing beside the real Orlando Health).
 
-### Salesforce: the Sales Cloud flow (screen 1 of 4, 8/24/2026)
+### Salesforce: the Sales Cloud flow (screen 1 of 4, REBUILT 8/24/2026)
+⚠️ **THE FIRST PASS WAS REPORTED WRONG ON SIX COUNTS and every one was a place I measured a
+COLOUR but inferred a STRUCTURE.** Recording them because the failure mode generalises: a
+palette lifted off a capture makes a screen look plausible in a screenshot while the geometry,
+the type and the icons are all invented. What fixed it was dumping the capture's own DOM —
+element boxes, the flex/grid rules, the icon paths — instead of reading values off a picture.
+
+| reported | cause | measured truth |
+|---|---|---|
+| icons wrong | Material ligatures substituted | real SLDS `<svg viewBox="0 0 520 520">` paths, extracted verbatim to `SldsIcon.tsx` |
+| font + colour wrong | platform Lato leaked in; h1 guessed | the SYSTEM stack, 13px base `#181818`; h1 **`300 28px/49px`** |
+| tab bar not full width | strip sized to content | `.navCenter` is `flex: 1 1 0%` — the strip spans the bar |
+| tab selection wrong | drew a 3px brand underline, blue bold label | `slds-is-active` is a **`rgba(0,112,210,.1)` wash**, no border, label stays `#181818`/400 |
+| tile heights off | height fell out of the content | fixed **333** (row 1) / **370.5** / **396.5** |
+| in-tile spacing wrong | one 16px padding, everything centred | three bands: 32 header (`12px 16px 0` + 12 margin), body inset 12, 57 footer behind a 1px rule |
+
+⚠️ **THE LAYOUT IS A WRAPPING FLEX OF FIXED 457.7px CARDS, NOT A BREAKPOINT GRID.** Measured
+at two widths: the real page puts **3 per row at 1500** (3 x 457.7 + gaps = the banner's own
+1421) and **4 at 1920**. A `repeat(4, 1fr)` grid is wrong at both — it squeezes at 1500 and
+stretches at 1920. Fixed width plus wrap reproduces both for free, and this is the
+measure-at-more-than-one-width rule catching a third screen.
+
+⚠️ **EVERY SLDS ICON IS ON A 520 GRID, filled not stroked.** Dropping one of those paths into
+a 24-unit viewBox renders an invisible speck. `SldsIcon` sets `fill: currentColor` so callers
+tint them the way Lightning does.
+⚠️ **TWO MARKS COULD NOT BE EXTRACTED AND ARE AUTHORED, both flagged in code**: the
+Salesforce cloud logo (the capture's `<img>` has no src — `class="icon noicon"`) and the
+"Invoca Call Log" object glyph, whose data URI is an EMPTY `<rect fill-opacity="0"/>`. The
+object TILE colours are the capture's own inline styles: Opportunity `#FF5D2D`, Contact
+`#9602C7`, Invoca Call Log `#8b85f9`, all 32 square at radius 4.
+⚠️ The Opportunity and Contact glyphs, and the Salesblazer banner (a webp), ARE extracted
+verbatim to `public/icons/salesforce/`.
+
+Verified after the rebuild: a **26-property diff against the spec came back empty**, 3 cards
+per row at 1500 and 4 at 1920, 31 SLDS icons rendering, **zero Material ligatures left**, zero
+broken images.
+
+### Salesforce: the original notes (screen 1 of 4, 8/24/2026)
 The **Sales Cloud** tile on Integrations opens `/salesforce` — `SalesforceHome.tsx` + `.sfh-`,
 from a SingleFile capture of `lightning.force.com/lightning/page/home`. The planned flow:
 Seller Home -> **Calendar** tab -> the appointment the SMS AI agent just booked -> open it and
