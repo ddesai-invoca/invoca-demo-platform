@@ -447,7 +447,17 @@
      cap is 202. That is why a Details Report with only a few columns looked airy and never
      wrapped, while the same code at 10 columns looked right. The real grid never stretches:
      its columns hold their width and the viewport simply scrolls. */
-  min-width: 0; width: max-content;
+  /* ⚠️ `width: 100%` SO THE ROW RULES REACH THE FULL WIDTH OF THE TILE, with the trailing
+     spacer cell (see TsTable) absorbing whatever the real columns do not use. `max-content`
+     stopped the table dead at the last column and took its rules with it; plain `100%` with
+     no spacer hands the slack to the data columns and blows past their measured widths.
+     ⚠️ `width: max-content` AND `min-width: 0` — the table must NOT be told to fill its box.
+     `min-width: 100%` (the base rule's value) makes the browser stretch the table itself, and
+     it does that by growing the DATA columns past their cap: measured 226.1 against a 202
+     ceiling, with the filler left at 0 because there was no gap for it to measure. At
+     max-content the columns take exactly their content width, the table comes out narrower
+     than the tile, and `useFillerWidth` measures that gap and hands it to the filler. */
+  width: max-content; min-width: 0;
   /* ⚠️ `separate`, WHERE THE BASE TABLE COLLAPSES — and this is what makes the frozen header
      work. Under `border-collapse: collapse` the borders belong to the TABLE, not the cells,
      so a `position: sticky` th leaves its rules behind and the 2px black edge vanishes the
@@ -555,6 +565,23 @@
   min-width: 145px; max-width: 202px;
   border-bottom: 1px solid #dde2eb; border-right: 1px solid #eaedf2;
   border-top: 0;
+}
+/* ⚠️ THE SPACER CARRIES THE HORIZONTAL RULES AND NOTHING ELSE. It must not paint a
+   `border-right` (the last real column already draws the final vertical rule, and a second
+   one would box in empty space), must not claim a minimum width, and must be free to grow —
+   `max-width: none` overrides the 202 cap the data cells set. */
+/* ⚠️ WRITTEN WITH `td`/`th` IN THE SELECTOR FOR SPECIFICITY. `.ts-table--report
+   .ts-report-spacer` is (0,2,0) and loses to the cell rules above, which are (0,2,1) —
+   measured: the spacer came out 145 wide with a 1px right border, i.e. it inherited the
+   data cells' floor and rule and read as an extra empty column. */
+.ts-tablewrap .ts-table--report td.ts-report-spacer,
+.ts-tablewrap .ts-table--report th.ts-report-spacer {
+  /* ⚠️ `width: 100%`, NOT `auto` — and this is the whole trick. With `auto` the browser's
+     table algorithm handed the slack to the DATA columns and sailed straight past their
+     202 cap (measured 226.1), because `max-width` on a cell is only a hint for the preferred
+     width, not a limit once the table has a definite width to fill. A filler cell asking for
+     100% claims the remainder instead, so the real columns keep their measured widths. */
+  min-width: 0; max-width: none; padding: 0; border-right: 0;
 }
 .ts-tablewrap .ts-table--report tbody tr:hover td { background: #fff; }
 /* The pinned aggregation row: 64px, its own top rule, and BOTH lines right-aligned in

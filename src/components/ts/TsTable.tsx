@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { fitCells } from "../chartFit";
 import { heatColor } from "../../data/tsPalette";
 
@@ -77,6 +77,60 @@ const numOf = (s: string): number | null => {
   return isFinite(n) ? n : null;
 };
 
+/**
+ * Width for the Report grid's trailing filler cell.
+ *
+ * ⚠️ MEASURED IN JS, BECAUSE NO CSS EXPRESSION OF THIS WORKS. The goal is the reference's
+ * behaviour: data columns at their CONTENT width (capped in the 145-202 band) and the leftover
+ * space taken by the filler, so the row rules reach the full width of the tile. Three CSS
+ * attempts, each measured and each wrong:
+ *   - `width: max-content` — columns correct, but the table stops at the last column and
+ *     takes its rules with it, so nothing crosses the empty area.
+ *   - `width: 100%` — the browser negotiates every column against the available space and
+ *     resolves it by handing the slack to the DATA columns, past their cap (226.1 measured).
+ *   - `width: 100%` on the filler (with or without `max-content` on the table) — a percentage
+ *     cell width forces every other column to its MINIMUM: all six came out 145.
+ * So the filler's width is computed from what the data columns actually measured. The table
+ * stays `max-content` (correct columns) with `min-width: 100%`, and this fills the gap.
+ */
+function useFillerWidth(
+  wrapRef: React.RefObject<HTMLDivElement | null>,
+  headRef: React.RefObject<HTMLTableRowElement | null>,
+  enabled: boolean,
+): number {
+  const [w, setW] = useState(0);
+  const measure = useCallback(() => {
+    const wrap = wrapRef.current, head = headRef.current;
+    if (!wrap || !head) return;
+    /* Sum the DATA cells, never the table's own width — the filler is part of that, so using
+       it would feed this measurement back into itself. */
+    let data = 0;
+    for (const c of Array.from(head.cells)) {
+      if (!c.classList.contains("ts-report-spacer")) data += c.getBoundingClientRect().width;
+    }
+    const room = wrap.clientWidth - data;
+    setW((prev) => (Math.abs(prev - Math.max(0, room)) < 0.5 ? prev : Math.max(0, Math.round(room))));
+  }, [wrapRef, headRef]);
+
+  /* ⚠️ A LAYOUT EFFECT PLUS A rAF PASS, NOT ONE `useEffect` — the same first-paint trap
+     TsGeoMap documents. Measured: the first pass runs before this wrapper has a real width, so
+     `room` comes out 0, and the ResizeObserver then never fires again because the box it is
+     watching does not change after `observe()`. The filler sat at 0 forever and the rules
+     stopped at the last column; forcing a real resize by hand corrected it to 116, which is
+     how the ordering was confirmed rather than guessed. */
+  useLayoutEffect(() => {
+    if (!enabled) return;
+    measure();
+    const raf = requestAnimationFrame(measure);
+    const wrap = wrapRef.current;
+    const ro = wrap ? new ResizeObserver(measure) : null;
+    ro?.observe(wrap!);
+    return () => { cancelAnimationFrame(raf); ro?.disconnect(); };
+  }, [enabled, measure, wrapRef]);
+
+  return enabled ? w : 0;
+}
+
 export function TsTable({
   columns, rows, heatmap, footer, alignRight, onRow, heatScope = "column", heatMax, pivotHeader,
   reportFooter, caption,
@@ -133,6 +187,34 @@ export function TsTable({
   };
 
   const variant = pivotHeader ? " ts-table--pivot" : reportFooter ? " ts-table--report" : "";
+  /**
+   * ⚠️ A TRAILING SPACER COLUMN, ON THE REPORT GRID ONLY — this is what makes the row rules
+   * run the FULL width of the tile when the chosen columns do not fill it.
+   *
+   * Measured across two captures of the same 6-column report, one in an 863px tile and one
+   * in a 1760px tile. The column widths are IDENTICAL in both (187.93 / 201.59 / 201.59 /
+   * 144.69 / 166.26 / 158.29), so columns never flex — they are content-sized and fixed, and
+   * the grid simply scrolls when they overflow. In the wide tile the columns total 1060 in a
+   * 1742 viewport, and there the grid splits in two:
+   *
+   *   - `.ag-row` is **1734** wide — the full container — so its 1px #DDE2EB bottom rule runs
+   *     right across the empty area. Same for the header's 2px black rule (on
+   *     `.ag-header-viewport`, 1742) and the aggregation row's 1px top rule (on
+   *     `.ag-floating-bottom`, 1742).
+   *   - the header ROW and the aggregation ROW are only **1060** — cells, text and the
+   *     vertical column rules all stop at the last column.
+   *
+   * A `width: max-content` table stops dead at the last column and takes its rules with it,
+   * which is what ours did. Giving the table `width: 100%` alone would instead hand the slack
+   * to the data columns and blow past their measured widths. An uncapped spacer cell absorbs
+   * it: the real columns keep their band, the rules span the tile, and when the columns
+   * overflow the spacer collapses to zero and the grid scrolls exactly as before.
+   */
+  const spacer = !!reportFooter;
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const headRef = useRef<HTMLTableRowElement>(null);
+  const fillerW = useFillerWidth(wrapRef, headRef, spacer);
+  const fillerStyle = { width: fillerW ? `${fillerW}px` : 0 } as const;
 
   return (
     /* ⚠️ A FRAGMENT, because the caption sits OUTSIDE the scroller. Inside it, the caption
@@ -143,7 +225,7 @@ export function TsTable({
     {/* The wrapper carries the variant too: a Report grid scrolls its BODY inside a fixed
         height (measured 477px in the capture) with the header and the aggregation row
         pinned, and only the wrapper can own that. */}
-    <div className={`ts-tablewrap${reportFooter ? " ts-tablewrap--report" : ""}`}>
+    <div ref={wrapRef} className={`ts-tablewrap${reportFooter ? " ts-tablewrap--report" : ""}`}>
       <table className={`ts-table${variant}`}>
         <thead>
           {/* ⚠️ A PIVOT HAS TWO HEADER ROWS. The first names the MEASURE over the row-label
@@ -156,10 +238,11 @@ export function TsTable({
               <th colSpan={Math.max(1, columns.length - 1)}>{pivotHeader.columnDimension}</th>
             </tr>
           ) : null}
-          <tr>
+          <tr ref={headRef}>
             {columns.map((c, i) => (
               <th key={c + i} className={cellCls(i)}>{c}</th>
             ))}
+            {spacer ? <th className="ts-report-spacer" aria-hidden="true" style={fillerStyle} /> : null}
           </tr>
         </thead>
         <tbody>
@@ -178,6 +261,7 @@ export function TsTable({
                   </td>
                 );
               })}
+              {spacer ? <td className="ts-report-spacer" style={fillerStyle} /> : null}
             </tr>
           ))}
           {body.length === 0 ? (
@@ -210,6 +294,7 @@ export function TsTable({
                   <span className="ts-agg-value">{f?.value ?? ""}</span>
                 </td>
               ))}
+              {spacer ? <td className="ts-report-spacer" style={fillerStyle} /> : null}
             </tr>
           </tfoot>
         ) : null}

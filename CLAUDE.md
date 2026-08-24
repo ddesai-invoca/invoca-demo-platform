@@ -1963,13 +1963,52 @@ other table.
 deliberate trade, since those rows are wrong in a way a prospect can catch and the template
 is hours old. Do not widen it to tiles that already carry the new props.
 
-⚠️ **THE LIVE TILE'S COLUMNS ARE NARROWER THAN THE CAPTURE'S** — ~124-147px at a ~1030px tile
-against the capture's 145-202 at 1742 — so ag-Grid shrinks below the floor when the tile is
-narrow. Not reproduced: a fixed band plus horizontal scroll is the same behaviour at the width
-the template was measured at, and the alternative is reverse-engineering ag-Grid's flex
-algorithm off screenshots. Same for the tile HEIGHT: the live tile shows only ~4 rows because
-that dashboard gives it a short slot, where the captured one is 703 tall. Height is
-layout-driven on the real thing; our 589 is the measured full-width case.
+✅ **CORRECTED: COLUMNS DO NOT FLEX AT ALL.** This section previously said "ag-Grid shrinks
+below the floor when the tile is narrow", inferred from estimating pixel widths off a live
+screenshot at an unknown scale. Two captures of the SAME 6-column report settle it — one in an
+**863px** tile, one in a **1760px** tile — and the widths are IDENTICAL in both: 187.93 /
+201.59 / 201.59 / 144.69 / 166.26 / 158.29. Columns are content-sized and then fixed; the grid
+simply scrolls when they overflow. Do not re-derive geometry from a screenshot when a capture
+can be measured.
+
+⚠️ **WHEN THE COLUMNS DO NOT FILL THE TILE, THE HORIZONTAL RULES STILL DO.** In the 1760px
+capture the columns total 1060 in a 1742 viewport, and the grid splits in two:
+
+| element | width | what it draws |
+|---|---|---|
+| `.ag-row` | **1734** (full container) | its 1px `#DDE2EB` bottom rule, all the way across |
+| `.ag-header-viewport` | **1742** | the 2px black rule, all the way across |
+| `.ag-floating-bottom` | **1742** | the aggregation row's 1px `#EAEDF2` top rule |
+| header ROW / aggregation ROW | **1060** | cells, text and the vertical column rules — these STOP |
+
+So the empty area to the right of the last column is crossed by every horizontal rule and by
+nothing else. That is the "lighter grey lines run all the width of the tile" in the reference.
+
+**Reproduced with a trailing filler cell** (`.ts-report-spacer`, one per row, report grid only)
+whose width is measured in JS by `useFillerWidth`. ⚠️ **Three CSS-only formulations were tried
+and each measured wrong**, so do not "simplify" this back:
+- `width: max-content` on the table — columns correct, but the table stops at the last column
+  and takes its rules with it;
+- `width: 100%` on the table — the browser negotiates every column against the available space
+  and hands the slack to the DATA columns, past the 202 cap (226.1 measured);
+- `width: 100%` on the filler cell — a percentage cell width forces every other column to its
+  MINIMUM: all six came out 145.
+The table stays `width: max-content; min-width: 0` (so the columns are genuinely content-sized)
+and the filler takes `wrapper.clientWidth − Σ(data cell widths)`. Verified at two widths from a
+fresh load: at a 1088px wrapper the columns read 164.9 / 145 / 170.2 / 202 / 145 / 145 with a
+116px filler and the rules running 116px past the last column; at a 690px wrapper the same six
+columns are unchanged, the filler collapses to 0 and the grid scrolls 282px.
+
+⚠️ **THE FILLER MEASUREMENT NEEDS A LAYOUT EFFECT PLUS A rAF PASS** — the same first-paint trap
+`TsGeoMap` documents. A single `useEffect` measured before the wrapper had a width, got 0, and
+the ResizeObserver then never fired again because the box it watches never changed after
+`observe()`. The filler sat at 0 forever and the rules stopped at the last column; forcing a
+real resize by hand corrected it to 116, which is how the ordering was confirmed rather than
+guessed.
+
+⚠️ Still layout-driven and NOT reproduced: the tile HEIGHT. The live tile shows ~4 rows because
+that dashboard gives it a short slot, where the captured one is 703 tall. Ours is the measured
+full-width 589.
 
 ⚠️ **`height: auto` HAD TO BE SAID OUT LOUD.** The base `.ts-table td` pins 50px, so every
 row sat at 50 against a measured 31 while the `--report` rule looked complete (it set the
