@@ -4592,3 +4592,13 @@ button.nav-item {
 .sfc-cal-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
 .sfc-swatch { width: 16px; height: 16px; flex: 0 0 16px; border-radius: 8px; background: #0b827c; }
 .sfc-cal-name { flex: 1 1 auto; font-size: 13px; color: #181818; }
+
+/* AI Conversion by Location — the ONLY new class this screen adds: a section heading
+   between the card rows. Everything else reuses .dash-page / .dash-card / .kpi-grid /
+   .kpi-tile / .dash-table / .aac-conv-grid / .aac-chip, per the no-new-CSS rule the
+   Location Comparison screen follows. Sized to the platform's own tile title (26.4px is
+   the h2 the dashboards already use, so a section heading sits just under it). */
+.fai-section {
+  font-size: 20px; font-weight: 700; color: #3d3d3d; margin: 24px 0 10px;
+}
+.fai-section:first-of-type { margin-top: 12px; }

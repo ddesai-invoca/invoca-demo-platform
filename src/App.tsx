@@ -19,6 +19,7 @@ import { AiMessagingImpactDashboard } from "./screens/AiMessagingImpactDashboard
 import { QualityManagementDashboard } from "./screens/QualityManagementDashboard";
 import { QmInstantInsightsDashboard } from "./screens/QmInstantInsightsDashboard";
 import { LocationComparisonDashboard } from "./screens/LocationComparisonDashboard";
+import { FranchiseAiDashboard } from "./screens/FranchiseAiDashboard";
 import { ManageDashboards } from "./screens/ManageDashboards";
 import { InsightsAnalytics } from "./screens/InsightsAnalytics";
 import { InsightsReport } from "./screens/InsightsReport";
@@ -178,6 +179,7 @@ export default function App() {
             <Route path="/dashboards/quality-management" element={<QualityManagementDashboard />} />
             <Route path="/dashboards/qm-instant-insights" element={<QmInstantInsightsDashboard />} />
             <Route path="/dashboards/location-comparison" element={<LocationComparisonDashboard />} />
+            <Route path="/dashboards/ai-conversion-by-location" element={<FranchiseAiDashboard />} />
             <Route path="/call-review/detail" element={<CallDetail />} />
             {/* Signal's flyout offers three destinations. Manage Signals is /signal
                 (SignalManager, via the NAV loop below); these two are not built yet. */}

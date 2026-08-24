@@ -171,6 +171,57 @@ every breakdown rising monotonically (Campaign 14→17→21→25→33%).
 ⚠️ Reading column 1 by mistake is how a first pass at this check mis-scored Product
 Category; the conversion column is index 2 on every breakdown shape.
 
+### AI Conversion by <Location> (`/dashboards/ai-conversion-by-location`)
+Requested 8/24/2026 beside the Location Performance Comparison, whose card shape it reuses:
+**the top row is the whole organization**, then the same figures per franchise, carrying call
+data AND the AI Agent Conversion dashboard's numbers split into **Lead Form / Voice Agent /
+After Hours**. `FranchiseAiDashboard.tsx` + `src/data/franchiseAi.ts` (all the arithmetic).
+
+**Derived**, like Location Comparison: no schema slice, no engine phase, so all 11 profiles on
+disk get it and generation time is unchanged. Listed in Manage Dashboards only when the
+prospect has BOTH `locationHandling.rows` and `aiAgentConversion.conversionCards`, since the
+channels are read off those cards. The title uses the prospect's own noun via `vocabFor` —
+"Facility" for a hospital, "Showroom" / "Store" / "Branch" / "Location" elsewhere.
+
+⚠️ **EVERY COLUMN RECONCILES, AND IT IS ASSERTED ACROSS ALL 11 PROFILES** (nine checks: calls,
+revenue, forms, each channel's revenue, each voice channel's interactions, voice + after hours
+= the call total, no empty channel, and every rate inside 0-99). `locationHandling` is a
+complete partition and every apportioned column goes through `apportion()`.
+
+⚠️ **THE LEAD FORM CHANNEL COMES FROM `leadFormFacts`, NOT A SECOND SUM OF THE SAME CARDS.**
+That helper already publishes the form count, the revenue-weighted rate and the lead-form
+revenue, and the Marketing dashboard's lead-form card reads the same values — so the two
+screens cannot disagree.
+
+⚠️⚠️ **AFTER HOURS IS THE ONE MODELLED CHANNEL, AND IT SAYS SO ON SCREEN** — a "Modelled" chip
+on its card and a footnote under the table. No profile carries an after-hours field (checked
+every slice; the phrase appears once across 19 profiles and not as data). Rather than invent a
+share it is built on calls the prospect DID miss — `locationHandling`'s own "Call Not Answered
+(Count)", real and per-location — converted at the **AI-ONLY** Voice Agent card's rate (chips
+"Live Agent Call: No"), which is the right cohort for a principled reason: after hours there is
+no live agent. Revenue then follows at the prospect's own revenue-per-booking. Every input is a
+figure the prospect can find on another screen.
+
+⚠️ **INTERACTIONS ARE COUNTED, NOT SUBTRACTED FROM A SUMMARY TILE.** The first version did
+`summaryInteractions - forms - unanswered` and rendered **0** Voice Agent interactions on
+Orlando Health, because that account's AI "Interactions" tile (1,247) and its Form Submits
+(1,247) happen to be the same number — two unrelated slices agreeing by accident silently
+emptied a column. Now: Voice Agent = ANSWERED calls, After Hours = unanswered, Lead Form = form
+submits, so the two voice channels sum exactly to the call total.
+
+⚠️ **A TOTALS ROW IS SAFE HERE, unlike on Location Comparison.** The three channels PARTITION
+the AI revenue, so summing them is meaningful; that screen's Form-Attributed revenue is a cut
+of call revenue and must never be summed with it.
+⚠️ Per-franchise rates are the company rate scaled by that franchise's own booking rate
+against the company's, clamped to 0-99. A single shared rate would make every row identical in
+the only column a manager is reading.
+⚠️ **ONE NEW CLASS ONLY** (`.fai-section`, a section heading). Everything else reuses
+`.dash-page` / `.dash-card` / `.kpi-grid` / `.kpi-tile` / `.dash-table` / `.aac-conv-grid` /
+`.aac-chip`.
+⚠️ **A BARE `<>` IN A `.map()` HAS NO KEY.** The grouped header pair warned "Each child in a
+list should have a unique key ... check the render method of `tr`", which reads as the cells
+being at fault; the key belongs on a `<Fragment key=…>`.
+
 ### Location Performance Comparison (`/dashboards/location-comparison`)
 A per-location scorecard for the prospect's MANAGERS: a card per location, then the
 locations side by side — share of calls (donut), booking-rate ranking (HBarChart) and

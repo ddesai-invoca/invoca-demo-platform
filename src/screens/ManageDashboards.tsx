@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { vocabFor } from "../data/insightsCatalog";
 
 /* Manage Dashboards — the landing list you get when clicking "Dashboards".
    For now it holds the one dashboard we've built (Marketing Performance);
@@ -70,6 +71,20 @@ export function ManageDashboards() {
           shared: ["All Users"],
           owner: "You",
           modified: "1/28/26 4:02 pm",
+        }]
+      : []),
+    /* Same gate, and for the same reason: this screen breaks the AI conversion figures down
+       by location, so with no locationHandling there is nothing to break down. It also needs
+       the AI Agent Conversion slice, since the Lead Form and Voice Agent channels are read
+       straight off its cards. */
+    ...(profile.reports.opsDashboard?.locationHandling?.rows?.length
+      && profile.reports.aiAgentConversion?.conversionCards?.length
+      ? [{
+          name: `AI Conversion by ${vocabFor(profile).location} (${profile.customerName})`,
+          path: "/dashboards/ai-conversion-by-location",
+          shared: ["All Users"],
+          owner: "You",
+          modified: "8/24/26 3:41 pm",
         }]
       : []),
   ];
