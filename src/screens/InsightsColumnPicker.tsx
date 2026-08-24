@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
@@ -67,7 +67,12 @@ export function InsightsColumnPicker() {
      Call Record ID and Transaction ID, Summary with nothing selected. */
   const [picked, setPicked] = useState<string[]>(side.seeded);
   const [query, setQuery] = useState("");
-  const [open, setOpen] = useState<Set<string>>(new Set([grouped[0]?.[0] ?? ""]));
+  /* ⚠️ EVERY GROUP OPEN BY DEFAULT. Measured on a capture of the live builder: all 20 column
+     groups carry `aria-expanded="true"` and all 372 checkboxes are laid out at once. Ours
+     opened only the first, so finding a column meant clicking through twenty accordions.
+     They stay collapsible — this is the default state, not a removal of the control. */
+  const allGroupNames = useMemo(() => grouped.map(([n]) => n), [grouped]);
+  const [open, setOpen] = useState<Set<string>>(() => new Set(allGroupNames));
   /* Summary Report only: what the aggregate is broken out by. Dimensions come from
      the Categories group, which is what the live Group By offers. */
   const groupByOptions = useMemo(
@@ -86,7 +91,10 @@ export function InsightsColumnPicker() {
     setPicked(sidebarFor(kind).seeded);
     setGroupBy("");
     setQuery("");
-  }, [kind]);
+    /* The open set is per report too — a group only one report has would otherwise stay
+       collapsed after switching (Transactions adds RingPool Details to Details' twenty). */
+    setOpen(new Set(allGroupNames));
+  }, [kind, allGroupNames]);
 
   const q = query.trim().toLowerCase();
   const visible = (cols: string[]) => (q ? cols.filter((c) => c.toLowerCase().includes(q)) : cols);
@@ -95,6 +103,67 @@ export function InsightsColumnPicker() {
     setPicked((p) => (p.includes(c) ? p.filter((x) => x !== c) : [...p, c]));
   const setMany = (cols: string[], on: boolean) =>
     setPicked((p) => (on ? [...new Set([...p, ...cols])] : p.filter((x) => !cols.includes(x))));
+
+  /* ---- drag to reorder ----------------------------------------------------
+     ⚠️ THE REAL LIST IS DRAGGABLE, and ours only had an up-arrow nudge. Measured on the
+     builder capture: every row is `role="button" tabindex="0"` with
+     `aria-roledescription="sortable"`, `cursor: grab`, a 24px `drag_indicator` handle and an
+     inline `transition: transform linear` — i.e. a dnd-kit sortable list.
+
+     Implemented with POINTER EVENTS rather than a drag-and-drop library: the app ships as one
+     bundle with no code splitting, so a dependency here lands on every screen (see the Leaflet
+     note in CLAUDE.md), and this is ~20 lines. `setPointerCapture` means the drag survives the
+     pointer leaving the row, which a naive mousemove listener does not.
+     Reordering happens LIVE on move, as the real list's transform transition implies, rather
+     than on drop. */
+  const listRef = useRef<HTMLUListElement>(null);
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+
+  const move = (from: number, to: number) => setPicked((p) => {
+    if (to < 0 || to >= p.length || from === to) return p;
+    const n = [...p]; const [row] = n.splice(from, 1); n.splice(to, 0, row); return n;
+  });
+
+  /* Which row is the pointer over? Compared against each row's own midpoint, so a short drag
+     into the top half of the next row already commits — the behaviour a sortable list needs to
+     feel responsive. */
+  const rowUnder = useCallback((clientY: number): number => {
+    const ul = listRef.current;
+    if (!ul) return -1;
+    const items = Array.from(ul.children) as HTMLElement[];
+    for (let i = 0; i < items.length; i++) {
+      const r = items[i].getBoundingClientRect();
+      if (clientY < r.top + r.height / 2) return i;
+    }
+    return items.length - 1;
+  }, []);
+
+  const onDragStart = (i: number) => (e: React.PointerEvent<HTMLLIElement>) => {
+    /* Left button / primary touch only, and never start a drag from the label text selection. */
+    if (e.button !== 0) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    setDragIndex(i);
+  };
+  const onDragMove = (e: React.PointerEvent<HTMLLIElement>) => {
+    if (dragIndex === null) return;
+    const to = rowUnder(e.clientY);
+    if (to >= 0 && to !== dragIndex) { move(dragIndex, to); setDragIndex(to); }
+  };
+  const onDragEnd = () => setDragIndex(null);
+
+  /* Keyboard equivalent, because the real row is focusable and a drag is mouse-only. */
+  const onRowKey = (i: number) => (e: React.KeyboardEvent) => {
+    if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
+    e.preventDefault();
+    const to = e.key === "ArrowUp" ? i - 1 : i + 1;
+    if (to < 0 || to >= picked.length) return;
+    move(i, to);
+    /* Keep focus on the row that moved, so repeated presses keep walking it. */
+    requestAnimationFrame(() => {
+      const el = listRef.current?.children[to] as HTMLElement | undefined;
+      el?.focus();
+    });
+  };
 
   const allCols = grouped.flatMap(([, c]) => c);
 
@@ -134,8 +203,8 @@ export function InsightsColumnPicker() {
                 {isOpen && (
                   <>
                     <div className="icp-bulk icp-bulk--group">
-                      <button type="button" onClick={() => setMany(shown, true)}>Select All</button>
-                      <button type="button" onClick={() => setMany(shown, false)}>Deselect All</button>
+                      <button type="button" onClick={() => setMany(shown, true)}>Select all</button>
+                      <button type="button" onClick={() => setMany(shown, false)}>Deselect all</button>
                     </div>
                     <div className="icp-cols">
                       {shown.map((c) => (
@@ -173,18 +242,21 @@ export function InsightsColumnPicker() {
           {/* Order follows selection order, and each row can be nudged. Real drag and
               drop is not worth the risk on a demo screen: a dropped drag mid-pitch
               looks broken, while arrows always work. */}
-          <ul className="icp-order">
+          {/* The scroll box is the real one's: 320 wide, `overflow-y: auto`, so twenty chosen
+              columns scroll here instead of stretching the page. */}
+          <ul className="icp-order" ref={listRef}>
             {picked.map((c, i) => (
-              <li key={c}>
+              <li key={c}
+                role="button" tabIndex={0} aria-roledescription="sortable"
+                aria-label={`${c}, position ${i + 1} of ${picked.length}. Drag, or use the arrow keys, to reorder.`}
+                className={dragIndex === i ? "icp-order-row is-dragging" : "icp-order-row"}
+                onPointerDown={onDragStart(i)}
+                onPointerMove={onDragMove}
+                onPointerUp={onDragEnd}
+                onPointerCancel={onDragEnd}
+                onKeyDown={onRowKey(i)}>
                 <span className="material-icons icp-grip">drag_indicator</span>
                 <span className="icp-order-name">{c}</span>
-                <button className="icp-nudge" type="button" disabled={i === 0}
-                  aria-label={`Move ${c} up`}
-                  onClick={() => setPicked((p) => {
-                    const n = [...p]; [n[i - 1], n[i]] = [n[i], n[i - 1]]; return n;
-                  })}>
-                  <span className="material-icons">arrow_upward</span>
-                </button>
               </li>
             ))}
             {picked.length === 0 && <li className="icp-order-empty">No columns chosen yet.</li>}

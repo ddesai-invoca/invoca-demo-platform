@@ -1279,6 +1279,64 @@ have had at all. Reset on `kind` change, and test by navigating in an order buil
 expose stale state (details -> transactions -> summary -> details), not by loading each
 report fresh.
 
+### The column picker: expanded by default, and the list is DRAGGABLE (8/23/2026)
+Two captures of the live builder — one with the groups open, one closed — measured directly,
+because that page is Invoca's own React and serialises in full (no ThoughtSpot iframe).
+
+⚠️ **EVERY GROUP IS OPEN BY DEFAULT.** All 20 accordions carry `aria-expanded="true"` and all
+372 checkboxes lay out at once. Ours opened only the first, so finding a column meant clicking
+through twenty accordions. They stay collapsible; this is the default state. The open set is
+also reset per REPORT, or a group only one report has stays collapsed after switching
+(Transactions adds RingPool Details to Details' twenty).
+
+⚠️ **THE REORDER LIST IS A SORTABLE DRAG LIST**, not a nudge button. Measured: every row is
+`role="button" tabindex="0"` with `aria-roledescription="sortable"`, `cursor: grab`, a 24px
+`drag_indicator` handle and an inline `transition: transform linear` — a dnd-kit sortable.
+Implemented with POINTER EVENTS, not a library: the app is one bundle with no code splitting,
+so a dependency lands on every screen, and this is ~20 lines. `setPointerCapture` keeps the
+drag alive when the pointer leaves the row. Reordering happens LIVE on move, which the
+transform transition implies, and rows move when the pointer passes a row's MIDPOINT.
+Arrow keys move a focused row too, and focus follows it — the real row is focusable, and a
+drag alone is mouse-only.
+
+| | measured |
+|---|---|
+| panel | 320 wide, `padding: 24px 0 0` |
+| heading | Lato **16/700** `#15243E`, inset 24 |
+| scroll box | 320 x **672**, `overflow-y: auto` |
+| row | **53** tall, `padding: 12px 24px`, radius 4, `cursor: grab` |
+| handle | 24px `drag_indicator`, `rgba(0,0,0,.54)`, 12px to its right |
+| row label | Lato **16/400** `#15243E` |
+| group header | 48 tall, Lato **16/400** `#15243E`, no bottom rule |
+| per-group links | Lato **12/500** `#2666F9`, no underline, NO button chrome, and they read "Select all" / "Deselect all" — lower-case second word |
+| checkbox label | Lato 13.2/400 `#15243E`, 28 tall |
+
+⚠️ **THE ROW LABEL IS 16px, NOT 13.2.** 13.2 is the checkbox list's size on the left, and ours
+was using it for both. The row is also inset 24 on BOTH sides; ours had 0 on the left, so the
+handle sat flush against the panel edge.
+⚠️ `.icp-bulk.icp-bulk--group button` is written at (0,2,1) on purpose: as
+`.icp-bulk--group button` it ties with `.icp-bulk button` at (0,1,1) and loses on source order —
+measured, the border came back 2px and the pill was still drawn.
+
+✅ **RESOLVED — the `(%)` columns are DERIVED, not pickable.** This was an open item on the
+Details Report: the tile shows `Call Not Answered (%)` and `Answered by Agent (%)` beside their
+`Total …` columns, and no `(%)` name appeared in the extracted builder list. The builder capture
+settles it — **zero of its 372 checkbox labels contain `(%)`**. So the report adds a percentage
+companion for a conditional measure, and the base `Call Count` gets none (a percentage of itself
+is always 100%). The structural tell for "conditional" is a `(T/F)` twin, which both of those
+have and `Call Count` does not. NOT implemented: it adds columns the SE did not tick, which is a
+visible behaviour change and its own decision.
+✅ Also confirmed by the same capture: `Answered`, `Answered by Agent`, `Call Not Answered` and
+their `(T/F)` twins really are builder columns. Their existence had been proven only by a
+rendered tile, with the group placement inferred.
+
+⚠️ **SEARCH: TEST IT WITH REAL TYPING.** Dispatching `new Event("input")` at the search box does
+not reach React — it tracks a controlled input's value through a descriptor and dedupes the
+event — so filtering appeared broken (21 groups still shown) when it was not. Typed for real:
+"zip" cuts 21 groups to 3 and 262 checkboxes to the 4 that match. Third time synthetic events
+have produced a false negative in this repo; the other two are recorded at the combobox and the
+Google Ads back-nav.
+
 The Configuration drawer's dropdown is a **floating searchable popup**, not a native
 `<select>`: paper 450 wide, max-height 375, radius 3, MUI shadow, padding 8px 0; options
 32px tall (20px line box + 6px padding — the default line-height makes them 36) at

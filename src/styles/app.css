@@ -3765,6 +3765,18 @@ button.nav-item {
 }
 
 .icp-bulk { display: flex; gap: 8px; margin: 0 0 8px; }
+/* ⚠️ THE PER-GROUP LINKS ARE TEXT, NOT BUTTONS. Measured on the builder capture: Lato
+   **12px/500** `#2666F9`, no underline and no border or background — ours drew a bordered
+   pill for them. The two page-level ones keep the pill; only the in-group pair is text. */
+.icp-bulk.icp-bulk--group button {
+  /* ⚠️ WRITTEN `.icp-bulk.icp-bulk--group button` (0,2,1). As `.icp-bulk--group button` it
+     ties with `.icp-bulk button` below at (0,1,1) and loses on source order — measured, the
+     border came back as 2px and the pill was still drawn. */
+  border: 0; background: none; padding: 0; font-size: 12px; font-weight: 500;
+  color: #2666f9; cursor: pointer;
+}
+.icp-bulk.icp-bulk--group button:hover { background: none; text-decoration: underline; }
+.icp-bulk--group { gap: 16px; }
 .icp-bulk button {
   background: none; border: 2px solid transparent; border-radius: 3px; color: #2666f9;
   font: inherit; font-size: 12px; font-weight: 500; padding: 8px 12px; height: 32px;
@@ -3782,6 +3794,8 @@ button.nav-item {
 }
 .icp-group-head:hover { background: #fafbfc; }
 .icp-group-head .material-icons { font-size: 24px; color: #5b6577; }
+/* Measured: the group title is Lato 16/400 #15243E in a 48px row, and the bulk links
+   are 12px/500 #2666F9 with no underline — and read "Select all", lower-case 'a'. */
 
 /* Two columns, three from 1200px up — the breakpoint the live grid actually uses. */
 .icp-cols {
@@ -3797,7 +3811,10 @@ button.nav-item {
 .icp-col input { width: 20px; height: 20px; accent-color: #2666f9; flex: 0 0 auto; margin: 0; }
 
 .icp-side { flex: 0 0 320px; width: 320px; padding: 24px 0 0; }
-.icp-side-title { font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e; margin: 0 0 4px; }
+.icp-side-title {
+  font-size: 16px; line-height: 20px; font-weight: 700; color: #15243e;
+  margin: 0 0 4px; padding-left: 24px;
+}
 /* Group By is Summary-only; it sits above the reorder list with its own heading. */
 .icp-groupby { margin: 0 0 24px; }
 .icp-groupby select {
@@ -3805,20 +3822,33 @@ button.nav-item {
   color: #15243e; background: #fff; border: 1px solid #e7e9eb; border-radius: 4px;
   padding: 0 8px; margin-top: 4px;
 }
-.icp-order { list-style: none; margin: 0; padding: 0; }
-.icp-order li {
-  display: flex; align-items: center; gap: 8px; min-height: 53px;
-  padding: 12px 24px 12px 0; font-size: 13.2px; color: #15243e; border-radius: 4px;
+/* ---- "Reorder columns": measured off the live builder capture ---------------
+   panel 320 wide, `padding: 24px 0 0`; heading Lato 16/700 #15243E inset 24;
+   scroll box 320 x 672 with `overflow-y: auto`; each row a 53px `<li>` at
+   `padding: 12px 24px`, radius 4, `cursor: grab`, a 24px drag_indicator handle in
+   `rgba(0,0,0,.54)` with 12px to its right, label Lato **16/400** #15243E.
+   ⚠️ THE LABEL IS 16px, NOT 13.2 — 13.2 is the checkbox list's size on the left, which is
+   what ours had been using for both. And the row is inset 24 on BOTH sides; ours had 0 on
+   the left, so the handle sat flush against the panel edge. */
+.icp-order {
+  list-style: none; margin: 0; padding: 0;
+  max-height: 672px; overflow-y: auto;
 }
-.icp-grip { font-size: 20px; color: #b8bdc5; flex: 0 0 auto; }
+.icp-order-row {
+  display: flex; align-items: center; min-height: 53px; box-sizing: border-box;
+  padding: 12px 24px; font-size: 16px; color: #15243e; border-radius: 4px;
+  cursor: grab; user-select: none; touch-action: none;
+}
+.icp-order-row:hover { background: var(--ts-var-list-hover-background, #d4e0fe); }
+.icp-order-row:focus-visible { outline: 2px solid #2666f9; outline-offset: -2px; }
+/* The row being dragged lifts off the list, so it is obvious which one is moving. */
+.icp-order-row.is-dragging {
+  cursor: grabbing; background: #fff;
+  box-shadow: 0 2px 8px rgba(12, 0, 51, .18); position: relative; z-index: 1;
+}
+.icp-grip { font-size: 24px; color: rgba(0, 0, 0, .54); flex: 0 0 auto; margin-right: 12px; }
 .icp-order-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.icp-nudge {
-  background: none; border: 0; color: #2666f9; cursor: pointer; padding: 2px;
-  display: grid; place-items: center; border-radius: 3px;
-}
-.icp-nudge:disabled { color: #d0d3d8; cursor: default; }
-.icp-nudge .material-icons { font-size: 18px; }
-.icp-order-empty { color: #5b6577; font-style: italic; }
+.icp-order-empty { color: #5b6577; font-style: italic; padding: 12px 24px; }
 
 .icp-foot {
   flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
