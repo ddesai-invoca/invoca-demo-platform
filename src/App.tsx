@@ -43,6 +43,7 @@ import { EditRuleSignal } from "./screens/EditRuleSignal";
 import { Launch } from "./screens/Launch";
 import { SmsPreviewPage } from "./screens/SmsPreviewPage";
 import { ChatGptAd } from "./screens/ChatGptAd";
+import { Integrations } from "./screens/Integrations";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { ReadmeButton } from "./components/ReadmeButton";
@@ -71,7 +72,9 @@ const BUILT: Record<string, ReactNode> = {
 };
 
 /* Standalone screens render OUTSIDE the app shell (their own full-page chrome). */
-const STANDALONE = new Set(["/integrations"]);
+/* The in-platform Integrations page renders INSIDE the app shell now, so it is no longer
+   standalone; the exact-copy marketing page still is. */
+const STANDALONE = new Set(["/invoca-exchange"]);
 
 /* The bottom-right pair on the launch form. Same allow-list as ReadmeButton: past
    the launch form every screen is a replica of Invoca's product shown to a
@@ -110,7 +113,11 @@ export default function App() {
           <Route path="/feedback" element={<FeedbackBoard />} />
 
           {/* Standalone full-page routes (no sidebar/topbar) — exact static copies */}
-          <Route path="/integrations" element={<StaticRedirect to="/invoca-exchange.html" />} />
+          {/* ⚠️ THE OLD EXACT-COPY OF invoca.com/integrations IS NOT DELETED — it still
+              serves at /invoca-exchange and as the static file. It is a working replica of
+              a DIFFERENT (marketing-site) page and the Google Ads tile inside it still
+              works; the sidebar simply opens the in-platform page now. */}
+          <Route path="/invoca-exchange" element={<StaticRedirect to="/invoca-exchange.html" />} />
           <Route path="/integrations/google-ads" element={<StaticRedirect to="/google-ads.html" />} />
 
           {/* ChatGPT sponsored placement — the AI-channel counterpart to the
@@ -129,6 +136,11 @@ export default function App() {
 
           {/* Everything else lives inside the app shell */}
           <Route element={<AppShell />}>
+            {/* ⚠️ IN-SHELL, unlike the exact-copy page it replaced. This one is Invoca's
+                own in-platform screen, so it carries the sidebar and top bar; the previous
+                route was in the standalone group and rendering it there left the page
+                floating with no chrome. */}
+            <Route path="/integrations" element={<Integrations />} />
             {/* Reports nav → My Reports list; individual reports open from there */}
             {/* A saved Insights dashboard. The real URL carries a uuid; we pass
                 the name so the title matches the row that was clicked. */}

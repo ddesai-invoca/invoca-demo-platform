@@ -4119,3 +4119,77 @@ button.nav-item {
   transition: background-color 120ms ease;
 }
 .ied-card--on:hover { background: #f3f7ff; }
+
+/* =============================================================================
+   Integrations (the in-platform page). Measured off the LIVE page 8/24/2026.
+   Own prefix `.itg-`; the old exact-copy marketing page is untouched static HTML.
+   ============================================================================= */
+.itg-page { padding: 24px; }
+.itg-h1 { font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; margin: 0; }
+
+/* 274 x 36, and the icon sits inside the field rather than beside it. */
+.itg-search {
+  display: flex; align-items: center; gap: 4px; width: 274px; height: 36px;
+  box-sizing: border-box; margin: 60px 0 30px; padding: 0 8px;
+  background: #fff; border: 1px solid #e7e9eb; border-radius: 3px;
+}
+.itg-search-icon { font-size: 24px; color: #66708e; }
+.itg-search input {
+  flex: 1; min-width: 0; border: 0; outline: 0; background: none;
+  font: inherit; font-size: 16px; line-height: 23px; color: #15243e; padding: 0 4px;
+}
+.itg-section + .itg-section { margin-top: 30px; }
+/* ⚠️ UPPERCASED IN CSS — the DOM text is "Integrated" / "Library". */
+.itg-h2 {
+  font-size: 16.5px; line-height: 19.8px; font-weight: 400; color: #868e96;
+  text-transform: uppercase; margin: 0 0 19.5px;
+}
+
+/* Bootstrap's own grid, reproduced with the measured breakpoints: 30px gutter carried as
+   15px of column padding either side, with the row bleeding -15 so the cards line up with
+   the page's own 24px inset. */
+.itg-row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
+.itg-col { width: 100%; padding: 0 15px; margin-bottom: 30px; box-sizing: border-box; }
+@media (min-width: 576px) { .itg-col { width: 50%; } }
+@media (min-width: 1200px) { .itg-col { width: 33.333333%; } }
+/* ⚠️ 1400 IS BOOTSTRAP'S xxl, AND THE LAYOUT VIEWPORT IS WHAT COUNTS: at innerWidth 1406
+   the real page still rendered 3 columns because the scrollbar put the layout viewport
+   under 1400. Measuring at one width would have recorded the wrong rule. */
+@media (min-width: 1400px) { .itg-col { width: 25%; } }
+
+.itg-tile {
+  display: flex; align-items: stretch; background: #fff; border-radius: 8px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .2); overflow: hidden; height: 100%;
+}
+/* Only a card that goes somewhere gets the pointer. */
+.itg-tile--on { cursor: pointer; }
+.itg-tile--on:hover { background: #f8f9fb; }
+.itg-tile--on:focus-visible { outline: 2px solid #2666f9; outline-offset: 2px; }
+
+/* ⚠️ AN 8px DIV, NOT A BORDER — a border would sit outside the 8px radius and clip square. */
+.itg-stripe { width: 8px; flex: 0 0 8px; border-radius: 8px 0 0 8px; }
+.itg-stripe--integrated { background: #abe5bc; }
+.itg-stripe--ready { background: #b0cdff; }
+.itg-stripe--learn { background: #e7e0f9; }
+
+.itg-body { display: flex; align-items: center; padding: 13px; min-width: 0; }
+/* Measured: the logo column is the 50px image plus 13.6px of right padding (Bootstrap's
+   `pr-3` at their font scale), so 63.6 to the label. */
+.itg-logo {
+  flex: 0 0 auto; padding-right: 13.6px; display: flex; align-items: center;
+  justify-content: center;
+}
+.itg-logo img { width: 50px; height: 50px; object-fit: contain; display: block; }
+.itg-material { font-size: 44px; color: #15243e; }
+/* ⚠️ 6.5px BETWEEN THE BADGE AND THE NAME, not 4 — that 2.5px is the whole difference
+   between a 77px tile and the measured 79.5 (23 badge + 6.5 + 24 name + 26 padding). */
+.itg-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 6.5px; min-width: 0; }
+.itg-badge {
+  display: inline-block; font-size: 10px; line-height: 10px; padding: 6.5px;
+  border-radius: 100px; text-transform: capitalize;
+}
+.itg-badge--integrated { background: #abe5bc; color: #0d5400; }
+.itg-badge--ready { background: #b0cdff; color: #003399; }
+.itg-badge--learn { background: #e7e0f9; color: #440066; }
+.itg-name { font-size: 16.5px; line-height: 24px; color: #343a40; }
+.itg-empty { font-size: 16px; color: #5b6577; margin: 0; }

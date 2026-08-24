@@ -930,7 +930,8 @@ public/
 | Quality Management (QM Actionable Insights) | `/dashboards/quality-management` | Profile-driven (React) | ✅ 5th dashboard (`reports.qualityManagement`, optional), matched to the real Invoca page (`reference/quality-management/*.html`, network 2982). **Layout = the real 3-col gridstack**: Row1 Sales Opportunities **2/3** \| Sales Conversions **1/3** (`.qm-row-21`); Rows 2/3/5/6 left **1/3** \| right **2/3** (`.qm-row-13`); Rows 4/7/8 full width. 13 tiles: 4 KPI cards (ConversionCard title+chips+tiles), Calls Needing Review + Bottom/Top Quality Scores HBars (the two by-agent bars show a `pager` "1 - 6 of 30"), Highest Converting Agents stacked bar (**9 weeks × 5 agents**), Bottom/Quality Scores tables, and 3 **BarLineChart**s: Baseline Sales Quality Score (bars + red dashed avg line w/ a value badge) + the two Trending charts (**dual-axis**: bars=left %, orange line=right count/revenue via `rightLabel/rightMax/rightTicks/rightPrefix`). Platform metric labels verbatim; agents/scorecards/vertical terms re-skinned. Engine composes scaffolding + deterministic daily points; model generates compact `QmGen` content |
 | QM Instant Insights | `/dashboards/qm-instant-insights` | Profile-driven (React) | ✅ 6th dashboard (`reports.qmInstantInsights`, optional), matched to the real Invoca page (`reference/quality-management/*Instant*.html`, network 2982). QA at-a-glance: Trending Essential Metrics full-width (BarLineChart, **line-primary + DUAL-axis**: blue AHT line on left time axis, orange Negative-Sentiment **bars on the RIGHT axis** 0–120%; passed `height={150}` = 50% shorter), Essential Metrics **2/3** \| Trending Answer Rate **1/3** (`.qm-row-21`; answer rate = line-only, zoomed `yMin` 65–100), Contact Center Metrics, Overall Evaluation Score **1/3** \| Evaluation Rollup **2/3** (`.qm-row-13`), Scored Calls by Evaluator table. `BarLineChart` supports the SECONDARY series on the right axis (bars-on-right when `linePrimary`, else line-on-right). Engine composes charts; model supplies compact values (`QmInstantGen`) |
 | AI Messaging Impact (Human vs AI) | `/dashboards/ai-messaging-impact` | Profile-driven (React) | ✅ 4th dashboard (`reports.aiMessagingImpact`, optional), built from screenshots (`AiMessagingImpactDashboard.tsx`): paired **1/3 + 2/3 KPI cards** (`.aim-row`) — AI (This Month) vs Human (Last Month, grey chip) for Lead Engagement + Appointment Performance — then AI-Assisted Appointment Trend **LineChart** (49 daily pts, flat→jump; sparse x-labels), AI-Assisted Opportunities + AI Lead Nurture tiles, and a **Common Topics** StackedBarChart re-skinned to the prospect (window-treatment topics for Shady Blinds). Reuses the shared template; engine generates it per prospect |
-| Invoca Exchange (Integrations) | `/integrations` | **Exact static copy** (identical for all customers) | ✅ real page served |
+| Integrations (in-platform) | `/integrations` | Profile-independent (React) | ✅ Invoca's OWN in-platform page (`action_collections/ui`), measured live 8/24/2026. Search + INTEGRATED/LIBRARY sections + 48 cards with the real logos. **Two cards navigate**: Google Ads -> the captured Ads console, ChatGPT Ads -> the sponsored-ad screen. See its own section below |
+| Invoca Exchange (marketing site) | `/invoca-exchange` | **Exact static copy** (identical for all customers) | ✅ real page served — KEPT, just no longer what the sidebar opens |
 | Google Ads Search Keywords | `/integrations/google-ads` | **Exact static copy** | ✅ real page served |
 | Google Ads AI + undo (in-page) | n/a | Static + JS | The Ads page is a saved document, NOT a React screen, so the platform's Ask AI drawer cannot render there. `google-ads-demo.js` injects a compact equivalent: sparkle + undo left of the Ads **SEARCH** icon, hover-revealed on `.iga-zone` (same always-hold-layout-space-and-fade contract as the top bar), a small drawer, and the SAME `/api/ai-assistant` endpoint. **Rule 2 is structural here**: an edit only lands when its path names one of six fields (`keyword`, `campaign`, `adGroup`, `conversion`, `impressions`, `clicks`) and its value is a string or number, so there is no route from a reply to CSS or layout whatever the model returns. State persists per prospect (`invoca-demo:google-ads-ai::<id>`) and undo is one step at a time. ⚠️ Two traps found while building it: the capture ships **"Material Icons Extended"**, not "Material Icons" (asking for the latter renders the ligature as the literal text `auto_awesome`, 119px wide), and the injected `demo-back-nav` click rule now **excludes `.iga-zone`/`.iga-wrap`** — it is capture-phase so the assistant cannot stop it, and the drawer's backdrop covers the `x<255, y<60` logo region, so dismissing the drawer there used to navigate out of the page. ⚠️ A null field means "keep the capture's own value", so `ORIGINAL` snapshots each cell's text BEFORE the first write; without it, undoing impressions back to null left the edited number on screen instead of restoring 1,560. |
 | Google Ads per-prospect overrides | n/a | Static + JS re-skin | `public/google-ads-demo.js` re-skins the captured console from the active profile in localStorage, all from the prospect's OWN dashboard data: **keyword** = the top `Calls by Search Term` row (a real phrase somebody types, e.g. "emergency room near me" — it used to be `callReview.searchSuggestions[0]`, which are single transcript words like "monitoring" and read as a transcript search rather than a paid keyword), **ad group** = a `Conversions by Product Category` row picked by word overlap with the keyword (an ad group contains its keywords, so "used cars…" in a "New Cars" ad group looked fake; **two** shared words minimum, because one matched "continuing CARE" to "Memory Care" over the better "Independent Living"), and **conversion** = `<bookingTerm> Booked` ("Appointment Booked", "Tour Booked"). `OVERRIDES` is now EMPTY on purpose: the vector-security entry set the keyword by hand to exactly what the Search Term row already returns, so it was pure drift risk. Both defaults are borrowed from other screens and can read wrong for an ads account (searchSuggestions are single CALL REVIEW transcript words like "monitoring", not phrases anyone types into Google). Fix that in the `OVERRIDES` table at the top of that file, keyed by profile id, NOT in the profile: editing `searchSuggestions` makes the Call Review search placeholder suggest a term matching no summary, and editing `bookingTerm` renames the Agent Workflow leaf, the dashboard KPIs and the CI signals with it. Currently overridden: **vector-security** (keyword "home security systems near me", conversion term "Quote") |
@@ -1130,6 +1131,75 @@ real ratings; reproducing that shape with fabricated copy would put words in a
 named company's mouth. `derive` also rejects any rival name sharing two
 significant words with the prospect (that is what stopped "Orlando Health
 Systems" appearing beside the real Orlando Health).
+
+### Integrations: the IN-PLATFORM page (measured live 8/24/2026)
+`src/screens/Integrations.tsx` + `.itg-`, from the live `/networks/2160/action_collections/ui`
+(Invoca's own React, same-origin) plus a SingleFile capture for the logos. The sidebar's
+**Integrations** now opens THIS, not the marketing-site copy.
+
+⚠️ **NOTHING WAS DELETED.** `public/invoca-exchange.html` and its Google Ads tile still work,
+now at `/invoca-exchange`; `/integrations/google-ads` -> `google-ads.html` is untouched. The
+new page's **Google Ads** card routes to that same path, so the existing click-through is
+reached from the real screen instead of the marketing page. **ChatGPT Ads** routes to
+`/integrations/chatgpt` (the existing sponsored-ad screen).
+
+| | measured |
+|---|---|
+| h1 | "Integrations" 24/36 `#15243E` |
+| search | 274 x 36, 1px `#E7E9EB`, radius 3, white, 16/23 text, 24px icon `#66708E`; 60 under the h1, 30 above the first heading |
+| heading | h2 **sentence case in the DOM**, uppercased in CSS, 16.5/19.8 `#868E96`, 19.5 below |
+| tile | white, radius 8, shadow `0 4px 4px rgba(0,0,0,.2)`, NO border, **79.5** tall, inner padding 13 |
+| logo | 50 x 50 image in a column 63.6 wide (50 + 13.6 of `pr-3`) |
+| badge -> name | **6.5px** — 23 badge + 6.5 + 24 name + 26 padding = the 79.5 |
+| badge | 10px/10px, padding 6.5, radius 100px, `text-transform: capitalize` |
+| grid | 30px gutter, 30px row gap; **4 cols >= 1400, 3 >= 1200, 2 >= 576, 1 below** |
+
+⚠️ **THE COLOURED LEFT EDGE IS AN 8px DIV, NOT A BORDER**, and one palette dresses both it
+and the badge chip: integrated `#ABE5BC`/`#0D5400`, ready `#B0CDFF`/`#003399`, learnMore
+`#E7E0F9`/`#440066`. EVERY tile has a stripe including Learn More — the lilac is quiet enough
+to read as no stripe in a screenshot, which is how it nearly got left out.
+
+⚠️ **4 COLUMNS NEEDS 1400 OF *LAYOUT* VIEWPORT, and one measurement got this wrong.** At
+`innerWidth` 1406 the real page rendered THREE columns, because the classic scrollbar puts the
+layout viewport under Bootstrap's 1400 xxl breakpoint while `innerWidth` still reads 1406.
+Re-measured at 1500: four columns, `matchMedia('(min-width: 1400px)')` true. Exactly what the
+measure-at-more-than-one-width rule exists for.
+
+⚠️ **THE CARD LIST IS INVOCA'S OWN CATALOGUE and is NOT re-skinned** — every name is a real
+third-party product, identical in every account, like the Semantic Signal library. The
+per-account part is which are Integrated / Ready To Integrate, kept as captured: they name no
+customer, and an empty Integrated section would read as a broken page.
+⚠️ **"TEST - Do not turn live" IS OMITTED** — an internal artifact of that account, not
+something to put in front of a prospect. 49 captured tiles -> 48 rendered.
+
+⚠️ **LOGOS EXTRACTED VERBATIM to `public/icons/integrations/` (46 files)**, per the standing
+use-the-real-icons rule: 44 raster logos, 2 inline SVGs (Custom Webhooks, Invoca APIs), and
+Favorite Actions is a Material `star_border` ligature exactly as the live page renders it.
+HubSpot and HubSpot MCP SHARE one file — the same icon-sharing the Add Tile picker documents.
+⚠️ **THE BASE64 CARRIES `%0A` ESCAPES.** SingleFile writes the newlines it wrapped into the
+attribute as `%0A`, and `img.src` hands them back the same way. A walker that treats `%` as a
+terminator stops instantly: 3 of 47 logos extracted and 44 reported "missing". The extractor
+skips `%0A`/`%0D` as whitespace, and the DOM-side fingerprints are taken after
+`decodeURIComponent`, or the two sides never match.
+⚠️ Three logos are CSS `background-image` data URIs on a sprite-style div (Sales Cloud, Google
+Ads, Invoca for AdWords) rather than `<img>`, so any extractor has to read computed
+`backgroundImage` too. Rendered here as plain 50x50 images like the rest — the real ones sit
+in a 58x40 box — which trades a 2px difference for 48 uniform tiles.
+⚠️ **Resampled to 160px: 1.68MB -> 492KB.** They render at 50px and several were 300-500KB.
+They live under `public/` and are referenced by URL, so none of it reaches the single bundle.
+
+⚠️ **ONLY TWO CARDS NAVIGATE.** The live cards open Invoca's own documentation, which is not
+captured, so every other card is inert and carries no pointer cursor. A card that navigates
+somewhere invented is worse than one that does nothing.
+Unmeasured choice, stated: when a search empties a section, its heading is hidden too.
+
+Verified: a **16-property diff against the spec came back empty**, tile 79.5 / badge gap 6.5 /
+logo column 63.6 all exact, 48 tiles, 4 per row at 1500, **zero broken images**, the sidebar
+marks Integrations active, real typing "google" filters 48 -> 5, and both live paths work end
+to end (Google Ads -> `google-ads.html` titled "Search Keywords - Finance - Google Ads",
+ChatGPT Ads -> the ChatGPT screen). `/invoca-exchange` still serves the old copy with its
+Google Ads tile. `/dashboards/marketing` unchanged (21 cards, 4px, KPI 48,293, 7 donuts, zero
+`.itg-` leakage).
 
 ### The Integrations click-through (demo circuit)
 Sidebar **Integrations** → `/integrations` → `StaticRedirect` to `/invoca-exchange.html`
