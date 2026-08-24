@@ -1348,11 +1348,42 @@ to `.ied-page` so the Summary Dashboard and Connect AI are untouched (re-verifie
 `600 28px/42px` `#1D2B4A`). **OPEN:** those two are probably 24/36 as well — all three are
 the same liveboard header — but this capture is of THIS dashboard and cannot settle it.
 Re-measure from their own captures before widening.
-⚠️ **THE DESCRIPTION IS THE ONE UNMEASURED THING ON THIS SCREEN.** The captured dashboard has
-none, so the capture cannot say where one goes; concluding "the product never shows one" from
-a dashboard that has none would be an inference, not a measurement. It is aligned to the
-title (it previously sat 24px out, at the page's left edge) and takes the liveboard's own
-description ink `#5b6577`.
+⚠️ **THE PAGE IS WHITE, AND NOT PAINTING IT WAS A VISIBLE BUG.** Measured: the whole content
+area is `rgb(255,255,255)` (`ts-embed__overlay`), which is what
+`--ts-var-liveboard-layout-background` says and what the very first Insights note in this file
+already recorded. This screen painted no background at all, so the app body's `#f6f7f9` showed
+through — and because **the illustration's own ground is `#F5F6FA`**, the artwork's backdrop
+blended into the page and the whole thing read as washed out. On white that ellipse reads as a
+panel, exactly as the reference does. `min-height: 100%` keeps the grey from reappearing under
+a short page (verified: no spurious scrollbar). Scoped to `.ied-page` — every other Insights
+screen paints nothing either and is probably grey for the same reason, but each is signed off
+and widening it is its own pass.
+
+⚠️ **THE DESCRIPTION IS NOT RENDERED, and that IS the measurement.** The captured liveboard
+header carries the crumb and the title and nothing else. It used to print under the title,
+where it read as a stray word in the corner. Still collected by the modal and stored on the
+dashboard; put it on screen only against a capture that shows one.
+
+⚠️ **THE ILLUSTRATION IS GREY BY DESIGN — 13.5% of its painted pixels are chromatic.** The
+figures are `#66708E` / `#8A919E` / `#B8BDC5` with blue accents (`#2666F9`, `#7DA3FB`,
+`#D7E6FF`) and one skin tone (`#FFC6B5`). Rasterised at 300x204 our file is **pixel-identical
+to the real inline svg** — 47,339 painted, 6,370 chromatic, same top-10 histogram — so
+"make it colour" is already satisfied by matching; what made it look flat was the grey page
+above.
+
+⚠️ **BUT `<lineargradient>` IS A DIFFERENT ELEMENT FROM `<linearGradient>` IN XML, AND ALL 12
+OF OURS WERE LOWERCASE.** SingleFile serialises SVG element names in lower case; the HTML
+parser silently case-corrects known SVG names, which is why the capture renders correctly and
+why the bug is invisible until the same bytes are loaded through an `<img>`, where they are
+parsed as XML. Every `fill="url(#paintN...)"` then resolved to nothing and the 12 gradient
+shadow washes did not paint (measured: ~1,100 pixels of soft shading, and 0 chromatic pixels
+— so this was NOT the cause of the flat look, only a real defect found while checking it).
+Corrected in `public/insights-empty.svg`; verified by parsing the file with `DOMParser` as
+`image/svg+xml` and confirming all 12 `url(#…)` references resolve.
+⚠️ **THE EASY WAY TO EXTRACT AN SVG FROM A CAPTURE IS `XMLSerializer` ON THE LIVE NODE**, not
+a regex over the saved text — the DOM has already been case-corrected, so serialising it gives
+valid XML with no hand-fixing. Attribute quoting (the earlier broken-image bug) is handled the
+same way.
 
 ⚠️ **#1335BF WAS A HOVER STATE, NOT A SECOND DESIGN.** The centre Add Tile serialised at
 `rgb(19,53,191)` while the header's identically-classed one read `#2666F9` — the capture

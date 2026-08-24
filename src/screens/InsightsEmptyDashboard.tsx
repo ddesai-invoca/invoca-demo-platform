@@ -94,8 +94,11 @@ export function InsightsEmptyDashboard({ dashboard }: { dashboard: InsightsDashb
         </div>
       </div>
 
-      {dashboard.description ? <p className="ied-desc">{dashboard.description}</p> : null}
-
+      {/* ⚠️ THE DESCRIPTION IS NOT RENDERED HERE, and that is the measurement rather than an
+          omission: the captured liveboard header carries the crumb and the title and nothing
+          else. It was previously printed under the title, where it read as a stray word in
+          the corner. It is still collected by the New Dashboard modal and stored on the
+          dashboard — put it back on screen only against a capture that shows one. */}
       {empty ? (
         /* ⚠️ ONE CENTRED COLUMN holding both blocks, which is what the capture measures:
            `align-items: center` with a 24px gap, so each child is sized by its own content

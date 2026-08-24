@@ -3937,12 +3937,15 @@ button.nav-item {
    settle it. Re-measure them from their own captures before widening. */
 .ied-page .ind-title { font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; }
 
-/* ⚠️ UNMEASURED, AND THE ONLY THING ON THIS SCREEN THAT IS. The captured dashboard has no
-   description, so the capture cannot say where one goes or how it is set — and concluding
-   "the product never shows one" from a dashboard that has none would be an inference, not
-   a measurement. It is aligned to the title and takes the liveboard's own description ink
-   (`#5b6577`); it previously sat at the page's left edge, 24px out from the title. */
-.ied-desc { font-size: 13px; color: #5b6577; margin: 0 0 8px; padding: 0 24px; }
+/* ⚠️ THE LIVEBOARD PAGE IS WHITE, NOT THE PLATFORM'S #F6F7F9. Measured on the capture: the
+   whole content area is `rgb(255,255,255)` (`ts-embed__overlay`), which is also what
+   `--ts-var-liveboard-layout-background` says. This screen painted nothing, so the app
+   body's grey showed through and only the cards and panel read as surfaces.
+   `min-height` is what stops the grey reappearing below a short page.
+   ⚠️ Scoped to `.ied-page` on purpose. The other Insights screens almost certainly have
+   the same grey, since none of them paints a background either — but each is signed off
+   and widening this is its own pass. */
+.ied-page { background: var(--ts-var-liveboard-layout-background, #fff); min-height: 100%; }
 
 /* ⚠️ THE CONTENT IS A CENTRED COLUMN, AND THAT IS THE WHOLE SHAPE OF THIS SCREEN.
    Measured: `flex-direction: column; align-items: center; gap: 24px; padding: 24px` on a
