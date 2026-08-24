@@ -82,7 +82,7 @@ const INTEGRATED: Card[] = [
   { name: "Custom Webhooks", state: "integrated", icon: "custom-webhooks.svg" },
   { name: "Google Ads", state: "integrated", icon: "google-ads.png", to: "/integrations/google-ads" },
   { name: "Invoca APIs", state: "integrated", icon: "invoca-apis.svg" },
-  { name: "Sales Cloud", state: "integrated", icon: "sales-cloud.png" },
+  { name: "Sales Cloud", state: "integrated", icon: "sales-cloud.png", to: "/salesforce" },
 ];
 
 /* ⚠️ ONLY TWO CARDS NAVIGATE, and that is the whole point of this screen for the demo:

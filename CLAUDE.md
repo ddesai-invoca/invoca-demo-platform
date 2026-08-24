@@ -1132,6 +1132,56 @@ named company's mouth. `derive` also rejects any rival name sharing two
 significant words with the prospect (that is what stopped "Orlando Health
 Systems" appearing beside the real Orlando Health).
 
+### Salesforce: the Sales Cloud flow (screen 1 of 4, 8/24/2026)
+The **Sales Cloud** tile on Integrations opens `/salesforce` — `SalesforceHome.tsx` + `.sfh-`,
+from a SingleFile capture of `lightning.force.com/lightning/page/home`. The planned flow:
+Seller Home -> **Calendar** tab -> the appointment the SMS AI agent just booked -> open it and
+its fields are filled from that conversation. **Only screen 1 exists so far.**
+
+⚠️ **A REACT REPLICA, NOT AN EXACT-COPY PAGE — a deliberate departure from the
+third-party-console convention** (Google Ads and the Invoca Exchange are saved HTML). The
+flow is the reason: later screens must show the appointment the SMS agent booked and open it
+with that conversation's values, so they need prospect data and real routing, and a 1.6MB
+Lightning document gives neither. Same call `GoogleSearch` and `ChatGptAd` already make.
+
+| | measured |
+|---|---|
+| face | **`-apple-system`**, NOT Lato — this screen does not inherit the platform font |
+| global header | 50 tall | 
+| nav bar | 40 tall, white, **3px `#0070D2`** bottom rule (the Lightning tell) |
+| page | `#F3F3F3` behind white cards |
+| card | 457.7 x 333, white, radius 4, 1px `#C9C9C9`, shadow `0 2px 2px rgba(0,0,0,.1)` |
+| card title / sub | `700 16/20` `#181818` / `13/19.5` |
+| ring | 150 x 150, `circle r=72`, stroke-width 6, track `#E5E5E5`; value `300 28/35` `#2E2E2E` |
+| legend | 10px dot; pill radius 4, padding `4px 9.6px` |
+| footer button | full width, 32 tall, 1px `#747474`, radius 4, ink `#0176D3` |
+| greeting | `300 13px/49px` `#444` — the 49px line box is what puts it on the h1 baseline |
+
+⚠️ **THE THREE LEGEND PALETTES ARE MEASURED PAIRS**, not one hue at two opacities:
+open dot `#06A59A` / pill `#ACF3E4` / ink `#056764`; won `#0D9DDA` / `#CFE9FE` / `#05628A`;
+lost `#FE5C4C` / `#FEDED8` / `#BA0517`. Plan My Accounts' ring is the lost coral at full
+circle (its `stroke-dasharray` is `none` — nothing here is a partial arc).
+
+⚠️ **THE CAPTURED ORG IS EMPTY and that is reproduced, not filled in** — $0 pipeline, 0
+contacts, 0 leads, 5 accounts with no activity. This is the SE's own Salesforce, not the
+prospect's, so inventing a pipeline would be inventing Invoca's numbers.
+⚠️ **RECENT RECORDS IS THE ONE DATA-BEARING TILE** and is derived: the caller from
+`voiceScreenpop.callerName` plus `callDetail.callId` and the CI report's first call id, so a
+record here is a call the rest of the demo already knows about. The capture's own rows name a
+real person in that org.
+
+⚠️ **THE NAV COUNTS 16 TABS, AND THE DOM SAYS 20.** Every tab also carries an "<X> List"
+entry — those are its dropdown items, not tabs. Counting anchors gives the wrong bar.
+
+⚠️ **EVERY TAB IS INERT, INCLUDING CALENDAR, UNTIL ITS SCREEN EXISTS.** There is no `*`
+catch-all in the router, so linking Calendar before screen 2 lands would put a BLANK page
+mid-demo behind a tab that looks live. Flip it to a `Link` in the same commit that adds the
+screen.
+
+Verified: a **24-property diff against the spec came back empty**, 16 tabs, 8 cards, zero
+anchors (nothing falsely clickable), Recent Records showing Shady Blinds' own Jessica Harper
+and two INVOCA call ids, and the Sales Cloud tile lands here with no Invoca chrome.
+
 ### Integrations: the IN-PLATFORM page (measured live 8/24/2026)
 `src/screens/Integrations.tsx` + `.itg-`, from the live `/networks/2160/action_collections/ui`
 (Invoca's own React, same-origin) plus a SingleFile capture for the logos. The sidebar's

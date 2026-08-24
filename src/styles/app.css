@@ -4213,3 +4213,125 @@ button.nav-item {
 .itg-badge--learn { background: #e7e0f9; color: #440066; }
 .itg-name { font-size: 16.5px; line-height: 24px; color: #343a40; }
 .itg-empty { font-size: 16px; color: #5b6577; margin: 0; }
+
+/* =============================================================================
+   Salesforce Seller Home (`.sfh-`) — screen 1 of the Sales Cloud flow, from the
+   Integrations page's Sales Cloud tile. Measured off a SingleFile capture of
+   lightning.force.com/lightning/page/home (8/24/2026), which serialises Lightning's own
+   SLDS stylesheet, so these are computed styles.
+   ⚠️ Salesforce's face is the SYSTEM stack, not Lato — `-apple-system` in the capture — so
+   this screen deliberately does NOT inherit the platform font.
+   ============================================================================= */
+.sfh-root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #181818; background: #f3f3f3; min-height: 100%;
+}
+.sfh-globalhead {
+  display: flex; align-items: center; gap: 12px; height: 50px; padding: 0 12px;
+  background: #fff;
+}
+.sfh-cloud { display: flex; align-items: center; }
+.sfh-search {
+  flex: 1; max-width: 400px; margin: 0 auto; display: flex; align-items: center; gap: 8px;
+  height: 32px; padding: 0 12px; background: #fff; border: 1px solid #c9c9c9;
+  border-radius: 4px; color: #747474; font-size: 13px;
+}
+.sfh-search .material-icons { font-size: 16px; }
+.sfh-globalicons { display: flex; align-items: center; gap: 14px; color: #706e6b; }
+.sfh-globalicons .material-icons { font-size: 20px; }
+.sfh-avatar { width: 28px; height: 28px; border-radius: 50%; background: #706e6b; }
+
+/* 40 tall with a 3px brand rule under it — that rule is the tell that this is Lightning. */
+.sfh-nav {
+  display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 12px;
+  background: #fff; border-bottom: 3px solid #0070d2;
+}
+.sfh-waffle, .sfh-pencil { font-size: 20px; color: #706e6b; }
+.sfh-app { font-size: 18px; font-weight: 700; }
+.sfh-tabs { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0;
+  flex: 1; overflow: hidden; }
+.sfh-tab { display: flex; align-items: center; height: 40px; padding: 0 6px; font-size: 13px; }
+.sfh-tab-link { color: #181818; text-decoration: none; padding: 0 4px; }
+/* The active tab is underlined by a 3px brand bar sitting ON the nav's own rule. */
+.sfh-tab--on { box-shadow: inset 0 -3px 0 #0070d2; }
+.sfh-tab--on .sfh-tab-link { color: #0070d2; font-weight: 700; }
+.sfh-tab a.sfh-tab-link { cursor: pointer; }
+.sfh-tab a.sfh-tab-link:hover { text-decoration: underline; }
+.sfh-chev { font-size: 16px; color: #706e6b; }
+
+.sfh-page { padding: 12px 16px 40px; }
+.sfh-banner { display: flex; align-items: baseline; gap: 12px; height: 55px; }
+.sfh-h1 { font-size: 24px; font-weight: 400; color: #181818; margin: 0; }
+/* 300 weight at a 49px line box is what puts the greeting on the h1's baseline. */
+.sfh-greet { font-size: 13px; font-weight: 300; line-height: 49px; color: #444; margin: 0; }
+
+.sfh-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 1200px) { .sfh-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .sfh-grid { grid-template-columns: 1fr; } }
+.sfh-card {
+  display: flex; flex-direction: column; background: #fff; border: 1px solid #c9c9c9;
+  border-radius: 4px; box-shadow: 0 2px 2px rgba(0, 0, 0, .1); padding: 16px 17px;
+  box-sizing: border-box;
+}
+.sfh-card-title { font-size: 16px; line-height: 20px; font-weight: 700; color: #181818; margin: 0; }
+.sfh-card-sub { font-size: 13px; line-height: 19.5px; color: #181818; margin: 12px 0 0; }
+.sfh-card-body { flex: 1; display: flex; align-items: center; gap: 12px; padding: 16px 0; }
+.sfh-card-foot { border-top: 1px solid #e5e5e5; padding-top: 12px; }
+.sfh-btn {
+  display: block; text-align: center; height: 32px; line-height: 30px; box-sizing: border-box;
+  border: 1px solid #747474; border-radius: 4px; background: #fff; color: #0176d3;
+  font-size: 13px;
+}
+.sfh-btn--brand {
+  border: 0; background: #0176d3; color: #fff; width: 120px; margin: 0 auto;
+  border-radius: 4px; line-height: 32px;
+}
+
+/* The ring: value and label centred over a 150px svg. */
+.sfh-ring { position: relative; width: 150px; height: 150px; flex: 0 0 150px; }
+.sfh-ring-value {
+  position: absolute; left: 0; right: 0; top: 52px; text-align: center;
+  font-size: 28px; font-weight: 300; line-height: 35px; color: #2e2e2e;
+}
+.sfh-ring-label {
+  position: absolute; left: 0; right: 0; top: 87px; text-align: center;
+  font-size: 13px; line-height: 19.5px; color: #2e2e2e;
+}
+
+/* ⚠️ 42px BETWEEN LEGEND ROWS, measured off the three rows' own y positions. */
+.sfh-legend { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.sfh-legend-row { display: flex; align-items: center; gap: 8px; }
+.sfh-dot { width: 10px; height: 10px; border-radius: 100%; flex: 0 0 10px; }
+.sfh-dot--open { background: #06a59a; }
+.sfh-dot--won { background: #0d9dda; }
+.sfh-dot--lost { background: #fe5c4c; }
+.sfh-dot--none { background: #c9c9c9; }
+/* ⚠️ MEASURED PAIRS — a pill tint with its OWN darker ink, not one colour at two alphas. */
+.sfh-pill { font-size: 12px; line-height: 18px; border-radius: 4px; padding: 4px 9.6px; }
+.sfh-pill--open { background: #acf3e4; color: #056764; }
+.sfh-pill--won { background: #cfe9fe; color: #05628a; }
+.sfh-pill--lost { background: #fedad8; color: #ba0517; }
+.sfh-warn { display: flex; align-items: center; gap: 10px; }
+.sfh-warn-icon { color: #dd7a01; font-size: 20px; }
+
+.sfh-empty { font-size: 13px; line-height: 19.5px; color: #444; margin: 0; text-align: center; width: 100%; }
+.sfh-goals { display: grid; grid-template-columns: repeat(2, 44px); gap: 8px; margin: 0 auto; }
+.sfh-goal-c {
+  width: 44px; height: 44px; border-radius: 50%; background: #f3f3f3; color: #747474;
+  display: flex; align-items: center; justify-content: center; font-size: 16px;
+}
+.sfh-goal-c--on { background: #5867e8; color: #fff; }
+
+.sfh-recents { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;
+  width: 100%; }
+.sfh-recent { display: flex; align-items: center; gap: 10px; }
+.sfh-rec-icon {
+  width: 26px; height: 26px; border-radius: 3px; display: flex; align-items: center;
+  justify-content: center; flex: 0 0 26px;
+}
+.sfh-rec-icon .material-icons { font-size: 16px; color: #fff; }
+/* Salesforce's own object colours: Contact orange, Lead purple, Call blue. */
+.sfh-rec-icon--contact { background: #f88962; }
+.sfh-rec-icon--lead { background: #8c4fbf; }
+.sfh-rec-icon--call { background: #48c3cc; }
+.sfh-rec-label { font-size: 13px; line-height: 19.5px; color: #0469c1; text-decoration: underline; }

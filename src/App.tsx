@@ -44,6 +44,7 @@ import { Launch } from "./screens/Launch";
 import { SmsPreviewPage } from "./screens/SmsPreviewPage";
 import { ChatGptAd } from "./screens/ChatGptAd";
 import { Integrations } from "./screens/Integrations";
+import { SalesforceHome } from "./screens/SalesforceHome";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { ReadmeButton } from "./components/ReadmeButton";
@@ -119,6 +120,12 @@ export default function App() {
               works; the sidebar simply opens the in-platform page now. */}
           <Route path="/invoca-exchange" element={<StaticRedirect to="/invoca-exchange.html" />} />
           <Route path="/integrations/google-ads" element={<StaticRedirect to="/google-ads.html" />} />
+
+          {/* ⚠️ SALESFORCE IS STANDALONE — no Invoca sidebar or top bar. It is a different
+              product's console, the same call the Google Ads page makes; wrapping it in
+              Invoca chrome would misrepresent what the SE is looking at. Reached from the
+              Sales Cloud tile on Integrations. */}
+          <Route path="/salesforce" element={<SalesforceHome />} />
 
           {/* ChatGPT sponsored placement — the AI-channel counterpart to the
               Google Ads page: where the call starts, before Invoca sees it.
