@@ -440,6 +440,14 @@
    or the base `.ts-table` rule wins and the grid renders in the wrong face. */
 .ts-tablewrap .ts-table--report {
   font-family: var(--ts-var-root-font-family); font-size: 12px;
+  /* ⚠️ `min-width: 0` UNDOES THE BASE RULE'S `min-width: 100%`, and without it the column
+     band above is silently defeated. When the chosen columns are narrower than the tile the
+     table stretches to fill it and the browser hands the slack to the columns, straight past
+     `max-width` — measured on a 6-column tile: 183, 163, 190, **227**, 163, 163 where the
+     cap is 202. That is why a Details Report with only a few columns looked airy and never
+     wrapped, while the same code at 10 columns looked right. The real grid never stretches:
+     its columns hold their width and the viewport simply scrolls. */
+  min-width: 0; width: max-content;
 }
 /* ⚠️ THE BODY SCROLLS INSIDE THE TILE; THE TILE DOES NOT GROW TO THE ROW COUNT. Measured
    on the capture: tile 703 tall, `.ag-body-viewport` **477** with `overflow-y: auto` over
@@ -481,7 +489,13 @@
 .ts-tablewrap .ts-table--report th {
   font-size: 12px; font-weight: 700; color: #15243e; line-height: 16px;
   height: 48px; padding: 0 16px; background: none;
-  border-bottom: 1px solid #eaedf2; border-right: 1px solid #eaedf2;
+  /* ⚠️ THE RULE UNDER THE HEADER IS 2px SOLID BLACK, and it is the single most visible thing
+     the first pass got wrong — it read as a pale hairline where the real grid has a hard
+     black edge separating the headers from the data. It is NOT on `.ag-header`, which is the
+     element I measured (1px #EAEDF2); it is on `.ag-header-viewport` INSIDE it. Found by
+     walking every element in the header region for a border darker than rgb(200,·,·)
+     instead of reading the one node I expected it on. */
+  border-bottom: 2px solid #000; border-right: 1px solid #eaedf2;
   /* Header labels WRAP — "Answered by Agent (T/F)" sits on two lines in the capture, which
      is why a 23-character header does not force its column wide. */
   white-space: normal; vertical-align: middle;
@@ -531,7 +545,18 @@
 }
 .ts-table--report .ts-agg-label,
 .ts-table--report .ts-agg-value { display: block; white-space: nowrap; }
-.ts-table--report .ts-agg-label { font-size: 12px; font-weight: 400; color: #777e8b; line-height: 16px; }
+/* ⚠️ THE LABEL IS NOT LATO — it is ThoughtSpot's own `bb-roller-regular`, uppercased in CSS.
+   The stack is theirs verbatim (including their `courrier` typo, which is why it lands on the
+   generic sans rather than on Courier). We do not ship that face, so this renders as
+   sans-serif — measured 0.7% narrower than Lato on "UNIQUE COUNT 42963", i.e. all but
+   identical at 12px grey. Deliberately NOT substituted with a monospace: the embedded font
+   in the capture is a sans (`BB-Roller-Regular`, alongside a separate
+   `BB-Roller-Mono-semibold` this label does not use), so Courier would be further off than
+   what we have. */
+.ts-table--report .ts-agg-label {
+  font-family: bb-roller-regular, courrier, sans-serif; text-transform: uppercase;
+  font-size: 12px; font-weight: 400; color: #777e8b; line-height: 16px;
+}
 .ts-table--report .ts-agg-value { font-size: 16px; font-weight: 700; color: #15243e; line-height: 24px; }
 /* "Showing 200 of many rows", under the grid rather than inside it. */
 .ts-table-caption {

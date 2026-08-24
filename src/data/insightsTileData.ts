@@ -812,12 +812,21 @@ const REPORT_TITLES = new Set(["Details Report", "Summary Report", "Transactions
  * props — for those, the stored data is authoritative.
  */
 export function upgradeReportTile<T extends GeneratedTile>(profile: CustomerProfile, tile: T): T {
-  if (tile.tileType !== "table" || tile.reportFooter || !REPORT_TITLES.has(tile.title)) return tile;
+  if (tile.tileType !== "table" || !REPORT_TITLES.has(tile.title)) return tile;
   const cols = tile.columns ?? [];
   if (!cols.length) return tile;
-  const rows = reportRows(profile, cols);
+  /* A tile with no `reportFooter` came from the old builder, so its ROWS are wrong too. */
+  const stale = !tile.reportFooter;
+  const rows = stale ? reportRows(profile, cols) : (tile.rows ?? []);
+  /* ⚠️ THE FOOTER AND CAPTION ARE RE-DERIVED EVERY RENDER, not just for stale tiles. They
+     are pure functions of the columns and rows, and storing them made a later FORMAT fix
+     invisible on tiles that already existed: correcting UNIQUE COUNT from "48,293" to the
+     measured "48293" left every built tile showing the comma, because its footer was stored
+     and the stale check did not fire (it had a footer, just an outdated one). Deriving them
+     costs nothing and means the next format correction lands everywhere. Rows are NOT
+     re-derived for a current tile — those stay authoritative, so an AI edit survives. */
   return {
-    ...tile, note: "", columns: reportHeaders(profile, cols), rows,
+    ...tile, note: "", columns: stale ? reportHeaders(profile, cols) : cols, rows,
     reportFooter: reportFooter(profile, cols, rows), caption: reportCaption(rows.length),
   };
 }
@@ -883,9 +892,17 @@ export function reportFooter(
   /* Through `magnitudeOf` rather than reading the dashboard directly, so an id column's
      UNIQUE COUNT is the same call total every other tile partitions. */
   const calls = magnitudeOf(profile, "Call Count").total;
+  /* ⚠️ ACCEPT EITHER THE RAW OR THE AGGREGATED NAME. A freshly built tile stores the header
+     form ("Total Call Count"), which is not in the catalogue, so a lookup on the stored
+     columns alone classified every measure as a dimension and printed UNIQUE COUNT under it.
+     `axisTitleFor` only ever PREPENDS the aggregation word, so stripping it recovers the
+     catalogue name — which is what lets the footer be re-derived from a stored tile. */
+  const rawName = (col: string) =>
+    measures.has(col) ? col : measures.has(col.replace(/^Total /, "")) ? col.replace(/^Total /, "") : null;
   return columns.map((col, ci) => {
-    if (measures.has(col) && !/\(t\/f\)$/i.test(col)) {
-      const g = magnitudeOf(profile, col);
+    const raw = rawName(col);
+    if (raw && !/\(t\/f\)$/i.test(col)) {
+      const g = magnitudeOf(profile, raw);
       return isAdditive(g.kind)
         ? { label: "TOTAL", value: formatHero(g.total, g.kind) }
         : { label: "TABLE AGGREGATE", value: formatMeasure(g.level, g.kind) };
@@ -904,7 +921,10 @@ export function reportFooter(
     const n = /record id|unique id|interaction id|transaction id/i.test(col) ? calls
       : /\(t\/f\)$/i.test(col) ? 2
       : Math.max(1, seen, dimensionValues(profile, col).length);
-    return { label: "UNIQUE COUNT", value: n.toLocaleString("en-US") };
+    /* ⚠️ NO THOUSANDS SEPARATOR. The capture prints `42963`, not `42,963` — a raw integer,
+       where the TOTAL beside it is abbreviated to `42.96K`. Two different formats in one row,
+       both measured. We printed `48,293`. */
+    return { label: "UNIQUE COUNT", value: String(n) };
   });
 }
 
