@@ -61,6 +61,30 @@ function voiceCopy(p: ReturnType<typeof useProfile>["profile"]) {
    with its own canvas size and connector coordinates. It is now just a branch
    with two leaves, which the layout absorbs — and any prospect can be given the
    same shape by asking the AI for it. */
+/* ⚠️ THE SMS TEMPLATE'S NODE NAMES ARE FIXED FOR EVERY PROSPECT, because the real product
+   does not let a user rename them (confirmed against the live Agent Management page
+   8/24/2026). Two of the four were never at risk — "Triggered by" and "Conversation Start"
+   are literals in WorkflowTree.tsx. The INTENT names were being derived from each prospect's
+   own routing queues, which is why Shady Blinds showed "Design Consultation" / "Existing
+   Order" where the product always shows "Sales Inquiry" / "Need Support".
+
+   ⚠️ AND THEY ARE `locked`, so the AI cannot rename them either. Without that flag the
+   assistant would accept "rename this node", write the edit and change nothing — see
+   `editGuard.isLockedEdit` for why a refusal beats a silent no-op.
+
+   ⚠️ THE TRIGGER LINE IS THE PRODUCT'S TOO: "0 Campaigns, 0 Forms, and 0 Inbound SMS". Ours
+   said "0 campaigns and 0 forms", which is the VOICE wording — it never mentioned SMS on a
+   screen whose whole subject is SMS.
+
+   ⚠️ SCOPED TO THE SMS TEMPLATE. The Voice tree's intent nodes still derive from the
+   prospect's real queues and carry caller-intent subtitles, because those were measured off
+   Invoca's own Voice workflow page. Lock those too only against evidence from that screen. */
+const SMS_TRIGGER = "0 Campaigns, 0 Forms, and 0 Inbound SMS";
+const SMS_SALES = "Sales Inquiry";
+const SMS_SUPPORT = "Need Support";
+/** The support leaf is "All Support Users", NOT "All Need Support Users". */
+const SMS_SUPPORT_LEAF = "All Support Users";
+
 /** 
  * True when this profile IS the named prospect, whatever slug its demo was saved under.
  *
@@ -77,32 +101,32 @@ function isProspect(p: { id: string; customerName: string }, name: string): bool
 
 /* PER-PROSPECT *SMS* SHAPE OVERRIDES, matched by prospect name.
 
-   Comfort Keepers was given a specific SMS tree on request (8/24/2026), matched to a supplied
-   diagram. It differs from the derived default in five ways, all of them visible:
-     - "Triggered by" names inbound SMS: "0 Campaigns, 0 Forms, and 0 Inbound SMS"
-     - the intents are "Sales Inquiry" / "Need Support" rather than the prospect's own queue
-       names, which is what `voiceCopy` would otherwise supply
-     - the support leaf is "All Support Users", NOT "All Need Support Users"
-     - the sales action is "Schedule Callback" with a PHONE icon, not "Schedule <bookingTerm>"
+   ⚠️ THIS TABLE SHRANK when the four node names were locked into the template above. Three
+   of the five things that made Comfort Keepers' tree different turned out to be the
+   PRODUCT's, not the prospect's — the trigger line, the two intent names and the support
+   leaf title — so they moved into the template and every prospect gets them. What is left is
+   genuinely this prospect's configuration:
+     - the sales action is "Schedule Callback", with a PHONE icon, not "Schedule <bookingTerm>"
      - one chip, "Consumer Name", where the default carries two
-   Scoped to this prospect: every other SMS tree still derives from its own queues. */
+   Keeping the whole tree here instead would have frozen a copy of the template that stops
+   tracking it — the same drift the SMS brain note warns about. */
 const SMS_SHAPE: { prospect: string; tree: () => Pick<WorkflowTreeModel, "triggeredBy" | "branches"> }[] = [
   {
     prospect: "comfort keepers",
     tree: () => ({
-      triggeredBy: "0 Campaigns, 0 Forms, and 0 Inbound SMS",
+      triggeredBy: SMS_TRIGGER,
       branches: [
         {
-          title: "Sales Inquiry", icon: "cart",
+          title: SMS_SALES, icon: "cart", locked: true,
           leaves: [{
-            title: "All Sales Inquiry Users", action: "Schedule Callback",
+            title: `All ${SMS_SALES} Users`, action: "Schedule Callback",
             tone: "green", actionIcon: "phone", chips: ["Consumer Name"],
           }],
         },
         {
-          title: "Need Support", icon: "headset",
+          title: SMS_SUPPORT, icon: "headset", locked: true,
           leaves: [{
-            title: "All Support Users", action: "Support & Escalate",
+            title: SMS_SUPPORT_LEAF, action: "Support & Escalate",
             tone: "orange", warn: true,
           }],
         },
@@ -155,21 +179,22 @@ function deriveTree(
       ...smsShaped };
     return {
       variant: "sms",
-      triggeredBy: "0 campaigns and 0 forms",
+      triggeredBy: SMS_TRIGGER,
       startLabel: `${channelLabel} · classify intent`,
       branches: [
         {
-          title: c.newQ, icon: "cart",
+          title: SMS_SALES, icon: "cart", locked: true,
           leaves: [{
-            title: `All ${c.newQ} Users`,
+            title: `All ${SMS_SALES} Users`,
+            /* Still per prospect: the ACTION is a configured queue action, not chrome. */
             action: `Schedule ${bookingTerm}`,
             tone: "green",
             chips: ["Consumer Name", c.newChips[0]],
           }],
         },
         {
-          title: c.supQ, icon: "headset",
-          leaves: [{ title: `All ${c.supQ} Users`, action: "Support & Escalate", tone: "orange" }],
+          title: SMS_SUPPORT, icon: "headset", locked: true,
+          leaves: [{ title: SMS_SUPPORT_LEAF, action: "Support & Escalate", tone: "orange" }],
         },
       ],
     };

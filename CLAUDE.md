@@ -566,6 +566,42 @@ gets an editable diagram. `SHAPE` holds per-prospect shape defaults (National Va
 Lines' two-team split, previously a 100-line component, is now a branch with two
 leaves). `extraTree` maps an extra workflow's flatter branches onto the same model.
 
+### ⚠️ THE SMS WORKFLOW'S FOUR NODE NAMES ARE FIXED, AND LOCKED (8/24/2026)
+The real Invoca page does not let a user rename them, so the template must not either. They
+are always **"Triggered by"**, **"Conversation Start"**, **"Sales Inquiry"** and
+**"Need Support"** for every prospect, plus the support leaf **"All Support Users"** and the
+trigger line **"0 Campaigns, 0 Forms, and 0 Inbound SMS"**.
+
+⚠️ **TWO OF THE FOUR WERE NEVER AT RISK** — "Triggered by" and "Conversation Start" are
+literals in `WorkflowTree.tsx`. The INTENT names were being derived from each prospect's own
+routing queues (`voiceCopy`), which is why Shady Blinds showed "Design Consultation" /
+"Existing Order" and AutoNation "Test Drive" / "Service Appointment" where the product always
+shows the same two words.
+⚠️ **THE TRIGGER LINE WAS THE VOICE WORDING.** Ours read "0 campaigns and 0 forms" — it never
+mentioned SMS, on a screen whose entire subject is SMS.
+
+⚠️ **LOCKED MEANS THE AI IS REFUSED, NOT IGNORED.** `TreeBranch.locked` marks a node as
+product chrome and `editGuard.isLockedEdit` blocks a write to its `title`/`subtitle`, counted
+with the structural blocks so the drawer reports a REFUSAL. The tempting alternative — fix the
+names in the renderer and ignore `branch.title` — is a **silent no-op**: the model accepts
+"rename this node", writes the edit, and nothing moves. That exact failure is already recorded
+three times in this file (the greeting, the `cells` guard, the workflow tile). The flag lives
+on the NODE rather than in a path pattern, so the rule travels with the data.
+⚠️ **THE LEAF TITLES AND ACTIONS STAY EDITABLE**, since those are configured queue actions
+rather than chrome. Verified: `branches.N.title` is refused on both intents while
+`branches.0.leaves.0.title`, `...action` and `triggeredBy` are all still allowed.
+
+⚠️ **SCOPED TO THE SMS TEMPLATE.** The VOICE tree's intents still derive from the prospect's
+real queues and keep their caller-intent subtitles, because those were measured off Invoca's
+own Voice workflow page — re-verified after this change (AutoNation still reads "Test Drive" /
+"Service Appointment" with "2 campaigns and 0 forms"). Lock those only against evidence from
+that screen.
+
+⚠️ **THIS SHRANK THE COMFORT KEEPERS OVERRIDE.** Three of the five things that made its tree
+different were the PRODUCT's, not the prospect's, so they moved into the template and every
+prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
+tracking the template — the same drift the SMS-brain note warns about.
+
 ### Comfort Keepers has its own SMS workflow tree (8/24/2026)
 Requested as a change for **that prospect only**, matched to a supplied diagram. `SMS_SHAPE`
 in `AgentWorkflow.tsx` is the SMS counterpart to the existing voice `SHAPE` table. It differs

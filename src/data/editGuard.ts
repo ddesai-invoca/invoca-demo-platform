@@ -159,6 +159,41 @@ export function isStructuralChange(before: unknown, after: unknown, path?: strin
 }
 
 /* =============================================================================
+   NODES THE PRODUCT ITSELF DOES NOT LET A USER RENAME.
+   -----------------------------------------------------------------------------
+   Some labels are the product's own wiring rather than the prospect's data. The Agent
+   Studio workflow diagram is the case that forced this: in the real Invoca page the
+   trigger, the conversation-start node and the two intent nodes CANNOT be renamed, so an
+   assistant that happily renames them is showing an SE something the product cannot do.
+
+   "Triggered by" and "Conversation Start" were never at risk — they are literals in
+   WorkflowTree.tsx. The INTENT titles are model data, so they need enforcing.
+
+   ⚠️ THE ALTERNATIVE WAS A SILENT NO-OP, which is why this exists at all. Fixing the
+   titles in the renderer and ignoring `branch.title` would let the model accept "rename
+   this to X", write the edit, and change nothing on screen — the exact failure recorded at
+   the greeting, the `cells` guard and the workflow tile. Blocking the edit means the drawer
+   reports a REFUSAL, which is a true statement about the product.
+   ============================================================================= */
+
+/** Leaf keys that are product chrome when their node is marked `locked`. */
+const LOCKED_KEYS = /\.(title|subtitle)$/;
+
+/**
+ * True when `path` targets a label on a node the product does not allow renaming.
+ *
+ * Driven by a `locked: true` flag ON THE NODE rather than a path pattern, so the rule
+ * travels with the data: a diagram that gains a third locked node needs no change here, and
+ * nothing else in the app is affected by a name that happens to look similar.
+ */
+export function isLockedEdit(data: unknown, path: string): boolean {
+  const m = LOCKED_KEYS.exec(path);
+  if (!m) return false;
+  const parent = getByPath(data, path.slice(0, path.length - m[0].length));
+  return !!parent && typeof parent === "object" && (parent as { locked?: unknown }).locked === true;
+}
+
+/* =============================================================================
    FOCUSED EDITS MUST LAND ON THE FOCUSED TILE.
    -----------------------------------------------------------------------------
    When an SE clicks the sparkle ON a tile, the model still has to find that tile's

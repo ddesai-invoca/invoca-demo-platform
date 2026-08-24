@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { getByPath, isStructuralChange } from "./editGuard";
+import { getByPath, isLockedEdit, isStructuralChange } from "./editGuard";
 
 /* Global state for the "Ask AI" dashboard assistant. Holds:
    • the drawer open state + its FOCUS (whole dashboard, or one tile);
@@ -356,6 +356,13 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
       let val: unknown;
       try { val = JSON.parse(e.value); } catch { val = e.value; }
       const before = getByPath(nextData, e.path);
+      /* A label the product itself does not let a user rename (see editGuard). Counted with
+         the structural blocks so the drawer reports a refusal rather than a clean success. */
+      if (isLockedEdit(nextData, e.path)) {
+        blocked++;
+        console.warn(`[ai] refused a rename at "${e.path}" — that node is product chrome and cannot be renamed in the real page (see editGuard.ts)`);
+        continue;
+      }
       if (isStructuralChange(before, val, e.path)) {
         blocked++;
         console.warn(`[ai] blocked a structural edit at "${e.path}" (data only — see editGuard.ts)`);

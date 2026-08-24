@@ -35,6 +35,11 @@ export interface TreeLeaf {
 
 export interface TreeBranch {
   title: string;                                  // the intent node's title
+  /* ⚠️ PRODUCT CHROME: the real page does not let a user rename this node, so neither may
+     the AI. `editGuard.isLockedEdit` reads this flag and REFUSES a rename rather than
+     letting it write a field the renderer would ignore — a silent no-op is the failure this
+     repo has been bitten by three times. */
+  locked?: boolean;
   subtitle?: string;                              // caller-intent line (Voice)
   icon?: "cart" | "headset" | "altRoute";
   /* More than one leaf splits this branch a second time — how National Van Lines
