@@ -24,6 +24,13 @@ export interface TreeLeaf {
   action: string;                                 // "Route to Appointment Scheduling"
   tone?: "green" | "orange" | "blue" | "grey";
   chips?: string[];
+  /* ⚠️ BOTH OPT-IN, DEFAULTED TO TODAY'S BEHAVIOUR — the same pattern DonutChart's extra
+     props follow, and for the same reason: these two exist for ONE prospect's SMS tree
+     (Comfort Keepers) and every other diagram in the app must render byte-identically.
+     Omit them and the action icon is still chosen from `tone` and no warning is drawn. */
+  actionIcon?: "phone" | "headset" | "altRoute" | "cart";
+  /** Draws MUI's warning triangle after the action text. */
+  warn?: boolean;
 }
 
 export interface TreeBranch {
@@ -52,6 +59,11 @@ const VIC: Record<string, string> = {
   cart: "M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2M1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z",
   headset: "M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z",
   altRoute: "m18 4-4 4h3v7c0 1.1-.9 2-2 2s-2-.9-2-2V8c0-2.21-1.79-4-4-4S5 5.79 5 8v7H2l4 4 4-4H7V8c0-1.1.9-2 2-2s2 .9 2 2v7c0 2.21 1.79 4 4 4s4-1.79 4-4V8h3z",
+  /* MUI Phone and Warning, on the same 24-unit grid as the four above — added for the
+     Comfort Keepers SMS tree, which shows a handset beside "Schedule Callback" and a warning
+     triangle after "Support & Escalate". */
+  phone: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02z",
+  warning: "M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z",
 };
 
 function VIcon({ name }: { name: keyof typeof VIC | string }) {
@@ -258,7 +270,9 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
               style={{ left: colX(i) - g.nodeW / 2, top: g.leaf, width: g.nodeW }}>
               <div className="wf-leaf-title">{leaf.title}</div>
               <div className="wf-leaf-action">
-                <VIcon name={leaf.tone === "orange" ? "headset" : "altRoute"} />{leaf.action}
+                <VIcon name={leaf.actionIcon ?? (leaf.tone === "orange" ? "headset" : "altRoute")} />
+                {leaf.action}
+                {leaf.warn ? <VIcon name="warning" /> : null}
               </div>
               {leaf.chips?.length ? (
                 <div className="wf-chips">

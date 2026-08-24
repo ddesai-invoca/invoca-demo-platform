@@ -566,6 +566,36 @@ gets an editable diagram. `SHAPE` holds per-prospect shape defaults (National Va
 Lines' two-team split, previously a 100-line component, is now a branch with two
 leaves). `extraTree` maps an extra workflow's flatter branches onto the same model.
 
+### Comfort Keepers has its own SMS workflow tree (8/24/2026)
+Requested as a change for **that prospect only**, matched to a supplied diagram. `SMS_SHAPE`
+in `AgentWorkflow.tsx` is the SMS counterpart to the existing voice `SHAPE` table. It differs
+from the derived default in five visible ways: "Triggered by" names inbound SMS
+("0 Campaigns, 0 Forms, and 0 Inbound SMS"); the intents are the literal "Sales Inquiry" /
+"Need Support" rather than the prospect's own queue names; the support leaf is
+**"All Support Users"**, not "All Need Support Users"; the sales action is "Schedule Callback"
+with a **phone** icon rather than "Schedule <bookingTerm>"; and it carries ONE chip
+("Consumer Name") where the default carries two.
+
+⚠️ **MATCHED BY PROSPECT *NAME*, NOT BY A HARDCODED ID** (`isProspect`). Comfort Keepers is a
+demo in the shared LIBRARY, not a profile on disk, so its id was minted from whatever the SE
+typed — `comfort-keepers`, `comfort-keepers-home-care`, or a name with a city on the end.
+Keying an override off a guessed id **fails silently**: the tree renders the default and
+nobody knows why. Verified the matcher hits all three of those shapes and rejects both
+`shady-blinds` and `comfort-inn`.
+
+⚠️ **THE TWO NEW VISUALS ARE OPT-IN LEAF PROPS**, `actionIcon` and `warn`, defaulted to
+today's behaviour — the same pattern `DonutChart`'s extra props follow. Without them the
+action icon is still chosen from `tone` and no warning is drawn, so every other diagram in
+the app is byte-identical. Proved it: Shady Blinds' SMS tree is back to Design Consultation /
+Existing Order with "Schedule Consultation" and two chips, and its Voice tree still renders
+`altRoute` + `headset` with **zero** warning triangles.
+
+⚠️ **HOW THIS WAS VERIFIED WITHOUT THE PROFILE.** There is no Comfort Keepers profile on
+disk, so the override could not be seen directly. Pointing the SAME table entry at
+"shady blinds" for one run exercised the whole path — shape lookup, renderer, both new icons —
+against a prospect that IS on disk, then the entry was reverted and the absence of leakage
+re-checked. Use that trick for any library-only prospect.
+
 ⚠️ **`editGuard` lets `branches`/`leaves`/`chips` change length.** On a workflow
 screen the tree's shape IS the content, so that exemption is deliberate — and it is
 only safe BECAUSE the layout is computed: a new branch positions itself and draws

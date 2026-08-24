@@ -61,6 +61,56 @@ function voiceCopy(p: ReturnType<typeof useProfile>["profile"]) {
    with its own canvas size and connector coordinates. It is now just a branch
    with two leaves, which the layout absorbs — and any prospect can be given the
    same shape by asking the AI for it. */
+/** 
+ * True when this profile IS the named prospect, whatever slug its demo was saved under.
+ *
+ * ⚠️ MATCHES ON THE NAME, NOT A HARDCODED ID, and that is deliberate. Comfort Keepers is a
+ * demo in the shared LIBRARY, not a profile on disk, so its id was minted from whatever the
+ * SE typed — `comfort-keepers`, or `comfort-keepers-home-care`, or anything else. Keying an
+ * override off a guessed id fails silently: the tree just renders the default and nobody
+ * knows why. Checking the customer NAME and the id both survives that.
+ */
+function isProspect(p: { id: string; customerName: string }, name: string): boolean {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  return norm(p.customerName).includes(norm(name)) || norm(p.id).includes(norm(name));
+}
+
+/* PER-PROSPECT *SMS* SHAPE OVERRIDES, matched by prospect name.
+
+   Comfort Keepers was given a specific SMS tree on request (8/24/2026), matched to a supplied
+   diagram. It differs from the derived default in five ways, all of them visible:
+     - "Triggered by" names inbound SMS: "0 Campaigns, 0 Forms, and 0 Inbound SMS"
+     - the intents are "Sales Inquiry" / "Need Support" rather than the prospect's own queue
+       names, which is what `voiceCopy` would otherwise supply
+     - the support leaf is "All Support Users", NOT "All Need Support Users"
+     - the sales action is "Schedule Callback" with a PHONE icon, not "Schedule <bookingTerm>"
+     - one chip, "Consumer Name", where the default carries two
+   Scoped to this prospect: every other SMS tree still derives from its own queues. */
+const SMS_SHAPE: { prospect: string; tree: () => Pick<WorkflowTreeModel, "triggeredBy" | "branches"> }[] = [
+  {
+    prospect: "comfort keepers",
+    tree: () => ({
+      triggeredBy: "0 Campaigns, 0 Forms, and 0 Inbound SMS",
+      branches: [
+        {
+          title: "Sales Inquiry", icon: "cart",
+          leaves: [{
+            title: "All Sales Inquiry Users", action: "Schedule Callback",
+            tone: "green", actionIcon: "phone", chips: ["Consumer Name"],
+          }],
+        },
+        {
+          title: "Need Support", icon: "headset",
+          leaves: [{
+            title: "All Support Users", action: "Support & Escalate",
+            tone: "orange", warn: true,
+          }],
+        },
+      ],
+    }),
+  },
+];
+
 /* PER-PROSPECT SHAPE OVERRIDES.
 
    National Van Lines routes a new move to two different teams, which used to be a
@@ -100,6 +150,9 @@ function deriveTree(
   const bookingTerm = profile.bookingTerm;
 
   if (isSms) {
+    const smsShaped = SMS_SHAPE.find((o) => isProspect(profile, o.prospect))?.tree();
+    if (smsShaped) return { variant: "sms", startLabel: `${channelLabel} · classify intent`,
+      ...smsShaped };
     return {
       variant: "sms",
       triggeredBy: "0 campaigns and 0 forms",
