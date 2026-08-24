@@ -3168,6 +3168,50 @@ a Stacked Bar of Revenue (Sale Amount) by Marketing Campaign, and "Add to dashbo
 landed a tile rendering through the ts- layer (22px `#2CBF58` bars, 0 gridlines, no
 `.dash-card` leakage).
 
+## ⚠️ INSIGHTS & ANALYTICS IS PHASE 2, AND IT IS NOW ENFORCED (8/24/2026)
+The user's constraint: **a demo must be generatable in under five minutes**, so Insights &
+Analytics builds AFTER the rest of the platform. Where that actually stands, measured rather
+than assumed:
+
+**Insights costs ZERO generation seconds today — better than phase 2.** There is no Insights
+engine phase and no Insights schema slice. Every screen on the tab derives at RENDER time from
+phase-1 data: the Summary Dashboard, Connect AI, the Details Report screen, all twelve ts-
+templates, the tile builder, the three Report column pickers and the dashboards an SE creates.
+The phase-1 pool is 18 phases and none of them is an Insights phase. So there is nothing to
+defer, and every demo already on disk has the tab.
+
+**The five-minute budget is real and already enforced.** `BUDGET_SECONDS = 300` in
+`engine/canary.ts`; the nightly canary times a full generation, sets `overBudget`, and that
+feeds `needsAttention` on the PUBLIC `/api/canary`.
+
+⚠️ **BUT IT HAS BEEN BREACHED TWICE IN THE LAST EIGHT RUNS — 389.9s and 300.5s** (live canary,
+8/24/2026; latest run 211.5s, prefix 98.3s, slowest phase `opsDashboard`). Research dominates
+the serial prefix and swings with site size, so a big multi-page prospect is what puts a run
+over. The budget is not a comfortable margin — which is the real argument for keeping Insights
+out of phase 1, not a theoretical one.
+
+**`npm run audit:phases`** (also run by `npm run audit`) is the enforcement, because
+"Insights costs nothing" is only true while nobody has added a phase for it, and the standing
+architecture below describes a Phase 2 that WILL mint dimensions server-side. The cheapest way
+to build that is a thunk in `runPool` beside the other eighteen, and generation then grows on
+the critical path of every SE waiting on a demo. Three checks:
+1. no Insights & Analytics phase in the phase-1 pool;
+2. every pool phase has a `BUILD_STEPS` row in `Launch.tsx` (otherwise its progress is
+   invisible on the checklist and its weight is missing from the bar — a trap this file has
+   warned about in prose since the checklist was built);
+3. `BUDGET_SECONDS` is still <= 300, so nobody relaxes the budget instead of fixing a slow
+   phase.
+
+⚠️ **IT MATCHES THE INSIGHTS SURFACE, NOT THE WORD "insights".** Two phase-1 phases contain it
+and are legitimately NOT this tab — `digitalInsights` (the Digital Journey report, Reports tab)
+and `qmInstantInsights` (a Dashboards-tab dashboard). A naive `/insights/i` fails on both, gets
+dismissed as a false alarm, and gets deleted — worse than no check.
+⚠️ **It also fails if its own parse breaks** (fewer than 10 phases found, or no `runPool([`),
+because a static audit that silently matches nothing reports success forever.
+Verified in BOTH directions: passing on the real tree, and actually FIRING on all three broken
+shapes — a smuggled `insightsAnalytics` phase, a renamed `BUILD_STEPS` key, and a 600s budget —
+with exit code 1 so it can gate a push.
+
 ## INSIGHTS & ANALYTICS — the standing architecture (agreed 8/18/2026)
 Context for every I&A screen we build. Not yet implemented; this is the contract.
 
