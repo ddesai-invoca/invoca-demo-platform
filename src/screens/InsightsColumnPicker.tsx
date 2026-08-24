@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
@@ -47,6 +47,27 @@ const TITLES: Record<string, string> = {
   "transactions-report": "Transactions Report",
 };
 
+/**
+ * Put the picker at the top of its scroller on arrival.
+ *
+ * ⚠️ THE SCROLL POSITION CARRIES OVER FROM THE TEMPLATE GRID, and expanding every group by
+ * default is what made it obvious. `.main` is the scroller (`overflow-y: auto`), not the
+ * window, and this is an in-shell route — so scrolling down the Add Tile grid to reach
+ * "Details Report" near the bottom and clicking it left the picker opening halfway down its
+ * own (now very tall) page. React Router restores nothing here.
+ *
+ * The scroller is found by WALKING UP rather than by selecting `.main`, so a change to the
+ * shell cannot silently break it. A plain `scrollTop` assignment on purpose: smooth scrolling
+ * does not work on `.main` in this app's browser (see the Semantic Signal notes) and a rAF
+ * tween does not run when the pane is not painting.
+ */
+function scrollScrollerToTop(from: HTMLElement | null): void {
+  for (let n = from?.parentElement ?? null; n; n = n.parentElement) {
+    if (/(auto|scroll)/.test(getComputedStyle(n).overflowY)) { n.scrollTop = 0; return; }
+  }
+  window.scrollTo(0, 0);
+}
+
 export function InsightsColumnPicker() {
   const navigate = useNavigate();
   const { report } = useParams();
@@ -87,6 +108,12 @@ export function InsightsColumnPicker() {
      opening Transactions after Details showed Details' single seeded column and Summary
      showed one it should not have at all. Reset everything the report owns when it
      changes; the seed is per report, not per mount. */
+  /* A layout effect, so the page is already at the top on first paint rather than jumping
+     after it. Keyed on `kind` as well as mount: the three reports share one route, so
+     switching between them reuses this component. */
+  const pageRef = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => { scrollScrollerToTop(pageRef.current); }, [kind]);
+
   useEffect(() => {
     setPicked(sidebarFor(kind).seeded);
     setGroupBy("");
@@ -168,7 +195,7 @@ export function InsightsColumnPicker() {
   const allCols = grouped.flatMap(([, c]) => c);
 
   return (
-    <div className="icp-page">
+    <div className="icp-page" ref={pageRef}>
       <h1 className="icp-h1">New Tile - {name}</h1>
 
       <div className="icp-body">

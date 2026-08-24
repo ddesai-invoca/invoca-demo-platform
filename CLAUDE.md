@@ -1330,6 +1330,16 @@ visible behaviour change and its own decision.
 their `(T/F)` twins really are builder columns. Their existence had been proven only by a
 rendered tile, with the group placement inferred.
 
+⚠️ **THE PICKER SCROLLS ITSELF TO THE TOP ON ARRIVAL**, and expanding every group is what made
+its absence obvious. `.main` is the scroller (`overflow-y: auto`), not the window, and this is an
+in-shell route — so scrolling the Add Tile grid down to reach "Details Report" near the bottom
+and clicking it opened the picker **523px down its own now very tall page**. React Router
+restores nothing here. Fixed with a LAYOUT effect (at the top on first paint, no jump after it),
+keyed on `kind` as well as mount because the three reports share one route and reuse the
+component. The scroller is found by WALKING UP rather than by selecting `.main`, so a change to
+the shell cannot silently break it, and it is a plain `scrollTop` assignment — smooth scrolling
+does not work on `.main` in this app's browser.
+
 ⚠️ **SEARCH: TEST IT WITH REAL TYPING.** Dispatching `new Event("input")` at the search box does
 not reach React — it tracks a controlled input's value through a descriptor and dedupes the
 event — so filtering appeared broken (21 groups still shown) when it was not. Typed for real:
