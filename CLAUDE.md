@@ -2084,6 +2084,49 @@ sticky at offset 0. Row shapes came out 3% / 30% / 52% / 15% against the capture
 table tiles (13/700 at 48px, 50px rows, 40 per-column heat cells) and `/dashboards/marketing`
 (21 dash-cards, 4px radius, KPI 48,293, 7 donuts, zero `ts-`). `npm run audit:ai` all green.
 
+## Template: "Transactions Report" (measured 8/23/2026)
+`reportRows(profile, cols, { transactions: true })` + the transaction fields on `RowShape`.
+The grid is the Details Report's, unchanged — same chrome, same 145-202 band, same 2px black
+header rule, same 601 box, same "Showing 1,000 of many rows". Geometry verified identical
+(tile 703, grid 601, header 49, body 485, aggregation 65). **A ROW IS A TRANSACTION, NOT A
+CALL**, and five things follow from that:
+
+⚠️ **1. IT IS SORTED BY TRANSACTION ID, NOT CALL RECORD ID.** Measured: the transaction ids
+ascend down the capture (4291B4C0 / 42B723DC / 446B5426 …) while the call record ids plainly do
+not. The Details Report is the other way round. So the transaction id is built from the ROW
+INDEX and the call id is hashed FROM the transaction id — which also means one transaction
+always belongs to the same call.
+⚠️ Ours ascended down BOTH columns at first, because the call id was derived from the row index
+the way the Details Report correctly does it. That lost the very distinction the sort creates.
+
+⚠️ **2. TRANSACTION ID IS 8 HEX, A DASH, 8 HEX** — `4291B4C0-57E84B76` — against the Call
+Record ID's 4 and 12.
+⚠️ It used to render the literal **"Transaction ID A"**: the THIRD time the minted-dimension
+fallback has produced a placeholder in this grid (Website Journey and the measure columns were
+the other two). Any column this report can show needs a real generator or that is what appears.
+
+⚠️ **3. TOTAL CALL COUNT IS 0 OR 1 PER ROW**, where a Details row is always 1 — only one of a
+call's transactions is the call leg. The capture's column holds exactly those two values.
+
+⚠️ **4. THE TWO ID COLUMNS DISAGREE IN THE FOOTER, AND THAT IS THE POINT OF THE TEMPLATE.**
+Measured: **105,359** unique Transaction IDs against **45,633** unique Call Record IDs, i.e.
+`TX_PER_CALL = 2.31`. Counting both as "calls" printed the same figure twice and lost the one
+fact the report exists to show. The 1-in-2.31 share of call-carrying rows falls out of the same
+constant, so Total Call Count sums to the prospect's own call total (48.29K) — the capture's own
+42.28K sits slightly under its 45,633 call ids, and ours reconciles exactly instead.
+
+⚠️ **5. THE MONOTONIC-ID TRAP.** A first pass stepped the id by `row * (0x20 + seed % 0x1c0)`,
+and because `seed` changes per row the ids wandered — 420002EA was followed by 420002AC. The
+jitter has to be SMALLER than the stride: 0x200 per row with at most 0x1F0 of jitter ascends
+while still leaving the irregular gaps the capture shows.
+
+Verified through the real picker with the capture's seven columns (the two seeded ids plus five):
+headers, footer labels, caption, header 49 / row 31 / aggregation 65 / title-to-grid 27,
+transaction ids strictly ascending, call ids NOT ascending, Total Call Count only ever 0 or 1 —
+diff empty. Details re-checked in the same pass: still ascending by call id, still 1 per row,
+still 4-and-12 ids. All three Reports rendered side by side on one dashboard keep their own
+identity (Details 200 rows / 601 box, Summary 1 row / 154 box, Transactions 200 rows / 601 box).
+
 ## Template: "Summary Report" (measured 8/23/2026)
 `summaryRows` in `insightsTileData.ts`, the `summary-report` branch in
 `InsightsColumnPicker`. It reuses the Details Report's grid wholesale — same ag-Grid chrome,

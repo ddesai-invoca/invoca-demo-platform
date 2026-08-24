@@ -676,10 +676,14 @@ const LAST = ["Bennett", "Alvarez", "Okafor", "Nguyen", "Kowalski", "Rivera", "H
    magnitude, a (T/F) signal reads true/false. Everything is keyed off the profile id
    and the row index, so the same chosen columns always produce the same table — the
    rule that a number never changes once shown applies to report rows too. */
-export function reportRows(profile: CustomerProfile, columns: string[], count = REPORT_ROWS): string[][] {
+export function reportRows(
+  profile: CustomerProfile, columns: string[],
+  opts: { count?: number; transactions?: boolean } = {},
+): string[][] {
+  const { count = REPORT_ROWS, transactions = false } = opts;
   const base = hash(profile.id + "::report");
   return Array.from({ length: count }, (_, i) => {
-    const shape = rowShape(base + i * 7919);
+    const shape = rowShape(base + i * 7919, transactions ? i : undefined);
     return columns.map((col, j) => cellFor(profile, col, i, base + i * 131 + j * 17, shape));
   });
 }
@@ -721,6 +725,19 @@ interface RowShape {
   flag: boolean | null;
   answered: 0 | 1;
   notAnswered: 0 | 1;
+  /** Transactions Report only: this row's transaction id, ascending down the grid. */
+  txId?: string;
+  /** Transactions Report only: the call this transaction belongs to — deliberately unordered. */
+  callId?: string;
+  /**
+   * Transactions Report only: whether THIS transaction is the one carrying the call.
+   *
+   * ⚠️ A TRANSACTION ROW'S CALL COUNT IS 0 OR 1, WHERE A DETAILS ROW'S IS ALWAYS 1. Measured:
+   * the capture's Total Call Count column holds only those two values, and its TOTAL (42.28K)
+   * is a fraction of the 105,359 unique transactions — a call has several transactions and
+   * only one of them is the call leg.
+   */
+  carriesCall?: boolean;
 }
 
 /**
@@ -758,7 +775,18 @@ function attribution(profile: CustomerProfile, col: string, row: number): string
   return null;
 }
 
-function rowShape(seed: number): RowShape {
+/**
+ * Transactions per call.
+ *
+ * ⚠️ MEASURED, and it is what makes the two id columns disagree in the footer: the capture
+ * counts **105,359** unique Transaction IDs against **45,633** unique Call Record IDs, i.e.
+ * 2.31 transactions for every call. Its Total Call Count sums to 42.28K, slightly under the
+ * call count — ours sums to the call total exactly, so a prospect adding that column up lands
+ * on the same figure the dashboards show.
+ */
+const TX_PER_CALL = 2.31;
+
+function rowShape(seed: number, row?: number): RowShape {
   const r = (n: number, shift: number) => (seed >>> shift) % n;
   /* ~3% of rows carry no agent-leg data (1 of the capture's 34), and ~15% of the rest have
      no marketing attribution — the capture's rows 1, 4 and 5 are all-{Null}. */
@@ -768,7 +796,32 @@ function rowShape(seed: number): RowShape {
   /* An unanswered call always counts as not answered; an answered one does 5/23 of the
      time, which is the capture's own fourth shape. */
   const notAnswered: 0 | 1 = flagless ? 0 : flag ? (r(23, 9) < 5 ? 1 : 0) : 1;
-  return { attributed: flagless ? false : r(100, 15) >= 15, flag, answered, notAnswered };
+  const shape: RowShape = { attributed: flagless ? false : r(100, 15) >= 15, flag, answered, notAnswered };
+  if (row === undefined) return shape;
+  /* ⚠️ THE TRANSACTIONS REPORT IS SORTED BY TRANSACTION ID, NOT CALL RECORD ID. Measured on the
+     capture: the transaction ids ascend down the grid (4291B4C0 / 42B723DC / 446B5426 …) while
+     the call record ids plainly do not. Format is 8 hex, a dash, 8 hex, against the Call Record
+     ID's 4 and 12.
+     ⚠️ THE JITTER MUST BE SMALLER THAN THE STEP or the sequence is not monotonic. A first pass
+     used a per-row step (`row * (0x20 + seed % 0x1c0)`), and because `seed` changes per row the
+     ids wandered — 420002EA was followed by 420002AC. A fixed 0x200 stride with at most 0x1F0
+     of jitter keeps every id above the last while still leaving irregular gaps. */
+  const hi = ((0x42000000 + row * 0x200 + (hash(`${row}:gap`) % 0x1f0)) >>> 0)
+    .toString(16).toUpperCase().padStart(8, "0").slice(0, 8);
+  const lo = hash(`${seed}:tx`).toString(16).toUpperCase().padStart(8, "0").slice(0, 8);
+  shape.txId = `${hi}-${lo}`;
+  /* ⚠️ AND THE CALL RECORD ID MUST *NOT* ASCEND HERE. Ordering by transaction id scatters the
+     calls, which is exactly what the capture shows; deriving the call id from the row index
+     (what the Details Report does, correctly, because it IS ordered by call) made ours ascend
+     down both columns and lost the distinction. Hashing the transaction id also means one
+     transaction always belongs to the same call. */
+  const c = hash(`${shape.txId}:call`).toString(16).toUpperCase().padStart(8, "0");
+  const d = hash(`${shape.txId}:call2`).toString(16).toUpperCase().padStart(8, "0");
+  shape.callId = `${c.slice(0, 4)}-${(c.slice(4) + d).slice(0, 12)}`;
+  /* One transaction in every TX_PER_CALL carries the call, so the column sums to the call
+     total. Seeded, so the same row always reads the same way. */
+  shape.carriesCall = (seed % 1000) / 1000 < 1 / TX_PER_CALL;
+  return shape;
 }
 
 /**
@@ -864,7 +917,9 @@ export function upgradeReportTile<T extends GeneratedTile>(profile: CustomerProf
   if (!cols.length) return tile;
   /* A tile with no `reportFooter` came from the old builder, so its ROWS are wrong too. */
   const stale = !tile.reportFooter;
-  const rows = stale ? reportRows(profile, cols) : (tile.rows ?? []);
+  const rows = stale
+    ? reportRows(profile, cols, { transactions: tile.title === "Transactions Report" })
+    : (tile.rows ?? []);
   /* ⚠️ THE FOOTER AND CAPTION ARE RE-DERIVED EVERY RENDER, not just for stale tiles. They
      are pure functions of the columns and rows, and storing them made a later FORMAT fix
      invisible on tiles that already existed: correcting UNIQUE COUNT from "48,293" to the
@@ -971,7 +1026,12 @@ export function reportFooter(
     const seen = rows
       ? new Set(rows.map((r) => r[ci]).filter((v) => v && v !== NULL_CELL)).size
       : 0;
-    const n = /record id|unique id|interaction id|transaction id/i.test(col) ? calls
+    /* ⚠️ THE TWO ID COLUMNS DO NOT AGREE, and that is the point of this report. Measured:
+       105,359 unique Transaction IDs against 45,633 unique Call Record IDs. Counting both as
+       `calls` printed the same figure twice and lost the one fact the template exists to
+       show — that a call has several transactions. */
+    const n = /transaction id/i.test(col) ? Math.round(calls * TX_PER_CALL)
+      : /record id|unique id|interaction id/i.test(col) ? calls
       : /\(t\/f\)$/i.test(col) ? 2
       : Math.max(1, seen, dimensionValues(profile, col).length);
     /* ⚠️ NO THOUSANDS SEPARATOR. The capture prints `42963`, not `42,963` — a raw integer,
@@ -993,12 +1053,21 @@ function cellFor(
     if (/answered by agent/.test(c)) return shape.flag === null ? NULL_CELL : String(shape.flag);
     return shape.flag === null ? NULL_CELL : (seed % 3 === 0) ? "false" : "true";
   }
+  /* ⚠️ THE TRANSACTION ID USED TO RENDER THE LITERAL "Transaction ID A". Third time this
+     fallback has bitten — Website Journey and the measure columns were the other two — because
+     no regex here matched the column and `dimensionValues` mints `<name> <letter>`. */
+  if (shape?.txId && /^transaction id$/.test(c)) return shape.txId;
+  if (shape?.callId && /record id/.test(c)) return shape.callId;
   if (shape) {
     const k = kindOf(col);
     /* A row-level report shows ONE call, so an additive count is an indicator, not a
        total: the base call count is 1 and every conditional count is 0 or 1. */
     if (k === "count" || k === "flag") {
-      if (/^(total )?call count$/.test(c)) return "1";
+      /* ⚠️ ON A TRANSACTION ROW THE CALL COUNT IS 0 OR 1 — only one of a call's transactions
+         is the call leg. On a details row, where the row IS the call, it is always 1. */
+      if (/^(total )?call count$/.test(c)) {
+        return shape.carriesCall === undefined ? "1" : shape.carriesCall ? "1" : "0";
+      }
       if (/not answered/.test(c)) return String(shape.notAnswered);
       if (/answered/.test(c)) return String(shape.answered);
     }

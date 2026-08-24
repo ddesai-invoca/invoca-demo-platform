@@ -208,7 +208,10 @@ export function InsightsColumnPicker() {
                  `reportRows`, which mints one row per call. */
               const rows = kind === "summary-report"
                 ? summaryRows(profile, cols, groupBy || undefined)
-                : reportRows(profile, cols);
+                /* ⚠️ A TRANSACTION ROW IS NOT A CALL ROW. Rows are ordered by Transaction ID
+                   and only one transaction per call carries the call leg, so the Total Call
+                   Count column reads 0 or 1 rather than always 1. */
+                : reportRows(profile, cols, { transactions: kind === "transactions-report" });
               addTile(`${profileId}::${DASH}`, {
                 id: `t${Date.now()}`, tileType: "table", title: name,
                 /* ⚠️ NO NOTE. The captured tile's header carries the title and nothing
