@@ -1189,15 +1189,25 @@ returns `null` — so the tile rendered as an empty purple square with no error 
 for the view picker (`calendar-sm`). **A missing icon key fails SILENTLY**; if a glyph is
 absent, check the key before re-extracting the asset.
 
-⚠️ **WHY THE SALESFORCE CLOUD CANNOT BE EXTRACTED, verified rather than assumed.** Searched
-both captures: no `<img>` with a src, no `background-image`, no `<svg>`, no sprite — the
-top-left corner holds only skip links and a `pointer` div. Every data URI in the Calendar
-capture is accounted for (17 svg: the SLDS illustrations and entity glyphs; 14 png: the object
-icons and the Salesblazer banner). Lightning's own script adds `noicon` to that `<img>` when
-the fetch fails, which is exactly what SingleFile left behind — **the asset was never in the
-saved page**. Same for the profile avatar. Both are therefore authored, flagged in
-`SldsIcon.tsx`, and are the ONLY two authored marks on these screens. To get them verbatim
-we would need the file itself (or a capture whose fetch of it succeeded).
+⚠️ **THE LOGO AND THE AVATAR *ARE* IN THE CAPTURE, AND I SAID TWICE THAT THEY WERE NOT.**
+This is the correction worth keeping, because the wrong conclusion was confidently argued from
+evidence: I searched for `<img>` with a src, for inline `<svg>`, for a sprite, found only
+Lightning's `class="icon noicon"` placeholder, inventoried every data URI, and concluded the
+assets had never been saved. **Both are CSS `background-image`s**, and both were missed for
+the same two reasons — I never checked `background-image` across the header region, and my
+corner searches filtered to elements narrower than ~70px while `.slds-global-header__logo` is
+**200 x 40**.
+
+| mark | where it actually lives | measured |
+|---|---|---|
+| Salesforce logo | `background-image` on `.slds-global-header__logo` | 200 x 40, `contain`, `0% 50%`, no-repeat, at x=16 |
+| profile avatar | `background-image` on `.profileTrigger` over `#1B96FF` | 32 square, `cover`, radius 100% |
+
+Both are now extracted verbatim to `public/icons/salesforce/logo.svg` (a 4000x2800 viewBox)
+and `avatar.png`, and **there are no authored marks left on these screens.** The lesson, and
+it generalises to every replica: **when a mark looks absent from a capture, check
+`background-image` across the region before drawing one** — and do not let a width filter
+decide what you looked at.
 
 ⚠️ **THE FIRST BUILD'S GRIDLINES WERE WRONG THREE WAYS AT ONCE** — white instead of 10%
 black, every 80px instead of 40, and drawn as bordered cells instead of a background

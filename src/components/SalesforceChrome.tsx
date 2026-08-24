@@ -35,9 +35,13 @@ const ROUTES: Record<string, string> = {
 export function SfGlobalHeader() {
   return (
     <header className="sfh-globalhead">
-      <span className="sfh-logo" aria-label="Salesforce">
-        <SldsIcon name="cloud" size={38} />
-      </span>
+      {/* ⚠️ THE REAL LOGO, EXTRACTED VERBATIM. It is a CSS `background-image` on
+          `.slds-global-header__logo` — a **200 x 40** element with `background-size: contain`
+          and `background-position: 0% 50%` — not an `<img>` and not an inline `<svg>`. Two
+          earlier passes concluded "the asset is not in the capture" because their corner
+          searches filtered to elements narrower than 70px, and a 200px-wide div never
+          matched. It was there the whole time. */}
+      <span className="sfh-logo" aria-label="Salesforce" />
 
       <div className="sfh-search">
         <SldsIcon name="search" size={14} className="sfh-search-icon" />
@@ -55,8 +59,8 @@ export function SfGlobalHeader() {
         <span className="sfh-gi"><SldsIcon name="help" size={20} /></span>
         <span className="sfh-gi"><SldsIcon name="setup" size={20} /></span>
         <span className="sfh-gi"><SldsIcon name="notification" size={20} /></span>
-        {/* The avatar is a white user glyph on #1B96FF — see the `user` note in SldsIcon. */}
-        <span className="sfh-avatar"><SldsIcon name="user" size={20} /></span>
+        {/* The avatar's artwork is the real one too — a background image, see the CSS. */}
+        <span className="sfh-avatar" />
       </div>
     </header>
   );
