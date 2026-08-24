@@ -172,15 +172,32 @@ every breakdown rising monotonically (Campaign 14→17→21→25→33%).
 Category; the conversion column is index 2 on every breakdown shape.
 
 ### AI Conversion by <Location> (`/dashboards/ai-conversion-by-location`)
+⚠️⚠️ **COMFORT KEEPERS ONLY (scoped 8/24/2026, at the user's request).** It is the one dashboard
+on Manage Dashboards gated to a single prospect, and **BOTH the list row AND the route are
+gated** — gating only the row would leave a bookmarked or pasted URL rendering a full dashboard
+for whichever prospect is active, which works perfectly for an account that is not supposed to
+have it and is exactly the thing nobody notices until it is on a projector. Off-prospect the
+route renders "Not available for <prospect>" with a link back. Matched by NAME through the
+shared `isProspect`, never a guessed id. **To open it to every prospect, drop the `isProspect`
+line in `ManageDashboards` and the guard in the screen — the data gates below already say who
+CAN have it.**
+
+⚠️ **`isProspect` MOVED TO `src/data/prospect.ts` — ONE implementation, several callers.** It
+was a private function in `AgentWorkflow.tsx` (the Comfort Keepers SMS tree) and this screen
+needed the identical test; two copies would eventually disagree about which prospect is which,
+and the symptom would be the override applying to the workflow and not the dashboard. Verified
+with 8 cases: all three plausible Comfort Keepers slugs and a double-space name match, and
+`shady-blinds`, `comfort-inn`, `orlando-health` and `Keepers of Comfort` do not.
+
 Requested 8/24/2026 beside the Location Performance Comparison, whose card shape it reuses:
 **the top row is the whole organization**, then the same figures per franchise, carrying call
 data AND the AI Agent Conversion dashboard's numbers split into **Lead Form / Voice Agent /
 After Hours**. `FranchiseAiDashboard.tsx` + `src/data/franchiseAi.ts` (all the arithmetic).
 
-**Derived**, like Location Comparison: no schema slice, no engine phase, so all 11 profiles on
-disk get it and generation time is unchanged. Listed in Manage Dashboards only when the
-prospect has BOTH `locationHandling.rows` and `aiAgentConversion.conversionCards`, since the
-channels are read off those cards. The title uses the prospect's own noun via `vocabFor` —
+**Derived**, like Location Comparison: no schema slice, no engine phase, so generation time is
+unchanged and any prospect it is opened up to gets it for free. Listed only when the prospect
+is Comfort Keepers AND has BOTH `locationHandling.rows` and `aiAgentConversion.conversionCards`,
+since the channels are read off those cards. The title uses the prospect's own noun via `vocabFor` —
 "Facility" for a hospital, "Showroom" / "Store" / "Branch" / "Location" elsewhere.
 
 ⚠️ **EVERY COLUMN RECONCILES, AND IT IS ASSERTED ACROSS ALL 11 PROFILES** (nine checks: calls,

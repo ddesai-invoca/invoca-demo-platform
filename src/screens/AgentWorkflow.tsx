@@ -7,6 +7,7 @@ import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCall } from "./VoiceCall";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
+import { isProspect } from "../data/prospect";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
    in the left sub-nav. Template flow (Conversation Start → classify intent →
@@ -85,19 +86,8 @@ const SMS_SUPPORT = "Need Support";
 /** The support leaf is "All Support Users", NOT "All Need Support Users". */
 const SMS_SUPPORT_LEAF = "All Support Users";
 
-/** 
- * True when this profile IS the named prospect, whatever slug its demo was saved under.
- *
- * ⚠️ MATCHES ON THE NAME, NOT A HARDCODED ID, and that is deliberate. Comfort Keepers is a
- * demo in the shared LIBRARY, not a profile on disk, so its id was minted from whatever the
- * SE typed — `comfort-keepers`, or `comfort-keepers-home-care`, or anything else. Keying an
- * override off a guessed id fails silently: the tree just renders the default and nobody
- * knows why. Checking the customer NAME and the id both survives that.
- */
-function isProspect(p: { id: string; customerName: string }, name: string): boolean {
-  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-  return norm(p.customerName).includes(norm(name)) || norm(p.id).includes(norm(name));
-}
+/* `isProspect` moved to src/data/prospect.ts when the franchise AI dashboard needed the same
+   test. ONE implementation, several callers — see the note at the top of that file. */
 
 /* PER-PROSPECT *SMS* SHAPE OVERRIDES, matched by prospect name.
 

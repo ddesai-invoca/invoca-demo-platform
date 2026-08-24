@@ -7,6 +7,7 @@ import { DashAssistant, usePageDataWithLabels } from "../components/GeneratedTil
 import { HBarChart } from "../components/HBarChart";
 import { tileId } from "../data/tileId";
 import { franchiseAiView, type FranchiseRow } from "../data/franchiseAi";
+import { isProspect, COMFORT_KEEPERS } from "../data/prospect";
 
 /* =============================================================================
    AI Conversion by <Location> — the organization on top, then its franchises.
@@ -99,6 +100,25 @@ export function FranchiseAiDashboard() {
   const rows: FranchiseRow[] = view.rows ?? [];
   const channels = view.channels ?? [];
   const org = view.org;
+
+  /* ⚠️ SCOPED TO COMFORT KEEPERS (requested 8/24/2026), AND THE ROUTE IS GATED TOO, NOT JUST
+     THE LIST ROW. Gating only Manage Dashboards would leave a bookmarked or pasted URL
+     rendering a full dashboard for whichever prospect happens to be active — the screen would
+     work perfectly for an account that is not supposed to have it, which is the kind of thing
+     nobody notices until it is on a projector. Same matcher as the list, so the two agree. */
+  if (!isProspect(profile, COMFORT_KEEPERS)) {
+    return (
+      <div className="dash-page">
+        <div className="placeholder">
+          <h2>Not available for {profile.customerName}</h2>
+          <p className="muted">
+            This dashboard was built for a specific account. Open it from{" "}
+            <Link to="/dashboards">Manage Dashboards</Link> on that prospect.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   if (!derived || !rows.length || !org) {
     return (

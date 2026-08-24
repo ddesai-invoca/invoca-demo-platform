@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { vocabFor } from "../data/insightsCatalog";
+import { isProspect, COMFORT_KEEPERS } from "../data/prospect";
 
 /* Manage Dashboards — the landing list you get when clicking "Dashboards".
    For now it holds the one dashboard we've built (Marketing Performance);
@@ -73,11 +74,16 @@ export function ManageDashboards() {
           modified: "1/28/26 4:02 pm",
         }]
       : []),
-    /* Same gate, and for the same reason: this screen breaks the AI conversion figures down
-       by location, so with no locationHandling there is nothing to break down. It also needs
-       the AI Agent Conversion slice, since the Lead Form and Voice Agent channels are read
-       straight off its cards. */
-    ...(profile.reports.opsDashboard?.locationHandling?.rows?.length
+    /* ⚠️ COMFORT KEEPERS ONLY (requested 8/24/2026) — the one dashboard on this list that is
+       scoped to a single prospect. Matched by NAME through the shared `isProspect`, never by
+       a guessed id, for the reason recorded in src/data/prospect.ts.
+       The data gates stay as well, and both still matter: this screen breaks the AI
+       conversion figures down by location, so with no `locationHandling` there is nothing to
+       break down, and it needs the AI Agent Conversion slice because the Lead Form and Voice
+       Agent channels are read straight off its cards. To open it up to every prospect, drop
+       the `isProspect` line and nothing else. */
+    ...(isProspect(profile, COMFORT_KEEPERS)
+      && profile.reports.opsDashboard?.locationHandling?.rows?.length
       && profile.reports.aiAgentConversion?.conversionCards?.length
       ? [{
           name: `AI Conversion by ${vocabFor(profile).location} (${profile.customerName})`,
