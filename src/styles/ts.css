@@ -448,6 +448,13 @@
      wrapped, while the same code at 10 columns looked right. The real grid never stretches:
      its columns hold their width and the viewport simply scrolls. */
   min-width: 0; width: max-content;
+  /* ⚠️ `separate`, WHERE THE BASE TABLE COLLAPSES — and this is what makes the frozen header
+     work. Under `border-collapse: collapse` the borders belong to the TABLE, not the cells,
+     so a `position: sticky` th leaves its rules behind and the 2px black edge vanishes the
+     moment you scroll. With `separate` + zero spacing each cell paints its own edges and
+     they travel with it. Nothing doubles up, because every rule here is a single
+     `border-right` or `border-bottom` — only one cell ever draws a given edge. */
+  border-collapse: separate; border-spacing: 0;
 }
 /* ⚠️ THE BODY SCROLLS INSIDE THE TILE; THE TILE DOES NOT GROW TO THE ROW COUNT. Measured
    on the capture: tile 703 tall, `.ag-body-viewport` **477** with `overflow-y: auto` over
@@ -459,7 +466,7 @@
    the rules between cells but no outline, so the columns ran into the tile's white. The
    caption sits OUTSIDE this box. */
 .ts-tablewrap--report {
-  max-height: 589px; overflow: auto; border: 1px solid #eaedf2;
+  max-height: 589px; overflow: auto; border: 1px solid #eaedf2; background: #fff;
 }
 /* ⚠️ THE SCROLLBARS ARE ALWAYS VISIBLE ON THE REAL GRID, and on macOS ours were not there
    at all — overlay scrollbars fade out, so a grid 550px wider than its tile gave no hint
@@ -488,14 +495,23 @@
 }
 .ts-tablewrap .ts-table--report th {
   font-size: 12px; font-weight: 700; color: #15243e; line-height: 16px;
-  height: 48px; padding: 0 16px; background: none;
+  /* 49, not 48: `box-sizing: border-box` means the 1px pale rule eats into the height, so
+     48 gave 47 of content and a text block 1px off centre. 49 - 1 = 48 = 16/16/16. */
+  height: 49px; padding: 0 16px; background: #fff;
   /* ⚠️ THE RULE UNDER THE HEADER IS 2px SOLID BLACK, and it is the single most visible thing
      the first pass got wrong — it read as a pale hairline where the real grid has a hard
      black edge separating the headers from the data. It is NOT on `.ag-header`, which is the
      element I measured (1px #EAEDF2); it is on `.ag-header-viewport` INSIDE it. Found by
      walking every element in the header region for a border darker than rgb(200,·,·)
      instead of reading the one node I expected it on. */
-  border-bottom: 2px solid #000; border-right: 1px solid #eaedf2;
+  /* ⚠️ THE HEADER CARRIES TWO RULES, AND THE BLACK ONE PAINTS *INSIDE* THE 48px. Measured
+     from the top of the header: 16px of space, a 16px line box, 16px of space (= the 48),
+     with `.ag-header-viewport`'s 2px black border overlapping the last 2px of it, and then
+     `.ag-header`'s own 1px #EAEDF2 below — body rows start at 49. A real `border-bottom: 2px`
+     would ADD to the 48 and push the text off-centre, so the black rule is an inset
+     box-shadow and only the pale 1px is a border. 16/16/16 + 1 = 49, exactly. */
+  box-shadow: inset 0 -2px 0 #000;
+  border-bottom: 1px solid #eaedf2; border-right: 1px solid #eaedf2;
   /* Header labels WRAP — "Answered by Agent (T/F)" sits on two lines in the capture, which
      is why a 23-character header does not force its column wide. */
   white-space: normal; vertical-align: middle;
@@ -507,11 +523,15 @@
      complete because it set the padding and the line box and never mentioned height.
      Row height is CONTENT-driven here: measured 31px for one line and 47 / 63 where a
      campaign name or a website journey wraps to two or three, i.e. 31 + 16 per extra line.
-     ⚠️ 7px, where the capture's cell reads 8px. ag-Grid pins its own row height (31) BELOW
-     the natural content box its padding implies (8 + 16 + 8 + 1 = 33), so copying the
-     padding reproduces neither height. 7 + 16 + 7 + 1 lands on 31, 47 and 63 exactly —
-     the visible geometry, off by a pixel on a value nobody can see. */
-  height: auto; padding: 7px 16px;
+     ⚠️ THE PADDING IS ASYMMETRIC BECAUSE THE MEASURED TEXT IS. ag-Grid pins its row height
+     (31) below the content box its own padding implies (8 + 16 + 8 + 1 = 33), so copying the
+     cell's `8px 0` reproduces neither the height nor the text position. Measured from the
+     row's own top edge: text starts at **9**, is 16 tall, and 6 remain below it including
+     the 1px rule. 9 + 16 + 5 + 1 = 31, and it lands on 47 and 63 for two and three lines.
+     ⚠️ 17px SIDES, not 16. The body cell's text sits 17px in — a 1px TRANSPARENT border on
+     the cell plus the inner div's own `0 16px`. The header's is a true 16, which is why the
+     two differ by a pixel and why both are written out. */
+  height: auto; padding: 9px 16px 5px 17px; background: #fff;
   white-space: pre-wrap; vertical-align: top;
   /* ⚠️ COLUMNS LIVE IN A BAND, 145 TO 202, and BOTH ends of it matter. Measured across all
      twelve of the capture's columns: 144.7, 146.7, 158.3, 183.5, 195.1, 195.3, 201.2 and
@@ -536,15 +556,25 @@
   border-bottom: 1px solid #dde2eb; border-right: 1px solid #eaedf2;
   border-top: 0;
 }
-.ts-tablewrap .ts-table--report tbody tr:hover td { background: none; }
+.ts-tablewrap .ts-table--report tbody tr:hover td { background: #fff; }
 /* The pinned aggregation row: 64px, its own top rule, and BOTH lines right-aligned in
-   every column — including the dimension columns, whose data cells are left-aligned. */
+   every column — including the dimension columns, whose data cells are left-aligned.
+   ⚠️ THE VERTICAL RHYTHM IS MEASURED, NOT CENTRED. From the row's top edge: 13px, then the
+   label's 16px line, then a 3px gap, then the value's 24px line, leaving 8 below. Centring
+   the pair instead (12/40/12) drifts the value 3px high and the label 1px, which is visible
+   against the reference because the label is the thing your eye lands on.
+   ⚠️ 17px right inset, matching the body — the reference gets there as 13px on the cell plus
+   4px on the label and value spans, which sums to the same place. */
 .ts-table--report .ts-report-agg td {
-  height: 64px; padding: 0 16px; text-align: right; vertical-align: middle;
+  /* 12, not 13: the cell's own 1px top rule already pushes its content down, so 1 + 12
+     puts the label at the measured 13 from the row's top edge and the value at 32. */
+  height: 64px; padding: 12px 16px 0; text-align: right; vertical-align: top;
   border-top: 1px solid #eaedf2; border-bottom: 0;
+  border-right: 1px solid #eaedf2;
 }
 .ts-table--report .ts-agg-label,
 .ts-table--report .ts-agg-value { display: block; white-space: nowrap; }
+.ts-table--report .ts-agg-value { margin-top: 3px; }
 /* ⚠️ THE LABEL IS NOT LATO — it is ThoughtSpot's own `bb-roller-regular`, uppercased in CSS.
    The stack is theirs verbatim (including their `courrier` typo, which is why it lands on the
    generic sans rather than on Courier). We do not ship that face, so this renders as
@@ -555,13 +585,15 @@
    what we have. */
 .ts-table--report .ts-agg-label {
   font-family: bb-roller-regular, courrier, sans-serif; text-transform: uppercase;
-  font-size: 12px; font-weight: 400; color: #777e8b; line-height: 16px;
+  font-size: 12px; font-weight: 400; color: #777e8b; line-height: 15.96px;
 }
 .ts-table--report .ts-agg-value { font-size: 16px; font-weight: 700; color: #15243e; line-height: 24px; }
-/* "Showing 200 of many rows", under the grid rather than inside it. */
+/* "Showing 200 of many rows", under the grid rather than inside it. Measured: Lato 12/400
+   `#777E8B`, `padding: 4px 0 0`, line-height 17.1429px (ThoughtSpot's 1.4286rem at their
+   12px root), in a box 33 tall. */
 .ts-table-caption {
   font-family: var(--ts-var-root-font-family); font-size: 12px; color: #777e8b;
-  padding-top: 4px;
+  line-height: 17.1429px; padding: 4px 0 0; min-height: 33px;
 }
 
 /* ---- "Build With AI" -> Create Tile with AI drawer -------------------------

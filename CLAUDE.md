@@ -1899,6 +1899,53 @@ wider than ~202 even for a 44-character search term.
    8 hex digits, so the tail is a second hash. (The Details Report SCREEN's own generator was
    already 4-12, which is independent corroboration.)
 
+### The pixel-exact spec, and how it was reached
+Asked for a pixel-by-pixel match, so it was done as a **programmatic diff** rather than by
+eye: dump one property set (family / size / weight / colour / line-height / transform /
+padding / each border / rect) from the capture's ag-Grid nodes, dump the same from our
+`<table>`, and fix until the diff is empty. Eyeballing had already missed four of these twice.
+
+| | measured |
+|---|---|
+| grid box | 1px solid `#EAEDF2` all four sides, ground `#fff` |
+| header block | **49** = 16 space / 16 line / 16 space, then a 1px `#EAEDF2` rule |
+| header rule | **2px solid #000**, painting INSIDE the 48 (`.ag-header-viewport`) |
+| header text | Lato **12/700** `#15243E`, lh 16, wraps, **16px** from the cell's left |
+| gap header→first row | **0** |
+| row | **31** tall, `#fff`, bottom rule 1px `#DDE2EB` |
+| body text | Lato **12/400** `#15243E`, lh 16, `pre-wrap`, **9** from the row top, 5 + rule below |
+| body inset | **17px** each side (a 1px transparent cell border + the inner div's 16) |
+| column rule | 1px `#EAEDF2`, on the right of every cell |
+| numeric cells | right-aligned |
+| agg row | **64** tall, top rule 1px `#EAEDF2`, right rule 1px `#EAEDF2` |
+| agg label | `bb-roller-regular` **12/400** `#777E8B`, lh **15.96**, uppercase, **13** from the row top |
+| agg value | Lato **16/700** `#15243E`, lh 24, **32** from the row top |
+| agg inset | text ends **17px** in, both lines |
+| caption | Lato 12/400 `#777E8B`, lh 17.1429, box 33 tall, 4px above |
+
+⚠️ **`border-collapse: separate` IS WHAT MAKES THE FROZEN HEADER WORK.** Under `collapse` the
+borders belong to the TABLE, not the cells, so a `position: sticky` th leaves its rules behind
+and the 2px black edge disappears the moment you scroll. With `separate` + `border-spacing: 0`
+each cell paints its own edges and they travel with it; nothing doubles up because every rule
+here is a single `border-right` or `border-bottom`. Scoped to `--report`, so the pivot and the
+plain table tiles keep `collapse`.
+
+⚠️ **THE BLACK RULE IS AN INSET BOX-SHADOW, NOT A BORDER.** It paints over the last 2px of the
+header's own 48 in the reference; a real `border-bottom: 2px` ADDS to the box and pushes the
+text off centre. A box-shadow also travels with a sticky cell whatever the collapse mode.
+Verified frozen: at scrollTop 0 / 1200 / 7886 the header sits 1px inside the wrapper every
+time, with the shadow and the pale rule intact and `elementFromPoint` over the band returning
+the `th` (not a row bleeding through), and the agg row pinned 1px off the bottom.
+
+⚠️ **THREE PLACES WHERE 1px OF BORDER CHANGES THE PADDING**, all of which read as sloppiness
+if the reason is not written down:
+- the header is `height: 49px`, not 48 — `box-sizing: border-box` means the 1px pale rule eats
+  into it, so 48 gave 47 of content and a text block a pixel off centre;
+- the body cell is `padding: 9px 16px 5px 17px` — 17 on the LEFT because nothing borders it
+  there, 16 on the RIGHT because the 1px column rule makes up the difference;
+- the agg cell is `padding-top: 12px` for a measured 13, because its own 1px top rule already
+  pushes the content down.
+
 ⚠️ **A TILE BUILT BEFORE THE TEMPLATE WAS MEASURED DOES NOT UPGRADE ITSELF, and that read as
 the template still being broken.** Reported as "doesn't look anything like the real site"
 against a tile created an hour earlier — and the screenshot was right, but the cause was
