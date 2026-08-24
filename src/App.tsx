@@ -45,6 +45,7 @@ import { SmsPreviewPage } from "./screens/SmsPreviewPage";
 import { ChatGptAd } from "./screens/ChatGptAd";
 import { Integrations } from "./screens/Integrations";
 import { SalesforceHome } from "./screens/SalesforceHome";
+import { SalesforceCalendar } from "./screens/SalesforceCalendar";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { ReadmeButton } from "./components/ReadmeButton";
@@ -126,6 +127,7 @@ export default function App() {
               Invoca chrome would misrepresent what the SE is looking at. Reached from the
               Sales Cloud tile on Integrations. */}
           <Route path="/salesforce" element={<SalesforceHome />} />
+          <Route path="/salesforce/calendar" element={<SalesforceCalendar />} />
 
           {/* ChatGPT sponsored placement — the AI-channel counterpart to the
               Google Ads page: where the call starts, before Invoca sees it.

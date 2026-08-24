@@ -4231,10 +4231,11 @@ button.nav-item {
 
 /* ---- global header: 50 tall ---------------------------------------------- */
 .sfh-globalhead { display: flex; align-items: center; height: 50px; padding: 0 12px; background: #fff; }
-.sfh-logo { display: flex; align-items: center; margin-right: 12px; }
+.sfh-logo { display: flex; align-items: center; margin-right: 12px; color: #00a1e0; }
+/* ⚠️ THE SEARCH BORDER IS #747474, not #C9C9C9 — measured on the button that wraps it. */
 .sfh-search {
   display: flex; align-items: center; gap: 8px; width: 400px; height: 32px; margin: 0 auto;
-  padding: 0 12px; background: #fff; border: 1px solid #c9c9c9; border-radius: 4px;
+  padding: 0 12px; background: #fff; border: 1px solid #747474; border-radius: 4px;
 }
 .sfh-search-icon { color: #757575; flex: 0 0 14px; }
 .sfh-search-ph { color: #747474; font-size: 13px; }
@@ -4245,9 +4246,17 @@ button.nav-item {
 }
 .sfh-gi--star { color: #919191; font-size: 15px; }
 .sfh-gi--tri { width: 18px; }
-/* The + is a white glyph on the brand blue, which is why it reads as a button. */
-.sfh-gi--add { color: #fff; background: #0176d3; border-radius: 4px; width: 28px; height: 28px; }
-.sfh-avatar { width: 32px; height: 32px; border-radius: 100%; background: #1b96ff; margin-left: 8px; }
+/* ⚠️ THE + IS WHITE ON #919191 GREY, NOT ON BRAND BLUE, and the box is 20 square at radius
+   4 — measured. Blue made it the loudest thing in the header. */
+.sfh-gi--add {
+  color: #fff; background: #919191; border-radius: 4px; width: 20px; height: 20px;
+  flex: 0 0 20px; margin: 0 6px;
+}
+/* The avatar carries a white user glyph on #1B96FF; an empty circle is what read as wrong. */
+.sfh-avatar {
+  width: 32px; height: 32px; flex: 0 0 32px; border-radius: 100%; background: #1b96ff;
+  margin-left: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+}
 
 /* ---- context bar: 40 tall, FULL WIDTH, 3px brand rule -------------------- */
 .sfh-bar {
@@ -4402,3 +4411,112 @@ button.nav-item {
 .sfh-sb-read { font-size: 12px; line-height: 18px; font-weight: 590; color: #181818; margin: 8px 0 0; }
 /* The external-link glyph rides the text baseline, as it does in the capture. */
 .sfh-sb-ext { display: inline-block; vertical-align: -3px; margin-left: 6px; }
+
+/* =============================================================================
+   Salesforce Calendar, week view (`.sfc-`) — screen 2 of the Sales Cloud flow.
+   Measured off a capture of the live Calendar (8/24/2026).
+   ============================================================================= */
+.sfc-root { display: flex; flex-direction: column; height: 100%; background: #fff; }
+
+/* page header: 69.5 tall over a 1px rule */
+.sfc-head {
+  display: flex; align-items: center; gap: 12px; height: 69.5px; padding: 0 16px;
+  border-bottom: 1px solid #c9c9c9; background: #fff; flex: 0 0 auto;
+}
+/* The tile glyph is white on the Event object's purple. */
+.sfc-head-icon {
+  display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
+  flex: 0 0 32px; border-radius: 4px; background: #a094ed; color: #fff;
+}
+.sfc-head-text { flex: 1 1 auto; min-width: 0; }
+.sfc-head-kicker { font-size: 13px; line-height: 19.5px; color: #181818; margin: 0; }
+.sfc-head-range { font-size: 18px; font-weight: 700; line-height: 22.5px; color: #181818; margin: 0; }
+.sfc-head-actions { display: flex; align-items: center; gap: 4px; flex: 0 0 auto; }
+.sfc-nudge, .sfc-icobtn, .sfc-btn {
+  display: flex; align-items: center; justify-content: center; gap: 4px; height: 32px;
+  box-sizing: border-box; border: 1px solid #747474; border-radius: 4px; background: #fff;
+  color: #0176d3; font-size: 13px;
+}
+.sfc-nudge, .sfc-icobtn { width: 32px; color: #747474; }
+.sfc-icobtn--split { width: 46px; }
+/* The list-view toggle is the one that reads as pressed: white glyph on brand blue. */
+.sfc-icobtn--on { background: #0176d3; border-color: #0176d3; color: #fff; }
+.sfc-btn { padding: 0 12px; }
+.sfc-btn--new { padding: 0 14px; }
+
+.sfc-split { flex: 1 1 auto; display: flex; min-height: 0; }
+.sfc-grid { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; }
+
+/* day headers: the time gutter, then seven equal columns */
+.sfc-dayheads { display: flex; height: 40px; flex: 0 0 auto; border-bottom: 1px solid #c9c9c9; }
+.sfc-gmt { width: 60px; flex: 0 0 60px; font-size: 11px; line-height: 40px; color: #757575;
+  padding-left: 19px; box-sizing: border-box; }
+.sfc-dayhead {
+  flex: 1 1 0; text-align: center; font-size: 13px; line-height: 40px; color: #181818;
+  border-left: 1px solid #e5e5e5;
+}
+
+/* ⚠️ 80px PER HOUR — 24 rows, so the body is 1920 tall and scrolls. */
+.sfc-body { flex: 1 1 auto; display: flex; overflow-y: auto; min-height: 0; background: #f3f3f3; }
+.sfc-hours { width: 60px; flex: 0 0 60px; }
+.sfc-hour {
+  display: block; height: 80px; font-size: 13px; line-height: 19.5px; color: #444;
+  padding-left: 23px; box-sizing: border-box; transform: translateY(-9px);
+}
+.sfc-cols { flex: 1 1 auto; display: flex; min-width: 0; }
+.sfc-col { flex: 1 1 0; position: relative; border-left: 1px solid #e5e5e5; }
+/* The slot rules are WHITE on the grey ground, which is what gives the grid its look. */
+.sfc-slot { height: 80px; border-bottom: 1px solid #fff; box-sizing: border-box; }
+
+/* ⚠️ THE EVENT CHIP: #5A93B1 at radius 4, padding 2px 4px 0, title 700 12px and time 12px
+   both in #181818 — the ink does NOT go white on this fill. */
+.sfc-event {
+  position: absolute; left: 4px; right: 7px; background: #5a93b1; border-radius: 4px;
+  padding: 2px 4px 0; box-sizing: border-box; overflow: hidden;
+}
+/* ⚠️ `line-height: normal` — the capture reports the chip's type as `700 12px` and `12px`
+   with no line box of its own, and pinning 16px pushes the time line 2px low. */
+.sfc-event-title {
+  display: block; font-size: 12px; font-weight: 700; line-height: normal; color: #181818;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sfc-event-time { display: block; font-size: 12px; line-height: normal; color: #181818; }
+
+/* right rail: 304 wide, white */
+.sfc-rail {
+  width: 304px; flex: 0 0 304px; background: #fff; padding: 12px 16px; overflow-y: auto;
+  box-sizing: border-box;
+}
+.sfc-mini-head { display: flex; align-items: center; gap: 8px; height: 32px; }
+.sfc-mini-nudge { color: #0176d3; display: flex; }
+/* ⚠️ THE MINI HEADER'S ARROWS ARE THE SAME TRIANGLE ROTATED — the capture's own left/right
+   triangles were not serialised separately, so `triangledown` is turned rather than a second
+   pair of paths invented. */
+.sfc-mini-nudge:first-child svg { transform: rotate(90deg); }
+.sfc-mini-nudge:nth-child(3) svg { transform: rotate(-90deg); }
+.sfc-mini-month { flex: 1 1 auto; text-align: center; font-size: 13px; color: #181818; }
+.sfc-mini-year {
+  display: flex; align-items: center; gap: 4px; height: 24px; padding: 0 6px;
+  border: 1px solid #c9c9c9; border-radius: 4px; font-size: 13px; color: #181818;
+}
+.sfc-mini { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 8px; }
+.sfc-mini-dow { text-align: center; font-size: 12px; line-height: 24px; color: #444; }
+/* 40 x 40 cells, out-of-month days at #C9C9C9. */
+.sfc-mini-cell {
+  height: 40px; line-height: 40px; text-align: center; font-size: 12px; color: #181818;
+}
+.sfc-mini-cell--out { color: #c9c9c9; }
+.sfc-mini-cell--week { background: #f3f3f3; }
+/* Today is a ring, not a fill. */
+.sfc-mini-cell--today {
+  font-weight: 700;
+  background-image: radial-gradient(circle at 50% 50%, transparent 12px, #c9c9c9 12px, #c9c9c9 13px, transparent 13px);
+}
+.sfc-rail-sec {
+  display: flex; align-items: center; justify-content: space-between; margin-top: 24px;
+}
+.sfc-rail-head { font-size: 16px; font-weight: 700; line-height: 24px; color: #181818; margin: 0; }
+.sfc-cal-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+/* 16px swatch at radius 8 — measured. */
+.sfc-swatch { width: 16px; height: 16px; flex: 0 0 16px; border-radius: 8px; background: #0b827c; }
+.sfc-cal-name { flex: 1 1 auto; font-size: 13px; color: #181818; }

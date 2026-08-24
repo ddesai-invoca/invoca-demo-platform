@@ -1132,6 +1132,57 @@ named company's mouth. `derive` also rejects any rival name sharing two
 significant words with the prospect (that is what stopped "Orlando Health
 Systems" appearing beside the real Orlando Health).
 
+### Salesforce Calendar — screen 2 of 4 (8/24/2026)
+`SalesforceCalendar.tsx` + `.sfc-`, plus `salesforceEvent.ts` for the booked appointment.
+What the **Calendar** tab opens; measured off a capture of the live week view.
+
+| | measured |
+|---|---|
+| page header | 69.5 tall over a 1px `#C9C9C9` rule; kicker 13/19.5, range **700 18px/22.5** |
+| buttons | 32 tall, 1px `#747474`, radius 4, ink `#0176D3`; the list toggle is white-on-`#0176D3` |
+| GMT label | 11px/40 `#757575`; day header 13px/40 `#181818`, centred |
+| **hour pitch** | **80px** — 24 rows, so the body is 1920 and scrolls |
+| hour label | 13/19.5 `#444` at 23 from the left; slot rules are **white on `#F3F3F3`** |
+| event chip | `#5A93B1`, radius 4, padding `2px 4px 0`, 81 tall for one hour; title `700 12px` and time `12px`, both `#181818` with **`line-height: normal`** |
+| right rail | 304 wide, white; heading `700 16/24`; mini cell 40 square, out-of-month `#C9C9C9`; swatch 16 at radius 8 |
+
+⚠️ **THE EVENT IS THE APPOINTMENT THE SMS AGENT BOOKED, and it prefers a LIVE capture.**
+`bookedEvent()` takes the newest conversation from `SmsCaptureContext` (what the Preview
+Agent just wrote) and falls back to the profile's seeded SMS conversation, so the calendar is
+never empty — a screen that shows nothing until someone runs a chat is worse on a projector
+than one that always carries the record.
+⚠️ **THE DAY AND TIME ARE DERIVED, NOT PARSED OUT OF THE CHAT.** The agent confirms a slot in
+prose ("does Thursday at 2 work?"); reading that back with a regex breaks the first time a
+model phrases it differently. The slot is a pure function of the conversation id, so it is
+stable across reloads and an SE can rehearse against it.
+
+⚠️ **A REAL BUG WORTH NOT REPEATING: `>>` IS SIGNED, AND `%` KEEPS THE SIGN.** `hash()`
+returns an UNSIGNED 32-bit value, so any hash above 2^31 goes negative under `h >> 4`, and
+`9 + ((h >> 4) % 8)` — which reads as "9 plus 0..7" — produced **3**, i.e. a 3am appointment
+on a business calendar, for Shady Blinds' own conversation id. Fixed with `>>>`. It also hid
+a second symptom: the grid opens scrolled to `(startHour - 4) * 80`, which clamped to 0, so
+"the scroll didn't work" and "the time is wrong" were one fault.
+
+⚠️ **THE WEEK COMES FROM THE DEMO'S OWN CLOCK, not the capture.** The capture shows Aug 2-8
+because that SE had navigated back — session state, not design. The appointment is placed
+inside the current week.
+
+⚠️ **THE CHROME IS NOW SHARED** (`SalesforceChrome.tsx`: global header, context bar, To Do
+bar). It was inline in the Home screen, and a second copy is exactly how the nav ends up with
+a different active-tab treatment on each page. Only tabs in its `ROUTES` map link; the rest
+stay inert because there is no `*` catch-all.
+
+Header marks corrected in the same pass, all measured: the **+ is white on `#919191` GREY**
+at 20 square (it was the `#0176D3` primary, the loudest thing in the header), the search
+border is **`#747474`** not `#C9C9C9`, and the avatar carries a **white user glyph on
+`#1B96FF`** where it had been an empty circle. The Salesforce cloud and that user glyph are
+the two authored marks — neither capture carries the logo or avatar image (both serialise as
+`class="icon noicon"` with no src).
+
+Verified: the appointment renders at 11am–12pm on a weekday of the current week, the grid
+opens scrolled to it, the Calendar tab is the pale-blue wash and navigates from Home with a
+real click, and a 22-property diff against the spec is empty.
+
 ### Salesforce: the Sales Cloud flow (screen 1 of 4, REBUILT 8/24/2026)
 ⚠️ **THE FIRST PASS WAS REPORTED WRONG ON SIX COUNTS and every one was a place I measured a
 COLOUR but inferred a STRUCTURE.** Recording them because the failure mode generalises: a

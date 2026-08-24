@@ -1,5 +1,6 @@
 import { useProfile } from "../data/ProfileContext";
 import { SldsIcon } from "../components/SldsIcon";
+import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 
 /* =============================================================================
    Salesforce — Seller Home. Screen 1 of the Sales Cloud flow.
@@ -34,21 +35,10 @@ import { SldsIcon } from "../components/SldsIcon";
    build had a 24px/400 h1 and let the platform's Lato leak in. The 49px line box on a 28px
    glyph is what gives the banner its 55px height and sits the greeting on its baseline. */
 
-/* ⚠️ CORRECTION 3 — THE CONTEXT BAR SPANS THE FULL WIDTH. Measured: the bar is the viewport
-   width and `.navCenter` inside it is `flex: 1 1 0%`, so the tab strip fills everything
-   between the app name and the pencil. The first build let the strip size to its content. */
+/* ⚠️ CORRECTIONS 3 AND 4 (the full-width strip, and the active tab being a pale blue WASH
+   rather than an underline) now live in `SalesforceChrome.tsx`, shared with the Calendar
+   screen so the two cannot drift. */
 
-/* ⚠️ CORRECTION 4 — THE ACTIVE TAB IS A PALE BLUE WASH, NOT AN UNDERLINE.
-   `slds-is-active` computes to `background: rgba(0,112,210,.1)` with NO bottom border, and
-   its label stays #181818 at weight 400. The first build drew a 3px brand underline and
-   turned the label blue and bold, which is a different product's tab entirely. */
-
-const TABS = [
-  "Home", "Opportunities", "Leads", "Tasks", "Files", "Accounts", "Contacts", "Campaigns",
-  "Dashboards", "Reports", "Chatter", "Groups", "Calendar", "People", "Cases", "Forecasts",
-];
-/** Chatter and Forecasts carry no dropdown in the capture; everything else does. */
-const NO_CHEVRON = new Set(["Chatter", "Forecasts"]);
 
 type Tone = "open" | "won" | "lost" | "none";
 
@@ -139,53 +129,9 @@ export function SalesforceHome() {
 
   return (
     <div className="sfh-root">
-      <header className="sfh-globalhead">
-        {/* The Salesforce cloud mark. The capture's own logo `<img>` carries NO src (it
-            serialised as `class="icon noicon"`), so this is drawn to shape — the one mark on
-            this screen that is not verbatim. */}
-        <span className="sfh-logo" aria-label="Salesforce">
-          <svg viewBox="0 0 60 42" width="36" height="26" aria-hidden="true">
-            <path fill="#00A1E0" d="M25 9a11 11 0 0118 3 13 13 0 0117 12 12 12 0 01-12 12H20A11 11 0 018 25a11 11 0 016-10 13 13 0 0111-6z" />
-          </svg>
-        </span>
+      <SfGlobalHeader />
 
-        <div className="sfh-search">
-          <SldsIcon name="search" size={14} className="sfh-search-icon" />
-          <span className="sfh-search-ph">Search...</span>
-        </div>
-
-        <div className="sfh-globalicons">
-          <span className="sfh-gi sfh-gi--star">&#9733;</span>
-          <span className="sfh-gi sfh-gi--tri"><SldsIcon name="triangledown" size={12} /></span>
-          <span className="sfh-gi sfh-gi--add"><SldsIcon name="add" size={16} /></span>
-          <span className="sfh-gi"><SldsIcon name="guidance" size={20} /></span>
-          <span className="sfh-gi"><SldsIcon name="help" size={20} /></span>
-          <span className="sfh-gi"><SldsIcon name="setup" size={20} /></span>
-          <span className="sfh-gi"><SldsIcon name="notification" size={20} /></span>
-          <span className="sfh-avatar" />
-        </div>
-      </header>
-
-      <nav className="sfh-bar">
-        <span className="sfh-waffle" aria-hidden="true">
-          {Array.from({ length: 9 }, (_, i) => <i key={i} />)}
-        </span>
-        <span className="sfh-app">Sales</span>
-        {/* flex: 1 — this is what makes the strip span the bar. */}
-        <ul className="sfh-tabs">
-          {TABS.map((t) => (
-            <li className={"sfh-tab" + (t === "Home" ? " sfh-tab--on" : "")} key={t}>
-              {/* ⚠️ EVERY TAB IS INERT UNTIL ITS SCREEN EXISTS, Calendar included — there is
-                  no `*` catch-all in the router, so a link now would put a blank page
-                  mid-demo behind a tab that looks live. */}
-              <span className="sfh-tab-link">{t}</span>
-              {NO_CHEVRON.has(t) ? null
-                : <SldsIcon name="chevrondown" size={14} className="sfh-tab-chev" />}
-            </li>
-          ))}
-        </ul>
-        <span className="sfh-barpencil"><SldsIcon name="pencil" size={14} /></span>
-      </nav>
+      <SfContextBar active="Home" />
 
       <div className="sfh-page">
         <div className="sfh-banner">
@@ -312,10 +258,7 @@ export function SalesforceHome() {
         </div>
       </div>
 
-      <footer className="sfh-todo">
-        <SldsIcon name="todo" size={14} className="sfh-todo-icon" />
-        <span>To Do List</span>
-      </footer>
+      <SfTodoBar />
     </div>
   );
 }

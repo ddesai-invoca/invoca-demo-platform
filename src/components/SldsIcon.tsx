@@ -29,11 +29,36 @@ const PATHS: Record<string, string> = {
   settings: "M261 191c-39 0-70 31-70 70s31 70 70 70 70-31 70-70-31-70-70-70m210 133l-37-31a195 195 0 000-68l37-31c12-10 16-28 8-42l-16-28a34 34 0 00-40-14l-46 17a168 168 0 00-59-34l-8-47c-3-16-17-25-33-25h-32c-16 0-30 9-33 25l-8 46a180 180 0 00-60 34l-46-17-11-2c-12 0-23 6-29 16l-16 28c-8 14-5 32 8 42l37 31a195 195 0 000 68l-37 31a34 34 0 00-8 42l16 28a34 34 0 0040 14l46-17c18 16 38 27 59 34l8 48a33 33 0 0033 27h32c16 0 30-12 33-28l8-48a170 170 0 0062-37l43 17 12 2c12 0 23-6 29-16l15-26c9-11 5-29-7-39m-210 47c-61 0-110-49-110-110s49-110 110-110 110 49 110 110-49 110-110 110",
   newwindow: "M487 20H296c-8 0-16 5-16 13v30c0 8 7 17 16 17h79c9 0 14 10 7 16L212 266c-6 6-6 15 0 21l21 21c6 6 15 6 21 0l170-170c6-6 16-2 16 7v79c0 8 8 17 16 17h29c8 0 15-9 15-17V34c0-9-5-14-13-14M363 255l-34 35q-9 9-9 21v114c0 8-7 15-15 15H95c-8 0-15-7-15-15V215c0-8 7-15 15-15h115c8 0 16-3 21-9l34-34c6-6 2-17-7-17H60a40 40 0 00-40 40v280a40 40 0 0040 40h280a40 40 0 0040-40V262c0-9-11-13-17-7",
   todo: "M240 70l-17-17c-5-5-12-5-17 0L100 158l-43-42c-5-5-12-5-17 0l-17 17c-5 5-5 12 0 17l59 59c5 5 11 7 17 7s12-2 17-7L240 87c4-4 4-12 0-17m244 114H275c-9 0-16-7-16-16v-32c0-9 7-16 16-16h209c9 0 16 7 16 16v32c0 9-7 16-16 16m0 143H227c-9 0-16-7-16-16v-32c0-9 7-16 16-16h257c9 0 16 7 16 16v32c0 9-7 16-16 16m-354 0H98c-9 0-16-7-16-16v-32c0-9 7-16 16-16h32c9 0 16 7 16 16v32c1 9-7 16-16 16m0 143H98c-9 0-16-7-16-16v-32c0-9 7-16 16-16h32c9 0 16 7 16 16v32c1 9-7 16-16 16m354 0H227c-9 0-16-7-16-16v-32c0-9 7-16 16-16h257c9 0 16 7 16 16v32c0 9-7 16-16 16",
-  /* ⚠️ AUTHORED, and the only one here that is: the "Invoca Call Log" object's own glyph
+  chevronleft: "M342 477L134 272c-6-6-6-16 0-22L342 45c6-6 16-6 22 0l22 22c6 6 6 16 0 22L221 250c-6 6-6 16 0 22l163 161c6 6 6 16 0 22l-22 22c-5 5-14 5-20 0",
+  chevronright: "M179 44l207 205c6 6 6 16 0 22L179 476c-6 6-16 6-22 0l-22-22c-6-6-6-16 0-22l163-161c6-6 6-16 0-22L136 88c-6-6-6-16 0-22l22-22c6-5 15-5 21 0",
+  refresh: "M465 40h-30c-8 0-15 7-15 15v70c0 9-5 13-12 7l-10-10a210 210 0 10-12 309c7-6 7-16 1-22l-21-21c-5-5-14-6-20-1a152 152 0 01-172 14 152 152 0 0177-281 150 150 0 01118 58c3 8-4 12-13 12h-70c-8 0-15 7-15 15v31c0 8 6 14 14 14h183c7 0 13-6 13-13V55c-1-8-8-15-16-15",
+  rows: "M465 140H55c-8 0-15-7-15-15V95c0-8 7-15 15-15h410c8 0 15 7 15 15v30c0 8-7 15-15 15m0 149H55c-8 0-15-7-15-15v-30c0-7 7-14 15-14h410c8 0 15 7 15 15v30c0 7-7 14-15 14m0 151H55c-8 0-15-7-15-15v-30c0-8 7-15 15-15h410c8 0 15 7 15 15v30c0 8-7 15-15 15",
+  /* The page-header tile glyph — a 100-unit box, not 520. */
+  "calendar-tile": "M76 42H24a2 2 0 00-2 2v30a6 6 0 006 6h44a6 6 0 006-6V44a2 2 0 00-2-2M40 70a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm0-14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm14 14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm0-14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm14 14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm0-14a2 2 0 01-2 2h-4a2 2 0 01-2-2v-4c0-1.1.9-2 2-2h4a2 2 0 012 2zm4-30h-5v-2c0-2.2-1.8-4-4-4s-4 1.8-4 4v2H41v-2c0-2.2-1.8-4-4-4s-4 1.8-4 4v2h-5a6 6 0 00-6 6v2c0 1.1.9 2 2 2h52a2 2 0 002-2v-2a6 6 0 00-6-6",
+  /* The view-picker calendar — a 52-unit box. */
+  "calendar-sm": "M46.5 20h-41c-.8 0-1.5.7-1.5 1.5V46a4 4 0 004 4h36a4 4 0 004-4V21.5c0-.8-.7-1.5-1.5-1.5M19 42c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm10 10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm10 10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm5-25h-5V5a3 3 0 00-3-3 3 3 0 00-3 3v2H19V5a3 3 0 00-3-3 3 3 0 00-3 3v2H8a4 4 0 00-4 4v2.5c0 .8.7 1.5 1.5 1.5h41c.8 0 1.5-.7 1.5-1.5V11a4 4 0 00-4-4",
+  /* ⚠️ THE SALESFORCE CLOUD, AUTHORED — neither capture carries the logo image (its `<img>`
+     serialises as `class="icon noicon"` with no src). Drawn as the mark's real silhouette:
+     three lobes over a flat base, which is what distinguishes it from a generic cloud.
+     Replace it the moment a capture carries the asset. */
+  cloud: "M196 96c19-20 45-32 74-32 39 0 73 22 91 54a112 112 0 0135-6c60 0 109 49 109 109s-49 109-109 109H150C93 330 47 284 47 227c0-40 23-75 56-92a94 94 0 01-1-11c0-52 42-94 94-94",
+  /* ⚠️ ALSO AUTHORED, for the same reason: the profile avatar's `<img alt="User">` has no
+     src in either capture. SLDS's default is a white head-and-shoulders on the user's
+     colour, and the measured circle is #1B96FF at 32px. */
+  user: "M260 270a105 105 0 10-105-105 105 105 0 00105 105m0 40c-79 0-190 40-190 120v30c0 11 9 20 20 20h340c11 0 20-9 20-20v-30c0-80-111-120-190-120",
+  /* ⚠️ AUTHORED, like `cloud` and `user` above: the "Invoca Call Log" object's own glyph
      serialised as an EMPTY placeholder (`<rect fill-opacity="0"/>`), so the capture has the
      tile colour but no artwork. This is a plain SLDS-weight handset on the same 520 grid.
      Replace it if a capture ever carries the real one. */
   call: "M478 372l-71-71a30 30 0 00-42 0l-30 30a20 20 0 01-25 3 371 371 0 01-124-124 20 20 0 013-25l30-30a30 30 0 000-42l-71-71a30 30 0 00-42 0l-41 41c-20 20-24 51-11 78a707 707 0 00306 306c27 13 58 9 78-11l41-41a30 30 0 000-43",
+};
+
+/* ⚠️ NOT EVERY SLDS GLYPH IS ON THE 520 GRID. The calendar tile and the view-picker
+   calendar come off smaller boxes (100 and 52), measured from their own path extents. An
+   icon set that assumes one viewBox renders those two as a speck in the corner. */
+const VIEWBOX: Record<string, string> = {
+  "calendar-tile": "0 0 100 100",
+  "calendar-sm": "0 0 52 52",
 };
 
 export type SldsIconName = keyof typeof PATHS | string;
@@ -47,7 +72,7 @@ export function SldsIcon({ name, size = 16, className }: {
   const d = PATHS[name];
   if (!d) return null;
   return (
-    <svg className={className} width={size} height={size} viewBox="0 0 520 520"
+    <svg className={className} width={size} height={size} viewBox={VIEWBOX[name] ?? "0 0 520 520"}
       aria-hidden="true" focusable="false">
       <path d={d} fill="currentColor" />
     </svg>
