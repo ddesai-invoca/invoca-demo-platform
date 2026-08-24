@@ -788,6 +788,40 @@ export const REPORT_ROWS = 200;
 export const reportCaption = (rows: number): string =>
   `Showing ${rows.toLocaleString("en-US")} of many rows`;
 
+const REPORT_TITLES = new Set(["Details Report", "Summary Report", "Transactions Report"]);
+
+/**
+ * Bring a Report tile built by the OLD code up to the measured template.
+ *
+ * ⚠️ A GENERATED TILE STORES ITS COMPUTED ROWS, so nothing about a template fix reaches a
+ * tile that already exists — this repo has been bitten by that before, and it surfaced here
+ * as a reported "it still looks nothing like the real site" against a tile created an hour
+ * earlier. The tell was the ROW COUNT: exactly 8, which was `reportRows`' old default. Such
+ * a tile also has raw headers ("Call Count", not "Total Call Count"), monthly totals in a
+ * row-level grid (33, 4, 15 where every row is one call), short 4-and-6 ids, and no
+ * `reportFooter` — so it renders with the plain table chrome rather than the ag-Grid one.
+ *
+ * `reportFooter` being absent is the marker, and it is exact: only the old builder produced
+ * a Report tile without one. That also guarantees `columns` still holds the RAW picked names,
+ * which is what `reportHeaders` and `reportFooter` need to look up in the catalogue.
+ *
+ * ⚠️ IT RE-DERIVES THE ROWS, so an AI edit to a stale tile's cells would be discarded. That
+ * is the deliberate trade: those rows are wrong in a way a prospect can catch (a monthly
+ * total sitting in a row-level report), and the template shipped hours ago, so no saved demo
+ * can hold considered edits to one. Do NOT widen this to tiles that already have the new
+ * props — for those, the stored data is authoritative.
+ */
+export function upgradeReportTile<T extends GeneratedTile>(profile: CustomerProfile, tile: T): T {
+  if (tile.tileType !== "table" || tile.reportFooter || !REPORT_TITLES.has(tile.title)) return tile;
+  const cols = tile.columns ?? [];
+  if (!cols.length) return tile;
+  const rows = reportRows(profile, cols);
+  return {
+    ...tile, note: "", columns: reportHeaders(profile, cols), rows,
+    reportFooter: reportFooter(profile, cols, rows), caption: reportCaption(rows.length),
+  };
+}
+
 /**
  * The pinned aggregation row under a Report tile.
  *

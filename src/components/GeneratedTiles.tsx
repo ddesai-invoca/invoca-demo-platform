@@ -14,7 +14,7 @@ import { axisTitleFor, formatTick, kindOf, type MeasureKind } from "../data/insi
 import { fitCells } from "./chartFit";
 import { InteractionsDrawer, type DrawerRequest } from "./InteractionsDrawer";
 import { buildInteractions, isoDate } from "../data/interactions";
-import { rangeStartIso, interactionsAt } from "../data/insightsTileData";
+import { rangeStartIso, interactionsAt, upgradeReportTile } from "../data/insightsTileData";
 
 /* useDashboardData — each dashboard calls this with its BASE data slice. It
    registers the dashboard as the assistant's scope and returns the EFFECTIVE
@@ -328,7 +328,13 @@ export function DashAssistant({ variant = "dash" }: { variant?: "dash" | "ts" } 
       <HiddenTileStyles hidden={hidden} />
       {tiles.length > 0 && (
         <div className={variant === "ts" ? "ts-gen-tiles" : "gen-tiles"}>
-          {tiles.map((t) => (
+          {tiles.map((t0) => {
+            /* A Report tile built before the template was measured stores 8 rows, raw
+               headers and no aggregation row, and a code change cannot reach stored tile
+               data — so it is upgraded on the way to the card. A no-op for everything
+               else, including every Report tile built since. */
+            const t = upgradeReportTile(profile, t0);
+            return (
             <Card key={t.id} tile={t} onRemove={() => removeTile(key, t.id)}
               {...(variant === "ts" ? {
                 onPick: (seriesName: string, category: string, value: number) => setDrawer({
@@ -355,7 +361,8 @@ export function DashAssistant({ variant = "dash" }: { variant?: "dash" | "ts" } 
                       ? value : interactionsAt(profile, category)}`,
                 }),
               } : {})} />
-          ))}
+            );
+          })}
         </div>
       )}
       {variant === "ts" && drawer ? (

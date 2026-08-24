@@ -1899,6 +1899,23 @@ wider than ~202 even for a 44-character search term.
    8 hex digits, so the tail is a second hash. (The Details Report SCREEN's own generator was
    already 4-12, which is independent corroboration.)
 
+⚠️ **A TILE BUILT BEFORE THE TEMPLATE WAS MEASURED DOES NOT UPGRADE ITSELF, and that read as
+the template still being broken.** Reported as "doesn't look anything like the real site"
+against a tile created an hour earlier — and the screenshot was right, but the cause was
+stored data, not the design. A generated tile keeps its computed rows and props forever, so
+an old Report tile shows raw headers ("Call Count"), monthly totals in a row-level grid (33,
+4, 15 where every row is one call), short 4-and-6 ids, a "6 columns" note, and — because it
+has no `reportFooter` — the PLAIN table chrome instead of the ag-Grid one. **The tell was the
+row count: exactly 8, which was `reportRows`' old default.**
+`upgradeReportTile` now re-derives those tiles on the way to the card, keyed off the missing
+`reportFooter`, which only the old builder could produce. Verified by injecting a tile of
+exactly that shape: it came back with the `--report` chrome, `Total Call Count`, 200 rows, 1
+per row, the aggregation row and the caption. Idempotent on new tiles, and a no-op on any
+other table.
+⚠️ It re-derives the ROWS, so an AI edit to a stale tile's cells would be discarded — a
+deliberate trade, since those rows are wrong in a way a prospect can catch and the template
+is hours old. Do not widen it to tiles that already carry the new props.
+
 ⚠️ **THE LIVE TILE'S COLUMNS ARE NARROWER THAN THE CAPTURE'S** — ~124-147px at a ~1030px tile
 against the capture's 145-202 at 1742 — so ag-Grid shrinks below the floor when the tile is
 narrow. Not reproduced: a fixed band plus horizontal scroll is the same behaviour at the width
