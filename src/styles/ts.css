@@ -466,17 +466,32 @@
      `border-right` or `border-bottom` — only one cell ever draws a given edge. */
   border-collapse: separate; border-spacing: 0;
 }
-/* ⚠️ THE BODY SCROLLS INSIDE THE TILE; THE TILE DOES NOT GROW TO THE ROW COUNT. Measured
-   on the capture: tile 703 tall, `.ag-body-viewport` **477** with `overflow-y: auto` over
-   16,925px of virtualised rows, header 49 above it and the aggregation row 65 below. Ours
-   was 8,958px tall — 200 rows at 31px with nothing capping it — which made the dashboard
-   scroll for nine screens and pushed every tile below it out of sight. 48 + 477 + 64. */
+/* ⚠️ THE BODY SCROLLS INSIDE THE TILE; THE TILE DOES NOT GROW TO THE ROW COUNT. Ours was
+   8,958px tall — 200 rows at 31px with nothing capping it — which made the dashboard scroll
+   for nine screens and pushed every tile below it out of sight.
+
+   ⚠️ **601 IS THE GRID BOX, AND IT IS CONSTANT.** Measured across all THREE captures — an
+   863px tile, a 1760px tile with 6 columns and a 1760px tile with 12 — and it is 601 every
+   time, with the tile itself 703 every time. Height does not track width or column count.
+   It decomposes as 2 (border) + 49 (header) + body + 65 (aggregation row), where the body is
+   **485** when nothing scrolls horizontally and **477** when the 8px scrollbar takes its
+   space — both measured, and both fall out of a fixed 601 rather than being set. So one
+   `max-height` reproduces every case; the earlier 589 was assembled from parts
+   (48 + 477 + 64) and came out 12px short. */
 /* ⚠️ AND THE GRID IS A BORDERED BOX. `.ag-root-wrapper` carries a 1px #EAEDF2 border on all
    four sides, which is what reads as the frame around the grid on the real tile — ours had
    the rules between cells but no outline, so the columns ran into the tile's white. The
    caption sits OUTSIDE this box. */
 .ts-tablewrap--report {
-  max-height: 589px; overflow: auto; border: 1px solid #eaedf2; background: #fff;
+  max-height: 601px; overflow: auto; border: 1px solid #eaedf2; background: #fff;
+  /* ⚠️ 27px OF AIR UNDER THE TILE TITLE. Measured on all three captures: the title's bottom
+     edge sits 27 above the grid box, where ours had the table starting immediately under it —
+     visible in a side-by-side as the grid being crammed against the heading.
+     ⚠️ Scoped to the REPORT grid deliberately, though the 27 almost certainly belongs to the
+     tile chrome and so to every ts template: the gap falls OUTSIDE the svg, so none of the
+     chart measurements would have caught its absence. Applying it globally means
+     re-verifying nine signed-off templates, which is its own pass. */
+  margin-top: 27px;
 }
 /* ⚠️ THE SCROLLBARS ARE ALWAYS VISIBLE ON THE REAL GRID, and on macOS ours were not there
    at all — overlay scrollbars fade out, so a grid 550px wider than its tile gave no hint

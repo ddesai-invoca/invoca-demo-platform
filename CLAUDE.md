@@ -2006,9 +2006,35 @@ the ResizeObserver then never fired again because the box it watches never chang
 real resize by hand corrected it to 116, which is how the ordering was confirmed rather than
 guessed.
 
-⚠️ Still layout-driven and NOT reproduced: the tile HEIGHT. The live tile shows ~4 rows because
-that dashboard gives it a short slot, where the captured one is 703 tall. Ours is the measured
-full-width 589.
+✅ **THE TILE HEIGHT IS A CONSTANT 601, NOT LAYOUT-DRIVEN — this was recorded here as an open
+item and the three captures close it.** Measured on an 863px tile, a 1760px tile with 6 columns
+and a 1760px tile with 12: the grid box is **601** every time and the tile **703** every time.
+Height tracks neither width nor column count. It decomposes as 2 (border) + 49 (header) + body
++ 65 (aggregation row), where the body is **485** when nothing scrolls sideways and **477**
+when the 8px horizontal scrollbar takes its space — both fall out of the fixed 601 rather than
+being set anywhere. One `max-height: 601px` reproduces every case; the earlier 589 was
+assembled from parts (48 + 477 + 64) and came out 12px short.
+
+⚠️ **AND THERE ARE 27px OF AIR UNDER THE TILE TITLE**, on all three captures, where ours had
+the grid starting immediately below the heading. Scoped to the report grid, though the 27
+almost certainly belongs to the tile chrome and therefore to every ts template — the gap falls
+OUTSIDE the svg, so none of the chart measurements would have caught its absence. Applying it
+globally means re-verifying nine signed-off templates, which is its own pass.
+Verified after both changes: grid box 601, title-to-grid 27, header 49, aggregation row 65,
+caption 33, 486 of visible rows against the reference's 485 — diff empty.
+
+⚠️ **`__` IS DATA, NOT A SECOND ABSENCE MARKER.** One cell renders as what looks like an em
+dash beside neighbours reading `{Null}`, which invites a rule about two kinds of absence. Its
+code points are **U+005F U+005F** — two underscores, a real search-term value in that account.
+Checked because the glyph was about to become a template rule; `{Null}` is the only absence
+marker (66 cells in that capture, zero dashes).
+
+❌ **REFUTED: the all-`{Null}` row does NOT sort first.** This section previously carried that
+as an inference from a single capture whose first row was fully null. With three captures the
+rule breaks: two of them lead with THREE fully-null rows whose ids are not in order (E79C,
+4D95, AAA5), then ascend from 0093 — but `02B8-1C6F2B5EAA41`, also fully null, sits in its
+ascending position rather than at the top. So nulls are not hoisted, and whatever orders those
+leading rows is not visible in the grid. Left alone rather than implemented on a guess.
 
 ⚠️ **`height: auto` HAD TO BE SAID OUT LOUD.** The base `.ts-table td` pins 50px, so every
 row sat at 50 against a measured 31 while the `--report` rule looked complete (it set the
