@@ -178,17 +178,28 @@ about moving them to **Gold**. Two extra rows on My Reports —
 `/reports/conversation-intelligence/silver|gold`. `src/data/signalTiers.ts` holds the content;
 `ConversationIntelligence.tsx` gained an **opt-in `tier` prop**.
 
-⚠️ **THE BASE REPORT IS BYTE-IDENTICAL AND THAT IS ENFORCED BY STRUCTURE, NOT CARE.** `tier`
-defaults to undefined, every tier block sits behind a `t &&` guard, and the untiered signal
-list keeps its ORIGINAL markup in an `else` branch rather than being refactored into the new
-one — folding them together would have meant editing the line the base report renders.
-Verified: 9 signals with their original badges, "MET SIGNALS" with no count, **zero
-`[class*="ci-tier"]` elements**, same title, same 19 turns, same 82% ring.
+⚠️⚠️ **V2 EXISTS BECAUSE V1 SHOWED THINGS THE PRODUCT CANNOT DO, AND THAT IS THE LESSON.** The
+first build (commit `a64c73f`) added a tier pill on the header, a sub-header, a fired-count, a
+caller-sentiment ribbon, a Signal AI Discovery panel, a "what reaches your systems" panel,
+explanatory notes under every signal row and a locked AI Summary tab. All of it read well and
+**none of it exists on Invoca's real CI report** — so a prospect who knows the platform sees a
+screen that could not exist and the demo stops being evidence. Removed on request the same day.
+**Anything added back has to exist on the real report first.** A replica that out-features the
+product is not a better demo, it is a worse one.
 
-⚠️ **THE WHOLE ARGUMENT IS THE MISS, ANCHORED IN REAL TURNS OF THEIR OWN CALL** — not the
-HCSC Medicare script the request arrived with. Health Spring's transcript is Diana Whitfield,
-new to Texas, no coverage, ~$500/month. Silver misses three signals and each UNMET row prints
-the phrases the engine was listening for:
+**What V2 renders, and it is only this:** the signal rail, split MET / UNMET, with the tier's
+own badges. Silver 4 met + **3 unmet** (7 rows), Gold 13 met (13 rows). Everything else on the
+page — header, toolbar, call list, transcript, Call Scoring, every other tab — is the base
+report untouched.
+
+⚠️ **THE TALK TRACK MOVED TO THE COMMENTS TAB**, which is a REAL tab on this screen holding
+real free text anchored to a call time (the centre column already reads "Add comment at 0:00").
+So the timing and the phrase-list explanations are one click away mid-demo and invisible while
+the rail is on show. Silver gets 4 comments, Gold 5.
+
+⚠️ **THE MISSES ARE ANCHORED IN REAL TURNS OF THEIR OWN CALL** — not the HCSC Medicare script
+the request arrived with. Health Spring's transcript is Diana Whitfield, new to Texas, no
+coverage, ~$500/month:
 | turn | said | Silver's list |
 |---|---|---|
 | 1:52 | "I'd like to move forward" | "sign me up", "enroll me", "I want to apply" |
@@ -200,27 +211,32 @@ just produces a slightly lower number.
 
 ⚠️ **SILVER'S HITS ARE HONEST, OR THE DEMO IS A STRAWMAN.** Silver DOES fire on
 "Consultation: Scheduled" (the AGENT says "schedule a consultation" at 1:59 — a phrase list
-genuinely catches that, and the row says so) and on Prescription Coverage, because the word is
-spoken twice. A comparison where the incumbent detects nothing is one a prospect stops
+genuinely catches that, and the Comments tab says so) and on Prescription Coverage, because the
+word is spoken twice. A comparison where the incumbent detects nothing is one a prospect stops
 believing.
 
-⚠️ **SILVER IS DELIBERATELY SHORT: 7 rows (4 met / 3 unmet) against Gold's 13.** A phrase
-library is maintained by hand, so its length is itself part of what is being sold against.
+⚠️ **SILVER IS DELIBERATELY SHORT: 7 rows against Gold's 13.** A phrase library is maintained
+by hand, so its length is part of what is being sold against.
 ⚠️ **GOLD CARRIES ALL THREE BADGE TYPES — Rules Based, Keyword Spotting AND AI** (verified: 9
-AI badges, all three types present). Gold does not replace the deterministic detections; the
-QA and routing signals keep their original badges and the three misses come back as AI.
-⚠️ **SILVER'S EMPTY PANELS SAY WHY THEY ARE EMPTY.** Its AI Summary tab is a LOCKED capability
-statement, deliberately NOT the existing "regenerate this prospect" empty state, which reads
-as our tool being broken. Sentiment and Discovery print "Not available on Signal AI Silver"
-rather than nothing — a blank rail reads as a screen that failed to load.
-⚠️ **THE DOWNSTREAM PANEL IS THE MARKETING ARGUMENT**: Silver posts no conversion, so Smart
-Bidding optimises against an understated count and bids DOWN the campaigns producing
-consultations. Same call, opposite signal to the algorithm.
-⚠️ **HEALTH SPRING ONLY**, both the rows and the routes (`hasTierReports` / the screen's own
-refusal). Verified on another prospect: 0 tier rows on My Reports and the route renders "Not
-available for <prospect>" with 0 tier elements.
-⚠️ **CSS is all-new `.ci-tier-*`** plus `.ci-sig-x` / `.ci-badge--ai` / `.ci-mood-*`; grepped
-for zero prior uses before writing, so nothing above it in app.css changes.
+AI badges, all three types on one rail). Gold does not replace the deterministic detections;
+the QA and routing signals keep their original badges and the three misses come back as AI.
+
+⚠️ **THE BASE REPORT IS BYTE-IDENTICAL AND THAT IS STRUCTURAL, NOT CAREFUL.** `tier` defaults
+to undefined, every tier block sits behind a `t &&` guard, and the untiered signal list keeps
+its ORIGINAL markup in an `else` branch rather than being refactored into the new one.
+Verified: original badges, "MET SIGNALS" with no count, Comments back to its empty state, and
+**zero `[class*="ci-tier"]` / `[class*="ci-cmt"]` elements**.
+⚠️ **HEALTH SPRING ONLY**, both the rows and the routes. Verified on another prospect: 0 tier
+rows on My Reports and the route renders "Not available for <prospect>".
+⚠️ **CSS is all-new `.ci-tier-*` / `.ci-cmt-*` plus `.ci-sig-x` and `.ci-badge--ai`**; grepped
+for zero prior uses before writing.
+
+⚠️ **PREVIEWING A LIVE-ONLY DEMO LOCALLY:** Health Spring lives on the server, so a
+`health-spring-preview` profile was built by grafting its REAL `conversationIntelligence` slice
+(pulled from `/api/demos/health-spring` in a signed-in tab) onto a local profile. It is in
+`.gitignore` so it can never reach the live site, and only the CI reports on it are faithful —
+every other screen is another account's data wearing the name. Same trick as the Comfort
+Keepers retarget, but with real data instead of a renamed matcher.
 
 ### AI Conversion by <Location> (`/dashboards/ai-conversion-by-location`)
 ⚠️⚠️ **COMFORT KEEPERS ONLY (scoped 8/24/2026, at the user's request).** It is the one dashboard

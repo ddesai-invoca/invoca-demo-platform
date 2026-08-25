@@ -6,32 +6,45 @@ import { isProspect, HEALTH_SPRING } from "./prospect";
    -----------------------------------------------------------------------------
    Built 8/24/2026 for a Health Spring upsell call: they run Signal AI Silver today and the
    conversation is about moving them to Gold. The template is the prospect's own Conversation
-   Intelligence report; what changes per tier is WHICH SIGNALS FIRE, WHAT BADGES they carry,
-   and which Gold-only panels exist at all.
+   Intelligence report; the ONLY things that differ per tier are which signals fired, whether
+   they are met or unmet, and what badges they carry.
 
-   ⚠️ **THE WHOLE ARGUMENT IS THE MISS, AND IT IS ANCHORED IN REAL TURNS OF THEIR OWN CALL.**
-   Silver matches phrases; Gold reads intent. So the demo only lands if the misses are ones a
-   prospect can verify by reading the transcript sitting next to the rail:
+   ⚠️⚠️ **VERSION 2, AND THE REASON FOR IT IS THE WHOLE RULE OF THIS REPO: THE REPLICA MAY NOT
+   DO WHAT THE PRODUCT CANNOT.** V1 (commit a64c73f) also put a tier pill on the header, a
+   sub-header, a fired-count, a caller-sentiment ribbon, a Signal AI Discovery panel, a
+   "what reaches your systems" panel and a locked AI Summary tab into the rail. Every one of
+   those was invented chrome — Invoca's real CI report has none of it — so a prospect who
+   knows the product sees a screen that could not exist, and the demo stops being evidence.
+   They were removed on request 8/24/2026. Anything added back here has to exist on the real
+   report first.
+
+   ⚠️ **THE ARGUMENT NOW LIVES IN THE SIGNAL LIST ALONE**, which is exactly where the product
+   puts it: Silver shows 4 met and 3 UNMET, Gold shows 13 met with AI badges. The commentary
+   that used to sit under each row moved to the COMMENTS TAB (see `comments` below) — a real
+   tab on the real report, holding real free text anchored to a call time.
+
+   ⚠️ **THE MISSES ARE ANCHORED IN REAL TURNS OF THEIR OWN CALL**, not the HCSC Medicare
+   script the request arrived with. Health Spring's transcript is Diana Whitfield, new to
+   Texas, no coverage, about $500 a month:
 
    | turn | what the caller actually said | why Silver misses it |
    |---|---|---|
-   | 1:52 | "I'd like to move forward but I have questions about the deductible and subsidies" | the phrase list has "sign me up" / "enroll me" / "I want to apply" — none were said |
-   | 0:45 | "I'd like to stay around five hundred a month if I can" | the list has "too expensive" / "cheaper" / "what does it cost" — none were said |
+   | 1:52 | "I'd like to move forward" | the phrase list has "sign me up" / "enroll me" / "I want to apply" |
+   | 0:45 | "I'd like to stay around five hundred a month if I can" | the list has "too expensive" / "cheaper" / "what does it cost" |
    | 0:07 | "I don't have coverage yet" | the list has "uninsured" / "no insurance" / "lost my coverage" |
 
    That first row is the lead of the call. The consultation IS booked ninety seconds later, so
    Silver logs a real conversion as a non-conversion — and a missed signal raises no alert, it
-   just produces a slightly lower number. Nobody would ever know.
+   just produces a slightly lower number.
 
    ⚠️ **SILVER'S HITS ARE HONEST TOO, or the demo is a strawman.** Silver fires on
    "Consultation: Scheduled" — the AGENT says "schedule a consultation" at 1:59, which a phrase
    list genuinely catches — and on Prescription Coverage, because the word "prescriptions" is
    spoken twice. A tier comparison where the old product detects nothing is one a prospect
-   stops believing. What Gold adds is the intent that was never said in matching words.
+   stops believing.
 
-   ⚠️ **SCOPED TO HEALTH SPRING.** `tierReports()` returns nothing for every other prospect, so
-   the two rows never appear on anyone else's My Reports and the routes refuse. To open this up
-   later, widen that one function — the tier content below is per-prospect data, not a template.
+   ⚠️ **SCOPED TO HEALTH SPRING.** `hasTierReports()` is false for every other prospect, so the
+   two rows never appear on anyone else's My Reports and the routes refuse.
    ============================================================================= */
 
 export type SignalTier = "silver" | "gold";
@@ -43,32 +56,31 @@ export interface TierSignal {
   badges: string[];
   count: number;
   met: boolean;
-  /** Shown under an UNMET signal: the phrases the engine was looking for and did not hear. */
-  missNote?: string;
-  /** Shown under a MET signal on the Gold rail: the turn the intent was read from. */
-  hitNote?: string;
 }
 
-export interface DownstreamRow {
-  system: string;
-  value: string;
-  /** "good" prints in blue as a win, "bad" in red as the loss, undefined is neutral. */
-  tone?: "good" | "bad";
+/**
+ * One entry on the Comments tab.
+ *
+ * ⚠️ **THIS IS THE TALK TRACK, PARKED SOMEWHERE THE PRODUCT ACTUALLY HAS.** The timing and the
+ * phrase-list explanations used to print under each signal row, which no real Invoca report
+ * does. A comment anchored to a call time is a real feature of this screen, so the same
+ * argument now sits one tab away: invisible while the rail is on show, and there to read out
+ * when a prospect asks why a signal did or did not fire.
+ */
+export interface TierComment {
+  /** Call timecode the comment is anchored to, e.g. "1:52". */
+  time: string;
+  /** The signal it explains — the comment's subject line. */
+  signal: string;
+  text: string;
+  /** True when it explains a MISS; renders with the muted treatment. */
+  miss?: boolean;
 }
 
 export interface TierView {
   tier: SignalTier;
-  label: string;              // "Signal AI Silver"
-  /** One line under the title explaining what this engine can do. */
-  blurb: string;
   signals: TierSignal[];
-  /** Gold only — the sentiment ribbon. Empty on Silver, which cannot produce one. */
-  sentiment: { slots: ("pos" | "neu" | "neg")[]; label: string } | null;
-  /** Gold only — Discovery themes across the prospect's volume. */
-  themes: { label: string; pct: number }[] | null;
-  /** Gold only — whether the AI Summary tab has anything in it. */
-  hasAiSummary: boolean;
-  downstream: DownstreamRow[];
+  comments: TierComment[];
 }
 
 /* -----------------------------------------------------------------------------
@@ -80,34 +92,38 @@ export interface TierView {
 const SILVER_SIGNALS: TierSignal[] = [
   { name: "(QA) Proper Greeting", badges: ["Keyword Spotting", "Rules Based"], count: 3, met: true },
   { name: "Answered by Agent", badges: ["Rules Based"], count: 0, met: true },
-  { name: "Consultation: Scheduled", badges: ["Keyword Spotting"], count: 1, met: true,
-    hitNote: `Matched "schedule a consultation" at 1:59 — spoken by the AGENT, not the caller.` },
+  { name: "Consultation: Scheduled", badges: ["Keyword Spotting"], count: 1, met: true },
   { name: "Prescription Coverage Inquiry", badges: ["Keyword Spotting"], count: 2, met: true },
-  { name: "Enrollment Intent", badges: ["Keyword Spotting"], count: 0, met: false,
-    missNote: `1:52 "I'd like to move forward." The list has "sign me up", "enroll me", "I want to apply". None were said.` },
-  { name: "Price Sensitivity", badges: ["Keyword Spotting"], count: 0, met: false,
-    missNote: `0:45 "I'd like to stay around five hundred a month if I can." The list has "too expensive", "cheaper", "what does it cost".` },
-  { name: "Coverage Gap: Uninsured", badges: ["Keyword Spotting"], count: 0, met: false,
-    missNote: `0:07 "I don't have coverage yet." The list has "uninsured", "no insurance", "lost my coverage".` },
+  { name: "Enrollment Intent", badges: ["Keyword Spotting"], count: 0, met: false },
+  { name: "Price Sensitivity", badges: ["Keyword Spotting"], count: 0, met: false },
+  { name: "Coverage Gap: Uninsured", badges: ["Keyword Spotting"], count: 0, met: false },
+];
+
+const SILVER_COMMENTS: TierComment[] = [
+  { time: "1:52", signal: "Enrollment Intent", miss: true,
+    text: `Caller: "I'd like to move forward." No phrase matched. The configured list holds "sign me up", "enroll me" and "I want to apply", and none of them were said. This is the lead of the call, and the consultation is booked ninety seconds later, so the call logs as a non-conversion.` },
+  { time: "0:45", signal: "Price Sensitivity", miss: true,
+    text: `Caller: "I'd like to stay around five hundred a month if I can." No phrase matched. The list holds "too expensive", "cheaper" and "what does it cost". A budget stated as a preference is still a budget.` },
+  { time: "0:07", signal: "Coverage Gap: Uninsured", miss: true,
+    text: `Caller: "I don't have coverage yet." No phrase matched. The list holds "uninsured", "no insurance" and "lost my coverage".` },
+  { time: "1:59", signal: "Consultation: Scheduled",
+    text: `Matched "schedule a consultation" — spoken by the AGENT, not the caller. Phrase spotting works here, and it is worth saying so out loud: the gap is intent, not detection in general.` },
 ];
 
 /* -----------------------------------------------------------------------------
    GOLD — every signal fires, and the three badge types are all present.
    ⚠️ THE BADGE MIX IS THE POINT: Rules Based, Keyword Spotting AND AI on one rail. Gold does
    not replace the deterministic detections, it adds intent on top of them — so the QA and
-   routing signals keep their original badges and the misses come back as AI.
+   routing signals keep their original badges and the three misses come back as AI.
    -------------------------------------------------------------------------- */
 const GOLD_SIGNALS: TierSignal[] = [
   { name: "(QA) Proper Greeting", badges: ["Keyword Spotting", "Rules Based"], count: 3, met: true },
   { name: "(QA) Proper Close", badges: ["Keyword Spotting"], count: 2, met: true },
   { name: "Answered by Agent", badges: ["Rules Based"], count: 0, met: true },
   { name: "Caller Type: New Member", badges: ["AI", "Rules Based"], count: 2, met: true },
-  { name: "Coverage Gap: Uninsured", badges: ["AI"], count: 1, met: true,
-    hitNote: `0:07 "I don't have coverage yet." Read as intent, not matched as a phrase.` },
-  { name: "Price Sensitivity", badges: ["AI"], count: 1, met: true,
-    hitNote: `0:45 A budget stated as a preference is still a budget.` },
-  { name: "Enrollment Intent", badges: ["AI"], count: 1, met: true,
-    hitNote: `1:52 "I'd like to move forward." The lead of the call, and the consultation follows 90 seconds later.` },
+  { name: "Coverage Gap: Uninsured", badges: ["AI"], count: 1, met: true },
+  { name: "Price Sensitivity", badges: ["AI"], count: 1, met: true },
+  { name: "Enrollment Intent", badges: ["AI"], count: 1, met: true },
   { name: "Consultation: Scheduled", badges: ["Keyword Spotting", "AI"], count: 3, met: true },
   { name: "Individual & Family Plan Interest", badges: ["AI"], count: 2, met: true },
   { name: "Dental & Vision Add-On Interest", badges: ["Keyword Spotting", "AI"], count: 2, met: true },
@@ -116,65 +132,18 @@ const GOLD_SIGNALS: TierSignal[] = [
   { name: "Contact Info Captured", badges: ["Rules Based"], count: 3, met: true },
 ];
 
-/* The sentiment ribbon reads the call's own shape: neutral discovery, a positive close once
-   the plan fits and the consultation is booked. Gold only — Silver has no sentiment model at
-   all, which is why its ribbon is absent rather than flat. */
-const GOLD_SENTIMENT: ("pos" | "neu" | "neg")[] = [
-  "neu", "neu", "neu", "neu", "neu", "neu", "neu", "neu",
-  "pos", "pos", "pos", "pos", "pos", "pos", "pos", "pos",
+const GOLD_COMMENTS: TierComment[] = [
+  { time: "1:52", signal: "Enrollment Intent",
+    text: `Caller: "I'd like to move forward." Read as intent rather than matched as a phrase, which is why it fires here and not on Silver. The consultation is booked ninety seconds later, so the conversion is credited to the call that produced it.` },
+  { time: "0:45", signal: "Price Sensitivity",
+    text: `Caller: "I'd like to stay around five hundred a month if I can." A budget stated as a preference is still a budget. No phrase on any list would have caught this wording.` },
+  { time: "0:07", signal: "Coverage Gap: Uninsured",
+    text: `Caller: "I don't have coverage yet." Detected from meaning; the words "uninsured" and "no insurance" never appear in the call.` },
+  { time: "1:59", signal: "Consultation: Scheduled",
+    text: `Fires on both tiers. Gold keeps the keyword detection and adds intent on top of it, which is why this row carries two badges rather than replacing one with the other.` },
+  { time: "2:22", signal: "Contact Info Captured",
+    text: `Rules based, unchanged between tiers. Worth pointing at when the question is "does Gold replace what we already have" — it does not.` },
 ];
-
-/* ⚠️ DISCOVERY IS ACROSS THEIR VOLUME, NOT THIS CALL — the heading says so on screen. These
-   are themes nobody wrote a signal for, which is the argument: you cannot phrase-match a
-   question you did not know callers were asking. */
-const GOLD_THEMES: { label: string; pct: number }[] = [
-  { label: "Deductible and subsidy eligibility confusion", pct: 31 },
-  { label: "Relocated to state, no coverage in place", pct: 24 },
-  { label: "Specialist access without referrals", pct: 19 },
-  { label: "Dental and vision asked for as an add-on", pct: 16 },
-  { label: "Monthly premium stated as a hard ceiling", pct: 12 },
-];
-
-/* -----------------------------------------------------------------------------
-   DOWNSTREAM — where the miss actually costs money.
-   ⚠️ THIS IS THE MARKETING ARGUMENT AND IT IS THE REASON THE PANEL EXISTS. Silver posts no
-   conversion, so Smart Bidding optimises against an understated count and bids DOWN the exact
-   campaigns producing consultations. Same call, opposite signal to the algorithm.
-   -------------------------------------------------------------------------- */
-const SILVER_DOWNSTREAM: DownstreamRow[] = [
-  { system: "Salesforce", value: "Lead created, status Prospect" },
-  { system: "Conversion", value: "Not flagged, no phrase matched", tone: "bad" },
-  { system: "Google Ads", value: "No conversion sent", tone: "bad" },
-  { system: "Adobe", value: "Call logged, no intent segment" },
-];
-
-const GOLD_DOWNSTREAM: DownstreamRow[] = [
-  { system: "Salesforce", value: "Lead + Enrollment Intent + Consultation Booked", tone: "good" },
-  { system: "Conversion", value: "Enrollment Intent, consultation booked", tone: "good" },
-  { system: "Google Ads", value: "Conversion posted to Smart Bidding", tone: "good" },
-  { system: "Adobe", value: "Suppression audience + open-enrollment intent segment", tone: "good" },
-];
-
-const VIEWS: Record<SignalTier, Omit<TierView, "tier">> = {
-  silver: {
-    label: "Signal AI Silver",
-    blurb: "Matches the exact words and phrases on your list. Nothing else counts.",
-    signals: SILVER_SIGNALS,
-    sentiment: null,
-    themes: null,
-    hasAiSummary: false,
-    downstream: SILVER_DOWNSTREAM,
-  },
-  gold: {
-    label: "Signal AI Gold",
-    blurb: "Reads meaning from the whole conversation, however the caller phrases it.",
-    signals: GOLD_SIGNALS,
-    sentiment: { slots: GOLD_SENTIMENT, label: "Positive · plan fit confirmed" },
-    themes: GOLD_THEMES,
-    hasAiSummary: true,
-    downstream: GOLD_DOWNSTREAM,
-  },
-};
 
 /** True when this prospect has the Silver / Gold pair of reports. */
 export function hasTierReports(p: { id: string; customerName: string }): boolean {
@@ -190,10 +159,7 @@ export function hasTierReports(p: { id: string; customerName: string }): boolean
  */
 export function tierView(profile: CustomerProfile, tier: SignalTier): TierView | null {
   if (!hasTierReports(profile)) return null;
-  return { tier, ...VIEWS[tier] };
-}
-
-/** Counts for the header strip: how many of the engine's own signals fired. */
-export function tierScore(v: TierView): { met: number; total: number } {
-  return { met: v.signals.filter((s) => s.met).length, total: v.signals.length };
+  return tier === "silver"
+    ? { tier, signals: SILVER_SIGNALS, comments: SILVER_COMMENTS }
+    : { tier, signals: GOLD_SIGNALS, comments: GOLD_COMMENTS };
 }
