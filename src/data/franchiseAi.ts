@@ -1,6 +1,7 @@
 import type { CustomerProfile } from "./schema";
 import { apportion, leadFormFacts } from "./leadForms";
 import { vocabFor } from "./insightsCatalog";
+import { isProspect, COMFORT_KEEPERS } from "./prospect";
 
 /* =============================================================================
    AI Conversion by <Location> — the org total, then the same numbers per franchise.
@@ -89,6 +90,38 @@ export interface FranchiseAiView {
   };
   channels: ChannelTotal[];
   rows: FranchiseRow[];
+}
+
+/**
+ * What this prospect calls one of its locations, on THIS screen.
+ *
+ * ⚠️ **COMFORT KEEPERS CALLS THEM FRANCHISES, AND `vocabFor` SAYS "Community".** That is the
+ * right word for a senior-living operator's own sites and the wrong one for a FRANCHISE
+ * NETWORK, whose `locationHandling` rows are literally "Comfort Keepers of Memphis" — those
+ * are franchisees, not communities. The dashboard was asked for as a franchise breakdown, so
+ * the screen it is scoped to should say so.
+ *
+ * ⚠️ **OVERRIDDEN HERE, NOT IN `vocabFor`.** That helper feeds the Insights column catalogue,
+ * the Configuration drawer's field list and the question catalogue, so changing it would
+ * rename things on screens nobody asked about — the standing "a change for one screen stays
+ * on that screen" rule. Every other prospect still gets `vocabFor`'s answer.
+ */
+function locationNoun(p: { id: string; customerName: string }, fallback: string): string {
+  return isProspect(p, COMFORT_KEEPERS) ? "Franchise" : fallback;
+}
+
+/**
+ * Plural of a location noun.
+ *
+ * ⚠️ **"All Communitys" WAS ON SCREEN.** The org card read `All ${noun}s`, which is fine for
+ * Franchise / Showroom / Store / Branch and visibly broken for the two nouns ending in **y**
+ * — Community and Facility — so Orlando Health has been reading "All Facilitys" since this
+ * screen shipped. A naive `+ "s"` is only correct until the vocabulary grows one word.
+ */
+export function pluralNoun(noun: string): string {
+  if (/[^aeiou]y$/i.test(noun)) return `${noun.slice(0, -1)}ies`;
+  if (/(s|x|z|ch|sh)$/i.test(noun)) return `${noun}es`;
+  return `${noun}s`;
 }
 
 /** Find a column by HEADER, never by index — the engine owns the column order. */
@@ -226,7 +259,7 @@ export function franchiseAiView(profile: CustomerProfile): FranchiseAiView | nul
   }));
 
   return {
-    locationNoun: v.location,
+    locationNoun: locationNoun(profile, v.location),
     org: {
       calls: orgCalls, forms: formCount,
       bookingRate: orgCalls ? (orgBooked / orgCalls) * 100 : 0,

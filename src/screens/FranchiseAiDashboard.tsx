@@ -6,7 +6,7 @@ import { DashTileMenu } from "../components/DashTileMenu";
 import { DashAssistant, usePageDataWithLabels } from "../components/GeneratedTiles";
 import { HBarChart } from "../components/HBarChart";
 import { tileId } from "../data/tileId";
-import { franchiseAiView, type FranchiseRow } from "../data/franchiseAi";
+import { franchiseAiView, pluralNoun, type FranchiseRow } from "../data/franchiseAi";
 import { isProspect, COMFORT_KEEPERS } from "../data/prospect";
 
 /* =============================================================================
@@ -31,13 +31,17 @@ import { isProspect, COMFORT_KEEPERS } from "../data/prospect";
    to another screen has to be labelled, not quietly mixed in with ones that can.
    ============================================================================= */
 
+/* ⚠️ `{noun}` IS RESOLVED AT RENDER, so a heading names what THIS prospect calls a location
+   ("By Franchise", not "By Location"). It stays a token in LABELS rather than being baked in,
+   because these are AI-editable labels: an SE who renames one simply drops the token, and
+   `fill()` is then a no-op on their text rather than clobbering it. */
 const LABELS = {
   title: "AI Conversion by Location",
   org: "Whole Organization",
   channels: "AI Conversion by Channel",
-  perLocation: "By Location",
+  perLocation: "By {noun}",
   table: "AI Conversion Scorecard",
-  ranking: "After-Hours Opportunity by Location",
+  ranking: "After-Hours Opportunity by {noun}",
   calls: "Call Count",
   forms: "Lead Forms (Count)",
   bookingRate: "Booked (Percent)",
@@ -135,6 +139,8 @@ export function FranchiseAiDashboard() {
   }
 
   const noun = derived.locationNoun;
+  /** Resolve `{noun}` in a label; a no-op on a label the AI has renamed. */
+  const fill = (s: string) => s.replace(/\{noun\}/g, noun);
   /* Axis headroom rounded up to a clean step, so the longest bar does not touch the edge. */
   const rankMax = (() => {
     const top = Math.max(...rows.map((r) => r.afterHours.revenue), 1);
@@ -156,7 +162,7 @@ export function FranchiseAiDashboard() {
       {/* ---- row 1: the whole organization ---- */}
       <h2 className="fai-section">{L.org}</h2>
       <section className="dash-card">
-        <CardHead title={`${profile.customerName} (All ${noun}s)`} />
+        <CardHead title={`${profile.customerName} (All ${pluralNoun(noun)})`} />
         <div className="kpi-grid">
           <Tile label={L.calls} value={int(org.calls)} />
           <Tile label={L.forms} value={int(org.forms)} />
@@ -182,7 +188,7 @@ export function FranchiseAiDashboard() {
       </div>
 
       {/* ---- row 3: a card per franchise, the shape the Location screen uses ---- */}
-      <h2 className="fai-section">{L.perLocation}</h2>
+      <h2 className="fai-section">{fill(L.perLocation)}</h2>
       <div className="aac-conv-grid"
         style={{ gridTemplateColumns: `repeat(${Math.min(rows.length, 4)}, 1fr)` }}>
         {rows.map((r) => (
@@ -262,9 +268,9 @@ export function FranchiseAiDashboard() {
       </section>
 
       {/* ---- where the missed calls actually are ---- */}
-      <h2 className="fai-section">{L.ranking}</h2>
+      <h2 className="fai-section">{fill(L.ranking)}</h2>
       <section className="dash-card">
-        <CardHead title={L.ranking} />
+        <CardHead title={fill(L.ranking)} />
         <HBarChart
           chart={{
             legend: L.channelRevenue,

@@ -197,8 +197,24 @@ After Hours**. `FranchiseAiDashboard.tsx` + `src/data/franchiseAi.ts` (all the a
 **Derived**, like Location Comparison: no schema slice, no engine phase, so generation time is
 unchanged and any prospect it is opened up to gets it for free. Listed only when the prospect
 is Comfort Keepers AND has BOTH `locationHandling.rows` and `aiAgentConversion.conversionCards`,
-since the channels are read off those cards. The title uses the prospect's own noun via `vocabFor` —
-"Facility" for a hospital, "Showroom" / "Store" / "Branch" / "Location" elsewhere.
+since the channels are read off those cards. The title, both section headings and the table's first column all use the prospect's own noun.
+
+⚠️ **THE NOUN IS OVERRIDDEN TO "Franchise" FOR COMFORT KEEPERS, and `vocabFor` is left alone.**
+That helper answers "Community" for a senior-care operator, which is right for its own sites
+and wrong for a FRANCHISE NETWORK whose `locationHandling` rows are literally "Comfort Keepers
+of Memphis". The dashboard was asked for as a franchise breakdown, so the row read "AI
+Conversion by Community" and was easy to scan straight past in the list. Overridden in
+`franchiseAi.ts` rather than in `vocabFor`, which also feeds the Insights column catalogue, the
+Configuration drawer and the question catalogue — renaming it there would change screens nobody
+asked about.
+
+⚠️ **"All Communitys" WAS ON SCREEN, and "All Facilitys" had been since this shipped.** The org
+card built its plural as `noun + "s"`, which is fine for Franchise / Showroom / Store / Branch
+and visibly broken for the two nouns ending in **y**. `pluralNoun()` handles y/s/x/ch/sh; unit
+tested on all eight nouns the vocabulary can produce.
+⚠️ **The headings carry a `{noun}` TOKEN resolved at render**, not a baked-in string, because
+they are AI-editable labels: an SE who renames one drops the token and `fill()` becomes a no-op
+on their text instead of overwriting it.
 
 ⚠️ **EVERY COLUMN RECONCILES, AND IT IS ASSERTED ACROSS ALL 11 PROFILES** (nine checks: calls,
 revenue, forms, each channel's revenue, each voice channel's interactions, voice + after hours
