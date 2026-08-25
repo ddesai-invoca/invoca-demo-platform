@@ -4602,3 +4602,67 @@ button.nav-item {
   font-size: 20px; font-weight: 700; color: #3d3d3d; margin: 24px 0 10px;
 }
 .fai-section:first-of-type { margin-top: 12px; }
+
+/* ============================================================================
+   Conversation Intelligence — the Signal AI SILVER / GOLD report pair (8/24/2026)
+   ----------------------------------------------------------------------------
+   ⚠️ EVERY SELECTOR HERE IS NEW AND `.ci-tier-`-PREFIXED (plus three siblings the base rail
+   never defined: .ci-sig-x, .ci-badge--ai, .ci-mood-*). Nothing above is edited, so the plain
+   Conversation Intelligence report is untouched — the same opt-in discipline the screen's own
+   `tier` prop follows. Grepped before writing: zero prior uses of any of these names.
+   ========================================================================== */
+
+/* --- header --- */
+.ci-tier-chip { display: inline-block; margin-left: 12px; vertical-align: middle;
+  font-size: 11px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
+  border-radius: 999px; padding: 5px 12px; }
+.ci-tier-chip--silver { background: #eef0f3; color: #5b6577; border: 1px solid #d7dbe0; }
+.ci-tier-chip--gold { background: #15243e; color: #fff; }
+.ci-tier-blurb { margin: 6px 0 0; font-size: 13px; color: var(--color-text-muted);
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ci-tier-fired { font-weight: 700; color: #0d7a3e; }
+/* The short count is the whole argument, so it is the one red thing on the page. */
+.ci-tier-fired.is-short { color: #b3261e; }
+
+/* --- signal rows --- */
+.ci-tier-sig { flex-wrap: wrap; align-items: flex-start; }
+.ci-tier-sig .ci-sig-name { padding-top: 1px; }
+.ci-sig-x { color: #b0b7c0; font-size: 20px; flex-shrink: 0; }
+.ci-tier-sig.is-unmet .ci-sig-name { color: var(--color-text-muted); }
+.ci-sig-sub--unmet { margin-top: 18px; padding-top: 14px; border-top: 1px solid #e7e9eb; }
+/* AI is the badge that only exists on Gold, so it is the one that reads as new. */
+.ci-badge--ai { background: #e7e0f9; color: #440066; }
+.ci-tier-note { flex-basis: 100%; margin: 6px 0 0 28px; font-size: 11.5px; line-height: 1.5;
+  color: var(--color-text-muted); border-left: 2px solid #e7e9eb; padding-left: 10px; }
+.ci-tier-note.is-miss { border-left-color: #b3261e; color: #7a3a34; }
+
+/* --- gold-only panels --- */
+.ci-tier-head { margin-top: 22px; }
+.ci-tier-none { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--color-text-muted);
+  background: #f5f6fa; border-radius: 6px; padding: 12px 14px; }
+.ci-tier-sub { margin: 0 0 10px; font-size: 11.5px; color: var(--color-text-muted); }
+.ci-tier-mood { margin-top: 2px; }
+.ci-tier-moodbar { display: flex; gap: 3px; height: 22px; }
+.ci-tier-moodbar span { flex: 1; border-radius: 3px; }
+.ci-mood-pos { background: #0d7a3e; }
+.ci-mood-neu { background: #d7dbe0; }
+.ci-mood-neg { background: #b3261e; }
+.ci-tier-moodlab { margin-top: 8px; font-size: 12px; font-weight: 600; color: #0d7a3e; }
+.ci-tier-theme { display: flex; align-items: center; gap: 10px; padding: 7px 0; }
+.ci-tier-theme-lb { flex: 1.3; font-size: 12.5px; color: var(--color-text); }
+.ci-tier-theme-bar { flex: 1; height: 6px; border-radius: 999px; background: #eef0f3; overflow: hidden; }
+.ci-tier-theme-bar i { display: block; height: 100%; background: #2666f9; }
+.ci-tier-theme-pc { width: 34px; text-align: right; font-size: 11.5px; font-weight: 700; color: #2666f9; }
+.ci-tier-points { margin: 0; padding-left: 18px; font-size: 12.5px; line-height: 1.6; color: var(--color-text); }
+.ci-tier-points li { margin-bottom: 5px; }
+
+/* --- downstream --- */
+.ci-tier-out { border: 1px solid #e7e9eb; border-radius: 6px; overflow: hidden; }
+.ci-tier-outrow { display: flex; gap: 10px; padding: 9px 12px; font-size: 12.5px; }
+.ci-tier-outrow + .ci-tier-outrow { border-top: 1px solid #e7e9eb; }
+.ci-tier-outk { width: 74px; flex: none; font-size: 11px; font-weight: 700; letter-spacing: .3px;
+  text-transform: uppercase; color: var(--color-text-muted); padding-top: 1px; }
+.ci-tier-outv { color: var(--color-text); }
+.ci-tier-outrow.is-bad .ci-tier-outv { color: #b3261e; font-weight: 600; }
+.ci-tier-outrow.is-good .ci-tier-outv { color: #0d5400; font-weight: 600; }
+.ci-tier-locked .material-icons { color: #a1a7b2; }

@@ -36,3 +36,6 @@ export function isProspect(
 
 /** The prospect the franchise AI dashboard was built for. */
 export const COMFORT_KEEPERS = "comfort keepers";
+
+/** The prospect the Signal AI Silver / Gold report pair was built for. */
+export const HEALTH_SPRING = "health spring";

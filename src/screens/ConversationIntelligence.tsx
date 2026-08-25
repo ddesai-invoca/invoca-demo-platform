@@ -4,6 +4,7 @@ import { useProfile } from "../data/ProfileContext";
 import { Pill } from "../components/Pill";
 import type { CITranscriptTurn } from "../data/schema";
 import { usePageData, DashAssistant } from "../components/GeneratedTiles";
+import { tierView, tierScore, type SignalTier, type TierSignal, type TierView } from "../data/signalTiers";
 
 /* Bold + underline the signal-keyword phrases inside a transcript turn. */
 function Highlighted({ turn }: { turn: CITranscriptTurn }) {
@@ -35,6 +36,32 @@ function ScoreRing({ value }: { value: number }) {
   );
 }
 
+/* One signal row on a tiered report. A MET row is the platform's normal green check; an UNMET
+   row is the grey outline the Call Detail rail already uses for its unmet group — and it
+   carries the phrases the engine was listening for, because "why didn't it fire" is the
+   question the whole comparison exists to answer. */
+function TierRow({ s }: { s: TierSignal }) {
+  return (
+    <div className={"ci-signal ci-tier-sig" + (s.met ? "" : " is-unmet")}>
+      <span className={"material-icons " + (s.met ? "ci-sig-check" : "ci-sig-x")}>
+        {s.met ? "check_circle" : "cancel"}
+      </span>
+      <span className="ci-sig-name">{s.name}</span>
+      {s.badges.map((b) => (
+        <span className={"ci-badge" + (b === "AI" ? " ci-badge--ai" : "")} key={b}>{b}</span>
+      ))}
+      {s.count > 0 && <span className="ci-sig-count">{s.count}</span>}
+      {s.count > 0 && <span className="material-icons ci-sig-caret">expand_more</span>}
+      {(s.missNote || s.hitNote) && (
+        <p className={"ci-tier-note" + (s.missNote ? " is-miss" : "")}>{s.missNote ?? s.hitNote}</p>
+      )}
+    </div>
+  );
+}
+
+const metOf = (v: TierView) => v.signals.filter((s) => s.met);
+const unmetOf = (v: TierView) => v.signals.filter((s) => !s.met);
+
 const TABS = [
   { label: "Analysis", icon: "bar_chart" },
   { label: "Call Info", icon: "call" },
@@ -43,12 +70,31 @@ const TABS = [
   { label: "Deliveries", icon: "work_outline" },
 ];
 
-export function ConversationIntelligence() {
+/* ⚠️ `tier` IS OPT-IN AND DEFAULTS TO UNDEFINED, so the plain Conversation Intelligence report
+   renders exactly as it did before this file learned about tiers — the standing rule that a
+   change for one screen must not touch another. Everything tier-specific below is inside a
+   `t &&` guard, and the Silver/Gold routes are the only callers that pass one. */
+export function ConversationIntelligence({ tier }: { tier?: SignalTier } = {}) {
   const { profile } = useProfile();
   /* Registers this page as the AI scope and returns the slice with any
      edits made ON THIS PAGE overlaid (see usePageData). */
   const d = usePageData(profile.reports.conversationIntelligence);
   const [tab, setTab] = useState("Analysis");
+  const t = tier ? tierView(profile, tier) : null;
+
+  /* A tier route on a prospect that does not have these reports: refuse rather than render a
+     generic pair. The signal names are Health Spring's own. */
+  if (tier && !t) {
+    return (
+      <div className="report-surface">
+        <div className="placeholder"><h2>Not available for {profile.customerName}</h2>
+          <p className="muted">
+            The Signal AI tier comparison was built for a specific account. Open it from{" "}
+            <Link to="/reports">My Reports</Link> on that prospect.
+          </p></div>
+      </div>
+    );
+  }
   if (!d) {
     return (
       <div className="report-surface">
@@ -68,7 +114,20 @@ export function ConversationIntelligence() {
 
       <div className="ci-header">
         <div className="ci-header-left">
-          <h1 className="title ci-title">{d.title}</h1>
+          <h1 className="title ci-title">
+            {d.title}
+            {t && <span className={"ci-tier-chip ci-tier-chip--" + t.tier}>{t.label}</span>}
+          </h1>
+          {t && (
+            <p className="ci-tier-blurb">
+              {t.blurb}
+              {/* The headline number, on the header rather than buried in the rail: this is
+                  the sentence an SE says out loud when the two reports sit side by side. */}
+              <span className={"ci-tier-fired" + (tierScore(t).met < tierScore(t).total ? " is-short" : "")}>
+                {tierScore(t).met} of {tierScore(t).total} signals fired on this call
+              </span>
+            </p>
+          )}
           <div className="toolbar ci-toolbar">
             <div className="view-toggle">
               <div className="view-btn active"><span className="material-icons">grid_on</span></div>
@@ -170,16 +229,85 @@ export function ConversationIntelligence() {
                 <span className="material-icons ci-edit">edit</span>
               </div>
               <div className="ci-sig-search"><span className="material-icons">search</span><input placeholder="" /></div>
-              <div className="ci-sig-sub">MET SIGNALS</div>
-              {d.signals.map((s) => (
-                <div className="ci-signal" key={s.name}>
-                  <span className="material-icons ci-sig-check">check_circle</span>
-                  <span className="ci-sig-name">{s.name}</span>
-                  {s.badges.map((b) => <span className="ci-badge" key={b}>{b}</span>)}
-                  {s.count > 0 && <span className="ci-sig-count">{s.count}</span>}
-                  {s.count > 0 && <span className="material-icons ci-sig-caret">expand_more</span>}
-                </div>
-              ))}
+              {/* ⚠️ TWO RENDER PATHS ON PURPOSE. The untiered report keeps its ORIGINAL markup
+                  below, untouched; a tiered report draws its own met/unmet groups. Folding the
+                  two together would have meant editing the line the base report renders. */}
+              {t ? (
+                <>
+                  <div className="ci-sig-sub">MET SIGNALS ({metOf(t).length})</div>
+                  {metOf(t).map((s) => <TierRow s={s} key={s.name} />)}
+                  {unmetOf(t).length > 0 && (
+                    <>
+                      <div className="ci-sig-sub ci-sig-sub--unmet">UNMET SIGNALS ({unmetOf(t).length})</div>
+                      {unmetOf(t).map((s) => <TierRow s={s} key={s.name} />)}
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  <div className="ci-sig-sub">MET SIGNALS</div>
+                  {d.signals.map((s) => (
+                    <div className="ci-signal" key={s.name}>
+                      <span className="material-icons ci-sig-check">check_circle</span>
+                      <span className="ci-sig-name">{s.name}</span>
+                      {s.badges.map((b) => <span className="ci-badge" key={b}>{b}</span>)}
+                      {s.count > 0 && <span className="ci-sig-count">{s.count}</span>}
+                      {s.count > 0 && <span className="material-icons ci-sig-caret">expand_more</span>}
+                    </div>
+                  ))}
+                </>
+              )}
+
+              {/* ---- Gold-only panels. Their ABSENCE on Silver is the argument, so Silver
+                      renders an explicit "this tier cannot" note rather than nothing at all —
+                      a blank space reads as a screen that failed to load. ---- */}
+              {t && (
+                <>
+                  <div className="ci-section-head ci-tier-head">
+                    <span className="ci-section-title">Caller Sentiment</span>
+                  </div>
+                  {t.sentiment ? (
+                    <div className="ci-tier-mood">
+                      <div className="ci-tier-moodbar">
+                        {t.sentiment.slots.map((k, i) => <span className={"ci-mood-" + k} key={i} />)}
+                      </div>
+                      <div className="ci-tier-moodlab">{t.sentiment.label}</div>
+                    </div>
+                  ) : (
+                    <p className="ci-tier-none">Not available on {t.label}. There is no sentiment model on this tier.</p>
+                  )}
+
+                  <div className="ci-section-head ci-tier-head">
+                    <span className="ci-section-title">Signal AI Discovery</span>
+                  </div>
+                  {t.themes ? (
+                    <div className="ci-tier-themes">
+                      <p className="ci-tier-sub">Themes found across this month's calls that nobody built a signal for.</p>
+                      {t.themes.map((th) => (
+                        <div className="ci-tier-theme" key={th.label}>
+                          <span className="ci-tier-theme-lb">{th.label}</span>
+                          <span className="ci-tier-theme-bar"><i style={{ width: `${th.pct}%` }} /></span>
+                          <span className="ci-tier-theme-pc">{th.pct}%</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="ci-tier-none">Not available on {t.label}. Themes have to be known in advance to be spotted.</p>
+                  )}
+
+                  <div className="ci-section-head ci-tier-head">
+                    <span className="ci-section-title">What reaches your systems</span>
+                  </div>
+                  <div className="ci-tier-out">
+                    {t.downstream.map((r) => (
+                      <div className={"ci-tier-outrow" + (r.tone ? " is-" + r.tone : "")} key={r.system}>
+                        <span className="ci-tier-outk">{r.system}</span>
+                        <span className="ci-tier-outv">{r.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
 
               <div className="ci-section-head ci-scoring-head">
                 <span className="ci-section-title">Call Scoring</span>
@@ -192,13 +320,47 @@ export function ConversationIntelligence() {
             </div>
           )}
 
-          {tab === "AI Summary" && (
+          {/* ⚠️ SILVER'S EMPTY AI SUMMARY IS A CAPABILITY STATEMENT, NOT A MISSING FIELD, and it
+              must not reuse the "regenerate this prospect" empty state below — that one reads
+              as our tool being broken. Silver structurally has no summariser. */}
+          {tab === "AI Summary" && t && !t.hasAiSummary && (
+            <div className="ci-analysis-body ci-empty-tab ci-tier-locked">
+              <span className="material-icons">lock</span>
+              <p><strong>Not produced on {t.label}.</strong><br />
+                This tier returns a transcript and phrase matches. Summarisation, sentiment and
+                theme detection are Gold capabilities.</p>
+            </div>
+          )}
+
+          {tab === "AI Summary" && !(t && !t.hasAiSummary) && (
             d.aiSummary ? (
               <div className="ci-analysis-body ci-summary">
                 <div className="ci-section-head">
                   <span className="ci-section-title">AI Summary</span>
                 </div>
                 <p className="ci-sum-text">{d.aiSummary.summary}</p>
+                {/* Gold shows the structured read as well as the paragraph — the contrast with
+                    Silver's locked panel is the argument, so the panel has to be full. */}
+                {t && d.aiSummary.keyPoints?.length > 0 && (
+                  <>
+                    <div className="ci-section-head ci-tier-head">
+                      <span className="ci-section-title">Key Points</span>
+                    </div>
+                    <ul className="ci-tier-points">
+                      {d.aiSummary.keyPoints.map((k: string) => <li key={k}>{k}</li>)}
+                    </ul>
+                    <div className="ci-tier-out">
+                      <div className="ci-tier-outrow is-good">
+                        <span className="ci-tier-outk">Outcome</span>
+                        <span className="ci-tier-outv">{d.aiSummary.outcome}</span>
+                      </div>
+                      <div className="ci-tier-outrow">
+                        <span className="ci-tier-outk">Sentiment</span>
+                        <span className="ci-tier-outv">{d.aiSummary.sentiment}</span>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             ) : (
               <div className="ci-analysis-body ci-empty-tab">

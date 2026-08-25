@@ -171,6 +171,57 @@ every breakdown rising monotonically (Campaign 14→17→21→25→33%).
 ⚠️ Reading column 1 by mistake is how a first pass at this check mis-scored Product
 Category; the conversion column is index 2 on every breakdown shape.
 
+### Signal AI SILVER vs GOLD — two versions of one CI report (Health Spring, 8/24/2026)
+Built for an upsell call: Health Spring runs **Signal AI Silver** today and the conversation is
+about moving them to **Gold**. Two extra rows on My Reports —
+`Conversation Intelligence (Health Spring) (Silver)` and `… (Gold)` — at
+`/reports/conversation-intelligence/silver|gold`. `src/data/signalTiers.ts` holds the content;
+`ConversationIntelligence.tsx` gained an **opt-in `tier` prop**.
+
+⚠️ **THE BASE REPORT IS BYTE-IDENTICAL AND THAT IS ENFORCED BY STRUCTURE, NOT CARE.** `tier`
+defaults to undefined, every tier block sits behind a `t &&` guard, and the untiered signal
+list keeps its ORIGINAL markup in an `else` branch rather than being refactored into the new
+one — folding them together would have meant editing the line the base report renders.
+Verified: 9 signals with their original badges, "MET SIGNALS" with no count, **zero
+`[class*="ci-tier"]` elements**, same title, same 19 turns, same 82% ring.
+
+⚠️ **THE WHOLE ARGUMENT IS THE MISS, ANCHORED IN REAL TURNS OF THEIR OWN CALL** — not the
+HCSC Medicare script the request arrived with. Health Spring's transcript is Diana Whitfield,
+new to Texas, no coverage, ~$500/month. Silver misses three signals and each UNMET row prints
+the phrases the engine was listening for:
+| turn | said | Silver's list |
+|---|---|---|
+| 1:52 | "I'd like to move forward" | "sign me up", "enroll me", "I want to apply" |
+| 0:45 | "I'd like to stay around five hundred a month" | "too expensive", "cheaper", "what does it cost" |
+| 0:07 | "I don't have coverage yet" | "uninsured", "no insurance", "lost my coverage" |
+That first row is the lead of the call and the consultation IS booked 90 seconds later, so
+Silver logs a real conversion as a non-conversion — and a missed signal raises no alert, it
+just produces a slightly lower number.
+
+⚠️ **SILVER'S HITS ARE HONEST, OR THE DEMO IS A STRAWMAN.** Silver DOES fire on
+"Consultation: Scheduled" (the AGENT says "schedule a consultation" at 1:59 — a phrase list
+genuinely catches that, and the row says so) and on Prescription Coverage, because the word is
+spoken twice. A comparison where the incumbent detects nothing is one a prospect stops
+believing.
+
+⚠️ **SILVER IS DELIBERATELY SHORT: 7 rows (4 met / 3 unmet) against Gold's 13.** A phrase
+library is maintained by hand, so its length is itself part of what is being sold against.
+⚠️ **GOLD CARRIES ALL THREE BADGE TYPES — Rules Based, Keyword Spotting AND AI** (verified: 9
+AI badges, all three types present). Gold does not replace the deterministic detections; the
+QA and routing signals keep their original badges and the three misses come back as AI.
+⚠️ **SILVER'S EMPTY PANELS SAY WHY THEY ARE EMPTY.** Its AI Summary tab is a LOCKED capability
+statement, deliberately NOT the existing "regenerate this prospect" empty state, which reads
+as our tool being broken. Sentiment and Discovery print "Not available on Signal AI Silver"
+rather than nothing — a blank rail reads as a screen that failed to load.
+⚠️ **THE DOWNSTREAM PANEL IS THE MARKETING ARGUMENT**: Silver posts no conversion, so Smart
+Bidding optimises against an understated count and bids DOWN the campaigns producing
+consultations. Same call, opposite signal to the algorithm.
+⚠️ **HEALTH SPRING ONLY**, both the rows and the routes (`hasTierReports` / the screen's own
+refusal). Verified on another prospect: 0 tier rows on My Reports and the route renders "Not
+available for <prospect>" with 0 tier elements.
+⚠️ **CSS is all-new `.ci-tier-*`** plus `.ci-sig-x` / `.ci-badge--ai` / `.ci-mood-*`; grepped
+for zero prior uses before writing, so nothing above it in app.css changes.
+
 ### AI Conversion by <Location> (`/dashboards/ai-conversion-by-location`)
 ⚠️⚠️ **COMFORT KEEPERS ONLY (scoped 8/24/2026, at the user's request).** It is the one dashboard
 on Manage Dashboards gated to a single prospect, and **BOTH the list row AND the route are

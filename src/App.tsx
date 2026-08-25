@@ -163,6 +163,10 @@ export default function App() {
             <Route path="/insights/call" element={<InsightsCallDetail />} />
             <Route path="/reports/digital-insights" element={<DigitalInsights />} />
             <Route path="/reports/conversation-intelligence" element={<ConversationIntelligence />} />
+            {/* The Signal AI tier pair — same screen, same template, different engine.
+                Health Spring only; the screen itself refuses on any other prospect. */}
+            <Route path="/reports/conversation-intelligence/silver" element={<ConversationIntelligence tier="silver" />} />
+            <Route path="/reports/conversation-intelligence/gold" element={<ConversationIntelligence tier="gold" />} />
             <Route path="/reports/sms-conversation-intelligence" element={<SmsConversationIntelligence />} />
             <Route path="/reports/voice-conversation-intelligence" element={<VoiceConversationIntelligence />} />
             <Route path="/reports/artifact/:id" element={<ArtifactView />} />

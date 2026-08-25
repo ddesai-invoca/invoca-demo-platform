@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import type { GumloopArtifact } from "../data/schema";
 import { openArtifact } from "../artifacts";
+import { hasTierReports } from "../data/signalTiers";
 
 /* My Reports — the landing page for the Reports nav item. Lists a customer's
    saved reports; clicking the built Digital Journey report opens it. The other
@@ -23,12 +24,21 @@ function reportsFor(
   hasSmsConversation: boolean,
   hasVoiceConversation: boolean,
   artifacts: GumloopArtifact[],
+  tiers: boolean,
 ): ReportRow[] {
   const rows: ReportRow[] = [
     { name: `Digital Journey & Call Attribution Report (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:35 am", to: "/reports/digital-insights" },
   ];
   if (hasConversation) {
     rows.push({ name: `Conversation Intelligence (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:41 am", to: "/reports/conversation-intelligence" });
+  }
+  /* ⚠️ HEALTH SPRING ONLY — the Signal AI Silver / Gold pair, added 8/24/2026 for an upsell
+     conversation. Same template as the row above; what differs is which signals fire, what
+     badges they carry, and which Gold-only panels exist. Gated on the prospect, so no other
+     account grows two reports it did not ask for. */
+  if (hasConversation && tiers) {
+    rows.push({ name: `Conversation Intelligence (${customerName}) (Silver)`, type: "Interaction Details", createdAt: "8/24/26 9:02 am", to: "/reports/conversation-intelligence/silver" });
+    rows.push({ name: `Conversation Intelligence (${customerName}) (Gold)`, type: "Interaction Details", createdAt: "8/24/26 9:04 am", to: "/reports/conversation-intelligence/gold" });
   }
   if (hasSmsConversation) {
     rows.push({ name: `AI SMS Conversation Intelligence (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:44 am", to: "/reports/sms-conversation-intelligence" });
@@ -67,7 +77,7 @@ export function MyReports() {
   const [tab, setTab] = useState<(typeof TABS)[number]>("Saved");
   const [search, setSearch] = useState("");
 
-  const all = reportsFor(profile.customerName, !!profile.reports.conversationIntelligence, !!profile.reports.smsConversationIntelligence, !!profile.reports.voiceConversationIntelligence, profile.reports.gumloopArtifacts ?? []);
+  const all = reportsFor(profile.customerName, !!profile.reports.conversationIntelligence, !!profile.reports.smsConversationIntelligence, !!profile.reports.voiceConversationIntelligence, profile.reports.gumloopArtifacts ?? [], hasTierReports(profile));
   const rows = search.trim()
     ? all.filter((r) => r.name.toLowerCase().includes(search.trim().toLowerCase()))
     : all;
