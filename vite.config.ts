@@ -374,6 +374,43 @@ function analyzeApi(apiKey: string | undefined): Plugin {
   }
 }
 
+/* Dev endpoint: POST /api/livekit-token { brain, profileId, greeting? } →
+   { url, token, room } for the LiveKit voice call. The API SECRET never leaves the
+   server; the browser only ever gets a 10-minute join token. Answers 501 when
+   LiveKit is not configured, so the client can fall back to the old pipeline
+   instead of failing mid-demo. */
+function livekitApi(env: Record<string, string>): Plugin {
+  return {
+    name: 'invoca-livekit-api',
+    configureServer(server) {
+      server.middlewares.use('/api/livekit-token', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        const send = (code: number, body: unknown) => {
+          res.statusCode = code
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Cache-Control', 'no-store')
+          res.end(JSON.stringify(body))
+        }
+        try {
+          let raw = ''
+          for await (const chunk of req) raw += chunk
+          const { brain, profileId, greeting } = JSON.parse(raw || '{}')
+          if (!brain) return send(400, { error: 'brain is required.' })
+
+          const mod = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/livekitToken.ts')).href
+          )
+          const cfg = mod.livekitEnv(env)
+          if (!cfg) return send(501, { error: 'LiveKit is not configured. Add LIVEKIT_URL, LIVEKIT_API_KEY and LIVEKIT_API_SECRET to .env.' })
+          send(200, await mod.mintVoiceToken({ brain, profileId: profileId || 'demo', greeting }, cfg))
+        } catch (e) {
+          send(500, { error: e instanceof Error ? e.message : String(e) })
+        }
+      })
+    },
+  }
+}
+
 /* Dev-only endpoint: POST /api/tts { text, voiceId? } → MP3 audio (audio/mpeg)
    from the configured provider (Deepgram Aura or ElevenLabs; key server-side).
    Powers the premium human voice on the live Voice-agent call. Returns a JSON
@@ -470,6 +507,7 @@ export default defineConfig(({ mode }) => {
       assistantApi(apiKey),
       analyzeApi(apiKey),
       ttsApi({ provider, deepgramKey, deepgramModel, elevenKey, elevenVoice, elevenModel }),
+      livekitApi(env),
     ],
   }
 })

@@ -29,6 +29,7 @@ import { generateProfile, slugify } from "./engine/core.ts";
 import { chatReply } from "./engine/chat.ts";
 import { analyzeSms } from "./engine/analyze.ts";
 import { synthesize } from "./engine/tts.ts";
+import { livekitEnv, mintVoiceToken } from "./engine/livekitToken.ts";
 import { askAssistant } from "./engine/assistant.ts";
 import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
 import { handleDemoApi, isAdmin } from "./engine/demoApi.ts";
@@ -231,6 +232,22 @@ app.post("/api/tts", async (req, res) => {
   } catch (e: any) {
     console.error("[tts] failed:", e);
     res.status(500).json({ error: e?.message || "TTS failed." });
+  }
+});
+
+/* POST /api/livekit-token → { url, token, room } for the LiveKit voice call.
+   The API SECRET stays here; the browser only gets a short-lived join token.
+   501 when unconfigured, so the client falls back rather than dying mid-demo. */
+app.post("/api/livekit-token", async (req, res) => {
+  try {
+    const { brain, profileId, greeting } = req.body || {};
+    if (!brain) return res.status(400).json({ error: "brain is required." });
+    const cfg = livekitEnv();
+    if (!cfg) return res.status(501).json({ error: "LiveKit is not configured on the server." });
+    res.json(await mintVoiceToken({ brain, profileId: profileId || "demo", greeting }, cfg));
+  } catch (e: any) {
+    console.error("[livekit] token failed:", e);
+    res.status(500).json({ error: e?.message || "Could not mint a LiveKit token." });
   }
 });
 

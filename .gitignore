@@ -31,3 +31,7 @@ public/__m/
 
 # Local-only preview profile (see the Silver/Gold reports before pushing). Never commit.
 src/data/generated/health-spring-preview.json
+
+# The LiveKit agent worker has its own dependencies (kept out of the app bundle).
+agent/node_modules/
+agent/package-lock.json

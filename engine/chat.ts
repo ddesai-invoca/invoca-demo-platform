@@ -73,6 +73,21 @@ const SMS_FORMAT_RULES = [
   "One question at a time.",
 ].join("\n");
 
+/**
+ * The VOICE agent's system prompt for a given brain.
+ *
+ * ⚠️ **EXPORTED SO THE LIVEKIT WORKER CANNOT DRIFT FROM `/api/chat`.** The LiveKit voice agent
+ * runs in its own process and needs this exact prompt; the tempting shortcut is to paste a
+ * copy into the worker, and then the SE tunes the routing flow on one and the two channels
+ * behave differently on the next demo. Same rule `smsBrain.ts` already enforces for the SMS
+ * brain: two local copies of one object drift on the first edit.
+ *
+ * `buildSystem(brain, true)` is the single definition; this is a named door onto it.
+ */
+export function voiceSystemPrompt(brain: ChatBrain): string {
+  return buildSystem(brain, true);
+}
+
 function buildSystem(brain: ChatBrain, voice: boolean): string {
   /* A workflow-supplied playbook wins over the generated persona, with our
      channel format rules appended so the phone UI stays renderable. */
