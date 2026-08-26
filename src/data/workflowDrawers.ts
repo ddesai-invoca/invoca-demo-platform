@@ -159,9 +159,10 @@ export function drawerFor(
       looksLike: isSales
         ? `${b.subtitle ?? `The caller is reaching out about ${profile.customerName}'s services`}. Treat them as a prospective ${noun} and find out what they need before routing.`
         : `Contacts seeking help with an existing product or service, such as troubleshooting, billing questions, or account changes.`,
-      /* ⚠️ THE SUPPORT INTENT SHIPS WITH NO RULES, and that is measured: the real Need
-         Support capture has three EMPTY rule rows. The drawer renders blanks for it rather
-         than inventing support policy nobody configured. */
+      /* ⚠️ THE SUPPORT INTENT SHIPS WITH NO RULES, rather than inventing support policy
+         nobody configured. The DRAWER renders that as the product's own empty state ("No
+         conversation rules defined yet"); an earlier note here said three blank rows, which
+         was a capture of someone having pressed Add three times rather than the default. */
       rules: isSales
         ? [
             ...(area ? [`When asking for the caller's zip code, explain that it is used to connect them with their local ${profile.customerName} office.`] : []),

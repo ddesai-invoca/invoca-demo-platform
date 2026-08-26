@@ -112,7 +112,16 @@ export function WorkflowNodeDrawer({ d, onClose }: { d: NodeDrawer; onClose: () 
               <AutoTa value={d.looksLike} maxLines={8} />
 
               <label className="wnd-label">How would you like to define the conversation rules?</label>
-              {(d.rules.length ? d.rules : ["", "", ""]).map((r, i) => (
+              {/* ⚠️ NO RULES MEANS AN EMPTY STATE, NOT EMPTY ROWS — and this corrects an earlier
+                  reading of mine. The first capture of Need Support showed three blank rule
+                  boxes and I took that for the default; a capture of the same drawer at rest
+                  shows `addList-empty-state` with the italic line below, so those three blanks
+                  were someone having pressed Add three times. Rendering them by default
+                  invented a shape the product does not start in. */}
+              {d.rules.length === 0 && (
+                <p className="wnd-empty">No conversation rules defined yet</p>
+              )}
+              {d.rules.map((r, i) => (
                 <div className="wnd-rulerow" key={i}>
                   <AutoTa value={r} maxLines={3} className="wnd-ta--rule" placeholder="Enter rule..." />
                   <button className="wnd-del" aria-label="Remove rule" onClick={(e) => e.preventDefault()}>

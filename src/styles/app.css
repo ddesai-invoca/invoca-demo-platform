@@ -4650,6 +4650,9 @@ button.nav-item {
 /* Italic helper lines, both the What-To-Collect lede and each chip's description. */
 .wnd-help { font-size: 16px; font-style: italic; line-height: 24px; color: var(--color-text-title); margin: 4px 0 0; }
 .wnd-optional { font-weight: 400; }
+/* The rules list at rest. Measured 16px/400 ITALIC in the title ink, with Add immediately
+   under it — no gap between the two. */
+.wnd-empty { font-size: 16px; font-style: italic; line-height: 24px; color: var(--color-text-title); margin: 16px 0 0; }
 
 /* "INTENT NAME" is Title Case in the DOM and uppercased here — 12px/700. */
 .wnd-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--color-text-title); }
@@ -4691,6 +4694,9 @@ button.nav-item {
   font-family: inherit; font-size: 14px; font-weight: 500; color: #2666f9;
 }
 .wnd-add .material-icons { font-size: 18px; }
+/* Measured 0 between the empty-state line and Add; the button's own padding is the only gap
+   the real one has. After a list of rules it keeps its 12px. */
+.wnd-empty + .wnd-add { margin-top: 0; }
 
 /* Chips: 24px tall, 12px text, #E7E9EB, 16px radius. */
 .wnd-chip {
