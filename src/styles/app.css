@@ -831,8 +831,12 @@ table.rp-table tbody tr:nth-child(odd) { background: #fafbfc; }
 .ag-live { background: #d7f0d9; color: #1e7a2b; font-size: 12px; font-weight: 600; border-radius: 12px; padding: 3px 12px; }
 .ag-lastsaved { font-size: 14px; color: var(--color-text-muted); padding-top: 8px; white-space: nowrap; }
 
-.ag-body { flex: 1; min-height: 0; display: flex; overflow-y: auto; border-top: 1px solid #e7eaee; }
-.ag-subnav { width: 344px; flex-shrink: 0; padding: 20px 16px; border-right: 1px solid #e7eaee; }
+/* ⚠️ THE BODY NO LONGER SCROLLS — that scroll is exactly what the fourth row exposed: an
+   880px tree grew the canvas past the viewport and the whole diagram could only be seen by
+   scrolling, where the real page fits it. The rail keeps its own scroll for a long
+   workflow list. */
+.ag-body { flex: 1; min-height: 0; display: flex; overflow: hidden; border-top: 1px solid #e7eaee; }
+.ag-subnav { width: 344px; flex-shrink: 0; padding: 20px 16px; border-right: 1px solid #e7eaee; overflow-y: auto; }
 .ag-nav-item { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: none; border: none; font-family: inherit; font-size: 15px; color: var(--color-text-title); padding: 12px 14px; border-radius: 8px; cursor: pointer; }
 .ag-nav-item .material-icons { font-size: 20px; color: #5b6577; }
 .ag-nav-item:hover { background: #f5f6f8; }
@@ -847,7 +851,16 @@ table.rp-table tbody tr:nth-child(odd) { background: #fafbfc; }
 .ag-create-wf { display: flex; align-items: center; gap: 10px; background: none; border: none; font-family: inherit; font-size: 14px; color: #2666f9; padding: 12px 8px; cursor: pointer; }
 .ag-create-wf .material-icons { font-size: 20px; }
 
-.ag-content { flex: 1; min-width: 0; padding: 22px 24px 40px; }
+/* ⚠️ THE CONTENT COLUMN OWNS ITS HEIGHT NOW, so the canvas below can fill what is left
+   instead of growing past the viewport and making the page scroll. */
+/* ⚠️ `overflow-y: auto`, NOT hidden. Hidden let the workflow canvas fill the box but would
+   have CLIPPED the sub-pages that are genuinely long — Knowledge Sources and AI
+   Recommendations are tables. `flex: 1` on the canvas still resolves against this box's
+   definite height, so the diagram fits AND a long table still scrolls. */
+.ag-content { flex: 1; min-width: 0; min-height: 0; padding: 22px 24px 24px; display: flex; flex-direction: column; overflow-y: auto; }
+.ag-header-right { display: flex; align-items: center; gap: 16px; }
+.ag-golive { background: #2666f9; color: #fff; border: none; font-family: inherit; font-size: 15px; font-weight: 500; padding: 9px 20px; border-radius: 6px; cursor: pointer; }
+.ag-golive:hover { background: #1c53e9; }
 .ag-section-title { font-size: 22px; font-weight: 400; color: var(--color-text-title); margin: 0 0 24px; }
 .ag-field-label { display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--color-text-title); margin-bottom: 8px; }
 .ag-info { font-size: 16px; color: #adb5bd; }
@@ -869,10 +882,6 @@ table.rp-table tbody tr:nth-child(odd) { background: #fafbfc; }
 .ag-add { display: flex; align-items: center; gap: 8px; background: none; border: none; font-family: inherit; font-size: 15px; color: #2666f9; padding: 6px 0; margin-top: 6px; cursor: pointer; }
 .ag-add .material-icons { font-size: 20px; }
 
-.ag-footer { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding: 14px 28px; border-top: 1px solid #e7eaee; background: #fff; }
-.ag-cancel { color: #2666f9; font-size: 15px; text-decoration: none; padding: 8px 12px; }
-.ag-save { background: #fff; color: var(--color-text-title); border: 1px solid #c2c8d0; font-family: inherit; font-size: 15px; padding: 9px 22px; border-radius: 8px; cursor: pointer; }
-.ag-publish { background: #2666f9; color: #fff; border: 1px solid #2666f9; font-family: inherit; font-size: 15px; padding: 9px 26px; border-radius: 8px; cursor: pointer; }
 
 /* ---- Agent Studio → Knowledge Sources ---------------------------------- */
 .ks-sub { font-size: 15px; color: var(--color-text-muted); margin: 0 0 20px; }
@@ -966,13 +975,22 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 
 /* dotted canvas */
 .wf-canvas {
-  /* padding-bottom reserves the strip the zoom cluster occupies (bottom: 16px,
-     104px tall). The tree is centred in the remaining space, so a tall tree can
-     never land on top of the controls. This replaces a per-tree min-height
-     override that only fixed the one hand-built tree it was written for — now the
-     branch count can be anything. */
-  position: relative; min-height: 560px; padding-bottom: 136px;
-  border: 1px solid #e7eaee; border-radius: 8px; overflow: hidden;
+  /* ⚠️ THE 136px RESERVE IS GONE, AND THAT DECISION HAD SIMPLY EXPIRED. It existed so a
+     tall tree could never land on the zoom cluster (bottom: 16px, 104px tall) back when the
+     tree sized itself and the canvas grew to fit. Now the tree SCALES to fit, so reserving a
+     strip does not protect anything — it just shrinks the diagram, and on a 556px canvas it
+     was eating a third of the height and rendering the four-row tree at 0.42 scale. The real
+     page lets those controls overlay the dotted canvas in the corner, which is what this now
+     does too.
+     ⚠️ Fills the space the content column has left rather than sizing to the tree, which is
+     what lets the fit scale solve for a real box in BOTH dimensions. */
+  position: relative; flex: 1; min-height: 320px; padding-bottom: 24px;
+  /* ⚠️ `auto`, NOT `hidden`. Hidden was right when the tree sized itself and the canvas grew
+     to match — nothing ever needed to scroll here. With a scale FLOOR a tree can now be
+     legitimately larger than its box on a short window, and hidden would clip the bottom row
+     silently. Nothing scrolls while the tree fits, so no scrollbar appears in the normal
+     case. */
+  border: 1px solid #e7eaee; border-radius: 8px; overflow: auto;
   background-color: #fff;
   background-image: radial-gradient(#d7dbe0 1.1px, transparent 1.1px);
   background-size: 20px 20px;

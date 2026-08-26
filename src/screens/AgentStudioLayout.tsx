@@ -41,7 +41,16 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
             <span className="ag-live">Live</span>
           </div>
         </div>
-        <div className="ag-lastsaved">Last Saved 6/21/2026, 1:01:31 PM</div>
+        {/* ⚠️ THE ACTIONS LIVE UP HERE, NOT IN A FOOTER (8/26/2026). The page carried a
+            Cancel / Save / Publish bar pinned to the bottom and the real page has NO footer at
+            all — a capture of it contains "Go Live" once and the words Save and Cancel zero
+            times (its two "Publish" hits are the sidebar's Publishers nav item). Removing the
+            bar without putting its action back would have lost the affordance, so Go Live sits
+            where the real one does. */}
+        <div className="ag-header-right">
+          <div className="ag-lastsaved">Last Saved 6/21/2026, 1:01:31 PM</div>
+          <button className="ag-golive">Go Live</button>
+        </div>
       </div>
 
       <div className="ag-body">
@@ -77,11 +86,6 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
         <section className="ag-content">{children}</section>
       </div>
 
-      <div className="ag-footer">
-        <a className="ag-cancel" href="#">Cancel</a>
-        <button className="ag-save">Save</button>
-        <button className="ag-publish">Publish</button>
-      </div>
     </div>
   );
 }

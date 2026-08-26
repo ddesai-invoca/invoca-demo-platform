@@ -155,21 +155,47 @@ const GEO = {
    the layout box, so the wrapper has to reserve the SCALED size or `margin: auto`
    centres the wrong box. This measures the real canvas instead of assuming, so
    any branch count fits. */
-function useFitScale(designWidth: number) {
+/**
+ * Shrink the tree to fit its canvas.
+ *
+ * ⚠️ **IT FITS BOTH DIMENSIONS NOW, AND WIDTH-ONLY WAS A REAL BUG.** It solved
+ * `avail / designWidth` and ignored height, which was invisible while every tree was
+ * shorter than the canvas. The fourth row made the voice tree 880px tall, the canvas grew
+ * to fit it, and the whole diagram could only be seen by SCROLLING — where the real page
+ * shows all of it. Solving for the smaller of the two ratios fits any tree in any box.
+ *
+ * ⚠️ The canvas reserves 136px at the bottom for the zoom cluster, so the height available
+ * to the tree is the parent's client height MINUS that strip and the tree's own margin.
+ * Measuring the parent's full height instead would slide a tall tree under the controls.
+ */
+/** Never shrink past this — see the note at the clamp. */
+const MIN_SCALE = 0.5;
+
+function useFitScale(designWidth: number, designHeight: number) {
   const ref = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   useEffect(() => {
     const el = ref.current?.parentElement;
     if (!el) return;
     const measure = () => {
-      const avail = el.clientWidth - 32;               // breathing room either side
-      setScale(avail > 0 ? Math.min(1, avail / designWidth) : 1);
+      const cs = getComputedStyle(el);
+      const availW = el.clientWidth - 32;                                  // breathing room either side
+      const availH = el.clientHeight - parseFloat(cs.paddingBottom || "0") - 48;
+      const byW = availW > 0 ? availW / designWidth : 1;
+      const byH = availH > 0 ? availH / designHeight : 1;
+      /* ⚠️ THERE IS A FLOOR, because "fits" is not the same as "readable". On a 620px-tall
+         window the four-row tree solved to 0.28, which renders a 13px node title at an
+         effective 3.8px — a grey smudge, and the page scrolled anyway because the canvas had
+         hit its own min-height. Below the floor it stops shrinking and the canvas scrolls
+         instead, which is the honest trade: a legible diagram you move, not an illegible one
+         you cannot read. */
+      setScale(Math.max(MIN_SCALE, Math.min(1, byW, byH)));
     };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [designWidth]);
+  }, [designWidth, designHeight]);
   return { ref, scale };
 }
 
@@ -218,7 +244,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
   const firstCx = branches.length ? branchCx(0) : mid;
   const lastCx = branches.length ? branchCx(branches.length - 1) : mid;
 
-  const { ref, scale } = useFitScale(W);
+  const { ref, scale } = useFitScale(W, H);
 
   /* Measure the nodes so the connectors can start and end on real edges. Layout
      effect + ResizeObserver: the effect covers the first paint and any model
