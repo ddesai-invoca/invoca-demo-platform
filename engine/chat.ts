@@ -92,6 +92,18 @@ export interface ChatBrain {
    * on its own workflow.
    */
   voiceRules?: string[];
+  /**
+   * ⚠️ **THE CONFIGURED ROUTING STEPS, AND LEAVING THEM OUT WAS A REAL BUG.** The drawer
+   * rendered an SE's six numbered steps while the prompt never saw them, so the one that says
+   * "if the caller does not provide their full name, ask again — do not route without it" was
+   * on screen and not in the agent: asked for a name and refused, it said "that's okay" and
+   * transferred anyway. Caught by scripting the refusal rather than the happy path.
+   *
+   * ⚠️ When present these REPLACE the generated service-area block, because they already say
+   * what to check and what to read out. Two overlapping instruction sets in one prompt is how
+   * a model ends up splitting the difference.
+   */
+  voiceSteps?: string[];
   /* Per-prospect VOICE routing, from reports.voiceRoutingDemo.queues plus the
      prospect's booking term and product categories. Without it the voice prompt
      used to fall back to hardcoded retail language: it asked every caller for an
@@ -266,6 +278,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
      to collect simply has no collect line; a tree with no branches falls through to the
      hardcoded flow rather than emitting an empty CALL FLOW the model would improvise on. */
   const zips = brain.serviceZips ?? [];
+  const steps = brain.voiceSteps ?? [];
   const paths = (brain.voicePaths ?? []).filter((p) => p.intent?.trim() && p.routes?.length);
   const flow = paths.length ? [
     `CALL FLOW — follow the routing your team configured, adapting naturally to what the caller says:`,
@@ -280,7 +293,10 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
        demo rule stands, where a single ZIP is the only refusal so an SE can show the happy path
        with any number they like. Getting these the wrong way round either books callers a
        franchise cannot serve or turns away every caller in the demo. */
-    zips.length
+    /* The SE's own steps win outright — see the note at `voiceSteps`. */
+    steps.length
+      ? `\n2. THEN FOLLOW THESE STEPS EXACTLY, in order, and do not skip one:\n${steps.join("\n")}`
+      : zips.length
       ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. ${brain.customerName} serves ONLY these ZIP codes: ${zips.join(", ")}. If the caller's ZIP is one of them, briefly confirm you serve their area and continue. If it is ANYTHING else, say exactly this and then END the call, asking nothing further and routing nobody: "${brain.outOfAreaScript ?? `Thank you for calling ${brain.customerName}. Unfortunately we do not currently serve your area.`}"`
       : serviceArea
       ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. Treat "12345" as the ONLY out-of-area ZIP — if they say it, politely apologise, explain ${brain.customerName} serves ${serviceArea}, say you cannot book them, then STOP: ask nothing else and do not route. For ANY other ZIP, briefly confirm you serve their area and continue.`
