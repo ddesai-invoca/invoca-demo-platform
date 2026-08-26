@@ -94,6 +94,31 @@ const CONSUMER_ZIP: CollectField = { name: "Consumer Zip", help: "The consumer's
 const CONSUMER_NAME: CollectField = { name: "Consumer Name", help: "The full name of the consumer." };
 
 /**
+ * What each action collects. **ONE TABLE, THREE READERS.**
+ *
+ * ⚠️ THE DIAGRAM'S PILLS ARE THIS LIST, not a copy of it. They used to be the prospect's own
+ * vocabulary — "Blinds", "Timeline", "Issue Type" — invented per node and matching nothing, so
+ * a node advertised collecting one thing while its drawer's "What To Collect" said another.
+ * `AgentWorkflow` now labels the pills from here and this drawer lists the same entries, so the
+ * two cannot disagree.
+ *
+ * ⚠️ AND THE PROMPT READS IT TOO. `treeToVoicePaths` used to take a leaf's chips as the things
+ * to collect; emptying the chips would have silently stopped the agent asking for anything on
+ * the support path. Keyed by ACTION rather than by node, because what gets collected is a
+ * property of what the agent is doing there.
+ *
+ * ⚠️ Qualify collects NOTHING: it asks a question and routes on the answer. Giving it fields
+ * would put pills on a node the product draws without any.
+ */
+export const COLLECT_FOR: Record<ActionKind, CollectField[]> = {
+  qualify: [],
+  inform: [CONSUMER_ZIP, CONSUMER_NAME],
+  escalate: [CONSUMER_NAME],
+};
+/** Just the labels, for the diagram's pills. */
+export const collectNames = (a: ActionKind): string[] => COLLECT_FOR[a].map((f) => f.name);
+
+/**
  * A demo transfer number for this prospect.
  *
  * ⚠️ 555 IS RESERVED FOR FICTION. Real area code so it reads local, `555` so it cannot
@@ -201,7 +226,7 @@ export function drawerFor(
         kind: "action", title: "Action", action,
         handling: `Do not attempt to resolve the caller's question. Immediately let the caller know you're connecting them with a member of the support team, then transfer the call.`,
         phone: demoPhone(areaCodeOf(profile)),
-        collect: [CONSUMER_NAME],
+        collect: COLLECT_FOR.escalate,
       };
     }
     return {
@@ -214,7 +239,7 @@ export function drawerFor(
         `5. Do not route the call without a captured full name.`,
       ].join("\n"),
       phone: demoPhone(areaCodeOf(profile)),
-      collect: [CONSUMER_ZIP, CONSUMER_NAME],
+      collect: COLLECT_FOR.inform,
     };
   }
   /* A path node opens the Inform & Route action, which is what every captured path shows.
@@ -235,7 +260,7 @@ export function drawerFor(
         `6. Do not route the call without a captured full name.`,
       ].join("\n"),
       phone: demoPhone(areaCodeOf(profile)),
-      collect: [CONSUMER_ZIP, CONSUMER_NAME],
+      collect: COLLECT_FOR.inform,
     };
   }
 

@@ -10,7 +10,7 @@ import { useLiveKitReady } from "../data/liveKitVoice";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
-import { drawerFor } from "../data/workflowDrawers";
+import { drawerFor, collectNames } from "../data/workflowDrawers";
 import { isProspect } from "../data/prospect";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
@@ -163,10 +163,10 @@ const SHAPE: Record<string, (c: ReturnType<typeof voiceCopy>) => TreeBranch[] | 
       title: INTENT_SALES, icon: "cart", locked: true,
       subtitle: "Caller wants to book a move and is not an existing customer",
       leaves: [
-        { title: "All Inter-State Users", action: "Route to Inter-State Move (Team A)",
-          tone: "green", chips: ["Origin ZIP", "Destination ZIP", "Move Date"] },
-        { title: "All Local Move Users", action: "Route to Local Move (Team B)",
-          tone: "green", chips: ["Origin ZIP", "Move Size", "Move Date"] },
+        /* No pills: these are user-group leaves, the row the rule above clears. The split
+           itself is what this override exists for. */
+        { title: "All Inter-State Users", action: "Route to Inter-State Move (Team A)", tone: "green" },
+        { title: "All Local Move Users", action: "Route to Local Move (Team B)", tone: "green" },
       ],
     },
     {
@@ -176,8 +176,7 @@ const SHAPE: Record<string, (c: ReturnType<typeof voiceCopy>) => TreeBranch[] | 
          `All ${c.supQ} Users` / `Route to ${c.supQueue}` — a copy of the default from before
          the leaf became chrome, which is exactly the drift that shrank the Comfort Keepers
          override. An override should differ only where it genuinely differs. */
-      leaves: [{ title: SUPPORT_LEAF, action: LEAF_ESCALATE,
-        tone: "orange", chips: c.supChips, locked: true }],
+      leaves: [{ title: SUPPORT_LEAF, action: LEAF_ESCALATE, tone: "orange", locked: true }],
     },
   ],
 };
@@ -240,6 +239,11 @@ function deriveTree(
            action — so the diagram still names this prospect's own teams. Only the intent
            label is generic, because in the product it always is. */
         title: INTENT_SALES, subtitle: c.newSub, icon: "cart", locked: true,
+        /* ⚠️ ONLY THE ROW BELOW THE USER GROUPS CARRIES PILLS (8/26/2026), and they are the
+           drawer's own "What To Collect" rather than a second list that happens to look like
+           it. They used to be the prospect's vocabulary — "Blinds", "Timeline", "Issue Type" —
+           minted per node, so a node advertised collecting one thing while its drawer said
+           another. `collectNames` reads the single table in `workflowDrawers`. */
         leaves: [{
           /* ⚠️ THE LEAF IS CHROME TOO (8/26/2026). It read `All ${c.newQ} Users` /
              `Route to ${c.newQueue}` — the prospect's own queue — where the real page always
@@ -253,7 +257,6 @@ function deriveTree(
           title: `All ${INTENT_SALES} Users`,
           action: LEAF_QUALIFY,
           tone: "green",
-          chips: c.newChips,
           locked: true,
           /* ⚠️ QUALIFY ASKS A QUESTION AND ROUTES ON THE ANSWER, so its leaf has one child
              per answer — the fourth row the real Comfort Keepers workflow draws under "All
@@ -264,9 +267,9 @@ function deriveTree(
              giving it paths would draw a fork the product does not have. */
           paths: [
             { title: `Looking to book ${aOrAn(c.bookingLower)} ${c.bookingLower}`,
-              action: LEAF_INFORM, tone: "green", chips: c.newChips.slice(0, 2) },
+              action: LEAF_INFORM, tone: "green", chips: collectNames("inform") },
             { title: `Needs help with an existing request`,
-              action: LEAF_INFORM, tone: "green", chips: c.supChips },
+              action: LEAF_INFORM, tone: "green", chips: collectNames("inform") },
           ],
         }],
       },
@@ -277,7 +280,6 @@ function deriveTree(
           action: LEAF_ESCALATE,
           tone: "orange",
           locked: true,
-          chips: c.supChips,
         }],
       },
     ],

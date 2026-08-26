@@ -1,5 +1,6 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoicePath } from "../../engine/chat";
+import { collectNames } from "./workflowDrawers";
 
 /* =============================================================================
    voicePaths.ts — the workflow diagram, as the voice agent's routing logic
@@ -28,6 +29,11 @@ import type { VoicePath } from "../../engine/chat";
      leaf action     -> what the agent does there
      leaf chips      -> the data to gather first, i.e. the questions to ask
    ============================================================================= */
+
+/** Which action a leaf is performing, from the words the product puts on it. */
+function actionKindOf(action: string): "qualify" | "inform" | "escalate" {
+  return /escalate/i.test(action) ? "escalate" : /qualify/i.test(action) ? "qualify" : "inform";
+}
 
 /** The scope key the voice workflow page registers its diagram under. */
 export const VOICE_WORKFLOW_SCOPE_PATH = "/agent-studio/agent/workflow/voice";
@@ -66,7 +72,15 @@ export function treeToVoicePaths(tree: WorkflowTreeModel | undefined | null): Vo
         : [{
             team: (l?.title ?? "").trim(),
             action: (l?.action ?? "").trim() || "route them",
-            collect: (l?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),
+            /* ⚠️ THE ACTION SAYS WHAT TO COLLECT, NOT THE NODE'S PILLS. This read `l.chips`,
+               which was fine while every leaf carried some — and the moment the user-group row
+               stopped carrying pills (they belong to the row below it) that would have quietly
+               left the support path with nothing to collect: the diagram changes, the drawer
+               still says "Consumer Name", and the agent stops asking. Same table the pills and
+               the drawer read, keyed by action. */
+            collect: (l?.chips?.length
+              ? l.chips
+              : collectNames(actionKindOf(l?.action ?? ""))).map((c) => (c ?? "").trim()).filter(Boolean),
           }]))
       .filter((r) => r.team);
     if (!routes.length) continue;   // a branch that routes nowhere is not a path

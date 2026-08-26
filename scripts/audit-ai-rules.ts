@@ -13,6 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { isLockedEdit } from "../src/data/editGuard.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
+import { collectNames } from "../src/data/workflowDrawers.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -195,6 +196,26 @@ console.log("\nThe SMS workflow template's node names are locked");
   })()
     ? ok("a leaf with no paths still contributes itself")
     : bad("a pathless leaf no longer produces a route");
+  /* ⚠️ THE DIAGRAM'S PILLS ARE THE DRAWER'S "WHAT TO COLLECT" (8/26/2026), and only the row
+     below the user groups carries any. Checked because a pill is a label an SE reads off the
+     node and then expects to find in the drawer; two lists would drift silently. */
+  (() => {
+    const inform = collectNames("inform").join("|");
+    return inform === "Consumer Zip|Consumer Name" && collectNames("qualify").length === 0;
+  })()
+    ? ok("the collect table drives the pills: inform collects Zip + Name, qualify collects nothing")
+    : bad("the action collect table changed shape — the pills and the drawer can now disagree");
+  /* And the prompt still gets a collect list for a leaf with no pills of its own. */
+  (() => {
+    const t: any = { branches: [{ title: "I", leaves: [{ title: "All Support Users", action: "Support & Escalate" }] }] };
+    return (treeToVoicePaths(t)[0]?.routes?.[0]?.collect ?? []).length > 0;
+  })()
+    ? ok("a pill-less leaf still tells the agent what to collect, from its action")
+    : bad("emptying a node's pills left the agent with nothing to collect — a silent no-op");
+  !/chips: c\.(newChips|supChips)/.test(wf)
+    ? ok("no node labels its pills from the prospect's own vocabulary")
+    : bad("a node's pills are minted per prospect again instead of read from the collect table");
+
   /* The Qualify drawer's segments must READ the tree's path titles rather than rebuild them. */
   /\(l\.paths \?\? \[\]\)\.map\(\(x\) => x\.title\)/.test(readAny("src/data/workflowDrawers.ts"))
     ? ok("the Qualify drawer's segments are the leaf's own path titles")
