@@ -25,6 +25,33 @@ export interface SmsPlaybook {
   providesEstimate: boolean;
   qualifyingQuestions: string[];
 }
+/* =============================================================================
+   VoicePath — one branch of the WORKFLOW DIAGRAM, in the form the prompt needs.
+   -----------------------------------------------------------------------------
+   ⚠️ **THE DIAGRAM IS THE SOURCE OF TRUTH FOR THE CALL'S LOGIC.** The tree and this
+   prompt used to be derived SEPARATELY from `voiceRoutingDemo.queues`, so they shared a
+   source but not a model: an SE who used Ask AI to add a branch, rename a team or change
+   what a leaf collects saw the diagram change and heard the agent behave exactly as
+   before. One model, two renderings — the same rule that made the diagram data in the
+   first place.
+
+   It also gives the reverse direction for free: telling Ask AI "ask for the ZIP before
+   routing" edits that leaf's chips, so the chip appears ON the diagram and the agent
+   starts asking for it. No syncing, because there is only one thing to sync.
+   ============================================================================= */
+export interface VoicePath {
+  /** The intent node's title — "Book a Move", "Existing Order". */
+  intent: string;
+  /** The caller-intent line under it, if the diagram carries one. */
+  recognise?: string;
+  /** One per leaf. More than one means this branch splits to different teams. */
+  routes: {
+    team: string;        // leaf title  — who it hands off to
+    action: string;      // leaf action — what the agent does there
+    collect: string[];   // leaf chips  — what to gather BEFORE handing off
+  }[];
+}
+
 export interface ChatBrain {
   customerName: string;
   industry?: string;
@@ -39,6 +66,9 @@ export interface ChatBrain {
      underneath, so a hand-written prompt can't accidentally produce a wall of
      text or markdown that the phone UI can't render. */
   customSystem?: string;
+  /* The workflow diagram, when the caller came from a page that has one. Opt-in and
+     defaulted to absent, so every existing caller keeps the hardcoded flow below. */
+  voicePaths?: VoicePath[];
   /* Per-prospect VOICE routing, from reports.voiceRoutingDemo.queues plus the
      prospect's booking term and product categories. Without it the voice prompt
      used to fall back to hardcoded retail language: it asked every caller for an
@@ -174,11 +204,46 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
   const book = (r.bookingTerm || "appointment").toLowerCase();
   const who = r.who || "customer";
   const products = r.products ?? [];
-  return [
-    NO_DASH_RULE,
-    `You are the AI phone assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
-    `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
+
+  /* ⚠️ WHEN THE CALLER CAME FROM A PAGE WITH A DIAGRAM, THE DIAGRAM IS THE FLOW.
+     Absent one, everything below is exactly what it always was — this is opt-in and
+     defaulted to today's behaviour, so nothing that does not pass a tree changes.
+
+     ⚠️ AND IT IS TOTAL: the tree is user-editable through Ask AI, so this has to survive
+     any shape it is handed — no branches, ten leaves, empty chips. A branch with nothing
+     to collect simply has no collect line; a tree with no branches falls through to the
+     hardcoded flow rather than emitting an empty CALL FLOW the model would improvise on. */
+  const paths = (brain.voicePaths ?? []).filter((p) => p.intent?.trim() && p.routes?.length);
+  const flow = paths.length ? [
+    `CALL FLOW — follow the routing your team configured, adapting naturally to what the caller says:`,
+    `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant, then work out which of these the caller needs:`,
+    ...paths.map((p) => `   • ${p.intent}${p.recognise ? ` — ${p.recognise}` : ""}`),
+    serviceArea
+      ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. Treat "12345" as the ONLY out-of-area ZIP — if they say it, politely apologise, explain ${brain.customerName} serves ${serviceArea}, say you cannot book them, then STOP: ask nothing else and do not route. For ANY other ZIP, briefly confirm you serve their area and continue.`
+      : ``,
     ``,
+    ...paths.flatMap((p) => {
+      const collect = [...new Set(p.routes.flatMap((r2) => r2.collect ?? []).filter(Boolean))];
+      const lines = [`PATH: ${p.intent.toUpperCase()}`];
+      if (collect.length) {
+        lines.push(`   - Collect these, ONE question at a time, in this order: ${collect.join(", ")}. Ask for them in your own words, naturally.`);
+      } else {
+        lines.push(`   - Ask what they need, in their own words.`);
+      }
+      if (p.routes.length === 1) {
+        const r2 = p.routes[0];
+        lines.push(`   - Then ${r2.action.toLowerCase()}: offer to connect them to ${r2.team}, confirm, then say "I'm transferring you to ${r2.team} now."`);
+      } else {
+        lines.push(`   - Then hand off to whichever of these fits what they told you, confirming before you transfer:`);
+        /* ⚠️ THE DIAGRAM DOES NOT ENCODE *WHY* A BRANCH SPLITS, so the criterion is not
+           invented here — the model is told to choose on what the caller said and the
+           leaf's own action wording, which is the only honest instruction available. */
+        for (const r2 of p.routes) lines.push(`      • ${r2.team} — ${r2.action}`);
+      }
+      lines.push(``);
+      return lines;
+    }),
+  ] : [
     `CALL FLOW, adapt naturally to what the caller says:`,
     `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant and ask whether they are calling to book ${aOrAn(book)} ${book}, or need help as an existing ${who}. Phrase it naturally for this business. Wait for their answer.`,
     ``,
@@ -200,6 +265,14 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `   c. Do NOT try to solve it. Once you have who they are AND what the issue is, offer to connect them to ${r.supportQueue}, confirm, then transfer ("Transferring you now.").`,
     `      If it clearly is not a ${r.supportQueue} matter, route to ${r.generalQueue ?? r.supportQueue} instead.`,
     ``,
+  ];
+
+  return [
+    NO_DASH_RULE,
+    `You are the AI phone assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
+    `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
+    ``,
+    ...flow,
     `STYLE & RULES:`,
     `- This is a SPOKEN call: talk naturally and briefly (1–2 sentences), ask ONE question at a time, then stop and wait.`,
     `- NEVER use emojis, markdown, or formatting — your words are read aloud by a text-to-speech voice.`,

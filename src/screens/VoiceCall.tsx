@@ -3,6 +3,8 @@ import { useProfile } from "../data/ProfileContext";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
+import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "../data/voicePaths";
+import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import { AgentStudioIcon } from "../components/nav";
 import type { VoiceConversation, VoiceTurn } from "../data/schema";
 
@@ -77,6 +79,20 @@ export function useBrain() {
       ?? profile.reports.agentConfig,
     [effectiveData, agentKey, profile.reports.agentConfig],
   );
+
+  /* ⚠️ THE DIAGRAM IS THE CALL'S LOGIC. Read the workflow page's EFFECTIVE tree — the same
+     object its sparkle edits — and hand it to the prompt as routing paths, so an SE who
+     adds a branch or changes what a leaf collects hears the agent follow it on the next
+     call. Read, never registered: `usePageData` here would repoint that page's own sparkle
+     away from the tree, which is the trap `WorkflowChatPreview` documents.
+
+     Absent a tree (a call started somewhere with no diagram) this is empty and the prompt
+     falls back to its original hardcoded flow. */
+  const treeKey = `${profileId}::${VOICE_WORKFLOW_SCOPE_PATH}`;
+  const voicePaths = useMemo(
+    () => treeToVoicePaths(effectiveData(treeKey) as WorkflowTreeModel | undefined),
+    [effectiveData, treeKey],
+  );
   return {
     customerName: profile.customerName,
     industry: profile.industry,
@@ -85,6 +101,7 @@ export function useBrain() {
     knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
     playbook: ac?.smsPlaybook,
     serviceArea: ac?.serviceArea,
+    voicePaths,
     /* Per-prospect routing for the voice prompt. Same source the workflow
        diagram uses (voiceRoutingDemo.queues), so the spoken call and the
        diagram name the same teams. Without this the prompt fell back to
