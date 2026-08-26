@@ -11,6 +11,7 @@ import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../compon
 import { usePageData } from "../components/GeneratedTiles";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor, collectNames } from "../data/workflowDrawers";
+import { voiceSpecFor } from "../data/voiceAgentSpec";
 import { isProspect } from "../data/prospect";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
@@ -220,6 +221,7 @@ function deriveTree(
   }
 
   const shaped = SHAPE[profile.id]?.(c);
+  const spec = voiceSpecFor(profile);
   return {
     variant: "voice",
     triggeredBy: "2 campaigns and 0 forms",
@@ -238,7 +240,7 @@ function deriveTree(
            name now lives where it is genuinely configuration — the leaf title and its route
            action — so the diagram still names this prospect's own teams. Only the intent
            label is generic, because in the product it always is. */
-        title: INTENT_SALES, subtitle: c.newSub, icon: "cart", locked: true,
+        title: INTENT_SALES, subtitle: spec ? spec.intent.split("\n")[0] : c.newSub, icon: "cart", locked: true,
         /* ⚠️ ONLY THE ROW BELOW THE USER GROUPS CARRIES PILLS (8/26/2026), and they are the
            drawer's own "What To Collect" rather than a second list that happens to look like
            it. They used to be the prospect's vocabulary — "Blinds", "Timeline", "Issue Type" —
@@ -265,12 +267,15 @@ function deriveTree(
 
              ⚠️ The support leaf deliberately has NONE. Support & Escalate does not branch;
              giving it paths would draw a fork the product does not have. */
-          paths: [
-            { title: `Looking to book ${aOrAn(c.bookingLower)} ${c.bookingLower}`,
-              action: LEAF_INFORM, tone: "green", chips: collectNames("inform") },
-            { title: `Needs help with an existing request`,
-              action: LEAF_INFORM, tone: "green", chips: collectNames("inform") },
-          ],
+          /* ⚠️ THE PATH TITLES ARE THE QUALIFY DRAWER'S ANSWERS, so a prospect with a
+             configured spec gets ITS answers on the diagram rather than a derived pair — the
+             two would otherwise disagree on the same screen. */
+          paths: (spec ? spec.segments : [
+            `Looking to book ${aOrAn(c.bookingLower)} ${c.bookingLower}`,
+            `Needs help with an existing request`,
+          ]).map((title) => ({
+            title, action: LEAF_INFORM, tone: "green" as const, chips: collectNames("inform"),
+          })),
         }],
       },
       {

@@ -72,6 +72,17 @@ export interface ChatBrain {
   /* The workflow diagram, when the caller came from a page that has one. Opt-in and
      defaulted to absent, so every existing caller keeps the hardcoded flow below. */
   voicePaths?: VoicePath[];
+  /**
+   * ⚠️ **AN ALLOW-LIST, AND IT INVERTS THE GATE.** Without it the prompt's rule is "12345 is
+   * the only out-of-area ZIP, everything else proceeds" — right for a national business, and
+   * exactly backwards for one that serves three ZIP codes and turns the rest away. Present
+   * means: only these are in area.
+   */
+  serviceZips?: string[];
+  /** Read verbatim to an out-of-area caller, when the prospect has scripted it. */
+  outOfAreaScript?: string;
+  /** The agent's opening line, when the prospect has scripted that too. */
+  voiceGreeting?: string;
   /* Per-prospect VOICE routing, from reports.voiceRoutingDemo.queues plus the
      prospect's booking term and product categories. Without it the voice prompt
      used to fall back to hardcoded retail language: it asked every caller for an
@@ -245,12 +256,24 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
      any shape it is handed — no branches, ten leaves, empty chips. A branch with nothing
      to collect simply has no collect line; a tree with no branches falls through to the
      hardcoded flow rather than emitting an empty CALL FLOW the model would improvise on. */
+  const zips = brain.serviceZips ?? [];
   const paths = (brain.voicePaths ?? []).filter((p) => p.intent?.trim() && p.routes?.length);
   const flow = paths.length ? [
     `CALL FLOW — follow the routing your team configured, adapting naturally to what the caller says:`,
-    `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant, then work out which of these the caller needs:`,
+    brain.voiceGreeting
+      /* ⚠️ VERBATIM WHEN SCRIPTED. An SE who typed the opening line expects to hear it, not a
+         paraphrase of it — this is the first thing a prospect hears on the demo call. */
+      ? `1. OPEN with exactly this line, word for word: "${brain.voiceGreeting}" Then wait for their answer and work out which of these they need:`
+      : `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant, then work out which of these the caller needs:`,
     ...paths.map((p) => `   • ${p.intent}${p.recognise ? ` — ${p.recognise}` : ""}`),
-    serviceArea
+    /* ⚠️ TWO GATES, AND WHICH ONE APPLIES IS THE PROSPECT'S OWN CONFIGURATION. An allow-list
+       turns every unlisted ZIP away and reads the scripted apology verbatim; without one the
+       demo rule stands, where a single ZIP is the only refusal so an SE can show the happy path
+       with any number they like. Getting these the wrong way round either books callers a
+       franchise cannot serve or turns away every caller in the demo. */
+    zips.length
+      ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. ${brain.customerName} serves ONLY these ZIP codes: ${zips.join(", ")}. If the caller's ZIP is one of them, briefly confirm you serve their area and continue. If it is ANYTHING else, say exactly this and then END the call, asking nothing further and routing nobody: "${brain.outOfAreaScript ?? `Thank you for calling ${brain.customerName}. Unfortunately we do not currently serve your area.`}"`
+      : serviceArea
       ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. Treat "12345" as the ONLY out-of-area ZIP — if they say it, politely apologise, explain ${brain.customerName} serves ${serviceArea}, say you cannot book them, then STOP: ask nothing else and do not route. For ANY other ZIP, briefly confirm you serve their area and continue.`
       : ``,
     ``,

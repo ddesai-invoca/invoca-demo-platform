@@ -5,6 +5,7 @@ import { VoiceCallUI } from "../components/VoiceCallUI";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "../data/voicePaths";
+import { voiceSpecFor } from "../data/voiceAgentSpec";
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoiceConversation, VoiceTurn } from "../data/schema";
 
@@ -89,6 +90,7 @@ export function useBrain() {
      Absent a tree (a call started somewhere with no diagram) this is empty and the prompt
      falls back to its original hardcoded flow. */
   const treeKey = `${profileId}::${VOICE_WORKFLOW_SCOPE_PATH}`;
+  const spec = voiceSpecFor(profile);
   const voicePaths = useMemo(
     () => treeToVoicePaths(effectiveData(treeKey) as WorkflowTreeModel | undefined),
     [effectiveData, treeKey],
@@ -102,6 +104,13 @@ export function useBrain() {
     playbook: ac?.smsPlaybook,
     serviceArea: ac?.serviceArea,
     voicePaths,
+    /* ⚠️ THE SPEC REACHES THE LIVE CALL, which is the whole point of it. Without these three
+       the diagram and the drawers would show this prospect's configuration while the agent on
+       the phone used the generic derived flow — the two-surfaces-disagreeing failure this
+       repo keeps hitting, in its most visible form: a prospect hears the wrong greeting. */
+    serviceZips: spec?.serviceZips,
+    outOfAreaScript: spec?.outOfAreaScript,
+    voiceGreeting: spec?.greeting,
     /* Per-prospect routing for the voice prompt. Same source the workflow
        diagram uses (voiceRoutingDemo.queues), so the spoken call and the
        diagram name the same teams. Without this the prompt fell back to

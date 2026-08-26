@@ -1,4 +1,5 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
+import { voiceSpecFor } from "./voiceAgentSpec";
 
 /* =============================================================================
    workflowDrawers.ts — what each node of the flow diagram opens
@@ -160,6 +161,7 @@ export function drawerFor(
   tree: WorkflowTreeModel,
   nodeId: string,
 ): NodeDrawer | null {
+  const spec = voiceSpecFor(profile);
   const noun = (profile.customerNoun ?? "customer").toLowerCase();
   const booking = profile.bookingTerm.toLowerCase();
   const area = profile.reports.agentConfig?.serviceArea?.trim();
@@ -179,6 +181,12 @@ export function drawerFor(
     const b = tree.branches[bi];
     if (!b) return null;
     const isSales = bi === 0;
+    /* ⚠️ THE SPEC WINS ON THE SALES INTENT. Where an SE has configured this agent's own words,
+       showing a derived paraphrase beside them would be the drawer contradicting the prompt. */
+    if (isSales && spec) {
+      return { kind: "intent", title: "Intent Details", name: b.title,
+        looksLike: spec.intent, rules: spec.rules };
+    }
     return {
       kind: "intent", title: "Intent Details", name: b.title,
       looksLike: isSales
@@ -207,6 +215,10 @@ export function drawerFor(
     const action: ActionKind = /escalate/i.test(l.action) ? "escalate"
       : /qualify/i.test(l.action) ? "qualify" : "inform";
     if (action === "qualify") {
+      if (spec) {
+        return { kind: "action", title: "Action", action,
+          question: spec.qualifyQuestion, segments: [...spec.segments], fallback: spec.qualifyFallback };
+      }
       return {
         kind: "action", title: "Action", action,
         question: `Are you looking to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}, or do you need help with something already in progress?`,
@@ -229,6 +241,11 @@ export function drawerFor(
         collect: COLLECT_FOR.escalate,
       };
     }
+    if (spec) {
+      return { kind: "action", title: "Action", action,
+        handling: spec.informSteps.join("\n"),
+        phone: demoPhone(areaCodeOf(profile)), collect: COLLECT_FOR.inform };
+    }
     return {
       kind: "action", title: "Action", action,
       handling: [
@@ -249,6 +266,11 @@ export function drawerFor(
   if (pathId) {
     const pth = tree.branches[Number(pathId[1])]?.leaves[Number(pathId[2])]?.paths?.[Number(pathId[3])];
     if (!pth) return null;
+    if (spec) {
+      return { kind: "action", title: "Action", action: "inform",
+        handling: spec.informSteps.join("\n"),
+        phone: demoPhone(areaCodeOf(profile)), collect: COLLECT_FOR.inform };
+    }
     return {
       kind: "action", title: "Action", action: "inform",
       handling: [
