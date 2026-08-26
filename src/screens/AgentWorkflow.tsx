@@ -5,6 +5,8 @@ import { AgentStudioLayout } from "./AgentStudioLayout";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
 import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCall } from "./VoiceCall";
+import { VoiceCallLive } from "./VoiceCallLive";
+import { useLiveKitReady } from "../data/liveKitVoice";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
 import { isProspect } from "../data/prospect";
@@ -263,6 +265,7 @@ export function AgentWorkflow() {
   const tree = usePageData(baseTree);
   const [voicePreview, setVoicePreview] = useState(false);
   const [inCall, setInCall] = useState(false);
+  const liveKitReady = useLiveKitReady();
   const closeVoice = () => { setVoicePreview(false); setInCall(false); };
   /* Preview Workflow is channel-specific: Voice slides in the call drawer, SMS
      opens the chat drawer that tests the same agent as the Preview Agent screen.
@@ -297,7 +300,13 @@ export function AgentWorkflow() {
               <button className="vp-close" onClick={closeVoice} aria-label="Close preview"><span className="material-icons">close</span></button>
             </div>
             {inCall ? (
-              <VoiceCall onEnd={() => setInCall(false)} />
+              /* ⚠️ LIVEKIT WHEN IT IS CONFIGURED, THE ORIGINAL ENGINE OTHERWISE. The
+                 streaming pipeline is the point (the old one took 4.5-6s to speak), but a
+                 missing key or a LiveKit outage must not leave an SE with a dead Start Call
+                 mid-demo — so the fallback is real and stays until this is proven. */
+              liveKitReady
+                ? <VoiceCallLive onEnd={() => setInCall(false)} />
+                : <VoiceCall onEnd={() => setInCall(false)} />
             ) : (
               <div className="vp-body">
                 <VoicePreviewIllustration />

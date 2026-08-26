@@ -43,7 +43,7 @@ const METER_MAX = 0.25;       // RMS mapped to a full meter
 
 /* The agent's brain: the same brand rules + Q&A + knowledge + playbook the SMS
    Preview Agent uses, re-skinned per prospect at generation time. */
-function useBrain() {
+export function useBrain() {
   const { profile } = useProfile();
   const ac = profile.reports.agentConfig;
   return {
@@ -120,7 +120,7 @@ function extractName(messages: Msg[]): { first: string; last: string; display: s
   return { first: "—", last: "—", display: "Voice Lead" };
 }
 
-function buildVoiceConversation(messages: Msg[], durationSecs: number): VoiceConversation {
+export function buildVoiceConversation(messages: Msg[], durationSecs: number): VoiceConversation {
   const now = new Date();
   const id = genId();
   const transcript: VoiceTurn[] = messages.map((m, i) => ({
