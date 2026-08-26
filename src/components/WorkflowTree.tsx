@@ -410,6 +410,12 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         <span className="material-icons">crop_free</span>
       </button>
     </div>
+    {/* ⚠️ AN INNER SCROLLER, SO THE OVERLAYS DO NOT SCROLL WITH THE DIAGRAM. The canvas
+        itself used to scroll, and an absolutely-positioned child of a scroll container
+        moves with its content — so zooming in far enough carried the zoom cluster (and the
+        minimap) up and out of the corner. The canvas is the non-scrolling frame the
+        overlays anchor to; this box inside it does the scrolling. */}
+    <div className="wf-scroll">
     <div className="wf-fit" ref={ref}
       style={{ width: W * scale, height: H * scale, margin: "24px auto" }}>
       <div className={"wf-tree" + (model.variant === "voice" ? " wf-voice" : "")}
@@ -558,6 +564,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         })}
       </div>
     </div>
+      </div>
     </>
   );
 }

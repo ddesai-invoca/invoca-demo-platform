@@ -988,13 +988,12 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
      does too.
      ⚠️ Fills the space the content column has left rather than sizing to the tree, which is
      what lets the fit scale solve for a real box in BOTH dimensions. */
-  position: relative; flex: 1; min-height: 320px; padding-bottom: 24px;
-  /* ⚠️ `auto`, NOT `hidden`. Hidden was right when the tree sized itself and the canvas grew
-     to match — nothing ever needed to scroll here. With a scale FLOOR a tree can now be
-     legitimately larger than its box on a short window, and hidden would clip the bottom row
-     silently. Nothing scrolls while the tree fits, so no scrollbar appears in the normal
-     case. */
-  border: 1px solid #e7eaee; border-radius: 8px; overflow: auto;
+  position: relative; flex: 1; min-height: 320px;
+  /* ⚠️ THE CANVAS IS THE FRAME AND DOES NOT SCROLL — `.wf-scroll` inside it does. It briefly
+     had `overflow: auto` itself, and that carried the absolutely-positioned zoom cluster and
+     minimap along with the content the moment anyone zoomed in far enough to scroll: overlays
+     anchored to a scroll container move with it. They anchor to this box instead. */
+  border: 1px solid #e7eaee; border-radius: 8px; overflow: hidden;
   background-color: #fff;
   background-image: radial-gradient(#d7dbe0 1.1px, transparent 1.1px);
   background-size: 20px 20px;
@@ -1003,6 +1002,10 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 /* Reserves the SCALED footprint of a computed-layout tree so `margin: auto`
    centres the box you can actually see. transform: scale() shrinks the paint and
    not the layout box, which is what clipped the right-hand column before. */
+/* Fills the canvas and does the scrolling, so the diagram can be larger than its frame
+   without dragging the overlays out of the corner. The 24px is the breathing room that used
+   to sit on the canvas itself. */
+.wf-scroll { position: absolute; inset: 0; overflow: auto; padding-bottom: 24px; box-sizing: border-box; }
 .wf-fit { position: relative; }
 .wf-lines { position: absolute; left: 0; top: 0; overflow: visible; }
 .wf-l { stroke: #c7ccd4; stroke-width: 2; fill: none; }
@@ -1047,11 +1050,11 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-canvas-wide { overflow-x: auto; }
 
 /* zoom controls + minimap */
-.wf-zoom { position: absolute; left: 16px; bottom: 16px; display: flex; flex-direction: column; border: 1px solid #d5d9de; border-radius: 8px; overflow: hidden; background: #fff; }
+.wf-zoom { position: absolute; z-index: 2; left: 16px; bottom: 16px; display: flex; flex-direction: column; border: 1px solid #d5d9de; border-radius: 8px; overflow: hidden; background: #fff; }
 .wf-zoom-btn { width: 34px; height: 34px; background: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--color-text-muted); }
 .wf-zoom-btn + .wf-zoom-btn { border-top: 1px solid #e7eaee; }
 .wf-zoom-btn .material-icons { font-size: 18px; }
-.wf-minimap { position: absolute; right: 16px; bottom: 16px; width: 150px; height: 96px; border: 1px solid #e2e5e9; border-radius: 6px; background: #fafbfc; }
+.wf-minimap { position: absolute; z-index: 2; right: 16px; bottom: 16px; width: 150px; height: 96px; border: 1px solid #e2e5e9; border-radius: 6px; background: #fafbfc; }
 .wf-mini-node { position: absolute; width: 34px; height: 12px; background: #dfe3e8; border-radius: 2px; }
 
 /* ---- iPhone "Preview Agent" SMS chat (modern iOS, dark mode) ------------ */
