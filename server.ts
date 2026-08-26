@@ -241,10 +241,17 @@ app.post("/api/tts", async (req, res) => {
    501 when unconfigured, so the client falls back rather than dying mid-demo. */
 app.post("/api/livekit-token", async (req, res) => {
   try {
-    const { brain, profileId, greeting } = req.body || {};
-    if (!brain) return res.status(400).json({ error: "brain is required." });
+    /* ⚠️⚠️ **CONFIG IS CHECKED BEFORE THE BODY, AND THE ORDER IS THE WHOLE POINT.** This
+       validated `brain` first and answered 400 to a body-less request — which is exactly what
+       `useLiveKitReady()` sends to ask "is LiveKit available here?", and it reads 400 as YES.
+       So on a server with no LiveKit keys the probe said yes, the app chose the LiveKit
+       engine, and the real token request then fell through to the 501 below: Start Call did
+       nothing, on production, with the fallback engine sitting right there unused. An
+       unconfigured server must answer 501 whatever the body says. */
     const cfg = livekitEnv();
     if (!cfg) return res.status(501).json({ error: "LiveKit is not configured on the server." });
+    const { brain, profileId, greeting } = req.body || {};
+    if (!brain) return res.status(400).json({ error: "brain is required." });
     res.json(await mintVoiceToken({ brain, profileId: profileId || "demo", greeting }, cfg));
   } catch (e: any) {
     console.error("[livekit] token failed:", e);

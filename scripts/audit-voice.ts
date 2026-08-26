@@ -77,9 +77,26 @@ check(!/^import \{[^}]*\} from "livekit-client"/m.test(client),
 check(!/process\.env\.DEEPGRAM_API_KEY/.test(worker),
   "worker reads no Deepgram key (STT/TTS come from LiveKit's gateway)");
 
+/* ⚠️ 8. THE READINESS PROBE MUST BE ABLE TO SAY "NO". `useLiveKitReady` POSTs an EMPTY body
+      and reads 400 as "LiveKit is available here". Both servers used to validate `brain`
+      before checking the config, so an unconfigured server answered 400 to that probe, the app
+      chose the LiveKit engine, the real token request then 501'd, and Start Call silently did
+      nothing — on production, with the fallback engine sitting unused. The config check must
+      come FIRST in both. */
+for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", read("vite.config.ts")]] as const) {
+  const seg = src.slice(src.indexOf("livekit-token"));
+  const cfgAt = Math.min(...["livekitEnv()", "livekitEnv(env)"].map((k) => {
+    const i = seg.indexOf(k); return i < 0 ? Number.MAX_SAFE_INTEGER : i;
+  }));
+  const brainAt = seg.indexOf("brain is required");
+  check(cfgAt < brainAt && brainAt > 0,
+    `${file}: /api/livekit-token checks LiveKit config BEFORE validating the body`,
+    `config at ${cfgAt}, body guard at ${brainAt}`);
+}
+
 /* Self-check: a static audit that silently matches nothing reports success forever. */
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (13 checks)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (15 checks)");
 process.exit(failures ? 1 : 0);

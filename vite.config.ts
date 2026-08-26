@@ -395,14 +395,17 @@ function livekitApi(env: Record<string, string>): Plugin {
         try {
           let raw = ''
           for await (const chunk of req) raw += chunk
-          const { brain, profileId, greeting } = JSON.parse(raw || '{}')
-          if (!brain) return send(400, { error: 'brain is required.' })
-
           const mod = await import(
             pathToFileURL(path.resolve(process.cwd(), 'engine/livekitToken.ts')).href
           )
           const cfg = mod.livekitEnv(env)
           if (!cfg) return send(501, { error: 'LiveKit is not configured. Add LIVEKIT_URL, LIVEKIT_API_KEY and LIVEKIT_API_SECRET to .env.' })
+
+          /* ⚠️ CONFIG BEFORE BODY — see the note in server.ts. The readiness probe sends an
+             empty body, so validating `brain` first makes an unconfigured server answer 400,
+             which the client reads as "LiveKit is available" and the fallback never engages. */
+          const { brain, profileId, greeting } = JSON.parse(raw || '{}')
+          if (!brain) return send(400, { error: 'brain is required.' })
           send(200, await mod.mintVoiceToken({ brain, profileId: profileId || 'demo', greeting }, cfg))
         } catch (e) {
           send(500, { error: e instanceof Error ? e.message : String(e) })
