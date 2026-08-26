@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import {
   ACTION_LABEL, ACTION_DESCRIPTION, ACTION_PROMPT, PHONE_PROMPT,
   type NodeDrawer,
@@ -24,6 +24,47 @@ import {
    were not captured, so these render the closed control with its measured chevron and do not
    open. A dropdown listing invented options is worse than one that does not open.
    ============================================================================= */
+
+
+/**
+ * A textarea that is as tall as its text, up to `maxLines`, then scrolls.
+ *
+ * ⚠️ **MEASURED, NOT CHOSEN.** The real drawer's boxes come out at 46 / 69 / 161 px — exact
+ * multiples of the 23px line box — so they size to their content rather than to a fixed
+ * height. One 362-character rule sits at 69 with `overflow-y: auto` and its text clipped
+ * mid-sentence, which is what pins the cap: a rule stops growing at THREE lines and scrolls.
+ * Ours were a flat 84px, and 230px for the two marked `--tall`, so a two-sentence description
+ * sat in a half-empty well.
+ *
+ * ⚠️ The height has to be measured from `scrollHeight` rather than derived from the character
+ * count, because where the text wraps depends on the box's width — and the drawer is
+ * `max-width: 100vw`, so that width genuinely changes. Re-measured on resize for the same
+ * reason.
+ */
+function AutoTa({ value, maxLines, className = "", placeholder }: {
+  value: string; maxLines: number; className?: string; placeholder?: string;
+}) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+  useLayoutEffect(() => {
+    const fit = () => {
+      const el = ref.current;
+      if (!el) return;
+      const cs = getComputedStyle(el);
+      const line = parseFloat(cs.lineHeight) || 23;
+      const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+      const border = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+      el.style.height = "auto";                       // let scrollHeight report the content
+      const want = el.scrollHeight;
+      const max = maxLines * line + pad;
+      el.style.height = `${Math.min(want, max) + border}px`;
+      el.style.overflowY = want > max ? "auto" : "hidden";
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    return () => window.removeEventListener("resize", fit);
+  }, [value, maxLines]);
+  return <textarea ref={ref} className={`wnd-ta ${className}`} readOnly value={value} placeholder={placeholder} />;
+}
 
 export function WorkflowNodeDrawer({ d, onClose }: { d: NodeDrawer; onClose: () => void }) {
   /* Escape closes, as the real drawer does. */
@@ -68,12 +109,12 @@ export function WorkflowNodeDrawer({ d, onClose }: { d: NodeDrawer; onClose: () 
               <div className="wnd-value">{d.name}</div>
 
               <label className="wnd-label">What does this intent look like?</label>
-              <textarea className="wnd-ta wnd-ta--tall" readOnly value={d.looksLike} />
+              <AutoTa value={d.looksLike} maxLines={8} />
 
               <label className="wnd-label">How would you like to define the conversation rules?</label>
               {(d.rules.length ? d.rules : ["", "", ""]).map((r, i) => (
                 <div className="wnd-rulerow" key={i}>
-                  <textarea className="wnd-ta wnd-ta--rule" readOnly value={r} placeholder="Enter rule..." />
+                  <AutoTa value={r} maxLines={3} className="wnd-ta--rule" placeholder="Enter rule..." />
                   <button className="wnd-del" aria-label="Remove rule" onClick={(e) => e.preventDefault()}>
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
                       <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -112,7 +153,7 @@ export function WorkflowNodeDrawer({ d, onClose }: { d: NodeDrawer; onClose: () 
                   <label className="wnd-label wnd-label--info">
                     If the agent can't determine the answer<InfoDot />
                   </label>
-                  <textarea className="wnd-ta" readOnly value={d.fallback ?? ""} />
+                  <AutoTa value={d.fallback ?? ""} maxLines={4} />
                 </>
               ) : (
                 <>
@@ -120,10 +161,10 @@ export function WorkflowNodeDrawer({ d, onClose }: { d: NodeDrawer; onClose: () 
                       holds six numbered routing steps; the escalate capture's is the default
                       height for its two-line instruction. One shared `--tall` made a short
                       instruction sit in a half-empty 230px well. */}
-                  <textarea
-                    className={"wnd-ta" + (d.action === "inform" ? " wnd-ta--tall" : "")}
-                    readOnly value={d.handling ?? ""}
-                  />
+                  {/* One rule for both: it grows to its own content, so the six numbered
+                      routing steps and the two-line escalation instruction each get the
+                      height they need without a per-action modifier. */}
+                  <AutoTa value={d.handling ?? ""} maxLines={10} />
                   <label className="wnd-label wnd-label--info">
                     {PHONE_PROMPT[d.action]}<InfoDot />
                   </label>
