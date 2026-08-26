@@ -20,8 +20,12 @@ function QaModal({ pairs, onClose }: { pairs: QaPair[]; onClose: () => void }) {
           ))}
         </div>
         <div className="qa-modal-foot">
-          <button className="ag-save" onClick={onClose}>Cancel</button>
-          <button className="ag-publish" onClick={onClose}>Done</button>
+          {/* ⚠️ ITS OWN CLASSES NOW. These were `.ag-save` / `.ag-publish`, borrowed from the
+              Agent Studio FOOTER — which no longer exists, so deleting those rules left this
+              modal's buttons unstyled. Borrowing a class from another screen's chrome is how a
+              change over there silently breaks something over here. */}
+          <button className="qa-cancel" onClick={onClose}>Cancel</button>
+          <button className="qa-done" onClick={onClose}>Done</button>
         </div>
       </div>
     </div>
