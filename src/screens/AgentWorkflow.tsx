@@ -413,11 +413,7 @@ export function AgentWorkflow() {
           return d ? <WorkflowNodeDrawer d={d} onClose={() => setOpenNode(null)} /> : null;
         })()}
 
-        <div className="wf-zoom">
-          <button className="wf-zoom-btn"><span className="material-icons">add</span></button>
-          <button className="wf-zoom-btn"><span className="material-icons">remove</span></button>
-          <button className="wf-zoom-btn"><span className="material-icons">crop_free</span></button>
-        </div>
+        {/* The zoom cluster is rendered by WorkflowTree, which owns the scale. */}
 
         <div className="wf-minimap">
           <span className="wf-mini-node" style={{ top: 10, left: 40 }} />

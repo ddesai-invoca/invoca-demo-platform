@@ -171,9 +171,36 @@ const GEO = {
 /** Never shrink past this — see the note at the clamp. */
 const MIN_SCALE = 0.5;
 
+/* User zoom bounds. The FIT can go below MIN_ZOOM (it has its own 0.5 floor); these bound
+   what the +/- buttons and the wheel can reach. */
+const MIN_ZOOM = 0.3;
+const MAX_ZOOM = 2.5;
+/* Multiplicative, so each press feels the same size at any zoom — a fixed +0.1 step is
+   a 33% jump at 0.3 and a 4% nudge at 2.5. */
+const ZOOM_STEP = 1.2;
+const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z));
+
 function useFitScale(designWidth: number, designHeight: number) {
   const ref = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+  const [fit, setFit] = useState(1);
+  /* ⚠️ null MEANS "FOLLOW THE FIT", which is not the same as holding the fit's current
+     number. Storing the number would freeze the diagram at whatever the fit happened to be
+     when the window was that size, so a later resize would stop re-fitting — and nothing on
+     screen would say why. */
+  const [user, setUser] = useState<number | null>(null);
+  const scale = user ?? fit;
+  /* ⚠️ A REF MIRRORS THE LIVE SCALE, and without it rapid zooming barely moves. Every wheel
+     event in a burst closes over the SAME `scale` from its render, so three clicks all
+     computed `0.62 * 1.2` and set the identical value — three notches of input, one notch of
+     zoom, which reads as the gesture being ignored. Reading the ref lets consecutive events
+     compose before React has re-rendered. */
+  const scaleRef = useRef(scale);
+  scaleRef.current = scale;
+
+  /* Where to put the scroll after a zoom, so the point under the cursor stays under it. */
+  const anchor = useRef<{ cx: number; cy: number; px: number; py: number } | null>(null);
+
+  const setScale = setFit;
   useEffect(() => {
     const el = ref.current?.parentElement;
     if (!el) return;
@@ -196,7 +223,74 @@ function useFitScale(designWidth: number, designHeight: number) {
     ro.observe(el);
     return () => ro.disconnect();
   }, [designWidth, designHeight]);
-  return { ref, scale };
+
+  /* ⚠️ THE SCROLL FIX HAS TO RUN AFTER THE NEW SCALE IS PAINTED, hence a LAYOUT effect: the
+     scaled box only has its new size once React has committed, and setting scroll before that
+     lands against the old dimensions and jumps. */
+  useLayoutEffect(() => {
+    const a = anchor.current;
+    if (!a) return;
+    anchor.current = null;
+    const el = ref.current?.parentElement;
+    if (!el) return;
+    el.scrollLeft = a.cx * scale - a.px;
+    el.scrollTop = a.cy * scale - a.py;
+  }, [scale]);
+
+  /**
+   * Zoom to `next`, keeping the content under (clientX, clientY) in place.
+   *
+   * ⚠️ Without the anchor a zoom recentres on the box and the node you were looking at slides
+   * away, which makes the wheel feel like it is fighting you. Anchoring on the POINTER for the
+   * wheel and on the box CENTRE for the buttons is what each gesture implies.
+   */
+  const zoomTo = (next: number, clientX?: number, clientY?: number) => {
+    const el = ref.current?.parentElement;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const px = clientX != null ? clientX - r.left : el.clientWidth / 2;
+    const py = clientY != null ? clientY - r.top : el.clientHeight / 2;
+    const from = scaleRef.current;
+    const to = clampZoom(next);
+    anchor.current = { cx: (el.scrollLeft + px) / from, cy: (el.scrollTop + py) / from, px, py };
+    scaleRef.current = to;
+    setUser(to);
+  };
+
+  const zoomIn = () => zoomTo(scaleRef.current * ZOOM_STEP);
+  const zoomOut = () => zoomTo(scaleRef.current / ZOOM_STEP);
+  /** Back to the computed fit, re-centred — the whole diagram visible however far you strayed. */
+  const resetZoom = () => {
+    anchor.current = null;
+    setUser(null);
+    const el = ref.current?.parentElement;
+    if (el) requestAnimationFrame(() => {
+      el.scrollLeft = Math.max(0, (el.scrollWidth - el.clientWidth) / 2);
+      el.scrollTop = 0;
+    });
+  };
+
+  /* ⚠️ A NATIVE, NON-PASSIVE LISTENER. React's onWheel is registered passively at the root, so
+     `preventDefault` there is ignored with a console warning and the canvas scrolls INSTEAD of
+     zooming. Attaching it here with `{ passive: false }` is the only way the gesture works. */
+  useEffect(() => {
+    const el = ref.current?.parentElement;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      if (e.ctrlKey) return;                     // leave browser pinch-zoom alone
+      e.preventDefault();
+      /* ⚠️ PROPORTIONAL TO deltaY, NOT ONE FIXED STEP PER EVENT. A mouse notch is about
+         ±100, so it gets a full ZOOM_STEP; a trackpad sends a stream of small deltas, and
+         charging a full step for each would rocket from 0.6 to the ceiling on one flick.
+         Clamped to a single step per event so a chunky OS setting cannot jump either. */
+      const notches = Math.max(-1, Math.min(1, -e.deltaY / 100));
+      zoomTo(scaleRef.current * Math.pow(ZOOM_STEP, notches), e.clientX, e.clientY);
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  });
+
+  return { ref, scale, zoomIn, zoomOut, resetZoom, zoomed: user !== null };
 }
 
 export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNode?: (id: string) => void }) {
@@ -244,7 +338,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
   const firstCx = branches.length ? branchCx(0) : mid;
   const lastCx = branches.length ? branchCx(branches.length - 1) : mid;
 
-  const { ref, scale } = useFitScale(W, H);
+  const { ref, scale, zoomIn, zoomOut, resetZoom } = useFitScale(W, H);
 
   /* Measure the nodes so the connectors can start and end on real edges. Layout
      effect + ResizeObserver: the effect covers the first paint and any model
@@ -298,6 +392,24 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
   : { className: "" });
 
   return (
+    <>
+    {/* ⚠️ THE ZOOM CLUSTER LIVES HERE NOW, not in AgentWorkflow. It rendered next to the
+        canvas with no state behind it, so all three buttons were decorative — the classic
+        control that looks live and does nothing. Its state is the fit scale, which is
+        measured in this component, so the buttons belong with it rather than being wired
+        up through props. It is absolutely positioned against `.wf-canvas`, which is still
+        the positioned ancestor, so it lands in exactly the same corner. */}
+    <div className="wf-zoom">
+      <button className="wf-zoom-btn" onClick={zoomIn} aria-label="Zoom in" title="Zoom in">
+        <span className="material-icons">add</span>
+      </button>
+      <button className="wf-zoom-btn" onClick={zoomOut} aria-label="Zoom out" title="Zoom out">
+        <span className="material-icons">remove</span>
+      </button>
+      <button className="wf-zoom-btn" onClick={resetZoom} aria-label="Fit to view" title="Fit to view">
+        <span className="material-icons">crop_free</span>
+      </button>
+    </div>
     <div className="wf-fit" ref={ref}
       style={{ width: W * scale, height: H * scale, margin: "24px auto" }}>
       <div className={"wf-tree" + (model.variant === "voice" ? " wf-voice" : "")}
@@ -446,5 +558,6 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         })}
       </div>
     </div>
+    </>
   );
 }
