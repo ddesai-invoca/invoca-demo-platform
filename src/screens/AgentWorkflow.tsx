@@ -82,11 +82,16 @@ function voiceCopy(p: ReturnType<typeof useProfile>["profile"]) {
    ⚠️ SCOPED TO THE SMS TEMPLATE. The Voice tree's intent nodes still derive from the
    prospect's real queues and carry caller-intent subtitles, because those were measured off
    Invoca's own Voice workflow page. Lock those too only against evidence from that screen. */
+/* ⚠️ RENAMED FROM SMS_* BECAUSE BOTH CHANNELS USE THEM NOW (8/26/2026). The voice tree's
+   intents were the prospect's own queue names until the user confirmed the real Voice page
+   shows these same two words; leaving them called INTENT_SALES on a voice tree reads as a bug and
+   invites someone to "fix" it back. SMS_TRIGGER keeps its name — its wording genuinely names
+   inbound SMS and the voice tree has its own trigger line. */
 const SMS_TRIGGER = "0 Campaigns, 0 Forms, and 0 Inbound SMS";
-const SMS_SALES = "Sales Inquiry";
-const SMS_SUPPORT = "Need Support";
+const INTENT_SALES = "Sales Inquiry";
+const INTENT_SUPPORT = "Need Support";
 /** The support leaf is "All Support Users", NOT "All Need Support Users". */
-const SMS_SUPPORT_LEAF = "All Support Users";
+const SUPPORT_LEAF = "All Support Users";
 
 /* `isProspect` moved to src/data/prospect.ts when the franchise AI dashboard needed the same
    test. ONE implementation, several callers — see the note at the top of that file. */
@@ -109,16 +114,16 @@ const SMS_SHAPE: { prospect: string; tree: () => Pick<WorkflowTreeModel, "trigge
       triggeredBy: SMS_TRIGGER,
       branches: [
         {
-          title: SMS_SALES, icon: "cart", locked: true,
+          title: INTENT_SALES, icon: "cart", locked: true,
           leaves: [{
-            title: `All ${SMS_SALES} Users`, action: "Schedule Callback",
+            title: `All ${INTENT_SALES} Users`, action: "Schedule Callback",
             tone: "green", actionIcon: "phone", chips: ["Consumer Name"],
           }],
         },
         {
-          title: SMS_SUPPORT, icon: "headset", locked: true,
+          title: INTENT_SUPPORT, icon: "headset", locked: true,
           leaves: [{
-            title: SMS_SUPPORT_LEAF, action: "Support & Escalate",
+            title: SUPPORT_LEAF, action: "Support & Escalate",
             tone: "orange", warn: true,
           }],
         },
@@ -140,7 +145,12 @@ const SMS_SHAPE: { prospect: string; tree: () => Pick<WorkflowTreeModel, "trigge
 const SHAPE: Record<string, (c: ReturnType<typeof voiceCopy>) => TreeBranch[] | null> = {
   "national-van-lines": (c) => [
     {
-      title: "Book a Move", icon: "cart",
+      /* ⚠️ THE INTENT NAME IS THE TEMPLATE'S, EVEN HERE. This override exists for the
+         two-team SPLIT, which is genuinely this prospect's configuration; the node it hangs
+         off is the same locked "Sales Inquiry" every other account shows. It used to read
+         "Book a Move", which is exactly the drift the SMS note warns about — an override
+         that quietly keeps a copy of a template that has since changed. */
+      title: INTENT_SALES, icon: "cart", locked: true,
       subtitle: "Caller wants to book a move and is not an existing customer",
       leaves: [
         { title: "All Inter-State Users", action: "Route to Inter-State Move (Team A)",
@@ -150,7 +160,7 @@ const SHAPE: Record<string, (c: ReturnType<typeof voiceCopy>) => TreeBranch[] | 
       ],
     },
     {
-      title: c.supQ, subtitle: c.supSub, icon: "headset",
+      title: INTENT_SUPPORT, subtitle: c.supSub, icon: "headset", locked: true,
       leaves: [{ title: `All ${c.supQ} Users`, action: `Route to ${c.supQueue}`,
         tone: "orange", chips: c.supChips }],
     },
@@ -173,11 +183,14 @@ function deriveTree(
       variant: "sms",
       triggeredBy: SMS_TRIGGER,
       startLabel: `${channelLabel} · classify intent`,
+      /* Same chrome lock: SMS_TRIGGER is the product's exact wording, so it was
+         inconsistent for the AI to be able to rewrite it while the intents were refused. */
+      chromeLocked: true,
       branches: [
         {
-          title: SMS_SALES, icon: "cart", locked: true,
+          title: INTENT_SALES, icon: "cart", locked: true,
           leaves: [{
-            title: `All ${SMS_SALES} Users`,
+            title: `All ${INTENT_SALES} Users`,
             /* Still per prospect: the ACTION is a configured queue action, not chrome. */
             action: `Schedule ${bookingTerm}`,
             tone: "green",
@@ -185,8 +198,8 @@ function deriveTree(
           }],
         },
         {
-          title: SMS_SUPPORT, icon: "headset", locked: true,
-          leaves: [{ title: SMS_SUPPORT_LEAF, action: "Support & Escalate", tone: "orange" }],
+          title: INTENT_SUPPORT, icon: "headset", locked: true,
+          leaves: [{ title: SUPPORT_LEAF, action: "Support & Escalate", tone: "orange" }],
         },
       ],
     };
@@ -197,9 +210,21 @@ function deriveTree(
     variant: "voice",
     triggeredBy: "2 campaigns and 0 forms",
     startLabel: "Voice · classify intent",
+    /* Trigger line and Conversation Start are the product's, not the prospect's. */
+    chromeLocked: true,
     branches: shaped ?? [
       {
-        title: c.newQ, subtitle: c.newSub, icon: "cart",
+        /* ⚠️ THE VOICE INTENTS ARE THE SAME TWO WORDS THE SMS TEMPLATE USES, and locked for
+           the same reason: the real product does not let a user rename them (confirmed
+           8/25/2026). They USED to derive from each prospect's own routing queues, which is
+           why Shady Blinds read "Design Consultation" / "Existing Order" and AutoNation
+           "Test Drive" / "Service Appointment" on a screen that always shows these two.
+
+           ⚠️ THE PROSPECT-SPECIFIC PART MOVED DOWN A ROW, IT DID NOT DISAPPEAR. The queue
+           name now lives where it is genuinely configuration — the leaf title and its route
+           action — so the diagram still names this prospect's own teams. Only the intent
+           label is generic, because in the product it always is. */
+        title: INTENT_SALES, subtitle: c.newSub, icon: "cart", locked: true,
         leaves: [{
           title: `All ${c.newQ} Users`,
           action: `Route to ${c.newQueue}`,
@@ -208,7 +233,7 @@ function deriveTree(
         }],
       },
       {
-        title: c.supQ, subtitle: c.supSub, icon: "headset",
+        title: INTENT_SUPPORT, subtitle: c.supSub, icon: "headset", locked: true,
         leaves: [{
           title: `All ${c.supQ} Users`,
           action: `Route to ${c.supQueue}`,

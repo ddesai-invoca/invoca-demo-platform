@@ -11,6 +11,7 @@
    ============================================================================= */
 import fs from "node:fs";
 import path from "node:path";
+import { isLockedEdit } from "../src/data/editGuard.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -19,6 +20,8 @@ const ok = (msg: string) => console.log(`  ok    ${msg}`);
 
 const files = fs.readdirSync(SCREENS).filter((f) => f.endsWith(".tsx"));
 const read = (f: string) => fs.readFileSync(path.join(SCREENS, f), "utf8");
+/** Read anything in the repo — the voice-lock checks below span components/ and data/. */
+const readAny = (f: string) => fs.readFileSync(f, "utf8");
 
 console.log("\nRule 1 — presentation is never data");
 {
@@ -119,7 +122,7 @@ console.log("\nThe SMS workflow template's node names are locked");
 
   /* The SMS block must use the constants, not the prospect's queue names. */
   const sms = wf.slice(wf.indexOf("if (isSms)"), wf.indexOf("const shaped = SHAPE"));
-  sms.includes("title: SMS_SALES") && sms.includes("title: SMS_SUPPORT")
+  sms.includes("title: INTENT_SALES") && sms.includes("title: INTENT_SUPPORT")
     ? ok("the SMS intents come from the fixed constants")
     : bad("the SMS intent titles are not the fixed constants");
   /\btitle:\s*c\.(newQ|supQ)\b/.test(sms)
@@ -128,6 +131,43 @@ console.log("\nThe SMS workflow template's node names are locked");
   sms.includes("locked: true")
     ? ok("the SMS intent nodes are marked locked")
     : bad("the SMS intent nodes are not marked locked — the AI could rename them");
+
+  /* ⚠️ THE VOICE TREE IS LOCKED TOO NOW (8/26/2026), which OVERTURNS the note that used to
+     sit in CLAUDE.md saying the voice intents were measured off Invoca's own Voice workflow
+     page and must keep deriving from the prospect's queues. The user confirmed the real page
+     shows the SAME two words as SMS, so that reading was wrong. Every voice tree now uses the
+     constants — the derived default AND the National Van Lines split override, which is
+     exactly the place a stale copy of a template survives. */
+  const intents = [...wf.matchAll(/title:\s*INTENT_(?:SALES|SUPPORT)[^\n]*/g)].map((m) => m[0]);
+  intents.length >= 8
+    ? ok(`all five trees declare both intents from the constants (${intents.length})`)
+    : bad(`only ${intents.length} intent titles use the constants — a tree names its own`);
+  intents.every((l) => l.includes("locked: true"))
+    ? ok("every intent node carrying a constant is also locked")
+    : bad("an intent node uses a constant but is NOT locked — the AI could rename it");
+  /\btitle:\s*"Book a Move"/.test(wf)
+    ? bad("the National Van Lines override carries its own intent name again")
+    : ok("the National Van Lines override uses the template's intent names");
+
+  /* The trigger line and Conversation Start are chrome on BOTH channels; `chromeLocked` is
+     what makes editGuard refuse them. Without it the AI can rewrite the product's wording. */
+  (wf.match(/chromeLocked: true/g) ?? []).length >= 2
+    ? ok("both the SMS and Voice trees set chromeLocked")
+    : bad("a tree does not set chromeLocked — its trigger line is AI-editable");
+  /chromeLocked\?: boolean/.test(readAny("src/components/WorkflowTree.tsx"))
+    ? ok("WorkflowTreeModel declares chromeLocked")
+    : bad("WorkflowTreeModel no longer declares chromeLocked");
+  /* ⚠️ CALLED, NOT GREPPED. The first version of this check tested the SOURCE for
+     `CHROME_KEYS.has(path)` and passed happily against `if (false && CHROME_KEYS.has(path))`
+     — it was verified against that exact breakage and stayed silent. A text match cannot tell
+     you a guard is reachable; running it can. */
+  isLockedEdit({ chromeLocked: true, triggeredBy: "x" }, "triggeredBy")
+    && isLockedEdit({ chromeLocked: true, startLabel: "x" }, "startLabel")
+    ? ok("isLockedEdit actually refuses triggeredBy and startLabel when chromeLocked")
+    : bad("isLockedEdit does NOT refuse the chrome fields — chromeLocked is decorative");
+  isLockedEdit({ triggeredBy: "x" }, "triggeredBy")
+    ? bad("isLockedEdit refuses triggeredBy even WITHOUT chromeLocked — too broad")
+    : ok("an unlocked tree keeps its trigger line editable");
   wf.includes('SMS_TRIGGER = "0 Campaigns, 0 Forms, and 0 Inbound SMS"')
     ? ok("the trigger line names inbound SMS")
     : bad("the SMS trigger line is not the product's wording");

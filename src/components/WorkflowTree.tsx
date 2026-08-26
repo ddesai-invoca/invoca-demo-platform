@@ -54,6 +54,13 @@ export interface WorkflowTreeModel {
   variant: "sms" | "voice";
   triggeredBy: string;
   startLabel: string;
+  /* ⚠️ PRODUCT CHROME AT THE TOP OF THE TREE. The trigger line and the Conversation Start
+     label are the product's own wording, not this prospect's, so `editGuard.isLockedEdit`
+     refuses a write to either when this is set. The node TITLES beside them ("Triggered by",
+     "Conversation Start") are literals below and were never at risk; these two are model
+     data and so needed enforcing. Flagged on the MODEL rather than matched by path, for the
+     same reason `TreeBranch.locked` is: the rule travels with the data. */
+  chromeLocked?: boolean;
   branches: TreeBranch[];
 }
 

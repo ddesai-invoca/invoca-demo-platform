@@ -179,6 +179,15 @@ export function isStructuralChange(before: unknown, after: unknown, path?: strin
 /** Leaf keys that are product chrome when their node is marked `locked`. */
 const LOCKED_KEYS = /\.(title|subtitle)$/;
 
+/* ⚠️ THE TWO TOP-OF-TREE FIELDS, which have no node of their own to carry a flag. The trigger
+   line and the Conversation Start label are the product's wording on both channels, so it was
+   inconsistent for the AI to be refused the intent names and allowed to rewrite these — and
+   the note above already recorded that our trigger line had once been the WRONG channel's
+   wording, which is exactly the kind of edit this stops. Gated on the model's own
+   `chromeLocked`, so an authored extra workflow that wants its own trigger line simply does
+   not set it. */
+const CHROME_KEYS = new Set(["triggeredBy", "startLabel"]);
+
 /**
  * True when `path` targets a label on a node the product does not allow renaming.
  *
@@ -187,6 +196,9 @@ const LOCKED_KEYS = /\.(title|subtitle)$/;
  * nothing else in the app is affected by a name that happens to look similar.
  */
 export function isLockedEdit(data: unknown, path: string): boolean {
+  if (CHROME_KEYS.has(path)
+    && !!data && typeof data === "object"
+    && (data as { chromeLocked?: unknown }).chromeLocked === true) return true;
   const m = LOCKED_KEYS.exec(path);
   if (!m) return false;
   const parent = getByPath(data, path.slice(0, path.length - m[0].length));
