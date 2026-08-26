@@ -1019,7 +1019,15 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-node { position: absolute; background: #fff; border: 1px solid #d9dee4; border-radius: 8px; padding: 10px 14px; box-shadow: 0 1px 3px rgba(0,0,0,.08); box-sizing: border-box; }
 .wf-node-title { display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 700; color: var(--color-text-title); }
 .wf-node-title .material-icons { font-size: 17px; color: #5b6577; }
-.wf-node-sub { font-size: 12.5px; color: var(--color-text-muted); margin-top: 3px; padding-left: 24px; }
+/* ⚠️ CLAMPED TO TWO LINES WITH AN ELLIPSIS, which is what the real node shows — its intent
+   description runs to a paragraph and the node is 248px wide. Clamped rather than truncated in
+   the DATA, because the full text is what the Intent Details drawer renders and what the prompt
+   is built from; cutting the string would have shortened all three. The trigger and
+   Conversation Start subs are one-liners, so the clamp never engages on them. */
+.wf-node-sub {
+  font-size: 12.5px; color: var(--color-text-muted); margin-top: 3px; padding-left: 24px;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+}
 .wf-start { background: #eef1fb; border-color: #d3dcf6; }
 .wf-start .wf-node-title .material-icons { color: #2666f9; }
 .wf-intent { }

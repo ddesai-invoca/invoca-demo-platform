@@ -111,6 +111,7 @@ export function useBrain() {
     serviceZips: spec?.serviceZips,
     outOfAreaScript: spec?.outOfAreaScript,
     voiceGreeting: spec?.greeting,
+    voiceRules: spec?.rules,
     /* Per-prospect routing for the voice prompt. Same source the workflow
        diagram uses (voiceRoutingDemo.queues), so the spoken call and the
        diagram name the same teams. Without this the prompt fell back to

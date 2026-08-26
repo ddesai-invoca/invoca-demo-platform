@@ -83,6 +83,15 @@ export interface ChatBrain {
   outOfAreaScript?: string;
   /** The agent's opening line, when the prospect has scripted that too. */
   voiceGreeting?: string;
+  /**
+   * ⚠️ **THE SPEC'S RULES REPLACE THE BRAND RULES, THEY DO NOT JOIN THEM.** `brandConversationRules`
+   * is written for the SMS SALES agent — intro and offer, qualify on services and hours and
+   * schedule, estimate then book — and injecting that into a qualify-and-route prompt is what
+   * made the agent interrogate callers: it asked who needs care, which services, how many
+   * hours, when to begin, all before the ZIP. A routing agent's rules are the ones configured
+   * on its own workflow.
+   */
+  voiceRules?: string[];
   /* Per-prospect VOICE routing, from reports.voiceRoutingDemo.queues plus the
      prospect's booking term and product categories. Without it the voice prompt
      used to fall back to hardcoded retail language: it asked every caller for an
@@ -342,12 +351,21 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     ``,
     ...flow,
     paths.length ? namingRule(r) : ``,
+    /* ⚠️ AN EXPLICIT CEILING ON WHAT IT MAY ASK. Listing the flow was not enough on its own —
+       the model filled the gaps with sensible-sounding sales questions, which on a routing call
+       reads as an interrogation and buries the one thing the demo is showing. */
+    paths.length
+      ? `ASK NOTHING BEYOND THE FLOW ABOVE. The only things you ask are the opening question and the fields listed under the path the caller chooses. Do NOT ask about budget, pricing, schedules, hours, which services they want, when they want to start, or who the care is for. The moment you have the listed fields, confirm and transfer.\n`
+      : ``,
     `STYLE & RULES:`,
     `- This is a SPOKEN call: talk naturally and briefly (1–2 sentences), ask ONE question at a time, then stop and wait.`,
     `- NEVER use emojis, markdown, or formatting — your words are read aloud by a text-to-speech voice.`,
     `- NEVER quote prices, availability, or promotions. NEVER attempt to resolve a support issue yourself — only qualify and route.`,
     `- Only discuss ${brain.customerName}'s products and services; if the caller goes off-topic, gently steer back.`,
-    rules ? `\nBRAND CONTEXT (brand-specific terms, teams, and numbers):\n${rules}` : ``,
+    /* The workflow's own rules when it has them, the brand rules only as a fallback. */
+    brain.voiceRules?.length
+      ? `\nCONVERSATION RULES configured on this workflow:\n${brain.voiceRules.map((r) => `- ${r}`).join("\n")}`
+      : rules ? `\nBRAND CONTEXT (brand-specific terms, teams, and numbers):\n${rules}` : ``,
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,
   ].join("\n");
 }
