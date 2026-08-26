@@ -191,6 +191,35 @@ const aOrAn = (w: string) => (/^[aeiou]/i.test(w) ? "an" : "a");
    bare apostrophe. */
 const poss = (n: string) => (/s$/i.test(n) ? `${n}'` : `${n}'s`);
 
+/**
+ * How the agent should NAME a team out loud.
+ *
+ * ⚠️ **THE DIAGRAM STOPPED CONTAINING A SPEAKABLE DESTINATION (8/26/2026).** Its leaves used to
+ * read `All Design Consultation Users` / `Route to Design Consultation` — the prospect's own
+ * queue — and the prompt put that straight into the handoff line. Now the leaf is product
+ * chrome (`All Sales Inquiry Users` / `Qualify`), so the same line would have had the agent
+ * SAY "I'm transferring you to All Sales Inquiry Users", i.e. read a user-group label aloud on
+ * a live call. That is the kind of thing a prospect notices immediately.
+ *
+ * The real queue names still exist on the brain, from `voiceRoutingDemo.queues`, so they are
+ * offered here as the words to use. The model picks which fits rather than us mapping branch
+ * index to queue index — a positional map breaks the moment an SE adds a third branch.
+ */
+function namingRule(r: NonNullable<ChatBrain["voiceRouting"]>): string {
+  const teams = [r.newQueue, r.supportQueue, r.generalQueue].filter(Boolean) as string[];
+  return [
+    `NAMING THE TEAM WHEN YOU HAND OFF:`,
+    /* ⚠️ ONE TEAM PER LINE, NOT A COMMA LIST. A real queue name can CONTAIN a comma — Shady
+       Blinds has "Existing Order, Support" — so `join(", ")` turned two teams into three. */
+    ...(teams.length
+      ? [`- These are the teams, one per line. Use whichever fits what the caller needs:`,
+         ...teams.map((t) => `    • ${t}`)]
+      : [`- Refer to the team by what it does ("our scheduling team").`]),
+    `- NEVER read out a user-group label such as "All Sales Inquiry Users" or "All Support Users". Those are screen labels, not words anyone says on a phone call.`,
+    ``,
+  ].join("\n");
+}
+
 function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): string {
   const serviceArea = brain.serviceArea?.trim();
   /* Fall back to neutral wording rather than retail wording when a profile has
@@ -232,7 +261,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
       }
       if (p.routes.length === 1) {
         const r2 = p.routes[0];
-        lines.push(`   - Then ${r2.action.toLowerCase()}: offer to connect them to ${r2.team}, confirm, then say "I'm transferring you to ${r2.team} now."`);
+        lines.push(`   - Then ${r2.action.toLowerCase()}, confirm, and transfer them to the team that handles ${p.intent}.`);
       } else {
         lines.push(`   - Then hand off to whichever of these fits what they told you, confirming before you transfer:`);
         /* ⚠️ THE DIAGRAM DOES NOT ENCODE *WHY* A BRANCH SPLITS, so the criterion is not
@@ -273,6 +302,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
     ``,
     ...flow,
+    paths.length ? namingRule(r) : ``,
     `STYLE & RULES:`,
     `- This is a SPOKEN call: talk naturally and briefly (1–2 sentences), ask ONE question at a time, then stop and wait.`,
     `- NEVER use emojis, markdown, or formatting — your words are read aloud by a text-to-speech voice.`,

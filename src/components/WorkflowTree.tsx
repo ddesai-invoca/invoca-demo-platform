@@ -22,6 +22,12 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 export interface TreeLeaf {
   title: string;                                  // "All Appointment Scheduling Users"
   action: string;                                 // "Route to Appointment Scheduling"
+  /* ⚠️ PRODUCT CHROME, same flag and same reason as `TreeBranch.locked` — but here it covers
+     the ACTION as well as the title, because a leaf has one and a branch does not. Set on the
+     voice tree's two default leaves: the real page names the user group after the intent and
+     offers a fixed set of actions, so neither is the prospect's to rename. The CHIPS below
+     stay editable, which is where per-prospect configuration now lives. */
+  locked?: boolean;
   tone?: "green" | "orange" | "blue" | "grey";
   chips?: string[];
   /* ⚠️ BOTH OPT-IN, DEFAULTED TO TODAY'S BEHAVIOUR — the same pattern DonutChart's extra

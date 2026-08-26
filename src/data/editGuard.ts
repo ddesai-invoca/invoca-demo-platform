@@ -177,7 +177,12 @@ export function isStructuralChange(before: unknown, after: unknown, path?: strin
    ============================================================================= */
 
 /** Leaf keys that are product chrome when their node is marked `locked`. */
-const LOCKED_KEYS = /\.(title|subtitle)$/;
+/* ⚠️ `action` WAS MISSING AND THAT WAS A HOLE (8/26/2026). Locking the voice tree's leaves
+   refused a rename of "All Sales Inquiry Users" and left "Qualify" wide open, so the AI could
+   accept "change this to Route to Sales" and write it — half of the row protected and half
+   not, which is worse than either. Only LEAVES carry `action`, so adding it here cannot affect
+   a branch or the two chrome fields. */
+const LOCKED_KEYS = /\.(title|subtitle|action)$/;
 
 /* ⚠️ THE TWO TOP-OF-TREE FIELDS, which have no node of their own to carry a flag. The trigger
    line and the Conversation Start label are the product's wording on both channels, so it was

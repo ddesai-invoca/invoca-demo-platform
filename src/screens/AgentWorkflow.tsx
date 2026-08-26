@@ -92,6 +92,10 @@ const INTENT_SALES = "Sales Inquiry";
 const INTENT_SUPPORT = "Need Support";
 /** The support leaf is "All Support Users", NOT "All Need Support Users". */
 const SUPPORT_LEAF = "All Support Users";
+/* The two leaf ACTIONS the product defaults to. Not the prospect's queue: "Route to <queue>"
+   was ours, and the real page shows one of a fixed set of agent behaviours here. */
+const LEAF_QUALIFY = "Qualify";
+const LEAF_ESCALATE = "Support & Escalate";
 
 /* `isProspect` moved to src/data/prospect.ts when the franchise AI dashboard needed the same
    test. ONE implementation, several callers — see the note at the top of that file. */
@@ -161,8 +165,13 @@ const SHAPE: Record<string, (c: ReturnType<typeof voiceCopy>) => TreeBranch[] | 
     },
     {
       title: INTENT_SUPPORT, subtitle: c.supSub, icon: "headset", locked: true,
-      leaves: [{ title: `All ${c.supQ} Users`, action: `Route to ${c.supQueue}`,
-        tone: "orange", chips: c.supChips }],
+      /* ⚠️ THE SUPPORT PATH IS THE TEMPLATE'S, even in this override. Only the SALES branch
+         differs for this prospect (two teams instead of one); this side was still carrying
+         `All ${c.supQ} Users` / `Route to ${c.supQueue}` — a copy of the default from before
+         the leaf became chrome, which is exactly the drift that shrank the Comfort Keepers
+         override. An override should differ only where it genuinely differs. */
+      leaves: [{ title: SUPPORT_LEAF, action: LEAF_ESCALATE,
+        tone: "orange", chips: c.supChips, locked: true }],
     },
   ],
 };
@@ -226,18 +235,29 @@ function deriveTree(
            label is generic, because in the product it always is. */
         title: INTENT_SALES, subtitle: c.newSub, icon: "cart", locked: true,
         leaves: [{
-          title: `All ${c.newQ} Users`,
-          action: `Route to ${c.newQueue}`,
+          /* ⚠️ THE LEAF IS CHROME TOO (8/26/2026). It read `All ${c.newQ} Users` /
+             `Route to ${c.newQueue}` — the prospect's own queue — where the real page always
+             shows the user group named after the intent and one of a fixed set of actions.
+             So the whole top of the tree down to and including this row is the product's, and
+             only the CHIPS below it are configuration.
+
+             ⚠️ CONSEQUENCE, AND IT IS REAL: the diagram no longer contains a destination the
+             agent could name aloud. `buildVoiceSystem` therefore stopped reading a group label
+             into the spoken handoff — see the note there. */
+          title: `All ${INTENT_SALES} Users`,
+          action: LEAF_QUALIFY,
           tone: "green",
           chips: c.newChips,
+          locked: true,
         }],
       },
       {
         title: INTENT_SUPPORT, subtitle: c.supSub, icon: "headset", locked: true,
         leaves: [{
-          title: `All ${c.supQ} Users`,
-          action: `Route to ${c.supQueue}`,
+          title: SUPPORT_LEAF,
+          action: LEAF_ESCALATE,
           tone: "orange",
+          locked: true,
           chips: c.supChips,
         }],
       },

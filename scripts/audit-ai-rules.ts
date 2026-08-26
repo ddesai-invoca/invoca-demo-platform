@@ -145,6 +145,33 @@ console.log("\nThe SMS workflow template's node names are locked");
   intents.every((l) => l.includes("locked: true"))
     ? ok("every intent node carrying a constant is also locked")
     : bad("an intent node uses a constant but is NOT locked — the AI could rename it");
+  /* ⚠️ THE LEAF ROW IS CHROME TOO (8/26/2026). The voice tree's leaves read
+     `All ${c.newQ} Users` / `Route to ${c.newQueue}` until the user confirmed the real page
+     always shows the group named after the intent and one of a fixed set of actions. Only the
+     CHIPS below stay per prospect. Checked because a leaf is the easiest place for a queue
+     name to creep back in. */
+  const voice = wf.slice(wf.indexOf("const shaped = SHAPE[profile.id]"));
+  !/title:\s*`All \$\{c\.(newQ|supQ)\} Users`/.test(wf)
+    ? ok("no leaf title derives from a prospect queue name")
+    : bad("a leaf title is `All ${c.newQ|supQ} Users` again — the queue name is back");
+  !/action:\s*`Route to \$\{c\.(newQueue|supQueue)\}`/.test(wf)
+    ? ok("no leaf action derives from a prospect queue name")
+    : bad("a leaf action is `Route to ${c.newQueue|supQueue}` again");
+  voice.includes("action: LEAF_QUALIFY") && voice.includes("action: LEAF_ESCALATE")
+    ? ok("the voice leaves default to Qualify and Support & Escalate")
+    : bad("the voice leaf actions are not the two defaults");
+  /\.\(title\|subtitle\|action\)\$/.test(readAny("src/data/editGuard.ts"))
+    ? ok("LOCKED_KEYS covers action, so a locked leaf's action is refused too")
+    : bad("LOCKED_KEYS does not cover action — a locked leaf's action is still editable");
+  /locked\?: boolean/.test(readAny("src/components/WorkflowTree.tsx").slice(
+      readAny("src/components/WorkflowTree.tsx").indexOf("export interface TreeLeaf"),
+      readAny("src/components/WorkflowTree.tsx").indexOf("export interface TreeBranch")))
+    ? ok("TreeLeaf declares locked")
+    : bad("TreeLeaf no longer declares locked");
+  /NEVER read out a user-group label/.test(readAny("engine/chat.ts"))
+    ? ok("the voice prompt forbids saying a user-group label aloud")
+    : bad("the prompt could have the agent say \"All Sales Inquiry Users\" on a call");
+
   /\btitle:\s*"Book a Move"/.test(wf)
     ? bad("the National Van Lines override carries its own intent name again")
     : ok("the National Van Lines override uses the template's intent names");
