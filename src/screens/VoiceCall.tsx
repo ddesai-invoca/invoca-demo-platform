@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
+import { VoiceCallUI } from "../components/VoiceCallUI";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "../data/voicePaths";
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
-import { AgentStudioIcon } from "../components/nav";
 import type { VoiceConversation, VoiceTurn } from "../data/schema";
 
 /* =============================================================================
@@ -576,97 +576,42 @@ export function VoiceCall({ onEnd }: { onEnd: () => void }) {
     handleUserUtterance(t);   // also cancels any in-flight TTS (barge-in by text)
   }
 
-  const statusText =
-    phase === "connecting" ? "Connecting…" :
-    phase === "speaking" ? "Speaking…" :
-    phase === "thinking" ? "Thinking…" :
-    muted ? "Muted" : "Listening…";
+  /* ⚠️ NO STATUS LINE ANY MORE. `statusText` ("Connecting… / Speaking… / Listening…") drove
+     the old phone-screen header, and the real drawer has no such line — so it went with the
+     markup rather than being left computing a string nobody renders. The visualiser now
+     carries that information: dots at rest, bars while the call is live. */
+  const micNote = (micDenied || unsupported)
+    ? `${unsupported ? "Live voice needs Chrome." : "Microphone unavailable."} Type below to talk to the agent.`
+    : null;
 
   const canType = micDenied || unsupported || showType;
 
+  /* ⚠️ THE INLINE COPY OF THE CALL SCREEN IS GONE (8/26/2026). It existed because this file
+     was carrying live demos and the duplication was scheduled for deletion with it; that
+     stopped being the right trade the moment the screen was REDESIGNED, since this engine is
+     the FALLBACK and therefore what the live site serves until LiveKit is deployed. Leaving
+     the old markup here would have shipped the new drawer to nobody. */
   return (
-    <div className="vc-root">
-      {/* Caller-facing "call screen" */}
-      <div className={"vc-stage vc-stage--" + phase}>
-        <div className={"vc-avatar" + (phase === "speaking" ? " vc-avatar--speaking" : phase === "listening" && !muted ? " vc-avatar--listening" : "")}>
-          <span className="vc-avatar-glyph">{AgentStudioIcon()}</span>
-        </div>
-        <div className="vc-name">{profile.customerName}</div>
-        <div className="vc-subname">AI Voice Agent</div>
-        <div className="vc-status">
-          <span className={"vc-dot vc-dot--" + phase} />
-          {statusText}
-          <span className="vc-timer">{mmss(elapsed)}</span>
-        </div>
-      </div>
-
-      {/* Live captions / running transcript */}
-      <div className="vc-captions" ref={scrollRef}>
-        {messages.map((m, i) => (
-          <div key={i} className={"vc-line " + (m.role === "assistant" ? "vc-line--agent" : "vc-line--caller")}>
-            <span className="vc-line-who">
-              {m.role === "assistant"
-                ? <span className="vc-line-glyph">{AgentStudioIcon()}</span>
-                : <span className="material-icons vc-line-ic">person</span>}
-            </span>
-            <span className="vc-line-text">{m.content}</span>
-          </div>
-        ))}
-        {phase === "listening" && interim && (
-          <div className="vc-line vc-line--caller vc-line--interim">
-            <span className="vc-line-who"><span className="material-icons vc-line-ic">person</span></span>
-            <span className="vc-line-text">{interim}</span>
-          </div>
-        )}
-        {phase === "thinking" && (
-          <div className="vc-line vc-line--agent">
-            <span className="vc-line-who"><span className="vc-line-glyph">{AgentStudioIcon()}</span></span>
-            <span className="vc-line-text vc-thinking"><span></span><span></span><span></span></span>
-          </div>
-        )}
-        {error && <div className="vc-callerror">{error}</div>}
-      </div>
-
-      {/* Mic activity meter (real, echo-cancelled level) while listening */}
-      <div className={"vc-meter" + (phase === "listening" && !muted && !micDenied ? " is-live" : "")} ref={meterRef} aria-hidden="true">
-        <span /><span /><span /><span /><span />
-      </div>
-
-      {(micDenied || unsupported) && (
-        <div className="vc-micnote">
-          {unsupported ? "Live voice needs Chrome. " : "Microphone unavailable. "}
-          Type below to talk to the agent.
-        </div>
-      )}
-
-      {canType && (
-        <div className="vc-typebar">
-          <input
-            className="vc-typeinput"
-            placeholder="Type what you'd say…"
-            value={typed}
-            onChange={(e) => setTyped(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter") submitTyped(); }}
-          />
-          <button className="vc-typesend" onClick={submitTyped} aria-label="Send"><span className="material-icons">arrow_upward</span></button>
-        </div>
-      )}
-
-      {/* Call controls */}
-      <div className="vc-controls">
-        <button className={"vc-ctl" + (muted ? " vc-ctl--on" : "")} onClick={toggleMute} disabled={micDenied || unsupported}>
-          <span className="material-icons">{muted ? "mic_off" : "mic"}</span>
-          <span className="vc-ctl-lbl">{muted ? "Unmute" : "Mute"}</span>
-        </button>
-        <button className={"vc-ctl" + (showType ? " vc-ctl--on" : "")} onClick={() => setShowType((s) => !s)} disabled={micDenied || unsupported}>
-          <span className="material-icons">keyboard</span>
-          <span className="vc-ctl-lbl">Keypad</span>
-        </button>
-        <button className="vc-ctl vc-ctl--end" onClick={endCall}>
-          <span className="material-icons">call_end</span>
-          <span className="vc-ctl-lbl">End</span>
-        </button>
-      </div>
-    </div>
+    <VoiceCallUI
+      customerName={profile.customerName}
+      phase={phase}
+      elapsed={mmss(elapsed)}
+      muted={muted}
+      lines={messages.map((m) => ({ role: m.role, content: m.content }))}
+      interim={phase === "listening" ? interim : ""}
+      error={error}
+      scrollRef={scrollRef}
+      meterRef={meterRef}
+      canType={canType}
+      showTypeToggle={showType}
+      typed={typed}
+      onTyped={setTyped}
+      onSubmitTyped={submitTyped}
+      onToggleType={() => setShowType((v) => !v)}
+      micNote={micNote}
+      controlsDisabled={micDenied || unsupported}
+      onToggleMute={toggleMute}
+      onEnd={endCall}
+    />
   );
 }

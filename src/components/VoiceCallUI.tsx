@@ -1,26 +1,38 @@
-import type { RefObject } from "react";
-import { AgentStudioIcon } from "./nav";
+import { useEffect, useRef, useState, type RefObject } from "react";
+import { VoiceAgentGlyph, MicGlyph, ChevronGlyph, EndCallGlyph } from "./VoiceGlyphs";
 
 /* =============================================================================
-   VoiceCallUI — the call screen, with no engine in it
+   VoiceCallUI — the live call inside the Preview Workflow drawer
    -----------------------------------------------------------------------------
-   Extracted verbatim from `VoiceCall.tsx` 8/25/2026 for the LiveKit engine
-   (`VoiceCallLive.tsx`) to render.
+   REBUILT 8/26/2026 against a SingleFile capture of the real drawer saved MID-CALL
+   ("Agent Management | Invoca for Healthcare 2.0"). It is a TRANSCRIPT, not a phone
+   screen: the avatar, the pulse rings, the name block, the status line and the call
+   timer are all gone, because the real drawer has none of them.
 
-   ⚠️ **THE OLD ENGINE STILL HAS ITS OWN INLINE COPY OF THIS MARKUP, ON PURPOSE.** Pointing
-   it here too would mean editing a working file that is carrying live demos tonight, to
-   de-duplicate something scheduled for deletion the moment LiveKit is proven. So the
-   duplication is real and TEMPORARY, and it is written down rather than left to be
-   discovered: **if you change this screen before `VoiceCall.tsx` is deleted, change it in
-   both places.**
+   ⚠️ **WHAT IS EXACT AND WHAT IS NOT.** The capture's emotion CSS did not serialise, so:
+     • EXACT — the row structure (agent = glyph + BARE text, caller = a bubble and no
+       glyph), the four glyphs, the 500px panel, the `<hr>` above the controls, the
+       9-bar visualiser, the mic-plus-chevron button, an OUTLINED End Call carrying
+       MUI's `phone_missed`, and the "Last updated: <date>" line under everything.
+     • FROM THE SCREENSHOTS + OUR TOKENS — every colour, size and gap.
+   Do not let a later reader mistake the second list for measurements.
 
-   ⚠️ **PRESENTATIONAL ONLY — it owns no state and starts nothing.** Every prop is
-   supplied by whichever engine is driving. That is what makes it safe to have two
-   engines at once while the LiveKit swap is proven.
+   ⚠️ **THE TITLE STAYS "(Draft)" DURING A CALL.** The screenshots show "(Live)" and it
+   is tempting to flip it when the call starts — but the capture was taken MID-CALL and
+   still reads "(Draft)", so Draft/Live is the WORKFLOW's publish state, not the call's.
+   Flipping it on Start Call would invent a behaviour the product does not have.
 
-   ⚠️ **THE MARKUP AND CLASS NAMES ARE UNCHANGED.** Every `.vc-` class, the phase
-   modifiers, the avatar/pulse states and the meter's five spans are exactly what the
-   original rendered, so the signed-off call screen is byte-identical across both engines.
+   ⚠️ **WORDS ARE REVEALED ONE AT A TIME** (asked for 8/26/2026): the agent's line grows
+   from the left, the caller's bubble grows on the right. `useWordReveal` clamps to the
+   words that have actually ARRIVED, which matters because the two engines feed this very
+   differently — LiveKit streams a line in progressively while the old pipeline hands over
+   a whole sentence. Clamping makes the same animation correct for both instead of running
+   ahead of text that does not exist yet.
+
+   ⚠️ **BOTH ENGINES RENDER THIS ONE COMPONENT NOW.** `VoiceCall.tsx` used to keep its own
+   inline copy, justified while nothing was changing. That justification expired here: the
+   old engine is the FALLBACK, so it is what the live site serves until LiveKit is
+   deployed, and leaving it behind would have shipped the new design to nobody.
    ============================================================================= */
 
 export type VcPhase = "connecting" | "listening" | "thinking" | "speaking";
@@ -33,16 +45,15 @@ export interface VcLine {
 export interface VoiceCallUIProps {
   customerName: string;
   phase: VcPhase;
-  elapsed: string;              // already mm:ss — the engine owns the clock
+  /** Still tracked by the engine for the CI capture; the real drawer shows no timer. */
+  elapsed: string;
   muted: boolean;
   lines: VcLine[];
-  /** Partial caller speech under the transcript; blank when there is none. */
+  /** Partial caller speech; rendered as a caller bubble, as the real one does. */
   interim?: string;
   error?: string | null;
   scrollRef: RefObject<HTMLDivElement | null>;
   meterRef: RefObject<HTMLDivElement | null>;
-  /* The keyboard fallback. An engine that cannot type (LiveKit needs a mic anyway)
-     passes `canType: false` and the bar and its control never render. */
   canType?: boolean;
   showTypeToggle?: boolean;
   typed?: string;
@@ -55,62 +66,97 @@ export interface VoiceCallUIProps {
   onEnd: () => void;
 }
 
+/** How fast words appear. Fast enough to feel like speech, slow enough to SEE. */
+const WORD_MS = 55;
+/** The real visualiser draws nine bars. Counted in the capture, not chosen. */
+const VIZ_BARS = 9;
+
+/* ⚠️ COMPUTED ONCE AT MODULE LOAD, not per render. The real drawer shows today's date, and
+   re-evaluating it inside the component would make it a new object on every reveal tick.
+   (The Signal AI Studio dates are HASHED instead so an SE can rehearse against them; that
+   rule is about content a prospect reads on a report, not a widget footer that legitimately
+   says today.) */
+const LAST_UPDATED = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+/**
+ * Reveal the newest line one word at a time.
+ *
+ * ⚠️ **IT CLAMPS, IT DOES NOT DRIVE.** The counter advances on a timer but the render only
+ * ever shows `min(counter, words.length)`, so a line that arrives whole animates and a line
+ * that streams in word by word is shown as fast as it arrives — never ahead of it. Getting
+ * this backwards (rendering `counter` words of a partial string) prints undefined tails.
+ *
+ * ⚠️ Only the LAST line animates. Re-animating the whole thread on every new message would
+ * replay the entire call each turn.
+ */
+function useWordReveal(count: number, lastText: string): number {
+  const [shown, setShown] = useState(0);
+  const idx = useRef(count);
+  /* A new line resets the counter; the same line keeps counting up. */
+  if (idx.current !== count) { idx.current = count; }
+  useEffect(() => { setShown(0); }, [count]);
+  useEffect(() => {
+    const total = lastText.trim() ? lastText.trim().split(/\s+/).length : 0;
+    if (shown >= total) return;
+    const t = setTimeout(() => setShown((n) => n + 1), WORD_MS);
+    return () => clearTimeout(t);
+  }, [shown, lastText]);
+  return shown;
+}
+
+/** The words of `text` up to `n`, or all of them when this is not the animating line. */
+function upTo(text: string, n: number | null): string {
+  if (n === null) return text;
+  const w = text.trim().split(/\s+/);
+  return w.slice(0, Math.min(n, w.length)).join(" ");
+}
+
 export function VoiceCallUI(p: VoiceCallUIProps) {
-  const statusText =
-    p.phase === "connecting" ? "Connecting…" :
-    p.phase === "speaking" ? "Speaking…" :
-    p.phase === "thinking" ? "Thinking…" :
-    p.muted ? "Muted" : "Listening…";
+  const last = p.lines.length ? p.lines[p.lines.length - 1] : null;
+  const shown = useWordReveal(p.lines.length, last?.content ?? "");
+
+  /* The visualiser is BARS while the agent speaks or the caller is being heard, and DOTS
+     otherwise — the two states both screenshots show. Level comes through `--vc-level`,
+     written on an animation frame by the engine, so this re-renders on phase only. */
+  const live = (p.phase === "speaking" || (p.phase === "listening" && !p.muted)) && !p.controlsDisabled;
 
   return (
     <div className="vc-root">
-      {/* Caller-facing "call screen" */}
-      <div className={"vc-stage vc-stage--" + p.phase}>
-        <div className={"vc-avatar" + (p.phase === "speaking" ? " vc-avatar--speaking" : p.phase === "listening" && !p.muted ? " vc-avatar--listening" : "")}>
-          <span className="vc-avatar-glyph">{AgentStudioIcon()}</span>
-        </div>
-        <div className="vc-name">{p.customerName}</div>
-        <div className="vc-subname">AI Voice Agent</div>
-        <div className="vc-status">
-          <span className={"vc-dot vc-dot--" + p.phase} />
-          {statusText}
-          <span className="vc-timer">{p.elapsed}</span>
-        </div>
-      </div>
+      <div className="vc-thread" ref={p.scrollRef}>
+        {p.lines.map((m, i) => {
+          const isLast = i === p.lines.length - 1;
+          const text = upTo(m.content, isLast ? shown : null);
+          if (m.role === "assistant") {
+            return (
+              <div className="vc-msg vc-msg--agent" key={i}>
+                <span className="vc-msg-ic"><VoiceAgentGlyph /></span>
+                <span className="vc-msg-text">{text}</span>
+              </div>
+            );
+          }
+          return (
+            <div className="vc-msg vc-msg--caller" key={i}>
+              <span className="vc-msg-bubble">{text}</span>
+            </div>
+          );
+        })}
 
-      {/* Live captions / running transcript */}
-      <div className="vc-captions" ref={p.scrollRef}>
-        {p.lines.map((m, i) => (
-          <div key={i} className={"vc-line " + (m.role === "assistant" ? "vc-line--agent" : "vc-line--caller")}>
-            <span className="vc-line-who">
-              {m.role === "assistant"
-                ? <span className="vc-line-glyph">{AgentStudioIcon()}</span>
-                : <span className="material-icons vc-line-ic">person</span>}
-            </span>
-            <span className="vc-line-text">{m.content}</span>
-          </div>
-        ))}
-        {p.phase === "listening" && p.interim && (
-          <div className="vc-line vc-line--caller vc-line--interim">
-            <span className="vc-line-who"><span className="material-icons vc-line-ic">person</span></span>
-            <span className="vc-line-text">{p.interim}</span>
+        {/* Partial caller speech reads as a caller bubble, not a separate treatment. */}
+        {p.interim && (
+          <div className="vc-msg vc-msg--caller vc-msg--interim">
+            <span className="vc-msg-bubble">{p.interim}</span>
           </div>
         )}
+
         {p.phase === "thinking" && (
-          <div className="vc-line vc-line--agent">
-            <span className="vc-line-who"><span className="vc-line-glyph">{AgentStudioIcon()}</span></span>
-            <span className="vc-line-text vc-thinking"><span></span><span></span><span></span></span>
+          <div className="vc-msg vc-msg--agent">
+            <span className="vc-msg-ic"><VoiceAgentGlyph /></span>
+            <span className="vc-msg-text vc-thinking"><span /><span /><span /></span>
           </div>
         )}
+
         {p.error && <div className="vc-callerror">{p.error}</div>}
       </div>
-
-      {/* Mic activity meter (real, echo-cancelled level) while listening */}
-      <div className={"vc-meter" + (p.phase === "listening" && !p.muted && !p.controlsDisabled ? " is-live" : "")} ref={p.meterRef} aria-hidden="true">
-        <span /><span /><span /><span /><span />
-      </div>
-
-      {p.micNote && <div className="vc-micnote">{p.micNote}</div>}
 
       {p.canType && (
         <div className="vc-typebar">
@@ -121,27 +167,54 @@ export function VoiceCallUI(p: VoiceCallUIProps) {
             onChange={(e) => p.onTyped?.(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter") p.onSubmitTyped?.(); }}
           />
-          <button className="vc-typesend" onClick={() => p.onSubmitTyped?.()} aria-label="Send"><span className="material-icons">arrow_upward</span></button>
+          <button className="vc-typesend" onClick={() => p.onSubmitTyped?.()} aria-label="Send">
+            <span className="material-icons">arrow_upward</span>
+          </button>
         </div>
       )}
 
-      {/* Call controls */}
-      <div className="vc-controls">
-        <button className={"vc-ctl" + (p.muted ? " vc-ctl--on" : "")} onClick={p.onToggleMute} disabled={p.controlsDisabled}>
-          <span className="material-icons">{p.muted ? "mic_off" : "mic"}</span>
-          <span className="vc-ctl-lbl">{p.muted ? "Unmute" : "Mute"}</span>
+      <hr className="vc-rule" />
+
+      <div className="vc-bar">
+        <button
+          className={"vc-mic" + (p.muted ? " vc-mic--off" : "")}
+          onClick={p.onToggleMute}
+          disabled={p.controlsDisabled}
+          aria-label={p.muted ? "Unmute" : "Mute"}
+        >
+          <MicGlyph />
+          <ChevronGlyph />
         </button>
+
+        <div className={"vc-viz" + (live ? " is-live" : "")} ref={p.meterRef} aria-hidden="true">
+          {Array.from({ length: VIZ_BARS }, (_, i) => <span key={i} data-i={i} />)}
+        </div>
+
         {p.onToggleType && (
-          <button className={"vc-ctl" + (p.showTypeToggle ? " vc-ctl--on" : "")} onClick={p.onToggleType} disabled={p.controlsDisabled}>
+          <button
+            className={"vc-keypad" + (p.showTypeToggle ? " is-on" : "")}
+            onClick={p.onToggleType}
+            disabled={p.controlsDisabled}
+            aria-label="Type instead"
+          >
             <span className="material-icons">keyboard</span>
-            <span className="vc-ctl-lbl">Keypad</span>
           </button>
         )}
-        <button className="vc-ctl vc-ctl--end" onClick={p.onEnd}>
-          <span className="material-icons">call_end</span>
-          <span className="vc-ctl-lbl">End</span>
+
+        <button className="vc-end" onClick={p.onEnd}>
+          <EndCallGlyph />
+          End Call
         </button>
       </div>
+
+      {p.micNote && <div className="vc-micnote">{p.micNote}</div>}
+
+      {/* ⚠️ IT APPEARS DURING THE CALL ONLY. Every live screenshot carries it and the
+          empty state does not, so it belongs here rather than on the drawer.
+          ⚠️ "Last updated" with a lower-case u, and the MEDIUM date form ("Aug 26, 2026")
+          — the SMS drawer's footer says "Last Updated:" with a slashed date, which is its
+          own capture's wording. Two different widgets, two measurements; do not unify them. */}
+      <div className="vc-updated">Last updated: {LAST_UPDATED}</div>
     </div>
   );
 }
