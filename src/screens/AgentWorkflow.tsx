@@ -49,6 +49,7 @@ function voiceCopy(p: ReturnType<typeof useProfile>["profile"]) {
     supSub: `Caller is an existing ${who} and needs help with something already in progress`,
     newChips: [hero ?? p.industry, p.bookingTerm, "Timeline"],
     supChips: [`Existing ${who[0].toUpperCase()}${who.slice(1)}`, "Issue Type"],
+    bookingLower: booking,
     newQueue: q[0]?.name ?? "New Inquiry",
     supQueue: q[1]?.name ?? "Support",
   };
@@ -98,6 +99,9 @@ const SUPPORT_LEAF = "All Support Users";
    was ours, and the real page shows one of a fixed set of agent behaviours here. */
 const LEAF_QUALIFY = "Qualify";
 const LEAF_ESCALATE = "Support & Escalate";
+const LEAF_INFORM = "Inform & Route";
+/** "a consultation" / "an estimate" — a vowel-initial booking term reads wrong without it. */
+const aOrAn = (w: string) => (/^[aeiou]/i.test(w) ? "an" : "a");
 
 /* `isProspect` moved to src/data/prospect.ts when the franchise AI dashboard needed the same
    test. ONE implementation, several callers — see the note at the top of that file. */
@@ -251,6 +255,19 @@ function deriveTree(
           tone: "green",
           chips: c.newChips,
           locked: true,
+          /* ⚠️ QUALIFY ASKS A QUESTION AND ROUTES ON THE ANSWER, so its leaf has one child
+             per answer — the fourth row the real Comfort Keepers workflow draws under "All
+             Sales Inquiry Users". These titles ARE the Qualify drawer's Answers/Segments:
+             one list, two renderings, so the diagram and the drawer cannot disagree.
+
+             ⚠️ The support leaf deliberately has NONE. Support & Escalate does not branch;
+             giving it paths would draw a fork the product does not have. */
+          paths: [
+            { title: `Looking to book ${aOrAn(c.bookingLower)} ${c.bookingLower}`,
+              action: LEAF_INFORM, tone: "green", chips: c.newChips.slice(0, 2) },
+            { title: `Needs help with an existing request`,
+              action: LEAF_INFORM, tone: "green", chips: c.supChips },
+          ],
         }],
       },
       {

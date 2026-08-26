@@ -184,7 +184,14 @@ export function drawerFor(
       return {
         kind: "action", title: "Action", action,
         question: `Are you looking to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}, or do you need help with something already in progress?`,
-        segments: [`Looking to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}`, `Needs help with an existing ${noun} request`],
+        /* ⚠️ THE SEGMENTS ARE THE LEAF'S PATH TITLES, read from the tree rather than built
+           again here. The diagram draws them as nodes on the row below and this drawer lists
+           them as Answers/Segments; two derivations would disagree the first time an SE
+           edited one, and the disagreement would be invisible until someone compared the
+           two surfaces. Falls back only for a Qualify leaf with no paths. */
+        segments: (l.paths ?? []).map((x) => x.title).length
+          ? (l.paths ?? []).map((x) => x.title)
+          : [`Looking to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}`, `Needs help with an existing ${noun} request`],
         fallback: `I want to make sure I connect you with the right team. Are you looking to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}, or do you need help with something already in progress?`,
       };
     }
@@ -209,6 +216,28 @@ export function drawerFor(
       collect: [CONSUMER_ZIP, CONSUMER_NAME],
     };
   }
+  /* A path node opens the Inform & Route action, which is what every captured path shows.
+     ⚠️ IT REUSES THE LEAF BRANCH BELOW rather than repeating the body, so a change to the
+     routing steps or the collected fields lands on both. */
+  const pathId = nodeId.match(/^path-(\d+)-(\d+)-(\d+)$/);
+  if (pathId) {
+    const pth = tree.branches[Number(pathId[1])]?.leaves[Number(pathId[2])]?.paths?.[Number(pathId[3])];
+    if (!pth) return null;
+    return {
+      kind: "action", title: "Action", action: "inform",
+      handling: [
+        `1. Ask the caller for their zip code and capture it.`,
+        area ? `2. Check the zip code against our current service area: ${area}.` : `2. Confirm the caller is in a serviceable area.`,
+        `3. If the caller is outside the service area, politely inform them that we do not yet serve their area and end the call.`,
+        `4. If the caller is inside the service area, ask for their full name and capture it.`,
+        `5. This path handles "${pth.title}", so keep the conversation on that need and do not re-ask what they are calling about.`,
+        `6. Do not route the call without a captured full name.`,
+      ].join("\n"),
+      phone: demoPhone(areaCodeOf(profile)),
+      collect: [CONSUMER_ZIP, CONSUMER_NAME],
+    };
+  }
+
   /* Conversation Start opens nothing — the real page has no drawer for it. */
   return null;
 }

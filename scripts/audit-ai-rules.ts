@@ -12,6 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { isLockedEdit } from "../src/data/editGuard.ts";
+import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -171,6 +172,33 @@ console.log("\nThe SMS workflow template's node names are locked");
   /NEVER read out a user-group label/.test(readAny("engine/chat.ts"))
     ? ok("the voice prompt forbids saying a user-group label aloud")
     : bad("the prompt could have the agent say \"All Sales Inquiry Users\" on a call");
+
+  /* ⚠️ THE FOURTH ROW HAS TO REACH THE PROMPT (8/26/2026). A Qualify leaf's paths are what
+     the agent routes on; reading only the leaves would let an SE edit a path, watch the
+     diagram redraw, and hear no change — the silent no-op that deriving the prompt from the
+     tree exists to close, one row further down. CALLED, not grepped. */
+  (() => {
+    const t: any = { branches: [{ title: "I", leaves: [{ title: "G", action: "Qualify", chips: ["x"],
+      paths: [{ title: "A", action: "Inform & Route", chips: ["p"] },
+              { title: "B", action: "Inform & Route", chips: ["q"] }] }] }] };
+    const r = treeToVoicePaths(t)[0]?.routes ?? [];
+    return r.length === 2 && r.every((x: any) => x.need);
+  })()
+    ? ok("a Qualify leaf's PATHS reach the prompt, one route per answer")
+    : bad("the prompt ignores the diagram's fourth row — editing a path would change nothing");
+  (() => {
+    /* A leaf with no paths must still contribute itself, or every tree without a fourth row
+       loses its routing. */
+    const t: any = { branches: [{ title: "I", leaves: [{ title: "G", action: "Route", chips: ["x"] }] }] };
+    const r = treeToVoicePaths(t)[0]?.routes ?? [];
+    return r.length === 1 && r[0].team === "G" && !r[0].need;
+  })()
+    ? ok("a leaf with no paths still contributes itself")
+    : bad("a pathless leaf no longer produces a route");
+  /* The Qualify drawer's segments must READ the tree's path titles rather than rebuild them. */
+  /\(l\.paths \?\? \[\]\)\.map\(\(x\) => x\.title\)/.test(readAny("src/data/workflowDrawers.ts"))
+    ? ok("the Qualify drawer's segments are the leaf's own path titles")
+    : bad("the Qualify drawer rebuilds its segments — it can disagree with the diagram");
 
   /\btitle:\s*"Book a Move"/.test(wf)
     ? bad("the National Van Lines override carries its own intent name again")

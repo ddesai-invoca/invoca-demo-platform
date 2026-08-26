@@ -48,12 +48,26 @@ export function treeToVoicePaths(tree: WorkflowTreeModel | undefined | null): Vo
   for (const b of branches) {
     const intent = (b?.title ?? "").trim();
     if (!intent) continue;
+    /* ⚠️ A LEAF WITH PATHS CONTRIBUTES ITS PATHS, NOT ITSELF (8/26/2026). The diagram grew a
+       fourth row: a Qualify leaf now has one child per answer. Reading only the leaves would
+       have left an SE editing a path, watching the diagram redraw, and hearing the agent
+       behave exactly as before — the precise silent no-op deriving the prompt from the tree
+       was built to close, reappearing one row further down. */
     const routes = (b.leaves ?? [])
-      .map((l) => ({
-        team: (l?.title ?? "").trim(),
-        action: (l?.action ?? "").trim() || "route them",
-        collect: (l?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),
-      }))
+      .flatMap((l) => (l?.paths?.length
+        ? l.paths.map((pth) => ({
+            /* The team is still the LEAF's group; the path names the caller's need, so it
+               carries the collect list and the action the agent performs there. */
+            team: (l.title ?? "").trim(),
+            need: (pth?.title ?? "").trim(),
+            action: (pth?.action ?? "").trim() || "route them",
+            collect: (pth?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),
+          }))
+        : [{
+            team: (l?.title ?? "").trim(),
+            action: (l?.action ?? "").trim() || "route them",
+            collect: (l?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),
+          }]))
       .filter((r) => r.team);
     if (!routes.length) continue;   // a branch that routes nowhere is not a path
     const recognise = (b.subtitle ?? "").trim();

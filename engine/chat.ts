@@ -47,6 +47,9 @@ export interface VoicePath {
   /** One per leaf. More than one means this branch splits to different teams. */
   routes: {
     team: string;        // leaf title  — who it hands off to
+    /* Set when the diagram has a fourth row: the ANSWER this route belongs to, so the
+       agent can follow the caller's own need instead of re-asking what they want. */
+    need?: string;
     action: string;      // leaf action — what the agent does there
     collect: string[];   // leaf chips  — what to gather BEFORE handing off
   }[];
@@ -252,11 +255,20 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
       : ``,
     ``,
     ...paths.flatMap((p) => {
-      const collect = [...new Set(p.routes.flatMap((r2) => r2.collect ?? []).filter(Boolean))];
+      /* ⚠️ DO NOT UNION THE COLLECT LISTS WHEN THE ROUTES ARE ANSWERS. Sibling teams share
+         what they need, so unioning was right — but a Qualify leaf's routes are ALTERNATIVES,
+         and unioning them told the agent to ask a caller booking an appointment for their
+         "Issue Type" as well. When a route carries `need` its own line states what to
+         collect, so the shared line is suppressed. Caught by reading the built prompt, not
+         by any type. */
+      const answered = p.routes.some((r2) => r2.need);
+      const collect = answered
+        ? []
+        : [...new Set(p.routes.flatMap((r2) => r2.collect ?? []).filter(Boolean))];
       const lines = [`PATH: ${p.intent.toUpperCase()}`];
       if (collect.length) {
         lines.push(`   - Collect these, ONE question at a time, in this order: ${collect.join(", ")}. Ask for them in your own words, naturally.`);
-      } else {
+      } else if (!answered) {
         lines.push(`   - Ask what they need, in their own words.`);
       }
       if (p.routes.length === 1) {
@@ -267,7 +279,11 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
         /* ⚠️ THE DIAGRAM DOES NOT ENCODE *WHY* A BRANCH SPLITS, so the criterion is not
            invented here — the model is told to choose on what the caller said and the
            leaf's own action wording, which is the only honest instruction available. */
-        for (const r2 of p.routes) lines.push(`      • ${r2.team} — ${r2.action}`);
+        for (const r2 of p.routes) {
+          lines.push(r2.need
+            ? `      • If they say ${r2.need}: ${r2.action.toLowerCase()}${r2.collect.length ? `, collecting ${r2.collect.join(", ")}` : ""}.`
+            : `      • ${r2.team} — ${r2.action}`);
+        }
       }
       lines.push(``);
       return lines;

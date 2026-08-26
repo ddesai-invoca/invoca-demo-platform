@@ -19,9 +19,26 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
    never its design.
    ============================================================================= */
 
+/** One answer of a Qualify leaf, drawn as its own node on the row below. */
+export interface TreePath {
+  title: string;                                  // the answer, e.g. "Looking for care services"
+  action: string;                                 // "Inform & Route"
+  tone?: "green" | "orange" | "blue" | "grey";
+  chips?: string[];
+  actionIcon?: "phone" | "headset" | "altRoute" | "cart";
+}
+
 export interface TreeLeaf {
   title: string;                                  // "All Appointment Scheduling Users"
   action: string;                                 // "Route to Appointment Scheduling"
+  /* A FOURTH ROW. The Qualify action asks a question and routes on the answer, so its leaf
+     has one child per answer — which is what the real Comfort Keepers voice workflow shows
+     under "All Sales Inquiry Users". A leaf with no paths is a terminal, exactly as before.
+
+     ⚠️ **THE PATH TITLES ARE THE QUALIFY DRAWER'S ANSWERS/SEGMENTS.** One list, two
+     renderings: the diagram draws them as nodes and the drawer lists them as segments. Two
+     copies would disagree the first time an SE edited one. */
+  paths?: TreePath[];
   /* ⚠️ PRODUCT CHROME, same flag and same reason as `TreeBranch.locked` — but here it covers
      the ACTION as well as the title, because a leaf has one and a branch does not. Set on the
      voice tree's two default leaves: the real page names the user group after the intent and
@@ -121,13 +138,15 @@ const toneLine = (t?: string) =>
    renaming a node — all of which this component exists to support. So each node
    reports its own height and the lines are drawn between real edges. Fallbacks
    below only cover the single frame before the first measurement. */
-const FALLBACK = { trigger: 65, start: 65, intent: 64 };
+const FALLBACK = { trigger: 65, start: 65, intent: 64, leaf: 88 };
 
 /* Row geometry per channel, matched to the two real pages. Voice nodes are 248px
    and carry a subtitle, so every row sits lower. */
 const GEO = {
-  sms:   { nodeW: 220, gap: 26, trigger: 8, start: 122, intent: 240, subBus: 300, leaf: 344, height: 470, triggerW: 200, startW: 230 },
-  voice: { nodeW: 248, gap: 32, trigger: 8, start: 176, intent: 344, subBus: 470, leaf: 528, height: 700, triggerW: 248, startW: 248 },
+  /* ⚠️ `leafBus` and `path` are the FOURTH ROW, and `pathHeight` is only used when a leaf
+     actually has paths — so a tree without them keeps its signed-off canvas height exactly. */
+  sms:   { nodeW: 220, gap: 26, trigger: 8, start: 122, intent: 240, subBus: 300, leaf: 344, leafBus: 462, path: 500, height: 470, pathHeight: 660, triggerW: 200, startW: 230 },
+  voice: { nodeW: 248, gap: 32, trigger: 8, start: 176, intent: 344, subBus: 470, leaf: 528, leafBus: 660, path: 700, height: 700, pathHeight: 880, triggerW: 248, startW: 248 },
 } as const;
 
 /* The canvas clips (overflow: hidden) and is roughly 640px wide, so a tree wider
@@ -161,25 +180,38 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
   /* Each leaf gets a column; a branch spans its leaves' columns and centres over
      them. This is what makes "add a branch" and "split a branch" both work
      without touching the renderer. */
-  const slots: { branch: number; leaf: number }[] = [];
+  /* ⚠️ A COLUMN IS A TERMINAL, NOT A LEAF (8/26/2026). It was one column per leaf; now a
+     leaf that HAS paths contributes one column per path and the leaf centres over them,
+     exactly as a branch centres over its leaves. Reusing the second fork's machinery one
+     level down beats adding a parallel one, and a leaf with no paths behaves precisely as
+     before (`path: -1`). */
+  const slots: { branch: number; leaf: number; path: number }[] = [];
   branches.forEach((b, bi) => {
     const n = Math.max(1, b.leaves?.length ?? 1);
-    for (let li = 0; li < n; li++) slots.push({ branch: bi, leaf: li });
+    for (let li = 0; li < n; li++) {
+      const np = b.leaves?.[li]?.paths?.length ?? 0;
+      if (np) for (let pi = 0; pi < np; pi++) slots.push({ branch: bi, leaf: li, path: pi });
+      else slots.push({ branch: bi, leaf: li, path: -1 });
+    }
   });
   const nSlots = Math.max(1, slots.length);
+  const anyPaths = slots.some((s) => s.path >= 0);
 
   const colW = g.nodeW + g.gap;
   const W = Math.max(760, nSlots * colW);
-  const H = g.height;
+  /* ⚠️ THE CANVAS ONLY GROWS WHEN A PATH ROW EXISTS, so every tree without one keeps its
+     signed-off height and nothing below it moves. */
+  const H = anyPaths ? g.pathHeight : g.height;
   const colX = (i: number) => (W - nSlots * colW) / 2 + i * colW + colW / 2;
 
-  /* Where each branch's intent node centres: the midpoint of its own leaves. */
+  /* Where each branch's intent node centres: the midpoint of its own terminals. */
   const branchSlots = (bi: number) => slots.map((s, i) => ({ ...s, i })).filter((s) => s.branch === bi);
-  const branchCx = (bi: number) => {
-    const own = branchSlots(bi);
-    if (!own.length) return W / 2;
-    return (colX(own[0].i) + colX(own[own.length - 1].i)) / 2;
-  };
+  const cxOf = (own: { i: number }[]) =>
+    own.length ? (colX(own[0].i) + colX(own[own.length - 1].i)) / 2 : W / 2;
+  const branchCx = (bi: number) => cxOf(branchSlots(bi));
+  /* And where a LEAF centres: the midpoint of its own paths, or its single column. */
+  const leafSlots = (bi: number, li: number) => branchSlots(bi).filter((s) => s.leaf === li);
+  const leafCx = (bi: number, li: number) => cxOf(leafSlots(bi, li));
 
   const mid = W / 2;
   const busY = g.intent - 30;
@@ -196,8 +228,13 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
   const triggerRef = useRef<HTMLDivElement>(null);
   const startRef = useRef<HTMLDivElement>(null);
   const intentRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [h, setH] = useState<{ trigger: number; start: number; intents: number[] }>(
-    { trigger: FALLBACK.trigger, start: FALLBACK.start, intents: [] });
+  /* ⚠️ LEAVES ARE MEASURED NOW TOO, keyed by the terminal column so a leaf spanning two
+     paths is found once. Without it the leaf-to-path connector would leave a HARDCODED
+     offset — the exact mistake recorded above, which produced a 4px upward line on SMS and a
+     stub floating 24px below the node on voice. */
+  const leafRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [h, setH] = useState<{ trigger: number; start: number; intents: number[]; leaves: Record<string, number> }>(
+    { trigger: FALLBACK.trigger, start: FALLBACK.start, intents: [], leaves: {} });
 
   useLayoutEffect(() => {
     const measure = () => {
@@ -205,11 +242,14 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         trigger: triggerRef.current?.offsetHeight || FALLBACK.trigger,
         start: startRef.current?.offsetHeight || FALLBACK.start,
         intents: branches.map((_, i) => intentRefs.current[i]?.offsetHeight || FALLBACK.intent),
+        leaves: Object.fromEntries(Object.entries(leafRefs.current)
+          .map(([k, el]) => [k, el?.offsetHeight || FALLBACK.leaf])),
       };
       setH((prev) =>
         prev.trigger === next.trigger && prev.start === next.start
         && prev.intents.length === next.intents.length
-        && prev.intents.every((v, i) => v === next.intents[i]) ? prev : next);
+        && prev.intents.every((v, i) => v === next.intents[i])
+        && JSON.stringify(prev.leaves) === JSON.stringify(next.leaves) ? prev : next);
     };
     measure();
     const ro = new ResizeObserver(measure);
@@ -222,6 +262,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
   const triggerBottom = g.trigger + h.trigger;
   const startBottom = g.start + h.start;
   const intentBottom = (bi: number) => g.intent + (h.intents[bi] ?? FALLBACK.intent);
+  const leafBottom = (bi: number, li: number) => g.leaf + (h.leaves[`${bi}-${li}`] ?? FALLBACK.leaf);
 
   /* One place decides what a clickable node looks like and does, so a node cannot end up
    with a pointer cursor and no handler (or the reverse). */
@@ -245,7 +286,11 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
           {branches.map((b, bi) => {
             const bx = branchCx(bi);
             const own = branchSlots(bi);
-            const split = own.length > 1;
+            /* ⚠️ SPLIT MEANS TWO LEAVES, NOT TWO COLUMNS — and this broke the moment columns
+               became terminals. A branch with ONE Qualify leaf that has two paths has two
+               terminals, so `own.length > 1` drew the second-fork bus above a single leaf: a
+               green line spanning nothing, visible on screen the first time it rendered. */
+            const split = new Set(own.map((s) => s.leaf)).size > 1;
             return (
               <g key={`lines-${bi}`}>
                 <line x1={bx} y1={busY} x2={bx} y2={g.intent} className="wf-l" />
@@ -256,15 +301,37 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
                       className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
                     <line x1={colX(own[0].i)} y1={g.subBus} x2={colX(own[own.length - 1].i)} y2={g.subBus}
                       className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
-                    {own.map((s) => (
-                      <line key={`d-${s.i}`} x1={colX(s.i)} y1={g.subBus} x2={colX(s.i)} y2={g.leaf}
-                        className={"wf-l" + toneLine(b.leaves[s.leaf]?.tone)} />
+                    {[...new Set(own.map((s) => s.leaf))].map((li) => (
+                      <line key={`d-${li}`} x1={leafCx(bi, li)} y1={g.subBus} x2={leafCx(bi, li)} y2={g.leaf}
+                        className={"wf-l" + toneLine(b.leaves[li]?.tone)} />
                     ))}
                   </>
                 ) : (
                   <line x1={bx} y1={intentBottom(bi)} x2={bx} y2={g.leaf}
                     className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
                 )}
+
+                {/* ⚠️ THE FOURTH ROW'S CONNECTORS, and they mirror the second fork exactly:
+                    a stem from the leaf's MEASURED bottom, a bus across its own paths, then a
+                    drop into each. A single path still gets a bus of zero width, which is
+                    harmless and keeps one code path instead of two. */}
+                {(b.leaves ?? []).map((lf, li) => {
+                  const own2 = leafSlots(bi, li);
+                  if (!lf.paths?.length) return null;
+                  const lx = leafCx(bi, li);
+                  return (
+                    <g key={`paths-${bi}-${li}`}>
+                      <line x1={lx} y1={leafBottom(bi, li)} x2={lx} y2={g.leafBus}
+                        className={"wf-l" + toneLine(lf.paths[0]?.tone ?? lf.tone)} />
+                      <line x1={colX(own2[0].i)} y1={g.leafBus} x2={colX(own2[own2.length - 1].i)} y2={g.leafBus}
+                        className={"wf-l" + toneLine(lf.paths[0]?.tone ?? lf.tone)} />
+                      {own2.map((s2) => (
+                        <line key={`pd-${s2.i}`} x1={colX(s2.i)} y1={g.leafBus} x2={colX(s2.i)} y2={g.path}
+                          className={"wf-l" + toneLine(lf.paths?.[s2.path]?.tone ?? lf.tone)} />
+                      ))}
+                    </g>
+                  );
+                })}
               </g>
             );
           })}
@@ -291,7 +358,12 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
           </div>
         ))}
 
-        {slots.map((s, i) => {
+        {/* ⚠️ ONE NODE PER LEAF, NOT PER COLUMN. `slots` now holds one entry per PATH, so
+            mapping it here rendered a leaf on top of itself once per path — two identical
+            boxes stacked, which reads as a blur rather than as a bug. Dedupe to the distinct
+            (branch, leaf) pairs and centre each over its own columns. */}
+        {[...new Map(slots.map((s) => [`${s.branch}-${s.leaf}`, s])).values()].map((s) => {
+          const i = slots.findIndex((x) => x.branch === s.branch && x.leaf === s.leaf);
           const b = branches[s.branch];
           const leaf = b?.leaves?.[s.leaf];
           if (!leaf) return null;
@@ -303,7 +375,8 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
               <div {...open(`leaf-${s.branch}-${s.leaf}`)}
                 className={"wf-node wf-leaf" + toneClass(leaf.tone) + " " + open("").className}
                 key={`leaf-${i}`}
-              style={{ left: colX(i) - g.nodeW / 2, top: g.leaf, width: g.nodeW }}>
+              ref={(el) => { leafRefs.current[`${s.branch}-${s.leaf}`] = el; }}
+              style={{ left: leafCx(s.branch, s.leaf) - g.nodeW / 2, top: g.leaf, width: g.nodeW }}>
               <div className="wf-leaf-title">{leaf.title}</div>
               <div className="wf-leaf-action">
                 <VIcon name={leaf.actionIcon ?? (leaf.tone === "orange" ? "headset" : "altRoute")} />
@@ -313,6 +386,33 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
               {leaf.chips?.length ? (
                 <div className="wf-chips">
                   {leaf.chips.map((c, ci) => <span className="wf-chip" key={`${c}-${ci}`}>{c}</span>)}
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+
+        {/* ⚠️ THE PATH ROW. Same node chrome as a leaf, on its own row and one per column, so an
+            SE reads them as the same kind of thing the product draws them as. Only rendered for
+            slots that ARE paths, so a tree without any adds no elements at all — the SMS diagram
+            and every extra workflow are untouched by construction. */}
+        {slots.map((s, i) => {
+          if (s.path < 0) return null;
+          const pth = branches[s.branch]?.leaves?.[s.leaf]?.paths?.[s.path];
+          if (!pth) return null;
+          return (
+            <div {...open(`path-${s.branch}-${s.leaf}-${s.path}`)}
+              className={"wf-node wf-leaf" + toneClass(pth.tone ?? "green") + " " + open("").className}
+              key={`path-${i}`}
+              style={{ left: colX(i) - g.nodeW / 2, top: g.path, width: g.nodeW }}>
+              <div className="wf-leaf-title">{pth.title}</div>
+              <div className="wf-leaf-action">
+                <VIcon name={pth.actionIcon ?? "altRoute"} />
+                {pth.action}
+              </div>
+              {pth.chips?.length ? (
+                <div className="wf-chips">
+                  {pth.chips.map((c, ci) => <span className="wf-chip" key={`${c}-${ci}`}>{c}</span>)}
                 </div>
               ) : null}
             </div>
