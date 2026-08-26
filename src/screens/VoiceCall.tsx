@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
+import { useAiAssistant } from "../data/AiAssistantContext";
+import { SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
 import { AgentStudioIcon } from "../components/nav";
 import type { VoiceConversation, VoiceTurn } from "../data/schema";
 
@@ -44,8 +46,37 @@ const METER_MAX = 0.25;       // RMS mapped to a full meter
 /* The agent's brain: the same brand rules + Q&A + knowledge + playbook the SMS
    Preview Agent uses, re-skinned per prospect at generation time. */
 export function useBrain() {
-  const { profile } = useProfile();
-  const ac = profile.reports.agentConfig;
+  const { profile, profileId } = useProfile();
+  const { effectiveData, registerBase } = useAiAssistant();
+
+  /* ⚠️⚠️ **THE VOICE CALL USED TO READ THE RAW PROFILE, SO EVERY AI EDIT WAS A SILENT
+     NO-OP HERE.** The SMS phone reads the effective config through `usePageData` and the
+     SMS workflow drawer through `effectiveData`; this was the one surface of the three
+     still reading `profile.reports.agentConfig` directly. An SE who used Ask AI to change
+     the agent's rules, greeting or questions got a success message and a call that behaved
+     exactly as before — the failure mode this repo keeps re-learning.
+
+     ⚠️ **`effectiveData`, NEVER `usePageData`.** The workflow page has already registered
+     its DIAGRAM as the AI scope and `registerScope` is last-write-wins, so calling
+     `usePageData` here would silently repoint that page's sparkle from the tree to the
+     agent config and kill "add a branch" with no visible cause. Same reason
+     `WorkflowChatPreview` uses this pattern.
+
+     ⚠️ The scope is the PREVIEW AGENT page's, because `agentConfig` is one object shared by
+     both channels — so an edit made there governs the spoken call too, and the two agents
+     cannot disagree about their own rules. */
+  const agentKey = `${profileId}::${SMS_AGENT_SCOPE_PATH}`;
+  /* `applyEdits` refuses a key with no base, so an SE who starts a call without ever opening
+     the Preview Agent tab would make edits that did nothing. This fills the base WITHOUT
+     making it the active scope. */
+  useEffect(() => { registerBase(agentKey, profile.reports.agentConfig); },
+    [agentKey, profile.reports.agentConfig, registerBase]);
+
+  const ac = useMemo(
+    () => (effectiveData(agentKey) as typeof profile.reports.agentConfig | undefined)
+      ?? profile.reports.agentConfig,
+    [effectiveData, agentKey, profile.reports.agentConfig],
+  );
   return {
     customerName: profile.customerName,
     industry: profile.industry,
