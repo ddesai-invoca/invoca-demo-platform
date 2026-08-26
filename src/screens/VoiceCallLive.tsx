@@ -151,7 +151,12 @@ export function VoiceCallLive({ onEnd }: { onEnd: () => void }) {
       /* No keyboard fallback on this engine: a LiveKit call needs a working mic by
          definition, so a "type instead" bar would offer a path that cannot work. */
       canType={false}
-      micNote={lk.error ? "Voice service unavailable. End the call and try again." : null}
+      /* ⚠️ THE ERROR IS RENDERED ONCE, in the captions area via `error` above. Passing it
+         here as well printed the same sentence twice on screen. And it must be the ENGINE's
+         own message, not a generic one: "could not reach the service" and "connected fine
+         but nobody joined" have completely different fixes, and flattening both into one
+         line is what made an empty room impossible to diagnose from the screen. */
+      micNote={null}
       onToggleMute={toggleMute}
       onEnd={endCall}
     />

@@ -116,8 +116,26 @@ const segments = new Map<string, { speaker: "agent" | "consumer"; text: string }
 /** How long a teardown waits, so a StrictMode remount can cancel it and reuse the room. */
 const TEARDOWN_GRACE_MS = 250;
 
+/* ⚠️⚠️ **AN EMPTY ROOM IS THE WORST FAILURE THIS PIPELINE HAS, AND IT USED TO BE SILENT.**
+   If no worker is registered, the token still mints, the room is still created and the
+   browser still connects perfectly — there is simply nobody in it. The screen sat on
+   "Listening…" with a running timer and no error, so the only symptom was that the agent
+   never spoke. That is indistinguishable from a broken mic, a bad prompt or a dead network,
+   and it cost a round trip to diagnose ("I clicked start call but voice agent isnt
+   starting"). So we watch for the agent actually JOINING and say so if it does not. */
+const AGENT_JOIN_TIMEOUT_MS = 10_000;
+let agentWatch: ReturnType<typeof setTimeout> | null = null;
+/** Whichever hook instance is bound receives a watchdog failure. */
+let errorSink: ((msg: string) => void) | null = null;
+
+function clearAgentWatch() {
+  if (agentWatch) { clearTimeout(agentWatch); agentWatch = null; }
+}
+
 function destroyLive() {
   pendingTeardown = null;
+  clearAgentWatch();
+  errorSink = null;
   const c = live;
   live = null;
   connecting = null;
@@ -150,6 +168,12 @@ export function useLiveKitVoice(): LiveKitVoice {
        handlers on the same room and every transcript line would render twice. */
     room.removeAllListeners();
     levelSink = levelRef;
+    errorSink = (msg: string) => { if (aliveRef.current) setError(msg); };
+
+    /* The agent joining is what cancels the watchdog. Checked as an EVENT rather than by
+       polling, and also checked synchronously below, because on a reused room it may
+       already be here. */
+    room.on(RoomEventNS.ParticipantConnected, () => clearAgentWatch());
 
     room.on(RoomEventNS.TrackSubscribed, (track: RemoteTrack) => {
       /* The agent's voice. Attaching to a detached element and never appending it plays
@@ -241,6 +265,16 @@ export function useLiveKitVoice(): LiveKitVoice {
       await room.localParticipant.setMicrophoneEnabled(true);
       call.meter = startMeter(room);
       live = call;
+
+      /* If the agent is already here, nothing to wait for. */
+      if (room.remoteParticipants.size === 0) {
+        clearAgentWatch();
+        agentWatch = setTimeout(() => {
+          agentWatch = null;
+          if (live?.room.remoteParticipants.size) return;   // it arrived late; fine
+          errorSink?.("No voice agent joined this call. The agent worker may not be running — start it with `npm run dev` in the agent folder.");
+        }, AGENT_JOIN_TIMEOUT_MS);
+      }
       return call;
     })();
 
