@@ -1,5 +1,4 @@
-import { cli, defineAgent, voice, WorkerOptions } from "@livekit/agents";
-import * as deepgram from "@livekit/agents-plugin-deepgram";
+import { cli, defineAgent, inference, voice, WorkerOptions } from "@livekit/agents";
 import * as anthropic from "@livekit/agents-plugin-anthropic";
 import * as silero from "@livekit/agents-plugin-silero";
 import { fileURLToPath } from "node:url";
@@ -30,15 +29,32 @@ import { fileURLToPath } from "node:url";
 
    ⚠️ **CLAUDE STAYS THE BRAIN.** `@livekit/agents-plugin-anthropic` reads the same
    `ANTHROPIC_API_KEY` the rest of the platform uses, so moving to LiveKit did not
-   hand the conversation to somebody else's model.
+   hand the conversation to somebody else's model. Everything else — speech in and
+   speech out — comes from LiveKit's gateway, so this worker needs no provider keys
+   of its own.
    ============================================================================= */
 
-/** Model kept in step with the platform's own fast model (engine/chat.ts). */
+/* ⚠️⚠️ **STT AND TTS COME FROM LIVEKIT'S INFERENCE GATEWAY, NOT FROM OUR OWN KEYS**
+   (asked for 8/25/2026: "don't use the Deepgram API keys, use it all from the LiveKit
+   instance"). LiveKit brokers the provider and bills it, so the worker authenticates
+   with LIVEKIT_API_KEY/SECRET alone and **DEEPGRAM_API_KEY is no longer read anywhere
+   in this pipeline**. Note the model strings are `provider/model` — that prefix is what
+   routes through the gateway, and dropping it is not the same call.
+
+   ⚠️ **THE LLM IS THE ONE EXCEPTION, AND IT IS NOT AN OVERSIGHT.** LiveKit's inference
+   gateway lists OpenAI, Google, Moonshot, DeepSeek, ZAI and xAI — **there is no
+   Anthropic model in it** (checked the installed package's own `LLMModels` type, 1.7.0).
+   Routing the brain through the gateway would therefore mean giving up Claude, which is
+   the platform's standing rule for this agent. So the LLM keeps the direct Anthropic
+   plugin on the ANTHROPIC_API_KEY the rest of the app already uses. Revisit the moment
+   LiveKit adds Claude to the gateway. */
+
+/** Kept in step with the platform's own fast model (engine/chat.ts). */
 const LLM_MODEL = process.env.VOICE_LLM_MODEL?.trim() || "claude-haiku-4-5";
-/** Deepgram STT: nova-3 is their realtime streaming model. */
-const STT_MODEL = process.env.VOICE_STT_MODEL?.trim() || "nova-3";
-/** Deepgram Aura — the SAME voice the old pipeline used, now streamed. */
-const TTS_MODEL = process.env.DEEPGRAM_MODEL?.trim() || "aura-2-thalia-en";
+/** Streaming STT through LiveKit. `auto` is also valid if a prospect needs it picked. */
+const STT_MODEL = process.env.VOICE_STT_MODEL?.trim() || "deepgram/nova-3";
+/** The SAME Aura voice the old pipeline used — now streamed, and brokered by LiveKit. */
+const TTS_MODEL = process.env.VOICE_TTS_MODEL?.trim() || "deepgram/aura-2";
 
 /** Read the dispatch metadata the token put on this job. */
 function jobBrief(ctx) {
@@ -76,9 +92,9 @@ export default defineAgent({
     const agent = new voice.Agent({ instructions: brief.instructions });
 
     const session = new voice.AgentSession({
-      stt: new deepgram.STT({ model: STT_MODEL }),
+      stt: new inference.STT({ model: STT_MODEL }),
       llm: new anthropic.LLM({ model: LLM_MODEL }),
-      tts: new deepgram.TTS({ model: TTS_MODEL }),
+      tts: new inference.TTS({ model: TTS_MODEL }),
       vad: ctx.proc.userData.vad,
     });
 

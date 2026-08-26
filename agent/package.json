@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "LiveKit voice agent worker for the Invoca demo platform. Deploys as its own Render service.",
+  "description": "LiveKit voice agent worker. STT/TTS come from LiveKit's inference gateway; only the LLM uses our own Anthropic key. Deploys as its own Render service.",
   "scripts": {
     "start": "node --env-file-if-exists=../.env voiceAgent.js start",
     "dev": "node --env-file-if-exists=../.env voiceAgent.js dev"
@@ -11,7 +11,6 @@
   "dependencies": {
     "@livekit/agents": "^1.7.0",
     "@livekit/agents-plugin-anthropic": "^1.7.0",
-    "@livekit/agents-plugin-deepgram": "^1.7.0",
     "@livekit/agents-plugin-silero": "^1.7.0"
   }
 }
