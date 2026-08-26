@@ -123,7 +123,10 @@ export function VoiceCallLive({ onEnd }: { onEnd: () => void }) {
 
   function endCall() {
     captureCall();
-    lk.hangUp();
+    /* Immediate: the SE pressed End, so there is no remount coming and the agent must stop
+       talking now. The effect cleanup below deliberately does NOT pass this — that one has
+       to leave the grace window open for StrictMode's remount. */
+    lk.hangUp(true);
     onEnd();
   }
 

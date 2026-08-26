@@ -13,7 +13,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
    Types are imported type-only below; those are erased at build and cost nothing. */
 import type {
-  LocalAudioTrack, Participant, RemoteTrack, Room, TranscriptionSegment,
+  LocalAudioTrack, Participant, RemoteTrack, Room, RoomEvent, Track, TranscriptionSegment,
 } from "livekit-client";
 
 /* =============================================================================
@@ -64,7 +64,8 @@ export interface LiveKitVoice {
   /** Null until something fails; a string the screen can show and fall back on. */
   error: string | null;
   connect: (opts: { brain: unknown; profileId: string; greeting?: string }) => Promise<void>;
-  hangUp: () => void;
+  /** `immediate` skips the reuse grace window — the End button, not an unmount. */
+  hangUp: (immediate?: boolean) => void;
   setMuted: (muted: boolean) => void;
 }
 
@@ -79,58 +80,142 @@ function phaseOf(state: string | undefined): VoicePhase {
   }
 }
 
+/* =============================================================================
+   ⚠️⚠️ ONE LIVE CALL PER APP, HELD AT MODULE SCOPE — AND THIS IS NOT OVER-ENGINEERING.
+   -----------------------------------------------------------------------------
+   React StrictMode double-invokes effects in dev: mount, cleanup, mount. With the room
+   owned by component state that produced **TWO tokens, TWO rooms and TWO agents**, and the
+   caller heard both greet at once. The worker log is unambiguous — two job requests 160ms
+   apart into `voice-…-t49wv5` and `voice-…-i347td`.
+
+   Neither obvious fix works on its own:
+     • a `startedRef` guard skips the second mount, but the FIRST mount's cleanup has already
+       torn the connection down, so the call never connects at all (0:00 forever, no error);
+     • no guard at all connects twice, which is what shipped and what you heard.
+
+   So the room lives HERE, outside the component, and a cleanup only SCHEDULES teardown.
+   A remount inside the grace window cancels it and rebinds to the same room. StrictMode
+   therefore gets one room; a real close still tears down 250ms later, which nobody can
+   perceive; and the End button tears down immediately.
+   ============================================================================= */
+
+interface LiveCall {
+  room: Room;
+  audioEl: HTMLAudioElement | null;
+  meter: { ctx: AudioContext; raf: number } | null;
+}
+
+let live: LiveCall | null = null;
+let connecting: Promise<LiveCall | null> | null = null;
+let pendingTeardown: ReturnType<typeof setTimeout> | null = null;
+/** Whichever hook instance is currently bound gets the mic level written into its ref. */
+let levelSink: { current: number } | null = null;
+/** Transcript segments, revised in place until final. Module-scoped so a remount keeps them. */
+const segments = new Map<string, { speaker: "agent" | "consumer"; text: string }>();
+
+/** How long a teardown waits, so a StrictMode remount can cancel it and reuse the room. */
+const TEARDOWN_GRACE_MS = 250;
+
+function destroyLive() {
+  pendingTeardown = null;
+  const c = live;
+  live = null;
+  connecting = null;
+  levelSink = null;
+  if (!c) return;
+  if (c.meter) {
+    cancelAnimationFrame(c.meter.raf);
+    c.meter.ctx.close().catch(() => {});
+  }
+  c.audioEl?.remove();
+  c.room.disconnect().catch(() => {});
+}
+
 export function useLiveKitVoice(): LiveKitVoice {
   const [phase, setPhase] = useState<VoicePhase>("idle");
   const [turns, setTurns] = useState<VoiceTurn[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const roomRef = useRef<Room | null>(null);
   const levelRef = useRef(0);
-  const audioElRef = useRef<HTMLAudioElement | null>(null);
-  const meterRef = useRef<{ ctx: AudioContext; raf: number } | null>(null);
-  /* ⚠️ StrictMode double-invokes effects and a demo can be hung up mid-connect, so every
-     async continuation checks this before touching state — the same `aliveRef` guard the
-     old VoiceCall used, for the same reason. */
+  /* ⚠️ StrictMode double-invokes and a demo can be hung up mid-connect, so every async
+     continuation checks this before touching state — the same guard the old VoiceCall used. */
   const aliveRef = useRef(true);
 
-  /* Transcription arrives as SEGMENTS that are revised in place until `final`, so turns
-     are keyed by segment id rather than appended. Appending each update instead prints
-     the caller's sentence four times as it firms up. */
-  const segRef = useRef<Map<string, { speaker: "agent" | "consumer"; text: string }>>(new Map());
+  useEffect(() => { aliveRef.current = true; return () => { aliveRef.current = false; }; }, []);
 
-  const teardown = useCallback(() => {
-    if (meterRef.current) {
-      cancelAnimationFrame(meterRef.current.raf);
-      meterRef.current.ctx.close().catch(() => {});
-      meterRef.current = null;
-    }
-    audioElRef.current?.remove();
-    audioElRef.current = null;
-    roomRef.current?.disconnect().catch(() => {});
-    roomRef.current = null;
-    levelRef.current = 0;
+  /** Point the room's events at THIS instance's state. Called on a fresh connect and on reuse. */
+  const bind = useCallback((call: LiveCall, RoomEventNS: typeof RoomEvent, TrackNS: typeof Track) => {
+    const { room } = call;
+    /* Rebinding, not adding: a StrictMode remount would otherwise stack a second set of
+       handlers on the same room and every transcript line would render twice. */
+    room.removeAllListeners();
+    levelSink = levelRef;
+
+    room.on(RoomEventNS.TrackSubscribed, (track: RemoteTrack) => {
+      /* The agent's voice. Attaching to a detached element and never appending it plays
+         nothing, so the element goes into the document. */
+      if (track.kind !== TrackNS.Kind.Audio) return;
+      call.audioEl?.remove();
+      const el = track.attach() as HTMLAudioElement;
+      el.style.display = "none";
+      document.body.appendChild(el);
+      call.audioEl = el;
+      el.play().catch(() => {/* the click that started the call satisfies autoplay */});
+    });
+
+    room.on(RoomEventNS.ParticipantAttributesChanged, (_c: unknown, participant: Participant) => {
+      if (!aliveRef.current || participant.isLocal) return;
+      const st = participant.attributes?.["lk.agent.state"];
+      if (st) setPhase(phaseOf(st));
+    });
+
+    room.on(RoomEventNS.TranscriptionReceived, (segs: TranscriptionSegment[], participant?: Participant) => {
+      if (!aliveRef.current) return;
+      /* ⚠️ THE SPEAKER IS DECIDED BY WHO PUBLISHED IT, never guessed from the text.
+         `participant.isLocal` is the SE on the mic; anything else is the agent. */
+      const speaker: "agent" | "consumer" = participant?.isLocal ? "consumer" : "agent";
+      for (const seg of segs) segments.set(seg.id, { speaker, text: seg.text });
+      setTurns([...segments.values()].filter((t) => t.text.trim()));
+    });
+
+    room.on(RoomEventNS.Disconnected, () => { if (aliveRef.current) setPhase("idle"); });
+
+    /* Catch up with whatever happened before this instance bound. */
+    setTurns([...segments.values()].filter((t) => t.text.trim()));
   }, []);
 
-  useEffect(() => () => { aliveRef.current = false; teardown(); }, [teardown]);
-
-  const hangUp = useCallback(() => {
-    teardown();
+  const hangUp = useCallback((immediate = false) => {
     setPhase("idle");
-  }, [teardown]);
+    if (immediate) { if (pendingTeardown) clearTimeout(pendingTeardown); destroyLive(); return; }
+    if (pendingTeardown) clearTimeout(pendingTeardown);
+    pendingTeardown = setTimeout(destroyLive, TEARDOWN_GRACE_MS);
+  }, []);
 
   const setMuted = useCallback((muted: boolean) => {
-    roomRef.current?.localParticipant.setMicrophoneEnabled(!muted).catch(() => {});
+    live?.room.localParticipant.setMicrophoneEnabled(!muted).catch(() => {});
   }, []);
 
   const connect = useCallback<LiveKitVoice["connect"]>(async ({ brain, profileId, greeting }) => {
     aliveRef.current = true;
     setError(null);
+
+    const { Room, RoomEvent, Track } = await import("livekit-client");
+
+    /* A remount inside the grace window: cancel the teardown and reuse the same room, which
+       is what stops StrictMode from dispatching a second agent. */
+    if (pendingTeardown) { clearTimeout(pendingTeardown); pendingTeardown = null; }
+    if (live) { bind(live, RoomEvent, Track); setPhase("listening"); return; }
+    if (connecting) {
+      const existing = await connecting;
+      if (existing && aliveRef.current) { bind(existing, RoomEvent, Track); setPhase("listening"); }
+      return;
+    }
+
+    segments.clear();
     setTurns([]);
-    segRef.current.clear();
     setPhase("connecting");
 
-    let cfg: { url: string; token: string };
-    try {
+    connecting = (async (): Promise<LiveCall | null> => {
       const res = await fetch("/api/livekit-token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -138,79 +223,37 @@ export function useLiveKitVoice(): LiveKitVoice {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data?.error || `Token request failed (${res.status}).`);
-      cfg = data;
-    } catch (e) {
-      if (!aliveRef.current) return;
-      setError(e instanceof Error ? e.message : String(e));
-      setPhase("idle");
-      return;
-    }
-    if (!aliveRef.current) return;
 
-    /* The on-demand load. Awaited before the room is built, so a slow first fetch shows as
-       "connecting" rather than as a dead button. */
-    const { Room, RoomEvent, Track } = await import("livekit-client");
-    if (!aliveRef.current) return;
+      const room = new Room({ adaptiveStream: false, dynacast: false });
+      const call: LiveCall = { room, audioEl: null, meter: null };
+      bind(call, RoomEvent, Track);
 
-    const room = new Room({ adaptiveStream: false, dynacast: false });
-    roomRef.current = room;
-
-    room.on(RoomEvent.TrackSubscribed, (track: RemoteTrack) => {
-      /* The agent's voice. Attaching to a detached element and appending it is what makes
-         it audible; a bare `attach()` that is never in the document plays nothing. */
-      if (track.kind !== Track.Kind.Audio) return;
-      const el = track.attach() as HTMLAudioElement;
-      el.style.display = "none";
-      document.body.appendChild(el);
-      audioElRef.current = el;
-      el.play().catch(() => {/* autoplay guard — the click that started the call satisfies it */});
-    });
-
-    room.on(RoomEvent.ParticipantAttributesChanged, (_changed, participant: Participant) => {
-      if (!aliveRef.current || participant.isLocal) return;
-      const st = participant.attributes?.["lk.agent.state"];
-      if (st) setPhase(phaseOf(st));
-    });
-
-    room.on(RoomEvent.TranscriptionReceived, (segments: TranscriptionSegment[], participant?: Participant) => {
-      if (!aliveRef.current) return;
-      /* ⚠️ THE SPEAKER IS DECIDED BY WHO PUBLISHED IT, not by guessing from the text.
-         `participant.isLocal` is the SE on the mic; anything else is the agent. */
-      const speaker: "agent" | "consumer" = participant?.isLocal ? "consumer" : "agent";
-      for (const s of segments) segRef.current.set(s.id, { speaker, text: s.text });
-      setTurns([...segRef.current.values()].filter((t) => t.text.trim()));
-    });
-
-    room.on(RoomEvent.Disconnected, () => {
-      if (!aliveRef.current) return;
-      setPhase("idle");
-    });
-
-    try {
-      /* ⚠️ **`room.connect()` RETRIES INTERNALLY AND CAN HANG INDEFINITELY**, which is worse
-         than failing: observed in the in-app preview browser, where outbound WebSockets to
-         LiveKit are blocked — the screen sat on "Connecting…" forever with no error, and an
-         SE would just watch it. A demo needs a fast, visible failure it can fall back from,
-         so the connect races a timeout. 12s is generous for a healthy network and short
-         enough that nobody is left guessing on a projector. */
+      /* ⚠️ `room.connect()` RETRIES INTERNALLY AND CAN HANG INDEFINITELY, which on a
+         projector is worse than failing — observed as "Connecting…" forever with no error.
+         12s is generous for a healthy network and short enough that nobody is left guessing. */
       await Promise.race([
-        room.connect(cfg.url, cfg.token),
+        room.connect(data.url, data.token),
         new Promise((_, rej) => setTimeout(
-          () => rej(new Error("Could not reach the voice service. Check the network, or end the call and retry.")),
+          () => rej(new Error("Could not reach the voice service. End the call and try again.")),
           CONNECT_TIMEOUT_MS,
         )),
       ]);
-      if (!aliveRef.current) { room.disconnect().catch(() => {}); return; }
       await room.localParticipant.setMicrophoneEnabled(true);
-      if (!aliveRef.current) { room.disconnect().catch(() => {}); return; }
-      startMeter(room, levelRef, meterRef);
+      call.meter = startMeter(room);
+      live = call;
+      return call;
+    })();
+
+    try {
+      await connecting;
     } catch (e) {
+      connecting = null;
+      destroyLive();
       if (!aliveRef.current) return;
       setError(e instanceof Error ? e.message : String(e));
       setPhase("idle");
-      teardown();
     }
-  }, [teardown]);
+  }, [bind]);
 
   return { phase, turns, levelRef, error, connect, hangUp, setMuted };
 }
@@ -223,28 +266,28 @@ export function useLiveKitVoice(): LiveKitVoice {
  * read by a CSS variable, so a 60fps meter never re-renders the call screen — the same
  * decision the old VoiceCall made and the reason its UI stayed smooth.
  */
-function startMeter(
-  room: Room,
-  levelRef: React.RefObject<number>,
-  meterRef: React.RefObject<{ ctx: AudioContext; raf: number } | null>,
-) {
+function startMeter(room: Room): { ctx: AudioContext; raf: number } | null {
   const pub = [...room.localParticipant.audioTrackPublications.values()][0];
   const track = pub?.track as LocalAudioTrack | undefined;
   const stream = track?.mediaStream;
-  if (!stream) return;
+  if (!stream) return null;
   const ctx = new AudioContext();
   const analyser = ctx.createAnalyser();
   analyser.fftSize = 512;
   ctx.createMediaStreamSource(stream).connect(analyser);
   const buf = new Uint8Array(analyser.frequencyBinCount);
+  const handle: { ctx: AudioContext; raf: number } = { ctx, raf: 0 };
   const tick = () => {
     analyser.getByteTimeDomainData(buf);
     let peak = 0;
     for (const v of buf) peak = Math.max(peak, Math.abs(v - 128) / 128);
-    levelRef.current = Math.min(1, peak * 1.8);
-    if (meterRef.current) meterRef.current.raf = requestAnimationFrame(tick);
+    /* Written into whichever hook instance is currently bound, so a remount keeps the meter
+       alive instead of leaving a dead ref behind. */
+    if (levelSink) levelSink.current = Math.min(1, peak * 1.8);
+    handle.raf = requestAnimationFrame(tick);
   };
-  meterRef.current = { ctx, raf: requestAnimationFrame(tick) };
+  handle.raf = requestAnimationFrame(tick);
+  return handle;
 }
 
 /**
