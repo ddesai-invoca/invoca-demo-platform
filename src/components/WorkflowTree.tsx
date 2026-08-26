@@ -54,6 +54,10 @@ export interface TreeBranch {
   leaves: TreeLeaf[];
 }
 
+/* ⚠️ OPT-IN, DEFAULTED TO TODAY'S BEHAVIOUR — the same pattern DonutChart's extra props and
+   the leaf's `actionIcon` follow. Without `onNode` no node is clickable, carries a pointer
+   cursor or gains a hover shadow, so the SMS tree and every extra-workflow diagram are
+   byte-identical. Passing it is what turns the boxes into drawer triggers. */
 export interface WorkflowTreeModel {
   /* Only the node WIDTH and the icon set differ between channels; both are
      matched to the real Invoca pages. */
@@ -86,6 +90,7 @@ const VIC: Record<string, string> = {
 
 function VIcon({ name }: { name: keyof typeof VIC | string }) {
   const d = VIC[name] ?? VIC.altRoute;
+
   return (
     <svg className="wf-svg-ic" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
       <path d={d} />
@@ -149,7 +154,7 @@ function useFitScale(designWidth: number) {
   return { ref, scale };
 }
 
-export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
+export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNode?: (id: string) => void }) {
   const g = GEO[model.variant];
   const branches = model.branches?.length ? model.branches : [];
 
@@ -218,6 +223,13 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
   const startBottom = g.start + h.start;
   const intentBottom = (bi: number) => g.intent + (h.intents[bi] ?? FALLBACK.intent);
 
+  /* One place decides what a clickable node looks like and does, so a node cannot end up
+   with a pointer cursor and no handler (or the reverse). */
+  const open = (id: string) => (onNode
+  ? { className: "wf-node--open", onClick: () => onNode(id), role: "button" as const, tabIndex: 0,
+      onKeyDown: (e: React.KeyboardEvent) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onNode(id); } } }
+  : { className: "" });
+
   return (
     <div className="wf-fit" ref={ref}
       style={{ width: W * scale, height: H * scale, margin: "24px auto" }}>
@@ -258,7 +270,7 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
           })}
         </svg>
 
-        <div className="wf-node wf-trigger" ref={triggerRef}
+        <div {...open("trigger")} className={"wf-node wf-trigger " + open("trigger").className} ref={triggerRef}
           style={{ left: mid - g.triggerW / 2, top: g.trigger, width: g.triggerW }}>
           <div className="wf-node-title"><VIcon name="bolt" />Triggered by</div>
           <div className="wf-node-sub">{model.triggeredBy}</div>
@@ -271,7 +283,7 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
         </div>
 
         {branches.map((b, bi) => (
-          <div className="wf-node wf-intent" key={`intent-${bi}`}
+          <div {...open(`intent-${bi}`)} className={"wf-node wf-intent " + open(`intent-${bi}`).className} key={`intent-${bi}`}
             ref={(el) => { intentRefs.current[bi] = el; }}
             style={{ left: branchCx(bi) - g.nodeW / 2, top: g.intent, width: g.nodeW }}>
             <div className="wf-node-title"><VIcon name={b.icon ?? "altRoute"} />{b.title}</div>
@@ -284,7 +296,13 @@ export function WorkflowTree({ model }: { model: WorkflowTreeModel }) {
           const leaf = b?.leaves?.[s.leaf];
           if (!leaf) return null;
           return (
-            <div className={"wf-node wf-leaf" + toneClass(leaf.tone)} key={`leaf-${i}`}
+            /* ⚠️ THE ID CARRIES BOTH INDICES, not the flat slot index `i`. `slots` is FLATTENED
+                 across every branch, so `leaf-2` is ambiguous the moment a branch has two
+                 leaves — the National Van Lines split makes that real, not hypothetical.
+                 Same class of bug as building an edit path from a filtered index. */
+              <div {...open(`leaf-${s.branch}-${s.leaf}`)}
+                className={"wf-node wf-leaf" + toneClass(leaf.tone) + " " + open("").className}
+                key={`leaf-${i}`}
               style={{ left: colX(i) - g.nodeW / 2, top: g.leaf, width: g.nodeW }}>
               <div className="wf-leaf-title">{leaf.title}</div>
               <div className="wf-leaf-action">

@@ -9,6 +9,8 @@ import { VoiceCallLive } from "./VoiceCallLive";
 import { useLiveKitReady } from "../data/liveKitVoice";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
+import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
+import { drawerFor } from "../data/workflowDrawers";
 import { isProspect } from "../data/prospect";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
@@ -311,6 +313,8 @@ export function AgentWorkflow() {
   const [voicePreview, setVoicePreview] = useState(false);
   const [inCall, setInCall] = useState(false);
   const liveKitReady = useLiveKitReady();
+  /* Which diagram node has its drawer open, by the id WorkflowTree hands back. */
+  const [openNode, setOpenNode] = useState<string | null>(null);
   const closeVoice = () => { setVoicePreview(false); setInCall(false); };
   /* Preview Workflow is channel-specific: Voice slides in the call drawer, SMS
      opens the chat drawer that tests the same agent as the Preview Agent screen.
@@ -377,7 +381,20 @@ export function AgentWorkflow() {
       </div>
 
       <div className={"wf-canvas" + (isSms ? "" : " wf-canvas-voice")}>
-        <WorkflowTree model={tree} />
+        {/* ⚠️ VOICE ONLY, and this was caught by looking. The captures are all of a VOICE
+              workflow, and handing `onNode` to every tree made the SMS diagram clickable too —
+              where its "Schedule <bookingTerm>" leaf has no captured action type and fell
+              through to "Inform & Route", i.e. a drawer confidently naming the wrong action.
+              A change asked for on one screen stays on that screen; give me an SMS capture and
+              this becomes `onNode={setOpenNode}` unconditionally. */}
+            <WorkflowTree model={tree} onNode={isSms ? undefined : setOpenNode} />
+        {/* ⚠️ THE DRAWER IS RESOLVED FROM THE EFFECTIVE TREE, so a node the AI renamed opens a
+            drawer naming the same thing. `drawerFor` returns null for a node the real page has
+            no drawer for — Conversation Start — and nothing opens rather than an empty panel. */}
+        {(() => {
+          const d = openNode ? drawerFor(profile, tree, openNode) : null;
+          return d ? <WorkflowNodeDrawer d={d} onClose={() => setOpenNode(null)} /> : null;
+        })()}
 
         <div className="wf-zoom">
           <button className="wf-zoom-btn"><span className="material-icons">add</span></button>

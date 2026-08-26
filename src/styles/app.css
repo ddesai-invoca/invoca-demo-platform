@@ -4564,3 +4564,107 @@ button.nav-item {
 .ci-cmt-sig { font-size: 12.5px; font-weight: 700; color: var(--color-text); margin-bottom: 3px; }
 .ci-cmt-row.is-miss .ci-cmt-time { color: #b3261e; }
 .ci-cmt-text { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--color-text-muted); }
+
+/* ---- Workflow node drawer (clicking a box in the flow diagram) --------------
+   MEASURED off six SingleFile captures of the real page (8/26/2026), each saved with a
+   different drawer open. ⚠️ Unusually for this feature those captures DID serialise their
+   emotion CSS, so every value below is a real computed style rather than a screenshot
+   reading — unlike the call screen in the block above. */
+.wnd-root { position: fixed; inset: 0; z-index: 1300; }
+.wnd-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.5); }
+.wnd-paper {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  /* 800px, measured on all six. Wider than the 500px voice-preview drawer beside it. */
+  width: 800px; max-width: 100vw;
+  background: #fff; box-sizing: border-box; padding: 24px;
+  display: flex; flex-direction: column;
+  box-shadow: -8px 0 30px rgba(12,0,51,.18);
+  animation: wnd-in 225ms cubic-bezier(0,0,0.2,1);
+}
+@keyframes wnd-in { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+.wnd-head { flex: 0 0 auto; display: flex; align-items: flex-start; justify-content: space-between; }
+/* h2 20px/400 — NOT bold, which is easy to get wrong on a drawer title. */
+.wnd-title { font-size: 20px; font-weight: 400; line-height: 28px; color: var(--color-text-title); margin: 0; }
+.wnd-x { background: none; border: none; cursor: pointer; color: var(--color-text-title); display: flex; padding: 0; }
+
+/* The content column is inset a further 16px inside the paper's own 24px, which is what
+   puts every field 40px from the paper edge. */
+.wnd-body { flex: 1; min-height: 0; overflow-y: auto; padding: 27px 16px 16px; }
+.wnd-foot {
+  flex: 0 0 auto; display: flex; justify-content: flex-end; gap: 8px; padding: 12px 16px 0;
+}
+
+/* Measured: the first link starts at x=24 and the second at x=150, so the pipe sits in a
+   real gap rather than butting the two links together. */
+.wnd-links { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.wnd-link { font-size: 16px; color: #00acf1; text-decoration: none; }
+.wnd-link:hover { text-decoration: underline; }
+.wnd-pipe { color: var(--color-text-title); }
+.wnd-strong { font-size: 16px; font-weight: 700; color: var(--color-text-title); }
+.wnd-strong--section { margin-top: 32px; }
+.wnd-prose { font-size: 16px; line-height: 24px; color: var(--color-text-title); margin: 4px 0 0; }
+/* Italic helper lines, both the What-To-Collect lede and each chip's description. */
+.wnd-help { font-size: 16px; font-style: italic; line-height: 24px; color: var(--color-text-title); margin: 4px 0 0; }
+.wnd-optional { font-weight: 400; }
+
+/* "INTENT NAME" is Title Case in the DOM and uppercased here — 12px/700. */
+.wnd-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--color-text-title); margin-top: 27px; }
+.wnd-value { font-size: 16px; color: var(--color-text-title); margin-top: 4px; }
+
+.wnd-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 16px; font-weight: 400; color: var(--color-text-title); margin-top: 28px;
+}
+.wnd-label--info { }
+.wnd-info, .wnd-chev { color: #66708e; flex: 0 0 auto; }
+
+/* Fields: 35px tall, 3px radius, 1px #E7E9EB. The measured border sits on MUI's fieldset
+   rather than the control, so it is drawn on the control here and looks identical. */
+.wnd-input, .wnd-ta, .wnd-combo {
+  display: block; width: 100%; box-sizing: border-box; margin-top: 9px;
+  font-family: inherit; font-size: 16px; color: var(--color-text-title);
+  background: #fff; border: 1px solid #e7e9eb; border-radius: 3px;
+}
+.wnd-input { height: 35px; padding: 6px 8px; }
+.wnd-ta { min-height: 84px; padding: 6px 8px; line-height: 24px; resize: none; }
+.wnd-ta--tall { min-height: 230px; }
+.wnd-ta--rule { min-height: 72px; margin-top: 0; }
+.wnd-input:focus, .wnd-ta:focus { outline: none; border-color: #2666f9; }
+
+.wnd-combo { display: flex; align-items: center; justify-content: space-between; height: 35px; padding: 6px 8px; cursor: default; }
+.wnd-combo--empty > span { color: #66708e; }
+
+/* A rule row is a textarea with an × to its right. */
+.wnd-rulerow { display: flex; align-items: flex-start; gap: 12px; margin-top: 9px; }
+.wnd-del { flex: 0 0 auto; background: none; border: none; cursor: pointer; color: var(--color-text-title); display: flex; padding: 6px 0 0; }
+
+/* "Add" is a bare text button in the accent, no chrome. */
+.wnd-add {
+  display: inline-flex; align-items: center; gap: 4px; margin-top: 12px;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 14px; font-weight: 500; color: #2666f9;
+}
+.wnd-add .material-icons { font-size: 18px; }
+
+/* Chips: 24px tall, 12px text, #E7E9EB, 16px radius. */
+.wnd-chip {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 24px;
+  height: 24px; padding: 0 8px; border-radius: 16px;
+  background: rgb(231,233,235); color: var(--color-text-title); font-size: 12px;
+}
+.wnd-chip svg { color: #66708e; }
+
+.wnd-btn {
+  height: 36px; padding: 8px 12px; border-radius: 3px; cursor: pointer;
+  font-family: inherit; font-size: 14px; font-weight: 500;
+}
+.wnd-btn--primary { background: #2666f9; color: #fff; border: none; }
+.wnd-btn--primary:hover { background: #1c53e9; }
+.wnd-btn--ghost { background: #fff; color: #2666f9; border: 1px solid rgba(38,102,249,.5); }
+.wnd-btn--ghost:hover { background: #f2f6ff; }
+
+/* The diagram's nodes become clickable. Only the ones that HAVE a drawer — Conversation
+   Start opens nothing on the real page, so it keeps the default cursor. */
+.wf-node--open { cursor: pointer; }
+.wf-node--open:hover { box-shadow: 0 2px 6px rgba(12,0,51,.16); }
