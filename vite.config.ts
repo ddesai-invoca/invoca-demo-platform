@@ -208,6 +208,7 @@ function statusApi(): Plugin {
           res.end(JSON.stringify(deployStatus({
             ttsProvider,
             ttsKey: ttsProvider === 'deepgram' ? !!deepgram : !!eleven,
+            livekitConfigured: !!(env.LIVEKIT_URL && env.LIVEKIT_API_KEY && env.LIVEKIT_API_SECRET),
             anthropicKey: !!env.ANTHROPIC_API_KEY,
             googlePlacesKey: !!env.GOOGLE_PLACES_API_KEY,
             mapboxTokenInServerEnv: !!env.VITE_MAPBOX_TOKEN,

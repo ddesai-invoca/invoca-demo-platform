@@ -14,10 +14,11 @@
     "start": "node --env-file-if-exists=.env --import tsx server.ts",
     "serve": "npm run build && npm start",
     "generate": "node --env-file-if-exists=.env engine/generate.ts",
-    "audit": "npm run audit:phases && node --env-file-if-exists=.env --import tsx scripts/audit-seeds.ts",
+    "audit": "npm run audit:phases && npm run audit:voice && node --env-file-if-exists=.env --import tsx scripts/audit-seeds.ts",
     "audit:phases": "tsx scripts/audit-phases.ts",
     "audit:ai": "tsx scripts/audit-ai-rules.ts",
-    "test:sw": "node scripts/sw-logic.test.mjs"
+    "test:sw": "node scripts/sw-logic.test.mjs",
+    "audit:voice": "tsx scripts/audit-voice.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.111.0",

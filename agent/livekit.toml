@@ -1,0 +1,13 @@
+# LiveKit Cloud deployment config for the voice agent worker.
+#
+# ⚠️ `agent_name` MUST match AGENT_NAME in engine/livekitToken.ts. The token dispatches the
+# agent BY NAME, so a mismatch means no agent ever joins and the caller hears silence with no
+# error anywhere — the failure mode the client's 10s empty-room watchdog now reports.
+#
+# ⚠️ Track this file in version control: the CLI reads it from the working directory for every
+# `lk agent` command, and it carries the id of the deployment those commands act on.
+[project]
+  subdomain = "invoca-custom-project-tk9impi1"
+
+[agent]
+  name = "invoca-voice"

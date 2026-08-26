@@ -81,6 +81,7 @@ app.get("/healthz", (_req, res) =>
 app.get("/api/status", (_req, res) => res.json(deployStatus({
   ttsProvider,
   ttsKey: ttsProvider === "deepgram" ? !!deepgramKey : !!elevenKey,
+  livekitConfigured: !!livekitEnv(),
   anthropicKey: !!apiKey,
   googlePlacesKey: !!process.env.GOOGLE_PLACES_API_KEY,
   mapboxTokenInServerEnv: !!process.env.VITE_MAPBOX_TOKEN,
