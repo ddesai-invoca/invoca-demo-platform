@@ -4606,12 +4606,20 @@ button.nav-item {
   /* 800px, measured on all six. Wider than the 500px voice-preview drawer beside it. */
   width: 800px; max-width: 100vw;
   background: #fff; box-sizing: border-box; padding: 24px;
-  /* ⚠️ THE PAPER IS THE SCROLLER AND THE FOOTER SCROLLS WITH IT. Measured on the real drawer:
-     the paper is `overflow-y: auto` with scrollHeight past clientHeight, and its button row is
-     `position: static` — so Cancel and Apply are part of the content, not pinned. Ours pinned
-     them to the bottom of a flex column, which is a nicer control and the wrong one: add
-     enough rules and the real product makes you scroll to reach Apply. */
-  display: block; overflow-y: auto;
+  /* ⚠️ THE FOOTER SITS AT THE BOTTOM *AND* SCROLLS — both, and they are not in conflict.
+     Measured on the real drawer: the paper is `overflow-y: auto`, its button row is
+     `position: static`, and in the EMPTY state (a short body) Cancel and Apply are still down
+     at the bottom of the paper rather than tucked under the last field.
+
+     A flex column gets both from one rule: the body is `flex: 1 0 auto`, so it GROWS to fill a
+     short drawer and pushes the footer down, and because it never SHRINKS a tall body keeps
+     its natural height and the paper scrolls — carrying the footer below the fold, which is
+     what makes you scroll to reach Apply once enough rules are added.
+
+     `position: sticky` would have satisfied the "stays at the bottom" half and broken the
+     other: it would pin Apply in view no matter how long the list, which the real one does
+     not do. */
+  display: flex; flex-direction: column; overflow-y: auto;
   box-shadow: -8px 0 30px rgba(12,0,51,.18);
   animation: wnd-in 225ms cubic-bezier(0,0,0.2,1);
 }
@@ -4626,7 +4634,7 @@ button.nav-item {
    puts every field 40px from the paper edge.
    ⚠️ NO top padding and no scroll of its own: the paper scrolls, and the gap under the title
    is set by the first field's own margin so it can match each drawer's measurement. */
-.wnd-body { padding: 0 16px; }
+.wnd-body { flex: 1 0 auto; padding: 0 16px; }
 /* ⚠️ MEASURED GAPS UNDER THE TITLE: 23px to "INTENT NAME" and 26px to the Action drawer's
    first label. Ours came to 54 — 27px of body padding plus another 27 of the eyebrow's own
    margin, stacked — which is the space the header appeared to be floating in. */
@@ -4636,7 +4644,7 @@ button.nav-item {
    one exception. */
 .wnd-body > :first-child { margin-top: 23px; }
 .wnd-body > .wnd-label:first-child { margin-top: 26px; }
-.wnd-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 24px 16px 0; }
+.wnd-foot { flex: 0 0 auto; display: flex; justify-content: flex-end; gap: 8px; padding: 24px 16px 0; }
 
 /* Measured: the first link starts at x=24 and the second at x=150, so the pipe sits in a
    real gap rather than butting the two links together. */
