@@ -170,6 +170,11 @@ const GEO = {
  */
 /** Never shrink past this — see the note at the clamp. */
 const MIN_SCALE = 0.5;
+/** The hair of space under the lowest row, in design units. */
+const BOTTOM_PAD = 10;
+/** Breathing room around the fitted tree, top and bottom, in real pixels. Deliberately small:
+    the ask is that the first row sits JUST under the frame and the last JUST above it. */
+const FIT_INSET = 16;
 
 /* User zoom bounds. The FIT can go below MIN_ZOOM (it has its own 0.5 floor); these bound
    what the +/- buttons and the wheel can reach. */
@@ -207,7 +212,12 @@ function useFitScale(designWidth: number, designHeight: number) {
     const measure = () => {
       const cs = getComputedStyle(el);
       const availW = el.clientWidth - 32;                                  // breathing room either side
-      const availH = el.clientHeight - parseFloat(cs.paddingBottom || "0") - 48;
+      /* ⚠️ SUBTRACT THE INSET TWICE — once for the top, once for the bottom — and let the
+         box's own margin be exactly that inset. Budgeting it once while the margin claimed it
+         at BOTH ends is what left 31px above the first row and 0 below the last, with the
+         diagram overflowing by a hair. Symmetric by construction now rather than by arithmetic
+         that has to be kept in step. */
+      const availH = el.clientHeight - parseFloat(cs.paddingBottom || "0") - FIT_INSET * 2;
       const byW = availW > 0 ? availW / designWidth : 1;
       const byH = availH > 0 ? availH / designHeight : 1;
       /* ⚠️ THERE IS A FLOOR, because "fits" is not the same as "readable". On a 620px-tall
@@ -319,9 +329,30 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
 
   const colW = g.nodeW + g.gap;
   const W = Math.max(760, nSlots * colW);
-  /* ⚠️ THE CANVAS ONLY GROWS WHEN A PATH ROW EXISTS, so every tree without one keeps its
-     signed-off height and nothing below it moves. */
-  const H = anyPaths ? g.pathHeight : g.height;
+  /* ⚠️ THE DESIGN HEIGHT IS THE MEASURED CONTENT, NOT THE ROW CONSTANT. The constants exist
+     to POSITION rows; using one as the height meant fitting to a box with dead space at the
+     bottom (880 against a lowest node ending near 788), which shrank the diagram for no
+     reason. `BOTTOM_PAD` is the hair of space under the last row.
+     ⚠️ Falls back to the constant for the single frame before the first measurement, and for
+     the degenerate case of a tree with no nodes at all. */
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const startRef = useRef<HTMLDivElement>(null);
+  const intentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  /* ⚠️ LEAVES ARE MEASURED NOW TOO, keyed by the terminal column so a leaf spanning two
+     paths is found once. Without it the leaf-to-path connector would leave a HARDCODED
+     offset — the exact mistake recorded above, which produced a 4px upward line on SMS and a
+     stub floating 24px below the node on voice. */
+  const leafRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  /* ⚠️ THE TREE'S REAL BOTTOM, MEASURED — the row constants cannot tell you it. `pathHeight`
+     is 880 while the lowest node ends near 788, so fitting to the constant left ~90 design
+     units of nothing under the diagram and made the whole thing render smaller than it needed
+     to. Node offsets are DESIGN units even inside the scaled wrapper (transform changes the
+     paint, not the layout box), so this can be read straight off the DOM. */
+  const treeRef = useRef<HTMLDivElement>(null);
+  const [h, setH] = useState<{ trigger: number; start: number; intents: number[]; leaves: Record<string, number>; content: number }>(
+    { trigger: FALLBACK.trigger, start: FALLBACK.start, intents: [], leaves: {}, content: 0 });
+
+  const H = h.content > 0 ? h.content + BOTTOM_PAD : (anyPaths ? g.pathHeight : g.height);
   const colX = (i: number) => (W - nSlots * colW) / 2 + i * colW + colW / 2;
 
   /* Where each branch's intent node centres: the midpoint of its own terminals. */
@@ -345,16 +376,6 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
      change, the observer covers a later reflow (a longer label wrapping to a
      second line) that changes no prop. offsetHeight is the LAYOUT box, so the
      wrapper's transform: scale() does not distort it. */
-  const triggerRef = useRef<HTMLDivElement>(null);
-  const startRef = useRef<HTMLDivElement>(null);
-  const intentRefs = useRef<(HTMLDivElement | null)[]>([]);
-  /* ⚠️ LEAVES ARE MEASURED NOW TOO, keyed by the terminal column so a leaf spanning two
-     paths is found once. Without it the leaf-to-path connector would leave a HARDCODED
-     offset — the exact mistake recorded above, which produced a 4px upward line on SMS and a
-     stub floating 24px below the node on voice. */
-  const leafRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const [h, setH] = useState<{ trigger: number; start: number; intents: number[]; leaves: Record<string, number> }>(
-    { trigger: FALLBACK.trigger, start: FALLBACK.start, intents: [], leaves: {} });
 
   useLayoutEffect(() => {
     const measure = () => {
@@ -364,11 +385,18 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         intents: branches.map((_, i) => intentRefs.current[i]?.offsetHeight || FALLBACK.intent),
         leaves: Object.fromEntries(Object.entries(leafRefs.current)
           .map(([k, el]) => [k, el?.offsetHeight || FALLBACK.leaf])),
+        content: (() => {
+          const t = treeRef.current;
+          if (!t) return 0;
+          const rows = [...t.querySelectorAll<HTMLElement>(".wf-node")];
+          return rows.length ? Math.max(...rows.map((n2) => n2.offsetTop + n2.offsetHeight)) : 0;
+        })(),
       };
       setH((prev) =>
         prev.trigger === next.trigger && prev.start === next.start
         && prev.intents.length === next.intents.length
         && prev.intents.every((v, i) => v === next.intents[i])
+        && prev.content === next.content
         && JSON.stringify(prev.leaves) === JSON.stringify(next.leaves) ? prev : next);
     };
     measure();
@@ -417,8 +445,13 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         overlays anchor to; this box inside it does the scrolling. */}
     <div className="wf-scroll">
     <div className="wf-fit" ref={ref}
-      style={{ width: W * scale, height: H * scale, margin: "24px auto" }}>
-      <div className={"wf-tree" + (model.variant === "voice" ? " wf-voice" : "")}
+      /* ⚠️ THE MARGIN IS THE FIT INSET, and the fit subtracts that inset TWICE. Those two
+         facts have to agree: the margin was a hardcoded 24px against a budget of 16px at each
+         end, so the box claimed 48px of a 32px allowance and the diagram overflowed its frame
+         by exactly the 16px difference — which is what made it scroll while looking like it
+         fitted. Derived from the one constant now, so they cannot drift apart again. */
+      style={{ width: W * scale, height: H * scale, margin: `${FIT_INSET}px auto` }}>
+      <div ref={treeRef} className={"wf-tree" + (model.variant === "voice" ? " wf-voice" : "")}
         style={{ width: W, height: H, margin: 0, transform: `scale(${scale})`, transformOrigin: "top left" }}>
         <svg className="wf-lines" viewBox={`0 0 ${W} ${H}`} width={W} height={H} aria-hidden="true">
           {/* trigger → start → the branch bus, from measured node bottoms */}

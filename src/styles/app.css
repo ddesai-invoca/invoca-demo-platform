@@ -1005,7 +1005,11 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 /* Fills the canvas and does the scrolling, so the diagram can be larger than its frame
    without dragging the overlays out of the corner. The 24px is the breathing room that used
    to sit on the canvas itself. */
-.wf-scroll { position: absolute; inset: 0; overflow: auto; padding-bottom: 24px; box-sizing: border-box; }
+/* ⚠️ NO BOTTOM PADDING. It carried 24px of the canvas's old breathing room, which the fit
+   then had to subtract on top of its own inset — 44px of a 620px canvas spent twice over,
+   which is part of why the diagram rendered smaller than its box. The room under the last row
+   is BOTTOM_PAD, in design units, so it scales with the tree instead of eating the frame. */
+.wf-scroll { position: absolute; inset: 0; overflow: auto; }
 .wf-fit { position: relative; }
 .wf-lines { position: absolute; left: 0; top: 0; overflow: visible; }
 .wf-l { stroke: #c7ccd4; stroke-width: 2; fill: none; }
