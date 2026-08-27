@@ -65,6 +65,17 @@ const LENGTH_IS_CONTENT = [
   /\bbranches$/i,          // a workflow diagram's branches ARE its content
   /\bleaves$/i,            // ...and so are a branch's routing outcomes
   /\bchips$/i,             // the signals collected on a leaf
+  /\bpaths$/i,             // ...and the answers a Qualify leaf routes on
+  /* ⚠️ THE VOICE AGENT'S OWN CONFIGURATION (8/27/2026), registered beside the diagram so one
+     Ask AI instruction can build the tree AND configure the agent. Every one of these is a
+     LIST whose length is its content: "add a rule", "serve these four ZIP codes instead",
+     "drop the step that asks for a name". Blocking the length would leave the feature able to
+     reword an existing rule and unable to add one.
+
+     ⚠️ SCOPED TO `agent.` ON PURPOSE. A bare /rules$/ would also match the Signal Manager's
+     rule strings and any other `rules` array on any screen, quietly widening rule 2 across the
+     app to buy one page a feature. */
+  /^agent\.(rules|informSteps|serviceZips)$/i,
   /* THE DIGITAL JOURNEY REPORT'S LEADING COLUMNS. Adding, removing, renaming or
      moving one is a normal thing to want of a demo table ("put a Location column
      before Marketing Source"), and it used to be declined as structural.
@@ -126,6 +137,10 @@ const LENGTH_IS_CONTENT = [
    renderer never reads. */
 const CREATABLE_WHEN_ABSENT = [
   /\bgreeting$/i,
+  /* A prospect with no configured service area has NEITHER of these, so the first "only serve
+     ZIPs 30097 and 30096" is an undefined -> value write. `agentConfigOf` omits them rather
+     than writing undefined, so absent really does mean absent here. */
+  /^agent\.(serviceZips|outOfAreaScript)$/i,
 ];
 
 /**

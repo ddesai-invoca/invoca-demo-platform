@@ -84,6 +84,17 @@ export interface ChatBrain {
   /** The agent's opening line, when the prospect has scripted that too. */
   voiceGreeting?: string;
   /**
+   * The qualifying question, asked verbatim after the greeting.
+   *
+   * ⚠️ **ADDED 8/27/2026 BECAUSE EDITING IT WAS A SILENT NO-OP.** The spec has carried a
+   * `qualifyQuestion` since it was written, and it reached the drawer and nothing else — the
+   * agent inferred a question from the path nodes instead. That was invisible while the only
+   * spec was Comfort Keepers', whose GREETING already contains its qualifying question. The
+   * moment Ask AI could edit the field, an SE could change the question, watch the drawer
+   * update, and hear the agent ask the old one. Observed live.
+   */
+  voiceQualify?: string;
+  /**
    * ⚠️ **THE SPEC'S RULES REPLACE THE BRAND RULES, THEY DO NOT JOIN THEM.** `brandConversationRules`
    * is written for the SMS SALES agent — intro and offer, qualify on services and hours and
    * schedule, estimate then book — and injecting that into a qualify-and-route prompt is what
@@ -285,7 +296,13 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     brain.voiceGreeting
       /* ⚠️ VERBATIM WHEN SCRIPTED. An SE who typed the opening line expects to hear it, not a
          paraphrase of it — this is the first thing a prospect hears on the demo call. */
-      ? `1. OPEN with exactly this line, word for word: "${brain.voiceGreeting}" Then wait for their answer and work out which of these they need:`
+      ? `1. OPEN with exactly this line, word for word: "${brain.voiceGreeting}"`
+        + (brain.voiceQualify?.trim() && !brain.voiceGreeting.includes("?")
+          /* ⚠️ ONLY WHEN THE GREETING DID NOT ALREADY ASK. Comfort Keepers' greeting IS its
+             qualifying question, so appending it there would have the agent ask twice. */
+          ? ` Then ask exactly this, word for word: "${brain.voiceQualify.trim()}"`
+          : ``)
+        + ` Then wait for their answer and work out which of these they need:`
       : `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant, then work out which of these the caller needs:`,
     ...paths.map((p) => `   • ${p.intent}${p.recognise ? ` — ${p.recognise}` : ""}`),
     /* ⚠️ TWO GATES, AND WHICH ONE APPLIES IS THE PROSPECT'S OWN CONFIGURATION. An allow-list

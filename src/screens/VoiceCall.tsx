@@ -5,7 +5,7 @@ import { VoiceCallUI } from "../components/VoiceCallUI";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "../data/voicePaths";
-import { voiceSpecFor } from "../data/voiceAgentSpec";
+import { voiceSpecFor, specWithConfig, type VoiceAgentConfig } from "../data/voiceAgentSpec";
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoiceConversation, VoiceTurn } from "../data/schema";
 
@@ -90,11 +90,23 @@ export function useBrain() {
      Absent a tree (a call started somewhere with no diagram) this is empty and the prompt
      falls back to its original hardcoded flow. */
   const treeKey = `${profileId}::${VOICE_WORKFLOW_SCOPE_PATH}`;
-  const spec = voiceSpecFor(profile);
-  const voicePaths = useMemo(
-    () => treeToVoicePaths(effectiveData(treeKey) as WorkflowTreeModel | undefined),
-    [effectiveData, treeKey],
+  const effTree = effectiveData(treeKey) as
+    (WorkflowTreeModel & { agent?: VoiceAgentConfig }) | undefined;
+  /* ⚠️⚠️ **THE AGENT'S CONFIG IS READ FROM THE PAGE, NOT FROM THE PROFILE (8/27/2026).**
+     This was `voiceSpecFor(profile)`, i.e. the BASE spec — so an SE who told Ask AI "greet
+     callers with X" or "only serve these ZIP codes" watched the diagram and drawers update
+     and then heard the agent on the phone use the old greeting anyway. The edit landed; it
+     just never reached the one surface that matters. Same failure the tree itself had before
+     `treeToVoicePaths` started reading effective data, one field down.
+
+     `specWithConfig` lays the page's config over the base rather than replacing it, so a
+     partial override cannot drop the routing steps and quietly stop the agent asking for a
+     name. */
+  const spec = useMemo(
+    () => specWithConfig(voiceSpecFor(profile), effTree?.agent),
+    [profile, effTree?.agent],
   );
+  const voicePaths = useMemo(() => treeToVoicePaths(effTree), [effTree]);
   return {
     customerName: profile.customerName,
     industry: profile.industry,
@@ -111,6 +123,7 @@ export function useBrain() {
     serviceZips: spec?.serviceZips,
     outOfAreaScript: spec?.outOfAreaScript,
     voiceGreeting: spec?.greeting,
+    voiceQualify: spec?.qualifyQuestion,
     voiceRules: spec?.rules,
     voiceSteps: spec?.informSteps,
     /* Per-prospect routing for the voice prompt. Same source the workflow

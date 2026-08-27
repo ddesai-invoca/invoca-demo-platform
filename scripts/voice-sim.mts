@@ -38,7 +38,7 @@ const brain = {
   customerName: p.customerName, industry: p.industry ?? "",
   serviceArea: p.reports.agentConfig?.serviceArea,
   serviceZips: spec.serviceZips, outOfAreaScript: spec.outOfAreaScript,
-  voiceGreeting: spec.greeting, voiceRules: spec.rules, voiceSteps: spec.informSteps,
+  voiceGreeting: spec.greeting, voiceQualify: spec.qualifyQuestion, voiceRules: spec.rules, voiceSteps: spec.informSteps,
   voicePaths: paths,
 };
 

@@ -13,9 +13,10 @@
    tree — a check that never fires is indistinguishable from no check.
    ============================================================================= */
 import { readFileSync, readdirSync } from "node:fs";
+import { isStructuralChange } from "../src/data/editGuard";
 import { voiceSystemPrompt } from "../engine/chat";
 import { treeToVoicePaths } from "../src/data/voicePaths";
-import { voiceSpecFor, deriveVoiceSpec, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
+import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
 import { voiceCopy } from "../src/data/voiceCopy";
 import { collectNames } from "../src/data/workflowDrawers";
 
@@ -195,9 +196,74 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
   check(reworded === 0, "a derived spec renders the diagram's existing wording");
 }
 
+/* ⚠️ 10. ASK AI MUST BE ABLE TO CONFIGURE THE AGENT, AND EVERY FIELD IT OFFERS MUST BITE
+      (8/27/2026). Three bugs found while building this, each of which let an edit land and do
+      nothing: `qualifyQuestion` reached the drawer and never the prompt; the greeting is COPIED
+      into `rules` and the copy went stale when only the greeting changed; and a ZIP allow-list
+      added without rewriting the steps was overridden by steps still saying "serves everywhere".
+      All three are checked FUNCTIONALLY — by calling the code and reading the built prompt. */
+{
+  const profile = JSON.parse(read("src/data/generated/autonation.json"));
+  const base = voiceSpecFor(profile);
+  const cfg = agentConfigOf(base);
+
+  /* The page must register the agent beside the diagram, or there is nothing to edit. */
+  const wf = read("src/screens/AgentWorkflow.tsx");
+  check(/agent:\s*agentConfigOf\(/.test(wf), "the voice workflow page registers the agent config beside its tree");
+  /* ...and the CALL must read the edited one, not the profile's base. */
+  const vc = read("src/screens/VoiceCall.tsx");
+  check(/specWithConfig\(/.test(vc) && /effTree\?\.agent/.test(vc),
+    "VoiceCall builds its brain from the page's EFFECTIVE agent config");
+
+  /* A changed greeting must not leave the copy inside `rules` reciting the old one. */
+  const reGreeted = specWithConfig(base, { ...cfg, greeting: "Totally new opening line." });
+  check(!reGreeted.rules.some((r) => r.startsWith(GREETING_RULE_PREFIX) && !r.includes("Totally new opening line.")),
+    "changing the greeting updates the copy of it inside the conversation rules");
+
+  /* A ZIP allow-list must not be contradicted by steps nobody rewrote. */
+  const zipped = specWithConfig(base, { ...cfg, serviceZips: ["90210"] });
+  check(zipped.informSteps.some((x) => x.includes("90210"))
+    && !zipped.informSteps.some((x) => /nationally|Do not turn anyone away/i.test(x)),
+    "adding a ZIP allow-list rewrites steps that still said the agent serves everywhere");
+  /* ...but steps somebody DID write are theirs. */
+  const authored = specWithConfig(base, { ...cfg, serviceZips: ["90210"], informSteps: ["1. Say hello."] });
+  check(JSON.stringify(authored.informSteps) === JSON.stringify(["1. Say hello."]),
+    "steps written by hand are never rewritten by the ZIP repair");
+
+  /* The qualifying question must actually reach the prompt. */
+  const spoken = voiceSystemPrompt({
+    customerName: profile.customerName, industry: profile.industry ?? "",
+    voiceGreeting: "Thanks for calling, this is Max.",   // no "?", so the question is appended
+    voiceQualify: "Are you buying or servicing?",
+    voiceRules: base.rules, voiceSteps: base.informSteps,
+    voicePaths: auditTreePaths(profile, base),
+  } as never);
+  check(spoken.includes("Are you buying or servicing?"),
+    "the qualifying question reaches the voice prompt (editing it is not a no-op)");
+  /* ...and must NOT be appended when the greeting already asks it, or the agent asks twice. */
+  const ck = JSON.parse(read("src/data/generated/comfort-keepers.json"));
+  const ckSpec = voiceSpecFor(ck);
+  const ckPrompt = voiceSystemPrompt({
+    customerName: ck.customerName, industry: ck.industry ?? "",
+    voiceGreeting: ckSpec.greeting, voiceQualify: ckSpec.qualifyQuestion,
+    voiceRules: ckSpec.rules, voiceSteps: ckSpec.informSteps,
+    voicePaths: auditTreePaths(ck, ckSpec),
+  } as never);
+  check(!ckPrompt.includes(`Then ask exactly this, word for word: "${ckSpec.qualifyQuestion}"`),
+    "a greeting that already asks the question does not get it appended twice");
+
+  /* And the guard must permit what the feature promises. */
+  check(!isStructuralChange(cfg.rules, [...cfg.rules, "another rule"], "agent.rules"),
+    "editGuard allows the agent's rule list to change length");
+  check(!isStructuralChange(undefined, ["30097"], "agent.serviceZips"),
+    "editGuard allows a ZIP allow-list to be created");
+  check(isStructuralChange(cfg.rules, "not a list", "agent.rules"),
+    "editGuard still blocks a type flip on the agent's config");
+}
+
 /* Self-check: a static audit that silently matches nothing reports success forever. */
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (25 checks)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (35 checks)");
 process.exit(failures ? 1 : 0);

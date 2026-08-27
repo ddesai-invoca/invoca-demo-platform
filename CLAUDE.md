@@ -765,6 +765,74 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### Ask AI configures the voice agent, not just the diagram (8/27/2026)
+Asked for directly: "tell the AI what you want the Voice agent to do, and it builds the tree
+and also configures the Voice agent." Before this the workflow page registered **only the
+diagram**, so "greet callers with X" or "only serve these ZIPs" had nowhere to land — the model
+wrote the edit, `applyEdits` found no such path, and the drawer reported success.
+
+`AgentWorkflow` now registers `{ ...tree, agent }` as ONE object, so a single instruction
+returns edits to both halves. Measured on the real drawer: one sentence produced **11 edits** —
+path titles, chips, greeting, qualifying question, fallback and routing steps — and the live
+call opened with the new greeting.
+
+⚠️ **ONE OBJECT, NOT TWO SCOPES.** `registerScope` is last-write-wins, so a second
+`usePageData` here would repoint the page's sparkle away from the tree and break "add a branch"
+with no visible cause — the trap `WorkflowChatPreview` documents.
+
+⚠️ **EACH FIELD HAS EXACTLY ONE HOME, or the two renderings fight:**
+
+| lives in | fields |
+|---|---|
+| the **tree** (the diagram draws it) | intent subtitle, leaf titles, path titles, chips |
+| **`agent`** (the diagram cannot draw it) | greeting, qualifyQuestion, qualifyFallback, rules, serviceZips, outOfAreaScript, informSteps |
+
+`segments` is deliberately NOT in `agent` — the two answers ARE the path nodes. `intent` is not
+either: its first line is the Sales Inquiry subtitle, and that node is locked chrome, so
+offering it would be offering an edit `isLockedEdit` then refuses.
+
+⚠️ **THE CALL READS THE PAGE, NOT THE PROFILE.** `VoiceCall` was `voiceSpecFor(profile)` — the
+BASE spec — so an edit updated the diagram and drawers and the agent on the phone used the old
+greeting anyway. Now `specWithConfig(voiceSpecFor(profile), effTree?.agent)`, laid over field by
+field rather than spread, so a partial override cannot drop `informSteps` and silently stop the
+agent asking for a name.
+
+⚠️⚠️ **THREE BUGS HERE WERE ALL THE SAME SHAPE: AN EDIT THAT LANDED AND CHANGED NOTHING.** Each
+was found by reading the built prompt or hearing the call, never by a type or a green test:
+1. **`qualifyQuestion` reached the drawer and never the prompt.** It had been in the spec since
+   it was written; the agent inferred a question from the path nodes instead. Invisible while
+   the only spec was Comfort Keepers', whose GREETING already contains its question. `chat.ts`
+   gained `voiceQualify`, appended **only when the greeting has no "?"** or Comfort Keepers asks
+   twice.
+2. **The greeting is COPIED into `rules`** (both specs end with "This is how you should also
+   greet…", mirroring how an SE writes it). Changing only `agent.greeting` left the copy
+   reciting the old opening, and the agent spoke the new greeting then obeyed the old rule.
+   Observed live: it opened "Thanks for calling AutoNation, this is Max." and immediately asked
+   the previous "book a test drive" question. `specWithConfig` rewrites the copy, and ONLY when
+   the greeting actually changed, so a hand-written rule is never overwritten.
+3. **A ZIP allow-list added without rewriting the steps is IGNORED** — `buildVoiceSystem`
+   prefers the SE's steps, which still said "takes enquiries nationally". `stepsForZips`
+   regenerates them, and ONLY when the steps are byte-identical to the base.
+
+**A duplicated field is the common cause of all three.** When one field copies another, changing
+the source silently strands the copy. Both repairs are narrow by the same rule: regenerate the
+copy only when the source changed AND the copy was not itself edited.
+
+⚠️ **`editGuard` gained `/^agent\.(rules|informSteps|serviceZips)$/` under LENGTH_IS_CONTENT and
+`/^agent\.(serviceZips|outOfAreaScript)$/` under CREATABLE_WHEN_ABSENT**, plus `paths` (adding an
+answer under Qualify was refused before). **Scoped to `agent.` on purpose** — a bare `/rules$/`
+would also match the Signal Manager's rule strings and quietly widen rule 2 across the app.
+`agentConfigOf` OMITS absent optionals rather than writing `undefined`, so "absent" really is
+absent to both the guard and the model.
+
+**`npm run audit:voice` is 35 checks.** The ten new ones are FUNCTIONAL — they call the code and
+read the built prompt rather than grepping for a helper that might not be called. Each verified
+to fire: disabling the greeting sync, the ZIP repair, or `voiceQualify` each turns one red.
+
+**`scripts/askai-voice.ts`** drives the whole loop from the terminal: instruction ->
+`/api/ai-assistant` -> the REAL `editGuard` -> the resulting prompt -> a live call. It reports
+applied/blocked/locked per edit, because "the drawer said yes" is exactly what was misleading.
+
 ### The Qualify-and-Route voice template now applies to EVERY prospect (8/27/2026)
 Asked for directly: "this template should apply to all prospects that are generated by other
 users." `voiceSpecFor` used to return **null for everyone but Comfort Keepers**, and the

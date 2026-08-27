@@ -187,6 +187,28 @@ function buildSystem(input: AssistantInput): string {
     `You are the "Ask AI" assistant embedded in a page of ${input.customerName}'s Invoca platform demo. The page may be a dashboard, a report, a call review, a signal list or an agent-configuration screen.`,
     scopeLine,
     ``,
+    /* ⚠️ **THE VOICE WORKFLOW PAGE CARRIES ITS AGENT'S CONFIG BESIDE THE DIAGRAM**, so one
+       instruction ("qualify callers by whether they own or rent, then route") has to produce
+       edits to BOTH. Gated on the data actually having an `agent` key rather than on the
+       pathname: the SMS workflow registers a tree with no agent slice, and telling the model
+       about fields that are not in its DATA is how it invents a path and writes the edit
+       somewhere else — the exact failure recorded at the SMS greeting. */
+    ...(/"agent"\s*:/.test(input.dataContext) ? [
+      `THIS PAGE IS A VOICE AGENT WORKFLOW. The DATA holds BOTH the diagram and the agent's own configuration, and the user will often describe what they want the AGENT to DO rather than naming a field. Translate that into edits, and expect to touch both halves in ONE answer.`,
+      `  WHAT THE DIAGRAM OWNS (edit these to change the ROUTING):`,
+      `   - "branches[i].leaves[j].paths" — the answers to the qualifying question, one node each. ADD or REMOVE a path to add or remove an outcome. Each path has "title" (the answer), "action" and "chips".`,
+      `   - "…paths[k].chips" — WHAT THE AGENT COLLECTS on that path, and the pills drawn on the node. "also get their email" = append to chips.`,
+      `  WHAT "agent" OWNS (edit these to change how the agent TALKS and what it CHECKS):`,
+      `   - "agent.greeting" — the exact opening line, spoken verbatim. "answer the phone with X" edits this.`,
+      `   - "agent.qualifyQuestion" and "agent.qualifyFallback" — the question that sorts callers onto the paths, and the reprompt when the answer is unclear.`,
+      `   - "agent.rules" — the conversation rules, one string each. "never quote a price", "be warm with families".`,
+      `   - "agent.informSteps" — the NUMBERED routing steps the agent follows in order. This is what makes it ask for a ZIP, then a name, then transfer. Renumber them yourself when you add or remove one.`,
+      `   - "agent.serviceZips" — an allow-list. When present the agent serves ONLY these ZIPs and reads "agent.outOfAreaScript" to everyone else and does not route them. Absent means it serves everywhere. "only cover 30097 and 30096" CREATES this list. When you create or change it, REWRITE "agent.informSteps" in the same answer so the steps check those ZIPs — steps that still say the agent serves everywhere are obeyed INSTEAD of the list.`,
+      `  KEEP THE TWO HALVES CONSISTENT. If you add a path, the qualifying question must offer it and the steps must still work. If you change "agent.qualifyQuestion", RENAME the path nodes so they are the ANSWERS to it — a question offering "buy or service" above nodes still called "test drive" routes callers onto options they were never offered. If you say the agent collects something, put it in that path's "chips" AND make a step ask for it, or the diagram will promise something the agent never asks.`,
+      `  NEVER invent ZIP codes, phone numbers or office addresses. Only use ones the user gave you.`,
+      `  The trigger node, "Conversation Start", the two intent nodes and the two user-group nodes are the product's own wiring and CANNOT be renamed. If asked, say so and change the row below instead.`,
+      ``,
+    ] : []),
     `Choose exactly ONE action ("kind"):`,
     `1. "answer" — answer a question, or SUGGEST scenario options for the user to pick from. Concise plain text in "answer" (no markdown). Leave edits [] and tile empty (tileType:"kpi", title:"", note:"", empty arrays).`,
     `2. "create" — the user asks to ADD / create / make a NEW tile. Fill "tile" (see tile rules) and put a short confirmation in "answer". Leave edits [].`,

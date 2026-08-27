@@ -11,7 +11,7 @@ import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../compon
 import { usePageData } from "../components/GeneratedTiles";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor, collectNames } from "../data/workflowDrawers";
-import { voiceSpecFor } from "../data/voiceAgentSpec";
+import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
 import { voiceCopy } from "../data/voiceCopy";
 import { isProspect } from "../data/prospect";
 
@@ -289,10 +289,35 @@ export function AgentWorkflow() {
      the layout from whatever it is handed. SMS and Voice are different pathnames,
      so their edits and undo stacks are separate. `title` gives the drawer a real
      scope label. */
+  /* ⚠️⚠️ **THE VOICE PAGE REGISTERS THE AGENT'S CONFIG ALONGSIDE ITS DIAGRAM (8/27/2026).**
+     Asked for directly: an SE should be able to describe what they want the voice agent to
+     do and have Ask AI build the tree AND configure the agent. Only the DIAGRAM was
+     registered before, so "greet callers with X" or "only serve these ZIPs" had nowhere to
+     land: the model would write the edit, `applyEdits` would find no such path, and the
+     drawer reported success while nothing changed. That is the silent no-op this file warns
+     about three times over.
+
+     ⚠️ **ONE OBJECT, NOT TWO SCOPES.** `registerScope` is last-write-wins, so a second
+     `usePageData` here would repoint this page's sparkle away from the tree and break "add a
+     branch" with no visible cause (see the note in `WorkflowChatPreview`). Merging `agent`
+     into the SAME registered object also lets ONE instruction return edits to both — which
+     is exactly what "tell it what you want the agent to do" needs.
+
+     ⚠️ **EACH FIELD HAS EXACTLY ONE HOME, or the two renderings fight.** Anything the
+     diagram DRAWS (intent subtitles, leaf titles, path titles, chips) lives in the tree and
+     only there. Anything it CANNOT draw (the greeting, the conversation rules, the ZIP
+     allow-list, the routing steps) lives under `agent`. A `segments` copy under `agent` would
+     duplicate the path nodes and the first edit to either would desync the diagram from the
+     prompt. */
+  const baseAgent = useMemo(
+    () => (isSms || extra ? null : voiceSpecFor(profile)),
+    [isSms, extra, profile],
+  );
   const baseTree = useMemo(() => ({
     title: `${workflowName} workflow`,
     ...(extra ? extraTree(extra) : deriveTree(profile, isSms, channelLabel)),
-  }), [extra, profile, isSms, channelLabel, workflowName]);
+    ...(baseAgent ? { agent: agentConfigOf(baseAgent) } : {}),
+  }), [extra, profile, isSms, channelLabel, workflowName, baseAgent]);
   /* This page's sparkle edits the DIAGRAM, and only the diagram. The SMS agent is a
      different thing living in a different scope, and it has its own sparkle inside
      the Preview Workflow chat. */

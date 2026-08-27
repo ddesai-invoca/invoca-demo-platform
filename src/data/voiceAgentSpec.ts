@@ -32,6 +32,10 @@ import type { CustomerProfile } from "./schema";
    words: `SPECS` is searched first and derivation only fills the gap.
    ============================================================================= */
 
+/** The configured specs write the greeting as their last conversation rule; so does the
+    derived one. `specWithConfig` finds it by this prefix to keep the copy in step. */
+export const GREETING_RULE_PREFIX = "This is how you should also greet and start a phone call: ";
+
 export interface VoiceAgentSpec {
   /** Matched with `isProspect`, so any id the SE typed still resolves. */
   prospect: string;
@@ -84,7 +88,7 @@ const COMFORT_KEEPERS: VoiceAgentSpec = {
     "As soon as this intent is recognized, determine whether the caller is looking to arrange care services or is interested in becoming a caregiver, so the conversation can proceed down the correct path.",
     "When asking for the caller's zip code, explain that it's used to connect them with their local Comfort Keepers office.",
     "If asked about cost or pricing, do not provide specific numbers. Acknowledge that pricing varies by service type and location, and let the caller know the local team will cover exact pricing.",
-    "This is how you should also greet and start a phone call: Hi, thanks for calling Comfort Keepers, I'm here to help. Are you looking to arrange care services for yourself or a loved one, or are you interested in becoming a caregiver with us?",
+    GREETING_RULE_PREFIX + "Hi, thanks for calling Comfort Keepers, I'm here to help. Are you looking to arrange care services for yourself or a loved one, or are you interested in becoming a caregiver with us?",
   ],
   serviceZips: ["30097", "30096", "30095"],
   outOfAreaScript:
@@ -145,7 +149,7 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
 
   /* ⚠️ THE GREETING IS ALSO THE LAST CONVERSATION RULE, exactly as the configured spec has it,
      so the drawer and the spoken opening cannot drift apart. */
-  const greetingRule = `This is how you should also greet and start a phone call: ${greeting}`;
+  const greetingRule = `${GREETING_RULE_PREFIX}${greeting}`;
 
   return {
     prospect: name,
@@ -198,4 +202,130 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
 /** This prospect's voice-agent spec: the SE's own where one is configured, else derived. */
 export function voiceSpecFor(profile: CustomerProfile): VoiceAgentSpec {
   return SPECS.find((s) => isProspect(profile, s.prospect)) ?? deriveVoiceSpec(profile);
+}
+
+/* =============================================================================
+   THE AI-EDITABLE SLICE OF A VOICE AGENT
+   -----------------------------------------------------------------------------
+   ⚠️ **THIS IS EXACTLY THE PART THE DIAGRAM CANNOT DRAW.** The workflow page registers it
+   beside the tree so one Ask AI instruction can build the routing AND configure the agent.
+   The split is the whole design and it is not arbitrary:
+
+     on the diagram  -> the tree owns it   (intent subtitle, leaf titles, path titles, chips)
+     not on the diagram -> `agent` owns it (greeting, rules, ZIP allow-list, routing steps)
+
+   ⚠️ **`segments` IS DELIBERATELY ABSENT.** The two answers under Qualify are DRAWN as path
+   nodes, so the tree already owns them; a second copy here would mean an edit to one silently
+   disagreeing with the other, which is the exact drift `voicePaths.ts` exists to prevent.
+   Change the answers by editing the path nodes.
+
+   ⚠️ **`intent` IS ABSENT TOO, and for a different reason:** its first line is the Sales
+   Inquiry node's subtitle, and that node is product chrome the real page does not let anyone
+   rename (`locked: true`, enforced by `editGuard.isLockedEdit`). Offering it here would be
+   offering an edit the guard then refuses.
+   ============================================================================= */
+export interface VoiceAgentConfig {
+  greeting: string;
+  qualifyQuestion: string;
+  qualifyFallback: string;
+  rules: string[];
+  serviceZips?: string[];
+  outOfAreaScript?: string;
+  informSteps: string[];
+}
+
+/** The editable slice of a spec, for registering as page data. */
+export function agentConfigOf(spec: VoiceAgentSpec): VoiceAgentConfig {
+  return {
+    greeting: spec.greeting,
+    qualifyQuestion: spec.qualifyQuestion,
+    qualifyFallback: spec.qualifyFallback,
+    rules: spec.rules,
+    /* ⚠️ OMIT rather than write `undefined`. `editGuard` treats undefined -> value as a TYPE
+       FLIP and blocks it unless the path is creatable, and a key present with an undefined
+       value also serialises into the model's DATA as `null`, which reads as "this prospect
+       has an empty allow-list" rather than "it has none". */
+    ...(spec.serviceZips?.length ? { serviceZips: spec.serviceZips } : {}),
+    ...(spec.outOfAreaScript ? { outOfAreaScript: spec.outOfAreaScript } : {}),
+    informSteps: spec.informSteps,
+  };
+}
+
+
+/**
+ * The routing steps for a ZIP allow-list.
+ *
+ * ⚠️ **THIS EXISTS BECAUSE `serviceZips` AND `informSteps` CAN CONTRADICT EACH OTHER, AND THE
+ * STEPS WIN.** `buildVoiceSystem` renders the SE's own steps in preference to the allow-list
+ * gate, which is right (they are the words a human typed). But when Ask AI was asked to "only
+ * serve 90210 and 90211" it correctly wrote `agent.serviceZips` and left the derived steps
+ * saying "Do not turn anyone away on their zip code. AutoNation takes enquiries nationally."
+ * The prompt then followed the steps, the allow-list was never applied, and the drawer
+ * reported success — an instruction that visibly landed and did nothing.
+ */
+export function stepsForZips(zips: string[], script: string): string[] {
+  const list = zips.join(", ");
+  return [
+    `1. Ask the caller for their zip code and capture it.`,
+    `2. Check the zip code against our current service area: ${list}.`,
+    `3. If the zip code falls outside ${list}, politely inform the caller that we do not serve their area and end the call without routing.`,
+    `4. If the zip code falls within our service area, ask the caller for their full name and capture it.`,
+    `5. If the zip code does not fall within our service area say: ${script}`,
+    `6. If the caller does not provide their full name, ask again before proceeding. Do not route the call without a captured full name.`,
+  ];
+}
+
+/** A spec with the page's (possibly AI-edited) config laid over it. */
+export function specWithConfig(spec: VoiceAgentSpec, cfg: VoiceAgentConfig | undefined): VoiceAgentSpec {
+  if (!cfg) return spec;
+  /* ⚠️ FIELD BY FIELD, NOT A SPREAD. A spread would let a partial or malformed override drop
+     `informSteps` entirely and silently return the agent to not asking for a name. */
+  const merged = {
+    ...spec,
+    greeting: typeof cfg.greeting === "string" && cfg.greeting.trim() ? cfg.greeting : spec.greeting,
+    qualifyQuestion: typeof cfg.qualifyQuestion === "string" && cfg.qualifyQuestion.trim() ? cfg.qualifyQuestion : spec.qualifyQuestion,
+    qualifyFallback: typeof cfg.qualifyFallback === "string" && cfg.qualifyFallback.trim() ? cfg.qualifyFallback : spec.qualifyFallback,
+    rules: Array.isArray(cfg.rules) ? cfg.rules.filter((r) => typeof r === "string" && r.trim()) : spec.rules,
+    serviceZips: Array.isArray(cfg.serviceZips)
+      ? cfg.serviceZips.map((z) => String(z).trim()).filter(Boolean)
+      : spec.serviceZips,
+    outOfAreaScript: typeof cfg.outOfAreaScript === "string" && cfg.outOfAreaScript.trim()
+      ? cfg.outOfAreaScript : spec.outOfAreaScript,
+    informSteps: Array.isArray(cfg.informSteps) && cfg.informSteps.length
+      ? cfg.informSteps.filter((r) => typeof r === "string" && r.trim())
+      : spec.informSteps,
+  };
+
+  /* ⚠️ REPAIR THE ONE CONTRADICTION THE TWO FIELDS CAN HOLD. If a ZIP allow-list was added
+     and the steps were NOT touched in the same edit, the steps still describe the old policy
+     and would be obeyed instead. Regenerating only when the steps are byte-identical to the
+     base keeps this narrow: the moment an SE (or the model) writes their own steps, those are
+     the words and nothing rewrites them. */
+  /* ⚠️ **THE GREETING IS COPIED INTO `rules`, AND A COPY GOES STALE.** Both the configured and
+     the derived spec end their rules with "This is how you should also greet...", mirroring how
+     an SE actually writes it on the real page. So changing ONLY `agent.greeting` left the rule
+     still reciting the old opening — and the agent spoke the new greeting and then obeyed the
+     old rule's question. Observed live: it opened "Thanks for calling AutoNation, this is Max."
+     and immediately asked the previous "book a test drive" question.
+
+     Narrow on purpose: only when the greeting actually changed, so a rule somebody rewrote by
+     hand is never overwritten. */
+  if (merged.greeting !== spec.greeting) {
+    merged.rules = merged.rules.map((r) =>
+      r.startsWith(GREETING_RULE_PREFIX) ? `${GREETING_RULE_PREFIX}${merged.greeting}` : r);
+  }
+
+  const zipsAdded = (merged.serviceZips?.length ?? 0) > 0 && !(spec.serviceZips?.length ?? 0);
+  const stepsUntouched = JSON.stringify(merged.informSteps) === JSON.stringify(spec.informSteps);
+  if (zipsAdded && stepsUntouched) {
+    return {
+      ...merged,
+      informSteps: stepsForZips(
+        merged.serviceZips ?? [],
+        merged.outOfAreaScript
+          ?? `Thank you for calling ${merged.prospect}. Unfortunately we do not currently serve your area.`,
+      ),
+    };
+  }
+  return merged;
 }

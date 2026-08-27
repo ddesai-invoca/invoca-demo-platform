@@ -1,6 +1,6 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { CustomerProfile } from "./schema";
-import { voiceSpecFor } from "./voiceAgentSpec";
+import { voiceSpecFor, specWithConfig, type VoiceAgentConfig } from "./voiceAgentSpec";
 
 /* =============================================================================
    workflowDrawers.ts — what each node of the flow diagram opens
@@ -157,7 +157,12 @@ export function drawerFor(
   tree: WorkflowTreeModel,
   nodeId: string,
 ): NodeDrawer | null {
-  const spec = voiceSpecFor(profile);
+  /* ⚠️ THE DRAWER SHOWS WHAT THE AGENT WILL ACTUALLY DO. The tree handed in is the page's
+     EFFECTIVE object, so its `agent` slice carries any Ask AI edits; reading the base spec
+     here would leave the drawer describing a greeting and a set of rules the agent no longer
+     uses, which is the same two-surfaces-disagreeing bug in a quieter place. */
+  const spec = specWithConfig(voiceSpecFor(profile),
+    (tree as WorkflowTreeModel & { agent?: VoiceAgentConfig }).agent);
   const noun = (profile.customerNoun ?? "customer").toLowerCase();
   const booking = profile.bookingTerm.toLowerCase();
   const area = profile.reports.agentConfig?.serviceArea?.trim();
