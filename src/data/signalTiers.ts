@@ -1,5 +1,11 @@
-import type { CustomerProfile } from "./schema";
-import { isProspect, HEALTH_SPRING } from "./prospect";
+/* ⚠️ **EXPLICIT `.ts` EXTENSIONS, because `engine/canary.ts` IMPORTS THIS FILE.** The engine
+   project compiles with `module: nodenext`, which requires them; the app project allows them
+   (`allowImportingTsExtensions`), so both resolve. `engine/core.ts` already imports
+   `../src/data/schema.ts` the same way. Without this, adding the nightly tier check to the
+   canary broke `tsc -p tsconfig.node.json` with five errors that read as type problems in
+   THIS file rather than as a cross-project import. */
+import type { CustomerProfile } from "./schema.ts";
+import { isProspect, HEALTH_SPRING } from "./prospect.ts";
 
 /* =============================================================================
    Signal AI SILVER vs GOLD — two versions of one Conversation Intelligence report.
@@ -145,21 +151,279 @@ const GOLD_COMMENTS: TierComment[] = [
     text: `Rules based, unchanged between tiers. Worth pointing at when the question is "does Gold replace what we already have" — it does not.` },
 ];
 
-/** True when this prospect has the Silver / Gold pair of reports. */
-export function hasTierReports(p: { id: string; customerName: string }): boolean {
-  return isProspect(p, HEALTH_SPRING);
+/* =============================================================================
+   EVERY PROSPECT GETS THE PAIR (8/27/2026) — derived from its own call
+   -----------------------------------------------------------------------------
+   Asked for directly: "do for all prospect and also for all prospect moving forward, of
+   course reskinned for that prospect." Health Spring's hand-authored pair above is kept as
+   its configured version; every other prospect's is DERIVED from the Conversation
+   Intelligence report it already has — no engine phase and no schema slice, so all 13
+   profiles on disk get it and a prospect generated next month does too.
+
+   ⚠️⚠️ **THE MISSES HAVE TO BE REAL, AND THAT IS THE WHOLE DESIGN PROBLEM.** The demo's claim
+   is "a keyword library did not fire on this call, and AI did." Inventing three misses per
+   prospect would be trivial and worthless: an SE reads the caller's actual words off the
+   transcript beside the rail, and a phrase the caller demonstrably DID say cannot be a miss.
+   So each candidate is tested against the transcript, both ways:
+
+     1. a CONCEPT is located in the caller's own turns by the SIDEWAYS phrasings real callers
+        use ("what does that run", "can we hold that reservation", "do you also offer storage");
+     2. that turn is then checked against the PHRASES a hand-maintained library would hold
+        ("what does it cost", "price", "budget", plus the prospect's own booking term).
+        Contains one -> Silver legitimately CATCHES it and it renders as a met row.
+        Contains none -> a genuine MISS, quoted verbatim on the Comments tab.
+
+   ⚠️ **SO THE NUMBER OF MISSES VARIES PER PROSPECT, and that is the honest outcome rather
+   than a gap.** Measured across all 13: Roto-Rooter 5, four prospects 4, three 3, five 2, and
+   **Marriott exactly 1** — its caller says "budget", "reservation" and "enroll me" out loud,
+   so that call really is well covered by keywords. Five prospects also carry honest Silver
+   HITS. A tier comparison where the old product detects nothing is one a prospect stops
+   believing, which this file already says about Health Spring.
+
+   ⚠️ **`hasTierReports` FAILS CLOSED.** No CI report, no transcript, or no genuine miss means
+   no rows and a route that refuses — never an invented Silver list.
+
+   ⚠️ **TWO ATTRIBUTION RULES, both found by reading the output across every profile:**
+   • Scan ALL the turns and PREFER an uncaught one. Taking the first match declared "Silver
+     catches this" for Continuing Life on an early turn while a later turn said the same thing
+     in words no list holds.
+   • A "late" concept may not land on the OPENING turn. Preferring a miss pulled Key-Whitman's
+     booking intent onto "I'm interested in getting LASIK. I've worn glasses forever" — the
+     first thing said, and a motivation rather than a decision to proceed.
+   ============================================================================= */
+
+interface Concept {
+  key: string;
+  /** Re-skinned per prospect: the intent row is named from its own booking term. */
+  name: (bookingTerm: string) => string;
+  /** How a real caller phrases it — deliberately NOT the words a library would hold. */
+  soft: RegExp[];
+  /** What a hand-maintained keyword library holds. Printed in the comment. */
+  hard: string[];
+  /** Scan from the END of the call: a decision to proceed happens after the discussion. */
+  late?: boolean;
+}
+
+const CONCEPTS: Concept[] = [
+  { key: "price", name: () => "Price Sensitivity",
+    soft: [/what does .{0,26}run/i, /how much .{0,30}run/i, /run me/i, /usually run/i, /in my range/i,
+           /spend a fortune/i, /a month if i can/i, /stay (under|around)/i, /what would that look like/i,
+           /out of pocket/i, /monthly fee/i, /just for me/i],
+    hard: ["too expensive", "cheaper", "what does it cost", "price", "pricing", "discount", "budget",
+           "afford", "how much is", "cost"] },
+  { key: "intent", name: (b) => `${b} Intent`, late: true,
+    soft: [/can we (set|hold|do)/i, /what'?s the next step/i, /come try it out/i, /come out (today|tomorrow)/i,
+           /let'?s (do|include)/i, /really need to see/i, /how do i set that up/i, /want to get moving/i,
+           /move forward/i, /yes,? please/i, /can i do all of that/i, /wanted to see about/i,
+           /getting rid of them/i, /can someone come out/i],
+    hard: ["book", "schedul", "reserve", "sign me up", "enroll", "appointment", "consultation",
+           "test drive", "quote", "estimate"] },
+  { key: "addon", name: () => "Add-On Interest",
+    soft: [/come with any/i, /can they .{0,24}too/i, /do i earn/i, /how does .{0,26}work/i, /could i also add/i,
+           /could i finance/i, /putting them together/i, /down the line/i, /is that worth it/i,
+           /anything else i should/i, /do you also offer/i, /does it cover/i],
+    hard: ["add-on", "add on", "bundle", "upgrade", "warranty", "package", "extra"] },
+  { key: "urgency", name: () => "Urgency Expressed",
+    soft: [/today or tomorrow/i, /this afternoon/i, /this week/i, /before we close/i, /right away/i,
+           /got a little time/i, /slow for a while/i, /it'?s time for/i, /sooner the better/i,
+           /won'?t be ready/i, /couple of weeks/i, /couple weeks/i],
+    hard: ["urgent", "emergency", "asap", "as soon as possible", "right now", "immediately"] },
+  { key: "competitor", name: () => "Competitor Comparison",
+    soft: [/different from the/i, /i keep seeing/i, /hadn'?t thought about/i, /shopping around/i,
+           /other (companies|places|providers|dealers)/i, /compared to/i],
+    hard: ["competitor", "versus", "better than", "another company", "somewhere else"] },
+  { key: "need", name: () => "Unmet Need Stated",
+    soft: [/don'?t have a .{0,24}yet/i, /don'?t have coverage/i, /struggling/i, /worried about/i,
+           /waking up with/i, /been putting off/i, /worn glasses forever/i, /will not drain/i,
+           /won'?t drain/i, /can'?t really/i, /forgets her/i, /just moved/i, /never been seen/i,
+           /looking for a new/i, /this would be my first/i],
+    /* ⚠️ "first time" AND "never used" ARE HARD ON PURPOSE, and it costs two misses. A library
+       plausibly holds "first time caller" / "never used you before", so calling those a miss is
+       the kind of over-claim a prospect catches. Both become honest Silver HITS instead. */
+    hard: ["problem", "complaint", "unhappy", "not working", "broken", "first time", "never used"] },
+];
+
+/** Stems of the prospect's own booking term — any library keyed on it holds these. */
+function bookWords(bookingTerm: string): string[] {
+  return bookingTerm.split(/[^A-Za-z]+/).filter((w) => w.length >= 4)
+    .map((w) => w.toLowerCase().replace(/(ation|ment|ing|e)$/, ""));
+}
+
+interface FoundConcept {
+  name: string;
+  time: string;
+  text: string;
+  /** "miss" = no configured phrase matched; "caught" = Silver legitimately fires. */
+  verdict: "miss" | "caught";
+  phrases: string[];
+}
+
+type Turn = { speaker?: string; time: string; text: string };
+
+function findConcepts(transcript: Turn[], bookingTerm: string): FoundConcept[] {
+  const caller = transcript.filter((t) => t?.speaker !== "agent" && (t?.text ?? "").trim());
+  const used = new Set<string>();
+  const out: FoundConcept[] = [];
+  for (const c of CONCEPTS) {
+    const scan = c.late ? [...caller].reverse() : caller;
+    const hits = scan.filter((t) => !used.has(t.time) && c.soft.some((r) => r.test(t.text)));
+    if (!hits.length) continue;
+    const hard = c.key === "intent" ? [...c.hard, ...bookWords(bookingTerm)] : c.hard;
+    let missed = hits.find((t) => !hard.some((h) => t.text.toLowerCase().includes(h)));
+    if (c.late && missed) {
+      const i = caller.findIndex((t) => t.time === missed!.time);
+      const later = hits.find((t) => caller.findIndex((x) => x.time === t.time) > caller.length * 0.4);
+      if (i >= 0 && i < caller.length * 0.4 && later && later.time !== missed.time) missed = undefined;
+    }
+    const turn = missed ?? hits[0];
+    used.add(turn.time);
+    out.push({ name: c.name(bookingTerm), time: turn.time, text: turn.text.trim(),
+      verdict: missed ? "miss" : "caught", phrases: hard.slice(0, 3) });
+  }
+  return out;
+}
+
+/** Rows a rules engine produces regardless of tier — they are not phrase lists at all. */
+const DETERMINISTIC = /^(\(QA\)|Answered by Agent|Business Hours|Contact Info|Caller Type)/;
+/**
+ * The two rows a SHORT library still has: the QA greeting and the answered/routing rule.
+ *
+ * ⚠️ These are the ones Health Spring's hand-authored Silver keeps; it drops (QA) Proper
+ * Close, Caller Type and Contact Info Captured. The claim is not that a rules engine cannot
+ * do those — it is that this account's Silver library is small.
+ */
+const SILVER_LIBRARY = /^(\(QA\) Proper Greeting|Answered by Agent)$/;
+/** The conversion row, which Silver catches off the AGENT's own scheduling phrase. */
+const CONVERSION = /:\s*Scheduled$/i;
+
+/**
+ * The turn where the AGENT actually says the scheduling phrase.
+ *
+ * ⚠️ **THIS WAS `transcript[length - 2]`, AND IT ANCHORED THE CONVERSION COMMENT TO
+ * "Thanks again, goodbye."** The comment explains that Silver matched the agent's scheduling
+ * phrase, so pointing it at the farewell is the sort of small contradiction a prospect reads
+ * straight off the transcript beside it. Found by looking at the rendered Comments tab.
+ */
+function schedulingTurn(transcript: Turn[]): Turn | undefined {
+  /* ⚠️ **VERBS ONLY — the booking term itself is in the GREETING.** Including its stems
+     anchored Marriott at 0:00, because "Thank you for calling Marriott Bonvoy *reservations*"
+     contains "reservat". A scheduling phrase is a verb, and the turn that carries one is the
+     turn Silver's keyword actually fired on. */
+  /* ⚠️ "book" AS A STEM, not "book you"/"book a": Marriott's conversion turn is "I have
+     BOOKED your ocean-view suite", and the narrower forms skipped it onto an earlier "set up
+     a profile for you" — a Bonvoy profile, not a booking. */
+  const verbs = ["schedul", "book", "set up", "set you up", "next step",
+    "get that on the calendar", "get you in", "reserved"];
+  const agent = transcript.filter((t) => t?.speaker === "agent");
+  /* Search from the END: the offer to schedule comes late, and an early "we can book that
+     for you" recap is not what closed the call. */
+  return [...agent].reverse().find((t) => verbs.some((w) => t.text.toLowerCase().includes(w)))
+    ?? agent[agent.length - 1];
+}
+
+/** One quoted line, trimmed for a comment. */
+function quote(text: string): string {
+  const t = text.length > 150 ? `${text.slice(0, 147)}...` : text;
+  return `"${t}"`;
+}
+
+function derive(profile: CustomerProfile, tier: SignalTier): TierView | null {
+  const ci = profile.reports.conversationIntelligence;
+  const own = ci?.signals ?? [];
+  const transcript = (ci?.transcript ?? []) as Turn[];
+  if (!own.length || !transcript.length) return null;
+  const book = profile.bookingTerm || "Appointment";
+  const found = findConcepts(transcript, book);
+  const misses = found.filter((f) => f.verdict === "miss");
+  /* No genuine miss means no story. Fail closed rather than invent one. */
+  if (!misses.length) return null;
+
+  const det = own.filter((s) => DETERMINISTIC.test(s.name));
+  const conv = own.find((s) => CONVERSION.test(s.name));
+  const interest = own.filter((s) => !DETERMINISTIC.test(s.name) && s !== conv);
+  const badges = (s: { badges?: string[] }) => (s.badges?.length ? s.badges : ["Keyword Spotting"]);
+
+  if (tier === "silver") {
+    const signals: TierSignal[] = [
+      /* ⚠️⚠️ **SILVER IS DELIBERATELY SHORT, AND A FIRST PASS LOST THAT.** Including every
+         deterministic row plus two interest rows produced Silver 12 against Gold 13 — a rail
+         that reads as "two nearly identical reports" and throws away the point the signed-off
+         Health Spring version makes at 7 against 13. A hand-maintained phrase library holds a
+         FEW lists, because every entry is a plan year of upkeep, and its length is itself the
+         thing being sold against.
+
+         So Silver keeps exactly what Health Spring's own hand-authored Silver keeps: the QA
+         greeting, the answered/routing rule, the conversion phrase, ONE product list, and then
+         the intent rows it misses. Everything else is what Gold adds. Named explicitly rather
+         than sliced by position, because the signal ORDER is the generator's and a slice would
+         silently pick different rows for a prospect whose report is ordered differently. */
+      ...det.filter((s) => SILVER_LIBRARY.test(s.name))
+        .map((s) => ({ name: s.name, badges: badges(s), count: s.count ?? 0, met: true })),
+      ...(conv ? [{ name: conv.name, badges: badges(conv), count: conv.count ?? 1, met: true }] : []),
+      ...interest.slice(0, 1).map((s) => ({ name: s.name, badges: badges(s), count: s.count ?? 1, met: true })),
+      ...found.filter((f) => f.verdict === "caught")
+        .map((f) => ({ name: f.name, badges: ["Keyword Spotting"], count: 1, met: true })),
+      ...misses.map((f) => ({ name: f.name, badges: ["Keyword Spotting"], count: 0, met: false })),
+    ];
+    const comments: TierComment[] = [
+      ...misses.map((f) => ({ time: f.time, signal: f.name, miss: true,
+        text: `Caller: ${quote(f.text)} No phrase matched. The configured list holds `
+          + `${f.phrases.map((x) => `"${x}"`).join(", ")}, and none of them were said.` })),
+      ...(conv ? [{ time: schedulingTurn(transcript)?.time ?? "0:00", signal: conv.name,
+        text: `Matched on the AGENT's own scheduling phrase rather than anything the caller said. `
+          + `Phrase spotting works here, and it is worth saying so out loud: the gap is intent, `
+          + `not detection in general.` }] : []),
+    ].slice(0, 5);
+    return { tier, signals, comments };
+  }
+
+  const signals: TierSignal[] = [
+    ...det.map((s) => ({ name: s.name, badges: badges(s), count: s.count ?? 0, met: true })),
+    ...(conv ? [{ name: conv.name, badges: [...badges(conv), "AI"], count: conv.count ?? 1, met: true }] : []),
+    /* Gold does not REPLACE the keyword detections, it adds intent on top — so an interest row
+       keeps its original badge and gains AI. That badge mix is the point of the rail. */
+    ...interest.map((s) => ({ name: s.name, badges: [...badges(s), "AI"], count: s.count ?? 1, met: true })),
+    ...found.map((f) => ({ name: f.name,
+      badges: f.verdict === "caught" ? ["Keyword Spotting", "AI"] : ["AI"], count: 1, met: true })),
+  ];
+  const comments: TierComment[] = [
+    ...misses.map((f) => ({ time: f.time, signal: f.name,
+      text: `Caller: ${quote(f.text)} Read as intent rather than matched as a phrase, which is `
+        + `why it fires here and not on Silver.` })),
+    ...(conv ? [{ time: schedulingTurn(transcript)?.time ?? "0:00", signal: conv.name,
+      text: `Fires on both tiers. Gold keeps the keyword detection and adds intent on top of it, `
+        + `which is why this row carries two badges rather than replacing one with the other.` }] : []),
+    ...(det.length ? [{ time: "0:00", signal: det[0].name,
+      text: `Rules based, unchanged between tiers. Worth pointing at when the question is `
+        + `"does Gold replace what we already have" — it does not.` }] : []),
+  ].slice(0, 5);
+  return { tier, signals, comments };
+}
+
+/**
+ * True when this prospect has the Silver / Gold pair.
+ *
+ * ⚠️ **EVERY PROSPECT WITH A CI REPORT AND AT LEAST ONE GENUINE MISS**, which as of 8/27/2026
+ * is all 13 on disk. It used to be Health Spring alone. The gate is the MISS, not the name:
+ * without one there is nothing to compare and the rows do not appear.
+ */
+export function hasTierReports(p: CustomerProfile): boolean {
+  if (isProspect(p, HEALTH_SPRING)) return true;
+  return derive(p, "silver") !== null;
 }
 
 /**
  * The tier view for a prospect, or null when this prospect does not have these reports.
  *
- * ⚠️ Returns null rather than falling back to a generic pair: an invented Silver list on an
- * account that does not run Silver would put words in a prospect's mouth, and the signal
- * names above are Health Spring's own.
+ * ⚠️ **A CONFIGURED PAIR BEATS THE DERIVED ONE**, the same precedent `voiceSpecFor` sets: the
+ * hand-authored Health Spring lists are the words a human wrote for a specific upsell call, so
+ * they win. Everyone else derives from their own transcript.
  */
 export function tierView(profile: CustomerProfile, tier: SignalTier): TierView | null {
-  if (!hasTierReports(profile)) return null;
-  return tier === "silver"
-    ? { tier, signals: SILVER_SIGNALS, comments: SILVER_COMMENTS }
-    : { tier, signals: GOLD_SIGNALS, comments: GOLD_COMMENTS };
+  if (isProspect(profile, HEALTH_SPRING)) {
+    return tier === "silver"
+      ? { tier, signals: SILVER_SIGNALS, comments: SILVER_COMMENTS }
+      : { tier, signals: GOLD_SIGNALS, comments: GOLD_COMMENTS };
+  }
+  return derive(profile, tier);
 }

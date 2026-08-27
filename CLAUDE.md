@@ -171,6 +171,120 @@ every breakdown rising monotonically (Campaign 14→17→21→25→33%).
 ⚠️ Reading column 1 by mistake is how a first pass at this check mis-scored Product
 Category; the conversion column is index 2 on every breakdown shape.
 
+### Signal AI Silver / Gold now exists for EVERY prospect, derived (8/27/2026)
+Asked for directly: "do for all prospect and also for all prospect moving forward, of course
+reskinned for that prospect." Health Spring's hand-authored pair (the section below) is kept as
+its CONFIGURED version and wins for that account; every other prospect's is **derived from the
+Conversation Intelligence report it already has** — no engine phase, no schema slice, so all 13
+profiles on disk have it and a prospect generated next month does too.
+
+⚠️⚠️ **THE MISSES HAVE TO BE REAL, AND THAT IS THE ENTIRE DESIGN PROBLEM.** The claim on screen
+is "a keyword library did not fire on this call, and AI did" — with the transcript open beside
+the rail. Inventing three misses per prospect is trivial and worthless, because an SE reads the
+caller's actual words two inches away. So each candidate is tested against the transcript in
+BOTH directions:
+
+1. a CONCEPT is located in the caller's OWN turns by the sideways phrasings real callers use
+   ("what does that run", "can we hold that reservation", "do you also offer storage");
+2. that turn is then checked against the PHRASES a hand-maintained library would hold ("what
+   does it cost", "price", "budget", plus the prospect's own booking term). Contains one ->
+   Silver legitimately **CATCHES** it, and it renders as a met row. Contains none -> a genuine
+   **MISS**, quoted verbatim on the Comments tab.
+
+⚠️ **SO THE COUNT VARIES PER PROSPECT, AND THAT IS THE HONEST OUTCOME RATHER THAN A GAP.**
+Measured across all 13: Roto-Rooter **5**, four prospects 4, three 3, five 2, and **Marriott
+exactly 1** — its caller says "budget", "reservation" and "enroll me" out loud, so that call
+really is well covered by keywords. Five prospects also carry honest Silver HITS. A comparison
+where the old product detects nothing is one a prospect stops believing, which this file already
+says about Health Spring.
+
+| | Silver | Gold |
+|---|---|---|
+| Marriott | 6 rows, 1 unmet (Add-On Interest) | 11 rows |
+| Roto-Rooter | 10 rows, 5 unmet | 16 rows |
+| Health Spring (hand-authored) | 7 rows, 3 unmet | 13 rows |
+
+**Two approaches were tried and the first one failed, which is worth recording.** Deriving the
+misses from the prospect's OWN SIGNAL NAMES (does this signal's name appear in the transcript?)
+produced almost no misses at all — the generator writes both the signals and the transcript, so
+a signal's words are nearly always present. That measurement is what forced the concept lexicon.
+
+⚠️ **TWO ATTRIBUTION RULES, both found by reading the output for all 13 rather than one:**
+- **Scan ALL the turns and PREFER an uncaught one.** Taking the first soft match declared
+  "Silver catches this" for Continuing Life on an early turn, while a LATER turn said the same
+  thing in words no list holds.
+- **A "late" concept may not land on the OPENING turn.** Preferring a miss pulled Key-Whitman's
+  booking intent onto "I'm interested in getting LASIK. I've worn glasses forever" — the first
+  thing said, and a motivation rather than a decision to proceed. When the only uncaught
+  candidate is in the opening third and a later turn genuinely expresses it, the honest CAUGHT
+  row beats a badly attributed miss.
+
+⚠️ **"first time" AND "never used" ARE IN THE HARD LIST ON PURPOSE, and it costs two misses.** A
+library plausibly holds "first time caller" / "never used you before", so calling a caller who
+says those words a miss is the kind of over-claim a prospect catches. Both become honest Silver
+HITS instead. Same conservatism as the booking term: Marriott's "Can we hold that reservation?"
+was reported as a miss because the list held "reserve", which is not a substring of
+"reservation" — while any hotel phrase library obviously holds it.
+
+⚠️⚠️ **SILVER IS DELIBERATELY SHORT, AND THE FIRST DERIVED VERSION LOST THAT.** Including every
+deterministic row plus two interest rows gave Silver **12 against Gold 13** — a rail that reads
+as two nearly identical reports and throws away the point the signed-off version makes at 7 v
+13. A hand-maintained library holds a FEW lists, because every entry is a plan year of upkeep,
+and its length is itself the thing being sold against. Silver now keeps exactly what Health
+Spring's own Silver keeps: the QA greeting, the answered/routing rule, the conversion phrase,
+ONE product list, then the intent rows it misses. Named explicitly (`SILVER_LIBRARY`) rather
+than sliced by position, because signal ORDER is the generator's.
+
+⚠️ **GOLD ADDS AI, IT DOES NOT REPLACE.** An interest row keeps its original badge and gains
+"AI", so the rail carries the mix — verified on every prospect: Keyword Spotting + Rule +
+Keypress + AI, with Silver carrying no AI badge at all.
+
+⚠️ **THE COMMENT ANCHOR WAS `transcript[length - 2]`, WHICH POINTED AT "Thanks again,
+goodbye."** The comment explains that Silver matched the AGENT's scheduling phrase, so anchoring
+it to the farewell is a contradiction a prospect reads straight off the transcript. It now finds
+the agent turn carrying a scheduling VERB, scanning from the end — verbs only, because the
+booking term itself is in the greeting ("Thank you for calling Marriott Bonvoy **reservations**"
+anchored Marriott at 0:00), and "book" as a STEM, because Marriott's conversion turn is "I have
+**booked** your ocean-view suite" and "book you"/"book a" skipped it onto "set up a profile".
+Verified: 12 of 12 now land on the real scheduling turn.
+
+⚠️ **`hasTierReports` FAILS CLOSED** — no CI report, no transcript, or no genuine miss means no
+rows and a route that refuses, never an invented Silver list. It used to be `isProspect(HEALTH_
+SPRING)`; the gate is now the MISS, not the name.
+
+⚠️ **`signalTiers.ts` GAINED EXPLICIT `.ts` IMPORT EXTENSIONS** because `engine/canary.ts` now
+imports it and the engine project compiles with `module: nodenext`. `engine/core.ts` already
+imports `../src/data/schema.ts` the same way. Without it the node project failed with five
+errors that read as type problems inside signalTiers rather than as a cross-project import.
+
+**"MOVING FORWARD" IS ENFORCED BY THE NIGHTLY CANARY, not hoped for.** The misses are found by
+matching the caller's own phrasings, and a future transcript is model-written — so a prompt
+change could produce a call the lexicon does not recognise, `hasTierReports` would quietly go
+false, and the two rows would stop appearing with nothing failing. `auditProfile` therefore
+gained three checks (the pair builds · at least one genuine miss · Silver is shorter), so a real
+generated prospect is checked every night. Verified to FIRE on a profile whose CI report is
+stripped. ⚠️ If it fires, widen the CONCEPTS lexicon — do NOT loosen the phrase test that keeps
+a miss honest.
+
+**`npm run audit:tiers` (new, also run by `npm run audit`) covers all 13 profiles**, and the
+central check is the **verbatim quote**: every caller line printed on the Comments tab must
+appear in that prospect's own transcript character for character. Plus: the miss is real (the
+quoted turn contains none of the phrases the comment names) · Silver shorter than Gold · Gold
+carries AI and keeps its rules rows · Silver carries none · every Silver miss fires on Gold ·
+no Health Spring vocabulary leaks · a profile with no CI report fails closed.
+⚠️ **Each was broken on purpose, and THREE PROBES WERE WRONG BEFORE THE CHECKS WERE.** Removing
+Silver's interest cap still left it shorter (it keeps 2 deterministic rows where Gold keeps
+all), so that probe proved nothing until it also removed the `SILVER_LIBRARY` filter; and
+"remove the fail-closed guard" was caught by a SECOND guard downstream, so both had to go.
+Second time this session a probe, not a check, was the thing at fault.
+
+Verified in the browser: My Reports lists both rows for Marriott, its Silver rail reads MET (5)
+/ UNMET (1) in Marriott's own vocabulary, Gold reads 11 met with the badge mix, and the Comments
+tab quotes "Yes, an ocean-view suite would be perfect. Do I earn points on an all-inclusive
+stay?" verbatim. Roto-Rooter's Silver shows 5 unmet plus an honest catch. **The untiered report
+is unchanged** — 0 tier elements, "MET SIGNALS" with no count, 9 rows, 0 AI badges — and Health
+Spring still renders its hand-authored 7 / 13 with "Rules Based" and "Enrollment Intent".
+
 ### Signal AI SILVER vs GOLD — two versions of one CI report (Health Spring, 8/24/2026)
 Built for an upsell call: Health Spring runs **Signal AI Silver** today and the conversation is
 about moving them to **Gold**. Two extra rows on My Reports —
@@ -226,8 +340,9 @@ to undefined, every tier block sits behind a `t &&` guard, and the untiered sign
 its ORIGINAL markup in an `else` branch rather than being refactored into the new one.
 Verified: original badges, "MET SIGNALS" with no count, Comments back to its empty state, and
 **zero `[class*="ci-tier"]` / `[class*="ci-cmt"]` elements**.
-⚠️ **HEALTH SPRING ONLY**, both the rows and the routes. Verified on another prospect: 0 tier
-rows on My Reports and the route renders "Not available for <prospect>".
+⚠️ **WAS HEALTH SPRING ONLY** — as of 8/27/2026 every prospect has the pair (see the section
+above). Health Spring keeps THIS hand-authored version; everyone else derives theirs. The
+refusal path still exists and is what a prospect with no CI report gets.
 ⚠️ **CSS is all-new `.ci-tier-*` / `.ci-cmt-*` plus `.ci-sig-x` and `.ci-badge--ai`**; grepped
 for zero prior uses before writing.
 

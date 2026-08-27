@@ -28,6 +28,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { generateProfile } from "./core.ts";
 import { DATA_DIR } from "./demoStore.ts";
+import { tierView } from "../src/data/signalTiers.ts";
 
 /* The budget the user set: a generation must stay under five minutes. */
 export const BUDGET_SECONDS = 300;
@@ -181,6 +182,26 @@ export function auditProfile(p: any): { checks: number; failures: string[] } {
         .every((f) => String(r[f] ?? "").trim().length > 0)));
 
   check(`no dash-joined prose (found ${prose})`, prose === 0);
+
+  /* ⚠️⚠️ **THE SILVER / GOLD PAIR IS DERIVED, SO A FRESHLY GENERATED PROSPECT CAN LOSE IT
+     SILENTLY.** Asked for 8/27/2026: the pair must appear for every prospect "moving
+     forward", and every prospect on disk has it today. But the Silver misses are found by
+     matching the CALLER'S OWN sideways phrasings ("what does that run", "can we hold that
+     reservation"), and a future transcript is model-written — so a prompt change or an unusual
+     call could produce a transcript the lexicon does not recognise, `hasTierReports` would go
+     false, and the two rows would simply stop appearing on My Reports with nothing failing.
+     This is the only place that notices: the canary generates a real prospect nightly, so it
+     is where "moving forward" is enforced rather than hoped.
+     ⚠️ If this fires, widen the CONCEPTS lexicon in `src/data/signalTiers.ts` — do NOT
+     loosen the phrase test that keeps a miss honest. */
+  {
+    const silver = tierView(p, "silver");
+    const gold = tierView(p, "gold");
+    const unmet = (silver?.signals ?? []).filter((s) => !s.met).length;
+    check("Signal AI Silver / Gold pair builds for this prospect", !!silver && !!gold);
+    check("Silver has at least one genuine miss to compare (else the rows vanish)", unmet > 0);
+    check("Silver is the shorter library", (silver?.signals.length ?? 0) < (gold?.signals.length ?? 0));
+  }
 
   return { checks, failures: fail };
 }
