@@ -39,34 +39,82 @@ interface Msg { role: "user" | "assistant"; content: string; icon?: string }
    ⚠️ Returns null for everything else, so every other screen keeps its existing copy verbatim —
    the opt-in rule for anything shared by many screens.
    ============================================================================= */
-function pageHint(data: unknown): { title: string; body: ReactNode } | null {
-  const d = data as { agent?: unknown; branches?: unknown[] } | undefined;
+type TreeShape = {
+  agent?: unknown;
+  branches?: { title?: string; leaves?: { title?: string; paths?: { title?: string }[] }[] }[];
+};
+
+/** Every use-case branch title on the tree, in the order they are drawn. */
+function branchTitles(d: TreeShape | undefined): string[] {
+  return (d?.branches ?? [])
+    .flatMap((b) => b.leaves ?? [])
+    .flatMap((l) => l.paths ?? [])
+    .map((p) => (p?.title ?? "").trim())
+    .filter(Boolean);
+}
+
+/**
+ * "Marriott's" but "Comfort Keepers'".
+ *
+ * ⚠️ A blunt `+ "'s"` printed "Comfort Keepers's voice agent" — the prospect's own name, wrong,
+ * in the first line of the drawer. Any name ending in s hits this, and several do.
+ */
+function possessive(name: string): string {
+  return /s$/i.test(name.trim()) ? `${name.trim()}'` : `${name.trim()}'s`;
+}
+
+function pageHint(data: unknown, customerName: string): { title: string; body: ReactNode } | null {
+  const d = data as TreeShape | undefined;
   if (!Array.isArray(d?.branches)) return null;
 
-  /* A VOICE workflow registers the agent's own configuration beside its diagram, so one
-     instruction can build the routing AND set what the agent says. */
+  /* ⚠️ **THE EXAMPLES NAME THIS PROSPECT'S OWN BRANCHES.** A first version listed invented ones
+     — "a use case for loyalty members", "the billing branch", "ZIP codes 30097 and 30096" —
+     which read as somebody else's agent and, on a prospect with none of those, as instructions
+     that would not work. Reading the titles off the tree the SE is looking at makes every
+     example true by construction, and it changes per prospect for free. */
+  const titles = branchTitles(d);
+  const last = titles[titles.length - 1];
+
   if (d?.agent) {
+    /* ⚠️ **BUILT AS A LIST SO NO BRANCH IS NAMED TWICE.** With fixed slots, Comfort Keepers'
+       two branches put "Interested in becoming a caregiver" in both the remove example and the
+       route example — which reads as a typo rather than as two things you can do. A prospect
+       with fewer branches simply gets fewer examples. */
+    const ex: string[] = [];
+    if (last) ex.push(`remove the ${last} branch`);
+    ex.push(`add a use case under All Support Users`);
+    if (titles[0] && titles[0] !== last) ex.push(`ask ${titles[0]} for their email as well`);
+    if (titles.length > 2) ex.push(`route ${titles[1]} to a dedicated team`);
+    ex.push(`open with Thanks for calling ${customerName}`);
     return {
-      title: "Build this voice agent",
+      title: `Build ${possessive(customerName)} voice agent`,
       body: (
         <>
-          Describe what you want the agent to do and I'll build the tree and configure it:
-          "add a use case for loyalty members", "remove the billing branch", "ask group bookings
-          for the room count", "route cancellations to the retention team", "greet callers as
-          Max", "only serve ZIP codes 30097 and 30096". The trigger, Conversation Start and the
-          four nodes above the branches are Invoca's own and cannot be renamed.
+          Describe what you want the agent to do and I&apos;ll build the tree and configure it:
+          {" "}{ex.map((e, i) => (
+            <span key={e}>{i ? ", " : ""}&quot;{e}&quot;</span>
+          ))}.
+          {" "}The trigger, Conversation Start and the four nodes above the branches are
+          Invoca&apos;s own and cannot be renamed.
         </>
       ),
     };
   }
+  const group = (d?.branches?.[0]?.leaves?.[0]?.title ?? "the first group").trim();
+  const ex = [
+    `add a branch under ${group}`,
+    ...(titles[0] ? [`rename ${titles[0]}`] : []),
+    `collect their email too`,
+    ...(last && last !== titles[0] ? [`drop ${last}`] : []),
+  ];
   return {
-    title: "Change this workflow",
+    title: `Change ${possessive(customerName)} workflow`,
     body: (
       <>
-        Reshape the diagram: "add a branch for warranty questions", "rename this path",
-        "collect their email too", "drop the second option". The trigger, Conversation Start
-        and the two intent nodes are Invoca's own and cannot be renamed. I change this
-        diagram only, never the styling, and never another page.
+        Reshape the diagram:
+        {" "}{ex.map((e, i) => <span key={e}>{i ? ", " : ""}&quot;{e}&quot;</span>)}.
+        {" "}The trigger, Conversation Start and the two intent nodes are Invoca&apos;s own and
+        cannot be renamed. I change this diagram only, never the styling, and never another page.
       </>
     ),
   };
@@ -113,7 +161,10 @@ export function AiAssistantDrawer() {
   /* The empty state describes THIS page, from the slice it registered. Memoised on the same
      inputs as `effTitle` so it re-reads when an edit lands (a page that gains an `agent` slice
      should start describing it). */
-  const hint = useMemo(() => (active ? pageHint(effectiveData(active.key)) : null), [active, effectiveData]);
+  const hint = useMemo(
+    () => (active ? pageHint(effectiveData(active.key), profile.customerName) : null),
+    [active, effectiveData, profile.customerName],
+  );
   const effTitle = useMemo(() => (active ? ((effectiveData(active.key) as any)?.title ?? active.baseTitle) : ""), [active, effectiveData]);
 
   /* THE QUESTION TOOLS ARE OPT-IN, and the opt-in is the scope's questionPath.

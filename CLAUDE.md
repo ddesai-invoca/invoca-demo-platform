@@ -777,6 +777,24 @@ returns a title and body per page:
 | SMS / extra workflow (`branches`, no `agent`) | **Change this workflow** |
 | everything else | unchanged, verbatim |
 
+⚠️⚠️ **AND THE EXAMPLES NAME THE PROSPECT'S OWN BRANCHES.** A first version listed invented
+ones — "a use case for loyalty members", "the billing branch", "ZIP codes 30097 and 30096" —
+which read as somebody else's agent, and on a prospect with none of those they were
+instructions that would not work. `branchTitles()` reads them off the tree the SE is looking
+at, so every example is true by construction and changes per prospect for free:
+
+| prospect | reads |
+|---|---|
+| Marriott | Build **Marriott's** voice agent — "remove the **Cancel a reservation** branch", "ask **Ready to book now** for their email as well", "route **Comparing options** to a dedicated team" |
+| Comfort Keepers | Build **Comfort Keepers'** voice agent — "remove the **Interested in becoming a caregiver** branch", "ask **Looking for care services** for their email as well" |
+
+⚠️ **THE EXAMPLES ARE A BUILT LIST, NOT FIXED SLOTS.** With one example per slot, Comfort
+Keepers' two branches put "Interested in becoming a caregiver" in BOTH the remove example and
+the route example — which reads as a typo rather than as two things you can do. A prospect with
+fewer branches gets fewer examples.
+⚠️ **`possessive()` EXISTS BECAUSE `+ "'s"` PRINTED "Comfort Keepers's"** — the prospect's own
+name, wrong, in the first line of the drawer. Several prospects end in s.
+
 ⚠️ **KEYED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME.** A pathname test breaks when a
 route moves and says nothing about what is editable. The shape is the SAME signal
 `engine/assistant.ts` uses to decide whether to describe the agent, so the drawer's promise and
