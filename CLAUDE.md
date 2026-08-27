@@ -791,6 +791,19 @@ then drew a FOURTH queue with that name beside the real "Guest Support, Existing
 `matchDestination()` then drops anything off-list to `""`, so a stray answer produces no
 artifacts rather than a wrong department. Instruct-then-enforce, as everywhere else here.
 
+⚠️⚠️ **THERE ARE TWO VOICE ENGINES, AND THE FIRST BUILD ONLY PATCHED ONE.** `VoiceCall`
+(browser speech) and `VoiceCallLive` (LiveKit) each carried their own copy of "capture the call,
+then POST /api/analyze". The destinations and the `outcome` patch went into the OLD engine only
+— so a real LiveKit call, which is what every configured environment actually runs, captured
+perfectly, stored no outcome, and the two rows silently never appeared. Reported as: "I had the
+conversation, it transferred me, and it wasn't there."
+
+**The duplication survived because both copies worked** for the thing they were written for; it
+only broke when one gained a feature. `captureVoiceCall` in `VoiceCall.tsx` is now the single
+path and `VoiceCallLive` calls it. `audit:voice` checks this STRUCTURALLY rather than by
+feature — exactly ONE `/api/analyze` fetch may exist across the two files, and both must call
+the shared helper — because the next divergence will be a different field.
+
 ⚠️ **NOT A REGEX OVER THE AGENT'S LAST LINE.** The obvious gate is looking for "transferring
 you". This repo has been bitten twice reading model prose that way — the Salesforce appointment
 slot, and the Comfort Keepers simulator false-failing 5 runs in 6 on a curly apostrophe. It

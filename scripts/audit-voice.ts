@@ -347,6 +347,33 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
   }
 }
 
+/* ⚠️ 12. **BOTH CALL ENGINES MUST SHARE ONE CAPTURE PATH (8/27/2026).** `VoiceCall` (browser
+      speech) and `VoiceCallLive` (LiveKit) each had their own copy of "capture the call, then
+      POST /api/analyze". When the routing destinations and the `outcome` were added, they went
+      into the OLD engine only — so a real LiveKit call, which is what every configured
+      environment actually runs, captured perfectly and stored no outcome, and the two
+      (Voice AI) rows silently never appeared. Reported as "I had the conversation, it
+      transferred me, and it wasn't there."
+
+      Checked STRUCTURALLY rather than by feature, because the next divergence will be a
+      different field: exactly one of them may own the fetch, and both must call the shared
+      helper. */
+{
+  const legacy = read("src/screens/VoiceCall.tsx");
+  const live = read("src/screens/VoiceCallLive.tsx");
+  const fetches = (src: string) => (src.match(/fetch\(\s*["'`]\/api\/analyze/g) ?? []).length;
+  check(fetches(legacy) + fetches(live) === 1,
+    "exactly ONE /api/analyze call exists across the two voice engines",
+    `legacy ${fetches(legacy)}, live ${fetches(live)}`);
+  check(/export function captureVoiceCall\(/.test(legacy), "captureVoiceCall is the shared capture path");
+  for (const [name, src] of [["VoiceCall", legacy], ["VoiceCallLive", live]] as const) {
+    check(/captureVoiceCall\(profile/.test(src), `${name} captures through the shared path`);
+  }
+  /* And the shared path must carry BOTH things the artifacts depend on. */
+  check(/destinations:/.test(legacy), "the shared capture sends the workflow's routing destinations");
+  check(/patch\.outcome = d\.outcome/.test(legacy), "the shared capture stores the analysed outcome");
+}
+
 /* Self-check: a static audit that silently matches nothing reports success forever. */
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");

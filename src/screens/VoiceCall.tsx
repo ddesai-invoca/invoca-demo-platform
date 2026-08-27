@@ -192,6 +192,60 @@ function extractName(messages: Msg[]): { first: string; last: string; display: s
   return { first: "—", last: "—", display: "Voice Lead" };
 }
 
+/**
+ * Capture a finished call into the AI Voice Conversation Intelligence report, then analyse it.
+ *
+ * ⚠️⚠️ **SHARED BY BOTH CALL ENGINES, AND IT HAD TO BE.** `VoiceCall` and `VoiceCallLive` each
+ * carried their own copy of this, and the copies diverged the moment one gained a feature:
+ * `destinations` and the `outcome` patch were added to the OLD engine only, so a real LiveKit
+ * call — which is the one every configured environment actually runs — captured fine and never
+ * stored an outcome, and the two (Voice AI) rows silently never appeared. Reported as "I had
+ * the conversation, it transferred me, and it wasn't there."
+ *
+ * The report's own capture is why the duplication survived so long: both copies worked
+ * perfectly for the thing they were written for. Anything added here reaches both engines.
+ */
+export function captureVoiceCall(
+  profile: { id: string; customerName: string; bookingTerm: string; customerNoun?: string },
+  brain: { voicePaths?: { routes: { team: string }[] }[] },
+  msgs: Msg[],
+  durationSecs: number,
+  addCaptured: (profileId: string, conv: VoiceConversation) => void,
+  patchCaptured: (profileId: string, id: string, patch: Partial<VoiceConversation>) => void,
+): void {
+  const conv = buildVoiceConversation(msgs, durationSecs);
+  addCaptured(profile.id, conv);
+  fetch("/api/analyze", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      customerName: profile.customerName,
+      bookingTerm: profile.bookingTerm,
+      customerNoun: profile.customerNoun,
+      channel: "voice",
+      /* ⚠️ THE DEPARTMENTS THIS WORKFLOW CAN ROUTE TO, so the analysis CLASSIFIES rather than
+         extracting the agent's spoken paraphrase — see the note on `AnalyzeInput.destinations`.
+         Read off the same `voicePaths` the prompt was built from, so the list the model chooses
+         from is exactly the list the agent was routing against. */
+      destinations: [...new Set(
+        (brain.voicePaths ?? []).flatMap((p) => p.routes.map((r) => r.team)).filter(Boolean),
+      )],
+      transcript: conv.transcript.map((t) => ({ speaker: t.speaker, text: t.text })),
+    }),
+  })
+    .then((r) => r.json())
+    .then((d) => {
+      const patch: Partial<VoiceConversation> = {};
+      if (Array.isArray(d?.signals) && d.signals.length) patch.signals = d.signals;
+      /* ⚠️ THE OUTCOME GATES THE TWO (Voice AI) ARTIFACTS. Stored only when the model returned a
+         well-formed one, so a failed analysis leaves the call with no outcome and those rows
+         simply do not appear. */
+      if (d?.outcome && typeof d.outcome.transferred === "boolean") patch.outcome = d.outcome;
+      if (Object.keys(patch).length) patchCaptured(profile.id, conv.id, patch);
+    })
+    .catch(() => { /* leave signals empty; the report shows an analyzing note */ });
+}
+
 export function buildVoiceConversation(messages: Msg[], durationSecs: number): VoiceConversation {
   const now = new Date();
   const id = genId();
@@ -555,45 +609,15 @@ export function VoiceCall({ onEnd }: { onEnd: () => void }) {
     else if (phaseRef.current === "listening") startListening();
   }
 
-  /* Capture the finished call into the AI Voice Conversation Intelligence report:
-     prepend the transcript + call info, then extract signals via /api/analyze.
-     Guarded so a call is logged at most once (End Call and unmount both call it). */
+  /* Capture the finished call into the AI Voice Conversation Intelligence report.
+     Guarded so a call is logged at most once (End Call and unmount both call it).
+     ⚠️ The BODY lives in `captureVoiceCall` so this engine and `VoiceCallLive` cannot drift. */
   function captureCall() {
     if (capturedRef.current) return;
     const msgs = messagesRef.current;
     if (!msgs.some((m) => m.role === "user")) return;   // nothing real happened
     capturedRef.current = true;
-    const conv = buildVoiceConversation(msgs, elapsedRef.current);
-    addCaptured(profile.id, conv);
-    fetch("/api/analyze", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        customerName: profile.customerName,
-        bookingTerm: profile.bookingTerm,
-        customerNoun: profile.customerNoun,
-        channel: "voice",
-        /* ⚠️ THE DEPARTMENTS THIS WORKFLOW CAN ROUTE TO, so the analysis CLASSIFIES rather than
-           extracting the agent's spoken paraphrase — see the note on `AnalyzeInput.destinations`.
-           Read off the same `voicePaths` the prompt was built from, so the list the model
-           chooses from is exactly the list the agent was routing against. */
-        destinations: [...new Set(
-          (brain.voicePaths ?? []).flatMap((p) => p.routes.map((r) => r.team)).filter(Boolean),
-        )],
-        transcript: conv.transcript.map((t) => ({ speaker: t.speaker, text: t.text })),
-      }),
-    })
-      .then((r) => r.json())
-      .then((d) => {
-        const patch: Parameters<typeof patchCaptured>[2] = {};
-        if (Array.isArray(d?.signals) && d.signals.length) patch.signals = d.signals;
-        /* ⚠️ THE OUTCOME IS WHAT GATES THE TWO (Voice AI) ARTIFACTS. Stored only when the model
-           returned a well-formed one, so a failed or unreadable analysis leaves the call with no
-           outcome and those rows simply do not appear — see the note on `VoiceOutcome`. */
-        if (d?.outcome && typeof d.outcome.transferred === "boolean") patch.outcome = d.outcome;
-        if (Object.keys(patch).length) patchCaptured(profile.id, conv.id, patch);
-      })
-      .catch(() => { /* leave signals empty; report shows an analyzing note */ });
+    captureVoiceCall(profile, brain, msgs, elapsedRef.current, addCaptured, patchCaptured);
   }
 
   function endCall() {

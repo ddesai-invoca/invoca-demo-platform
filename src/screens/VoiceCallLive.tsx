@@ -5,7 +5,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
    captured-conversation shape must be IDENTICAL across the two engines, or a call
    captured through LiveKit would look different in the Voice CI report from one
    captured the old way. Same one-definition rule `smsBrain.ts` already enforces. */
-import { useBrain, buildVoiceConversation } from "./VoiceCall";
+import { useBrain, captureVoiceCall } from "./VoiceCall";
 import { useLiveKitVoice } from "../data/liveKitVoice";
 import { VoiceCallUI, type VcLine, type VcPhase } from "../components/VoiceCallUI";
 
@@ -103,22 +103,11 @@ export function VoiceCallLive({ onEnd }: { onEnd: () => void }) {
     const msgs = turnsRef.current;
     if (!msgs.some((m) => m.role === "user")) return;   // nothing real happened
     capturedRef.current = true;
-    const conv = buildVoiceConversation(msgs, elapsedRef.current);
-    addCaptured(profile.id, conv);
-    fetch("/api/analyze", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        customerName: profile.customerName,
-        bookingTerm: profile.bookingTerm,
-        customerNoun: profile.customerNoun,
-        channel: "voice",
-        transcript: conv.transcript.map((t) => ({ speaker: t.speaker, text: t.text })),
-      }),
-    })
-      .then((r) => r.json())
-      .then((d) => { if (Array.isArray(d?.signals) && d.signals.length) patchCaptured(profile.id, conv.id, { signals: d.signals }); })
-      .catch(() => { /* leave signals empty; the report shows an analyzing note */ });
+    /* ⚠️ ONE capture path for BOTH engines — see `captureVoiceCall`. This file used to carry
+       its own copy, and when the outcome and the routing destinations were added to the other
+       one, a real LiveKit call captured fine and stored no outcome, so the two (Voice AI) rows
+       never appeared. */
+    captureVoiceCall(profile, brain, msgs, elapsedRef.current, addCaptured, patchCaptured);
   }
 
   function endCall() {
