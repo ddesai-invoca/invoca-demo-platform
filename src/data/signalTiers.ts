@@ -204,44 +204,94 @@ interface Concept {
   late?: boolean;
 }
 
+/* =============================================================================
+   THE CONCEPTS ARE SALES-VALUE SIGNALS (revised 8/27/2026)
+   -----------------------------------------------------------------------------
+   Reported against Aptive: "I don't like the unmet signals, they don't show a strong missed
+   value. Let's do sales related signals, like pricing, competitors, and anything else that
+   may show the value that they missed out on with just phrase spotting."
+
+   The first set included **Unmet Need Stated** and **Add-On Interest**, and the criticism is
+   right: "this caller has a need" is what EVERY inbound call has, so missing it costs nothing
+   an executive would fund. Each concept now names revenue that walked out of the call
+   undetected:
+
+   | signal | what missing it costs |
+   |---|---|
+   | Price Sensitivity | you cannot see which leads are lost on cost |
+   | Competitor Comparison | competitive losses are invisible in the call data |
+   | `<booking>` Intent | a caller who said yes is logged as a non-conversion |
+   | Upsell Opportunity | expansion revenue nobody attributed to the call |
+   | Urgency Expressed | hot leads are not prioritised or routed differently |
+   | Contract Objection | the objection nobody is coached on |
+   | Decision Maker Absent | the deal risk that explains the follow-up nobody made |
+
+   ⚠️ **"Add-On Interest" BECAME "Upsell Opportunity" — the same detection, named for the
+   money.** Aptive's caller asks "What about mosquitoes? Our backyard was terrible last
+   summer" and the agent parks it for a spring quote: that is a second service line raised by
+   the customer and never counted. The row is identical; the name is what makes the point.
+   ============================================================================= */
 const CONCEPTS: Concept[] = [
   { key: "price", name: () => "Price Sensitivity",
     soft: [/what does .{0,26}run/i, /how much .{0,30}run/i, /run me/i, /usually run/i, /in my range/i,
            /spend a fortune/i, /a month if i can/i, /stay (under|around)/i, /what would that look like/i,
-           /out of pocket/i, /monthly fee/i, /just for me/i],
+           /out of pocket/i, /monthly fee/i, /just for me/i, /keep it (reasonable|manageable)/i,
+           /without breaking/i, /ballpark/i, /what am i looking at/i],
     hard: ["too expensive", "cheaper", "what does it cost", "price", "pricing", "discount", "budget",
            "afford", "how much is", "cost"] },
+  { key: "competitor", name: () => "Competitor Comparison",
+    soft: [/different from the/i, /i keep seeing/i, /hadn'?t thought about/i, /shopping around/i,
+           /other (companies|places|providers|dealers|guys)/i, /compared to/i, /a couple of quotes/i,
+           /someone else (quoted|said|told)/i, /the (last|previous) (company|place|guy)/i,
+           /we were with/i, /down the street/i, /online said/i],
+    hard: ["competitor", "versus", "better than", "another company", "somewhere else"] },
   { key: "intent", name: (b) => `${b} Intent`, late: true,
     soft: [/can we (set|hold|do)/i, /what'?s the next step/i, /come try it out/i, /come out (today|tomorrow)/i,
            /let'?s (do|include)/i, /really need to see/i, /how do i set that up/i, /want to get moving/i,
            /move forward/i, /yes,? please/i, /can i do all of that/i, /wanted to see about/i,
-           /getting rid of them/i, /can someone come out/i],
+           /getting rid of them/i, /can someone come out/i, /i'?d like to get started/i, /sign us up/i],
     hard: ["book", "schedul", "reserve", "sign me up", "enroll", "appointment", "consultation",
            "test drive", "quote", "estimate"] },
-  { key: "addon", name: () => "Add-On Interest",
-    soft: [/come with any/i, /can they .{0,24}too/i, /do i earn/i, /how does .{0,26}work/i, /could i also add/i,
+  { key: "upsell", name: () => "Upsell Opportunity",
+    /* ⚠️ `/how does .* work/` WAS HERE AND IS NOT AN UPSELL. It matched Aptive's "How does that
+       work exactly? Is it just one visit?" — a clarifying question about the plan being bought
+       — and because non-late concepts scan earliest-first it beat the real upsell moment four
+       turns later: "What about mosquitoes? Our backyard was terrible last summer", which is a
+       SECOND service line the caller raises and the agent parks for a spring quote. */
+    soft: [/come with any/i, /can they .{0,24}too/i, /do i earn/i, /could i also add/i,
            /could i finance/i, /putting them together/i, /down the line/i, /is that worth it/i,
-           /anything else i should/i, /do you also offer/i, /does it cover/i],
-    hard: ["add-on", "add on", "bundle", "upgrade", "warranty", "package", "extra"] },
+           /anything else i should/i, /do you also (offer|do|handle)/i, /does it cover/i,
+           /what about .{0,30}\?/i, /while you'?re (here|out)/i],
+    hard: ["add-on", "add on", "bundle", "upgrade", "warranty", "package", "extra", "upsell"] },
   { key: "urgency", name: () => "Urgency Expressed",
     soft: [/today or tomorrow/i, /this afternoon/i, /this week/i, /before we close/i, /right away/i,
            /got a little time/i, /slow for a while/i, /it'?s time for/i, /sooner the better/i,
-           /won'?t be ready/i, /couple of weeks/i, /couple weeks/i],
+           /won'?t be ready/i, /couple of weeks/i, /couple weeks/i, /getting worse/i,
+           /can'?t wait (much|another)/i, /before (the|next) /i],
     hard: ["urgent", "emergency", "asap", "as soon as possible", "right now", "immediately"] },
-  { key: "competitor", name: () => "Competitor Comparison",
-    soft: [/different from the/i, /i keep seeing/i, /hadn'?t thought about/i, /shopping around/i,
-           /other (companies|places|providers|dealers)/i, /compared to/i],
-    hard: ["competitor", "versus", "better than", "another company", "somewhere else"] },
-  { key: "need", name: () => "Unmet Need Stated",
-    soft: [/don'?t have a .{0,24}yet/i, /don'?t have coverage/i, /struggling/i, /worried about/i,
-           /waking up with/i, /been putting off/i, /worn glasses forever/i, /will not drain/i,
-           /won'?t drain/i, /can'?t really/i, /forgets her/i, /just moved/i, /never been seen/i,
-           /looking for a new/i, /this would be my first/i],
-    /* ⚠️ "first time" AND "never used" ARE HARD ON PURPOSE, and it costs two misses. A library
-       plausibly holds "first time caller" / "never used you before", so calling those a miss is
-       the kind of over-claim a prospect catches. Both become honest Silver HITS instead. */
-    hard: ["problem", "complaint", "unhappy", "not working", "broken", "first time", "never used"] },
+  { key: "contract", name: () => "Contract Objection",
+    soft: [/locked in/i, /lock us in/i, /tied (in|down)/i, /cancel any ?time/i, /get out of it/i,
+           /how long am i committing/i, /month to month/i, /no commitment/i, /if it doesn'?t work out/i,
+           /walk away/i],
+    hard: ["contract", "commitment", "cancellation fee", "terms"] },
+  { key: "decider", name: () => "Decision Maker Absent",
+    soft: [/talk to my (wife|husband|partner|spouse)/i, /run it by/i, /check with my/i,
+           /both of us/i, /my (wife|husband|partner) handles/i, /discuss it with/i,
+           /not the one who decides/i],
+    hard: ["decision maker", "authorized", "approval"] },
 ];
+
+/**
+ * Every phrase the concept lists treat as "a keyword library would hold this".
+ *
+ * ⚠️ **EXPORTED SO `scripts/enrich-ci-sales.ts` CANNOT DRIFT FROM THE DERIVATION.** That script
+ * writes new caller turns into a transcript, and its first version policed its own shorter
+ * list — so it happily produced "How is your PRICING stacking up compared to theirs?", a line
+ * this file then classifies as CAUGHT rather than a miss. The enrichment would have been
+ * quietly writing turns the report discounts. One list, two readers: the same reason
+ * `voiceCopy` and `isProspect` moved out of the screens that first needed them.
+ */
+export const CONCEPT_HARD_PHRASES: string[] = [...new Set(CONCEPTS.flatMap((c) => c.hard))];
 
 /** Stems of the prospect's own booking term — any library keyed on it holds these. */
 function bookWords(bookingTerm: string): string[] {
@@ -373,7 +423,12 @@ function derive(profile: CustomerProfile, tier: SignalTier): TierView | null {
         text: `Matched on the AGENT's own scheduling phrase rather than anything the caller said. `
           + `Phrase spotting works here, and it is worth saying so out loud: the gap is intent, `
           + `not detection in general.` }] : []),
-    ].slice(0, 5);
+      /* ⚠️ **EVERY MISS GETS A COMMENT — the cap used to be 5 and it silently dropped one.**
+         It was set to match Health Spring's hand-authored 4, which was fine while three misses
+         was the most anyone had; with the sales-value concepts Goosehead and Mattress Firm hit
+         SIX, and `audit:tiers` caught the sixth unmet row having no talk track behind it. An
+         unexplained row is the one an SE gets asked about. */
+    ].slice(0, 8);
     return { tier, signals, comments };
   }
 
@@ -396,7 +451,7 @@ function derive(profile: CustomerProfile, tier: SignalTier): TierView | null {
     ...(det.length ? [{ time: "0:00", signal: det[0].name,
       text: `Rules based, unchanged between tiers. Worth pointing at when the question is `
         + `"does Gold replace what we already have" — it does not.` }] : []),
-  ].slice(0, 5);
+  ].slice(0, 8);
   return { tier, signals, comments };
 }
 

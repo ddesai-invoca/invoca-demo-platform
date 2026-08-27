@@ -171,6 +171,114 @@ every breakdown rising monotonically (Campaign 14→17→21→25→33%).
 ⚠️ Reading column 1 by mistake is how a first pass at this check mis-scored Product
 Category; the conversion column is index 2 on every breakdown shape.
 
+### The tier misses are SALES VALUE now, and the calls carry it (8/27/2026)
+Reported against Aptive, looking at its Silver rail: "I don't like the unmet signals, they don't
+show a strong missed value. Let's do sales related signals, like pricing, competitors, and
+anything else that may show the value that they missed out on with just phrase spotting. Of
+course fix the transcript as well."
+
+Both halves were real problems, and the second one was the cause.
+
+**1. The concepts are sales-value signals.** The first set included **Unmet Need Stated** and
+**Add-On Interest**, and the criticism is right: "this caller has a need" is what every inbound
+call has, so missing it costs nobody anything. Each concept now names revenue that left the call
+undetected:
+
+| signal | what missing it costs |
+|---|---|
+| Price Sensitivity | you cannot see which leads are lost on cost |
+| Competitor Comparison | competitive losses are invisible in the call data |
+| `<booking>` Intent | a caller who said yes is logged as a non-conversion |
+| Upsell Opportunity | expansion revenue nobody attributed to the call |
+| Urgency Expressed | hot leads are not prioritised or routed |
+| Contract Objection | the objection nobody is coached on |
+| Decision Maker Absent | the deal risk that explains the follow-up nobody made |
+
+⚠️ "Add-On Interest" became **Upsell Opportunity** — the same detection, named for the money.
+Aptive's caller asks "What about mosquitoes? Our backyard was terrible last summer" and the agent
+parks it for a spring quote: a second service line the customer raised and nobody counted.
+⚠️ `/how does .* work/` came OUT of that concept: it matched Aptive's "How does that work
+exactly? Is it just one visit?" — a clarifying question about the plan being bought — and because
+non-late concepts scan earliest-first it beat the real upsell four turns later.
+
+**2. THE CALLS THEMSELVES WERE THE PROBLEM, AND THE PROMPT WAS WHY.** `engine/core.ts` asked for
+"a NEW customer inquires… the agent gathers name + needs, recommends products… and SCHEDULES it",
+so every generated call is a clean happy path: no price question, no competitor, no objection.
+The derivation can only find what the caller actually said, so the strongest available misses were
+the weak ones. The prompt now REQUIRES three moments spoken by the caller — a price or budget
+concern, a competitor comparison, and one of (commitment worry / a second service they raise / a
+deadline / needing to check with a partner) — with worked examples of saying them SIDEWAYS,
+because a caller who says "that's too expensive" hands the keyword library its detection and
+there is no gap left to demonstrate.
+
+**`scripts/enrich-ci-sales.ts` brings the calls that already exist up to that shape.** 12 of 13
+profiles on disk, plus the Aptive demo on the server. Every prospect now shows **3 to 6** sales
+misses, all led by pricing and competitors.
+
+⚠️⚠️ **THE MODEL DESCRIBES THE INSERT AND THE SCRIPT SPLICES IT — and asking for the whole
+transcript back was a mistake this file already warned about.** The first version did exactly
+that, and the Digital Journey column-edit note says why it fails: "asked to emit full cell lists
+and copy the untouched columns verbatim, Haiku rewrote real values… Splicing makes preservation
+STRUCTURAL." Measured on the first run, it dropped **Marriott's "That works for our budget. Can
+we hold that reservation?"**, National Van Lines' price question AND "What's the next step?", and
+**both of Aptive's booking turns** — the exact lines the tier reports quote and the conversion
+comment anchors to. An 85% retention threshold passed all of it, because it counted turns instead
+of weighing them. With insertions the originals survive by construction: verified against
+`git show HEAD:` for all 12, zero dropped.
+
+⚠️ **THE TIMESTAMPS ARE THE SCRIPT'S, NOT THE MODEL'S.** Told to re-time, it paced Marriott at
+~12s a turn and pushed a 2:31 call to **4:10** — outside the 1:30 to 3:00 these are generated at.
+Re-timed at 5 to 7 seconds, varied by index so it is not a metronome and deterministic so a
+re-run produces the same call.
+
+⚠️⚠️ **THE ACCEPTANCE TEST IS THE REPORT, NOT THE WORDING, and three wording proxies were worse
+than the outcome check.** Banning every concept's hard phrases in any new turn failed an AGENT
+line offering to cancel "immediately"; scoping it to caller turns then failed FOUR prospects for
+writing "I'm getting a couple of quotes RIGHT NOW", a COMPETITOR line tripping the URGENCY
+keyword. Neither is a defect. Each candidate transcript now goes through the SAME `tierView` the
+screen renders, and is accepted only when Competitor Comparison actually comes out as a MISS, a
+price moment is on the rail, and there are at least 3 unmet rows. That is what caught a "How is
+your **pricing** stacking up" turn every wording rule had passed.
+⚠️ **`CONCEPT_HARD_PHRASES` is exported from `signalTiers.ts`** so the script cannot drift from
+the derivation — it was policing a shorter local copy.
+
+⚠️ **REQUIRING PRICING *AND* COMPETITOR AS MISSES FOUGHT A CALL THAT ALREADY HAD A PRICE
+QUESTION.** National Van Lines' "How much should I expect this to cost roughly?" contains "cost",
+which a keyword library genuinely CATCHES — and five attempts running, the model destroyed that
+real turn trying to satisfy the check. The prompt now says leave an existing moment alone, and
+the check asks for pricing to be ON THE RAIL (met or unmet) rather than necessarily missed. An
+honest MET row answers the request; a fabricated miss would not.
+
+⚠️⚠️ **HEALTH SPRING IS SKIPPED, AND ENRICHING IT WOULD HAVE BROKEN ITS REPORTS.** Its pair is
+the hand-authored one and its comments quote its transcript verbatim ("I'd like to move forward",
+"I don't have coverage yet"). Rewriting that call would leave quotes on the Comments tab that no
+turn says any more — the fabricated-evidence failure `audit:tiers` exists to catch, introduced by
+the script meant to improve things. It needs no enrichment: `tierView` returns its configured
+lists whatever the transcript holds.
+
+⚠️ **THE COMMENT CAP WENT 5 -> 8.** It was set to match Health Spring's hand-authored 4, which
+was fine while three misses was the most anyone had; with the sales concepts Goosehead and
+Mattress Firm hit SIX, and `audit:tiers` caught the sixth unmet row having no talk track behind
+it. An unexplained row is the one an SE gets asked about.
+
+**Aptive, the demo this started from** — a library demo, so patched through the API round trip
+(pull, splice, PATCH, read back; `updatedAt` bumped by the handler):
+
+| | before | after |
+|---|---|---|
+| Silver unmet | Add-On Interest, Unmet Need Stated | **Price Sensitivity, Competitor Comparison, Service Appointment Intent, Upsell Opportunity** |
+| call | 22 turns, 2:38 | 28 turns, 2:47 |
+
+Its caller now says "what does that Initial Service run? I want to keep it manageable", "I'm
+getting a couple of quotes from other local guys too", and "I'd like to get started, but I should
+probably check with my husband first" — so the intent miss means a real conversion logged as a
+non-conversion.
+
+⚠️ **CONSEQUENCE, STATED: the `aiSummary` on each enriched profile still describes the call as it
+was.** Summaries are selective, so omitting the price and competitor exchange is not wrong, and
+its outcome line and key points are all still true. Regenerate that slice if a summary ever needs
+to mention them.
+
 ### Signal AI Silver / Gold now exists for EVERY prospect, derived (8/27/2026)
 Asked for directly: "do for all prospect and also for all prospect moving forward, of course
 reskinned for that prospect." Health Spring's hand-authored pair (the section below) is kept as
