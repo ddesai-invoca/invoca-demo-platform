@@ -31,12 +31,25 @@ const chat = read("engine/chat.ts");
 const nameOf = (s: string, re: RegExp) => s.match(re)?.[1];
 const tokenName = nameOf(token, /AGENT_NAME\s*=\s*"([^"]+)"/);
 const workerName = nameOf(worker, /agentName:\s*"([^"]+)"/);
-const tomlName = nameOf(toml, /^\s*name\s*=\s*"([^"]+)"/m);
+/* ⚠️ THE DISPATCH NAME IS NOT IN livekit.toml, and asserting that it was is a mistake this
+   check used to make. That file carries the project subdomain and the DEPLOYMENT id, which
+   the CLI assigns; the name a token dispatches by comes from `WorkerOptions({ agentName })`.
+   What still has to agree is the worker and the token, which is checked below. */
+const tomlSubdomain = nameOf(toml, /^\s*subdomain\s*=\s*"([^"]+)"/m);
 check(!!tokenName, "token declares AGENT_NAME");
 check(tokenName === workerName, "worker registers under the token's AGENT_NAME",
   `token=${tokenName} worker=${workerName}`);
-check(tokenName === tomlName, "livekit.toml names the same agent",
-  `token=${tokenName} toml=${tomlName}`);
+check(!!tomlSubdomain, "livekit.toml names the LiveKit project to deploy into",
+  `subdomain=${tomlSubdomain}`);
+/* The container must not run as root and must launch with `start`, or LiveKit Cloud rejects
+   the build / the worker never connects. Both are one-line mistakes with a slow feedback loop. */
+{
+  const df = read("agent/Dockerfile");
+  check(/^USER node$/m.test(df), "the agent image does not run as root");
+  check(/CMD \[.*"start".*\]/.test(df), "the image launches the agent with `start`, not `dev`");
+  check(!/ENV\s+LIVEKIT_/.test(df), "the image bakes in no LiveKit credentials");
+  check(/node:\d+-slim|node:\d+-bookworm|debian|ubuntu/i.test(df), "the base image is glibc, not Alpine");
+}
 
 /* 2. THE METADATA CONTRACT. The token writes `instructions`; the worker refuses a job
       without one. If the token stopped sending it the worker would decline every call. */
@@ -98,5 +111,5 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (15 checks)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (18 checks)");
 process.exit(failures ? 1 : 0);

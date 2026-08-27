@@ -1,0 +1,9 @@
+# ⚠️ node_modules is the point of this file: the build context is capped at 1 GB and the image
+# installs its own dependencies anyway, so shipping the local tree wastes the whole budget.
+node_modules
+npm-debug.log
+.env
+.env.*
+*.log
+livekit.toml
+README.md

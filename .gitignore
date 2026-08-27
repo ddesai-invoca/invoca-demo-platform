@@ -35,3 +35,7 @@ src/data/generated/health-spring-preview.json
 # The LiveKit agent worker has its own dependencies (kept out of the app bundle).
 agent/node_modules/
 agent/package-lock.json
+
+# LiveKit agent secrets handed to `lk agent create --secrets-file` — never commit these.
+agent/*.secrets.env
+agent/secrets.env
