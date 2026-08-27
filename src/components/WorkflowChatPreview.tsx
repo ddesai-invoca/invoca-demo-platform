@@ -70,10 +70,12 @@ function RefreshIcon() {
   );
 }
 
-export function WorkflowChatPreview({ workflowName, wfSlug, onClose }: {
+export function WorkflowChatPreview({ workflowName, wfSlug, minimal, onClose }: {
   workflowName: string;
   wfSlug?: string | null;
   onClose: () => void;
+  /* An empty workflow: greet, classify, hand off. Absent means the configured agent. */
+  minimal?: boolean;
 }) {
   const { profile, profileId } = useProfile();
   const { effectiveData, registerBase, openDrawer, undo, canUndo, readOnly } = useAiAssistant();
@@ -102,7 +104,17 @@ export function WorkflowChatPreview({ workflowName, wfSlug, onClose }: {
   const wf = wfSlug
     ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
     : undefined;
-  const brain = useMemo(() => buildSmsBrain(profile, agentConfig, wf), [profile, agentConfig, wf]);
+  /* ⚠️ **A MINIMAL PREVIEW MUST NOT INHERIT THE CONFIGURED AGENT.** Same reasoning as
+     `useBrain`'s minimal branch on the voice side: the prospect's playbook, questions and
+     offer are all correct for the configured workflow and all wrong for one with no actions.
+     `voiceMinimal` picks the empty-workflow flow in `buildSystem` for either channel. */
+  const brain = useMemo(
+    () => (minimal
+      ? { ...buildSmsBrain(profile, agentConfig, wf), voiceMinimal: true, openingMessage: undefined,
+          customSystem: undefined, playbook: undefined }
+      : buildSmsBrain(profile, agentConfig, wf)),
+    [minimal, profile, agentConfig, wf],
+  );
 
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");

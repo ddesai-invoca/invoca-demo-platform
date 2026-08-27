@@ -106,3 +106,16 @@ export function emptyWorkflowTree(channelLabel: string): WorkflowTreeModel {
     ],
   };
 }
+
+/**
+ * What the agent says first on an empty workflow.
+ *
+ * ⚠️ **HOUSE STYLE, and no invented human name.** `deriveVoiceSpec` opens "Hi, thanks for
+ * calling <name>. I'm here to help. <question>" — this is the same shape with the open
+ * question the user asked for. It introduces the agent as the AI assistant rather than
+ * giving it a first name: the configured specs only have names where an SE typed one.
+ */
+export function emptyWorkflowGreeting(customerName: string): string {
+  return `Hi, thanks for calling ${customerName}. I'm ${customerName}'s AI assistant. `
+    + `How can I help you today?`;
+}

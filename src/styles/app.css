@@ -639,6 +639,43 @@ table.dash-table tbody td { font-size: 14px; color: var(--color-text); padding: 
 .as-menu { text-align: center; }
 .as-menu .material-icons { font-size: 20px; color: var(--color-text-muted); cursor: pointer; }
 .as-status-live { display: inline-block; background: #e3f6e9; color: #1a8a3f; font-size: 12px; font-weight: 600; border-radius: 100px; padding: 3px 12px; }
+/* ⚠️ **`.as-status-draft` ALREADY EXISTED further down this file, and this is where a
+   duplicate went in.** A created workflow must not wear the live pill's green, so a "draft"
+   pill was written here — and the copy at the bottom of the Agent Studio block won on source
+   order, so the value set here (`#E7E9EB`) never applied and the pill rendered `#ECEFF2`.
+   Harmless only because the older rule is the right one. **Grep for a class name before
+   writing it**, the same lesson `.fbb-page` records. The rule that survives lives with the
+   rest of the `.as-` pills. */
+
+/* =============================================================================
+   WorkflowRowMenu (.wrm-) — the kebab + delete on a created workflow's row
+   ============================================================================= */
+.wrm { position: relative; display: inline-flex; align-items: center; }
+.wrm-kebab { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; padding: 0; background: none; border: none; border-radius: 100px; font-size: 20px; color: #5b6577; cursor: pointer; }
+.wrm-kebab:hover { background: rgba(0, 0, 0, .04); }
+/* The menu is a sibling of the kebab and absolutely positioned, which is fine here: unlike
+   the Create Workflow dropdown, no ancestor of these rows is a scroll box. */
+.wrm-menu { position: absolute; top: 26px; right: 0; z-index: 20; display: block; min-width: 160px; padding: 6px 0; background: #fff; border-radius: 3px; box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12); }
+.wrm-item { display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 16px; background: none; border: none; font-family: inherit; font-size: 16px; line-height: 20px; color: #15243e; text-align: left; cursor: pointer; }
+.wrm-item:hover { background: #d4e0fe; }
+.wrm-item .material-icons { font-size: 20px; }
+.wrm-del { color: #b3261e; }
+.wrm-del:hover { background: #fdeceb; }
+/* The confirm. `display: flex` on a span, because this lives inside a <Link> in the sub-nav
+   and a <td> in the table — a <div> in either is invalid markup. */
+.wrm-root { position: fixed; inset: 0; z-index: 3300; display: flex; align-items: center; justify-content: center; }
+.wrm-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .5); }
+.wrm-paper { position: relative; display: flex; flex-direction: column; gap: 12px; width: 420px; max-width: calc(100vw - 32px); padding: 20px; background: #fff; border-radius: 3px; box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12); }
+.wrm-title { font-size: 20px; line-height: 28px; color: #15243e; }
+.wrm-body { font-size: 16px; line-height: 23px; color: #5b6577; }
+.wrm-actions { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+.wrm-cancel, .wrm-confirm { height: 36px; padding: 8px 12px; border-radius: 3px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+.wrm-cancel { background: #fff; color: #2666f9; border: 1px solid rgba(38, 102, 249, .5); }
+.wrm-cancel:hover { background: rgba(38, 102, 249, .04); }
+.wrm-confirm { background: #b3261e; color: #fff; border: 1px solid #b3261e; }
+.wrm-confirm:hover { background: #9a2019; border-color: #9a2019; }
+/* In the sub-nav the kebab replaces the inert glyph, so it keeps that row's own sizing. */
+.ag-wf-kebab .wrm-kebab { width: 20px; height: 20px; font-size: 18px; color: #9aa2ac; }
 .as-status-draft { display: inline-block; background: #eceff2; color: var(--color-text-muted); font-size: 12px; font-weight: 600; border-radius: 100px; padding: 3px 12px; }
 .as-pill { display: inline-block; background: #eceff2; color: var(--color-text-muted); font-size: 12px; border-radius: 100px; padding: 3px 12px; }
 

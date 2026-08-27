@@ -5,6 +5,7 @@ import { VoiceCallUI } from "../components/VoiceCallUI";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "../data/voicePaths";
+import { emptyWorkflowGreeting } from "../data/workflowChrome";
 import { voiceSpecFor, specWithConfig, type VoiceAgentConfig } from "../data/voiceAgentSpec";
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoiceConversation, VoiceTurn } from "../data/schema";
@@ -48,7 +49,23 @@ const METER_MAX = 0.25;       // RMS mapped to a full meter
 
 /* The agent's brain: the same brand rules + Q&A + knowledge + playbook the SMS
    Preview Agent uses, re-skinned per prospect at generation time. */
-export function useBrain() {
+/**
+ * Options for a preview that is not the prospect's configured voice workflow.
+ *
+ * ⚠️ **`scopePath` EXISTS BECAUSE THE KEY WAS HARDCODED.** `useBrain` read
+ * `VOICE_WORKFLOW_SCOPE_PATH` — the built-in Voice page — so a call started from a CREATED
+ * workflow would have read the configured tree and previewed a diagram the SE was not
+ * looking at. That is the same wrong-surface bug as reading the profile instead of the page,
+ * one level up.
+ */
+export interface BrainOpts {
+  /** Which page's registered tree to read. Defaults to the built-in Voice workflow. */
+  scopePath?: string;
+  /** Preview a workflow that has only its starting tree: greet, classify, announce, transfer. */
+  minimal?: boolean;
+}
+
+export function useBrain(opts?: BrainOpts) {
   const { profile, profileId } = useProfile();
   const { effectiveData, registerBase } = useAiAssistant();
 
@@ -89,7 +106,7 @@ export function useBrain() {
 
      Absent a tree (a call started somewhere with no diagram) this is empty and the prompt
      falls back to its original hardcoded flow. */
-  const treeKey = `${profileId}::${VOICE_WORKFLOW_SCOPE_PATH}`;
+  const treeKey = `${profileId}::${opts?.scopePath ?? VOICE_WORKFLOW_SCOPE_PATH}`;
   const effTree = effectiveData(treeKey) as
     (WorkflowTreeModel & { agent?: VoiceAgentConfig }) | undefined;
   /* ⚠️⚠️ **THE AGENT'S CONFIG IS READ FROM THE PAGE, NOT FROM THE PROFILE (8/27/2026).**
@@ -107,6 +124,15 @@ export function useBrain() {
     [profile, effTree?.agent],
   );
   const voicePaths = useMemo(() => treeToVoicePaths(effTree), [effTree]);
+  /* ⚠️⚠️ **A MINIMAL PREVIEW MUST NOT INHERIT THE CONFIGURED AGENT'S FIELDS.** The prospect's
+     spec carries a ZIP allow-list, routing steps, conversation rules and a greeting that asks
+     a two-way booking question — all of it correct for the configured workflow and all of it
+     wrong for one with no actions. Returning the spec fields here and merely adding a flag
+     would leave the prompt carrying a service-area gate for a flow whose whole point is that
+     nothing is configured, which is the self-contradicting prompt this repo has already been
+     bitten by once. So they are dropped at the source, and the greeting is the empty
+     workflow's own. */
+  const minimal = !!opts?.minimal;
   return {
     customerName: profile.customerName,
     industry: profile.industry,
@@ -120,12 +146,13 @@ export function useBrain() {
        the diagram and the drawers would show this prospect's configuration while the agent on
        the phone used the generic derived flow — the two-surfaces-disagreeing failure this
        repo keeps hitting, in its most visible form: a prospect hears the wrong greeting. */
-    serviceZips: spec?.serviceZips,
-    outOfAreaScript: spec?.outOfAreaScript,
-    voiceGreeting: spec?.greeting,
-    voiceQualify: spec?.qualifyQuestion,
-    voiceRules: spec?.rules,
-    voiceSteps: spec?.informSteps,
+    voiceMinimal: minimal,
+    serviceZips: minimal ? undefined : spec?.serviceZips,
+    outOfAreaScript: minimal ? undefined : spec?.outOfAreaScript,
+    voiceGreeting: minimal ? emptyWorkflowGreeting(profile.customerName) : spec?.greeting,
+    voiceQualify: minimal ? undefined : spec?.qualifyQuestion,
+    voiceRules: minimal ? undefined : spec?.rules,
+    voiceSteps: minimal ? undefined : spec?.informSteps,
     /* Per-prospect routing for the voice prompt. Same source the workflow
        diagram uses (voiceRoutingDemo.queues), so the spoken call and the
        diagram name the same teams. Without this the prompt fell back to
@@ -286,10 +313,12 @@ export function buildVoiceConversation(messages: Msg[], durationSecs: number): V
   };
 }
 
-export function VoiceCall({ onEnd }: { onEnd: () => void }) {
+/* `brainOpts` is opt-in: absent means the prospect's configured voice workflow, exactly as
+   before. The created-workflow preview passes its own scope path and `minimal`. */
+export function VoiceCall({ onEnd, brainOpts }: { onEnd: () => void; brainOpts?: BrainOpts }) {
   const { profile } = useProfile();
   const { addCaptured, patchCaptured } = useVoiceCapture();
-  const brain = useBrain();
+  const brain = useBrain(brainOpts);
 
   const [phase, setPhase] = useState<Phase>("connecting");
   const [messages, setMessages] = useState<Msg[]>([]);

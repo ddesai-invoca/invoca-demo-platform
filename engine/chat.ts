@@ -73,6 +73,24 @@ export interface ChatBrain {
      defaulted to absent, so every existing caller keeps the hardcoded flow below. */
   voicePaths?: VoicePath[];
   /**
+   * A workflow that has ONLY its starting tree: greet, classify sales vs support, announce,
+   * transfer. Nothing else.
+   *
+   * ⚠️ **THIS EXISTS BECAUSE PREVIEWING AN EMPTY WORKFLOW MUST PREVIEW *THAT* WORKFLOW.**
+   * Create Workflow builds a flow with no actions configured (see `emptyWorkflowTree`), and
+   * running the prospect's CONFIGURED agent there would have an SE hear the full Marriott
+   * agent — ZIP gate, travel dates, six use cases — answering a diagram that shows none of
+   * it. Asked for directly: "introduce yourself, thank them for calling the prospect, ask
+   * how you can help; then decide sales or support, tell them, and transfer."
+   *
+   * ⚠️ **OPT-IN AND DEFAULTED OFF**, so no configured prospect's prompt can change. The
+   * minimal flow REPLACES the path machinery rather than trimming it: reusing that path
+   * emitted "Ask what they need, in their own words" on top of the opening question (a
+   * second question this flow must not ask) and named the destination as "the team that
+   * handles Sales Inquiry", which is a screen label rather than something to say aloud.
+   */
+  voiceMinimal?: boolean;
+  /**
    * ⚠️ **AN ALLOW-LIST, AND IT INVERTS THE GATE.** Without it the prompt's rule is "12345 is
    * the only out-of-area ZIP, everything else proceeds" — right for a national business, and
    * exactly backwards for one that serves three ZIP codes and turns the rest away. Present
@@ -164,6 +182,18 @@ export function voiceSystemPrompt(brain: ChatBrain): string {
   return buildSystem(brain, true);
 }
 
+/**
+ * The SMS prompt for a brain, so the audit can read it.
+ *
+ * ⚠️ **A NAMED DOOR ONTO `buildSystem(brain, false)`, NOT A SECOND DEFINITION** — the same
+ * reasoning as `voiceSystemPrompt`. The audit needs to assert what an empty workflow's CHAT
+ * preview actually says, and the alternative was reproducing the prompt in the test, which
+ * would then pass while the real one drifted.
+ */
+export function smsSystemPromptForAudit(brain: ChatBrain): string {
+  return buildSystem(brain, false);
+}
+
 function buildSystem(brain: ChatBrain, voice: boolean): string {
   /* A workflow-supplied playbook wins over the generated persona, with our
      channel format rules appended so the phone UI stays renderable. */
@@ -180,6 +210,34 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
   //   • Voice = qualify-and-ROUTE (never sell, quote, or resolve — hand off)
   //   • SMS   = SALES: qualify → quote → book a consultation
   if (voice) return buildVoiceSystem(brain, rules, knowledge);
+
+  /* ⚠️⚠️ **AN EMPTY WORKFLOW BEHAVES THE SAME ON EITHER CHANNEL.** `voiceMinimal` is named
+     for where it started, and the reason it applies here too is the same lie in a different
+     drawer: an SMS workflow that Create Workflow just built has no actions, and the chat
+     preview would otherwise run the prospect's CONFIGURED SMS agent — qualifying questions,
+     an offer, a booking — against a diagram that shows none of it.
+
+     The only channel difference is the wording: this hands the conversation over rather than
+     transferring a call, and it stays inside the SMS format rules. */
+  if (brain.voiceMinimal) {
+    return [
+      `You are ${brain.customerName}'s AI assistant, replying by TEXT MESSAGE${brain.industry ? ` for a ${brain.industry} business` : ""}.`,
+      `This workflow has only its starting tree, so your job is EXACTLY this and nothing more:`,
+      `1. Your first message: thank them for texting ${brain.customerName}, say who you are, and ask how you can help today.`,
+      `2. Read their reply. Ask NOTHING else — no ZIP code, no name, no dates, no reference number, no product questions.`,
+      `3. Decide which ONE of these two teams they need:`,
+      `   - the sales team: a new enquiry — buying, booking, pricing, availability, anything they do not already have.`,
+      `   - the support team: an existing customer — changing or cancelling something, a problem, a charge, anything they already have.`,
+      `   If it is genuinely unclear, ask ONE short clarifying question, then decide.`,
+      `4. Acknowledge what they need in one short sentence, then hand off, ENDING your message with exactly one of these lines, word for word:`,
+      `   "I'm handing you over to the sales team now."`,
+      `   "I'm handing you over to the support team now."`,
+      ``,
+      `NEVER quote prices, availability or promotions, and never try to resolve the issue yourself. Once you have handed off, stop.`,
+      ``,
+      SMS_FORMAT_RULES,
+    ].join("\n");
+  }
 
   // ---- SMS sales / quote / book flow -------------------------------------
   // The playbook is chosen per prospect from research; fall back to sensible
@@ -308,8 +366,35 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
      hardcoded flow rather than emitting an empty CALL FLOW the model would improvise on. */
   const zips = brain.serviceZips ?? [];
   const steps = brain.voiceSteps ?? [];
-  const paths = (brain.voicePaths ?? []).filter((p) => p.intent?.trim() && p.routes?.length);
-  const flow = paths.length ? [
+  const paths = brain.voiceMinimal
+    ? []   /* the minimal flow owns the whole block; see `voiceMinimal` */
+    : (brain.voicePaths ?? []).filter((p) => p.intent?.trim() && p.routes?.length);
+  /* ⚠️ A WORKFLOW WITH NOTHING CONFIGURED, previewed honestly: exactly the four chrome nodes
+     the diagram draws, and not one question more. `SALES_TEAM`/`SUPPORT_TEAM` are the generic
+     names the user asked for, and they are the honest ones — an empty workflow has no
+     configured queue, so naming the prospect's real desks would credit it with routing
+     somebody has not set up. */
+  const minimalFlow = [
+    `CALL FLOW — this workflow has only its starting tree, so the call is EXACTLY this and nothing more:`,
+    brain.voiceGreeting
+      ? `1. OPEN with exactly this line, word for word: "${brain.voiceGreeting}"`
+      : `1. OPEN: thank them for calling ${brain.customerName}, say you are its AI assistant, then ask how you can help today.`,
+    `2. LISTEN to their answer. Ask NOTHING else — no ZIP code, no name, no dates, no reference number, no product questions.`,
+    `3. DECIDE, from what they just said, which ONE of these two teams they need:`,
+    `   • the sales team — a new enquiry: buying, booking, pricing, availability, anything they do not already have.`,
+    `   • the support team — an existing customer: changing or cancelling something, a problem, a charge, anything they already have.`,
+    `   If it is genuinely unclear, ask ONE short clarifying question, then decide. Never ask more than one.`,
+    /* ⚠️ "EXACTLY ONE OF THESE" ON ITS OWN GOT READ AS THE WHOLE UTTERANCE: the agent replied
+       just "Transferring you to the sales team now." to a caller who had explained what they
+       wanted, which is abrupt on a demo call. The acknowledgement is asked for first and the
+       scripted line is named as the ENDING, not the reply. */
+    `4. ACKNOWLEDGE what they need in one short, warm sentence that shows you heard them, then`,
+    `   transfer, ENDING your reply with exactly one of these lines, word for word:`,
+    `   • "Transferring you to the sales team now."`,
+    `   • "Transferring you to the support team now."`,
+    ``,
+  ];
+  const flow = brain.voiceMinimal ? minimalFlow : paths.length ? [
     `CALL FLOW — follow the routing your team configured, adapting naturally to what the caller says:`,
     brain.voiceGreeting
       /* ⚠️ VERBATIM WHEN SCRIPTED. An SE who typed the opening line expects to hear it, not a
@@ -401,11 +486,15 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
     ``,
     ...flow,
-    paths.length ? namingRule(r) : ``,
+    paths.length && !brain.voiceMinimal ? namingRule(r) : ``,
     /* ⚠️ AN EXPLICIT CEILING ON WHAT IT MAY ASK. Listing the flow was not enough on its own —
        the model filled the gaps with sensible-sounding sales questions, which on a routing call
        reads as an interrogation and buries the one thing the demo is showing. */
-    paths.length
+    brain.voiceMinimal
+      /* ⚠️ THE CAP MATTERS MOST HERE. With no fields to collect the model will happily fill
+         the silence with qualifying questions, which is exactly what this flow must not do. */
+      ? `ASK NOTHING BEYOND THE FLOW ABOVE. This workflow has no actions configured yet, so the ONLY thing you ask is the opening question (plus at most one clarifying question). Do NOT ask for a ZIP code, a name, dates, a reference number, a budget, or which product they want. As soon as you can tell sales from support, say which team and transfer.\n`
+      : paths.length
       ? `ASK NOTHING BEYOND THE FLOW ABOVE. The only things you ask are the opening question and the fields listed under the path the caller chooses. Do NOT ask about budget, pricing, schedules, hours, which services they want, when they want to start, or who the care is for. The moment you have the listed fields, confirm and transfer.\n`
       : ``,
     `STYLE & RULES:`,

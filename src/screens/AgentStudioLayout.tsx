@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { CreateWorkflowModal } from "../components/CreateWorkflowModal";
 import { useAgentWorkflows, createdWorkflowPath } from "../data/agentWorkflows";
+import { WorkflowRowMenu } from "../components/WorkflowRowMenu";
 
 /* Shared chrome for the Agent Studio editor sub-pages (Agent Settings,
    Knowledge Sources, …): header + left sub-nav + sticky footer. The active
@@ -25,11 +26,11 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
   const { profile } = useProfile();
   const name = profile.customerName;
   const { pathname } = useLocation();
-  const { items: created, create } = useAgentWorkflows(profile.id);
+  const { items: created, create, remove } = useAgentWorkflows(profile.id);
 
   const workflows = [
-    { name: `${name} - Voice`, to: "/agent-studio/agent/workflow/voice", icon: "call", status: "Live", warn: false },
-    { name: `${name} - SMS`, to: "/agent-studio/agent/workflow/sms", icon: "chat", status: "Live", warn: false },
+    { name: `${name} - Voice`, to: "/agent-studio/agent/workflow/voice", icon: "call", status: "Live", warn: false, id: "" },
+    { name: `${name} - SMS`, to: "/agent-studio/agent/workflow/sms", icon: "chat", status: "Live", warn: false, id: "" },
     // per-prospect extras (Reyes Law's SMS nurture agent) — keep their own label
     ...(profile.reports.extraWorkflows ?? []).map((w) => ({
       name: w.label,
@@ -37,6 +38,7 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
       icon: w.channel === "SMS" ? "chat" : "call",
       status: w.status ?? "Live",
       warn: false,
+      id: "",
     })),
     /* ⚠️ **WORKFLOWS THE SE CREATED, AND THEY LOOK DIFFERENT ON PURPOSE.** Measured by
        comparing the two captures: the newly created row carries MUI's warning triangle in
@@ -49,6 +51,7 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
       icon: w.channel === "SMS" ? "chat" : "call",
       status: "",
       warn: true,
+      id: w.id,
     })),
   ];
 
@@ -100,7 +103,19 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
                     <path d="M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z" />
                   </svg>
                 ) : null}
-                <span className="material-icons ag-wf-menu">more_vert</span>
+                {/* ⚠️ ONLY A CREATED ROW'S KEBAB DOES ANYTHING. The built-ins are DERIVED from
+                    the prospect, so "delete" would either no-op or appear to work and come
+                    back on the next render; they keep the inert kebab the capture shows. */}
+                {w.id ? (
+                  <WorkflowRowMenu name={w.name} className="ag-wf-kebab" onDelete={() => {
+                    remove(w.id);
+                    /* Deleting the one you are LOOKING AT would otherwise strand you on the
+                       not-found state, which reads as the delete having broken something. */
+                    if (pathname === w.to) navigate("/agent-studio/agent/workflow/voice");
+                  }} />
+                ) : (
+                  <span className="material-icons ag-wf-menu">more_vert</span>
+                )}
               </Link>
             ))}
             {/* ⚠️ The modal lives on the SHARED chrome, not on one sub-page, because the

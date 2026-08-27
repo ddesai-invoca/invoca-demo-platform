@@ -5,7 +5,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
    captured-conversation shape must be IDENTICAL across the two engines, or a call
    captured through LiveKit would look different in the Voice CI report from one
    captured the old way. Same one-definition rule `smsBrain.ts` already enforces. */
-import { useBrain, captureVoiceCall } from "./VoiceCall";
+import { useBrain, captureVoiceCall, type BrainOpts } from "./VoiceCall";
 import { useLiveKitVoice } from "../data/liveKitVoice";
 import { VoiceCallUI, type VcLine, type VcPhase } from "../components/VoiceCallUI";
 
@@ -33,12 +33,12 @@ import { VoiceCallUI, type VcLine, type VcPhase } from "../components/VoiceCallU
 
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
-export function VoiceCallLive({ onEnd }: { onEnd: () => void }) {
+export function VoiceCallLive({ onEnd, brainOpts }: { onEnd: () => void; brainOpts?: BrainOpts }) {
   const { profile } = useProfile();
   const { addCaptured, patchCaptured } = useVoiceCapture();
   /* The EFFECTIVE agent config, via the old engine's own hook — so an edit made on the
      Preview Agent page reaches this call exactly as it reached that one. */
-  const brain = useBrain();
+  const brain = useBrain(brainOpts);
 
   const lk = useLiveKitVoice();
   const [elapsed, setElapsed] = useState(0);

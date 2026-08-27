@@ -14,7 +14,8 @@
    ============================================================================= */
 import { readFileSync, readdirSync } from "node:fs";
 import { isStructuralChange } from "../src/data/editGuard";
-import { voiceSystemPrompt } from "../engine/chat";
+import { voiceSystemPrompt, smsSystemPromptForAudit } from "../engine/chat";
+import { emptyWorkflowGreeting } from "../src/data/workflowChrome";
 import { treeToVoicePaths } from "../src/data/voicePaths";
 import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
 import { voiceCopy } from "../src/data/voiceCopy";
@@ -421,8 +422,55 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
 }
 
 /* Self-check: a static audit that silently matches nothing reports success forever. */
+/* ===========================================================================
+   Previewing an EMPTY workflow (8/27/2026)
+   Asked for directly: "the preview workflow on an empty tree should introduce itself, thank
+   them for calling the prospect, ask how it can help; then decide sales or support, tell
+   them, and transfer." These BUILD the real prompt for both channels and read it.
+   =========================================================================== */
+{
+  const min = { customerName: "Marriott", industry: "hotels", rules: [], qaPairs: [], knowledge: [],
+    voiceMinimal: true, voiceGreeting: emptyWorkflowGreeting("Marriott") };
+  const vp = voiceSystemPrompt(min as never);
+  /* ⚠️ **THIS ASSERTED `vp.includes(emptyWorkflowGreeting(...))` AND SO COULD NOT FAIL** —
+     both sides came from the same function, so rewording the greeting to "Please hold."
+     changed the expectation with it and the check stayed green. Caught by breaking it on
+     purpose. It now asserts the three things the request actually named. */
+  check(/thanks for calling Marriott/i.test(vp), "it thanks them for calling the prospect");
+  check(/AI assistant/i.test(vp), "it introduces itself");
+  check(/How can I help you today\?/.test(vp), "it asks how it can help, verbatim");
+  check(/the sales team/.test(vp) && /the support team/.test(vp),
+    "it names both destinations");
+  check(/Transferring you to the sales team now\./.test(vp)
+    && /Transferring you to the support team now\./.test(vp),
+    "it scripts the transfer line for each");
+  /* ⚠️ THE GATE, NOT THE WORD. "ZIP" appears in this prompt's PROHIBITIONS ("no ZIP code"),
+     so matching the bare word would fail on a correct prompt — the same trap that made the
+     earlier `/zip code/i` check match a conversation rule instead of the imperative. */
+  check(!/SERVICE-AREA CHECK/.test(vp) && !/ask for their ZIP code/.test(vp),
+    "no service-area gate reaches a workflow with nothing configured");
+  check(!/PATH: /.test(vp) && !/Collect these/.test(vp),
+    "none of the configured path machinery reaches it");
+  check(/ASK NOTHING BEYOND THE FLOW ABOVE/.test(vp),
+    "the ask-nothing cap still applies");
+
+  /* The SMS side of the same empty workflow: hand off rather than transfer. */
+  const sp = smsSystemPromptForAudit(min);
+  check(/handing you over to the sales team now\./.test(sp)
+    && /handing you over to the support team now\./.test(sp),
+    "the empty workflow's CHAT preview hands off to the same two teams");
+  check(/plain text only/.test(sp), "and it keeps the SMS format rules");
+
+  /* ⚠️ THE FLAG MUST NOT LEAK. Without `voiceMinimal` the configured flow has to come back,
+     or one created workflow would flatten every prospect's agent. */
+  const conf = voiceSystemPrompt({ ...min, voiceMinimal: false,
+    voicePaths: [{ intent: "Sales Inquiry", routes: [{ team: "Reservations", action: "Inform & Route", collect: ["Travel Dates"] }] }] } as never);
+  check(/PATH: SALES INQUIRY/.test(conf) && /Travel Dates/.test(conf),
+    "without the flag the configured path flow is unchanged");
+}
+
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (38 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (49 checks + per-profile)");
 process.exit(failures ? 1 : 0);

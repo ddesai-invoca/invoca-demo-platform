@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useAgentWorkflows } from "../data/agentWorkflows";
 import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, ZERO_TRIGGER, emptyWorkflowTree } from "../data/workflowChrome";
 import { useProfile } from "../data/ProfileContext";
@@ -318,6 +318,7 @@ function UndoIcon() {
 export function AgentWorkflow() {
   const { profile } = useProfile();
   const { channel, id } = useParams();
+  const { pathname } = useLocation();
   /* The route param is a slug, not just sms|voice: extra workflows add their
      own (e.g. "sms-nurture"). Resolve those first so they don't fall through to
      the built-in SMS tree. */
@@ -388,6 +389,8 @@ export function AgentWorkflow() {
      opens the chat drawer that tests the same agent as the Preview Agent screen.
      Until now the SMS button was inert — it rendered and did nothing. */
   const [smsPreview, setSmsPreview] = useState(false);
+  /* Absent for the built-in pages, so their calls behave exactly as before. */
+  const brainOpts = created ? { scopePath: pathname, minimal: true } : undefined;
 
   /* ⚠️⚠️ **THE ROUTE IS GATED, NOT JUST THE SUB-NAV ROW.** With an `:id` that this prospect
      has no workflow for — a pasted or bookmarked link, or a switch to another prospect
@@ -437,16 +440,16 @@ export function AgentWorkflow() {
             extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
                   : "/agent-studio/agent/preview",
             "_blank", "noopener")}>Preview Agent</button>}
-          {/* ⚠️ **DISABLED ON AN EMPTY WORKFLOW, WHICH DEPARTS FROM THE CAPTURE — deliberately,
-              and this is the one measured value not reproduced.** The real button is enabled
-              there. Ours would open a preview of the PROSPECT'S CONFIGURED AGENT, which is a
-              different workflow: an SE would click it on a flow with no actions and hear the
-              full Marriott agent answer. A greyed button reading "nothing configured yet" is
-              the honest state, and it is the same call `SemanticSignalActivate` makes for its
-              uncaptured templates and Verify Labels makes for Train AI Model. */}
-          <button className="wf-preview" disabled={!!created}
-            title={created ? "Add an action to this workflow first" : undefined}
-            onClick={() => { if (created) return; isSms ? setSmsPreview(true) : setVoicePreview(true); }}>
+          {/* ⚠️ **ENABLED, AS MEASURED — and it previews THIS workflow.** It was briefly
+              disabled here, because a preview would have run the prospect's CONFIGURED agent
+              (ZIP gate, travel dates, six use cases) against a diagram that shows none of it.
+              Asked for directly instead: on an empty workflow the agent greets, asks how it
+              can help, decides sales or support from the answer, says which, and transfers.
+              That IS the four chrome nodes — Conversation Start classifies intent, and the two
+              user groups are the destinations — so the preview is honest and the departure
+              from the capture is gone. `brainOpts.minimal` builds that flow. */}
+          <button className="wf-preview"
+            onClick={() => (isSms ? setSmsPreview(true) : setVoicePreview(true))}>
             Preview Workflow
           </button>
         </div>
@@ -455,6 +458,7 @@ export function AgentWorkflow() {
         <WorkflowChatPreview
           workflowName={workflowName}
           wfSlug={extra?.slug}
+          minimal={!!created}
           onClose={() => setSmsPreview(false)}
         />
       )}
@@ -471,9 +475,13 @@ export function AgentWorkflow() {
                  streaming pipeline is the point (the old one took 4.5-6s to speak), but a
                  missing key or a LiveKit outage must not leave an SE with a dead Start Call
                  mid-demo — so the fallback is real and stays until this is proven. */
+              /* ⚠️ **THE SCOPE PATH IS THIS PAGE'S, NOT THE BUILT-IN VOICE PAGE'S.** `useBrain`
+                 hardcoded `VOICE_WORKFLOW_SCOPE_PATH`, so without this a call started here
+                 would read the CONFIGURED tree and preview a diagram the SE is not looking
+                 at — the same wrong-surface bug as reading the profile instead of the page. */
               liveKitReady
-                ? <VoiceCallLive onEnd={() => setInCall(false)} />
-                : <VoiceCall onEnd={() => setInCall(false)} />
+                ? <VoiceCallLive onEnd={() => setInCall(false)} brainOpts={brainOpts} />
+                : <VoiceCall onEnd={() => setInCall(false)} brainOpts={brainOpts} />
             ) : (
               <div className="vp-body">
                 <VoicePreviewIllustration />

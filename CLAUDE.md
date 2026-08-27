@@ -960,12 +960,9 @@ opening Marriott's created workflow while AutoNation was active rendered a full,
 warns about ("gating only the row leaves a bookmarked URL rendering a full dashboard for
 whichever prospect is active"). It renders "Workflow not found" instead.
 
-⚠️ **PREVIEW WORKFLOW IS DISABLED HERE, and it is the ONE measured value not reproduced.** The
-real button is enabled. Ours would open a preview of the PROSPECT'S CONFIGURED AGENT — a
-different workflow — so an SE would click it on a flow with no actions and hear the full
-Marriott agent answer. A greyed button titled "Add an action to this workflow first" is the
-honest state, the same call `SemanticSignalActivate` makes for uncaptured templates and Verify
-Labels makes for Train AI Model.
+✅ **SUPERSEDED — Preview Workflow is ENABLED again, as measured.** It was disabled here
+because a preview would have run the prospect's configured agent; it now previews THIS
+workflow (greet, classify, announce, transfer). See the section above.
 
 ⚠️ **A CREATED WORKFLOW REGISTERS NO `agent` HALF.** The agent config is the prospect's
 configured voice agent (greeting, rules, ZIP allow-list); attaching it here would let an SE
@@ -1015,11 +1012,116 @@ chips, "2 campaigns and 0 forms", enabled preview, no Saved/Undo), the SMS page 
 chips, Preview Agent present) and `/dashboards/marketing` (17 cards, 4px, 5 donuts, zero `wf-`
 leakage). `audit:voice` (38) and `audit:phases` (4) green.
 
-⚠️ **OPEN, and deliberately not guessed: a created workflow does NOT appear in the Agent Studio
-LIST table.** No capture shows that page with one, so its Status / Channel / Campaigns / date
-cells would have to be invented — "Draft" is a plausible status (the editor header uses that
-word) but plausible is not measured. The sub-nav and the page are what was asked for. Raised
-with the user.
+✅ **RESOLVED — a created workflow DOES appear in the Agent Studio list now, and can be
+deleted.** See the section above; the cells are derived rather than invented.
+
+### Previewing an empty workflow, and listing + deleting one (8/27/2026)
+Two follow-ups to what Create builds, both asked for directly.
+
+**1. Preview Workflow on an empty tree.** In the user's words: "introduce yourself, and thank
+them for calling the prospect, and ask them how can you help them today; based on what they say,
+make a decision to transfer them to the sales team or the support team, and let them know that,
+and transfer them." `ChatBrain.voiceMinimal` selects that flow in `buildSystem`;
+`emptyWorkflowGreeting()` is the opening line.
+
+⚠️⚠️ **THIS REMOVED THE ONE MEASURED VALUE THE PREVIOUS COMMIT DID NOT REPRODUCE.** Preview
+Workflow was disabled on a created workflow because a preview would have run the prospect's
+CONFIGURED agent — ZIP gate, travel dates, six use cases — against a diagram showing none of
+it. The requested behaviour IS the four chrome nodes (Conversation Start classifies intent; the
+two user groups are the destinations), so the button is enabled again, as the capture shows, and
+the preview is honest.
+
+⚠️ **IT REPLACES THE PATH MACHINERY RATHER THAN TRIMMING IT.** Routing the empty tree through
+`treeToVoicePaths` + the configured flow emitted "Ask what they need, in their own words" ON TOP
+of the opening question — a second question this flow must not ask — and named the destination
+"the team that handles Sales Inquiry", which is a screen label rather than something to say
+aloud. Reading the BUILT prompt is what showed both.
+
+⚠️ **THE DESTINATIONS ARE GENERIC ON PURPOSE.** "the sales team" / "the support team" are what
+was asked for and also the honest names: an empty workflow has no configured queue, so naming
+the prospect's real desks would credit it with routing nobody has set up.
+
+⚠️ **BOTH CHANNELS, because the modal defaults to SMS.** An empty SMS workflow's Preview
+Workflow opens the CHAT drawer, which builds `buildSmsBrain` — the prospect's configured SMS
+agent, with its playbook, questions and offer. Same lie in a different drawer. `voiceMinimal`
+therefore also selects a minimal SMS flow (it hands the conversation over rather than
+transferring a call, and keeps `SMS_FORMAT_RULES`), and `WorkflowChatPreview` takes a `minimal`
+prop that drops `openingMessage`, `customSystem` and `playbook`.
+
+⚠️⚠️ **`useBrain` HARDCODED THE VOICE PAGE'S SCOPE KEY**, so a call started from a created
+workflow would have read the CONFIGURED tree and previewed a diagram the SE was not looking at
+— the same wrong-surface bug as reading the profile instead of the page, one level up. It takes
+`BrainOpts { scopePath, minimal }` now, threaded through both engines as an optional prop
+defaulted to absent.
+
+⚠️ **A MINIMAL PREVIEW MUST NOT INHERIT THE CONFIGURED FIELDS.** `serviceZips`,
+`outOfAreaScript`, `voiceQualify`, `voiceRules` and `voiceSteps` are dropped at the source
+rather than merely flagged — leaving them would put a service-area gate in a prompt whose whole
+point is that nothing is configured, which is the self-contradicting prompt this file records
+once already.
+
+⚠️ **"EXACTLY ONE OF THESE" GOT READ AS THE WHOLE UTTERANCE.** The agent replied just
+"Transferring you to the sales team now." to a caller who had explained what they wanted, which
+is abrupt on a demo call. Step 4 asks for the acknowledgement FIRST and names the scripted line
+as the ENDING. Heard, not assumed.
+
+**Measured on the real endpoint** (`scripts/empty-workflow-sim.mts`, the sibling of
+`voice-sim.mts`):
+
+| caller | agent |
+|---|---|
+| "looking to book a room in new york for next weekend" | "Great, I can help you with that. **Transferring you to the sales team now.**" |
+| "there's a charge on my card i don't recognise" | "I understand, that sounds frustrating… **Transferring you to the support team now.**" |
+| "hi" → "a question about a stay" → "one i already booked" | one clarifying question, then **support** |
+| SMS: "change the dates on a booking i already have" | "Got it… **I'm handing you over to the support team now.**" |
+
+**2. The created workflow shows in the Agent Studio LIST, and can be deleted.** This was the
+open item at the end of the previous section. Every cell is DERIVED rather than invented: the
+channel is what the modal collected, the date is its own `createdAt`, **"0 Campaigns"** is the
+wording its own trigger node carries, and "Went Live On" is the same "-" the agent row already
+uses for never — because it never has. The one word not read off a capture of that table is the
+status, and **"Draft"** is the product's own (the editor header shows it for this agent).
+
+⚠️ **`.as-status-draft` ALREADY EXISTED IN app.css, and a duplicate went in.** A created
+workflow must not wear the live pill's green, so a draft pill was written — and the older copy
+further down the file won on source order, so the new value never applied and the pill rendered
+`#ECEFF2` instead of `#E7E9EB`. Harmless only because the older rule is the right one.
+**Grep for a class name before writing it**, the lesson `.fbb-page` already records.
+
+⚠️ **ONE `WorkflowRowMenu`, TWO PLACEMENTS** — the list table and the editor's left sub-nav.
+Two copies would drift on the first fix and the symptom would be delete working in one place and
+not the other.
+⚠️ **CREATED ROWS ONLY.** The Voice and SMS rows are DERIVED from the prospect, so deleting one
+would either no-op or appear to work and come back on the next render. They keep the inert kebab
+the capture shows.
+⚠️ **IT CONFIRMS, AND NAMES THE WORKFLOW.** Delete is the one irreversible thing here and in the
+sub-nav the kebab sits INSIDE the row's `<Link>`, one stray click from the row itself — so every
+handler calls `preventDefault` + `stopPropagation`, or opening the menu navigates.
+⚠️ **DELETING THE ONE YOU ARE LOOKING AT navigates to the Voice workflow**, or you land on the
+not-found state, which reads as the delete having broken something.
+
+**`npm run audit:voice` is 49 checks** (was 38). Nine are new and BUILD both prompts: the
+greeting thanks them / introduces itself / asks how it can help · both destinations named · both
+transfer lines scripted · no service-area gate reaches it · none of the path machinery reaches it
+· the ask-nothing cap still applies · the SMS preview hands off to the same two teams and keeps
+its format rules · and **without the flag the configured path flow is unchanged**, so one created
+workflow cannot flatten every prospect's agent.
+⚠️ **TWO OF THEM WERE TAUTOLOGIES AND BREAKING THEM ON PURPOSE IS WHAT FOUND IT.** One asserted
+`prompt.includes(emptyWorkflowGreeting(...))` — both sides from the same function, so rewording
+the greeting to "Please hold." changed the expectation with it and the check stayed green. The
+other looked fine and my PROBE was wrong: it replaced the first occurrence of the transfer line,
+which is in a COMMENT. Re-probed against the real line, it fires.
+⚠️ The gate check matches **`SERVICE-AREA CHECK` / `ask for their ZIP code`, not the word "ZIP"**
+— which appears in this prompt's own prohibitions, so a bare match would fail on a correct
+prompt. Same trap as the earlier `/zip code/i` matching a conversation rule.
+
+Verified with real clicks and typing: Create → the row appears with its warning triangle → the
+page renders the 6-node tree → Preview Workflow opens and behaves as above → the list row reads
+Draft / Voice / Network / 0 Campaigns / its own date / "-" with a working kebab → Delete confirms,
+names the workflow, Cancel is a no-op, Delete removes it from both the list and the sub-nav, and
+deleting the open one lands on the Voice workflow. **The configured previews are untouched**: the
+voice sim still gates and collects Travel Dates, and the built-in SMS chat still opens with
+Marriott's own "AI booking assistant … 9,000+ properties … Bonvoy member rates".
 
 ### Create Workflow: the name + channel modal (measured 8/27/2026)
 `src/components/CreateWorkflowModal.tsx` (`.cwm-`), opened by **Create Workflow** in
