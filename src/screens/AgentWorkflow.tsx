@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useAgentWorkflows } from "../data/agentWorkflows";
+import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, ZERO_TRIGGER, emptyWorkflowTree } from "../data/workflowChrome";
 import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
@@ -74,16 +76,7 @@ function useCaseNodes(cases: VoiceUseCase[], tone: "green" | "orange"): TreePath
    ⚠️ SCOPED TO THE SMS TEMPLATE. The Voice tree's intent nodes still derive from the
    prospect's real queues and carry caller-intent subtitles, because those were measured off
    Invoca's own Voice workflow page. Lock those too only against evidence from that screen. */
-/* ⚠️ RENAMED FROM SMS_* BECAUSE BOTH CHANNELS USE THEM NOW (8/26/2026). The voice tree's
-   intents were the prospect's own queue names until the user confirmed the real Voice page
-   shows these same two words; leaving them called INTENT_SALES on a voice tree reads as a bug and
-   invites someone to "fix" it back. SMS_TRIGGER keeps its name — its wording genuinely names
-   inbound SMS and the voice tree has its own trigger line. */
-const SMS_TRIGGER = "0 Campaigns, 0 Forms, and 0 Inbound SMS";
-const INTENT_SALES = "Sales Inquiry";
-const INTENT_SUPPORT = "Need Support";
-/** The support leaf is "All Support Users", NOT "All Need Support Users". */
-const SUPPORT_LEAF = "All Support Users";
+
 /* The two leaf ACTIONS the product defaults to. Not the prospect's queue: "Route to <queue>"
    was ours, and the real page shows one of a fixed set of agent behaviours here. */
 const LEAF_QUALIFY = "Qualify";
@@ -108,7 +101,7 @@ const SMS_SHAPE: { prospect: string; tree: () => Pick<WorkflowTreeModel, "trigge
   {
     prospect: "comfort keepers",
     tree: () => ({
-      triggeredBy: SMS_TRIGGER,
+      triggeredBy: ZERO_TRIGGER,
       branches: [
         {
           title: INTENT_SALES, icon: "cart", locked: true,
@@ -168,6 +161,7 @@ const SHAPE: Record<string, (c: ReturnType<typeof voiceCopy>) => TreeBranch[] | 
   ],
 };
 
+
 function deriveTree(
   profile: ReturnType<typeof useProfile>["profile"],
   isSms: boolean,
@@ -182,9 +176,9 @@ function deriveTree(
       ...smsShaped };
     return {
       variant: "sms",
-      triggeredBy: SMS_TRIGGER,
+      triggeredBy: ZERO_TRIGGER,
       startLabel: `${channelLabel} · classify intent`,
-      /* Same chrome lock: SMS_TRIGGER is the product's exact wording, so it was
+      /* Same chrome lock: ZERO_TRIGGER is the product's exact wording, so it was
          inconsistent for the AI to be able to rewrite it while the intents were refused. */
       chromeLocked: true,
       branches: [
@@ -300,16 +294,43 @@ function extraTree(
 }
 
 
+/* ⚠️ **BOTH GLYPHS ARE EXTRACTED VERBATIM from the capture's own svg paths**, per the
+   standing use-the-real-icons rule — not Material ligatures that merely look similar. Read
+   off the rendered DOM at 20px with their computed fills: the check is MUI `check_circle` in
+   `#2CBF58` (the palette green, NOT the platform's `#0d7a3e`), the undo is MUI `undo` taking
+   the disabled ink from `currentColor`. */
+function CheckCircle() {
+  return (
+    <svg className="wf-ic20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z" />
+    </svg>
+  );
+}
+
+function UndoIcon() {
+  return (
+    <svg className="wf-ic20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8" />
+    </svg>
+  );
+}
+
 export function AgentWorkflow() {
   const { profile } = useProfile();
-  const { channel } = useParams();
+  const { channel, id } = useParams();
   /* The route param is a slug, not just sms|voice: extra workflows add their
      own (e.g. "sms-nurture"). Resolve those first so they don't fall through to
      the built-in SMS tree. */
   const extra = (profile.reports.extraWorkflows ?? []).find((w) => w.slug === channel);
-  const isSms = extra ? extra.channel === "SMS" : (channel ?? "sms") !== "voice";
-  const channelLabel = extra ? extra.channel : isSms ? "SMS" : "Voice";
-  const workflowName = extra ? extra.label : `${profile.customerName} - ${channelLabel}`;
+  /* A workflow the SE created with the Create Workflow modal. `/workflow/new/:id` is its
+     own route, so `id` is set only here and every other path behaves exactly as before. */
+  const { byId } = useAgentWorkflows(profile.id);
+  const created = id ? byId(id) : undefined;
+  const isSms = created ? created.channel === "SMS"
+    : extra ? extra.channel === "SMS" : (channel ?? "sms") !== "voice";
+  const channelLabel = created ? created.channel : extra ? extra.channel : isSms ? "SMS" : "Voice";
+  const workflowName = created ? created.name
+    : extra ? extra.label : `${profile.customerName} - ${channelLabel}`;
 
   /* The diagram is this page's DATA. Registering it as the AI scope is what lets
      the drawer rename a node, add a branch or remove one; the renderer recomputes
@@ -336,15 +357,23 @@ export function AgentWorkflow() {
      allow-list, the routing steps) lives under `agent`. A `segments` copy under `agent` would
      duplicate the path nodes and the first edit to either would desync the diagram from the
      prompt. */
+  /* ⚠️ **A CREATED WORKFLOW REGISTERS NO `agent` HALF, and that is deliberate.** The agent
+     config belongs to the prospect's CONFIGURED voice agent — greeting, rules, ZIP
+     allow-list. Attaching it here would let an SE edit the live agent's greeting from a
+     workflow that has no actions, and the Ask AI drawer would promise "Build this voice
+     agent" on a page whose whole state is that nothing is built. It gets the tree only, so
+     the drawer offers "Change this workflow" instead. */
   const baseAgent = useMemo(
-    () => (isSms || extra ? null : voiceSpecFor(profile)),
-    [isSms, extra, profile],
+    () => (isSms || extra || created ? null : voiceSpecFor(profile)),
+    [isSms, extra, created, profile],
   );
   const baseTree = useMemo(() => ({
     title: `${workflowName} workflow`,
-    ...(extra ? extraTree(extra) : deriveTree(profile, isSms, channelLabel)),
+    ...(created ? emptyWorkflowTree(channelLabel)
+       : extra ? extraTree(extra)
+       : deriveTree(profile, isSms, channelLabel)),
     ...(baseAgent ? { agent: agentConfigOf(baseAgent) } : {}),
-  }), [extra, profile, isSms, channelLabel, workflowName, baseAgent]);
+  }), [created, extra, profile, isSms, channelLabel, workflowName, baseAgent]);
   /* This page's sparkle edits the DIAGRAM, and only the diagram. The SMS agent is a
      different thing living in a different scope, and it has its own sparkle inside
      the Preview Workflow chat. */
@@ -360,16 +389,66 @@ export function AgentWorkflow() {
      Until now the SMS button was inert — it rendered and did nothing. */
   const [smsPreview, setSmsPreview] = useState(false);
 
+  /* ⚠️⚠️ **THE ROUTE IS GATED, NOT JUST THE SUB-NAV ROW.** With an `:id` that this prospect
+     has no workflow for — a pasted or bookmarked link, or a switch to another prospect
+     mid-demo — `created` is undefined, `channel` is undefined too, and `isSms` defaults to
+     TRUE: measured, opening Marriott's created workflow while AutoNation was active rendered
+     a complete, plausible **"Agent Workflow: AutoNation - SMS"**. A page that looks
+     legitimate and is not what the URL asked for is exactly the failure the AI-Conversion
+     dashboard's note describes ("gating only the row leaves a bookmarked URL rendering a
+     full dashboard for whichever prospect is active"), and it is the same silent fall-through
+     as the stale-store bug two commits back. It fails closed instead. */
+  if (id && !created) {
+    return (
+      <AgentStudioLayout>
+        <div className="wf-top"><h2 className="wf-title">Workflow not found</h2></div>
+        <p className="wf-missing">
+          This workflow does not belong to {profile.customerName}.{" "}
+          <Link to="/agent-studio/agent/workflow/voice">Open the Voice workflow</Link> instead.
+        </p>
+      </AgentStudioLayout>
+    );
+  }
+
   return (
     <AgentStudioLayout>
       <div className="wf-top">
-        <h2 className="wf-title">Agent Workflow: {workflowName}</h2>
+        {/* ⚠️ A CREATED WORKFLOW IS TITLED BY ITS OWN NAME, with no "Agent Workflow:" prefix —
+            that is what the capture's h2 reads (20/28 `#15243E`). The two built-in pages keep
+            their prefix: dropping it there would change screens nobody asked about, and it is
+            flagged for the user rather than done quietly. */}
+        <h2 className="wf-title">{created ? workflowName : `Agent Workflow: ${workflowName}`}</h2>
         <div className="wf-top-actions">
-          {isSms && <button className="wf-preview wf-preview-agent" onClick={() => window.open(
+          {/* ⚠️ **`Saved` AND `Undo` ARE MEASURED, AND THEY ARE DIFFERENT KINDS OF THING.**
+              Comparing the two captures settles it: the disabled `Undo` is on BOTH, so it is
+              permanent workflow-page chrome, while `Saved` appears ONLY on the freshly created
+              one — a transient state from the create that just happened. Both are rendered on
+              this page only; adding `Undo` to the two built-in pages would change them, so
+              that is raised separately rather than done here. */}
+          {created && (
+            <>
+              <span className="wf-saved"><CheckCircle />Saved</span>
+              <button className="wf-undo" disabled title="Nothing to undo yet">
+                <UndoIcon />Undo
+              </button>
+            </>
+          )}
+          {isSms && !created && <button className="wf-preview wf-preview-agent" onClick={() => window.open(
             extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
                   : "/agent-studio/agent/preview",
             "_blank", "noopener")}>Preview Agent</button>}
-          <button className="wf-preview" onClick={() => isSms ? setSmsPreview(true) : setVoicePreview(true)}>Preview Workflow</button>
+          {/* ⚠️ **DISABLED ON AN EMPTY WORKFLOW, WHICH DEPARTS FROM THE CAPTURE — deliberately,
+              and this is the one measured value not reproduced.** The real button is enabled
+              there. Ours would open a preview of the PROSPECT'S CONFIGURED AGENT, which is a
+              different workflow: an SE would click it on a flow with no actions and hear the
+              full Marriott agent answer. A greyed button reading "nothing configured yet" is
+              the honest state, and it is the same call `SemanticSignalActivate` makes for its
+              uncaptured templates and Verify Labels makes for Train AI Model. */}
+          <button className="wf-preview" disabled={!!created}
+            title={created ? "Add an action to this workflow first" : undefined}
+            onClick={() => { if (created) return; isSms ? setSmsPreview(true) : setVoicePreview(true); }}>
+            Preview Workflow
+          </button>
         </div>
       </div>
       {isSms && smsPreview && (

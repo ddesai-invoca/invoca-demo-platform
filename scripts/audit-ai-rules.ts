@@ -14,6 +14,7 @@ import path from "node:path";
 import { isLockedEdit } from "../src/data/editGuard.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { collectNames } from "../src/data/workflowDrawers.ts";
+import { emptyWorkflowTree, ZERO_TRIGGER } from "../src/data/workflowChrome.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -244,9 +245,54 @@ console.log("\nThe SMS workflow template's node names are locked");
   isLockedEdit({ triggeredBy: "x" }, "triggeredBy")
     ? bad("isLockedEdit refuses triggeredBy even WITHOUT chromeLocked — too broad")
     : ok("an unlocked tree keeps its trigger line editable");
-  wf.includes('SMS_TRIGGER = "0 Campaigns, 0 Forms, and 0 Inbound SMS"')
-    ? ok("the trigger line names inbound SMS")
-    : bad("the SMS trigger line is not the product's wording");
+  /* ⚠️ THE CHECK IS ABOUT THE WORDING, AND IT READS THE VALUE NOW RATHER THAN THE SOURCE.
+     It used to grep AgentWorkflow.tsx for `SMS_TRIGGER = "…"`; the constant was renamed
+     `ZERO_TRIGGER` (two captures show the same line on a VOICE workflow) and moved to
+     `workflowChrome.ts`, which Node can import — so the check asserts the STRING itself and
+     no longer cares where it lives or what it is called. */
+  ZERO_TRIGGER === "0 Campaigns, 0 Forms, and 0 Inbound SMS"
+    ? ok("the trigger line names inbound SMS, and is one constant for both channels")
+    : bad(`the trigger line is not the product's wording: ${ZERO_TRIGGER}`);
+
+  /* ===========================================================================
+     What Create Workflow builds: the EMPTY workflow (measured 8/27/2026)
+     ⚠️ FUNCTIONAL, NOT GREPPED — these build the real tree and read it, because a text
+     match cannot tell you `emptyWorkflowTree` is what the page actually renders.
+     =========================================================================== */
+  {
+    const t = emptyWorkflowTree("Voice");
+    const leaves = t.branches.flatMap((b) => b.leaves);
+    t.branches.length === 2 && leaves.length === 2
+      ? ok("the empty workflow has exactly the four chrome nodes and nothing else")
+      : bad(`the empty workflow is not the bare tree (${t.branches.length} branches, ${leaves.length} leaves)`);
+    /* The whole point of the empty state: an unconfigured leaf OFFERS an action rather
+       than naming one, and advertises no fields it was never told to collect. */
+    leaves.every((l) => l.addAction && !l.action && !l.chips?.length)
+      ? ok("its user-group leaves offer + Add action, with no action text and no pills")
+      : bad("an empty user-group leaf carries an action or pills it cannot have");
+    /* A tone is the ACTION's colour; with no action there is no hue to paint. */
+    leaves.every((l) => !l.tone)
+      ? ok("its leaves are untinted, since a node takes its colour from its action")
+      : bad("an empty leaf is tinted by an action nobody configured");
+    /* Describing the caller is configuration the SE has not done yet. */
+    t.branches.every((b) => !b.subtitle)
+      ? ok("its intent nodes carry no caller-intent subtitle")
+      : bad("an empty intent node describes a caller the SE never described");
+    t.triggeredBy === "0 Campaigns, 0 Forms, and 0 Inbound SMS"
+      ? ok("its trigger line is the product's all-zero wording")
+      : bad(`its trigger line is not the measured wording: ${t.triggeredBy}`);
+    /* Same lock as a configured tree — these four names are the product's either way. */
+    t.chromeLocked && t.branches.every((b) => b.locked) && leaves.every((l) => l.locked)
+      && isLockedEdit({ ...t, branches: t.branches }, "branches.0.title")
+      ? ok("the empty workflow's chrome is locked, and isLockedEdit refuses renaming it")
+      : bad("the empty workflow's chrome names are AI-editable");
+  }
+  /* The route must FAIL CLOSED on an id this prospect has no workflow for: without the
+     guard, `isSms` defaults true and a pasted link renders a full SMS page for whichever
+     prospect is active. Verified in the browser; pinned here so it cannot be deleted. */
+  /if \(id && !created\)/.test(wf)
+    ? ok("an unresolvable created-workflow id renders the not-found state")
+    : bad("a created-workflow id from another prospect falls through to the SMS tree");
 
   /* Locked must be ENFORCED, not merely declared — otherwise a rename is a silent no-op. */
   guard.includes("export function isLockedEdit")

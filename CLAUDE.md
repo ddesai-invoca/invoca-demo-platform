@@ -904,6 +904,123 @@ broken code. Rewritten against a seeded queue, it fails loudly and prints the du
 `/api/chat`, the transcript through `/api/analyze`, then both artifacts built exactly as My
 Reports builds them, printing the department three times over so a mismatch is obvious.
 
+### What Create Workflow BUILDS: an empty workflow (measured 8/27/2026)
+The open question at the end of the modal section is closed, by the user and by a capture taken
+straight after creating one (`/networks/2751/ai_agents/edit/169/workflow/550`, kept at
+`reference/agent-workflow/create-workflow-built.html`). In their words: **"an empty template
+with just the starting tree without anything."**
+
+`src/data/agentWorkflows.ts` stores them per prospect; `emptyWorkflowTree()` in
+`src/data/workflowChrome.ts` is the tree; `/agent-studio/agent/workflow/new/:id` renders it.
+
+| node | measured |
+|---|---|
+| Triggered by | **"0 Campaigns, 0 Forms, and 0 Inbound SMS"**, 248 x 90 |
+| Conversation Start | `<channel> · classify intent`, 248 x 66, ground `#D4E0FE` |
+| Sales Inquiry / Need Support | title ONLY — **no caller-intent subtitle**, 248 x 46 |
+| All Sales Inquiry / Support Users | title + **"+ Add action"** (`400 16/20` `#2666F9`, no icon), 248 x 72, **no pills** |
+| the new sub-nav row | channel icon, the typed name, **MUI warning `#FF7045` 20px**, kebab, **no status pill** |
+| header | the workflow NAME alone (20/28), then **✓ Saved** (`#2CBF58`) · **Undo disabled** · Preview Workflow |
+
+The canvas is React Flow at scale 0.78125, so its 193.75px nodes are the **248px** our voice
+tree already draws — the geometry needed no change, only the contents.
+
+⚠️⚠️ **THE WARNING TRIANGLE MEANS "NOTHING CONFIGURED", AND TWO CAPTURES PROVE IT** — 1
+occurrence on the new row, **0** on the configured workflow in the same account. Same trick
+settled two more things in one grep: the disabled **Undo** is on BOTH captures (permanent
+workflow-page chrome), while **Saved** is only on the new one (a transient state from the
+create that just happened) — and `Go Live` is disabled in BOTH, so its greyness is that
+agent's own state and **ours was correctly left alone**. A comparison stopped a change that
+looked obviously right.
+
+⚠️⚠️ **A NODE IS TINTED BY ITS ACTION, so an empty leaf is WHITE.** The two captures give the
+whole system: a configured leaf takes its action's hue at 8% with a matching 1px border and a
+**5px LEFT edge** — Qualify **lilac `#D0C1F2`**, Inform & Route **teal `#33E5C9`**, Support &
+Escalate **orange `#FF7045`** — and an empty leaf is white with 1px `#E7E9EB` and a GREY 5px
+left edge. With no action there is no hue, so the first build's green/orange tints were
+colouring a route nobody had configured. **Our configured tree's own green/orange and its
+missing 5px edge come from an older capture of a different page and are deliberately
+untouched** — raised with the user rather than rewritten here.
+
+⚠️⚠️ **THE STALE-STORE BUG, AND ITS SYMPTOM POINTED NOWHERE NEAR ITS CAUSE.** `AgentStudioLayout`
+and `AgentWorkflow` each call `useAgentWorkflows`, so there are TWO instances of that state.
+Create wrote localStorage and updated the LAYOUT's copy; the page was already mounted, its copy
+stayed stale, `byId` found nothing, and the created-workflow branch fell through to the SMS
+default — so creating a **Voice** workflow rendered a complete **"Agent Workflow: Marriott -
+SMS"** while the URL, the store and the highlighted row were all correct. **The `storage` event
+is deliberately not delivered to the tab that wrote it**, so the cross-tab listener could never
+have covered this. Writes now notify every mounted hook directly and the listener stays for
+other tabs. Same shape as the two-voice-engines bug: two copies of one thing, working
+separately until one had to hear about a change.
+
+⚠️⚠️ **THE ROUTE FAILS CLOSED, NOT JUST THE ROW.** With an `:id` this prospect has no workflow
+for, `created` is undefined, `channel` is undefined too, and `isSms` defaults TRUE: measured,
+opening Marriott's created workflow while AutoNation was active rendered a full, plausible
+**"Agent Workflow: AutoNation - SMS"**. That is exactly what the AI-Conversion dashboard's note
+warns about ("gating only the row leaves a bookmarked URL rendering a full dashboard for
+whichever prospect is active"). It renders "Workflow not found" instead.
+
+⚠️ **PREVIEW WORKFLOW IS DISABLED HERE, and it is the ONE measured value not reproduced.** The
+real button is enabled. Ours would open a preview of the PROSPECT'S CONFIGURED AGENT — a
+different workflow — so an SE would click it on a flow with no actions and hear the full
+Marriott agent answer. A greyed button titled "Add an action to this workflow first" is the
+honest state, the same call `SemanticSignalActivate` makes for uncaptured templates and Verify
+Labels makes for Train AI Model.
+
+⚠️ **A CREATED WORKFLOW REGISTERS NO `agent` HALF.** The agent config is the prospect's
+configured voice agent (greeting, rules, ZIP allow-list); attaching it here would let an SE
+edit the live agent's greeting from a workflow with no actions, and the Ask AI drawer would
+promise "Build this voice agent" on a page whose whole state is that nothing is built. It gets
+the tree only, so the drawer offers "Change this workflow" — and the scope key carries the id,
+so each created workflow has its own edits and undo stack.
+
+⚠️ **THE TITLE IS THE WORKFLOW NAME ALONE**, per the capture's h2; the two built-in pages keep
+their "Agent Workflow: " prefix because dropping it there would change screens nobody asked
+about. Same reasoning for not adding the (permanent, measured) `Undo` to those pages. Both
+flagged for the user.
+
+⚠️ **`ZERO_TRIGGER` WAS `SMS_TRIGGER`, AND IT IS NOT SMS-SPECIFIC.** Both captures carry that
+line on a VOICE workflow — the configured one as "**1 Campaign**, 0 Forms, and 0 Inbound SMS",
+singular at one. A second constant was written for the empty tree before this was noticed, with
+a byte-identical value; **one field copying another is the common cause of three separate silent
+bugs in this file**, so there is one constant and both callers use it. The configured voice
+tree still reads "2 campaigns and 0 forms" from an older capture and is left alone.
+
+⚠️ **THE CHROME CONSTANTS AND THE EMPTY TREE MOVED TO `src/data/workflowChrome.ts` SO NODE CAN
+IMPORT THEM.** `AgentWorkflow.tsx` reaches `profiles.ts` and its `import.meta.glob`, a
+Vite-only builtin, so the audit could not import anything from that screen and its checks had
+to grep source. Now the empty tree is BUILT and READ by the audit. That distinction has already
+mattered twice here: a grep passed against `if (false && CHROME_KEYS.has(path))`, and another
+matched a conversation RULE rather than the imperative it was written for. Values unchanged.
+
+⚠️ **`TreeLeaf.addAction` IS OPT-IN, defaulted off**, like `actionIcon` and `warn` — every
+existing diagram is byte-identical. ⚠️ And `.wf-leaf-add` is written **`.wf-leaf .wf-leaf-add`
+(0,2,0)**: as a bare class it TIES with `.wf-leaf-action` and loses on source order, so the
+affordance rendered `rgb(52,58,64)` while the rule plainly said blue — the same tie
+`.ts-tablewrap .ts-table` exists to win.
+
+**`npm run audit:ai` gained 7 checks, and they BUILD the tree rather than grepping for it:**
+four chrome nodes and nothing else · leaves offer "+ Add action" with no action text and no
+pills · leaves untinted · intents carry no subtitle · the all-zero trigger wording · the chrome
+locked AND `isLockedEdit` refusing a rename · the not-found guard present. **Each was verified
+to FIRE on its own broken shape** (a third branch, pills, a tint, a subtitle, reworded trigger,
+`chromeLocked` dropped, guard removed) and to go green again.
+
+Verified end to end with real clicks and typing: Create stores the workflow, the row appears
+with its warning triangle and no status pill, the page renders the 6-node tree with 2 blue
+affordances / 0 pills / white leaves, `Saved` shows, `Undo` and `Preview Workflow` are disabled.
+Per prospect: AutoNation shows only its two rows and Marriott's workflow does not leak, and
+pasting its id there renders "Workflow not found". Untouched: the Voice page (11 nodes, 13
+chips, "2 campaigns and 0 forms", enabled preview, no Saved/Undo), the SMS page (6 nodes, 2
+chips, Preview Agent present) and `/dashboards/marketing` (17 cards, 4px, 5 donuts, zero `wf-`
+leakage). `audit:voice` (38) and `audit:phases` (4) green.
+
+⚠️ **OPEN, and deliberately not guessed: a created workflow does NOT appear in the Agent Studio
+LIST table.** No capture shows that page with one, so its Status / Channel / Campaigns / date
+cells would have to be invented — "Draft" is a plausible status (the editor header uses that
+word) but plausible is not measured. The sub-nav and the page are what was asked for. Raised
+with the user.
+
 ### Create Workflow: the name + channel modal (measured 8/27/2026)
 `src/components/CreateWorkflowModal.tsx` (`.cwm-`), opened by **Create Workflow** in
 `AgentStudioLayout`'s left sub-nav. From a SingleFile capture saved with the modal OPEN

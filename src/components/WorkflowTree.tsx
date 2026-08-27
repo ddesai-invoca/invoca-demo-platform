@@ -68,6 +68,16 @@ export interface TreeLeaf {
   actionIcon?: "phone" | "headset" | "altRoute" | "cart";
   /** Draws MUI's warning triangle after the action text. */
   warn?: boolean;
+  /**
+   * Renders the action row as the product's blue **"+ Add action"** affordance instead of a
+   * configured action.
+   *
+   * ⚠️ **OPT-IN, defaulted off, so every existing diagram is byte-identical** — the same rule
+   * `actionIcon` and `warn` follow. It is what a leaf with nothing configured shows on a
+   * freshly created workflow: measured `400 16px/20px` `#2666F9` with NO icon, where a
+   * configured leaf carries an icon and its action text.
+   */
+  addAction?: boolean;
 }
 
 export interface TreeBranch {
@@ -569,11 +579,16 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
               ref={(el) => { leafRefs.current[`${s.branch}-${s.leaf}`] = el; }}
               style={{ left: leafCx(s.branch, s.leaf) - g.nodeW / 2, top: g.leaf, width: g.nodeW }}>
               <div className="wf-leaf-title">{leaf.title}</div>
-              <div className="wf-leaf-action">
-                <VIcon name={leaf.actionIcon ?? (leaf.tone === "orange" ? "headset" : "altRoute")} />
-                {leaf.action}
-                {leaf.warn ? <VIcon name="warning" /> : null}
-              </div>
+              {leaf.addAction ? (
+                /* An unconfigured leaf: the affordance, not an action. No icon in the capture. */
+                <div className="wf-leaf-action wf-leaf-add">+ Add action</div>
+              ) : (
+                <div className="wf-leaf-action">
+                  <VIcon name={leaf.actionIcon ?? (leaf.tone === "orange" ? "headset" : "altRoute")} />
+                  {leaf.action}
+                  {leaf.warn ? <VIcon name="warning" /> : null}
+                </div>
+              )}
               {leaf.chips?.length ? (
                 <div className="wf-chips">
                   {leaf.chips.map((c, ci) => <span className="wf-chip" key={`${c}-${ci}`}>{c}</span>)}

@@ -2,6 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { CreateWorkflowModal } from "../components/CreateWorkflowModal";
+import { useAgentWorkflows, createdWorkflowPath } from "../data/agentWorkflows";
 
 /* Shared chrome for the Agent Studio editor sub-pages (Agent Settings,
    Knowledge Sources, …): header + left sub-nav + sticky footer. The active
@@ -24,13 +25,30 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
   const { profile } = useProfile();
   const name = profile.customerName;
   const { pathname } = useLocation();
+  const { items: created, create } = useAgentWorkflows(profile.id);
 
   const workflows = [
-    { name: `${name} - Voice`, channel: "voice", status: "Live" },
-    { name: `${name} - SMS`, channel: "sms", status: "Live" },
+    { name: `${name} - Voice`, to: "/agent-studio/agent/workflow/voice", icon: "call", status: "Live", warn: false },
+    { name: `${name} - SMS`, to: "/agent-studio/agent/workflow/sms", icon: "chat", status: "Live", warn: false },
     // per-prospect extras (Reyes Law's SMS nurture agent) — keep their own label
     ...(profile.reports.extraWorkflows ?? []).map((w) => ({
-      name: w.label, channel: w.slug, status: w.status ?? "Live",
+      name: w.label,
+      to: `/agent-studio/agent/workflow/${w.slug}`,
+      icon: w.channel === "SMS" ? "chat" : "call",
+      status: w.status ?? "Live",
+      warn: false,
+    })),
+    /* ⚠️ **WORKFLOWS THE SE CREATED, AND THEY LOOK DIFFERENT ON PURPOSE.** Measured by
+       comparing the two captures: the newly created row carries MUI's warning triangle in
+       `#FF7045` and the configured row does not (1 occurrence against 0), so the triangle
+       means "this workflow has nothing configured" rather than being decoration. They also
+       carry NO status pill — nothing is live about an empty flow. */
+    ...created.map((w) => ({
+      name: w.name,
+      to: createdWorkflowPath(w.id),
+      icon: w.channel === "SMS" ? "chat" : "call",
+      status: "",
+      warn: true,
     })),
   ];
 
@@ -71,17 +89,20 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
             <span>Agent Workflows</span>
           </button>
           <div className="ag-wf-list">
-            {workflows.map((w) => {
-              const to = `/agent-studio/agent/workflow/${w.channel}`;
-              return (
-                <Link to={to} className={"ag-wf" + (pathname === to ? " active" : "")} key={w.name}>
-                  <span className="material-icons ag-wf-ic">{w.channel === "voice" ? "call" : "chat"}</span>
-                  <span className="ag-wf-name">{w.name}</span>
-                  <span className="ag-wf-status">{w.status}</span>
-                  <span className="material-icons ag-wf-menu">more_vert</span>
-                </Link>
-              );
-            })}
+            {workflows.map((w) => (
+              <Link to={w.to} className={"ag-wf" + (pathname === w.to ? " active" : "")} key={w.to}>
+                <span className="material-icons ag-wf-ic">{w.icon}</span>
+                <span className="ag-wf-name">{w.name}</span>
+                {w.status ? <span className="ag-wf-status">{w.status}</span> : null}
+                {w.warn ? (
+                  /* Extracted verbatim from the capture (MUI `warning`, `#FF7045`, 20px). */
+                  <svg className="ag-wf-warn" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z" />
+                  </svg>
+                ) : null}
+                <span className="material-icons ag-wf-menu">more_vert</span>
+              </Link>
+            ))}
             {/* ⚠️ The modal lives on the SHARED chrome, not on one sub-page, because the
                 sub-nav that carries this button is shared — the real page offers it from every
                 Agent Studio screen. */}
@@ -94,17 +115,18 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
         <section className="ag-content">{children}</section>
       </div>
 
-      {/* ⚠️ **WHAT CREATE *BUILDS* IS UNMEASURED, so it does the one true thing it can.** The
-          capture shows the modal and nothing after it, and this app derives exactly one workflow
-          per channel — so Create opens the chosen channel's workflow rather than inventing a
-          third one under the typed name and leaving an SE with a row that goes nowhere. Same
-          call the Dashboard Configuration drawer makes about its own Save. */}
+      {/* ⚠️ **WHAT CREATE BUILDS IS NOW MEASURED (8/27/2026): an EMPTY workflow.** A capture
+          taken straight after creating one shows a new sub-nav row carrying the typed name and
+          a page holding only the four chrome nodes, its two user-group leaves offering
+          "+ Add action". It used to navigate to the chosen channel's EXISTING workflow and
+          discard the name — faithful to the modal and dishonest about the name, since an SE
+          who typed "Marriott - After Hours" landed on "Marriott - Voice". */}
       <CreateWorkflowModal
         open={createOpen}
         onClose={() => setCreateOpen(false)}
-        onCreate={(_name, channel) => {
+        onCreate={(wfName, channel) => {
           setCreateOpen(false);
-          navigate(`/agent-studio/agent/workflow/${channel.toLowerCase()}`);
+          navigate(createdWorkflowPath(create(wfName, channel).id));
         }}
       />
 

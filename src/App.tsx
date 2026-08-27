@@ -176,6 +176,9 @@ export default function App() {
             <Route path="/agent-studio/agent/knowledge" element={<KnowledgeSources />} />
             <Route path="/agent-studio/agent/recommendations" element={<AiRecommendations />} />
             <Route path="/agent-studio/agent/workflow/:channel" element={<AgentWorkflow />} />
+            {/* A workflow the SE created with the Create Workflow modal. Its own path segment,
+                so `:channel` can never swallow it and the two built-in pages are unaffected. */}
+            <Route path="/agent-studio/agent/workflow/new/:id" element={<AgentWorkflow />} />
             <Route path="/dashboards/marketing" element={<MarketingDashboard />} />
             <Route path="/dashboards/marketing-ops" element={<MarketingOpsDashboard />} />
             <Route path="/dashboards/ai-agent-conversion" element={<AiAgentConversionDashboard />} />

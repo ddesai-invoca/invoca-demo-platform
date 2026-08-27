@@ -1034,6 +1034,36 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 
 .wf-leaf { padding: 12px 14px; }
 .wf-leaf-title { font-size: 13.5px; font-weight: 700; color: var(--color-text-title); margin-bottom: 8px; }
+/* =============================================================================
+   What Create Workflow builds — the EMPTY workflow (measured 8/27/2026)
+   Capture: reference/agent-workflow/create-workflow-built.html (workflow 550 of agent 169).
+   ============================================================================= */
+/* ⚠️ THE UNCONFIGURED LEAF'S ROW IS THE AFFORDANCE, NOT AN ACTION: measured
+   `400 16px/20px` `#2666F9` with NO icon, against a configured leaf's icon + dark text.
+   The node itself is unchanged, so `.wf-leaf-add` only overrides the ink and drops the gap. */
+/* ⚠️ WRITTEN AT (0,2,0) ON PURPOSE. As a bare `.wf-leaf-add` it TIES with `.wf-leaf-action`
+   (which sets `color: var(--color-text)`) and loses on source order — measured, the row
+   rendered `rgb(52,58,64)` while this rule plainly said blue. The same specificity tie
+   `.ts-tablewrap .ts-table` exists to win. */
+.wf-leaf .wf-leaf-add { color: #2666f9; gap: 0; }
+/* The `Saved` state and the disabled `Undo` on a freshly created workflow's header.
+   ⚠️ `Saved` appears ONLY on the created capture and `Undo` on BOTH — see the note in
+   AgentWorkflow.tsx. Both are scoped to that page by being rendered only there. */
+.wf-saved { display: inline-flex; align-items: center; gap: 6px; font-size: 16px; line-height: 20px; color: #15243e; white-space: nowrap; }
+.wf-undo { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 8px 12px; background: none; border: 2px solid transparent; border-radius: 3px; font-family: inherit; font-size: 14px; font-weight: 500; color: #a1a7b2; cursor: default; }
+.wf-ic20 { width: 20px; height: 20px; flex: 0 0 auto; fill: currentColor; }
+/* The check is the palette green whatever the row's ink, so it carries its own fill. */
+.wf-saved .wf-ic20 { fill: #2cbf58; }
+/* ⚠️ MEASURED DISABLED STATE, matching Go Live's in the same capture. Preview Workflow is
+   ENABLED on the real empty workflow — the departure is argued at the button itself. */
+.wf-preview:disabled { background: #e7e9eb; color: #a1a7b2; border-color: #e7e9eb; cursor: default; }
+/* ⚠️ THE WARNING TRIANGLE MEANS "NOTHING CONFIGURED", proven by its absence on the
+   configured row in the sibling capture. `#FF7045` at 20px, read off the path's own fill. */
+/* The gated state for a created-workflow id this prospect does not have. */
+.wf-missing { margin: 0; padding: 24px 0 0; font-size: 16px; line-height: 23px; color: #5b6577; }
+.wf-missing a { color: #2666f9; }
+.ag-wf-warn { width: 20px; height: 20px; flex: 0 0 auto; fill: #ff7045; }
+
 .wf-leaf-action { display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: var(--color-text); }
 .wf-leaf-action .material-icons { font-size: 16px; }
 .wf-leaf-green { background: #eefaf1; border-color: #b7e6c4; }
