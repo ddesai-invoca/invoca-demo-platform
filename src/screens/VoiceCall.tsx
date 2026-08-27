@@ -573,11 +573,26 @@ export function VoiceCall({ onEnd }: { onEnd: () => void }) {
         bookingTerm: profile.bookingTerm,
         customerNoun: profile.customerNoun,
         channel: "voice",
+        /* ⚠️ THE DEPARTMENTS THIS WORKFLOW CAN ROUTE TO, so the analysis CLASSIFIES rather than
+           extracting the agent's spoken paraphrase — see the note on `AnalyzeInput.destinations`.
+           Read off the same `voicePaths` the prompt was built from, so the list the model
+           chooses from is exactly the list the agent was routing against. */
+        destinations: [...new Set(
+          (brain.voicePaths ?? []).flatMap((p) => p.routes.map((r) => r.team)).filter(Boolean),
+        )],
         transcript: conv.transcript.map((t) => ({ speaker: t.speaker, text: t.text })),
       }),
     })
       .then((r) => r.json())
-      .then((d) => { if (Array.isArray(d?.signals) && d.signals.length) patchCaptured(profile.id, conv.id, { signals: d.signals }); })
+      .then((d) => {
+        const patch: Parameters<typeof patchCaptured>[2] = {};
+        if (Array.isArray(d?.signals) && d.signals.length) patch.signals = d.signals;
+        /* ⚠️ THE OUTCOME IS WHAT GATES THE TWO (Voice AI) ARTIFACTS. Stored only when the model
+           returned a well-formed one, so a failed or unreadable analysis leaves the call with no
+           outcome and those rows simply do not appear — see the note on `VoiceOutcome`. */
+        if (d?.outcome && typeof d.outcome.transferred === "boolean") patch.outcome = d.outcome;
+        if (Object.keys(patch).length) patchCaptured(profile.id, conv.id, patch);
+      })
       .catch(() => { /* leave signals empty; report shows an analyzing note */ });
   }
 

@@ -16,7 +16,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
+import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, VoiceConversationIntelligenceView, VoiceConversation, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
 import { sweepValue } from "./dashSweep.ts";
 
 const QM_SCORE_MEAN = 71;   // true mean of the agent scorecard series
@@ -702,12 +702,26 @@ function generateSmsConversationIntelligence(client: Anthropic, name: string, br
   );
 }
 
+/**
+ * ⚠️ **THE GENERATION SCHEMA OMITS `outcome`, WHICH THE APP WRITES.**
+ *
+ * `toSchema()` runs `sanitize()`, which marks every property required — so an `.optional()`
+ * field in a generated type is FORCED onto the model. `VoiceConversation.outcome` is written
+ * after a real call by `/api/analyze`, and a generated one would be a fabricated routing
+ * decision sitting on a seeded conversation, which the two (Voice AI) artifacts would then
+ * render as if a call had happened. Same class of bug as `InteractionRow.cells`, and the same
+ * fix: omit it here, and add anything else app-written to this omit in the same commit.
+ */
+const VOICE_CI_GEN = VoiceConversationIntelligenceView.extend({
+  conversations: z.array(VoiceConversation.omit({ outcome: true })),
+});
+
 /* AI Voice Conversation Intelligence — the voice sibling of the SMS report: a
    list of AI-voice phone calls (1 active example + 3 inactive shells). */
 function generateVoiceConversationIntelligence(client: Anthropic, name: string, brief: string, bookingTerm: string, customerNoun: string, sc: Scale) {
   return structured<z.infer<typeof VoiceConversationIntelligenceView>>(
     client,
-    VoiceConversationIntelligenceView,
+    VOICE_CI_GEN,
     `Using this business brief, produce Invoca "AI Voice Conversation Intelligence" demo data for ${name} — a list of AI-voice phone calls.\n\n` +
       `BRIEF:\n${brief}\n\n` +
       `${reskin(name)}\n\n${scaleRules(sc, bookingTerm)}\n\n` +

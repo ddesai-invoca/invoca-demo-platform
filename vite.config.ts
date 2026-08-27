@@ -364,8 +364,9 @@ function analyzeApi(apiKey: string | undefined): Plugin {
           const { analyzeSms } = await import(
             pathToFileURL(path.resolve(process.cwd(), 'engine/analyze.ts')).href
           )
-          const signals = await analyzeSms(input, apiKey)
-          send(200, { signals })
+          const { signals, outcome } = await analyzeSms(input, apiKey)
+          /* `outcome` is voice-only and absent for SMS; the client ignores what it does not use. */
+          send(200, { signals, outcome })
         } catch (e: any) {
           console.error('[analyze] failed:', e)
           send(500, { error: e?.message || 'Analyze failed.' })

@@ -468,6 +468,25 @@ export const VoiceInfo = z.object({
   finalCampaign: z.string(),
   finalCampaignId: z.string(),
 });
+/**
+ * How a CAPTURED voice call ended. Written by the app after `/api/analyze`, never generated.
+ *
+ * ⚠️⚠️ **OMITTED FROM THE GENERATION SCHEMA (`VOICE_CI_GEN` in engine/core.ts).** `toSchema()`
+ * runs `sanitize()`, which sets `required = Object.keys(properties)` on every object, so EVERY
+ * `.optional()` field in a generated type is forced onto the model. That is right for content
+ * the model should invent and wrong for anything the APP writes later — the exact bug that made
+ * the engine emit a 2-entry `InteractionRow.cells` against 6 columns and shift the Digital
+ * Journey report a column left. Adding a field here means adding it to that omit in the SAME
+ * commit.
+ */
+export const VoiceCallOutcome = z.object({
+  transferred: z.boolean(),
+  routedTo: z.string(),
+  callerName: z.string(),
+  intent: z.string(),
+  location: z.string(),
+});
+
 export const VoiceConversation = z.object({
   id: z.string(),                            // "C516-117FE212560D"
   time: z.string(),                          // "8/16/25 10:55 pm"
@@ -476,6 +495,8 @@ export const VoiceConversation = z.object({
   transcript: z.array(VoiceTurn),            // [] for inactive
   signals: z.array(CISignal),                // [] for inactive (Analysis tab)
   voiceInfo: VoiceInfo.optional(),           // present for active
+  /* App-written, never generated — see the note on VoiceCallOutcome. */
+  outcome: VoiceCallOutcome.optional(),
 });
 export const VoiceConversationIntelligenceView = z.object({
   countLabel: z.string(),                    // "5,139 calls"

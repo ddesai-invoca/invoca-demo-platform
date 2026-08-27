@@ -765,6 +765,74 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### The (Voice AI) story: routing demo + screenpop from the call just had (8/27/2026)
+The demo beat, in the user's words: "the Caller calls in, then voice agent picks up and has the
+conversation, the Voice Routing Demo shows how we took that conversation, pulled out all the
+signals and routed them to the correct department, then the Voice Screenpop shows what the agent
+in the call center gets when that call got routed to him."
+
+Two new My Reports rows — **Voice Routing Demo (Voice AI)** and **Voice Screenpop (Voice AI)** —
+render the SAME two artifact templates from the call the SE just had. `src/data/voiceAiArtifacts.ts`
+derives both slices; the seeded pair is untouched (verified: still St. Regis, no live transcript).
+
+⚠️⚠️ **GATED ON A REAL TRANSFER, AND IT FAILS CLOSED.** The rows exist only when `/api/analyze`
+returned `transferred: true` AND a department. Out of area, hung up, or a failed analysis
+produces NOTHING. These artifacts NAME A DEPARTMENT on screen, and one pointing at a queue
+nobody was sent to is the single thing on them a prospect would check.
+Verified in both directions: an out-of-area Orlando Health call and a caller who hangs up
+mid-qualification both yield no rows; flipping `transferred` in storage removes them live.
+
+⚠️⚠️ **`routedTo` IS A CLASSIFICATION AGAINST THE WORKFLOW'S OWN DESTINATIONS, NOT AN EXTRACTION
+— and the first build got this wrong in a way that rendered.** Asked to copy the department "as
+the agent said it", a Marriott cancellation came back as **"our support team"**, because that is
+what the agent says out loud (the naming rule deliberately keeps it speakable). The routing demo
+then drew a FOURTH queue with that name beside the real "Guest Support, Existing Reservation".
+`AnalyzeInput.destinations` now carries the workflow's own team list and the model picks ONE;
+`matchDestination()` then drops anything off-list to `""`, so a stray answer produces no
+artifacts rather than a wrong department. Instruct-then-enforce, as everywhere else here.
+
+⚠️ **NOT A REGEX OVER THE AGENT'S LAST LINE.** The obvious gate is looking for "transferring
+you". This repo has been bitten twice reading model prose that way — the Salesforce appointment
+slot, and the Comfort Keepers simulator false-failing 5 runs in 6 on a curly apostrophe. It
+rides along on the `/api/analyze` call that ALREADY runs when a call ends, so it costs nothing.
+
+⚠️ **`VoiceConversation.outcome` IS APP-WRITTEN AND OMITTED FROM GENERATION.** `toSchema()`'s
+`sanitize()` marks every property required, so an `.optional()` field in a generated type is
+FORCED onto the model — it would fabricate a routing decision on a seeded conversation and the
+two artifacts would render it as if a call had happened. Same class as `InteractionRow.cells`.
+`VOICE_CI_GEN` omits it, and the audit checks BOTH the omit and that no profile on disk carries
+a generated `outcome`.
+
+⚠️ **THE AI VOICE AGENT PANEL COMES FROM THE CALL; THE CRM FIELDS DO NOT** — and the distinction
+is not pedantry. Agreed that email, street, cart id, digital journey and estimated value stay as
+the prospect's own (blanking them undersells the pre-call-intelligence pitch). But keeping the
+seeded `coverage` left a support caller who never gave a location reading "ZIP 89121 confirmed,
+Las Vegas serviceable" **on a panel headed by the AI agent's name** — crediting the agent with a
+check it never ran. An address is a fact a CRM legitimately holds; a verification is an EVENT.
+No location now reads "Service area not checked on this call".
+
+⚠️ **Signals are attached to turns by the `InsightsCallDetail` "Found Phrases" technique** —
+signal name to its words of 5+ characters to the first turn containing one — not a second model
+call, so a rehearsal renders identically twice. An unmatched signal lands on the LAST turn
+rather than being dropped, because the artifact prints a signal COUNT and losing detections
+would make it disagree with the CI report built from the same call.
+
+⚠️ **THE CONFIDENCE RAMP IS THE ONE MODELLED THING, and it is bounded by two real facts:** it
+starts near even and ENDS on the department the agent actually named. No transcript carries a
+per-turn probability, and asking a model for one would score the same call differently on each
+replay.
+
+⚠️ **NEWEST CALL ONLY** — one pair of rows, not a pair per practice run.
+
+⚠️ **A CHECK THAT CANNOT FAIL IS NOT A CHECK, and one here proved it.** The dedup check used
+"Group Sales", which is a use-case DESTINATION and not one of Marriott's seeded queues — so the
+branch that could duplicate was never entered, and the check stayed green against deliberately
+broken code. Rewritten against a seeded queue, it fails loudly and prints the duplicate.
+
+**`scripts/voice-story.ts`** drives the whole beat from the terminal: the call through
+`/api/chat`, the transcript through `/api/analyze`, then both artifacts built exactly as My
+Reports builds them, printing the department three times over so a mismatch is obvious.
+
 ### The Ask AI empty state describes THIS page (8/27/2026)
 Reported from the voice workflow page: the drawer opened with "bump Total Revenue to $1.2M",
 "make Q4 trend up" and "On a dashboard I can add a tile too" — three examples that would all be

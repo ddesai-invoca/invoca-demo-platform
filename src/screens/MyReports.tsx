@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import type { GumloopArtifact } from "../data/schema";
-import { openArtifact } from "../artifacts";
+import { openArtifact, VOICE_AI_ROUTING_ID, VOICE_AI_SCREENPOP_ID, type ArtifactOverrides } from "../artifacts";
 import { hasTierReports } from "../data/signalTiers";
+import { useVoiceCapture } from "../data/VoiceCaptureContext";
+import { latestTransferredCall, voiceAiRouting, voiceAiScreenpop } from "../data/voiceAiArtifacts";
 
 /* My Reports — the landing page for the Reports nav item. Lists a customer's
    saved reports; clicking the built Digital Journey report opens it. The other
@@ -25,6 +27,7 @@ function reportsFor(
   hasVoiceConversation: boolean,
   artifacts: GumloopArtifact[],
   tiers: boolean,
+  voiceAi: boolean,
 ): ReportRow[] {
   const rows: ReportRow[] = [
     { name: `Digital Journey & Call Attribution Report (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:35 am", to: "/reports/digital-insights" },
@@ -45,6 +48,18 @@ function reportsFor(
   }
   if (hasVoiceConversation) {
     rows.push({ name: `AI Voice Conversation Intelligence (${customerName})`, type: "Interaction Details", createdAt: "6/25/26 7:45 am", to: "/reports/voice-conversation-intelligence" });
+  }
+  /* ⚠️ **THE (Voice AI) PAIR EXISTS ONLY AFTER A REAL TRANSFERRED CALL** (8/27/2026). They tell
+     one continuous story with the call the SE just had: the routing demo replays that
+     conversation and shows it being matched to the department the agent actually named, and the
+     screenpop shows what the receiving rep sees when it lands. Listing them on a cold demo
+     would put an empty leave-behind in front of a prospect, so they are gated on the call, not
+     on the prospect. */
+  if (voiceAi) {
+    rows.push({ name: `Voice Routing Demo (Voice AI)`, type: "AI Artifact", createdAt: "just now",
+      artifact: { id: VOICE_AI_ROUTING_ID, name: "Voice Routing Demo (Voice AI)", status: "complete" } });
+    rows.push({ name: `Voice Screenpop (Voice AI)`, type: "AI Artifact", createdAt: "just now",
+      artifact: { id: VOICE_AI_SCREENPOP_ID, name: "Voice Screenpop (Voice AI)", status: "complete" } });
   }
   // Gumloop leave-behinds — open in a new browser tab once complete; status shows in the Schedule Status column.
   for (const a of artifacts) {
@@ -74,10 +89,22 @@ const TABS = ["Saved", "Requested", "Subscriptions"] as const;
 
 export function MyReports() {
   const { profile } = useProfile();
+  const { capturedFor } = useVoiceCapture();
   const [tab, setTab] = useState<(typeof TABS)[number]>("Saved");
   const [search, setSearch] = useState("");
 
-  const all = reportsFor(profile.customerName, !!profile.reports.conversationIntelligence, !!profile.reports.smsConversationIntelligence, !!profile.reports.voiceConversationIntelligence, profile.reports.gumloopArtifacts ?? [], hasTierReports(profile));
+  /* The newest call that actually ended in a transfer, or null — see `voiceAiArtifacts`. */
+  const call = latestTransferredCall(capturedFor(profile.id));
+  const overrides: ArtifactOverrides = call
+    ? {
+        voiceRoutingDemo: voiceAiRouting(profile, call) ?? undefined,
+        voiceScreenpop: voiceAiScreenpop(profile, call) ?? undefined,
+      }
+    : {};
+  /* ⚠️ GATED ON THE RENDERED SLICES, not merely on the call. A prospect with no seeded
+     `voiceRoutingDemo` cannot produce one, and a row that opens nothing is worse than no row. */
+  const hasVoiceAi = !!overrides.voiceRoutingDemo && !!overrides.voiceScreenpop;
+  const all = reportsFor(profile.customerName, !!profile.reports.conversationIntelligence, !!profile.reports.smsConversationIntelligence, !!profile.reports.voiceConversationIntelligence, profile.reports.gumloopArtifacts ?? [], hasTierReports(profile), hasVoiceAi);
   const rows = search.trim()
     ? all.filter((r) => r.name.toLowerCase().includes(search.trim().toLowerCase()))
     : all;
@@ -131,7 +158,7 @@ export function MyReports() {
                           r.artifact.status === "complete" ? (
                             <button
                               className="rp-link rp-link-btn"
-                              onClick={() => openArtifact(profile, r.artifact!)}
+                              onClick={() => openArtifact(profile, r.artifact!, overrides)}
                               title="Opens in a new tab"
                             >
                               {r.name}

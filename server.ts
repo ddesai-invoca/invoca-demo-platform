@@ -205,8 +205,9 @@ app.post("/api/analyze", async (req, res) => {
     const input = req.body || {};
     if (!input?.customerName || !Array.isArray(input?.transcript)) return res.status(400).json({ error: "customerName and transcript are required." });
     if (!apiKey) return res.status(500).json({ error: "ANTHROPIC_API_KEY is not set on the server." });
-    const signals = await analyzeSms(input, apiKey);
-    res.json({ signals });
+    const { signals, outcome } = await analyzeSms(input, apiKey);
+    /* `outcome` is voice-only and absent for SMS; the client ignores what it does not use. */
+    res.json({ signals, outcome });
   } catch (e: any) {
     console.error("[analyze] failed:", e);
     res.status(500).json({ error: e?.message || "Analyze failed." });

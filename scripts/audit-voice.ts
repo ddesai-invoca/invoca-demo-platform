@@ -18,6 +18,7 @@ import { voiceSystemPrompt } from "../engine/chat";
 import { treeToVoicePaths } from "../src/data/voicePaths";
 import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
 import { voiceCopy } from "../src/data/voiceCopy";
+import { latestTransferredCall, voiceAiRouting, voiceAiScreenpop } from "../src/data/voiceAiArtifacts";
 import { collectNames } from "../src/data/workflowDrawers";
 
 /* ⚠️ THE VOICE TREE'S SHAPE, mirroring `deriveTree` in AgentWorkflow.tsx. The prompt is only
@@ -280,9 +281,75 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "editGuard still blocks a type flip on a destination");
 }
 
+/* ⚠️ 11. THE (Voice AI) STORY ARTIFACTS (8/27/2026). Two leave-behinds rebuilt from a real
+      call. They NAME A DEPARTMENT on screen, so the gate matters more than the rendering: an
+      artifact pointing at a queue nobody was sent to is the one thing on these screens a
+      prospect would catch. */
+{
+  const profile = JSON.parse(read("src/data/generated/marriott.json"));
+  const base = { id: "T", time: "", active: true, date: "",
+    transcript: [{ speaker: "consumer", time: "", text: "book a wedding block" },
+                 { speaker: "agent", time: "", text: "connecting you now" }],
+    signals: [{ name: "Qualified Lead", badges: ["Rule"], count: 0 }] };
+  const ok = { ...base, outcome: { transferred: true, routedTo: "Group Sales", callerName: "Dev Desai", intent: "Book a block.", location: "Orlando" } };
+
+  check(!!latestTransferredCall([ok as never]), "a transferred call yields the (Voice AI) artifacts");
+  /* Every way a call can fail to be a transfer must produce NOTHING. */
+  check(!latestTransferredCall([{ ...ok, outcome: { ...ok.outcome, transferred: false } } as never]),
+    "an untransferred call yields no (Voice AI) artifacts");
+  check(!latestTransferredCall([{ ...ok, outcome: { ...ok.outcome, routedTo: "" } } as never]),
+    "a transfer naming no department yields no artifacts");
+  check(!latestTransferredCall([base as never]),
+    "a call whose analysis failed (no outcome at all) yields no artifacts");
+  check(!voiceAiRouting(profile, base as never) && !voiceAiScreenpop(profile, base as never),
+    "the builders themselves refuse a call with no outcome");
+
+  const routing = voiceAiRouting(profile, ok as never)!;
+  const pop = voiceAiScreenpop(profile, ok as never)!;
+  /* ⚠️ `queues[0]` IS THE WINNER — the renderer reads it positionally (`d.queues[0]?.name`). */
+  check(routing.queues[0]?.name === "Group Sales", "the department the agent named is queues[0]",
+    routing.queues[0]?.name);
+  /* ⚠️ **THIS CASE HAS TO USE A DEPARTMENT THE PROSPECT ALREADY HAS**, or it proves nothing.
+     Written first with "Group Sales" — which is a use-case destination, NOT one of Marriott's
+     seeded queues — so the dedup branch was never entered and the check stayed green while the
+     code was deliberately broken. The routed department can be either, and only the seeded case
+     can produce a duplicate. */
+  const seededQueue = profile.reports.voiceRoutingDemo.queues[1].name;
+  const onSeeded = voiceAiRouting(profile, { ...ok, outcome: { ...ok.outcome, routedTo: seededQueue } } as never)!;
+  check(onSeeded.queues[0]?.name === seededQueue, "a seeded department also leads the queue list");
+  check(new Set(onSeeded.queues.map((q) => q.name)).size === onSeeded.queues.length,
+    "the routed department is not duplicated when it is already a seeded queue",
+    onSeeded.queues.map((q) => q.name).join(" | "));
+  check(routing.convo.length === ok.transcript.length, "the routing demo replays the REAL transcript");
+  check(routing.convo.reduce((n, t) => n + t.sigs.length, 0) === ok.signals.length,
+    "every analysed signal is attached to a turn (the artifact prints a count)");
+  check((routing.convo.at(-1)?.q[0] ?? 0) > (routing.convo[0]?.q[0] ?? 0),
+    "confidence in the winning queue rises across the call");
+  check(pop.callerName === "Dev Desai" && pop.tagBlue.includes("Group Sales"),
+    "the screenpop carries the caller and the department from the call");
+  /* ⚠️ THE AI PANEL IS THE CALL'S; THE CRM FIELDS ARE THE PROSPECT'S. Keeping the seeded
+     coverage credited the agent with a service-area check it never ran. */
+  check(pop.coverage.includes("Orlando"), "the AI panel's coverage comes from the call");
+  check(pop.email === profile.reports.voiceScreenpop.email,
+    "CRM fields the call cannot establish stay as the prospect's own");
+
+  /* ⚠️ THE GENERATION TRAP. `toSchema()` marks every property required, so an `.optional()`
+     field in a generated type is FORCED onto the model — which would fabricate a routing
+     decision on a seeded conversation and render it as if a call had happened. Same class as
+     `InteractionRow.cells`. */
+  const core = read("engine/core.ts");
+  check(/VoiceConversation\.omit\(\{\s*outcome:\s*true\s*\}\)/.test(core),
+    "the voice CI generation schema OMITS the app-written `outcome`");
+  for (const f of readdirSync("src/data/generated").filter((x) => x.endsWith(".json"))) {
+    const pr = JSON.parse(read(`src/data/generated/${f}`));
+    const bad = (pr.reports?.voiceConversationIntelligence?.conversations ?? []).some((c: { outcome?: unknown }) => c.outcome);
+    check(!bad, `no generated conversation carries a fabricated outcome (${f})`);
+  }
+}
+
 /* Self-check: a static audit that silently matches nothing reports success forever. */
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (38 checks)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (38 checks + per-profile)");
 process.exit(failures ? 1 : 0);
