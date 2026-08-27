@@ -7,18 +7,42 @@ import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCall } from "./VoiceCall";
 import { VoiceCallLive } from "./VoiceCallLive";
 import { useLiveKitReady } from "../data/liveKitVoice";
-import { WorkflowTree, type WorkflowTreeModel, type TreeBranch } from "../components/WorkflowTree";
+import { WorkflowTree, type WorkflowTreeModel, type TreeBranch, type TreePath } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
-import { drawerFor, collectNames } from "../data/workflowDrawers";
+import { drawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
 import { voiceCopy } from "../data/voiceCopy";
+import type { VoiceUseCase } from "../data/voiceUseCases";
 import { isProspect } from "../data/prospect";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
    in the left sub-nav. Template flow (Conversation Start → classify intent →
    Sales / Support branches) with the title derived from the customer + channel. */
 
+
+/**
+ * Use cases -> path nodes.
+ *
+ * ⚠️ **`collect` IS THE PILLS AND THE PROMPT'S COLLECT LIST, from ONE array.** The pills used
+ * to come from `collectNames(actionKind)` — a table keyed by the ACTION — which was fine while
+ * every branch collected the same two things and wrong the moment they differ: a cancellation
+ * wants a confirmation number, not a ZIP. Reading both from the use case is what stops the
+ * diagram advertising a field the agent never asks for.
+ *
+ * ⚠️ Returns `undefined` rather than `[]` for an empty list, so a leaf with no use cases is
+ * byte-identical to one that never had the prop.
+ */
+function useCaseNodes(cases: VoiceUseCase[], tone: "green" | "orange"): TreePath[] | undefined {
+  if (!cases?.length) return undefined;
+  return cases.map((u) => ({
+    title: u.title,
+    action: LEAF_INFORM,
+    tone,
+    chips: u.collect,
+    ...(u.route ? { route: u.route } : {}),
+  }));
+}
 
 /* THE TREE MODEL, derived per prospect.
 
@@ -222,23 +246,15 @@ function deriveTree(
           action: LEAF_QUALIFY,
           tone: "green",
           locked: true,
-          /* ⚠️ QUALIFY ASKS A QUESTION AND ROUTES ON THE ANSWER, so its leaf has one child
-             per answer — the fourth row the real Comfort Keepers workflow draws under "All
-             Sales Inquiry Users". These titles ARE the Qualify drawer's Answers/Segments:
-             one list, two renderings, so the diagram and the drawer cannot disagree.
+          /* ⚠️ QUALIFY ASKS A QUESTION AND ROUTES ON THE ANSWER, so its leaf has one child per
+             answer. These titles ARE the Qualify drawer's answers: one list, two renderings,
+             so the diagram and the drawer cannot disagree.
 
-             ⚠️ The support leaf deliberately has NONE. Support & Escalate does not branch;
-             giving it paths would draw a fork the product does not have. */
-          /* ⚠️ THE PATH TITLES ARE THE QUALIFY DRAWER'S ANSWERS, so a prospect with a
-             configured spec gets ITS answers on the diagram rather than a derived pair — the
-             two would otherwise disagree on the same screen. */
-          /* ⚠️ ONE SOURCE (8/27/2026). These used to fall back to a locally-written pair when
-             the prospect had no spec, so the diagram's answers and the agent's routes were
-             built in two places. `deriveVoiceSpec` returns the SAME two strings, so this
-             renders identically for every prospect already on disk and can no longer drift. */
-          paths: spec.segments.map((title) => ({
-            title, action: LEAF_INFORM, tone: "green" as const, chips: collectNames("inform"),
-          })),
+             ⚠️ **AS MANY BRANCHES AS THE PROSPECT NEEDS (8/27/2026).** This was a fixed PAIR,
+             and the type enforced it — so "add a third use case" was impossible rather than
+             merely absent. The row is configuration, not chrome; only the four nodes above it
+             are the product's. */
+          paths: useCaseNodes(spec.useCases.sales, "green"),
         }],
       },
       {
@@ -248,6 +264,17 @@ function deriveTree(
           action: LEAF_ESCALATE,
           tone: "orange",
           locked: true,
+          /* ⚠️ **THE SUPPORT NODE BRANCHES TOO NOW, and this file used to say it must not** —
+             "Support & Escalate does not branch; giving it paths would draw a fork the product
+             does not have." That was wrong about the product and, more importantly, wrong about
+             the demo: an existing customer rings to DO something (change it, cancel it, query a
+             charge), each wanting a different reference number and a different team. With no
+             branches the agent asked every support caller the same two questions and routed
+             them all to one queue.
+
+             ⚠️ A prospect whose spec defines none (Comfort Keepers) still renders NO paths, so
+             its diagram is untouched. */
+          paths: useCaseNodes(spec.useCases.support, "orange"),
         }],
       },
     ],

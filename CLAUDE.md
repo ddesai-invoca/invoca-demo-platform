@@ -765,6 +765,109 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### Use-case branches: both user-group nodes fork now (8/27/2026)
+Agreed in a capabilities exercise, in the user's own words: the four chrome nodes stay locked,
+"but after all sales inquiry users and all support users, those 2 can have as many branches as
+the user want, those branches represents use cases."
+
+| | before | now |
+|---|---|---|
+| under **All Sales Inquiry Users** | exactly **2**, enforced by a `[string, string]` TUPLE | **N** use cases |
+| under **All Support Users** | **none** — this file said it must not branch | **N** use cases |
+| per branch | shared pills from a table keyed by ACTION | its own fields AND its own destination |
+
+⚠️ **THE SUPPORT NODE NOT BRANCHING WAS OUR LIMIT, NOT THE PRODUCT'S**, and this file previously
+asserted the opposite: "Support & Escalate does not branch; giving it paths would draw a fork the
+product does not have." The consequence was that every support caller got the same two questions
+and one queue, when an existing customer rings to DO something — change it, cancel it, query a
+charge — each wanting a different reference number and a different team.
+
+**`src/data/voiceUseCases.ts`** derives the defaults: sales branches by BUYING STAGE, support
+branches by ACTION. **Derived, not generated** — no engine phase, no schema slice, so every demo
+on disk gets them and generation time is unchanged. Marriott, from data it already had:
+
+```
+Ready to book now      -> Reservation, New Booking  [Consumer Name, Destination, Travel Dates]
+Comparing options      -> Reservation, New Booking  [Consumer Name, Consumer Email, Destination]
+Group or event booking -> Group Sales               [Consumer Name, Group Size, Travel Dates]
+Change or reschedule   -> Guest Support, Existing…   [Confirmation Number, Consumer Name]
+Cancel a reservation   -> Guest Support, Existing…   [Confirmation Number, Consumer Name]
+Billing question       -> Billing                    [Confirmation Number, Consumer Name]
+```
+
+⚠️ **BUYING STAGE, NOT PRODUCT LINE.** One branch per "Conversions by Product Category" row reads
+well on a slide and is wrong on a phone: a caller does not ring having sorted themselves into the
+prospect's product taxonomy. Where they are in the decision is something they CAN answer.
+
+⚠️ **THE DESTINATION PUTS BACK WHAT THE LOCKED CHROME TOOK AWAY.** When the leaf became "All Sales
+Inquiry Users", the note in `AgentWorkflow` recorded: "the diagram no longer contains a
+destination the agent could name aloud", and `buildVoiceSystem` stopped naming one. `TreePath.route`
+is drawn as `Route to <team>` — reusing the ACTION slot, so no new node chrome on a tree that
+already has to fit — and `voicePaths` reads it as the route's `team`, falling back to the leaf
+title. `isGroupLabel()` in chat.ts stops the fallback ever being SAID, because "All Sales Inquiry
+Users" is a screen label.
+
+⚠️⚠️ **THREE CONTRADICTIONS THIS CREATED, all caught by reading the built prompt or hearing the
+call, and all the same shape as the duplicated-field bugs above:**
+1. **`informSteps` said "ask for the zip and the full name" while the branches carried their own
+   fields.** The steps WIN in `buildVoiceSystem`, so Marriott's Destination and Travel Dates would
+   have been silently ignored. The steps are now ONLY the service-area gate, and a national
+   prospect gets **none at all** — with no gate to describe there is nothing left for them to say
+   that the call flow does not already carry.
+2. **The opening question recited the branches.** Building it from the sales titles sounds
+   principled — the question can then never offer something the diagram lacks — and produced,
+   verbatim: *"Are you ready to book now, comparing options or group or event booking, or do you
+   need help with something already in progress?"* Nobody says that on a phone. The tree already
+   answers it: the OPENING sorts on Sales Inquiry vs Need Support; the use cases are the row below,
+   classified from what the caller goes on to say.
+3. **The pills came from `collectNames(actionKind)`**, a table keyed by the action, which is right
+   only while every branch collects the same thing. Both the pills and the prompt now read ONE
+   array on the use case.
+
+⚠️ **`vocabFor` IS NOT EXTENDED** — it feeds the Insights catalogue, the tile Configuration drawer
+and the question catalogue, so voice words would change screens nobody asked about. Same call
+`franchiseAi` makes. `voiceUseCases` keeps its own vocabulary.
+
+⚠️⚠️ **"In-home senior care" CONTAINS "car", AND COMFORT KEEPERS BECAME A CAR DEALERSHIP.** It
+derived a "Fleet or business enquiry" branch routed to Fleet Sales and asked callers for a
+"Purchase Timeline". Word boundaries alone did NOT fix it — the trailing `[a-z]*` needed for
+"auto"→"automotive" also lets "car" swallow "care" — so the keyword is BANNED from the lists and
+"auto" covers it. `vocabFor` gets away with `includes` because none of its keywords are substrings
+of another vertical's word; these are.
+⚠️ **QUEUE NAMES ARE USED WHOLE.** Cutting at the first separator the way intent NODE titles do
+turned "Reservation, New Booking" into "Reservation", so the agent announced a transfer to a
+booking term rather than a desk.
+
+⚠️ **COMFORT KEEPERS IS UNTOUCHED, and that is the test of the design.** Its SE configured two
+sales branches, no support branches and no destinations; verified byte-identical — 8 nodes,
+"Inform & Route" with no `Route to`, Consumer Zip + Consumer Name, support leaf unbranched. A
+configured spec is the words a human typed; the derived defaults are what a prospect gets when
+nobody has typed any.
+
+**Fit at six branches, measured** (the user chose "fit it all, let the text get smaller"):
+
+| viewport | scale | scrolls | node title |
+|---|---|---|---|
+| 1500 x 900 | 0.56 | no | **7.5px** |
+| 1920 x 1000 | 0.67 | no | **9.1px** (chips 7.4px) |
+
+⚠️ It FITS at both, which is what was asked for, but the type is small and worth knowing before a
+projector. The 0.5 `MIN_SCALE` floor is what stops it going further; below that the canvas scrolls
+instead. The zoom cluster comes within 1px of the first branch at 1500 and does not overlap it —
+and the 136px reserve that used to guarantee that was deliberately removed earlier, because the
+real page lets those controls overlay the canvas corner.
+
+⚠️ **`voice-call-sim.mts` HAD A FALSE FAILURE THAT LOOKED EXACTLY LIKE A REGRESSION.** Its
+out-of-area check matched a literal `don't`, and a TTS-facing model returns U+2019 as often as
+U+0027 — so a word-perfect reply failed, 5 runs in 6, while the transcript read correctly. It
+normalises the apostrophe now. **Normalise before matching any scripted line.** The residual
+flakiness (the model paraphrasing instead of reading verbatim) is real and pre-existing.
+
+**`npm run audit:voice` stays at 35 checks but two changed meaning.** "Every prospect asks for a
+ZIP and a name" was right only while the pills were uniform; it is now **every field a use-case
+node advertises is asked for in the prompt**, which generalises and is the invariant that always
+mattered. Plus: a derived prospect branches under BOTH user-group nodes. Each verified to fire.
+
 ### Ask AI configures the voice agent, not just the diagram (8/27/2026)
 Asked for directly: "tell the AI what you want the Voice agent to do, and it builds the tree
 and also configures the Voice agent." Before this the workflow page registered **only the

@@ -103,7 +103,18 @@ const inArea = await run("SCENARIO 1 — care services, ZIP inside the service a
   ["transfers once it has ZIP and name", /transfer|connect/i.test(inArea[6].content)],
   ["never asks about hours, schedule or services", !asked(t(inArea), /how many hours|what schedule|which services|when would you like care to begin/i)],
   ["never quotes a price", !asked(t(inArea), /\$\d|hourly rate is|per hour/i)],
-  ["out-of-area: reads the script and does not route", /don't currently serve your area|do not currently serve your area/i.test(t(outArea)) && !/transferring you/i.test(outArea[outArea.length - 1].content)],
+  ["out-of-area: reads the script and does not route", (() => {
+    const said = t(outArea);
+    /* ⚠️ THE APOSTROPHE IS THE TRAP. The scripted line contains "don't", and a TTS-facing model
+       returns U+2019 as often as U+0027 — so a literal "don't" in this regex fails on a reply
+       that is word-for-word correct. Measured: 5 of 6 runs "failed" while the transcript read
+       exactly right. Normalise before matching any scripted line. */
+    const norm = said.replace(/[\u2018\u2019]/g, "'");
+    const readIt = /don't currently serve your area|do not currently serve your area/i.test(norm);
+    const routed = /transferring you/i.test(outArea[outArea.length - 1].content);
+    if (!readIt || routed) console.log(`      [debug] readScript=${readIt} routed=${routed}`);
+    return readIt && !routed;
+  })()],
   ["out-of-area: never asks for a name", !asked(t(outArea), /your (full )?name/i)],
   ["caregiver path also asks ZIP then name", asked(t(caregiver), /zip/i) && asked(t(caregiver), /name/i)],
 ];

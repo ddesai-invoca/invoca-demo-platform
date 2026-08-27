@@ -24,15 +24,20 @@ import { collectNames } from "../src/data/workflowDrawers";
    built when `voicePaths` is non-empty, so passing an empty tree here would skip the entire
    CALL FLOW block and every check below would pass against a prompt that was never built.
    That happened while writing these checks and read exactly like the feature working. */
-function auditTreePaths(p: never, spec: VoiceAgentSpec) {
+function auditTreePaths(_p: never, spec: VoiceAgentSpec) {
+  const node = (u: { title: string; collect: string[]; route?: string }) => ({
+    title: u.title, action: "Inform & Route", chips: u.collect,
+    ...(u.route ? { route: u.route } : {}),
+  });
   return treeToVoicePaths({
     variant: "voice",
     branches: [
       { title: "Sales Inquiry", subtitle: spec.intent.split("\n")[0],
         leaves: [{ title: "All Sales Inquiry Users", action: "Qualify",
-          paths: spec.segments.map((title) => ({ title, action: "Inform & Route", chips: collectNames("inform") })) }] },
+          paths: spec.useCases.sales.map(node) }] },
       { title: "Need Support", subtitle: "Existing customer",
-        leaves: [{ title: "All Support Users", action: "Support & Escalate" }] },
+        leaves: [{ title: "All Support Users", action: "Support & Escalate",
+          ...(spec.useCases.support.length ? { paths: spec.useCases.support.map(node) } : {}) }] },
     ],
   } as never);
 }
@@ -139,7 +144,7 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
 {
   const files = readdirSync("src/data/generated").filter((f) => f.endsWith(".json"));
   check(files.length >= 5, "generated profiles were found to audit", `${files.length} files`);
-  let noZip = 0, noName = 0, noGreet = 0, invented = 0, reworded = 0, smsLeak = 0;
+  let unasked = 0, noGreet = 0, invented = 0, noBranch = 0, smsLeak = 0;
   for (const f of files) {
     const profile = JSON.parse(read(`src/data/generated/${f}`));
     const spec = voiceSpecFor(profile);
@@ -152,19 +157,36 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
       serviceZips: spec.serviceZips,
       outOfAreaScript: spec.outOfAreaScript,
       voiceGreeting: spec.greeting,
+      voiceQualify: spec.qualifyQuestion,
       voiceRules: spec.rules,
       voiceSteps: spec.informSteps,
       voicePaths: auditTreePaths(profile, spec),
     } as never);
-    /* ⚠️ MATCH THE IMPERATIVE, NOT THE WORDS. `/zip code/i` also matched the conversation
-       RULE that explains why the ZIP is asked for, so a prompt with the rule and no step
-       passed — caught by deliberately deleting the steps and watching this check stay green. */
-    /* ⚠️ THE SMS PLAYBOOK IS A DIFFERENT AGENT'S SCRIPT. `brandConversationRules` enumerates
-       the questions the SMS sales agent asks ("your target price or monthly payment, your
-       timeline to buy"), which contradicts the voice flow's "ASK NOTHING BEYOND THE FLOW
-       ABOVE" cap and reproduces the over-asking already fixed once by hand. It leaked in the
-       moment every prospect got a spec, because the Intent drawer had always appended three
-       of them and nothing had ever forwarded the drawer's rules to the prompt. */
+
+    /* ⚠️⚠️ **EVERY PILL THE DIAGRAM DRAWS MUST BE ASKED FOR — this replaced "asks for a ZIP
+       and a name" (8/27/2026), which was the right check only while every branch collected the
+       same two things.** Now a use case carries its OWN fields: Marriott's "Ready to book now"
+       wants Destination and Travel Dates and would FAIL a hardcoded ZIP check while being
+       perfectly correct. The invariant that actually matters has not changed and now
+       generalises — a node must never advertise a field the agent never asks for. */
+    for (const vp of [...spec.useCases.sales, ...spec.useCases.support]) {
+      for (const field of vp.collect) {
+        if (!prompt.includes(field)) {
+          unasked++;
+          console.log(`      pill never asked for: ${profile.customerName} — "${vp.title}" / ${field}`);
+        }
+      }
+    }
+    if (!/OPEN with exactly this line/.test(prompt)) { noGreet++; console.log(`      no scripted greeting: ${profile.customerName}`); }
+    /* ⚠️ ZIP CODES ARE SE CONFIGURATION AND MUST NEVER BE MINTED. A fabricated allow-list
+       would turn real callers away from a real company for a reason that does not exist. */
+    if (isDerived && derived.serviceZips) { invented++; console.log(`      invented ZIPs: ${profile.customerName}`); }
+    /* ⚠️ BOTH USER-GROUP NODES BRANCH for a derived prospect. The support leaf carried NO
+       paths until 8/27/2026, so every support caller got the same two questions and one queue.
+       A configured spec may legitimately define none, which is why this only checks derived. */
+    if (isDerived && (!derived.useCases.sales.length || !derived.useCases.support.length)) {
+      noBranch++; console.log(`      a user-group node has no use cases: ${profile.customerName}`);
+    }
     for (const r of profile.reports.agentConfig?.brandConversationRules ?? []) {
       const probe = String(r).slice(0, 60);
       if (probe.length > 25 && prompt.includes(probe)) {
@@ -172,28 +194,12 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
         break;
       }
     }
-    if (!/for their zip code/i.test(prompt)) { noZip++; console.log(`      no ZIP step: ${profile.customerName}`); }
-    if (!/for their full name/i.test(prompt)) { noName++; console.log(`      no name step: ${profile.customerName}`); }
-    if (!/OPEN with exactly this line/.test(prompt)) { noGreet++; console.log(`      no scripted greeting: ${profile.customerName}`); }
-    /* ⚠️ ZIP CODES ARE SE CONFIGURATION AND MUST NEVER BE MINTED. A fabricated allow-list
-       would turn real callers away from a real company for a reason that does not exist. */
-    if (isDerived && derived.serviceZips) { invented++; console.log(`      invented ZIPs: ${profile.customerName}`); }
-    /* ⚠️ AND THE DIAGRAM MUST NOT MOVE. The tree renders intent line 1 as the Sales Inquiry
-       subtitle and `segments` as the two path nodes, so a reworded derivation silently
-       rewrites a screen nobody asked about. */
-    const c = voiceCopy(profile);
-    const an = /^[aeiou]/i.test(c.bookingLower) ? "an" : "a";
-    if (isDerived && (derived.intent.split("\n")[0] !== c.newSub
-      || JSON.stringify(derived.segments) !== JSON.stringify([`Looking to book ${an} ${c.bookingLower}`, `Needs help with an existing request`]))) {
-      reworded++; console.log(`      diagram wording changed: ${profile.customerName}`);
-    }
   }
   check(smsLeak === 0, "the SMS sales playbook never reaches the voice prompt");
-  check(noZip === 0, "every prospect's voice prompt asks for a ZIP (the diagram's Consumer Zip pill)");
-  check(noName === 0, "every prospect's voice prompt asks for a full name (the Consumer Name pill)");
+  check(unasked === 0, "every field a use-case node advertises is asked for in the prompt");
+  check(noBranch === 0, "a derived prospect branches under BOTH user-group nodes");
   check(noGreet === 0, "every prospect opens with a scripted greeting");
   check(invented === 0, "no derived spec invents service ZIP codes");
-  check(reworded === 0, "a derived spec renders the diagram's existing wording");
 }
 
 /* ⚠️ 10. ASK AI MUST BE ABLE TO CONFIGURE THE AGENT, AND EVERY FIELD IT OFFERS MUST BITE

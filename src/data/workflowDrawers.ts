@@ -163,8 +163,6 @@ export function drawerFor(
      uses, which is the same two-surfaces-disagreeing bug in a quieter place. */
   const spec = specWithConfig(voiceSpecFor(profile),
     (tree as WorkflowTreeModel & { agent?: VoiceAgentConfig }).agent);
-  const noun = (profile.customerNoun ?? "customer").toLowerCase();
-  const booking = profile.bookingTerm.toLowerCase();
   const area = profile.reports.agentConfig?.serviceArea?.trim();
 
   if (nodeId === "trigger") {
@@ -212,22 +210,19 @@ export function drawerFor(
     const action: ActionKind = /escalate/i.test(l.action) ? "escalate"
       : /qualify/i.test(l.action) ? "qualify" : "inform";
     if (action === "qualify") {
-      if (spec) {
-        return { kind: "action", title: "Action", action,
-          question: spec.qualifyQuestion, segments: [...spec.segments], fallback: spec.qualifyFallback };
-      }
+      /* ⚠️ **THE ANSWERS COME FROM THE LEAF'S PATH NODES, ALWAYS (8/27/2026).** This used to
+         prefer `spec.segments` whenever a spec existed and read the tree only as a fallback —
+         and the note in the fallback branch already argued the right way round: the diagram
+         draws these as nodes on the row below, so two derivations disagree the first time
+         anybody edits one. The tree handed in here is the page's EFFECTIVE object, so it also
+         carries Ask AI's edits, which the spec does not. The question and the reprompt still
+         come from the spec, because neither is drawn anywhere. */
+      const answers = (l.paths ?? []).map((x) => x.title).filter(Boolean);
       return {
         kind: "action", title: "Action", action,
-        question: `Are you looking to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}, or do you need help with something already in progress?`,
-        /* ⚠️ THE SEGMENTS ARE THE LEAF'S PATH TITLES, read from the tree rather than built
-           again here. The diagram draws them as nodes on the row below and this drawer lists
-           them as Answers/Segments; two derivations would disagree the first time an SE
-           edited one, and the disagreement would be invisible until someone compared the
-           two surfaces. Falls back only for a Qualify leaf with no paths. */
-        segments: (l.paths ?? []).map((x) => x.title).length
-          ? (l.paths ?? []).map((x) => x.title)
-          : [`Looking to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}`, `Needs help with an existing ${noun} request`],
-        fallback: `I want to make sure I connect you with the right team. Are you looking to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}, or do you need help with something already in progress?`,
+        question: spec.qualifyQuestion,
+        segments: answers,
+        fallback: spec.qualifyFallback,
       };
     }
     if (action === "escalate") {

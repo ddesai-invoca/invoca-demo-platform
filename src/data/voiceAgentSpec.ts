@@ -1,5 +1,6 @@
 import { isProspect } from "./prospect";
 import { voiceCopy } from "./voiceCopy";
+import { deriveUseCases, type VoiceUseCases } from "./voiceUseCases";
 import type { CustomerProfile } from "./schema";
 
 /* =============================================================================
@@ -45,8 +46,16 @@ export interface VoiceAgentSpec {
   greeting: string;
   /** The Qualify leaf's question. */
   qualifyQuestion: string;
-  /** Its answers, which are also the two path nodes on the row below. */
-  segments: [string, string];
+  /**
+   * The branches under the two user-group nodes, one per USE CASE.
+   *
+   * ⚠️ **THIS REPLACED A FIXED PAIR OF SALES SEGMENTS (8/27/2026)**, at the user's request:
+   * "those 2 can have as many branches as the user want, those branches represent use cases."
+   * The old `segments: [string, string]` was a TUPLE, so the type itself made a third sales
+   * branch impossible and the support node could not branch at all. Both limits were ours,
+   * not the product's.
+   */
+  useCases: VoiceUseCases;
   /** What the agent says when it cannot tell which answer it heard. */
   qualifyFallback: string;
   /** The intent's conversation rules, in order. */
@@ -79,7 +88,18 @@ const COMFORT_KEEPERS: VoiceAgentSpec = {
     "Hi, thanks for calling Comfort Keepers, I'm here to help. Are you looking to arrange care services for yourself or a loved one, or are you interested in becoming a caregiver with us?",
   qualifyQuestion:
     "Are you interested in arranging care services, or are you looking to become a caregiver with us?",
-  segments: ["Looking for care services", "Interested in becoming a caregiver"],
+  /* ⚠️ COMFORT KEEPERS KEEPS EXACTLY WHAT ITS SE CONFIGURED: two sales branches, NO support
+     branches and NO named destinations, so its signed-off diagram and its call are unchanged.
+     A configured spec is the words a human typed; the derived defaults below are what a
+     prospect gets when nobody has typed any. If this account ever wants support branches,
+     Ask AI adds them. */
+  useCases: {
+    sales: [
+      { title: "Looking for care services", collect: ["Consumer Zip", "Consumer Name"] },
+      { title: "Interested in becoming a caregiver", collect: ["Consumer Zip", "Consumer Name"] },
+    ],
+    support: [],
+  },
   qualifyFallback:
     "I want to make sure I connect you with the right team. Are you looking to arrange care services for yourself or a loved one, or are you interested in becoming a caregiver with us?",
   rules: [
@@ -127,8 +147,6 @@ const SPECS: VoiceAgentSpec[] = [COMFORT_KEEPERS];
 export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
   const c = voiceCopy(profile);
   const name = profile.customerName;
-  const booking = c.bookingLower;
-  const an = /^[aeiou]/i.test(booking) ? "an" : "a";
   const area = profile.reports.agentConfig?.serviceArea?.trim();
   /* ⚠️ **`brandConversationRules` IS THE *SMS* SALES PLAYBOOK AND MUST NOT REACH THIS PROMPT.**
      The Intent drawer used to append three of them here, which was invisible while the spec
@@ -143,9 +161,23 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
      rather than six. The three it loses were SMS playbook lines rendered as voice-workflow
      rules, which was wrong on that screen too. */
 
+  const cases = deriveUseCases(profile);
+  const booking = (profile.bookingTerm || "Reservation").toLowerCase();
+  const an = /^[aeiou]/i.test(booking) ? "an" : "a";
+  /* ⚠️⚠️ **THE OPENING QUESTION SPLITS ON INTENT, NOT ON USE CASE — and reading the branches
+     aloud was a real mistake worth recording.** A first version built it from the sales
+     branch titles, which sounds principled (the question can then never offer something the
+     diagram does not draw) and produced, verbatim: "Are you ready to book now, comparing
+     options or group or event booking, or do you need help with something already in
+     progress?" Nobody says that on a phone.
+
+     The tree already answers this: the row the caller is being sorted into at the OPENING is
+     Sales Inquiry vs Need Support. The use cases are the row BELOW, classified from what they
+     go on to say — which is exactly what the CALL FLOW block lists for the model. So the
+     question stays two-way and speakable, and the branches never have to be recited. */
   const greeting =
     `Hi, thanks for calling ${name}. I'm here to help. Are you looking to book ${an} ${booking}, `
-    + `or do you need help with something already in progress?`;
+    + `or do you need help with one you already have?`;
 
   /* ⚠️ THE GREETING IS ALSO THE LAST CONVERSATION RULE, exactly as the configured spec has it,
      so the drawer and the spoken opening cannot drift apart. */
@@ -160,11 +192,11 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
       + greetingRule,
     greeting,
     qualifyQuestion:
-      `Are you looking to book ${an} ${booking}, or do you need help with something already in progress?`,
-    segments: [`Looking to book ${an} ${booking}`, `Needs help with an existing request`],
+      `Are you looking to book ${an} ${booking}, or do you need help with one you already have?`,
+    useCases: cases,
     qualifyFallback:
       `I want to make sure I connect you with the right team. Are you looking to book ${an} ${booking}, `
-      + `or do you need help with something already in progress?`,
+      + `or do you need help with one you already have?`,
     rules: [
       ...(area
         ? [`When asking for the caller's zip code, explain that it is used to connect them with their local ${name} office.`]
@@ -178,24 +210,26 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
     outOfAreaScript: area
       ? `Thank you for calling ${name}. Unfortunately we do not currently serve your area. ${name} serves ${area}.`
       : undefined,
-    /* ⚠️ THE ZIP AND THE NAME ARE THE TWO PILLS THE DIAGRAM DRAWS, so these steps are what make
-       the pills true. A national brand still captures the ZIP, to route to the nearest
-       location rather than to turn anyone away. */
+    /* ⚠️⚠️ **THE STEPS ARE THE SERVICE-AREA GATE, NOT A FIELD LIST (8/27/2026).** They used to
+       spell out "ask for the zip, then the full name", which was right while every branch
+       collected the same two things. The moment each use case carries its OWN fields the two
+       contradict — Marriott's "Ready to book now" wants Destination and Travel Dates, not a
+       caller's home ZIP — and `buildVoiceSystem` prefers the STEPS, so the branches would have
+       been silently ignored. The fields now come from the branch the caller picked; the steps
+       cover only the thing no branch can express, which is whether this prospect turns
+       out-of-area callers away.
+
+       ⚠️ A NATIONAL PROSPECT THEREFORE GETS NO STEPS AT ALL, and that is deliberate rather
+       than an omission: with no gate to describe there is nothing here that the call flow does
+       not already say, and an extra instruction is one more thing to contradict. */
     informSteps: area
       ? [
-          `1. Ask the caller for their zip code and capture it.`,
-          `2. Check the zip code against our service area: ${area}.`,
+          `1. Before routing anyone who wants new service, ask for their zip code and capture it.`,
+          `2. Check it against our service area: ${area}.`,
           `3. If the caller is outside that service area, politely inform them and end the call without routing.`,
-          `4. If the caller is inside our service area, ask for their full name and capture it.`,
-          `5. If the caller is outside our service area say: Thank you for calling ${name}. Unfortunately we do not currently serve your area.`,
-          `6. If the caller does not provide their full name, ask again before proceeding. Do not route the call without a captured full name.`,
+          `4. If they are inside it, briefly confirm we serve their area and continue with the questions for their path.`,
         ]
-      : [
-          `1. Ask the caller for their zip code and capture it, so they can be matched to their nearest ${name} location.`,
-          `2. Do not turn anyone away on their zip code. ${name} takes enquiries nationally.`,
-          `3. Ask the caller for their full name and capture it.`,
-          `4. If the caller does not provide their full name, ask again before proceeding. Do not route the call without a captured full name.`,
-        ],
+      : [],
   };
 }
 

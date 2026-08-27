@@ -18,19 +18,22 @@
 import { readFileSync } from "node:fs";
 import { voiceSpecFor } from "../src/data/voiceAgentSpec";
 import { treeToVoicePaths } from "../src/data/voicePaths";
-import { collectNames } from "../src/data/workflowDrawers";
 
 const slug = process.argv[2];
 const p = JSON.parse(readFileSync(`src/data/generated/${slug}.json`, "utf8"));
 const spec = voiceSpecFor(p);
+const node = (u: { title: string; collect: string[]; route?: string }) => ({
+  title: u.title, action: "Inform & Route", chips: u.collect, ...(u.route ? { route: u.route } : {}),
+});
 const paths = treeToVoicePaths({
   variant: "voice",
   branches: [
     { title: "Sales Inquiry", subtitle: spec.intent.split("\n")[0],
       leaves: [{ title: "All Sales Inquiry Users", action: "Qualify",
-        paths: spec.segments.map((t: string) => ({ title: t, action: "Inform & Route", chips: collectNames("inform") })) }] },
+        paths: spec.useCases.sales.map(node) }] },
     { title: "Need Support", subtitle: "Existing customer",
-      leaves: [{ title: "All Support Users", action: "Support & Escalate" }] },
+      leaves: [{ title: "All Support Users", action: "Support & Escalate",
+        ...(spec.useCases.support.length ? { paths: spec.useCases.support.map(node) } : {}) }] },
   ],
 } as never);
 

@@ -62,9 +62,14 @@ export function treeToVoicePaths(tree: WorkflowTreeModel | undefined | null): Vo
     const routes = (b.leaves ?? [])
       .flatMap((l) => (l?.paths?.length
         ? l.paths.map((pth) => ({
-            /* The team is still the LEAF's group; the path names the caller's need, so it
-               carries the collect list and the action the agent performs there. */
-            team: (l.title ?? "").trim(),
+            /* ⚠️ **THE PATH'S OWN DESTINATION IS THE TEAM (8/27/2026), falling back to the
+               leaf's group.** The leaf title became locked chrome ("All Sales Inquiry Users"),
+               and this file's own note recorded the consequence: the tree stopped carrying a
+               destination the agent could name aloud, so `buildVoiceSystem` stopped naming
+               one. A use case is where the routing decision actually happens, so that is where
+               the team belongs. The fallback keeps Comfort Keepers — whose SE named no teams —
+               behaving exactly as before. */
+            team: ((pth?.route ?? "").trim() || (l.title ?? "").trim()),
             need: (pth?.title ?? "").trim(),
             action: (pth?.action ?? "").trim() || "route them",
             collect: (pth?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),

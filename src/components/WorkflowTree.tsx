@@ -26,6 +26,20 @@ export interface TreePath {
   tone?: "green" | "orange" | "blue" | "grey";
   chips?: string[];
   actionIcon?: "phone" | "headset" | "altRoute" | "cart";
+  /**
+   * The team this branch hands off to, drawn on the action line and named aloud on transfer.
+   *
+   * ⚠️ **THIS PUTS BACK SOMETHING THE LOCKED CHROME TOOK AWAY.** When the leaf became
+   * "All Sales Inquiry Users" (product chrome, 8/26/2026) the note in `AgentWorkflow` recorded
+   * the consequence: "the diagram no longer contains a destination the agent could name aloud",
+   * and `buildVoiceSystem` stopped reading a group label into the spoken handoff. The
+   * destination belongs on the USE CASE, which is where a real routing decision is made.
+   *
+   * ⚠️ **OPTIONAL, so every existing diagram is byte-identical.** Without it the action line
+   * renders `action` exactly as before — the opt-in-prop rule this component already follows
+   * for `actionIcon` and `warn`.
+   */
+  route?: string;
 }
 
 export interface TreeLeaf {
@@ -585,7 +599,11 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
               <div className="wf-leaf-title">{pth.title}</div>
               <div className="wf-leaf-action">
                 <VIcon name={pth.actionIcon ?? "altRoute"} />
-                {pth.action}
+                {/* ⚠️ "Route to <team>" REUSES THE ACTION SLOT rather than adding a line. The
+                    product itself used that wording on this diagram before these rows became
+                    chrome, so it needs no new node chrome and no new CSS — which matters on a
+                    six-branch tree that already has to fit without scrolling. */}
+                {pth.route?.trim() ? `Route to ${pth.route.trim()}` : pth.action}
               </div>
               {pth.chips?.length ? (
                 <div className="wf-chips">

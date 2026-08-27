@@ -251,6 +251,24 @@ const poss = (n: string) => (/s$/i.test(n) ? `${n}'` : `${n}'s`);
  * offered here as the words to use. The model picks which fits rather than us mapping branch
  * index to queue index — a positional map breaks the moment an SE adds a third branch.
  */
+/**
+ * A user-group label, which is a SCREEN label and must never be said on a call.
+ *
+ * ⚠️ `voicePaths` falls back to the leaf title when a branch names no destination, and that
+ * title is the product's own locked chrome ("All Sales Inquiry Users"). So a route's `team` is
+ * either a real desk or one of those, and only the first is speakable — which is why this
+ * tests the SHAPE rather than trusting the field to be one or the other.
+ */
+function isGroupLabel(team: string): boolean {
+  return /^all\b.*\busers$/i.test(team.trim());
+}
+
+/** ", then transfer them to <team>" — only when the branch names a real one. */
+function destination(team: string): string {
+  const t = (team ?? "").trim();
+  return t && !isGroupLabel(t) ? `, then transfer them to ${t}` : "";
+}
+
 function namingRule(r: NonNullable<ChatBrain["voiceRouting"]>): string {
   const teams = [r.newQueue, r.supportQueue, r.generalQueue].filter(Boolean) as string[];
   return [
@@ -346,7 +364,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
            leaf's own action wording, which is the only honest instruction available. */
         for (const r2 of p.routes) {
           lines.push(r2.need
-            ? `      • If they say ${r2.need}: ${r2.action.toLowerCase()}${r2.collect.length ? `, collecting ${r2.collect.join(", ")}` : ""}.`
+            ? `      • If they say ${r2.need}: ${r2.action.toLowerCase()}${r2.collect.length ? `, collecting ${r2.collect.join(", ")}` : ""}${destination(r2.team)}.`
             : `      • ${r2.team} — ${r2.action}`);
         }
       }
