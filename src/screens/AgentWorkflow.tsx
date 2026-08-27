@@ -12,49 +12,13 @@ import { usePageData } from "../components/GeneratedTiles";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor, collectNames } from "../data/workflowDrawers";
 import { voiceSpecFor } from "../data/voiceAgentSpec";
+import { voiceCopy } from "../data/voiceCopy";
 import { isProspect } from "../data/prospect";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
    in the left sub-nav. Template flow (Conversation Start → classify intent →
    Sales / Support branches) with the title derived from the customer + channel. */
 
-/* Derives every label from the prospect's own voice routing queues
-   (reports.voiceRoutingDemo.queues), which all seven profiles already carry in
-   the same shape: [0] is the new-business intent, [1] is existing-customer
-   support, [2] is general. Previously this tree was hardcoded Shady Blinds
-   retail copy, so Orlando Health's voice workflow talked about ordering window
-   treatments and collecting an Order Number. */
-function voiceCopy(p: ReturnType<typeof useProfile>["profile"]) {
-  const q = p.reports.voiceRoutingDemo?.queues ?? [];
-  /* Queue names carry a qualifier after a separator ("Consultation - LASIK New
-     Patient"); the node title wants the head, so cut at the first one.
-
-     COMMA included, not just dashes: the em-dash migration rewrote every queue
-     name from "Support - Existing Move" to "Support, Existing Move", so this
-     stopped trimming anything and the intent nodes started showing the whole
-     queue name. Splitting on both restores what the code always meant to do. */
-  const head = (n?: string, fb = "") =>
-    (n ?? fb).split(/\s*[-–—,]\s*/)[0].trim() || fb;
-  const newQ = head(q[0]?.name, "New Inquiry");
-  const supQ = head(q[1]?.name, "Existing Customer Support");
-  // "patient" vs "customer" comes from the prospect's own queue wording rather
-  // than a guess about the vertical.
-  const who = /patient/i.test(q[1]?.name ?? "") ? "patient"
-    : /resident/i.test(q[1]?.name ?? "") ? "resident" : "customer";
-  const hero = p.reports.marketingDashboard.breakdowns
-    .find((b) => /Product Category/i.test(b.title))?.rows[0]?.name;
-  const booking = p.bookingTerm.toLowerCase();
-  return {
-    newQ, supQ, who,
-    newSub: `Caller wants to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking} and is not an existing ${who}`,
-    supSub: `Caller is an existing ${who} and needs help with something already in progress`,
-    newChips: [hero ?? p.industry, p.bookingTerm, "Timeline"],
-    supChips: [`Existing ${who[0].toUpperCase()}${who.slice(1)}`, "Issue Type"],
-    bookingLower: booking,
-    newQueue: q[0]?.name ?? "New Inquiry",
-    supQueue: q[1]?.name ?? "Support",
-  };
-}
 
 /* THE TREE MODEL, derived per prospect.
 
@@ -101,8 +65,6 @@ const SUPPORT_LEAF = "All Support Users";
 const LEAF_QUALIFY = "Qualify";
 const LEAF_ESCALATE = "Support & Escalate";
 const LEAF_INFORM = "Inform & Route";
-/** "a consultation" / "an estimate" — a vowel-initial booking term reads wrong without it. */
-const aOrAn = (w: string) => (/^[aeiou]/i.test(w) ? "an" : "a");
 
 /* `isProspect` moved to src/data/prospect.ts when the franchise AI dashboard needed the same
    test. ONE implementation, several callers — see the note at the top of that file. */
@@ -240,7 +202,7 @@ function deriveTree(
            name now lives where it is genuinely configuration — the leaf title and its route
            action — so the diagram still names this prospect's own teams. Only the intent
            label is generic, because in the product it always is. */
-        title: INTENT_SALES, subtitle: spec ? spec.intent.split("\n")[0] : c.newSub, icon: "cart", locked: true,
+        title: INTENT_SALES, subtitle: spec.intent.split("\n")[0], icon: "cart", locked: true,
         /* ⚠️ ONLY THE ROW BELOW THE USER GROUPS CARRIES PILLS (8/26/2026), and they are the
            drawer's own "What To Collect" rather than a second list that happens to look like
            it. They used to be the prospect's vocabulary — "Blinds", "Timeline", "Issue Type" —
@@ -270,10 +232,11 @@ function deriveTree(
           /* ⚠️ THE PATH TITLES ARE THE QUALIFY DRAWER'S ANSWERS, so a prospect with a
              configured spec gets ITS answers on the diagram rather than a derived pair — the
              two would otherwise disagree on the same screen. */
-          paths: (spec ? spec.segments : [
-            `Looking to book ${aOrAn(c.bookingLower)} ${c.bookingLower}`,
-            `Needs help with an existing request`,
-          ]).map((title) => ({
+          /* ⚠️ ONE SOURCE (8/27/2026). These used to fall back to a locally-written pair when
+             the prospect had no spec, so the diagram's answers and the agent's routes were
+             built in two places. `deriveVoiceSpec` returns the SAME two strings, so this
+             renders identically for every prospect already on disk and can no longer drift. */
+          paths: spec.segments.map((title) => ({
             title, action: LEAF_INFORM, tone: "green" as const, chips: collectNames("inform"),
           })),
         }],

@@ -1,4 +1,5 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
+import type { CustomerProfile } from "./schema";
 import { voiceSpecFor } from "./voiceAgentSpec";
 
 /* =============================================================================
@@ -129,17 +130,12 @@ function demoPhone(areaCode: string): string {
   return `+1${areaCode}5550142`;
 }
 
-type Profile = {
-  id: string;
-  customerName: string;
-  industry: string;
-  bookingTerm: string;
-  customerNoun?: string;
-  reports: {
-    agentConfig?: { serviceArea?: string; brandConversationRules?: string[] } | undefined;
-    voiceScreenpop?: { callerPhone?: string } | undefined;
-  };
-};
+/* ⚠️ THE FULL PROFILE, NOT A STRUCTURAL SUBSET (8/27/2026). This was a hand-written shape
+   listing only the fields the drawers read, which is tidy right up to the moment a helper it
+   calls needs one more: `voiceSpecFor` derives from the prospect's routing queues and
+   marketing breakdowns, and a narrowed type cannot be passed to it. Widening beats bolting
+   another three fields on every time, and the real type is the one every other screen uses. */
+type Profile = CustomerProfile;
 
 /** Pull an area code out of whatever number the profile already shows, else a default. */
 function areaCodeOf(p: Profile): string {
@@ -165,7 +161,6 @@ export function drawerFor(
   const noun = (profile.customerNoun ?? "customer").toLowerCase();
   const booking = profile.bookingTerm.toLowerCase();
   const area = profile.reports.agentConfig?.serviceArea?.trim();
-  const rules = profile.reports.agentConfig?.brandConversationRules ?? [];
 
   if (nodeId === "trigger") {
     /* ⚠️ The bold line is the drawer's own wording and counts all THREE sources, where the
@@ -183,27 +178,24 @@ export function drawerFor(
     const isSales = bi === 0;
     /* ⚠️ THE SPEC WINS ON THE SALES INTENT. Where an SE has configured this agent's own words,
        showing a derived paraphrase beside them would be the drawer contradicting the prompt. */
-    if (isSales && spec) {
+    /* ⚠️ THE SALES INTENT ALWAYS COMES FROM THE SPEC NOW (8/27/2026). This used to be
+       `isSales && spec`, with a second derived rule list right here for everyone else — two
+       places building the same sentences, and only one of them ever reached the agent, which
+       is why 11 of 12 prospects showed a "Consumer Name" pill and never asked for a name.
+       `deriveVoiceSpec` absorbed that list verbatim, so the drawer and the spoken prompt now
+       render ONE rule set. Do not reintroduce a fallback here. */
+    if (isSales) {
       return { kind: "intent", title: "Intent Details", name: b.title,
         looksLike: spec.intent, rules: spec.rules };
     }
     return {
       kind: "intent", title: "Intent Details", name: b.title,
-      looksLike: isSales
-        ? `${b.subtitle ?? `The caller is reaching out about ${profile.customerName}'s services`}. Treat them as a prospective ${noun} and find out what they need before routing.`
-        : `Contacts seeking help with an existing product or service, such as troubleshooting, billing questions, or account changes.`,
+      looksLike: `Contacts seeking help with an existing product or service, such as troubleshooting, billing questions, or account changes.`,
       /* ⚠️ THE SUPPORT INTENT SHIPS WITH NO RULES, rather than inventing support policy
          nobody configured. The DRAWER renders that as the product's own empty state ("No
          conversation rules defined yet"); an earlier note here said three blank rows, which
          was a capture of someone having pressed Add three times rather than the default. */
-      rules: isSales
-        ? [
-            ...(area ? [`When asking for the caller's zip code, explain that it is used to connect them with their local ${profile.customerName} office.`] : []),
-            `As soon as this intent is recognized, find out what the caller needs so the conversation can proceed down the correct path.`,
-            `If asked about cost or pricing, do not provide specific numbers. Acknowledge that pricing varies and let the caller know the local team will cover exact pricing.`,
-            ...rules.slice(0, 3),
-          ]
-        : [],
+      rules: [],
     };
   }
 

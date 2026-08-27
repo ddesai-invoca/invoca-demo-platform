@@ -12,7 +12,29 @@
    Each check was verified to FIRE on its own broken shape, not merely to pass on a good
    tree — a check that never fires is indistinguishable from no check.
    ============================================================================= */
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
+import { voiceSystemPrompt } from "../engine/chat";
+import { treeToVoicePaths } from "../src/data/voicePaths";
+import { voiceSpecFor, deriveVoiceSpec, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
+import { voiceCopy } from "../src/data/voiceCopy";
+import { collectNames } from "../src/data/workflowDrawers";
+
+/* ⚠️ THE VOICE TREE'S SHAPE, mirroring `deriveTree` in AgentWorkflow.tsx. The prompt is only
+   built when `voicePaths` is non-empty, so passing an empty tree here would skip the entire
+   CALL FLOW block and every check below would pass against a prompt that was never built.
+   That happened while writing these checks and read exactly like the feature working. */
+function auditTreePaths(p: never, spec: VoiceAgentSpec) {
+  return treeToVoicePaths({
+    variant: "voice",
+    branches: [
+      { title: "Sales Inquiry", subtitle: spec.intent.split("\n")[0],
+        leaves: [{ title: "All Sales Inquiry Users", action: "Qualify",
+          paths: spec.segments.map((title) => ({ title, action: "Inform & Route", chips: collectNames("inform") })) }] },
+      { title: "Need Support", subtitle: "Existing customer",
+        leaves: [{ title: "All Support Users", action: "Support & Escalate" }] },
+    ],
+  } as never);
+}
 
 const read = (p: string) => readFileSync(p, "utf8");
 let failures = 0;
@@ -107,9 +129,75 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     `config at ${cfgAt}, body guard at ${brainAt}`);
 }
 
+/* ⚠️ 9. THE TEMPLATE MUST REACH EVERY PROSPECT, NOT JUST THE CONFIGURED ONE (8/27/2026).
+      The diagram draws "Consumer Zip" and "Consumer Name" pills for EVERY prospect, and
+      before this the spec existed only for Comfort Keepers: measured across the 12 profiles
+      on disk, 8 never asked for a ZIP and 11 never asked for a name. The pills promised two
+      things the agent did not collect, and nothing failed — so this is checked by BUILDING
+      the real prompt, not by grepping for a helper that might not be called. */
+{
+  const files = readdirSync("src/data/generated").filter((f) => f.endsWith(".json"));
+  check(files.length >= 5, "generated profiles were found to audit", `${files.length} files`);
+  let noZip = 0, noName = 0, noGreet = 0, invented = 0, reworded = 0, smsLeak = 0;
+  for (const f of files) {
+    const profile = JSON.parse(read(`src/data/generated/${f}`));
+    const spec = voiceSpecFor(profile);
+    const derived = deriveVoiceSpec(profile);
+    const isDerived = JSON.stringify(spec) === JSON.stringify(derived);
+    const prompt = voiceSystemPrompt({
+      customerName: profile.customerName,
+      industry: profile.industry ?? "",
+      serviceArea: profile.reports.agentConfig?.serviceArea,
+      serviceZips: spec.serviceZips,
+      outOfAreaScript: spec.outOfAreaScript,
+      voiceGreeting: spec.greeting,
+      voiceRules: spec.rules,
+      voiceSteps: spec.informSteps,
+      voicePaths: auditTreePaths(profile, spec),
+    } as never);
+    /* ⚠️ MATCH THE IMPERATIVE, NOT THE WORDS. `/zip code/i` also matched the conversation
+       RULE that explains why the ZIP is asked for, so a prompt with the rule and no step
+       passed — caught by deliberately deleting the steps and watching this check stay green. */
+    /* ⚠️ THE SMS PLAYBOOK IS A DIFFERENT AGENT'S SCRIPT. `brandConversationRules` enumerates
+       the questions the SMS sales agent asks ("your target price or monthly payment, your
+       timeline to buy"), which contradicts the voice flow's "ASK NOTHING BEYOND THE FLOW
+       ABOVE" cap and reproduces the over-asking already fixed once by hand. It leaked in the
+       moment every prospect got a spec, because the Intent drawer had always appended three
+       of them and nothing had ever forwarded the drawer's rules to the prompt. */
+    for (const r of profile.reports.agentConfig?.brandConversationRules ?? []) {
+      const probe = String(r).slice(0, 60);
+      if (probe.length > 25 && prompt.includes(probe)) {
+        smsLeak++; console.log(`      SMS playbook in voice prompt: ${profile.customerName} — "${probe}..."`);
+        break;
+      }
+    }
+    if (!/for their zip code/i.test(prompt)) { noZip++; console.log(`      no ZIP step: ${profile.customerName}`); }
+    if (!/for their full name/i.test(prompt)) { noName++; console.log(`      no name step: ${profile.customerName}`); }
+    if (!/OPEN with exactly this line/.test(prompt)) { noGreet++; console.log(`      no scripted greeting: ${profile.customerName}`); }
+    /* ⚠️ ZIP CODES ARE SE CONFIGURATION AND MUST NEVER BE MINTED. A fabricated allow-list
+       would turn real callers away from a real company for a reason that does not exist. */
+    if (isDerived && derived.serviceZips) { invented++; console.log(`      invented ZIPs: ${profile.customerName}`); }
+    /* ⚠️ AND THE DIAGRAM MUST NOT MOVE. The tree renders intent line 1 as the Sales Inquiry
+       subtitle and `segments` as the two path nodes, so a reworded derivation silently
+       rewrites a screen nobody asked about. */
+    const c = voiceCopy(profile);
+    const an = /^[aeiou]/i.test(c.bookingLower) ? "an" : "a";
+    if (isDerived && (derived.intent.split("\n")[0] !== c.newSub
+      || JSON.stringify(derived.segments) !== JSON.stringify([`Looking to book ${an} ${c.bookingLower}`, `Needs help with an existing request`]))) {
+      reworded++; console.log(`      diagram wording changed: ${profile.customerName}`);
+    }
+  }
+  check(smsLeak === 0, "the SMS sales playbook never reaches the voice prompt");
+  check(noZip === 0, "every prospect's voice prompt asks for a ZIP (the diagram's Consumer Zip pill)");
+  check(noName === 0, "every prospect's voice prompt asks for a full name (the Consumer Name pill)");
+  check(noGreet === 0, "every prospect opens with a scripted greeting");
+  check(invented === 0, "no derived spec invents service ZIP codes");
+  check(reworded === 0, "a derived spec renders the diagram's existing wording");
+}
+
 /* Self-check: a static audit that silently matches nothing reports success forever. */
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (18 checks)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (25 checks)");
 process.exit(failures ? 1 : 0);
