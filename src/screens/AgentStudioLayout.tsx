@@ -1,6 +1,7 @@
-import type { ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, type ReactNode } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { CreateWorkflowModal } from "../components/CreateWorkflowModal";
 
 /* Shared chrome for the Agent Studio editor sub-pages (Agent Settings,
    Knowledge Sources, …): header + left sub-nav + sticky footer. The active
@@ -18,6 +19,8 @@ const SUBNAV = [
 ];
 
 export function AgentStudioLayout({ children }: { children: ReactNode }) {
+  const [createOpen, setCreateOpen] = useState(false);
+  const navigate = useNavigate();
   const { profile } = useProfile();
   const name = profile.customerName;
   const { pathname } = useLocation();
@@ -79,12 +82,31 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
                 </Link>
               );
             })}
-            <button className="ag-create-wf"><span className="material-icons">add</span> Create Workflow</button>
+            {/* ⚠️ The modal lives on the SHARED chrome, not on one sub-page, because the
+                sub-nav that carries this button is shared — the real page offers it from every
+                Agent Studio screen. */}
+            <button className="ag-create-wf" onClick={() => setCreateOpen(true)}>
+              <span className="material-icons">add</span> Create Workflow
+            </button>
           </div>
         </aside>
 
         <section className="ag-content">{children}</section>
       </div>
+
+      {/* ⚠️ **WHAT CREATE *BUILDS* IS UNMEASURED, so it does the one true thing it can.** The
+          capture shows the modal and nothing after it, and this app derives exactly one workflow
+          per channel — so Create opens the chosen channel's workflow rather than inventing a
+          third one under the typed name and leaving an SE with a row that goes nowhere. Same
+          call the Dashboard Configuration drawer makes about its own Save. */}
+      <CreateWorkflowModal
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        onCreate={(_name, channel) => {
+          setCreateOpen(false);
+          navigate(`/agent-studio/agent/workflow/${channel.toLowerCase()}`);
+        }}
+      />
 
     </div>
   );

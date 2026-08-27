@@ -904,6 +904,87 @@ broken code. Rewritten against a seeded queue, it fails loudly and prints the du
 `/api/chat`, the transcript through `/api/analyze`, then both artifacts built exactly as My
 Reports builds them, printing the department three times over so a mismatch is obvious.
 
+### Create Workflow: the name + channel modal (measured 8/27/2026)
+`src/components/CreateWorkflowModal.tsx` (`.cwm-`), opened by **Create Workflow** in
+`AgentStudioLayout`'s left sub-nav. From a SingleFile capture saved with the modal OPEN
+(network 2751, `/ai_agents/edit/169/workflow/186`), kept at
+`reference/agent-workflow/create-workflow-modal.html` — Invoca's own MUI dialog, so it
+serialises in full and every value is a computed style, not a screenshot reading.
+
+| | measured |
+|---|---|
+| paper | **500 x 422**, radius 3, MUI elevation-24 shadow; `52 title + 310 content + 60 actions` |
+| title | "Create Workflow" 400 20/28 `#15243E`, inset 12, **no bottom rule** |
+| content | `flex: 1 1 auto; overflow-y: auto`, padding `0 13.6px`; inner wrapper `16px 0` |
+| lede | 400 16/20, wraps to two lines (40 tall) at dy 69 |
+| field | dy **133** (h **74**) and **231** (h **76**); label box **32 tall with `margin-top: 7px`** |
+| inputs | name 472.8 x **35** radius 3 · channel 472.8 x **37** radius **4** |
+| actions | band 60 at dy 362, **no top rule**; buttons 36 tall, 16 apart, Create 12 from the edge |
+| Cancel / Create | outlined `1px rgba(38,102,249,.5)` ink `#2666F9` · **disabled** `#E7E9EB` on `#A1A7B2` |
+
+⚠️ **THE PAPER HEIGHT IS AUTHORED `422px`, NOT CONTENT-DRIVEN.** The first build came out
+**66px short** (356) because it let the content size the paper; there are ~40px of slack under
+the last field. `height: 422px` + `flex-direction: column` on the paper with `flex: 1 1 auto`
+on the content reproduces every offset.
+
+⚠️⚠️ **`display: flex` ON `.cwm-field` IS LOAD-BEARING, and its absence was the second
+defect.** As a plain block, the field's own `margin-top: 24px` and the label's `margin-top: 7px`
+**COLLAPSE into one 24** — so the label sat flush at the field's top, each FormControl measured
+**67 against 74**, and the second field was dragged 8px up with it. A flex container establishes
+its own formatting context, so the child margin is no longer adjacent to the parent's and both
+spacings count. Two symptoms (short fields AND a shifted second field) from one collapse.
+
+⚠️ **THE LABEL BOX IS 32 TALL; THE 23 IS ITS INNER SPAN.** Measuring the span rather than the
+FormLabel is what produced the 67. `7 + 32 + 35 = 74` and `7 + 32 + 37 = 76` land both fields
+exactly, which is how the decomposition was checked rather than eyeballed.
+
+⚠️ **NAME 35 / CHANNEL 37 IS REAL** — MUI's Autocomplete wraps its input with an extra pixel
+each side. Reproduced rather than evened up; tidying it is how a replica starts drifting.
+
+⚠️ **NEITHER THE TITLE NOR THE ACTIONS BAND HAS A RULE** (both measured `0px none`).
+`NewDashboardModal` DOES carry one under its title and is **also 500 x 422**, so the two are
+easy to conflate. Every other value differs (its label is 16/**700**, its field 384 x 40).
+
+⚠️⚠️ **THE CHANNEL POPUP IS PORTALLED TO THE BODY, LIKE MUI'S OWN POPPER, AND IT HAD TO BE.**
+`.cwm-content` is the measured `overflow-y: auto` scroll box, so an absolutely positioned list
+inside it was **CLIPPED — "Voice" cut in half by the content's bottom edge, and the paper grew a
+scrollbar.** Now `createPortal` + `position: fixed` anchored to the combo's rect, re-measured on
+any scroll in the **capture phase** (scroll does not bubble, and it is the modal's own content
+that scrolls, not the window) — the same anchoring the sidebar flyout documents.
+⚠️ **The outside-pointerdown handler had to learn about the portal.** Testing only
+`comboRef.contains` closed the popup on the very pointerdown that was selecting an option, so
+the option's own handler never ran and the channel never changed — the silent-no-op shape this
+file records repeatedly. It checks the LIST too.
+⚠️ z-index **3150**: above `.cwm-root` (3100) because the list is now a body child rather than a
+descendant of the paper, and deliberately not 3200, which `.ndm-backdrop` uses. They can never
+be on screen together, but a tie decided by source order becomes a confusing bug later.
+
+⚠️ **THE DROPDOWN'S OPEN STATE IS NOT IN THE CAPTURE** (`aria-expanded="false"`), so its popup
+geometry is the screenshot plus the combobox values already measured for the tile Configuration
+drawer — options 32 tall at `6px 16px`, 16/400, paper radius 3 with the MUI shadow. Flagged
+rather than presented as measured.
+⚠️ **THE TWO TOOLTIPS ARE VERBATIM from the capture's own `aria-label`s** — Invoca's product
+words, which is why they read as long as they do.
+⚠️ **Channel defaults to "SMS"** — the capture opens with it already in the field, so it is a
+default, not a placeholder. **Create is disabled until the NAME has content** (measured
+`disabled` while Channel already held SMS). The combo is READ-ONLY: with two options there is
+nothing to search, and a text field that accepts "Fax" is a worse lie than one that does not.
+
+⚠️ **WHAT CREATE *BUILDS* IS UNRESOLVED — today it navigates to the chosen channel's existing
+workflow and the typed name is discarded.** So an SE who types "Marriott - After Hours" and
+picks Voice lands on "Marriott - Voice". That is honest about the modal and dishonest about the
+name; adding a real workflow means storing it, listing it in the sub-nav, and deciding what tree
+it starts with, none of which the capture settles. Raised with the user rather than invented.
+
+Verified with real clicks and real typing: a **22-property diff against the measured spec came
+back empty** (paper 500 x 422, fields 132/74 and 230/76, labels 32, inputs 35 and 37 at 472.8,
+actions at 362); the popup escapes the paper with both options at 32px and the content no longer
+scrolling (310/310); picking Voice sets the field and closes the list; Create navigates to
+`/agent-studio/agent/workflow/voice` leaving **zero** stray portal nodes; Escape and a backdrop
+click both close. Untouched afterwards: the SMS workflow page (6 nodes, 2 chips, its own Create
+Workflow button, zero `.cwm-`) and `/dashboards/marketing` (17 cards at 4px, 5 donuts, zero
+`.cwm-`). `audit:ai` and `audit:voice` (38 checks) both green.
+
 ### The Ask AI empty state describes THIS page (8/27/2026)
 Reported from the voice workflow page: the drawer opened with "bump Total Revenue to $1.2M",
 "make Q4 trend up" and "On a dashboard I can add a tile too" — three examples that would all be

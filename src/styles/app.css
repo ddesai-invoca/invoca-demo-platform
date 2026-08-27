@@ -4735,3 +4735,90 @@ button.nav-item {
    Start opens nothing on the real page, so it keeps the default cursor. */
 .wf-node--open { cursor: pointer; }
 .wf-node--open:hover { box-shadow: 0 2px 6px rgba(12,0,51,.16); }
+
+/* ============================================================================
+   Create Workflow modal (.cwm-) — MEASURED off a SingleFile capture saved with
+   the modal open (8/27/2026, network 2751). Every number here is a computed
+   style read off the rendered DOM; see the header of CreateWorkflowModal.tsx.
+   ⚠️ The paper decomposes exactly: 52 title + 310 content + 60 actions = 422.
+   ⚠️ NO rule under the title and none above the actions (both measured
+      `0px none`) — the New Dashboard modal has one and is also 500x422, which
+      makes the two easy to conflate. They are different modals.
+   ============================================================================ */
+.cwm-root { position: fixed; inset: 0; z-index: 3100; display: flex; align-items: center; justify-content: center; }
+.cwm-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .5); }
+.cwm-paper {
+  /* ⚠️ **THE HEIGHT IS AUTHORED AT 422, NOT CONTENT-DRIVEN** (measured `height: 422px` on the
+     paper, with the content `flex: 1 1 auto`). The content therefore STRETCHES and leaves ~40px
+     of slack under the last field — reproduced rather than trimmed, because a content-height
+     paper came out 356 and the modal read noticeably shorter than the real one. The New
+     Dashboard modal is also 500x422, so this is Invoca's modal shell. */
+  position: relative; width: 500px; max-width: 500px; height: 422px; max-height: calc(100% - 64px);
+  display: flex; flex-direction: column;
+  background: #fff; border-radius: 3px;
+  /* MUI elevation 24, verbatim. */
+  box-shadow: rgba(0,0,0,.2) 0 11px 15px -7px, rgba(0,0,0,.14) 0 24px 38px 3px, rgba(0,0,0,.12) 0 9px 46px 8px;
+  font-family: var(--font-sans, Lato, Avenir, "Museo Sans", sans-serif); color: #15243e;
+}
+/* 400/20/28 with a 12px inset gives the measured 52px band. */
+.cwm-title { margin: 0; padding: 12px; font-size: 20px; font-weight: 400; line-height: 28px; color: #15243e; }
+.cwm-content { flex: 1 1 auto; overflow-y: auto; padding: 0 13.6px; }
+/* The 16px band lives on an inner wrapper, as in the capture, so the content can stretch. */
+.cwm-inner { padding: 16px 0; }
+.cwm-lede { margin: 0; font-size: 16px; font-weight: 400; line-height: 20px; color: #15243e; }
+/* Measured gap between the lede and the first field, and between the fields: 24.
+   ⚠️ **`display: flex` IS LOAD-BEARING, NOT DECORATION.** As a plain block, this 24px
+   margin and the label's own 7px COLLAPSE into one 24 — so the label sat flush at the
+   field's top and each FormControl measured 67 against the capture's 74, pulling the
+   second field 8px up with it. A flex container establishes its own formatting context,
+   so the child margin is no longer adjacent to the parent's and both spacings count. */
+.cwm-field { display: flex; flex-direction: column; margin-top: 24px; }
+/* ⚠️ THE LABEL BOX IS 32 TALL WITH A 7px MARGIN ABOVE IT — measured on the FormLabel, not on
+   its inner span (that span is the 23px line box, which is what a first pass mistook it for).
+   7 + 32 + 35 is exactly the 74 the first FormControl measures. */
+.cwm-label { display: flex; align-items: center; min-height: 32px; margin-top: 7px; font-size: 16px; font-weight: 400; line-height: 23px; color: #15243e; }
+.cwm-tip { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; margin-left: 2px; padding: 0; background: none; border: none; border-radius: 100px; color: #66708e; cursor: pointer; }
+.cwm-tip svg { width: 20px; height: 20px; fill: currentColor; }
+.cwm-tip:hover { background: rgba(0, 0, 0, .04); }
+/* ⚠️ 35 for the text field and 37 for the combo — MUI's Autocomplete adds a pixel
+   each side. Measured, and deliberately not evened up. */
+.cwm-input {
+  width: 100%; height: 35px; box-sizing: border-box; padding: 6px 8px;
+  font-family: inherit; font-size: 16px; color: #15243e;
+  background: transparent; border: 1px solid #e7e9eb; border-radius: 3px;
+}
+.cwm-input:focus { outline: none; border-color: #2666f9; }
+.cwm-combo { position: relative; }
+.cwm-comboinput {
+  width: 100%; height: 37px; box-sizing: border-box; padding: 6px 62px 6px 8px;
+  font-family: inherit; font-size: 16px; color: #15243e;
+  background: transparent; border: 1px solid #e7e9eb; border-radius: 4px; cursor: pointer;
+}
+.cwm-comboinput:focus { outline: none; border-color: #2666f9; }
+.cwm-adorn { position: absolute; top: 0; right: 6px; height: 37px; display: flex; align-items: center; gap: 2px; }
+.cwm-clear, .cwm-caret { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; padding: 0; background: none; border: none; border-radius: 100px; color: #66708e; cursor: pointer; }
+.cwm-clear svg, .cwm-caret svg { width: 18px; height: 18px; fill: currentColor; }
+.cwm-clear:hover, .cwm-caret:hover { background: rgba(0, 0, 0, .04); }
+/* ⚠️ POPUP GEOMETRY IS THE SCREENSHOT PLUS THE COMBOBOX ALREADY MEASURED for the
+   tile Configuration drawer — the capture has the list CLOSED. Flagged in the
+   component header rather than presented as measured. */
+/* ⚠️ 3150 sits above `.cwm-root` (3100) because the list is a BODY child now, not a
+   descendant of the paper — and deliberately NOT 3200, which `.ndm-backdrop` already
+   uses. The two can never be on screen together, but a tie decided by source order is
+   the kind of thing that becomes a confusing bug later. */
+.cwm-list { position: fixed; z-index: 3150; margin: 0; padding: 8px 0; list-style: none; background: #fff; border-radius: 3px; box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12); max-height: 375px; overflow-y: auto; }
+.cwm-opt { padding: 6px 16px; font-size: 16px; line-height: 20px; color: #15243e; cursor: pointer; }
+.cwm-opt:hover { background: #d4e0fe; }
+.cwm-opt--on { background: #f3f4f5; }
+/* Measured: band 60 tall, buttons 36 and 16 apart, Create ending 12 from the edge. */
+.cwm-actions { display: flex; justify-content: flex-end; align-items: center; gap: 16px; padding: 12px; }
+.cwm-cancel, .cwm-create {
+  height: 36px; padding: 8px 12px; font-family: inherit; font-size: 14px; font-weight: 400;
+  text-transform: capitalize; border-radius: 3px; cursor: pointer;
+}
+.cwm-cancel { background: #fff; color: #2666f9; border: 1px solid rgba(38, 102, 249, .5); }
+.cwm-cancel:hover { background: rgba(38, 102, 249, .04); }
+.cwm-create { background: #2666f9; color: #fff; border: 1px solid #2666f9; }
+.cwm-create:hover:not(:disabled) { background: #1c53e9; border-color: #1c53e9; }
+/* Measured disabled state, which is how the capture was saved. */
+.cwm-create:disabled { background: #e7e9eb; color: #a1a7b2; border-color: #e7e9eb; cursor: default; }
