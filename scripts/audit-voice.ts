@@ -330,8 +330,32 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
   /* ⚠️ THE AI PANEL IS THE CALL'S; THE CRM FIELDS ARE THE PROSPECT'S. Keeping the seeded
      coverage credited the agent with a service-area check it never ran. */
   check(pop.coverage.includes("Orlando"), "the AI panel's coverage comes from the call");
-  check(pop.email === profile.reports.voiceScreenpop.email,
-    "CRM fields the call cannot establish stay as the prospect's own");
+  check(pop.cartId === profile.reports.voiceScreenpop.cartId
+    && pop.estimatedValue === profile.reports.voiceScreenpop.estimatedValue,
+    "place-free CRM fields the call cannot establish stay as the prospect's own");
+
+  /* ⚠️⚠️ **NO FIELD MAY STILL NAME THE SEEDED CITY ONCE THE CALLER NAMED A DIFFERENT ONE.** This
+     is the reported bug in one assertion: a caller who said "New York" was shown "luxury hotels
+     Las Vegas weekend", "Calling Page: St. Regis Las Vegas", "Pages Viewed: W Hotels Las Vegas",
+     "Location: Las Vegas, NV", a campaign called "Las Vegas Acquisition" and a 702 area code —
+     the attribution panel contradicting the transcript printed beside it. Asserted over the
+     WHOLE serialised artifact rather than per field, so a field added later is covered too. */
+  const seededCity = profile.reports.voiceScreenpop.city;
+  const moved = { ...ok, outcome: { ...ok.outcome, location: "New York" } };
+  const mr = voiceAiRouting(profile, moved as never)!;
+  const mp = voiceAiScreenpop(profile, moved as never)!;
+  const blob = JSON.stringify({ mr, mp });
+  check(!new RegExp(seededCity, "i").test(blob),
+    `no artifact field still names the seeded city after the caller named another`,
+    (blob.match(new RegExp(`.{0,40}${seededCity}.{0,20}`, "i")) ?? [])[0]);
+  check(/New York/.test(mr.attribution.map((a) => a.value).join(" ")),
+    "the attribution panel follows the call's location");
+  /* ⚠️ THE AREA CODE TOO — 702 sat directly above the word "New York" on the caller card, and
+     the 555 exchange must survive so a demo number cannot ring a real business. */
+  check(/\(212\)/.test(mr.callerPhone) && /555/.test(mr.callerPhone),
+    "the caller's area code follows the city and keeps the 555 exchange", mr.callerPhone);
+  check(/^[a-z]+\.[a-z]+@gmail\.com$/.test(mp.email),
+    "the email is derived from whoever actually called", mp.email);
 
   /* ⚠️ THE GENERATION TRAP. `toSchema()` marks every property required, so an `.optional()`
      field in a generated type is FORCED onto the model — which would fabricate a routing

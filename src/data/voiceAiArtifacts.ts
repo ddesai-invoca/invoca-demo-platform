@@ -22,11 +22,22 @@ import type { CustomerProfile, VoiceConversation, VoiceRoutingDemo, VoiceScreenp
    ⚠️ **NEWEST CALL ONLY** (agreed 8/27/2026). One pair of rows that always reflects the most
    recent transferred call, rather than a pair per practice run cluttering My Reports.
 
-   ⚠️ **THE CALL OVERRIDES ONLY WHAT IT ESTABLISHED** (agreed 8/27/2026). Name, intent, location,
-   department, signals and the transcript come from the call; email, street address, cart id,
-   digital journey and estimated value stay as the prospect's own seeded screenpop. Blanking
-   them would undersell the pre-call-intelligence pitch, and inventing them from a two-minute
-   call would be worse. Everything derived here is traceable to something that was said.
+   ⚠️⚠️ **THE PRE-CALL STORY IS RE-SKINNED TO THE CALL'S LOCATION, and the first build got this
+   badly wrong.** The rule was "keep whatever the call could not establish", which is right for
+   an email or a cart id and WRONG for anything naming a place. A caller who said "New York"
+   got a screen reading "luxury hotels Las Vegas weekend", "Calling Page: St. Regis Las Vegas",
+   "Pages Viewed: W Hotels Las Vegas", "Location: Las Vegas, NV" and a campaign called "Las
+   Vegas Acquisition" — every one of them contradicting the transcript printed beside it.
+   Reported as: "I want a consistent story so no one says wait a sec, this metric and these
+   attributions don't match."
+
+   The digital journey is FICTION WE CONTROL. It costs nothing to make it agree with the call,
+   and a prospect reading the search term against the transcript is exactly the person this demo
+   is for. So the seeded city is substituted throughout: attribution, visitor history, campaign,
+   searches, calling page, products, journey and the address block.
+
+   ⚠️ Only genuinely unknowable, place-free fields stay seeded: the cart id, the estimated value,
+   the street number. Those cannot contradict anything that was said.
    ============================================================================= */
 
 type Conv = VoiceConversation;
@@ -124,6 +135,92 @@ function queuesWithWinner(base: VoiceRoutingDemo["queues"], routedTo: string): V
   return [winner, ...base.filter((q) => q.id !== winner.id)].slice(0, Math.max(3, 1));
 }
 
+
+/**
+ * A city the demo call might name, with a real state and a real ZIP inside it.
+ *
+ * ⚠️ **STATE AND ZIP MOVE WITH THE CITY OR THEY CONTRADICT IT.** Substituting only the city left
+ * "City: New York / State: NV / Zip: 89121" on the screenpop, which is the same class of
+ * mismatch this whole change exists to remove — just one row further down.
+ *
+ * ⚠️ Unknown city: the address block is left ALONE rather than half-rewritten. A caller's home
+ * address is not something the call established, so leaving the seeded one intact is honest;
+ * writing a city with someone else's state is not.
+ */
+const CITY_PLACE: Record<string, { state: string; zip: string; area: string }> = {
+  "new york": { state: "NY", zip: "10019", area: "212" },
+  "los angeles": { state: "CA", zip: "90015", area: "213" },
+  "san francisco": { state: "CA", zip: "94103", area: "415" },
+  "san diego": { state: "CA", zip: "92101", area: "619" },
+  "las vegas": { state: "NV", zip: "89109", area: "702" },
+  "chicago": { state: "IL", zip: "60601", area: "312" },
+  "miami": { state: "FL", zip: "33131", area: "305" },
+  "orlando": { state: "FL", zip: "32819", area: "407" },
+  "boston": { state: "MA", zip: "02116", area: "617" },
+  "seattle": { state: "WA", zip: "98101", area: "206" },
+  "denver": { state: "CO", zip: "80202", area: "303" },
+  "austin": { state: "TX", zip: "78701", area: "512" },
+  "dallas": { state: "TX", zip: "75201", area: "214" },
+  "houston": { state: "TX", zip: "77002", area: "713" },
+  "atlanta": { state: "GA", zip: "30303", area: "404" },
+  "phoenix": { state: "AZ", zip: "85004", area: "602" },
+  "nashville": { state: "TN", zip: "37203", area: "615" },
+  "new orleans": { state: "LA", zip: "70130", area: "504" },
+  "washington": { state: "DC", zip: "20001", area: "202" },
+  "philadelphia": { state: "PA", zip: "19107", area: "215" },
+  "charlotte": { state: "NC", zip: "28202", area: "704" },
+  "portland": { state: "OR", zip: "97205", area: "503" },
+  "tampa": { state: "FL", zip: "33602", area: "813" },
+  "honolulu": { state: "HI", zip: "96815", area: "808" },
+};
+
+/** "Las Vegas, NV" -> "las vegas"; "New York" -> "new york". */
+function cityKey(loc: string): string {
+  return loc.split(",")[0].trim().toLowerCase();
+}
+
+/** Title Case the city as the caller said it, so "new york" prints "New York". */
+function cityLabel(loc: string): string {
+  return loc.split(",")[0].trim().replace(/\b[a-z]/g, (m) => m.toUpperCase());
+}
+
+/**
+ * Swap every mention of the seeded city for the one the caller named.
+ *
+ * ⚠️ WORD-BOUNDED and case-insensitive, so "St. Regis Las Vegas" becomes "St. Regis New York"
+ * rather than being left half-substituted, and a city name that happens to appear inside
+ * another word is not mangled.
+ */
+function swapCity(text: string, from: string, to: string): string {
+  if (!from || !to || from.toLowerCase() === to.toLowerCase()) return text;
+  const esc = from.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return text.replace(new RegExp(`\\b${esc}\\b`, "gi"), to);
+}
+
+/**
+ * Re-point a phone number's AREA CODE at the caller's city, keeping everything else.
+ *
+ * ⚠️ **702 IS LAS VEGAS, AND IT SAT DIRECTLY ABOVE THE WORD "New York" ON THE CALLER CARD.** Not
+ * in the reported list, but the same class of mismatch and the one a prospect who knows area
+ * codes spots instantly.
+ *
+ * ⚠️ **THE 555 EXCHANGE IS PRESERVED** — it is reserved precisely so a demo number cannot ring a
+ * real business, the same care the Google Search ad's call extension takes.
+ */
+function swapAreaCode(phone: string, area: string | undefined): string {
+  /* ⚠️ CAPTURE THE PARENTHESES, DO NOT RE-ADD THEM. A first version matched the prefix with
+     `\D*`, which greedily swallowed the opening "(" and then wrote another one — producing
+     "+1 ((212) 555-0847". Anchoring on the 555 exchange keeps this to the area code alone. */
+  return area ? phone.replace(/(\(?)(\d{3})(\)?\D*555)/, `$1${area}$3`) : phone;
+}
+
+/** "Challer Bing" -> "challer.bing@gmail.com". A name-free call keeps the seeded address. */
+function emailFor(name: string, seeded: string): string {
+  const parts = name.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if (parts.length < 2) return seeded;
+  return `${parts[0]}.${parts[parts.length - 1]}@gmail.com`.replace(/[^a-z0-9.@-]/g, "");
+}
+
 /** The Voice Routing Demo, rebuilt from a captured call. */
 export function voiceAiRouting(profile: CustomerProfile, conv: Conv): VoiceRoutingDemo | null {
   const base = profile.reports.voiceRoutingDemo;
@@ -135,9 +232,25 @@ export function voiceAiRouting(profile: CustomerProfile, conv: Conv): VoiceRouti
   const sigs = signalsByTurn(conv.signals ?? [], turns);
   const ramp = confidenceRamp(turns.length, queues.length);
 
+  /* The seeded city, and the one the caller actually named. */
+  const fromCity = cityLabel(base.callerLocation);
+  const toCity = o.location.trim() ? cityLabel(o.location) : fromCity;
+  const place = CITY_PLACE[cityKey(toCity)];
+  const swap = (t: string) => swapCity(t, fromCity, toCity);
+
   return {
-    ...base,                                   // brand, icon, phone, attribution, visitor history, badge
-    callerLocation: o.location.trim() || base.callerLocation,
+    ...base,                                   // brand, icon, phone, badge
+    /* ⚠️ THE WHOLE PRE-CALL STORY FOLLOWS THE CALL. Leaving these seeded put "luxury hotels Las
+       Vegas weekend" and "Pages Viewed: W Hotels Las Vegas" beside a transcript in which the
+       caller says New York — the attribution panel contradicting the transcript panel, on one
+       screen, in front of the person most likely to read both. */
+    callerLocation: place ? `${toCity}, ${place.state}` : swap(base.callerLocation),
+    callerPhone: swapAreaCode(base.callerPhone, place?.area),
+    attribution: base.attribution.map((a) => ({ ...a, value: swap(a.value) })),
+    visitorHistory: base.visitorHistory.map((a) => ({
+      ...a,
+      value: a.label.toLowerCase() === "location" && place ? `${toCity}, ${place.state}` : swap(a.value),
+    })),
     queues,
     convo: turns.map((t, i) => ({
       role: t.speaker === "agent" ? ("agent" as const) : ("caller" as const),
@@ -171,9 +284,29 @@ export function voiceAiScreenpop(profile: CustomerProfile, conv: Conv): VoiceScr
     where ? "location" : "",
   ].filter(Boolean);
 
+  const fromCity = cityLabel(base.city ? `${base.city}` : "");
+  const toCity = where ? cityLabel(where) : fromCity;
+  const place = CITY_PLACE[cityKey(toCity)];
+  const swap = (t: string) => swapCity(t, fromCity, toCity);
+
   return {
-    ...base,                                   // email, address, cart, journey, value: the prospect's own
+    /* ⚠️ Only the genuinely unknowable, PLACE-FREE fields stay seeded — the cart id, the
+       estimated value, the street number. Nothing left here can contradict the transcript. */
+    ...base,
     callerName: name,
+    /* ⚠️ THE EMAIL FOLLOWED A DIFFERENT PERSON ENTIRELY. The seeded one was
+       "j.martinez.702@email.com" while the caller had just given their name as Challer Bing, so
+       the rep's screen named two people. Derived from whoever actually called; a call that got
+       no name keeps the seeded address rather than inventing one. */
+    email: emailFor(name, base.email),
+    callerPhone: swapAreaCode(base.callerPhone, place?.area),
+    campaign: swap(base.campaign),
+    googleSearch: swap(base.googleSearch),
+    websiteSearch: swap(base.websiteSearch),
+    callingWebpage: swap(base.callingWebpage),
+    products: swap(base.products),
+    digitalJourney: swap(base.digitalJourney),
+    ...(place ? { city: toCity, state: place.state, zip: place.zip } : {}),
     intent,
     /* ⚠️⚠️ **THE "AI VOICE AGENT" PANEL COMES ENTIRELY FROM THE CALL, WHERE THE CRM FIELDS DO
        NOT — and the distinction is not pedantry.** Keeping the seeded `coverage` left a support

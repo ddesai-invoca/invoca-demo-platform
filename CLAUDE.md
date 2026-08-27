@@ -816,6 +816,41 @@ two artifacts would render it as if a call had happened. Same class as `Interact
 `VOICE_CI_GEN` omits it, and the audit checks BOTH the omit and that no profile on disk carries
 a generated `outcome`.
 
+⚠️⚠️ **THE PRE-CALL STORY IS RE-SKINNED TO THE CALL'S LOCATION, and the first build got this
+badly wrong.** The rule was "keep whatever the call could not establish" — right for an email or
+a cart id, and WRONG for anything naming a place. A caller who said **New York** was shown, on
+the same two screens as the transcript: `Marketing Search Term(s): luxury hotels Las Vegas
+weekend`, `Calling Page: St. Regis Las Vegas`, `Pages Viewed: W Hotels Las Vegas`,
+`Location: Las Vegas, NV`, `Campaign: Luxury Resort Getaway, Las Vegas Acquisition`,
+`Google Search: Ritz-Carlton Las Vegas`, a **702** area code, and an email belonging to a
+different person entirely (`j.martinez.702@email.com` beside a caller named Challer Bing).
+Reported as: "I want a consistent story so no one says wait a sec, this metric and these
+attributions don't match."
+
+**The digital journey is fiction we control**, so it costs nothing to make it agree — and a
+prospect reading the search term against the transcript is exactly who this demo is for. The
+seeded city is now substituted throughout both artifacts: attribution, visitor history, campaign,
+searches, calling page, products, journey, city/state/zip and the area code.
+
+⚠️ **STATE, ZIP AND AREA CODE MOVE WITH THE CITY OR THEY CONTRADICT IT.** Substituting only the
+city left "City: New York / State: NV / Zip: 89121" — the same mismatch one row further down.
+`CITY_PLACE` carries state + zip + area code for 24 cities; an UNKNOWN city leaves the address
+block alone rather than half-rewriting it, because a city with someone else's state is worse than
+a seeded address the call never claimed to know.
+⚠️ **THE 555 EXCHANGE SURVIVES THE AREA-CODE SWAP** — reserved so a demo number cannot ring a
+real business, the same care the Google Search ad's call extension takes.
+⚠️ A first `swapAreaCode` matched the prefix with `\D*`, which greedily ate the opening "(" and
+then wrote another, producing **"+1 ((212) 555-0847"**. Anchor on the 555 exchange and CAPTURE
+the parentheses. Tested against five real formats.
+⚠️ **The email is derived from whoever called** (`challer.bing@gmail.com`); a call that got no
+name keeps the seeded address rather than inventing one.
+⚠️ **STILL SEEDED AND FLAGGED: `street`.** "4521 Desert Palm Drive" reads as Las Vegas in a New
+York address block. It is the one field left that carries a place flavour, and inventing a
+Manhattan street is inventing — raised with the user rather than decided here.
+
+**The audit asserts this over the WHOLE serialised pair**, not field by field, so a field added
+later is covered: no artifact may still name the seeded city once the caller named another.
+
 ⚠️ **THE AI VOICE AGENT PANEL COMES FROM THE CALL; THE CRM FIELDS DO NOT** — and the distinction
 is not pedantry. Agreed that email, street, cart id, digital journey and estimated value stay as
 the prospect's own (blanking them undersells the pre-call-intelligence pitch). But keeping the
