@@ -1,15 +1,5 @@
-# LiveKit Cloud deployment config.
-#
-# ⚠️ `lk agent create` FILLS IN THE REST. The documented shape is `[project] subdomain` plus
-# `[agent] id`, where the id identifies the DEPLOYMENT and is assigned when the agent is
-# created — it is not something to invent here. `lk agent config` regenerates this file.
-#
-# ⚠️ THE DISPATCH NAME IS NOT IN THIS FILE, which is easy to get wrong. The token dispatches
-# by AGENT NAME, and that name comes from `WorkerOptions({ agentName })` in voiceAgent.js —
-# it must stay equal to AGENT_NAME in engine/livekitToken.ts. `npm run audit:voice` checks
-# those two against each other.
-#
-# ⚠️ Track this file in version control: the CLI reads it from the working directory for every
-# `lk agent` command.
 [project]
   subdomain = "invoca-custom-project-tk9impi1"
+
+[agent]
+  id = "CA_y7Ctc5ZfZ4G6"

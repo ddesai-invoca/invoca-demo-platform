@@ -7,3 +7,7 @@ npm-debug.log
 *.log
 livekit.toml
 README.md
+
+# Secrets are passed via --secrets-file, never baked into the image.
+secrets.env
+*.secrets.env
