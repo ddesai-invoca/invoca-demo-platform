@@ -174,6 +174,68 @@ const CITY_PLACE: Record<string, { state: string; zip: string; area: string }> =
   "honolulu": { state: "HI", zip: "96815", area: "808" },
 };
 
+/**
+ * ZIP codes a demo call is likely to give, with the city USPS actually assigns them.
+ *
+ * ⚠️ **A CALLER MAY GIVE A ZIP RATHER THAN A CITY, and for a serviceable-address prospect that
+ * ZIP *IS* the caller's address** — asked for directly: "if its for a serviceable address and on
+ * the call they give a zipcode for example 30097, then i do want you to go change the pre call
+ * intelligence to match the address with zipcode." A hotel caller's own address is irrelevant
+ * (the destination is what matters); a plumber's is the whole job.
+ *
+ * ⚠️ **REAL ZIP-TO-CITY PAIRS ONLY.** Guessing a city from a ZIP3 prefix would put "Atlanta, GA
+ * 30097" on screen when 30097 is Duluth — a prospect who knows their own service area reads that
+ * instantly, which is the exact failure this work exists to remove. An unresolved ZIP leaves the
+ * address block ALONE rather than half-rewriting it.
+ */
+const ZIP_PLACE: Record<string, { city: string; state: string; area: string }> = {
+  /* Comfort Keepers' own configured service area. */
+  "30097": { city: "Duluth", state: "GA", area: "770" },
+  "30096": { city: "Duluth", state: "GA", area: "770" },
+  "30095": { city: "Duluth", state: "GA", area: "770" },
+  /* Metros the seeded profiles and the demo scripts actually use. */
+  "89109": { city: "Las Vegas", state: "NV", area: "702" },
+  "89121": { city: "Las Vegas", state: "NV", area: "702" },
+  "10019": { city: "New York", state: "NY", area: "212" },
+  "90210": { city: "Beverly Hills", state: "CA", area: "310" },
+  "93109": { city: "Santa Barbara", state: "CA", area: "805" },
+  "32701": { city: "Altamonte Springs", state: "FL", area: "407" },
+  "32819": { city: "Orlando", state: "FL", area: "407" },
+  "75201": { city: "Dallas", state: "TX", area: "214" },
+  "78701": { city: "Austin", state: "TX", area: "512" },
+  "60601": { city: "Chicago", state: "IL", area: "312" },
+  "98101": { city: "Seattle", state: "WA", area: "206" },
+  "02116": { city: "Boston", state: "MA", area: "617" },
+};
+
+/**
+ * A place-NEUTRAL street, so the address block can never contradict its own city.
+ *
+ * ⚠️ The seeded street was "4521 Desert Palm Drive", which reads as Las Vegas wherever it is
+ * printed — and once the city moves to New York or Duluth it is the last field still telling the
+ * old story. Inventing a real Manhattan address is inventing; keeping the house NUMBER and
+ * choosing a name that evokes nowhere is not. Deterministic on the ZIP, so a rehearsal renders
+ * the same address twice.
+ */
+const NEUTRAL_STREETS = ["Oakwood Drive", "Maple Avenue", "Cedar Lane", "Ridgeview Court", "Brookside Road", "Highland Terrace"];
+function neutralStreet(seeded: string, zip: string): string {
+  const num = (seeded.match(/^\d+/) ?? ["1240"])[0];
+  const pick = [...zip].reduce((n, ch) => n + ch.charCodeAt(0), 0) % NEUTRAL_STREETS.length;
+  return `${num} ${NEUTRAL_STREETS[pick]}`;
+}
+
+/** Whatever the caller said — a city or a ZIP — resolved to one place, or null. */
+function resolvePlace(loc: string): { city: string; state: string; zip: string; area: string } | null {
+  const raw = loc.trim();
+  const zip = raw.match(/\b(\d{5})\b/)?.[1];
+  if (zip) {
+    const z = ZIP_PLACE[zip];
+    return z ? { city: z.city, state: z.state, zip, area: z.area } : null;
+  }
+  const c = CITY_PLACE[cityKey(raw)];
+  return c ? { city: cityLabel(raw), state: c.state, zip: c.zip, area: c.area } : null;
+}
+
 /** "Las Vegas, NV" -> "las vegas"; "New York" -> "new york". */
 function cityKey(loc: string): string {
   return loc.split(",")[0].trim().toLowerCase();
@@ -232,10 +294,10 @@ export function voiceAiRouting(profile: CustomerProfile, conv: Conv): VoiceRouti
   const sigs = signalsByTurn(conv.signals ?? [], turns);
   const ramp = confidenceRamp(turns.length, queues.length);
 
-  /* The seeded city, and the one the caller actually named. */
+  /* The seeded city, and the place the caller actually named — a city OR a ZIP. */
   const fromCity = cityLabel(base.callerLocation);
-  const toCity = o.location.trim() ? cityLabel(o.location) : fromCity;
-  const place = CITY_PLACE[cityKey(toCity)];
+  const place = o.location.trim() ? resolvePlace(o.location) : null;
+  const toCity = place?.city ?? (o.location.trim() && !/\d{5}/.test(o.location) ? cityLabel(o.location) : fromCity);
   const swap = (t: string) => swapCity(t, fromCity, toCity);
 
   return {
@@ -244,12 +306,12 @@ export function voiceAiRouting(profile: CustomerProfile, conv: Conv): VoiceRouti
        Vegas weekend" and "Pages Viewed: W Hotels Las Vegas" beside a transcript in which the
        caller says New York — the attribution panel contradicting the transcript panel, on one
        screen, in front of the person most likely to read both. */
-    callerLocation: place ? `${toCity}, ${place.state}` : swap(base.callerLocation),
+    callerLocation: place ? `${place.city}, ${place.state}` : swap(base.callerLocation),
     callerPhone: swapAreaCode(base.callerPhone, place?.area),
     attribution: base.attribution.map((a) => ({ ...a, value: swap(a.value) })),
     visitorHistory: base.visitorHistory.map((a) => ({
       ...a,
-      value: a.label.toLowerCase() === "location" && place ? `${toCity}, ${place.state}` : swap(a.value),
+      value: a.label.toLowerCase() === "location" && place ? `${place.city}, ${place.state}` : swap(a.value),
     })),
     queues,
     convo: turns.map((t, i) => ({
@@ -284,9 +346,9 @@ export function voiceAiScreenpop(profile: CustomerProfile, conv: Conv): VoiceScr
     where ? "location" : "",
   ].filter(Boolean);
 
-  const fromCity = cityLabel(base.city ? `${base.city}` : "");
-  const toCity = where ? cityLabel(where) : fromCity;
-  const place = CITY_PLACE[cityKey(toCity)];
+  const fromCity = cityLabel(base.city ?? "");
+  const place = where ? resolvePlace(where) : null;
+  const toCity = place?.city ?? (where && !/\d{5}/.test(where) ? cityLabel(where) : fromCity);
   const swap = (t: string) => swapCity(t, fromCity, toCity);
 
   return {
@@ -306,7 +368,16 @@ export function voiceAiScreenpop(profile: CustomerProfile, conv: Conv): VoiceScr
     callingWebpage: swap(base.callingWebpage),
     products: swap(base.products),
     digitalJourney: swap(base.digitalJourney),
-    ...(place ? { city: toCity, state: place.state, zip: place.zip } : {}),
+    /* ⚠️ **THE WHOLE ADDRESS MOVES TOGETHER, STREET INCLUDED.** For a serviceable-address
+       prospect the ZIP the caller gave IS their address, so city, state, zip AND street have to
+       sit at it — "4521 Desert Palm Drive, Duluth, GA 30097" would be the last field still
+       telling the Las Vegas story. The street becomes place-neutral rather than a fabricated
+       local one: the house number is kept, and the name evokes nowhere, so it cannot contradict
+       whatever city ends up beside it. */
+    ...(place
+      ? { city: place.city, state: place.state, zip: place.zip,
+          street: neutralStreet(base.street, place.zip) }
+      : {}),
     intent,
     /* ⚠️⚠️ **THE "AI VOICE AGENT" PANEL COMES ENTIRELY FROM THE CALL, WHERE THE CRM FIELDS DO
        NOT — and the distinction is not pedantry.** Keeping the seeded `coverage` left a support

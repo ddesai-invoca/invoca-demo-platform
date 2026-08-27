@@ -844,7 +844,30 @@ then wrote another, producing **"+1 ((212) 555-0847"**. Anchor on the 555 exchan
 the parentheses. Tested against five real formats.
 ⚠️ **The email is derived from whoever called** (`challer.bing@gmail.com`); a call that got no
 name keeps the seeded address rather than inventing one.
-⚠️ **STILL SEEDED AND FLAGGED: `street`.** "4521 Desert Palm Drive" reads as Las Vegas in a New
+⚠️⚠️ **A ZIP IS A LOCATION TOO, AND FOR A SERVICEABLE-ADDRESS PROSPECT IT *IS* THE CALLER'S
+ADDRESS.** Asked for directly: "in this use case its just the calls address that doesn't matter
+when booking a hotel, but for another prospect if its for a serviceable address and on the call
+they give a zipcode for example 30097, then i do want you to go change the pre call intelligence
+to match the address with zipcode." A hotel caller's own address is irrelevant — the DESTINATION
+is what matters; a plumber's or a carer's is the whole job. `resolvePlace()` therefore takes
+either a city name or a 5-digit ZIP and returns one place. Verified: Comfort Keepers + "30097"
+gives **Duluth, GA 30097** with a **770** area code, and Marriott + "New York" gives New York, NY
+10019 with 212.
+
+⚠️ **`ZIP_PLACE` HOLDS REAL ZIP-TO-CITY PAIRS ONLY, and a ZIP3 prefix guess was rejected.**
+Deriving a city from the first three digits would print "Atlanta, GA 30097" when USPS assigns
+30097 to Duluth — and the prospect who knows their own service area is exactly the person
+reading it. An UNRESOLVED ZIP leaves the address block ALONE (verified with 12345): a city
+carrying someone else's state is worse than a seeded address the call never claimed to know.
+
+⚠️ **THE STREET MOVES WITH THE ADDRESS, AND BECOMES PLACE-NEUTRAL.** "4521 Desert Palm Drive"
+reads as Las Vegas wherever it is printed, so once the city becomes Duluth it is the last field
+still telling the old story. Fabricating a real local street is inventing; keeping the house
+NUMBER and choosing a name that evokes nowhere ("4218 Maple Avenue") is not. Deterministic on
+the ZIP, so a rehearsal renders the same address twice. This replaces the note below, which
+raised the street as an open question.
+
+⚠️ **SUPERSEDED — `street` was flagged here as still seeded.** "4521 Desert Palm Drive" reads as Las Vegas in a New
 York address block. It is the one field left that carries a place flavour, and inventing a
 Manhattan street is inventing — raised with the user rather than decided here.
 

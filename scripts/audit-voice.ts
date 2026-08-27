@@ -357,6 +357,28 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
   check(/^[a-z]+\.[a-z]+@gmail\.com$/.test(mp.email),
     "the email is derived from whoever actually called", mp.email);
 
+  /* ⚠️⚠️ **A ZIP IS A LOCATION TOO, and for a serviceable-address prospect it IS the caller's
+     address** — asked for directly with 30097 as the example. So the address block has to move to
+     it, street included: "4521 Desert Palm Drive, Duluth, GA 30097" would leave the last field
+     telling the Las Vegas story. */
+  const ck = JSON.parse(read("src/data/generated/comfort-keepers.json"));
+  const zipCall = { ...ok, outcome: { ...ok.outcome, location: "30097", routedTo: "Care Assessment. New Project" } };
+  const zr = voiceAiRouting(ck, zipCall as never)!;
+  const zp = voiceAiScreenpop(ck, zipCall as never)!;
+  check(zp.zip === "30097" && zp.city === "Duluth" && zp.state === "GA",
+    "a ZIP the caller gave resolves the whole address block",
+    `${zp.city}, ${zp.state} ${zp.zip}`);
+  check(/\(770\)/.test(zr.callerPhone), "the area code follows a ZIP too", zr.callerPhone);
+  /* ⚠️ THE STREET MUST CARRY NO PLACE FLAVOUR once the address moves — see `neutralStreet`. */
+  check(zp.street !== ck.reports.voiceScreenpop.street && /^\d+\s/.test(zp.street),
+    "the street becomes place-neutral when the address moves", zp.street);
+  /* ⚠️ AND AN UNRESOLVED ZIP LEAVES THE BLOCK ALONE rather than half-rewriting it: a city with
+     someone else's state is worse than a seeded address the call never claimed to know. */
+  const unknown = voiceAiScreenpop(profile, { ...ok, outcome: { ...ok.outcome, location: "12345" } } as never)!;
+  const seededPop = profile.reports.voiceScreenpop;
+  check(unknown.city === seededPop.city && unknown.zip === seededPop.zip && unknown.street === seededPop.street,
+    "an unresolved ZIP leaves the address block untouched");
+
   /* ⚠️ THE GENERATION TRAP. `toSchema()` marks every property required, so an `.optional()`
      field in a generated type is FORCED onto the model — which would fabricate a routing
      decision on a seeded conversation and render it as if a call had happened. Same class as
