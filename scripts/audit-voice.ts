@@ -265,11 +265,24 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "editGuard allows a ZIP allow-list to be created");
   check(isStructuralChange(cfg.rules, "not a list", "agent.rules"),
     "editGuard still blocks a type flip on the agent's config");
+  /* ⚠️ **THE DRAWER'S EMPTY STATE OFFERS "route cancellations to the retention team", so the
+     guard has to permit it.** `TreePath.route` is OPTIONAL — a spec naming no teams renders
+     exactly as before — which made that an `undefined -> string` write, i.e. a type flip, on
+     precisely the prospects whose branches carry no route. The UI promised something the guard
+     refused, and it would only have failed on those accounts. Checked by CALLING the guard
+     against what the copy says, not by trying one prospect. */
+  const routePath = "branches.1.leaves.0.paths.0.route";
+  check(!isStructuralChange(undefined, "Retention", routePath),
+    "editGuard lets a use case be given a destination it did not have");
+  check(!isStructuralChange("Billing", "Retention", routePath),
+    "editGuard lets a use case's destination be changed");
+  check(isStructuralChange("Billing", ["a"], routePath),
+    "editGuard still blocks a type flip on a destination");
 }
 
 /* Self-check: a static audit that silently matches nothing reports success forever. */
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (35 checks)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (38 checks)");
 process.exit(failures ? 1 : 0);

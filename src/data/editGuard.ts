@@ -141,6 +141,12 @@ const CREATABLE_WHEN_ABSENT = [
      ZIPs 30097 and 30096" is an undefined -> value write. `agentConfigOf` omits them rather
      than writing undefined, so absent really does mean absent here. */
   /^agent\.(serviceZips|outOfAreaScript)$/i,
+  /* ⚠️ A USE CASE'S DESTINATION, which is OPTIONAL on `TreePath` so that a spec naming no teams
+     (Comfort Keepers) renders exactly as before. That made "route cancellations to the retention
+     team" an undefined -> string write on precisely those prospects, so the guard refused an
+     edit the drawer's own empty state offers. Caught by checking the guard against the copy
+     rather than by trying it, which would only have failed on one account. */
+  /\bpaths\.\d+\.route$/i,
 ];
 
 /**

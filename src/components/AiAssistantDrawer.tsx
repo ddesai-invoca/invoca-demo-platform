@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
@@ -20,6 +20,57 @@ import { tileId } from "../data/tileId";
    Edits are keyed per page, so nothing here can change another screen. */
 
 interface Msg { role: "user" | "assistant"; content: string; icon?: string }
+
+
+/* =============================================================================
+   WHAT THIS PAGE ACTUALLY LETS YOU DO
+   -----------------------------------------------------------------------------
+   ⚠️ **THE EMPTY STATE USED TO PITCH DASHBOARD EDITS ON EVERY SCREEN** — "bump Total Revenue
+   to $1.2M", "make Q4 trend up", "On a dashboard I can add a tile too". On a workflow diagram
+   none of that is true: there is no revenue, no Q4 and no tile to add. The first thing an SE
+   reads in the drawer was three examples that would all be declined, on the one screen where
+   the feature is most capable.
+
+   ⚠️ **KEYED ON THE PAGE'S DATA, NOT ITS PATHNAME.** A pathname test breaks when a route moves
+   and says nothing about what is editable; the SHAPE of the registered slice is the same signal
+   `engine/assistant.ts` uses to decide whether to describe the agent at all, so the drawer's
+   promise and the model's instructions cannot drift apart.
+
+   ⚠️ Returns null for everything else, so every other screen keeps its existing copy verbatim —
+   the opt-in rule for anything shared by many screens.
+   ============================================================================= */
+function pageHint(data: unknown): { title: string; body: ReactNode } | null {
+  const d = data as { agent?: unknown; branches?: unknown[] } | undefined;
+  if (!Array.isArray(d?.branches)) return null;
+
+  /* A VOICE workflow registers the agent's own configuration beside its diagram, so one
+     instruction can build the routing AND set what the agent says. */
+  if (d?.agent) {
+    return {
+      title: "Build this voice agent",
+      body: (
+        <>
+          Describe what you want the agent to do and I'll build the tree and configure it:
+          "add a use case for loyalty members", "remove the billing branch", "ask group bookings
+          for the room count", "route cancellations to the retention team", "greet callers as
+          Max", "only serve ZIP codes 30097 and 30096". The trigger, Conversation Start and the
+          four nodes above the branches are Invoca's own and cannot be renamed.
+        </>
+      ),
+    };
+  }
+  return {
+    title: "Change this workflow",
+    body: (
+      <>
+        Reshape the diagram: "add a branch for warranty questions", "rename this path",
+        "collect their email too", "drop the second option". The trigger, Conversation Start
+        and the two intent nodes are Invoca's own and cannot be renamed. I change this
+        diagram only, never the styling, and never another page.
+      </>
+    ),
+  };
+}
 
 export function AiAssistantDrawer() {
   const { open, closeDrawer, active: registered, focus, effectiveData, applyEdits, addTile, replaceTile, hideTile, showTile, readOnly, activeDemo } = useAiAssistant();
@@ -59,6 +110,10 @@ export function AiAssistantDrawer() {
   const listRef = useRef<HTMLDivElement>(null);
   const key = active?.key ?? "";
 
+  /* The empty state describes THIS page, from the slice it registered. Memoised on the same
+     inputs as `effTitle` so it re-reads when an edit lands (a page that gains an `agent` slice
+     should start describing it). */
+  const hint = useMemo(() => (active ? pageHint(effectiveData(active.key)) : null), [active, effectiveData]);
   const effTitle = useMemo(() => (active ? ((effectiveData(active.key) as any)?.title ?? active.baseTitle) : ""), [active, effectiveData]);
 
   /* THE QUESTION TOOLS ARE OPT-IN, and the opt-in is the scope's questionPath.
@@ -363,14 +418,16 @@ export function AiAssistantDrawer() {
                 </>
               ) : (
                 <>
-                  <p className="aiad-empty-title">{questions ? "Change what this agent asks" : "Ask about this page"}</p>
+                  <p className="aiad-empty-title">
+                    {questions ? "Change what this agent asks" : (hint?.title ?? "Ask about this page")}
+                  </p>
                   <p className="aiad-empty-sub">{questions ? (
                     <>
                       Tap a question above to change it, paste or import a whole list, or pick a use
                       case and I'll rewrite them all. You can also just tell me: "drop the budget
                       question", "ask for their ZIP first", "add one about financing".
                     </>
-                  ) : (
+                  ) : hint ? hint.body : (
                     <>
                     Ask a question, or change the data: "bump Total Revenue to $1.2M",
                     "rename this signal to Quote Booked", "make Q4 trend up". On a dashboard I can

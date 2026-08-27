@@ -765,6 +765,32 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### The Ask AI empty state describes THIS page (8/27/2026)
+Reported from the voice workflow page: the drawer opened with "bump Total Revenue to $1.2M",
+"make Q4 trend up" and "On a dashboard I can add a tile too" — three examples that would all be
+declined, on the screen where the feature is most capable. `pageHint()` in `AiAssistantDrawer`
+returns a title and body per page:
+
+| page | title |
+|---|---|
+| voice workflow (data has `agent` + `branches`) | **Build this voice agent** |
+| SMS / extra workflow (`branches`, no `agent`) | **Change this workflow** |
+| everything else | unchanged, verbatim |
+
+⚠️ **KEYED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME.** A pathname test breaks when a
+route moves and says nothing about what is editable. The shape is the SAME signal
+`engine/assistant.ts` uses to decide whether to describe the agent, so the drawer's promise and
+the model's instructions cannot drift apart. Returns null for every other screen, so their copy
+is untouched — verified live on `/dashboards/marketing`.
+
+⚠️⚠️ **WRITING THE COPY EXPOSED A REAL GUARD BUG, which is the argument for making UI promises
+concrete.** The new text offers "route cancellations to the retention team". `TreePath.route` is
+OPTIONAL so that a spec naming no teams (Comfort Keepers) renders byte-identically — which made
+that an `undefined -> string` write, a TYPE FLIP, on exactly the prospects whose branches carry
+no route. The drawer advertised something `editGuard` refused, and it would only have failed on
+those accounts. `/\bpaths\.\d+\.route$/` is now in CREATABLE_WHEN_ABSENT, and three checks
+assert it by CALLING the guard against what the copy says.
+
 ### Use-case branches: both user-group nodes fork now (8/27/2026)
 Agreed in a capabilities exercise, in the user's own words: the four chrome nodes stay locked,
 "but after all sales inquiry users and all support users, those 2 can have as many branches as
