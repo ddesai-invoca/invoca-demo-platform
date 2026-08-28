@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
@@ -15,9 +16,10 @@ import { salesforceCallLog } from "../data/salesforceCallLog";
    writing its measured widths inline in ITS window, frozen by SingleFile. See the
    note at `.scl-col-name`.
 
-   ⚠️ ROWS ARE INERT, like the Leads list's. The record pages behind these links
-   are not captured, and a link that navigates somewhere invented is worse than one
-   that does nothing — the same call `SfContextBar`'s ROUTES map makes for tabs.
+   ⚠️ EVERY ROW OPENS ITS RECORD, as of 8/28/2026. They were inert until the record
+   page was built off its own capture; the rule that kept them inert — never link
+   somewhere invented — is the same rule that let them go live once the destination
+   was real.
    ============================================================================= */
 
 /** The header's action group: white, 1px #5C5C5C, ink #0250D9, 600, ends rounded. */
@@ -122,7 +124,12 @@ export function SalesforceCallLog() {
                   <tr className="scl-tr" key={r.name}>
                     <td className="scl-td scl-td--num">{i + 1}</td>
                     <td className="scl-td"><span className="scl-check" /></td>
-                    <td className="scl-td"><span className="scl-link">{r.name}</span></td>
+                    <td className="scl-td">
+                      {/* ⚠️ LIVE NOW THAT THE RECORD PAGE EXISTS. These were deliberately
+                          inert while it did not — a link that navigates somewhere invented
+                          is worse than one that does nothing. */}
+                      <Link className="scl-link" to={`/salesforce/call-log/${r.name}`}>{r.name}</Link>
+                    </td>
                     <td className="scl-td scl-td--act">
                       <SldsIcon name="triangledown" size={12} className="scl-rowcaret" />
                     </td>

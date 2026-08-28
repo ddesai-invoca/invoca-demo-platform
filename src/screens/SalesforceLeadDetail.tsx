@@ -201,7 +201,7 @@ export function SalesforceLeadDetail() {
                 <span className="sld-ribtn"><SldsIcon name="triangledown" size={14} /></span>
               </div>
               <div className="sld-rbody">
-                <Link className="sld-link" to="/salesforce/call-log">{d.callLogName}</Link>
+                <Link className="sld-link" to={`/salesforce/call-log/${d.callLogName}`}>{d.callLogName}</Link>
               </div>
               <div className="sld-rfoot"><span className="sld-link">View All</span></div>
             </div>

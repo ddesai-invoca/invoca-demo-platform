@@ -5658,3 +5658,108 @@ button.nav-item {
 .cwm-create:hover:not(:disabled) { background: #1c53e9; border-color: #1c53e9; }
 /* Measured disabled state, which is how the capture was saved. */
 .cwm-create:disabled { background: #e7e9eb; color: #a1a7b2; border-color: #e7e9eb; cursor: default; }
+
+/* =============================================================================
+   Invoca Call Log RECORD page — `.clr-` (screen 6)
+   -----------------------------------------------------------------------------
+   From `reference/salesforce/call-log-detail-v1.html`, measured at 1920.
+
+   ⚠️ ITS OWN PREFIX, even though several values match the Lead record page's
+   `.sld-` ones. One prefix per screen is what stops a change to one record page
+   silently restyling the other — the rule this repo has already paid for once, when
+   a component rebuild deleted 79 `.cd-` rules as collateral. If a shared value
+   changes, re-read BOTH captures.
+   ============================================================================= */
+.clr-page { background: #f3f3f3; min-height: 100%; }
+
+/* ⚠️ A FULL-BLEED 80px BAND, not the Lead page's inset rounded slab. */
+.clr-head { display: flex; align-items: center; height: 80px; padding: 0 32px; background: #f3f3f3; }
+.clr-entity { flex: 0 0 auto; width: 32px; height: 32px; border-radius: 100%; background: #8b85f9;
+  display: flex; align-items: center; justify-content: center; }
+.clr-entity img { width: 20px; height: 20px; }
+.clr-headtext { margin-left: 12px; }
+/* ⚠️ `#444`, NOT the `#03234D` the Lead page's eyebrow uses. Measured on both. */
+.clr-eyebrow { font-size: 13px; line-height: 13px; color: #444; }
+.clr-title { margin: 0; font-size: 28px; line-height: 35px; font-weight: 400; color: #03234d; }
+.clr-headbtns { margin-left: auto; display: flex; align-items: center; }
+.clr-bgrp { display: flex; }
+.clr-btn { height: 32px; padding: 0 16px; display: inline-flex; align-items: center; background: #fff;
+  border: 1px solid #5c5c5c; border-right: 0; font-size: 13px; font-weight: 600; color: #0250d9;
+  white-space: nowrap; box-sizing: border-box; }
+.clr-btn--first { border-radius: 240px 0 0 240px; }
+.clr-btn--last { border-radius: 0 240px 240px 0; border-right: 1px solid #5c5c5c; }
+.clr-btn--icon { padding: 0 12px; }
+
+/* ---- the two columns ------------------------------------------------------ */
+/* ⚠️ 30px OF GROUND BETWEEN THE HEADER BAND AND THE PANEL. Without it the whole page
+   sat 30px high — the panel, both columns and the card all with it, which the diff
+   reported as four separate failures. */
+.clr-cols { display: flex; align-items: flex-start; gap: 24px; padding: 30px 16px 0; }
+.clr-left { flex: 0 0 1254.9px; min-width: 0; background: #fff; border-radius: 20px; padding: 13px 17px 0; }
+.clr-right { flex: 1 1 auto; min-width: 0; background: #fff; border-radius: 20px; padding: 13px 17px 0; }
+
+/* ---- Related / Details / More --------------------------------------------- */
+.clr-tabs { display: flex; height: 41px; border-bottom: 1px solid #c9c9c9; }
+.clr-tab { display: inline-flex; align-items: center; height: 40px; padding: 0 12px;
+  font-size: 16px; font-weight: 600; line-height: 24px; color: #5c5c5c; text-transform: capitalize;
+  border-bottom: 3px solid transparent; box-sizing: border-box; }
+/* Measured: the active tab is ink `#022AC0` with a 3px underline of the same colour —
+   and this page's blue is NOT the Lead list's `#0250D9`. Left as measured. */
+.clr-tab--on { color: #022ac0; border-bottom-color: #022ac0; }
+.clr-tab-chev { margin-left: 4px; }
+
+/* ---- the record card ------------------------------------------------------ */
+.clr-card { margin-top: 24px; }
+.clr-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.clr-field { padding: 0 12px; min-width: 0; }
+/* ⚠️ THE SEPARATOR IS ON THIS BOX so it spans the measured 586.5 rather than the
+   item's full 610.5. Putting it on `.clr-field` draws it 24px too wide. */
+.clr-fbox { padding: 4px 4px 0; border-bottom: 1px solid #c9c9c9; min-height: 48px; box-sizing: border-box; }
+.clr-field--spacer .clr-fbox, .clr-field--spacer { border: 0; }
+.clr-flabel { font-size: 13px; font-weight: 600; line-height: 19.5px; color: #2e2e2e; }
+.clr-fval { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+  min-height: 19.5px; }
+.clr-fvaltext { font-size: 13px; line-height: 19.5px; color: #181818; word-break: break-word; }
+.clr-link { font-size: 13px; line-height: 19.5px; font-weight: 400; color: #0250d9; text-decoration: none; }
+.clr-link:hover { text-decoration: underline; }
+.clr-fedit { flex: 0 0 auto; width: 16px; height: 16px; color: #747474; opacity: 0; }
+.clr-field:hover .clr-fedit { opacity: 1; }
+/* Drawn at 140x35 from a 200x50 asset — the capture's own inline width/height. */
+.clr-play { width: 140px; height: 35px; display: block; }
+
+/* ---- a section band ------------------------------------------------------- */
+.clr-section { margin-top: 13px; }
+.clr-sect-h { margin: 0; padding: 1px; }
+.clr-sect-btn { display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 8px;
+  background: #f3f3f3; border-radius: 8px; font-size: 20px; font-weight: 400; line-height: 30px;
+  color: #03234d; box-sizing: border-box; }
+.clr-sect-chev { flex: 0 0 auto; color: #03234d; }
+.clr-section .clr-grid { margin-top: 8px; }
+
+/* ⚠️ ONE ROW PER PAIR — Signals and Custom Data both — with the name on the left and
+   what it holds on the right, ON THE SAME LINE. Putting the right-hand cell's content in
+   the VALUE position would drop it 19.5px below the name it belongs to, reading as two
+   unrelated rows rather than one. */
+.clr-field--pair .clr-fval { min-height: 19.5px; }
+.clr-check { width: 16px; height: 16px; color: #181818; margin-top: 2px; }
+
+/* ---- the Activity panel -------------------------------------------------- */
+.clr-pubrow { display: flex; gap: 8px; margin-top: 16px; }
+.clr-pub { display: inline-flex; align-items: center; height: 32px; border: 1px solid #c9c9c9;
+  border-radius: 240px; padding: 0 6px 0 2px; background: #fff; }
+.clr-pub-ic { width: 24px; height: 24px; border-radius: 100%; display: flex; align-items: center;
+  justify-content: center; color: #fff; }
+.clr-pub-caret { margin-left: 4px; color: #0250d9; display: flex; }
+.clr-filters { margin-top: 16px; font-size: 12px; line-height: 18px; color: #5c5c5c; text-align: right; }
+.clr-actlinks { margin-top: 4px; display: flex; justify-content: flex-end; gap: 6px;
+  font-size: 12px; line-height: 18px; }
+.clr-actlinks .clr-link { font-size: 12px; line-height: 18px; }
+.clr-dot { color: #5c5c5c; }
+.clr-actband { display: flex; align-items: center; gap: 8px; height: 32px; margin-top: 16px;
+  padding: 0 8px; background: #f3f3f3; border-radius: 8px; font-size: 13px; color: #03234d; }
+.clr-empty { padding: 16px 0; font-size: 13px; line-height: 19.5px; color: #5c5c5c; text-align: center; }
+.clr-empty--past { border-top: 1px solid #e5e5e5; color: #0250d9; }
+
+.clr-missing { padding: 48px; }
+.clr-missing h1 { font-size: 28px; font-weight: 400; color: #03234d; }
+.clr-missing p { margin-top: 12px; font-size: 13px; color: #5c5c5c; }

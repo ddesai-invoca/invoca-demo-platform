@@ -2900,6 +2900,132 @@ list (10 rows, "10 items", 52px rows, 406px scroll box), the Call Log (50 rows, 
 INVOCA-00002741 first) and `/dashboards/marketing` (21 cards, 7 donuts, KPI 48,293) — **zero
 `.sld-` elements on any of them**. `audit:leads` and `audit:calllog` both green.
 
+### Salesforce Invoca Call Log RECORD page — screen 6 (8/28/2026)
+"Next screen is what happens when you click on the Invoca Call Log link. In the page, reduce the
+number of fields in the Enriched Caller Data. For signals the left column is the name and the
+right column is a check or not if it existed in the call. Custom Data: reduce the number of
+fields and also left column is the name of the data and the right column is the value of the
+name." Capture: `reference/salesforce/call-log-detail-v1.html`. `SalesforceCallLogDetail.tsx` +
+`.clr-*` + `src/data/salesforceCallLogRecord.ts`, routed at `/salesforce/call-log/:name`.
+
+This is the screen that shows, field by field, exactly what the integration WRITES INTO
+Salesforce — the payoff for the Call Log list being in the demo at all.
+
+| | measured at 1920 |
+|---|---|
+| header | **FULL-BLEED 80px `#F3F3F3` band** at y90, padding `0 32px` — not the Lead page's inset slab |
+| entity icon | 32 circle **`#8B85F9`** at x32 y114 (the same purple as the list and Seller Home's tile) |
+| eyebrow / title | 13px/13 **`#444`** / `400 28px/35px` `#03234D` |
+| header buttons | 32 tall, white, 1px `#5C5C5C`, ink **`#0250D9`**, `600 13px`, padding `0 16px`, ends radius 240 |
+| gap under the band | **30px** of page ground before the panel |
+| left panel | x16 y200 **w1254.9**, white, radius 20, padding `13px 17px 0` |
+| right panel | x1295, same chrome; the two are 24px apart |
+| tabs | 41 tall over 1px `#C9C9C9`; tab `600 16px`, inactive `#5C5C5C`, active **`#022AC0`** + a 3px underline |
+| card | x33 y278 **w1220.9** (two 610.5 columns, no gutter) |
+| field item | **610.5** wide, padding `0 12px`; populated 48 tall, empty 49.3 |
+| the separator | 1px `#C9C9C9` on an INNER box, **x45 w586.5** |
+| label / value | `600 13px/19.5` `#2E2E2E` / `400 13px/19.5` **`#181818`** |
+| section band | h3 34 tall with a 1px inset **button**: 32 tall, `#F3F3F3`, radius 8, `20px/30px` `#03234D` |
+| PLAY RECORDING | a real **200x50 PNG drawn at 140x35** |
+
+⚠️⚠️ **THE CAPTURE STORES SIGNALS AND CUSTOM DATA AS PAIRED GENERIC FIELDS, and that is why
+collapsing them is not a departure so much as a translation.** A field literally called
+`Customer Boolean Name 0` holds the value "Buying Intent (Industry)", and beside it
+`Customer Boolean Value 0` holds True — because these are generic columns on a custom object
+and Salesforce cannot label them with the thing they happen to contain. So the real page spends
+**20 rows to show 10 signals and 52 rows to show 25 custom values**, with every actual name
+buried in the VALUE column. One row per pair — name on the left, what it holds on the right —
+is what those rows MEAN, and it is the difference between a screen an SE can point at and a
+wall of "Customer Boolean Name 7".
+
+⚠️ **AND I FIRST RENDERED CUSTOM DATA AS ORDINARY STACKED FIELDS, which reproduced the exact
+thing being collapsed.** With the name as a label above its value, the two-column grid puts
+TWO DIFFERENT KEYS on one row each with its own value underneath — `invoca_caller_language`
+over "English" beside `utm_source` over "Paid Search". Read back off the rendered page rather
+than assumed. `PairRow` is now one component serving both sections, so they cannot drift.
+
+⚠️ **ENRICHED CALLER DATA: 23 FIELDS DOWN TO 8, AND *WHICH* EIGHT IS THE DECISION.** Twenty of
+the capture's are empty, and what got dropped is the whole demographic block — Age Range,
+Gender, Marital Status, Has Children, Education, Household Income, Home Market Value, High Net
+Worth, Occupation. Those are real Invoca enrichment fields, and filling them would mean
+**inventing a named caller's income and marital status to decorate a demo**. What stays is the
+line intelligence an SE actually talks about: who the number belongs to, what kind of line it
+is, and where it is. The audit asserts the dropped ones never come back.
+
+⚠️ **THE UNFIRED SIGNAL IS A DASHED SQUARE, NOT AN ABSENCE.** Both states are 16px SLDS glyphs
+on the 520 grid at fill `#181818`, extracted verbatim into `SldsIcon` as `check` and
+`checkboxdash`. Drawing nothing for a signal that did not fire would make it indistinguishable
+from a field the page failed to render — and this file already records that **a missing icon
+key fails silently**.
+
+#### Four bugs, and the first one is the important one
+⚠️⚠️ **TWO LEADS HASHED TO THE SAME CALL LOG RECORD, IN 6 OF THE 14 PROFILES ON DISK.**
+`salesforceLeadDetail` picked its record as `recs[hash(lead.slug) % 50]` — independently per
+lead, so collisions were inevitable. That was **invisible while the value was only ever
+PRINTED**: two leads naming one record contradicted nothing. The moment the record got its own
+page it could only name ONE of them back, so clicking Priya Castellano's call log record landed
+on a page reading **"Lead: Michael Chen"**. Now stepped by 7 from a per-profile offset — 7 is
+coprime with 50, so the pick is injective for far more than ten leads, still scatters instead of
+handing lead 1 the newest row, and is as stable as the hash was.
+**The lesson generalises: a derived value that becomes a LINK acquires an invariant it never had
+as a string.** The round-trip check in the new audit is what found it, on its first run.
+
+⚠️ **ONE MISSING 30px GAP PRODUCED FOUR DIFFS.** The panel, both columns and the card were all
+30px high because nothing separated the header band from the panel — three of the four entries
+named a consequence. Second screen running where one spacing value did this.
+
+⚠️ **THE 1px SEPARATOR IS ON AN INNER BOX, NOT THE FIELD.** The item is 610.5 with 12px of
+padding and the rule spans only the 586.5 inside it, so putting the border on the outer element
+draws it 24px too wide on every row of the page.
+
+⚠️⚠️ **THE utm ROWS CONTRADICTED THE URL PRINTED TWO ROWS BELOW THEM.** The first version read
+`utm_source = Paid Search` above a `calling_page` of `…?utm_source=google&utm_medium=cpc…`.
+Marketing Source is a CHANNEL; `utm_source` is the PARAMETER that was on the link. They now come
+out of the URL itself, falling back to the channel labels only for a row whose URL carries no utm
+params — so the rows agree by construction, the same reason the Details Report takes a whole
+attribution row instead of cycling its fields.
+
+⚠️⚠️ **EXTRACTING THE PLAY PNG THROUGH MY OWN MESSAGE TRUNCATED IT, and the byte count nearly
+let it through.** 3,270 base64 chars came back from the browser, went out through a `printf`, and
+decoded to a file whose chunk walk read `IHDR, tEXt, IDAT, <garbage chunk of length 75029>` — no
+IEND, running off the end. **Extract from the capture ON DISK instead of copying base64 through a
+message.** Two further traps in doing so: SingleFile writes **UNQUOTED attributes**, so
+`src="data:…"` does not match and the value ends at whitespace; and my first IEND test compared
+the last 8 bytes against a 12-byte pattern and so reported False on the good file too. **The
+authoritative check is a chunk walk that ends exactly at EOF.**
+
+⚠️ **THE CALL LOG LIST'S ROWS ARE LIVE NOW.** They were deliberately inert while no record page
+existed — "a link that navigates somewhere invented is worse than one that does nothing" — and
+that same rule is what let them go live once the destination was real and audited. All 50 per
+prospect resolve.
+
+⚠️ **ITS OWN `.clr-` PREFIX even though several values match the Lead page's `.sld-` ones.** One
+prefix per screen is what stops a change to one record page restyling the other — the rule this
+repo paid for when a component rebuild deleted 79 `.cd-` rules as collateral. Note two values
+that genuinely differ and were left as measured: the eyebrow is `#444` here and `#03234D` there,
+and the active tab is `#022AC0` here against `#0250D9` on the Leads list.
+
+**`npm run audit:clrecord` (also run by `npm run audit`) covers all 14 profiles**: every one of
+the 50 rows per prospect resolves, an unknown record fails closed, the **lead -> record -> lead
+round trip** holds for all ten leads, Enriched is <= 10 fields and carries none of the dropped
+demographics, Custom Data is <= 12 pairs, every signal name is one of that prospect's own with at
+least one fired and one not, the utm rows agree with the calling_page beside them, every phone
+number is on the reserved 555 exchange, and the derivation is stable across calls.
+⚠️ **The 555 check is written against the formats this page actually renders** — `(805) 555-0142`
+and `877-555-0961` — because the Leads audit's own version asked for three digits after the
+exchange and so agreed with the nine-digit phone number it existed to catch. Proved on both
+formats plus a real exchange.
+
+**Verified at 1920: a 21-property diff came back empty.** Signals render 10 rows with 4 checked
+and 6 dashed, all name-and-check on ONE row; Custom Data renders 11 name/value rows whose three
+utm values match the URL beneath them; Enriched renders 8. A real click on Jessica Harper's
+record link opens INVOCA-00002700, whose Lead field reads "Jessica Harper" and links back.
+Untouched: Seller Home (9 cards, 4/4/1, 338 / 400 / 376, 14 tabs, 0 broken images), the Leads
+list (10 rows, 52px, 406px scroll), the Call Log list (50 rows, 37px, header 32, all 50 now
+linking) and `/dashboards/marketing` (21 cards, 7 donuts, KPI 48,293) — **zero `.clr-` elements
+on any of them**. `audit:leads`, `audit:calllog`, `audit:leaddetail`, `audit:phases` and
+`audit:ai` all green.
+
 ### Salesforce Calendar — screen 2 of 4 (8/24/2026)
 `SalesforceCalendar.tsx` + `.sfc-`, plus `salesforceEvent.ts` for the booked appointment.
 What the **Calendar** tab opens; measured off a capture of the live week view.

@@ -260,10 +260,19 @@ export function salesforceLeadDetail(profile: CustomerProfile, slug: string): Sf
       websiteCallingPage: row?.landingPageUrl ?? "",
     },
     /* One call log record per lead, off the object that owns that numbering — so the
-       record named here exists in the Invoca Call Log tab's own list. */
+       record named here exists in the Invoca Call Log tab's own list.
+       ⚠️⚠️ THE PICK MUST BE INJECTIVE, AND A PER-LEAD HASH IS NOT. `recs[hash(slug) % 50]`
+       collided in **6 of the 14 profiles on disk**: two leads named the SAME record, and
+       once that record got its own page it could only name ONE of them back — so a
+       prospect clicking Priya Castellano's call log record landed on a page reading
+       "Lead: Michael Chen". Invisible while this string was only ever printed, and a real
+       contradiction the moment it became a link.
+       Stepping by 7 from a per-profile offset is injective for far more than ten leads (7
+       is coprime with 50), still scatters the records instead of handing lead 1 the newest
+       row, and is as stable across reloads as the hash was. */
     callLogName: (() => {
       const recs = salesforceCallLog(profile).records;
-      return recs[hash(`calllog:${lead.slug}`) % recs.length].name;
+      return recs[(hash(`calllog:${profile.id}`) + i * 7) % recs.length].name;
     })(),
     /* The lead's owner is the SE's own Salesforce user, as in the capture — that org's
        records are owned by the person demoing, not by anyone at the prospect. */
