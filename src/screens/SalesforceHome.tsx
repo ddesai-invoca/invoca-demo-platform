@@ -1,6 +1,7 @@
 import { useProfile } from "../data/ProfileContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
+import { newestCallLogName } from "../data/salesforceCallLog";
 
 /* =============================================================================
    Salesforce — Seller Home. Screen 1 of the Sales Cloud flow.
@@ -153,11 +154,18 @@ export function SalesforceHome() {
      Contact, which is also the mix that makes the Invoca integration the point of the page. */
   const caller = profile.reports.voiceScreenpop?.callerName ?? "Jessica Harper";
   const second = profile.reports.callDetail?.agent ?? "Bill Hyatt";
-  const callId = (profile.reports.callDetail?.callId ?? "00001888").replace(/\W/g, "").slice(0, 8).toUpperCase();
+  /* ⚠️ THE CALL LOG RECORD NAME IS AN 8-DIGIT AUTO-NUMBER, and this used to build
+     `INVOCA-<the Invoca call id>` -> "INVOCA-0597627F". Both captures say otherwise:
+     this one's own row reads **INVOCA-00001888** and the Invoca Call Log list view's
+     records are `INVOCA-00001889` and neighbours. So the two screens disagreed about
+     one record's name in one org. It comes from `salesforceCallLog` now, which owns
+     that object's numbering, and the row is genuinely the newest record in the list
+     the Invoca Call Log tab shows. */
+  const callLogName = newestCallLogName(profile);
   const recents = [
     { kind: "lead" as const, file: "lead", label: caller },
     { kind: "lead" as const, file: "lead", label: second },
-    { kind: "call" as const, file: "invoca-call-log", label: `INVOCA-${callId}` },
+    { kind: "call" as const, file: "invoca-call-log", label: callLogName },
     { kind: "account" as const, file: "account", label: `${profile.customerName} ${profile.bookingTerm}` },
     { kind: "contact" as const, file: "contact", label: caller },
   ];

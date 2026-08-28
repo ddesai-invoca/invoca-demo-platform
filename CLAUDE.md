@@ -2652,6 +2652,98 @@ and the horizontal scroll reaches the attribution ids. Untouched: Seller Home (4
 400 / 376, zero `.sfl-`), the Calendar, and `/dashboards/marketing` (21 cards, 7 donuts, KPI
 48,293, zero `.sfl-`).
 
+### Salesforce Invoca Call Log -> Recently Viewed — screen 4 of 4 (8/28/2026)
+"Next is the Invoca Call Log tab." Capture: `reference/salesforce/call-log-v1.html`.
+`SalesforceCallLog.tsx` + `.scl-*` + `src/data/salesforceCallLog.ts`, routed at
+`/salesforce/call-log`, with the tab added to `ROUTES` in the same commit. The Invoca
+package's own custom object: one record per call, ONE data column, an auto-numbered name —
+the plainest of the four screens and the one that shows the integration writes into
+Salesforce at all.
+
+| | measured at 1920 |
+|---|---|
+| card | white, **radius 20**, 1px TRANSPARENT border (which is what insets everything by 1) |
+| header band | **#F3F3F3 INSIDE the card**, 128 tall, padding `16px 16px 12px`, 1px `#C9C9C9` under it |
+| entity icon | 32 circle **`#8B85F9`** — the same purple Seller Home's call-log tile carries |
+| eyebrow / title | **13px/13** `#5C5C5C` / `400 28px/49` `#03234D` |
+| title controls | caret 4px after the title (no border), pin 16 further on (1px `#5C5C5C`), both 24 at radius 240 |
+| action group | New / Import / Change Owner / Assign Label, `li` 32 tall 1px `#5C5C5C`, label 13/30 600 `#0250D9` |
+| count line | 12/18 `#5C5C5C`, **bottom-aligned** to the tools row |
+| search | 240 x 32, radius **8**, 1px `#5C5C5C`, glyph inside 32px of left padding |
+| icon buttons | 44 / 44 / 32 / 32 / 32 then a **grey pair** — `#E5E5E5` ground, `#757575` ink |
+| list box | **radius 8 on all four corners**, 1px `#C9C9C9`, `#F3F3F3` ground, sticky header |
+| header row | 32 tall on `#F3F3F3`, `600 13px` `#5C5C5C`, padding `8px` |
+| rows | **37** tall (the Leads list is 52), padding 8, border-top from the second row on |
+| columns | 52 / 32 / **fills** / 50 |
+
+⚠️⚠️ **THE CAPTURE'S 1558px NAME COLUMN IS ITS WINDOW WIDTH, NOT A DESIGN VALUE.**
+`lightning-datatable` writes `table-layout: fixed; width: 1692px` plus a per-`th` inline
+width when it renders, and SingleFile froze the numbers from the window the capture was
+taken in (~1728 CSS px). Re-rendered at 1920 the table keeps 1692 and leaves a 194px band
+of the box's grey to its right, which reads as a deliberate gutter until you open the
+inline style. Copying it would have pinned every prospect's list to one SE's window. The
+other three columns ARE fixed; the name column takes what is left.
+⚠️ **Two signals agreed before this was changed**: the inline `style` attribute, and the
+user's own screenshot, where the row-action caret sits at the far right of the box.
+
+⚠️⚠️ **`display: inline-block` ON A 16px CHECKBOX MADE THE HEADER ROW 33.5 AGAINST 32.** An
+inline box sits on the BASELINE, so a 16px checkbox on a 16px line box grows the line to
+17.5 and takes the whole row with it — while `line-height: 16px` on the cell read as
+correct and measured 16 on the label beside it. A block fills the cell's content box
+exactly. Third time in this file a row height has been decided by something other than the
+`height` on it.
+
+⚠️ **THE ORDER IS "RECENTLY VIEWED", WHICH IS NOT NUMERIC.** The capture reads 1889, 1875,
+1872, 1888, 1884, 1887 — an SE's viewing history, and the column header carries "Column
+sort is disabled". A tidy descending list would contradict that, so each record gets a
+derived last-viewed instant and the list orders by it. `audit:calllog` **proves the check
+bites** by feeding it a numerically sorted list, which must fail.
+
+⚠️⚠️ **THIS FIXED A CROSS-SCREEN BUG ON SELLER HOME.** That screen built its Recent Records
+call-log row as `INVOCA-${callId}` -> **"INVOCA-0597627F"**, because the Invoca call id was
+the only id to hand when it was built. Both captures say the object is an **8-digit
+auto-number** — this one's records are `INVOCA-00001889` and neighbours, and the Seller Home
+capture's own row is **`INVOCA-00001888`**, a neighbour from the same block. So the two
+screens disagreed about one record's name in one org. `newestCallLogName()` is exported and
+Seller Home reads it, so the row it shows is genuinely the newest record in this list —
+verified live: Home now shows `INVOCA-00002741`, the exact first row here.
+
+⚠️ **THE COUNT IS THE ROW COUNT, NOT THE CAPTURE'S "50+".** Salesforce prints the "+" when
+there are more records than it fetched; printing it over exactly the rows we render would
+claim an unseen remainder. Same rule as the Leads list.
+⚠️ **THE STARTING NUMBER IS DERIVED PER PROSPECT and anchored near the capture's own block**
+rather than at 1 — an org whose call-log records start at INVOCA-00000001 has just been
+installed, which is the opposite of the story. The audit asserts the 14 profiles get
+distinct blocks, so two demos cannot show the same ids.
+
+⚠️ **ROWS ARE INERT**, like the Leads list's: the record pages behind these links are not
+captured, and a link that navigates somewhere invented is worse than one that does nothing.
+
+⚠️ **FOUR GLYPHS EXTRACTED VERBATIM** (pin, listdisplay, sortarrows, piechart). The gear,
+pencil, refresh, funnel, search and both carets were already in `SldsIcon` and matched the
+capture's paths character for character — checked rather than assumed.
+
+⚠️ **`.scl-` DUPLICATES THE LEADS SCREEN'S GROUP BUTTON, SEARCH PILL AND ROW CHROME rather
+than sharing them.** Every value is identical on both captures today, so sharing is
+tempting — and one prefix per screen is what stops a change to one list altering the other,
+which this file has already paid for once this week. If a value here changes, re-read BOTH
+captures.
+⚠️ Also measured here and NOT shared: neighbours in the action group omit `border-right`
+rather than pulling back 1px (a negative margin lands in the same place and stacks two
+borders), and the Charts/Filters pair does not overlap at all.
+
+**`npm run audit:calllog` (also run by `npm run audit`) covers all 14 profiles**: 50 records,
+the `INVOCA-` + 8-digit format, no duplicates, the status line agreeing with the rows, the
+order not numerically sorted, stability across calls, `newestCallLogName` being the first
+row, distinct blocks per prospect, and Seller Home still reading that helper instead of
+minting its own name.
+
+**Verified at 1920: a 21-property diff came back with ONE entry** — the action group 4px
+narrower from font metrics across four labels, the same drift the Leads header has. 50 rows
+scrolling under a sticky header. Untouched: Seller Home (4/4/1, 338 / 400 / 376), the Leads
+list (10 rows, "10 items") and `/dashboards/marketing` (21 cards, 7 donuts, KPI 48,293) —
+**zero `.scl-` elements on any of them**.
+
 ### Salesforce Calendar — screen 2 of 4 (8/24/2026)
 `SalesforceCalendar.tsx` + `.sfc-`, plus `salesforceEvent.ts` for the booked appointment.
 What the **Calendar** tab opens; measured off a capture of the live week view.

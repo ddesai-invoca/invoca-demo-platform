@@ -61,6 +61,7 @@ const NO_CHEVRON = new Set(["Home", "Chatter"]);
 const ROUTES: Record<string, string> = {
   Home: "/salesforce",
   Leads: "/salesforce/leads",
+  "Invoca Call Log": "/salesforce/call-log",
   More: "/salesforce/calendar",
 };
 

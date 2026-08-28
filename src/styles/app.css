@@ -4919,6 +4919,158 @@ button.nav-item {
   border: 1px solid #5c5c5c; border-radius: 4px; background: #fff; vertical-align: middle;
 }
 
+/* =============================================================================
+   Invoca Call Log -> Recently Viewed  (`.scl-`)
+   -----------------------------------------------------------------------------
+   Measured off `reference/salesforce/call-log-v1.html` at 1920. Own prefix, so it
+   cannot reach Seller Home, the Calendar or the Leads list.
+   ⚠️ The group button, the round icon buttons and the row chrome are the SAME
+   controls as the Leads list's `.sfl-` ones, deliberately duplicated rather than
+   shared: two captures agree on every value today, and one prefix per screen is
+   what stops a change to one list altering the other. If a value here ever changes,
+   re-read BOTH captures.
+   ============================================================================= */
+.scl-page { display: flex; flex-direction: column; height: calc(100vh - 130px); padding: 16px; }
+/* ⚠️ RADIUS 20 AND NO BORDER — the same slab Seller Home's cards are. Everything
+   else on this screen sits inside it. */
+.scl-card {
+  display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0;
+  background: #fff; border-radius: 20px;
+  /* ⚠️ A 1px TRANSPARENT BORDER, measured. It is what insets the header band and the
+     list box to x=17 inside a card at x=16; without it both sat a pixel wide and 2px
+     out, and every x inside them followed. */
+  border: 1px solid transparent;
+}
+
+/* ---- header band -------------------------------------------------------- */
+/* ⚠️ #F3F3F3 INSIDE A WHITE CARD, with a 1px #C9C9C9 rule under it and nothing on
+   the other three sides. Reading this as the page background (which is what it
+   looks like) puts the list's own box on grey instead of on white. */
+.scl-head {
+  flex: 0 0 auto; padding: 16px 16px 12px; background: #f3f3f3;
+  border-bottom: 1px solid #c9c9c9; border-radius: 20px 20px 0 0;
+}
+.scl-headrow { display: flex; align-items: flex-start; }
+/* ⚠️ `flex-end`. The count's text sits at 206 in a row running 188..220 — its
+   BASELINE row, not its middle (centring put it 12px high). */
+.scl-headrow--2 { align-items: flex-end; justify-content: space-between; margin: 3px 0; }
+/* 32 circle, #8B85F9 — the Invoca Call Log object's own colour on both captures. */
+.scl-entity {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; flex: 0 0 32px; margin-top: 16.5px;
+  background: #8b85f9; border-radius: 100%;
+}
+.scl-entity img { display: block; width: 32px; height: 32px; }
+.scl-headtext { flex: 1 1 auto; min-width: 0; margin-left: 12px; }
+/* ⚠️ `13px/13px` #5C5C5C — the Leads screen's eyebrow is 13/19.5 #03234D. Same
+   slot, different values, measured on their own captures. */
+.scl-eyebrow { font-size: 13px; line-height: 13px; color: #5c5c5c; padding-right: 8px; }
+.scl-titlerow { display: flex; align-items: center; }
+.scl-title { font-size: 28px; line-height: 49px; font-weight: 400; color: #03234d; margin: 0; }
+/* 24 square at radius 240; the picker's caret has NO visible border, the pin does. */
+.scl-tbtn {
+  display: flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; flex: 0 0 24px; margin-left: 4px;
+  border: 1px solid transparent; border-radius: 240px; color: #0250d9;
+}
+/* ⚠️ 16 FROM THE CARET, 4 FROM THE TITLE — two different gaps, measured. And the pin
+   sits 1.5px BELOW the caret on an otherwise centred row; the cause is not visible in
+   the capture, so it is reproduced rather than explained away. */
+.scl-tbtn--bordered { background: #fff; border-color: #5c5c5c; margin-left: 16px; margin-top: 1.5px; }
+
+/* The action group: `<li>` carries the border, the label inside is 13/30 weight 600. */
+.scl-actions { display: flex; align-items: center; list-style: none; margin: 0; padding: 0; flex: 0 0 auto; margin-top: 14.5px; }
+/* ⚠️ NEIGHBOURS SHARE AN EDGE BY OMITTING border-right, NOT by pulling back 1px:
+   measured `1px 0 1px 1px` on every item but the last, and adjacent x's with no
+   overlap. A negative margin lands in the same place and stacks two borders. */
+.scl-gbtn {
+  display: flex; align-items: center; height: 32px;
+  background: #fff; border: 1px solid #5c5c5c; border-right: 0;
+}
+.scl-gbtn--first { border-radius: 240px 0 0 240px; }
+.scl-gbtn--last { border-radius: 0 240px 240px 0; border-right: 1px solid #5c5c5c; }
+.scl-gbtn-a { padding: 0 16px; font-size: 13px; line-height: 30px; font-weight: 600; color: #0250d9; white-space: nowrap; }
+
+.scl-count { font-size: 12px; line-height: 18px; color: #5c5c5c; }
+/* ⚠️ TWO SPACINGS, MEASURED: 4px between the first three buttons and 8px between the
+   rest, with 6px after the search box. One uniform gap cannot produce
+   1607/1655/1703 then 1743/1783/1823. */
+.scl-tools { display: flex; align-items: center; gap: 8px; }
+.scl-icluster { display: flex; align-items: center; gap: 4px; }
+/* 240 wide at radius 8, 1px #5C5C5C, with the glyph inside the 32px left padding. */
+.scl-search {
+  position: relative; display: flex; align-items: center;
+  width: 240px; height: 32px; padding: 0 32px;
+  background: #fff; border: 1px solid #5c5c5c; border-radius: 8px;
+}
+.scl-search-ic { position: absolute; left: 10px; color: #5c5c5c; }
+.scl-search-ph { font-size: 13px; line-height: 30px; color: #5c5c5c; }
+.scl-ibtn {
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  width: 32px; height: 32px; flex: 0 0 32px;
+  background: #fff; border: 1px solid #5c5c5c; border-radius: 240px; color: #0250d9;
+}
+/* The two that carry a caret are 44 wide with `0 8px` of padding. */
+.scl-ibtn--wide { width: 44px; flex: 0 0 44px; padding: 0 8px; }
+/* ⚠️ MEASURED `#E5E5E5` GROUND AND `#757575` INK. Not a hover state — the Charts
+   and Filters pair reads as pressed on this account, and the other five do not. */
+.scl-ibtn--grey { background: #e5e5e5; color: #757575; }
+.scl-ipair { display: flex; align-items: center; }
+.scl-ipair .scl-ibtn--first { border-radius: 240px 0 0 240px; }
+.scl-ipair .scl-ibtn--last { border-radius: 0 240px 240px 0; }
+
+/* ---- the list box ------------------------------------------------------- */
+/* ⚠️ RADIUS 8 ON ALL FOUR CORNERS with a full 1px #C9C9C9 border and a #F3F3F3
+   ground — where the Leads list splits its border between a header bar and the
+   table container, this one is a single box. */
+.scl-scroll {
+  /* Flush to the card's content box on all three sides — the 16px inset it used to
+     carry put it 15px right of the capture's and 30px narrower. */
+  flex: 1 1 auto; min-height: 0; overflow: auto;
+  background: #f3f3f3; border: 1px solid #c9c9c9; border-radius: 8px;
+}
+/* ⚠️⚠️ **THE NAME COLUMN FILLS THE BOX, AND THE CAPTURE'S 1558px MUST NOT BE
+   COPIED.** `lightning-datatable` writes `table-layout:fixed; width:1692px` plus a
+   per-`th` inline width when it renders, and SingleFile froze the values from the
+   window the capture was taken in (~1728 CSS px). Re-rendered at 1920 the table
+   keeps 1692 and leaves a 194px band of the box's grey to its right, which looks
+   like a design until you read the inline style. The other three columns ARE
+   fixed — 52 / 32 / 50 — and the name column takes what is left. */
+.scl-table { width: 100%; table-layout: fixed; border-collapse: collapse; background: #fff; }
+.scl-th--num, .scl-td--num { width: 52px; }
+.scl-th--check { width: 32px; }
+.scl-th--act, .scl-td--act { width: 50px; }
+/* 32 tall on #F3F3F3, sticky, `600 13px` #5C5C5C. */
+.scl-th {
+  position: sticky; top: 0; z-index: 1;
+  /* ⚠️ `line-height: 16px` IS WHAT MAKES THE ROW 32. `height` cannot shrink a cell
+     below its content, so the inherited 19.5 line box rendered 35.5 while the rule
+     plainly said 32 — the same trap the pivot table's 27px row documents. */
+  height: 32px; padding: 8px; line-height: 16px; background: #f3f3f3;
+  font-size: 13px; font-weight: 600; color: #5c5c5c; text-align: left; white-space: nowrap;
+}
+.scl-th--name { position: sticky; padding: 8px 32px 8px 8px; }
+.scl-th-label { display: block; overflow: hidden; text-overflow: ellipsis; }
+.scl-th-chev { position: absolute; right: 12px; top: 9px; color: #0250d9; }
+/* ⚠️ 37 TALL, not the Leads list's 52 — a one-column list view packs tighter. And
+   the separator is a border-top from the SECOND row on, as it is there. */
+.scl-tr > * { height: 37px; padding: 8px; font-size: 13px; color: #5c5c5c; text-align: left; font-weight: 400; vertical-align: middle; }
+.scl-tr + .scl-tr > * { border-top: 1px solid #c9c9c9; }
+.scl-td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* The row number is a `counter()` in the capture, 12px with 20px of left padding. */
+.scl-td--num { font-size: 12px; padding-left: 20px; }
+.scl-link { color: #0250d9; font-weight: 500; }
+.scl-rowcaret { color: #0250d9; }
+.scl-td--act { text-align: right; }
+/* ⚠️ `display: block`, NOT `inline-block`. As an inline box a 16px checkbox sits on the
+   BASELINE, so its line box grows to 17.5 and the header row rendered 33.5 against the
+   measured 32 — with `line-height: 16px` on the cell reading as correct the whole time. A
+   block fills the cell's content box exactly (32 wide less 8+8 of padding = 16). */
+.scl-check {
+  display: block; width: 16px; height: 16px;
+  border: 1px solid #5c5c5c; border-radius: 4px; background: #fff;
+}
+
 /* ---- Salesblazer -------------------------------------------------------- */
 .sfh-sb-img { display: block; width: 423.7px; height: 100px; border-radius: 2px; }
 .sfh-sb-head {
