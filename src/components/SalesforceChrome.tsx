@@ -60,6 +60,7 @@ const NO_CHEVRON = new Set(["Home", "Chatter"]);
  */
 const ROUTES: Record<string, string> = {
   Home: "/salesforce",
+  Leads: "/salesforce/leads",
   More: "/salesforce/calendar",
 };
 

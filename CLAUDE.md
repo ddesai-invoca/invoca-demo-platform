@@ -2482,6 +2482,88 @@ Checked that the wider row did not push **More** — which carries the Calendar 
 the clip: at 1920 all 14 tabs fit with nothing clipped, and More keeps its underline. At 1157
 it is off the right edge, as it was before this change.
 
+### Salesforce Leads -> Lead Intelligence View — screen 3 of 4 (8/27/2026)
+"Next is the Leads tab." Capture: `reference/salesforce/leads-v1.html`. `SalesforceLeads.tsx`
++ `.sfl-*` + `src/data/salesforceLeads.ts`, routed at `/salesforce/leads`, and the **Leads tab
+now links** (added to `ROUTES` in the same commit as the screen, per the rule there).
+
+Measured at 1920 the same way as Seller Home — dump one property set off the capture's DOM,
+dump the same off ours, fix until the diff is empty:
+
+| | measured |
+|---|---|
+| page header | 101.5 tall on `#F3F3F3`, padding 16 |
+| entity icon | 32 circle **`#1B96FF`** at radius 100%, white glyph |
+| eyebrow / title | 13/19.5 `#03234D` / **`400 28px/49px`**, with a `#0250D9` caret 9px after it |
+| header buttons | 43 / 32 / 32 / 60.9 / 91.3, all 32 tall, 1px `#5C5C5C`, ink `#0250D9`, 600 |
+| card | `#fff`, radius **12**, 1px `#C9C9C9`, padding `0 16`, **fills the stage** |
+| filter pill | radius **8** (not 240), 1px `#5C5C5C`, ink `#5C5C5C`, padding `0 16` |
+| KPI tile | radius 10, padding `16px 20px`; selected `#F3F3F3` + **2px `#5C5C5C`** |
+| KPI label / value | 13/16 **`#000`** / **32px/32 weight 274** |
+| list header | count 12/18 `#03234D` 33 in; the 5-button group 9 from the right |
+| table header | **41 tall on `#F3F3F3`**, `600 13px` `#5C5C5C`, padding `8px 32px 8px 12px` |
+| rows | **52** tall, cells `8px 12px`, 13px `#5C5C5C`, links `#0250D9` weight 500 |
+| columns | 52 / 32 / 289 / 44 / 140 / 155 / 199 / 174 / 140 / 322 / 241 / **591** / 241 / 181 / 100 / 50 = **2951** |
+
+⚠️⚠️ **THE ROW SEPARATOR IS A `border-top` ON EVERY ROW BUT THE FIRST, and every border on
+the `tr` and the `td` computes to 0** — so a probe that reads the first row concludes the
+grid has no rules at all, which is visibly false. Reading rows 1 and 2 instead shows
+`border-top: 1px #C9C9C9` appearing from the second row on. The distinction is not academic:
+a `border-bottom` on every row draws a line under the LAST row, which the capture does not
+have.
+
+⚠️⚠️ **THE ACTIVE HEADER RULE LOST TO A LATER `position: relative` IN ITS OWN BLOCK.** The
+`th` needs `sticky` (the capture scrolls the body under a fixed header) and `relative` (the
+sort chevron is absolutely positioned), and the rule carried both — so the later one won and
+the header simply scrolled away while every declaration read correctly. `sticky` establishes a
+containing block too, so one declaration does both jobs.
+
+⚠️ **THE TABLE IS 2951 WIDE INSIDE AN 1854 CARD, so the Invoca Attribution ID column starts
+off-screen** — and that column is the reason this screen is in the demo. The order is the
+capture's and the SE scrolls to it; promoting it forward would make the screen easier to demo
+and stop it being a replica. Verified the scroll reaches it and that the ids render.
+
+⚠️⚠️ **THE ROWS ARE THE PROSPECT'S OWN PEOPLE, NOT THE CAPTURE'S 13.** That org's list is real
+names mixed with its test rows — John Doe, QA Test, and **Dana Probe twice** — and copying it
+would put those on a projector in front of a customer. Every lead is derived from the four
+places a profile actually names a caller (both screen-pops, the voice CI record, the SMS CI
+record), and **the counts follow the rows**: "N items" and the Total Leads / No Activity tiles
+are computed, never typed, so the page cannot claim 13 leads over a table of three. Same rule
+as `leadForms.ts`. Consequence, stated: most prospects get **3 or 4 leads**, Shady Blinds gets
+2. That is the honest number, and a thin list of people who appear elsewhere in the demo beats
+a full one of strangers.
+
+⚠️⚠️ **DEDUP ON THE NAME ALONE, AND THE CHECK THAT SHOULD HAVE CAUGHT THIS WAS TAUTOLOGICAL.**
+Keyed on name+phone, four profiles rendered the same person on two rows — "Sarah Mitchell,
+Sarah Mitchell" — because the screen-pop and the call record store their number in two forms.
+The audit's duplicate check used **the dedup's own key**, so it passed 13 profiles while four
+of them were visibly broken. It now asks the question the screen cares about (does one person
+appear twice?) and **is proved to bite**: it must fail a deliberately doubled list, asserted
+in the script. Third tautological check recorded in this file.
+
+⚠️ **THE ATTRIBUTION ID IS DERIVED, NOT RANDOM** — `<network>/<promo>/i-<uuid>` in the
+capture's own shape, a pure function of the lead's identity, so an SE re-opening the tab
+mid-demo sees the same ids. `Math.random()` would change them on every reload.
+
+⚠️ **FOUR GLYPHS EXTRACTED VERBATIM** (bookmark, filter, email, info) per the use-the-real-icons
+rule. ⚠️ `info` is on a **52-unit box**, like the two calendar glyphs — dropping it into the
+520 grid renders a speck, which is exactly what the `SldsIcon` VIEWBOX note already warns about.
+
+⚠️ **THE LEAD ICON IS `#1B96FF` HERE AND `#06A59A` ON SELLER HOME.** Both measured, on their
+own captures, and the fill is three levels above the glyph in both — the same walk-further-out
+trap as the nav bar and the record tiles. Left as measured rather than unified; flagged.
+
+**`npm run audit:leads` (new, also run by `npm run audit`) covers all 13 profiles**: the counts
+equal the row count, no person repeats, every lead is named somewhere in that profile's own
+JSON, the ids match the capture's shape, the derivation is stable across calls, and every row
+has a phone and a product of interest.
+
+**Verified** at 1920: a 25-property diff came back with one entry, the action button group 4px
+narrower from font metrics across five labels. The header sticks, the chevron stays at 12/13,
+and the horizontal scroll reaches the attribution ids. Untouched: Seller Home (4/4/1, 338 /
+400 / 376, zero `.sfl-`), the Calendar, and `/dashboards/marketing` (21 cards, 7 donuts, KPI
+48,293, zero `.sfl-`).
+
 ### Salesforce Calendar — screen 2 of 4 (8/24/2026)
 `SalesforceCalendar.tsx` + `.sfc-`, plus `salesforceEvent.ts` for the booked appointment.
 What the **Calendar** tab opens; measured off a capture of the live week view.

@@ -50,7 +50,13 @@ const PATHS: Record<string, string> = {
   /* The view-picker calendar — a 52-unit box. */
   "calendar-sm": "M46.5 20h-41c-.8 0-1.5.7-1.5 1.5V46a4 4 0 004 4h36a4 4 0 004-4V21.5c0-.8-.7-1.5-1.5-1.5M19 42c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm10 10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm10 10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm0-10c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-4c0-.6.4-1 1-1h4c.6 0 1 .4 1 1zm5-25h-5V5a3 3 0 00-3-3 3 3 0 00-3 3v2H19V5a3 3 0 00-3-3 3 3 0 00-3 3v2H8a4 4 0 00-4 4v2.5c0 .8.7 1.5 1.5 1.5h41c.8 0 1.5-.7 1.5-1.5V11a4 4 0 00-4-4",
   call: "M478 372l-71-71a30 30 0 00-42 0l-30 30a20 20 0 01-25 3 371 371 0 01-124-124 20 20 0 013-25l30-30a30 30 0 000-42l-71-71a30 30 0 00-42 0l-41 41c-20 20-24 51-11 78a707 707 0 00306 306c27 13 58 9 78-11l41-41a30 30 0 000-43",
-};
+
+  /* Leads list, all four extracted verbatim from the Lead Intelligence capture. */
+  bookmark: "M390 490c0 8-11 13-17 6l-99-99c-6-6-15-6-21 0L147 497c-7 6-17 2-17-7V60a40 40 0 0140-40h180a40 40 0 0140 40zm-55-90a8 8 0 0014-6V70a8 8 0 00-8-8H180a8 8 0 00-8 8v330a8 8 0 0013 6l40-38a55 55 0 0179 0l33 33z",
+  filter: "M483 40H39c-15 0-22 17-13 28l194 227c6 7 9 17 9 26v144c0 8 8 15 16 15h30c8 0 14-7 14-15V321c0-10 4-19 11-26L496 68c9-11 2-28-13-28",
+  email: "M249 301c6 6 15 6 21 0L496 91c4-8 3-21-13-21L36 71c-12 0-22 11-13 21zm251-128c0-10-12-16-20-9L303 327c-12 11-27 17-43 17s-31-6-43-16L41 164c-8-7-20-2-20 9-1-3-1 227-1 227a40 40 0 0040 40h400a40 40 0 0040-40z",
+  /* ⚠️ A 52-UNIT BOX, like the two calendar glyphs — see the VIEWBOX note below. */
+  info: "M26 2a24 24 0 100 48 24 24 0 100-48m0 42C16 44 8 36 8 26S16 8 26 8s18 8 18 18-8 18-18 18m0-29.9c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3m5 21c0 .5-.4.9-1 .9h-8c-.5 0-1-.3-1-.9v-2c0-.5.4-1.1 1-1.1.5 0 1-.3 1-.9v-4c0-.5-.4-1.1-1-1.1-.5 0-1-.3-1-.9v-2c0-.5.4-1.1 1-1.1h6c.5 0 1 .5 1 1.1v8c0 .5.4.9 1 .9.5 0 1 .5 1 1.1z",};
 
 /* ⚠️ NOT EVERY SLDS GLYPH IS ON THE 520 GRID. The calendar tile and the view-picker
    calendar come off smaller boxes (100 and 52), measured from their own path extents. An
@@ -58,6 +64,7 @@ const PATHS: Record<string, string> = {
 const VIEWBOX: Record<string, string> = {
   "calendar-tile": "0 0 100 100",
   "calendar-sm": "0 0 52 52",
+  info: "0 0 52 52",
 };
 
 export type SldsIconName = keyof typeof PATHS | string;

@@ -4607,6 +4607,155 @@ button.nav-item {
 }
 .sfh-todo-icon { color: #5c5c5c; }
 
+/* =============================================================================
+   Leads -> Lead Intelligence View  (`.sfl-`)
+   -----------------------------------------------------------------------------
+   Measured off `reference/salesforce/leads-v1.html` at 1920. Own prefix, so nothing
+   here can reach the Seller Home or Calendar screens; the two share only the chrome.
+   ============================================================================= */
+/* ⚠️ THE CARD FILLS THE STAGE — the capture's is 736.4 tall in an 870 stage, i.e.
+   everything left after the 101.5 header and 16 of padding top and bottom, with the
+   TABLE scrolling inside it rather than the page scrolling. A content-height card
+   leaves a grey band under a short list, which is exactly what a prospect's own
+   list often is. 130 = the 50 global header + the 40 nav + the 40 To Do bar. */
+.sfl-page { display: flex; flex-direction: column; height: calc(100vh - 130px); }
+
+/* ⚠️ THE HEADER BAND IS THE PAGE COLOUR, NOT WHITE — 101.5 tall on #F3F3F3 with
+   16px of padding, and the white starts at the card below it. */
+.sfl-head { display: flex; align-items: flex-start; flex: 0 0 101.5px; padding: 16px; background: #f3f3f3; }
+/* ⚠️⚠️ #1B96FF AT RADIUS 100%. The fill is three levels above the glyph
+   (`.slds-icon-standard-lead`), so probing the svg or its immediate parent reports
+   "transparent" — the same trap as the Seller Home record tiles and the nav bar.
+   ⚠️ Note this is NOT the teal `.sfh-ent--lead` on Seller Home; that tile was
+   measured on its own capture and stays as measured. */
+.sfl-entity {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; flex: 0 0 32px; margin-top: 18.8px;
+  background: #1b96ff; border-radius: 100%; color: #fff;
+}
+.sfl-headtext { flex: 1 1 auto; min-width: 0; margin-left: 12px; }
+.sfl-eyebrow { font-size: 13px; line-height: 19.5px; color: #03234d; }
+.sfl-titlerow { display: flex; align-items: center; }
+/* ⚠️ `400 28px/49px` — the same oversized-and-light treatment as Seller Home's h1. */
+.sfl-title { font-size: 28px; line-height: 49px; font-weight: 400; color: #03234d; margin: 0; }
+.sfl-titlechev { color: #0250d9; margin-left: 9px; flex: 0 0 14px; }
+.sfl-headactions { display: flex; align-items: center; margin-top: 18.8px; flex: 0 0 auto; }
+
+/* ⚠️ ONE BUTTON GROUP SHAPE FOR THE WHOLE SCREEN: the header's five, the filter
+   row's two icons and the list header's five are the same control. 1px #5C5C5C,
+   white, ink #0250D9, 600; only the ENDS are rounded (240), and the middles pull
+   back 1px so neighbours share a border rather than doubling it. */
+.sfl-gbtn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 32px; padding: 0 16px; margin: 0 -1px;
+  border: 1px solid #5c5c5c; background: #fff;
+  font-size: 13px; font-weight: 600; color: #0250d9; white-space: nowrap;
+}
+.sfl-gbtn--icon { width: 32px; padding: 0; }
+.sfl-gbtn--first { border-radius: 240px 0 0 240px; margin-left: 0; }
+.sfl-gbtn--last { border-radius: 0 240px 240px 0; margin-right: 0; }
+/* The gear is 43 wide, not 32 — it carries a caret the other icon buttons do not. */
+.sfl-headactions .sfl-gbtn--first.sfl-gbtn--icon { width: 43px; }
+
+/* ---- the card: one white slab holding filters, KPIs and the table -------- */
+.sfl-card {
+  display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0;
+  margin: 16px; padding: 0 16px;
+  background: #fff; border: 1px solid #c9c9c9; border-radius: 12px;
+}
+
+/* ---- filter row --------------------------------------------------------- */
+/* ⚠️ RIGHT-ALIGNED IN A FULL-WIDTH ROW, 44 tall. */
+.sfl-filters { display: flex; align-items: center; justify-content: flex-end; flex: 0 0 44px; margin-top: 12px; padding: 0 12px 0 0; }
+.sfl-filter-label { font-size: 13px; line-height: 19.5px; color: #03234d; padding-right: 8px; }
+.sfl-pill + .sfl-filter-label { margin-left: 16px; }
+/* ⚠️ RADIUS 8, ink #5C5C5C — a different control from the 240-radius group buttons
+   beside it, and the two are easy to conflate. */
+.sfl-pill {
+  display: inline-flex; align-items: center; height: 32px; padding: 0 16px;
+  border: 1px solid #5c5c5c; border-radius: 8px; background: #fff;
+  font-size: 13px; color: #5c5c5c; white-space: nowrap;
+}
+.sfl-pill-icon { margin-left: 12px; flex: 0 0 14px; }
+.sfl-iconpair { display: inline-flex; align-items: center; margin-left: 23.2px; }
+.sfl-iconpair .sfl-gbtn { color: #0250d9; background: transparent; }
+
+/* ---- KPI strip ---------------------------------------------------------- */
+/* ⚠️ 116 TALL, of which 20 is padding BELOW the tiles. */
+.sfl-kpis { display: flex; align-items: flex-start; flex: 0 0 116px; margin-top: 12px; padding: 0 0 20px; }
+/* ⚠️ EVERY TILE CARRIES THE 2px BORDER — the unselected ones just paint it
+   transparent. Giving only the selected tile a border would shift its label 2px
+   the moment the SE clicked a different tile. */
+.sfl-kpi {
+  margin: 0 8px; padding: 16px 20px; border: 2px solid transparent; border-bottom: 0;
+  border-radius: 10px; background: #fff; white-space: nowrap;
+}
+.sfl-kpi--on { background: #f3f3f3; border-color: #5c5c5c; border-bottom: 2px solid #5c5c5c; }
+/* ⚠️ #000, not the page's #03234D. */
+.sfl-kpi-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; line-height: 16px; color: #000; margin: 0 0 12px;
+}
+.sfl-kpi-info { color: #5c5c5c; flex: 0 0 14px; }
+/* ⚠️ WEIGHT 274. Salesforce sets this from a variable font, and 300 reads visibly
+   heavier next to the capture. */
+.sfl-kpi-value { font-size: 32px; line-height: 32px; font-weight: 274; color: #000; margin: 0; }
+
+/* ---- list header -------------------------------------------------------- */
+.sfl-listhead { display: flex; align-items: center; justify-content: space-between; flex: 0 0 32px; margin: 9px 0; padding: 0 9px 0 33px; }
+.sfl-count { font-size: 12px; line-height: 18px; color: #03234d; }
+.sfl-actions { display: flex; align-items: center; }
+/* ⚠️ 12px HERE, 13 in the header group — same control, smaller type. */
+.sfl-actions .sfl-gbtn { font-size: 12px; }
+
+/* ---- the table ---------------------------------------------------------- */
+/* ⚠️⚠️ THE TABLE IS 2951 WIDE INSIDE AN 1854 CARD, so it scrolls horizontally and
+   the Invoca Attribution ID column starts off-screen. That is the capture's own
+   behaviour and the column order is the capture's; promoting the Invoca column
+   forward would make the screen easier to demo and stop it being a replica. */
+.sfl-scroll { flex: 1 1 auto; min-height: 0; overflow: auto; }
+.sfl-table { border-collapse: collapse; background: #fff; table-layout: fixed; margin-left: 1px; }
+/* ⚠️ 41 TALL ON #F3F3F3 with `600 13px` #5C5C5C — the header band is grey, the
+   body white. */
+/* ⚠️ STICKY. The capture scrolls the BODY under a fixed header
+   (`.slds-table_header-fixed_container`), not the whole table. */
+.sfl-th {
+  /* ⚠️ ONE `position`, AND IT IS `sticky`. This rule first carried both `sticky` and
+     the `relative` the chevron needs, later in the same block — so the later one won
+     and the header simply scrolled away. `sticky` establishes a containing block for
+     the absolutely-positioned chevron too, so one declaration does both jobs. */
+  position: sticky; top: 0; z-index: 1;
+  height: 41px; padding: 8px 32px 8px 12px; background: #f3f3f3;
+  font-size: 13px; font-weight: 600; color: #5c5c5c; text-align: left;
+  white-space: nowrap;
+}
+.sfl-th-label { display: block; overflow: hidden; text-overflow: ellipsis; }
+/* The sort menu's chevron is #0250D9, sitting in the 32px the label's padding leaves. */
+.sfl-th-chev { position: absolute; right: 12px; top: 13px; color: #0250d9; }
+.sfl-th-flag { color: #5c5c5c; }
+.sfl-th--num, .sfl-th--check, .sfl-th--important { padding-left: 12px; padding-right: 12px; }
+
+/* ⚠️ 52 TALL, AND THE SEPARATOR IS A border-top ON EVERY ROW BUT THE FIRST — not a
+   border-bottom on every row. The distinction shows: a bottom border would draw a
+   line under the last row, which the capture does not have. */
+.sfl-tr > * { height: 52px; padding: 8px 12px; font-size: 13px; color: #5c5c5c; text-align: left; font-weight: 400; vertical-align: middle; }
+.sfl-tr + .sfl-tr > * { border-top: 1px solid #c9c9c9; }
+.sfl-td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* ⚠️ 12px and 20px OF LEFT PADDING — the row number is a `counter()` in the capture,
+   set smaller than the row's own type. */
+.sfl-td--num { font-size: 12px; padding-left: 20px; }
+.sfl-link { color: #0250d9; font-weight: 500; }
+.sfl-td--name .sfl-link { font-weight: 500; }
+.sfl-flag { color: #c9c9c9; }
+.sfl-rowicon { color: #0250d9; }
+.sfl-td--actions { white-space: nowrap; }
+.sfl-td--actions .sfl-rowicon + .sfl-rowicon { margin-left: 16px; }
+/* 16 square, radius 4, 1px #5C5C5C — the row and header checkbox. */
+.sfl-check {
+  display: inline-block; width: 16px; height: 16px;
+  border: 1px solid #5c5c5c; border-radius: 4px; background: #fff; vertical-align: middle;
+}
+
 /* ---- Salesblazer -------------------------------------------------------- */
 .sfh-sb-img { display: block; width: 423.7px; height: 100px; border-radius: 2px; }
 .sfh-sb-head {
