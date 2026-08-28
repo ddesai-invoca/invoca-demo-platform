@@ -4317,11 +4317,20 @@ button.nav-item {
   margin-left: 8px;
 }
 
-/* ---- nav row: 40 tall, TRANSPARENT, no rule ------------------------------
-   ⚠️ RE-MEASURED: the older capture's white bar with a 3px #0070D2 bottom rule is gone. This
-   strip paints nothing, so the page's #F3F3F3 shows through and the only blue on the row is
-   the active tab's own underline. */
-.sfh-bar { display: flex; align-items: center; height: 40px; padding: 0 0 0 16px; background: transparent; }
+/* ---- nav row: 40 tall, WHITE, with a soft shadow -------------------------
+   ⚠️⚠️ **"TRANSPARENT, NO RULE" WAS WRONG, AND IT IS THE SAME MISTAKE AS THE RECORD TILES:
+   the probe stopped at the first ancestor and called it the answer.** `one-app-nav-bar` and
+   `.navCenter` really do paint nothing, so the bar read as transparent — but `.slds-context-bar`
+   TWO levels further out is `#fff` at 40 tall with `4px 0` padding, and its wrapper
+   `.oneAppNavContainer` carries `0 2px 4px 0 rgba(0,0,0,.07)`. The user saw it immediately:
+   "it's not a grey background, it's white". When a probe says "nothing paints this", the
+   answer is almost always further out, not that nothing paints it.
+   The shadow needs a stacking context to land on the page below, hence the z-index. */
+.sfh-bar {
+  display: flex; align-items: center; height: 40px; padding: 4px 0 4px 16px;
+  background: #fff; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.07);
+  position: relative; z-index: 1;
+}
 .sfh-waffle {
   display: grid; grid-template-columns: repeat(3, 3px); gap: 2px; align-content: center;
   width: 44px; justify-content: center; flex: 0 0 44px;
@@ -4329,13 +4338,30 @@ button.nav-item {
 .sfh-waffle i { width: 3px; height: 3px; background: #5c5c5c; border-radius: 1px; }
 /* ⚠️ 400 20px/25px, NOT bold 18 — and it lives on THIS row, not in the header. */
 .sfh-app { display: flex; align-items: center; font-size: 20px; line-height: 25px; font-weight: 400; color: #03234d; margin-right: 24px; }
-.sfh-tabs { flex: 1 1 0%; display: flex; align-items: center; list-style: none; margin: 0; padding: 0;
-  min-width: 0; overflow: hidden; }
+/* ⚠️ 4px BETWEEN ITEMS (`.navUL` is a flex row with `gap: 4px`). Without it every tab after
+   the first sat 4px early, and the error accumulated along the row. */
+/* ⚠️⚠️ **THE ROW HAS TO BE 35 TALL, NOT 32, OR THE ACTIVE UNDERLINE IS NEVER DRAWN.** The
+   underline is an `::after` 3px BELOW its tab, and `overflow: hidden` here — needed to clip
+   the tabs at the right edge — was clipping it away as well; `overflow` cannot be hidden on
+   one axis and visible on the other. So the row keeps its horizontal clip, gains the 3px the
+   underline lives in, and hangs off the bar's content box (the bar itself does not clip).
+   ⚠️ It had been invisible in every build. Proved rather than assumed: hit-testing the 3px
+   band under the active tab returned only `.sfh-bar`, and returned `li.sfh-tab` the moment
+   the clip was lifted — with the tab's interior and an inactive tab's band as controls. */
+.sfh-tabs { flex: 1 1 0%; display: flex; align-items: flex-start; list-style: none; margin: 0; padding: 0;
+  gap: 4px; min-width: 0; height: 35px; align-self: flex-start; overflow: hidden; }
 /* ⚠️ `position: relative` is load-bearing: the active underline is an ::after positioned
    against this box, exactly as the real one is. */
 .sfh-tab { position: relative; display: flex; align-items: center; height: 32px; flex: 0 0 auto; }
 .sfh-tab-link { font-size: 13px; line-height: 19.5px; font-weight: 500; color: #03234d; padding: 0 12px; }
-.sfh-tab-chev { color: #03234d; margin-left: -6px; margin-right: 6px; flex: 0 0 14px; }
+/* ⚠️ THE CHEVRON OCCUPIES 36px, NOT 14: a 24 square button butted straight against the
+   label's right padding, with the 14px glyph centred in it (hence the 5px inset) and 12px
+   after. A bare 14px glyph made every tab with a chevron exactly 22px too narrow, which is
+   why the row's tabs drifted left of the capture's the further along you looked. */
+.sfh-tab-chev {
+  color: #03234d; width: 24px; height: 24px; flex: 0 0 24px;
+  padding: 5px; box-sizing: border-box; margin: 0 12px 0 0;
+}
 /* ⚠️ AN UNDERLINE, NOT A WASH (re-measured 8/27/2026). `top: 32px; bottom: -3px; left/right: 0;
    border-radius: 12px; background: #0250D9` — a 3px rounded bar under the tab, and the label
    turns #0250D9 with it. The previous build painted a `rgba(0,112,210,.1)` background and left

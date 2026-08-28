@@ -2332,7 +2332,7 @@ same off ours, fix until the diff is empty — at BOTH 1500 and 1920.
 | brand button | `#0176D3` | **`#066AFE`** |
 | legend pill | radius 4 | **radius 8** |
 | record tile | 32 square, radius 4 | **32 CIRCLE**, radius 100% |
-| nav bar | white, **3px `#0070D2`** rule | **transparent, no rule** |
+| nav bar | white, **3px `#0070D2`** rule | white, **no rule**, `0 2px 4px rgba(0,0,0,.07)` |
 | nav item | 37 tall, `#181818` | **32** tall, **500** 13/19.5 `#03234D` |
 | active tab | `rgba(0,112,210,.1)` **wash** | ink `#0250D9` + a **3px underline**, radius 12 |
 | search | radius 4, 1px `#747474` | radius **8**, 1px **`#5C5C5C`** |
@@ -2444,6 +2444,43 @@ dy 46, label 13 at dy 87, pill 12px / `4px 9.6px` / radius 8, dot dx 283 — and
 on sub 45 / art 142.8 / pill gap 21, all within the uniform 1px offset that predates this
 work. `.sfh-card-head`, `.sfh-pillbtn`, `.sfh-goal*` and `.sfh-ring*` are Home-only;
 SalesforceCalendar shares just `.sfh-iconbtn`, untouched, and still renders.
+
+#### Then: the nav bar is WHITE, and the active underline had never been drawn (8/27/2026)
+"Fix the bar with all the tabs, it's not a grey background, it's white, so match the real site
+and the shadowing. Also match how a tab looks when it's selected."
+
+⚠️⚠️ **"TRANSPARENT, NO RULE" WAS A BAD MEASUREMENT, AND IT IS THE RECORD-TILE MISTAKE AGAIN:
+the probe stopped at the first ancestor and reported what it found there as the answer.**
+`one-app-nav-bar` and `.navCenter` genuinely paint nothing — but `.slds-context-bar` two levels
+further out is `#fff`, 40 tall, `4px 0` padding, and ITS wrapper `.oneAppNavContainer` carries
+`box-shadow: 0 2px 4px 0 rgba(0,0,0,.07)`. *When a probe says "nothing paints this", walk
+further out before believing it.* Third time this exact shape has cost a pass.
+
+⚠️⚠️ **THE ACTIVE UNDERLINE WAS NEVER VISIBLE IN ANY BUILD.** It is an `::after` 3px BELOW the
+tab, and `.sfh-tabs { overflow: hidden }` — needed to clip the row at the right edge — clipped
+it away too; `overflow` cannot be hidden on one axis and visible on the other. The row is now
+35 tall (32 + the 3), `align-self: flex-start`, and hangs into the bar's padding, which does
+not clip. **Proved, not assumed:** hit-testing the 3px band under the active tab returned only
+`.sfh-bar`, and returned `li.sfh-tab` the instant the clip was lifted, with the tab's interior
+and an inactive tab's band as controls. A rule can be right in every declaration and still
+paint nothing.
+
+Selected state, measured: label `#0250D9` (inactive `#03234D`), weight 500 either way — the
+colour and the underline are the whole difference, there is no wash and no weight change. The
+underline is `left/right: 0; bottom: -3px; height: 3px; radius: 12px`. Both states carry the
+`::after`; the inactive one is `#001E5B` at `opacity: 0`, i.e. a hover affordance, not a
+second style.
+
+⚠️ **THE CHEVRON OCCUPIES 36px, NOT 14** — a 24 square button butted against the label's right
+padding, the 14px glyph centred in it, then 12px. With a bare glyph every tab carrying a
+chevron was exactly 22px narrow, and with `.navUL`'s 4px `gap` missing as well the error
+accumulated along the row: by "Invoca Call Log" the replica was 82px left of the capture. Now
+every tab's x and width match the capture exactly at 1157 (Home 131.3/60.5, Opportunities
+195.7/145.2, Leads 344.9/96.8, Tasks 445.7/95, Invoca Call Log 544.8/153.5).
+
+Checked that the wider row did not push **More** — which carries the Calendar route — out of
+the clip: at 1920 all 14 tabs fit with nothing clipped, and More keeps its underline. At 1157
+it is off the right edge, as it was before this change.
 
 ### Salesforce Calendar — screen 2 of 4 (8/24/2026)
 `SalesforceCalendar.tsx` + `.sfc-`, plus `salesforceEvent.ts` for the booked appointment.
