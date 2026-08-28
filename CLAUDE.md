@@ -2523,15 +2523,52 @@ off-screen** — and that column is the reason this screen is in the demo. The o
 capture's and the SE scrolls to it; promoting it forward would make the screen easier to demo
 and stop it being a replica. Verified the scroll reaches it and that the ids render.
 
-⚠️⚠️ **THE ROWS ARE THE PROSPECT'S OWN PEOPLE, NOT THE CAPTURE'S 13.** That org's list is real
+#### Ten leads, seven visible, the rest behind a scroll (8/27/2026)
+Asked for directly: "have a total of 10 leads instead of 2, show only 7 and the user has to
+scroll for the rest just like the real site." Both halves of that were fixes.
+
+**The list is padded to ten, and WHICH half is which is what keeps it honest.** The
+prospect's own named callers keep the top of the list — so an SE can still point at row 1 and
+open that same person's screen-pop — and the remainder is scaffolding: a name, a **555**
+number in the prospect's own area code, and one of the prospect's own products.
+⚠️ **THE FILLER CARRIES NO FIGURE, and that is the line this repo actually draws.** Every
+number it refuses to invent is a MEASUREMENT a prospect can check against another screen. A
+lead row is a contact record, and the capture's own list is padded with John Doe and QA Test.
+What still must never be typed is the COUNT: "N items" and the Total Leads / No Activity
+tiles are computed from the rows.
+⚠️ **A FILLER NAME MUST NOT COLLIDE WITH A NAME THE DEMO ALREADY USES.** Measured: the pool
+produced **"Curtis Nakamura" for AutoNation, one of that profile's own agents**, so the same
+person would have been an agent on one screen and a lead on another. Rejected against the
+whole serialised profile rather than a list of the fields that hold names today. ⚠️ And the
+loop tests `leads.length` while a separate counter advances the seed, or a rejected name
+costs a ROW and the list silently comes back nine long.
+
+**Seven rows then a scroll**: `max-height: 406px` on the scroll box = 41 of sticky header +
+7 × 52 + the last row's own 1px rule. A max, not a height, so a short window shrinks it
+instead of pushing the To Do bar off screen. ⚠️ `.sfl-card` also went `flex: 1 1 auto` ->
+`0 1 auto`: filling the stage is what the capture does with 13 rows in it, but with the list
+capped at 7 that left a band of empty card under the box, and a white slab beneath a bordered
+list reads as a rendering fault. **This also retires the grey field flagged above** — the
+capture's container is `#F3F3F3` and its rows always cover it, and 7 of 10 cover it here.
+
+⚠️⚠️ **THE PHONE CHECK ENCODED THE BUG IT EXISTED TO CATCH.** The filler rendered
+**"(805) 555-466"** — a nine-digit phone number, on screen — and `audit:leads` asked for
+`\(\d{3}\) 555-\d{3}`, three digits, so it passed. Found by reading the rendered rows, not
+by the suite. Both the pad and the regex say four now.
+⚠️ **AND THE "every lead is named in the profile" CHECK HAD TO BE RE-AIMED, not deleted.**
+Padding made it fail 13 profiles for doing its job. The invariant now is that no
+profile-named lead sits BELOW a filler, plus at least two came from the profile at all (every
+profile names its two screen-pop callers, so "at least one" would not notice a source going
+dark). ⚠️ Its first version classified by full-name match alone and called **James Mitchell**
+filler — the CI-derived leads come from separate `firstName` / `lastName` fields, so that name
+appears nowhere as one string. Either form counts.
+
+⚠️⚠️ **THE ROWS ARE THE PROSPECT'S OWN PEOPLE FIRST, NOT THE CAPTURE'S 13.** That org's list is real
 names mixed with its test rows — John Doe, QA Test, and **Dana Probe twice** — and copying it
-would put those on a projector in front of a customer. Every lead is derived from the four
+would put those on a projector in front of a customer. The leads at the top are derived from the four
 places a profile actually names a caller (both screen-pops, the voice CI record, the SMS CI
-record), and **the counts follow the rows**: "N items" and the Total Leads / No Activity tiles
-are computed, never typed, so the page cannot claim 13 leads over a table of three. Same rule
-as `leadForms.ts`. Consequence, stated: most prospects get **3 or 4 leads**, Shady Blinds gets
-2. That is the honest number, and a thin list of people who appear elsewhere in the demo beats
-a full one of strangers.
+record); see the section above for the padding that follows them and for why the COUNTS are
+still computed from the rows rather than typed.
 
 ⚠️⚠️ **DEDUP ON THE NAME ALONE, AND THE CHECK THAT SHOULD HAVE CAUGHT THIS WAS TAUTOLOGICAL.**
 Keyed on name+phone, four profiles rendered the same person on two rows — "Sarah Mitchell,
@@ -2559,10 +2596,8 @@ against the grey ground, which is worth knowing before adding one to "match".
 ⚠️ The bar's padding is `8px 8px 8px 32px`, and THAT is what puts the count at x=66 and the
 button group 9px off the right edge — the first build reproduced both with 9px margins on the
 row instead, which landed the same two numbers and drew no bar.
-⚠️ **THE CONTAINER'S GREY SHOWS WHERE A SHORT LIST DOES NOT REACH.** The capture's 13 rows
-fill it, so this is the measured background applied to a case the capture never shows; with 2
-leads there is a visible grey field under the rows. Stated rather than quietly filled with
-white.
+✅ **RESOLVED — the container's grey no longer shows.** It had been visible under a two-row
+list; with ten leads in a seven-row viewport the rows cover it, as they do in the capture.
 
 ⚠️ **FOUR GLYPHS EXTRACTED VERBATIM** (bookmark, filter, email, info) per the use-the-real-icons
 rule. ⚠️ `info` is on a **52-unit box**, like the two calendar glyphs — dropping it into the
@@ -2572,10 +2607,11 @@ rule. ⚠️ `info` is on a **52-unit box**, like the two calendar glyphs — dr
 own captures, and the fill is three levels above the glyph in both — the same walk-further-out
 trap as the nav bar and the record tiles. Left as measured rather than unified; flagged.
 
-**`npm run audit:leads` (new, also run by `npm run audit`) covers all 13 profiles**: the counts
-equal the row count, no person repeats, every lead is named somewhere in that profile's own
-JSON, the ids match the capture's shape, the derivation is stable across calls, and every row
-has a phone and a product of interest.
+**`npm run audit:leads` (also run by `npm run audit`) covers all 13 profiles**: the counts
+equal the row count, no person repeats, at least ten rows, no profile-named lead below a
+filler, at least two from the profile, no filler colliding with a name the profile already
+uses, filler phones on the 555 exchange in the prospect's own area code carrying one of its
+own products, ids matching the capture's shape, and the derivation stable across calls.
 
 **Verified** at 1920: a 25-property diff came back with one entry, the action button group 4px
 narrower from font metrics across five labels. The header sticks, the chevron stays at 12/13,

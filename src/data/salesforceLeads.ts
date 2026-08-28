@@ -21,11 +21,23 @@ import type { CustomerProfile } from "./schema";
      voice CI              the evaluated call's own caller record
      SMS CI                the evaluated conversation's own caller record
 
-   That is typically four leads, sometimes fewer. **The counts follow the rows** —
-   "N items" and the Total Leads / No Activity tiles are computed here, never
-   typed — so the page can never claim 13 leads over a table of four. Same rule as
-   leadForms.ts: a fabricated count sitting beside real ones is worse than a
-   smaller true one.
+   That yields two to four leads, and a list that short reads as a broken query on a
+   screen built for a scrolling table — so it is **padded to TEN** (asked for
+   directly: "have a total of 10 leads instead of 2"). The distinction that keeps
+   this honest is WHICH HALF IS WHICH:
+
+     rows 1..k   the prospect's own named callers, newest first, so the SE can point
+                 at a row and open that same person's screen-pop or CI transcript
+     the rest    demo scaffolding — a name, a 555 number in the prospect's own area
+                 code, and one of the prospect's own products
+
+   ⚠️ **THE FILLER CARRIES NO FIGURE, and that is the line.** Every number this repo
+   refuses to invent is a MEASUREMENT — a call count, a revenue, a conversion rate,
+   something a prospect can check against another screen. A lead row is a contact
+   record; the capture's own list is padded with John Doe and QA Test. What must
+   still never be typed is the COUNT: "N items" and the Total Leads / No Activity
+   tiles are computed from the rows, so the page cannot claim ten over a table of
+   four. Same rule as leadForms.ts.
 
    ⚠️ THE ATTRIBUTION ID IS DERIVED, NOT RANDOM. `Math.random()` would hand the SE
    a different id every reload, which is exactly the kind of thing that gets
@@ -108,6 +120,26 @@ function products(raw: string | undefined): string[] {
   return String(raw ?? "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
 }
 
+/** Asked for directly. The capture's own list is 13. */
+const TARGET_LEADS = 10;
+
+/* Names for the padded rows. Deliberately ordinary and deliberately not anybody's:
+   a lead list is the one place on this screen where a recognisable real name would
+   be worse than a plain invented one. */
+const FIRST_NAMES = ["Alan", "Priya", "Devon", "Renee", "Marcus", "Simone", "Curtis", "Nadia",
+  "Grant", "Yvette", "Theo", "Lorna", "Miles", "Bianca", "Roland", "Cara"];
+const LAST_NAMES = ["Whitfield", "Okonkwo", "Barrett", "Alvarez", "Lindqvist", "Moreau", "Sandoval",
+  "Ferris", "Nakamura", "Delgado", "Rowan", "Castellano", "Bright", "Osei", "Vance", "Holloway"];
+const MAIL_DOMAINS = ["gmail.com", "outlook.com", "yahoo.com", "icloud.com"];
+
+/** The capture's "8/27/2026, 1:30 PM". */
+function stamp(ms: number): string {
+  const d = new Date(ms);
+  const h = d.getHours() % 12 || 12;
+  const ap = d.getHours() < 12 ? "AM" : "PM";
+  return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}, ${h}:${String(d.getMinutes()).padStart(2, "0")} ${ap}`;
+}
+
 function splitName(full: string): { first: string; last: string } {
   const parts = String(full ?? "").trim().split(/\s+/);
   return { first: parts[0] ?? "", last: parts.slice(1).join(" ") };
@@ -170,6 +202,46 @@ export function salesforceLeads(profile: CustomerProfile): SfLeadView {
       created: c.text, sortKey: c.key });
   }
   leads.sort((a, b) => b.sortKey - a.sortKey);
+
+  /* ⚠️ THE PAD RUNS OFF THE END OF THE REAL ROWS, NOT THE OTHER WAY ROUND — the
+     prospect's own people keep the top of the list, which is where an SE points. */
+  const areaCode = (vs?.callerPhone ?? ss?.callerPhone ?? "").replace(/\D/g, "").slice(-10, -7) || "805";
+  /* ⚠️ A FILLER NAME MUST NOT COLLIDE WITH A NAME THE DEMO ALREADY USES. Measured: the
+     pool produced "Curtis Nakamura" for AutoNation, which is one of that profile's own
+     agents — so the same person would have appeared as an agent on one screen and a lead
+     on another. Checked against the whole profile rather than a list of the fields that
+     hold names today, since the next slice to carry one would not be in such a list. */
+  const known = JSON.stringify(profile).toLowerCase();
+  const catalogue = [...products(vs?.products), ...products(ss?.products)].filter(Boolean);
+  let clock = leads.length ? leads[leads.length - 1].sortKey : Date.parse("2026-01-14T14:12:00");
+  /* ⚠️ `attempt` ADVANCES ON A SKIP AND `leads.length` IS THE LOOP'S TEST, so a rejected
+     name costs a different seed rather than a row — keyed on the index alone, a collision
+     silently returned a nine-row list. */
+  for (let attempt = leads.length; leads.length < TARGET_LEADS && attempt < TARGET_LEADS + 40; attempt++) {
+    const i = attempt;
+    const seed = `pad:${id}:${i}`;
+    const first = FIRST_NAMES[hash(`f:${seed}`) % FIRST_NAMES.length];
+    const last = LAST_NAMES[hash(`l:${seed}`) % LAST_NAMES.length];
+    const key = `${first} ${last}`.toLowerCase();
+    if (seen.has(key) || known.includes(key)) { clock -= 1; continue; }
+    seen.add(key);
+    /* Down the list in time, like the capture's own dates, by a varying 6 to 30 hours. */
+    clock -= (6 + (hash(`t:${seed}`) % 25)) * 3_600_000;
+    leads.push({
+      first, last,
+      /* ⚠️ THE 555 EXCHANGE IS RESERVED so a demo number cannot ring a real business —
+         the same care the Google Search ad's call extension takes.
+         ⚠️ FOUR DIGITS AFTER IT. Without the pad this rendered "(805) 555-466", a
+         nine-digit phone number, on screen — and the audit's own regex asked for
+         `\d{3}`, so the check agreed with the bug. */
+      phone: `(${areaCode}) 555-${String(100 + (hash(`p:${seed}`) % 900)).padStart(4, "0")}`,
+      status: "New", smsOptIn: "Yes",
+      product: catalogue.length ? catalogue[i % catalogue.length] : "",
+      email: `${first.toLowerCase()}.${last.toLowerCase()}@${MAIL_DOMAINS[hash(`m:${seed}`) % MAIL_DOMAINS.length]}`,
+      attributionId: attributionId(id, seed),
+      created: stamp(clock), sortKey: clock,
+    });
+  }
 
   const n = leads.length;
   return {

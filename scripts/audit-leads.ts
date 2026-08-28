@@ -18,7 +18,7 @@ function noRepeatedPerson(leads: { first: string; last: string }[]): boolean {
 }
 
 for (const f of files) {
-  const p = JSON.parse(readFileSync(`${dir}/${f}`, "utf8")) as CustomerProfile;
+  const p = JSON.parse(readFileSync(`${dir}/${f}`, "utf8")) as CustomerProfile & Record<string, any>;
   const v = salesforceLeads(p);
   const again = salesforceLeads(p);
   const errs: string[] = [];
@@ -43,9 +43,44 @@ for (const f of files) {
   /* Stability: the SE re-opens the tab mid-demo and the ids must not move. */
   if (JSON.stringify(v.leads) !== JSON.stringify(again.leads)) errs.push("NOT STABLE across calls");
 
-  /* Every name must appear somewhere in the profile's own text. */
+  /* ⚠️ THE LIST IS PADDED, so "every name is in the profile" is no longer the invariant —
+     the one that matters now is that the prospect's OWN people are not buried under the
+     filler. Derived here from the JSON rather than asked of the module, so it is a real
+     check and not a restatement of the implementation. */
   const hay = JSON.stringify(p).toLowerCase();
-  for (const l of v.leads) if (!hay.includes(l.first.toLowerCase())) errs.push(`${l.first} is not named in the profile`);
+  /* ⚠️ A FULL-NAME MATCH ALONE IS A FALSE NEGATIVE HERE: the CI-derived leads come from
+     `firstName` / `lastName` stored as separate fields, so "James Mitchell" appears
+     nowhere as one string and the check called a real lead filler. Either form counts. */
+  const isReal = (l: { first: string; last: string }) =>
+    hay.includes(`${l.first} ${l.last}`.trim().toLowerCase()) ||
+    (hay.includes(`"${l.first.toLowerCase()}"`) && hay.includes(`"${l.last.toLowerCase()}"`));
+  const lastReal = v.leads.map(isReal).lastIndexOf(true);
+  const firstFiller = v.leads.map(isReal).indexOf(false);
+  if (firstFiller !== -1 && lastReal > firstFiller) errs.push("a profile-named lead sits below a filler row");
+  /* Every profile names at least its two screen-pop callers, so fewer than two real leads
+     means a source stopped being read — which a looser "at least one" would not catch. */
+  if (v.leads.filter(isReal).length < 2) errs.push("fewer than two leads came from the profile");
+  /* A filler must be nobody the demo already names — an agent appearing as their own lead. */
+  const fillers = v.leads.filter((l) => !isReal(l));
+  for (const l of fillers) if (hay.includes(`${l.first} ${l.last}`.toLowerCase())) errs.push(`${l.first} ${l.last} collides with a name in the profile`);
+
+  /* Filler rows must be safe to put on a projector: the reserved 555 exchange, the
+     prospect's own area code, and a product this prospect actually sells. */
+  const area = String(p.reports?.voiceScreenpop?.callerPhone ?? p.reports?.smsScreenpop?.callerPhone ?? "")
+    .replace(/\D/g, "").slice(-10, -7);
+  const catalogue = [p.reports?.voiceScreenpop?.products, p.reports?.smsScreenpop?.products]
+    .flatMap((x) => String(x ?? "").split(",")).map((x) => x.trim().toLowerCase()).filter(Boolean);
+  for (const l of v.leads) {
+    if (isReal(l)) continue;
+    /* ⚠️ `\d{4}`. This asked for three and so passed "(805) 555-466" — a nine-digit phone
+       number rendered on screen, which the check was written to prevent. */
+    if (!/^\(\d{3}\) 555-\d{4}$/.test(l.phone)) errs.push(`${l.first}: filler phone is not a 555 number (${l.phone})`);
+    if (area && !l.phone.startsWith(`(${area})`)) errs.push(`${l.first}: filler phone is not the prospect's area code`);
+    if (catalogue.length && !catalogue.includes(l.product)) errs.push(`${l.first}: "${l.product}" is not one of this prospect's products`);
+  }
+
+  /* The ask was ten. More is fine when the profile itself names more. */
+  if (v.leads.length < 10) errs.push(`only ${v.leads.length} leads, expected at least 10`);
 
   const tag = errs.length ? "FAIL" : "ok  ";
   if (errs.length) bad++;

@@ -4658,8 +4658,12 @@ button.nav-item {
 .sfl-headactions .sfl-gbtn--first.sfl-gbtn--icon { width: 43px; }
 
 /* ---- the card: one white slab holding filters, KPIs and the table -------- */
+/* ⚠️ `flex: 0 1 auto` — the card SIZES TO ITS CONTENT and shrinks only when the stage is
+   too short for it. It used to fill the stage, which is what the capture does with 13
+   rows in it; with the list capped at 7 that left a band of card below the box, and a
+   white slab under a bordered list reads as a rendering fault rather than as spare room. */
 .sfl-card {
-  display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0;
+  display: flex; flex-direction: column; flex: 0 1 auto; min-height: 0;
   margin: 16px; padding: 0 16px;
   background: #fff; border: 1px solid #c9c9c9; border-radius: 12px;
 }
@@ -4730,9 +4734,16 @@ button.nav-item {
    behaviour and the column order is the capture's; promoting the Invoca column
    forward would make the screen easier to demo and stop it being a replica. */
 /* The bottom half of that box: the same border on three sides, the matching radii, and
-   the same #F3F3F3 ground — which is what shows in the area a short list does not fill. */
+   the same #F3F3F3 ground.
+   ⚠️ **SEVEN ROWS, THEN IT SCROLLS** — asked for directly ("show only 7 and the user has
+   to scroll for the rest just like the real site"). 41 of sticky header + 7 x 52 + the
+   1px the last row's own rule takes = 406. It is a MAX, not a height, so a short window
+   still shrinks it rather than pushing the To Do bar off screen.
+   ⚠️ This also retires the grey field the previous note flagged: the capture's container
+   is #F3F3F3 and its 13 rows always cover it, and with the viewport capped at 7 of 10 the
+   rows cover it here too. */
 .sfl-scroll {
-  flex: 1 1 auto; min-height: 0; overflow: auto;
+  flex: 0 1 auto; min-height: 0; max-height: 406px; overflow: auto;
   background: #f3f3f3;
   border: 1px solid #c9c9c9; border-top: 0; border-radius: 0 0 8px 8px;
 }
