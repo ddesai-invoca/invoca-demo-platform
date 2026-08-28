@@ -2545,6 +2545,25 @@ in the script. Third tautological check recorded in this file.
 capture's own shape, a pure function of the lead's identity, so an SE re-opening the tab
 mid-demo sees the same ids. `Math.random()` would change them on every reload.
 
+⚠️⚠️ **THE LIST IS A BORDERED BOX DRAWN AS TWO HALVES, and the first pass rendered neither.**
+Reported directly, with the region circled: "fix the background colour and shadows for the bar
+I tagged, and there is a border around the whole box, with the bar and the lead information."
+`.commonListHeader` is **50 tall on `#F3F3F3`** with a 1px `#C9C9C9` border on all four sides
+and `8px 8px 0 0` radii; the table's container repeats that border on its other three sides
+with `0 0 8px 8px` and **no top border**, so the bar's own bottom edge is the divider rather
+than two rules stacking into 2px. Without it the count line and the five buttons floated on
+the card's white with nothing around the list.
+⚠️ **THERE IS NO BOX-SHADOW ANYWHERE HERE** — measured `none` on the bar, the container, the
+table, the header row and the fixed header cell. What reads as a shadow is that 1px border
+against the grey ground, which is worth knowing before adding one to "match".
+⚠️ The bar's padding is `8px 8px 8px 32px`, and THAT is what puts the count at x=66 and the
+button group 9px off the right edge — the first build reproduced both with 9px margins on the
+row instead, which landed the same two numbers and drew no bar.
+⚠️ **THE CONTAINER'S GREY SHOWS WHERE A SHORT LIST DOES NOT REACH.** The capture's 13 rows
+fill it, so this is the measured background applied to a case the capture never shows; with 2
+leads there is a visible grey field under the rows. Stated rather than quietly filled with
+white.
+
 ⚠️ **FOUR GLYPHS EXTRACTED VERBATIM** (bookmark, filter, email, info) per the use-the-real-icons
 rule. ⚠️ `info` is on a **52-unit box**, like the two calendar glyphs — dropping it into the
 520 grid renders a speck, which is exactly what the `SldsIcon` VIEWBOX note already warns about.

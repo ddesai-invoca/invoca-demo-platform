@@ -4702,7 +4702,23 @@ button.nav-item {
 .sfl-kpi-value { font-size: 32px; line-height: 32px; font-weight: 274; color: #000; margin: 0; }
 
 /* ---- list header -------------------------------------------------------- */
-.sfl-listhead { display: flex; align-items: center; justify-content: space-between; flex: 0 0 32px; margin: 9px 0; padding: 0 9px 0 33px; }
+/* ⚠️⚠️ **THE LIST IS A BORDERED BOX DRAWN AS TWO HALVES, and this bar is the top one.**
+   `.commonListHeader` is 50 tall on **#F3F3F3** with a 1px `#C9C9C9` border on all four
+   sides and `8px 8px 0 0` radii; the table's container below it repeats the border on its
+   other three sides with `0 0 8px 8px` and **no top border**, so the bar's bottom edge is
+   the divider between them rather than two rules stacking into 2px. Missing it left the
+   count line and the buttons floating on the card's white with nothing around the list.
+   ⚠️ **THERE IS NO BOX-SHADOW ON EITHER — measured `none` on the bar, the container, the
+   table, the header row and the fixed header cell.** What reads as a shadow is that 1px
+   border against the grey ground.
+   ⚠️ The 9px margins this rule used to carry were standing in for the bar's own padding
+   (`8px 8px 8px 32px`), which is what actually puts the count at x=66 and the button group
+   9 off the right edge. */
+.sfl-listhead {
+  display: flex; align-items: center; justify-content: space-between; flex: 0 0 50px;
+  padding: 8px 8px 8px 32px; background: #f3f3f3;
+  border: 1px solid #c9c9c9; border-radius: 8px 8px 0 0;
+}
 .sfl-count { font-size: 12px; line-height: 18px; color: #03234d; }
 .sfl-actions { display: flex; align-items: center; }
 /* ⚠️ 12px HERE, 13 in the header group — same control, smaller type. */
@@ -4713,8 +4729,15 @@ button.nav-item {
    the Invoca Attribution ID column starts off-screen. That is the capture's own
    behaviour and the column order is the capture's; promoting the Invoca column
    forward would make the screen easier to demo and stop it being a replica. */
-.sfl-scroll { flex: 1 1 auto; min-height: 0; overflow: auto; }
-.sfl-table { border-collapse: collapse; background: #fff; table-layout: fixed; margin-left: 1px; }
+/* The bottom half of that box: the same border on three sides, the matching radii, and
+   the same #F3F3F3 ground — which is what shows in the area a short list does not fill. */
+.sfl-scroll {
+  flex: 1 1 auto; min-height: 0; overflow: auto;
+  background: #f3f3f3;
+  border: 1px solid #c9c9c9; border-top: 0; border-radius: 0 0 8px 8px;
+}
+/* The TABLE is white against that grey container, and carries its own closing rule. */
+.sfl-table { border-collapse: collapse; background: #fff; table-layout: fixed; border-bottom: 1px solid #c9c9c9; }
 /* ⚠️ 41 TALL ON #F3F3F3 with `600 13px` #5C5C5C — the header band is grey, the
    body white. */
 /* ⚠️ STICKY. The capture scrolls the BODY under a fixed header
