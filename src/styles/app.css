@@ -1409,6 +1409,135 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
   background: #2666f9; color: #fff; cursor: pointer;
 }
 .vc-typesend .material-icons { font-size: 18px; }
+/* ⚠️⚠️ **RESTORED 8/27/2026 — this whole block was deleted as collateral damage by
+   `fbd7d96` ("Rebuild the voice preview drawer against the real one", 8/26), which
+   removed 79 `.cd-*` rules and the 3 `.cr-card-link` rules along with the `.vc-*` ones
+   it meant to replace.** Call Detail had rendered as unstyled stacked text ever since,
+   and nothing failed: the screen has no test, `tsc` cannot see a missing CSS rule, and
+   every OTHER screen still looked right — the sidebar and topbar are styled from rules
+   earlier in the file, so the page reads as "half loaded" rather than as a deletion.
+   ⚠️ A prefix rename or a component rebuild is exactly when to diff the RULE COUNT PER
+   PREFIX before and after, not just read the diff: 375 insertions against 374 deletions
+   looked like a rewrite of one component. */
+/* ============================================================================
+   Call Detail — 3-column drill-in from Call Review (matched to Invoca)
+   ========================================================================== */
+.cd-page { display: flex; flex-direction: column; min-height: 100%; background: #fff; }
+.cd-head { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px 14px; }
+.cd-title { font-size: 24px; font-weight: 700; color: var(--color-text-title); }
+.cd-head-actions { display: flex; align-items: center; gap: 12px; }
+.cd-link-ic { color: #66708e; font-size: 20px; cursor: pointer; }
+.cd-hbtn { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #c9d2e3; color: #2666f9; font-family: inherit; font-size: 14px; font-weight: 500; padding: 7px 14px; border-radius: 6px; cursor: pointer; }
+.cd-hbtn .material-icons { font-size: 18px; }
+.cd-hbtn:hover { background: #f5f8ff; }
+
+.cd-body { display: grid; grid-template-columns: 320px minmax(0,1fr) 340px; gap: 26px; padding: 6px 28px 24px; align-items: start; }
+.cd-sec-label { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: #6c757d; margin: 18px 0 10px; }
+.cd-left .cd-sec-label:first-child { margin-top: 0; }
+
+.cd-reviewed { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--color-text-title); cursor: pointer; }
+.cd-select { display: flex; align-items: center; justify-content: space-between; border: 1px solid #d5dae2; border-radius: 6px; padding: 9px 12px; font-size: 14px; color: #5b6577; }
+.cd-select .material-icons { font-size: 20px; color: #66708e; }
+
+/* Scorecard */
+.cd-scorecard, .cd-signals { border: 1px solid #e7e9eb; border-radius: 8px; overflow: hidden; }
+.cd-scorecard-head { display: flex; align-items: center; gap: 12px; width: 100%; background: #fff; border: none; padding: 14px 14px; cursor: pointer; font-family: inherit; text-align: left; }
+.cd-sc-ic { color: #66708e; font-size: 22px; }
+.cd-sc-pct { font-size: 26px; font-weight: 700; color: var(--color-text-title); }
+.cd-sc-meta { display: flex; flex-direction: column; flex: 1; }
+.cd-sc-name { font-size: 13px; font-weight: 700; color: var(--color-text-title); }
+.cd-sc-points { font-size: 12px; color: #9aa2af; }
+.cd-caret { color: #66708e; font-size: 22px; }
+.cd-caret-sm { color: #9aa2af; font-size: 18px; }
+.cd-sc-rows { border-top: 1px solid #eef0f3; }
+.cd-sc-rowhead { display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 8px; padding: 8px 14px; font-size: 12px; color: #9aa2af; border-bottom: 1px solid #eef0f3; }
+.cd-sc-ic-sm { font-size: 16px; color: #c3c9d4; }
+.cd-sc-pts-col { text-align: right; }
+.cd-sc-row { display: grid; grid-template-columns: 22px 1fr auto 18px; align-items: center; gap: 8px; padding: 9px 14px; border-bottom: 1px solid #f1f3f6; }
+.cd-sc-row:last-child { border-bottom: none; }
+.cd-sc-signame { font-size: 13px; color: var(--color-text-title); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cd-sc-pts { font-size: 13px; color: #5b6577; font-variant-numeric: tabular-nums; }
+.cd-ic-met { color: #2cbf58; font-size: 19px; }
+.cd-ic-unmet { color: #e4131b; font-size: 19px; }
+.cd-ic-na { color: #a1a7b2; font-size: 19px; }
+
+/* Signals */
+.cd-signals-head { display: flex; align-items: center; gap: 10px; width: 100%; background: #fff; border: none; padding: 13px 14px; cursor: pointer; font-family: inherit; }
+.cd-sig-all { font-size: 14px; font-weight: 600; color: var(--color-text-title); flex: 1; text-align: left; }
+.cd-sig-counts { display: flex; gap: 10px; }
+.cd-sig-count { display: inline-flex; align-items: center; gap: 3px; font-size: 13px; font-weight: 600; color: #5b6577; }
+.cd-sig-count .material-icons { font-size: 16px; }
+.cd-sig-body { border-top: 1px solid #eef0f3; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.cd-sig-search { display: flex; align-items: center; gap: 6px; border: 1px solid #d5dae2; border-radius: 6px; padding: 7px 10px; }
+.cd-sig-search .material-icons { font-size: 18px; color: #9aa2af; }
+.cd-sig-search input { border: none; outline: none; font-family: inherit; font-size: 13px; width: 100%; }
+.cd-sig-group { display: flex; align-items: center; gap: 8px; width: 100%; background: #fff; border: 1px solid #e7e9eb; border-radius: 6px; padding: 11px 12px; cursor: pointer; font-family: inherit; }
+.cd-sig-group.active { border-color: #2666f9; box-shadow: 0 0 0 1px #2666f9; }
+.cd-sig-group .material-icons:first-child { font-size: 18px; }
+.cd-sig-glabel { flex: 1; text-align: left; font-size: 14px; color: var(--color-text-title); }
+.cd-sig-gcount { font-size: 14px; font-weight: 600; color: var(--color-text-title); }
+.cd-sig-list { display: flex; flex-direction: column; gap: 2px; padding: 4px 4px 4px 8px; }
+.cd-sig-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #445065; padding: 5px 0; }
+.cd-sig-item .material-icons { font-size: 16px; }
+
+/* Prompts */
+.cd-prompts { display: flex; flex-direction: column; gap: 10px; }
+.cd-prompt { border: 1px solid #e7e9eb; border-radius: 8px; }
+.cd-prompt-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; background: #fff; border: none; padding: 13px 14px; cursor: pointer; font-family: inherit; font-size: 14px; color: var(--color-text-title); text-align: left; }
+.cd-prompt-body { padding: 0 14px 14px; font-size: 13px; line-height: 1.5; color: #445065; }
+
+/* Center transcript */
+.cd-transcript-label { margin-top: 0; }
+.cd-transcript-card { border: 1px solid #e7e9eb; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.05); padding: 16px; }
+.cd-tr-search { display: flex; align-items: center; gap: 8px; border: 1px solid #d5dae2; border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; }
+.cd-tr-search .material-icons { font-size: 20px; color: #9aa2af; }
+.cd-tr-search input { border: none; outline: none; font-family: inherit; font-size: 14px; width: 100%; }
+.cd-tr-turns { display: flex; flex-direction: column; }
+.cd-turn { display: grid; grid-template-columns: 72px 1fr; gap: 14px; padding: 12px 0; }
+.cd-turn-side { display: flex; flex-direction: column; }
+.cd-turn-who { font-size: 13px; font-weight: 700; color: var(--color-text-title); }
+.cd-turn-time { font-size: 12px; color: #9aa2af; }
+.cd-turn-text { font-size: 14px; line-height: 1.5; color: #2b3442; border-left: 3px solid #e7e9eb; padding-left: 12px; }
+.cd-t-caller { border-left-color: #f0b8bb; }
+.cd-conv-start { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #66708e; padding: 10px 0; }
+.cd-conv-start .material-icons { font-size: 18px; color: #9aa2af; }
+.cd-cs-info { font-size: 15px !important; }
+
+/* Right rail */
+.cd-ai-summary { font-size: 14px; line-height: 1.55; color: #2b3442; margin: 0 0 16px; }
+.cd-ai-meta { display: flex; flex-direction: column; gap: 10px; padding-bottom: 16px; border-bottom: 1px solid #eef0f3; }
+.cd-ai-metarow { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #445065; }
+.cd-ai-metarow .material-icons { font-size: 18px; color: #66708e; }
+.cd-comments-head { display: flex; align-items: center; justify-content: space-between; }
+.cd-comment-btn { display: inline-flex; align-items: center; gap: 5px; background: #fff; border: 1px solid #c9d2e3; color: #2666f9; font-family: inherit; font-size: 13px; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+.cd-comment-btn .material-icons { font-size: 16px; }
+.cd-comment { border: 1px solid #e7e9eb; border-radius: 8px; padding: 12px; margin-top: 10px; }
+.cd-comment-top { display: flex; align-items: center; gap: 8px; }
+.cd-comment-author { font-size: 14px; font-weight: 700; color: var(--color-text-title); }
+.cd-comment-aud { display: inline-flex; align-items: center; gap: 4px; background: #f0f2f6; color: #5b6577; font-size: 12px; padding: 2px 8px; border-radius: 4px; }
+.cd-comment-aud .material-icons { font-size: 14px; }
+.cd-comment-more { margin-left: auto; color: #9aa2af; font-size: 18px; }
+.cd-comment-date { font-size: 12px; color: #9aa2af; margin: 2px 0 8px; }
+.cd-comment-text { font-size: 13px; line-height: 1.5; color: #445065; margin: 0; }
+
+/* Audio bar */
+.cd-audio { position: sticky; bottom: 0; background: #fff; border-top: 1px solid #e7e9eb; margin-top: auto; }
+.cd-scrubber { height: 4px; background: #e7e9eb; position: relative; }
+.cd-scrub-knob { position: absolute; left: 4%; top: 50%; transform: translate(-50%,-50%); width: 14px; height: 14px; border-radius: 50%; background: #2cbf58; }
+.cd-audio-controls { display: flex; align-items: center; justify-content: space-between; padding: 12px 28px; }
+.cd-back { display: inline-flex; align-items: center; gap: 5px; color: #2666f9; font-size: 14px; text-decoration: none; }
+.cd-back .material-icons { font-size: 18px; }
+.cd-audio-center { display: flex; align-items: center; gap: 18px; }
+.cd-audio-speed { display: inline-flex; align-items: center; font-size: 14px; color: #445065; cursor: pointer; }
+.cd-audio-btn { color: #5b6577; font-size: 24px; cursor: pointer; }
+.cd-audio-play { color: #2b3442; font-size: 34px; cursor: pointer; }
+.cd-audio-time { font-size: 13px; color: #66708e; font-variant-numeric: tabular-nums; }
+
+/* The evaluated (4th) Call Review card is clickable → Call Detail */
+.cr-card-link { text-decoration: none; display: block; }
+.cr-card-link .cr-card { cursor: pointer; transition: box-shadow .12s, border-color .12s; }
+.cr-card-link:hover .cr-card { box-shadow: 0 3px 12px rgba(0,0,0,.10); border-color: #c9d2e3; }
+
 /* ---- Gumloop artifacts in My Reports + the iframe viewer ------------------ */
 .rp-status { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; }
 .rp-status-complete { color: #0d5400; }

@@ -1873,6 +1873,39 @@ table headers ("Name", "Shared Status"), ThoughtSpot footers ("UNIQUE COUNT",
 the Launch screen (our tool, not the demo). That is the template, and rule 2 keeps
 the AI out of it. The six platform dashboards were already fully data-driven.
 
+### ⚠️⚠️ A COMPONENT REBUILD DELETED ANOTHER SCREEN'S ENTIRE STYLESHEET (found 8/27/2026)
+Reported as "what's going on with this page, it didn't render correctly" — Call Detail was
+rendering as unstyled stacked text: a default `<h1>`, default buttons, every rail section and
+every transcript turn in one column.
+
+**Cause: `fbd7d96` ("Rebuild the voice preview drawer against the real one", 8/26) removed 79
+`.cd-*` rules and the 3 `.cr-card-link` rules along with the `.vc-*` ones it meant to
+replace.** Call Detail had been broken for a day. Restored verbatim from `fbd7d96^`.
+
+⚠️ **NOTHING FAILED, AND EVERY SIGNAL POINTED AWAY FROM A DELETION.** `tsc` cannot see a
+missing CSS rule, that screen has no test, and the SIDEBAR AND TOPBAR STILL RENDERED —
+they are styled from rules earlier in the file — so the page reads as "half loaded", which
+sends you looking at the dev server and the route rather than at the stylesheet. The
+`.cd-` grep that finds the problem in one command returns a comment mentioning `.cd-*` and
+nothing else, which is easy to skim past as a hit.
+
+⚠️ **THE DIFFSTAT ACTIVELY CONCEALED IT: `343 ++++----` on app.css, 375 insertions against
+374 deletions across the commit.** That reads as a rewrite of one component. **Diff the RULE
+COUNT PER PREFIX before and after any prefix rename, component rebuild or large CSS move** —
+it takes one script and it names the blast radius outright:
+
+```
+.cd-        79 ->  0   (-79)     <- Call Detail, collateral
+.cr-        51 -> 48   (-3)      <- Call Review's clickable card, collateral
+.vc-        36 -> 22   (-14)     <- the rebuild's actual subject
+```
+
+⚠️ Two of this file's existing rules would each have caught it and neither was applied: "one
+CSS prefix per screen" (which exists because prefixes get confused with one another) and
+"THEN PROVE IT — load one of the other screens and assert the old values". The screens to
+prove after touching a shared stylesheet are the ones whose prefixes the diff TOUCHED, and
+the count table above is how you learn which those are.
+
 ## Launch screen & live generation (the front door)
 `/` and `/launch` render `src/screens/Launch.tsx` (full-page, outside the AppShell).
 An SE enters a prospect **name + URL** → **Launch** → the app POSTs to
