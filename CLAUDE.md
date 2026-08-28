@@ -2311,6 +2311,92 @@ named company's mouth. `derive` also rejects any rival name sharing two
 significant words with the prospect (that is what stopped "Orlando Health
 Systems" appearing beside the real Orlando Health).
 
+### Salesforce Seller Home REBUILT off a newer capture (8/27/2026)
+Asked for directly: "let's actually recreate the salesforce page, I found a newer page, since
+now you know what to look for, replicate this page perfectly." Capture:
+`reference/salesforce/seller-home-v2.html`
+(`invocafforhomeservices.lightning.force.com/lightning/page/home`).
+
+**Salesforce has restyled this page, so almost every measured value changed.** The rebuild is
+the same method as last time — dump one property set off the capture's rendered DOM, dump the
+same off ours, fix until the diff is empty — at BOTH 1500 and 1920.
+
+| | 8/24 capture | THIS capture |
+|---|---|---|
+| card | radius 4, 1px `#C9C9C9`, `0 2px 2px` shadow | **radius 20, no border, no shadow** |
+| card heights | 333 / 370.5 / 396.5 | **338 / 366.5 / 400** |
+| card title | `700 16/20` `#181818` | **`400 20px/25px` `#03234D`** |
+| h1 | `300 28/49` `#181818` | **`300 32px/56px` `#03234D`** |
+| ring value | `300 28/33` | **`300 32px/40px`** |
+| footer button | full width, radius 4, `#0176D3` | **centred pill**, radius 240, 1px `#5C5C5C`, **`#0250D9`**, 600 |
+| brand button | `#0176D3` | **`#066AFE`** |
+| legend pill | radius 4 | **radius 8** |
+| record tile | 32 square, radius 4 | **32 CIRCLE**, radius 100% |
+| nav bar | white, **3px `#0070D2`** rule | **transparent, no rule** |
+| nav item | 37 tall, `#181818` | **32** tall, **500** 13/19.5 `#03234D` |
+| active tab | `rgba(0,112,210,.1)` **wash** | ink `#0250D9` + a **3px underline**, radius 12 |
+| search | radius 4, 1px `#747474` | radius **8**, 1px **`#5C5C5C`** |
+| the + button | grey, radius 4 | grey, **radius 240** (a circle) |
+| favourites | one star | a **split pair**, 26 + 22, mirrored radii |
+| cards | 8 | **9** — Salesblazer sits alone on row 3 |
+| tabs | 16, incl. Calendar | **14**, incl. **Invoca Call Log**, ending in **More** |
+
+⚠️⚠️ **THE CARD BODY IS TWO 50% COLUMNS, EACH CENTRING ITS CONTENT — and only the two-width
+rule reveals it.** The ring starts 34px into the body at 1500 and **30** at 1920; the legend's
+dot 63.65 and 60 into the right half. Centring each in half the body gives (218.35-150)/2 =
+34.2, (210-150)/2 = 30, (218.35-90.1)/2 = 64.1 and (210-90.1)/2 = 60 — all four land. Fixed
+offsets reproduce one width and drift at the other, which is exactly what that rule exists for.
+The card widths solve the same way: `flex: 1 1 440px` + 24px gap gives 462.67 at 1500 (3 per
+row) and 446 at 1920 (4 per row), both measured.
+
+⚠️⚠️ **"THE TILE IS TRANSPARENT, THE COLOUR MUST BE BAKED INTO THE PNG" WAS WRONG, and the
+PNGs are what disproved it.** Probing `img.closest('span,div')` lands on `.uiImage` — 32
+square, transparent, radius 0 — so the record tiles read as having no fill. Decoding the
+extracted PNGs showed them only **~16% opaque**, i.e. white glyphs on transparent, which cannot
+produce the coloured circles the capture plainly shows. The fill lives TWO levels further up on
+`.slds-media__figure`: 32 square at **radius 100%**, Lead `#06A59A`, Invoca Call Log `#8B85F9`,
+Account `#5867E8`, Contact `#9602C7`. Same family as the check-`background-image` lesson one
+section down: **when a probe says "nothing paints this", walk further up before believing it.**
+
+⚠️ **ONE MISSING 12px MARGIN PRODUCED FIVE DIFFS.** Dropping the header's `margin-bottom: 12px`
+while rewriting put the subtitle, the ring, its value, its label and the legend all 15 to 37px
+high. The diff named five failures with one cause, which is the argument for diffing positions
+rather than eyeballing a screenshot.
+
+⚠️ **THE ACTIVE TAB IS AN `::after`, NOT A BACKGROUND** — `top: 32px; bottom: -3px; left/right:
+0; border-radius: 12px; background: #0250D9`, a 3px rounded bar under the tab. An INACTIVE tab
+carries the same pseudo element with a dark navy fill, hidden rather than absent, so "does it
+have an ::after" would light every tab up.
+
+⚠️ **"Sales" IS NOT IN THE LOGO.** `.slds-global-header__logo` (200 x 40) contains a
+`slds-assistive-text` span reading "Sales" that measures 0 x 0; the visible app name is a
+separate `400 20px/25px` element one row down, on the NAV row at x=60. Reading the assistive
+text as the label puts the app name in the wrong row.
+
+⚠️ **PLAN MY ACCOUNTS' RING IS TWO FILLED ARCS**, outer r=75 inner r=69, `#0D9DDA` for the 1
+account with past activity and `#FE5C4C` for the 3 without. Every other ring really is a
+`<circle r=72>` with a 6px stroke, so both shapes are drawn the way the page draws them.
+
+⚠️ **TWO NEW ASSETS EXTRACTED VERBATIM**: `invoca-call-log.png` and `account.png` (both 120x120).
+⚠️ **THE LEAD GLYPH IS STILL A PLACEHOLDER** — `<svg><rect fill-opacity="0"/></svg>`, exactly
+like the call-log icon in the older capture. It is drawn by hand in `SldsIcon` and flagged
+there; it is the only authored glyph on the screen. Replace it when a capture carries the real
+one.
+
+⚠️⚠️ **THIS ORG'S NAV HAS NO CALENDAR TAB, which breaks a documented click path.** The flow is
+"Seller Home -> Calendar -> the appointment the SMS agent booked", and this bar ends Chatter,
+Groups, **More**. Keeping a Calendar tab would invent one this org does not have; dropping it
+dead-ends the demo. **More** is the overflow menu, which is where such a tab lives, so it
+carries the route and highlights on the Calendar screen. Smallest available departure, and
+raised with the user rather than decided quietly — give me a capture of the More menu and it
+becomes a real dropdown.
+
+**Verified: a 29-property diff came back empty at 1500 and a 6-property one at 1920** (card
+width, gap, inset, ring and legend offsets, cards per row), 9 cards, zero broken images, the
+record tiles carrying their four measured colours. The Calendar screen still renders under the
+updated chrome (week grid, the 11am event, the mini calendar), and `/dashboards/marketing` is
+untouched — 21 cards at 4px radius, KPI 48,293, 7 donuts, **zero `.sfh-` elements**.
+
 ### Salesforce Calendar — screen 2 of 4 (8/24/2026)
 `SalesforceCalendar.tsx` + `.sfc-`, plus `salesforceEvent.ts` for the booked appointment.
 What the **Calendar** tab opens; measured off a capture of the live week view.

@@ -116,7 +116,10 @@ export function SalesforceCalendar() {
   return (
     <div className="sfh-root sfc-root">
       <SfGlobalHeader />
-      <SfContextBar active="Calendar" />
+      {/* ⚠️ "More", not "Calendar": this org's nav bar has no Calendar tab (measured on the
+          8/27 capture), so Calendar sits in the overflow menu and that is the item that
+          highlights when you are here. */}
+      <SfContextBar active="More" />
 
       {/* ---- page header ---- */}
       <div className="sfc-head">

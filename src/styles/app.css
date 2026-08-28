@@ -4265,40 +4265,50 @@ button.nav-item {
 .sfh-root *, .sfh-root *::before { box-sizing: border-box; }
 
 /* ---- global header: 50 tall ---------------------------------------------- */
-.sfh-globalhead { display: flex; align-items: center; height: 50px; padding: 0 12px; background: #fff; }
+.sfh-globalhead { display: flex; align-items: center; height: 50px; padding: 0 12px 0 16px; background: #fff; }
 /* ⚠️ THE LOGO IS A 200 x 40 BACKGROUND IMAGE, measured: `background-size: contain`,
    `background-position: 0% 50%`, `no-repeat`, at x=16 in the 50px header. The artwork is the
-   real one (`public/icons/salesforce/logo.svg`, a 4000x2800 viewBox that draws the cloud at
-   the left of the box), so nothing here is drawn by hand any more. */
+   real one (`public/icons/salesforce/logo.svg`), so nothing here is drawn by hand.
+   ⚠️ The "Sales" wordmark inside it is `slds-assistive-text` and measures 0 x 0 — the VISIBLE
+   app name is a separate element one row down. Do not read it out of the logo. */
 .sfh-logo {
-  width: 200px; height: 40px; flex: 0 0 200px; margin-right: 12px;
+  width: 200px; height: 40px; flex: 0 0 200px;
   background-image: url("/icons/salesforce/logo.svg");
   background-size: contain; background-position: 0% 50%; background-repeat: no-repeat;
 }
-/* ⚠️ THE SEARCH BORDER IS #747474, not #C9C9C9 — measured on the button that wraps it. */
+/* ⚠️ RADIUS 8 AND A #5C5C5C BORDER (re-measured 8/27/2026 — was radius 4 / #747474).
+   ⚠️ AND IT IS NOT CENTRED IN THE VIEWPORT: measured x=493 at a 1500 viewport, which is the
+   midpoint of the gap between the logo and the icon cluster, not of the window. `margin: auto`
+   inside a flex row between those two reproduces it. */
 .sfh-search {
   display: flex; align-items: center; gap: 8px; width: 400px; height: 32px; margin: 0 auto;
-  padding: 0 12px; background: #fff; border: 1px solid #747474; border-radius: 4px;
+  padding: 0 12px; background: #fff; border: 1px solid #5c5c5c; border-radius: 8px;
 }
-.sfh-search-icon { color: #757575; flex: 0 0 14px; }
-.sfh-search-ph { color: #747474; font-size: 13px; }
-.sfh-globalicons { display: flex; align-items: center; gap: 4px; }
+.sfh-search-icon { color: #5c5c5c; flex: 0 0 14px; }
+.sfh-search-ph { color: #5c5c5c; font-size: 13px; }
+.sfh-globalicons { display: flex; align-items: center; gap: 12px; }
 .sfh-gi {
-  display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
-  color: #919191;
+  display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;
+  border-radius: 240px; color: #5c5c5c;
 }
-.sfh-gi--star { color: #919191; font-size: 15px; }
-.sfh-gi--tri { width: 18px; }
-/* ⚠️ THE + IS WHITE ON #919191 GREY, NOT ON BRAND BLUE, and the box is 20 square at radius
-   4 — measured. Blue made it the loudest thing in the header. */
+/* ⚠️ THE FAVOURITES CONTROL IS A SPLIT PAIR — 26 x 24 and 22 x 24 with mirrored radii, so the
+   two read as one pill. Measured; the previous build drew a single star. */
+.sfh-fav {
+  display: flex; align-items: center; justify-content: center; height: 24px;
+  border: 1px solid #c9c9c9; color: #5c5c5c;
+}
+.sfh-fav--l { width: 26px; border-radius: 240px 0 0 240px; border-right: none; font-size: 13px; }
+.sfh-fav--r { width: 22px; border-radius: 0 240px 240px 0; border-color: #5c5c5c; }
+/* ⚠️ THE + IS WHITE ON #5C5C5C AND IT IS A CIRCLE (radius 240), 20 square — measured. The
+   previous build had it grey but SQUARE, and the one before that had it in the brand blue,
+   which is the loudest thing in the header and the wrong colour entirely. */
 .sfh-gi--add {
-  color: #fff; background: #919191; border-radius: 4px; width: 20px; height: 20px;
-  flex: 0 0 20px; margin: 0 6px;
+  color: #fff; background: #5c5c5c; border-radius: 240px; width: 20px; height: 20px;
+  flex: 0 0 20px;
 }
-/* ⚠️ THE AVATAR IS THE REAL ARTWORK TOO — a `background-image` on `.profileTrigger` over
-   `#1B96FF`, `background-size: cover`, 32 square at radius 100%. Found the same way as the
-   logo, and missed for the same reason: I had searched for `<img>` and `<svg>` and never
-   checked `background-image` across the header. */
+/* ⚠️ THE AVATAR IS THE REAL ARTWORK — a `background-image` over `#1B96FF`, `cover`, 32 square
+   at radius 100%. Found by checking `background-image` across the header region, which is the
+   step two earlier passes skipped before concluding the asset "was not in the capture". */
 .sfh-avatar {
   width: 32px; height: 32px; flex: 0 0 32px; border-radius: 100%;
   background-color: #1b96ff;
@@ -4307,100 +4317,118 @@ button.nav-item {
   margin-left: 8px;
 }
 
-/* ---- context bar: 40 tall, FULL WIDTH, 3px brand rule -------------------- */
-.sfh-bar {
-  display: flex; align-items: stretch; height: 40px; padding: 0 0 0 24px;
-  background: #fff; border-bottom: 3px solid #0070d2;
-}
+/* ---- nav row: 40 tall, TRANSPARENT, no rule ------------------------------
+   ⚠️ RE-MEASURED: the older capture's white bar with a 3px #0070D2 bottom rule is gone. This
+   strip paints nothing, so the page's #F3F3F3 shows through and the only blue on the row is
+   the active tab's own underline. */
+.sfh-bar { display: flex; align-items: center; height: 40px; padding: 0 0 0 16px; background: transparent; }
 .sfh-waffle {
   display: grid; grid-template-columns: repeat(3, 3px); gap: 2px; align-content: center;
-  margin-right: 14px; flex: 0 0 auto;
+  width: 44px; justify-content: center; flex: 0 0 44px;
 }
-.sfh-waffle i { width: 3px; height: 3px; background: #747474; border-radius: 1px; }
-.sfh-app { display: flex; align-items: center; font-size: 18px; font-weight: 700; margin-right: 16px; }
-/* ⚠️ flex: 1 — the measured `.navCenter` is `flex: 1 1 0%`, so the strip spans the bar. */
-.sfh-tabs { flex: 1 1 0%; display: flex; align-items: stretch; list-style: none; margin: 0; padding: 0;
+.sfh-waffle i { width: 3px; height: 3px; background: #5c5c5c; border-radius: 1px; }
+/* ⚠️ 400 20px/25px, NOT bold 18 — and it lives on THIS row, not in the header. */
+.sfh-app { display: flex; align-items: center; font-size: 20px; line-height: 25px; font-weight: 400; color: #03234d; margin-right: 24px; }
+.sfh-tabs { flex: 1 1 0%; display: flex; align-items: center; list-style: none; margin: 0; padding: 0;
   min-width: 0; overflow: hidden; }
-.sfh-tab { display: flex; align-items: center; height: 37px; flex: 0 0 auto; }
-.sfh-tab-link { font-size: 13px; line-height: 19.5px; color: #181818; padding: 0 12px; }
-.sfh-tab-chev { color: #747474; margin-left: -6px; margin-right: 6px; flex: 0 0 14px; }
-/* ⚠️ A PALE BLUE WASH, NOT AN UNDERLINE — and the label keeps its default ink and weight. */
-.sfh-tab--on { background: rgba(0, 112, 210, .1); }
-.sfh-tab--on .sfh-tab-link { color: #181818; font-weight: 400; }
-.sfh-barpencil { display: flex; align-items: center; padding: 0 12px; color: #747474; flex: 0 0 auto; }
+/* ⚠️ `position: relative` is load-bearing: the active underline is an ::after positioned
+   against this box, exactly as the real one is. */
+.sfh-tab { position: relative; display: flex; align-items: center; height: 32px; flex: 0 0 auto; }
+.sfh-tab-link { font-size: 13px; line-height: 19.5px; font-weight: 500; color: #03234d; padding: 0 12px; }
+.sfh-tab-chev { color: #03234d; margin-left: -6px; margin-right: 6px; flex: 0 0 14px; }
+/* ⚠️ AN UNDERLINE, NOT A WASH (re-measured 8/27/2026). `top: 32px; bottom: -3px; left/right: 0;
+   border-radius: 12px; background: #0250D9` — a 3px rounded bar under the tab, and the label
+   turns #0250D9 with it. The previous build painted a `rgba(0,112,210,.1)` background and left
+   the label its default ink, which is what the OLDER capture showed. */
+.sfh-tab--on .sfh-tab-link, .sfh-tab--on .sfh-tab-chev { color: #0250d9; }
+.sfh-tab--on::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 32px; height: 3px;
+  background: #0250d9; border-radius: 12px;
+}
+.sfh-barpencil { display: flex; align-items: center; padding: 0 12px; color: #5c5c5c; flex: 0 0 auto; }
 
 /* ---- page + banner ------------------------------------------------------- */
-.sfh-page { padding: 0 32px 12px; }
-.sfh-banner { display: flex; align-items: baseline; gap: 12px; height: 55px; padding-left: 20px; }
-/* ⚠️ 300 28px/49px — the 49px line box is what makes the band 55 tall. */
-.sfh-h1 { font-size: 28px; font-weight: 300; line-height: 49px; color: #181818; margin: 0; }
-.sfh-greet { font-size: 13px; font-weight: 300; line-height: 49px; color: #444; margin: 0; }
+/* ⚠️ 12px ABOVE THE H1: the nav ends at y=90 and the title's box starts at 102. */
+.sfh-page { padding: 12px 32px 12px; }
+/* ⚠️⚠️ RE-MEASURED 8/27/2026 off `reference/salesforce/seller-home-v2.html`. Salesforce has
+   restyled this page and EVERY value below changed; the old ones are named where the
+   difference is instructive. */
+/* ⚠️ ONE LINE, NOT A BAND: the h1 is `300 32px/56px` `#03234D` and the greeting is a 13px
+   `#5C5C5C` span INSIDE it, sharing the 56px line box. Was 28/49 `#181818` + `#444`. */
+.sfh-banner { display: flex; align-items: baseline; gap: 12px; padding: 0; }
+.sfh-h1 { font-size: 32px; font-weight: 300; line-height: 56px; color: #03234d; margin: 0; }
+.sfh-greet { font-size: 13px; font-weight: 300; line-height: 56px; color: #5c5c5c; margin: 0; }
 
 /* ---- the card grid ------------------------------------------------------- */
-/* ⚠️ A WRAPPING FLEX OF FIXED 457.7px CARDS — NOT a breakpoint grid, and this is the
-   authored rule rather than an inference. Measured: at a 1500 viewport the real page puts
-   THREE cards per row (3 x 457.7 + gaps = the banner's own 1421 width) and at 1920 it fits
-   four. A `repeat(4, 1fr)` grid gets both widths wrong: it squeezes four in at 1500 and
-   stretches them at 1920. Fixed width + wrap reproduces both for free. */
-/* ⚠️ THE CARDS FLEX, they are not a fixed width — measured 457.7 at a 1500 viewport and
-   442.3 at 1920. `flex: 1 1 440px` with a 24px gap reproduces BOTH exactly: at 1500 only
-   three 440s fit, so each grows to (1421-48)/3 = 457.7; at 1920 four fit and each settles at
-   (1837-72)/4 = 442. A fixed 457.7px basis (the previous attempt) is right at one width and
-   wrong at the other. */
+/* ⚠️ `flex: 1 1 440px` with a 24px gap, re-confirmed on THIS capture at both widths: at 1500
+   only three 440s fit so each grows to (1436-48)/3 = 462.67, and at 1920 four fit and each
+   settles at (1856-72)/4 = 446. Both measured exactly. A fixed basis is right at one width
+   and wrong at the other. */
 .sfh-grid { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
 
-/* ⚠️ THREE MEASURED BANDS AND A FIXED HEIGHT: 1 + 32 header + 12 margin + 230 body
-   + 57 footer + 1 = 333 on a row-1 card. The second row measures 370.5, i.e. a 267.5 body.
-   The first build had one 16px padding and let the height fall out of the content, which is
-   why every tile was the wrong size. */
+/* ⚠️ RADIUS 20, NO BORDER, NO SHADOW — the biggest single visual change from the older
+   capture (4px radius, 1px #C9C9C9, `0 2px 2px rgba(0,0,0,.1)`). The cards now read as plain
+   white slabs on the #F3F3F3 page. Heights are per ROW and measured: 338 / 366.5 / 400. */
 .sfh-card {
-  display: flex; flex-direction: column; height: 333px;
-  flex: 1 1 440px; max-width: 458px;
-  background: #fff; border: 1px solid #c9c9c9; border-radius: 4px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+  display: flex; flex-direction: column; height: 338px;
+  flex: 1 1 440px; max-width: 463px;
+  background: #fff; border-radius: 20px;
 }
-/* ⚠️ 396.5, NOT 370.5 — measured on Today's Events, Today's Tasks and My Goals directly. */
-.sfh-card--tall { height: 396.5px; }
-.sfh-card--sb { height: 396.5px; }
+.sfh-card--tall { height: 366.5px; }
+.sfh-card--sb { height: 400px; }
+/* ⚠️ THE 12px BELOW THE HEADER IS LOAD-BEARING and dropping it shifted the whole card:
+   measured header 1..38, body 50. Without it the subtitle, the ring, its value, its label and
+   the legend were every one of them 15 to 37px high — five diffs from one missing margin. */
 .sfh-card-head {
   display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
-  height: 32px; padding: 12px 16px 0; margin-bottom: 12px; flex: 0 0 auto;
+  padding: 12px 16px 0; margin-bottom: 12px; flex: 0 0 auto;
 }
-/* 32 square, 1px #747474 — round on My Goals, square on Today's Tasks. */
+/* 32 square at radius 240, 1px #5C5C5C, ink #0250D9 — the gear on My Goals and the chevron
+   on Today's Tasks. Was radius 4 with a #747474 border. */
 .sfh-iconbtn {
   display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
-  flex: 0 0 32px; margin-top: -6px; border: 1px solid #747474; border-radius: 4px;
-  color: #747474; background: #fff;
+  flex: 0 0 32px; border: 1px solid #5c5c5c; border-radius: 240px;
+  color: #0250d9; background: #fff;
 }
 .sfh-iconbtn--round { border-radius: 240px; }
-.sfh-card-title { font-size: 16px; line-height: 20px; font-weight: 700; color: #181818; margin: 0; }
-/* The body is inset 12 either side — 1 less than the header's 16, which is why the subtitle
-   sits 4px left of the title. */
+/* ⚠️ `400 20px/25px` `#03234D` — was `700 16/20`. Lighter AND bigger, which is most of why
+   the older build reads as a different product. */
+.sfh-card-title { font-size: 20px; line-height: 25px; font-weight: 400; color: #03234d; margin: 0; }
 .sfh-card-body { flex: 1 1 auto; margin: 0 12px; min-height: 0; overflow: hidden; }
-.sfh-card-sub { font-size: 13px; line-height: 16px; color: #181818; margin: 0 0 24px; }
-.sfh-card-content { display: flex; align-items: flex-start; gap: 0; }
-.sfh-card-foot { height: 57px; padding: 12px 16px; border-top: 1px solid #c9c9c9; flex: 0 0 auto; }
+/* Measured: the subtitle sits at dy 52 and the ring at 106, i.e. 34.5 of air under it. */
+.sfh-card-sub { font-size: 13px; line-height: 19.5px; color: #5c5c5c; margin: 2px 0 34.5px; }
+/* ⚠️⚠️ TWO 50% COLUMNS, EACH CENTRING ITS OWN CONTENT — and this is the rule that survives
+   both widths. Measured: the ring starts 34px into the body at 1500 and 30px at 1920, and the
+   legend's dot 63.65 and 60 into the right half. Centring each in half the body reproduces
+   all four numbers exactly ((218.35-150)/2 = 34.2, (210-150)/2 = 30). Fixed offsets are right
+   at one width only, which is the trap the measure-at-two-widths rule exists for. */
+.sfh-card-content { display: flex; align-items: flex-start; }
+.sfh-card-col { flex: 1 1 50%; display: flex; justify-content: center; min-width: 0; }
+.sfh-card-foot { height: 57px; padding: 12px 16px; flex: 0 0 auto; display: flex; justify-content: center; }
+/* ⚠️ A CENTRED PILL, not a full-width button: radius 240, 1px #5C5C5C, ink #0250D9, weight
+   600. Was a full-width radius-4 button in #0176D3. */
 .sfh-btn {
-  display: block; height: 32px; line-height: 30px; text-align: center;
-  border: 1px solid #747474; border-radius: 4px; background: #fff; color: #0176d3;
-  font-size: 13px; padding: 0 16px;
+  display: inline-block; height: 32px; line-height: 30px; text-align: center;
+  border: 1px solid #5c5c5c; border-radius: 240px; background: #fff; color: #0250d9;
+  font-size: 13px; font-weight: 600; padding: 0 16px; white-space: nowrap;
 }
-.sfh-btn--brand { border-color: #0176d3; background: #0176d3; color: #fff; }
+.sfh-btn--brand { border-color: #066afe; background: #066afe; color: #fff; }
 
-/* ---- ring: value and label placed from the ring's own top ---------------- */
-.sfh-ring { position: relative; width: 150px; height: 150px; flex: 0 0 150px; margin-left: 33px; }
+/* ---- ring --------------------------------------------------------------- */
+.sfh-ring { position: relative; width: 150px; height: 150px; flex: 0 0 150px; }
+/* ⚠️ `300 32px/40px` — was 28/33. Measured at 46 and 87 from the ring's own top. */
 .sfh-ring-value {
-  position: absolute; left: 0; right: 0; top: 48.8px; text-align: center;
-  font-size: 28px; font-weight: 300; line-height: 33px; color: #2e2e2e;
+  position: absolute; left: 0; right: 0; top: 46px; text-align: center;
+  font-size: 32px; font-weight: 300; line-height: 40px; color: #2e2e2e;
 }
 .sfh-ring-label {
-  position: absolute; left: 0; right: 0; top: 83.8px; text-align: center;
-  font-size: 13px; line-height: 16px; color: #2e2e2e;
+  position: absolute; left: 0; right: 0; top: 87px; text-align: center;
+  font-size: 13px; line-height: 19.5px; color: #2e2e2e;
 }
 
-/* ⚠️ 42px PITCH, and the row starts 20px below the ring's top. The dot is 10px with the
-   pill 12px after it. */
-.sfh-legend { list-style: none; margin: 20px 0 0 46px; padding: 0; }
+/* ⚠️ 42px PITCH, first row 24px below the ring's top; the pill is 26 tall at RADIUS 8 (was
+   4) and the dot is 10px with 12px after it. */
+.sfh-legend { list-style: none; margin: 24px 0 0; padding: 0; }
 .sfh-legend-row { display: flex; align-items: center; height: 26px; margin-bottom: 16px; }
 .sfh-legend-row:last-child { margin-bottom: 0; }
 .sfh-dot { width: 10px; height: 10px; border-radius: 100%; flex: 0 0 10px; margin-right: 12px; }
@@ -4408,47 +4436,56 @@ button.nav-item {
 .sfh-dot--won { background: #0d9dda; }
 .sfh-dot--lost { background: #fe5c4c; }
 .sfh-dot--none { background: #c9c9c9; }
-/* Measured tint/ink pairs, not one hue at two alphas. */
-.sfh-pill { font-size: 12px; line-height: 18px; border-radius: 4px; padding: 4px 9.6px; white-space: nowrap; }
+/* Measured tint/ink pairs, not one hue at two alphas. The inks re-confirmed on this capture. */
+.sfh-pill { font-size: 12px; line-height: 18px; border-radius: 8px; padding: 4px 9.6px; white-space: nowrap; }
 .sfh-pill--open { background: #acf3e4; color: #056764; }
 .sfh-pill--won { background: #cfe9fe; color: #05628a; }
 .sfh-pill--lost { background: #feded8; color: #ba0517; }
-.sfh-warnrow { display: flex; align-items: center; margin: 20px 0 0 46px; height: 26px; }
+.sfh-warnrow { display: flex; align-items: center; margin: 24px 0 0; height: 26px; }
 .sfh-warn-icon { color: #a96404; }
 
-/* ---- second-row tiles ---------------------------------------------------- */
-/* The illustration sits above centred copy, with 24px under it (measured margin-bottom). */
+/* ---- second- and third-row tiles ---------------------------------------- */
 .sfh-illus { display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 12px; }
 .sfh-illus img { display: block; margin-bottom: 24px; }
-.sfh-empty { font-size: 13px; line-height: 19.5px; color: #181818; margin: 0; text-align: center; }
-.sfh-goalwrap { display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 52px; }
-.sfh-goalart { display: block; margin-bottom: 12px; }
-/* ⚠️ A PILL, not a full-width button: 90.3 x 32 at radius 240. */
+.sfh-empty { font-size: 13px; line-height: 19.5px; color: #5c5c5c; margin: 0; text-align: center; }
+.sfh-goalwrap { display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 64px; }
+.sfh-goalart { display: block; margin-bottom: 24px; }
 .sfh-pillbtn {
   height: 32px; line-height: 30px; padding: 0 16px; border-radius: 240px;
-  background: #0176d3; color: #fff; font-size: 13px; border: 1px solid #0176d3;
+  background: #066afe; color: #fff; font-size: 13px; font-weight: 600; border: 1px solid #066afe;
 }
 
-/* ⚠️ THE OBJECT TILE IS 32 SQUARE AT RADIUS 4 with the object's own colour, and the glyph is
-   a 32px image inside it — the capture's colours verbatim. */
+/* ⚠️⚠️ **THE RECORD TILE IS A COLOURED CIRCLE BEHIND A WHITE GLYPH, and a first pass here
+   concluded the opposite.** Probing `img.closest('span,div')` lands on `.uiImage`, which is
+   transparent at radius 0 — so the tile read as "no tile, the colour must be baked into the
+   PNG". It is not: the fill lives TWO levels up on `.slds-media__figure`, 32 square at
+   **radius 100%**. What exposed it was decoding the PNGs and finding them only ~16% opaque,
+   i.e. a glyph on transparent rather than a filled square. Same family as the
+   check-background-image lesson, one ancestor further out: when a probe says "nothing paints
+   this", walk further before believing it.
+   Rows sit at a 56px pitch. */
 .sfh-recents { list-style: none; margin: 0; padding: 0; width: 100%; }
-.sfh-recent { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.sfh-recent { display: flex; align-items: center; gap: 12px; height: 56px; }
 .sfh-ent {
-  width: 32px; height: 32px; border-radius: 4px; flex: 0 0 32px;
+  width: 32px; height: 32px; flex: 0 0 32px; border-radius: 100%;
   display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
 .sfh-ent img { display: block; width: 32px; height: 32px; }
-.sfh-ent-glyph { color: #fff; }
-.sfh-ent--opportunity { background: #ff5d2d; }
-.sfh-ent--contact { background: #9602c7; }
+/* The capture's own tile colours, verbatim. ⚠️ These are CIRCLES now — the older capture had
+   32px squares at radius 4. */
+.sfh-ent--lead { background: #06a59a; }
 .sfh-ent--call { background: #8b85f9; }
-.sfh-rec-label { font-size: 13px; line-height: 19.5px; color: #0469c1; }
+.sfh-ent--account { background: #5867e8; }
+.sfh-ent--contact { background: #9602c7; }
+.sfh-ent-glyph { color: #fff; }
+.sfh-rec-label { font-size: 13px; line-height: 19.5px; color: #0250d9; }
 
+/* ⚠️ 40 TALL and the label is `600 13px` `#5C5C5C` at x=38 — was a 32px bar in #181818. */
 .sfh-todo {
-  display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 16px;
-  background: #fff; border-top: 1px solid #c9c9c9; font-size: 13px; color: #181818;
+  display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px;
+  background: #fff; font-size: 13px; font-weight: 600; color: #5c5c5c;
 }
-.sfh-todo-icon { color: #181818; }
+.sfh-todo-icon { color: #5c5c5c; }
 
 /* ---- Salesblazer -------------------------------------------------------- */
 .sfh-sb-img { display: block; width: 423.7px; height: 100px; border-radius: 2px; }

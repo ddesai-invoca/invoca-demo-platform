@@ -22,6 +22,11 @@
 
 /** Icon name -> the `<path d>` of the real SLDS glyph. */
 const PATHS: Record<string, string> = {
+  /* ⚠️ AUTHORED, NOT EXTRACTED — and it is the only glyph on this screen that is. The
+     capture's Lead icon is `<svg width=120 height=120><rect fill-opacity="0"/></svg>`, an
+     empty placeholder, exactly like the Invoca Call Log glyph in the older capture. Replace it
+     the moment a capture carries the real artwork. SLDS draws on a 520 grid, filled. */
+  lead: "M260 60c-52 0-94 42-94 94s42 94 94 94 94-42 94-94-42-94-94-94zm0 236c-63 0-188 32-188 94v50c0 11 9 20 20 20h336c11 0 20-9 20-20v-50c0-62-125-94-188-94z",
   search: "M496 453L362 320a189 189 0 10-340-92 190 190 0 00298 135l133 133a14 14 0 0021 0l21-21a17 17 0 001-22M210 338a129 129 0 11130-130 129 129 0 01-130 130",
   /* The small solid triangle Lightning uses for a menu, distinct from `chevrondown`. */
   triangledown: "M83 140h354c10 0 17 13 9 22L273 374c-6 8-19 8-25 0L73 162c-7-9-1-22 10-22",
