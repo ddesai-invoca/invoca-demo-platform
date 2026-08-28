@@ -46,6 +46,8 @@ import type { CustomerProfile } from "./schema";
    ============================================================================= */
 
 export interface SfLead {
+  /** URL identity, shared by the list row and the record page. */
+  slug: string;
   first: string;
   last: string;
   /** "(406) 781-2153", the capture's own formatting. */
@@ -54,6 +56,11 @@ export interface SfLead {
   smsOptIn: string;
   /** Lower-case in the capture ("blinds", "shutters"), and it stays that way. */
   product: string;
+  /** ⚠️ THE SAME PRODUCT IN ITS PROPER CASE ("Plantation Shutters"). The Lead record
+   *  page shows Product of Interest and Product Name side by side, and deriving the
+   *  second one independently gave one lead "apartments by marriott bonvoy" against
+   *  "The Ritz-Carlton Las Vegas" — two products for one person, from one function. */
+  productName: string;
   /** Blank when the source has no email — two of the capture's rows are blank too. */
   email: string;
   attributionId: string;
@@ -115,9 +122,13 @@ function created(raw: string | undefined, fallbackSeed: string): { text: string;
   return { text: "", key: -(hash(fallbackSeed) % 1000) };
 }
 
-/** "Motorized Shades, Plantation Shutters" -> ["motorized shades", "plantation shutters"]. */
+/** "Motorized Shades, Plantation Shutters" -> ["Motorized Shades", "Plantation Shutters"]. */
+function productList(raw: string | undefined): string[] {
+  return String(raw ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+}
+/** The same list lower-cased, which is the form the capture's own column shows. */
 function products(raw: string | undefined): string[] {
-  return String(raw ?? "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
+  return productList(raw).map((s) => s.toLowerCase());
 }
 
 /** Asked for directly. The capture's own list is 13. */
@@ -140,6 +151,11 @@ function stamp(ms: number): string {
   return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}, ${h}:${String(d.getMinutes()).padStart(2, "0")} ${ap}`;
 }
 
+/** "Jessica Harper" -> "jessica-harper". Names are deduped, so this is unique per list. */
+export function leadSlug(first: string, last: string): string {
+  return `${first} ${last}`.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
 function splitName(full: string): { first: string; last: string } {
   const parts = String(full ?? "").trim().split(/\s+/);
   return { first: parts[0] ?? "", last: parts.slice(1).join(" ") };
@@ -150,14 +166,14 @@ export function salesforceLeads(profile: CustomerProfile): SfLeadView {
   const id = profile.id;
 
   type Src = { first: string; last: string; phone: string; email: string; product: string;
-               optIn: string; when: string | undefined; seed: string };
+               productName: string; optIn: string; when: string | undefined; seed: string };
   const sources: Src[] = [];
 
   const vs = r.voiceScreenpop;
   if (vs?.callerName) {
     const n = splitName(vs.callerName);
     sources.push({ ...n, phone: phone(vs.callerPhone), email: vs.email ?? "", product: products(vs.products)[0] ?? "",
-      optIn: "Yes", when: r.voiceConversationIntelligence?.conversations?.find((c) => c.voiceInfo)?.voiceInfo?.callStartTime,
+      productName: productList(vs.products)[0] ?? "", optIn: "Yes", when: r.voiceConversationIntelligence?.conversations?.find((c) => c.voiceInfo)?.voiceInfo?.callStartTime,
       seed: `voice:${id}:${vs.callerName}` });
   }
 
@@ -166,20 +182,22 @@ export function salesforceLeads(profile: CustomerProfile): SfLeadView {
     const n = splitName(ss.callerName);
     const info = r.smsConversationIntelligence?.conversations?.find((c) => c.smsInfo)?.smsInfo;
     sources.push({ ...n, phone: phone(ss.callerPhone), email: ss.email ?? "", product: products(ss.products)[0] ?? "",
-      optIn: info?.smsOptIn || "Yes", when: info?.smsStartTime, seed: `sms:${id}:${ss.callerName}` });
+      productName: productList(ss.products)[0] ?? "", optIn: info?.smsOptIn || "Yes", when: info?.smsStartTime, seed: `sms:${id}:${ss.callerName}` });
   }
 
   const vi = r.voiceConversationIntelligence?.conversations?.find((c) => c.voiceInfo)?.voiceInfo;
   if (vi?.firstName) {
     sources.push({ first: vi.firstName, last: vi.lastName ?? "", phone: phone(vi.callerId), email: "",
-      product: products(vs?.products)[1] ?? products(vs?.products)[0] ?? "", optIn: "Yes",
+      product: products(vs?.products)[1] ?? products(vs?.products)[0] ?? "",
+      productName: productList(vs?.products)[1] ?? productList(vs?.products)[0] ?? "", optIn: "Yes",
       when: vi.callStartTime, seed: `voiceinfo:${id}:${vi.firstName}${vi.lastName ?? ""}` });
   }
 
   const si = r.smsConversationIntelligence?.conversations?.find((c) => c.smsInfo)?.smsInfo;
   if (si?.firstName) {
     sources.push({ first: si.firstName, last: si.lastName ?? "", phone: phone(si.callerId), email: "",
-      product: products(ss?.products)[1] ?? products(ss?.products)[0] ?? "", optIn: si.smsOptIn || "Yes",
+      product: products(ss?.products)[1] ?? products(ss?.products)[0] ?? "",
+      productName: productList(ss?.products)[1] ?? productList(ss?.products)[0] ?? "", optIn: si.smsOptIn || "Yes",
       when: si.smsStartTime, seed: `smsinfo:${id}:${si.firstName}${si.lastName ?? ""}` });
   }
 
@@ -197,8 +215,8 @@ export function salesforceLeads(profile: CustomerProfile): SfLeadView {
     if (!s.first || seen.has(key)) continue;
     seen.add(key);
     const c = created(s.when, s.seed);
-    leads.push({ first: s.first, last: s.last, phone: s.phone, status: "New", smsOptIn: s.optIn,
-      product: s.product, email: s.email, attributionId: attributionId(id, s.seed),
+    leads.push({ slug: leadSlug(s.first, s.last), first: s.first, last: s.last, phone: s.phone, status: "New", smsOptIn: s.optIn,
+      product: s.product, productName: s.productName, email: s.email, attributionId: attributionId(id, s.seed),
       created: c.text, sortKey: c.key });
   }
   leads.sort((a, b) => b.sortKey - a.sortKey);
@@ -212,7 +230,7 @@ export function salesforceLeads(profile: CustomerProfile): SfLeadView {
      on another. Checked against the whole profile rather than a list of the fields that
      hold names today, since the next slice to carry one would not be in such a list. */
   const known = JSON.stringify(profile).toLowerCase();
-  const catalogue = [...products(vs?.products), ...products(ss?.products)].filter(Boolean);
+  const catalogue = [...productList(vs?.products), ...productList(ss?.products)].filter(Boolean);
   let clock = leads.length ? leads[leads.length - 1].sortKey : Date.parse("2026-01-14T14:12:00");
   /* ⚠️ `attempt` ADVANCES ON A SKIP AND `leads.length` IS THE LOOP'S TEST, so a rejected
      name costs a different seed rather than a row — keyed on the index alone, a collision
@@ -228,7 +246,7 @@ export function salesforceLeads(profile: CustomerProfile): SfLeadView {
     /* Down the list in time, like the capture's own dates, by a varying 6 to 30 hours. */
     clock -= (6 + (hash(`t:${seed}`) % 25)) * 3_600_000;
     leads.push({
-      first, last,
+      slug: leadSlug(first, last), first, last,
       /* ⚠️ THE 555 EXCHANGE IS RESERVED so a demo number cannot ring a real business —
          the same care the Google Search ad's call extension takes.
          ⚠️ FOUR DIGITS AFTER IT. Without the pad this rendered "(805) 555-466", a
@@ -236,7 +254,8 @@ export function salesforceLeads(profile: CustomerProfile): SfLeadView {
          `\d{3}`, so the check agreed with the bug. */
       phone: `(${areaCode}) 555-${String(100 + (hash(`p:${seed}`) % 900)).padStart(4, "0")}`,
       status: "New", smsOptIn: "Yes",
-      product: catalogue.length ? catalogue[i % catalogue.length] : "",
+      product: catalogue.length ? catalogue[i % catalogue.length].toLowerCase() : "",
+      productName: catalogue.length ? catalogue[i % catalogue.length] : "",
       email: `${first.toLowerCase()}.${last.toLowerCase()}@${MAIL_DOMAINS[hash(`m:${seed}`) % MAIL_DOMAINS.length]}`,
       attributionId: attributionId(id, seed),
       created: stamp(clock), sortKey: clock,

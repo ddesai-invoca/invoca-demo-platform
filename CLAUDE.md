@@ -2744,6 +2744,162 @@ scrolling under a sticky header. Untouched: Seller Home (4/4/1, 338 / 400 / 376)
 list (10 rows, "10 items") and `/dashboards/marketing` (21 cards, 7 donuts, KPI 48,293) —
 **zero `.scl-` elements on any of them**.
 
+### Salesforce Lead record page — screen 5, and the attribution section is the point (8/28/2026)
+"This page is what happens when the user clicks on the first name in the lead, in this example
+its Jessica Harper. Fill in the following sections as well: 1. Invoca Captured Attribution.
+Don't worry about the Address information and Additional Information." Capture:
+`reference/salesforce/lead-detail-v1.html`. `SalesforceLeadDetail.tsx` + `.sld-*` +
+`src/data/salesforceLeadDetail.ts`, routed at `/salesforce/leads/:slug`, and **the name cell on
+the Leads list is now a `<Link>`** — the one live link on that row, added in the same commit as
+the screen per the rule the nav tabs already follow.
+
+⚠️ **THE FOUR SCREENS ABOVE ARE LABELLED "of 4" AND THERE ARE NOW FIVE.** Left as written
+rather than renumbering four signed-off sections; this is the fifth.
+
+| | measured at 1920 |
+|---|---|
+| header slab | 1888 x **148.6** on `#F3F3F3`, radius 4, padding 16 |
+| entity icon | 32 circle **`#06A59A`**, at y130 |
+| eyebrow / title | 13/19.5 / **`300 28px/35px`** `#03234D` |
+| highlights | labels 12px at y202, values 21.6 tall; **31px under the title block** |
+| path | y266.6, **58** tall; stage 32 tall, current `#032d60` on white ink |
+| Mark Status as Complete | 30 tall, `#066AFE` |
+| columns | left **67.0%** (1265), right 623, both `padding: 0 17px`, right +29 on its left |
+| tabs | x33 y349.6 w1231 **h41**, `13px 0 8px`, **13px below the column top** |
+| card | x33 w1231, radius **20** |
+| field | **591.5** wide, 52 tall, at x45 and x660.5 |
+| section band | the grey `#F3F3F3` band is a **button** inside the h3, 32 tall, `20px` `#03234D` |
+| related card | x1310 **w577**, radius 12 |
+
+⚠️⚠️ **ONE MISSING 31px PRODUCED SIX DIFFS, AND THEY LOOKED LIKE SIX PROBLEMS.** The header
+slab came out 142 against 148.6, so the highlight labels, the path, both stage rows and the
+tab list were all ~6.6px high — five of the six entries named a consequence rather than the
+cause. The slab's height is not authored: it decomposes as `16 padding + 49 title block + 31 +
+15 label + 21.6 value + 16 padding`, and the 31 is what a `margin-top: 24` had been guessing.
+Same argument as the Seller Home 12px margin: **diff positions, do not eyeball a screenshot.**
+
+⚠️ **THE COLUMNS ARE ADJACENT AND THE TAB LIST IS INSET 13px INTO ITS OWN COLUMN** — not flush
+with it. Reproducing the tabs at the column top left them 19.6px high, which reads as the whole
+card being misplaced.
+
+⚠️ **THE ATTRIBUTION SECTION IS FILLED, WHICH THE CAPTURE'S IS NOT, and that is deliberate.**
+That org has all eleven fields blank except Product of Interest — it simply is not passing them.
+Blank is the honest replica and a terrible demo: the entire claim of this screen is that Invoca
+writes the attribution onto the lead, and an empty section says the opposite. Address Information
+and Additional Information stay blank, exactly as captured and as asked.
+
+⚠️ **EVERY FIELD COMES FROM DATA ANOTHER SCREEN ALREADY SHOWS**, so a prospect who cross-checks
+finds the same values rather than a second set: Line of Business from `networkName` less "Invoca
+for ", Product of Interest from the lead's own product, Product Name its proper-case form,
+Product Category as below, the promotion as below, and **Marketing Source / Medium / Campaign /
+Search Terms + Website Journey + Calling Page from ONE `digitalInsights` row taken WHOLE** — the
+same rule the Details Report note gives, because cycling those four independently is what
+produced "Medium: Bing, Source: Paid Search" there. Rows are sorted by how many fields they fill,
+so the complete ones land on the leads an SE actually clicks; strictly by index, the FIRST lead's
+Marketing Search Terms was the em-dash placeholder, i.e. a section asked to be "filled in"
+opened with a blank.
+
+⚠️ **THE LEAD CARRIES ITS OWN PROPER-CASE PRODUCT.** Picking one off the screen-pops by index
+instead gave David Chen "apartments by marriott bonvoy" as his Product of Interest and "The
+Ritz-Carlton Las Vegas" as his Product Name — two products for one person, on adjacent rows of
+the same section.
+
+#### Product Category: the screen-pop knows, and keyword overlap did not
+⚠️⚠️ **WORD OVERLAP FILED A CARDIAC CATHETERIZATION UNDER "Cancer Institute".** Orlando Health's
+category rows are Cancer / **Heart & Vascular** / Orthopedic / Women's / Digestive Institute, and
+overlap cannot reach the right one because "cardiac" is not "heart" — so it fell through to a
+stable index pick and produced a contradiction two rows apart in the same section.
+
+**The profile already records the answer, twice, on the very object the lead's product came
+from**: `voiceScreenpop.campaign` is "Heart & Vascular Institute, Winter Park Acquisition" and
+its `callingWebpage` is `/services/heart-vascular-institute`, beside `products: "Cardiac
+Catheterization, Diagnostic Imaging"`. The campaign's FIRST SEGMENT is that caller's product
+category and it is a real `Conversions by Product Category` row; the rest is the campaign's own
+targeting ("Winter Park Acquisition"), which is not a category. Same principle as taking a
+`digitalInsights` row whole — read the coherent tuple the generator already produced rather than
+re-deriving one field of it by keyword.
+
+⚠️ **BUT A STRONG LEXICAL MATCH MUST WIN OVER THE CAMPAIGN, because a screen-pop lists TWO
+products against ONE campaign.** With the campaign first, its second product inherits the
+first's category: measured, **"memory care neighborhood" rendered as "Assisted Living" with a
+**Memory Care** row sitting in the same list.** Precedence is now: an unambiguous lexical match
+(**two** shared significant words, the threshold the Google Ads ad-group note settled after one
+word matched "continuing CARE" to "Memory Care") -> the screen-pop's campaign -> the looser
+single-word overlap -> a stable index pick.
+
+⚠️ **A KNOWN LIMIT, STATED RATHER THAN PAPERED OVER:** where the words differ AND the campaign
+disagrees, the pair is merely plausible rather than right — "the ritz-carlton las vegas" files
+under "Full Service / Premium Hotels" where "Luxury Hotels" exists. Closing that needs a
+per-vertical synonym taxonomy, which is inventing vocabulary for a real company; the campaign is
+genuine attribution evidence, so it wins over a guess.
+
+#### Product Promotion: recovered from the call, or honestly blank
+⚠️⚠️ **`agentConfig.smsPlaybook.offer` IS EMPTY ON 5 OF THE 14 PROFILES ON DISK** — every
+healthcare prospect plus Comfort Keepers — so the section asked to be "filled in" opened with a
+blank Product Promotion on **50 of 140** lead pages. A hospital genuinely runs no promotion, and
+minting one would fabricate a healthcare offer, the same refusal `serviceZips` and the rejected
+ZIP3 guess already make.
+
+Two of those five DO name a real offer **in their own call data**, and a promotion the agent made
+on the recorded call is exactly what an attribution field should carry: Comfort Keepers' met
+signal "Agent offered free in-home assessment" -> **"Free in-home assessment"**, and Orlando
+Health's key point "MyChart portal enrollment offered at no cost" -> **"MyChart portal enrollment
+at no cost"**. So it is RECOVERED, never invented, and stays blank for the three prospects that
+run none. Blanks went **50 -> 30**; 11 of 14 profiles now fill all eleven fields.
+
+⚠️ **`qaPairs` IS DELIBERATELY NOT A SOURCE.** Those are questions the CALLER asks and they are
+full of the word "offer" — "Do you offer virtual visits?", "Do you offer physical therapy?" — so
+including them prints a caller's question as the prospect's promotion. Anything containing "?" is
+rejected as a second guard.
+
+⚠️⚠️ **TWO KEYWORD BRANCHES WERE TOO LOOSE AND BOTH RENDERED, which is why the matcher is this
+narrow.** A bare `\boffered\b` turned Denver Health's "Agent offered specific clinic locations"
+into the promotion **"Specific clinic locations"** — the agent naming clinics, not an offer. And
+`\$\d` turned Health Spring's "Needs an individual plan near $500/month" into a promotion, i.e.
+**the caller's own budget**. A promotion needs a VALUE word (free / complimentary / no cost /
+waived / discount / % off); "offered" survives only as a phrase to strip during normalisation,
+and a bare dollar amount is not a discount. Third and fourth time in this file a keyword has been
+too loose in exactly this way.
+
+⚠️ **THE DUPLICATES CARD IS OMITTED, and that is a decision.** The capture's Related column opens
+with "We found 38 potential duplicates of this Lead" — true of that org, and impossible here: this
+demo's list is ten leads deduplicated by name, so a duplicate warning would contradict the screen
+the SE just came from. Flagged rather than rendered with an invented count.
+
+⚠️ **THE ROUTE FAILS CLOSED** on a slug this prospect has no lead for ("Lead not found" plus a
+link back), the same rule the created-workflow route documents. A plausible page for a lead that
+does not exist is worse than a refusal.
+
+⚠️ **THE LEAD ICON IS `#06A59A` HERE AND `#1B96FF` ON THE LIST VIEW.** Both measured, on their
+own captures, and in both the fill is levels above the glyph — the same walk-further-out trap as
+the nav bar and the record tiles. Left as measured rather than unified; flagged.
+
+**`npm run audit:leaddetail` (also run by `npm run audit`) covers all 14 profiles**: every slug on
+the list resolves (no dead link mid-demo), slugs are unique, the ten always-populated attribution
+fields are non-blank, a lead's two product fields describe ONE product, an unambiguous category
+row is never ignored in favour of the campaign, the Invoca Call Log record named here exists in
+that tab's own list, a call-derived promotion names a value and is not a question, the derivation
+is stable across calls, and an unknown slug returns null.
+⚠️ **`offerFromCall`, `strongLexical` and `categoryRows` are EXPORTED so the audit tests the real
+functions rather than copies of their rules** — the same reason `CONCEPT_HARD_PHRASES` is exported
+from `signalTiers.ts`, which had been policing a shorter local copy.
+⚠️ **EVERY CHECK WAS BROKEN ON PURPOSE AND SEEN TO FIRE**: a blanked `marketingSource`, a call-log
+name outside the list, the fail-closed guard removed, the category precedence reversed (which
+reproduced the Memory Care failure exactly), plus four self-tests asserting the promotion matcher
+rejects agent behaviour, the caller's budget and a caller question while accepting a genuine free
+offer. Three tautological checks are already recorded in this file; a check that cannot fail is
+worse than none.
+
+**Verified at 1920: a 10-property diff came back empty**, all eleven attribution fields populated
+on Shady Blinds (Line of Business "Home Services", Product Category "Shades", promotion "Schedule
+a consultation today to save 10% on wood blinds", Search Terms "traditional colonial window
+shutters"), and Orlando Health re-skins completely (Healthcare / cardiac catheterization / Heart &
+Vascular Institute / MyChart portal enrollment at no cost / "emergency room near me"). Untouched:
+Seller Home (9 cards, 4/4/1, 338 / 400 / 376, the active underline still hit-testable), the Leads
+list (10 rows, "10 items", 52px rows, 406px scroll box), the Call Log (50 rows, 37px, header 32,
+INVOCA-00002741 first) and `/dashboards/marketing` (21 cards, 7 donuts, KPI 48,293) — **zero
+`.sld-` elements on any of them**. `audit:leads` and `audit:calllog` both green.
+
 ### Salesforce Calendar — screen 2 of 4 (8/24/2026)
 `SalesforceCalendar.tsx` + `.sfc-`, plus `salesforceEvent.ts` for the booked appointment.
 What the **Calendar** tab opens; measured off a capture of the live week view.

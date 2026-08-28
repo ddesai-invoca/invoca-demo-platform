@@ -49,6 +49,7 @@ import { SalesforceHome } from "./screens/SalesforceHome";
 import { SalesforceCalendar } from "./screens/SalesforceCalendar";
 import { SalesforceLeads } from "./screens/SalesforceLeads";
 import { SalesforceCallLog } from "./screens/SalesforceCallLog";
+import { SalesforceLeadDetail } from "./screens/SalesforceLeadDetail";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { ReadmeButton } from "./components/ReadmeButton";
@@ -133,6 +134,7 @@ export default function App() {
           <Route path="/salesforce/calendar" element={<SalesforceCalendar />} />
           <Route path="/salesforce/leads" element={<SalesforceLeads />} />
           <Route path="/salesforce/call-log" element={<SalesforceCallLog />} />
+          <Route path="/salesforce/leads/:slug" element={<SalesforceLeadDetail />} />
 
           {/* ChatGPT sponsored placement — the AI-channel counterpart to the
               Google Ads page: where the call starts, before Invoca sees it.

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
@@ -163,7 +164,12 @@ export function SalesforceLeads() {
                     <td className="sfl-td sfl-td--num">{i + 1}</td>
                     <td className="sfl-td"><span className="sfl-check" /></td>
                     <th className="sfl-td sfl-td--name">
-                      <span className="sfl-link">{`${l.first} ${l.last}`.trim()}</span>
+                      {/* ⚠️ THE NAME IS THE ONE LIVE LINK ON THIS ROW — it opens the lead
+                          record page, which is what the demo path does next. Every other
+                          cell stays inert. */}
+                      <Link className="sfl-link" to={`/salesforce/leads/${l.slug}`}>
+                        {`${l.first} ${l.last}`.trim()}
+                      </Link>
                     </th>
                     <td className="sfl-td"><SldsIcon name="bookmark" size={14} className="sfl-flag" /></td>
                     <td className="sfl-td">{l.first}</td>
