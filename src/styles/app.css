@@ -4360,27 +4360,55 @@ button.nav-item {
 .sfh-greet { font-size: 13px; font-weight: 300; line-height: 56px; color: #5c5c5c; margin: 0; }
 
 /* ---- the card grid ------------------------------------------------------- */
-/* ⚠️ `flex: 1 1 440px` with a 24px gap, re-confirmed on THIS capture at both widths: at 1500
-   only three 440s fit so each grows to (1436-48)/3 = 462.67, and at 1920 four fit and each
-   settles at (1856-72)/4 = 446. Both measured exactly. A fixed basis is right at one width
-   and wrong at the other. */
-.sfh-grid { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+/* ⚠️⚠️ **FOUR PER ROW AT EVERY WIDTH — A DELIBERATE DEPARTURE FROM THE REAL PAGE, asked for
+   directly (8/27/2026): "each row needs to have 4 tiles in each row just like the real page".**
+
+   The real page is `flex: 1 1 440px` with a 24px gap, and that IS what the capture does:
+   measured 4 per row at 1920 (446 wide) and only THREE at 1500 (462.67), because a fourth 440
+   no longer fits. So on a demo laptop the faithful rule gives 3 or even 2 per row, and the
+   page stops looking like the reference screenshot everyone has in their head — which is
+   always of a wide window.
+
+   A fixed 4-column grid keeps the composition identical at any width and makes the row
+   heights correct by construction: the cards group 4 / 4 / 1, which is exactly the grouping
+   the 338 / 400 / 376 row heights were measured on.
+   ⚠️ **THE COST, STATED: below ~1150px the cards get narrower than the real page ever draws
+   them**, because its own answer at that width is to wrap. Three rules absorb it instead of
+   clipping: the legend column will not shrink below its content, the ring scales into
+   whatever is left with its type in `cqw` so the number stays inside the donut, and under a
+   330px card the pills give back some padding. Below that it goes tight, not broken. */
+.sfh-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: start; }
 
 /* ⚠️ RADIUS 20, NO BORDER, NO SHADOW — the biggest single visual change from the older
    capture (4px radius, 1px #C9C9C9, `0 2px 2px rgba(0,0,0,.1)`). The cards now read as plain
-   white slabs on the #F3F3F3 page. Heights are per ROW and measured: 338 / 366.5 / 400. */
+   white slabs on the #F3F3F3 page. Heights are per ROW and measured at 1920: 338 / 400 / 376. */
+/* ⚠️ A CONTAINER, so the narrow adjustments below key off the CARD's width rather than the
+   window's. With four fixed columns the card width is a function of the viewport, but the
+   thing that actually breaks is the card's own inner width — and a container query says so
+   directly. Same mechanism the ts- layer uses for its legend. */
 .sfh-card {
-  display: flex; flex-direction: column; height: 338px;
-  flex: 1 1 440px; max-width: 463px;
+  display: flex; flex-direction: column; height: 338px; min-width: 0;
+  container-type: inline-size; container-name: sfhcard;
   background: #fff; border-radius: 20px;
 }
-.sfh-card--tall { height: 366.5px; }
-.sfh-card--sb { height: 400px; }
+/* ⚠️ **338 / 400 / 376, RE-MEASURED AT 1920 — the earlier 338 / 366.5 / 400 was measured at
+   a width where the capture wrapped to a different number of columns**, so its "second row"
+   was not the row this build calls the second row. A row height is only meaningful together
+   with the row's membership: once the grid was pinned to four columns, the reference had to
+   be re-read at the width where the capture is also four across. Salesblazer is the SHORTER
+   card (376), not the taller one. */
+.sfh-card--tall { height: 400px; }
+.sfh-card--sb { height: 376px; }
 /* ⚠️ THE 12px BELOW THE HEADER IS LOAD-BEARING and dropping it shifted the whole card:
    measured header 1..38, body 50. Without it the subtitle, the ring, its value, its label and
    the legend were every one of them 15 to 37px high — five diffs from one missing margin. */
+/* ⚠️ `align-items: center`, and it only moves the two cards that HAVE a control. The
+   capture puts the title at 13 on every plain card but at 16.5 on My Goals and Today's
+   Tasks — exactly (32 - 25) / 2 lower, i.e. the 25px title centred against the 32px icon
+   button. Centring reproduces both cases from one rule; `flex-start` reproduced only the
+   plain one. */
 .sfh-card-head {
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
   padding: 12px 16px 0; margin-bottom: 12px; flex: 0 0 auto;
 }
 /* 32 square at radius 240, 1px #5C5C5C, ink #0250D9 — the gear on My Goals and the chevron
@@ -4404,6 +4432,15 @@ button.nav-item {
    at one width only, which is the trap the measure-at-two-widths rule exists for. */
 .sfh-card-content { display: flex; align-items: flex-start; }
 .sfh-card-col { flex: 1 1 50%; display: flex; justify-content: center; min-width: 0; }
+/* ⚠️ **THE FLOOR HAS TO BE ON THE COLUMN, NOT ON THE LIST INSIDE IT.** With `min-width:
+   max-content` on `.sfh-legend` and `min-width: 0` on its column, flexbox happily shrank the
+   column below its own content and the pills spilled 19.7px past the card's clipped edge —
+   the text looked cut mid-word while the pill itself reported no overflow. The legend column
+   now refuses to go below its content, so the RING column absorbs the loss and the ring
+   scales, which is the intended trade. */
+.sfh-card-col:last-child { min-width: max-content; }
+/* Every illustration and banner caps to its card so a narrow column cannot overflow. */
+.sfh-card-body img { max-width: 100%; height: auto; }
 .sfh-card-foot { height: 57px; padding: 12px 16px; flex: 0 0 auto; display: flex; justify-content: center; }
 /* ⚠️ A CENTRED PILL, not a full-width button: radius 240, 1px #5C5C5C, ink #0250D9, weight
    600. Was a full-width radius-4 button in #0176D3. */
@@ -4415,19 +4452,37 @@ button.nav-item {
 .sfh-btn--brand { border-color: #066afe; background: #066afe; color: #fff; }
 
 /* ---- ring --------------------------------------------------------------- */
-.sfh-ring { position: relative; width: 150px; height: 150px; flex: 0 0 150px; }
-/* ⚠️ `300 32px/40px` — was 28/33. Measured at 46 and 87 from the ring's own top. */
+/* ⚠️ THE RING SCALES BELOW 150. It is 150 square wherever there is room (measured), and
+   shrinks only when the legend needs the space. Its svg carries a viewBox so the geometry
+   scales with it, and the value and label are positioned in PERCENT (46/150 and 87/150 of the
+   measured offsets) so they stay put at any size. */
+.sfh-ring {
+  position: relative; width: 150px; max-width: 100%; aspect-ratio: 1; flex: 0 1 150px;
+  container-type: inline-size; container-name: sfhring;
+}
+.sfh-ring svg { width: 100%; height: 100%; display: block; }
+/* ⚠️ `300 32px/40px` — was 28/33. Measured at 46 and 87 from the ring's own top.
+   ⚠️ **EVERY LENGTH IN HERE IS THE MEASURED PIXEL OVER 150**, in `cqw` against the ring
+   itself, because a ring that scales with nothing else scaling is worse than one that clips:
+   pinning the legend's width shrank three rings to 76px while `32px/40px` stayed put, and
+   "4 Accounts" sat outside its own donut. At the design's 150px ring these resolve to exactly
+   32/40/13/19.5 and 46/87, so the wide-width diff is untouched. */
 .sfh-ring-value {
-  position: absolute; left: 0; right: 0; top: 46px; text-align: center;
-  font-size: 32px; font-weight: 300; line-height: 40px; color: #2e2e2e;
+  position: absolute; left: 0; right: 0; top: 30.667%; text-align: center;
+  font-size: 21.333cqw; font-weight: 300; line-height: 26.667cqw; color: #2e2e2e;
 }
 .sfh-ring-label {
-  position: absolute; left: 0; right: 0; top: 87px; text-align: center;
-  font-size: 13px; line-height: 19.5px; color: #2e2e2e;
+  position: absolute; left: 0; right: 0; top: 58%; text-align: center;
+  font-size: 8.667cqw; line-height: 13cqw; color: #2e2e2e;
 }
 
 /* ⚠️ 42px PITCH, first row 24px below the ring's top; the pill is 26 tall at RADIUS 8 (was
    4) and the dot is 10px with 12px after it. */
+/* ⚠️ `min-width: max-content` IS WHAT STOPS THE PILLS CLIPPING. At four-per-row on a 1238px
+   window the card is 275 wide, its body 251, and a 50/50 split leaves the legend 125 against a
+   147px "0 Upcoming Activity" row — so the text was cut mid-word. The legend now refuses to
+   shrink and the RING column absorbs the loss instead (it scales; see `.sfh-ring`). Above
+   ~330px of card the two columns are still the measured 50/50 with a 150px ring. */
 .sfh-legend { list-style: none; margin: 24px 0 0; padding: 0; }
 .sfh-legend-row { display: flex; align-items: center; height: 26px; margin-bottom: 16px; }
 .sfh-legend-row:last-child { margin-bottom: 0; }
@@ -4448,8 +4503,22 @@ button.nav-item {
 .sfh-illus { display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 12px; }
 .sfh-illus img { display: block; margin-bottom: 24px; }
 .sfh-empty { font-size: 13px; line-height: 19.5px; color: #5c5c5c; margin: 0; text-align: center; }
-.sfh-goalwrap { display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 64px; }
-.sfh-goalart { display: block; margin-bottom: 24px; }
+/* ⚠️⚠️ **EVERY NUMBER IN THIS BLOCK WAS RE-DERIVED WHEN THE ROW HEIGHT WENT 366.5 -> 400,
+   and that is the point: an inner offset measured against the wrong card height is wrong
+   even when the measurement itself was careful.** The old `padding-top: 64px` +
+   `margin-bottom: 24px` put the art at 176 and the pill 42 off the bottom; the capture's
+   400px card has them at 142.8 and 21. The pill is now anchored to the BOTTOM and the art
+   takes the slack above it, so the composition survives a subtitle that wraps — which is
+   also what stopped "Set goals" dropping out through the bottom edge in a narrow card.
+   ⚠️ The subtitle sits directly under this card's header with NO 12px gap and no top
+   margin: measured 45, which is exactly the header's own bottom. */
+.sfh-card--goals .sfh-card-head { margin-bottom: 0; }
+.sfh-card--goals .sfh-card-sub { margin-top: 0; }
+.sfh-card--goals .sfh-card-body { display: flex; flex-direction: column; }
+.sfh-card--goals .sfh-card-content { flex: 1 1 auto; align-items: stretch; min-height: 0; }
+.sfh-goalwrap { display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 43.8px; }
+.sfh-goalart { display: block; margin-bottom: 0; }
+.sfh-goalwrap .sfh-pillbtn { margin-top: auto; margin-bottom: 21px; }
 .sfh-pillbtn {
   height: 32px; line-height: 30px; padding: 0 16px; border-radius: 240px;
   background: #066afe; color: #fff; font-size: 13px; font-weight: 600; border: 1px solid #066afe;
@@ -4479,6 +4548,31 @@ button.nav-item {
 .sfh-ent--contact { background: #9602c7; }
 .sfh-ent-glyph { color: #fff; }
 .sfh-rec-label { font-size: 13px; line-height: 19.5px; color: #0250d9; }
+
+/* ⚠️ NARROW-CARD ADJUSTMENTS, and they exist ONLY because the grid is pinned to four
+   columns. The real page wraps instead, so it never renders a card this narrow; these keep
+   the composition intact rather than letting it clip. */
+/* ⚠️ **330, AND THE NUMBER IS DERIVED, NOT GUESSED.** The full-size composition needs a
+   150px ring beside a 155.4px `0 Upcoming Activity` legend row = 305.4, and the body is the
+   card less 24px of padding — so everything fits down to a 329.4px card. A first pass put
+   this at 380 "to be safe" and quietly degraded the 1500px case: cards are 341 there, the
+   query fired, and the pills rendered 11px against the capture's 12px. A safety margin on a
+   threshold is not free; it moves the degraded band over widths that did not need it. */
+@container sfhcard (max-width: 330px) {
+  /* The subtitle wraps to two or three lines here, so a fixed 64px of air above the goal
+     rings pushed the "Set goals" button off the bottom of the card. */
+  .sfh-goalwrap { padding-top: 12px; }
+  /* The two empty-state illustrations have the same problem, one row down. */
+  .sfh-illus { padding-top: 4px; }
+  .sfh-illus img { margin-bottom: 12px; }
+  /* Recent Records' five 56px rows do not fit under a wrapped subtitle either. */
+  .sfh-recent { height: 48px; }
+  /* The legend sets the floor the ring has to live under, so giving back ~17px of pill
+     padding and type here buys the ring back ~17px of diameter. Secondary text shrinking
+     ahead of the card's focal element is the right trade. */
+  .sfh-pill { font-size: 11px; padding: 4px 8px; }
+  .sfh-dot { margin-right: 8px; }
+}
 
 /* ⚠️ 40 TALL and the label is `600 13px` `#5C5C5C` at x=38 — was a 32px bar in #181818. */
 .sfh-todo {

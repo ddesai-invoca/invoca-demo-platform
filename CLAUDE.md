@@ -2324,7 +2324,7 @@ same off ours, fix until the diff is empty — at BOTH 1500 and 1920.
 | | 8/24 capture | THIS capture |
 |---|---|---|
 | card | radius 4, 1px `#C9C9C9`, `0 2px 2px` shadow | **radius 20, no border, no shadow** |
-| card heights | 333 / 370.5 / 396.5 | **338 / 366.5 / 400** |
+| card heights | 333 / 370.5 / 396.5 | **338 / 400 / 376** (re-measured 4-across, below) |
 | card title | `700 16/20` `#181818` | **`400 20px/25px` `#03234D`** |
 | h1 | `300 28/49` `#181818` | **`300 32px/56px` `#03234D`** |
 | ring value | `300 28/33` | **`300 32px/40px`** |
@@ -2396,6 +2396,54 @@ width, gap, inset, ring and legend offsets, cards per row), 9 cards, zero broken
 record tiles carrying their four measured colours. The Calendar screen still renders under the
 updated chrome (week grid, the 11am event, the mini calendar), and `/dashboards/marketing` is
 untouched — 21 cards at 4px radius, KPI 48,293, 7 donuts, **zero `.sfh-` elements**.
+
+#### Then: four tiles per row, always (8/27/2026)
+"No, each row on the salesforce main screen needs to have 4 tiles in each row just like the
+real page." The faithful rule was `flex: 1 1 440px` + 24px gap, and it *is* what the capture
+does — but that yields **4 per row at 1920 and only 3 at 1500**, so on a laptop the page
+stopped looking like the screenshot everyone pictures. Now `grid-template-columns: repeat(4,
+1fr)`.
+
+⚠️⚠️ **THE ROW HEIGHTS WERE MEASURED AT A WIDTH WHERE THE CAPTURE WRAPPED DIFFERENTLY, so
+they described rows this build no longer has.** 338 / 366.5 / 400 came off a 3-across
+reading; re-read at 1920, where the capture is genuinely 4 across, the rows are **338 / 400 /
+376** — Salesblazer is the SHORT card, not the tall one. *A row height is only meaningful
+together with the row's membership.* Any per-row constant is suspect the moment the grouping
+changes, and every inner offset measured against one is suspect with it: My Goals' art and
+pill had been placed in the old 366.5 frame, so they were 33px and 21px out in the 400 one.
+
+Pinning the columns means rendering cards narrower than the real page ever draws them (its
+own answer at that width is to wrap). Three rules absorb that instead of clipping:
+- **the floor goes on the COLUMN, not on the list inside it.** `min-width: max-content` on
+  `.sfh-legend` under a `min-width: 0` column let flexbox shrink the column below its own
+  content — pills spilled 19.7px past the card's clipped edge, text cut mid-word, while the
+  pill itself reported **no** overflow (`scrollWidth === clientWidth`). The probe has to
+  compare against the clipping ancestor, not the element.
+- **whatever scales, its type scales with it.** Freeing the legend shrank three rings to 76px
+  while `32px/40px` stayed put and "4 Accounts" sat outside its own donut. Ring type is now
+  `cqw` against the ring itself — 21.333/26.667/8.667/13, each the measured pixel over 150, so
+  a 150px ring still computes to exactly 32/40/13/19.5.
+- **the pill anchors to the card's bottom** (measured 21px) and the art takes the slack, so a
+  subtitle wrapping to a second line no longer pushes "Set goals" out through the edge.
+
+⚠️ **A SAFETY MARGIN ON A CONTAINER-QUERY THRESHOLD IS NOT FREE — it moves the degraded band
+over widths that did not need it.** `@container sfhcard (max-width: 380px)` was a guess; cards
+are 341 at 1500, so the query fired there and pills rendered 11px against the capture's 12px.
+The real floor is derivable: a 150px ring beside a 155.4px `0 Upcoming Activity` row = 305.4,
+plus 24px of card padding = **330**.
+
+Also fixed here: `.sfh-card-head` is `align-items: center`. The capture puts the title at 13
+on plain cards but 16.5 on the two with an icon button — exactly (32 − 25) / 2, the title
+centred against the button. One rule reproduces both; `flex-start` reproduced only one.
+
+**Verified at 1920, 1500 and 1157:** 4 / 4 / 1 every time, heights 338×4 / 400×4 / 376, no
+horizontal document scroll, and nothing escaping its card (legend, pills, buttons, recents,
+illustrations, ring value and label all checked against the card's own rect). At 1920 the KPI
+card matches the capture value for value — card 446, ring 150, ring dx 43, value 32/40 at
+dy 46, label 13 at dy 87, pill 12px / `4px 9.6px` / radius 8, dot dx 283 — and My Goals lands
+on sub 45 / art 142.8 / pill gap 21, all within the uniform 1px offset that predates this
+work. `.sfh-card-head`, `.sfh-pillbtn`, `.sfh-goal*` and `.sfh-ring*` are Home-only;
+SalesforceCalendar shares just `.sfh-iconbtn`, untouched, and still renders.
 
 ### Salesforce Calendar — screen 2 of 4 (8/24/2026)
 `SalesforceCalendar.tsx` + `.sfc-`, plus `salesforceEvent.ts` for the booked appointment.

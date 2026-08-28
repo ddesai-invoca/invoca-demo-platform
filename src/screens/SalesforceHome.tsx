@@ -71,7 +71,8 @@ function Ring({ value, label, segments }: {
   let at = 0;
   return (
     <div className="sfh-ring">
-      <svg width="150" height="150" aria-hidden="true">
+      {/* viewBox, so the ring scales when a narrow card shrinks it. */}
+      <svg viewBox="0 0 150 150" aria-hidden="true">
         {parts.length > 1 ? parts.map((p) => {
           const from = at; at += (p.n / total) * Math.PI * 2;
           return <path key={p.tone} d={arc(from, at)} fill={TONE_HEX[p.tone]} />;
@@ -103,12 +104,15 @@ function Legend({ rows }: { rows: { tone: Tone; text: string }[] }) {
    (padding 12/16/0 plus 12 of margin), a body inset 12 either side, and a 57px footer behind
    a 1px rule. The first build used a single 16px padding and centred everything, which is
    why the spacing read wrong on every tile. */
-function Card({ title, subtitle, action, tall, control, children }: {
+function Card({ title, subtitle, action, tall, control, children, variant }: {
   title: string; subtitle?: string; action?: React.ReactNode; tall?: boolean;
   control?: { icon: string; round?: boolean }; children: React.ReactNode;
+  /* Opt-in, off for every other card: My Goals is the one tile whose body has to fill the
+     card so its pill can sit a measured 21px off the bottom. */
+  variant?: "goals";
 }) {
   return (
-    <article className={"sfh-card" + (tall ? " sfh-card--tall" : "")}>
+    <article className={"sfh-card" + (tall ? " sfh-card--tall" : "") + (variant ? " sfh-card--" + variant : "")}>
       <div className="sfh-card-head">
         <h2 className="sfh-card-title">{title}</h2>
         {control ? (
@@ -223,12 +227,14 @@ export function SalesforceHome() {
           {/* ⚠️ THE FOUR GOAL CIRCLES ARE ONE ILLUSTRATION, 127 x 126, not four DOM circles.
               The first two passes hand-built them out of spans, which is why their size,
               overlap and the avatar glyph were all wrong. Extracted verbatim.
-              ⚠️ AND "Set goals" IS A PILL INSIDE THE BODY (90.3 x 32, radius 240,
-              centred at y=343.5), NOT a full-width footer button — this card has no
-              `.slds-card__footer` at all. */}
+              ⚠️ AND "Set goals" IS A PILL INSIDE THE BODY (90.3 x 32, radius 240), NOT a
+              full-width footer button — this card has no `.slds-card__footer` at all. It is
+              anchored 21px off the CARD's bottom, not placed by the flow above it: the art
+              takes the slack, so a subtitle that wraps to a second line no longer pushes the
+              pill out through the bottom edge. */}
           <Card title="My Goals"
             subtitle="Set personal weekly or monthly goals for emails, calls, and meetings."
-            tall control={{ icon: "settings", round: true }}>
+            tall variant="goals" control={{ icon: "settings", round: true }}>
             <div className="sfh-goalwrap">
               <img className="sfh-goalart" src="/icons/salesforce/goals-rings.svg" alt=""
                 width={127} height={126} />
