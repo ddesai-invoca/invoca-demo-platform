@@ -297,14 +297,62 @@ export function agentConfigOf(spec: VoiceAgentSpec): VoiceAgentConfig {
  * The prompt then followed the steps, the allow-list was never applied, and the drawer
  * reported success — an instruction that visibly landed and did nothing.
  */
+/**
+ * Coerce whatever the model wrote for `informSteps` into the `string[]` the prompt needs.
+ *
+ * ⚠️⚠️ **THIS EXISTS BECAUSE A `typeof r === "string"` FILTER SILENTLY ATE A CORRECT EDIT.**
+ * Told that Avi & Co has three showrooms and to offer the nearest one when a caller's ZIP is
+ * outside them, the model wrote two GOOD steps — naming Miami, New York and Aspen and
+ * describing the fallback exactly as asked — as OBJECTS: `{step, action, description}`. The
+ * filter dropped both for not being strings, `informSteps` became `[]`, and because the base
+ * spec's steps are also `[]` the `stepsUntouched` comparison below then concluded nobody had
+ * touched them and regenerated the stock refusal. The SE watched the diagram and the drawer
+ * update and heard the agent turn callers away.
+ *
+ * `editGuard` cannot catch this: `agent.informSteps` is a LENGTH_IS_CONTENT path and
+ * array -> array is not a type flip, so the write is legitimately allowed. The shape has to be
+ * accepted HERE. Dropping data because it arrived in a reasonable-but-different shape is the
+ * silent-no-op failure this file already records three times.
+ */
+export function toSteps(v: unknown, fallback: string[]): string[] {
+  if (!Array.isArray(v)) return fallback;
+  const out = v.map((r) => {
+    if (typeof r === "string") return r.trim();
+    if (r && typeof r === "object") {
+      const o = r as Record<string, unknown>;
+      /* Render the object the way the prompt reads a step: an imperative, then its detail. */
+      const parts = [o.action, o.description, o.text, o.step_description]
+        .filter((x): x is string => typeof x === "string" && !!x.trim())
+        .map((x) => x.trim());
+      if (!parts.length) return "";
+      const n = typeof o.step === "number" || typeof o.step === "string" ? `${o.step}. ` : "";
+      return `${n}${parts.join(": ")}`;
+    }
+    return "";
+  }).filter(Boolean);
+  /* Nothing survived normalisation — keep the base rather than returning an empty list, which
+     is what turned "the agent stopped asking for a name" into a silent regression before. */
+  return out.length ? out : fallback;
+}
+
 export function stepsForZips(zips: string[], script: string): string[] {
   const list = zips.join(", ");
+  /* ⚠️⚠️ **THE SCRIPT IS THE ONLY OUT-OF-AREA POLICY — do not also hardcode a refusal.** This
+     used to say "inform the caller that we do not serve their area and end the call without
+     routing" in step 3 AND append the script in step 5. When the script REFUSES those agree;
+     when it offers an alternative they flatly contradict each other, with the refusal first.
+     Measured on Avi & Co: step 3 ended the call while step 5 offered the nearest showroom, and
+     the agent obeyed step 3 — so an SE who asked for the nearest-showroom behaviour got a
+     hang-up. A self-contradicting prompt is worse than either rule, which this repo has
+     already paid for once with the SMS playbook leaking into the voice prompt.
+     Whether we turn the caller away or offer them another location is now expressed in ONE
+     place, and no prose is sniffed to decide which it is. */
   return [
     `1. Ask the caller for their zip code and capture it.`,
     `2. Check the zip code against our current service area: ${list}.`,
-    `3. If the zip code falls outside ${list}, politely inform the caller that we do not serve their area and end the call without routing.`,
-    `4. If the zip code falls within our service area, ask the caller for their full name and capture it.`,
-    `5. If the zip code does not fall within our service area say: ${script}`,
+    `3. If the zip code falls outside ${list}, say: ${script}`,
+    `4. Then follow the caller's answer. Do not route the call anywhere the caller has not agreed to.`,
+    `5. If the zip code falls within our service area, ask the caller for their full name and capture it.`,
     `6. If the caller does not provide their full name, ask again before proceeding. Do not route the call without a captured full name.`,
   ];
 }
@@ -325,9 +373,7 @@ export function specWithConfig(spec: VoiceAgentSpec, cfg: VoiceAgentConfig | und
       : spec.serviceZips,
     outOfAreaScript: typeof cfg.outOfAreaScript === "string" && cfg.outOfAreaScript.trim()
       ? cfg.outOfAreaScript : spec.outOfAreaScript,
-    informSteps: Array.isArray(cfg.informSteps) && cfg.informSteps.length
-      ? cfg.informSteps.filter((r) => typeof r === "string" && r.trim())
-      : spec.informSteps,
+    informSteps: toSteps(cfg.informSteps, spec.informSteps ?? []),
   };
 
   /* ⚠️ REPAIR THE ONE CONTRADICTION THE TWO FIELDS CAN HOLD. If a ZIP allow-list was added

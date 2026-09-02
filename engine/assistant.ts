@@ -202,8 +202,22 @@ function buildSystem(input: AssistantInput): string {
       `   - "agent.greeting" — the exact opening line, spoken verbatim. "answer the phone with X" edits this.`,
       `   - "agent.qualifyQuestion" and "agent.qualifyFallback" — the question that sorts callers onto the paths, and the reprompt when the answer is unclear.`,
       `   - "agent.rules" — the conversation rules, one string each. "never quote a price", "be warm with families".`,
-      `   - "agent.informSteps" — the NUMBERED routing steps the agent follows in order. This is what makes it ask for a ZIP, then a name, then transfer. Renumber them yourself when you add or remove one.`,
-      `   - "agent.serviceZips" — an allow-list. When present the agent serves ONLY these ZIPs and reads "agent.outOfAreaScript" to everyone else and does not route them. Absent means it serves everywhere. "only cover 30097 and 30096" CREATES this list. When you create or change it, REWRITE "agent.informSteps" in the same answer so the steps check those ZIPs — steps that still say the agent serves everywhere are obeyed INSTEAD of the list.`,
+      /* ⚠️ THE SHAPE IS STATED BECAUSE THE MODEL GUESSED A REASONABLE OTHER ONE. Asked about
+         three showrooms it wrote these as objects — {step, action, description} — which a
+         string filter then dropped, so a correct instruction produced an agent that hung up
+         on out-of-area callers. `toSteps` now normalises objects, and this says the shape so
+         the normaliser is the safety net rather than the mechanism. */
+      `   - "agent.informSteps" — the NUMBERED routing steps the agent follows in order, as an array of PLAIN STRINGS (e.g. "1. Ask the caller for their zip code."). NOT objects: do not emit {step, action, description}. This is what makes it ask for a ZIP, then a name, then transfer. Renumber them yourself when you add or remove one.`,
+      /* ⚠️ AN ALLOW-LIST DOES NOT HAVE TO MEAN A REFUSAL. This used to say the agent "does not
+         route them", full stop — so a request to offer the NEAREST of several locations had
+         nowhere to go, and the answer fought the field description. The script states the
+         policy; turning the caller away is only one thing it can say. */
+      `   - "agent.serviceZips" — an allow-list of the ZIPs the agent treats as in-area. When present it reads "agent.outOfAreaScript" to everyone else. Absent means it serves everywhere. "only cover 30097 and 30096" CREATES this list. THE SCRIPT DECIDES WHAT HAPPENS NEXT: it may turn the caller away, or it may offer them the nearest location and ask if that works — write whichever the user asked for. When you create or change the list, REWRITE "agent.informSteps" in the same answer so the steps describe that same policy; steps that still say the agent serves everywhere are obeyed INSTEAD of the list. If several named locations are served, NAME THEM in the steps so the agent can tell a caller which is closest.`,
+      /* ⚠️ A BRACKETED TOKEN GETS READ ALOUD ON A LIVE CALL. The model wrote an out-of-area
+         script containing "[CLOSEST_LOCATION]", expecting something downstream to fill it in;
+         nothing does. The prompt now carries a defensive instruction to resolve any such
+         token, and this asks for none to be written in the first place. */
+      `   - "agent.outOfAreaScript" — the words the agent says to an out-of-area caller. Write a COMPLETE spoken line with NO fill-in placeholders: never "[CLOSEST_LOCATION]", "[NAME]" or any bracketed token, because the agent says this line out loud. If the closest location varies by caller, say so in "agent.informSteps" instead and let the agent name it.`,
       `  THE OPENING QUESTION IS TWO-WAY AND STAYS THAT WAY: new booking vs existing customer. Do NOT rewrite "agent.qualifyQuestion" to recite the use cases — the agent sorts callers into those from what they say next, and a question listing six options is unspeakable on a phone.`,
       `  KEEP EACH USE CASE SELF-CONSISTENT. Whatever you put in a path's "chips" is what the agent asks for on that path, so add a field THERE rather than in "agent.informSteps". Those steps are ONLY the service-area gate; leave them alone unless the user is changing which areas are served.`,
       `  NEVER invent ZIP codes, phone numbers or office addresses. Only use ones the user gave you.`,

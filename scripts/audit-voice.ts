@@ -17,7 +17,7 @@ import { isStructuralChange } from "../src/data/editGuard";
 import { voiceSystemPrompt, smsSystemPromptForAudit } from "../engine/chat";
 import { emptyWorkflowGreeting } from "../src/data/workflowChrome";
 import { treeToVoicePaths } from "../src/data/voicePaths";
-import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
+import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, stepsForZips, toSteps, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
 import { voiceCopy } from "../src/data/voiceCopy";
 import { latestTransferredCall, voiceAiRouting, voiceAiScreenpop } from "../src/data/voiceAiArtifacts";
 import { collectNames } from "../src/data/workflowDrawers";
@@ -469,8 +469,98 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "without the flag the configured path flow is unchanged");
 }
 
+/* ---- the multi-location / out-of-area contract (added 9/2/2026) ------------
+   ⚠️ ALL FIVE OF THESE FAILED ON A REAL DEMO. Asked to serve three showrooms and offer the
+   nearest one when a caller's ZIP was outside them, Avi & Co's agent hung up on those callers
+   instead. The instruction had landed correctly in the stored config; three separate things
+   between there and the prompt undid it. */
+{
+  /* 1. Object-shaped steps must be NORMALISED, not filtered away. The model wrote its steps
+        as `{step, action, description}` and a `typeof r === "string"` filter dropped both. */
+  const objSteps = toSteps(
+    [{ step: 1, action: "Ask for ZIP code", description: "Offer the nearest of Miami, New York and Aspen." }],
+    ["BASE"],
+  );
+  check(objSteps.length === 1 && /Miami/.test(objSteps[0]) && /Ask for ZIP code/.test(objSteps[0]),
+    "object-shaped informSteps are normalised, not dropped", objSteps.join(" | "));
+  check(JSON.stringify(toSteps([{}, { step: 2 }], ["BASE"])) === JSON.stringify(["BASE"]),
+    "steps that normalise to nothing fall back to the base rather than emptying the list");
+  check(JSON.stringify(toSteps("not an array", ["BASE"])) === JSON.stringify(["BASE"]),
+    "a non-array informSteps keeps the base");
+
+  /* 2. `stepsForZips` states ONE out-of-area policy. It used to refuse in step 3 and offer the
+        script in step 5, so a nearest-location script contradicted a hang-up ahead of it. */
+  const gen = stepsForZips(["33101", "10001"], "Our closest showroom is in Miami. Would that work?").join("\n");
+  check(!/end the call without routing/i.test(gen) && !/we do not serve their area/i.test(gen),
+    "stepsForZips no longer hardcodes a refusal beside the script", gen.split("\n")[2]);
+  check(gen.includes("Our closest showroom is in Miami. Would that work?"),
+    "and the script is what states the policy");
+
+  /* 3. A bracketed placeholder must never be spoken. The model's script carried the literal
+        token `[CLOSEST_LOCATION]`, which nothing downstream substitutes. */
+  /* ⚠️ NO `voiceSteps` HERE, AND THAT IS THE POINT. When the SE's own steps win, the script is
+     not emitted at all, so there is no bracket in the prompt to guard — the guard exists for
+     the allow-list branch, which quotes the script verbatim. Written the other way round this
+     check failed while the guard was working, which is how the branch got documented. */
+  const withPh = voiceSystemPrompt({
+    customerName: "Avi & Co", voicePaths: [{ intent: "Sales Inquiry",
+      routes: [{ team: "Boutique", action: "Inform & Route", collect: ["Consumer Zip"] }] }],
+    serviceZips: ["33101"], outOfAreaScript: "Our closest showroom is in [CLOSEST_LOCATION].",
+  } as never);
+  check(/PLACEHOLDERS:/.test(withPh) && withPh.includes("[CLOSEST_LOCATION]"),
+    "an unresolved [PLACEHOLDER] gets an explicit resolve-it instruction");
+  check(/never read a square bracket/i.test(withPh),
+    "and the agent is told not to speak the bracket");
+  const noPh = voiceSystemPrompt({
+    customerName: "Avi & Co", voicePaths: [{ intent: "Sales Inquiry",
+      routes: [{ team: "Boutique", action: "Inform & Route", collect: ["Consumer Zip"] }] }],
+    voiceSteps: ["1. Ask for the ZIP."],
+  } as never);
+  check(!/PLACEHOLDERS:/.test(noPh), "and a prompt with no placeholder gains no such line");
+
+  /* 4. An allow-list reaches the prompt even when the SE's own steps win, or the agent knows
+        the policy and not the ZIPs it applies to. */
+  const zipsPlusSteps = voiceSystemPrompt({
+    customerName: "Avi & Co", voicePaths: [{ intent: "Sales Inquiry",
+      routes: [{ team: "Boutique", action: "Inform & Route", collect: ["Consumer Zip"] }] }],
+    serviceZips: ["33101"], voiceSteps: ["1. Ask for the ZIP.", "2. Offer the nearest showroom."],
+  } as never);
+  check(/Service-area ZIP codes: 33101/.test(zipsPlusSteps),
+    "the ZIP allow-list reaches the prompt alongside the SE's own steps");
+  /* And the script is NOT also quoted there, or the steps and a verbatim line would both
+     claim to be the out-of-area policy — the contradiction this whole block exists for. */
+  check(!/say exactly this/.test(zipsPlusSteps),
+    "and the allow-list branch's own wording does not double up on the steps");
+  const reciting = voiceSystemPrompt({
+    customerName: "X", voicePaths: [{ intent: "Sales Inquiry",
+      routes: [{ team: "T", action: "Inform & Route", collect: ["Consumer Zip"] }] }],
+    serviceZips: ["30097"], voiceSteps: ["2. Check the zip against 30097."],
+  } as never);
+  check(!/Service-area ZIP codes:/.test(reciting),
+    "and is not repeated when the steps already recite it");
+
+  /* 5. THE REGRESSION ITSELF, end to end: object steps + an allow-list must produce a prompt
+        that names the locations and does NOT hang up on an out-of-area caller. */
+  const spec = specWithConfig(
+    { prospect: "Avi & Co", greeting: "Hi.", rules: [], informSteps: [] } as never,
+    { serviceZips: ["33101", "10001", "81611"],
+      outOfAreaScript: "Our closest showroom is in [CLOSEST_LOCATION]. Would that work?",
+      informSteps: [{ step: 1, action: "Ask for ZIP code",
+        description: "If outside Miami, New York or Aspen, offer the closest showroom and ask if that is ok." }] } as never,
+  );
+  const full = voiceSystemPrompt({
+    customerName: "Avi & Co", voicePaths: [{ intent: "Sales Inquiry",
+      routes: [{ team: "Boutique", action: "Inform & Route", collect: ["Consumer Zip"] }] }],
+    serviceZips: spec.serviceZips, outOfAreaScript: spec.outOfAreaScript, voiceSteps: spec.informSteps,
+  } as never);
+  check(/Miami/.test(full) && /Aspen/.test(full),
+    "the multi-location instruction survives to the prompt");
+  check(!/end the call without routing/i.test(full),
+    "and the prompt does not also tell the agent to hang up");
+}
+
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (49 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (62 checks + per-profile)");
 process.exit(failures ? 1 : 0);

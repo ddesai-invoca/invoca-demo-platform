@@ -413,11 +413,30 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
        demo rule stands, where a single ZIP is the only refusal so an SE can show the happy path
        with any number they like. Getting these the wrong way round either books callers a
        franchise cannot serve or turns away every caller in the demo. */
-    /* The SE's own steps win outright — see the note at `voiceSteps`. */
+    /* The SE's own steps win outright — see the note at `voiceSteps`.
+       ⚠️ **BUT AN ALLOW-LIST STILL HAS TO REACH THE PROMPT AS FACT.** With steps present the
+       ZIP list used to vanish entirely, so an SE who set both got an agent that knew the
+       policy and not the ZIP codes it applies to — the same lands-and-does-nothing shape one
+       level over. The list goes in as DATA and the steps stay the only POLICY, so the two can
+       never contradict. Skipped when the steps already recite the ZIPs (which
+       `stepsForZips` does), to avoid saying it twice. */
     steps.length
-      ? `\n2. THEN FOLLOW THESE STEPS EXACTLY, in order, and do not skip one:\n${steps.join("\n")}`
+      ? `\n2. THEN FOLLOW THESE STEPS EXACTLY, in order, and do not skip one:`
+        + (zips.length && !zips.every((z) => steps.some((st) => st.includes(z)))
+          ? `\n   Service-area ZIP codes: ${zips.join(", ")}.`
+          : ``)
+        + `\n${steps.join("\n")}`
+      /* ⚠️⚠️ **THE SCRIPT STATES THE OUT-OF-AREA POLICY; THIS MUST NOT ALSO HARDCODE A
+         REFUSAL.** It used to say "say exactly this and then END the call, asking nothing
+         further and routing nobody" and then quote the script. That agrees with a script that
+         turns the caller away and flatly contradicts one that offers them another location —
+         and the refusal came first, so the agent hung up on callers an SE had just told it to
+         redirect. Measured on Avi & Co, whose three showrooms were meant to produce a
+         nearest-location offer. What survives is the SAFETY property (never route someone to
+         somewhere they have not agreed to), which is true either way and needs no guess about
+         what the script says. */
       : zips.length
-      ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. ${brain.customerName} serves ONLY these ZIP codes: ${zips.join(", ")}. If the caller's ZIP is one of them, briefly confirm you serve their area and continue. If it is ANYTHING else, say exactly this and then END the call, asking nothing further and routing nobody: "${brain.outOfAreaScript ?? `Thank you for calling ${brain.customerName}. Unfortunately we do not currently serve your area.`}"`
+      ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. ${brain.customerName}'s service area is these ZIP codes: ${zips.join(", ")}. If the caller's ZIP is one of them, briefly confirm you serve their area and continue. If it is ANYTHING else, say exactly this: "${brain.outOfAreaScript ?? `Thank you for calling ${brain.customerName}. Unfortunately we do not currently serve your area.`}" Then follow the caller's answer. Never route or book a caller to a location they have not agreed to, and if there is nothing you can offer them, close the call politely without routing.`
       : serviceArea
       ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. Treat "12345" as the ONLY out-of-area ZIP — if they say it, politely apologise, explain ${brain.customerName} serves ${serviceArea}, say you cannot book them, then STOP: ask nothing else and do not route. For ANY other ZIP, briefly confirm you serve their area and continue.`
       : ``,
@@ -480,12 +499,27 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     ``,
   ];
 
+  /* ⚠️⚠️ **A BRACKETED PLACEHOLDER WOULD BE READ ALOUD.** Asked to offer the nearest showroom,
+     the model wrote an out-of-area script containing the literal token `[CLOSEST_LOCATION]` —
+     a template it expected something downstream to fill in, and nothing does. On a live call
+     the agent either says the bracket out loud or improvises past it, on the first thing a
+     prospect hears after giving their ZIP. Rather than sniffing for one vocabulary of
+     placeholder names, any `[ALL_CAPS]` token left in the flow gets ONE instruction telling
+     the agent to resolve it from what it already knows and never speak the bracket. */
+  const placeholders = [...new Set(
+    flow.join("\n").match(/\[[A-Z][A-Z0-9_ ]{2,}\]/g) ?? [],
+  )];
+  const placeholderRule = placeholders.length
+    ? `PLACEHOLDERS: the lines above contain ${placeholders.join(", ")}. These are fill-ins, NOT words to say. Replace each one with the real value for THIS caller — the nearest location by name, their own details, whatever the token stands for — working it out from the service area and steps above. Never read a square bracket or its contents aloud.`
+    : ``;
+
   return [
     NO_DASH_RULE,
     `You are the AI phone assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
     `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
     ``,
     ...flow,
+    placeholderRule,
     paths.length && !brain.voiceMinimal ? namingRule(r) : ``,
     /* ⚠️ AN EXPLICIT CEILING ON WHAT IT MAY ASK. Listing the flow was not enough on its own —
        the model filled the gaps with sensible-sounding sales questions, which on a routing call

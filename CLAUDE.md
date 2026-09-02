@@ -988,6 +988,121 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### Multiple service locations: "offer the nearest showroom" (9/2/2026)
+Reported against Avi & Co: *"I asked the AI in the UI 'Avi and Co only has 3 showroom locations,
+Miami, New York and Aspen. So when asking a Caller for their Zipcode, if they are outside of
+those cities zipcode. Tell them which showroom location is the closest and if thats ok'. I think
+the tree changed so the actual voice agent during the call didnt change."*
+
+⚠️⚠️ **THE EDIT HAD LANDED PERFECTLY. THREE THINGS BETWEEN THE STORED CONFIG AND THE PROMPT
+UNDID IT** — and the reported symptom ("the call didn't change") pointed at the plumbing that
+was, in fact, the one part working. The stored override held `serviceZips: ["33101","10001",
+"81611"]`, a nearest-showroom `outOfAreaScript`, and two `informSteps` naming all three cities.
+`editGuard` refused nothing.
+
+**1. A `typeof r === "string"` FILTER SILENTLY ATE THE MODEL'S STEPS.** It wrote them as
+OBJECTS — `{step, action, description}` — a reasonable shape, and its two steps described the
+requested behaviour exactly. `specWithConfig` filtered both out for not being strings, leaving
+`informSteps: []`.
+⚠️ **`editGuard` CANNOT CATCH THIS**: `agent.informSteps` is a LENGTH_IS_CONTENT path and
+array -> array is not a type flip, so the write is legitimately allowed. The shape has to be
+accepted where it is read. `toSteps()` now normalises objects into the `string[]` the prompt
+needs and falls back to the base when nothing survives, because returning `[]` is what turned
+"the agent stopped asking for a name" into a silent regression before.
+
+**2. THE EMPTIED LIST THEN READ AS "UNTOUCHED", so the stock refusal was regenerated.** The
+`stepsUntouched` guard compares `merged.informSteps` against `spec.informSteps` — and the
+derived spec's steps are ALSO `[]`, so an edit that had been destroyed one line earlier
+compared equal to no edit at all and `stepsForZips` overwrote it. Two failures compounding, each
+individually plausible.
+
+**3. `stepsForZips` REFUSED IN STEP 3 AND OFFERED THE SCRIPT IN STEP 5.** It hardcoded "politely
+inform the caller that we do not serve their area and end the call without routing" and then
+appended the out-of-area script. Those agree when the script turns the caller away and flatly
+contradict each other when it offers an alternative — **with the refusal first**, which is the
+one the agent obeyed. The script is now the ONLY statement of the policy; what survives from the
+old step 3 is the safety property ("never route a caller somewhere they have not agreed to"),
+which holds either way and needs no guess about what the script says. A self-contradicting
+prompt is worse than either rule, which this file already records for the SMS playbook leaking
+into the voice prompt.
+⚠️ **The same hardcoded refusal existed a second time in `engine/chat.ts`**, in the
+`zips.length` branch ("say exactly this and then END the call, asking nothing further and routing
+nobody"). Fixed identically. Safe to change: **every prospect on disk that has `serviceZips`
+also has `informSteps`**, so that branch was unreachable for all of them — only an AI-added
+allow-list reaches it, which is precisely this bug.
+
+⚠️ **A BRACKETED PLACEHOLDER GETS READ ALOUD ON A LIVE CALL.** The script the model wrote
+contained the literal token `[CLOSEST_LOCATION]`, expecting something downstream to fill it in.
+Nothing does. Rather than sniff for one vocabulary of placeholder names, any `[ALL_CAPS]` token
+left in the flow now earns ONE instruction telling the agent to resolve it and never speak the
+bracket — and `engine/assistant.ts` asks for none to be written in the first place. Same
+instruct-then-enforce pairing as the dashes and rule 2.
+
+⚠️ **AN ALLOW-LIST HAS TO REACH THE PROMPT EVEN WHEN THE SE'S STEPS WIN.** With steps present
+the ZIP list vanished entirely, so the agent knew the policy and not the ZIPs it applies to —
+the lands-and-does-nothing shape one level over. The list now goes in as **data**
+("Service-area ZIP codes: …") and the steps stay the only **policy**, so the two cannot
+contradict; suppressed when the steps already recite the ZIPs, as `stepsForZips` output does.
+
+⚠️ **AND THE ASSISTANT'S OWN FIELD DESCRIPTION WAS REFUSAL-ONLY.** `engine/assistant.ts` said an
+allow-list means the agent "reads `agent.outOfAreaScript` to everyone else **and does not route
+them**", full stop — so a request to offer the nearest of several locations was fighting the
+prompt's own definition of the field, which is why the model reached for a shape of its own. It
+now says the script decides what happens next, and asks for the served locations to be NAMED in
+the steps so the agent can tell a caller which is closest.
+
+**Measured on the real endpoint afterwards** (`scripts/demo-voice-sim.ts avi-co`):
+
+| caller ZIP | agent |
+|---|---|
+| **33139** (Miami Beach, NOT on the 3-ZIP list) | "That's in the Miami area, so I can connect you with our Miami showroom. Does that work for you?" |
+| **80202** (Denver) | "Our closest location to you is in Aspen, Colorado. Would that work for you to visit, or would you prefer one of our other showrooms in Miami or New York?" |
+| **98101** (Seattle), then "no thanks, thats too far" | offers a showroom, then "we're currently only in Miami, New York, and Aspen, so unfortunately we wouldn't be a good fit for you right now" — closes politely instead of hanging up mid-qualification |
+
+⚠️ **THE THREE ZIPS BEING ONE-PER-CITY TURNED OUT NOT TO MATTER, for a reason worth knowing.**
+33101 is a single Miami ZIP, so a literal allow-list would refuse Miami Beach. Because the steps
+name the CITIES, the agent does the geography instead — 33139 is recognised as Miami. That is
+better than a longer allow-list would be, and it is why the fix is "name the locations" rather
+than "enumerate more ZIPs".
+⚠️ **Its geography is the model's own and is occasionally wrong**: Seattle was offered New York
+"which serves the broader northeast area" when Aspen is far closer. Harmless for a demo whose
+callers are in the served metros, and not something more prompt text reliably fixes.
+
+**`scripts/demo-voice-sim.ts` is new, and it exists because neither existing harness could see
+this.** `voice-sim.mts` and `askai-voice.ts` both read `src/data/generated/<slug>.json`, so
+neither can reach a prospect that lives only in the shared demo LIBRARY — which is most real
+ones, and every one an SE has actually tuned with Ask AI. It rebuilds the brain exactly as
+`useBrain` does, from the demo record's own override layer, and talks to the real `/api/chat`;
+`--prompt` prints the built prompt instead.
+
+**`npm run audit:voice` is 62 checks** (was 49). The twelve new ones cover: object-shaped steps
+normalising rather than dropping, a normalise-to-nothing falling back to the base, a non-array
+keeping the base, `stepsForZips` carrying no hardcoded refusal beside the script, the script
+being what states the policy, an unresolved placeholder earning the resolve-it instruction, no
+such line when there is no placeholder, the ZIP list reaching the prompt alongside the SE's own
+steps, not being repeated when the steps recite it, the allow-list branch not doubling up on the
+steps, and the end-to-end regression (object steps + allow-list produce a prompt that names the
+locations and does NOT tell the agent to hang up).
+⚠️ **Each was verified to FIRE by restoring the original bug** — the string filter, the
+hardcoded refusal, and the dropped placeholder rule each turn one red.
+⚠️ **TWO OF THE NEW CHECKS WERE WRONG FIRST, AND FIXING THEM DOCUMENTED A BRANCH.** They asserted
+the placeholder rule fires on a prompt built with `voiceSteps` — but when the SE's steps win the
+script is never emitted at all, so there is no bracket in the prompt to guard. The guard is for
+the allow-list branch, which quotes the script verbatim. Third time in this file a probe rather
+than a check was at fault.
+
+⚠️ **NO DATA MIGRATION, AND THAT IS DELIBERATE.** All of this is fixed at READ time, so the
+stored override — object-shaped steps, `[CLOSEST_LOCATION]` and all — starts working as soon as
+this deploys, on the live demo and on every other demo already carrying an edit like it. Nothing
+had to be re-issued through the drawer.
+
+**Untouched, verified:** Comfort Keepers, the one configured spec with BOTH an allow-list and
+steps, is byte-identical — its own hand-authored six steps still recite 30097 / 30096 / 30095,
+its refusal script is still quoted verbatim, it gains no duplicate ZIP line and no placeholder
+rule. It never goes through `stepsForZips`. `audit:ai` green, and `audit:seeds` fails the same 14
+of 25 demos before and after (checked with the changes stashed — pre-existing profile-data
+failures, not this work).
+
 ### The (Voice AI) story: routing demo + screenpop from the call just had (8/27/2026)
 The demo beat, in the user's words: "the Caller calls in, then voice agent picks up and has the
 conversation, the Voice Routing Demo shows how we took that conversation, pulled out all the
