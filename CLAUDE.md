@@ -988,6 +988,90 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### A second SMS workflow for Avi & Co: "Avi & Co - New" (9/2/2026)
+Asked for directly: *"add one more Avi & Co - SMS workflow called 'Avi & Co - New'"*. Built as a
+**speed-to-lead** agent (chosen from four options offered, since a name gives no purpose): the
+first reply to a brand new inbound lead, within seconds, while the interest is still live.
+
+⚠️⚠️ **IT LIVES IN `reports.extraWorkflows`, NOT IN `agentWorkflows.ts`, AND THAT CHOICE IS THE
+WHOLE ANSWER TO "can you add one".** There are two workflow stores and only one of them travels:
+
+| | `agentWorkflows.ts` (Create Workflow) | `reports.extraWorkflows` |
+|---|---|---|
+| storage | **localStorage, per BROWSER** | the profile, so per DEMO |
+| survives a colleague opening the demo | no | yes |
+| starting content | the empty four-node tree | authored branches + its own playbook |
+| Preview Agent | the prospect's configured agent | **its own `systemPrompt`** |
+
+So clicking Create Workflow on this machine would have produced a workflow that existed only in
+one browser session and never reached the person who asked for it. `extraWorkflows` is
+schema-backed (`ExtraWorkflow`), lists in BOTH the Agent Studio table and the left sub-nav,
+routes at `/agent-studio/agent/workflow/<slug>`, and its `systemPrompt` becomes
+`buildSmsBrain`'s `customSystem`, which REPLACES the default sales flow — so Preview Agent runs
+this workflow's playbook rather than the built-in one.
+
+**What it contains**, all in Avi & Co's own vocabulary rather than generic sales copy: four
+branches (Ready to Book -> Book Appointment, Comparing Options -> Answer & Nurture, Selling or
+Trading -> Route to Trade Sales, Human Requested -> Warm Hand-off) with ten chips between them,
+and a playbook that names the brands the profile actually carries (Rolex, Patek Philippe,
+Audemars Piguet, Richard Mille, Diamonds By Avi & Co., the Iced and Hue Collections), the real
+AMETA 0% financing offer, and the three boutiques. It asks brand -> buy/sell/trade -> ZIP ->
+timeline, one question at a time, and offers a virtual consultation when the ZIP is not near a
+boutique — which is the same three-city logic the voice workflow got the same day.
+⚠️ **`openingMessage` keeps `{name}` AS A TOKEN**, resolved by `resolveGreeting` off the
+prospect's own caller, so a demo shown against a different client still greets the right person.
+Verified: it renders "Hi Marcus, this is Avi & Co…".
+⚠️ Two rules the playbook carries for a reason: it never quotes an exact price (pre-owned pricing
+moves with condition and paperwork, and the voice agent already defers pricing the same way), and
+it never asks for payment details, account numbers or document images over text.
+
+#### The dash sweep would have renamed it, and flattened its playbook
+⚠️⚠️ **`sweepValue` REWROTE "Avi & Co - New" TO "Avi & Co, New".** The spaced-connector rule
+(`([A-Za-z0-9)\]%])\s+-\s+([A-Za-z])` -> `"$1, $2"`) cannot tell a dash joining two clauses from
+a dash separating the parts of a NAME. The proof it had already happened is in the schema:
+`ExtraWorkflow.label` is commented `// "Reyes Law - SMS - Nurture"` and the stored value reads
+**"Reyes Law, SMS, Nurture"**. The other two workflow names dodge it only because they are
+derived at render from `customerName` and never stored.
+
+⚠️⚠️ **AND `\s{2,}` COLLAPSES EVERY BLANK LINE, so a multi-line playbook comes out as one
+run-on paragraph.** Reyes Law's stored `systemPrompt` shows exactly that damage — "intake team,
+You are warm, empathetic, and professional, this is a law firm dealing with people who…" — a
+bulleted persona list flattened into comma-joined prose, and its structure is not recoverable
+from the swept copy.
+
+`SKIP_KEY` now covers **`label`** and **`systemPrompt`**:
+- a **label is a name**, and names legitimately carry dashes, which is why this file already
+  keeps "Certified Pre-Owned" and "Trade-In and Consignment";
+- a **`systemPrompt` is instructions to the model and is never shown to a prospect**, so the rule
+  it was being held to does not apply — dashes matter here because they make COPY read as machine
+  written.
+⚠️ **`openingMessage` is deliberately NOT skipped**: the agent texts that to a real person, so it
+is copy and the rule applies. Verified in both directions — the label and the prompt are now left
+alone, while an em dash in an `aiSummary`, a `title` or an `openingMessage` is still swept, and
+the seeds audit fails the same 14 of 25 demos as before.
+⚠️ The migration is marker-guarded (`.dash-sweep-v1`) so nothing re-walked this demo, but
+`npx tsx scripts/strip-dashes.ts` is manual and would have.
+
+⚠️ **`updatedAt` WAS BUMPED BY HAND**, because writing the demo file directly is a server-side
+write and `DemoLibraryContext`'s self-heal only refetches when the library's `updatedAt` is newer
+than the copy the browser cached. Both boot migrations were bitten by exactly this; a write that
+leaves the timestamp alone is invisible to every already-loaded tab.
+
+⚠️ **THE WORKFLOW ITSELF IS NOT IN GIT.** It lives in `.data/demos/avi-co.json`, and `DATA_DIR`
+is git-ignored by design. What this commit carries is the `SKIP_KEY` fix and this note. Getting
+the workflow onto the live site is a PATCH to the server's own Avi & Co record, which is a
+different record from the local one (the local demo's creator is `local@dev`).
+
+**Verified end to end:** the Agent Studio table lists three workflows with "Avi & Co - New" as
+Live / SMS / "New inbound lead, web form and missed call" under the **Triggered By** column (that
+column takes prose, which is what Reyes Law's "No-response follow-up" already does); the sub-nav
+lists it third and highlights it; the tree draws 10 nodes and all 10 chips with the Warm Hand-off
+leaf in orange; and its Preview Agent runs the new playbook — asked for a Daytona it went brand
+-> buy/sell -> ZIP, and answered 90210 with a virtual consultation. Untouched: "Avi & Co - SMS"
+(6 nodes, 2 chips, its own Financing Question / Trade branches), "Avi & Co - Voice" (12 nodes, 15
+chips, the showroom logic intact), the built-in SMS brain (no `customSystem`, its own opener) and
+Reyes Law's single nurture workflow. `audit:voice` (62) and `audit:ai` green.
+
 ### Multiple service locations: "offer the nearest showroom" (9/2/2026)
 Reported against Avi & Co: *"I asked the AI in the UI 'Avi and Co only has 3 showroom locations,
 Miami, New York and Aspen. So when asking a Caller for their Zipcode, if they are outside of

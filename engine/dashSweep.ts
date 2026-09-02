@@ -12,7 +12,22 @@ import fs from "node:fs";
 import path from "node:path";
 
 /* Keys whose VALUES are structural — a dash there means something. */
-const SKIP_KEY = /^(id|slug|url|href|domain|brandDomain|websiteUrl|dateRange|range|path|icon)$/i;
+/* ⚠️ `label` AND `systemPrompt` WERE ADDED 9/2/2026, AND BOTH FOR MEASURED DAMAGE.
+   - A **label is a NAME, not prose.** " - " in one separates the parts of a name, so the
+     spaced-connector rule renamed a workflow the user had just asked to be called
+     "Avi & Co - New" into "Avi & Co, New". The evidence it had happened before is in the
+     schema: `ExtraWorkflow.label` is commented `// "Reyes Law - SMS - Nurture"` while the
+     stored value reads "Reyes Law, SMS, Nurture". Names legitimately carry dashes, which is
+     why this file already keeps "Certified Pre-Owned" and "Trade-In and Consignment".
+   - A **`systemPrompt` is instructions to the model, never shown to a prospect**, so the rule
+     it was being held to does not apply to it: dashes matter here because they make COPY read
+     as machine written. Worse, `\s{2,}` collapses every blank line, so a multi-line playbook
+     came out as one run-on paragraph with its bullets comma-joined. Reyes Law's stored prompt
+     shows exactly that damage ("intake team, You are warm, empathetic, and professional, this
+     is a law firm..."), and its bullet structure is not recoverable from the swept copy.
+   ⚠️ `openingMessage` is deliberately NOT skipped — the agent texts that to a real person, so
+   it is copy and the rule applies. */
+const SKIP_KEY = /^(id|slug|url|href|domain|brandDomain|websiteUrl|dateRange|range|path|icon|label|systemPrompt)$/i;
 
 const looksStructural = (s: string) =>
   /^https?:\/\//.test(s) ||
