@@ -1107,14 +1107,19 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-leaf-green .wf-leaf-action .material-icons { color: #2fae4e; }
 .wf-leaf-orange { background: #fff4ef; border-color: #f6cdb8; }
 .wf-leaf-orange .wf-leaf-action .material-icons { color: #ef7d3b; }
-.wf-chips { display: flex; gap: 8px; margin-top: 10px; }
+/* ⚠️ `flex-wrap: wrap` BELONGS HERE, NOT ONLY ON `.wf-voice .wf-chips` (found 9/2/2026). The
+   voice tree got it because Comfort Keepers' voice leaves needed it; every other leaf — the
+   built-in SMS tree's, and any extra workflow's use cases (2-3 chips is normal there) — had
+   no wrap at all, so a row wider than the 220px SMS node just kept going and spilled past the
+   card's border with nothing to clip it. `.wf-node` sets no `overflow`, so the pills render
+   fully visible outside the box rather than being cut off, which is what made it obvious. */
+.wf-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .wf-chip { background: rgba(255,255,255,.7); border: 1px solid #cfe6d6; color: #3d5c46; font-size: 11px; border-radius: 999px; padding: 3px 10px; }
 /* Voice flow tree: taller (intent subtitles + chips on both leaves) and neutral
    chips (so the Support leaf's chips aren't green-tinted). */
 /* Voice tree matched to Invoca's real Voice workflow: 248px nodes, wider/taller
    canvas, MUI SVG icons (grey node icons, green/orange leaf actions), neutral chips. */
 .wf-voice { width: 560px; height: 560px; transform: scale(0.85); transform-origin: top center; }
-.wf-voice .wf-chips { flex-wrap: wrap; }
 .wf-voice .wf-chip { background: #f4f6f8; border-color: #d9dee4; color: #5b6577; }
 .wf-svg-ic { flex: none; }
 .wf-voice .wf-node-title .wf-svg-ic { color: #5b6577; }              /* grey node icons (MUI colorAction) */

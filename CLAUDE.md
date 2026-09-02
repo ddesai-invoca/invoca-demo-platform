@@ -991,6 +991,31 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### The tree's pills overflow their box on any non-voice leaf, fixed (9/2/2026)
+Reported directly: "some of the pills in the boxing are going outside the box, the pills should
+only be similar to the voice agent 'Consumer Name and Consumer Zip'." — i.e. wrap the way the
+voice tree's chips already do.
+
+⚠️⚠️ **`flex-wrap: wrap` WAS ONLY EVER SET ON `.wf-voice .wf-chips`, NEVER ON `.wf-chips`
+ITSELF.** Every other leaf — the built-in SMS tree's, and any extra workflow's use cases, where
+2-3 chips is normal — had NO wrap at all, so a chip row wider than the SMS node's 220px just kept
+going in one line. `.wf-node` sets no `overflow`, so the pills rendered fully visible OUTSIDE the
+card's border rather than being clipped, which is what made the bug so obvious on screen. Moved
+the property to the base `.wf-chips` rule and removed the now-redundant voice-only copy.
+
+⚠️ **THIS WAS A REAL, PRE-EXISTING BUG ON REYES LAW, NOT SOMETHING THE NEW AVI & CO WORKFLOW
+INTRODUCED.** Its "Re-engaged" leaf carries three chips (First Name, Injury Type, Date of
+Incident) and was overflowing the same way before this fix — confirmed by loading the actual
+demo and measuring it. The new Avi & Co workflow's three-chip use cases just made the same
+long-standing bug impossible to miss.
+
+**Verified with real measurements, not a screenshot glance**: every chip's `getBoundingClientRect()`
+compared against its own node's, on Avi & Co's new tree (4 leaves, 2-3 chips each), Reyes Law's
+nurture tree (now rendering correctly through the locked-chrome restructure from the same day),
+the built-in SMS tree (Consumer Name / Rolex, 2 chips, unaffected, still one line), and the voice
+tree (unaffected, wrap was already there). `audit:ai` and `audit:voice` (62) both green; `tsc`
+clean.
+
 ### A second SMS workflow for Avi & Co: "Avi & Co - New" (9/2/2026)
 Asked for directly: *"add one more Avi & Co - SMS workflow called 'Avi & Co - New'"*. Built as a
 **speed-to-lead** agent (chosen from four options offered, since a name gives no purpose): the
