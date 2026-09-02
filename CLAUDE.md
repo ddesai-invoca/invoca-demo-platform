@@ -991,6 +991,85 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### Don't ask twice: the voice agent was re-asking ZIP and name (9/2/2026)
+Reported directly: "when asking for things like are you looking to book an appointment or
+something, or their zipcode, or their name. Only ask that once, you should remember that data or
+customer doesn't have to say it twice."
+
+⚠️⚠️ **THIS WAS STRUCTURAL AND AFFECTS ANY PROSPECT WITH A SERVICE-AREA CHECK, NOT ONLY AVI &
+CO.** The CALL FLOW's step 2 (the service-area check, built from `voiceSteps`/`serviceZips`)
+and each path's own "collecting X, Y, Z" line (built from `TreePath.chips`) are two independent
+blocks that were never reconciled. `deriveUseCases` puts **"Consumer Name" on every single
+sales AND support use case by design**, and "Consumer Zip" is the DEFAULT `where` for any
+vertical that is not a hotel, home-service, or senior-care business. So the agent asked for the
+ZIP (or name) once during the service-area check, then asked for the SAME field again the
+moment it reached the chosen path's collect list — on Avi & Co (custom AI-written steps, ZIP
+only) and, worse, on **Comfort Keepers** (the generic template, which asks for BOTH zip and full
+name in its own hardcoded step 4), where every single path re-asked "Consumer Name" a second
+time.
+
+**Two deductions, computed fresh from the same `zips`/`steps`/`serviceArea` values that already
+decide whether step 2 exists**, so there is no second flag to drift out of sync with them:
+- a ZIP is asked in step 2 whenever ANY of the three service-area branches fires (custom steps,
+  an allow-list, or the demo's single-ZIP fallback) — that block's only purpose is asking for a
+  ZIP, so this can never misfire;
+- a full name is asked in step 2 only when the steps TEXT actually says so (`/\bfull name\b/i`)
+  — true of `stepsForZips`'s own wording, and of a custom step that happens to mention it too.
+  Deliberately conservative: a custom step that never asks for a name leaves "Consumer Name"
+  alone, so the field still gets asked exactly once, just later in the path rather than not at
+  all.
+
+`dedupeCollect()` strips those two EXACT chip strings from a path's collect list when the
+matching deduction is true. Everything else — Care Location, Timeline, Consumer Email,
+Destination, Travel Dates — is untouched, because those are genuinely distinct fields the
+service-area check never gathers.
+
+⚠️ **A GENERAL BACKSTOP RULE WAS ADDED TOO, for what the structural fix cannot see**: a caller
+who volunteers their name before being asked, or gives their ZIP while answering a different
+question. "NEVER ask for anything you already have… track what you have gathered so far" — the
+same instruct-then-enforce pairing the dash rule and the placeholder rule already use in this
+file. Verified live: a caller who says everything in one breath ("this is Marcus Wellington,
+I'm in zip code 80202, ready to book") gets neither re-asked, and the agent moves straight to
+resolving the ZIP.
+
+⚠️⚠️ **TWO SEPARATE EDITS TO A `\b` WORD-BOUNDARY REGEX WERE SILENTLY CORRUPTED BY THE SAME
+PYTHON-HEREDOC MISTAKE, and it cost the most time in this fix.** Writing `\bfull name\b` inside
+a Python triple-quoted (non-raw) string collapses `\b` to an actual ASCII BACKSPACE byte
+(0x08), not the two characters backslash-then-b. `tsc` cannot catch it — a raw backspace
+between two `/` delimiters is a syntactically valid regex, it just matches a literal control
+character that never appears in real text, so the regex silently never matched anything.
+`grep`/terminal output rendered the corrupted line as if it read `/full name/i` (the backspace
+erased the visible `\` when printed), which is exactly why the bug looked invisible until the
+bytes were inspected with `od -c`. **Any edit containing `\b`, `\n` inside a Python string
+literal (not a raw string) needs its bytes verified with `od -c`, not just `grep`, before
+trusting it compiled correctly.** Both occurrences (the fix itself, and the audit check written
+to verify it) were caught and fixed the same way.
+
+⚠️ **`npm run audit:voice`'s OWN "every field a use-case node advertises is asked for in the
+prompt" check had to be updated, and this is not a case of loosening a check to make it pass.**
+It did a literal `prompt.includes(field)` substring search, which is now too strict: Denver
+Health's service-area step says "ask for their zip code and capture it", never the literal UI
+label "Consumer Zip", so stripping the duplicate from the path line correctly made the LITERAL
+string vanish from the whole prompt even though the ZIP is still asked, just earlier and in
+different words. The check now accepts two narrow SEMANTIC exceptions — "Consumer Zip" is
+satisfied whenever a service-area check of any shape exists, "Consumer Name" whenever the
+prompt matches `/\bfull name\b/i` — and every other field (Destination, Travel Dates, Care
+Location) still has to appear literally. **Verified the check still fires**: force-dropping an
+unrelated field ("Destination") from a `dedupeCollect`-style filter still fails it on Marriott,
+exactly as before.
+
+⚠️ **AND `.data/demos/*` IS GIT-IGNORED, SO THIS IS A DEPLOY-TIME FIX FOR EVERY EXISTING
+DEMO.** Both dedupe passes read `brain.voiceSteps`/`serviceZips` at PROMPT-BUILD time, not at
+save time, so no demo record needs editing — Avi & Co, Comfort Keepers, and any other demo
+already carrying a service-area check stop double-asking the moment this deploys.
+
+Verified end to end via `scripts/demo-voice-sim.ts` against the real `/api/chat` endpoint:
+Avi & Co's ZIP is asked exactly once (previously twice); Comfort Keepers' name is asked exactly
+once (previously twice); AutoNation, which has NO service-area check at all, is byte-for-byte
+unaffected (Consumer Name and Consumer Zip both still appear, since nothing was ever gathered
+earlier to deduplicate against). `audit:voice` (62 checks) and `audit:ai` both green; the
+pre-existing 14-of-25 `audit:seeds` failures are unchanged.
+
 ### The tree's pills overflow their box on any non-voice leaf, fixed (9/2/2026)
 Reported directly: "some of the pills in the boxing are going outside the box, the pills should
 only be similar to the voice agent 'Consumer Name and Consumer Zip'." — i.e. wrap the way the

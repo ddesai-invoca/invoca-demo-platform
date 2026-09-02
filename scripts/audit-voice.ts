@@ -171,9 +171,27 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
        wants Destination and Travel Dates and would FAIL a hardcoded ZIP check while being
        perfectly correct. The invariant that actually matters has not changed and now
        generalises — a node must never advertise a field the agent never asks for. */
+    /* ⚠️⚠️ **"ASKED FOR" NO LONGER MEANS "THE LITERAL CHIP LABEL APPEARS" (9/2/2026), because
+       the prompt now deliberately does NOT re-ask Consumer Zip / Consumer Name inside a path's
+       own collect line when the service-area check already gathered it — see the "don't ask
+       twice" note in engine/chat.ts. Denver Health's own step says "ask for their zip code and
+       capture it", never the UI label "Consumer Zip", so a bare prompt.includes(field) started
+       failing on the very profiles the fix was correct for. The field is still asked; it just
+       moved earlier and changed its wording. Two narrow exceptions, checked SEMANTICALLY
+       rather than assumed: a service-area check of any shape always asks for a ZIP (that
+       block's only purpose), and the generic wording for a name is "full name". Any OTHER
+       field, Destination, Travel Dates, Care Location, still has to appear literally, so this
+       stays a real check on everything that isn't one of the two deduped fields — verified by
+       forcing an unrelated field to drop out, which still fails the check. */
+    const hasServiceAreaCheck = !!(spec.serviceZips?.length || spec.informSteps?.length
+      || profile.reports.agentConfig?.serviceArea);
+    const nameAskedGenerically = /\bfull name\b/i.test(prompt);
     for (const vp of [...spec.useCases.sales, ...spec.useCases.support]) {
       for (const field of vp.collect) {
-        if (!prompt.includes(field)) {
+        const norm = field.trim().toLowerCase();
+        const dedupedElsewhere = (norm === "consumer zip" && hasServiceAreaCheck)
+          || (norm === "consumer name" && nameAskedGenerically);
+        if (!prompt.includes(field) && !dedupedElsewhere) {
           unasked++;
           console.log(`      pill never asked for: ${profile.customerName} — "${vp.title}" / ${field}`);
         }

@@ -369,6 +369,36 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
   const paths = brain.voiceMinimal
     ? []   /* the minimal flow owns the whole block; see `voiceMinimal` */
     : (brain.voicePaths ?? []).filter((p) => p.intent?.trim() && p.routes?.length);
+
+  /* ⚠️⚠️ **DON'T ASK TWICE (9/2/2026).** Reported directly: the agent asked for the caller's
+     ZIP code (or name) once during the service-area check in step 2, then asked for the SAME
+     field again once it reached the path's own "collecting X, Y, Z" line — because those two
+     blocks are built from two independent inputs (`voiceSteps` and each path's `chips`) that
+     have never been reconciled. `deriveUseCases` puts "Consumer Name" on EVERY sales and
+     support use case by design, and "Consumer Zip" is the default `where` for any vertical
+     that isn't a hotel/home-service/senior-care business — so this was not an Avi & Co
+     quirk, it repeats on any prospect with a service-area check at all. Verified on Comfort
+     Keepers too: its generic template asks for the caller's full name in step 4, then every
+     single path asked for "Consumer Name" again.
+
+     Both deductions below are computed FRESH from `zips`/`steps`/`serviceArea`, the same
+     values that already decide whether step 2 exists, so there is no second flag to fall
+     out of sync with them:
+     - a ZIP is asked in step 2 whenever ANY of the three service-area branches fires
+       (custom steps, an allow-list, or the demo's single-ZIP fallback) — that block's whole
+       purpose is asking for a ZIP, so this can never misfire;
+     - a full name is asked in step 2 only when the steps TEXT actually says so, which is
+       true of `stepsForZips`'s own wording and of a custom step that mentions it too. A
+       custom step that never asks for a name leaves "Consumer Name" alone, so the field is
+       still gathered exactly once, just later in the path. */
+  const zipAlreadyAsked = steps.length > 0 || zips.length > 0 || !!serviceArea;
+  const nameAlreadyAsked = steps.some((st) => /\bfull name\b/i.test(st));
+  const dedupeCollect = (fields: string[]): string[] => fields.filter((f) => {
+    const norm = f.trim().toLowerCase();
+    if (zipAlreadyAsked && norm === "consumer zip") return false;
+    if (nameAlreadyAsked && norm === "consumer name") return false;
+    return true;
+  });
   /* ⚠️ A WORKFLOW WITH NOTHING CONFIGURED, previewed honestly: exactly the four chrome nodes
      the diagram draws, and not one question more. `SALES_TEAM`/`SUPPORT_TEAM` are the generic
      names the user asked for, and they are the honest ones — an empty workflow has no
@@ -451,7 +481,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
       const answered = p.routes.some((r2) => r2.need);
       const collect = answered
         ? []
-        : [...new Set(p.routes.flatMap((r2) => r2.collect ?? []).filter(Boolean))];
+        : dedupeCollect([...new Set(p.routes.flatMap((r2) => r2.collect ?? []).filter(Boolean))]);
       const lines = [`PATH: ${p.intent.toUpperCase()}`];
       if (collect.length) {
         lines.push(`   - Collect these, ONE question at a time, in this order: ${collect.join(", ")}. Ask for them in your own words, naturally.`);
@@ -467,9 +497,12 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
            invented here — the model is told to choose on what the caller said and the
            leaf's own action wording, which is the only honest instruction available. */
         for (const r2 of p.routes) {
-          lines.push(r2.need
-            ? `      • If they say ${r2.need}: ${r2.action.toLowerCase()}${r2.collect.length ? `, collecting ${r2.collect.join(", ")}` : ""}${destination(r2.team)}.`
-            : `      • ${r2.team} — ${r2.action}`);
+          if (r2.need) {
+            const c = dedupeCollect(r2.collect ?? []);
+            lines.push(`      • If they say ${r2.need}: ${r2.action.toLowerCase()}${c.length ? `, collecting ${c.join(", ")}` : ""}${destination(r2.team)}.`);
+          } else {
+            lines.push(`      • ${r2.team} — ${r2.action}`);
+          }
         }
       }
       lines.push(``);
@@ -536,6 +569,12 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `- NEVER use emojis, markdown, or formatting — your words are read aloud by a text-to-speech voice.`,
     `- NEVER quote prices, availability, or promotions. NEVER attempt to resolve a support issue yourself — only qualify and route.`,
     `- Only discuss ${brain.customerName}'s products and services; if the caller goes off-topic, gently steer back.`,
+    /* ⚠️ THE BACKSTOP FOR EVERYTHING THE STRUCTURAL DEDUPE ABOVE CANNOT SEE — a caller who
+       volunteers their name before being asked, or gives their ZIP while answering a
+       different question. The fields removed from the flow above cover the guaranteed
+       duplicates; this covers the rest, the same instruct-then-enforce pairing the dash rule
+       and the placeholder rule already use elsewhere in this file. */
+    `- NEVER ask for anything you already have. If the caller already gave you their name, ZIP code, or anything else earlier in this call, whether you asked for it or they volunteered it, use what you have and move on. Track what you have gathered so far as the call progresses.`,
     /* The workflow's own rules when it has them, the brand rules only as a fallback. */
     brain.voiceRules?.length
       ? `\nCONVERSATION RULES configured on this workflow:\n${brain.voiceRules.map((r) => `- ${r}`).join("\n")}`
