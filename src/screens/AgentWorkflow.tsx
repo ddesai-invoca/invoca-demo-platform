@@ -275,21 +275,77 @@ function deriveTree(
   };
 }
 
-/* An extra workflow (Reyes Law's SMS nurture) already carried its branches as
-   data; this maps that flatter shape onto the same model so there is one renderer
-   rather than two. */
+/* An extra workflow (Reyes Law's SMS nurture, Avi & Co's speed-to-lead) carries its branches
+   as data; this maps them onto the same model so there is one renderer rather than two.
+   -----------------------------------------------------------------------------------------
+   ⚠️⚠️ **THE FOUR CHROME BOXES ARE LOCKED HERE TOO, AND THIS USED TO SKIP THEM (9/2/2026).**
+   Reported directly: *"just like the voice tree the 'Sales Inquiry, Need support, all sales
+   inquiry users and All support users' box are locked, those can't be change / edit. we can
+   only do branches below that."*
+
+   It used to draw each authored branch as its own TOP-LEVEL intent node with a `${title}
+   Users` leaf under it — so a new workflow rendered four intent nodes where the product always
+   shows exactly two, and neither those nodes nor their leaves were locked. This file's own SMS
+   note had recorded the opposite as a deliberate exception ("EXTRA agent workflows keep their
+   own authored branch names, because a nurture flow's node is not 'Sales Inquiry'"), and that
+   exception was wrong: the intents and the user groups are product chrome on EVERY SMS
+   workflow, and what a nurture or speed-to-lead flow actually contributes is the USE CASES on
+   the row beneath them — which is the same shape the voice tree settled on.
+
+   ⚠️ CONSEQUENCE, STATED: this restructures Reyes Law's nurture diagram too. Its branches now
+   sit under the two locked leaves rather than being intent nodes themselves. That is not
+   collateral damage from someone else's fix — it is the same product rule, and its old tree
+   was drawing chrome the product does not have.
+
+   ⚠️ `chromeLocked` IS DELIBERATELY NOT SET. The two flags cover different things: per-node
+   `locked` refuses the four titles the user named, `chromeLocked` additionally freezes
+   `triggeredBy` and `startLabel`. An authored extra workflow's trigger line is real
+   configuration ("New inbound lead, web form and missed call" is what fires it, and the Agent
+   Studio table renders that same field under its own "Triggered By" column), and `editGuard`'s
+   note already sanctions exactly this: "an authored extra workflow that wants its own trigger
+   line simply does not set it." */
 function extraTree(
   wf: NonNullable<ReturnType<typeof useProfile>["profile"]["reports"]["extraWorkflows"]>[number],
 ): WorkflowTreeModel {
+  /* A branch with no `intent` is a sales-side use case, which is what every authored one was
+     before the field existed. */
+  const asPath = (b: (typeof wf.branches)[number]): TreePath => ({
+    title: b.title,
+    action: b.action,
+    tone: b.tone,
+    chips: b.chips,
+  });
+  const sales = wf.branches.filter((b) => b.intent !== "support").map(asPath);
+  const support = wf.branches.filter((b) => b.intent === "support").map(asPath);
+
   return {
     variant: "sms",
     triggeredBy: wf.triggeredBy ?? "1 Campaign",
     startLabel: wf.startLabel,
-    branches: wf.branches.map((b) => ({
-      title: b.title,
-      icon: "altRoute",
-      leaves: [{ title: `${b.title} Users`, action: b.action, tone: b.tone, chips: b.chips }],
-    })),
+    branches: [
+      {
+        title: INTENT_SALES, icon: "cart", locked: true,
+        leaves: [{
+          title: `All ${INTENT_SALES} Users`,
+          action: LEAF_QUALIFY,
+          tone: "green",
+          locked: true,
+          ...(sales.length ? { paths: sales } : {}),
+        }],
+      },
+      {
+        title: INTENT_SUPPORT, icon: "headset", locked: true,
+        leaves: [{
+          title: SUPPORT_LEAF,
+          action: LEAF_ESCALATE,
+          tone: "orange",
+          locked: true,
+          /* A workflow with no support-side use case renders the leaf as a terminal, exactly
+             as Comfort Keepers' voice tree does. */
+          ...(support.length ? { paths: support } : {}),
+        }],
+      },
+    ],
   };
 }
 

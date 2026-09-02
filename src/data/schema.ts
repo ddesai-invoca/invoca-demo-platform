@@ -713,6 +713,19 @@ export const WorkflowBranch = z.object({
   action: z.string(),                   // "Book Consultation"
   tone: z.enum(["green", "orange", "blue", "grey"]).optional(),
   chips: z.array(z.string()).optional(),
+  /* ⚠️ WHICH LOCKED LEAF THIS USE CASE HANGS UNDER (9/2/2026). An extra workflow's branches
+     used to be drawn as top-level intent nodes of their own, which skipped the four chrome
+     boxes the product does not let anyone rename. They are USE CASES, so they belong on the
+     row below "All Sales Inquiry Users" / "All Support Users", and this says which. Optional,
+     defaulting to the sales side, so existing data parses. */
+  intent: z.enum(["sales", "support"]).optional(),
+  /* ⚠️ NO `route` FIELD HERE, DELIBERATELY. `TreePath.route` exists because the voice
+     agent NAMES its destination aloud on transfer, and the locked leaf took that away. An
+     SMS agent books or hands off rather than transferring a live call, and the renderer
+     shows `Route to <route>` INSTEAD OF the action when route is set — so adding one here
+     would have made all four authored actions ("Book Appointment", "Warm Hand-off") dead
+     data that is stored and never drawn. Where a use case does hand off to a desk, its
+     ACTION says so. */
 });
 export type WorkflowBranch = z.infer<typeof WorkflowBranch>;
 

@@ -303,5 +303,57 @@ console.log("\nThe SMS workflow template's node names are locked");
     : bad("isLockedEdit is defined but never called — a locked rename would silently no-op");
 }
 
+/* ---- an EXTRA workflow gets the same locked chrome (9/2/2026) --------------
+   ⚠️ REPORTED, AND THIS FILE HAD RECORDED THE OPPOSITE AS DELIBERATE. The note under the SMS
+   template said extra workflows "keep their own authored branch names, because a nurture
+   flow's node is not 'Sales Inquiry'". That exception was wrong: the two intents and the two
+   user groups are product chrome on EVERY SMS workflow, and what an authored workflow
+   contributes is the USE CASES on the row beneath them. `extraTree` used to draw each branch
+   as its own top-level intent node with an unlocked `${title} Users` leaf, so a new workflow
+   rendered four intent nodes where the product always shows two, none of them locked. */
+{
+  const wf = readAny("src/screens/AgentWorkflow.tsx");
+  const extra = wf.slice(wf.indexOf("function extraTree"), wf.indexOf("function extraTree") + 3200);
+  extra.includes("title: INTENT_SALES") && extra.includes("title: INTENT_SUPPORT")
+    ? ok("extraTree draws the two chrome intents, not the authored branch titles")
+    : bad("extraTree still draws authored branches as top-level intent nodes");
+  extra.includes(`All \${INTENT_SALES} Users`) && extra.includes("SUPPORT_LEAF")
+    ? ok("and the two chrome user-group leaves")
+    : bad("extraTree does not use the chrome leaf titles");
+  (extra.match(/locked: true/g) ?? []).length >= 4
+    ? ok("all four chrome nodes are marked locked")
+    : bad("fewer than four locked nodes in extraTree — one of the boxes is renameable");
+  extra.includes("action: LEAF_QUALIFY") && extra.includes("action: LEAF_ESCALATE")
+    ? ok("its leaves carry the same two default actions as the voice tree")
+    : bad("extraTree's leaf actions are not the two defaults");
+  !/leaves: wf\.branches\.map/.test(wf)
+    ? ok("no authored branch is mapped straight onto a leaf again")
+    : bad("extraTree maps authored branches onto leaves again");
+
+  /* ⚠️ AND "LOCKED" MUST MEAN REFUSED, NOT MERELY DRAWN. Built here rather than grepped,
+     because a flag that is set and never consulted is the silent no-op this file exists to
+     stop — and `isLockedEdit` reads the NODE, so only a real tree exercises it. */
+  const tree = {
+    variant: "sms",
+    branches: [
+      { title: "Sales Inquiry", locked: true, leaves: [{ title: "All Sales Inquiry Users",
+        action: "Qualify", locked: true, paths: [{ title: "Ready to Book", action: "Book Appointment", chips: ["Brand"] }] }] },
+      { title: "Need Support", locked: true, leaves: [{ title: "All Support Users",
+        action: "Support & Escalate", locked: true, paths: [{ title: "Human Requested", action: "Warm Hand-off" }] }] },
+    ],
+  };
+  const refused = ["branches.0.title", "branches.1.title",
+    "branches.0.leaves.0.title", "branches.1.leaves.0.title",
+    "branches.0.leaves.0.action", "branches.1.leaves.0.action"];
+  refused.every((pth) => isLockedEdit(tree, pth))
+    ? ok("every one of the four boxes (and both leaf actions) is REFUSED by editGuard")
+    : bad(`a chrome edit is allowed: ${refused.find((pth) => !isLockedEdit(tree, pth))}`);
+  const editable = ["branches.0.leaves.0.paths.0.title", "branches.0.leaves.0.paths.0.action",
+    "branches.0.leaves.0.paths.0.chips.0", "branches.1.leaves.0.paths.0.title"];
+  editable.every((pth) => !isLockedEdit(tree, pth))
+    ? ok("and the use cases below stay editable, which is the whole point")
+    : bad(`a use-case edit is refused: ${editable.find((pth) => isLockedEdit(tree, pth))}`);
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");
 process.exit(fail ? 1 : 0);

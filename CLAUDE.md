@@ -972,10 +972,13 @@ regenerating anything. `npm run audit:ai` now enforces it with **7 checks**: the
 literals, the intents coming from the constants, no intent title derived from `c.newQ`/`c.supQ`
 again, the `locked` flag present, the trigger line's wording, and `isLockedEdit` being both
 defined AND called. Verified each fires on its own broken shape.
-⚠️ One narrow exception, and it is correct: **EXTRA agent workflows** (`extraWorkflows` in the
-schema) keep their own authored branch names, because they are different workflows with
-different intents — a nurture flow's node is not "Sales Inquiry". The two renderer literals
-still apply to them.
+❌ **SUPERSEDED 9/2/2026 — this said extra workflows were an exception, and that was wrong.**
+It read: "One narrow exception, and it is correct: EXTRA agent workflows keep their own authored
+branch names, because they are different workflows with different intents, a nurture flow's node
+is not 'Sales Inquiry'." Reported directly against a new Avi & Co workflow: the four chrome
+boxes are locked on EVERY SMS workflow, and an authored one contributes the USE CASES on the row
+beneath them, exactly as the voice tree does. What a nurture or speed-to-lead flow brings is its
+use cases, not its own intent nodes. See "A second SMS workflow for Avi & Co" below.
 
 ⚠️ **SCOPED TO THE SMS TEMPLATE.** The VOICE tree's intents still derive from the prospect's
 real queues and keep their caller-intent subtitles, because those were measured off Invoca's
@@ -1061,6 +1064,78 @@ leaves the timestamp alone is invisible to every already-loaded tab.
 is git-ignored by design. What this commit carries is the `SKIP_KEY` fix and this note. Getting
 the workflow onto the live site is a PATCH to the server's own Avi & Co record, which is a
 different record from the local one (the local demo's creator is `local@dev`).
+
+#### ⚠️ CORRECTED SAME DAY: the four chrome boxes are locked here too
+Reported after the first build: *"you forgot one rule, take a look at the voice tree, just like
+the voice tree the 'Sales Inquiry, Need support, all sales inquiry users and All support users'
+box are locked, those can't be change / edit. we can only do branches below that."*
+
+Right, and the miss was reading this file's own SMS note, which carved out an exception for
+`extraWorkflows` (now marked superseded above). `extraTree` drew each authored branch as its own
+TOP-LEVEL intent node with a `${title} Users` leaf under it, so the new workflow rendered **four
+intent nodes where the product always shows two**, and neither those nodes nor their leaves were
+locked. It now builds the same locked chrome the voice tree does, with the authored branches as
+the USE CASES below:
+
+```
+Triggered by                                   (authored: what fires this workflow)
+Conversation Start                             (authored: the classify line)
+Sales Inquiry            Need Support          LOCKED, icon cart / headset
+All Sales Inquiry Users  All Support Users     LOCKED, Qualify / Support & Escalate
+Ready to Book …          Human Requested       the use cases, editable
+```
+
+⚠️ **`WorkflowBranch` GAINED `intent: "sales" | "support"`** so an authored branch can say which
+locked leaf it hangs under. Optional and defaulting to the sales side, so existing data parses;
+Avi & Co's four are 3 sales + 1 support, Reyes Law's are 2 + 2.
+
+⚠️ **`chromeLocked` IS DELIBERATELY NOT SET, and the two flags are not the same thing.** Per-node
+`locked` refuses the four titles the user named (plus a locked leaf's ACTION, since
+`LOCKED_KEYS` covers it); `chromeLocked` additionally freezes `triggeredBy` and `startLabel`. An
+authored workflow's trigger line is real configuration — "New inbound lead, web form and missed
+call" is what fires it, and the Agent Studio table renders that same field under its own
+**Triggered By** column — and `editGuard`'s own note already sanctions this: "an authored extra
+workflow that wants its own trigger line simply does not set it."
+
+⚠️ **NO `route` ON A BRANCH, AND THAT WAS A REAL TRAP AVOIDED.** I first added one, mirroring
+`TreePath.route`. But the renderer draws `Route to <route>` **INSTEAD OF** the action, so all
+four authored actions ("Book Appointment", "Warm Hand-off") became data that is stored and never
+drawn — the silent no-op this file records repeatedly. `TreePath.route` exists because the VOICE
+agent names its destination aloud on transfer; an SMS agent books or hands off, so the action is
+the meaningful line and a use case that does hand off says so in its action.
+
+⚠️ **CONSEQUENCE, STATED: THIS RESTRUCTURED REYES LAW'S NURTURE TREE TOO.** Its four branches
+now sit under the two locked leaves rather than being intent nodes themselves (Re-engaged and
+Hesitant / Needs Info under Sales, Already Represented and Human Requested under Support). That
+is not collateral from someone else's fix — it is the same product rule, and its old tree was
+drawing chrome the product does not have.
+
+⚠️ **A STALE BROWSER CACHE MADE THE LAYOUT LOOK BROKEN, and the numbers are worth keeping
+because they diagnose it exactly.** Straight after the data edit the tree measured Sales Inquiry
+at cx855 over use cases at 567/759/951 (centre 759) and Need Support at cx1335 over a use case at
+1143 — parents not above their children. That is precisely what the OLD data renders: with no
+`intent` on any branch, all four use cases go under Sales (4 columns) and the support leaf becomes
+a fifth EMPTY terminal, putting Sales Inquiry at the midpoint of columns 0-3 and Need Support
+alone at column 4. The layout was never wrong; `DemoLibraryContext` had not yet refetched. After
+the refetch: sales leaf cx850 over 647/850/1052, support leaf cx1255 over 1255, both centred.
+**A demo-record edit is invisible until the library refetches, which is why the `updatedAt` bump
+matters.**
+
+⚠️ **THE BUILT-IN SMS TREE'S LEAVES ARE STILL UNLOCKED, and that is left alone rather than
+quietly changed.** `deriveTree`'s SMS branch locks the two intents but not the two leaves,
+because its leaf ACTION is documented as per-prospect configuration (`Schedule ${bookingTerm}`).
+The voice tree and now the extra tree lock both. Flagged for a decision rather than changed,
+since that screen is signed off and the user's report was about a new workflow.
+
+**`npm run audit:ai` gained 7 checks**, and they BUILD a tree and call the real `isLockedEdit`
+rather than grepping for a flag: the two chrome intents are drawn, both chrome leaves are, at
+least four nodes are marked locked, the leaves carry the two default actions, no authored branch
+is mapped onto a leaf again, all four boxes plus both leaf actions are REFUSED, and the use cases
+below stay editable (title, action, chips, and adding or removing one). Verified to fire by
+unlocking one leaf and by restoring the old branch mapping.
+⚠️ Its lock probe was wrong once — `isStructuralChange(before, after, path)` was called with the
+tree as `before` and a path string as `after`, so "adding a use case" reported as refused when it
+is allowed. **Fourth probe-not-code fault this session.**
 
 **Verified end to end:** the Agent Studio table lists three workflows with "Avi & Co - New" as
 Live / SMS / "New inbound lead, web form and missed call" under the **Triggered By** column (that
