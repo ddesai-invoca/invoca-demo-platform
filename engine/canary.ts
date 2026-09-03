@@ -96,6 +96,19 @@ export function auditProfile(p: any): { checks: number; failures: string[] } {
     ((p?.reports?.agentConfig?.aiRecommendations ?? []) as any[])
       .some((r) => (r?.qaPairs ?? []).length > 0));
 
+  /* ⚠️ **NO HUMAN-AGENT QA SIGNALS ON THE TWO AI CONVERSATION REPORTS (9/3/2026).** Asked for
+     directly: the AI SMS and AI Voice reports "don't need QA signals as there is no human agent
+     involved". The prompts no longer ask for them, but a model that has seen a thousand Invoca
+     screenshots volunteers "(QA) Proper Greeting" anyway, and it renders as if a person took the
+     call. The two screens also strip them on read (src/data/aiSignals.ts), so this check is about
+     catching the DATA drifting back rather than about what a prospect sees.
+     ⚠️ The human call-log CI and the Call Review scorecard keep theirs — do not widen this. */
+  const aiQa = ["smsConversationIntelligence", "voiceConversationIntelligence"].flatMap((k) =>
+    ((p?.reports?.[k]?.conversations ?? []) as any[]).flatMap((c) =>
+      ((c?.signals ?? []) as any[]).map((sig) => String(sig?.name ?? ""))));
+  check("AI conversation reports carry no (QA) human-agent signals",
+    !aiQa.some((n) => /^\s*\(qa\)/i.test(n)));
+
   /* Canonical breakdown order — the dashboard's donut sequence and the Google
      Ads re-skin both depend on it (see assembleDashboard in core.ts). */
   const ORDER = [/^calls by source/i, /^calls by medium/i, /^calls by campaign/i,

@@ -1,0 +1,5273 @@
+{
+  "id": "denver-health",
+  "customerName": "Denver Health",
+  "websiteUrl": "https://www.denverhealth.org/services/orthopedics",
+  "brandDomain": "denverhealth.org",
+  "networkName": "Invoca for Healthcare",
+  "industry": "Healthcare, Orthopedic Hospital & Physician Services",
+  "bookingTerm": "Consultation",
+  "customerNoun": "Patient",
+  "reports": {
+    "digitalInsights": {
+      "title": "Digital Journey & Call Attribution Report",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "filterLabel": "Marketing Source: 3 selected",
+      "chartLegend": "Total Interactions",
+      "yMax": 10000,
+      "yTicks": [
+        2000,
+        4000,
+        6000,
+        8000,
+        10000
+      ],
+      "chart": [
+        {
+          "date": "Jan 1-4",
+          "value": 4312
+        },
+        {
+          "date": "Jan 5-11",
+          "value": 8047
+        },
+        {
+          "date": "Jan 12-18",
+          "value": 7913
+        },
+        {
+          "date": "Jan 19-25",
+          "value": 8229
+        },
+        {
+          "date": "Jan 26-31",
+          "value": 6556
+        }
+      ],
+      "dimensionColumns": [
+        "Marketing Source",
+        "Marketing Medium",
+        "Marketing Campaign",
+        "Marketing Search Term",
+        "Full Landing Page URL",
+        "Website Journey"
+      ],
+      "signalColumns": [
+        {
+          "label": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Discussed (Industry)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        },
+        {
+          "label": "Consultation Booked (Conversion)",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Knee Replacement Denver",
+          "marketingSearchTerm": "knee replacement denver health",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/joint-replacement?utm_source=google&utm_medium=cpc&utm_campaign=knee_replacement_denver",
+          "websiteJourney": "Home / Orthopedics / Joint Replacement",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Denver Orthopedic Surgeon Near Me",
+          "marketingSearchTerm": "orthopedic surgeon denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/find-a-provider?utm_source=google&utm_medium=cpc&utm_campaign=ortho_surgeon_near_me",
+          "websiteJourney": "Home / Orthopedics / Find a Provider",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Sports Injury Care Denver",
+          "marketingSearchTerm": "sports medicine doctor near me denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/sports-medicine?utm_source=bing&utm_medium=cpc&utm_campaign=sports_injury_care",
+          "websiteJourney": "Home / Orthopedics / Sports Medicine",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "ACL Surgery Colorado",
+          "marketingSearchTerm": "acl surgery cost colorado",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/sports-medicine/acl?utm_source=google&utm_medium=cpc&utm_campaign=acl_surgery_colorado",
+          "websiteJourney": "Home / Orthopedics / Sports Medicine / ACL Repair",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Orthopedics Service Line Content Hub",
+          "marketingSearchTerm": "broken bone urgent care denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/trauma-fracture-care?utm_source=google&utm_medium=organic&utm_campaign=fracture_care_hub",
+          "websiteJourney": "Home / Orthopedics / Trauma & Fracture Care",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Rotator Cuff Repair Denver",
+          "marketingSearchTerm": "rotator cuff repair denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/shoulder/rotator-cuff?utm_source=google&utm_medium=cpc&utm_campaign=rotator_cuff_repair",
+          "websiteJourney": "Home / Orthopedics / Hand & Upper Extremity / Shoulder",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Denver Orthopedic Surgeon Near Me",
+          "marketingSearchTerm": "carpal tunnel doctor denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/hand-wrist/carpal-tunnel?utm_source=bing&utm_medium=cpc&utm_campaign=hand_upper_extremity",
+          "websiteJourney": "Home / Orthopedics / Hand, Wrist & Upper Extremity",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Fracture Care & Trauma Landing Pages",
+          "marketingSearchTerm": "back pain specialist denver health",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/spine-care?utm_source=google&utm_medium=organic&utm_campaign=spine_care_pages",
+          "websiteJourney": "Home / Orthopedics / Spine Care",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Knee Replacement Denver",
+          "marketingSearchTerm": "total hip replacement denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/joint-replacement/hip?utm_source=google&utm_medium=cpc&utm_campaign=knee_replacement_denver",
+          "websiteJourney": "Home / Orthopedics / Joint Replacement / Hip",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Orthopedics Service Line Content Hub",
+          "marketingSearchTerm": "physical therapy denver health",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/physical-therapy?utm_source=google&utm_medium=organic&utm_campaign=ortho_content_hub",
+          "websiteJourney": "Home / Orthopedics / Physical Therapy & Rehabilitation",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Orthopedics Service Line Content Hub",
+          "marketingSearchTerm": "orthopedic clinic accepting medicaid denver",
+          "landingPageUrl": "https://www.denverhealth.org/billing-insurance/financial-assistance?utm_source=google&utm_medium=organic&utm_campaign=ortho_content_hub",
+          "websiteJourney": "Home / Billing & Insurance / Financial Assistance",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Move Better with Denver Health",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics?utm_source=facebook&utm_medium=social&utm_campaign=move_better",
+          "websiteJourney": "Home / Orthopedics",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Instagram",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Meet Our Ortho Team",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/find-a-provider?utm_source=instagram&utm_medium=social&utm_campaign=meet_ortho_team",
+          "websiteJourney": "Home / Orthopedics / Meet the Team",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Considering Knee Surgery Book a Consult",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/joint-replacement?utm_source=facebook&utm_medium=display&utm_campaign=knee_retargeting",
+          "websiteJourney": "Home / Orthopedics / Joint Replacement",
+          "signals": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Sports Injury Care Denver",
+          "marketingSearchTerm": "meniscus surgery denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/sports-medicine/knee?utm_source=google&utm_medium=cpc&utm_campaign=sports_injury_care",
+          "websiteJourney": "Home / Orthopedics / Sports Medicine / Knee",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Bing",
+          "marketingMedium": "Bing",
+          "marketingCampaign": "Denver Orthopedic Surgeon Near Me",
+          "marketingSearchTerm": "foot and ankle surgeon denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/foot-ankle?utm_source=bing&utm_medium=cpc&utm_campaign=ortho_surgeon_near_me",
+          "websiteJourney": "Home / Orthopedics / Foot & Ankle",
+          "signals": [
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "Organic",
+          "marketingCampaign": "Fracture Care & Trauma Landing Pages",
+          "marketingSearchTerm": "pediatric orthopedic doctor denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/pediatric?utm_source=google&utm_medium=organic&utm_campaign=fracture_care_pages",
+          "websiteJourney": "Home / Orthopedics / Pediatric Orthopedics",
+          "signals": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "YouTube",
+          "marketingMedium": "Instagram",
+          "marketingCampaign": "Move Better with Denver Health",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/physical-therapy?utm_source=youtube&utm_medium=social&utm_campaign=move_better",
+          "websiteJourney": "Home / Orthopedics / Physical Therapy & Rehabilitation",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Google",
+          "marketingMedium": "cpc",
+          "marketingCampaign": "Denver Orthopedic Surgeon Near Me",
+          "marketingSearchTerm": "corticosteroid injection knee denver",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/joint-injection?utm_source=google&utm_medium=cpc&utm_campaign=ortho_surgeon_near_me",
+          "websiteJourney": "Home / Orthopedics / Joint Injection",
+          "signals": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "marketingSource": "Facebook",
+          "marketingMedium": "Facebook",
+          "marketingCampaign": "Trauma Care Awareness",
+          "marketingSearchTerm": "—",
+          "landingPageUrl": "https://www.denverhealth.org/services/orthopedics/trauma-fracture-care?utm_source=facebook&utm_medium=social&utm_campaign=trauma_awareness",
+          "websiteJourney": "Home / Orthopedics / Trauma & Fracture Care",
+          "signals": [
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    "marketingDashboard": {
+      "title": "Marketing Performance Dashboard (Denver Health)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "Call Performance Summary",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "27,496"
+            },
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "21%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$24,712,223"
+            }
+          ]
+        },
+        {
+          "title": "Non-Sales Inquiries",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "4,399"
+            },
+            {
+              "label": "Billing & Insurance Inquiry (Percent)",
+              "value": "7%"
+            },
+            {
+              "label": "Existing Patient Follow-Up (Percent)",
+              "value": "5%"
+            },
+            {
+              "label": "Medical Records Request (Percent)",
+              "value": "4%"
+            }
+          ]
+        },
+        {
+          "title": "New Patient Call Breakout Metrics",
+          "tiles": [
+            {
+              "label": "New Patient Call (Percent)",
+              "value": "84%"
+            },
+            {
+              "label": "Pricing Discussed (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Non-Qualifying Inquiry (Percent)",
+              "value": "18%"
+            },
+            {
+              "label": "New Patient (Percent)",
+              "value": "21%"
+            }
+          ]
+        }
+      ],
+      "salesCallBreakoutGraph": {
+        "yLabel": "New Patient Call (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "New Patient Call (Count)",
+            "values": [
+              3142,
+              5318,
+              5076,
+              4987,
+              4574
+            ]
+          },
+          {
+            "name": "Pricing Discussed (Count)",
+            "values": [
+              1532,
+              2614,
+              2489,
+              2401,
+              2237
+            ]
+          },
+          {
+            "name": "Unqualified Lead (Count)",
+            "values": [
+              673,
+              1148,
+              1092,
+              1054,
+              982
+            ]
+          },
+          {
+            "name": "New Patient (Count)",
+            "values": [
+              786,
+              1327,
+              1268,
+              1231,
+              1162
+            ]
+          }
+        ]
+      },
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 27496,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "9,842",
+                "38%",
+                "16%",
+                "$6,482,915"
+              ]
+            },
+            {
+              "name": "Google Business Profile",
+              "metrics": [
+                "7,318",
+                "40%",
+                "20%",
+                "$6,091,340"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "5,461",
+                "43%",
+                "23%",
+                "$5,318,760"
+              ]
+            },
+            {
+              "name": "Direct",
+              "metrics": [
+                "2,987",
+                "45%",
+                "29%",
+                "$3,724,508"
+              ]
+            },
+            {
+              "name": "Community & Referral",
+              "metrics": [
+                "1,888",
+                "48%",
+                "36%",
+                "$3,094,700"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 27496,
+          "rows": [
+            {
+              "name": "Organic",
+              "metrics": [
+                "10,214",
+                "37%",
+                "15%",
+                "$6,928,570"
+              ]
+            },
+            {
+              "name": "Local Listings",
+              "metrics": [
+                "6,872",
+                "40%",
+                "19%",
+                "$5,588,700"
+              ]
+            },
+            {
+              "name": "CPC",
+              "metrics": [
+                "5,118",
+                "43%",
+                "23%",
+                "$5,082,600"
+              ]
+            },
+            {
+              "name": "Email",
+              "metrics": [
+                "3,241",
+                "46%",
+                "28%",
+                "$3,942,903"
+              ]
+            },
+            {
+              "name": "Social",
+              "metrics": [
+                "2,051",
+                "49%",
+                "35%",
+                "$3,169,450"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 11312,
+          "rows": [
+            {
+              "name": "Knee Replacement Denver, Search",
+              "metrics": [
+                "3,842",
+                "38%",
+                "16%",
+                "$2,631,480"
+              ]
+            },
+            {
+              "name": "Sports Injury Care Denver",
+              "metrics": [
+                "2,918",
+                "41%",
+                "20%",
+                "$2,498,720"
+              ]
+            },
+            {
+              "name": "Move Better with Denver Health, Social",
+              "metrics": [
+                "2,104",
+                "44%",
+                "24%",
+                "$2,161,340"
+              ]
+            },
+            {
+              "name": "Joint Replacement Seminar Invite, Email",
+              "metrics": [
+                "1,461",
+                "47%",
+                "29%",
+                "$1,814,905"
+              ]
+            },
+            {
+              "name": "Considering Knee Surgery? Book a Consult, Retargeting",
+              "metrics": [
+                "987",
+                "50%",
+                "36%",
+                "$1,519,660"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 7192,
+          "rows": [
+            {
+              "name": "orthopedic surgeon denver",
+              "metrics": [
+                "2,417",
+                "39%",
+                "17%",
+                "$1,758,940"
+              ]
+            },
+            {
+              "name": "knee replacement denver health",
+              "metrics": [
+                "1,864",
+                "42%",
+                "21%",
+                "$1,673,110"
+              ]
+            },
+            {
+              "name": "sports medicine doctor near me denver",
+              "metrics": [
+                "1,352",
+                "45%",
+                "25%",
+                "$1,446,320"
+              ]
+            },
+            {
+              "name": "acl surgery cost colorado",
+              "metrics": [
+                "918",
+                "48%",
+                "30%",
+                "$1,176,880"
+              ]
+            },
+            {
+              "name": "rotator cuff repair denver",
+              "metrics": [
+                "641",
+                "51%",
+                "37%",
+                "$1,014,560"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Set (Industry) (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Joint Replacement / Adult Reconstruction",
+              "metrics": [
+                "7,843",
+                "38%",
+                "14%",
+                "$7,012,455"
+              ]
+            },
+            {
+              "name": "Orthopedic Trauma & Fracture Care",
+              "metrics": [
+                "6,214",
+                "42%",
+                "18%",
+                "$5,584,120"
+              ]
+            },
+            {
+              "name": "Sports Medicine",
+              "metrics": [
+                "5,687",
+                "44%",
+                "22%",
+                "$5,102,338"
+              ]
+            },
+            {
+              "name": "Spine Care",
+              "metrics": [
+                "4,231",
+                "46%",
+                "27%",
+                "$3,884,210"
+              ]
+            },
+            {
+              "name": "Physical Therapy & Rehabilitation",
+              "metrics": [
+                "3,521",
+                "49%",
+                "33%",
+                "$3,129,100"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Region",
+          "tableTitle": "Region Summary",
+          "dimensionColumn": "Location Region",
+          "metricColumns": [
+            "Call Count",
+            "Quote Discussed (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 27496,
+          "rows": [
+            {
+              "name": "West",
+              "metrics": [
+                "9,124",
+                "41%",
+                "15%",
+                "$8,201,455"
+              ]
+            },
+            {
+              "name": "Mountain",
+              "metrics": [
+                "6,847",
+                "44%",
+                "19%",
+                "$6,150,300"
+              ]
+            },
+            {
+              "name": "South",
+              "metrics": [
+                "5,213",
+                "47%",
+                "24%",
+                "$4,684,210"
+              ]
+            },
+            {
+              "name": "Midwest",
+              "metrics": [
+                "3,986",
+                "49%",
+                "29%",
+                "$3,580,100"
+              ]
+            },
+            {
+              "name": "Northeast",
+              "metrics": [
+                "2,326",
+                "53%",
+                "36%",
+                "$2,096,158"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Joint Replacement / Adult Reconstruction",
+            "values": [
+              214,
+              238,
+              241,
+              205,
+              200
+            ]
+          },
+          {
+            "name": "Orthopedic Trauma & Fracture Care",
+            "values": [
+              218,
+              242,
+              245,
+              210,
+              204
+            ]
+          },
+          {
+            "name": "Sports Medicine",
+            "values": [
+              245,
+              268,
+              272,
+              235,
+              231
+            ]
+          },
+          {
+            "name": "Spine Care",
+            "values": [
+              224,
+              244,
+              248,
+              214,
+              212
+            ]
+          },
+          {
+            "name": "Physical Therapy & Rehabilitation",
+            "values": [
+              228,
+              248,
+              252,
+              218,
+              216
+            ]
+          }
+        ]
+      }
+    },
+    "callReview": {
+      "shownCount": "15 Calls",
+      "totalNote": "total of 27,496 calls from Jan 1 to Jan 31",
+      "scoreDisplay": "Quality Score",
+      "sortBy": "Highest Score",
+      "dateRange": "01/01/2026-01/31/2026",
+      "calls": [
+        {
+          "scoreLabel": "Quality Score",
+          "score": 92,
+          "summary": "Marcus Delgado called about a knee replacement after years of arthritis pain. Rosey reviewed his imaging history, confirmed Denver Health accepts his plan, and scheduled a new-patient consultation with an adult reconstruction surgeon. Marcus was reassured and confirmed the visit before hanging up.",
+          "date": "Jan 6, 9:42 AM",
+          "agent": "Rosey",
+          "duration": "2m 50s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 6,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 88,
+          "summary": "Angela Pruitt called to arrange physical therapy after her recent shoulder surgery. Lila located her surgeon's rehab order and booked a series of sessions at the orthopedics clinic. Angela was grateful and asked about parking, which Lila explained clearly.",
+          "date": "Feb 11, 1:15 PM",
+          "agent": "Lila",
+          "duration": "2m 12s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 8,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 84,
+          "summary": "David Okafor called to check on results from his knee MRI ordered last week. Oscar confirmed the images were read and that the surgeon's office would call with findings within 24-48h. David appreciated the clear timeline and stayed calm throughout.",
+          "date": "Mar 3, 10:30 AM",
+          "agent": "Oscar",
+          "duration": "1m 48s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 11,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 76,
+          "summary": "Bethany Cruz, a new patient and recreational runner, called to set up a sports medicine evaluation for ongoing ankle pain. Mary collected her full contact details, insurance information, and injury history, then scheduled the intake consultation with a sports medicine provider. Bethany confirmed the date and requested a reminder text.",
+          "date": "Apr 8, 3:20 PM",
+          "agent": "Mary",
+          "duration": "3m 05s",
+          "scorecards": 8,
+          "comments": 1,
+          "negativeSentiment": 13,
+          "evaluated": true,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 71,
+          "summary": "Frank Sullivan called wanting a cost estimate for a possible total knee replacement. Lee walked him through the consultation-first process and scheduled a new-patient orthopedic visit to evaluate his knee. Frank still had billing questions but agreed to come in.",
+          "date": "May 14, 11:05 AM",
+          "agent": "Lee",
+          "duration": "2m 40s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 15,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 67,
+          "summary": "Nadia Kensington called after a fall left her with a suspected wrist fracture. Sue advised urgent evaluation and booked a same-week fracture care consultation with the trauma team. Nadia was anxious but relieved to have an appointment secured.",
+          "date": "Jun 2, 4:48 PM",
+          "agent": "Sue",
+          "duration": "2m 20s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 18,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 63,
+          "summary": "Gregory Alvarado disputed a charge on his bill for a carpal tunnel release he had last month. Mike reviewed the itemized statement and opened a billing inquiry with financial services. Gregory remained frustrated but accepted the follow-up.",
+          "date": "Jun 19, 9:12 AM",
+          "agent": "Mike",
+          "duration": "2m 55s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 26,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 58,
+          "summary": "Priya Ramachandran complained that her physical therapy sessions kept getting rescheduled. Jennifer apologized, verified the clinic's availability, and locked in a consistent weekly time. Priya was still irritated by the earlier confusion.",
+          "date": "Jul 7, 2:34 PM",
+          "agent": "Jennifer",
+          "duration": "2m 18s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 29,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 54,
+          "summary": "Tyler Brennan, a high school coach's referral, called about a sports medicine assessment for a possible ACL tear. Rose gathered his information and scheduled a new evaluation, though the first available slot was further out than he hoped. He booked it anyway.",
+          "date": "Aug 5, 10:50 AM",
+          "agent": "Rose",
+          "duration": "2m 44s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 22,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 49,
+          "summary": "Denise Holloway called about a large bill following her knee MRI and asked why it was not fully covered. Oscar explained the imaging costs and referred her to financial assistance. Denise was upset about the amount and asked to escalate.",
+          "date": "Aug 22, 1:40 PM",
+          "agent": "Oscar",
+          "duration": "3m 10s",
+          "scorecards": 7,
+          "comments": 1,
+          "negativeSentiment": 31,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 45,
+          "summary": "Samuel Ortega called about numbness in his hand and a possible carpal tunnel problem. Lila collected his details and scheduled a hand and upper extremity consultation despite a long hold earlier in the call. Samuel confirmed but noted the wait time was frustrating.",
+          "date": "Sep 3, 11:28 AM",
+          "agent": "Lila",
+          "duration": "2m 58s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 28,
+          "evaluated": false,
+          "converted": true
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 42,
+          "summary": "Carla Whitfield called because her cast from a recent fracture felt too tight and painful. Lee flagged it as urgent and arranged a same-day check, but Carla was distressed about being transferred twice. The issue was routed to the trauma clinic.",
+          "date": "Sep 20, 3:52 PM",
+          "agent": "Lee",
+          "duration": "2m 05s",
+          "scorecards": 8,
+          "comments": 0,
+          "negativeSentiment": 34,
+          "evaluated": true,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 39,
+          "summary": "Raymond Fisk called to cancel his upcoming spine consultation because he found a closer provider. Jennifer processed the cancellation and offered to keep his records active. Raymond was curt and declined a reschedule.",
+          "date": "Sep 29, 9:05 AM",
+          "agent": "Jennifer",
+          "duration": "1m 20s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 36,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 36,
+          "summary": "Loretta Simmons called angry about being billed twice for a corticosteroid joint injection. Mike struggled to locate the duplicate charge and the call grew tense before he promised a callback. Loretta remained dissatisfied at the end.",
+          "date": "Oct 6, 4:15 PM",
+          "agent": "Mike",
+          "duration": "3m 25s",
+          "scorecards": 7,
+          "comments": 2,
+          "negativeSentiment": 40,
+          "evaluated": false,
+          "converted": false
+        },
+        {
+          "scoreLabel": "Quality Score",
+          "score": 34,
+          "summary": "Howard Mackenzie called after hours seeking to schedule a foot and ankle consultation and rolled to voicemail. He left a rushed message with only a partial callback number. No agent was available and the message was queued for the next business day.",
+          "date": "Oct 14, 6:48 PM",
+          "agent": "No Agent",
+          "duration": "0m 47s",
+          "scorecards": 7,
+          "comments": 0,
+          "negativeSentiment": 38,
+          "evaluated": false,
+          "converted": false
+        }
+      ],
+      "searchSuggestions": [
+        "knee replacement",
+        "physical therapy",
+        "mri",
+        "fracture",
+        "sports medicine",
+        "carpal tunnel"
+      ]
+    },
+    "callDetail": {
+      "callId": "0597-627F62F2570D",
+      "agent": "Marcus Bell",
+      "date": "Oct 22, 2:28 PM",
+      "duration": "2m 41s",
+      "scorecardName": "BASE SKILLS",
+      "scorecardPercent": 78,
+      "scorecardPoints": "70/90 Points",
+      "scorecardRows": [
+        {
+          "name": "(QA) Proper Greeting",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "(QA) Proper Close",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Full Name",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Qualify Chief Complaint or Injury Type",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Confirm Service Area and ZIP Code",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Capture Email Address",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Capture Contact Phone Number",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Establish Consultation Availability and Schedule",
+          "points": "10/10",
+          "status": "met"
+        },
+        {
+          "name": "Set Patient Expectations for Visit",
+          "points": "0/10",
+          "status": "unmet"
+        },
+        {
+          "name": "Compliance and Chart Documentation Ready",
+          "points": "—/—",
+          "status": "na"
+        }
+      ],
+      "signalsMet": 13,
+      "signalsUnmet": 26,
+      "signalsNa": 25,
+      "metSignals": [
+        "Caller expressed interest in scheduling",
+        "Caller confirmed availability for morning appointment",
+        "Caller is new to Denver Health orthopedic services",
+        "Service area verified as Denver metro",
+        "Chief complaint clearly identified",
+        "Agent offered specific clinic locations",
+        "Caller accepted appointment time",
+        "Agent confirmed appointment details",
+        "Caller provided full legal name",
+        "Caller provided valid phone number",
+        "Scheduling system confirmed availability",
+        "Agent maintained professional tone",
+        "Caller showed confidence in Denver Health"
+      ],
+      "unmetSignals": [
+        "Email address not captured during call",
+        "Caller insurance eligibility not verified",
+        "Specific injury imaging needs not discussed",
+        "Estimated wait time for surgery not mentioned",
+        "Payment options and financial assistance not explained",
+        "Parking and location details not provided",
+        "Pre-visit questionnaire not referenced",
+        "Prescriptions or medications not reviewed",
+        "Severity assessment or urgency not clarified",
+        "Follow-up communication method not confirmed"
+      ],
+      "naSignals": [
+        "Previous visit history not applicable to new patient",
+        "Billing issues or account adjustments",
+        "Return authorization or revision surgery discussion",
+        "Insurance claim status or prior authorization",
+        "Prescription refill requests",
+        "Medical records transfer from another provider",
+        "Cancellation or rescheduling of existing appointment",
+        "Payment plan reconciliation",
+        "DME or orthotic device ordering"
+      ],
+      "prompts": [
+        {
+          "question": "Is the patient trying to solve a specific problem?",
+          "answer": "Yes, the caller has a right shoulder injury from a work accident approximately four weeks ago. She wants an evaluation for possible rotator cuff damage and is seeking surgical consultation if needed."
+        },
+        {
+          "question": "What are the patient's expectations?",
+          "answer": "The caller expects a timely consultation appointment with an orthopedic surgeon, wants imaging to be arranged during the visit, and hopes for a clear diagnosis and treatment plan for her shoulder."
+        },
+        {
+          "question": "How could the agent handle the call better?",
+          "answer": "The agent should have captured the caller's email address for appointment confirmation and should have briefly explained what to expect during the consultation visit, such as range-of-motion testing and possible X-ray ordering in clinic."
+        }
+      ],
+      "convStart": "00:16",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "00:16",
+          "text": "Thank you for calling Denver Health Orthopedics. This is Marcus Bell. How can I help you today?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:24",
+          "text": "Hi Marcus. Yes, I injured my shoulder about a month ago at work. I need to see an orthopedic surgeon. I heard Denver Health has a great orthopedics team."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:36",
+          "text": "I am sorry to hear that. We definitely can help you. I would be happy to schedule a consultation with one of our orthopedic surgeons. Can I get your full name first, please?"
+        },
+        {
+          "speaker": "caller",
+          "time": "00:46",
+          "text": "Of course. It is Sarah Mitchell."
+        },
+        {
+          "speaker": "agent",
+          "time": "00:50",
+          "text": "Thank you, Sarah. And just to make sure we get you to the right specialist, can you tell me a bit more about your shoulder injury? What happened?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:02",
+          "text": "I fell off a ladder at a construction site and landed hard on my right shoulder. Since then I have had pain and I cannot lift my arm very well. My primary care doctor said I should see an orthopedic surgeon to check for rotator cuff damage."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:18",
+          "text": "I understand. That definitely sounds like something we need to evaluate. A rotator cuff evaluation is right in our wheelhouse. What ZIP code are you calling from, Sarah?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:27",
+          "text": "I live in Denver. My ZIP is 80202."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:33",
+          "text": "Perfect. We serve the Denver metro area and you are definitely in our service area. Now let me get your contact information. What is the best phone number to reach you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "01:43",
+          "text": "You can reach me at ****-***-**** extension 4521."
+        },
+        {
+          "speaker": "agent",
+          "time": "01:50",
+          "text": "Great, thank you. And I also want to make sure we have your email so we can send you appointment details and any forms you may need to complete beforehand."
+        },
+        {
+          "speaker": "caller",
+          "time": "01:59",
+          "text": "Oh, actually I prefer not to give my email over the phone. Can you just call me to confirm everything?"
+        },
+        {
+          "speaker": "agent",
+          "time": "02:06",
+          "text": "I completely understand. We will call you to confirm. Now let us get you scheduled. We have several appointments available next week. We have Tuesday morning at 10:00 AM or Wednesday afternoon at 2:00 PM. Which works better for you?"
+        },
+        {
+          "speaker": "caller",
+          "time": "02:19",
+          "text": "Tuesday morning works great for me. 10:00 AM is perfect."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:24",
+          "text": "Excellent. So I have you down for Tuesday, October 29th at 10:00 AM with our orthopedic team at our central Denver clinic location. We will give you a call on Monday to confirm. Thank you for choosing Denver Health, Sarah. We look forward to seeing you."
+        },
+        {
+          "speaker": "caller",
+          "time": "02:39",
+          "text": "Thank you, Marcus. I really appreciate it. Bye."
+        },
+        {
+          "speaker": "agent",
+          "time": "02:41",
+          "text": "You are welcome. Take care."
+        }
+      ],
+      "aiSummary": "Sarah Mitchell, a new Denver Health orthopedic patient, called to schedule a consultation for a right shoulder injury sustained in a work accident approximately four weeks prior. She reported pain and limited range of motion consistent with possible rotator cuff damage, as recommended by her primary care physician. Marcus Bell successfully captured her name, contact phone number, and service area confirmation, and booked her for a Tuesday morning appointment at the central Denver clinic. However, her email address was not captured, and specific expectations for the consultation visit were not discussed.",
+      "comment": {
+        "author": "Kyle Paklaian",
+        "audience": "Everyone",
+        "date": "Oct 22, 2:55 PM",
+        "text": "@Marcus, great job on the overall structure and pacing of this call. You greeted professionally, qualified the chief complaint clearly, and confirmed service area before scheduling. The booking felt natural and the appointment detail was solid. Two coaching points. First, when Sarah declined to share her email, you could have acknowledged her preference and offered an alternative like sending a text message or having the confirmation call include the details verbally. Second, you could have briefly set expectations for the visit. For example, you might have said, 'When you come in on Tuesday, our surgeon will do a range-of-motion exam and may order imaging like an X-ray or MRI to get a complete picture of your rotator cuff. The whole visit usually takes about 30 to 45 minutes.' Small additions like that reduce patient anxiety and improve satisfaction. Otherwise, excellent work."
+      }
+    },
+    "opsDashboard": {
+      "title": "Marketing and Operations Performance with Revenue",
+      "dateRange": "1/1/2026-1/31/2026",
+      "kpiGroups": [
+        {
+          "title": "MARKETING DRIVEN CALLS",
+          "tiles": [
+            {
+              "label": "Call Count",
+              "value": "27,496"
+            },
+            {
+              "label": "Avg. Duration",
+              "value": "2:56"
+            },
+            {
+              "label": "Avg. Revenue (Sale Amount)",
+              "value": "$898.76"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$24,712,223"
+            }
+          ]
+        },
+        {
+          "title": "NEW PATIENT ACQUISITION",
+          "tiles": [
+            {
+              "label": "Caller Type: New Patients (Count)",
+              "value": "16,498"
+            },
+            {
+              "label": "Caller Type: New Patients (Percent)",
+              "value": "60%"
+            },
+            {
+              "label": "Consultation: Scheduled (Count)",
+              "value": "11,273"
+            },
+            {
+              "label": "Consultation: Scheduled (Percent)",
+              "value": "41%"
+            }
+          ]
+        },
+        {
+          "title": "EXISTING PATIENTS & RESCHEDULING",
+          "tiles": [
+            {
+              "label": "Caller Type: Existing Patient (Count)",
+              "value": "10,998"
+            },
+            {
+              "label": "Caller Type: Existing Patient (Percent)",
+              "value": "40%"
+            },
+            {
+              "label": "Consultation: Canceled (Percent)",
+              "value": "7%"
+            }
+          ]
+        }
+      ],
+      "marketingSections": [
+        {
+          "chartTitle": "MARKETING: Source (Consultations)",
+          "chart": {
+            "legend": "Consultation: Scheduled (Percent)",
+            "axisMax": 60,
+            "axisTicks": [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60
+            ],
+            "axisSuffix": "%",
+            "bars": [
+              {
+                "name": "Referral",
+                "value": 58,
+                "display": "58%"
+              },
+              {
+                "name": "Direct",
+                "value": 50,
+                "display": "50%"
+              },
+              {
+                "name": "Paid Search",
+                "value": 42,
+                "display": "42%"
+              },
+              {
+                "name": "Google Business Profile",
+                "value": 34,
+                "display": "34%"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Source (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Source",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Organic Search",
+                  "9,847",
+                  "27%",
+                  "$8,447,556"
+                ]
+              },
+              {
+                "cells": [
+                  "Google Business Profile",
+                  "6,932",
+                  "34%",
+                  "$6,012,338"
+                ]
+              },
+              {
+                "cells": [
+                  "Paid Search",
+                  "5,418",
+                  "42%",
+                  "$4,918,221"
+                ]
+              },
+              {
+                "cells": [
+                  "Direct",
+                  "3,286",
+                  "50%",
+                  "$3,096,442"
+                ]
+              },
+              {
+                "cells": [
+                  "Referral",
+                  "2,013",
+                  "58%",
+                  "$2,237,666"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Medium (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 12000,
+            "axisTicks": [
+              0,
+              2000,
+              4000,
+              6000,
+              8000,
+              10000,
+              12000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "organic",
+                "value": 10213,
+                "display": "10,213"
+              },
+              {
+                "name": "cpc",
+                "value": 6148,
+                "display": "6,148"
+              },
+              {
+                "name": "referral",
+                "value": 4972,
+                "display": "4,972"
+              },
+              {
+                "name": "(none)",
+                "value": 3724,
+                "display": "3,724"
+              },
+              {
+                "name": "email",
+                "value": 2439,
+                "display": "2,439"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Medium (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Medium",
+              "Call Count",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "organic",
+                  "10,213",
+                  "29%"
+                ]
+              },
+              {
+                "cells": [
+                  "cpc",
+                  "6,148",
+                  "36%"
+                ]
+              },
+              {
+                "cells": [
+                  "referral",
+                  "4,972",
+                  "43%"
+                ]
+              },
+              {
+                "cells": [
+                  "(none)",
+                  "3,724",
+                  "50%"
+                ]
+              },
+              {
+                "cells": [
+                  "email",
+                  "2,439",
+                  "57%"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Campaign (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 4000,
+            "axisTicks": [
+              0,
+              500,
+              1000,
+              1500,
+              2000,
+              2500,
+              3000,
+              3500,
+              4000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "Knee Replacement Denver",
+                "value": 3847,
+                "display": "3,847"
+              },
+              {
+                "name": "Denver Orthopedic Surgeon Near Me",
+                "value": 3124,
+                "display": "3,124"
+              },
+              {
+                "name": "Sports Injury Care Denver",
+                "value": 2568,
+                "display": "2,568"
+              },
+              {
+                "name": "Move Better with Denver Health",
+                "value": 1893,
+                "display": "1,893"
+              },
+              {
+                "name": "Considering Knee Surgery Book a Consult",
+                "value": 1247,
+                "display": "1,247"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Campaign (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Campaign",
+              "Call Count",
+              "Consultation: Scheduled (Percent)",
+              "Total Revenue (Sale Amount)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Knee Replacement Denver",
+                  "3,847",
+                  "31%",
+                  "$3,412,778"
+                ]
+              },
+              {
+                "cells": [
+                  "Denver Orthopedic Surgeon Near Me",
+                  "3,124",
+                  "39%",
+                  "$2,738,455"
+                ]
+              },
+              {
+                "cells": [
+                  "Sports Injury Care Denver",
+                  "2,568",
+                  "47%",
+                  "$2,104,332"
+                ]
+              },
+              {
+                "cells": [
+                  "Move Better with Denver Health",
+                  "1,893",
+                  "58%",
+                  "$1,489,221"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "chartTitle": "MARKETING: Search Terms (Calls)",
+          "chart": {
+            "legend": "Call Count",
+            "axisMax": 3000,
+            "axisTicks": [
+              0,
+              500,
+              1000,
+              1500,
+              2000,
+              2500,
+              3000
+            ],
+            "axisSuffix": "",
+            "bars": [
+              {
+                "name": "orthopedic surgeon Denver",
+                "value": 2847,
+                "display": "2,847"
+              },
+              {
+                "name": "knee replacement Denver Health",
+                "value": 2134,
+                "display": "2,134"
+              },
+              {
+                "name": "sports medicine doctor near me Denver",
+                "value": 1782,
+                "display": "1,782"
+              },
+              {
+                "name": "ACL surgery cost Colorado",
+                "value": 1356,
+                "display": "1,356"
+              },
+              {
+                "name": "rotator cuff repair Denver",
+                "value": 987,
+                "display": "987"
+              }
+            ]
+          },
+          "tableTitle": "MARKETING: Search Terms (Calls resulting in Consultations)",
+          "table": {
+            "columns": [
+              "Marketing Search Terms",
+              "Consultation: Scheduled (Percent)"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "orthopedic surgeon Denver",
+                  "33%"
+                ]
+              },
+              {
+                "cells": [
+                  "knee replacement Denver Health",
+                  "41%"
+                ]
+              },
+              {
+                "cells": [
+                  "sports medicine doctor near me Denver",
+                  "49%"
+                ]
+              },
+              {
+                "cells": [
+                  "ACL surgery cost Colorado",
+                  "59%"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "webpagesTitle": "Webpages driving New Patients",
+      "webpages": {
+        "columns": [
+          "Product Category",
+          "Call Count",
+          "Consultation: Scheduled (Percent)",
+          "Caller Type: New Patients (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Joint Replacement / Adult Reconstruction",
+              "7,213",
+              "30%",
+              "64%"
+            ]
+          },
+          {
+            "cells": [
+              "Sports Medicine",
+              "5,842",
+              "38%",
+              "68%"
+            ]
+          },
+          {
+            "cells": [
+              "Orthopedic Trauma & Fracture Care",
+              "4,268",
+              "47%",
+              "71%"
+            ]
+          },
+          {
+            "cells": [
+              "Spine Care",
+              "2,947",
+              "57%",
+              "74%"
+            ]
+          }
+        ]
+      },
+      "locationTitle": "Location Call Handling",
+      "locationHandling": {
+        "columns": [
+          "Location",
+          "Call Count",
+          "Call Not Answered (Count)",
+          "Voice Mail (Percent)",
+          "Consultation: Scheduled (Percent)"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Main Campus Orthopedics Clinic (Bannock St)",
+              "11,847",
+              "984",
+              "4%",
+              "31%"
+            ]
+          },
+          {
+            "cells": [
+              "Webb Center for Primary Care Orthopedics",
+              "7,213",
+              "560",
+              "5%",
+              "39%"
+            ]
+          },
+          {
+            "cells": [
+              "Lowry Family Health Center",
+              "4,982",
+              "404",
+              "6%",
+              "48%"
+            ]
+          },
+          {
+            "cells": [
+              "Pena Southwest Family Health Center",
+              "3,454",
+              "252",
+              "7%",
+              "57%"
+            ]
+          }
+        ]
+      },
+      "noBookingChart": {
+        "yLabel": "Call Count",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Price Above Budget / Insurance Concern",
+            "values": [
+              512,
+              1187,
+              1224,
+              1156,
+              903
+            ]
+          },
+          {
+            "name": "Comparing Providers",
+            "values": [
+              398,
+              912,
+              934,
+              878,
+              725
+            ]
+          },
+          {
+            "name": "Timing Not Right",
+            "values": [
+              324,
+              742,
+              758,
+              712,
+              588
+            ]
+          },
+          {
+            "name": "Needs Referral / Authorization",
+            "values": [
+              267,
+              608,
+              622,
+              586,
+              485
+            ]
+          },
+          {
+            "name": "Outside Service Area",
+            "values": [
+              178,
+              402,
+              414,
+              388,
+              320
+            ]
+          }
+        ]
+      }
+    },
+    "aiAgentConversion": {
+      "title": "AI Agent Conversion Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "summary": {
+        "title": "AI Agent Performance Summary",
+        "tiles": [
+          {
+            "label": "Interactions",
+            "value": "10,998"
+          },
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "56%"
+          },
+          {
+            "label": "New Patient (Percent)",
+            "value": "33%"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$14,085,967"
+          }
+        ]
+      },
+      "conversionCards": [
+        {
+          "title": "LEAD FORM (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "28%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,847,652"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "31%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,156,489"
+            }
+          ]
+        },
+        {
+          "title": "LEAD FORM (Conversions): SMS Agent Assist",
+          "chips": [
+            "Interaction Type: Form Fill",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "37%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,487,934"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: No",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "29%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$1,945,278"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent & Live Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: Yes"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "34%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$2,623,456"
+            }
+          ]
+        },
+        {
+          "title": "Voice Agent (Conversions): Voice Agent",
+          "chips": [
+            "Interaction Type: Voice",
+            "SMS Engaged: Yes",
+            "Live Agent Call: No"
+          ],
+          "tiles": [
+            {
+              "label": "New Patient (Percent)",
+              "value": "41%"
+            },
+            {
+              "label": "Total Revenue (Sale Amount)",
+              "value": "$3,025,158"
+            }
+          ]
+        }
+      ],
+      "breakdowns": [
+        {
+          "title": "Calls by Source",
+          "tableTitle": "Source: Call Outcome Summary",
+          "dimensionColumn": "Marketing Source",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12847,
+          "rows": [
+            {
+              "name": "Organic Search",
+              "metrics": [
+                "3847",
+                "64%",
+                "38%",
+                "$3,527,819"
+              ]
+            },
+            {
+              "name": "Paid Search",
+              "metrics": [
+                "2964",
+                "58%",
+                "34%",
+                "$2,148,567"
+              ]
+            },
+            {
+              "name": "Google Business Profile",
+              "metrics": [
+                "2156",
+                "59%",
+                "31%",
+                "$1,687,234"
+              ]
+            },
+            {
+              "name": "Social Media",
+              "metrics": [
+                "1452",
+                "52%",
+                "28%",
+                "$987,567"
+              ]
+            },
+            {
+              "name": "Direct / Referral",
+              "metrics": [
+                "579",
+                "48%",
+                "22%",
+                "$734,780"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Medium",
+          "tableTitle": "Medium: Call Outcome Summary",
+          "dimensionColumn": "Marketing Medium",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12156,
+          "rows": [
+            {
+              "name": "Website Form",
+              "metrics": [
+                "4287",
+                "62%",
+                "37%",
+                "$4,156,892"
+              ]
+            },
+            {
+              "name": "SMS Engagement",
+              "metrics": [
+                "3456",
+                "57%",
+                "32%",
+                "$2,876,543"
+              ]
+            },
+            {
+              "name": "Voice IVR",
+              "metrics": [
+                "2089",
+                "54%",
+                "29%",
+                "$1,654,321"
+              ]
+            },
+            {
+              "name": "Facebook Messenger",
+              "metrics": [
+                "814",
+                "49%",
+                "25%",
+                "$643,267"
+              ]
+            },
+            {
+              "name": "Email Inquiry",
+              "metrics": [
+                "352",
+                "43%",
+                "18%",
+                "$287,455"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Campaign",
+          "tableTitle": "Campaign: Call Outcome Summary",
+          "dimensionColumn": "Marketing Campaign",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 12743,
+          "rows": [
+            {
+              "name": "Knee Replacement / Joint Reconstruction Awareness",
+              "metrics": [
+                "2876",
+                "63%",
+                "40%",
+                "$2,834,756"
+              ]
+            },
+            {
+              "name": "Sports Injury & Acute Care Campaign",
+              "metrics": [
+                "2341",
+                "58%",
+                "35%",
+                "$1,987,234"
+              ]
+            },
+            {
+              "name": "Fracture & Trauma Response Initiative",
+              "metrics": [
+                "1897",
+                "54%",
+                "31%",
+                "$1,456,789"
+              ]
+            },
+            {
+              "name": "Spine Health & Back Pain Solutions",
+              "metrics": [
+                "1234",
+                "49%",
+                "26%",
+                "$876,543"
+              ]
+            },
+            {
+              "name": "Hand Surgery & Upper Extremity Specialists",
+              "metrics": [
+                "650",
+                "44%",
+                "19%",
+                "$512,367"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Calls by Search Term",
+          "tableTitle": "Search Term: Call Outcome Summary",
+          "dimensionColumn": "Marketing Search Term(s)",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": true,
+          "donutTotal": 11542,
+          "rows": [
+            {
+              "name": "knee replacement Denver Health",
+              "metrics": [
+                "1876",
+                "67%",
+                "42%",
+                "$1,923,456"
+              ]
+            },
+            {
+              "name": "orthopedic surgeon near me Denver",
+              "metrics": [
+                "1543",
+                "61%",
+                "38%",
+                "$1,654,321"
+              ]
+            },
+            {
+              "name": "sports medicine doctor Colorado",
+              "metrics": [
+                "1287",
+                "57%",
+                "33%",
+                "$1,234,567"
+              ]
+            },
+            {
+              "name": "broken bone urgent care Denver",
+              "metrics": [
+                "987",
+                "51%",
+                "28%",
+                "$876,543"
+              ]
+            },
+            {
+              "name": "rotator cuff repair cost Denver",
+              "metrics": [
+                "756",
+                "46%",
+                "21%",
+                "$643,267"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversions by Product Category",
+          "tableTitle": "Conversions by Product Category",
+          "dimensionColumn": "Product Category",
+          "metricColumns": [
+            "Call Count",
+            "Consultation Scheduled (Percent)",
+            "New Patient (Percent)",
+            "Total Revenue (Sale Amount)"
+          ],
+          "hasDonut": false,
+          "donutTotal": 0,
+          "rows": [
+            {
+              "name": "Joint Replacement and Reconstruction",
+              "metrics": [
+                "3456",
+                "68%",
+                "41%",
+                "$4,287,654"
+              ]
+            },
+            {
+              "name": "Orthopedic Trauma and Fracture Care",
+              "metrics": [
+                "2789",
+                "59%",
+                "34%",
+                "$2,876,543"
+              ]
+            },
+            {
+              "name": "Sports Medicine and Performance",
+              "metrics": [
+                "2145",
+                "57%",
+                "31%",
+                "$1,987,234"
+              ]
+            },
+            {
+              "name": "Spine and Back Pain Management",
+              "metrics": [
+                "1432",
+                "52%",
+                "27%",
+                "$1,234,567"
+              ]
+            },
+            {
+              "name": "Hand Wrist and Upper Extremity",
+              "metrics": [
+                "1176",
+                "48%",
+                "24%",
+                "$899,969"
+              ]
+            }
+          ]
+        }
+      ],
+      "productCategoryGraph": {
+        "yLabel": "New Patient (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Joint Replacement and Reconstruction",
+            "values": [
+              468,
+              527,
+              612,
+              489,
+              541
+            ]
+          },
+          {
+            "name": "Orthopedic Trauma and Fracture Care",
+            "values": [
+              312,
+              389,
+              421,
+              367,
+              389
+            ]
+          },
+          {
+            "name": "Sports Medicine and Performance",
+            "values": [
+              198,
+              267,
+              289,
+              243,
+              276
+            ]
+          },
+          {
+            "name": "Spine and Back Pain Management",
+            "values": [
+              146,
+              189,
+              223,
+              178,
+              201
+            ]
+          },
+          {
+            "name": "Hand Wrist and Upper Extremity",
+            "values": [
+              89,
+              132,
+              167,
+              121,
+              139
+            ]
+          }
+        ]
+      }
+    },
+    "aiMessagingImpact": {
+      "title": "AI Messaging Impact on Lead Capture & Revenue (Human vs AI)",
+      "dateRange": "1/1/2026-1/31/2026",
+      "aiLeadEngagement": {
+        "title": "AI Agent Lead Engagement (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "1,347"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "0:01"
+          },
+          {
+            "label": "AI SMS Engagement Rate",
+            "value": "87%"
+          }
+        ]
+      },
+      "aiAppointmentPerformance": {
+        "title": "AI Agent Consultation Performance (This Month)",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "26%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "348"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$1,743,824"
+          }
+        ]
+      },
+      "humanLeadEngagement": {
+        "title": "Human-Only Lead Engagement (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Form Submits",
+            "value": "823"
+          },
+          {
+            "label": "Avg. Speed to Lead",
+            "value": "19:23:20"
+          },
+          {
+            "label": "Human SMS Engagement Rate",
+            "value": "34%"
+          }
+        ]
+      },
+      "humanAppointmentPerformance": {
+        "title": "Human Consultation Performance (Last Month)",
+        "chip": "Last Month",
+        "tiles": [
+          {
+            "label": "Consultation Scheduled (Percent)",
+            "value": "3%"
+          },
+          {
+            "label": "Consultation Scheduled (Count)",
+            "value": "28"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$168,673"
+          }
+        ]
+      },
+      "trendTitle": "AI-Assisted Consultation Trend",
+      "trendChip": "AI-Assisted Conversions",
+      "trendChart": {
+        "yLabel": "Count",
+        "xLabels": [
+          "07/01",
+          "07/02",
+          "07/03",
+          "07/04",
+          "07/05",
+          "07/06",
+          "07/07",
+          "07/08",
+          "07/09",
+          "07/10",
+          "07/11",
+          "07/12",
+          "07/13",
+          "07/14",
+          "07/15",
+          "07/16",
+          "07/17",
+          "07/18",
+          "07/19",
+          "07/20",
+          "07/21",
+          "07/22",
+          "07/23",
+          "07/24",
+          "07/25",
+          "07/26",
+          "07/27",
+          "07/28",
+          "07/29",
+          "07/30",
+          "07/31",
+          "08/01",
+          "08/02",
+          "08/03",
+          "08/04",
+          "08/05",
+          "08/06",
+          "08/07",
+          "08/08",
+          "08/09",
+          "08/10",
+          "08/11",
+          "08/12",
+          "08/13",
+          "08/14",
+          "08/15",
+          "08/16",
+          "08/17",
+          "08/18"
+        ],
+        "series": [
+          {
+            "name": "Consultation Scheduled",
+            "values": [
+              72,
+              74,
+              71,
+              75,
+              73,
+              72,
+              74,
+              71,
+              75,
+              76,
+              73,
+              74,
+              72,
+              75,
+              71,
+              74,
+              72,
+              73,
+              75,
+              74,
+              76,
+              73,
+              75,
+              72,
+              74,
+              71,
+              75,
+              73,
+              74,
+              176,
+              181,
+              178,
+              186,
+              179,
+              184,
+              181,
+              187,
+              173,
+              179,
+              185,
+              182,
+              178,
+              181,
+              179,
+              185,
+              180,
+              176,
+              183,
+              179
+            ]
+          }
+        ]
+      },
+      "aiOpportunities": {
+        "title": "AI-Assisted Opportunities",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "SMS Opt-In Count",
+            "value": "1,156"
+          },
+          {
+            "label": "SMS Opt-In Rate",
+            "value": "88%"
+          },
+          {
+            "label": "Total Messages",
+            "value": "11,347"
+          }
+        ]
+      },
+      "aiLeadNurture": {
+        "title": "AI Lead Nurture",
+        "chip": "This Month",
+        "tiles": [
+          {
+            "label": "AI SMS Callback Scheduled (Count)",
+            "value": "687"
+          },
+          {
+            "label": "AI SMS Callback Scheduled (Percent)",
+            "value": "59%"
+          },
+          {
+            "label": "AI SMS Callback Completed (Count)",
+            "value": "671"
+          },
+          {
+            "label": "AI SMS Callback Completed (Percent)",
+            "value": "97%"
+          }
+        ]
+      },
+      "commonTopicsTitle": "Common Topics",
+      "commonTopicsChart": {
+        "yLabel": "Consultation Scheduled (Count)",
+        "xLabels": [
+          "04/18",
+          "04/19",
+          "04/20",
+          "04/21",
+          "04/22",
+          "04/23"
+        ],
+        "series": [
+          {
+            "name": "Knee Replacement Consultation",
+            "values": [
+              8,
+              11,
+              9,
+              14,
+              12,
+              10
+            ]
+          },
+          {
+            "name": "Rotator Cuff Repair Inquiry",
+            "values": [
+              6,
+              8,
+              5,
+              9,
+              7,
+              11
+            ]
+          },
+          {
+            "name": "Fracture Care & Reduction",
+            "values": [
+              9,
+              12,
+              8,
+              2,
+              10,
+              13
+            ]
+          },
+          {
+            "name": "Sports Medicine Evaluation",
+            "values": [
+              5,
+              7,
+              6,
+              8,
+              9,
+              6
+            ]
+          },
+          {
+            "name": "Physical Therapy Scheduling",
+            "values": [
+              7,
+              6,
+              8,
+              10,
+              6,
+              9
+            ]
+          }
+        ]
+      }
+    },
+    "qualityManagement": {
+      "title": "QM | Actionable Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "salesOpportunities": {
+        "title": "Sales Opportunities",
+        "chips": [
+          "Answered by Agent: Yes"
+        ],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "25,296"
+          },
+          {
+            "label": "Buying Intent (Industry) (Count)",
+            "value": "18,285"
+          }
+        ]
+      },
+      "salesConversions": {
+        "title": "Sales Conversions",
+        "chips": [
+          "2 Filters"
+        ],
+        "tiles": [
+          {
+            "label": "Consultation Booked (Count)",
+            "value": "11,273"
+          },
+          {
+            "label": "Total Revenue (Sale Amount)",
+            "value": "$24,712,223"
+          }
+        ]
+      },
+      "callsNeedingReview": {
+        "title": "Calls Needing Review, Lost Sales Opportunities",
+        "chips": [
+          "5 Filters"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Fail (Range & Count)",
+          "axisMax": 250,
+          "axisTicks": [
+            0,
+            62.5,
+            125,
+            187.5,
+            250
+          ],
+          "axisSuffix": "",
+          "bars": [
+            {
+              "name": "Marcus Rivera",
+              "value": 218,
+              "display": "218"
+            },
+            {
+              "name": "Jennifer Kowalski",
+              "value": 187,
+              "display": "187"
+            },
+            {
+              "name": "David Chen",
+              "value": 241,
+              "display": "241"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 169,
+              "display": "169"
+            },
+            {
+              "name": "Robert Hutchins",
+              "value": 203,
+              "display": "203"
+            }
+          ]
+        }
+      },
+      "highestConvertingAgents": {
+        "yLabel": "Consultation Booked (Count)",
+        "xLabels": [
+          "Jan 1-4",
+          "Jan 5-11",
+          "Jan 12-18",
+          "Jan 19-25",
+          "Jan 26-31"
+        ],
+        "series": [
+          {
+            "name": "Sarah Mitchell",
+            "values": [
+              156,
+              168,
+              172,
+              184,
+              191
+            ]
+          },
+          {
+            "name": "James Patterson",
+            "values": [
+              142,
+              159,
+              167,
+              178,
+              186
+            ]
+          },
+          {
+            "name": "Emily Rodriguez",
+            "values": [
+              138,
+              151,
+              163,
+              174,
+              183
+            ]
+          },
+          {
+            "name": "Michael Torres",
+            "values": [
+              145,
+              157,
+              169,
+              181,
+              192
+            ]
+          },
+          {
+            "name": "Angela Lawrence",
+            "values": [
+              151,
+              164,
+              176,
+              189,
+              198
+            ]
+          }
+        ]
+      },
+      "baselineSkills": {
+        "title": "Baseline Skills",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Proper Greeting (Scorecard) (Percent)",
+            "value": "95%"
+          },
+          {
+            "label": "Asked for the Sale (Scorecard) (Percent)",
+            "value": "62%"
+          }
+        ]
+      },
+      "scoredCalls": {
+        "title": "Scored Calls",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Information Gathering (Average)",
+            "value": "64.5%"
+          },
+          {
+            "label": "Call Etiquette (Average)",
+            "value": "92.3%"
+          },
+          {
+            "label": "New Customer Sales (Average)",
+            "value": "71%"
+          }
+        ]
+      },
+      "baselineQualityScore": {
+        "title": "Baseline Sales Quality Score",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "average": 71,
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71
+          },
+          {
+            "label": "01/02",
+            "bar": 78
+          },
+          {
+            "label": "01/03",
+            "bar": 77
+          },
+          {
+            "label": "01/04",
+            "bar": 78
+          },
+          {
+            "label": "01/05",
+            "bar": 71
+          },
+          {
+            "label": "01/06",
+            "bar": 63
+          },
+          {
+            "label": "01/07",
+            "bar": 65
+          },
+          {
+            "label": "01/08",
+            "bar": 65
+          },
+          {
+            "label": "01/09",
+            "bar": 71
+          },
+          {
+            "label": "01/10",
+            "bar": 79
+          },
+          {
+            "label": "01/11",
+            "bar": 77
+          },
+          {
+            "label": "01/12",
+            "bar": 76
+          },
+          {
+            "label": "01/13",
+            "bar": 71
+          },
+          {
+            "label": "01/14",
+            "bar": 62
+          },
+          {
+            "label": "01/15",
+            "bar": 65
+          },
+          {
+            "label": "01/16",
+            "bar": 67
+          },
+          {
+            "label": "01/17",
+            "bar": 71
+          },
+          {
+            "label": "01/18",
+            "bar": 80
+          },
+          {
+            "label": "01/19",
+            "bar": 77
+          },
+          {
+            "label": "01/20",
+            "bar": 74
+          },
+          {
+            "label": "01/21",
+            "bar": 71
+          },
+          {
+            "label": "01/22",
+            "bar": 62
+          },
+          {
+            "label": "01/23",
+            "bar": 64
+          },
+          {
+            "label": "01/24",
+            "bar": 69
+          },
+          {
+            "label": "01/25",
+            "bar": 72
+          },
+          {
+            "label": "01/26",
+            "bar": 80
+          },
+          {
+            "label": "01/27",
+            "bar": 78
+          },
+          {
+            "label": "01/28",
+            "bar": 72
+          },
+          {
+            "label": "01/29",
+            "bar": 70
+          },
+          {
+            "label": "01/30",
+            "bar": 62
+          },
+          {
+            "label": "01/31",
+            "bar": 63
+          }
+        ]
+      },
+      "bottomByAgentBar": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Marcus Rivera",
+              "value": 54.3,
+              "display": "54.3%"
+            },
+            {
+              "name": "Jennifer Kowalski",
+              "value": 55.7,
+              "display": "55.7%"
+            },
+            {
+              "name": "David Chen",
+              "value": 53.2,
+              "display": "53.2%"
+            },
+            {
+              "name": "Patricia Gomez",
+              "value": 56.1,
+              "display": "56.1%"
+            },
+            {
+              "name": "Robert Hutchins",
+              "value": 52.8,
+              "display": "52.8%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "bottomByAgentTable": {
+        "title": "Bottom Quality Scores by Agent",
+        "chips": [
+          "New Customer Sales Combination Scorecard: Applied"
+        ],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Marcus Rivera",
+                "54.3%",
+                "28%",
+                "$863,584",
+                "1,387"
+              ]
+            },
+            {
+              "cells": [
+                "Jennifer Kowalski",
+                "55.7%",
+                "29%",
+                "$903,916",
+                "1,423"
+              ]
+            },
+            {
+              "cells": [
+                "David Chen",
+                "53.2%",
+                "27%",
+                "$823,254",
+                "1,401"
+              ]
+            },
+            {
+              "cells": [
+                "Patricia Gomez",
+                "56.1%",
+                "30%",
+                "$924,288",
+                "1,408"
+              ]
+            },
+            {
+              "cells": [
+                "Robert Hutchins",
+                "52.8%",
+                "26%",
+                "$799,856",
+                "1,356"
+              ]
+            }
+          ]
+        }
+      },
+      "topByAgentBar": {
+        "title": "Top Quality Scores by Agent",
+        "chips": [],
+        "chart": {
+          "legend": "New Customer Sales Combination Scorecard",
+          "axisMax": 100,
+          "axisTicks": [
+            0,
+            25,
+            50,
+            75,
+            100
+          ],
+          "axisSuffix": "%",
+          "bars": [
+            {
+              "name": "Sarah Mitchell",
+              "value": 92.4,
+              "display": "92.4%"
+            },
+            {
+              "name": "James Patterson",
+              "value": 88.9,
+              "display": "88.9%"
+            },
+            {
+              "name": "Emily Rodriguez",
+              "value": 90.2,
+              "display": "90.2%"
+            },
+            {
+              "name": "Michael Torres",
+              "value": 91.7,
+              "display": "91.7%"
+            },
+            {
+              "name": "Angela Lawrence",
+              "value": 89.3,
+              "display": "89.3%"
+            }
+          ]
+        },
+        "pager": "1 - 6 of 30"
+      },
+      "qualityByAgentTable": {
+        "title": "Quality Scores by Agent",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Agent",
+            "New Customer Sales Combination Scorecard (Average)",
+            "Consultation Booked (Percent)",
+            "Total Revenue (Sale Amount)",
+            "Call Count"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Mitchell",
+                "92.4%",
+                "67%",
+                "$1,963,144",
+                "1,527"
+              ]
+            },
+            {
+              "cells": [
+                "James Patterson",
+                "88.9%",
+                "62%",
+                "$1,772,448",
+                "1,498"
+              ]
+            },
+            {
+              "cells": [
+                "Emily Rodriguez",
+                "90.2%",
+                "65%",
+                "$1,899,328",
+                "1,502"
+              ]
+            },
+            {
+              "cells": [
+                "Michael Torres",
+                "91.7%",
+                "66%",
+                "$1,932,752",
+                "1,531"
+              ]
+            },
+            {
+              "cells": [
+                "Angela Lawrence",
+                "89.3%",
+                "63%",
+                "$1,804,336",
+                "1,511"
+              ]
+            }
+          ]
+        }
+      },
+      "trendingToConversion": {
+        "title": "Trending Sales Quality Score to Conversion",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Consultation Booked (Count)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Consultation Booked (Count)",
+        "rightMax": 600,
+        "rightTicks": [
+          0,
+          150,
+          300,
+          450,
+          600
+        ],
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 418
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 401
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 373
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 356
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 311
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 326
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 360
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 374
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 416
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 404
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 364
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 352
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 314
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 323
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 368
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 379
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 412
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 406
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 356
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 345
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 318
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 321
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 374
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 387
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 407
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 407
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 351
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 337
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 324
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 322
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 367
+          }
+        ]
+      },
+      "trendingToRevenue": {
+        "title": "Trending Sales Quality Score to Revenue",
+        "cadence": "Daily",
+        "barLabel": "New Customer Sales Combination Scorecard (Average)",
+        "lineLabel": "Total Revenue (Sale Amount)",
+        "yMax": 100,
+        "yTicks": [
+          0,
+          25,
+          50,
+          75,
+          100
+        ],
+        "suffix": "%",
+        "rightLabel": "Total Revenue (Sale Amount)",
+        "rightMax": 1200000,
+        "rightTicks": [
+          0,
+          400000,
+          800000,
+          1200000
+        ],
+        "rightPrefix": "$",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 71,
+            "line": 916060
+          },
+          {
+            "label": "01/02",
+            "bar": 78,
+            "line": 878002
+          },
+          {
+            "label": "01/03",
+            "bar": 77,
+            "line": 817598
+          },
+          {
+            "label": "01/04",
+            "bar": 78,
+            "line": 780146
+          },
+          {
+            "label": "01/05",
+            "bar": 71,
+            "line": 679261
+          },
+          {
+            "label": "01/06",
+            "bar": 63,
+            "line": 712866
+          },
+          {
+            "label": "01/07",
+            "bar": 65,
+            "line": 787482
+          },
+          {
+            "label": "01/08",
+            "bar": 65,
+            "line": 818523
+          },
+          {
+            "label": "01/09",
+            "bar": 71,
+            "line": 912658
+          },
+          {
+            "label": "01/10",
+            "bar": 79,
+            "line": 884878
+          },
+          {
+            "label": "01/11",
+            "bar": 77,
+            "line": 796980
+          },
+          {
+            "label": "01/12",
+            "bar": 76,
+            "line": 770296
+          },
+          {
+            "label": "01/13",
+            "bar": 71,
+            "line": 685434
+          },
+          {
+            "label": "01/14",
+            "bar": 62,
+            "line": 706521
+          },
+          {
+            "label": "01/15",
+            "bar": 65,
+            "line": 806231
+          },
+          {
+            "label": "01/16",
+            "bar": 67,
+            "line": 830798
+          },
+          {
+            "label": "01/17",
+            "bar": 71,
+            "line": 904160
+          },
+          {
+            "label": "01/18",
+            "bar": 80,
+            "line": 890089
+          },
+          {
+            "label": "01/19",
+            "bar": 77,
+            "line": 780512
+          },
+          {
+            "label": "01/20",
+            "bar": 74,
+            "line": 755755
+          },
+          {
+            "label": "01/21",
+            "bar": 71,
+            "line": 695722
+          },
+          {
+            "label": "01/22",
+            "bar": 62,
+            "line": 703016
+          },
+          {
+            "label": "01/23",
+            "bar": 64,
+            "line": 820128
+          },
+          {
+            "label": "01/24",
+            "bar": 69,
+            "line": 847313
+          },
+          {
+            "label": "01/25",
+            "bar": 72,
+            "line": 892674
+          },
+          {
+            "label": "01/26",
+            "bar": 80,
+            "line": 891375
+          },
+          {
+            "label": "01/27",
+            "bar": 78,
+            "line": 769343
+          },
+          {
+            "label": "01/28",
+            "bar": 72,
+            "line": 737677
+          },
+          {
+            "label": "01/29",
+            "bar": 70,
+            "line": 707786
+          },
+          {
+            "label": "01/30",
+            "bar": 62,
+            "line": 704373
+          },
+          {
+            "label": "01/31",
+            "bar": 63,
+            "line": 828566
+          }
+        ]
+      }
+    },
+    "qmInstantInsights": {
+      "title": "QM | Instant Insights Dashboard",
+      "dateRange": "1/1/2026-1/31/2026",
+      "trendingEssentialMetrics": {
+        "title": "Trending Essential Metrics",
+        "cadence": "Daily",
+        "barLabel": "Negative Sentiment (Percent)",
+        "lineLabel": "Average Agent Handle Time",
+        "yMin": 78,
+        "yMax": 105,
+        "yTicks": [
+          80,
+          88,
+          96,
+          104
+        ],
+        "suffix": "",
+        "tickLabels": [
+          "1:20",
+          "1:28",
+          "1:36",
+          "1:44"
+        ],
+        "linePrimary": true,
+        "rightLabel": "Negative Sentiment (Percent)",
+        "rightMax": 120,
+        "rightTicks": [
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "rightSuffix": "%",
+        "points": [
+          {
+            "label": "01/01",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/02",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/03",
+            "bar": 5,
+            "line": 91
+          },
+          {
+            "label": "01/04",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/05",
+            "bar": 4,
+            "line": 83
+          },
+          {
+            "label": "01/06",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/07",
+            "bar": 3,
+            "line": 89
+          },
+          {
+            "label": "01/08",
+            "bar": 3,
+            "line": 91
+          },
+          {
+            "label": "01/09",
+            "bar": 4,
+            "line": 97
+          },
+          {
+            "label": "01/10",
+            "bar": 6,
+            "line": 95
+          },
+          {
+            "label": "01/11",
+            "bar": 5,
+            "line": 90
+          },
+          {
+            "label": "01/12",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/13",
+            "bar": 50,
+            "line": 101
+          },
+          {
+            "label": "01/14",
+            "bar": 2,
+            "line": 85
+          },
+          {
+            "label": "01/15",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/16",
+            "bar": 3,
+            "line": 92
+          },
+          {
+            "label": "01/17",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/18",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/19",
+            "bar": 6,
+            "line": 89
+          },
+          {
+            "label": "01/20",
+            "bar": 5,
+            "line": 88
+          },
+          {
+            "label": "01/21",
+            "bar": 4,
+            "line": 84
+          },
+          {
+            "label": "01/22",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/23",
+            "bar": 2,
+            "line": 91
+          },
+          {
+            "label": "01/24",
+            "bar": 3,
+            "line": 93
+          },
+          {
+            "label": "01/25",
+            "bar": 4,
+            "line": 96
+          },
+          {
+            "label": "01/26",
+            "bar": 6,
+            "line": 96
+          },
+          {
+            "label": "01/27",
+            "bar": 6,
+            "line": 88
+          },
+          {
+            "label": "01/28",
+            "bar": 4,
+            "line": 86
+          },
+          {
+            "label": "01/29",
+            "bar": 4,
+            "line": 85
+          },
+          {
+            "label": "01/30",
+            "bar": 2,
+            "line": 84
+          },
+          {
+            "label": "01/31",
+            "bar": 2,
+            "line": 93
+          }
+        ]
+      },
+      "essentialMetrics": {
+        "title": "Essential Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Call Count",
+            "value": "27,496"
+          },
+          {
+            "label": "Average Agent Handle Time",
+            "value": "1:29"
+          },
+          {
+            "label": "Not Answered by Agent (Count)",
+            "value": "2,200"
+          },
+          {
+            "label": "Negative Sentiment (Count)",
+            "value": "1,650"
+          }
+        ]
+      },
+      "trendingAnswerRate": {
+        "title": "Trending Answer Rate",
+        "cadence": "Daily",
+        "lineLabel": "Answered by Agent (Percent)",
+        "yMin": 65,
+        "yMax": 100,
+        "yTicks": [
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95,
+          100
+        ],
+        "suffix": "%",
+        "linePrimary": true,
+        "points": [
+          {
+            "label": "01/01",
+            "line": 87
+          },
+          {
+            "label": "01/02",
+            "line": 85
+          },
+          {
+            "label": "01/03",
+            "line": 80
+          },
+          {
+            "label": "01/04",
+            "line": 78
+          },
+          {
+            "label": "01/05",
+            "line": 71
+          },
+          {
+            "label": "01/06",
+            "line": 73
+          },
+          {
+            "label": "01/07",
+            "line": 78
+          },
+          {
+            "label": "01/08",
+            "line": 81
+          },
+          {
+            "label": "01/09",
+            "line": 87
+          },
+          {
+            "label": "01/10",
+            "line": 85
+          },
+          {
+            "label": "01/11",
+            "line": 79
+          },
+          {
+            "label": "01/12",
+            "line": 77
+          },
+          {
+            "label": "01/13",
+            "line": 71
+          },
+          {
+            "label": "01/14",
+            "line": 73
+          },
+          {
+            "label": "01/15",
+            "line": 80
+          },
+          {
+            "label": "01/16",
+            "line": 81
+          },
+          {
+            "label": "01/17",
+            "line": 87
+          },
+          {
+            "label": "01/18",
+            "line": 86
+          },
+          {
+            "label": "01/19",
+            "line": 78
+          },
+          {
+            "label": "01/20",
+            "line": 76
+          },
+          {
+            "label": "01/21",
+            "line": 72
+          },
+          {
+            "label": "01/22",
+            "line": 72
+          },
+          {
+            "label": "01/23",
+            "line": 81
+          },
+          {
+            "label": "01/24",
+            "line": 83
+          },
+          {
+            "label": "01/25",
+            "line": 86
+          },
+          {
+            "label": "01/26",
+            "line": 86
+          },
+          {
+            "label": "01/27",
+            "line": 77
+          },
+          {
+            "label": "01/28",
+            "line": 75
+          },
+          {
+            "label": "01/29",
+            "line": 73
+          },
+          {
+            "label": "01/30",
+            "line": 72
+          },
+          {
+            "label": "01/31",
+            "line": 79
+          }
+        ]
+      },
+      "contactCenterMetrics": {
+        "title": "Contact Center Metrics",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Caller Talk Time %",
+            "value": "32%"
+          },
+          {
+            "label": "Agent Talk Time %",
+            "value": "59%"
+          },
+          {
+            "label": "Average Overtalk Time",
+            "value": "0:00"
+          },
+          {
+            "label": "Silence Time %",
+            "value": "9%"
+          }
+        ]
+      },
+      "overallEvaluationScore": {
+        "title": "Overall Evaluation Score",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "QA Evaluation Form (Average)",
+            "value": "85%"
+          }
+        ]
+      },
+      "evaluationRollup": {
+        "title": "Evaluation Rollup",
+        "chips": [],
+        "tiles": [
+          {
+            "label": "Introduction (Average)",
+            "value": "87%"
+          },
+          {
+            "label": "Phone Etiquette (Average)",
+            "value": "84%"
+          },
+          {
+            "label": "Problem Resolution (Average)",
+            "value": "84%"
+          }
+        ]
+      },
+      "scoredCallsByEvaluator": {
+        "title": "Scored Calls by Evaluator",
+        "chips": [],
+        "table": {
+          "columns": [
+            "Evaluated By",
+            "Evaluated (Count)",
+            "Introduction (Average)",
+            "Phone Etiquette (Average)",
+            "Problem Resolution (Average)"
+          ],
+          "rows": [
+            {
+              "cells": [
+                "Sarah Martinez",
+                "412",
+                "89%",
+                "86%",
+                "85%"
+              ]
+            },
+            {
+              "cells": [
+                "James Chen",
+                "578",
+                "86%",
+                "83%",
+                "83%"
+              ]
+            },
+            {
+              "cells": [
+                "Michelle Torres",
+                "651",
+                "87%",
+                "84%",
+                "84%"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "conversationIntelligence": {
+      "title": "Conversation intelligence",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "callCount": "27,496 calls",
+      "pagerLabel": "1 of 2,750",
+      "calls": [
+        {
+          "time": "1/6/26 8:52 am",
+          "id": "F57B-817F0292530D"
+        },
+        {
+          "time": "1/9/26 9:37 am",
+          "id": "A21C-4E9B7710C3AF"
+        },
+        {
+          "time": "1/12/26 10:41 am",
+          "id": "7D3E-2C5A90F14B6E"
+        },
+        {
+          "time": "1/14/26 11:18 am",
+          "id": "B840-6F1D33A70E92"
+        },
+        {
+          "time": "1/16/26 12:24 pm",
+          "id": "3C9F-D02E88B4517A"
+        },
+        {
+          "time": "1/20/26 1:09 pm",
+          "id": "E162-79AC4D3F0821"
+        },
+        {
+          "time": "1/22/26 2:33 pm",
+          "id": "9AF4-15B8C6E203DD"
+        },
+        {
+          "time": "1/26/26 3:47 pm",
+          "id": "64D1-8E37F92A0C55"
+        },
+        {
+          "time": "1/28/26 4:52 pm",
+          "id": "1B7A-C4602FD9E738"
+        },
+        {
+          "time": "1/30/26 5:41 pm",
+          "id": "D5E8-3A17B0C6942F"
+        }
+      ],
+      "duration": "2:41",
+      "transcript": [
+        {
+          "speaker": "agent",
+          "time": "0:02",
+          "text": "Thank you for calling Denver Health Orthopedics, this is Marcus. How can I help you today?",
+          "highlights": [
+            "Thank you for calling Denver Health Orthopedics",
+            "this is Marcus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:08",
+          "text": "Hi, yeah, I've been having a lot of knee pain and I think I might have messed something up playing basketball. I've never been seen at your clinic before.",
+          "highlights": [
+            "knee pain",
+            "never been seen at your clinic before"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:17",
+          "text": "I'm sorry to hear about the knee, we can definitely get you taken care of. Can I start with your first and last name?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:24",
+          "text": "Sure, it's Daniel Ortega.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "0:28",
+          "text": "Thanks, Daniel. And when did the pain start, is there swelling or any locking in the joint?",
+          "highlights": []
+        },
+        {
+          "speaker": "caller",
+          "time": "0:35",
+          "text": "About a week ago. It swells up when I walk on it too much and sometimes it kind of catches when I bend it.",
+          "highlights": [
+            "catches when I bend it"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "0:44",
+          "text": "That sounds like it's worth a proper look. Our sports medicine team would start with a new-patient consultation and likely an extremity X-ray, and if they suspect a ligament or meniscus issue they may order an MRI of the knee.",
+          "highlights": [
+            "new-patient consultation",
+            "MRI of the knee"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "0:57",
+          "text": "Okay, so before I go further, what does the consultation and the imaging run? I'm trying to keep this manageable, money's a little tight right now.",
+          "highlights": [
+            "what does the consultation and the imaging run",
+            "keep this manageable"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:08",
+          "text": "Completely understand. The new-patient consultation typically runs between $250 and $450, an extremity X-ray is around $150 to $400, and if an MRI is needed it ranges from $1,200 to $3,000. As a public safety-net system we also have financial assistance and we accept Medicaid, so let's not assume the worst before you're seen.",
+          "highlights": [
+            "$250 and $450",
+            "financial assistance",
+            "we accept Medicaid"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:26",
+          "text": "That helps. Honestly I called an orthopedic place over on the other side of town first, but they quoted me a lot more and couldn't see me for three weeks.",
+          "highlights": [
+            "called an orthopedic place over on the other side of town first",
+            "quoted me a lot more"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "1:37",
+          "text": "We can usually get new patients in much sooner than that. If the X-ray shows something and the team recommends imaging or an arthroscopic repair down the line, we'd walk you through every cost first. Nothing gets scheduled without you knowing the number.",
+          "highlights": [
+            "get new patients in much sooner",
+            "Nothing gets scheduled without you knowing the number"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "1:50",
+          "text": "Good, because I don't want to get pushed into surgery I didn't agree to. One more thing, my wife handles our calendar, is there any morning slot this week?",
+          "highlights": [
+            "I don't want to get pushed into surgery I didn't agree to",
+            "my wife handles our calendar"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:01",
+          "text": "No pressure at all, the consultation is just an evaluation. I have Thursday at 10 AM open at our Orthopedics clinic on the main campus. Would that morning work for you and your wife?",
+          "highlights": [
+            "Thursday at 10 AM",
+            "Orthopedics clinic on the main campus"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:12",
+          "text": "Thursday at 10 works. Let me lock that in.",
+          "highlights": [
+            "Thursday at 10 works"
+          ]
+        },
+        {
+          "speaker": "agent",
+          "time": "2:17",
+          "text": "Great, I've got you scheduled for a new-patient consultation Thursday at 10 AM with our sports medicine team. What's the best phone number and your date of birth?",
+          "highlights": [
+            "I've got you scheduled for a new-patient consultation Thursday at 10 AM"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:26",
+          "text": "Number is 720-555-0148, and I was born 4/18/1991.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:31",
+          "text": "Perfect. Please bring a photo ID and your insurance or Medicaid card, and try to arrive about fifteen minutes early to fill out intake.",
+          "highlights": [
+            "bring a photo ID and your insurance or Medicaid card"
+          ]
+        },
+        {
+          "speaker": "caller",
+          "time": "2:37",
+          "text": "Will do. Thanks for making this easy.",
+          "highlights": []
+        },
+        {
+          "speaker": "agent",
+          "time": "2:40",
+          "text": "My pleasure, Daniel. We'll see you Thursday, take care of that knee until then.",
+          "highlights": [
+            "We'll see you Thursday",
+            "take care of that knee"
+          ]
+        }
+      ],
+      "signals": [
+        {
+          "name": "(QA) Proper Greeting",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "(QA) Proper Close",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Answered by Agent",
+          "badges": [
+            "Rule"
+          ],
+          "count": 0
+        },
+        {
+          "name": "Business Hours: Inside",
+          "badges": [
+            "Rule"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Caller Type: New Patient",
+          "badges": [
+            "Keyword Spotting",
+            "Rule",
+            "Keypress"
+          ],
+          "count": 2
+        },
+        {
+          "name": "Consultation: Scheduled",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Service Interest: Sports Medicine",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Service Interest: Knee Imaging (MRI/X-ray)",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 4
+        },
+        {
+          "name": "Price / Financial Assistance Discussed",
+          "badges": [
+            "Keyword Spotting"
+          ],
+          "count": 3
+        },
+        {
+          "name": "Insurance / Medicaid Mentioned",
+          "badges": [
+            "Keyword Spotting",
+            "Rule"
+          ],
+          "count": 2
+        }
+      ],
+      "scoreValue": 86,
+      "scoreLabel": "BASE SKILLS",
+      "aiSummary": {
+        "summary": "Daniel Ortega, a new patient, called Denver Health Orthopedics about a week of knee pain, swelling, and catching in the joint after a basketball injury. Agent Marcus recommended a new-patient consultation with the sports medicine team, an extremity X-ray, and potentially a knee MRI, and addressed the caller's cost concerns by outlining price ranges and financial assistance and Medicaid options. Daniel mentioned another orthopedic clinic had quoted more and couldn't see him for three weeks, and wanted his wife's schedule considered. Marcus scheduled a new-patient consultation for Thursday at 10 AM and captured his phone number and date of birth.",
+        "keyPoints": [
+          "New patient, first time at the clinic",
+          "Knee pain with swelling and joint catching after a basketball injury",
+          "Recommended new-patient consultation, extremity X-ray, and possible knee MRI",
+          "Price concern addressed with ranges plus financial assistance and Medicaid",
+          "Competitor clinic quoted more with a three-week wait",
+          "Consultation booked Thursday 10 AM, contact and DOB captured"
+        ],
+        "sentiment": "Positive",
+        "outcome": "Consultation booked, Thursday 10 AM"
+      }
+    },
+    "smsConversationIntelligence": {
+      "countLabel": "17,322 conversations",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 1,732",
+      "conversations": [
+        {
+          "id": "C516-117FE212560D",
+          "time": "3/10/26 6:21 am",
+          "active": true,
+          "date": "March 10, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "6:21 AM",
+              "text": "Hi there. This is Sarah from Denver Health Orthopedics. Thanks for reaching out about knee pain. Is this a good time to chat for a few minutes?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:22 AM",
+              "text": "Yes, hi. I've been having knee pain for about 3 weeks now and I'm not sure what to do about it."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:23 AM",
+              "text": "I'm sorry to hear that. We'd love to help you get relief. Just to clarify, did this pain start after a specific injury or activity, or did it come on gradually?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:24 AM",
+              "text": "It started when I was playing basketball with my friends. I heard a pop and felt pain right away."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:26 AM",
+              "text": "Okay, that sounds like it could be a ligament or cartilage issue. Our sports medicine specialists are really experienced with basketball injuries. Have you seen any other doctors about this yet, or is Denver Health your first stop?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:27 AM",
+              "text": "No, you're the first. I looked you guys up online and saw great reviews."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:28 AM",
+              "text": "Thank you, that's wonderful to hear. We do have excellent outcomes with ACL and meniscus injuries. Can I ask, on a scale of 1 to 10, how much does the pain limit your daily activities right now?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:30 AM",
+              "text": "I'd say maybe a 6 or 7. I can walk around but I can't run or jump at all."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:31 AM",
+              "text": "Got it. We'd want to get you an MRI and a consultation with one of our sports medicine surgeons to figure out the best plan. We have some openings next week. Would Tuesday, March 18th at 2 PM work for you?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:33 AM",
+              "text": "Let me check. Yes, Tuesday at 2 works. Should I bring anything with me?"
+            },
+            {
+              "speaker": "agent",
+              "time": "6:34 AM",
+              "text": "Perfect. I've scheduled you for a sports medicine evaluation on Tuesday, March 18th at 2 PM at our main clinic on 9th Avenue. Please bring your insurance card and photo ID. You can also download our patient intake form at denverhealth.org. Do you have a good callback number where we can reach you if we need to reschedule?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:35 AM",
+              "text": "Yes, my number is 720-555-0147."
+            },
+            {
+              "speaker": "agent",
+              "time": "6:36 AM",
+              "text": "Great, we have that. We'll send you a text reminder 24 hours before your appointment. Thanks so much for choosing Denver Health, and we look forward to getting you back in the game soon. Have a great day."
+            },
+            {
+              "speaker": "consumer",
+              "time": "6:37 AM",
+              "text": "Thanks so much. See you Tuesday."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Product Intent: Sports Medicine ACL Injury",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Pain Severity Qualifier",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "smsInfo": {
+            "callRecordId": "C516-117FE212560D",
+            "smsStartTime": "3/10/26 6:21 am",
+            "destinationPhone": "877-936-2933",
+            "totalMessages": "16",
+            "source": "720-555-0147",
+            "promoNumberDescription": "SMS",
+            "smsEngaged": "Yes",
+            "smsOptIn": "Yes",
+            "smsOptOut": "No",
+            "sessionStatus": "Active",
+            "callerId": "720-555-0147",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Marcus Johnson",
+            "firstName": "Marcus",
+            "lastName": "Johnson",
+            "gender": "Male",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: SMS Campaign",
+            "finalCampaignId": "9970305"
+          }
+        },
+        {
+          "id": "A827-4B3C89F2E741",
+          "time": "3/10/26 8:45 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "A827-4B3C89F2E741",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "B941-6D2F5A1C8E92",
+          "time": "3/10/26 11:23 am",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "B941-6D2F5A1C8E92",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D358-7E4F1B9C6A23",
+          "time": "3/10/26 4:12 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "smsInfo": {
+            "callRecordId": "D358-7E4F1B9C6A23",
+            "smsStartTime": "",
+            "destinationPhone": "",
+            "totalMessages": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "smsEngaged": "",
+            "smsOptIn": "",
+            "smsOptOut": "",
+            "sessionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "voiceConversationIntelligence": {
+      "countLabel": "27,496 calls",
+      "dateRange": "Jan 1, 2026 - Jan 31, 2026",
+      "pagerLabel": "1 of 2,750",
+      "conversations": [
+        {
+          "id": "A417-2C9FE314770D",
+          "time": "1/14/26 4:12 pm",
+          "active": true,
+          "date": "January 14, 2026",
+          "transcript": [
+            {
+              "speaker": "agent",
+              "time": "4:12 PM",
+              "text": "Hello and thanks for calling Denver Health Orthopedics. My name is Marcus. How can I help you today?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:13 PM",
+              "text": "Hi Marcus. I fell off my bike about two weeks ago and my shoulder's been really bothering me. I'm wondering if I should get it checked out."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:14 PM",
+              "text": "I'm sorry to hear that. Shoulder injuries from a fall definitely need attention. Have you had any X rays or imaging done since the fall, or is this your first time getting it looked at?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:15 PM",
+              "text": "No, nothing yet. I've just been icing it and taking ibuprofen. It still hurts though, especially when I try to lift my arm."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:16 PM",
+              "text": "Okay, that makes sense. Pain with lifting your arm could indicate anything from a strain to a rotator cuff issue. Our orthopedic surgeons can evaluate you with imaging and get you a clear diagnosis. Are you currently a Denver Health patient, or would this be your first time with us?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:17 PM",
+              "text": "First time. I live in the Highlands and I saw you guys were nearby, so I thought I'd call."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:18 PM",
+              "text": "Great, welcome. We'd love to help you get back to biking. A consultation with one of our shoulder specialists includes an exam, imaging if needed, and a treatment plan. It typically runs two hundred fifty to four hundred fifty dollars depending on what we find. Does that sound okay?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:19 PM",
+              "text": "Yeah, that's fine. When can I come in?"
+            },
+            {
+              "speaker": "agent",
+              "time": "4:20 PM",
+              "text": "Excellent. I have some availability next week. Would Thursday, January twenty third at two o'clock PM work for you, or would you prefer morning or later in the week?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:21 PM",
+              "text": "Thursday afternoon works. Two o'clock is good."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:22 PM",
+              "text": "Perfect. So I've got you down for Thursday, January twenty third at two PM for an orthopedic shoulder consultation. Your confirmation will come via email and text. If you need to reach us before then, just call our main line at eight seven seven, nine three six, twenty nine thirty three. Is that number good for us to call you back if we need to confirm?"
+            },
+            {
+              "speaker": "consumer",
+              "time": "4:23 PM",
+              "text": "Yeah, that's my cell. Sounds great, thanks Marcus."
+            },
+            {
+              "speaker": "agent",
+              "time": "4:24 PM",
+              "text": "You're welcome. We look forward to seeing you Thursday the twenty third. Take care."
+            }
+          ],
+          "signals": [
+            {
+              "name": "Consultation: Scheduled",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Caller Type: New Patient",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Qualified Lead",
+              "badges": [
+                "Rule"
+              ],
+              "count": 1
+            },
+            {
+              "name": "Injury: Shoulder / Rotator Cuff",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 2
+            },
+            {
+              "name": "Treatment Intent: Surgery Candidate",
+              "badges": [
+                "Keyword Spotting"
+              ],
+              "count": 1
+            }
+          ],
+          "voiceInfo": {
+            "callRecordId": "A417-2C9FE314770D",
+            "callStartTime": "1/14/26 4:12 pm",
+            "duration": "12:37",
+            "destinationPhone": "877-936-2933",
+            "source": "877-936-2933",
+            "promoNumberDescription": "Voice, Paid Search",
+            "connectionStatus": "Connected",
+            "callerId": "720-554-8847",
+            "repeatCaller": "No",
+            "city": "Denver",
+            "region": "CO",
+            "phoneType": "Mobile",
+            "displayName": "Sarah Martinez",
+            "firstName": "Sarah",
+            "lastName": "Martinez",
+            "gender": "Female",
+            "destinationTimeZone": "Mountain Time (US & Canada)",
+            "finalCampaign": "Default: Voice Campaign",
+            "finalCampaignId": "9970118"
+          }
+        },
+        {
+          "id": "B521-4D7EF421A89C",
+          "time": "1/18/26 3:54 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "B521-4D7EF421A89C",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "C638-5A8GH532B47D",
+          "time": "1/22/26 2:31 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "C638-5A8GH532B47D",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        },
+        {
+          "id": "D749-6B9IJ643C58E",
+          "time": "1/27/26 5:18 pm",
+          "active": false,
+          "date": "",
+          "transcript": [],
+          "signals": [],
+          "voiceInfo": {
+            "callRecordId": "D749-6B9IJ643C58E",
+            "callStartTime": "",
+            "duration": "",
+            "destinationPhone": "",
+            "source": "",
+            "promoNumberDescription": "",
+            "connectionStatus": "",
+            "callerId": "",
+            "repeatCaller": "",
+            "city": "",
+            "region": "",
+            "phoneType": "",
+            "displayName": "",
+            "firstName": "",
+            "lastName": "",
+            "gender": "",
+            "destinationTimeZone": "",
+            "finalCampaign": "",
+            "finalCampaignId": ""
+          }
+        }
+      ]
+    },
+    "agentConfig": {
+      "brandConversationRules": [
+        "Intro and offer: Introduce yourself as Denver Health's AI scheduling assistant helping the patient get personalized orthopedic care information and a preliminary cost range, mention that new-patient orthopedic consultations are currently booking quickly and financial assistance may be available, then ask if they would like to get started.",
+        "Qualify one at a time: Ask only one question per message, covering which body area or injury is involved, how long symptoms have been present, whether they have had recent imaging such as X-ray or MRI, their insurance or coverage type including Medicaid, and finally their ZIP code to confirm they are within our service area.",
+        "Estimate then book: Confirm we serve their ZIP, share a general preliminary cost range for the likely service, explain that an exact quote requires an in-clinic evaluation with an orthopedic specialist, propose a specific day and time for the consultation, and let them know they will receive a reminder text before the appointment with a number to call."
+      ],
+      "knowledgeSources": [
+        {
+          "name": "Denver_Health_Sales_Playbook.pdf",
+          "type": "Document",
+          "lastUpdated": "03/11/2026 10:21 AM"
+        },
+        {
+          "name": "Homepage",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Orthopedics Services & Specialties",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Find a Provider",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        },
+        {
+          "name": "Make an Appointment",
+          "type": "Web Link",
+          "lastUpdated": "03/11/2026 10:02 AM"
+        }
+      ],
+      "aiRecommendations": [
+        {
+          "title": "Qa pairs - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": true,
+          "payload": "{\"task_data_type\":\"application/json\",\"EXISTING_CUSTOMER\":[{\"topic\":\"reschedule\",\"question\":\"How do I reschedule my orthopedic consultation?\",\"answer\":\"I can help you move your appointment to a new day and time that works better. Just let me know your preferred date and I will confirm availability with the orthopedics clinic.\"},{\"topic\":\"imaging results\",\"question\":\"Where can I see my X-ray or MRI results?\",\"answer\":\"Your imaging results are posted to your MyChart patient portal once your care team reviews them. If you have not signed up yet, I can point you to the portal so you are ready before your visit.\"}]}",
+          "qaPairs": [
+            {
+              "question": "Do I need a referral to see an orthopedic specialist at Denver Health?",
+              "answer": "Many patients can self-refer for an orthopedic consultation, though some insurance plans require a referral. I can help you book a new-patient consultation and the team will confirm any referral needs."
+            },
+            {
+              "question": "Do you accept Medicaid?",
+              "answer": "Yes, Denver Health is a public health system that accepts Medicaid and works with many plans. I can get you scheduled for a consultation where our team will review your coverage."
+            },
+            {
+              "question": "How much does an orthopedic consultation cost?",
+              "answer": "A new-patient consultation generally falls in a modest office-visit range, but your exact cost depends on your coverage and needs. The best step is to book a consultation so our team can give you an accurate estimate."
+            },
+            {
+              "question": "How much does a knee replacement cost?",
+              "answer": "Total knee replacement costs vary widely based on your plan and care plan, so I cannot quote an exact figure by text. Let me schedule you with a joint replacement specialist who can give you a precise estimate."
+            },
+            {
+              "question": "I think I broke a bone, what should I do?",
+              "answer": "If this is a severe or emergency injury please call 911 or go to the nearest emergency department right away. For non-emergency fracture care I can help you book an urgent orthopedic consultation quickly."
+            },
+            {
+              "question": "Can you treat a torn ACL?",
+              "answer": "Yes, our sports medicine and orthopedic surgeons evaluate and treat ACL injuries, including arthroscopic repair when needed. Let me set up a consultation so a specialist can assess your knee."
+            },
+            {
+              "question": "Do you offer physical therapy?",
+              "answer": "Yes, Denver Health provides physical therapy and rehabilitation for recovery, strengthening, and range of motion. I can help schedule an evaluation to start your therapy plan."
+            },
+            {
+              "question": "Where is the orthopedics clinic located?",
+              "answer": "Our orthopedics services are offered at Denver Health locations in the Denver area. Tell me your ZIP code and I will confirm the most convenient clinic and book your visit."
+            },
+            {
+              "question": "Can I get help with the cost if I am uninsured?",
+              "answer": "Yes, as a safety-net health system we offer financial assistance and sliding-scale options for eligible patients. I can book your consultation and connect you with a financial counselor."
+            },
+            {
+              "question": "Do you treat rotator cuff injuries?",
+              "answer": "Yes, our shoulder specialists diagnose and repair rotator cuff injuries, often with minimally invasive arthroscopy. Let me schedule a consultation so a specialist can review your shoulder."
+            },
+            {
+              "question": "How soon can I be seen?",
+              "answer": "Availability varies by service and provider, but we work to get new patients in promptly. Share your ZIP and preferred time and I will find the soonest consultation slot."
+            },
+            {
+              "question": "Do you do carpal tunnel surgery?",
+              "answer": "Yes, our hand and upper extremity team performs carpal tunnel release as an outpatient procedure. I can book you a consultation to confirm whether it is right for you."
+            },
+            {
+              "question": "Can you help with chronic back pain?",
+              "answer": "Yes, our spine care team evaluates disc, stenosis, and degenerative conditions and builds a treatment plan. Let me schedule a spine consultation for you."
+            },
+            {
+              "question": "Do you see children for orthopedic issues?",
+              "answer": "Yes, we offer pediatric orthopedics for children's fractures, growth concerns, and injuries. I can book a consultation with our pediatric orthopedic team."
+            },
+            {
+              "question": "Do I need an MRI before my visit?",
+              "answer": "Not necessarily, your specialist will decide what imaging is needed during your evaluation. Let me get you booked and they will order any imaging that is appropriate."
+            },
+            {
+              "question": "Can I get a corticosteroid injection for joint pain?",
+              "answer": "Image-guided joint injections are one of the options our team offers for pain relief. Book a consultation and a specialist will determine if an injection is a good fit."
+            },
+            {
+              "question": "Do you offer sports injury evaluations for athletes?",
+              "answer": "Yes, our sports medicine team handles injury assessment and return-to-play planning. I can schedule a sports medicine evaluation for you."
+            },
+            {
+              "question": "What should I bring to my appointment?",
+              "answer": "Bring your ID, insurance information, a list of medications, and any prior imaging or records if you have them. Let me confirm your consultation date so you can prepare."
+            },
+            {
+              "question": "Do you treat foot and ankle problems?",
+              "answer": "Yes, our foot and ankle specialists treat deformity, arthritis, and trauma with both non-surgical and surgical care. I can book a consultation to get you assessed."
+            },
+            {
+              "question": "Can I book an appointment right now?",
+              "answer": "Absolutely, I can help you book an orthopedic consultation today. Just share your ZIP code and a preferred day and time to get started."
+            }
+          ]
+        },
+        {
+          "title": "Intent follow up - 2026-03-11 13:12",
+          "updated": "07/09/2026 3:29 PM",
+          "enabled": false,
+          "payload": "{\"task_data_type\":\"application/json\",\"NEW_CUSTOMER\":[{\"intent\":\"schedule the consultation\",\"follow_up_message\":\"Great, I have an orthopedic consultation available this week at our Denver clinic. Reply with your preferred day and time and I will lock it in, then send you a reminder text before your visit.\"},{\"intent\":\"request a cost estimate\",\"follow_up_message\":\"I can share a general cost range now, but an exact estimate comes from an in-clinic evaluation with a specialist who can also review your coverage. Let me book that consultation for you so you get accurate numbers.\"}]}",
+          "qaPairs": []
+        }
+      ],
+      "smsPlaybook": {
+        "greeting": "Hi, this is Denver Health's AI scheduling assistant. I can help answer your orthopedic questions and book a consultation with one of our specialists. Would you like to get started?",
+        "goal": "Guide the patient to book an in-clinic orthopedic consultation with a Denver Health specialist while confirming their needs and coverage.",
+        "bookingType": "in-clinic orthopedic consultation",
+        "offer": "",
+        "providesEstimate": false,
+        "qualifyingQuestions": [
+          "Which body area or type of injury are you dealing with, for example knee, shoulder, back, hand, or foot?",
+          "How long have you been experiencing symptoms or pain?",
+          "Have you had any recent imaging such as an X-ray or MRI for this issue?",
+          "What type of insurance or coverage do you have, including Medicaid or self-pay?",
+          "What is your ZIP code so I can confirm the nearest Denver Health orthopedics clinic and your service availability?"
+        ]
+      },
+      "serviceArea": "the greater Denver, Colorado area, ZIP codes starting with 802"
+    },
+    "gumloopArtifacts": [
+      {
+        "id": "voice-screenpop",
+        "name": "Voice Screenpop",
+        "status": "complete",
+        "createdAt": "8/28/26 11:24 am"
+      },
+      {
+        "id": "sms-screenpop",
+        "name": "SMS Screenpop",
+        "status": "complete",
+        "createdAt": "8/28/26 11:24 am"
+      },
+      {
+        "id": "voice-routing-demo",
+        "name": "Voice Routing Demo",
+        "status": "complete",
+        "createdAt": "8/28/26 11:24 am"
+      }
+    ],
+    "voiceScreenpop": {
+      "brandName": "Denver Health",
+      "callerName": "Sarah Mitchell",
+      "callerPhone": "(720) 555-0847",
+      "campaign": "Knee Replacement, Denver Metro Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$38,750",
+      "googleSearch": "knee replacement surgery Denver",
+      "websiteSearch": "total knee replacement cost Denver Health",
+      "callingWebpage": "/services/orthopedics/joint-replacement",
+      "products": "Total Knee Replacement, Physical Therapy Rehabilitation",
+      "cartId": "DH-6234M",
+      "serviceable": "Yes",
+      "email": "sarah.mitchell@email.com",
+      "street": "2847 South Gaylord Street",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80210",
+      "digitalJourney": "/home › /services/orthopedics › /services/orthopedics/joint-replacement › /find-a-provider",
+      "intent": "Patient seeking consultation for chronic knee arthritis with limited mobility, interested in total knee replacement options and recovery timeline.",
+      "coverage": "ZIP 80210 confirmed, Denver serviceable",
+      "switchIntent": "High urgency. Patient reports significant pain limiting daily activities and recently retired, motivated to schedule surgery within the next 4 to 6 weeks.",
+      "greeting": "Hi Sarah, this is Marcus with Denver Health Orthopedics. I see you were just looking at information about knee replacement surgery. I'd love to get you scheduled with one of our specialists who can evaluate your knee and discuss whether replacement is the right option for you. Would Thursday or Friday work better for an initial consultation?"
+    },
+    "smsScreenpop": {
+      "brandName": "Denver Health",
+      "callerName": "James Rodriguez",
+      "callerPhone": "(303) 555-0521",
+      "campaign": "Sports Medicine, Boulder Valley Acquisition",
+      "tagGreen": "✓ In Service Area",
+      "tagBlue": "New Consultation Lead",
+      "estimatedValue": "$12,400",
+      "googleSearch": "ACL surgery cost Denver",
+      "websiteSearch": "sports medicine orthopedic surgeon Boulder",
+      "callingWebpage": "/services/orthopedics/sports-medicine",
+      "products": "Arthroscopic ACL Repair, Sports Medicine Evaluation",
+      "cartId": "DH-8901K",
+      "serviceable": "Yes",
+      "email": "james.rodriguez@email.com",
+      "street": "445 Pearl Street",
+      "city": "Boulder",
+      "state": "CO",
+      "zip": "80302",
+      "digitalJourney": "/home › /services/orthopedics › /services/orthopedics/sports-medicine › /services/orthopedics/sports-medicine/acl-injury",
+      "intent": "High school soccer player with acute ACL tear from weekend game, seeking urgent evaluation and surgical repair options from sports medicine specialist.",
+      "coverage": "ZIP 80302 confirmed, Boulder serviceable",
+      "appointment": "Sports medicine evaluation and ACL tear assessment with Dr. Patricia Chen. Thu Jul 18, 2:00 PM",
+      "greeting": "Hi James, thanks for connecting with us. We have you scheduled with Dr. Patricia Chen for your ACL evaluation this Thursday at 2 PM. She specializes in sports injuries and can discuss next steps including potential surgical repair. Looking forward to getting you back on the field. Any questions before your appointment?"
+    },
+    "voiceRoutingDemo": {
+      "brandName": "Denver Health",
+      "brandDomain": "www.denverhealth.org",
+      "brandIcon": "🏥",
+      "callerPhone": "+1 (720) 555-0142",
+      "callerLocation": "Littleton, CO",
+      "idBadge": "New Visitor",
+      "attribution": [
+        {
+          "label": "Source",
+          "value": "Google",
+          "highlight": false
+        },
+        {
+          "label": "Medium",
+          "value": "Paid Search",
+          "highlight": false
+        },
+        {
+          "label": "Campaign",
+          "value": "Denver Orthopedic Surgeon Near Me",
+          "highlight": false
+        },
+        {
+          "label": "Keyword",
+          "value": "knee replacement surgery Denver cost",
+          "highlight": true
+        },
+        {
+          "label": "Calling Page",
+          "value": "/services/orthopedics/joint-replacement",
+          "highlight": true
+        },
+        {
+          "label": "Device",
+          "value": "Mobile, iOS",
+          "highlight": false
+        }
+      ],
+      "visitorHistory": [
+        {
+          "label": "Pages Viewed",
+          "value": "Total Knee Replacement, Orthopedic New Patient Consultation",
+          "highlight": true
+        },
+        {
+          "label": "Quote Started",
+          "value": "Yes. not submitted",
+          "highlight": true
+        },
+        {
+          "label": "Location",
+          "value": "Littleton, CO",
+          "highlight": false
+        }
+      ],
+      "queues": [
+        {
+          "id": "consultation_new_ortho",
+          "name": "Consultation. New Orthopedic Patient"
+        },
+        {
+          "id": "scheduling_existing",
+          "name": "Scheduling. Existing Patient"
+        },
+        {
+          "id": "general_support",
+          "name": "General Orthopedic Support"
+        }
+      ],
+      "convo": [
+        {
+          "role": "agent",
+          "text": "Hi there. Thanks for calling Denver Health Orthopedics. I'm an AI agent here to help qualify your needs and get you connected with the right team. Are you looking to schedule a consultation with one of our orthopedic surgeons today?",
+          "sigs": [],
+          "q": [
+            33,
+            33,
+            34
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "Yes, I've been having knee pain for a few months now and I saw your page about knee replacement. I'm wondering if that's something I need or if there are other options first.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>Knee pain</strong>. multi month history"
+            },
+            {
+              "c": "blue",
+              "t": "Considering <strong>total knee replacement</strong>"
+            },
+            {
+              "c": "orange",
+              "t": "Seeking surgical alternatives"
+            }
+          ],
+          "q": [
+            55,
+            20,
+            25
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "I understand. Knee pain can really impact your quality of life. Our orthopedic surgeons typically start with a comprehensive consultation and imaging to understand exactly what's going on. That could include X rays or an MRI. Are you a new patient to Denver Health, or have you been seen by one of our providers before?",
+          "sigs": [],
+          "q": [
+            65,
+            18,
+            17
+          ]
+        },
+        {
+          "role": "caller",
+          "text": "I'm new to Denver Health, but I'm a Littleton resident so I'm pretty close to the clinic. I have insurance through my employer and I'm ready to get this scheduled pretty soon. Like within the next week or two if possible.",
+          "sigs": [
+            {
+              "c": "green",
+              "t": "<strong>New patient</strong>. Denver Health system"
+            },
+            {
+              "c": "blue",
+              "t": "<strong>Littleton location</strong> preferred"
+            },
+            {
+              "c": "purple",
+              "t": "High urgency. within 1 to 2 weeks"
+            }
+          ],
+          "q": [
+            82,
+            10,
+            8
+          ]
+        },
+        {
+          "role": "agent",
+          "text": "Perfect. I'm routing you now to our Consultation team for New Orthopedic Patients. They'll confirm your appointment availability next week and collect your insurance information. You'll be speaking with a scheduling specialist in just a moment.",
+          "sigs": [],
+          "q": [
+            95,
+            3,
+            2
+          ]
+        }
+      ],
+      "routedSubtitle": "AI Agent qualified caller intent and matched to the right team"
+    },
+    "signalManager": {
+      "title": "Signal",
+      "uploadTitle": "Upload Signal Records",
+      "uploadBody": "Go here to upload Signal and/or revenue amounts to Invoca calls",
+      "apiTitle": "View API Documentation",
+      "apiBody": "Learn about how to post Signals and revenue from another system",
+      "filterLabel": "All Signals",
+      "pagerLabel": "1 - 10 of 10",
+      "rowsPerPage": "100",
+      "signals": [
+        {
+          "name": "Consultation Booked (Conversion)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "2 Signals",
+          "description": "",
+          "taggedAs": "Conversion",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"let's get you scheduled (Agent)\", \"book the appointment (Agent)\", \"yes, let's set that up (Caller)\", \"come in for a consult (Agent)\"])",
+          "createdAt": "03/14/25 9:12 am",
+          "updatedAt": "01/09/26 2:44 pm"
+        },
+        {
+          "name": "Accepted Insurance & Medicaid Question",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"do you take Medicaid (Caller)\", \"is that covered by my insurance (Caller)\", \"we accept Health First Colorado (Agent)\", \"accepting new Medicaid patients (Caller)\"])",
+          "createdAt": "05/02/25 11:30 am",
+          "updatedAt": "12/18/25 4:05 pm"
+        },
+        {
+          "name": "ACL & Sports Injury Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"I tore my ACL (Caller)\", \"sports injury (Caller)\", \"torn meniscus (Caller)\", \"return to play (Agent)\"])",
+          "createdAt": "04/21/25 8:50 am",
+          "updatedAt": "11/27/25 10:15 am"
+        },
+        {
+          "name": "Appointment Scheduling Handled",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Appointment Scheduling] < 60 and duration > 45 sec",
+          "createdAt": "02/19/25 3:22 pm",
+          "updatedAt": "01/06/26 9:38 am"
+        },
+        {
+          "name": "Consultation Discussed (Industry)",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"see an orthopedic surgeon (Caller)\", \"new patient consultation (Agent)\", \"have the doctor evaluate it (Agent)\", \"come in for an exam (Agent)\"])",
+          "createdAt": "03/28/25 1:05 pm",
+          "updatedAt": "12/30/25 11:52 am"
+        },
+        {
+          "name": "Cost & Price Sensitivity",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting",
+          "usedIn": "",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"how much does it cost (Caller)\", \"that's too expensive (Caller)\", \"do you offer a payment plan (Caller)\", \"financial assistance (Caller)\"])",
+          "createdAt": "06/11/25 10:40 am",
+          "updatedAt": "01/12/26 3:18 pm"
+        },
+        {
+          "name": "Empathy & Patient Reassurance",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "3 Scorecards",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Patient Empathy] < 60 and duration > 45 sec",
+          "createdAt": "01/24/25 4:47 pm",
+          "updatedAt": "01/15/26 8:29 am"
+        },
+        {
+          "name": "Joint Replacement Interest",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Integration",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"knee replacement (Caller)\", \"total hip replacement (Caller)\", \"joint replacement seminar (Agent)\", \"getting a new knee (Caller)\"])",
+          "createdAt": "05/19/25 9:58 am",
+          "updatedAt": "12/22/25 1:11 pm"
+        },
+        {
+          "name": "Provider & Location Explained",
+          "status": "ACTIVE",
+          "types": "Rules, Scorecard",
+          "usedIn": "1 Scorecard",
+          "description": "",
+          "taggedAs": "",
+          "revenue": "",
+          "rules": "scorecard[Provider Info Accuracy] < 60 and duration > 45 sec",
+          "createdAt": "02/07/25 12:33 pm",
+          "updatedAt": "01/08/26 10:04 am"
+        },
+        {
+          "name": "Quote Provided",
+          "status": "ACTIVE",
+          "types": "Keyword Spotting, Rules",
+          "usedIn": "1 Campaign",
+          "description": "",
+          "taggedAs": "Lead",
+          "revenue": "",
+          "rules": "voice_signal = any(1, [\"out of pocket estimate (Agent)\", \"self-pay price (Agent)\", \"the surgery would run about (Agent)\", \"cost estimate for the procedure (Agent)\"])",
+          "createdAt": "04/03/25 2:16 pm",
+          "updatedAt": "01/11/26 4:52 pm"
+        }
+      ]
+    }
+  }
+}

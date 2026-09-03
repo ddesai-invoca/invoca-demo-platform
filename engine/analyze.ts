@@ -205,11 +205,16 @@ export async function analyzeSms(input: AnalyzeInput, apiKey?: string): Promise<
     `CONVERSATION:\n${convo}\n\n` +
     `Return 6–8 signals. Each: name, badges (a subset of ["Keyword Spotting","Rule","Keypress"]), count (integer 0–3; use 0 to hide the trailing count).\n` +
     `Base every signal on what ACTUALLY happened in the conversation. Include when applicable:\n` +
-    `- "(QA) Proper Greeting" and "(QA) Proper Close" (["Keyword Spotting","Rule"], count 1)\n` +
     `- "${bookingTerm}: Scheduled" (["Keyword Spotting","Rule"], count 0) if a booking was made\n` +
     `- "Caller Type: New ${customerNoun}" (["Keyword Spotting","Rule"], count 1)\n` +
     `- "Qualified Lead" (["Rule"], count 0)\n` +
-    `- 1–3 product/intent signals naming what the customer was interested in (["Keyword Spotting"], count 0).` +
+    /* ⚠️ NO "(QA) …" SIGNALS. This analyses a conversation an AI agent handled, so human
+       agent-quality scoring does not apply — asked for 9/3/2026. The slots they used to take go to
+       signals grounded in the conversation instead, which is what an SE can actually point at. Both AI
+       CI screens ALSO strip them on read (src/data/aiSignals.ts), so a stale response cannot show one. */
+    `- 3–5 signals for what the agent established: the qualifying answers it captured, the product or
+       service the customer named, any estimate or offer it gave, a service area it confirmed
+       (["Keyword Spotting"], count 0).` +
     (voice
       ? `\n\nALSO return "outcome" describing how the call ended:\n` +
         `- transferred: true ONLY if the agent actually handed the caller off to a team or department at the end. False if the call ended any other way, including the agent turning the caller away as out of area, the caller hanging up, or the conversation simply stopping.\n` +

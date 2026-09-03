@@ -7130,6 +7130,42 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
   NEW data-driven feature into `engine/core.ts` so new prospects get it. Pure design
   changes are shared CSS and apply to everyone.
 
+## No human-agent QA signals on the AI conversation reports (9/3/2026)
+
+Asked for pointing at "(QA) Proper Greeting" / "(QA) Proper Close" in the AI SMS report's MET
+SIGNALS rail: the AI SMS and AI Voice reports "don't need QA signals as there is no human agent
+involved."
+
+⚠️ **The `(QA)` prefix is Invoca's own agent-quality category** — what a supervisor grades a rep
+against, and the same names carry the Call Review scorecard. On an AI-handled conversation it
+passes on every call by construction, so it takes a row in the rail, tells an SE nothing, and
+implies a person was on a call whose whole point is that nobody was.
+
+⚠️⚠️ **FIXED AT FOUR PLACES, AND THE RENDER BOUNDARY IS THE ONE THAT MATTERS.** Changing the
+prompts alone would have fixed nothing an SE could see: 14 bundled seeds and 11 local library
+records were ALREADY generated with these signals, and no prompt reaches data that exists.
+  - `src/data/aiSignals.ts` — `withoutAgentQaSignals()`, applied to the merged
+    `[...captured, ...seed]` list in `SmsConversationIntelligence` and
+    `VoiceConversationIntelligence` **only**. This is what corrects every existing demo, every
+    live record on Render (which cannot be regenerated), and any stale `/api/analyze` response,
+    with no migration. It matches the `(QA)` PREFIX rather than the two known names, so
+    "(QA) Commitment to Help" is caught without another edit.
+  - `engine/core.ts` — both AI CI prompts now ask for signals grounded in what the agent
+    established (the answers it captured, the product named, an estimate given, a service area
+    confirmed) in place of the QA pair.
+  - `engine/analyze.ts` — same, for a REAL captured call. This one covers both channels.
+  - The data: 100 QA signals stripped from the two AI report blocks across all 25 demo JSONs,
+    and Shady Blinds' hand-authored pair replaced with "Service Area: Confirmed" /
+    "Estimate Provided", both true of its transcript.
+
+⚠️ **WHAT KEEPS ITS QA SIGNALS, DELIBERATELY** — the human call-log CI
+(`ConversationIntelligence`), `CallReview`, and `callDetail`'s scorecard, where agent-quality
+scoring IS the subject (the scorecard grades "(QA) Proper Close" 0/10 and that miss is the
+story). `insightsCatalog.ts` keeps them too: it lists the signals an account HAS, not the ones
+one conversation hit. **Verified by reading the rails after the change** — the two AI reports
+render 5 substantive signals each, the human call log still renders all 9 including both QA
+rows. `auditProfile` now gates the data so a future generation cannot quietly reintroduce them.
+
 ## ⚠️ OPEN ITEMS as of 9/3/2026 (found this session, NOT yet fixed)
 
 **1. ⚠️⚠️ AN ENDED CALL LEAVES THE AGENT IN THE ROOM, AND IT BILLS.** Measured live, twice.

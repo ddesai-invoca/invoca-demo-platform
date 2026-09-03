@@ -5,6 +5,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { Pill } from "../components/Pill";
 import { AgentStudioIcon } from "../components/nav";
 import type { VoiceConversation, VoiceInfo } from "../data/schema";
+import { withoutAgentQaSignals } from "../data/aiSignals";
 import { usePageData, DashAssistant } from "../components/GeneratedTiles";
 
 /* AI Voice Conversation Intelligence — the voice sibling of the SMS report. Lists
@@ -94,7 +95,9 @@ export function VoiceConversationIntelligence() {
   const seed = view?.conversations ?? [];
   // Captured calls accumulate at the top (newest first); seed examples fill in
   // below. The list scrolls, so no hard cap.
-  const conversations: VoiceConversation[] = [...captured, ...seed];
+  /* ⚠️ `withoutAgentQaSignals` strips "(QA) …" signals: no human agent answered these,
+     so agent-quality scoring does not apply. See src/data/aiSignals.ts. */
+  const conversations: VoiceConversation[] = withoutAgentQaSignals([...captured, ...seed]);
 
   const firstActive = conversations.find((c) => c.active) ?? conversations[0];
   const [selectedId, setSelectedId] = useState<string | undefined>(firstActive?.id);

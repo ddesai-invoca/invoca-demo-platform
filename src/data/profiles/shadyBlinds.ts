@@ -736,8 +736,8 @@ export const shadyBlinds: CustomerProfile = {
             { speaker: "agent",    time: "6:28 AM", text: "You're all set for Thursday at 11:00 AM. You'll get a reminder text 5 minutes before with the number to call: 805-888-2424. Thank you for choosing Shady Blinds!" },
           ],
           signals: [
-            { name: "(QA) Proper Greeting",        badges: ["Keyword Spotting","Rule"], count: 1 },
-            { name: "(QA) Proper Close",           badges: ["Keyword Spotting","Rule"], count: 1 },
+            { name: "Service Area: Confirmed",     badges: ["Keyword Spotting","Rule"], count: 1 },
+            { name: "Estimate Provided",           badges: ["Keyword Spotting","Rule"], count: 1 },
             { name: "Consultation: Scheduled",     badges: ["Keyword Spotting","Rule"], count: 1 },
             { name: "Caller Type: New Customer",   badges: ["Keyword Spotting","Rule"], count: 1 },
             { name: "Discount Offered",            badges: ["Keyword Spotting","Rule"], count: 1 },
@@ -805,8 +805,8 @@ export const shadyBlinds: CustomerProfile = {
             { speaker: "agent",    time: "4:18 PM", text: "You're all set for Thursday at eleven A M. You'll get a reminder text five minutes before, with a number you can call: eight oh five, eight eight eight, two four two four. Thanks so much for choosing Shady Blinds!" },
           ],
           signals: [
-            { name: "(QA) Proper Greeting",          badges: ["Keyword Spotting","Rule"], count: 1 },
-            { name: "(QA) Proper Close",             badges: ["Keyword Spotting","Rule"], count: 1 },
+            { name: "Service Area: Confirmed",       badges: ["Keyword Spotting","Rule"], count: 1 },
+            { name: "Estimate Provided",             badges: ["Keyword Spotting","Rule"], count: 1 },
             { name: "Consultation: Scheduled",       badges: ["Keyword Spotting","Rule"], count: 1 },
             { name: "Caller Type: New Customer",     badges: ["Keyword Spotting","Rule"], count: 1 },
             { name: "Discount Offered",              badges: ["Keyword Spotting","Rule"], count: 1 },

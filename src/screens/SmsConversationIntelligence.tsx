@@ -5,6 +5,7 @@ import { useSmsCapture } from "../data/SmsCaptureContext";
 import { Pill } from "../components/Pill";
 import { AgentStudioIcon } from "../components/nav";
 import type { SmsConversation, SmsInfo } from "../data/schema";
+import { withoutAgentQaSignals } from "../data/aiSignals";
 import { usePageData, DashAssistant } from "../components/GeneratedTiles";
 
 /* The AI Agent glyph in the transcript/legend = the Invoca AI icon (same SVG as
@@ -93,7 +94,9 @@ export function SmsConversationIntelligence() {
   const seed = view?.conversations ?? [];
   // Captured conversations accumulate at the top (newest first); seed examples
   // fill in below. The list scrolls, so no hard cap.
-  const conversations: SmsConversation[] = [...captured, ...seed];
+  /* ⚠️ `withoutAgentQaSignals` strips "(QA) …" signals: no human agent answered these,
+     so agent-quality scoring does not apply. See src/data/aiSignals.ts. */
+  const conversations: SmsConversation[] = withoutAgentQaSignals([...captured, ...seed]);
 
   const firstActive = conversations.find((c) => c.active) ?? conversations[0];
   const [selectedId, setSelectedId] = useState<string | undefined>(firstActive?.id);
