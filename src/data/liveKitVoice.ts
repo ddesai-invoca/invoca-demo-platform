@@ -122,8 +122,23 @@ const TEARDOWN_GRACE_MS = 250;
    "Listening…" with a running timer and no error, so the only symptom was that the agent
    never spoke. That is indistinguishable from a broken mic, a bad prompt or a dead network,
    and it cost a round trip to diagnose ("I clicked start call but voice agent isnt
-   starting"). So we watch for the agent actually JOINING and say so if it does not. */
-const AGENT_JOIN_TIMEOUT_MS = 10_000;
+   starting"). So we watch for the agent actually JOINING and say so if it does not.
+
+   ⚠️⚠️ **18s, NOT 10s (9/3/2026).** Reported live on the hosted deploy: "No voice agent
+   joined this call" firing intermittently even though `lk agent status` shows the
+   `invoca-voice` worker Running. Confirmed by reading the worker's own logs (`lk agent
+   logs`) at the moment it happened: the worker had just gone through a fresh
+   "starting worker" -> "registered worker" boot cycle seconds before serving the call fine
+   — i.e. a COLD START, not a dead worker. LiveKit Cloud's own docs say a project on the
+   Build (free) plan can scale its agent down to zero replicas once every call ends, and
+   that a cold start "can cause up to 10 to 20 seconds of delay before the agent joins the
+   room" — squarely straddling the old 10s cutoff, so the first call after any idle period
+   was a near-coin-flip. 18s covers the documented worst case with margin while still firing
+   well inside a demo's patience; a worker that is GENUINELY not deployed still gets caught,
+   just a few seconds later. The permanent fix is on LiveKit's side of the fence (a paid
+   plan tier with a minimum warm replica, so no call is ever the one that pays for the cold
+   start) — see the note on `AGENT_DOWN_MESSAGE` below for what changes here regardless. */
+const AGENT_JOIN_TIMEOUT_MS = 18_000;
 let agentWatch: ReturnType<typeof setTimeout> | null = null;
 /** Whichever hook instance is bound receives a watchdog failure. */
 let errorSink: ((msg: string) => void) | null = null;
@@ -272,7 +287,16 @@ export function useLiveKitVoice(): LiveKitVoice {
         agentWatch = setTimeout(() => {
           agentWatch = null;
           if (live?.room.remoteParticipants.size) return;   // it arrived late; fine
-          errorSink?.("No voice agent joined this call. The agent worker may not be running — start it with `npm run dev` in the agent folder.");
+          /* ⚠️⚠️ **THE OLD MESSAGE ("start it with `npm run dev` in the agent folder") WAS
+             LOCAL-DEV ADVICE SHOWN ON THE LIVE SITE.** It dates from before a hosted worker
+             existed (`agent/DEPLOY.md`: "the only worker registered is whatever is running on
+             a laptop"). Now there IS a hosted worker (`invoca-voice` on LiveKit Cloud) and an
+             SE hitting this on the live site has no repo, no terminal, and nothing to `npm run
+             dev` — the instruction is not merely unhelpful, it names an action that cannot be
+             taken by the person reading it. The real cause, confirmed live, is usually a COLD
+             START (see the AGENT_JOIN_TIMEOUT_MS note above), which resolves itself in
+             seconds. */
+          errorSink?.("The voice agent didn't join in time. If it was just idle, it's likely warming back up. End the call and try again in a few seconds — if it keeps happening, the LiveKit voice worker may be down.");
         }, AGENT_JOIN_TIMEOUT_MS);
       }
       return call;

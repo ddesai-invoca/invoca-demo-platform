@@ -46,9 +46,20 @@ The agent name is what a token dispatches by, so this is the thing to confirm:
 1. `lk agent status` shows the deployment running.
 2. On the live site, open a voice workflow and click **Start Call**. The agent should speak
    within a couple of seconds.
-3. If it stays silent for 10s the call screen says *"No voice agent joined this call"* — that
-   message means the room was created and nothing answered, i.e. the worker is not registered
-   under `invoca-voice`.
+3. If it stays silent for 18s the call screen says the voice agent didn't join in time —
+   that message means the room was created and nothing answered within the window.
+   ⚠️ **THIS FIRES ON A COLD START TOO, NOT ONLY A DEAD WORKER.** On the Build plan, LiveKit
+   Cloud can scale `invoca-voice` down to zero replicas once every call ends, and its own docs
+   say a cold start "can cause up to 10 to 20 seconds of delay before the agent joins" — so
+   the first call after any idle stretch can trip this even with a perfectly healthy
+   deployment. Confirmed live 9/3/2026: `lk agent logs` showed a "starting worker" ->
+   "registered worker" boot completing seconds before the worker served the call fine.
+   `lk agent status` (Running, replicas non-zero) tells you it is UP right now; it does not
+   tell you it was up 15 seconds ago. If the message repeats on a SECOND immediate retry
+   (past any cold-start window), that is when to suspect the worker is genuinely not
+   registered under `invoca-voice`. The permanent fix for the cold start itself is a plan
+   tier with a minimum warm replica — check the project's plan in the LiveKit Cloud dashboard
+   billing page; this is a plan/cost decision, not something the CLI or this repo controls.
 
 Then stop the laptop worker and confirm calls still work — that is the actual proof the hosted
 one is serving, since both register to the same project and either can answer.

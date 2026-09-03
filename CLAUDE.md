@@ -991,6 +991,60 @@ different were the PRODUCT's, not the prospect's, so they moved into the templat
 prospect gets them. Keeping the whole tree in the override would have frozen a copy that stops
 tracking the template — the same drift the SMS-brain note warns about.
 
+### "No voice agent joined this call" — cold start, not a dead worker (9/3/2026)
+Asked directly, on the live site: why does this show up sometimes, and is there a way to keep
+the agent worker always running?
+
+**Diagnosed live, not guessed.** `lk agent status` showed the hosted `invoca-voice` worker
+(`CA_y7Ctc5ZfZ4G6`) genuinely `Running` with a real replica up. `lk agent logs` at the same
+moment showed it had just gone through `"starting worker" -> "registered worker"` seconds
+before serving a real call correctly (greeting spoken, session closed cleanly on hangup) — a
+**cold start**, not a crashed or missing deployment.
+
+⚠️⚠️ **LIVEKIT CLOUD'S OWN DOCS EXPLAIN THE "SOMETIMES" EXACTLY.** On the Build (free) plan, a
+deployed agent "might have their deployed agents shut down after all active sessions end. The
+agent automatically starts again when a new session begins. This can cause **up to 10 to 20
+seconds of delay** before the agent joins the room." Our client-side watchdog
+(`AGENT_JOIN_TIMEOUT_MS`) was **10 seconds** — sitting at the very bottom of LiveKit's own
+documented cold-start window, so the first call after any idle stretch was close to a coin
+flip. Whenever nobody had called recently, the worker scaled to zero; the next Start Call woke
+it back up, and depending on exactly how long that boot took, the SE saw either a working call
+or this message. `lk agent status`'s "Running" only proves the worker is up **right now** — it
+says nothing about whether it was up 15 seconds ago when the call actually started.
+
+⚠️ **THE ERROR MESSAGE ITSELF WAS WRONG FOR ANYONE SEEING IT ON THE LIVE SITE.** It read "start
+it with `npm run dev` in the agent folder" — advice from before a hosted worker existed
+(`agent/DEPLOY.md`: "until a HOSTED worker exists, the only worker registered is whatever is
+running on a laptop"). A hosted worker exists now, and an SE hitting this in production has no
+repo, no terminal, and nothing to `npm run dev` — the message named an action the reader
+literally cannot take. Rewritten to describe the real, likely cause and the real fix ("try
+again in a few seconds").
+
+**Two things fixed here, in this repo:**
+- `AGENT_JOIN_TIMEOUT_MS` raised **10s -> 18s**, covering LiveKit's documented worst case with
+  margin while still failing well inside a demo's patience if the worker is genuinely down.
+- The error text rewritten to name the cold-start explanation and the actual recovery step
+  (retry), instead of local-dev instructions nobody on the live site can follow.
+- `agent/DEPLOY.md`'s own troubleshooting section updated to match — including the tell for
+  telling a cold start apart from a real outage: **retry immediately** (past any cold-start
+  window) — if it fails a SECOND time right away, that's when to suspect the worker is not
+  registered under `invoca-voice` at all.
+
+⚠️⚠️ **THE PERMANENT FIX — "always have the agent worker running" — IS A LIVEKIT CLOUD PLAN
+DECISION, NOT SOMETHING THIS REPO OR ITS CLI CAN SET.** LiveKit's CLI (`lk agent update` /
+`lk agent deploy` / `lk agent config`) exposes secrets and image deployment, but **no flag or
+`livekit.toml` key for a minimum warm-replica count** — confirmed by fetching the agent's own
+config fresh (`lk agent config`) and reading LiveKit's current deployment-management and
+quotas docs directly rather than trusting a possibly-stale memory of their API. The
+scale-to-zero behavior is explicitly tied to the **Build (free) plan**; the docs imply paid
+tiers behave differently but do not spell out the mechanism. **Check the project's plan on the
+LiveKit Cloud dashboard billing page** — this is a real cost decision (a warm, non-scaling
+replica bills for idle time) and is the user's to make, not something to change unasked.
+
+Verified: `audit:voice` (62 checks) and `audit:ai` both green, `tsc` clean, no regression to
+the worker/token contract (`AGENT_NAME` match, job-metadata shape) — this fix is entirely
+client-side timeout and copy, and `agent/voiceAgent.js` was not touched.
+
 ### Don't ask twice: the voice agent was re-asking ZIP and name (9/2/2026)
 Reported directly: "when asking for things like are you looking to book an appointment or
 something, or their zipcode, or their name. Only ask that once, you should remember that data or
