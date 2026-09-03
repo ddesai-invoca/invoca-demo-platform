@@ -1,6 +1,7 @@
 import { useMemo, useRef, useEffect } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
+import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 import { bookedEvent } from "../data/salesforceEvent";
@@ -64,11 +65,18 @@ const MONTHS = ["January", "February", "March", "April", "May", "June", "July", 
 export function SalesforceCalendar() {
   const { profile, profileId } = useProfile();
   const { capturedFor } = useSmsCapture();
+  /* ⚠️ VOICE CAPTURES TOO, SO A BOOKING AGENT'S CALL REACHES THIS SCREEN (9/3/2026). The
+     booking workflow confirms an appointment out loud; the SE's next move is to open
+     Salesforce and see it. A voice booking wins over the derived SMS slot inside
+     `bookedEvent`, and where there is none nothing about this screen changes. */
+  const { capturedFor: voiceFor } = useVoiceCapture();
   const body = useRef<HTMLDivElement | null>(null);
 
   /* The newest live capture wins; otherwise the seeded conversation. */
   const captured = capturedFor(profileId)[0];
-  const ev = useMemo(() => bookedEvent(profile, captured), [profile, captured]);
+  const voiceCalls = voiceFor(profileId);
+  const ev = useMemo(() => bookedEvent(profile, captured, voiceCalls),
+    [profile, captured, voiceCalls]);
 
   /* ⚠️ THE WEEK IS DERIVED FROM THE DEMO'S OWN CLOCK, and the appointment is placed INSIDE
      it — the capture shows Aug 2-8 because that SE had navigated back, which is that

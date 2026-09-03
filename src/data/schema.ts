@@ -485,6 +485,13 @@ export const VoiceCallOutcome = z.object({
   callerName: z.string(),
   intent: z.string(),
   location: z.string(),
+  /* A BOOKING workflow's result. Optional so every capture recorded before this parses, and
+     app-written like the rest of `outcome` — `VOICE_CI_GEN` omits the whole field from
+     generation, so the model can never fabricate an appointment onto a seeded conversation. */
+  booked: z.boolean().optional(),
+  bookedDay: z.string().optional(),
+  bookedTime: z.string().optional(),
+  bookedLocation: z.string().optional(),
 });
 
 export const VoiceConversation = z.object({
@@ -739,6 +746,12 @@ export const ExtraWorkflow = z.object({
   branches: z.array(WorkflowBranch),
   systemPrompt: z.string(),             // the agent's playbook, used by Preview Agent
   openingMessage: z.string().optional(),// what the agent texts first
+  /* The locations a BOOKING voice workflow can book into, e.g. Avi & Co's three boutiques.
+     ⚠️ ITS PRESENCE IS WHAT MARKS THE WORKFLOW AS A BOOKING ONE — there is deliberately no
+     separate `mode` flag to drift out of step with it. A booking agent with nowhere to book
+     is not a state worth representing, and the locations are the thing an SE actually types.
+     Absent on every existing workflow, so all of them still parse and still route. */
+  bookingLocations: z.array(z.string()).optional(),
 });
 export type ExtraWorkflow = z.infer<typeof ExtraWorkflow>;
 

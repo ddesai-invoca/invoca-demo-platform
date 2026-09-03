@@ -15,6 +15,7 @@
    ============================================================================= */
 
 import Anthropic from "@anthropic-ai/sdk";
+import { slotTable } from "../src/data/voiceBooking.ts";
 
 const CHAT_MODEL = "claude-haiku-4-5-20251001";
 
@@ -102,6 +103,22 @@ export interface ChatBrain {
    * handles Sales Inquiry", which is a screen label rather than something to say aloud.
    */
   voiceMinimal?: boolean;
+  /**
+   * A voice workflow that BOOKS the appointment on the call instead of routing it.
+   *
+   * ⚠️⚠️ **IT REPLACES THE PATH MACHINERY RATHER THAN TRIMMING IT, for the same reason
+   * `voiceMinimal` does.** The routing flow's whole shape is "qualify, then hand off to a
+   * team" — its step 3 names a destination and its service-area gate can REFUSE a caller.
+   * Both contradict an agent whose job is to end the call with a confirmed appointment, and a
+   * self-contradicting prompt is worse than either half (recorded twice in CLAUDE.md).
+   *
+   * ⚠️ OPT-IN AND DEFAULTED OFF, so no configured prospect's routing agent changes.
+   */
+  voiceBooking?: boolean;
+  /** The locations the caller can be booked into, nearest-first by the agent's own reading. */
+  voiceBookingLocations?: string[];
+  /** Weekday -> the ONLY times the agent may offer. Derived; see src/data/voiceBooking.ts. */
+  voiceBookingSlots?: Record<string, string[]>;
   /**
    * ⚠️ **AN ALLOW-LIST, AND IT INVERTS THE GATE.** Without it the prompt's rule is "12345 is
    * the only out-of-area ZIP, everything else proceeds" — right for a national business, and
@@ -412,8 +429,8 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
      hardcoded flow rather than emitting an empty CALL FLOW the model would improvise on. */
   const zips = brain.serviceZips ?? [];
   const steps = brain.voiceSteps ?? [];
-  const paths = brain.voiceMinimal
-    ? []   /* the minimal flow owns the whole block; see `voiceMinimal` */
+  const paths = brain.voiceMinimal || brain.voiceBooking
+    ? []   /* the minimal and booking flows own the whole block; see their notes */
     : (brain.voicePaths ?? []).filter((p) => p.intent?.trim() && p.routes?.length);
 
   /* ⚠️⚠️ **DON'T ASK TWICE (9/2/2026).** Reported directly: the agent asked for the caller's
@@ -470,7 +487,49 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `   • "Transferring you to the support team now."`,
     ``,
   ];
-  const flow = brain.voiceMinimal ? minimalFlow : paths.length ? [
+  /* ⚠️⚠️ **THE BOOKING FLOW: THIS AGENT FINISHES THE JOB INSTEAD OF HANDING IT OVER.**
+     Asked for 9/3/2026, as a third Avi & Co voice workflow. Every line here is deliberate:
+
+     • the times are QUOTED FROM A TABLE, so the agent cannot invent availability. An
+       invented slot is the one thing on this call a prospect could check against a real
+       diary, and it is also what would desynchronise the Salesforce Calendar the SE opens
+       next.
+     • it says a WEEKDAY and a TIME, never a calendar date — the Calendar screen owns the
+       date, and two independent claims about it would eventually disagree.
+     • the location comes from the ZIP, nearest boutique first, with a VIRTUAL consultation
+       as the fallback when the caller says it is too far. That is what the user chose when
+       asked, and it matches the out-of-area behaviour the routing agent already has.
+     • it NEVER transfers. The whole point of this workflow is that nobody is routed. */
+  const bookingLocations = brain.voiceBookingLocations ?? [];
+  const bookingFlow = [
+    `CALL FLOW — you BOOK the ${book} on this call yourself. You never transfer the caller and never hand them to a team.`,
+    brain.voiceGreeting
+      ? `1. OPEN with exactly this line, word for word: "${brain.voiceGreeting}" Then wait for their answer.`
+      : `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant and ask how you can help. Then wait for their answer.`,
+    `2. If they want to come in, visit, or book: continue. If they need help with something they have already bought, say a specialist will follow up and take their name and number — do NOT transfer them, this workflow has nobody to transfer to.`,
+    `3. COLLECT, ONE QUESTION PER MESSAGE, waiting for each answer before asking the next: first their FULL NAME, then their ZIP CODE. Never ask for both in one breath, and never ask for either twice.`,
+    bookingLocations.length
+      ? `4. LOCATION, from their ZIP: ${poss(brain.customerName)} locations are ${bookingLocations.join(", ")}. Work out which is closest to their ZIP, name it, and ask if that works for them.\n   • If they say it is too far, or they would rather not travel, offer a VIRTUAL consultation instead and book that. Say "virtual consultation" so it is unambiguous.\n   • Never book someone into a location they have not agreed to.`
+      : `4. LOCATION: ask which location suits them and use their answer.`,
+    `5. TIMELINE: ask how soon they are looking to come in.`,
+    `6. WEEKDAY: ask which weekday works best for them.`,
+    brain.voiceBookingSlots && Object.keys(brain.voiceBookingSlots).length
+      ? `7. TIMES — offer ONLY the times listed for the weekday they chose, read them out, and let them pick one. These are the whole of your availability; if they ask for anything else, say those are the times you have and offer the nearest one:\n${slotTable(brain.voiceBookingSlots)}`
+      : `7. TIMES: offer two or three times on that weekday and let them pick one.`,
+    `8. CONFIRM THE BOOKING and say clearly that it is booked. Repeat back, in one message: their name, the weekday, the time, and the location (or that it is a virtual consultation). Say the word "booked" so there is no doubt.`,
+    `9. Then ask if there is anything they would like ready for the visit, answer briefly, and close warmly.`,
+    ``,
+    `HARD RULES FOR THIS CALL:`,
+    `• NEVER offer, imply, or agree to a time that is not in the list above.`,
+    `• NEVER say a calendar date (no "the 20th", no "09/20"). The weekday and the time are the appointment.`,
+    `• NEVER transfer, route, or promise a callback from a department.`,
+    `• NEVER ask for payment details, card numbers, or account numbers.`,
+    /* ⚠️ THE CAP THE ROUTING FLOW ALREADY HAS. Without it the model volunteers a qualifying
+       question of its own between steps — observed on the first real call. */
+    `• ASK NOTHING BEYOND THE FLOW ABOVE. Do not add your own qualifying questions.`,
+    ``,
+  ];
+  const flow = brain.voiceBooking ? bookingFlow : brain.voiceMinimal ? minimalFlow : paths.length ? [
     `CALL FLOW — follow the routing your team configured, adapting naturally to what the caller says:`,
     brain.voiceGreeting
       /* ⚠️ VERBATIM WHEN SCRIPTED. An SE who typed the opening line expects to hear it, not a

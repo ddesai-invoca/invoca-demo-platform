@@ -22,6 +22,7 @@
    ============================================================================= */
 import { readFileSync, readdirSync } from "node:fs";
 import { voiceSpecFor, specWithConfig } from "../src/data/voiceAgentSpec.ts";
+import { bookingSlots } from "../src/data/voiceBooking.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { voiceSystemPrompt } from "../engine/chat.ts";
 
@@ -61,7 +62,31 @@ const brain: Record<string, unknown> = {
   voiceSteps: spec?.informSteps,
 };
 
-const lines = process.argv.slice(3);
+/* ⚠️ `--wf=<slug>` DRIVES AN EXTRA VOICE WORKFLOW, mirroring what `AgentWorkflow` passes as
+   `brainOpts.booking`. Without it this harness could only ever exercise the prospect's
+   built-in routing agent — and a booking workflow whose prompt is never built is exactly the
+   kind of thing that ships looking right and behaves like the old agent. */
+const wfArg = process.argv.slice(3).find((a) => a.startsWith("--wf="))?.slice(5);
+if (wfArg) {
+  const wf = (p.reports.extraWorkflows ?? []).find((w: { slug: string }) => w.slug === wfArg);
+  if (!wf) { console.log(`no workflow "${wfArg}" on ${id}`); process.exit(1); }
+  if (!wf.bookingLocations?.length) { console.log(`"${wfArg}" is not a booking workflow`); process.exit(1); }
+  const wfTree = ov[`/agent-studio/agent/workflow/${wfArg}`];
+  brain.voiceBooking = true;
+  brain.voiceBookingLocations = wf.bookingLocations;
+  brain.voiceBookingSlots = bookingSlots(p.id);
+  brain.voiceGreeting = wfTree?.agent?.greeting || wf.openingMessage;
+  /* The booking flow owns the location policy; the routing gate and steps must not also be
+     in the prompt — see the note in voiceSession.ts. */
+  brain.serviceZips = undefined;
+  brain.outOfAreaScript = undefined;
+  brain.voiceQualify = undefined;
+  brain.voiceSteps = undefined;
+  brain.voiceRules = undefined;   // the routing workflow's rules are not this one's
+  brain.voicePaths = [];
+}
+
+const lines = process.argv.slice(3).filter((a) => !a.startsWith("--"));
 if (!lines.length || lines[0] === "--prompt") {
   console.log(`# ${demo.prospect} — the prompt the agent is actually given\n`);
   console.log(voiceSystemPrompt(brain as never));

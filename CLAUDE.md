@@ -1211,6 +1211,110 @@ toolbar all present, **zero `.wfd-` elements**) and the SMS workflow's own tab (
 own trigger line, no voice picker, no dead controls). `audit:ai` and `audit:phases` green, `tsc`
 clean on both projects.
 
+### "Avi & Co - booking": a voice agent that BOOKS instead of routing (9/3/2026)
+Asked for directly: a third Avi & Co voice workflow that runs the same call as the routing
+agent but ends by booking the appointment itself — greeting -> caller wants to schedule -> name
+and ZIP -> timeline -> weekday -> a time -> the agent confirms with all the details.
+
+⚠️⚠️ **EXTRA WORKFLOWS WERE SMS-ONLY, SO ADDING THIS AS DATA ALONE WOULD HAVE SHIPPED A
+CONVINCING SHELL.** Three things fell through for a `channel: "Voice"` extra workflow, and each
+was silent: `baseAgent` is `null` for every extra workflow (so no agent config, and the Details
+tab correctly reports "no agent configured"), `buildSystem` gates the custom playbook behind
+`if (!voice && brain.customSystem)` (so a voice workflow's `systemPrompt` is DISCARDED), and
+the call therefore falls back to `voiceSpecFor(profile)`. Net effect: the new workflow would
+look right in the sub-nav and behave **exactly like the existing Avi & Co - Voice agent**.
+Flagged before building rather than discovered after.
+
+**`ChatBrain.voiceBooking` selects a booking flow, and it REPLACES the routing machinery
+rather than trimming it** — the same decision `voiceMinimal` made, for the same reason. The
+routing flow's step 3 names a team to hand off to and its service-area gate can REFUSE a
+caller; both contradict an agent whose job is to end the call with a confirmed appointment.
+`voiceSession` therefore drops `serviceZips`, `outOfAreaScript`, `voiceQualify` and
+`voiceSteps` for a booking call, and `audit:voice` asserts none of them reach the prompt.
+
+⚠️⚠️ **THE OFFERED TIMES ARE DERIVED AND BAKED INTO THE PROMPT, NEVER INVENTED.**
+`src/data/voiceBooking.ts` gives three slots per weekday (morning / early afternoon / late),
+a pure function of the profile id, so the same weekday offers the same times on every
+rehearsal. An invented slot is the one thing on this call a prospect could check against a real
+diary, and it is also what would desynchronise the Salesforce Calendar. Sunday is absent
+because a boutique is not open. ⚠️ `>>>` not `>>` in the hash — the signed-shift bug that once
+put a 3am appointment on a business calendar.
+
+⚠️ **THE AGENT SAYS A WEEKDAY AND A TIME, NEVER A CALENDAR DATE.** The Calendar places the
+appointment on that weekday of the current week, so a spoken date would be a second,
+independent claim about it. One surface owns the date; the screen does.
+
+⚠️ **`ExtraWorkflow.bookingLocations` IS BOTH THE DATA AND THE MARKER.** Its presence is what
+makes a workflow a booking one — there is deliberately no separate `mode` flag to drift out of
+step with it, and a booking agent with nowhere to book is not a state worth representing.
+Optional, so every existing workflow still parses and still routes.
+
+**Out of area: nearest boutique, virtual as the fallback** (the user's choice when asked).
+Measured on the real endpoint: ZIP 10001 -> "that puts you closest to our New York boutique";
+ZIP 98101 -> nearest offered, caller says it is too far -> "Let's book you a virtual
+consultation instead", and the confirmation says virtual.
+⚠️ Its geography is still the model's own and occasionally wrong (Seattle was offered New York
+where Aspen is nearer) — the same limitation already recorded for the routing agent, harmless
+for a demo whose callers are in the served metros.
+
+⚠️⚠️ **THE ROUTING WORKFLOW'S CONVERSATION RULES ARE DROPPED TOO, AND THAT WAS MEASURED.** They
+were kept at first, reasoning that rules are "how the agent sounds, not what it does". On the
+first real call the agent took the name and then asked *"What brings you in today? Are you
+looking to view watches, jewelry, or something else?"* — a qualifying question from the OTHER
+workflow, inserted between two steps of this one. They are that workflow's configuration; this
+flow is self-contained and carries its own `ASK NOTHING BEYOND THE FLOW ABOVE` cap.
+
+**The booking reaches the Salesforce Calendar, which is what makes it a demo beat.**
+⚠️ **THE DAY, TIME AND BOUTIQUE ARE THE CALL'S OWN, NOT DERIVED.** `analyzeSms` fills a
+`booked` / `bookedDay` / `bookedTime` / `bookedLocation` outcome by PICKING from the exact
+table the prompt offered — the same classify-not-extract pattern `destinations` and
+`matchDestination` already use, because this repo has been bitten twice reading model prose.
+Flat fields rather than a nested object, since a strict structured-output schema has no
+optionals. `bookedEvent` prefers such a booking over its hashed SMS slot and **fails closed**:
+no outcome, `booked` false, or a day/time that did not survive validation falls back exactly as
+before. Verified on all four bad shapes.
+⚠️ **AN EXACT LOCATION MATCH WAS TOO LITERAL AND SILENTLY LOST THE BOUTIQUE.** On a real
+transcript the agent said "at **our** New York boutique" while the list holds "**the** New York
+boutique", so a strict compare dropped it to `""` and the Salesforce chip lost the one detail
+proving the caller's ZIP decided anything. `matchLocation` normalises the article and any
+possessive — and nothing else, so an invented "Beverly Hills boutique" is still refused.
+
+⚠️ **THE LOCKED CHROME KEEPS ITS DEFAULT ACTIONS ("Qualify", "Support & Escalate"), and that is
+correct rather than an oversight.** Those four boxes are product chrome the user has already
+ruled un-editable; the booking actions ("Book Appointment", "Book Virtual", "Confirm & Update")
+sit on the USE CASES below, which is where authored content belongs.
+
+⚠️ **`scripts/demo-voice-sim.ts` GAINED `--wf=<slug>`**, mirroring what `AgentWorkflow` passes
+as `brainOpts.booking`. Without it the harness could only ever exercise the prospect's built-in
+routing agent — and a booking workflow whose prompt is never built is exactly the thing that
+ships looking right.
+⚠️⚠️ **AND THE FIRST REAL RUN WAS AGAINST A STALE MODULE.** The conversation used the ROUTING
+agent's greeting and questions while `--prompt` printed a perfect booking flow, because
+`--prompt` is built locally by the script and the CALL goes through the dev server's
+Node-cached `engine/chat.ts`. That reads exactly like the feature not working. **Restart the
+dev server after editing that file** — the caveat this file already carries, hit again.
+
+**`npm run audit:voice` is 106 checks** (was 87). Nineteen are new and BUILD the prompt: the
+flow tells the agent to book, every weekday's times and every location appear verbatim, the
+cap and the no-date rule are present, and **none** of the service-area gate, refusal script,
+routing steps or routing CALL FLOW leak in; with the flag off the routing prompt is untouched;
+slots are stable, three per weekday, no Sunday; `matchLocation` tolerates an article and
+refuses an invention; and a confirmed booking lands on the Calendar at its own day and hour
+naming the boutique, while all three malformed shapes fall back.
+⚠️ Each was verified to FIRE (deselecting the flow reddens 5, removing the cap 1, restricting
+the matcher 1, un-preferring the booking on the Calendar 2).
+⚠️ **ONE OF THEM WAS WRONG FIRST AND THE CODE WAS FINE:** it asserted the routing prompt
+contains "SERVICE-AREA CHECK", but with `voiceSteps` present the STEPS branch wins and that
+wording never appears. Yet another probe-not-code fault.
+
+**Verified in the app:** Agent Studio lists it Live / Voice / "Inbound calls to the booking
+line" (and the dash in the name survives the sweep, per `SKIP_KEY`); the page draws 9 nodes and
+11 chips with the three booking use cases; Preview Workflow is the voice drawer and there is no
+Preview Agent button; and the Details tab gives THIS workflow its own voice picker (6 voices,
+enabled) and its own opener. ⚠️ **The workflow itself lives in git-ignored
+`.data/demos/avi-co.json`** — reaching the live site is a PATCH to the server's own Avi & Co
+record, as "Avi & Co - New" already documents.
+
 ### ⚠️⚠️ Ask AI said it applied and nothing changed: TWO no-ops on an extra workflow (9/3/2026)
 Reported directly, from the Preview Agent: *"in the ask AI feature i asked for a couple of
 changes, the AI said that they applied but none of them actually applied to the actual text

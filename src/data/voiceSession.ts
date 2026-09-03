@@ -54,6 +54,16 @@ export interface BrainOpts {
   scopePath?: string;
   /** Preview a workflow that has only its starting tree: greet, classify, announce, transfer. */
   minimal?: boolean;
+  /**
+   * Preview a voice workflow that BOOKS the appointment instead of routing it.
+   *
+   * ⚠️ Carries its own greeting and locations because an extra workflow is not the prospect's
+   * configured agent — its opener is the one an SE authored on that workflow, and using
+   * `spec.greeting` here would have the booking agent open with the ROUTING agent's line.
+   * `slots` is derived (see `voiceBooking.ts`) and passed in so the prompt, and only the
+   * prompt, decides what availability exists.
+   */
+  booking?: { greeting?: string; locations: string[]; slots: Record<string, string[]> };
 }
 
 /**
@@ -154,6 +164,7 @@ export function useBrain(opts?: BrainOpts) {
      bitten by once. So they are dropped at the source, and the greeting is the empty
      workflow's own. */
   const minimal = !!opts?.minimal;
+  const booking = opts?.booking;
   return {
     customerName: profile.customerName,
     industry: profile.industry,
@@ -168,12 +179,31 @@ export function useBrain(opts?: BrainOpts) {
        the phone used the generic derived flow — the two-surfaces-disagreeing failure this
        repo keeps hitting, in its most visible form: a prospect hears the wrong greeting. */
     voiceMinimal: minimal,
-    serviceZips: minimal ? undefined : spec?.serviceZips,
-    outOfAreaScript: minimal ? undefined : spec?.outOfAreaScript,
-    voiceGreeting: minimal ? emptyWorkflowGreeting(profile.customerName) : spec?.greeting,
-    voiceQualify: minimal ? undefined : spec?.qualifyQuestion,
-    voiceRules: minimal ? undefined : spec?.rules,
-    voiceSteps: minimal ? undefined : spec?.informSteps,
+    /* ⚠️⚠️ **THE BOOKING FLOW DROPS THE SAME FIELDS THE MINIMAL FLOW DOES, AND FOR THE SAME
+       REASON.** The service-area gate can REFUSE a caller and the routing steps name a team to
+       hand off to; a booking agent must do neither. Leaving them in would put a refusal and a
+       booking instruction in one prompt, which is the self-contradicting shape that already
+       cost this repo a debugging session (the out-of-area script fighting step 3). The booking
+       flow states the location policy itself: nearest boutique, virtual as the fallback. */
+    voiceBooking: !!booking,
+    voiceBookingLocations: booking?.locations,
+    voiceBookingSlots: booking?.slots,
+    serviceZips: minimal || booking ? undefined : spec?.serviceZips,
+    outOfAreaScript: minimal || booking ? undefined : spec?.outOfAreaScript,
+    voiceGreeting: minimal ? emptyWorkflowGreeting(profile.customerName)
+      /* The workflow's own opener, then whatever the SE edited on it, then the prospect's. */
+      : booking ? (booking.greeting?.trim() || spec?.greeting)
+      : spec?.greeting,
+    voiceQualify: minimal || booking ? undefined : spec?.qualifyQuestion,
+    /* ⚠️⚠️ **THE ROUTING WORKFLOW'S RULES ARE DROPPED TOO, AND THAT WAS MEASURED RATHER THAN
+       ASSUMED.** They were kept at first on the reasoning that rules are "how the agent
+       sounds, not what it does". On the very first real call the agent collected the name and
+       then asked "What brings you in today? Are you looking to view watches, jewelry, or
+       something else?" — a qualifying question from the OTHER workflow, inserted between two
+       steps of this one. Those rules are the routing agent's configuration; a booking
+       workflow's flow is self-contained and says so in its own hard rules. */
+    voiceRules: minimal || booking ? undefined : spec?.rules,
+    voiceSteps: minimal || booking ? undefined : spec?.informSteps,
     /* Per-prospect routing for the voice prompt. Same source the workflow
        diagram uses (voiceRoutingDemo.queues), so the spoken call and the
        diagram name the same teams. Without this the prompt fell back to
@@ -242,7 +272,12 @@ function extractName(messages: Msg[]): { first: string; last: string; display: s
  */
 export function captureVoiceCall(
   profile: { id: string; customerName: string; bookingTerm: string; customerNoun?: string },
-  brain: { voicePaths?: { routes: { team: string }[] }[] },
+  brain: {
+    voicePaths?: { routes: { team: string }[] }[];
+    /* Present only for a booking workflow; see the note at the analyze call below. */
+    voiceBookingSlots?: Record<string, string[]>;
+    voiceBookingLocations?: string[];
+  },
   msgs: Msg[],
   durationSecs: number,
   addCaptured: (profileId: string, conv: VoiceConversation) => void,
@@ -265,6 +300,14 @@ export function captureVoiceCall(
       destinations: [...new Set(
         (brain.voicePaths ?? []).flatMap((p) => p.routes.map((r) => r.team)).filter(Boolean),
       )],
+      /* ⚠️ AND FOR A BOOKING WORKFLOW, THE ONLY DAYS / TIMES / PLACES AN APPOINTMENT MAY BE
+         REPORTED AT — read off the very table the prompt offered, so the analysis can only
+         report a slot the agent actually had. The Salesforce Calendar renders this, and a
+         paraphrased time would put an appointment on screen the call never offered. */
+      bookingDays: brain.voiceBookingSlots ? Object.keys(brain.voiceBookingSlots) : undefined,
+      bookingTimes: brain.voiceBookingSlots
+        ? [...new Set(Object.values(brain.voiceBookingSlots).flat())] : undefined,
+      bookingLocations: brain.voiceBookingLocations,
       transcript: conv.transcript.map((t) => ({ speaker: t.speaker, text: t.text })),
     }),
   })

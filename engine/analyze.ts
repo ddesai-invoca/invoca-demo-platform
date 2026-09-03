@@ -27,6 +27,18 @@ export interface AnalyzeInput {
    * so the answer is always a department the workflow actually has.
    */
   destinations?: string[];
+  /**
+   * For a BOOKING workflow: the only weekdays, times and locations an appointment may be
+   * reported at.
+   *
+   * ⚠️ SAME REASON `destinations` EXISTS. Asked to report what the agent booked, the model
+   * would otherwise paraphrase ("Thursday afternoon", "the New York store") and the Salesforce
+   * Calendar would render a slot the call never offered. It picks from these and anything off
+   * the list is dropped, so a stray answer produces NO booking rather than a wrong one.
+   */
+  bookingDays?: string[];
+  bookingTimes?: string[];
+  bookingLocations?: string[];
   transcript: { speaker: "consumer" | "agent"; text: string }[];
 }
 export interface Signal {
@@ -52,6 +64,11 @@ export interface Signal {
 export interface VoiceOutcome {
   /** True ONLY if the agent actually handed the caller to a team at the end. */
   transferred: boolean;
+  /** True only when a day AND time both matched what the agent actually offered. */
+  booked?: boolean;
+  bookedDay?: string;
+  bookedTime?: string;
+  bookedLocation?: string;
   /** The team named on transfer, verbatim. "" when nobody was routed. */
   routedTo: string;
   /** The caller's name if they gave one, else "". */
@@ -68,12 +85,23 @@ export interface AnalyzeResult {
   outcome?: VoiceOutcome;
 }
 
+/** The one non-boutique "location" a booking can have. Exported so the Calendar and the
+    audit use the same string the model is offered. */
+export const VIRTUAL = "Virtual consultation";
+
 const OUTCOME_PROPS = {
   transferred: { type: "boolean" },
   routedTo: { type: "string" },
   callerName: { type: "string" },
   intent: { type: "string" },
   location: { type: "string" },
+  /* A booking workflow's outcome. Flat rather than a nested object because a strict
+     structured-output schema has no optionals — the same constraint that made `VOICE_SCHEMA`
+     its own object instead of sharing one with `outcome` marked optional. */
+  booked: { type: "boolean" },
+  bookedDay: { type: "string" },
+  bookedTime: { type: "string" },
+  bookedLocation: { type: "string" },
 };
 
 /* Strict structured output has no optionals, so the VOICE schema is its own object rather than
@@ -87,7 +115,7 @@ const VOICE_SCHEMA = {
       required: ["name", "badges", "count"],
       properties: { name: { type: "string" }, badges: { type: "array", items: { type: "string" } }, count: { type: "number" } } } },
     outcome: { type: "object", additionalProperties: false,
-      required: ["transferred", "routedTo", "callerName", "intent", "location"],
+      required: ["transferred", "routedTo", "callerName", "intent", "location", "booked", "bookedDay", "bookedTime", "bookedLocation"],
       properties: OUTCOME_PROPS },
   },
 };
@@ -120,6 +148,25 @@ function matchDestination(answer: string, dests: string[]): string {
   return dests.find((d) => norm(d) === norm(answer)) ?? "";
 }
 
+/**
+ * Match a booked location against the allow-list, tolerating the article the agent SAYS.
+ *
+ * ⚠️⚠️ **AN EXACT MATCH WAS TOO LITERAL AND SILENTLY LOST THE BOUTIQUE — measured, not
+ * imagined.** On a real transcript the agent said "at our New York boutique" while the list
+ * holds "the New York boutique", so a strict comparison dropped it to "" and the Salesforce
+ * chip lost the one detail that proves the caller's ZIP decided anything. The article and any
+ * possessive are exactly what a speaking agent varies, so they are normalised away — while
+ * the PLACE still has to match one on the list, so an invented location is still refused.
+ */
+export function matchLocation(answer: string, locs: string[]): string {
+  const a = answer.trim();
+  if (!a) return "";
+  if (a === VIRTUAL) return VIRTUAL;
+  const norm = (x: string) => x.trim().toLowerCase().replace(/^(the|our|a)\s+/, "");
+  if (norm(a) === norm(VIRTUAL)) return VIRTUAL;
+  return locs.find((l) => norm(l) === norm(a)) ?? "";
+}
+
 export async function analyzeSms(input: AnalyzeInput, apiKey?: string): Promise<AnalyzeResult> {
   const key = apiKey ?? process.env.ANTHROPIC_API_KEY;
   if (!key) throw new Error("ANTHROPIC_API_KEY is not set.");
@@ -129,6 +176,9 @@ export async function analyzeSms(input: AnalyzeInput, apiKey?: string): Promise<
   const customerNoun = input.customerNoun || "Customer";
   const voice = input.channel === "voice";
   const dests = (input.destinations ?? []).map((x) => String(x).trim()).filter(Boolean);
+  const days = (input.bookingDays ?? []).map((x) => String(x).trim()).filter(Boolean);
+  const times = (input.bookingTimes ?? []).map((x) => String(x).trim()).filter(Boolean);
+  const locs = (input.bookingLocations ?? []).map((x) => String(x).trim()).filter(Boolean);
   const medium = voice ? "phone call" : "SMS conversation";
   const convo = input.transcript.map((t) => `${t.speaker === "agent" ? "Agent" : "Customer"}: ${t.text}`).join("\n");
 
@@ -147,6 +197,12 @@ export async function analyzeSms(input: AnalyzeInput, apiKey?: string): Promise<
         `- transferred: true ONLY if the agent actually handed the caller off to a team or department at the end. False if the call ended any other way, including the agent turning the caller away as out of area, the caller hanging up, or the conversation simply stopping.\n` +
         (dests.length
           ? `- routedTo: which of these departments the call was handed to. Copy ONE of them EXACTLY, character for character: ${dests.map((x) => `"${x}"`).join(", ")}. The agent will have said it in its own words ("our support team"), so match on MEANING, not wording. Use "" only if the call was not transferred at all. Never return a name that is not in this list.\n`
+        + (days.length
+          ? `- booked: true ONLY if the agent clearly CONFIRMED an appointment at the end (it will have said the appointment is booked). False otherwise, including a call that discussed times and never confirmed one.\n`
+            + `- bookedDay: the weekday of the confirmed appointment. Copy ONE of these EXACTLY: ${days.map((x) => `"${x}"`).join(", ")}. Use "" if nothing was confirmed.\n`
+            + `- bookedTime: the time of the confirmed appointment. Copy ONE of these EXACTLY: ${times.map((x) => `"${x}"`).join(", ")}. Use "" if nothing was confirmed.\n`
+            + `- bookedLocation: where it was booked. Copy ONE of these EXACTLY: ${locs.map((x) => `"${x}"`).join(", ")}${locs.length ? ", " : ""}or "${VIRTUAL}" if the agent booked a virtual consultation instead. Use "" if nothing was confirmed.\n`
+          : `- booked: false, bookedDay: "", bookedTime: "", bookedLocation: "" — this workflow does not book appointments.\n`)
           : `- routedTo: the team the agent named on transfer, copied VERBATIM from what the agent said. "" if nobody was routed. Do NOT invent a department name.\n`) +
         `- callerName: the caller's name if they gave one, else "".\n` +
         `- intent: ONE SENTENCE naming what the caller wanted, in this business's own words, specific enough for the receiving rep to open with. Not a two-word label.\n` +
@@ -179,6 +235,21 @@ export async function analyzeSms(input: AnalyzeInput, apiKey?: string): Promise<
           callerName: String(o.callerName ?? "").trim(),
           intent: String(o.intent ?? "").trim(),
           location: String(o.location ?? "").trim(),
+          /* ⚠️⚠️ **A BOOKING IS ONLY REAL IF BOTH THE DAY AND THE TIME CAME BACK FROM THE
+             LISTS.** The Salesforce Calendar renders this, so a paraphrase ("Thursday
+             afternoon") would put an appointment on screen at a time the call never offered —
+             the fabricated-evidence failure `audit:tiers` exists to catch, one screen over.
+             Anything unmatched collapses the whole booking to false. */
+          ...(() => {
+            const day = days.includes(String(o.bookedDay ?? "").trim()) ? String(o.bookedDay).trim() : "";
+            const time = times.includes(String(o.bookedTime ?? "").trim()) ? String(o.bookedTime).trim() : "";
+            const locRaw = String(o.bookedLocation ?? "").trim();
+            const loc = matchLocation(locRaw, locs);
+            const booked = o.booked === true && !!day && !!time;
+            return booked
+              ? { booked: true, bookedDay: day, bookedTime: time, bookedLocation: loc }
+              : { booked: false };
+          })(),
         }
       : undefined;
   return { signals, outcome };

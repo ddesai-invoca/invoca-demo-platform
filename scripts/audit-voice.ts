@@ -19,6 +19,9 @@ import { emptyWorkflowGreeting } from "../src/data/workflowChrome";
 import { treeToVoicePaths } from "../src/data/voicePaths";
 import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, stepsForZips, toSteps, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
 import { voiceCopy } from "../src/data/voiceCopy";
+import { bookingSlots, BOOKING_DAYS } from "../src/data/voiceBooking";
+import { matchLocation, VIRTUAL } from "../engine/analyze";
+import { bookedEvent } from "../src/data/salesforceEvent";
 import { VOICE_OPTIONS, DEFAULT_VOICE_ID, liveKitVoiceModel, isKnownVoice, voiceOption } from "../src/data/voiceOptions";
 import { latestTransferredCall, voiceAiRouting, voiceAiScreenpop } from "../src/data/voiceAiArtifacts";
 import { collectNames } from "../src/data/workflowDrawers";
@@ -703,8 +706,93 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "an unconfigured server says LiveKit is missing instead of failing obscurely");
 }
 
+
+/* =============================================================================
+   THE BOOKING VOICE WORKFLOW — it books instead of routing, and must not do both
+   -----------------------------------------------------------------------------
+   Asked for 9/3/2026 as a third Avi & Co voice workflow. The risk here is not that it fails
+   to book; it is that the ROUTING flow's machinery leaks in beside it, because a prompt that
+   both refuses an out-of-area caller and books them is worse than either half — the shape
+   that already cost this repo a debugging session with the out-of-area script.
+   ============================================================================= */
+{
+  const LOCS = ["the Miami boutique", "the New York boutique", "the Aspen boutique"];
+  const slots = bookingSlots("avi-co");
+  const bookingBrain = {
+    customerName: "Avi & Co",
+    voiceBooking: true,
+    voiceBookingLocations: LOCS,
+    voiceBookingSlots: slots,
+    voiceGreeting: "Thank you for calling Avi & Co, this is the booking line.",
+    /* Deliberately handed the routing fields too — the flow must ignore them, exactly as
+       `voiceSession` drops them. If it ever renders them, this is where we find out. */
+    serviceZips: ["33101"],
+    outOfAreaScript: "We do not serve your area.",
+    voiceSteps: ["1. Route the caller to a team."],
+    voicePaths: [{ intent: "Sales Inquiry", routes: [{ team: "Boutique Sales", action: "Inform & Route", collect: [] }] }],
+  };
+  const bp = voiceSystemPrompt(bookingBrain as never);
+
+  check(/you BOOK the .* on this call yourself/i.test(bp), "the booking flow tells the agent to book the appointment");
+  check(BOOKING_DAYS.every((d) => bp.includes(`${d}: ${slots[d].join(", ")}`)),
+    "every weekday's offered times are in the prompt verbatim");
+  check(LOCS.every((l) => bp.includes(l)), "and so are the locations it can book into");
+  check(/ASK NOTHING BEYOND THE FLOW ABOVE/.test(bp),
+    "the ask-nothing cap is present, so the agent adds no questions of its own");
+  check(/NEVER say a calendar date/.test(bp),
+    "and it is told not to speak a date, which the Salesforce Calendar owns");
+
+  /* ⚠️ THE CONTRADICTION CHECKS. Each of these appearing beside a booking instruction is a
+     prompt telling the agent to do two incompatible things. */
+  check(!/SERVICE-AREA CHECK/.test(bp), "no service-area gate reaches a booking prompt");
+  check(!/We do not serve your area\./.test(bp), "nor the out-of-area refusal script");
+  check(!/Route the caller to a team\./.test(bp), "nor the routing steps");
+  check(!/CALL FLOW — follow the routing/.test(bp), "and the routing CALL FLOW is replaced, not appended");
+
+  /* Without the flag, nothing changes for a configured prospect's routing agent. */
+  const routed = voiceSystemPrompt({ ...bookingBrain, voiceBooking: false } as never);
+  /* ⚠️ THIS CHECK WAS WRONG FIRST, AND THE CODE WAS FINE. It asserted the routing prompt
+     contains "SERVICE-AREA CHECK" — but with `voiceSteps` present the STEPS branch wins and
+     that wording never appears, so it failed on a correct prompt. The real invariant is that
+     the routing CALL FLOW is what renders and the booking flow does not. Yet another
+     probe-not-code fault; this file records several. */
+  check(/CALL FLOW — follow the routing/.test(routed) && !/you BOOK the/i.test(routed),
+    "and with the flag off the routing agent's own flow renders instead");
+
+  /* Slots are derived, so an SE can rehearse the same call twice. */
+  check(JSON.stringify(bookingSlots("avi-co")) === JSON.stringify(slots), "the offered times are stable across calls");
+  check(BOOKING_DAYS.every((d) => (slots[d] ?? []).length === 3), "three times per weekday");
+  check(!Object.keys(slots).includes("Sunday"), "and no Sunday, because a boutique is not open");
+
+  /* ⚠️ THE LOCATION MATCHER TOLERATES THE ARTICLE AN AGENT SAYS AND NOTHING MORE. Measured:
+     the agent said "our New York boutique" against a list holding "the New York boutique",
+     and a strict compare silently dropped the boutique from the Salesforce chip. */
+  check(matchLocation("our New York boutique", LOCS) === "the New York boutique",
+    "a spoken article does not lose the boutique");
+  check(matchLocation(VIRTUAL, LOCS) === VIRTUAL, "a virtual consultation is a valid location");
+  check(matchLocation("the Beverly Hills boutique", LOCS) === "",
+    "but an invented location is refused");
+
+  /* The Salesforce Calendar renders the call's OWN day/time, and fails closed without them. */
+  const prof = { id: "avi-co", bookingTerm: "Appointment", reports: { voiceScreenpop: { callerName: "Tom Reyes" }, smsConversationIntelligence: { conversations: [{ id: "S1" }] } } };
+  const withBooking = bookedEvent(prof as never, undefined, [{ id: "C1", outcome: {
+    booked: true, bookedDay: "Thursday", bookedTime: "12:30 PM", bookedLocation: LOCS[1], callerName: "Marcus Wellington" } }] as never);
+  check(withBooking.dayIndex === 4 && withBooking.startHour === 12 && withBooking.fromLiveCapture,
+    "a confirmed booking lands on the Calendar at its own day and hour",
+    `day=${withBooking.dayIndex} hour=${withBooking.startHour}`);
+  check(withBooking.title.includes(LOCS[1]), "and names the boutique the ZIP chose");
+  for (const [label, bad] of [
+    ["booked=false", { booked: false }],
+    ["no day", { booked: true, bookedTime: "12:30 PM" }],
+    ["unparseable time", { booked: true, bookedDay: "Thursday", bookedTime: "afternoon" }],
+  ] as const) {
+    check(!bookedEvent(prof as never, undefined, [{ id: "C1", outcome: bad }] as never).fromLiveCapture,
+      `a booking with ${label} falls back instead of half-rendering`);
+  }
+}
+
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (87 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (106 checks + per-profile)");
 process.exit(failures ? 1 : 0);

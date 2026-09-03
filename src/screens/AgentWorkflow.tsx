@@ -11,6 +11,7 @@ import { useLiveKitReady } from "../data/liveKitVoice";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch, type TreePath } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
 import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
+import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
@@ -429,7 +430,16 @@ export function AgentWorkflow() {
     ...(created ? emptyWorkflowTree(channelLabel)
        : extra ? extraTree(extra)
        : deriveTree(profile, isSms, channelLabel)),
-    ...(baseAgent ? { agent: agentConfigOf(baseAgent) } : {}),
+    /* ⚠️⚠️ **A BOOKING WORKFLOW REGISTERS AN AGENT HALF; EVERY OTHER EXTRA WORKFLOW STILL
+       DOES NOT.** `baseAgent` is null for extras, which is right for the SMS ones — their
+       playbook is their `systemPrompt` and they have no voice config. A booking workflow is
+       spoken, so without this the Details tab would correctly report "no agent configured"
+       and an SE could not choose its voice or edit its opener. Only the two fields that
+       workflow actually owns; the routing spec's ZIP gate and steps deliberately stay out,
+       because the booking flow states its own location policy. */
+    ...(baseAgent ? { agent: agentConfigOf(baseAgent) }
+      : extra?.bookingLocations?.length ? { agent: { greeting: extra.openingMessage ?? "" } }
+      : {}),
   }), [created, extra, profile, isSms, channelLabel, workflowName, baseAgent]);
   /* This page's sparkle edits the DIAGRAM, and only the diagram. The SMS agent is a
      different thing living in a different scope, and it has its own sparkle inside
@@ -450,7 +460,21 @@ export function AgentWorkflow() {
      Until now the SMS button was inert — it rendered and did nothing. */
   const [smsPreview, setSmsPreview] = useState(false);
   /* Absent for the built-in pages, so their calls behave exactly as before. */
-  const brainOpts = created ? { scopePath: pathname, minimal: true } : undefined;
+  /* ⚠️ THE GREETING COMES FROM THE EFFECTIVE TREE, NOT THE RAW WORKFLOW, so an opener edited
+     on the Details tab is the one the call opens with. Reading `extra.openingMessage` here
+     instead would be the same landed-and-ignored shape fixed elsewhere today. */
+  const brainOpts = created
+    ? { scopePath: pathname, minimal: true }
+    : extra?.bookingLocations?.length
+    ? {
+        scopePath: pathname,
+        booking: {
+          greeting: (tree as { agent?: { greeting?: string } }).agent?.greeting || extra.openingMessage,
+          locations: extra.bookingLocations,
+          slots: bookingSlots(profile.id),
+        },
+      }
+    : undefined;
 
   /* ⚠️⚠️ **THE ROUTE IS GATED, NOT JUST THE SUB-NAV ROW.** With an `:id` that this prospect
      has no workflow for — a pasted or bookmarked link, or a switch to another prospect

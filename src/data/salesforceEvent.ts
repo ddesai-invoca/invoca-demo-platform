@@ -65,10 +65,71 @@ function label(start: number, hours: number): string {
  *
  * `captured` is the newest SMS conversation from `SmsCaptureContext`, or undefined.
  */
+/** Weekday name -> the grid's Sunday-based index. */
+const DAY_INDEX: Record<string, number> = {
+  Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6,
+};
+
+/** "12:30 PM" -> 12 (the grid places chips on the hour). */
+function hourOf(time: string): number | null {
+  const m = /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i.exec(time.trim());
+  if (!m) return null;
+  let h = Number(m[1]) % 12;
+  if (/pm/i.test(m[3])) h += 12;
+  return h;
+}
+
+/**
+ * The appointment a VOICE booking agent actually confirmed, if there is one.
+ *
+ * ⚠️⚠️ **THESE VALUES ARE THE CALL'S OWN, NOT DERIVED — and that is the whole point of the
+ * booking workflow reaching this screen.** The day, the time and the boutique come from the
+ * captured call's `outcome`, which `analyzeSms` fills by picking from the exact table the
+ * prompt offered and dropping anything off it. So the chip an SE opens in Salesforce says the
+ * same words the agent said on the phone a minute earlier.
+ *
+ * ⚠️ **FAILS CLOSED.** No outcome, `booked` false, or a day/time that did not survive
+ * validation yields null, and the caller falls back to the derived SMS slot exactly as
+ * before — never a half-filled appointment.
+ */
+function voiceBooking(profile: CustomerProfile, calls?: { id: string; outcome?: {
+  booked?: boolean; bookedDay?: string; bookedTime?: string; bookedLocation?: string; callerName?: string;
+} }[]): BookedEvent | null {
+  const hit = (calls ?? []).find((c) => c.outcome?.booked
+    && c.outcome.bookedDay && c.outcome.bookedTime
+    && DAY_INDEX[c.outcome.bookedDay] !== undefined
+    && hourOf(c.outcome.bookedTime) !== null);
+  if (!hit) return null;
+  const o = hit.outcome!;
+  const booking = profile.bookingTerm || "Appointment";
+  const who = (o.callerName || profile.reports.voiceScreenpop?.callerName || "the customer").trim();
+  const startHour = hourOf(o.bookedTime!)!;
+  return {
+    /* The location is part of the subject, because on this screen it is the one detail that
+       proves the ZIP the caller gave actually decided something. */
+    title: o.bookedLocation ? `${booking} — ${who} · ${o.bookedLocation}` : `${booking} — ${who}`,
+    who,
+    dayIndex: DAY_INDEX[o.bookedDay!],
+    startHour,
+    hours: 1,
+    timeLabel: label(startHour, 1),
+    fromLiveCapture: true,
+    conversationId: hit.id,
+  };
+}
+
 export function bookedEvent(
   profile: CustomerProfile,
   captured?: { id: string; callerId?: string; messages?: unknown[] },
+  /* ⚠️ OPT-IN AND LAST, so every existing caller behaves exactly as before. Voice captures,
+     newest first — a booking among them wins over the derived SMS slot. */
+  voiceCalls?: { id: string; outcome?: {
+    booked?: boolean; bookedDay?: string; bookedTime?: string; bookedLocation?: string; callerName?: string;
+  } }[],
 ): BookedEvent {
+  /* A real booking the agent confirmed out loud beats a slot derived from a hash. */
+  const fromVoice = voiceBooking(profile, voiceCalls);
+  if (fromVoice) return fromVoice;
   const booking = profile.bookingTerm || "Appointment";
   const seeded = profile.reports.smsConversationIntelligence?.conversations?.[0];
   const conversationId = captured?.id ?? seeded?.id ?? `${profile.id}-sms`;
