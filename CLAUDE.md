@@ -7130,6 +7130,49 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
   NEW data-driven feature into `engine/core.ts` so new prospects get it. Pure design
   changes are shared CSS and apply to everyone.
 
+## ⚠️ OPEN ITEMS as of 9/3/2026 (found this session, NOT yet fixed)
+
+**1. ⚠️⚠️ AN ENDED CALL LEAVES THE AGENT IN THE ROOM, AND IT BILLS.** Measured live, twice.
+Navigating away from the call drops the CALLER (`hangUp` -> `destroyLive`) and the room goes
+from 2 participants to 1 — the agent stays, publishing, retrying STT against a room nobody
+will ever speak in (`session closed due to agent inactivity`, code 2007, on repeat). LiveKit
+bills participant-minutes, so an SE who opens Preview Workflow, hears the greeting and closes
+the drawer leaves one running. The room's empty-timeout cannot rescue it, because the agent
+itself keeps the room non-empty. Two rooms were found orphaned this way and deleted by hand
+(`lk room delete <name>`).
+⚠️ **Nothing in the UI or the logs reads as an error** — you only find it in `lk room list` or
+on the bill. The fix is worker-side (end the session when the last non-agent participant
+disconnects) and therefore needs its own `lk agent deploy`. Flagged rather than fixed: it was
+outside what was asked, and the disconnect event should be verified firing before claiming it
+works.
+⚠️ **Diagnosing it:** `lk room list` — 1 participant with 1 publisher and a `voice-<slug>-…`
+name is an orphaned agent, not a live call. 2 publishers means a real human is on it; do NOT
+`lk agent deploy` then, it restarts the worker and drops the call mid-sentence.
+
+**2. `agent/livekit.toml` sets a `loadThreshold` LiveKit Cloud ignores.** Every worker start
+logs `custom loadThreshold is not supported when deploying to Cloud`. Harmless, and it will
+keep appearing in every log until the key is removed.
+
+**3. The live Avi & Co demo record still needs a PATCH, and carries stale test data.**
+- `Avi & Co - booking` (and anything else added to `reports.extraWorkflows`) lives only in
+  git-ignored `.data/demos/avi-co.json`. The code that runs it is deployed; the workflow will
+  not appear on the live site until its record is patched.
+- **The procedure, which must be a read-modify-write against the LIVE copy:** `PATCH
+  /api/demos/:id` replaces the whole `profile` with whatever it is handed
+  (`profile: body?.profile ?? rec.profile`), so GET the live record first, append to ITS
+  `extraWorkflows`, and PATCH `{ profile }` ONLY — omitting `customizations` keeps the AI
+  override layer by construction rather than by care. The handler bumps `updatedAt` itself,
+  which is what makes already-open browsers refetch.
+- ⚠️ It needs a signed-in session: the API is behind the Google gate and the browser pane gets
+  `401 Sign in required`; the gate redirects to **Invoca's Okta SSO**, which the assistant
+  cannot complete. A human has to sign in first.
+- ⚠️ The live record's `/agent-studio/agent/preview` override holds **leftover test questions**
+  ("Does the workflow chat restart?", "Does it pick up the new questions?") from an earlier
+  session, alongside the real ones. Worth clearing next time that record is touched.
+
+**4. `src/data/generated/denver-health.json` is untracked and was not created by this work.**
+Left alone deliberately; decide whether it belongs in git.
+
 ## Deferred polish (TODO)
 0. **ZERO-DOWNTIME DEPLOYS — route B built 2026-08-20, ONE CHECK OUTSTANDING.**
    Goal: a push must not interrupt the live site, even for someone hitting refresh
