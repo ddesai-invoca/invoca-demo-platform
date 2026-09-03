@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 import { salesforceLeads } from "../data/salesforceLeads";
@@ -68,8 +69,13 @@ const COLS = [
 ] as const;
 
 export function SalesforceLeads() {
-  const { profile } = useProfile();
-  const view = salesforceLeads(profile);
+  const { profile, profileId } = useProfile();
+  /* ⚠️ A BOOKED CALL BECOMES THE TOP ROW. The SE makes the call, opens this tab, and their
+     caller is the newest lead — see `liveBookedLead`. Absent one, this list is the derived
+     ten it has always been. */
+  const { capturedFor } = useVoiceCapture();
+  const voiceCalls = capturedFor(profileId);
+  const view = salesforceLeads(profile, voiceCalls);
 
   return (
     <div className="sfh-root">

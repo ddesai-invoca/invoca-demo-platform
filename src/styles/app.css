@@ -1141,6 +1141,12 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-minimap { position: absolute; z-index: 2; right: 16px; bottom: 16px; width: 150px; height: 96px; border: 1px solid #e2e5e9; border-radius: 6px; background: #fafbfc; }
 .wf-mini-node { position: absolute; width: 34px; height: 12px; background: #dfe3e8; border-radius: 2px; }
 
+/* The event chip becomes a link when a booked CALL created the lead behind it. Inherits the
+   chip's own type and colour — Lightning does not restyle a clickable event, and a blue
+   underlined title inside a coloured chip would read as a different component. */
+.sfc-event-box--link { text-decoration: none; color: inherit; cursor: pointer; display: block; }
+.sfc-event-box--link:hover .sfc-event-title { text-decoration: underline; }
+
 /* ---- the workflow's DETAILS tab (`.wfd-`) --------------------------------
    Content and controls are faithful to the user's screenshot of the real page; the SPACING
    is authored from the platform's own tokens rather than measured off an image, per this

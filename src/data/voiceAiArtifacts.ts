@@ -189,6 +189,15 @@ const CITY_PLACE: Record<string, { state: string; zip: string; area: string }> =
  * address block ALONE rather than half-rewriting it.
  */
 const ZIP_PLACE: Record<string, { city: string; state: string; area: string }> = {
+  /* ⚠️ REAL PAIRS ONLY, added 9/3/2026 for the Avi & Co booking agent's three boutique
+     cities. A caller giving one of these now resolves to a city, state and area code, so the
+     Lead a booked call creates carries a coherent address instead of a blank one. A ZIP3
+     guess is still refused — USPS assigns 30097 to Duluth, not Atlanta, and the prospect who
+     knows their own service area is exactly the person reading it. */
+  "10001": { city: "New York", state: "NY", area: "212" },
+  "33139": { city: "Miami Beach", state: "FL", area: "305" },
+  "33101": { city: "Miami", state: "FL", area: "305" },
+  "81611": { city: "Aspen", state: "CO", area: "970" },
   /* Comfort Keepers' own configured service area. */
   "30097": { city: "Duluth", state: "GA", area: "770" },
   "30096": { city: "Duluth", state: "GA", area: "770" },
@@ -225,7 +234,11 @@ function neutralStreet(seeded: string, zip: string): string {
 }
 
 /** Whatever the caller said — a city or a ZIP — resolved to one place, or null. */
-function resolvePlace(loc: string): { city: string; state: string; zip: string; area: string } | null {
+/* ⚠️ EXPORTED so the Salesforce Lead a booked call creates derives its city, state and area
+   code from the SAME table the pre-call artifacts use. Two ZIP tables would eventually
+   disagree, and the symptom would be a lead in one city and a screen-pop in another for one
+   caller. */
+export function resolvePlace(loc: string): { city: string; state: string; zip: string; area: string } | null {
   const raw = loc.trim();
   const zip = raw.match(/\b(\d{5})\b/)?.[1];
   if (zip) {

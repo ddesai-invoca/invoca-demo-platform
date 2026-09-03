@@ -119,6 +119,8 @@ export interface ChatBrain {
   voiceBookingLocations?: string[];
   /** Weekday -> the ONLY times the agent may offer. Derived; see src/data/voiceBooking.ts. */
   voiceBookingSlots?: Record<string, string[]>;
+  /** The prospect's own products; used by the capture's analysis, not by the prompt. */
+  voiceBookingProducts?: string[];
   /**
    * ⚠️ **AN ALLOW-LIST, AND IT INVERTS THE GATE.** Without it the prompt's rule is "12345 is
    * the only out-of-area ZIP, everything else proceeds" — right for a national business, and

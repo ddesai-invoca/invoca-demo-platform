@@ -492,6 +492,9 @@ export const VoiceCallOutcome = z.object({
   bookedDay: z.string().optional(),
   bookedTime: z.string().optional(),
   bookedLocation: z.string().optional(),
+  /** The caller's own ZIP — a booked Lead's city, state and area code come from it. */
+  bookedZip: z.string().optional(),
+  bookedProduct: z.string().optional(),
 });
 
 export const VoiceConversation = z.object({

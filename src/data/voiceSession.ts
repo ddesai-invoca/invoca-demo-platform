@@ -187,6 +187,11 @@ export function useBrain(opts?: BrainOpts) {
        flow states the location policy itself: nearest boutique, virtual as the fallback. */
     voiceBooking: !!booking,
     voiceBookingLocations: booking?.locations,
+    /* ⚠️ THE PROSPECT'S OWN PRODUCTS, read off the screen-pop the rest of the demo already
+       shows, so the Lead this call creates names a product the dashboards also name. */
+    voiceBookingProducts: booking
+      ? (profile.reports.voiceScreenpop?.products ?? "").split(/\s*,\s*/).map((x) => x.trim()).filter(Boolean)
+      : undefined,
     voiceBookingSlots: booking?.slots,
     serviceZips: minimal || booking ? undefined : spec?.serviceZips,
     outOfAreaScript: minimal || booking ? undefined : spec?.outOfAreaScript,
@@ -277,6 +282,7 @@ export function captureVoiceCall(
     /* Present only for a booking workflow; see the note at the analyze call below. */
     voiceBookingSlots?: Record<string, string[]>;
     voiceBookingLocations?: string[];
+    voiceBookingProducts?: string[];
   },
   msgs: Msg[],
   durationSecs: number,
@@ -308,6 +314,9 @@ export function captureVoiceCall(
       bookingTimes: brain.voiceBookingSlots
         ? [...new Set(Object.values(brain.voiceBookingSlots).flat())] : undefined,
       bookingLocations: brain.voiceBookingLocations,
+      /* The prospect's own products, so a booked Lead's Product of Interest is one of theirs
+         rather than the caller's paraphrase — see `AnalyzeInput.bookingProducts`. */
+      bookingProducts: brain.voiceBookingProducts,
       transcript: conv.transcript.map((t) => ({ speaker: t.speaker, text: t.text })),
     }),
   })

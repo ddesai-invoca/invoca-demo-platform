@@ -1,9 +1,11 @@
 import { useMemo, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
+import { liveBookedLead } from "../data/salesforceLiveLead";
 import { bookedEvent } from "../data/salesforceEvent";
 
 /* =============================================================================
@@ -75,6 +77,10 @@ export function SalesforceCalendar() {
   /* The newest live capture wins; otherwise the seeded conversation. */
   const captured = capturedFor(profileId)[0];
   const voiceCalls = voiceFor(profileId);
+  /* Resolved through the SAME function the Leads list and the record page use, so the slug
+     this navigates to is by construction one that resolves. */
+  const live = liveBookedLead(profile, voiceCalls);
+  const leadHref = live ? `/salesforce/leads/${live.lead.slug}` : null;
   const ev = useMemo(() => bookedEvent(profile, captured, voiceCalls),
     [profile, captured, voiceCalls]);
 
@@ -193,10 +199,25 @@ export function SalesforceCalendar() {
                       {i === ev.dayIndex ? (
                         <div className="sfc-event"
                           style={{ top: ev.startHour * HOUR_PX, height: ev.hours * HOUR_PX }}>
-                          <span className="sfc-event-box">
-                            <span className="sfc-event-title">{ev.title}</span>
-                            <span className="sfc-event-time">{ev.timeLabel}</span>
-                          </span>
+                          {/* ⚠️⚠️ **CLICKABLE ONLY WHEN A CALL ACTUALLY CREATED A LEAD.** Asked
+                              for directly: clicking the appointment should open the lead. But
+                              the DERIVED chip (the hashed SMS slot every prospect always has)
+                              corresponds to no lead at all, so linking it unconditionally would
+                              navigate to "Lead not found" — and a link that goes somewhere
+                              invented is worse than one that does nothing, which is why the
+                              Leads and Call Log rows were inert until their pages existed. */}
+                          {leadHref ? (
+                            <Link className="sfc-event-box sfc-event-box--link" to={leadHref}
+                              title={`Open the lead for ${ev.who}`}>
+                              <span className="sfc-event-title">{ev.title}</span>
+                              <span className="sfc-event-time">{ev.timeLabel}</span>
+                            </Link>
+                          ) : (
+                            <span className="sfc-event-box">
+                              <span className="sfc-event-title">{ev.title}</span>
+                              <span className="sfc-event-time">{ev.timeLabel}</span>
+                            </span>
+                          )}
                         </div>
                       ) : null}
                     </div>

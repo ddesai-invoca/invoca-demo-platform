@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 import { salesforceLeadDetail } from "../data/salesforceLeadDetail";
@@ -53,9 +54,14 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 const STAGES = ["New", "Contacted", "Nurturing", "Unqualified", "Converted"];
 
 export function SalesforceLeadDetail() {
-  const { profile } = useProfile();
+  const { profile, profileId } = useProfile();
+  /* The captures the Leads list also reads, so a slug the Calendar chip navigated to
+     resolves here — without them this page would answer "Lead not found" for the very lead
+     the call just created. */
+  const { capturedFor } = useVoiceCapture();
+  const voiceCalls = capturedFor(profileId);
   const { slug = "" } = useParams();
-  const d = salesforceLeadDetail(profile, slug);
+  const d = salesforceLeadDetail(profile, slug, voiceCalls);
 
   /* ⚠️ FAILS CLOSED on a slug this prospect has no lead for — the same rule the
      created-workflow route documents. A plausible page for a lead that does not
@@ -169,15 +175,15 @@ export function SalesforceLeadDetail() {
 
               {/* Deliberately empty, as captured and as asked. */}
               <Section title="Address Information">
-                <Field label="Address" />
+                <Field label="Address">{d.address}</Field>
                 <Field label="Website" />
               </Section>
               <Section title="Additional Information">
                 <Field label="No. of Employees" />
-                <Field label="Lead Source" />
+                <Field label="Lead Source">{d.leadSource}</Field>
                 <Field label="Annual Revenue" />
                 <Field label="Industry" />
-                <Field label="Description" />
+                <Field label="Description">{d.description}</Field>
                 <Field label="" />
                 <Field label="Created By"><span className="sld-link">{d.owner}</span>, {d.createdAt}</Field>
                 <Field label="Last Modified By"><span className="sld-link">{d.owner}</span>, {d.modifiedAt}</Field>

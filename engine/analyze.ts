@@ -39,6 +39,15 @@ export interface AnalyzeInput {
   bookingDays?: string[];
   bookingTimes?: string[];
   bookingLocations?: string[];
+  /**
+   * The prospect's own products, so a booked lead's Product of Interest is one of THEIRS.
+   *
+   * ⚠️ Same classify-not-extract rule as `destinations`. Asked what the caller wanted, the
+   * model would otherwise write "a nice watch" into a Salesforce field that sits beside a
+   * Product Category row read off the prospect's own dashboard — two rows of one section
+   * disagreeing, which is the contradiction the Lead page's own notes already record.
+   */
+  bookingProducts?: string[];
   transcript: { speaker: "consumer" | "agent"; text: string }[];
 }
 export interface Signal {
@@ -69,6 +78,9 @@ export interface VoiceOutcome {
   bookedDay?: string;
   bookedTime?: string;
   bookedLocation?: string;
+  /** 5 digits, or "" — validated, because a Lead's city and state are derived from it. */
+  bookedZip?: string;
+  bookedProduct?: string;
   /** The team named on transfer, verbatim. "" when nobody was routed. */
   routedTo: string;
   /** The caller's name if they gave one, else "". */
@@ -102,6 +114,11 @@ const OUTCOME_PROPS = {
   bookedDay: { type: "string" },
   bookedTime: { type: "string" },
   bookedLocation: { type: "string" },
+  /* The caller's OWN ZIP, which is what a Lead record's address is built from. Kept apart
+     from `location` because that field is free text and has come back as a city, a ZIP or a
+     boutique depending on the call. */
+  bookedZip: { type: "string" },
+  bookedProduct: { type: "string" },
 };
 
 /* Strict structured output has no optionals, so the VOICE schema is its own object rather than
@@ -115,7 +132,7 @@ const VOICE_SCHEMA = {
       required: ["name", "badges", "count"],
       properties: { name: { type: "string" }, badges: { type: "array", items: { type: "string" } }, count: { type: "number" } } } },
     outcome: { type: "object", additionalProperties: false,
-      required: ["transferred", "routedTo", "callerName", "intent", "location", "booked", "bookedDay", "bookedTime", "bookedLocation"],
+      required: ["transferred", "routedTo", "callerName", "intent", "location", "booked", "bookedDay", "bookedTime", "bookedLocation", "bookedZip", "bookedProduct"],
       properties: OUTCOME_PROPS },
   },
 };
@@ -179,6 +196,7 @@ export async function analyzeSms(input: AnalyzeInput, apiKey?: string): Promise<
   const days = (input.bookingDays ?? []).map((x) => String(x).trim()).filter(Boolean);
   const times = (input.bookingTimes ?? []).map((x) => String(x).trim()).filter(Boolean);
   const locs = (input.bookingLocations ?? []).map((x) => String(x).trim()).filter(Boolean);
+  const prods = (input.bookingProducts ?? []).map((x) => String(x).trim()).filter(Boolean);
   const medium = voice ? "phone call" : "SMS conversation";
   const convo = input.transcript.map((t) => `${t.speaker === "agent" ? "Agent" : "Customer"}: ${t.text}`).join("\n");
 
@@ -202,6 +220,10 @@ export async function analyzeSms(input: AnalyzeInput, apiKey?: string): Promise<
             + `- bookedDay: the weekday of the confirmed appointment. Copy ONE of these EXACTLY: ${days.map((x) => `"${x}"`).join(", ")}. Use "" if nothing was confirmed.\n`
             + `- bookedTime: the time of the confirmed appointment. Copy ONE of these EXACTLY: ${times.map((x) => `"${x}"`).join(", ")}. Use "" if nothing was confirmed.\n`
             + `- bookedLocation: where it was booked. Copy ONE of these EXACTLY: ${locs.map((x) => `"${x}"`).join(", ")}${locs.length ? ", " : ""}or "${VIRTUAL}" if the agent booked a virtual consultation instead. Use "" if nothing was confirmed.\n`
+            + `- bookedZip: the caller's OWN 5-digit ZIP code, exactly as they said it. "" if they never gave one.\n`
+            + (prods.length
+              ? `- bookedProduct: what the caller is interested in. Copy ONE of these EXACTLY: ${prods.map((x) => `"${x}"`).join(", ")}. Match on MEANING (a caller saying "a Daytona" means the Rolex line). Use "" if they named nothing.\n`
+              : `- bookedProduct: "".\n`)
           : `- booked: false, bookedDay: "", bookedTime: "", bookedLocation: "" — this workflow does not book appointments.\n`)
           : `- routedTo: the team the agent named on transfer, copied VERBATIM from what the agent said. "" if nobody was routed. Do NOT invent a department name.\n`) +
         `- callerName: the caller's name if they gave one, else "".\n` +
@@ -246,8 +268,14 @@ export async function analyzeSms(input: AnalyzeInput, apiKey?: string): Promise<
             const locRaw = String(o.bookedLocation ?? "").trim();
             const loc = matchLocation(locRaw, locs);
             const booked = o.booked === true && !!day && !!time;
+            /* The ZIP is a Lead's address, so it is only accepted in the shape one really is. */
+            const zipRaw = String(o.bookedZip ?? "").trim();
+            const zip = /^\d{5}$/.test(zipRaw) ? zipRaw : "";
+            const prodRaw = String(o.bookedProduct ?? "").trim();
+            const norm = (x: string) => x.trim().toLowerCase();
+            const prod = prods.find((x) => norm(x) === norm(prodRaw)) ?? "";
             return booked
-              ? { booked: true, bookedDay: day, bookedTime: time, bookedLocation: loc }
+              ? { booked: true, bookedDay: day, bookedTime: time, bookedLocation: loc, bookedZip: zip, bookedProduct: prod }
               : { booked: false };
           })(),
         }

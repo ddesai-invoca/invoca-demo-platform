@@ -1,4 +1,5 @@
-import type { CustomerProfile } from "./schema";
+import { leadSlug, liveBookedLead } from "./salesforceLiveLead";
+import type { CustomerProfile, VoiceConversation } from "./schema";
 
 /* =============================================================================
    The Leads list — the CRM end of the Invoca integration
@@ -151,17 +152,20 @@ function stamp(ms: number): string {
   return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}, ${h}:${String(d.getMinutes()).padStart(2, "0")} ${ap}`;
 }
 
-/** "Jessica Harper" -> "jessica-harper". Names are deduped, so this is unique per list. */
-export function leadSlug(first: string, last: string): string {
-  return `${first} ${last}`.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-}
 
 function splitName(full: string): { first: string; last: string } {
   const parts = String(full ?? "").trim().split(/\s+/);
   return { first: parts[0] ?? "", last: parts.slice(1).join(" ") };
 }
 
-export function salesforceLeads(profile: CustomerProfile): SfLeadView {
+export function salesforceLeads(
+  profile: CustomerProfile,
+  /* ⚠️ OPT-IN AND LAST, so every existing caller and both audits behave exactly as before.
+     Pass the prospect's voice captures and a call that BOOKED an appointment becomes the top
+     row — which is the whole point: the SE makes the call, opens the Leads tab, and their
+     caller is the newest lead. */
+  voiceCalls?: VoiceConversation[],
+): SfLeadView {
   const r = profile.reports;
   const id = profile.id;
 
@@ -260,6 +264,30 @@ export function salesforceLeads(profile: CustomerProfile): SfLeadView {
       attributionId: attributionId(id, seed),
       created: stamp(clock), sortKey: clock,
     });
+  }
+
+  /* ⚠️⚠️ **THE LIVE LEAD IS PREPENDED AND ONE FILLER DROPS, so the list stays the length the
+     capture has.** Growing to eleven would be self-consistent (the count line is derived from
+     the rows), but the row that leaves is invented scaffolding while the row that arrives is a
+     real caller — trading one for the other keeps the screen the shape an SE has rehearsed
+     against. `sortKey` already puts it first; this only trims the tail.
+     ⚠️ And it is spliced HERE rather than pushed into `sources` above, because a source goes
+     through the dedup and the pad loop, and a live caller who happens to share a name with a
+     screen-pop caller would then be silently dropped — the very row this exists to show. */
+  const live = liveBookedLead(profile, voiceCalls);
+  if (live) {
+    /* ⚠️⚠️ **THE CALLER IS OFTEN ALREADY ON THIS LIST, AND THAT MUST UPDATE THEM RATHER THAN
+       DUPLICATE THEM.** Measured: Avi & Co's booking caller is Marcus Wellington, who is also
+       its screen-pop caller and therefore already a derived lead — so a blind `unshift` put
+       the same person on two rows, which is precisely the duplicated-Dana-Probe look
+       `audit:leads` exists to catch. Replaced in place, then MOVED TO THE TOP, because the
+       list is sorted by Created Date and this is the row the SE just created.
+       ⚠️ A first version replaced without moving, and the freshly-booked caller sat
+       mid-list while a filler held the top — found by reading the list, not by a type. */
+    const at = leads.findIndex((l) => l.slug === live.lead.slug);
+    if (at !== -1) leads.splice(at, 1);
+    leads.unshift(live.lead);
+    if (leads.length > TARGET_LEADS) leads.length = TARGET_LEADS;
   }
 
   const n = leads.length;

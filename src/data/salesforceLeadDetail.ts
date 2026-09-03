@@ -1,4 +1,5 @@
-import type { CustomerProfile } from "./schema";
+import { liveBookedLead } from "./salesforceLiveLead";
+import type { CustomerProfile, VoiceConversation } from "./schema";
 import { salesforceLeads, type SfLead } from "./salesforceLeads";
 import { salesforceCallLog } from "./salesforceCallLog";
 
@@ -57,6 +58,13 @@ export interface SfLeadDetail {
   attribution: SfLeadAttribution;
   /** The Invoca Call Log record related to this lead. */
   callLogName: string;
+  /* ⚠️ THE THREE FIELDS A BOOKED CALL FILLS, and they are OPTIONAL so every derived lead's
+     Address and Additional Information sections stay exactly as captured — blank. Only the
+     lead a live call created carries them. */
+  address?: string;
+  leadSource?: string;
+  /** "Appointment booked on the call: Thursday at 12:30 PM at the New York boutique." */
+  description?: string;
   owner: string;
   createdAt: string;
   modifiedAt: string;
@@ -213,8 +221,16 @@ export function categoryRows(profile: CustomerProfile): string[] {
     .find((b) => /product category/i.test(b.title ?? ""))?.rows?.map((x) => x.name) ?? [];
 }
 
-export function salesforceLeadDetail(profile: CustomerProfile, slug: string): SfLeadDetail | null {
-  const view = salesforceLeads(profile);
+export function salesforceLeadDetail(
+  profile: CustomerProfile,
+  slug: string,
+  /* ⚠️ THREADED THROUGH, AND IT HAS TO BE. The Calendar chip navigates to the live lead's
+     slug, and this builder resolves the slug against `salesforceLeads` — called without the
+     captures, that list does not contain the lead and the chip opens "Lead not found". Opt-in
+     and last, so both audits still exercise the derived ten. */
+  voiceCalls?: VoiceConversation[],
+): SfLeadDetail | null {
+  const view = salesforceLeads(profile, voiceCalls);
   const i = view.leads.findIndex((l) => l.slug === slug);
   if (i === -1) return null;
   const lead = view.leads[i];
@@ -237,7 +253,33 @@ export function salesforceLeadDetail(profile: CustomerProfile, slug: string): Sf
      for one person, on adjacent rows of the same section. */
   const productName = lead.productName;
 
+  /* ⚠️⚠️ **THE APPOINTMENT GOES IN `Description`, WHICH IS A REAL FIELD ON THIS PAGE.** The
+     capture has no appointment field, and inventing one would out-feature the product — the
+     rule this repo already learned the hard way with the CI tier report ("anything added back
+     has to exist on the real report first"). Description is where a Salesforce user records
+     what happened on a call, so that is where the booked day, time and boutique go.
+     ⚠️ ONLY FOR THE LEAD A CALL CREATED. A derived lead's Address and Additional Information
+     sections stay blank, exactly as captured and as previously asked. */
+  const live = liveBookedLead(profile, voiceCalls);
+  const isLive = live && live.lead.slug === slug;
+  const extra = isLive
+    ? {
+        /* The street is invented and deliberately place-NEUTRAL, while the city, state and ZIP
+           are the caller's own — the same split `voiceAiArtifacts` settled on, because a
+           fabricated local street reads as inventing a real address and a Las Vegas street in
+           a New York block reads as a bug. */
+        address: live.place
+          ? `${4000 + (live.lead.slug.length * 37) % 2000} Maple Avenue, ${live.place.city}, ${live.place.state} ${live.place.zip}`
+          : undefined,
+        leadSource: "Inbound Call",
+        description: live.where
+          ? `Appointment booked on the call: ${live.day} at ${live.time} at ${live.where}.`
+          : `Appointment booked on the call: ${live.day} at ${live.time}.`,
+      }
+    : {};
+
   return {
+    ...extra,
     lead,
     index: i + 1,
     attribution: {

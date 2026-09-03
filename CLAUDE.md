@@ -1224,6 +1224,97 @@ toolbar all present, **zero `.wfd-` elements**) and the SMS workflow's own tab (
 own trigger line, no voice picker, no dead controls). `audit:ai` and `audit:phases` green, `tsc`
 clean on both projects.
 
+### A booked call creates the Salesforce Lead, and the Calendar chip opens it (9/3/2026)
+Asked for directly: *"which the voice agent books the appointment and it shows up in salesforce
+calendar, i also want you to create that new lead in the leads tab and also when i click on
+appointment in the calendar, it should take me to the lead and with lead form filled out from
+the information from the call, and then you can make up the other information needed in the lead
+form as long as it matches the story."*
+
+`src/data/salesforceLiveLead.ts` is the single definition; the Leads list, the Lead record page
+and the Calendar's link all resolve the lead through it.
+
+⚠️⚠️ **ONE DEFINITION BECAUSE THE BEAT ENDS IN A NAVIGATION.** The chip navigates to a slug the
+record page has to resolve. Built twice, the chip opens "Lead not found" at the last click of
+the demo — and this exact class already bit this family of screens once (two leads hashing to
+one call-log record, invisible until a printed value became a LINK). `audit:leads` now checks
+the JOIN rather than the pieces.
+
+**What comes from the call, and what is invented** — stated so nobody has to guess later:
+
+| from the call | invented, consistent with the story |
+|---|---|
+| caller's name, their own phone number | email, built from their name as the pre-call artifacts already do |
+| their ZIP -> city, state, area code | the street: place-NEUTRAL ("4629 Maple Avenue"), never a fabricated real local street |
+| the product they named | the marketing attribution, taken as ONE WHOLE `digitalInsights` row |
+| the boutique, the weekday, the time | Lead Source "Inbound Call" |
+| the time the call happened | |
+
+⚠️⚠️ **THE APPOINTMENT GOES IN `Description`, A FIELD THE REAL PAGE ALREADY HAS.** The capture
+has no appointment field, and adding one would out-feature the product — the rule the CI tier
+report already paid for ("anything added back has to exist on the real report first").
+Description is where a Salesforce user records what happened on a call, so the booked day, time
+and boutique go there. `Address`, `Lead Source` and `Description` are OPTIONAL on
+`SfLeadDetail`, so every DERIVED lead's Address and Additional Information sections stay blank
+exactly as captured and as previously asked — asserted.
+
+⚠️⚠️ **THE BOOKING CALLER IS OFTEN ALREADY A LEAD, AND A BLIND PREPEND DUPLICATED THEM.**
+Measured: Avi & Co's booking caller is **Marcus Wellington**, who is also its screen-pop caller
+and therefore already a derived lead — so the first version put one person on two rows, which is
+precisely the duplicated-Dana-Probe look `audit:leads` exists to catch. The row is now replaced
+in place and then MOVED TO THE TOP, because the list sorts by Created Date and this is the row
+the SE just created. ⚠️ A version between those two replaced without moving, and the
+freshly-booked caller sat mid-list while a filler held the top — found by reading the list.
+
+⚠️ **ONE FILLER DROPS SO THE LIST STAYS TEN.** Growing to eleven would be self-consistent (the
+count line and both KPI tiles are derived from the rows), but the row that leaves is invented
+scaffolding while the row that arrives is a real caller.
+⚠️ **AND IT IS SPLICED AFTER THE PAD, NOT PUSHED INTO `sources`.** A source goes through the
+dedup and the pad loop, so a live caller sharing a name with a screen-pop caller would be
+silently dropped — the very row this exists to show.
+
+⚠️ **THE CHIP IS CLICKABLE ONLY WHEN A CALL CREATED A LEAD.** The DERIVED chip (the hashed SMS
+slot every prospect always has) corresponds to no lead at all, so linking it unconditionally
+would navigate to "Lead not found" — the reason the Leads and Call Log rows stayed inert until
+their pages existed. `.sfc-event-box--link` inherits the chip's own type and colour, because
+Lightning does not restyle a clickable event.
+
+⚠️ **`bookedZip` AND `bookedProduct` WERE ADDED TO THE CALL'S OUTCOME**, both allow-listed the
+same way `destinations` is: the ZIP only accepted as five digits, the product only if it is one
+of the prospect's OWN (from the screen-pop catalogue). Asked what the caller wanted, the model
+would otherwise write "a nice watch" into a field sitting beside a Product Category row read off
+the prospect's own dashboard.
+⚠️ **`resolvePlace` IS NOW EXPORTED and gained four REAL ZIP pairs** (10001, 33139, 33101,
+81611 — the boutique cities). One ZIP table, shared with the pre-call artifacts, or a caller
+ends up in one city on the Lead and another on the screen-pop. A ZIP3 guess is still refused.
+⚠️ An UNRECOGNISED ZIP leaves the address BLANK rather than half-writing it — asserted.
+
+⚠️ **`leadSlug` MOVED to `salesforceLiveLead.ts` TO KILL A RUNTIME IMPORT CYCLE.** The list needs
+`liveBookedLead` and that needs the slug function; with the slug on the other side the two
+modules imported each other at runtime. It happens to work (function declarations hoist) and is
+exactly the fragility that breaks on an unrelated refactor. The type import back is erased at
+build, so the dependency now points one way.
+
+**`npm run audit:leads` gained 19 checks**, run against both a brand-new caller and one who is
+already a lead: the live lead is the top row, nobody appears twice, the list keeps its length,
+the count line matches the rows, the chip's slug resolves on the record page, the record names
+the booked time and says Lead Source "Inbound Call" — plus fail-closed: an unbooked call, no
+call, a one-name caller and an unrecognised ZIP each produce nothing, and a derived lead's blank
+sections are still blank.
+⚠️ Each was verified to FIRE: a blind prepend (1 red), the detail page ignoring the captures
+(2 red — the "Lead not found" case), and accepting half a name (1 red).
+⚠️ **The new block uses LOCAL `okL`/`badL` helpers**, because this script counts with
+`let bad = 0` rather than calling `bad()` like `audit:ai` does — the first version called the
+counter as a function and crashed.
+
+**Verified in the browser with a real click**: the chip reads "Appointment — Marcus Wellington ·
+the New York boutique / 12–1pm" and is an `<a href="/salesforce/leads/marcus-wellington">`;
+clicking it opens the record with Address "4629 Maple Avenue, New York, NY 10001", Description
+"Appointment booked on the call: Thursday at 12:30 PM at the New York boutique.", Lead Source
+"Inbound Call", Product of Interest "rolex" beside Product Category "Rolex", and Marketing Source
+"Paid Search"; and the Leads tab lists him first of ten with the call's own number. The four
+Salesforce audits, `audit:voice` (107) and `audit:ai` are green, `tsc` clean on both projects.
+
 ### "Avi & Co - booking": a voice agent that BOOKS instead of routing (9/3/2026)
 Asked for directly: a third Avi & Co voice workflow that runs the same call as the routing
 agent but ends by booking the appointment itself — greeting -> caller wants to schedule -> name
