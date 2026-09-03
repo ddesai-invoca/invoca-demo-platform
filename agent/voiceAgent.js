@@ -53,8 +53,20 @@ import { fileURLToPath } from "node:url";
 const LLM_MODEL = process.env.VOICE_LLM_MODEL?.trim() || "claude-haiku-4-5";
 /** Streaming STT through LiveKit. `auto` is also valid if a prospect needs it picked. */
 const STT_MODEL = process.env.VOICE_STT_MODEL?.trim() || "deepgram/nova-3";
-/** The SAME Aura voice the old pipeline used — now streamed, and brokered by LiveKit. */
-const TTS_MODEL = process.env.VOICE_TTS_MODEL?.trim() || "deepgram/aura-2";
+/**
+ * The default voice, NAMED — not left to the provider to choose.
+ *
+ * ⚠️⚠️ **`deepgram/aura-2` ON ITS OWN NAMES NO VOICE (9/3/2026).** Verified against the
+ * installed SDK: `fromModelString("deepgram/aura-2")` leaves `opts.voice` undefined, so the
+ * gateway picks the provider's own default and the platform's default voice was whatever that
+ * happened to be. Asked for directly: "can we make the default voice Thalia". Naming it here
+ * makes Thalia the default on every path — a call whose metadata carries no voice, an older
+ * client, or a room created outside our own token.
+ *
+ * ⚠️ It stays in step with `DEFAULT_VOICE_ID` in `src/data/voiceOptions.ts`, and
+ * `audit:voice` asserts the two are the same string rather than trusting this comment.
+ */
+const TTS_MODEL = process.env.VOICE_TTS_MODEL?.trim() || "deepgram/aura-2:thalia";
 
 /** Read the dispatch metadata the token put on this job. */
 function jobBrief(ctx) {
@@ -100,7 +112,11 @@ function ttsFor(brief) {
       console.warn(`[voice-agent] unusable voice "${want}", falling back to ${TTS_MODEL}:`, e?.message ?? e);
     }
   }
-  return new inference.TTS({ model: TTS_MODEL });
+  /* ⚠️ `fromModelString`, NOT the constructor. `TTS_MODEL` now carries a voice
+     ("deepgram/aura-2:thalia"), and passing a composite as a bare `model` would send the
+     gateway a model id that does not exist. The parser splits it; a bare env override
+     ("cartesia/sonic-3") still works, it simply names no voice. */
+  return inference.TTS.fromModelString(TTS_MODEL);
 }
 
 export default defineAgent({

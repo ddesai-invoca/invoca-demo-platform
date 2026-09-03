@@ -617,12 +617,18 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
   check(isKnownVoice(DEFAULT_VOICE_ID) && liveKitVoiceModel(undefined) === `deepgram/aura-2:${DEFAULT_VOICE_ID}`,
     "the default voice is explicit and known");
 
-  /* ⚠️ THE PICKED VOICE AND THE WORKER'S OWN FALLBACK MUST NAME THE SAME MODEL. If the worker
-     falls back to a different family than the picker offers, an unparseable voice changes how
-     the agent sounds rather than merely which voice it uses. */
+  /* ⚠️⚠️ **THE WORKER'S FALLBACK MUST NAME THE DEFAULT VOICE, NOT JUST THE MODEL.** It used to
+     be a bare `deepgram/aura-2`, which names NO voice — verified against the installed SDK,
+     `opts.voice` comes back undefined — so the gateway chose the provider's own default and
+     the platform's "default voice" was whatever that happened to be. Asserted as string
+     equality with `liveKitVoiceModel(DEFAULT_VOICE_ID)` so the two ends cannot drift: change
+     the default in one place and this reddens. */
   const workerModel = /VOICE_TTS_MODEL\?\.trim\(\) \|\| "([^"]+)"/.exec(worker)?.[1];
-  check(!!workerModel && liveKitVoiceModel("thalia").startsWith(`${workerModel}:`),
-    "the picker and the worker's fallback share one model", `worker=${workerModel}`);
+  check(workerModel === liveKitVoiceModel(DEFAULT_VOICE_ID),
+    "the worker's fallback names the same default voice the picker does",
+    `worker=${workerModel} picker=${liveKitVoiceModel(DEFAULT_VOICE_ID)}`);
+  check(/fromModelString\(TTS_MODEL\)/.test(worker),
+    "and it parses that composite rather than passing it as a bare model");
 
   /* The preview endpoint is reachable from a browser and spends LiveKit inference. */
   const prev = read("engine/voicePreview.ts");
@@ -794,5 +800,5 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (106 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (107 checks + per-profile)");
 process.exit(failures ? 1 : 0);

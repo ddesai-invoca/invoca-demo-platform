@@ -1145,6 +1145,19 @@ and the live call keeps the old voice. That is the difference between this featu
 beautiful no-op. It is a **one-time** step: after it, every voice change is automatic, which is
 the behaviour that was asked for.
 
+⚠️⚠️ **AND THE WORKER'S OWN FALLBACK NAMES IT NOW — a bare `deepgram/aura-2` DID NOT
+(9/3/2026).** Asked for directly: "can we make the default voice Thalia, instead of what it is
+right now." The picker, the token and `DEFAULT_VOICE_ID` were already Thalia; the gap was
+`agent/voiceAgent.js`, whose `VOICE_TTS_MODEL` default was the bare model. Verified against the
+installed SDK: `fromModelString("deepgram/aura-2")` leaves `opts.voice` **undefined**, so the
+gateway chose the provider's own default and the platform's default voice was whatever that
+happened to be — and because that fallback is what an un-deployed worker uses for EVERY call,
+it was governing live calls. Now `"deepgram/aura-2:thalia"`, parsed with `fromModelString`
+rather than passed as a bare `model` (a composite is not a valid model id on its own).
+⚠️ `audit:voice` asserts the worker's fallback string EQUALS
+`liveKitVoiceModel(DEFAULT_VOICE_ID)`, so changing the default in either place without the
+other reddens — verified in both directions.
+
 ⚠️ **THE DEFAULT IS THALIA, AND THAT IS LOAD-BEARING RATHER THAN A TASTE.** `engine/tts.ts` has
 always sent `aura-2-thalia-en`, and `deepgram/aura-2` resolves to it — so an untouched demo
 sounds exactly as it did before this shipped. `audit:voice` compares `DEFAULT_VOICE_ID` against
