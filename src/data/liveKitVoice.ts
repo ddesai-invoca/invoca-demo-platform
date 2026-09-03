@@ -72,7 +72,7 @@ export interface LiveKitVoice {
    * seconds". Two channels, two treatments, and the screen can show a calm one.
    */
   notice: string | null;
-  connect: (opts: { brain: unknown; profileId: string; greeting?: string }) => Promise<void>;
+  connect: (opts: { brain: unknown; profileId: string; greeting?: string; voice?: string }) => Promise<void>;
   /** `immediate` skips the reuse grace window — the End button, not an unmount. */
   hangUp: (immediate?: boolean) => void;
   setMuted: (muted: boolean) => void;
@@ -268,7 +268,7 @@ export function useLiveKitVoice(): LiveKitVoice {
     live?.room.localParticipant.setMicrophoneEnabled(!muted).catch(() => {});
   }, []);
 
-  const connect = useCallback<LiveKitVoice["connect"]>(async ({ brain, profileId, greeting }) => {
+  const connect = useCallback<LiveKitVoice["connect"]>(async ({ brain, profileId, greeting, voice }) => {
     aliveRef.current = true;
     setError(null);
     setNotice(null);
@@ -293,7 +293,7 @@ export function useLiveKitVoice(): LiveKitVoice {
       const res = await fetch("/api/livekit-token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brain, profileId, greeting }),
+        body: JSON.stringify({ brain, profileId, greeting, voice }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data?.error || `Token request failed (${res.status}).`);

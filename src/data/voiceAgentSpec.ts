@@ -1,4 +1,5 @@
 import { isProspect } from "./prospect";
+import { isKnownVoice } from "./voiceOptions";
 import { voiceCopy } from "./voiceCopy";
 import { deriveUseCases, type VoiceUseCases } from "./voiceUseCases";
 import type { CustomerProfile } from "./schema";
@@ -71,6 +72,15 @@ export interface VoiceAgentSpec {
   outOfAreaScript?: string;
   /** The Inform & Route steps, verbatim, in the SE's own numbering. */
   informSteps: string[];
+  /**
+   * Which voice the agent speaks with — a `VOICE_OPTIONS` id like "thalia".
+   *
+   * ⚠️ **NOT PART OF THE PROMPT, and that is why it lives here rather than in `ChatBrain`.**
+   * `voiceSystemPrompt` turns a brain into words the agent says; a TTS voice is how it says
+   * them. It rides to the worker beside `greeting` as a per-call operational field.
+   * Absent means `DEFAULT_VOICE_ID`, which is the voice every demo already had.
+   */
+  voice?: string;
 }
 
 /**
@@ -260,6 +270,8 @@ export function voiceSpecFor(profile: CustomerProfile): VoiceAgentSpec {
    ============================================================================= */
 export interface VoiceAgentConfig {
   greeting: string;
+  /** A `VOICE_OPTIONS` id. Validated on read, because this object is AI-writable. */
+  voice?: string;
   qualifyQuestion: string;
   qualifyFallback: string;
   rules: string[];
@@ -282,6 +294,10 @@ export function agentConfigOf(spec: VoiceAgentSpec): VoiceAgentConfig {
     ...(spec.serviceZips?.length ? { serviceZips: spec.serviceZips } : {}),
     ...(spec.outOfAreaScript ? { outOfAreaScript: spec.outOfAreaScript } : {}),
     informSteps: spec.informSteps,
+    /* Omitted when unset, for the same reason as the two above: a key present with an
+       undefined value serialises to the model as `null`, which reads as "this prospect has
+       no voice" rather than "it has not chosen one". */
+    ...(spec.voice ? { voice: spec.voice } : {}),
   };
 }
 
@@ -374,6 +390,11 @@ export function specWithConfig(spec: VoiceAgentSpec, cfg: VoiceAgentConfig | und
     outOfAreaScript: typeof cfg.outOfAreaScript === "string" && cfg.outOfAreaScript.trim()
       ? cfg.outOfAreaScript : spec.outOfAreaScript,
     informSteps: toSteps(cfg.informSteps, spec.informSteps ?? []),
+    /* ⚠️ VALIDATED, NOT TRUSTED. This object is the workflow page's Ask AI scope, so the
+       model can write `agent.voice` — and an invented id would reach the worker and produce
+       a call that connects and never speaks. An unknown value falls back to the spec's own,
+       so the worst case is the voice not changing rather than the agent losing its tongue. */
+    voice: isKnownVoice(cfg.voice) ? cfg.voice!.trim().toLowerCase() : spec.voice,
   };
 
   /* ⚠️ REPAIR THE ONE CONTRADICTION THE TWO FIELDS CAN HOLD. If a ZIP allow-list was added

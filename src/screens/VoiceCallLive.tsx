@@ -5,7 +5,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
    captured-conversation shape must be IDENTICAL across the two engines, or a call
    captured through LiveKit would look different in the Voice CI report from one
    captured the old way. Same one-definition rule `smsBrain.ts` already enforces. */
-import { useBrain, captureVoiceCall, type BrainOpts } from "./VoiceCall";
+import { useBrain, useVoiceSpec, captureVoiceCall, type BrainOpts } from "./VoiceCall";
 import { useLiveKitVoice } from "../data/liveKitVoice";
 import { VoiceCallUI, type VcLine, type VcPhase } from "../components/VoiceCallUI";
 
@@ -39,6 +39,10 @@ export function VoiceCallLive({ onEnd, brainOpts }: { onEnd: () => void; brainOp
   /* The EFFECTIVE agent config, via the old engine's own hook — so an edit made on the
      Preview Agent page reaches this call exactly as it reached that one. */
   const brain = useBrain(brainOpts);
+  /* ⚠️ THE VOICE RIDES THE TOKEN, NOT THE PROMPT. It is read from the SAME spec the prompt
+     came from, so the voice an SE picked on the Details tab is the voice this call opens in
+     — the agent's words and the mouth saying them cannot come from different configs. */
+  const agentVoice = useVoiceSpec(brainOpts)?.voice;
 
   const lk = useLiveKitVoice();
   const [elapsed, setElapsed] = useState(0);
@@ -60,7 +64,7 @@ export function VoiceCallLive({ onEnd, brainOpts }: { onEnd: () => void; brainOp
      Start and stop belong in ONE effect with no guard: StrictMode then connects, tears down
      and reconnects cleanly, and production mounts once. */
   useEffect(() => {
-    void lk.connect({ brain, profileId: profile.id });
+    void lk.connect({ brain, profileId: profile.id, voice: agentVoice });
     const t = setInterval(() => { elapsedRef.current += 1; setElapsed(elapsedRef.current); }, 1000);
     return () => {
       clearInterval(t);

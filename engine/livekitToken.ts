@@ -1,5 +1,6 @@
 import { AccessToken } from "livekit-server-sdk";
 import { RoomConfiguration, RoomAgentDispatch } from "@livekit/protocol";
+import { liveKitVoiceModel } from "../src/data/voiceOptions.ts";
 import { voiceSystemPrompt } from "./chat.ts";
 import type { ChatBrain } from "./chat.ts";
 
@@ -46,6 +47,14 @@ export interface VoiceTokenRequest {
   profileId: string;
   /** What the agent opens the call with; blank lets the agent greet on its own. */
   greeting?: string;
+  /**
+   * A `VOICE_OPTIONS` id ("thalia", "arcas", ...) chosen on the workflow's Details tab.
+   *
+   * ⚠️ **A PER-CALL FIELD, LIKE `greeting`, NOT PART OF THE BRAIN.** The brain is what
+   * `voiceSystemPrompt` turns into words; this is how those words are spoken. Unknown or
+   * absent resolves to the default, so an old client that sends nothing keeps today's voice.
+   */
+  voice?: string;
 }
 
 export interface VoiceTokenResult {
@@ -120,6 +129,12 @@ export async function mintVoiceToken(
         metadata: JSON.stringify({
           instructions,
           greeting: req.greeting ?? "",
+          /* ⚠️ THE FULL INFERENCE STRING, RESOLVED HERE — not the bare id. The worker gets
+             "deepgram/aura-2:thalia", which is the exact composite shape LiveKit documents and
+             its own `inference.TTS.fromModelString()` parses, so the worker needs no table of
+             our voices and cannot disagree with the picker about what "thalia" means. An
+             unknown id resolves to the default rather than travelling as-is. */
+          voice: liveKitVoiceModel(req.voice),
           customerName: req.brain.customerName ?? "",
           profileId: req.profileId,
         }),

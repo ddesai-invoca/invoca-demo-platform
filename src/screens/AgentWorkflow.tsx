@@ -11,6 +11,7 @@ import { VoiceCallLive } from "./VoiceCallLive";
 import { useLiveKitReady } from "../data/liveKitVoice";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch, type TreePath } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
+import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
@@ -372,7 +373,7 @@ function UndoIcon() {
 }
 
 export function AgentWorkflow() {
-  const { profile } = useProfile();
+  const { profile, profileId } = useProfile();
   const { channel, id } = useParams();
   const { pathname } = useLocation();
   /* The route param is a slug, not just sms|voice: extra workflows add their
@@ -435,6 +436,10 @@ export function AgentWorkflow() {
      different thing living in a different scope, and it has its own sparkle inside
      the Preview Workflow chat. */
   const tree = usePageData(baseTree);
+  /* ⚠️ THE TABS WERE TWO INERT BUTTONS with `active` hardcoded on Definition. Local state
+     rather than a route: the real page keeps one URL per workflow, and a query parameter
+     would have to be carried by every link that reaches this screen. */
+  const [tab, setTab] = useState<"definition" | "details">("definition");
   const [voicePreview, setVoicePreview] = useState(false);
   const [inCall, setInCall] = useState(false);
   const liveKitReady = useLiveKitReady();
@@ -551,9 +556,30 @@ export function AgentWorkflow() {
       )}
 
       <div className="wf-tabs">
-        <button className="wf-tab active">Definition</button>
-        <button className="wf-tab">Details</button>
+        <button
+          className={"wf-tab" + (tab === "definition" ? " active" : "")}
+          onClick={() => setTab("definition")}
+        >Definition</button>
+        <button
+          className={"wf-tab" + (tab === "details" ? " active" : "")}
+          onClick={() => setTab("details")}
+        >Details</button>
       </div>
+
+      {tab === "details" ? (
+        /* ⚠️ THE SCOPE KEY IS BUILT THE SAME WAY `usePageData` BUILDS IT (profileId ::
+           pathname), because the voice and greeting written here have to land on the very
+           override this page reads back through `tree`. A different key would store the
+           choice under a page nobody is looking at — the hardcoded-destination bug the Add
+           Tile flow already paid for. */
+        <AgentWorkflowDetails
+          scopeKey={`${profileId}::${pathname}`}
+          isSms={isSms}
+          agent={(tree as { agent?: { voice?: string; greeting?: string } }).agent}
+          triggeredBy={tree.triggeredBy}
+        />
+      ) : (
+      <>
 
       <div className="wf-toolbar">
         <div className="wf-viewtoggle">
@@ -587,6 +613,8 @@ export function AgentWorkflow() {
           <span className="wf-mini-node" style={{ top: 58, left: 60 }} />
         </div>
       </div>
+      </>
+      )}
     </AgentStudioLayout>
   );
 }

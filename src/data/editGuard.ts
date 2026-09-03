@@ -147,6 +147,13 @@ const CREATABLE_WHEN_ABSENT = [
      edit the drawer's own empty state offers. Caught by checking the guard against the copy
      rather than by trying it, which would only have failed on one account. */
   /\bpaths\.\d+\.route$/i,
+  /* ⚠️ THE AGENT'S TTS VOICE, which no prospect carries until somebody picks one on the
+     Details tab — so the FIRST pick is an undefined -> string write on every demo, and
+     without this the picker would be refused by the guard on its first use and work on
+     every use after. `agentConfigOf` omits it when unset, so absent is really absent.
+     Safe to allow because `specWithConfig` validates the value against VOICE_OPTIONS:
+     the guard decides whether a write is structural, not whether it is a real voice. */
+  /^agent\.voice$/i,
 ];
 
 /**

@@ -19,6 +19,7 @@ import { emptyWorkflowGreeting } from "../src/data/workflowChrome";
 import { treeToVoicePaths } from "../src/data/voicePaths";
 import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, stepsForZips, toSteps, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
 import { voiceCopy } from "../src/data/voiceCopy";
+import { VOICE_OPTIONS, DEFAULT_VOICE_ID, liveKitVoiceModel, previewModel, isAllowedPreviewModel, voiceOption } from "../src/data/voiceOptions";
 import { latestTransferredCall, voiceAiRouting, voiceAiScreenpop } from "../src/data/voiceAiArtifacts";
 import { collectNames } from "../src/data/workflowDrawers";
 
@@ -577,8 +578,81 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "and the prompt does not also tell the agent to hang up");
 }
 
+
+/* =============================================================================
+   THE AGENT'S VOICE — the Details tab's picker, and the chain that makes it audible
+   -----------------------------------------------------------------------------
+   Four links, and every one of them has failed silently in this repo before in some other
+   guise: a picker writing a field nothing reads, a string the worker cannot parse, an
+   allow-list that lets our own key be spent freely, and a default that quietly re-voices
+   every existing demo. These call the real functions rather than grepping for them.
+   ============================================================================= */
+{
+  /* Ids are real Deepgram Aura-2 models and unique — a typo here is a call that connects
+     and then cannot speak, which the SE reads as the whole feature being broken. */
+  check(VOICE_OPTIONS.length > 0 && VOICE_OPTIONS.every((v) => /^aura-2-[a-z]+-en$/.test(v.deepgramModel)),
+    "every voice carries a real aura-2 model id");
+  check(new Set(VOICE_OPTIONS.map((v) => v.id)).size === VOICE_OPTIONS.length,
+    "no two voices share an id");
+  check(VOICE_OPTIONS.every((v) => v.deepgramModel === `aura-2-${v.id}-en`),
+    "the Deepgram id and the short id agree, so the preview and the call cannot diverge");
+
+  /* The composite string is what the worker parses; verified against the installed SDK,
+     which sets `opts.voice` from exactly this shape. */
+  check(liveKitVoiceModel("arcas") === "deepgram/aura-2:arcas",
+    "a choice becomes the LiveKit composite the worker parses");
+  check(liveKitVoiceModel("british-butler") === `deepgram/aura-2:${DEFAULT_VOICE_ID}`,
+    "an invented voice falls back rather than travelling to the worker");
+  check(liveKitVoiceModel(undefined) === `deepgram/aura-2:${DEFAULT_VOICE_ID}`,
+    "and so does an absent one");
+
+  /* ⚠️ THE DEFAULT MUST STAY THE VOICE EVERY DEMO ALREADY HAD. `engine/tts.ts` has always
+     sent `aura-2-thalia-en`; if these drift, shipping this picker silently re-voices every
+     prospect on the platform, which nobody asked for and nobody would attribute to it. */
+  const ttsSrc = read("engine/tts.ts");
+  const dgDefault = /DEEPGRAM_DEFAULT_MODEL\s*=\s*"([^"]+)"/.exec(ttsSrc)?.[1];
+  check(dgDefault === previewModel(DEFAULT_VOICE_ID),
+    "the default voice is still the one engine/tts.ts already used", `tts=${dgDefault}`);
+
+  /* The preview allow-list: our own Deepgram key is behind this endpoint. */
+  check(VOICE_OPTIONS.every((v) => isAllowedPreviewModel(v.deepgramModel)),
+    "every offered voice is previewable");
+  check(!isAllowedPreviewModel("aura-2-zeus-en") && !isAllowedPreviewModel("../../etc/passwd"),
+    "a real voice we do NOT offer, and a junk model, are both refused");
+
+  /* An unknown id degrades instead of throwing — this is read on every render. */
+  check(voiceOption("nonsense").id === DEFAULT_VOICE_ID && voiceOption(null).id === DEFAULT_VOICE_ID,
+    "reading an unknown voice yields the default rather than undefined");
+
+  /* ⚠️ THE CONFIG PATH: `agent.voice` is absent until somebody picks one, so the FIRST pick
+     is an undefined -> string write. Without CREATABLE_WHEN_ABSENT the picker is refused on
+     its first use and works on every use after — call the real guard rather than trust it. */
+  check(!isStructuralChange(undefined, "arcas", "agent.voice"),
+    "editGuard lets the first voice pick through");
+  check(!isStructuralChange("thalia", "arcas", "agent.voice"),
+    "and lets a later change through");
+
+  /* Validation on the merge, so an AI-written voice cannot break a call. */
+  const vSpec = { prospect: "x", greeting: "Hi.", rules: [], informSteps: [] } as unknown as VoiceAgentSpec;
+  check(specWithConfig(vSpec, { voice: "athena" } as never).voice === "athena",
+    "a real voice survives specWithConfig");
+  check(specWithConfig(vSpec, { voice: "made-up" } as never).voice === undefined,
+    "an invented one is dropped at the merge");
+
+  /* The two ends of the wire, structurally — the same reason `audit:voice` counts
+     `/api/analyze` fetches rather than testing a feature. */
+  check(/voice:\s*liveKitVoiceModel\(req\.voice\)/.test(token),
+    "the token puts the resolved voice in the dispatch metadata");
+  check(/fromModelString/.test(worker) && /tts:\s*ttsFor\(brief\)/.test(worker),
+    "the worker builds its TTS per call from that metadata");
+  check(!/tts:\s*new inference\.TTS\(\{ model: TTS_MODEL \}\)/.test(worker),
+    "and no longer pins one voice for every call in the process");
+  check(/voice\b/.test(client) && /greeting, voice/.test(client),
+    "the client sends the voice with the token request");
+}
+
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (62 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (78 checks + per-profile)");
 process.exit(failures ? 1 : 0);

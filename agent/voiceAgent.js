@@ -73,6 +73,36 @@ function jobBrief(ctx) {
   }
 }
 
+/**
+ * The voice this call speaks in.
+ *
+ * ⚠️⚠️ **THE VOICE IS PER CALL, NOT PER WORKER — that is the whole point of this helper.**
+ * `TTS_MODEL` is read from the environment ONCE at process start, so before this every demo
+ * on the platform shared one voice and the Details tab's picker could only ever have been
+ * decoration. The token now puts the SE's choice in the job metadata beside `instructions`,
+ * exactly as it already does for the greeting, and each session builds its own TTS from it.
+ *
+ * ⚠️ **`fromModelString` IS THE SDK'S OWN PARSER, and using it is deliberate.** The metadata
+ * carries the composite "deepgram/aura-2:thalia" — the shape LiveKit's docs show — so this
+ * worker holds NO table of our voices and cannot disagree with the picker about what a name
+ * means. Splitting the string here by hand is how the two ends drift.
+ *
+ * ⚠️ **FALLS BACK RATHER THAN THROWING.** A malformed or unknown voice must not cost the call
+ * its tongue: an empty room is this pipeline's worst failure and it is silent. Anything we
+ * cannot parse lands on the env default, which is the voice every demo had before.
+ */
+function ttsFor(brief) {
+  const want = typeof brief?.voice === "string" ? brief.voice.trim() : "";
+  if (want) {
+    try {
+      return inference.TTS.fromModelString(want);
+    } catch (e) {
+      console.warn(`[voice-agent] unusable voice "${want}", falling back to ${TTS_MODEL}:`, e?.message ?? e);
+    }
+  }
+  return new inference.TTS({ model: TTS_MODEL });
+}
+
 export default defineAgent({
   /* Silero VAD is loaded ONCE per worker process and shared by every job — it is a
      model file, and loading it per call would add startup latency to the very thing
@@ -94,7 +124,7 @@ export default defineAgent({
     const session = new voice.AgentSession({
       stt: new inference.STT({ model: STT_MODEL }),
       llm: new anthropic.LLM({ model: LLM_MODEL }),
-      tts: new inference.TTS({ model: TTS_MODEL }),
+      tts: ttsFor(brief),
       vad: ctx.proc.userData.vad,
     });
 

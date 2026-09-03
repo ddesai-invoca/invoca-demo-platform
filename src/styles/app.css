@@ -1141,6 +1141,47 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-minimap { position: absolute; z-index: 2; right: 16px; bottom: 16px; width: 150px; height: 96px; border: 1px solid #e2e5e9; border-radius: 6px; background: #fafbfc; }
 .wf-mini-node { position: absolute; width: 34px; height: 12px; background: #dfe3e8; border-radius: 2px; }
 
+/* ---- the workflow's DETAILS tab (`.wfd-`) --------------------------------
+   Content and controls are faithful to the user's screenshot of the real page; the SPACING
+   is authored from the platform's own tokens rather than measured off an image, per this
+   file's own rule about screenshot-derived geometry. See AgentWorkflowDetails.tsx. */
+.wfd-page { padding: 22px 2px 40px; max-width: 1180px; }
+.wfd-sec { margin-bottom: 26px; }
+.wfd-h { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font-size: 16px; font-weight: 700; color: #15243e; }
+.wfd-val { font-size: 15px; color: #343a40; }
+.wfd-edit { font-size: 14px; font-weight: 400; color: #2666f9; opacity: .55; cursor: default; }
+
+/* the voice row: picker on the left, its audition field on the right */
+.wfd-voicerow { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+.wfd-field { min-width: 0; }
+.wfd-select { width: 100%; height: 38px; padding: 0 10px; font-family: inherit; font-size: 15px; color: #15243e; background: #fff; border: 1px solid #d0d3d8; border-radius: 3px; cursor: pointer; }
+.wfd-select:disabled { color: #a1a7b2; background: #f5f6fa; cursor: default; }
+.wfd-help { margin-top: 6px; font-size: 13px; font-style: italic; color: #66708e; }
+
+.wfd-preview { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 6px 0 12px; background: #fff; border: 1px solid #d0d3d8; border-radius: 3px; }
+.wfd-previewtext { flex: 1; min-width: 0; font-size: 15px; color: #5b6577; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* The play affordance is the platform green, and it is a real button: 26px so it sits
+   inside the 38px field without touching either edge. */
+.wfd-play { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: none; border-radius: 50%; background: #2cbf58; color: #fff; cursor: pointer; }
+.wfd-play .material-icons { font-size: 17px; }
+.wfd-play--on { background: #0d7a3e; }
+
+.wfd-input { width: 100%; max-width: 1150px; height: 38px; padding: 0 12px; font-family: inherit; font-size: 15px; color: #15243e; background: #fff; border: 1px solid #d0d3d8; border-radius: 3px; }
+.wfd-input:disabled { color: #a1a7b2; background: #f5f6fa; }
+.wfd-input::placeholder { color: #a1a7b2; }
+
+.wfd-links { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.wfd-links a { color: #2666f9; text-decoration: none; }
+.wfd-links a:hover { text-decoration: underline; }
+.wfd-sep { color: #a1a7b2; }
+
+.wfd-check { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: #343a40; }
+
+/* A wait, a refusal and a failure read differently — the same three-channel distinction
+   the voice call's own notice/error pair makes. */
+.wfd-note { margin-top: 10px; font-size: 13px; color: #66708e; }
+.wfd-err { margin-top: 10px; font-size: 13px; line-height: 1.5; color: #b33b00; background: #fff4ef; border: 1px solid #ffd9c7; border-radius: 4px; padding: 8px 12px; }
+
 /* ---- iPhone "Preview Agent" SMS chat (modern iOS, dark mode) ------------ */
 .phone-overlay { position: fixed; inset: 0; background: rgba(10,12,18,.62); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 24px; }
 /* Standalone "Preview Agent" browser tab (opened via window.open) */

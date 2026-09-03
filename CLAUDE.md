@@ -1087,6 +1087,130 @@ and the teardown are verified by reading, not by a live cold start.
 Verified: `tsc` clean on BOTH projects, `audit:voice` (62) and `audit:ai` green, zero stray
 backspace bytes in every edited file (`od`-safe grep, per the `\b` heredoc trap above).
 
+### The workflow's DETAILS tab, and an agent voice that actually changes (9/3/2026)
+Asked for directly: *"lets make the Details page clickable and allow users to change the voice
+of the voice agent, give users access to all the different voice available in livekit."* Then,
+on how it should behave: *"User clicks the details button, selects or changes a voice and it
+automatically changes the voice without the user having to do anything else."*
+
+`src/screens/AgentWorkflowDetails.tsx` + `.wfd-*` + `src/data/voiceOptions.ts`. The two tabs
+were `<button className="wf-tab active">Definition</button>` and an inert sibling; they are
+stateful now, and Details renders instead of the toolbar + canvas.
+
+⚠️⚠️ **"ALL THE VOICES AVAILABLE IN LIVEKIT" IS NOT AN ENUMERABLE SET, and that shaped the
+whole feature.** LiveKit Inference brokers **seven** TTS providers (Cartesia, Deepgram,
+ElevenLabs, Rime, Inworld, xAI, Fish Audio — read off `@livekit/agents@1.7.0`'s own
+`inference/tts.d.ts`, which is authoritative for our version and lists two the docs page does
+not), and it publishes **no endpoint and no CLI that lists their voices** — LiveKit's docs say
+each catalogue lives in that provider's own documentation, and ElevenLabs ids are per-account
+UUIDs. So any list is a hand-maintained snapshot. Offered the choice, the user picked **six**:
+Thalia, Andromeda, Arcas, Harmonia, Neptune, Athena — all Aura-2, all American English, all
+voices Deepgram itself describes for customer service or IVR. **Every id is copied from
+Deepgram's published table, not typed from memory.**
+
+⚠️ **TWO ID FORMATS, BOTH REAL, BOTH DERIVED FROM ONE ENTRY.** Deepgram's REST API (the play
+button) wants `aura-2-thalia-en`; LiveKit wants provider/model plus a voice, which its SDK also
+accepts as the composite `deepgram/aura-2:thalia`. One `VoiceOption` produces both, so the
+voice an SE previews **is** the voice the call uses. `audit:voice` asserts the two agree.
+
+**The chain, and every link was verified separately** because each is a place this repo has
+already been bitten:
+
+| link | how it was proved |
+|---|---|
+| picker -> stored config | real `form_input`, then read the override store: `agent.voice: "arcas"` under `shady-blinds::/agent-studio/agent/workflow/voice`, undo depth 1 |
+| stored config -> preview audio | `/api/tts` returned **8208 bytes for Arcas and 8064 for Athena**, different SHA per voice — so the model is genuinely applied, not ignored |
+| stored config -> token | decoded the minted JWT: `roomConfig.agents[0].metadata.voice === "deepgram/aura-2:arcas"` |
+| token -> worker's TTS | ran `inference.TTS.fromModelString()` against the installed SDK: `opts.voice === "thalia"` / `"arcas"`, and `undefined` for a bare model |
+| worker -> audible on a call | ⚠️ **NOT VERIFIED — needs `lk agent deploy`.** See below |
+
+⚠️⚠️ **THE 7776-BYTE COINCIDENCE IS WHY THE HASH CHECK EXISTS.** Two different voices first
+came back with byte-identical LENGTHS, which reads exactly like the model parameter being
+dropped. Hashing them showed different content and, on a re-run, different lengths too —
+Deepgram is not byte-deterministic. **A matching length is not evidence the same audio was
+returned, and it is not evidence the parameter worked either; hash it.**
+
+⚠️⚠️ **THE VOICE IS PER CALL NOW; IT USED TO BE PER WORKER PROCESS.** `agent/voiceAgent.js`
+read `VOICE_TTS_MODEL` from the environment **once at startup**, so every demo on the platform
+shared one voice and any picker could only ever have been decoration. `ttsFor(brief)` builds the
+TTS from the job metadata instead, beside the `instructions` and `greeting` already carried
+there. It uses the SDK's own `fromModelString` rather than splitting the string by hand, so the
+worker holds **no table of our voices** and cannot disagree with the picker about what a name
+means; anything unparseable falls back to the env default, because an empty room is this
+pipeline's worst failure and it is silent.
+
+⚠️⚠️ **CONSEQUENCE, STATED PLAINLY: `agent/voiceAgent.js` IS A DEPLOYED IMAGE, SO `git push`
+DOES NOT SHIP IT.** Until `lk agent deploy` runs once, the picker stores and previews correctly
+and the live call keeps the old voice. That is the difference between this feature and a
+beautiful no-op. It is a **one-time** step: after it, every voice change is automatic, which is
+the behaviour that was asked for.
+
+⚠️ **THE DEFAULT IS THALIA, AND THAT IS LOAD-BEARING RATHER THAN A TASTE.** `engine/tts.ts` has
+always sent `aura-2-thalia-en`, and `deepgram/aura-2` resolves to it — so an untouched demo
+sounds exactly as it did before this shipped. `audit:voice` compares `DEFAULT_VOICE_ID` against
+`DEEPGRAM_DEFAULT_MODEL` in `engine/tts.ts`, because if those drift, shipping a picker silently
+re-voices every prospect on the platform and nobody would attribute it to this change.
+
+⚠️ **`/api/tts` NOW TAKES A MODEL FROM THE BROWSER, so it needed an allow-list or it is an open
+Deepgram proxy on our own key.** Only the six the picker offers are accepted; verified live that
+`aura-2-zeus-en` (a real Aura-2 voice we do not offer) and `../../etc/passwd` both 400.
+⚠️ **A SERVER-CONFIGURED `DEEPGRAM_MODEL` IS DELIBERATELY NOT CHECKED, and the first version got
+this wrong.** Validating inside `engine/tts.ts` would have rejected an operator's own env
+default and broken TTS everywhere it is set. The check belongs at the request boundary, where
+the value's SOURCE is known. Both twins (`vite.config.ts`, `server.ts`) carry it, per the
+keep-them-in-sync rule.
+
+⚠️ **THE EDITS GO THROUGH `applyEdits`, NOT A BESPOKE WRITER** — so the picker inherits
+`readOnly` on somebody else's demo, an undo step (page undo covers a voice change), and the same
+`editGuard` the assistant's edits pass. ⚠️ And `agent.voice` had to join
+**CREATABLE_WHEN_ABSENT**: no prospect carries a voice until somebody picks one, so the FIRST
+pick is an `undefined -> string` write. Without it the picker would be refused on first use and
+work every time after — the exact trap the greeting and `serviceZips` already documented.
+⚠️ The greeting field writes **on blur, not on change**: `applyEdits` pushes an undo step per
+call, so per-keystroke writes would bury the undo stack under one entry per letter.
+
+⚠️⚠️ **THE CUSTOM GREETING IS VOICE-ONLY, AND THE FIRST BUILD SHIPPED A DEAD CONTROL.** On an
+SMS workflow the page registers no `agent` half, so it rendered as a **disabled, empty input
+with no explanation** — worse than an absent one, by this file's own rule. Two further reasons
+not to fake it there: the screenshot is of a VOICE workflow, so an SMS Details tab's real
+contents are unverified, and the SMS opener is `smsPlaybook.greeting` in the **Preview Agent**
+scope, so writing `agent.greeting` from there would edit a different agent from the one the page
+is about. Gated on `agent`; verified the SMS tab now has **zero** disabled controls.
+
+⚠️ **`useVoiceSpec` WAS EXTRACTED FROM `useBrain` rather than re-deriving the voice in
+`VoiceCallLive`.** The call needs the chosen voice for the token, and a second copy of the scope
+key plus the merge is how the agent ends up speaking in a voice the Details tab is not showing.
+One function answers "which spec is this call using".
+
+⚠️ **PROVENANCE: SCREENSHOT, NOT A CAPTURE — the user's own choice when offered both.** Content
+and controls are faithful; the SPACING is authored from platform tokens rather than measured,
+because this file's own rule is that screenshot-derived geometry looks plausible and measures
+wrong. Same standing as the Create-Tile-with-AI drawer. A SingleFile capture of this tab can be
+diffed against it later the way the Create Workflow modal was.
+⚠️ **CHROME, DELIBERATELY INERT AND NOT DRESSED UP:** Default Business Hours ("Open 24/7") and
+its Edit link, and the Invoca Custom checkbox. The screenshot shows them; nothing behind them is
+captured or modelled. Channel and the trigger line are DERIVED from the workflow being rendered.
+
+**`npm run audit:voice` is 78 checks** (was 62). The sixteen new ones call the real functions:
+ids are real aura-2 models and unique, the Deepgram and short ids agree, a choice becomes the
+composite string, an invented or absent voice falls back, the default still matches
+`engine/tts.ts`, every offered voice is previewable while an unoffered real voice and a junk
+model are refused, reading an unknown id yields the default, `editGuard` allows the first pick
+AND a later change, `specWithConfig` keeps a real voice and drops an invented one, the token
+carries the resolved string, the worker builds its TTS per call, and it no longer pins one voice
+per process.
+⚠️ **Each was broken on purpose and seen to fire**: drifting the default (1 red), removing the
+guard pattern (1), reverting the worker to one voice (2), dropping the metadata field (1), and
+removing the merge's validation (1) — all restored to green.
+
+**Verified in the browser:** the tab switches and Details renders Channel / Default Business
+Hours / Agent Voice / Custom Greeting / Triggered by / Invoca Custom; all six voices list with
+Thalia selected by default; picking Arcas stores it, updates the character note, and survives a
+full page reload. **Untouched:** the Definition tab (12 nodes, 15 chips, canvas, minimap and
+toolbar all present, **zero `.wfd-` elements**) and the SMS workflow's own tab (Channel SMS, its
+own trigger line, no voice picker, no dead controls). `audit:ai` and `audit:phases` green, `tsc`
+clean on both projects.
+
 ### Don't ask twice: the voice agent was re-asking ZIP and name (9/2/2026)
 Reported directly: "when asking for things like are you looking to book an appointment or
 something, or their zipcode, or their name. Only ask that once, you should remember that data or

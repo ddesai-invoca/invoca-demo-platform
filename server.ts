@@ -29,6 +29,7 @@ import { generateProfile, slugify } from "./engine/core.ts";
 import { chatReply } from "./engine/chat.ts";
 import { analyzeSms } from "./engine/analyze.ts";
 import { synthesize } from "./engine/tts.ts";
+import { isAllowedPreviewModel } from "./src/data/voiceOptions.ts";
 import { livekitEnv, mintVoiceToken } from "./engine/livekitToken.ts";
 import { askAssistant } from "./engine/assistant.ts";
 import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
@@ -217,12 +218,15 @@ app.post("/api/analyze", async (req, res) => {
 /* POST /api/tts → audio/mpeg from Deepgram or ElevenLabs (key server-side). */
 app.post("/api/tts", async (req, res) => {
   try {
-    const { text, voiceId } = req.body || {};
+    const { text, voiceId, model: reqModel } = req.body || {};
     if (!text || !String(text).trim()) return res.status(400).json({ error: "text is required." });
     let audio: Uint8Array;
     if (ttsProvider === "deepgram") {
       if (!deepgramKey) return res.status(501).json({ error: "DEEPGRAM_API_KEY is not set on the server." });
-      audio = await synthesize({ text, provider: "deepgram", deepgram: { apiKey: deepgramKey, model: deepgramModel } });
+      /* Allow-list a model that came from the BROWSER (the Details tab's play button); an
+         operator's own DEEPGRAM_MODEL is left alone. Kept in step with the dev twin above. */
+      if (reqModel && !isAllowedPreviewModel(reqModel)) return res.status(400).json({ error: `Unsupported voice: ${reqModel}` });
+      audio = await synthesize({ text, provider: "deepgram", deepgram: { apiKey: deepgramKey, model: reqModel || deepgramModel } });
     } else {
       if (!elevenKey) return res.status(501).json({ error: "ELEVENLABS_API_KEY is not set on the server." });
       audio = await synthesize({ text, provider: "elevenlabs", elevenlabs: { apiKey: elevenKey, voiceId: voiceId || elevenVoice, modelId: elevenModel } });
@@ -251,9 +255,9 @@ app.post("/api/livekit-token", async (req, res) => {
        unconfigured server must answer 501 whatever the body says. */
     const cfg = livekitEnv();
     if (!cfg) return res.status(501).json({ error: "LiveKit is not configured on the server." });
-    const { brain, profileId, greeting } = req.body || {};
+    const { brain, profileId, greeting, voice } = req.body || {};
     if (!brain) return res.status(400).json({ error: "brain is required." });
-    res.json(await mintVoiceToken({ brain, profileId: profileId || "demo", greeting }, cfg));
+    res.json(await mintVoiceToken({ brain, profileId: profileId || "demo", greeting, voice }, cfg));
   } catch (e: any) {
     console.error("[livekit] token failed:", e);
     res.status(500).json({ error: e?.message || "Could not mint a LiveKit token." });

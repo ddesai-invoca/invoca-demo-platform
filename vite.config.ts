@@ -1,3 +1,4 @@
+import { isAllowedPreviewModel } from './src/data/voiceOptions.ts'
 import { defineConfig, loadEnv, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import fs from 'node:fs'
@@ -376,7 +377,7 @@ function analyzeApi(apiKey: string | undefined): Plugin {
   }
 }
 
-/* Dev endpoint: POST /api/livekit-token { brain, profileId, greeting? } →
+/* Dev endpoint: POST /api/livekit-token { brain, profileId, greeting?, voice? } →
    { url, token, room } for the LiveKit voice call. The API SECRET never leaves the
    server; the browser only ever gets a 10-minute join token. Answers 501 when
    LiveKit is not configured, so the client can fall back to the old pipeline
@@ -405,9 +406,9 @@ function livekitApi(env: Record<string, string>): Plugin {
           /* ⚠️ CONFIG BEFORE BODY — see the note in server.ts. The readiness probe sends an
              empty body, so validating `brain` first makes an unconfigured server answer 400,
              which the client reads as "LiveKit is available" and the fallback never engages. */
-          const { brain, profileId, greeting } = JSON.parse(raw || '{}')
+          const { brain, profileId, greeting, voice } = JSON.parse(raw || '{}')
           if (!brain) return send(400, { error: 'brain is required.' })
-          send(200, await mod.mintVoiceToken({ brain, profileId: profileId || 'demo', greeting }, cfg))
+          send(200, await mod.mintVoiceToken({ brain, profileId: profileId || 'demo', greeting, voice }, cfg))
         } catch (e) {
           send(500, { error: e instanceof Error ? e.message : String(e) })
         }
@@ -440,7 +441,7 @@ function ttsApi(cfg: TtsSettings): Plugin {
         try {
           let raw = ''
           for await (const chunk of req) raw += chunk
-          const { text, voiceId: reqVoice } = JSON.parse(raw || '{}')
+          const { text, voiceId: reqVoice, model: reqModel } = JSON.parse(raw || '{}')
           if (!text || !String(text).trim()) return sendErr(400, { error: 'text is required.' })
 
           const { synthesize } = await import(
@@ -449,7 +450,13 @@ function ttsApi(cfg: TtsSettings): Plugin {
           let audio: Uint8Array
           if (cfg.provider === 'deepgram') {
             if (!cfg.deepgramKey) return sendErr(501, { error: 'DEEPGRAM_API_KEY is not set. Add it to .env to enable the Deepgram voice.' })
-            audio = await synthesize({ text, provider: 'deepgram', deepgram: { apiKey: cfg.deepgramKey, model: cfg.deepgramModel } })
+            /* ⚠️ A BROWSER-SUPPLIED MODEL IS ALLOW-LISTED; A SERVER-CONFIGURED ONE IS NOT.
+               The Details tab's play button names the voice it wants to hear, so without this
+               the endpoint is an open Deepgram proxy on our key. `DEEPGRAM_MODEL` from the
+               environment is deliberately NOT checked — that is an operator's own choice, and
+               rejecting it would break every voice on a server that sets it. */
+            if (reqModel && !isAllowedPreviewModel(reqModel)) return sendErr(400, { error: `Unsupported voice: ${reqModel}` })
+            audio = await synthesize({ text, provider: 'deepgram', deepgram: { apiKey: cfg.deepgramKey, model: reqModel || cfg.deepgramModel } })
           } else {
             if (!cfg.elevenKey) return sendErr(501, { error: 'ELEVENLABS_API_KEY is not set. Add it to .env to enable the premium voice.' })
             audio = await synthesize({ text, provider: 'elevenlabs', elevenlabs: { apiKey: cfg.elevenKey, voiceId: reqVoice || cfg.elevenVoice, modelId: cfg.elevenModel } })

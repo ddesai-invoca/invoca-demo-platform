@@ -65,6 +65,36 @@ export interface BrainOpts {
   minimal?: boolean;
 }
 
+/**
+ * The workflow page's scope key — ONE definition, read by `useBrain` and `useVoiceSpec`.
+ *
+ * ⚠️ Two copies of this string is how a call ends up reading a DIFFERENT page's tree from
+ * the one the SE is looking at, which is the wrong-surface bug `BrainOpts` exists to fix.
+ */
+function treeScopeKey(profileId: string, opts?: BrainOpts): string {
+  return `${profileId}::${opts?.scopePath ?? VOICE_WORKFLOW_SCOPE_PATH}`;
+}
+
+/**
+ * The prospect's spec with the workflow page's own overrides laid over it.
+ *
+ * ⚠️ **EXTRACTED SO THE TTS VOICE COMES FROM THE SAME PLACE THE PROMPT DOES (9/3/2026).**
+ * `VoiceCallLive` needs the chosen voice to put on the token, and re-deriving it there would
+ * mean a second copy of the scope key and the merge — so the moment somebody changed one, the
+ * agent would speak in a voice the Details tab was not showing. `useBrain` calls this too, so
+ * there is exactly one answer to "which spec is this call using".
+ */
+export function useVoiceSpec(opts?: BrainOpts) {
+  const { profile, profileId } = useProfile();
+  const { effectiveData } = useAiAssistant();
+  const effTree = effectiveData(treeScopeKey(profileId, opts)) as
+    (WorkflowTreeModel & { agent?: VoiceAgentConfig }) | undefined;
+  return useMemo(
+    () => specWithConfig(voiceSpecFor(profile), effTree?.agent),
+    [profile, effTree?.agent],
+  );
+}
+
 export function useBrain(opts?: BrainOpts) {
   const { profile, profileId } = useProfile();
   const { effectiveData, registerBase } = useAiAssistant();
@@ -106,7 +136,7 @@ export function useBrain(opts?: BrainOpts) {
 
      Absent a tree (a call started somewhere with no diagram) this is empty and the prompt
      falls back to its original hardcoded flow. */
-  const treeKey = `${profileId}::${opts?.scopePath ?? VOICE_WORKFLOW_SCOPE_PATH}`;
+  const treeKey = treeScopeKey(profileId, opts);
   const effTree = effectiveData(treeKey) as
     (WorkflowTreeModel & { agent?: VoiceAgentConfig }) | undefined;
   /* ⚠️⚠️ **THE AGENT'S CONFIG IS READ FROM THE PAGE, NOT FROM THE PROFILE (8/27/2026).**
