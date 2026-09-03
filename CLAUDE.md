@@ -7189,22 +7189,39 @@ name is an orphaned agent, not a live call. 2 publishers means a real human is o
 logs `custom loadThreshold is not supported when deploying to Cloud`. Harmless, and it will
 keep appearing in every log until the key is removed.
 
-**3. The live Avi & Co demo record still needs a PATCH, and carries stale test data.**
-- `Avi & Co - booking` (and anything else added to `reports.extraWorkflows`) lives only in
-  git-ignored `.data/demos/avi-co.json`. The code that runs it is deployed; the workflow will
-  not appear on the live site until its record is patched.
-- **The procedure, which must be a read-modify-write against the LIVE copy:** `PATCH
-  /api/demos/:id` replaces the whole `profile` with whatever it is handed
-  (`profile: body?.profile ?? rec.profile`), so GET the live record first, append to ITS
-  `extraWorkflows`, and PATCH `{ profile }` ONLY — omitting `customizations` keeps the AI
-  override layer by construction rather than by care. The handler bumps `updatedAt` itself,
-  which is what makes already-open browsers refetch.
-- ⚠️ It needs a signed-in session: the API is behind the Google gate and the browser pane gets
-  `401 Sign in required`; the gate redirects to **Invoca's Okta SSO**, which the assistant
-  cannot complete. A human has to sign in first.
-- ⚠️ The live record's `/agent-studio/agent/preview` override holds **leftover test questions**
-  ("Does the workflow chat restart?", "Does it pick up the new questions?") from an earlier
-  session, alongside the real ones. Worth clearing next time that record is touched.
+**3. ✅ DONE 9/3/2026 — the live Avi & Co record was patched.** Kept here for the procedure,
+which was WRONG in one detail and is now measured against the live API.
+- Both workflows were missing on live: `extraWorkflows` was `[]`, so neither `sms-new`
+  ("Avi & Co - New") nor `voice-booking` ("Avi & Co - booking") existed there. Patched to
+  both; `customizations` (overrides + tiles) preserved, `creator` unchanged, `updatedAt`
+  bumped to 20:10Z.
+- ⚠️ **`GET /api/demos/:id` RETURNS `{ demo, canEdit }`, NOT the record.** The procedure
+  written from the handler source said the record came back directly, and a read-modify-write
+  built on that would have sent `profile: undefined` — which `body?.profile ?? rec.profile`
+  accepts silently, so it would have reported 200 and changed nothing. The read-modify-write
+  is against `json.demo.profile`.
+- The PATCH still takes `{ profile }` ONLY, as documented: omitting `customizations` preserves
+  the AI override layer by construction rather than by care.
+- ⚠️ **The sign-in wall is passable through the user's own Chrome** (`claude-in-chrome`), which
+  holds their live Okta session — the Browser pane does not. That is what unblocked this.
+- The stale `"Does the workflow chat restart?"` test questions are in the LOCAL record only
+  (`.data/demos/avi-co.json`, scope `/agent-studio/agent/preview`). Live has no preview
+  override at all, so nothing to clear there.
+
+⚠️⚠️ **WHY THE SALESFORCE WORK LOOKED UNPUSHED WHEN IT WAS DEPLOYED ALL ALONG (9/3/2026).**
+Reported as "the salesforce stuff is not pushed in the live instance". It was: `620d8eb` (lead
++ calendar chip) and `c469ada` (the booking agent) are both ancestors of `origin/main`, and
+live was running `d16c9de`. **Deployed code and a reachable feature are different claims**, and
+this one needed THREE things to line up:
+  1. the code — deployed;
+  2. a workflow that can produce `outcome.booked` — the live record had none (see above);
+  3. a captured booking call **in that viewer's own browser**, because `liveBookedLead` and
+     `bookedEvent` derive from localStorage captures and both fail closed.
+The user's Chrome held two Avi & Co captures, and both were ROUTING calls
+(`transferred: true`, `routedTo: "Boutique Appointment, New Client"`) from the older voice
+agent — `isBooked` requires `booked === true` plus a day and a time, so neither produced a
+lead. ⚠️ **The lesson: for anything gated on a captured call, "is it live?" is answered by
+checking the record AND the browser's captures, never by the commit alone.**
 
 **4. `src/data/generated/denver-health.json` is untracked and was not created by this work.**
 Left alone deliberately; decide whether it belongs in git.
