@@ -63,6 +63,15 @@ export interface LiveKitVoice {
   levelRef: React.RefObject<number>;
   /** Null until something fails; a string the screen can show and fall back on. */
   error: string | null;
+  /**
+   * A "please wait" that is NOT a failure — today, the agent warming up from a cold start.
+   *
+   * ⚠️ SEPARATE FROM `error` ON PURPOSE. A cold start is the expected behaviour of a plan
+   * that scales the worker to zero when idle, and painting it in the error's orange told an
+   * SE mid-demo that something had broken when the honest answer is "wait nine more
+   * seconds". Two channels, two treatments, and the screen can show a calm one.
+   */
+  notice: string | null;
   connect: (opts: { brain: unknown; profileId: string; greeting?: string }) => Promise<void>;
   /** `immediate` skips the reuse grace window — the End button, not an unmount. */
   hangUp: (immediate?: boolean) => void;
@@ -140,17 +149,40 @@ const TEARDOWN_GRACE_MS = 250;
    start) — see the note on `AGENT_DOWN_MESSAGE` below for what changes here regardless. */
 const AGENT_JOIN_TIMEOUT_MS = 18_000;
 let agentWatch: ReturnType<typeof setTimeout> | null = null;
+
+/**
+ * How long we keep HOLDING THE ROOM OPEN after the warming notice appears.
+ *
+ * ⚠️⚠️ **THE ROOM STAYS CONNECTED WHILE THIS RUNS, WHICH IS THE WHOLE POINT.** LiveKit's
+ * documented cold start is "up to 10 to 20 seconds", and we start warning at 18 — so the
+ * worker very often arrives a few seconds AFTER the notice goes up. Telling the SE to retry
+ * immediately would throw away a room the agent is seconds from joining and start the wait
+ * over. Instead the notice counts down, `ParticipantConnected` clears it the instant the
+ * agent lands, and only if this whole window elapses do we say the retry is worth it.
+ */
+const AGENT_GRACE_MS = 12_000;
+let agentGrace: ReturnType<typeof setInterval> | null = null;
+
 /** Whichever hook instance is bound receives a watchdog failure. */
 let errorSink: ((msg: string) => void) | null = null;
+/** ...and the warming notice, which is a wait rather than a failure. */
+let noticeSink: ((msg: string | null) => void) | null = null;
 
 function clearAgentWatch() {
   if (agentWatch) { clearTimeout(agentWatch); agentWatch = null; }
+  if (agentGrace) { clearInterval(agentGrace); agentGrace = null; }
+  /* ⚠️ THE NOTICE IS CLEARED HERE TOO, NOT JUST THE TIMERS. This runs from
+     `ParticipantConnected`, so an agent that lands DURING the countdown wipes the "warming
+     up" line off the screen and the call simply proceeds — without this the SE would be
+     talking to a working agent while the panel still told them to end the call. */
+  noticeSink?.(null);
 }
 
 function destroyLive() {
   pendingTeardown = null;
   clearAgentWatch();
   errorSink = null;
+  noticeSink = null;
   const c = live;
   live = null;
   connecting = null;
@@ -168,6 +200,7 @@ export function useLiveKitVoice(): LiveKitVoice {
   const [phase, setPhase] = useState<VoicePhase>("idle");
   const [turns, setTurns] = useState<VoiceTurn[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
 
   const levelRef = useRef(0);
   /* ⚠️ StrictMode double-invokes and a demo can be hung up mid-connect, so every async
@@ -184,6 +217,7 @@ export function useLiveKitVoice(): LiveKitVoice {
     room.removeAllListeners();
     levelSink = levelRef;
     errorSink = (msg: string) => { if (aliveRef.current) setError(msg); };
+    noticeSink = (msg: string | null) => { if (aliveRef.current) setNotice(msg); };
 
     /* The agent joining is what cancels the watchdog. Checked as an EVENT rather than by
        polling, and also checked synchronously below, because on a reused room it may
@@ -237,6 +271,7 @@ export function useLiveKitVoice(): LiveKitVoice {
   const connect = useCallback<LiveKitVoice["connect"]>(async ({ brain, profileId, greeting }) => {
     aliveRef.current = true;
     setError(null);
+    setNotice(null);
 
     const { Room, RoomEvent, Track } = await import("livekit-client");
 
@@ -287,16 +322,39 @@ export function useLiveKitVoice(): LiveKitVoice {
         agentWatch = setTimeout(() => {
           agentWatch = null;
           if (live?.room.remoteParticipants.size) return;   // it arrived late; fine
-          /* ⚠️⚠️ **THE OLD MESSAGE ("start it with `npm run dev` in the agent folder") WAS
-             LOCAL-DEV ADVICE SHOWN ON THE LIVE SITE.** It dates from before a hosted worker
-             existed (`agent/DEPLOY.md`: "the only worker registered is whatever is running on
-             a laptop"). Now there IS a hosted worker (`invoca-voice` on LiveKit Cloud) and an
-             SE hitting this on the live site has no repo, no terminal, and nothing to `npm run
-             dev` — the instruction is not merely unhelpful, it names an action that cannot be
-             taken by the person reading it. The real cause, confirmed live, is usually a COLD
-             START (see the AGENT_JOIN_TIMEOUT_MS note above), which resolves itself in
-             seconds. */
-          errorSink?.("The voice agent didn't join in time. If it was just idle, it's likely warming back up. End the call and try again in a few seconds — if it keeps happening, the LiveKit voice worker may be down.");
+          /* ⚠️⚠️ **THIS IS A "PLEASE WAIT", NOT AN ERROR, AND IT USED TO BE BOTH WRONG AND
+             UNACTIONABLE.** The original text said "start it with `npm run dev` in the agent
+             folder" — advice from before a hosted worker existed (`agent/DEPLOY.md`: "the only
+             worker registered is whatever is running on a laptop"). An SE hitting this on the
+             live site has no repo, no terminal and nothing to `npm run dev`, so it named an
+             action the reader could not take. The confirmed cause is a COLD START: on the
+             Build plan LiveKit scales `invoca-voice` to zero when idle and its own docs put a
+             wake-up at "up to 10 to 20 seconds".
+
+             So we say that, and we say WHEN to retry rather than leaving them guessing. The
+             countdown is live because a static "in a few seconds" is the thing an SE reads at
+             second 2 and again at second 9 with no idea whether to keep waiting. */
+          const startedAt = Date.now();
+          const tick = () => {
+            /* It landed while we were counting. `clearAgentWatch` wipes the notice. */
+            if (live?.room.remoteParticipants.size) { clearAgentWatch(); return; }
+            const left = Math.ceil((AGENT_GRACE_MS - (Date.now() - startedAt)) / 1000);
+            if (left > 0) {
+              noticeSink?.(`The voice agent is warming up. This happens when it has been idle for a while, and takes up to 20 seconds. Still waiting for it, hold on ${left}s.`);
+              return;
+            }
+            /* The window is gone. Now the retry is genuinely worth making — and it is very
+               likely to work, because whatever woke up during this wait is warm now. */
+            if (agentGrace) { clearInterval(agentGrace); agentGrace = null; }
+            noticeSink?.(null);
+            errorSink?.("The voice agent did not join in time. It should be warm now, so end the call and start it again. If it fails a second time, the voice worker may actually be down.");
+          };
+          /* ⚠️ THE INTERVAL IS ARMED BEFORE THE FIRST TICK, NOT AFTER. `tick` can finish the
+             countdown on its very first run (the agent landed, or the clock is already spent),
+             and both of its exits clear `agentGrace` — so assigning it afterwards strands an
+             interval nothing owns, ticking every second past the end of the call. */
+          agentGrace = setInterval(tick, 1000);
+          tick();
         }, AGENT_JOIN_TIMEOUT_MS);
       }
       return call;
@@ -313,7 +371,7 @@ export function useLiveKitVoice(): LiveKitVoice {
     }
   }, [bind]);
 
-  return { phase, turns, levelRef, error, connect, hangUp, setMuted };
+  return { phase, turns, levelRef, error, notice, connect, hangUp, setMuted };
 }
 
 /**

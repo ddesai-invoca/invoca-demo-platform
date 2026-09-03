@@ -52,6 +52,8 @@ export interface VoiceCallUIProps {
   /** Partial caller speech; rendered as a caller bubble, as the real one does. */
   interim?: string;
   error?: string | null;
+  /** A wait rather than a failure (the agent warming up), so it gets its own calm style. */
+  notice?: string | null;
   scrollRef: RefObject<HTMLDivElement | null>;
   meterRef: RefObject<HTMLDivElement | null>;
   canType?: boolean;
@@ -155,6 +157,7 @@ export function VoiceCallUI(p: VoiceCallUIProps) {
           </div>
         )}
 
+        {p.notice && <div className="vc-callnotice">{p.notice}</div>}
         {p.error && <div className="vc-callerror">{p.error}</div>}
       </div>
 

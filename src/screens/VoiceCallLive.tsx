@@ -135,6 +135,7 @@ export function VoiceCallLive({ onEnd, brainOpts }: { onEnd: () => void; brainOp
       muted={muted}
       lines={lines}
       error={lk.error}
+      notice={lk.notice}
       scrollRef={scrollRef}
       meterRef={meterRef}
       /* No keyboard fallback on this engine: a LiveKit call needs a working mic by

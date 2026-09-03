@@ -1045,6 +1045,48 @@ Verified: `audit:voice` (62 checks) and `audit:ai` both green, `tsc` clean, no r
 the worker/token contract (`AGENT_NAME` match, job-metadata shape) — this fix is entirely
 client-side timeout and copy, and `agent/voiceAgent.js` was not touched.
 
+#### Then: it is a WARMING-UP NOTICE with a live countdown, not an error (9/3/2026)
+Asked for straight after the fix above: *"instead of the error message you give, let's do a
+message that lets the user know the voice agent is warming up and when to refresh and try
+again."*
+
+⚠️⚠️ **A COLD START IS EXPECTED BEHAVIOUR, SO IT MUST NOT BE PAINTED AS A FAILURE.** The
+previous pass fixed the WORDS and left it in `error`, which renders in `.vc-callerror`'s
+orange — so an SE mid-demo read "something broke" when the honest answer is "it is coming".
+`LiveKitVoice` gained a **`notice`** channel beside `error` (its own `noticeSink`, its own
+`.vc-callnotice` in calm blue, rendered ABOVE the error), and the 18s mark now raises the
+notice instead of the error.
+
+⚠️⚠️ **AND IT HOLDS THE ROOM OPEN FOR 12 MORE SECONDS RATHER THAN GIVING UP AT 18.** LiveKit
+documents a 10-to-20-second wake-up, so the agent very often lands a few seconds AFTER our
+watchdog fires — telling the SE to retry at 18s throws away a call that was about to work.
+`AGENT_GRACE_MS = 12_000` counts down live ("…hold on 9s"), `ParticipantConnected` ->
+`clearAgentWatch()` wipes the notice the instant the agent arrives and the call just proceeds,
+and only if the whole 30s is spent does it swap to a definitive retry line — which is now
+genuinely worth following, because whatever woke during the wait is warm.
+⚠️ **THE COUNTDOWN IS LIVE FOR A REASON**: a static "in a few seconds" is the thing somebody
+reads at second 2 and again at second 9 with no idea whether to keep waiting. It runs 12 -> 1
+and never prints "0s" (at 12,000ms elapsed `left` is 0 and the branch hands off).
+
+⚠️ **THE INTERVAL IS ARMED BEFORE THE FIRST `tick()`, NOT AFTER — a real leak, fixed.** `tick`
+can finish on its very first run, and both of its exits clear `agentGrace`; assigning the
+interval on the NEXT line therefore stranded a timer nothing owned, ticking every second past
+the end of the call. Teardown is otherwise safe: `hangUp` -> `destroyLive` (immediately, or
+after the 250ms reuse grace) -> `clearAgentWatch()`, which clears the timeout AND the interval
+and wipes the notice while both sinks are still bound.
+
+⚠️⚠️ **THE COLD-START PATH CANNOT BE EXERCISED IN THE BROWSER PANE, and it is worth knowing
+why before someone concludes the feature is broken.** The pane has no microphone, so
+`setMicrophoneEnabled(true)` throws **"Permission denied"** on the line BEFORE the watchdog is
+armed — the notice can never appear there. What WAS measured is the presentation, injected as
+the real element's sibling inside the live call UI: notice `#0250d9` on `#eef3fe` with a
+`#cfe0fd` border against the error's `#b33b00` on `#fff4ef`, identical box (452 wide, 4px
+radius, `8px 12px`, 13px), and the notice rendering above the error. The countdown arithmetic
+and the teardown are verified by reading, not by a live cold start.
+
+Verified: `tsc` clean on BOTH projects, `audit:voice` (62) and `audit:ai` green, zero stray
+backspace bytes in every edited file (`od`-safe grep, per the `\b` heredoc trap above).
+
 ### Don't ask twice: the voice agent was re-asking ZIP and name (9/2/2026)
 Reported directly: "when asking for things like are you looking to book an appointment or
 something, or their zipcode, or their name. Only ask that once, you should remember that data or

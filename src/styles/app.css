@@ -1342,6 +1342,14 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
   font-size: 13px; line-height: 1.5; color: #b33b00;
   background: #fff4ef; border: 1px solid #ffd9c7; border-radius: 4px; padding: 8px 12px;
 }
+/* ⚠️ DELIBERATELY NOT THE ERROR'S ORANGE. A cold start is the expected behaviour of a plan
+   that scales the worker to zero when idle, so painting "the agent is warming up, hold on 9s"
+   in a failure colour tells an SE mid-demo that something broke when the honest answer is
+   that it is coming. Same box, calm blue, so it reads as a status line. */
+.vc-callnotice {
+  font-size: 13px; line-height: 1.5; color: #0250d9;
+  background: #eef3fe; border: 1px solid #cfe0fd; border-radius: 4px; padding: 8px 12px;
+}
 
 /* ---- the control bar ---- */
 .vc-rule { border: 0; border-top: 1px solid var(--color-border); margin: 0; }
