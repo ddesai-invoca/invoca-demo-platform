@@ -23,8 +23,52 @@
    ============================================================================= */
 
 import Anthropic from "@anthropic-ai/sdk";
+import { VOICE_OPTIONS } from "../src/data/voiceOptions.ts";
 
 const FAST_MODEL = "claude-haiku-4-5-20251001";
+
+/* =============================================================================
+   THE VOICE AGENT DIRECTOR — a second, far stronger model for one kind of page
+   -----------------------------------------------------------------------------
+   Asked for 9/3/2026, from the voice workflow's Ask AI drawer: "you know how I can ask you
+   to change how the voice agent acts, and does, and what questions it asks, I want the ASK
+   AI to have all the abilities that you have to change the Voice AI behavior... It's ok if
+   it takes a bit like it does for you, just put the progress bar or a percentage."
+
+   ⚠️⚠️ **THE GAP WAS THE MODEL, NOT THE DATA MODEL — measured before changing anything.**
+   `agent.rules[]` already reaches the live call prompt verbatim ("CONVERSATION RULES
+   configured on this workflow"), `agent.informSteps[]` is the numbered flow, and the tree's
+   paths and chips are what the agent collects. `editGuard` already permits every one of
+   those to change LENGTH. So almost anything an SE can describe was already expressible —
+   what was missing was a model strong enough to translate "make it qualify on budget before
+   it books" into the right combination of six or seven edits across two halves of one
+   object. Haiku wrote one plausible edit and stopped.
+
+   ⚠️ **SO ONLY THIS ONE PAGE PAYS FOR IT.** Dashboards, reports and the tile builder keep
+   Haiku and stay instant — a "bump revenue to $1.2M" edit does not need reasoning and an
+   SE mid-demo should not wait for it. The gate is the same `"agent":` test that already
+   decides whether to describe the agent at all, so the drawer's promise, the prompt's
+   instructions and the model choice cannot drift apart.
+
+   ⚠️ **ADAPTIVE THINKING AND `effort` ARE OPUS-ONLY** — Haiku 400s on either, which
+   `engine/core.ts` records for the generation pipeline. Both are set ONLY on this path.
+   ============================================================================= */
+const DIRECTOR_MODEL = "claude-opus-5";
+
+/** Does this page carry a voice agent's configuration beside its diagram? */
+function isVoiceAgentPage(dataContext: string): boolean {
+  return /"agent"\s*:/.test(dataContext);
+}
+
+/** What the endpoint streams to the drawer so a slow answer shows real progress. */
+export interface AssistantProgress {
+  /** A short label for what is happening now. */
+  phase: string;
+  /** 0-100. Never reaches 100 before the answer is actually parsed. */
+  pct: number;
+  /** The model's own summarized reasoning, when it is thinking. */
+  note?: string;
+}
 
 export interface AssistantFocus {
   scope: "dashboard" | "tile";
@@ -154,6 +198,9 @@ const RESULT_SCHEMA = {
 };
 
 function buildSystem(input: AssistantInput): string {
+  /* Named in the prompt so "make it a man's voice" resolves to a real id. One list, from
+     the same module the picker and the call read, so the drawer cannot offer a seventh. */
+  const VOICE_IDS = VOICE_OPTIONS.map((v) => `"${v.id}"`).join(", ");
   const f = input.focus;
   const scopeLine =
     f?.scope === "tile"
@@ -193,34 +240,54 @@ function buildSystem(input: AssistantInput): string {
        pathname: the SMS workflow registers a tree with no agent slice, and telling the model
        about fields that are not in its DATA is how it invents a path and writes the edit
        somewhere else — the exact failure recorded at the SMS greeting. */
-    ...(/"agent"\s*:/.test(input.dataContext) ? [
-      `THIS PAGE IS A VOICE AGENT WORKFLOW. The DATA holds BOTH the diagram and the agent's own configuration, and the user will often describe what they want the AGENT to DO rather than naming a field. Translate that into edits, and expect to touch both halves in ONE answer.`,
-      `  WHAT THE DIAGRAM OWNS (edit these to change the ROUTING):`,
-      `   - "branches[i].leaves[j].paths" — the answers to the qualifying question, one node each. ADD or REMOVE a path to add or remove an outcome. Each path has "title" (the answer), "action" and "chips".`,
-      `   - "…paths[k].chips" — WHAT THE AGENT COLLECTS on that path, and the pills drawn on the node. "also get their email" = append to chips.`,
-      `  WHAT "agent" OWNS (edit these to change how the agent TALKS and what it CHECKS):`,
-      `   - "agent.greeting" — the exact opening line, spoken verbatim. "answer the phone with X" edits this.`,
-      `   - "agent.qualifyQuestion" and "agent.qualifyFallback" — the question that sorts callers onto the paths, and the reprompt when the answer is unclear.`,
-      `   - "agent.rules" — the conversation rules, one string each. "never quote a price", "be warm with families".`,
-      /* ⚠️ THE SHAPE IS STATED BECAUSE THE MODEL GUESSED A REASONABLE OTHER ONE. Asked about
-         three showrooms it wrote these as objects — {step, action, description} — which a
-         string filter then dropped, so a correct instruction produced an agent that hung up
-         on out-of-area callers. `toSteps` now normalises objects, and this says the shape so
-         the normaliser is the safety net rather than the mechanism. */
-      `   - "agent.informSteps" — the NUMBERED routing steps the agent follows in order, as an array of PLAIN STRINGS (e.g. "1. Ask the caller for their zip code."). NOT objects: do not emit {step, action, description}. This is what makes it ask for a ZIP, then a name, then transfer. Renumber them yourself when you add or remove one.`,
-      /* ⚠️ AN ALLOW-LIST DOES NOT HAVE TO MEAN A REFUSAL. This used to say the agent "does not
-         route them", full stop — so a request to offer the NEAREST of several locations had
-         nowhere to go, and the answer fought the field description. The script states the
-         policy; turning the caller away is only one thing it can say. */
-      `   - "agent.serviceZips" — an allow-list of the ZIPs the agent treats as in-area. When present it reads "agent.outOfAreaScript" to everyone else. Absent means it serves everywhere. "only cover 30097 and 30096" CREATES this list. THE SCRIPT DECIDES WHAT HAPPENS NEXT: it may turn the caller away, or it may offer them the nearest location and ask if that works — write whichever the user asked for. When you create or change the list, REWRITE "agent.informSteps" in the same answer so the steps describe that same policy; steps that still say the agent serves everywhere are obeyed INSTEAD of the list. If several named locations are served, NAME THEM in the steps so the agent can tell a caller which is closest.`,
-      /* ⚠️ A BRACKETED TOKEN GETS READ ALOUD ON A LIVE CALL. The model wrote an out-of-area
-         script containing "[CLOSEST_LOCATION]", expecting something downstream to fill it in;
-         nothing does. The prompt now carries a defensive instruction to resolve any such
-         token, and this asks for none to be written in the first place. */
-      `   - "agent.outOfAreaScript" — the words the agent says to an out-of-area caller. Write a COMPLETE spoken line with NO fill-in placeholders: never "[CLOSEST_LOCATION]", "[NAME]" or any bracketed token, because the agent says this line out loud. If the closest location varies by caller, say so in "agent.informSteps" instead and let the agent name it.`,
-      `  THE OPENING QUESTION IS TWO-WAY AND STAYS THAT WAY: new booking vs existing customer. Do NOT rewrite "agent.qualifyQuestion" to recite the use cases — the agent sorts callers into those from what they say next, and a question listing six options is unspeakable on a phone.`,
-      `  KEEP EACH USE CASE SELF-CONSISTENT. Whatever you put in a path's "chips" is what the agent asks for on that path, so add a field THERE rather than in "agent.informSteps". Those steps are ONLY the service-area gate; leave them alone unless the user is changing which areas are served.`,
-      `  NEVER invent ZIP codes, phone numbers or office addresses. Only use ones the user gave you.`,
+    /* ⚠️⚠️ **THE DIRECTOR BRIEF (9/3/2026): everything an SE can say about how the agent
+       behaves has to land somewhere real.** This replaced a field-by-field description that
+       was accurate and too timid — it told the model which paths existed and then forbade
+       most of the interesting edits ("leave informSteps alone unless the user is changing
+       which areas are served", "the opening question is two-way and STAYS that way"). Both
+       were written to stop a WEAK model wrecking a working agent, and both stopped a strong
+       one doing what was asked. The guards that actually matter are in code — `editGuard`
+       refuses locked chrome and type flips, `specWithConfig` validates the voice, `toSteps`
+       normalises a shape — so the prompt can now describe the machine honestly and let the
+       model use it.
+       ⚠️ Gated on the DATA carrying an `agent` key, not on the pathname: an SMS workflow
+       registers a tree with no agent slice, and naming fields that are not in the model's
+       data is how it invents a path and writes the edit somewhere else. */
+    ...(isVoiceAgentPage(input.dataContext) ? [
+      `THIS PAGE IS A VOICE AGENT WORKFLOW, AND YOU ARE ITS DIRECTOR. The DATA below holds BOTH the diagram and the agent's own configuration. The user will describe what they want the agent to DO, SAY, ASK or DECIDE — rarely a field name. Your job is to translate that into edits, and a real instruction usually touches SEVERAL fields in BOTH halves. Take the whole request; do not answer the easy half and stop.`,
+      ``,
+      `HOW A CALL IS ACTUALLY BUILT, so you can reason about what to change:`,
+      `  The agent's system prompt is assembled at call time from the fields below. It opens with "agent.greeting" spoken verbatim, then follows a numbered CALL FLOW built from "agent.informSteps" and the use-case paths, and it is bound by "agent.rules", which are appended verbatim under "CONVERSATION RULES configured on this workflow". Whatever the caller says is classified onto one of the diagram's paths, and that path's "chips" are the fields the agent then collects.`,
+      ``,
+      `WHAT THE DIAGRAM OWNS (the routing, and what gets collected):`,
+      `   - "branches[i].leaves[j].paths" — the use cases. ADD or REMOVE a path to add or remove an outcome the agent can reach. Each has "title" (how a caller in that situation sounds), "action", optional "route" (the team it hands off to, spoken aloud), and "chips".`,
+      `   - "…paths[k].chips" — WHAT THE AGENT COLLECTS on that path, and the pills drawn on the node. "also get their email" = append "Consumer Email" here, NOT a new step.`,
+      ``,
+      `WHAT "agent" OWNS (how it talks, what it checks, how it sounds):`,
+      `   - "agent.greeting" — the exact opening line, spoken word for word. "answer the phone with X" edits this.`,
+      `   - "agent.qualifyQuestion" / "agent.qualifyFallback" — the question that sorts callers onto the paths, and the reprompt when the answer is unclear. You MAY rewrite either, including changing what the opening question sorts on, when that is what the user asked for. Keep it SPEAKABLE: a phone question offering six options is unusable, so sort on a small number of things and let the paths do the rest.`,
+      `   - "agent.rules" — an array of plain strings, appended to the prompt verbatim. ⚠️ THIS IS YOUR GENERAL-PURPOSE CHANNEL: any behaviour with no field of its own belongs here. Tone ("be warm with anxious callers"), prohibitions ("never quote a price"), judgement ("if they mention a competitor, acknowledge it and move on"), escalation ("offer a human the moment they sound frustrated"), pacing ("one question at a time"). Add, reword, reorder and remove them freely.`,
+      `   - "agent.informSteps" — the NUMBERED steps the agent works through, as an array of PLAIN STRINGS ("1. Ask the caller for their zip code."). NOT objects: never emit {step, action, description}. This is the flow itself — reorder it, add a step, drop one, rewrite all of them. Renumber them yourself. You are NOT limited to the service-area check; if the user wants the agent to qualify on budget before booking, or confirm the address back, that is a step.`,
+      `   - "agent.serviceZips" — an allow-list of in-area ZIPs; absent means it serves everywhere. "only cover 30097 and 30096" CREATES it. When you create or change it, REWRITE "agent.informSteps" in the same answer so the steps describe the same policy — steps that still say the agent serves everywhere are obeyed INSTEAD of the list.`,
+      `   - "agent.outOfAreaScript" — what it says to an out-of-area caller. THE SCRIPT DECIDES WHAT HAPPENS NEXT: it may turn them away, or offer the nearest location and ask if that works. Write a COMPLETE spoken line with NO fill-in placeholders — never "[CLOSEST_LOCATION]", "[NAME]" or any bracketed token, because the agent reads this out loud. If the nearest location varies by caller, say so in the steps and let the agent name it.`,
+      `   - "agent.voice" — which voice it speaks in. One of exactly: ${VOICE_IDS}. "make it a man's voice" = "arcas" or "neptune"; "warmer" = "harmonia"; "calm and mature" = "athena". Any other value is ignored, so pick from that list or leave it alone.`,
+      ``,
+      `HOW TO ANSWER A BEHAVIOUR REQUEST WELL:`,
+      `  1. Decide what the agent should DO differently on the call, in order, from hello to hand-off.`,
+      `  2. Put each piece where it belongs: what it SAYS -> greeting / script; what it WORKS THROUGH -> informSteps; what it COLLECTS -> that path's chips; where it SENDS people -> paths and routes; how it BEHAVES throughout -> rules.`,
+      `  3. Keep the two halves consistent. A new use case needs a path AND the chips it collects. A new policy needs the rule AND the step that enacts it. Contradictory instructions are worse than either one alone, because the agent will follow whichever it reads first.`,
+      /* ⚠️ **STATED BECAUSE A LIST EDIT IS A REPLACEMENT, AND THE COST OF GETTING IT WRONG IS
+         SILENT.** Every one of these is a `LENGTH_IS_CONTENT` path, so `editGuard` accepts a
+         shorter array as a legitimate removal — nothing downstream can tell "the user asked me
+         to drop this" from "I forgot to copy it across". The question-list rule below already
+         spells the same contract out for the same reason.
+         ⚠️ **THIS IS NOT A RECORD OF A BUG.** A first run appeared to show the model replacing
+         a path's chips wholesale; the chips it was shown were `undefined`, because the harness
+         read `u.chips` where the field is `u.collect`. Given real chips it carried them across
+         correctly. The instruction is kept as a guard, not as a fix. */
+      `  4. AN EDIT TO A LIST REPLACES THE WHOLE LIST, so send the COMPLETE new contents every time — everything that was already there PLUS your change. This applies to "chips", "agent.rules", "agent.informSteps", "agent.serviceZips" and "paths". Adding "Trade-In Year" to a path whose chips are ["Consumer Name","Consumer Zip"] means writing ["Consumer Name","Consumer Zip","Trade-In Year"], NEVER ["Trade-In Year"] — the short version deletes the two fields the agent was collecting and it will stop asking for them. Only leave something out when the user asked you to remove it.`,
+      `  5. Carry untouched content across VERBATIM. Rewording a rule nobody asked you to touch is a bug, not an improvement.`,
+      `  6. NEVER invent ZIP codes, phone numbers, addresses, prices or team names. Use only what the user gave you or what is already in the DATA.`,
       `  The trigger node, "Conversation Start", the two intent nodes and the two user-group nodes are the product's own wiring and CANNOT be renamed. If asked, say so and change the row below instead.`,
       ``,
     ] : []),
@@ -276,23 +343,89 @@ function buildSystem(input: AssistantInput): string {
   ].join("\n");
 }
 
-export async function askAssistant(input: AssistantInput, apiKey?: string): Promise<AssistantResult> {
+export async function askAssistant(
+  input: AssistantInput,
+  apiKey?: string,
+  onProgress?: (p: AssistantProgress) => void,
+): Promise<AssistantResult> {
   const key = apiKey ?? process.env.ANTHROPIC_API_KEY;
   if (!key) throw new Error("ANTHROPIC_API_KEY is not set.");
   const client = new Anthropic({ apiKey: key, maxRetries: 4 });
 
   const history = (input.history ?? []).slice(-8);
   const messages = [...history, { role: "user" as const, content: input.question }];
+  const system = buildSystem(input);
+  const director = isVoiceAgentPage(input.dataContext);
 
-  const resp = await client.messages.create({
-    model: FAST_MODEL,
-    max_tokens: 8000,
-    system: buildSystem(input),
-    output_config: { format: { type: "json_schema", schema: RESULT_SCHEMA } },
+  /* ---- the fast path, unchanged ------------------------------------------------
+     Every screen but the voice workflow. One non-streaming Haiku call, no thinking, no
+     effort — exactly as before, so nothing outside that page got slower or costlier. */
+  if (!director) {
+    const resp = await client.messages.create({
+      model: FAST_MODEL,
+      max_tokens: 8000,
+      system,
+      output_config: { format: { type: "json_schema", schema: RESULT_SCHEMA } },
+      messages,
+    } as any);
+    const text = (resp.content.find((b: any) => b.type === "text") as any)?.text;
+    if (!text) throw new Error("Empty assistant response.");
+    return JSON.parse(text) as AssistantResult;
+  }
+
+  /* ---- the director path -------------------------------------------------------
+     ⚠️ **STREAMED, AND NOT ONLY FOR THE PROGRESS BAR.** The SDK refuses a non-streaming
+     call it estimates could exceed 10 minutes, which is what `max_tokens` plus adaptive
+     thinking on Opus reaches — the identical failure `engine/core.ts` records for the
+     generation pipeline ("`structured()` MUST use streaming... which was silently failing
+     every generation at the ops phase"). Streaming is the requirement; the progress events
+     are what it makes possible.
+
+     ⚠️ **`display: "summarized"` IS DELIBERATE.** Opus 5 defaults thinking display to
+     "omitted", which streams thinking blocks with EMPTY text — so the drawer would show a
+     long silent pause and a bar moving on nothing. Summarized gives the SE the model's own
+     account of what it is doing, which is a real signal rather than a spinner with a
+     percentage painted on it. */
+  const report = (p: AssistantProgress) => { try { onProgress?.(p); } catch { /* never let a UI callback break the answer */ } };
+  report({ phase: "Sending to Claude Opus", pct: 4 });
+
+  const stream = client.messages.stream({
+    model: DIRECTOR_MODEL,
+    max_tokens: 16000,
+    system,
+    thinking: { type: "adaptive", display: "summarized" },
+    output_config: { effort: "high", format: { type: "json_schema", schema: RESULT_SCHEMA } },
     messages,
   } as any);
 
+  /* ⚠️⚠️ **THE BAR IS DRIVEN BY REAL EVENTS AND APPROACHES ITS CEILING ASYMPTOTICALLY —
+     it must never print 100 before the JSON has actually parsed.** The phases are true
+     (thinking blocks and text blocks are distinct events on the wire); what is ESTIMATED is
+     only how far through each one we are, because neither a thinking budget nor the length
+     of a JSON answer is knowable in advance. So each phase creeps toward its own ceiling and
+     never crosses it, and only a parsed result reports 100. Same shape as the Launch
+     screen's build bar, and for the same reason: a bar that sits still reads as a hang. */
+  let thought = 0, written = 0, phase: "think" | "write" = "think";
+  const creep = (chars: number, from: number, to: number, half: number) =>
+    from + (to - from) * (1 - Math.exp(-chars / half));
+
+  stream.on("streamEvent", (ev: any) => {
+    const d = ev?.delta;
+    if (ev?.type !== "content_block_delta" || !d) return;
+    if (d.type === "thinking_delta" && typeof d.thinking === "string") {
+      thought += d.thinking.length;
+      report({ phase: "Working out the changes", pct: creep(thought, 8, 48, 900), note: d.thinking.trim().slice(-160) });
+    } else if (d.type === "text_delta" && typeof d.text === "string") {
+      if (phase === "think") { phase = "write"; report({ phase: "Writing the edits", pct: 52 }); }
+      written += d.text.length;
+      report({ phase: "Writing the edits", pct: creep(written, 52, 94, 1200) });
+    }
+  });
+
+  const resp = await stream.finalMessage();
   const text = (resp.content.find((b: any) => b.type === "text") as any)?.text;
   if (!text) throw new Error("Empty assistant response.");
-  return JSON.parse(text) as AssistantResult;
+  const parsed = JSON.parse(text) as AssistantResult;
+  report({ phase: "Applying", pct: 100 });
+  return parsed;
 }

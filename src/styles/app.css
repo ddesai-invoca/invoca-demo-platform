@@ -1681,6 +1681,21 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .aiad-msg--assistant { align-self: flex-start; background: #fff; color: var(--color-text); border: 1px solid #e5e7eb; border-bottom-left-radius: 4px; display: flex; gap: 6px; align-items: flex-start; }
 .aiad-msg-icon { font-size: 18px; color: #2666f9; flex-shrink: 0; margin-top: 1px; }
 
+/* The voice workflow's progress bar. Only that page streams, so this renders nowhere else.
+   Grepped for `aiad-prog` before writing it, per the one-prefix-per-screen rule. */
+.aiad-prog { align-self: stretch; margin: 4px 0 2px; }
+.aiad-prog-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.aiad-prog-phase { font-size: 12px; color: #5b6577; }
+/* Tabular figures, or the percentage jitters sideways as the digits change width. */
+.aiad-prog-pct { font-size: 12px; font-weight: 700; color: #15243e; font-variant-numeric: tabular-nums; }
+.aiad-prog-track { margin-top: 6px; height: 4px; border-radius: 2px; background: #e7e9eb; overflow: hidden; }
+.aiad-prog-fill { height: 100%; border-radius: 2px; background: #2666f9; transition: width 220ms ease; }
+.aiad-prog-note {
+  margin-top: 6px; font-size: 11px; line-height: 1.45; color: #66708e;
+  /* The model's own summarized reasoning, which arrives as a growing tail. Two lines keeps
+     the drawer from reflowing on every delta while still showing that it is moving. */
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
 .aiad-typing { display: inline-flex; gap: 4px; align-items: center; }
 .aiad-typing span { width: 6px; height: 6px; border-radius: 50%; background: #b6bcc6; animation: aiad-bounce 1.2s infinite ease-in-out; }
 .aiad-typing span:nth-child(2) { animation-delay: .15s; }

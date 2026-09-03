@@ -323,6 +323,31 @@ function assistantApi(apiKey: string | undefined): Plugin {
           const { askAssistant } = await import(
             pathToFileURL(path.resolve(process.cwd(), 'engine/assistant.ts')).href
           )
+
+          /* ⚠️ SSE ONLY WHEN THE CLIENT ASKS. The voice workflow's drawer opts in because its
+             answer runs on Opus with adaptive thinking and takes real seconds; every other
+             screen still gets one JSON body, so nothing else changed shape. Same
+             `text/event-stream` framing the Launch screen's build checklist already reads. */
+          if (input?.stream) {
+            res.statusCode = 200
+            res.setHeader('Content-Type', 'text/event-stream')
+            res.setHeader('Cache-Control', 'no-cache, no-transform')
+            res.setHeader('Connection', 'keep-alive')
+            /* Proxies buffer SSE without this, which turns a live progress bar into one jump
+               at the end — the exact thing it exists to prevent. */
+            res.setHeader('X-Accel-Buffering', 'no')
+            const evt = (o: unknown) => res.write(`data: ${JSON.stringify(o)}\n\n`)
+            try {
+              const result = await askAssistant(input, apiKey, (p: unknown) => evt({ type: 'progress', ...(p as object) }))
+              evt({ type: 'done', result })
+            } catch (e: any) {
+              console.error('[ai-assistant] failed:', e)
+              const over = e?.status === 529 || e?.status === 429 || /overload/i.test(String(e?.message || ''))
+              evt({ type: 'error', error: over ? 'The AI is briefly overloaded — one moment, please resend.' : (e?.message || 'Assistant failed.') })
+            }
+            return res.end()
+          }
+
           const result = await askAssistant(input, apiKey)
           send(200, { result })
         } catch (e: any) {

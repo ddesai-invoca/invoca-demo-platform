@@ -445,5 +445,101 @@ console.log("\nAsk AI edits reach the SMS agent (extra workflows)");
     : bad("the Preview Agent page no longer passes the workflow's opener to the drawer");
 }
 
+/* =============================================================================
+   THE VOICE AGENT DIRECTOR (9/3/2026)
+   -----------------------------------------------------------------------------
+   The drawer on the voice workflow runs a much stronger model so an SE can describe agent
+   BEHAVIOUR and have it land. Three things have to stay true or the feature silently
+   degrades back to what it was, and none of them shows up as a type error:
+     • the strong model is reached at all (a stray edit to the gate sends every page to Haiku,
+       which answers the easy half of an instruction and stops);
+     • Haiku is NOT sent adaptive thinking or `effort` — it 400s on either, which would break
+       Ask AI on every dashboard in the app;
+     • the drawer streams exactly where the server reasons, or the SE watches a spinner for
+       twenty seconds with no idea whether it is working.
+   ============================================================================= */
+{
+  const a = readAny("engine/assistant.ts");
+
+  /^const DIRECTOR_MODEL = "claude-opus-5";$/m.test(a)
+    ? ok("the director runs on Opus 5")
+    : bad("the director model is missing or is no longer Opus 5");
+
+  /* ⚠️ ONE GATE, THREE READERS. The model choice, the transport and the prompt section must
+     all key off the SAME test, or the drawer promises what the model was never briefed to
+     do. Asserted as a called FUNCTION rather than three copies of the regex. */
+  (a.match(/isVoiceAgentPage\(/g) ?? []).length >= 3
+    ? ok("one gate decides the model, the prompt and the transport")
+    : bad("the voice-agent gate has been inlined again and the three can now drift");
+
+  /* ⚠️ THE FAST PATH MUST STAY FAST AND CHEAP. Every other screen in the app is on it. */
+  /if \(!director\) \{/.test(a) && /model: FAST_MODEL/.test(a)
+    ? ok("every other page still answers on Haiku")
+    : bad("the fast Haiku path is gone — every dashboard edit now costs Opus latency");
+
+  /* ⚠️ HAIKU 400s ON BOTH OF THESE (engine/core.ts records the same for generation), so they
+     may only ever appear after the director branch has returned the fast path. */
+  const fastPath = a.slice(a.indexOf("if (!director)"), a.indexOf("/* ---- the director path"));
+  !/thinking:|effort:/.test(fastPath)
+    ? ok("adaptive thinking and effort stay off the Haiku call")
+    : bad("thinking/effort leaked onto the Haiku path — it 400s, breaking Ask AI everywhere");
+
+  /* ⚠️ STREAMING IS A REQUIREMENT, NOT A NICETY: the SDK refuses a non-streaming call it
+     estimates could exceed 10 minutes, which Opus plus adaptive thinking reaches. */
+  /client\.messages\.stream\(/.test(a) && /finalMessage\(\)/.test(a)
+    ? ok("the director call streams")
+    : bad("the director call no longer streams — it will fail on long answers");
+
+  /* ⚠️ "omitted" IS THE DEFAULT ON OPUS 5 and streams EMPTY thinking text, so the progress
+     note would render blank and the bar would move on nothing. */
+  /display:\s*"summarized"/.test(a)
+    ? ok("thinking is summarized, so the progress note carries real reasoning")
+    : bad("thinking display is back to omitted — the progress note will be empty");
+
+  /* ⚠️ THE BAR MUST NEVER PRINT 100 BEFORE THE JSON HAS PARSED. */
+  a.indexOf('pct: 100') > a.indexOf("JSON.parse(text)")
+    ? ok("100% is reported only after the answer parses")
+    : bad("the bar can reach 100% before there is an answer");
+
+  /* The six voices are named so "make it a man's voice" resolves to a real id. */
+  /VOICE_OPTIONS\.map\(/.test(a) && /agent\.voice/.test(a)
+    ? ok("the prompt names the real voices from voiceOptions")
+    : bad("the prompt no longer names the offered voices");
+
+  /* ⚠️ A LIST EDIT IS A REPLACEMENT, and a short array is indistinguishable from a deliberate
+     removal to editGuard — so the whole-list contract is instruction-only and worth pinning. */
+  /REPLACES THE WHOLE LIST/.test(a)
+    ? ok("the whole-list contract is stated")
+    : bad("nothing tells the model a list edit replaces the whole list");
+
+  /* ⚠️ AND THE OLD TIMIDITY MUST NOT COME BACK. These two lines were written to stop a WEAK
+     model wrecking a working agent and are exactly what stopped a strong one doing the job. */
+  !/leave them alone unless the user is changing which areas are served/i.test(a)
+    ? ok("informSteps are no longer fenced off")
+    : bad("the 'leave informSteps alone' fence is back — behaviour edits will be declined");
+  !/THE OPENING QUESTION IS TWO-WAY AND STAYS THAT WAY/.test(a)
+    ? ok("the opening question can be rewritten when asked")
+    : bad("the two-way opening question fence is back");
+
+  /* ⚠️ BOTH TWINS OR NEITHER — the standing rule for these endpoint pairs. */
+  const vite = readAny("vite.config.ts"), server = readAny("server.ts");
+  /input\?\.stream/.test(vite) && /input\?\.stream/.test(server)
+    ? ok("both endpoint twins serve the progress stream")
+    : bad("only one twin streams — dev and prod now disagree");
+  /X-Accel-Buffering/.test(vite) && /X-Accel-Buffering/.test(server)
+    ? ok("both twins disable proxy buffering")
+    : bad("a proxy can buffer the stream into one jump at the end");
+
+  /* ⚠️ A STREAM THAT ENDS WITHOUT `done` MUST FAIL LOUDLY. Falling through would report
+     success having changed nothing — the silent no-op this repo has recorded five times. */
+  const drawer2 = readAny("src/components/AiAssistantDrawer.tsx");
+  /if \(!r\) throw new Error\("The connection closed/.test(drawer2)
+    ? ok("a dropped stream reports a failure, not a silent success")
+    : bad("a dropped stream falls through and reads as success");
+  /aiad-prog-fill/.test(drawer2) && /aiad-prog-pct/.test(drawer2)
+    ? ok("the drawer renders a bar and a percentage")
+    : bad("the progress bar is gone");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");
 process.exit(fail ? 1 : 0);

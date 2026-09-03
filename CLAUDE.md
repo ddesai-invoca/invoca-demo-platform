@@ -7166,6 +7166,94 @@ one conversation hit. **Verified by reading the rails after the change** — the
 render 5 substantive signals each, the human call log still renders all 9 including both QA
 rows. `auditProfile` now gates the data so a future generation cannot quietly reintroduce them.
 
+## Ask AI directs the voice agent, on Opus, with a real progress bar (9/3/2026)
+
+Asked for from the voice workflow's drawer: *"you know how I can ask you to change how the
+voice agent acts, and does, and what questions it asks, I want the ASK AI to have all the
+abilities that you have to change the Voice AI behavior which everything it does. Its ok if it
+takes a bit like it does for you, just put the process bar or a percentage."*
+
+⚠️⚠️ **THE GAP WAS THE MODEL, NOT THE DATA MODEL — measured before changing anything.**
+`agent.rules[]` already reaches the live prompt verbatim, `agent.informSteps[]` already IS the
+call flow, the tree's paths and chips already are what the agent collects and asks for, and
+`editGuard` already lets every one of those change LENGTH. So almost anything an SE can
+describe was already expressible. What was missing was a model strong enough to turn one
+sentence into the six or seven coordinated edits it implies — and a prompt that let it.
+
+**Three changes, in order of how much they mattered:**
+
+**1. `DIRECTOR_MODEL = "claude-opus-5"`, adaptive thinking, `effort: "high"` — on ONE page.**
+The gate is `isVoiceAgentPage()`, the same `"agent":` test that already decided whether to
+describe the agent at all, so the model choice, the prompt section and the transport cannot
+drift apart (`audit:ai` asserts it is one called function, not three copies of the regex).
+⚠️ **EVERYTHING ELSE STAYS ON HAIKU AND STAYS INSTANT** — measured after the change: a
+dashboard edit still answers in **2.3s** as plain JSON. A voice instruction takes **16 to 22s**.
+⚠️ **ADAPTIVE THINKING AND `effort` ARE OPUS-ONLY; Haiku 400s on either**, which `engine/core.ts`
+already records for the generation pipeline. The audit asserts neither appears before the fast
+path returns, because leaking one there would break Ask AI on every screen in the app.
+
+**2. Streamed, which is a REQUIREMENT and not only a progress bar.** The SDK refuses a
+non-streaming call it estimates could exceed 10 minutes — the identical failure recorded at
+`structured()` ("silently failing every generation at the ops phase"). The progress events are
+what streaming makes possible, not the reason for it.
+⚠️ **`thinking: { display: "summarized" }` IS DELIBERATE: "omitted" is the Opus 5 DEFAULT** and
+streams thinking blocks with EMPTY text, so the note would render blank and the bar would move
+on nothing. Summarized puts the model's own account of what it is doing under the bar.
+⚠️ **THE PHASES ARE REAL; THE POSITION WITHIN A PHASE IS ESTIMATED, and the bar never prints
+100 before the JSON has parsed.** Thinking and text deltas are distinct events on the wire;
+what is unknowable is how far through either one you are, so each creeps toward its own ceiling
+(48%, then 94%) and only a parsed result reports 100. Measured in the browser: **15 distinct
+samples, monotonic**, fill width tracking the percentage.
+⚠️ SSE only when the client asks (`stream: true`), on both twins, with `X-Accel-Buffering: no`
+— without it a proxy buffers the whole stream into one jump at the end, which is the exact
+thing the bar exists to prevent.
+
+**3. THE PROMPT STOPPED BEING TIMID, which is half the feature.** The old voice section was
+accurate and defensive: it named the fields and then forbade the interesting edits — *"leave
+them alone unless the user is changing which areas are served"* on `informSteps`, and *"THE
+OPENING QUESTION IS TWO-WAY AND STAYS THAT WAY"*. Both were written to stop a WEAK model
+wrecking a working agent, and both stopped a strong one doing what was asked. **The guards that
+matter are in code** — `editGuard` refuses locked chrome and type flips, `specWithConfig`
+validates the voice, `toSteps` normalises a shape — so the prompt now describes how a call is
+actually assembled and lets the model use it. It also names the six real voice ids from
+`voiceOptions`, so "make it a man's voice" resolves rather than inventing one. `audit:ai` fails
+if either fence returns.
+
+**Measured end to end, on the real drawer against the user's own Avi & Co state:**
+
+| asked | what landed |
+|---|---|
+| "ask whether this is their first Rolex, and if so slow down and be reassuring; switch to a calm mature female voice" | step 1 rewritten, **2 new rules**, `First Rolex` appended to all three sales paths, `agent.voice: "athena"` — all four original rules carried across verbatim, one undo step |
+| "add a use case for callers wanting a valuation on a watch they own, route to the trade desk" | a **new path** with its own route and five chips, the **opening question widened to three ways** so callers can reach it, a closing step, and a rule that it never estimates a value on the call |
+
+That second one is the whole point: nobody mentioned the qualifying question, and a new use
+case is unreachable without it.
+
+⚠️⚠️ **THE `chips` "BUG" WAS MY PROBE, AND IT IS THE SIXTH TIME IN THIS FILE.** A run appeared to
+show the model replacing a path's chips wholesale and deleting the prospect's collected fields.
+The chips it had been shown were `undefined`: `scripts/askai-voice.ts` read `u.chips` where the
+field is **`u.collect`** (one list, two names — "Its pills, AND what the agent asks for"). Given
+real chips it appends per path and keeps each path's own distinct set. The whole-list contract
+in the prompt was kept anyway — a short array is indistinguishable from a deliberate removal to
+`editGuard`, so instruction is the only lever — but it is a GUARD, not a fix for a bug that
+existed.
+
+⚠️ **`scripts/askai-voice.ts` HAD BEEN DEAD SINCE 8/27/2026** and nobody noticed, because it is
+only run by hand: it built its tree from `spec.segments`, which stopped existing when the fixed
+pair of sales segments became `useCases`. It now takes the use cases from the real
+`deriveUseCases` and streams like the drawer does, so it exercises the director path and the SSE
+transport rather than a shape and a transport nothing uses. ⚠️ The chrome around them is still
+spelled out there: `deriveTree` is private to `AgentWorkflow.tsx`, which reaches `profiles.ts`
+and its Vite-only `import.meta.glob`, so Node cannot import it — the same wall that sent the
+chrome constants to `workflowChrome.ts`.
+
+**`npm run audit:ai` gained 15 checks**, and each was broken on purpose and seen to fire:
+downgrading the model, reverting thinking display, dropping the whole-list contract, restoring
+either fence, breaking one twin's buffering header, and letting a dropped stream fall through.
+⚠️ That last one matters most: a stream that ends with neither `done` nor `error` must throw,
+or the drawer reports success having changed nothing — the silent no-op this file has now
+recorded five times.
+
 ## ⚠️ OPEN ITEMS as of 9/3/2026 (found this session, NOT yet fixed)
 
 **1. ⚠️⚠️ AN ENDED CALL LEAVES THE AGENT IN THE ROOM, AND IT BILLS.** Measured live, twice.

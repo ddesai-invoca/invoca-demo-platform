@@ -153,6 +153,12 @@ export function AiAssistantDrawer() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  /* ⚠️ THE PROGRESS BAR EXISTS BECAUSE ONE PAGE IS DELIBERATELY SLOW (9/3/2026). The voice
+     workflow's answer runs on Opus with adaptive thinking, which takes real seconds — asked
+     for explicitly: "It's ok if it takes a bit like it does for you, just put the progress
+     bar or a percentage." Absent on every other page, which still answers in one hop on
+     Haiku and gets the three-dot indicator as before. */
+  const [prog, setProg] = useState<{ phase: string; pct: number; note?: string } | null>(null);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -253,6 +259,8 @@ export function AiAssistantDrawer() {
       }
       let dataContext = "";
       try { const j = JSON.stringify(eff); dataContext = j.length > 12000 ? j.slice(0, 12000) + "…(truncated)" : j; } catch { /* ignore */ }
+      /* The server decides the model from the same signal; this only decides the transport. */
+      const wantsStream = /"agent"\s*:/.test(dataContext);
       const res = await fetch("/api/ai-assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -269,11 +277,48 @@ export function AiAssistantDrawer() {
              variant, so a tile created there is actually drawn. */
           canCreateTiles: pathname.startsWith("/dashboards/") || pathname.startsWith("/reports/")
             || pathname.startsWith("/insights/"),
+          /* ⚠️ THE SAME TEST THE SERVER USES TO PICK THE MODEL — the page's DATA carrying an
+             `agent` key, not its pathname. Asking for the stream on a page the server will
+             answer on Haiku would show a progress bar for a request that has no phases. */
+          stream: wantsStream,
           questionPath }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Assistant failed.");
-      const r = data.result;
+      if (!res.ok && res.headers.get("content-type")?.includes("json")) {
+        throw new Error((await res.json())?.error || "Assistant failed.");
+      }
+
+      let r: any;
+      if (wantsStream && res.body) {
+        /* Same SSE reader the Launch screen's build checklist uses: split on the blank line
+           between events, keep the trailing partial for the next chunk. */
+        const reader = res.body.getReader();
+        const dec = new TextDecoder();
+        let buf = "", err = "";
+        for (;;) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buf += dec.decode(value, { stream: true });
+          const parts = buf.split("\n\n");
+          buf = parts.pop() ?? "";
+          for (const part of parts) {
+            const line = part.split("\n").find((l) => l.startsWith("data: "));
+            if (!line) continue;
+            let ev: any; try { ev = JSON.parse(line.slice(6)); } catch { continue; }
+            if (ev.type === "progress") setProg({ phase: ev.phase, pct: ev.pct, note: ev.note });
+            else if (ev.type === "done") r = ev.result;
+            else if (ev.type === "error") err = ev.error;
+          }
+        }
+        if (err) throw new Error(err);
+        /* ⚠️ A STREAM THAT ENDS WITH NEITHER `done` NOR `error` IS A FAILURE, NOT AN EMPTY
+           ANSWER. A dropped connection would otherwise fall through and report success
+           having changed nothing — the silent no-op this repo has recorded four times. */
+        if (!r) throw new Error("The connection closed before the answer arrived. Please resend.");
+      } else {
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.error || "Assistant failed.");
+        r = data.result;
+      }
       const push = (content: string, icon?: string) => setMessages((prev) => [...prev, { role: "assistant", content, icon }]);
 
       /* Someone else's demo: still answer questions, but never mutate it. The
@@ -393,6 +438,7 @@ export function AiAssistantDrawer() {
       setError(e?.message || "Something went wrong.");
     } finally {
       setBusy(false);
+      setProg(null);
     }
   }
 
@@ -505,7 +551,20 @@ export function AiAssistantDrawer() {
               <span>{m.content}</span>
             </div>
           ))}
-          {busy && <div className="aiad-msg aiad-msg--assistant aiad-typing"><span /><span /><span /></div>}
+          {busy && !prog && <div className="aiad-msg aiad-msg--assistant aiad-typing"><span /><span /><span /></div>}
+          {busy && prog && (
+            <div className="aiad-prog" role="status" aria-live="polite">
+              <div className="aiad-prog-head">
+                <span className="aiad-prog-phase">{prog.phase}</span>
+                <span className="aiad-prog-pct">{Math.round(prog.pct)}%</span>
+              </div>
+              {/* ⚠️ WIDTH ONLY, AND IT NEVER GOES BACKWARDS — the phases creep toward their own
+                  ceilings server-side, so a bar that jumped back would be reporting a phase
+                  change as a regression. */}
+              <div className="aiad-prog-track"><div className="aiad-prog-fill" style={{ width: `${Math.round(prog.pct)}%` }} /></div>
+              {prog.note && <div className="aiad-prog-note">{prog.note}</div>}
+            </div>
+          )}
           {error && <div className="aiad-error">{error}</div>}
         </div>
 

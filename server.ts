@@ -181,6 +181,27 @@ app.post("/api/ai-assistant", async (req, res) => {
     const input = req.body || {};
     if (!input?.customerName || !input?.question) return res.status(400).json({ error: "customerName and question are required." });
     if (!apiKey) return res.status(500).json({ error: "ANTHROPIC_API_KEY is not set on the server." });
+
+    /* ⚠️ SSE ONLY WHEN THE CLIENT ASKS — see the twin in vite.config.ts. Both must stay in
+       sync, per the standing rule for these endpoint pairs. */
+    if (input?.stream) {
+      res.status(200);
+      res.setHeader("Content-Type", "text/event-stream");
+      res.setHeader("Cache-Control", "no-cache, no-transform");
+      res.setHeader("Connection", "keep-alive");
+      res.setHeader("X-Accel-Buffering", "no");
+      res.flushHeaders?.();
+      const evt = (o: unknown) => res.write(`data: ${JSON.stringify(o)}\n\n`);
+      try {
+        const result = await askAssistant(input, apiKey, (p) => evt({ type: "progress", ...p }));
+        evt({ type: "done", result });
+      } catch (e: any) {
+        console.error("[ai-assistant] failed:", e);
+        evt({ type: "error", error: isOverloaded(e) ? "The AI is briefly overloaded — one moment, please resend." : e?.message || "Assistant failed." });
+      }
+      return res.end();
+    }
+
     const result = await askAssistant(input, apiKey);
     res.json({ result });
   } catch (e: any) {
