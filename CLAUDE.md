@@ -1211,6 +1211,113 @@ toolbar all present, **zero `.wfd-` elements**) and the SMS workflow's own tab (
 own trigger line, no voice picker, no dead controls). `audit:ai` and `audit:phases` green, `tsc`
 clean on both projects.
 
+### ⚠️⚠️ STANDING RULE: ALL VOICE GOES THROUGH LIVEKIT — Deepgram and ElevenLabs are DELETED (9/3/2026)
+Asked for directly: *"completely delete everything related to elevenlabs or deepgram, i no
+longer want to use them for anything, I am going to remove their API credentials locally and on
+render, i want everything to do with Voice agents to go through LiveKit."*
+
+⚠️ **FIRST, THE DISTINCTION THAT DECIDES HOW TO READ THE CODE.** `deepgram/aura-2` and
+`deepgram/nova-3` still appear, and they are **MODEL NAMES INSIDE LIVEKIT'S INFERENCE GATEWAY**
+— the way `claude-haiku-4-5` names a model. LiveKit brokers seven TTS providers and you pick
+one by name; we hold no Deepgram credential on that path and LiveKit bills it. What was deleted
+is **both vendors as direct APIs with our own keys**. Confirmed with the user before deleting,
+because the other reading would mean re-picking all six voices from Cartesia/Rime/Inworld.
+
+**What is gone:**
+
+| deleted | was |
+|---|---|
+| `engine/tts.ts` | the whole provider layer: `api.deepgram.com/v1/speak`, `api.elevenlabs.io/v1/text-to-speech` |
+| `POST /api/tts` (both twins) | the endpoint in front of it |
+| `src/screens/VoiceCall.tsx` | the **browser-speech call engine** — see below |
+| `DEEPGRAM_API_KEY`, `DEEPGRAM_MODEL`, `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID`, `ELEVENLABS_MODEL_ID`, `TTS_PROVIDER` | every read, plus `.env.example` and the deploy docs |
+| `status.ttsProvider` / `status.ttsKey` | two fields on the PUBLIC `/api/status` payload |
+
+⚠️⚠️ **THE BROWSER-SPEECH ENGINE HAD TO GO WITH THEM, AND THAT IS A REAL DELETION RATHER THAN
+A TIDY-UP.** `VoiceCall.tsx` was the pre-LiveKit pipeline (browser `SpeechRecognition` ->
+`/api/chat` -> `/api/tts`), kept as the fallback for a server with no LiveKit keys. Its mouth
+WAS Deepgram or ElevenLabs; without them it could only speak in the browser's robotic voice, so
+keeping it would have shipped a "fallback" that sounds nothing like the product. **LiveKit is
+now the only voice engine**, and where it is unconfigured the workflow page says so instead of
+degrading silently.
+⚠️ **ITS SHARED HALF SURVIVED AS `src/data/voiceSession.ts`** — `useBrain`, `useVoiceSpec`,
+`captureVoiceCall` and `buildVoiceConversation` were used by BOTH engines, and the capture path
+in particular is the one `audit:voice` asserts is single (a duplicated copy is how a real
+LiveKit call once stored no outcome). The barge-in constants, VAD thresholds and browser
+voice-picker went with the component, because LiveKit handles interruption itself and leaving
+them would imply knobs that control nothing.
+
+**The preview button, rebuilt on LiveKit — `engine/voicePreview.ts`.** This is the part worth
+reading before changing anything:
+
+⚠️⚠️ **NO NEW DEPENDENCY, AND THAT WAS MEASURED RATHER THAN ASSUMED.** The obvious route is
+`inference.TTS` from `@livekit/agents` — the class the worker uses. On the WEB server that costs
+**26 MB** plus the OpenTelemetry exporter stack and `@livekit/local-inference` (partly native),
+on a service whose job is serving screens; a native install failure on Render would break the
+whole app for one button. So the endpoint speaks the gateway's own protocol using
+`livekit-server-sdk` (already a dependency) for auth and **Node's built-in WebSocket**.
+
+| | measured |
+|---|---|
+| endpoint | `wss://agent-gateway.livekit.cloud/v1/tts` (staging variant when `LIVEKIT_URL` says staging) |
+| auth | `AccessToken` + **`addInferenceGrant({ perform: true })`** |
+| handshake | **`?access_token=<jwt>` as a QUERY PARAM** |
+| frames | `session.create` -> `input_transcript` -> `session.flush`; back: `session.created`, `output_audio` (base64), `done` |
+| audio | headerless **pcm_s16le, 16 kHz mono** -> wrapped in a 44-byte WAV header |
+
+⚠️ **THE QUERY PARAM IS WHY NO `ws` PACKAGE IS NEEDED, and the name was verified rather than
+guessed.** The SDK authenticates with an `Authorization: Bearer` HEADER, and Node's built-in
+WebSocket cannot set headers. Tested against the live gateway: `?access_token=` is **accepted**
+and `?token=` is **rejected**.
+⚠️ **THE WAV HEADER IS NOT OPTIONAL.** The gateway returns raw PCM, which no browser will play
+— that is why the endpoint does not just forward the bytes. WAV over MP3 because it needs no
+encoder; ~40 KB for three words.
+⚠️⚠️ **THE FRAME SHAPES ARE READ OFF THE SDK'S COMPILED CLIENT, NOT A PUBLISHED SPEC — so the
+blast radius is stated deliberately.** If LiveKit changes this wire format the **play button**
+breaks and says so; **the call does not**, because the deployed worker uses the real SDK. That
+asymmetry is the only reason this shortcut is acceptable here, and it would NOT be acceptable
+inside the worker.
+
+⚠️ **THE PREVIEW AND THE CALL NOW SHARE ONE MODEL STRING, which fixed a real defect rather than
+just removing a vendor.** The old button went to Deepgram DIRECT while the call went through
+LiveKit's gateway — two paths that could resolve the same voice differently, so an SE could
+audition a voice the call would not produce. Both now send `deepgram/aura-2:<id>` to the same
+gateway, and `audit:voice` asserts the endpoint derives it from `liveKitVoiceModel`.
+⚠️ `VoiceOption.deepgramModel` (`aura-2-<name>-en`) is **deleted** — it existed only for the
+REST call. One id format now.
+⚠️ The endpoint still **allow-lists the voice** and caps the text at 200 characters: it is
+reachable from a browser and spends LiveKit inference, so it may only ever say a short line in
+one of the six voices the picker offers. Verified live that `zeus` (a real Aura-2 voice we do
+not offer) returns 400 naming the six.
+
+**Point 3 of the request — "when the voice changes in the details tab it should also change in
+the Preview Workflow" — is the same wire, and was verified end to end**: picking Harmonia on
+Details made Preview Workflow's Start Call post `voice: "harmonia"` on its token request (proved
+by patching `fetch` and reading the body), which `mintVoiceToken` resolves to
+`deepgram/aura-2:harmonia` in the dispatch metadata, which the worker's parser turns into
+`opts.voice = "harmonia"`. The only unproven link remains the worker RUNNING that code, which
+needs one `lk agent deploy`.
+
+**`npm run audit:voice` is 87 checks** (was 78). The nine new ones are the guard against this
+drifting back: no `api.deepgram.com` / `api.elevenlabs.io` anywhere, neither key read anywhere,
+`engine/tts.ts` gone, the browser engine gone, **both twins** serving `/api/voice-preview` and
+neither serving `/api/tts`, and an unconfigured server saying LiveKit is missing.
+⚠️⚠️ **THE VENDOR SCAN STRIPS COMMENTS FIRST, AND IT HAD TO — IT FIRED ON ITS OWN
+DOCUMENTATION.** Several files legitimately NAME the retired endpoints while explaining why they
+are gone. A check that reddens on a correct file gets deleted as a nuisance, so only code is
+searched (line comments matched anchored to the line start, or a `https://` inside a string
+looks like one).
+⚠️ Each was broken on purpose and seen to fire: reintroducing a real `api.deepgram.com` fetch,
+renaming the route back to `/api/tts`, and removing the voice allow-list each turned one red.
+⚠️ Two existing checks had to be **re-aimed rather than deleted** when the second engine went:
+the "exactly ONE `/api/analyze` call" and shared-capture checks now read `voiceSession.ts` plus
+the one engine. The invariant is unchanged and still the thing that caught a real bug.
+
+**Verified live:** `/api/voice-preview` returns valid RIFF/WAV for every offered voice with
+different byte lengths per voice (Thalia 34,606; Arcas 41,006), refuses an unoffered one with a
+message naming the six, and `POST /api/tts` now 404s. `tsc` clean on both projects,
+`audit:voice` (87) and `audit:ai` green.
+
 ### Don't ask twice: the voice agent was re-asking ZIP and name (9/2/2026)
 Reported directly: "when asking for things like are you looking to book an appointment or
 something, or their zipcode, or their name. Only ask that once, you should remember that data or

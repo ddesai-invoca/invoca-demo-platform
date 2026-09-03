@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { ZERO_TRIGGER } from "../data/workflowChrome";
-import { VOICE_OPTIONS, previewModel, voiceOption } from "../data/voiceOptions";
+import { VOICE_OPTIONS, voiceOption } from "../data/voiceOptions";
 
 /* =============================================================================
    The workflow's DETAILS tab — and the one control on it that changes a live call
@@ -62,16 +62,18 @@ export function AgentWorkflowDetails({ scopeKey, isSms, agent, triggeredBy }: Pr
     audioRef.current?.pause();
     setPlaying(voiceId);
     try {
-      const res = await fetch("/api/tts", {
+      /* ⚠️ 100% LIVEKIT. This posts a VOICE ID, and the server turns it into the very same
+         `deepgram/aura-2:<id>` string the live call sends to the same gateway — so the
+         audition and the call cannot disagree. It used to call Deepgram's REST API directly
+         with our own key, which was both a second vendor and a second code path. */
+      const res = await fetch("/api/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        /* The DEEPGRAM model id, derived from the same entry that builds the LiveKit string,
-           so what an SE hears here is what the call will use. */
-        body: JSON.stringify({ text: PREVIEW_TEXT, model: previewModel(voiceId) }),
+        body: JSON.stringify({ text: PREVIEW_TEXT, voice: voiceId }),
       });
       if (!res.ok) {
         /* ⚠️ SAY WHY. A dead play button reads as a broken page; the honest answer is usually
-           that no Deepgram key is configured on this server (the endpoint answers 501). */
+           that LiveKit is not configured on this server (the endpoint answers 501). */
         const msg = await res.json().catch(() => ({}));
         throw new Error(msg?.error || `Preview failed (${res.status}).`);
       }

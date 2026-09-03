@@ -47,8 +47,7 @@ flowchart TB
     subgraph paid["External APIs we pay for"]
         ANTH["Anthropic API<br/>Claude Opus 4.8 + Haiku 4.5"]
         PLACES["Google Places API<br/>prospect address / rating"]
-        DG["Deepgram API<br/>text-to-speech"]
-        EL["ElevenLabs API<br/>text-to-speech alternative"]
+        LK["LiveKit Cloud<br/>voice agent: STT, TTS, transport"]
     end
 
     subgraph free["External, no per-call cost to us"]
@@ -64,8 +63,7 @@ flowchart TB
 
     API -->|"generate a prospect · chat with the AI agent ·<br/>Ask AI edits · transcript analysis"| ANTH
     API -->|"look up the prospect's real location"| PLACES
-    API -->|"speak the voice agent's lines"| DG
-    API -.->|"alternative TTS provider"| EL
+    API -->|"mint a call token · preview a voice"| LK
     API -->|"fetch the prospect's logo"| SITE
 
     API --> ENGINE
@@ -104,8 +102,9 @@ demo later costs nothing.
 **The features that cost money while you're demoing.** Three things call Anthropic live during
 a demo: the AI agent you can text or talk to, the "Ask AI" panel that lets you re-word any
 screen on the fly, and the transcript analyser. These use **Claude Haiku, the cheapest model**,
-specifically because they run interactively. Separately, the voice agent's speech is generated
-by **Deepgram**, which is the one integration that charges per second of audio produced.
+specifically because they run interactively. Separately, the voice agent's ears, brain and
+voice all run on **LiveKit Cloud**, which is the one integration that charges per minute of
+call rather than per token.
 
 **What this means for the spend.** The bill scales with how many *new prospects* the team
 generates, not with how many demos they give. Ten SEs re-using the 58 demos already in the
@@ -148,8 +147,7 @@ Verified by grepping for outbound `fetch` calls in `engine/` and `server.ts`.
 | **Anthropic** — `claude-opus-4-8` | `engine/core.ts:23` | per token, highest tier | **Live.** Generation only. |
 | **Anthropic** — `claude-haiku-4-5` | `core.ts:24`, `chat.ts:19`, `analyze.ts:12`, `assistant.ts:27` | per token, cheapest tier | **Live.** All interactive AI. |
 | **Google Places** | `engine/places.ts:86` → `places.googleapis.com/v1/places:searchText` | per request | **Live.** One call per generation. |
-| **Deepgram TTS** | `engine/tts.ts:47` → `api.deepgram.com/v1/speak` | per character/second | **Live** — see the note below. |
-| **ElevenLabs TTS** | `engine/tts.ts:67` | per character | **Available, not selected.** Alternative provider; `TTS_PROVIDER` picks between them. |
+| **LiveKit Cloud** | `engine/livekitToken.ts` (the call) · `engine/voicePreview.ts` (the Details tab's preview) · `agent/voiceAgent.js` (the hosted worker) | per participant-minute, plus inference for STT/TTS | **Live.** The ONLY voice provider — see the note below. |
 | **Google OAuth** | `googleAuth.ts:101` → `oauth2.googleapis.com/token` | free | **Live.** |
 | **Mapbox** | browser, via `src/data/prospectPlace.ts` (`VITE_MAPBOX_TOKEN`) | free tier | **Live.** The only key that is deliberately public — it is a browser-side map-tile token. |
 | **The prospect's own website** | `engine/ogImage.ts:62` | free | **Live.** Fetches the homepage once to scrape a logo. |
@@ -163,14 +161,15 @@ Verified by grepping for outbound `fetch` calls in `engine/` and `server.ts`.
 > sponsored result. It is driven entirely by the local profile plus Mapbox tiles. Leadership
 > should not be told we are paying OpenAI, because we are not.
 >
-> **2. Deepgram appears to be working, not blocked.** The live service reports
-> `"ttsProvider":"deepgram","ttsKey":true` (`GET /api/status`), meaning a Deepgram key is set
-> in the Render environment and the voice agent's speech path is wired end to end
-> (`engine/tts.ts` → `POST /api/tts` → `src/components/VoiceCall.tsx`). If the voice agent is
-> blocked, the blocker is **not** "no Deepgram key" — it is something outside this codebase
-> (production/licensed access, or the AI Voice team's own agent rather than our TTS). Worth
-> resolving before this is presented, since "blocked" and "already spending on Deepgram" are
-> very different messages.
+> **2. ALL VOICE IS LIVEKIT, AS OF 9/3/2026 — and this replaced an earlier note here saying
+> Deepgram was the TTS provider.** Deepgram and ElevenLabs were removed entirely on request:
+> `engine/tts.ts` is deleted, `/api/tts` is gone, both API keys are unused, and the
+> browser-speech call engine that depended on them went with them. The call and the voice
+> preview now send the same model string to the same LiveKit gateway on LiveKit credentials.
+> `npm run audit:voice` fails if a direct call to either vendor's API reappears.
+> ⚠️ **"deepgram/aura-2" still appears in the code as a MODEL NAME inside LiveKit's inference
+> gateway** — the way `claude-haiku-4-5` names a model. That is not a Deepgram integration and
+> needs no Deepgram credential; the distinction matters when reading the spend.
 
 ### Authentication — what it actually is
 
@@ -279,7 +278,8 @@ the result. Re-opening the demo later replays those saved customizations over th
 | SMS / voice agent conversation | `POST /api/chat` | `engine/chat.ts` | Haiku 4.5 |
 | Ask AI screen edits | `POST /api/ai-assistant` | `engine/assistant.ts` | Haiku 4.5 |
 | Transcript signal analysis | `POST /api/analyze` | `engine/analyze.ts` | Haiku 4.5 |
-| Voice agent speech | `POST /api/tts` | `engine/tts.ts` | Deepgram (or ElevenLabs) |
+| Voice agent call (ears, brain, voice) | `POST /api/livekit-token` | `engine/livekitToken.ts` + `agent/voiceAgent.js` | LiveKit Inference (STT, TTS) + Haiku 4.5 |
+| Voice preview (Details tab) | `POST /api/voice-preview` | `engine/voicePreview.ts` | LiveKit Inference (TTS) |
 
 ---
 
@@ -314,8 +314,8 @@ browser bundle. `VITE_MAPBOX_TOKEN` is the sole intentional exception (a public 
 | `BASE_URL` | With the gate | Builds the OAuth redirect (`<BASE_URL>/auth/callback`) |
 | `ALLOWED_EMAIL_DOMAIN` | No | Defaults to `invoca.com` |
 | `GOOGLE_PLACES_API_KEY` | For location enrichment | **Secret — no `VITE_` prefix** |
-| `DEEPGRAM_API_KEY` / `ELEVENLABS_API_KEY` | For voice | Pick with `TTS_PROVIDER` |
-| `DEEPGRAM_MODEL` / `ELEVENLABS_VOICE_ID` / `ELEVENLABS_MODEL_ID` | No | Voice tuning |
+| `LIVEKIT_URL` / `LIVEKIT_API_KEY` / `LIVEKIT_API_SECRET` | For all voice | The only voice credentials; no vendor keys |
+| `VOICE_TTS_MODEL` / `VOICE_STT_MODEL` / `VOICE_LLM_MODEL` | No | Worker-side model overrides (`agent/`) |
 | `VITE_MAPBOX_TOKEN` | For the map screens | Public by design |
 | `DEMO_ADMIN_EMAILS` | No | Who may edit any demo |
 | `DATA_DIR` | No | Overrides the demo-storage path |
@@ -395,7 +395,7 @@ against what you pushed.
 | **Insights / Reporting 2.0 tab** | **Shipped — Aug 6** | Three reports (Summary Dashboard, Details Report, Connect AI), a call-detail page, interactive charts with drill-through. Commit `e8b5fa8`. *The brief listed this as In Progress; it shipped.* |
 | **Signal tab rebuild** | **In progress — not yet deployed** | Flyout nav, source type-select, Semantic Signal Library, template drawer, Edit Rule Signal. Working locally; **uncommitted**, so not on the live service. |
 | Signal AI Studio / Rule-based Signal builders | **Not started** | The type-select links exist; both return to Manage Signals. |
-| Voice agent | **⚠️ Status disputed** | The brief says *blocked pending Deepgram access from the AI Voice team*, but the live service reports a working Deepgram key and the TTS path is wired end to end. Resolve before presenting. |
+| Voice agent | **Live, on LiveKit** | Hosted worker (`invoca-voice`) with streaming STT/LLM/TTS. An SE picks the agent's voice on a workflow's Details tab. **⚠️ The earlier "blocked pending Deepgram access" framing is obsolete** — Deepgram and ElevenLabs were removed 9/3/2026 and voice needs no vendor key, only LiveKit. |
 | Video enablement | **⚠️ NOT CONFIRMED IN CODE** | The brief lists this as shipped Aug 5. No commit, file, or dependency in this repo relates to video. If it means a recorded walkthrough *about* the tool, it is not a code feature and should be described separately. |
 | Engine fix: hardcoded signal counts | **In progress** | Spun out as its own task; see §7. |
 

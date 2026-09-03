@@ -27,7 +27,8 @@ into `livekit.toml` — commit that change.
 
 ⚠️ **Only `ANTHROPIC_API_KEY` goes in the secrets file.** LiveKit injects `LIVEKIT_URL`,
 `LIVEKIT_API_KEY` and `LIVEKIT_API_SECRET` itself, and the CLI deliberately skips them.
-STT and TTS come from LiveKit's inference gateway, so no Deepgram key is needed either.
+STT and TTS come from LiveKit's inference gateway, so no third-party voice key is needed
+anywhere — the whole platform's voice runs on LiveKit credentials alone (9/3/2026).
 
 ## Afterwards
 

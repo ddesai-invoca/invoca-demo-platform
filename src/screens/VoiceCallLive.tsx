@@ -5,7 +5,7 @@ import { useVoiceCapture } from "../data/VoiceCaptureContext";
    captured-conversation shape must be IDENTICAL across the two engines, or a call
    captured through LiveKit would look different in the Voice CI report from one
    captured the old way. Same one-definition rule `smsBrain.ts` already enforces. */
-import { useBrain, useVoiceSpec, captureVoiceCall, type BrainOpts } from "./VoiceCall";
+import { useBrain, useVoiceSpec, captureVoiceCall, type BrainOpts } from "../data/voiceSession";
 import { useLiveKitVoice } from "../data/liveKitVoice";
 import { VoiceCallUI, type VcLine, type VcPhase } from "../components/VoiceCallUI";
 

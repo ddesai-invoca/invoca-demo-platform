@@ -1,4 +1,3 @@
-import { isAllowedPreviewModel } from './src/data/voiceOptions.ts'
 import { defineConfig, loadEnv, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import fs from 'node:fs'
@@ -201,14 +200,9 @@ function statusApi(): Plugin {
           const { deployStatus } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/status.ts')).href)
           const { authEnabled } = await import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href)
           const env = loadEnv('development', process.cwd(), '')
-          const deepgram = env.DEEPGRAM_API_KEY, eleven = env.ELEVENLABS_API_KEY
-          const raw = (env.TTS_PROVIDER || '').toLowerCase()
-          const ttsProvider = raw === 'elevenlabs' || raw === 'deepgram' ? raw : deepgram ? 'deepgram' : 'elevenlabs'
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/json')
           res.end(JSON.stringify(deployStatus({
-            ttsProvider,
-            ttsKey: ttsProvider === 'deepgram' ? !!deepgram : !!eleven,
             livekitConfigured: !!(env.LIVEKIT_URL && env.LIVEKIT_API_KEY && env.LIVEKIT_API_SECRET),
             anthropicKey: !!env.ANTHROPIC_API_KEY,
             googlePlacesKey: !!env.GOOGLE_PLACES_API_KEY,
@@ -417,21 +411,16 @@ function livekitApi(env: Record<string, string>): Plugin {
   }
 }
 
-/* Dev-only endpoint: POST /api/tts { text, voiceId? } → MP3 audio (audio/mpeg)
-   from the configured provider (Deepgram Aura or ElevenLabs; key server-side).
-   Powers the premium human voice on the live Voice-agent call. Returns a JSON
-   error (with a clear message) when the key is missing/errors, so VoiceCall.tsx
-   falls back to the browser voice. */
-interface TtsSettings {
-  provider: 'deepgram' | 'elevenlabs'
-  deepgramKey?: string; deepgramModel?: string
-  elevenKey?: string; elevenVoice?: string; elevenModel?: string
-}
-function ttsApi(cfg: TtsSettings): Plugin {
+/* Dev endpoint: POST /api/voice-preview { voice, text } → audio/wav, synthesized through
+   LiveKit Inference on LiveKit credentials. Twin of the handler in server.ts.
+
+   ⚠️ This REPLACED /api/tts, which called api.deepgram.com / api.elevenlabs.io directly with
+   those vendors' own keys. Everything voice now goes through LiveKit; see engine/voicePreview.ts. */
+function voicePreviewApi(cfg: { url?: string; apiKey?: string; apiSecret?: string }): Plugin {
   return {
-    name: 'invoca-tts-api',
+    name: 'invoca-voice-preview-api',
     configureServer(server) {
-      server.middlewares.use('/api/tts', async (req, res, next) => {
+      server.middlewares.use('/api/voice-preview', async (req, res, next) => {
         if (req.method !== 'POST') return next()
         const sendErr = (code: number, body: unknown) => {
           res.statusCode = code
@@ -439,35 +428,24 @@ function ttsApi(cfg: TtsSettings): Plugin {
           res.end(JSON.stringify(body))
         }
         try {
+          if (!cfg.apiKey || !cfg.apiSecret) return sendErr(501, { error: 'LiveKit is not configured. Add LIVEKIT_API_KEY and LIVEKIT_API_SECRET to .env.' })
           let raw = ''
           for await (const chunk of req) raw += chunk
-          const { text, voiceId: reqVoice, model: reqModel } = JSON.parse(raw || '{}')
-          if (!text || !String(text).trim()) return sendErr(400, { error: 'text is required.' })
-
-          const { synthesize } = await import(
-            pathToFileURL(path.resolve(process.cwd(), 'engine/tts.ts')).href
+          const { voice, text } = JSON.parse(raw || '{}')
+          const mod = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/voicePreview.ts')).href
           )
-          let audio: Uint8Array
-          if (cfg.provider === 'deepgram') {
-            if (!cfg.deepgramKey) return sendErr(501, { error: 'DEEPGRAM_API_KEY is not set. Add it to .env to enable the Deepgram voice.' })
-            /* ⚠️ A BROWSER-SUPPLIED MODEL IS ALLOW-LISTED; A SERVER-CONFIGURED ONE IS NOT.
-               The Details tab's play button names the voice it wants to hear, so without this
-               the endpoint is an open Deepgram proxy on our key. `DEEPGRAM_MODEL` from the
-               environment is deliberately NOT checked — that is an operator's own choice, and
-               rejecting it would break every voice on a server that sets it. */
-            if (reqModel && !isAllowedPreviewModel(reqModel)) return sendErr(400, { error: `Unsupported voice: ${reqModel}` })
-            audio = await synthesize({ text, provider: 'deepgram', deepgram: { apiKey: cfg.deepgramKey, model: reqModel || cfg.deepgramModel } })
-          } else {
-            if (!cfg.elevenKey) return sendErr(501, { error: 'ELEVENLABS_API_KEY is not set. Add it to .env to enable the premium voice.' })
-            audio = await synthesize({ text, provider: 'elevenlabs', elevenlabs: { apiKey: cfg.elevenKey, voiceId: reqVoice || cfg.elevenVoice, modelId: cfg.elevenModel } })
-          }
+          const wav = await mod.synthesizePreview(
+            { voice: String(voice ?? ''), text: String(text ?? '') },
+            { url: cfg.url, apiKey: cfg.apiKey, apiSecret: cfg.apiSecret },
+          )
           res.statusCode = 200
-          res.setHeader('Content-Type', 'audio/mpeg')
+          res.setHeader('Content-Type', 'audio/wav')
           res.setHeader('Cache-Control', 'no-store')
-          res.end(Buffer.from(audio))
+          res.end(Buffer.from(wav))
         } catch (e: any) {
-          console.error('[tts] failed:', e)
-          sendErr(500, { error: e?.message || 'TTS failed.' })
+          console.error('[voice-preview] failed:', e)
+          sendErr(400, { error: e?.message || 'Preview failed.' })
         }
       })
     },
@@ -493,18 +471,6 @@ export default defineConfig(({ mode }) => {
     if (v !== undefined && process.env[k] === undefined) process.env[k] = v
   }
   const apiKey = env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY
-  const deepgramKey = env.DEEPGRAM_API_KEY || process.env.DEEPGRAM_API_KEY
-  const deepgramModel = env.DEEPGRAM_MODEL || process.env.DEEPGRAM_MODEL
-  const elevenKey = env.ELEVENLABS_API_KEY || process.env.ELEVENLABS_API_KEY
-  const elevenVoice = env.ELEVENLABS_VOICE_ID || process.env.ELEVENLABS_VOICE_ID
-  const elevenModel = env.ELEVENLABS_MODEL_ID || process.env.ELEVENLABS_MODEL_ID
-  // Provider: explicit TTS_PROVIDER wins; otherwise auto — Deepgram if its key is
-  // set, else ElevenLabs.
-  const providerRaw = (env.TTS_PROVIDER || process.env.TTS_PROVIDER || '').toLowerCase()
-  const provider: TtsSettings['provider'] =
-    providerRaw === 'elevenlabs' || providerRaw === 'deepgram'
-      ? providerRaw
-      : (deepgramKey ? 'deepgram' : 'elevenlabs')
   return {
     plugins: [
       react(),
@@ -518,7 +484,7 @@ export default defineConfig(({ mode }) => {
       chatApi(apiKey),
       assistantApi(apiKey),
       analyzeApi(apiKey),
-      ttsApi({ provider, deepgramKey, deepgramModel, elevenKey, elevenVoice, elevenModel }),
+      voicePreviewApi({ url: env.LIVEKIT_URL, apiKey: env.LIVEKIT_API_KEY, apiSecret: env.LIVEKIT_API_SECRET }),
       livekitApi(env),
     ],
   }

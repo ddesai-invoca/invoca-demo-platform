@@ -28,8 +28,7 @@ import { fileURLToPath } from "node:url";
 import { generateProfile, slugify } from "./engine/core.ts";
 import { chatReply } from "./engine/chat.ts";
 import { analyzeSms } from "./engine/analyze.ts";
-import { synthesize } from "./engine/tts.ts";
-import { isAllowedPreviewModel } from "./src/data/voiceOptions.ts";
+import { synthesizePreview } from "./engine/voicePreview.ts";
 import { livekitEnv, mintVoiceToken } from "./engine/livekitToken.ts";
 import { askAssistant } from "./engine/assistant.ts";
 import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
@@ -50,14 +49,6 @@ const PORT = Number(process.env.PORT) || 3000;
 const apiKey = process.env.ANTHROPIC_API_KEY;
 
 // TTS provider resolution — mirrors vite.config.ts.
-const deepgramKey = process.env.DEEPGRAM_API_KEY;
-const deepgramModel = process.env.DEEPGRAM_MODEL;
-const elevenKey = process.env.ELEVENLABS_API_KEY;
-const elevenVoice = process.env.ELEVENLABS_VOICE_ID;
-const elevenModel = process.env.ELEVENLABS_MODEL_ID;
-const providerRaw = (process.env.TTS_PROVIDER || "").toLowerCase();
-const ttsProvider: "deepgram" | "elevenlabs" =
-  providerRaw === "elevenlabs" || providerRaw === "deepgram" ? (providerRaw as any) : deepgramKey ? "deepgram" : "elevenlabs";
 
 const app = express();
 /* Attachment uploads are RAW BYTES, so their parser is registered before the JSON
@@ -80,8 +71,6 @@ app.get("/healthz", (_req, res) =>
    way to confirm from outside that a deploy landed. The payload deliberately
    carries no customer data and no secrets — see engine/status.ts. */
 app.get("/api/status", (_req, res) => res.json(deployStatus({
-  ttsProvider,
-  ttsKey: ttsProvider === "deepgram" ? !!deepgramKey : !!elevenKey,
   livekitConfigured: !!livekitEnv(),
   anthropicKey: !!apiKey,
   googlePlacesKey: !!process.env.GOOGLE_PLACES_API_KEY,
@@ -215,29 +204,24 @@ app.post("/api/analyze", async (req, res) => {
   }
 });
 
-/* POST /api/tts → audio/mpeg from Deepgram or ElevenLabs (key server-side). */
-app.post("/api/tts", async (req, res) => {
+/* POST /api/voice-preview → audio/wav for the Details tab's play button.
+
+   ⚠️ 100% LiveKit: the voice is synthesized through the SAME gateway and the SAME model
+   string the live call uses, on LiveKit credentials. This replaced /api/tts, which called
+   Deepgram and ElevenLabs directly with their own keys. */
+app.post("/api/voice-preview", async (req, res) => {
   try {
-    const { text, voiceId, model: reqModel } = req.body || {};
-    if (!text || !String(text).trim()) return res.status(400).json({ error: "text is required." });
-    let audio: Uint8Array;
-    if (ttsProvider === "deepgram") {
-      if (!deepgramKey) return res.status(501).json({ error: "DEEPGRAM_API_KEY is not set on the server." });
-      /* Allow-list a model that came from the BROWSER (the Details tab's play button); an
-         operator's own DEEPGRAM_MODEL is left alone. Kept in step with the dev twin above. */
-      if (reqModel && !isAllowedPreviewModel(reqModel)) return res.status(400).json({ error: `Unsupported voice: ${reqModel}` });
-      audio = await synthesize({ text, provider: "deepgram", deepgram: { apiKey: deepgramKey, model: reqModel || deepgramModel } });
-    } else {
-      if (!elevenKey) return res.status(501).json({ error: "ELEVENLABS_API_KEY is not set on the server." });
-      audio = await synthesize({ text, provider: "elevenlabs", elevenlabs: { apiKey: elevenKey, voiceId: voiceId || elevenVoice, modelId: elevenModel } });
-    }
+    const cfg = livekitEnv();
+    if (!cfg) return res.status(501).json({ error: "LiveKit is not configured on the server." });
+    const { voice, text } = req.body || {};
+    const wav = await synthesizePreview({ voice: String(voice ?? ""), text: String(text ?? "") }, cfg);
     res.status(200);
-    res.setHeader("Content-Type", "audio/mpeg");
+    res.setHeader("Content-Type", "audio/wav");
     res.setHeader("Cache-Control", "no-store");
-    res.end(Buffer.from(audio));
+    res.end(Buffer.from(wav));
   } catch (e: any) {
-    console.error("[tts] failed:", e);
-    res.status(500).json({ error: e?.message || "TTS failed." });
+    console.error("[voice-preview] failed:", e);
+    res.status(400).json({ error: e?.message || "Preview failed." });
   }
 });
 

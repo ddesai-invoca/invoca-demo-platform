@@ -33,8 +33,6 @@ const BOOTED_AT = new Date(Date.now() - Math.round(process.uptime() * 1000)).toI
    whatever source it actually has. */
 export interface StatusInput {
   /** Resolved by the caller, since prod and dev pick the provider the same way. */
-  ttsProvider: "deepgram" | "elevenlabs";
-  ttsKey: boolean;
   /* Can the DEPLOYED app mint a LiveKit token? A boolean, never the key.
      ⚠️ Without this there was no way to tell from outside the gate whether the live site
      could start a streaming voice call at all — and when it cannot it silently falls back
@@ -79,8 +77,6 @@ export function deployStatus(input: StatusInput) {
          SERVER env does not prove the deployed bundle carries it. Named for what
          it actually measures rather than for what you wish it meant. */
       mapboxTokenInServerEnv: input.mapboxTokenInServerEnv,
-      ttsProvider: input.ttsProvider,
-      ttsKey: input.ttsKey,
       livekitConfigured: input.livekitConfigured,
       authGate: input.authGate,
     },

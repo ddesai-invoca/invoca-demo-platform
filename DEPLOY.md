@@ -28,13 +28,11 @@ So the host must be able to **run Node.js** (a VPS with SSH, or a Node platform)
 | Var | Needed for |
 | --- | --- |
 | `ANTHROPIC_API_KEY` | **Required.** All AI: chat, Ask AI, analyze, generation |
-| `ELEVENLABS_API_KEY` | Premium Voice-agent TTS (ElevenLabs) |
-| `DEEPGRAM_API_KEY` | Premium Voice-agent TTS (Deepgram) — alternative to ElevenLabs |
+| `LIVEKIT_URL` / `LIVEKIT_API_KEY` / `LIVEKIT_API_SECRET` | **All voice.** The live Voice-agent call and the Details tab's voice preview. Removing these disables voice entirely rather than degrading it |
 | `GMAIL_REFRESH_TOKEN` | Feedback completion emails via the Gmail API. Minted once at `/auth/gmail` (admin only) |
 | `GMAIL_SENDER` | The address those emails send AS, e.g. `ddesai@invoca.com` |
 | `SMTP_USER` | Fallback only. Your @invoca.com address, if app passwords are allowed |
 | `SMTP_APP_PASSWORD` | Google **app password** (16 chars, needs 2-Step Verification). Not your account password |
-| `TTS_PROVIDER` | Optional: `deepgram` or `elevenlabs` (auto-detected otherwise) |
 | `PORT` | Optional: port to listen on (default `3000`; Render sets this automatically) |
 | `GOOGLE_CLIENT_ID` | Enables the "Sign in with Google" gate (from Google Cloud Console) |
 | `GOOGLE_CLIENT_SECRET` | Paired with the client id — gate is ON only when both are set |
@@ -89,8 +87,9 @@ I'll give those steps.)
 ### 4. Add environment variables in Render (Settings → Environment)
 ```
 ANTHROPIC_API_KEY      = sk-ant-...
-ELEVENLABS_API_KEY     = ...            (optional, for premium voice)
-DEEPGRAM_API_KEY       = ...            (optional alternative)
+LIVEKIT_URL            = wss://<project>.livekit.cloud   (all voice)
+LIVEKIT_API_KEY        = ...
+LIVEKIT_API_SECRET     = ...
 GOOGLE_CLIENT_ID       = ....apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET   = ...
 ALLOWED_EMAIL_DOMAIN   = invoca.com

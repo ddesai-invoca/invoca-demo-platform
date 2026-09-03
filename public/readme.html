@@ -336,7 +336,7 @@ footer {
 
     <figure class="figure">
       <svg viewBox="0 0 1140 640" role="img"
-           aria-label="One service on Render sits between the user and the outside services. The user signs in through a Google gate, is served the screens, the screens call an API layer, the API layer drives the generation engine, and finished demos are saved to a permanent disk. The engine calls Anthropic, Google Places and the prospect's website; the API layer calls Deepgram for speech. Map tiles load directly in the browser.">
+           aria-label="One service on Render sits between the user and the outside services. The user signs in through a Google gate, is served the screens, the screens call an API layer, the API layer drives the generation engine, and finished demos are saved to a permanent disk. The engine calls Anthropic, Google Places and the prospect's website; the API layer calls LiveKit for the voice agent. Map tiles load directly in the browser.">
         <defs>
           <marker id="b-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="#5f7a72"/>
@@ -426,7 +426,7 @@ footer {
         <text x="858" y="374" font-size="12" fill="#626464">read once, for their logo</text>
 
         <rect x="838" y="404" width="254" height="62" rx="10" fill="#ffffff" stroke="#c9d2cd"/>
-        <text x="858" y="430" font-size="13.5" font-weight="600" fill="#0a231e">Deepgram</text>
+        <text x="858" y="430" font-size="13.5" font-weight="600" fill="#0a231e">LiveKit</text>
         <text x="858" y="450" font-size="12" fill="#626464">the voice agent's speech</text>
 
 
@@ -711,7 +711,7 @@ footer {
         <text x="608" y="1058" font-size="11" font-weight="600" letter-spacing="1.2" fill="#0d5c47">EXTERNAL SERVICES</text>
         <text x="608" y="1082" font-size="11.5" fill="#0a231e"><tspan font-weight="600">Anthropic</tspan> Opus 4.8 for generation, Haiku 4.5 interactive</text>
         <text x="608" y="1102" font-size="11.5" fill="#0a231e"><tspan font-weight="600">Google</tspan> OAuth for sign-in, Places for location</text>
-        <text x="608" y="1122" font-size="11.5" fill="#0a231e"><tspan font-weight="600">Deepgram</tspan> speech &middot; <tspan font-weight="600">Mapbox</tspan> tiles, browser only</text>
+        <text x="608" y="1122" font-size="11.5" fill="#0a231e"><tspan font-weight="600">LiveKit</tspan> voice agent &middot; <tspan font-weight="600">Mapbox</tspan> tiles, browser only</text>
       </svg>
     </figure>
     <figcaption>
@@ -755,8 +755,7 @@ footer {
         <tr><td>Anthropic, <code>claude-opus-4-8</code></td><td><code>engine/core.ts:23</code></td><td><span class="pill p-ship">Live</span> generation only</td></tr>
         <tr><td>Anthropic, <code>claude-haiku-4-5</code></td><td><code>core.ts:24</code>, <code>chat.ts:19</code>, <code>analyze.ts:12</code>, <code>assistant.ts:27</code></td><td><span class="pill p-ship">Live</span> all interactive AI</td></tr>
         <tr><td>Google Places</td><td><code>engine/places.ts:86</code>, photo via a second endpoint</td><td><span class="pill p-ship">Live</span> one call per generation</td></tr>
-        <tr><td>Deepgram TTS</td><td><code>engine/tts.ts:47</code></td><td><span class="pill p-ship">Live</span> the selected provider</td></tr>
-        <tr><td>ElevenLabs TTS</td><td><code>engine/tts.ts:67</code></td><td><span class="pill p-none">Available, not selected</span></td></tr>
+        <tr><td>LiveKit Cloud</td><td><code>engine/livekitToken.ts</code> &middot; <code>engine/voicePreview.ts</code> &middot; <code>agent/voiceAgent.js</code></td><td><span class="pill p-ship">Live</span> the only voice provider</td></tr>
         <tr><td>Google OAuth</td><td><code>googleAuth.ts:101</code></td><td><span class="pill p-ship">Live</span></td></tr>
         <tr><td>Mapbox</td><td>browser, <code>src/data/prospectPlace.ts</code></td><td><span class="pill p-ship">Live</span> the only deliberately public key</td></tr>
         <tr><td>The prospect's own website</td><td><code>engine/ogImage.ts:62</code></td><td><span class="pill p-ship">Live</span> homepage fetched once</td></tr>
@@ -883,7 +882,8 @@ footer {
         <tr><td>SMS / voice agent conversation</td><td><code>POST /api/chat</code></td><td><code>engine/chat.ts</code></td><td>Haiku 4.5</td></tr>
         <tr><td>Ask AI screen edits</td><td><code>POST /api/ai-assistant</code></td><td><code>engine/assistant.ts</code></td><td>Haiku 4.5</td></tr>
         <tr><td>Transcript signal analysis</td><td><code>POST /api/analyze</code></td><td><code>engine/analyze.ts</code></td><td>Haiku 4.5</td></tr>
-        <tr><td>Voice agent speech</td><td><code>POST /api/tts</code></td><td><code>engine/tts.ts</code></td><td>Deepgram / ElevenLabs</td></tr>
+        <tr><td>Voice agent call</td><td><code>POST /api/livekit-token</code></td><td><code>engine/livekitToken.ts</code></td><td>LiveKit + Haiku 4.5</td></tr>
+        <tr><td>Voice preview (Details tab)</td><td><code>POST /api/voice-preview</code></td><td><code>engine/voicePreview.ts</code></td><td>LiveKit Inference</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -1105,9 +1105,10 @@ git push origin main                                      <span class="cm"># tri
       </div>
       <div class="kcard">
         <span class="ktag">The voice</span>
-        <h4>Deepgram and ElevenLabs</h4>
-        <p>Give the prospect's AI agent a speaking voice, so you can hold a real conversation with
-        it on a call rather than only exchanging text.</p>
+        <h4>LiveKit</h4>
+        <p>Gives the prospect's AI agent ears and a speaking voice, so you can hold a real
+        conversation with it on a call rather than only exchanging text. You choose which voice
+        it uses on the workflow's Details tab, and hear it before you call.</p>
       </div>
       <div class="kcard">
         <span class="ktag">The front door</span>

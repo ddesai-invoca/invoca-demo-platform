@@ -6,7 +6,6 @@ import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
 import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
-import { VoiceCall } from "./VoiceCall";
 import { VoiceCallLive } from "./VoiceCallLive";
 import { useLiveKitReady } from "../data/liveKitVoice";
 import { WorkflowTree, type WorkflowTreeModel, type TreeBranch, type TreePath } from "../components/WorkflowTree";
@@ -532,17 +531,28 @@ export function AgentWorkflow() {
               <button className="vp-close" onClick={closeVoice} aria-label="Close preview"><span className="material-icons">close</span></button>
             </div>
             {inCall ? (
-              /* ⚠️ LIVEKIT WHEN IT IS CONFIGURED, THE ORIGINAL ENGINE OTHERWISE. The
-                 streaming pipeline is the point (the old one took 4.5-6s to speak), but a
-                 missing key or a LiveKit outage must not leave an SE with a dead Start Call
-                 mid-demo — so the fallback is real and stays until this is proven. */
-              /* ⚠️ **THE SCOPE PATH IS THIS PAGE'S, NOT THE BUILT-IN VOICE PAGE'S.** `useBrain`
+              /* ⚠️⚠️ **LIVEKIT IS THE ONLY ENGINE NOW (9/3/2026).** This used to fall back to
+                 the browser-speech engine when LiveKit was unconfigured. That engine's mouth
+                 was Deepgram or ElevenLabs through `/api/tts`, and both vendors were removed
+                 on request — so the fallback would have spoken in the robotic browser voice,
+                 which is worse for a demo than an honest refusal.
+                 ⚠️ **THE SCOPE PATH IS THIS PAGE'S, NOT THE BUILT-IN VOICE PAGE'S.** `useBrain`
                  hardcoded `VOICE_WORKFLOW_SCOPE_PATH`, so without this a call started here
                  would read the CONFIGURED tree and preview a diagram the SE is not looking
                  at — the same wrong-surface bug as reading the profile instead of the page. */
               liveKitReady
                 ? <VoiceCallLive onEnd={() => setInCall(false)} brainOpts={brainOpts} />
-                : <VoiceCall onEnd={() => setInCall(false)} brainOpts={brainOpts} />
+                : (
+                  <div className="vp-body">
+                    <VoicePreviewIllustration />
+                    <h3 className="vp-h">Voice calls are not configured here</h3>
+                    <p className="vp-sub">
+                      The voice agent runs on LiveKit, and this server has no LiveKit
+                      credentials. Add LIVEKIT_URL, LIVEKIT_API_KEY and LIVEKIT_API_SECRET to
+                      enable live test calls.
+                    </p>
+                  </div>
+                )
             ) : (
               <div className="vp-body">
                 <VoicePreviewIllustration />

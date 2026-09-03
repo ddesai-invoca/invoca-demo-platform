@@ -12,14 +12,14 @@
    Each check was verified to FIRE on its own broken shape, not merely to pass on a good
    tree — a check that never fires is indistinguishable from no check.
    ============================================================================= */
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { isStructuralChange } from "../src/data/editGuard";
 import { voiceSystemPrompt, smsSystemPromptForAudit } from "../engine/chat";
 import { emptyWorkflowGreeting } from "../src/data/workflowChrome";
 import { treeToVoicePaths } from "../src/data/voicePaths";
 import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, stepsForZips, toSteps, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
 import { voiceCopy } from "../src/data/voiceCopy";
-import { VOICE_OPTIONS, DEFAULT_VOICE_ID, liveKitVoiceModel, previewModel, isAllowedPreviewModel, voiceOption } from "../src/data/voiceOptions";
+import { VOICE_OPTIONS, DEFAULT_VOICE_ID, liveKitVoiceModel, isKnownVoice, voiceOption } from "../src/data/voiceOptions";
 import { latestTransferredCall, voiceAiRouting, voiceAiScreenpop } from "../src/data/voiceAiArtifacts";
 import { collectNames } from "../src/data/workflowDrawers";
 
@@ -238,9 +238,9 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
   const wf = read("src/screens/AgentWorkflow.tsx");
   check(/agent:\s*agentConfigOf\(/.test(wf), "the voice workflow page registers the agent config beside its tree");
   /* ...and the CALL must read the edited one, not the profile's base. */
-  const vc = read("src/screens/VoiceCall.tsx");
+  const vc = read("src/data/voiceSession.ts");
   check(/specWithConfig\(/.test(vc) && /effTree\?\.agent/.test(vc),
-    "VoiceCall builds its brain from the page's EFFECTIVE agent config");
+    "the voice session builds its brain from the page's EFFECTIVE agent config");
 
   /* A changed greeting must not leave the copy inside `rules` reciting the old one. */
   const reGreeted = specWithConfig(base, { ...cfg, greeting: "Totally new opening line." });
@@ -425,19 +425,21 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
       different field: exactly one of them may own the fetch, and both must call the shared
       helper. */
 {
-  const legacy = read("src/screens/VoiceCall.tsx");
+  /* ⚠️ THE SECOND ENGINE IS GONE (9/3/2026) — the browser-speech pipeline went with Deepgram
+     and ElevenLabs. The invariant it created still matters though: the capture lives in ONE
+     place, and the engine calls it rather than carrying its own copy. That is what stopped a
+     real LiveKit call from silently storing no outcome once. */
+  const shared = read("src/data/voiceSession.ts");
   const live = read("src/screens/VoiceCallLive.tsx");
   const fetches = (src: string) => (src.match(/fetch\(\s*["'`]\/api\/analyze/g) ?? []).length;
-  check(fetches(legacy) + fetches(live) === 1,
-    "exactly ONE /api/analyze call exists across the two voice engines",
-    `legacy ${fetches(legacy)}, live ${fetches(live)}`);
-  check(/export function captureVoiceCall\(/.test(legacy), "captureVoiceCall is the shared capture path");
-  for (const [name, src] of [["VoiceCall", legacy], ["VoiceCallLive", live]] as const) {
-    check(/captureVoiceCall\(profile/.test(src), `${name} captures through the shared path`);
-  }
+  check(fetches(shared) + fetches(live) === 1,
+    "exactly ONE /api/analyze call exists across the voice session and its engine",
+    `shared ${fetches(shared)}, live ${fetches(live)}`);
+  check(/export function captureVoiceCall\(/.test(shared), "captureVoiceCall is the shared capture path");
+  check(/captureVoiceCall\(profile/.test(live), "VoiceCallLive captures through the shared path");
   /* And the shared path must carry BOTH things the artifacts depend on. */
-  check(/destinations:/.test(legacy), "the shared capture sends the workflow's routing destinations");
-  check(/patch\.outcome = d\.outcome/.test(legacy), "the shared capture stores the analysed outcome");
+  check(/destinations:/.test(shared), "the shared capture sends the workflow's routing destinations");
+  check(/patch\.outcome = d\.outcome/.test(shared), "the shared capture stores the analysed outcome");
 }
 
 /* Self-check: a static audit that silently matches nothing reports success forever. */
@@ -590,12 +592,12 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
 {
   /* Ids are real Deepgram Aura-2 models and unique — a typo here is a call that connects
      and then cannot speak, which the SE reads as the whole feature being broken. */
-  check(VOICE_OPTIONS.length > 0 && VOICE_OPTIONS.every((v) => /^aura-2-[a-z]+-en$/.test(v.deepgramModel)),
-    "every voice carries a real aura-2 model id");
+  check(VOICE_OPTIONS.length > 0 && VOICE_OPTIONS.every((v) => /^[a-z]+$/.test(v.id)),
+    "every voice id is a bare gateway voice name");
   check(new Set(VOICE_OPTIONS.map((v) => v.id)).size === VOICE_OPTIONS.length,
     "no two voices share an id");
-  check(VOICE_OPTIONS.every((v) => v.deepgramModel === `aura-2-${v.id}-en`),
-    "the Deepgram id and the short id agree, so the preview and the call cannot diverge");
+  check(VOICE_OPTIONS.every((v) => new RegExp(`^${v.id}\\b`, "i").test(v.label)),
+    "each label names its own voice, so the picker cannot mislabel one");
 
   /* The composite string is what the worker parses; verified against the installed SDK,
      which sets `opts.voice` from exactly this shape. */
@@ -606,19 +608,27 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
   check(liveKitVoiceModel(undefined) === `deepgram/aura-2:${DEFAULT_VOICE_ID}`,
     "and so does an absent one");
 
-  /* ⚠️ THE DEFAULT MUST STAY THE VOICE EVERY DEMO ALREADY HAD. `engine/tts.ts` has always
-     sent `aura-2-thalia-en`; if these drift, shipping this picker silently re-voices every
-     prospect on the platform, which nobody asked for and nobody would attribute to it. */
-  const ttsSrc = read("engine/tts.ts");
-  const dgDefault = /DEEPGRAM_DEFAULT_MODEL\s*=\s*"([^"]+)"/.exec(ttsSrc)?.[1];
-  check(dgDefault === previewModel(DEFAULT_VOICE_ID),
-    "the default voice is still the one engine/tts.ts already used", `tts=${dgDefault}`);
+  /* ⚠️ THE DEFAULT MUST STAY A REAL, EXPLICIT VOICE. It is what an untouched demo speaks in,
+     so a drift here silently re-voices every prospect on the platform and nobody would
+     attribute it to this picker. */
+  check(isKnownVoice(DEFAULT_VOICE_ID) && liveKitVoiceModel(undefined) === `deepgram/aura-2:${DEFAULT_VOICE_ID}`,
+    "the default voice is explicit and known");
 
-  /* The preview allow-list: our own Deepgram key is behind this endpoint. */
-  check(VOICE_OPTIONS.every((v) => isAllowedPreviewModel(v.deepgramModel)),
-    "every offered voice is previewable");
-  check(!isAllowedPreviewModel("aura-2-zeus-en") && !isAllowedPreviewModel("../../etc/passwd"),
-    "a real voice we do NOT offer, and a junk model, are both refused");
+  /* ⚠️ THE PICKED VOICE AND THE WORKER'S OWN FALLBACK MUST NAME THE SAME MODEL. If the worker
+     falls back to a different family than the picker offers, an unparseable voice changes how
+     the agent sounds rather than merely which voice it uses. */
+  const workerModel = /VOICE_TTS_MODEL\?\.trim\(\) \|\| "([^"]+)"/.exec(worker)?.[1];
+  check(!!workerModel && liveKitVoiceModel("thalia").startsWith(`${workerModel}:`),
+    "the picker and the worker's fallback share one model", `worker=${workerModel}`);
+
+  /* The preview endpoint is reachable from a browser and spends LiveKit inference. */
+  const prev = read("engine/voicePreview.ts");
+  check(/isKnownVoice\(opts\.voice\)/.test(prev),
+    "the preview endpoint allow-lists the voice before synthesizing");
+  check(/liveKitVoiceModel\(opts\.voice\)/.test(prev),
+    "and builds the SAME model string the call uses, so the two cannot diverge");
+  check(!isKnownVoice("zeus") && !isKnownVoice("../../etc/passwd"),
+    "a real Aura-2 voice we do NOT offer, and a junk id, are both refused");
 
   /* An unknown id degrades instead of throwing — this is read on every render. */
   check(voiceOption("nonsense").id === DEFAULT_VOICE_ID && voiceOption(null).id === DEFAULT_VOICE_ID,
@@ -651,8 +661,50 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "the client sends the voice with the token request");
 }
 
+
+/* =============================================================================
+   NO DIRECT TTS VENDOR, ANYWHERE — the standing rule from 9/3/2026
+   -----------------------------------------------------------------------------
+   "Completely delete everything related to elevenlabs or deepgram... everything to do with
+   Voice agents has to go through LiveKit." Deleting the code was the easy half; this is what
+   stops it drifting back the next time somebody wants a quick preview or a fallback voice.
+
+   ⚠️ `deepgram/aura-2` and `deepgram/nova-3` are MODEL NAMES inside LiveKit's inference
+   gateway, not vendor API calls — so these checks look for the ENDPOINTS and the KEYS, never
+   for the word "deepgram", which would fire on a correct file and get deleted as a nuisance.
+   ============================================================================= */
+{
+  const files = ["engine/voicePreview.ts", "server.ts", "vite.config.ts", "src/data/voiceSession.ts",
+    "src/screens/AgentWorkflowDetails.tsx", "src/data/liveKitVoice.ts", "agent/voiceAgent.js"];
+  /* ⚠️ COMMENTS ARE STRIPPED FIRST, and that is not laziness — the check fired on its own
+     documentation. Several files legitimately NAME the retired endpoints while explaining why
+     they are gone, and a rule that reddens on a correct file gets deleted as a nuisance. The
+     rule is about code, so only code is searched. Line comments are matched anchored to the
+     line start so a `https://` inside a string is not mistaken for one. */
+  const stripComments = (src: string) => src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const joined = files.map((f) => stripComments(read(f))).join("\n");
+  check(!/api\.deepgram\.com|api\.elevenlabs\.io/.test(joined),
+    "no direct Deepgram or ElevenLabs endpoint is called anywhere");
+  check(!/process\.env\.(DEEPGRAM_API_KEY|ELEVENLABS_API_KEY)|env\.(DEEPGRAM_API_KEY|ELEVENLABS_API_KEY)/.test(joined),
+    "neither vendor's API key is read anywhere");
+  /* The retired provider layer must stay retired. */
+  check(!existsSync("engine/tts.ts"), "engine/tts.ts is gone");
+  check(!existsSync("src/screens/VoiceCall.tsx"), "the browser-speech engine is gone");
+  /* ⚠️ BOTH TWINS, because a route living in only one of them is the drift this repo has
+     already paid for with /api/status and the demo library. */
+  const [dev, prod] = [read("vite.config.ts"), read("server.ts")];
+  for (const [name, src] of [["dev plugin", dev], ["server.ts", prod]] as const) {
+    check(/\/api\/voice-preview/.test(src), `${name} serves /api/voice-preview`);
+    check(!/["'`]\/api\/tts/.test(src), `${name} no longer serves /api/tts`);
+  }
+  /* The preview must refuse rather than guess when LiveKit is absent — it is the ONLY
+     provider now, so an unconfigured server has no voice at all and should say so. */
+  check(/LiveKit is not configured/.test(prod) && /LiveKit is not configured/.test(dev),
+    "an unconfigured server says LiveKit is missing instead of failing obscurely");
+}
+
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (78 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (87 checks + per-profile)");
 process.exit(failures ? 1 : 0);
