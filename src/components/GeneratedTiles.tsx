@@ -25,6 +25,9 @@ export interface PageDataOptions {
      the drawer's paste / import / rewrite controls. Opt-in: omitted everywhere
      else, so no other screen changes. See AiAssistantContext's Scope. */
   questionPath?: string;
+  /* The agent's real opening line when nothing is stored — an extra workflow's own scripted
+     one. Opt-in; see the note on `Scope.greetingFallback`. */
+  greetingFallback?: string;
 }
 export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { pathname } = useLocation();
@@ -32,10 +35,11 @@ export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { registerScope, effectiveData } = useAiAssistant();
   const key = `${profileId}::${pathname}`;
   const questionPath = opts?.questionPath;
+  const greetingFallback = opts?.greetingFallback;
   useEffect(() => {
     if (base == null) return;
-    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath });
-  }, [key, base, profile.customerName, registerScope, questionPath]);
+    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback });
+  }, [key, base, profile.customerName, registerScope, questionPath, greetingFallback]);
   const eff = effectiveData(key);
   return (eff ?? base) as T;
 }

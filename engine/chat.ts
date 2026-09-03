@@ -69,6 +69,18 @@ export interface ChatBrain {
      underneath, so a hand-written prompt can't accidentally produce a wall of
      text or markdown that the phone UI can't render. */
   customSystem?: string;
+  /**
+   * Agent config the operator CHANGED, for a workflow whose `customSystem` replaces the flow.
+   *
+   * ⚠️⚠️ **WITHOUT THIS, EVERY Ask AI EDIT ON SUCH A PAGE IS A SILENT NO-OP.** The
+   * `customSystem` branch below returns before the questions, rules, Q&A and knowledge are
+   * rendered, so an edited question list never reached the model — the drawer reported
+   * success and the agent asked the old questions. Reported 9/3/2026.
+   *
+   * ⚠️ The client sends ONLY what genuinely differs from the prospect's profile, so an
+   * untouched workflow gets nothing appended and reads exactly as its author wrote it.
+   */
+  overrides?: { questions?: string[]; rules?: string[] };
   /* The workflow diagram, when the caller came from a page that has one. Opt-in and
      defaulted to absent, so every existing caller keeps the hardcoded flow below. */
   voicePaths?: VoicePath[];
@@ -194,11 +206,45 @@ export function smsSystemPromptForAudit(brain: ChatBrain): string {
   return buildSystem(brain, false);
 }
 
+/**
+ * The operator's own changes, appended after a workflow's scripted playbook.
+ *
+ * ⚠️ **IT SAYS WHICH SIDE WINS.** Appending a second question list without that produces two
+ * competing instructions, and the model picks one at random — the failure recorded twice in
+ * CLAUDE.md (the column-edit prompt, and the out-of-area script fighting step 3). Empty when
+ * nothing was edited, and the caller drops it.
+ *
+ * ⚠️ The question wording mirrors the main flow's step 2 verbatim, so a question list behaves
+ * the same whichever branch renders it.
+ */
+function overrideBlock(brain: ChatBrain): string {
+  const o = brain.overrides;
+  if (!o) return "";
+  const parts: string[] = [
+    `CONFIGURATION CHANGES — these were set for this agent AFTER the playbook above was written. Where the two disagree, THIS SECTION WINS.`,
+  ];
+  if (o.questions?.length) {
+    parts.push(
+      `Ask these questions ONE AT A TIME, IN THIS EXACT ORDER, waiting for each answer before asking the next. Do not skip any, do not reorder them, do not combine two into one message, and do not add questions of your own. If the customer already answered one, acknowledge it and move to the next in the list:`,
+      o.questions.map((q, i) => `${i + 1}. ${q}`).join("\n"),
+    );
+  }
+  if (o.rules?.length) {
+    parts.push(`Conversation rules:`, o.rules.map((r) => `- ${r}`).join("\n"));
+  }
+  return parts.join("\n");
+}
+
 function buildSystem(brain: ChatBrain, voice: boolean): string {
   /* A workflow-supplied playbook wins over the generated persona, with our
      channel format rules appended so the phone UI stays renderable. */
   if (!voice && brain.customSystem) {
-    return `${brain.customSystem}\n\n${SMS_FORMAT_RULES}`;
+    /* ⚠️ THE OVERRIDE BLOCK STATES ITS OWN PRECEDENCE, which is the only way to append to a
+       hand-written playbook without creating the self-contradicting prompt this file warns
+       about elsewhere. It is emitted ONLY for config that actually differs from the
+       prospect's profile, so a workflow nobody has edited is byte-identical to before. */
+    return [brain.customSystem, overrideBlock(brain), SMS_FORMAT_RULES]
+      .filter(Boolean).join("\n\n");
   }
   const rules = (brain.rules ?? []).map((r) => `- ${r}`).join("\n");
   const qa = (brain.qaPairs ?? [])

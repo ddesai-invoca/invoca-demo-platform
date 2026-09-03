@@ -135,7 +135,17 @@ export interface AssistantEdit { path: string; value: string }
    list" would light them up on Agent Config, AI Recommendations and Knowledge
    Sources too. Only the page whose JOB is those questions passes this, which keeps
    the change to the one screen it was asked for. */
-interface Scope { key: string; customerName: string; baseTitle: string; questionPath?: string }
+interface Scope {
+  key: string; customerName: string; baseTitle: string; questionPath?: string;
+  /* ⚠️ WHAT THE AGENT ACTUALLY OPENS WITH WHEN NOTHING IS STORED (9/3/2026).
+     An extra workflow carries its own scripted opener, and the drawer had no way to know it —
+     so on such a page the row showed a DERIVED default, the model was told that was the
+     "current" opening message, and both were wrong. Opt-in metadata rather than seeded into
+     the base, because the agent scope key is SHARED by every Preview Agent regardless of
+     `?wf=`: seeding it would leak one workflow's opener into the built-in agent and into
+     every other workflow's chat. */
+  greetingFallback?: string;
+}
 /* `hidden` is part of the snapshot so Undo restores a tile you removed. Hiding is
    never destructive: the data stays exactly where it was and only the card stops
    rendering, which is what makes "put it back" free. */
@@ -147,7 +157,7 @@ interface AiAssistantCtx {
   openDrawer: (focus?: AssistantFocus) => void;
   closeDrawer: () => void;
   active: Scope | null;
-  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string }) => void;
+  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string }) => void;
   /* Make a key EDITABLE without making it the active scope. applyEdits refuses a
      key with no base, so a page editing another page's data must ensure that base
      exists first; a second registerScope would do it but is last-write-wins and
@@ -272,12 +282,13 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const openDrawer = useCallback((f?: AssistantFocus) => { setFocus(f ?? null); setOpen(true); }, []);
   const closeDrawer = useCallback(() => setOpen(false), []);
 
-  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string }) => {
+  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string }) => {
     baseRef.current[s.key] = s.baseData;
     setActive((prev) => (
       prev && prev.key === s.key && prev.baseTitle === s.baseTitle && prev.questionPath === s.questionPath
+        && prev.greetingFallback === s.greetingFallback
         ? prev
-        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath }
+        : { key: s.key, customerName: s.customerName, baseTitle: s.baseTitle, questionPath: s.questionPath, greetingFallback: s.greetingFallback }
     ));
   }, []);
 

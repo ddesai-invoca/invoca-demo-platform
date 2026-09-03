@@ -48,6 +48,23 @@ export interface SmsBrain {
   qaPairs: { question: string; answer: string }[];
   knowledge: string[];
   playbook: AgentConfigView["smsPlaybook"] | undefined;
+  /**
+   * Config an SE or Ask AI CHANGED, for a workflow whose own `systemPrompt` replaces the
+   * default flow.
+   *
+   * ⚠️⚠️ **THIS EXISTS BECAUSE `customSystem` SWALLOWED EVERY EDIT ON SUCH A PAGE.**
+   * `buildSystem` returns `customSystem + SMS_FORMAT_RULES` and never reaches the lines that
+   * render the questions, the brand rules, the Q&A or the knowledge list — so on an extra
+   * workflow's Preview Agent, "ask for their ZIP first" applied, reported success, and
+   * changed nothing. Reported directly, 9/3/2026.
+   *
+   * ⚠️ **ONLY WHAT ACTUALLY DIFFERS FROM THE PROFILE GOES IN HERE.** Appending the prospect's
+   * generic playbook questions to a nurture script nobody edited would CONTRADICT that
+   * script, and "a self-contradicting prompt is worse than either rule" is a lesson this repo
+   * has already paid for twice. Untouched config sends nothing and those workflows behave
+   * exactly as they were signed off.
+   */
+  overrides?: { questions?: string[]; rules?: string[] };
 }
 
 function aOrAn(word: string): string {
@@ -96,14 +113,50 @@ export function resolveGreeting(text: string, profile: Profile): string {
 
 /** The `brain` POST body for /api/chat. `wf` is an extra workflow (e.g. a nurture
  *  playbook) whose systemPrompt REPLACES the default sales flow. */
+/** Same-shape comparison, so a re-ordered list counts as a change and a re-render does not. */
+function changed(a: unknown, b: unknown): boolean {
+  return JSON.stringify(a ?? null) !== JSON.stringify(b ?? null);
+}
+
+/**
+ * What the SE or Ask AI has changed, relative to the prospect's own profile.
+ *
+ * Computed from `profile.reports.agentConfig` (the base) against the effective config, which
+ * is why this needs no extra argument: the raw config is already on the profile.
+ */
+function editedSlices(profile: Profile, ac: AgentConfig): SmsBrain["overrides"] {
+  const raw = profile.reports.agentConfig as AgentConfig;
+  const out: NonNullable<SmsBrain["overrides"]> = {};
+  const q = ac?.smsPlaybook?.qualifyingQuestions;
+  if (Array.isArray(q) && q.length && changed(q, raw?.smsPlaybook?.qualifyingQuestions)) out.questions = q.map(String);
+  const r = ac?.brandConversationRules;
+  if (Array.isArray(r) && r.length && changed(r, raw?.brandConversationRules)) out.rules = r.map(String);
+  return out.questions || out.rules ? out : undefined;
+}
+
 export function buildSmsBrain(profile: Profile, ac: AgentConfig, wf?: ExtraWorkflow): SmsBrain {
   return {
     customSystem: wf?.systemPrompt,
     /* Precedence: an extra workflow's scripted line wins (it is the whole point of
        that workflow), then whatever the SE or the AI set, then the derived default.
        Always non-empty now, so the phone never improvises its own opener. */
-    openingMessage: wf?.openingMessage
-      || ac?.smsPlaybook?.greeting?.trim()
+    /* ⚠️⚠️ **AN EXPLICITLY SET GREETING WINS OVER THE WORKFLOW'S SCRIPTED LINE, AND THE OLD
+       ORDER WAS A SILENT NO-OP (9/3/2026).** Reported directly: "in the ask AI feature i
+       asked for a couple of changes, the AI said that they applied but none of them actually
+       applied... the opening message still hasnt changed."
+
+       `wf?.openingMessage` used to come FIRST, and it is read from the RAW profile — so on a
+       Preview Agent opened for an extra workflow, an SE (or Ask AI) could set
+       `smsPlaybook.greeting`, watch the drawer's row update, be told it applied, and hear the
+       phone open with the old line forever. `smsPlaybook.greeting` is absent until somebody
+       sets it (verified across the demos on disk: Avi & Co and Reyes Law both carry a
+       workflow opener and NO stored greeting), so its mere PRESENCE means a human or the
+       assistant put it there — which is exactly the thing that should win.
+
+       Unedited, this is byte-identical to the old behaviour: no stored greeting, so the
+       workflow's own opener is still what the agent says. */
+    openingMessage: ac?.smsPlaybook?.greeting?.trim()
+      || wf?.openingMessage
       || defaultGreeting(profile.customerName, ac?.smsPlaybook),
     agentLabel: wf?.label,
     customerName: profile.customerName,
@@ -112,6 +165,10 @@ export function buildSmsBrain(profile: Profile, ac: AgentConfig, wf?: ExtraWorkf
     qaPairs: ac?.aiRecommendations?.find((r) => r.qaPairs?.length)?.qaPairs ?? [],
     knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
     playbook: ac?.smsPlaybook,
+    /* Only when a custom flow would otherwise swallow them — everywhere else these already
+       reach the prompt through `rules` and `playbook`, and sending them twice would have the
+       agent read one list as an override of itself. */
+    overrides: wf?.systemPrompt ? editedSlices(profile, ac) : undefined,
   };
 }
 

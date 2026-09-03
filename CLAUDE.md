@@ -1211,6 +1211,75 @@ toolbar all present, **zero `.wfd-` elements**) and the SMS workflow's own tab (
 own trigger line, no voice picker, no dead controls). `audit:ai` and `audit:phases` green, `tsc`
 clean on both projects.
 
+### ⚠️⚠️ Ask AI said it applied and nothing changed: TWO no-ops on an extra workflow (9/3/2026)
+Reported directly, from the Preview Agent: *"in the ask AI feature i asked for a couple of
+changes, the AI said that they applied but none of them actually applied to the actual text
+messages, for example the opening message still hasnt changed."*
+
+**Both halves were real, both were silent, and both only bite on a Preview Agent opened for an
+EXTRA workflow (`/agent-studio/agent/preview?wf=<slug>`).** Reproduced on the user's own Avi & Co
+state, whose stored override held their edited greeting and four edited questions.
+
+**1. `wf.openingMessage` OUTRANKED THE AI-EDITABLE GREETING.** `buildSmsBrain` read
+`wf?.openingMessage || ac?.smsPlaybook?.greeting || defaultGreeting(...)` — and `wf` comes from
+the RAW profile, so no edit could ever win. The drawer's row updated, the assistant reported
+success, and the phone opened with the workflow's scripted line forever.
+⚠️ **THE FIX RESTS ON `smsPlaybook.greeting` BEING ABSENT UNTIL SOMEBODY SETS IT** — verified
+across the demos on disk (Avi & Co and Reyes Law both carry a workflow opener and NO stored
+greeting). So its mere PRESENCE means a human or the assistant put it there, which is exactly
+what should win. Order is now explicit-greeting -> workflow opener -> derived default, so an
+UNEDITED workflow is byte-identical to before.
+
+**2. `customSystem` SWALLOWED EVERY OTHER EDIT — the bigger half.** `buildSystem` does
+`if (!voice && brain.customSystem) return customSystem + SMS_FORMAT_RULES`, returning **before**
+the lines that render the questions, the brand rules, the Q&A and the knowledge list. So on such
+a page an edited question list never reached the model at all. That is what "a couple of changes,
+none of them applied" actually was.
+⚠️⚠️ **ONLY WHAT GENUINELY DIFFERS FROM THE PROFILE IS APPENDED, and that gate is the whole
+design.** Appending a prospect's generic playbook questions to a nurture script nobody edited
+would CONTRADICT that script — "a self-contradicting prompt is worse than either rule", which
+this file already records twice (the column-edit prompt, and the out-of-area script fighting
+step 3). `editedSlices()` diffs the effective config against `profile.reports.agentConfig`, so
+untouched workflows send nothing and read exactly as authored. Same
+regenerate-only-when-the-source-changed pattern as the voice greeting sync and `stepsForZips`.
+⚠️ **THE APPENDED BLOCK STATES ITS OWN PRECEDENCE** ("Where the two disagree, THIS SECTION
+WINS") and mirrors step 2's question wording verbatim, so a question list behaves the same
+whichever branch renders it. Without that sentence the model has two competing lists and picks
+one at random.
+
+**3. AND THE DRAWER WAS SHOWING A LINE THE AGENT NEVER SENDS.** Its greeting memo carried the
+comment *"The SAME derivation the phone uses"* and had stopped being true: it read
+`smsPlaybook.greeting || defaultGreeting(...)` with no workflow term. So the row displayed a
+DERIVED default and the prompt handed the model that same wrong text as the current opening
+message — which is why the assistant's edits read as plausible and landed nowhere.
+⚠️ **THE OPENER IS PASSED AS SCOPE METADATA (`Scope.greetingFallback`), NOT SEEDED INTO THE
+BASE.** The agent scope key is `<profileId>::/agent-studio/agent/preview` for EVERY Preview
+Agent regardless of `?wf=`, so seeding it would leak one workflow's opener into the built-in
+agent and into every other workflow's chat. Opt-in, defaulted absent, threaded
+`PhonePreview -> usePageData -> registerScope -> the drawer`.
+
+**Verified on the user's own data, end to end.** With the fix, `/api/chat`'s request body
+carries `openingMessage` = their edited greeting and `overrides.questions` = all four of their
+edited questions, while `hasCustomSystem` stays true so the workflow's playbook still governs.
+The phone's first bubble is their line rather than the scripted one.
+⚠️ **A NOTE ON WHAT WAS PROVED:** the config now REACHES the model with explicit
+in-this-exact-order instructions. Whether the model then asks them in order is model behaviour,
+not plumbing — one reply is not proof of that, and this section does not claim it.
+
+**`npm run audit:ai` gained 10 checks**, and they call the real `buildSmsBrain` +
+`smsSystemPromptForAudit` against a real workflow shape rather than grepping: an unedited
+workflow keeps its opener / sends no overrides / gains no block, an edited greeting beats the
+scripted opener, edited questions and rules survive `customSystem`, the block declares
+precedence, the workflow's playbook is still present, and both ends of the drawer fallback are
+wired.
+⚠️ Each was broken on purpose and seen to fire: restoring the old precedence (1 red), restoring
+the early return (3 red), removing the drawer fallback (1 red), and deleting the precedence
+sentence (1 red).
+
+⚠️ **A LESSON WORTH THE REPEAT: "the drawer said it applied" IS NOT EVIDENCE.** That is now the
+fourth time in this file. The reliable test is to read the REQUEST BODY the agent is sent, which
+is what settled it here — patching `fetch` in the page and inspecting `brain`.
+
 ### ⚠️⚠️ STANDING RULE: ALL VOICE GOES THROUGH LIVEKIT — Deepgram and ElevenLabs are DELETED (9/3/2026)
 Asked for directly: *"completely delete everything related to elevenlabs or deepgram, i no
 longer want to use them for anything, I am going to remove their API credentials locally and on

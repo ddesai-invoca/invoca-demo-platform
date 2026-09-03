@@ -189,7 +189,16 @@ export function AiAssistantDrawer() {
        DISPLAY resolves it, so the row reads as the text the phone actually sends.
        Showing the raw token would have the SE reading "Hi {name}," on screen;
        sending the resolved one would have the model bake a literal first name in. */
-    const raw = (getByPath(data, GREETING_PATH) as string) || defaultGreeting(active.customerName, data?.smsPlaybook);
+    /* ⚠️⚠️ **THE WORKFLOW'S OWN OPENER SITS BETWEEN THE STORED ONE AND THE DERIVED DEFAULT,
+       AND ITS ABSENCE HERE WAS HALF OF A REPORTED BUG (9/3/2026).** This comment used to say
+       "the SAME derivation the phone uses" and that had stopped being true: `buildSmsBrain`
+       also considers an extra workflow's scripted `openingMessage`, which this did not. On a
+       Preview Agent opened for such a workflow the row therefore showed a DERIVED default the
+       agent never sends, and the prompt handed the model that same wrong text as the current
+       opening message. Now the three terms match the phone's, in the same order. */
+    const raw = (getByPath(data, GREETING_PATH) as string)
+      || active.greetingFallback
+      || defaultGreeting(active.customerName, data?.smsPlaybook);
     return { raw, display: resolveGreeting(raw, profile) };
   }, [active, questionPath, qKey, effectiveData, profile]);
   const scopeLabel = focus?.scope === "tile" ? (focus.label || "This tile")

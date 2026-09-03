@@ -15,6 +15,8 @@ import { isLockedEdit } from "../src/data/editGuard.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { collectNames } from "../src/data/workflowDrawers.ts";
 import { emptyWorkflowTree, ZERO_TRIGGER } from "../src/data/workflowChrome.ts";
+import { buildSmsBrain } from "../src/data/smsBrain.ts";
+import { smsSystemPromptForAudit } from "../engine/chat.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -353,6 +355,94 @@ console.log("\nThe SMS workflow template's node names are locked");
   editable.every((pth) => !isLockedEdit(tree, pth))
     ? ok("and the use cases below stay editable, which is the whole point")
     : bad(`a use-case edit is refused: ${editable.find((pth) => isLockedEdit(tree, pth))}`);
+}
+
+
+/* =============================================================================
+   AN Ask AI EDIT MUST REACH THE SMS AGENT, EVEN ON AN EXTRA WORKFLOW
+   -----------------------------------------------------------------------------
+   Reported 9/3/2026: "the AI said that they applied but none of them actually applied...
+   the opening message still hasnt changed." Two independent silent no-ops, both only on a
+   Preview Agent opened for an extra workflow:
+
+     1. `wf.openingMessage` came FIRST in `buildSmsBrain`, ahead of the AI-editable
+        `smsPlaybook.greeting` — and it is read from the RAW profile, so the edit could never
+        win no matter how many times it was made.
+     2. `buildSystem` returns early on `customSystem`, so the questions, rules, Q&A and
+        knowledge were never rendered into the prompt at all.
+
+   These call the real functions against a real workflow shape, because both defects were
+   invisible to types and to every existing check.
+   ============================================================================= */
+console.log("\nAsk AI edits reach the SMS agent (extra workflows)");
+{
+  const wf = {
+    slug: "sms-nurture", label: "Test - SMS - Nurture", channel: "sms" as const,
+    openingMessage: "Hi {name}, this is the workflow's own scripted opener.",
+    systemPrompt: "You are a nurture agent. Re-engage the customer warmly.",
+    triggeredBy: "No-response follow-up", startLabel: "classify", branches: [],
+  } as never;
+  const profile = {
+    customerName: "Testco", industry: "Testing",
+    reports: { agentConfig: {
+      brandConversationRules: ["Original rule."],
+      smsPlaybook: { bookingType: "appointment", qualifyingQuestions: ["Original question?"] },
+    }, voiceScreenpop: { callerName: "Dana Probe" }, extraWorkflows: [wf] },
+  } as never;
+  const raw = (profile as never as { reports: { agentConfig: unknown } }).reports.agentConfig as never;
+
+  /* ⚠️ UNTOUCHED MUST BE BYTE-IDENTICAL. Appending a prospect's generic playbook to a
+     hand-written nurture script nobody edited would contradict it — the self-contradicting
+     prompt this repo has already paid for twice. */
+  const b0 = buildSmsBrain(profile, raw, wf);
+  b0.openingMessage === wf.openingMessage
+    ? ok("an unedited workflow still opens with its own scripted line")
+    : bad(`an unedited workflow's opener changed: ${b0.openingMessage}`);
+  b0.overrides === undefined
+    ? ok("and sends no config overrides")
+    : bad(`an unedited workflow sent overrides: ${JSON.stringify(b0.overrides)}`);
+  const p0 = smsSystemPromptForAudit(b0 as never);
+  !/CONFIGURATION CHANGES/.test(p0)
+    ? ok("so its prompt carries no override block")
+    : bad("an unedited workflow's prompt gained an override block");
+
+  /* THE REPORTED BUG: an edited greeting must win. */
+  const edited = { ...raw, smsPlaybook: { ...raw.smsPlaybook, greeting: "Hi {name}, the edited opener." } };
+  buildSmsBrain(profile, edited as never, wf).openingMessage === "Hi {name}, the edited opener."
+    ? ok("an edited greeting BEATS the workflow's scripted opener")
+    : bad("an edited greeting is still ignored — the reported no-op is back");
+
+  /* THE SECOND BUG: edited questions must survive `customSystem`. */
+  const qs = ["Edited question one?", "Edited question two?"];
+  const b2 = buildSmsBrain(profile, { ...raw, smsPlaybook: { ...raw.smsPlaybook, qualifyingQuestions: qs } } as never, wf);
+  const p2 = smsSystemPromptForAudit(b2 as never);
+  qs.every((q) => p2.includes(q))
+    ? ok("edited questions reach the prompt despite a custom system prompt")
+    : bad("edited questions are still swallowed by customSystem");
+  /* ...and must say which side wins, or the model picks one at random. */
+  /THIS SECTION WINS/.test(p2)
+    ? ok("and the override block states its own precedence")
+    : bad("the override block does not say it outranks the playbook above");
+  p2.includes(wf.systemPrompt)
+    ? ok("while the workflow's own playbook is still there")
+    : bad("appending the overrides dropped the workflow's playbook");
+  /* An edited rule list travels the same way. */
+  const b3 = buildSmsBrain(profile, { ...raw, brandConversationRules: ["A brand new rule."] } as never, wf);
+  /A brand new rule\./.test(smsSystemPromptForAudit(b3 as never))
+    ? ok("edited brand rules reach it too")
+    : bad("edited brand rules are still swallowed");
+
+  /* ⚠️ AND THE DRAWER MUST SHOW WHAT THE PHONE WILL SEND. Its row used to fall back to a
+     DERIVED default, so on such a page it displayed an opening message the agent never sends
+     and handed the model that same wrong text as the "current" one. */
+  const drawer = readAny("src/components/AiAssistantDrawer.tsx");
+  /active\.greetingFallback/.test(drawer)
+    ? ok("the drawer's greeting row considers the workflow's own opener")
+    : bad("the drawer can still show an opening message the agent never sends");
+  const phone = readAny("src/screens/PhonePreview.tsx");
+  /greetingFallback:\s*wf\?\.openingMessage/.test(phone)
+    ? ok("and the Preview Agent page tells it what that opener is")
+    : bad("the Preview Agent page no longer passes the workflow's opener to the drawer");
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");

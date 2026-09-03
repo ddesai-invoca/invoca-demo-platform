@@ -133,10 +133,15 @@ function useBrain(wfSlug?: string | null) {
   /* Opt in to the drawer's question tools. This is the page whose whole purpose is
      what the agent asks, so it is the one place the paste / import / use-case
      controls belong. */
-  const ac = usePageData(base, { questionPath: QUESTIONS_PATH });
   const wf = wfSlug
     ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
     : undefined;
+  /* ⚠️ TELL THE DRAWER WHAT THIS AGENT ACTUALLY OPENS WITH. Without it the drawer falls back
+     to a DERIVED default and shows an opening message this workflow never sends — which is
+     what let Ask AI report a change to a line nobody would hear. Passed as scope metadata
+     rather than folded into `base`, because the agent scope key is shared by every Preview
+     Agent regardless of `?wf=` and seeding it would leak this opener into the others. */
+  const ac = usePageData(base, { questionPath: QUESTIONS_PATH, greetingFallback: wf?.openingMessage });
   /* Shape comes from data/smsBrain.ts, shared with the SMS workflow page's
      "Preview Workflow" chat drawer. Both are previews of ONE agent, so they must
      ask the same questions in the same order; two local copies of this object
