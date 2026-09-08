@@ -439,7 +439,6 @@ export function derive(p: CustomerProfile, override?: ResolvedPlace) {
   /* Where the map centres, and the label beside it. ONE resolution, so the city, its state
      and its coordinates can never come from different places. `override` is the SE's own ZIP
      choice from the search screen when they have made one. */
-  const vs = r.voiceScreenpop;
   const place = override ?? companyPlace(p);
   const usedFallback = place.source === "fallback";
   const city = place.label;

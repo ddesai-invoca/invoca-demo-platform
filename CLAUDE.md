@@ -2980,6 +2980,16 @@ Flow of the pieces:
   before — that's how a missing `CallDetailView` import + these param bugs went unnoticed;
   no full generation had been run in a while). Run BOTH `tsc -p tsconfig.app.json` and
   `-p tsconfig.node.json`.
+  ⚠️⚠️ **`npx tsc --noEmit` CHECKS ZERO FILES, AND IT EXITS 0 — measured 9/8/2026 after a
+  Render build failed on an error it had reported clean.** The root `tsconfig.json` is a
+  SOLUTION file: `"files": []` plus two references. So the bare command compiles nothing and
+  is indistinguishable from success, while `-p tsconfig.app.json` covers 161 files and
+  `-p tsconfig.node.json` 19. Everything green from the bare command means nothing.
+  **Use `npm run typecheck` (an alias for `tsc -b`, which is exactly what `npm run build`
+  runs), and it is now the FIRST step of `npm run audit`** so a type error cannot hide behind
+  a wall of passing checks. ⚠️ Two ways the same reading went wrong in one session: this, and
+  `npx tsc --noEmit 2>&1 | head; echo $?` reporting **head's** exit status. A type-check is
+  only evidence if you can name the files it read.
 - **`/api/generate`** — a Vite dev-server plugin in `vite.config.ts`
   (`configureServer`). **Streams Server-Sent Events** (`text/event-stream`): a
   `{type:"progress",phase,status}` event for every phase start/done (fed by
