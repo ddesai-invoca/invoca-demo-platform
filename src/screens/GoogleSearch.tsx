@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { useLocationOverride } from "../data/locationOverride";
 import {
   derive, trackedSiteUrl, tileXY, MAPBOX_TOKEN, Z, TS,
 } from "../data/prospectPlace";
@@ -396,9 +397,84 @@ function OrganicResult({ r }: { r: Organic }) {
 
 /* ------------------------------------------------------------- the screen */
 
+/* =============================================================================
+   The "Use precise location" pill, made real (9/8/2026)
+   -----------------------------------------------------------------------------
+   Google's own pill is inert chrome in the capture; asked for directly, it now takes a ZIP
+   and re-points the whole screen — the ads, the local pack, the map and the footer, since
+   every one of those reads the same resolved place.
+
+   ⚠️ **IT LOOKS EXACTLY AS CAPTURED UNTIL IT IS CLICKED.** The resting state is the same
+   pill with the same target glyph and the same words, so a screenshot of this screen is
+   unchanged; the input only exists while it is open. Making it visibly a form would be
+   adding a control Google does not show.
+   ============================================================================= */
+function LocationPill({ loc }: { loc: ReturnType<typeof useLocationOverride> }) {
+  const [open, setOpen] = useState(false);
+  const [zip, setZip] = useState("");
+  const [err, setErr] = useState("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => { if (open) inputRef.current?.focus(); }, [open]);
+
+  const submit = async () => {
+    setErr("");
+    const msg = await loc.apply(zip);
+    if (msg) { setErr(msg); return; }
+    setZip(""); setOpen(false);
+  };
+
+  if (!open) {
+    return (
+      <>
+        <button className="gs-loc-pill" onClick={() => { setErr(""); setOpen(true); }}
+          title="Set the search location by ZIP code">
+          <Icon d={P.target} size={16} />Use precise location
+        </button>
+        {/* Only shown once a ZIP is in force, so the default screen is untouched. */}
+        {loc.place && (
+          <button className="gs-loc-reset" onClick={loc.clear}
+            title="Back to this business's own location">Reset</button>
+        )}
+      </>
+    );
+  }
+  return (
+    <span className="gs-loc-form">
+      <Icon d={P.target} size={16} />
+      <input
+        ref={inputRef}
+        className="gs-loc-input"
+        value={zip}
+        inputMode="numeric"
+        maxLength={5}
+        placeholder="ZIP code"
+        aria-label="ZIP code"
+        /* Digits only, so the field cannot hold something the endpoint will reject. */
+        onChange={(e) => { setZip(e.target.value.replace(/\D/g, "").slice(0, 5)); setErr(""); }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") void submit();
+          if (e.key === "Escape") { setOpen(false); setErr(""); setZip(""); }
+        }}
+      />
+      <button className="gs-loc-go" onClick={() => void submit()} disabled={loc.busy || zip.length !== 5}>
+        {loc.busy ? "…" : "Set"}
+      </button>
+      {/* ⚠️ THE FAILURE IS SHOWN, NOT SWALLOWED. An unknown ZIP resolves to nothing rather
+          than to an approximation, so the SE has to be told which one it was. */}
+      {err && <span className="gs-loc-err">{err}</span>}
+    </span>
+  );
+}
+
 export function GoogleSearch() {
   const { profile } = useProfile();
-  const d = derive(profile);
+  /* ⚠️ THE SE'S OWN ZIP WINS OVER THE PROSPECT'S OWN LOCATION, and nothing else does.
+     `derive` takes it as an argument rather than reading the store itself, so the module
+     stays a pure function of (profile, choice) and the ChatGPT screen resolves the SAME way
+     from the SAME choice — the whole reason prospectPlace is shared. */
+  const loc = useLocationOverride(profile.id);
+  const d = derive(profile, loc.place ?? undefined);
   const [query, setQuery] = useState(d.query);
 
   const md = profile.reports.marketingDashboard;
@@ -435,9 +511,11 @@ export function GoogleSearch() {
      FALLBACK location while the state came from the live screenpop. That is the
      same label/coordinate mismatch prospectPlace itself warns about, so the two
      halves have to come from one source or the other, never both. */
-  const st = profile.reports.voiceScreenpop?.state;
-  const locLabel = d.city.includes(",") ? d.city
-    : st ? `${d.shortCity}, ${st}` : d.shortCity;
+  /* ⚠️⚠️ THIS READ `voiceScreenpop.state` — THE CALLER'S STATE — UNTIL 9/8/2026, which is the
+     "Santa Barbara, TX" bug prospectPlace warns about, still live in this screen. `derive`
+     now returns the state that belongs to the city it resolved, so there is nothing to
+     recombine and the two halves cannot disagree. */
+  const locLabel = d.city.includes(",") ? d.city : `${d.shortCity}, ${d.state}`;
 
   /* prospectPlace builds rival names from six templates and drops any that
      collide with the prospect's own name, so in principle a name could come
@@ -610,7 +688,7 @@ export function GoogleSearch() {
         <div className="gs-loc">
           <Icon d={P.pin} size={16} />
           <b>{locLabel}</b>
-          <span className="gs-loc-pill"><Icon d={P.target} size={16} />Use precise location</span>
+          <LocationPill loc={loc} />
           <span className="gs-kebab"><Icon d={P.kebab} size={16} /></span>
         </div>
 

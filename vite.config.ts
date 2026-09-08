@@ -360,6 +360,38 @@ function assistantApi(apiKey: string | undefined): Plugin {
   }
 }
 
+/* Dev twin of GET /api/zip — see server.ts. Kept in sync per the standing rule for
+   these endpoint pairs. */
+function zipApi(placesKey: string | undefined): Plugin {
+  return {
+    name: 'invoca-zip-api',
+    configureServer(server) {
+      server.middlewares.use('/api/zip', async (req, res, next) => {
+        if (req.method !== 'GET') return next()
+        const send = (code: number, body: unknown) => {
+          res.statusCode = code
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(body))
+        }
+        try {
+          const zip = new URL(req.url ?? '', 'http://x').searchParams.get('zip') ?? ''
+          if (!/^\d{5}$/.test(zip)) return send(400, { error: 'Enter a 5-digit US ZIP code.' })
+          if (!placesKey) return send(501, { error: 'Location lookup is not configured on this server.' })
+          const { geocodeZip } = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/places.ts')).href
+          )
+          const place = await geocodeZip(zip, placesKey)
+          if (!place) return send(404, { error: `We could not find ZIP ${zip}.` })
+          send(200, { place })
+        } catch (e: any) {
+          console.error('[zip] failed:', e)
+          send(500, { error: e?.message || 'Location lookup failed.' })
+        }
+      })
+    },
+  }
+}
+
 /* Dev-only endpoint: POST /api/analyze { customerName, bookingTerm, customerNoun,
    transcript } → extracted SMS signals (fast Haiku). Powers the live-captured
    conversation's Analysis tab in the AI SMS Conversation Intelligence report. */
@@ -509,6 +541,7 @@ export default defineConfig(({ mode }) => {
       chatApi(apiKey),
       assistantApi(apiKey),
       analyzeApi(apiKey),
+      zipApi(env.GOOGLE_PLACES_API_KEY || process.env.GOOGLE_PLACES_API_KEY),
       voicePreviewApi({ url: env.LIVEKIT_URL, apiKey: env.LIVEKIT_API_KEY, apiSecret: env.LIVEKIT_API_SECRET }),
       livekitApi(env),
     ],

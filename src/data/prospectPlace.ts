@@ -62,29 +62,174 @@ export function trackedSiteUrl(domain: string): string {
   return u.toString();
 }
 
-const CITY_LL: Record<string, [number, number]> = {
-  "san francisco": [37.7749, -122.4194], "santa barbara": [34.4208, -119.6982],
-  "los angeles": [34.0522, -118.2437], "san diego": [32.7157, -117.1611],
-  "thousand oaks": [34.1706, -118.8376], "sacramento": [38.5816, -121.4944],
-  "san jose": [37.3382, -121.8863], "portland": [45.5152, -122.6784],
-  "seattle": [47.6062, -122.3321], "phoenix": [33.4484, -112.0740],
-  "denver": [39.7392, -104.9903], "dallas": [32.7767, -96.7970],
-  "fort worth": [32.7555, -97.3308], "houston": [29.7604, -95.3698],
-  "austin": [30.2672, -97.7431], "san antonio": [29.4241, -98.4936],
-  "orlando": [28.5383, -81.3792], "winter park": [28.6000, -81.3392],
-  "tampa": [27.9506, -82.4572], "miami": [25.7617, -80.1918],
-  "jacksonville": [30.3322, -81.6557], "atlanta": [33.7490, -84.3880],
-  "charlotte": [35.2271, -80.8431], "raleigh": [35.7796, -78.6382],
-  "nashville": [36.1627, -86.7816], "chicago": [41.8781, -87.6298],
-  "detroit": [42.3314, -83.0458], "minneapolis": [44.9778, -93.2650],
-  "kansas city": [39.0997, -94.5786], "columbus": [39.9612, -82.9988],
-  "cleveland": [41.4993, -81.6944], "pittsburgh": [40.4406, -79.9959],
-  "philadelphia": [39.9526, -75.1652], "new york": [40.7128, -74.0060],
-  "boston": [42.3601, -71.0589], "baltimore": [39.2904, -76.6122],
-  "washington": [38.9072, -77.0369], "richmond": [37.5407, -77.4360],
-  "las vegas": [36.1699, -115.1398], "salt lake city": [40.7608, -111.8910],
-  "duluth": [34.0029, -84.1446],
+/* =============================================================================
+   THE CITY TABLE — coordinates AND state in ONE entry
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ **ONE ENTRY CARRIES BOTH BECAUSE THE TWO HALVES MUST NEVER BE COMBINED FROM
+   DIFFERENT SOURCES.** This file already warned that "label and coordinates must always
+   resolve TOGETHER" after a fallback city was recombined with a live screenpop state and
+   printed "Santa Barbara, TX" for Reyes Law. `GoogleSearch` was STILL doing the same thing
+   as of 9/8/2026 — completing a city from this table with `voiceScreenpop.state`, i.e. the
+   CALLER's state — so the state now travels with the city and no caller has to be consulted.
+
+   ⚠️⚠️ **THE COORDINATES ARE THE HAND-CHECKED ONES; DO NOT BULK-REPLACE THEM FROM A
+   GEOCODER.** Verified 9/8/2026 by geocoding every key through the Google Places API: 39 of
+   41 agreed to within 0.05 degrees, and the two that disagreed showed the API was WRONG for
+   this app, not the table — a bare city name is ambiguous, so "washington" came back as
+   Washington STATE and "duluth" as Duluth MINNESOTA, where this app means Washington DC and
+   Duluth GEORGIA (metro Atlanta, the same place `ZIP_PLACE` maps 30097 to). Their states are
+   therefore set by hand and marked below.
+
+   ⚠️ **AMBIGUITY IS THE STANDING LIMITATION OF SUBSTRING MATCHING HERE.** Keys are matched by
+   longest-substring against a location NAME, so a key cannot be qualified by state:
+   "greensboro" resolves to Greensboro GA because that is where the one prospect naming it
+   actually is, and a future prospect with a Greensboro NC office would get Georgia. Prefer
+   adding a key only when a real prospect needs it, and leave the rest to the ZIP override on
+   the search screen, which resolves any US ZIP for real.
+   ============================================================================= */
+const CITIES: Record<string, { ll: [number, number]; st: string }> = {
+  "atlanta": { ll: [33.7490, -84.3880], st: "GA" },
+  "austin": { ll: [30.2672, -97.7431], st: "TX" },
+  "baltimore": { ll: [39.2904, -76.6122], st: "MD" },
+  "boston": { ll: [42.3601, -71.0589], st: "MA" },
+  "charlotte": { ll: [35.2271, -80.8431], st: "NC" },
+  "chicago": { ll: [41.8781, -87.6298], st: "IL" },
+  "cleveland": { ll: [41.4993, -81.6944], st: "OH" },
+  "columbus": { ll: [39.9612, -82.9988], st: "OH" },
+  "dallas": { ll: [32.7767, -96.7970], st: "TX" },
+  "denver": { ll: [39.7392, -104.9903], st: "CO" },
+  "detroit": { ll: [42.3314, -83.0458], st: "MI" },
+  /* ⚠️ Duluth GA (metro Atlanta), not Minnesota — see above. */
+  "duluth": { ll: [34.0029, -84.1446], st: "GA" },
+  "fort worth": { ll: [32.7555, -97.3308], st: "TX" },
+  "greensboro": { ll: [33.5757, -83.1824], st: "GA" },
+  "houston": { ll: [29.7604, -95.3698], st: "TX" },
+  "jacksonville": { ll: [30.3322, -81.6557], st: "FL" },
+  "kansas city": { ll: [39.0997, -94.5786], st: "MO" },
+  "las vegas": { ll: [36.1699, -115.1398], st: "NV" },
+  "los angeles": { ll: [34.0522, -118.2437], st: "CA" },
+  "miami": { ll: [25.7617, -80.1918], st: "FL" },
+  "minneapolis": { ll: [44.9778, -93.2650], st: "MN" },
+  "nashville": { ll: [36.1627, -86.7816], st: "TN" },
+  "new york": { ll: [40.7128, -74.0060], st: "NY" },
+  "orlando": { ll: [28.5383, -81.3792], st: "FL" },
+  "philadelphia": { ll: [39.9526, -75.1652], st: "PA" },
+  "phoenix": { ll: [33.4484, -112.0740], st: "AZ" },
+  "pittsburgh": { ll: [40.4406, -79.9959], st: "PA" },
+  "portland": { ll: [45.5152, -122.6784], st: "OR" },
+  "raleigh": { ll: [35.7796, -78.6382], st: "NC" },
+  "richmond": { ll: [37.5407, -77.4360], st: "VA" },
+  "sacramento": { ll: [38.5816, -121.4944], st: "CA" },
+  "salt lake city": { ll: [40.7608, -111.8910], st: "UT" },
+  "san antonio": { ll: [29.4241, -98.4936], st: "TX" },
+  "san diego": { ll: [32.7157, -117.1611], st: "CA" },
+  "san francisco": { ll: [37.7749, -122.4194], st: "CA" },
+  "san jose": { ll: [37.3382, -121.8863], st: "CA" },
+  "santa barbara": { ll: [34.4208, -119.6982], st: "CA" },
+  "seattle": { ll: [47.6062, -122.3321], st: "WA" },
+  "tampa": { ll: [27.9506, -82.4572], st: "FL" },
+  "thousand oaks": { ll: [34.1706, -118.8376], st: "CA" },
+  /* ⚠️ DC, not the state — see above. */
+  "washington": { ll: [38.9072, -77.0369], st: "DC" },
+  "winter park": { ll: [28.6000, -81.3392], st: "FL" },
 };
+
+/* =============================================================================
+   WHERE THE BUSINESS ACTUALLY IS
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ **THE LOCATION MUST BE ONE OF THE PROSPECT'S OWN LOCATIONS (9/8/2026).** Asked for
+   directly, looking at the search screen: *"In the past i asked you to default to Santa
+   Barbara, CA for the location, i no longer want you to do that, the location has to be one
+   of the locations where the business actually is."*
+
+   ⚠️⚠️ **TWO SEPARATE DEFECTS WERE FOUND BY MEASURING ALL 27 PROFILES, and the second was
+   the worse one:**
+     1. **12 of 27 fell back to Santa Barbara** — and every one of them had real locations
+        sitting unused two fields away. Reyes Law has Dallas, Houston and Fort Worth offices;
+        Vector Security has Pittsburgh and Philadelphia; Roto-Rooter has Chicago.
+     2. **14 prospects showed the SCREENPOP CALLER'S CITY as though it were the company's.**
+        That source was second in the old preference order, and a caller is a CUSTOMER, not a
+        location — Mattress Firm rendered "Portland, OR" while its stores are Houston, Dallas
+        and Atlanta. It is dropped entirely as a location source.
+
+   `opsDashboard.locationHandling` is the right source and was already there: it is a
+   COMPLETE PARTITION of the prospect's call volume by site, every profile carries four rows,
+   and the Location Comparison dashboard renders the same names. Measured after the change:
+   20 of 23 prospects resolve to one of their own locations.
+   ============================================================================= */
+
+/** The full table entry for the longest city key contained in `text`. */
+function matchCity(text: string): { key: string; ll: [number, number]; st: string } | null {
+  const s = text.toLowerCase();
+  let best = "";
+  for (const k of Object.keys(CITIES)) if (s.includes(k) && k.length > best.length) best = k;
+  return best ? { key: best, ...CITIES[best] } : null;
+}
+
+/** "pittsburgh" -> "Pittsburgh, PA" — one canonical format, state included. */
+function cityLabel(key: string, st: string): string {
+  return `${key.replace(/\b\w/g, (c) => c.toUpperCase())}, ${st}`;
+}
+
+/**
+ * The prospect's own site names, in the order the dashboard lists them.
+ *
+ * ⚠️ THE COLUMN IS FOUND BY HEADER, never by index — the standing rule for these tables,
+ * because the engine reordering `locationHandling.columns` would otherwise silently hand back
+ * a call count where a place name is expected. Rows are `{ cells: [...] }`; there is no
+ * `name` field, which is what made a first probe of this report a false negative.
+ */
+export function companyLocations(p: CustomerProfile): string[] {
+  const lh = p.reports.opsDashboard?.locationHandling;
+  if (!lh?.rows?.length) return [];
+  const i = lh.columns.findIndex((c) => /location|office|branch|store|site|facility|clinic|center|centre/i.test(c));
+  const col = i === -1 ? 0 : i;
+  return lh.rows.map((r) => r.cells?.[col]).filter((x): x is string => !!x && x.trim().length > 0);
+}
+
+export interface ResolvedPlace {
+  /** "Pittsburgh, PA" */
+  label: string;
+  ll: [number, number];
+  st: string;
+  /** Which of the prospect's own fields answered, for the audit and for `address`. */
+  source: "location" | "serviceArea" | "zip" | "fallback";
+  /** The site name that matched, when a location row did. */
+  matched?: string;
+}
+
+/**
+ * Resolve where the business is, from the prospect's own data only.
+ *
+ * ⚠️ **A CALLER'S CITY IS NOT A COMPANY LOCATION** and is deliberately absent from this
+ * order. See the note above for what that produced.
+ * ⚠️ **THE FALLBACK IS KEPT ON PURPOSE, and is now reachable by almost nothing.** Asked for
+ * when the three profiles that name no place anywhere were put to the user: Marriott, whose
+ * "locations" are reservation centres rather than hotels, and the two fictional healthcare
+ * demos, whose clinic names are invented. Every other prospect resolves from its own data,
+ * and an SE can override any of them by ZIP on the search screen.
+ */
+export function companyPlace(p: CustomerProfile): ResolvedPlace {
+  for (const name of companyLocations(p)) {
+    const hit = matchCity(name);
+    if (hit) return { label: cityLabel(hit.key, hit.st), ll: hit.ll, st: hit.st, source: "location", matched: name };
+  }
+  /* The prospect's own stated service area, scanned rather than trimmed to a short label:
+     Reynolds Lake Oconee's reads "the Reynolds Lake Oconee community in Greensboro, Georgia,
+     ZIP code 30642, about 85 miles east of Atlanta", which `shortArea`'s 34-character cap
+     threw away whole even though the city it names is right there. */
+  const area = p.reports.agentConfig?.serviceArea;
+  if (area) {
+    const hit = matchCity(area);
+    if (hit) return { label: cityLabel(hit.key, hit.st), ll: hit.ll, st: hit.st, source: "serviceArea" };
+  }
+  return { label: DEFAULT_PLACE.label, ll: DEFAULT_PLACE.ll, st: "CA", source: "fallback" };
+}
+
+/* Kept as the shape every existing caller expects. */
+const CITY_LL: Record<string, [number, number]> = Object.fromEntries(
+  Object.entries(CITIES).map(([k, v]) => [k, v.ll]),
+);
 
 /* An exact key lookup silently mismatched: "Dallas–Fort Worth Metroplex" isn't
    a key, so it fell back to San Francisco while the label still read Dallas —
@@ -129,10 +274,15 @@ export function tileXY(lat: number, lon: number) {
    server-side. It should be URL-restricted in the Mapbox dashboard. The full
    reasoning, and why Mapbox rather than CARTO, is with MapCard in
    screens/ChatGptAd.tsx. */
-export const MAPBOX_TOKEN = (import.meta.env as Record<string, string | undefined>)
-  .VITE_MAPBOX_TOKEN;
+/* ⚠️ OPTIONAL-CHAINED SO NODE CAN IMPORT THIS MODULE AT ALL. `import.meta.env` is a
+   Vite-only builtin and is `undefined` under plain Node, so a bare `.VITE_MAPBOX_TOKEN`
+   threw at import time — which meant nothing in this file could be measured or audited
+   outside a browser, and `derive()` is the shared source of truth for two screens. Same
+   wall that sent the workflow chrome constants to `workflowChrome.ts`. */
+export const MAPBOX_TOKEN = (import.meta.env as Record<string, string | undefined> | undefined)
+  ?.VITE_MAPBOX_TOKEN;
 
-export function derive(p: CustomerProfile) {
+export function derive(p: CustomerProfile, override?: ResolvedPlace) {
   const r = p.reports;
   const products = r.marketingDashboard.breakdowns
     .find((b) => /Product Category/i.test(b.title))?.rows.map((x) => x.name) ?? [];
@@ -154,22 +304,14 @@ export function derive(p: CustomerProfile) {
   const initials = caller.split(/\s+/).filter(Boolean).slice(0, 2)
     .map((w) => w[0]).join("").toUpperCase() || "A";
 
-  /* Where the map centres. Preference order, per the brief: the prospect's own
-     stated area first, then the screenpop location (populated for every
-     prospect on disk), then San Francisco as the explicit fallback. There is no
-     true HQ field on the profile — if we ever want one it has to come from the
-     engine, since only research knows it. */
+  /* Where the map centres, and the label beside it. ONE resolution, so the city, its state
+     and its coordinates can never come from different places. `override` is the SE's own ZIP
+     choice from the search screen when they have made one. */
   const vs = r.voiceScreenpop;
-  const stated = shortArea(r.agentConfig?.serviceArea)
-    ?? (vs?.city ? `${vs.city}${vs.state ? `, ${vs.state}` : ""}` : undefined);
-  /* Label and coordinates resolve TOGETHER and fall back together. An earlier
-     version kept the label and swapped only the coordinates when a place
-     wasn't in the table, which rendered "Dallas-Fort Worth Metroplex" over a
-     map of San Francisco. A wrong map is worse than a generic one. */
-  const ll = stated ? lookupLL(stated) : null;
-  const usedFallback = !ll;
-  const city = ll ? stated! : DEFAULT_PLACE.label;
-  const coords = ll ?? DEFAULT_PLACE.ll;
+  const place = override ?? companyPlace(p);
+  const usedFallback = place.source === "fallback";
+  const city = place.label;
+  const coords = place.ll;
 
   /* The organic results. The prospect is ALWAYS first. The others are built
      from the city + category rather than invented business names — this is a
@@ -232,10 +374,13 @@ export function derive(p: CustomerProfile) {
      connection to. */
   const address = usedFallback
     ? "2930 De La Vina St, Santa Barbara, CA 93105"
-    : `${shortCity}${vs?.state ? `, ${vs.state}` : ""}`;
+    : `${shortCity}, ${place.st}`;
 
   return {
     city, shortCity, places, coords, address, seg,
+    /* The state that BELONGS to `city`. Screens must use this rather than reaching for
+       `voiceScreenpop.state`, which is the caller's and produced "Santa Barbara, TX". */
+    state: place.st, placeSource: place.source, matchedLocation: place.matched,
     query: `best ${(isProcessWord ? hero : term!).toLowerCase()} near me`,
     hero,
     others: products.slice(1, 4),

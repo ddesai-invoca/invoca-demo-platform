@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 /* Location, rivals and the tracked click URL are SHARED with the Google
    search screen so the two agree on the same prospect. See prospectPlace.ts. */
+import { useLocationOverride } from "../data/locationOverride";
 import { derive, trackedSiteUrl, tileXY, MAPBOX_TOKEN, Z, TS }
   from "../data/prospectPlace";
 
@@ -182,7 +183,12 @@ function Icon({ d, size = 20 }: { d: string; size?: number }) {
 
 export function ChatGptAd() {
   const { profile } = useProfile();
-  const d = derive(profile);
+  /* ⚠️ THE SAME ZIP CHOICE AS THE SEARCH SCREEN. These two screens are deliberately one
+     story about one prospect — prospectPlace exists because "the same prospect must land in
+     the same city against the same competitors on both" — so an SE who re-points one and not
+     the other would reintroduce exactly the drift that module was written to prevent. */
+  const loc = useLocationOverride(profile.id);
+  const d = derive(profile, loc.place ?? undefined);
 
   const [text, setText] = useState("");
   const [asked, setAsked] = useState<string | null>(null);

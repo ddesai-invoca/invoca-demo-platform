@@ -7254,6 +7254,106 @@ either fence, breaking one twin's buffering header, and letting a dropped stream
 or the drawer reports success having changed nothing — the silent no-op this file has now
 recorded five times.
 
+## The search location is one the business actually has, and an SE can set it by ZIP (9/8/2026)
+
+Asked for from the Google Search screen, which was showing "Phoenix, AZ": *"In the past i
+asked you to default to Santa Barbara, CA for the location, i no longer want you to do that,
+the location has to be one of the locations where the business actually is."*
+
+⚠️⚠️ **MEASURING ALL 27 PROFILES FOUND TWO DEFECTS, AND THE SECOND WAS THE WORSE ONE.**
+
+| | measured before the change |
+|---|---|
+| fell back to a hardcoded Santa Barbara | **12 of 27** — every one with real locations sitting two fields away (Reyes Law: Dallas, Houston, Fort Worth; Vector Security: Pittsburgh, Philadelphia; Roto-Rooter: Chicago) |
+| showed the SCREENPOP CALLER'S city as the company's | **14 of 23** — Mattress Firm rendered "Portland, OR" while its stores are Houston, Dallas and Atlanta |
+
+The caller's city was the SECOND source in the preference order, and a caller is a CUSTOMER.
+It is dropped as a location source entirely. Aptive, the prospect on screen when this was
+reported, happened to look right — Phoenix IS one of its branches — but the value had come
+from its caller, so the mechanism was wrong even where the answer was not.
+
+**`opsDashboard.locationHandling` is the right source and was already on every profile:** a
+complete partition of call volume by site, four rows each, the same names the Location
+Comparison dashboard renders. New order in `companyPlace()`: the prospect's own location rows,
+then its own `serviceArea`, then the fallback. **Measured after: 20 of 23 resolve from their
+own data**, each traceable to the row that answered.
+
+⚠️ **THE FALLBACK IS KEPT, AND IS NOW REACHABLE BY THREE PROFILES.** Put to the user when the
+measurement turned them up: Marriott, whose "locations" are reservation centres rather than
+hotels, and the two fictional healthcare demos, whose clinic names are invented. Their names
+are listed in `audit:place`, so a FOURTH prospect appearing there means one lost its real
+location.
+
+⚠️ **`serviceArea` IS SCANNED, NOT TRIMMED.** `shortArea`'s 34-character cap threw away
+Reynolds Lake Oconee's whole area string — "the Reynolds Lake Oconee community in Greensboro,
+Georgia, ZIP code 30642, about 85 miles east of Atlanta" — even though the city it needs is
+right there. Scanning it resolves Greensboro, GA.
+
+### The city table carries its own state now
+⚠️⚠️ **`GoogleSearch` WAS STILL COMBINING A CITY FROM THE TABLE WITH `voiceScreenpop.state` —
+the CALLER's state.** That is the "Santa Barbara, TX" bug this file recorded for Reyes Law,
+still live in the screen months later, because the fix at the time was to make `derive` fall
+back label-and-all and nothing stopped a caller re-deriving the half it wanted. Each entry is
+now `{ ll, st }` and `derive` returns the state that BELONGS to the city, so there is nothing
+to recombine.
+
+⚠️⚠️ **DO NOT BULK-REPLACE THOSE COORDINATES FROM A GEOCODER — measured, and the geocoder was
+the one that was wrong.** All 41 keys were geocoded through the Google Places API to pick up
+authoritative states: 39 agreed to within 0.05 degrees, and the two that disagreed showed a
+bare city name is ambiguous. "washington" came back as Washington **STATE** and "duluth" as
+Duluth **MINNESOTA**, where this app means Washington **DC** and Duluth **GEORGIA** (metro
+Atlanta, the same place `ZIP_PLACE` maps 30097 to). Their states are set by hand and both are
+pinned by the audit. The hand-checked coordinates were right and stayed.
+
+⚠️ **AMBIGUITY IS THE STANDING LIMIT OF SUBSTRING MATCHING HERE.** Keys cannot be qualified by
+state, so "greensboro" means Georgia because that is where the one prospect naming it actually
+is, and a future Greensboro NC office would get Georgia. Add a key only when a real prospect
+needs one; the ZIP override below is the general answer.
+
+### "Use precise location" takes a ZIP (asked for in the same breath)
+*"for all prospects let add a feature, allow users to click on the 'Use precise location'
+button and give a zipcode to change the location."* Google's own pill was inert chrome in the
+capture; it now re-points the whole screen.
+
+⚠️ **PLACES, NOT THE GEOCODING API — measured rather than assumed.** The obvious call is
+`maps.googleapis.com/maps/api/geocode/json`, and on this project's key it returns
+`REQUEST_DENIED: This API is not activated`. Places Text Search IS enabled (`fetchPlace`
+already uses it) and resolves a bare ZIP: "85001" comes back "Phoenix, AZ 85001, USA" with
+real coordinates. **No new key and nothing to enable in the Cloud Console.**
+⚠️ **A RETURNED ZIP THAT DIFFERS FROM THE ONE TYPED IS REFUSED.** Places answers a nearby
+place for a ZIP it does not know, which would move the map somewhere the SE never asked for.
+Unresolvable is an error on screen, never an approximation — the same refusal as the rejected
+ZIP3 guess in the pre-call artifacts, one level up, because here the ZIP moves a MAP.
+⚠️ **THE RESTING PILL IS BYTE-FOR-BYTE AS CAPTURED** — same 32px height, same 9999px radius,
+same 14px Roboto, same words, and Reset appears only once a ZIP is in force. Making it look
+like a form would add a control Google does not show. A `<button>` needs the browser's own
+button styling removed, the same reset `button.nav-item` needed.
+⚠️ **BOTH SCREENS HONOUR ONE CHOICE.** `prospectPlace` exists because "the same prospect must
+land in the same city against the same competitors on both", so `ChatGptAd` reads the same
+override; an SE re-pointing one and not the other would reintroduce exactly that drift.
+Verified: ZIP 02108 moved the search screen's label, map coordinates, ad headline, competitor
+names and footer to Boston together, and the ChatGPT screen to the same coordinates.
+⚠️ Per prospect, persisted, **no TTL** — a captured conversation is a session artifact, a
+deliberate location choice is a setting. localStorage, so it does not follow a demo to a
+colleague; that is right for re-pointing a screen for one conversation.
+
+⚠️ **`prospectPlace.ts` COULD NOT BE AUDITED AT ALL until its Mapbox token read was
+optional-chained.** `import.meta.env` is a Vite builtin and is `undefined` under plain Node, so
+importing the shared source of truth for two screens threw at module load. One `?.` unlocked
+`npm run audit:place`.
+
+**`npm run audit:place` is 15 checks**, run over every profile, and each was broken on purpose
+and seen to fire: emptying the location scan (17 red), resolving from the caller again (5),
+setting washington to WA (1), restoring the screen's caller-state read (2), and accepting a
+mismatched ZIP (1).
+⚠️ One check was wrong first and **fired on its own documentation** — it forbade
+`maps/api/geocode`, which `geocodeZip`'s comment legitimately NAMES to record that it is not
+enabled. Comments are stripped before matching, the same fix the vendor scan needed. Seventh
+probe-not-code fault in this file; three more happened while measuring this change (reading
+`r.name` where location rows are `{cells:[...]}`, a curl subprocess with no `-d @-`, and
+`tsc --noEmit | head; echo $?` reporting **head's** exit code, which hid a real compile error
+behind a green "tsc=0").
+
 ## ⚠️ OPEN ITEMS as of 9/3/2026 (found this session, NOT yet fixed)
 
 **1. ⚠️⚠️ AN ENDED CALL LEAVES THE AGENT IN THE ROOM, AND IT BILLS.** Measured live, twice.

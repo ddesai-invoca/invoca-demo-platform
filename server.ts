@@ -28,6 +28,7 @@ import { fileURLToPath } from "node:url";
 import { generateProfile, slugify } from "./engine/core.ts";
 import { chatReply } from "./engine/chat.ts";
 import { analyzeSms } from "./engine/analyze.ts";
+import { geocodeZip } from "./engine/places.ts";
 import { synthesizePreview } from "./engine/voicePreview.ts";
 import { livekitEnv, mintVoiceToken } from "./engine/livekitToken.ts";
 import { askAssistant } from "./engine/assistant.ts";
@@ -207,6 +208,24 @@ app.post("/api/ai-assistant", async (req, res) => {
   } catch (e: any) {
     console.error("[ai-assistant] failed:", e);
     res.status(isOverloaded(e) ? 503 : 500).json({ error: isOverloaded(e) ? "The AI is briefly overloaded — one moment, please resend." : e?.message || "Assistant failed." });
+  }
+});
+
+/* GET /api/zip?zip=85001 → { label, city, st, zip, ll } for the search screen's
+   "Use precise location". Behind the auth gate like every other /api route; the Places key
+   stays server-side. Unresolvable is a 404 the SE can see, never an approximation — see
+   geocodeZip in engine/places.ts for why a guess is refused. */
+app.get("/api/zip", async (req, res) => {
+  try {
+    const zip = String(req.query.zip ?? "");
+    if (!/^\d{5}$/.test(zip)) return res.status(400).json({ error: "Enter a 5-digit US ZIP code." });
+    if (!apiKey && !process.env.GOOGLE_PLACES_API_KEY) return res.status(501).json({ error: "Location lookup is not configured on this server." });
+    const place = await geocodeZip(zip);
+    if (!place) return res.status(404).json({ error: `We could not find ZIP ${zip}.` });
+    res.json({ place });
+  } catch (e: any) {
+    console.error("[zip] failed:", e);
+    res.status(500).json({ error: e?.message || "Location lookup failed." });
   }
 });
 

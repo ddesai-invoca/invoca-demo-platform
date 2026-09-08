@@ -456,6 +456,40 @@
   border: 1px solid var(--gs-line); border-radius: 9999px; color: var(--gs-fg);
   margin-left: 8px; cursor: pointer;
 }
+/* "Use precise location", made functional 9/8/2026. Grepped for every one of these names
+   before writing them, per the one-prefix-per-screen rule.
+   ⚠️ THE PILL IS NOW A <button>, so the browser's own button styling has to be removed or it
+   sits a pixel off its captured position and picks up a system font — the same reset
+   `button.nav-item` needed when the Signal rail item became a button. Its geometry is
+   unchanged from the measured `.gs-loc-pill` above. */
+.gs-loc-pill { background: none; font: inherit; font-family: inherit; }
+.gs-loc-pill:hover { background: var(--gs-pill); }
+
+/* The open state. Same height and radius as the pill it replaces, so the row does not
+   reflow when it opens. */
+.gs-loc-form {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 6px 0 14px;
+  border: 1px solid var(--gs-line); border-radius: 9999px; color: var(--gs-fg);
+  margin-left: 8px;
+}
+.gs-loc-input {
+  width: 82px; background: none; border: 0; outline: none; color: var(--gs-fg);
+  font: inherit; font-family: inherit;
+  /* Digits in a fixed-width column, so the value does not shift as it is typed. */
+  font-variant-numeric: tabular-nums;
+}
+.gs-loc-input::placeholder { color: var(--gs-mut); }
+.gs-loc-go, .gs-loc-reset {
+  height: 24px; padding: 0 10px; border: 0; border-radius: 9999px;
+  background: var(--gs-act); color: #202124; font: inherit; font-family: inherit;
+  font-size: 13px; cursor: pointer;
+}
+.gs-loc-go:disabled { opacity: .45; cursor: default; }
+.gs-loc-reset { background: none; color: var(--gs-act); border: 1px solid var(--gs-line); margin-left: 6px; }
+/* The error sits OUTSIDE the pill: inside it, a sentence stretched the row and pushed the
+   kebab off the line. */
+.gs-loc-err { margin-left: 8px; font-size: 13px; color: #f28b82; }
+
 .gs-kebab { color: var(--gs-mut); display: inline-flex; cursor: pointer; }
 .gs-dot { margin: 0 5px; color: var(--gs-2); }
 

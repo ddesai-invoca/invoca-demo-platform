@@ -132,3 +132,89 @@ export async function fetchPlace(
   cache.set(query, info);              // negatives cached: don't retry a miss
   return info;
 }
+
+/* =============================================================================
+   ZIP -> a real place, for the search screen's "Use precise location"
+   -----------------------------------------------------------------------------
+   Asked for 9/8/2026 alongside the company-location fix: *"for all prospects let add a
+   feature, allow users to click on the 'Use precise location' button and give a zipcode to
+   change the location."*
+
+   ⚠️⚠️ **A ZIP MUST RESOLVE TO REAL COORDINATES OR NOT AT ALL.** This repo already refused a
+   ZIP3-prefix guess for the pre-call artifacts, on the grounds that printing "Atlanta, GA
+   30097" when USPS assigns 30097 to Duluth is exactly what the prospect who knows their own
+   service area will catch. Same rule here, one level up: the ZIP moves a MAP, so a plausible
+   guess puts the pin in the wrong city. Unresolvable means an error the SE can see, never an
+   approximation.
+
+   ⚠️ **PLACES, NOT THE GEOCODING API — measured, not assumed.** The obvious call is
+   `maps.googleapis.com/maps/api/geocode/json`, and on this project's key it returns
+   `REQUEST_DENIED: This API is not activated`. Places Text Search IS enabled (it is what
+   `fetchPlace` above already uses) and resolves a bare ZIP perfectly: "85001" comes back
+   "Phoenix, AZ 85001, USA" with real coordinates. So this needs no new key and no new API
+   enabled in the Cloud Console.
+   ============================================================================= */
+
+export interface ZipPlace {
+  /** "Phoenix, AZ" — the label the screens show. */
+  label: string;
+  city: string;
+  st: string;
+  zip: string;
+  ll: [number, number];
+}
+
+/* A ZIP resolves to the same place forever, so this is cached for the life of the process
+   the way `fetchPlace`'s lookups are. An SE trying a handful of ZIPs mid-demo then pays for
+   at most one call each. */
+const zipCache = new Map<string, ZipPlace | null>();
+
+export async function geocodeZip(zip: string, apiKey?: string): Promise<ZipPlace | null> {
+  const key = apiKey ?? process.env.GOOGLE_PLACES_API_KEY;
+  const z = String(zip ?? "").trim();
+  /* ⚠️ VALIDATED HERE, not just in the UI: this reaches a paid API from a browser, so
+     anything that is not a US ZIP is refused before it costs a call. */
+  if (!key || !/^\d{5}$/.test(z)) return null;
+  if (zipCache.has(z)) return zipCache.get(z)!;
+
+  let out: ZipPlace | null = null;
+  try {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 6000);
+    const res = await fetch("https://places.googleapis.com/v1/places:searchText", {
+      method: "POST",
+      signal: ctl.signal,
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": key,
+        "X-Goog-FieldMask": "places.formattedAddress,places.location",
+      },
+      /* The country qualifier stops a five-digit query matching a postcode elsewhere. */
+      body: JSON.stringify({ textQuery: `${z} USA`, maxResultCount: 1 }),
+    });
+    clearTimeout(timer);
+    if (res.ok) {
+      const body = (await res.json()) as { places?: { formattedAddress?: string; location?: { latitude: number; longitude: number } }[] };
+      const p = body.places?.[0];
+      const addr = p?.formattedAddress ?? "";
+      /* "Phoenix, AZ 85001, USA" -> city "Phoenix", state "AZ".
+         ⚠️ THE RETURNED ZIP IS CHECKED AGAINST THE ONE ASKED FOR. Places will happily answer
+         a nearby place for a ZIP it does not know, which would move the map somewhere the SE
+         did not type; a mismatch is treated as unresolved rather than as a near-enough hit. */
+      const m = addr.match(/^([^,]+),\s*([A-Z]{2})\s+(\d{5})/);
+      if (m && p?.location && m[3] === z) {
+        out = {
+          label: `${m[1].trim()}, ${m[2]}`,
+          city: m[1].trim(),
+          st: m[2],
+          zip: z,
+          ll: [p.location.latitude, p.location.longitude],
+        };
+      }
+    }
+  } catch {
+    /* A timeout or a network failure is "unresolved"; the endpoint reports it. */
+  }
+  zipCache.set(z, out);
+  return out;
+}
