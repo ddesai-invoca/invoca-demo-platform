@@ -29,6 +29,7 @@ import { generateProfile, slugify } from "./engine/core.ts";
 import { chatReply } from "./engine/chat.ts";
 import { analyzeSms } from "./engine/analyze.ts";
 import { geocodeZip } from "./engine/places.ts";
+import { appEnv, isProduction } from "./engine/appEnv.ts";
 import { synthesizePreview } from "./engine/voicePreview.ts";
 import { livekitEnv, mintVoiceToken } from "./engine/livekitToken.ts";
 import { askAssistant } from "./engine/assistant.ts";
@@ -397,8 +398,20 @@ process.on("SIGINT", () => shutdown("SIGINT"));
    ⚠️ Every failure path is swallowed. A canary that can take down the web service
    the whole team demos on is far worse than no canary. */
 function scheduleCanary(): void {
-  if ((process.env.CANARY ?? "").toLowerCase() === "off") {
+  const flag = (process.env.CANARY ?? "").toLowerCase();
+  if (flag === "off") {
     console.log("🐤 Nightly canary disabled (CANARY=off).");
+    return;
+  }
+  /* ⚠️⚠️ **OFF OUTSIDE PRODUCTION BY DEFAULT, BECAUSE THE COST IS SILENT AND RECURRING.** The
+     canary runs a FULL `generateProfile()` every night — ~2.5 minutes of Opus across 20 phases
+     — and a staging service created by copying production's environment variables would run a
+     second one forever, at real expense, with nobody looking at the result. It also publishes
+     to `/api/canary`, which two claude.ai routines read: a second service answering that route
+     is a second source of truth for "did last night's generation pass".
+     Set `CANARY=on` to arm it anywhere (the wiring check `CANARY_ON_BOOT=1` still works). */
+  if (!isProduction() && flag !== "on") {
+    console.log(`🐤 Nightly canary not armed — this is ${appEnv()}, not production (CANARY=on to force).`);
     return;
   }
   if (!apiKey) {

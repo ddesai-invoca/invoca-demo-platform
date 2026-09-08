@@ -160,7 +160,12 @@ export default defineAgent({
 
 /* `agentName` MUST match AGENT_NAME in engine/livekitToken.ts — the token dispatches
    by name, and a mismatch means no agent ever joins and the caller hears nothing. */
+/* ⚠️ THE SAME VARIABLE THE TOKEN USES. `engine/appEnv.ts` derives it from the environment so
+   a staging web service and a staging worker pair up without either touching production; this
+   side cannot import that module (the worker is a standalone deployed image), so it reads the
+   var directly and falls back to the identical production default. `audit:voice` asserts the
+   two defaults match, because a mismatch means no agent joins and the caller hears silence. */
 cli.runApp(new WorkerOptions({
   agent: fileURLToPath(import.meta.url),
-  agentName: "invoca-voice",
+  agentName: process.env.VOICE_AGENT_NAME?.trim() || "invoca-voice",
 }));

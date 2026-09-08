@@ -18,6 +18,7 @@
    ============================================================================= */
 
 import { DATA_DIR, isPersistent, listDemos } from "./demoStore.ts";
+import { appEnv } from "./appEnv.ts";
 
 /* Process start, so `uptimeSeconds` and this agree even if the module is loaded
    lazily (the dev server imports it on first request). */
@@ -59,6 +60,14 @@ export function deployStatus(input: StatusInput) {
     commit: process.env.RENDER_GIT_COMMIT ?? null,
     commitShort: (process.env.RENDER_GIT_COMMIT ?? "").slice(0, 7) || null,
     branch: process.env.RENDER_GIT_BRANCH ?? null,
+    /* ⚠️ WHICH ENVIRONMENT THIS IS — a LABEL, so it is safe on a public endpoint by the same
+       rule as `service` and `branch`: it names no prospect, no demo and no key value. It is
+       what lets you confirm from outside the gate that a push reached STAGING rather than
+       production, which is the whole point of having two. */
+    environment: appEnv(),
+    /* Whether the nightly full generation is armed here. Two claude.ai routines read
+       /api/canary, so knowing which service actually produces that result matters. */
+    canaryArmed: (process.env.CANARY ?? "").toLowerCase() === "on" || appEnv() === "production",
     service: process.env.RENDER_SERVICE_NAME ?? null,
     bootedAt: BOOTED_AT,
     uptimeSeconds: Math.round(process.uptime()),

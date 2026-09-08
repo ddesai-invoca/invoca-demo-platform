@@ -5838,3 +5838,16 @@ button.nav-item {
 .clr-missing { padding: 48px; }
 .clr-missing h1 { font-size: 28px; font-weight: 400; color: #03234d; }
 .clr-missing p { margin-top: 12px; font-size: 13px; color: #5c5c5c; }
+
+/* The staging label. Only ever rendered off production — see components/EnvBadge.tsx.
+   Top-centre rather than a corner: the corners already hold the Read.Me pill, the feedback
+   button and the AI affordances, and this must not sit under any of them. */
+.envbadge {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  z-index: 4000;                     /* above the z-3000 Ask AI drawer, so it is never hidden */
+  padding: 3px 14px 4px; border-radius: 0 0 6px 6px;
+  background: #b33b00; color: #fff;  /* the platform's own warning orange */
+  font: 700 11px/1.5 Lato, system-ui, sans-serif; letter-spacing: .08em;
+  pointer-events: none;              /* never intercepts a click on the screen underneath */
+  user-select: none;
+}

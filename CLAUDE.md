@@ -7427,6 +7427,74 @@ probe-not-code fault in this file; three more happened while measuring this chan
 `tsc --noEmit | head; echo $?` reporting **head's** exit code, which hid a real compile error
 behind a green "tsc=0").
 
+## Three environments: local, staging, production (9/8/2026)
+
+Asked for: *"currently i have local host and production environment, i want to create a sandbox
+environment as a redundancy how should i go about doing that"* — and when the two readings of
+"redundancy" were put to the user (a pre-production gate vs a hot standby), the answer was
+**both, staging first**. **The full runbook is `docs/ENVIRONMENTS.md`**; this records the code
+side and the traps.
+
+⚠️ **`engine/appEnv.ts` IS THE SINGLE DEFINITION, AND IT IS DERIVED FROM THE SERVICE NAME.**
+Render sets `RENDER_SERVICE_NAME` for free, so a service called `…-staging` is staging by
+construction. Keying off an `APP_ENV` flag alone means a service created without it looks
+EXACTLY like production — no badge, a nightly canary billing a full Opus generation, and real
+email to real colleagues — so the safe answer had to be the automatic one. `APP_ENV` still
+overrides. `local` is "no `RENDER_GIT_COMMIT`", the same signal `/api/status` already used to
+tell a dev server from a deploy.
+
+⚠️⚠️ **THE ONE THAT WOULD HAVE CONTAMINATED PRODUCTION SILENTLY: `AGENT_NAME` WAS A HARDCODED
+`"invoca-voice"` ON BOTH SIDES.** There is one LiveKit project, and LiveKit hands a job to ANY
+worker registered under the requested name. With a second deployed service asking for the same
+name:
+  - a staging test call is answered by the **production worker**, so staging can never exercise
+    a worker change and its test calls spend production capacity;
+  - and the moment a staging worker is deployed under that name it joins the same pool and can
+    answer a **real demo call** with untested code, mid-sentence.
+Neither shows up as an error anywhere. The name is now environment-derived
+(`invoca-voice-staging` off production) and both sides read `VOICE_AGENT_NAME` with the same
+fallback, which `audit:voice` asserts along with staging and production differing.
+⚠️ **CONSEQUENCE, STATED: staging voice sits on the warming notice until a second agent is
+deployed** under its own name. That is the safe failure and `docs/ENVIRONMENTS.md` gives the
+three commands.
+⚠️⚠️ **LOCAL KEEPS THE PRODUCTION NAME, AND THE FIRST VERSION GOT THIS WRONG.** Giving `local`
+its own name meant no worker ever answered a laptop's call — a silent regression in the daily
+loop, since user memory records the hosted worker is "always on" precisely so local can
+exercise a real call without deploying. Caught by measuring the derivation across all five
+cases rather than by reading it.
+
+⚠️ **THE CANARY AND THE MAILER NOW DEFAULT TO OFF OUTSIDE PRODUCTION**, because both costs are
+silent and recurring. The canary runs a FULL `generateProfile()` nightly (~2.5 min of Opus
+across 20 phases) and publishes to `/api/canary`, which two claude.ai routines read — a second
+service answering that route is a second source of truth for "did last night pass". Feedback
+completion mail goes to the SUBMITTER's real address, so a staging service built by copying
+production's env vars would email real colleagues about test items. `CANARY=on` and
+`ALLOW_EMAIL=1` force either.
+
+⚠️ **THE BADGE RENDERS NOTHING IN PRODUCTION — not a hidden node, not the class string.**
+Verified: 0 `.envbadge` nodes and `envbadge` absent from the HTML, with the dashboard still at
+17 cards / 5 donuts / KPI 64,004. It asks `/api/status` at runtime rather than reading a
+`VITE_` variable, because that would be one more build-time value to forget on a new service —
+the mistake this file already documents for the Mapbox token.
+⚠️⚠️ **AND IT WAS MOUNTED IN THE WRONG PLACE FIRST, in a way its own comment denied.** The
+edit landed inside `LaunchCorner`, which returns `null` unless the pathname is the launch form
+— so the badge appeared only on the one screen that is obviously our own tool, and on every
+replica screen (where it matters) it rendered nothing, while the comment beside it claimed
+"APP LEVEL". It is now inside `<BrowserRouter>` and outside `<Routes>`, which also covers the
+standalone screens a TopBar chip would have missed (the phone preview, Google Search, the
+Salesforce pages). **A comment asserting placement is not evidence of placement.**
+
+⚠️ **`/api/status` GAINED `environment` AND `canaryArmed`.** Both are labels or booleans, so
+they are safe on a public endpoint by the same rule as `service` and `branch`: no prospect, no
+demo id, no key value. `environment` is what lets you confirm from outside the gate that a
+push reached staging rather than production, which is the entire point of having two.
+
+⚠️ **A STAGING SERVICE IS NOT A FAILOVER TARGET, and cannot be made one from the app side.**
+The demo library is a Render persistent disk and a disk attaches to ONE instance at a time, so
+a standby cannot see production's 219 demos. Failover needs the store moved off the disk behind
+`engine/demoStore.ts` — the same migration this file already names as the real fix for
+zero-downtime deploys. It needs a store provisioned, which is the user's to do.
+
 ## ⚠️ OPEN ITEMS as of 9/3/2026 (found this session, NOT yet fixed)
 
 **1. ⚠️⚠️ AN ENDED CALL LEAVES THE AGENT IN THE ROOM, AND IT BILLS.** Measured live, twice.

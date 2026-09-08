@@ -33,6 +33,8 @@ import nodemailer from "nodemailer";
 
 const HOST = process.env.SMTP_HOST || "smtp.gmail.com";
 const PORT = Number(process.env.SMTP_PORT || 465);
+import { appEnv, isProduction } from "./appEnv.ts";
+
 const USER = process.env.SMTP_USER || "";              // e.g. ddesai@invoca.com
 const PASS = process.env.SMTP_APP_PASSWORD || "";      // Google app password
 const FROM_NAME = process.env.SMTP_FROM_NAME || "Invoca Demo Generator";
@@ -144,6 +146,16 @@ export interface Mail {
  * item is already updated on disk. Returns what happened so the caller can say so.
  */
 export async function sendMail(mail: Mail): Promise<{ sent: boolean; reason?: string }> {
+  /* ⚠️⚠️ **NON-PRODUCTION NEVER SENDS, IT LOGS.** Feedback completion mail goes to the
+     SUBMITTER's real sign-in address. A staging service stood up by copying production's
+     environment variables would therefore email real colleagues about test items from a
+     service they have never heard of. `sendMail` already treats "unconfigured" as a supported
+     state and logs instead, so this reuses that path rather than adding a second one; set
+     `ALLOW_EMAIL=1` on a non-production service to genuinely send. */
+  if (!isProduction() && process.env.ALLOW_EMAIL !== "1") {
+    console.log(`[mail] ${appEnv()}: not sending to ${mail.to} — "${mail.subject}"`);
+    return { sent: false, reason: `${appEnv()} does not send email` };
+  }
   if (!mailConfigured()) {
     console.log(`[mail] not configured, would have sent to ${mail.to}: ${mail.subject}`);
     return { sent: false, reason: "not configured" };

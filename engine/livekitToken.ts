@@ -1,4 +1,5 @@
 import { AccessToken } from "livekit-server-sdk";
+import { voiceAgentName } from "./appEnv.ts";
 import { RoomConfiguration, RoomAgentDispatch } from "@livekit/protocol";
 import { liveKitVoiceModel } from "../src/data/voiceOptions.ts";
 import { voiceSystemPrompt } from "./chat.ts";
@@ -65,8 +66,11 @@ export interface VoiceTokenResult {
   agentName: string;
 }
 
-/** The worker registers under this name; the dispatch below asks for it by name. */
-export const AGENT_NAME = "invoca-voice";
+/** The worker registers under this name; the dispatch below asks for it by name.
+    ⚠️ ENVIRONMENT-DERIVED since 9/8/2026 — production keeps "invoca-voice"; a staging service
+    asks for "invoca-voice-staging" so it can never be answered by the production worker, and
+    a staging worker can never answer a real demo call. See engine/appEnv.ts. */
+export const AGENT_NAME = voiceAgentName();
 
 /**
  * A room name that is unique per call.

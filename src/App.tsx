@@ -54,6 +54,7 @@ import { SalesforceCallLogDetail } from "./screens/SalesforceCallLogDetail";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { ReadmeButton } from "./components/ReadmeButton";
+import { EnvBadge } from "./components/EnvBadge";
 import { FeedbackButton } from "./components/FeedbackButton";
 import { InboxButton } from "./components/InboxButton";
 import { FeedbackBoard } from "./screens/FeedbackBoard";
@@ -109,6 +110,14 @@ export default function App() {
       <VoiceCaptureProvider>
       <AiAssistantProvider>
       <BrowserRouter>
+        {/* ⚠️⚠️ INSIDE THE ROUTER BUT OUTSIDE `<Routes>`, and NOT inside `LaunchCorner`.
+            A first attempt put it in that stack, which returns null unless the pathname is
+            the launch form — so the badge existed only on the one screen that is already
+            obviously our own tool, and on every replica screen (where it actually matters)
+            it rendered nothing. It must be identifiable on the standalone screens too: the
+            phone preview, Google Search and the Salesforce pages all render outside the
+            shell, so a TopBar chip would miss them as well. */}
+        <EnvBadge />
         <Routes>
           {/* Launch screen (new prospect / revisit) — full-page, outside the shell */}
           <Route path="/" element={<Launch />} />

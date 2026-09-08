@@ -63,16 +63,39 @@ const chat = read("engine/chat.ts");
 /* 1. THE AGENT NAME. The token dispatches by name; the worker registers under one; the
       deployment config names one. Any mismatch = no agent joins, silently. */
 const nameOf = (s: string, re: RegExp) => s.match(re)?.[1];
-const tokenName = nameOf(token, /AGENT_NAME\s*=\s*"([^"]+)"/);
-const workerName = nameOf(worker, /agentName:\s*"([^"]+)"/);
+/* ⚠️⚠️ **THE NAME IS ENVIRONMENT-DERIVED SINCE 9/8/2026, so the invariant moved but did not
+   weaken.** It used to be a literal on both sides. With a staging service in the picture the
+   name has to differ per environment — one LiveKit project hands a job to ANY worker
+   registered under the requested name, so two deployments sharing `invoca-voice` means a
+   staging test call is served by the production worker, and a staging worker can answer a
+   real demo call. Both sides now read `VOICE_AGENT_NAME` and fall back to the SAME literal,
+   which is what these checks assert; the failure mode if they drift is unchanged and still
+   silent (no agent joins, the caller hears nothing). */
+const envMod = read("engine/appEnv.ts");
+const tokenName = nameOf(envMod, /=== "staging" \? "[^"]+" : "([^"]+)"/);
+const workerName = nameOf(worker, /agentName:\s*process\.env\.VOICE_AGENT_NAME\?\.trim\(\) \|\| "([^"]+)"/);
+const stagingName = nameOf(envMod, /=== "staging" \? "([^"]+)"/);
 /* ⚠️ THE DISPATCH NAME IS NOT IN livekit.toml, and asserting that it was is a mistake this
    check used to make. That file carries the project subdomain and the DEPLOYMENT id, which
    the CLI assigns; the name a token dispatches by comes from `WorkerOptions({ agentName })`.
    What still has to agree is the worker and the token, which is checked below. */
 const tomlSubdomain = nameOf(toml, /^\s*subdomain\s*=\s*"([^"]+)"/m);
-check(!!tokenName, "token declares AGENT_NAME");
-check(tokenName === workerName, "worker registers under the token's AGENT_NAME",
+check(!!tokenName, "the environment module declares a production agent name",
+  `name=${tokenName}`);
+check(tokenName === workerName, "the worker falls back to the same name the token does",
   `token=${tokenName} worker=${workerName}`);
+/* ⚠️ ONE VARIABLE, BOTH SIDES. The web service and the deployed worker are configured
+   separately (Render env vars vs `lk agent update --secrets`), so if they read differently
+   named variables a staging pair can never be made to agree. */
+check(/VOICE_AGENT_NAME/.test(envMod) && /VOICE_AGENT_NAME/.test(worker),
+  "both sides read VOICE_AGENT_NAME");
+check(/AGENT_NAME = voiceAgentName\(\)/.test(token),
+  "the token's AGENT_NAME comes from the environment module");
+/* ⚠️ AND STAGING MUST NOT BE ABLE TO COLLIDE WITH PRODUCTION. This is the whole reason the
+   name became environment-derived; equal names would silently restore the old hazard. */
+check(!!stagingName && stagingName !== tokenName,
+  "a staging deploy dispatches to its own agent name",
+  `production=${tokenName} staging=${stagingName}`);
 check(!!tomlSubdomain, "livekit.toml names the LiveKit project to deploy into",
   `subdomain=${tomlSubdomain}`);
 /* The container must not run as root and must launch with `start`, or LiveKit Cloud rejects
