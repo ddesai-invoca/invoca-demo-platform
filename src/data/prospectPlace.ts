@@ -282,6 +282,138 @@ export function tileXY(lat: number, lon: number) {
 export const MAPBOX_TOKEN = (import.meta.env as Record<string, string | undefined> | undefined)
   ?.VITE_MAPBOX_TOKEN;
 
+/* =============================================================================
+   THE PAID AD'S CREATIVE — the prospect's own campaign, not a template
+   -----------------------------------------------------------------------------
+   Asked for 9/8/2026, looking at Aptive's sponsored result: *"just like a sponsored ad on
+   google, lets change the top title to a creative campaign personalized to the prospect. and
+   same for the search term, like now it says 'best quarterly near me' which make no sense for
+   this aptive prospect."*
+
+   ⚠️⚠️ **THE QUERY BUG WAS ALREADY FOUND AND FIXED ONCE, ON A DIFFERENT SCREEN.** The old
+   query was `best <searchSuggestions[0]> near me`, and `searchSuggestions` is a list of CALL
+   REVIEW TRANSCRIPT WORDS — so Aptive's read "best quarterly near me" (quarterly is how often
+   its plans run), American Home Shield's "best gold near me" (a plan TIER), and Avi & Co's
+   "best daytona near me". This file's own comment even warned the list "is just as likely to
+   hold a process word", and guarded only against a hardcoded list of process words that
+   "quarterly" is not on. `google-ads-demo.js` had the same defect and the fix is recorded in
+   CLAUDE.md verbatim: use the top **Calls by Search Term** row, "a real phrase somebody
+   types". It was never carried across to this module. Measured across all 23 prospects, the
+   search-term row is better every single time.
+
+   ⚠️ **THE CREATIVE IS THE PROSPECT'S OWN CAMPAIGN NAME.** `Calls by Campaign` rows are
+   human-written advertiser copy specific to the business — "Freedom From Glasses",
+   "Elevating the Human Spirit", "Smart Home. Smarter Decision.", "Turn 62", "$1B+ Recovered".
+   Nothing we could invent would be more personalised than that, and the ad already carries
+   the same campaign in its `utm_campaign`, so the creative and the click now tell one story.
+   ============================================================================= */
+
+/** The creative half of a campaign row: "Pest Control Near Me, Exact" -> "Pest Control Near Me". */
+function campaignThemes(p: CustomerProfile): { theme: string; full: string }[] {
+  const rows = p.reports.marketingDashboard.breakdowns
+    .find((b) => /campaign/i.test(b.title))?.rows ?? [];
+  return rows.map((r) => ({ theme: r.name.split(",")[0].trim(), full: r.name }))
+    .filter((x) => x.theme);
+}
+
+/**
+ * Is this theme a bare keyword rather than creative?
+ *
+ * ⚠️ A campaign named "Pest Control Near Me" or "Tires Near Me Search" is how an advertiser
+ * labels an exact-match keyword group, not a headline anybody wrote. Those are skipped for
+ * slot 1 in favour of the product, so the ad does not simply restate the search box.
+ */
+function isKeywordish(theme: string): boolean {
+  return /near (me|you)\b|\bexact\b|\bsearch\b|\bbranded\b|\blocal pages\b|retargeting|conquesting/i.test(theme);
+}
+
+const PROMO = /offer|free|save|sale|deal|promo|special|financing|rebate|savings|\$|%|guarantee|bundle|event|discount/i;
+
+/** A short benefit line, from a promotional campaign or from the prospect's own offer text. */
+function offerHook(p: CustomerProfile, themes: string[], skip?: string): string | null {
+  const promo = themes.find((t) => t !== skip && PROMO.test(t) && t.length <= 34 && !isKeywordish(t));
+  if (promo) return promo;
+
+  const offer = p.reports.agentConfig?.smsPlaybook?.offer ?? "";
+  /* ⚠️ CAPITALISED WORDS ONLY AFTER "free", AND THAT IS WHY. A loose `free\s+(\w+...)` gave
+     Big O Tires "Free With A Free" and Discount Tire "Free On Qualifying Sets" — it swallowed
+     prepositions and stopped before the noun. Requiring the named thing to be capitalised
+     ("a free ProAct Inspection") matches how these offers are actually written and produces
+     nothing rather than nonsense when it is not. */
+  const free = offer.match(/\bfree\s+((?:[A-Z][\w'-]+)(?:\s+[A-Z][\w'-]+){0,2})/);
+  /* ⚠️ NEVER "Free <booking>" — the same false claim `offer` already refuses, because a
+     medical appointment being free is not something this demo may assert. */
+  if (free && !new RegExp(`^${p.bookingTerm}s?$`, "i").test(free[1])) return `Free ${free[1]}`;
+
+  const pct = offer.match(/(\d{1,2})%\s*(?:off|discount)/i);
+  if (pct) return `${pct[1]}% Off`;
+  return null;
+}
+
+export interface AdCreative {
+  /** The pipe-separated headline, in Google's own shape. */
+  headline: string;
+  /** The campaign's creative half, used as the headline's lead. */
+  campaign: string;
+  /** Its FULL row name, match type and all, which is what `utm_campaign` carries — so the
+      click is traceable to the row an SE can then open on the Marketing dashboard. */
+  campaignFull: string;
+  /** The paid keyword, i.e. what the searcher typed. */
+  query: string;
+}
+
+/** How many significant words two strings share — the ad-group rule from google-ads-demo. */
+function overlap(a: string, b: string): number {
+  const stop = new Set(["the", "and", "for", "near", "me", "you", "a", "an", "of", "in", "my", "your"]);
+  const wa = new Set(a.toLowerCase().match(/[a-z0-9$]{3,}/g)?.filter((w) => !stop.has(w)) ?? []);
+  return (b.toLowerCase().match(/[a-z0-9$]{3,}/g) ?? []).filter((w) => !stop.has(w) && wa.has(w)).length;
+}
+
+/**
+ * The prospect's paid ad: what was searched, which campaign answered, and its creative.
+ *
+ * ⚠️ **THE CAMPAIGN IS CHOSEN BY MATCHING THE QUERY**, two significant words minimum — the
+ * same threshold `google-ads-demo.js` settled on for pairing a keyword to an ad group, after
+ * one shared word matched "continuing CARE" to "Memory Care". So the ad an SE sees is the one
+ * that campaign would really have served, and `utm_campaign` names it.
+ */
+export function adCreative(p: CustomerProfile, shortCity: string, hero: string, fallbackQuery: string): AdCreative {
+  const terms = p.reports.marketingDashboard.breakdowns
+    .find((b) => /search term/i.test(b.title))?.rows ?? [];
+  const query = terms[0]?.name?.trim() || fallbackQuery;
+
+  const camps = campaignThemes(p);
+  const matched = camps
+    .map((c) => ({ c, n: overlap(query, c.theme) }))
+    .filter((x) => x.n >= 2)
+    /* Stable sort, so equal scores keep the dashboard's own order — which is call volume
+       descending, i.e. the biggest campaign wins a tie. */
+    .sort((a, b) => b.n - a.n)[0]?.c;
+  const chosen = matched ?? camps[0] ?? { theme: `${hero} Search`, full: `${hero} Search` };
+  const campaign = chosen.theme;
+  const themes = camps.map((c) => c.theme);
+
+  /* Slot 1: the creative if somebody wrote one, else the PRODUCT — but only when the product
+     is what was searched for.
+     ⚠️ **MEASURED: AN UNGATED HERO ADVERTISED THE WRONG SERVICE.** Orlando Health's biggest
+     product category is its Cancer Institute and its top search term is "emergency room near
+     me", so falling back to the hero headlined an ER search with "Cancer Institute" —
+     plausible-looking and wrong, which is the worst combination on a screen a prospect reads.
+     The product leads only when it shares a significant word with the query; otherwise the
+     campaign's own name does, which by construction is the one that matched the search. */
+  const creative = campaign && !isKeywordish(campaign) && campaign.length <= 40 ? campaign : null;
+  const lead = creative ?? (overlap(query, hero) >= 1 ? hero : campaign || hero);
+  const hook = offerHook(p, themes, lead);
+  const cta = `${p.bookingTerm}s in ${shortCity}`;
+
+  /* ⚠️ CAPPED AND TRIMMED FROM THE RIGHT. Google shows roughly 90 characters of headline;
+     past that it truncates mid-word, which reads as a broken template rather than an ad.
+     Slot 3 goes first, then slot 2, so the creative itself always survives. */
+  const slots = [lead, hook, cta].filter((x): x is string => !!x);
+  while (slots.length > 1 && slots.join(" | ").length > 90) slots.splice(slots.length - 1, 1);
+  return { headline: slots.join(" | "), campaign, campaignFull: chosen.full, query };
+}
+
 export function derive(p: CustomerProfile, override?: ResolvedPlace) {
   const r = p.reports;
   const products = r.marketingDashboard.breakdowns
@@ -381,7 +513,13 @@ export function derive(p: CustomerProfile, override?: ResolvedPlace) {
     /* The state that BELONGS to `city`. Screens must use this rather than reaching for
        `voiceScreenpop.state`, which is the caller's and produced "Santa Barbara, TX". */
     state: place.st, placeSource: place.source, matchedLocation: place.matched,
-    query: `best ${(isProcessWord ? hero : term!).toLowerCase()} near me`,
+    /* ⚠️ THE REAL SEARCH TERM, not a phrase built from a transcript word. `isProcessWord`
+       and the `best … near me` construction survive only as the fallback for a profile with
+       no Search Term breakdown; every profile on disk has one. */
+    ...(() => {
+      const ad = adCreative(p, shortCity, hero, `best ${(isProcessWord ? hero : term!).toLowerCase()} near me`);
+      return { query: ad.query, adHeadline: ad.headline, adCampaign: ad.campaignFull };
+    })(),
     hero,
     others: products.slice(1, 4),
     brand: p.customerName,

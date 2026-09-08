@@ -477,10 +477,11 @@ export function GoogleSearch() {
   const d = derive(profile, loc.place ?? undefined);
   const [query, setQuery] = useState(d.query);
 
-  const md = profile.reports.marketingDashboard;
-  const campaign = md.breakdowns.find((b) => /Campaign/i.test(b.title))?.rows[0]?.name
-    ?? `${profile.customerName} Search`;
-  const href = paidClickUrl(d.domain, campaign, query, profile.id);
+  /* ⚠️ THE CLICK NAMES THE CAMPAIGN THAT ACTUALLY MATCHED, not simply row 0. `adCreative`
+     pairs the search term to a campaign by word overlap and the headline leads with that
+     campaign's creative, so the utm has to be the same campaign or the ad's copy and its
+     tracking disagree about which one served it. */
+  const href = paidClickUrl(d.domain, d.adCampaign, query, profile.id);
 
   /* The number in the ad is the whole reason this screen exists: it is the
      Invoca tracking number that gets swapped in per click, and the bridge from
@@ -494,11 +495,12 @@ export function GoogleSearch() {
      capture's sit on one line. A long product name ("Smart Home Security
      Systems") blows the budget, so the city moves into the second clause rather
      than being dropped: the ad still says where it is. */
-  const adTitle = (() => {
-    const wide = `${d.hero} in ${d.shortCity} | ${profile.bookingTerm}s This Week`;
-    return wide.length <= 62 ? wide
-      : `${d.hero} | ${profile.bookingTerm}s in ${d.shortCity}`;
-  })();
+  /* ⚠️ THE HEADLINE IS THE PROSPECT'S OWN CAMPAIGN CREATIVE, built in `prospectPlace` beside
+     the keyword it answers, so the ad's copy, its `utm_campaign` and the search term all come
+     from one place and tell one story. It replaced
+     `${hero} in ${city} | ${bookingTerm}s This Week`, which was the same sentence for every
+     prospect with three words swapped. See adCreative() for what each slot is. */
+  const adTitle = d.adHeadline;
 
   /* The chip and the footer want "City, ST", the format the capture shows.
      `d.city` is the prospect's STATED area, which can be a region ("Orlando and

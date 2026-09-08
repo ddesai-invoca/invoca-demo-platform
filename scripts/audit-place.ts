@@ -134,5 +134,90 @@ fellBack <= MAY_FALL_BACK.size
     : bad("the two screens can now show one prospect in two different cities");
 }
 
+
+/* =============================================================================
+   THE PAID AD'S CREATIVE AND ITS KEYWORD (9/8/2026)
+   -----------------------------------------------------------------------------
+   Reported as "best quarterly near me which make no sense for this aptive prospect". Both
+   halves are per-prospect derivations that LOOK fine on the one screen an SE happens to open,
+   which is why they are checked across every profile here.
+   ============================================================================= */
+{
+  console.log("");
+  const { adCreative } = await import("../src/data/prospectPlace.ts");
+  let ok1 = 0, ok2 = 0;
+  for (const p of profiles) {
+    const d: any = derive(p);
+    const terms = p.reports.marketingDashboard.breakdowns
+      .find((b: any) => /search term/i.test(b.title))?.rows ?? [];
+    const top = terms[0]?.name?.trim();
+
+    /* ⚠️ THE KEYWORD IS THE PROSPECT'S OWN TOP SEARCH TERM, VERBATIM. The old construction
+       was `best <searchSuggestions[0]> near me`, and those are CALL REVIEW TRANSCRIPT WORDS —
+       "quarterly", "gold", "daytona". */
+    if (top && d.query === top) ok1++;
+    else bad(`${p.customerName}: query is "${d.query}" but its top search term is "${top}"`);
+
+    /* ⚠️ AND IT MUST NOT BE THE OLD SHAPE. A profile with no Search Term breakdown may still
+       fall back to it, so this is asserted only where a real term exists. */
+    if (top && /^best .* near me$/.test(d.query)) bad(`${p.customerName}: query is still the "best … near me" template`);
+
+    const headline: string = d.adHeadline;
+    /* Google shows ~90 characters; past that it truncates mid-word. */
+    if (headline.length > 90) bad(`${p.customerName}: headline is ${headline.length} chars`);
+    if (!headline.includes(" | ")) bad(`${p.customerName}: headline has no second slot`);
+    /* ⚠️ NO PROSPECT MAY WEAR THE OLD TEMPLATE, which was one sentence with three words
+       swapped for every business on the platform. */
+    if (/ in .+ \| .*s This Week$/.test(headline)) bad(`${p.customerName}: headline is the old template`);
+    /* ⚠️ EVERY SLOT COMES FROM THE PROSPECT'S OWN DATA. The lead must be one of its campaign
+       themes or its hero product — never invented copy. */
+    const themes: string[] = (p.reports.marketingDashboard.breakdowns
+      .find((b: any) => /campaign/i.test(b.title))?.rows ?? []).map((r: any) => r.name.split(",")[0].trim());
+    const lead = headline.split(" | ")[0];
+    if (themes.includes(lead) || lead === d.hero) ok2++;
+    else bad(`${p.customerName}: headline leads with "${lead}", which is neither a campaign nor its hero product`);
+
+    /* ⚠️ THE LEAD MUST BE RELEVANT TO WHAT WAS SEARCHED. Ungated, Orlando Health headlined an
+       "emergency room near me" search with "Cancer Institute" — its biggest product category
+       and nothing to do with the query. Plausible and wrong is the worst combination here. */
+    const sig = (t: string) => new Set((t.toLowerCase().match(/[a-z0-9$]{4,}/g) ?? []));
+    const leadWords = sig(lead), qWords = sig(d.query);
+    const related = [...leadWords].some((w) => qWords.has(w)) || themes.includes(lead);
+    if (!related) bad(`${p.customerName}: headline "${lead}" is unrelated to the query "${d.query}"`);
+
+    /* ⚠️ NEVER "Free <booking>" — the false claim `offer` already refuses, since a free
+       medical appointment is not something this demo may assert. */
+    if (new RegExp(`free ${p.bookingTerm}`, "i").test(headline)) bad(`${p.customerName}: headline promises a free ${p.bookingTerm}`);
+
+    /* The utm must name the campaign whose creative the headline used. */
+    const full: string = adCreative(p, d.shortCity, d.hero, d.query).campaignFull;
+    if (!full.startsWith(adCreative(p, d.shortCity, d.hero, d.query).campaign)) {
+      bad(`${p.customerName}: utm campaign "${full}" is not the one the headline leads with`);
+    }
+  }
+  ok1 === profiles.length
+    ? ok(`all ${ok1} queries are the prospect's own top search term`)
+    : bad(`only ${ok1} of ${profiles.length} queries are a real search term`);
+  ok2 === profiles.length
+    ? ok(`all ${ok2} headlines lead with the prospect's own campaign or product`)
+    : bad(`only ${ok2} of ${profiles.length} headlines lead with the prospect's own data`);
+
+  /* ⚠️ THE OLD SOURCE MUST NOT COME BACK as the query. `searchSuggestions` still legitimately
+     feeds the Call Review placeholder, so this is scoped to the query expression. */
+  const src = read("src/data/prospectPlace.ts").replace(/\/\*[\s\S]*?\*\//g, "");
+  /searchSuggestions/.test(src) && !/query: ad\.query/.test(src)
+    ? bad("the query is being built from searchSuggestions again")
+    : ok("the query no longer comes from Call Review transcript words");
+
+  /* ⚠️ `\b` IN A REGEX HERE IS A REAL HAZARD, and it bit this very change: written through a
+     Python heredoc, `isKeywordish`'s word boundaries were saved as literal BACKSPACE bytes
+     (0x08). tsc accepts it — a backspace between two slashes is a valid regex — and grep
+     renders it invisibly, so the classifier silently matched nothing. Checked as bytes. */
+  const raw = readFileSync("src/data/prospectPlace.ts");
+  const ctrl = [...raw].filter((b) => b < 9 || (b >= 11 && b <= 12) || (b >= 14 && b <= 31)).length;
+  ctrl === 0 ? ok("no corrupted escape bytes in prospectPlace")
+    : bad(`${ctrl} control byte(s) in prospectPlace — a \\b was probably saved as a backspace`);
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll location checks passed\n");
 process.exit(fail ? 1 : 0);

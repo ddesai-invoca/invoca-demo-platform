@@ -7289,6 +7289,69 @@ Reynolds Lake Oconee's whole area string — "the Reynolds Lake Oconee community
 Georgia, ZIP code 30642, about 85 miles east of Atlanta" — even though the city it needs is
 right there. Scanning it resolves Greensboro, GA.
 
+### The sponsored ad is the prospect's own campaign, and its keyword is a real search
+Asked for in the same conversation: *"just like a sponsored ad on google, lets change the top
+title to a creative campaign personalized to the prospect. and same for the search term, like
+now it says 'best quarterly near me' which make no sense for this aptive prospect."*
+
+⚠️⚠️ **THE KEYWORD BUG HAD ALREADY BEEN FOUND AND FIXED ONCE, ON ANOTHER SCREEN, AND NEVER
+CARRIED ACROSS.** The query was `best <callReview.searchSuggestions[0]> near me`, and those
+are CALL REVIEW TRANSCRIPT WORDS — so Aptive read **"best quarterly near me"** (quarterly is
+how often its plans run), American Home Shield **"best gold near me"** (a plan TIER), Avi & Co
+**"best daytona near me"**, Orlando Health **"best cancer institute near me"** on an ER search.
+This module's own comment even warned the list "is just as likely to hold a process word", and
+guarded with a hardcoded list of process words that "quarterly" is not on. The Google Ads
+console note in this file already records the fix in full: use the top **Calls by Search Term**
+row, "a real phrase somebody types". Now `query` is that row VERBATIM — measured across all 23
+prospects and better every single time ("pest control near me", "home warranty", "buy rolex
+daytona", "emergency room near me"). The old construction survives only as the fallback for a
+profile with no Search Term breakdown; every profile on disk has one.
+
+⚠️ **THE HEADLINE IS THE PROSPECT'S OWN CAMPAIGN NAME, because nothing we invent beats it.**
+`Calls by Campaign` rows are human-written advertiser creative specific to the business:
+"Freedom From Glasses", "Elevating the Human Spirit", "Smart Home. Smarter Decision.",
+"Turn 62", "$1B+ Recovered", "Buy 3 Get 1 Free Tire Event", "Cruise Ship on Land". It replaced
+`${hero} in ${city} | ${bookingTerm}s This Week` — one sentence with three words swapped, for
+every business on the platform. `adCreative()` builds Google's own three-slot shape: the
+campaign's creative (or the product), a promotional hook, then a locality CTA, capped at 90
+characters and trimmed from the RIGHT so the creative always survives.
+
+⚠️ **THE CAMPAIGN IS PAIRED TO THE QUERY BY WORD OVERLAP, two significant words minimum** —
+the same threshold `google-ads-demo.js` settled on for keyword-to-ad-group after one shared
+word matched "continuing CARE" to "Memory Care". `utm_campaign` then carries that campaign's
+FULL row name, match type and all, so the copy and the tracking agree about which campaign
+served the ad and the click is still traceable to a row on the Marketing dashboard.
+
+⚠️⚠️ **AN UNGATED HERO PRODUCT ADVERTISED THE WRONG SERVICE, measured.** When the matched
+campaign is a bare keyword ("ER Near Me", "Tires Near Me Search"), the first version fell back
+to the hero product — and Orlando Health's biggest category is its Cancer Institute, so an
+"emergency room near me" search was headlined **"Cancer Institute"**. Plausible-looking and
+wrong is the worst combination on a screen a prospect reads. The product now leads only when
+it shares a significant word with the query; otherwise the campaign's own name does, which by
+construction is the one that matched.
+
+⚠️ **TWO SLOT-2 EXTRACTIONS WERE TOO LOOSE AND BOTH RENDERED.** A bare
+`free\s+(\w+…)` over the offer text gave Big O Tires **"Free With A Free"** and Discount Tire
+**"Free On Qualifying Sets"** — it swallowed prepositions and stopped before the noun. It now
+requires the named thing to be CAPITALISED ("a free ProAct Inspection"), which is how these
+offers are actually written, and produces nothing rather than nonsense when it is not. It also
+still refuses "Free <bookingTerm>", the false claim `offer` already guards against.
+
+⚠️⚠️ **A `\b` WAS SAVED AS A LITERAL BACKSPACE BYTE AGAIN, IN THIS VERY CHANGE.** Writing
+`isKeywordish`'s regex through a Python heredoc collapsed nine `\b` word boundaries into 0x08
+bytes. `tsc` accepts it (a backspace between two slashes IS a valid regex), `grep` renders it
+invisibly, and the classifier silently matched nothing. This file already documents the trap
+from the `\bfull name\b` incident; **it is now checked as BYTES by `audit:place`**, so the
+next occurrence reddens instead of hiding. Verified by reproducing it exactly.
+
+**`audit:place` gained 8 checks** covering both halves, over every profile: the query is the
+prospect's own top search term and is never the old template, the headline fits 90 characters,
+has more than one slot, is not the old template, leads with the prospect's own campaign or
+product, is RELEVANT to the query, never promises a free booking, and the utm names the
+campaign the headline used — plus the byte check above. Each was broken on purpose and seen to
+fire: reverting the query (47 red), ungating the hero (2), removing the cap (15), and saving a
+backspace (1).
+
 ### The city table carries its own state now
 ⚠️⚠️ **`GoogleSearch` WAS STILL COMBINING A CITY FROM THE TABLE WITH `voiceScreenpop.state` —
 the CALLER's state.** That is the "Santa Barbara, TX" bug this file recorded for Reyes Law,
