@@ -15,6 +15,7 @@ import { isLockedEdit, isStructuralChange } from "../src/data/editGuard.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { collectNames } from "../src/data/workflowDrawers.ts";
 import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF } from "../src/data/workflowChrome.ts";
+import { rowLayout } from "../src/data/workflowRows.ts";
 import { buildSmsBrain, smsWorkflowAgentOf, smsWorkflowScopePath,
   type SmsWorkflowAgent } from "../src/data/smsBrain.ts";
 import { smsSystemPromptForAudit } from "../engine/chat.ts";
@@ -737,6 +738,101 @@ console.log("\nThe dash sweep leaves a workflow's flow alone");
   swept.openingMessage === "Hi there, this is a message to a patient."
     ? ok("while an openingMessage is still swept, because a patient reads it")
     : bad(`openingMessage was not swept: ${swept.openingMessage}`);
+}
+
+/* =============================================================================
+   THE TREE'S ROWS ARE SYMMETRIC AND NEVER CROWDED (9/8/2026)
+   -----------------------------------------------------------------------------
+   Reported directly: *"There isnt any symmetry, in the branch in the tree diagram... Sometimes
+   the sales Inquiry branch is different length to the Need support. or the the branch line is
+   too close to the Conversation Start box."*
+
+   Both halves were the same root cause: `GEO`'s row constants are FIXED while node heights are
+   MEASURED, so every gap in the diagram was `(a constant) - (however tall the text made the row
+   above)`. Measured before the fix, across the seven Orlando Health workflow pages: the stub
+   under Conversation Start was **4px** on the two whose subtitle wraps to a second line, 23px
+   on the five that fit one line and 73px on the voice tree; and the built-in SMS tree's sales
+   leaf stood **142px against the support leaf's 75px** because it carries two chips.
+
+   ⚠️ THESE CALL THE REAL `rowLayout` OVER ADVERSARIAL HEIGHTS rather than checking one tree.
+   A single example passing is what let this ship: five of the seven pages looked fine.
+   ============================================================================= */
+console.log("\nThe workflow tree's rows are symmetric and never crowded");
+{
+  const MIN_GAP = 30;
+  /* One-line through five-line boxes, and a deliberately absurd one, on both channels and
+     with and without each optional row. */
+  const HS = [43, 65, 84, 103, 142, 400];
+  let worst = Infinity, worstCase = "";
+  let inverted = 0, cases = 0;
+  for (const variant of ["sms", "voice"] as const) {
+    for (const split of [false, true]) {
+      for (const paths of [false, true]) {
+        for (const trigger of HS) for (const start of HS) for (const intent of HS) for (const leaf of HS) {
+          cases++;
+          const R = rowLayout(variant, { trigger, start, intent, leaf }, { split, paths });
+          /* Every connector the tree DRAWS, as (from, to) pairs. A row that is not drawn
+             (`subBusY`/`leafBusY`/`pathTop` are 0 then) is deliberately excluded. */
+          const gaps: [string, number][] = [
+            ["trigger->start", R.startTop - R.triggerBottom],
+            ["start->bus", R.busY - R.startBottom],
+            ["bus->intent", R.intentTop - R.busY],
+            ...(split
+              ? [["intent->subBus", R.subBusY - R.intentBottom] as [string, number],
+                 ["subBus->leaf", R.leafTop - R.subBusY] as [string, number]]
+              : [["intent->leaf", R.leafTop - R.intentBottom] as [string, number]]),
+            ...(paths
+              ? [["leaf->leafBus", R.leafBusY - R.leafBottom] as [string, number],
+                 ["leafBus->path", R.pathTop - R.leafBusY] as [string, number]]
+              : []),
+          ];
+          for (const [name, gap] of gaps) {
+            if (gap < 0) inverted++;
+            if (gap < worst) { worst = gap; worstCase = `${name} = ${gap} (${variant}, trigger ${trigger}, start ${start}, intent ${intent}, leaf ${leaf})`; }
+          }
+        }
+      }
+    }
+  }
+  inverted === 0
+    ? ok(`no connector points upwards, over ${cases} height combinations`)
+    : bad(`${inverted} connectors are inverted — a line drawn bottom-to-top renders as nothing`);
+  worst >= MIN_GAP
+    ? ok(`every connector is at least ${MIN_GAP} design units long (shortest seen ${worst})`)
+    : bad(`a connector is only ${worst} units long: ${worstCase}`);
+
+  /* ⚠️ MONOTONE, which is the promise that no signed-off diagram moved. Taller text may push a
+     row DOWN and must never pull one up. */
+  const base = rowLayout("sms", { trigger: 65, start: 65, intent: 43, leaf: 75 }, { split: false, paths: true });
+  const taller = rowLayout("sms", { trigger: 84, start: 84, intent: 64, leaf: 142 }, { split: false, paths: true });
+  (["startTop", "busY", "intentTop", "leafTop", "leafBusY", "pathTop"] as const)
+    .every((k) => taller[k] >= base[k])
+    ? ok("taller text only ever pushes a row down, never up")
+    : bad("a row moved UP when the text above it grew");
+
+  /* ⚠️ THE VOICE TREE MUST BE BYTE-IDENTICAL. Its own gaps (103 / 73 / 100) already exceed
+     MIN_GAP, so the shift stays 0 and every row sits exactly on its measured constant. Pinned
+     because those numbers came off a real Invoca capture, not from us. */
+  const v = rowLayout("voice", { trigger: 65, start: 65, intent: 84, leaf: 75 }, { split: false, paths: true });
+  v.startTop === 176 && v.busY === 314 && v.intentTop === 344 && v.leafTop === 528
+    && v.leafBusY === 660 && v.pathTop === 700
+    ? ok("the voice tree still sits on the constants measured from the capture")
+    : bad(`the voice tree moved: ${JSON.stringify(v)}`);
+
+  /* ⚠️ AND THE ROWS MUST BE LEVELLED, or the gaps above prove nothing: they are computed from
+     ONE height per row, so a renderer that let siblings keep their own heights would draw
+     unequal stems from the same row however clean this arithmetic is. */
+  const tree = readAny("src/components/WorkflowTree.tsx");
+  /const levelRow = /.test(tree) && /el\.style\.minHeight = ""/.test(tree)
+    ? ok("levelRow clears minHeight before measuring, so a row shrinks as well as grows")
+    : bad("row levelling is gone, or measures its own applied height and can only grow");
+  /* ⚠️ THIS READS `workflowRows.ts`, NOT THE COMPONENT. The arithmetic moved there so the
+     sweep above could call it without React; the check followed it one commit later than it
+     should have, and reported a defect that did not exist. */
+  const rows = readAny("src/data/workflowRows.ts");
+  /\bintentBottom = intentTop \+ h\.intent\b/.test(rows) && /\bleafBottom = leafTop \+ h\.leaf\b/.test(rows)
+    ? ok("and a row's bottom is one number, so every stem leaving it is the same length")
+    : bad("per-node bottoms are back — two branches can be different lengths again");
 }
 
 /* =============================================================================

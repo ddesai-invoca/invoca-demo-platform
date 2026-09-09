@@ -1806,6 +1806,99 @@ outranking a greeting a human explicitly set.
    built-in SMS tree, the Comfort Keepers override and a created workflow all have leaves with
    no `paths`, so none of them changes.
 
+#### ⚠️⚠️ THE TREE HAD NO SYMMETRY, AND BOTH HALVES WERE ONE ROOT CAUSE (9/8/2026)
+Reported the same day, against these five pages: *"There isnt any symmetry, in the branch in the
+tree diagram. for example 1. Sometimes the sales Inquiry branch is different length to the Need
+support. or the the branch line is too close to the Conversation Start box."*
+
+**`GEO`'s row constants are FIXED while node heights are MEASURED, so every gap in the diagram
+was `(a constant) − (however tall the text above made the row)`.** Measured across the seven
+Orlando Health workflow pages before touching anything:
+
+| | stub under Conversation Start |
+|---|---|
+| the two whose `startLabel` wraps to a second line | **4px** |
+| the five that fit one line | 23px |
+| the voice tree | 73px |
+
+One workflow away from a third line it would have **inverted and pointed upwards**, which is the
+failure the note at the top of `FALLBACK` already records for a hardcoded offset. And the second
+half is the same arithmetic one row down: the built-in SMS tree's sales leaf measured **142px
+against the support leaf's 75px** because it carries two chips, so the two branches genuinely
+were different lengths.
+
+**Two fixes, and both were needed — the first alone does nothing for the second.**
+
+1. **`rowLayout()` places every row at `max(its constant, the row above + MIN_GAP)`**, with
+   `MIN_GAP = 30` (the product's own bus-to-intent drop, which was written as `g.intent - 30`).
+   ⚠️ **ONE SHARED, ACCUMULATED SHIFT, NOT A `max` PER ROW — and the per-row version was the
+   first attempt.** Clamping each row independently fixed the crowding and then ate the NEXT
+   gap instead: the intent-to-leaf stem came out 54px on five workflows and **35px on the two
+   whose subtitle wraps**. Symmetric within a tree, still ragged across the list of them.
+   Accumulating one shift and applying it to every row below preserves each variant's designed
+   gaps, because a row that has to move takes everything under it along.
+   ⚠️ **MONOTONE, WHICH IS WHY NO SIGNED-OFF DIAGRAM MOVED.** A row only ever moves DOWN.
+   Verified: the voice tree is byte-identical (its 103 / 73 / 100 gaps all clear MIN_GAP
+   already, so the shift stays 0) and the built-in SMS tree's bus and intent row move 7px,
+   which is that bus finally clearing the box by 30.
+   ⚠️ **ONLY ASK IT ABOUT ROWS THE TREE ACTUALLY DRAWS.** `rowAt` mutates the shift, so
+   querying the sub-bus on a tree with no split grew it by 13px and pushed every row below
+   down for a bus that is never rendered. Caught in the arithmetic, not on screen.
+
+2. **`levelRow()` gives every node in a row the tallest one's height**, so a row has ONE bottom
+   and every stem leaving it is the same length by construction. The height state collapsed
+   from `intents: number[]` + `leaves: Record<string, number>` to scalars; those per-node
+   lookups existed only to cope with the raggedness.
+   ⚠️ **IT CLEARS `minHeight` BEFORE MEASURING, AND THAT IS THE WHOLE TRICK.** Reading
+   `offsetHeight` with the previous pass's levelling still applied returns the level, not the
+   content, so the row could only ever GROW: Ask AI dropping a chip would leave every box
+   stranded at the old height with dead space, and nothing on screen would say why.
+   ⚠️ **THE HEIGHT IS WRITTEN IMPERATIVELY, NOT THROUGH THE `style` PROP.** Rendering it means
+   React re-applies it next commit and the effect clears it the pass after — and when the
+   measurement is unchanged `setH` bails, React does not re-render, and the row is left CLEARED
+   and ragged on screen. Ending the layout phase with the value applied is what guarantees the
+   painted frame is levelled.
+
+**Consequence, stated: the last row of every diagram is now level.** The built-in SMS tree's
+support leaf grows from 75 to 142 to match the sales leaf, and the voice tree's six use cases
+all sit at 162. That is the change the report asked for, and it reaches every prospect. The
+strongest evidence it is right is the product's own empty-workflow capture, which measures both
+user-group leaves at **248 x 72** and both intents at **248 x 46** — a uniform row.
+
+#### `workflowRows.ts`, and 30 more audit checks that sweep instead of sampling
+`GEO`, `MIN_GAP` and `rowLayout` moved into `src/data/workflowRows.ts` — a pure module with no
+JSX and no React, for the two reasons `workflowChrome.ts` is one: node can call `rowLayout`
+directly, and exporting a plain function from `WorkflowTree.tsx` breaks that file's fast refresh
+(`oxlint`'s `only-export-components`, which this repo already carries three of).
+
+`audit:ai` (129 checks, up from 76) now sweeps `rowLayout` over **10,368 height combinations** (six box heights from one
+to five lines plus an absurd 400, across both variants and with and without the sub-bus and the
+path row) and asserts that **no connector inverts and none is shorter than 30**. Plus:
+monotonicity, the voice tree's six row constants pinned to their captured values, and that
+`levelRow` still clears before measuring. **Verified to fire**: reverting `busY` to the constant
+turns up 5,904 inverted connectors and a −628px line; removing the clear, moving a voice
+constant, and putting a per-node row bottom back each turn one red.
+⚠️ Two probe faults again, both from this file's own catalogue. One check read the row
+arithmetic out of `WorkflowTree.tsx` after it had moved to `workflowRows.ts`, and reported a
+defect that did not exist. And the first sabotage attempt (`intentBottom = intentTop + h.intent
++ 0`) still satisfied the regex, so the check LOOKED like it had failed to fire when the test
+was the thing at fault.
+
+#### The five workflows' own copy got shorter, for a measured reason
+⚠️ **LEVELLING A ROW COSTS HEIGHT, AND THE FIT HAS A 0.5 FLOOR.** With the row levelled to its
+tallest card, `sms-er-new-vs-existing` grew past the floor at 1180x780 and the canvas started
+scrolling where it had fitted at 0.5015 — that margin was already nothing. Eleven actions and
+titles that wrapped to a second line were shortened ("Refer to Primary Care and Hand to
+Scheduling" to "Refer to Primary Care", "Route to Patient Financial Services" to "Route to
+Patient Billing"), and the three `startLabel`s over 29 characters were cut to under 27 so the
+Conversation Start box stays one line and the shift stays at 7. Better on the diagram either
+way: a two-line action in one card and a one-line action in the next is what made the row
+ragged in the first place.
+**After: no tree scrolls at 1440x1000** and they render at 0.78 to 1.0 rather than 0.5, so they
+are LARGER than before. Two of the five still scroll at 1180x780, which is a canvas 369px tall
+— the voice tree has always done that there, and the floor exists for exactly this ("a legible
+diagram you move, not an illegible one you cannot read").
+
 #### `extraTree` and the three leaf actions MOVED to `workflowChrome.ts`
 ⚠️ **BECAUSE THE AUDIT COULD ONLY GREP THEM.** `AgentWorkflow.tsx` imports `useProfile`, which
 reaches `profiles.ts` and its Vite-only `import.meta.glob`, so node cannot import that screen —

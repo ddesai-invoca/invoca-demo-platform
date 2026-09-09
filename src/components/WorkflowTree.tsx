@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { GEO, rowLayout } from "../data/workflowRows";
 
 /* =============================================================================
    WorkflowTree — ONE data-driven renderer for every Agent Studio flow diagram
@@ -164,14 +165,7 @@ const toneLine = (t?: string) =>
    below only cover the single frame before the first measurement. */
 const FALLBACK = { trigger: 65, start: 65, intent: 64, leaf: 88 };
 
-/* Row geometry per channel, matched to the two real pages. Voice nodes are 248px
-   and carry a subtitle, so every row sits lower. */
-const GEO = {
-  /* ⚠️ `leafBus` and `path` are the FOURTH ROW, and `pathHeight` is only used when a leaf
-     actually has paths — so a tree without them keeps its signed-off canvas height exactly. */
-  sms:   { nodeW: 220, gap: 26, trigger: 8, start: 122, intent: 240, subBus: 300, leaf: 344, leafBus: 462, path: 500, height: 470, pathHeight: 660, triggerW: 200, startW: 230 },
-  voice: { nodeW: 248, gap: 32, trigger: 8, start: 176, intent: 344, subBus: 470, leaf: 528, leafBus: 660, path: 700, height: 700, pathHeight: 880, triggerW: 248, startW: 248 },
-} as const;
+
 
 /* The canvas clips (overflow: hidden) and is roughly 640px wide, so a tree wider
    than that loses its right-hand column — which is exactly how the National Van
@@ -196,6 +190,8 @@ const GEO = {
 const MIN_SCALE = 0.5;
 /** The hair of space under the lowest row, in design units. */
 const BOTTOM_PAD = 10;
+
+
 /** Breathing room around the fitted tree, top and bottom, in real pixels. Deliberately small:
     the ask is that the first row sits JUST under the frame and the last JUST above it. */
 const FIT_INSET = 16;
@@ -208,6 +204,8 @@ const MAX_ZOOM = 2.5;
    a 33% jump at 0.3 and a 4% nudge at 2.5. */
 const ZOOM_STEP = 1.2;
 const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z));
+
+
 
 function useFitScale(designWidth: number, designHeight: number) {
   const ref = useRef<HTMLDivElement>(null);
@@ -367,14 +365,28 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
      offset — the exact mistake recorded above, which produced a 4px upward line on SMS and a
      stub floating 24px below the node on voice. */
   const leafRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  /* ⚠️ THE PATH ROW IS MEASURED NOW TOO, so it can be levelled like the others. */
+  const pathRefs = useRef<Record<string, HTMLDivElement | null>>({});
   /* ⚠️ THE TREE'S REAL BOTTOM, MEASURED — the row constants cannot tell you it. `pathHeight`
      is 880 while the lowest node ends near 788, so fitting to the constant left ~90 design
      units of nothing under the diagram and made the whole thing render smaller than it needed
      to. Node offsets are DESIGN units even inside the scaled wrapper (transform changes the
      paint, not the layout box), so this can be read straight off the DOM. */
   const treeRef = useRef<HTMLDivElement>(null);
-  const [h, setH] = useState<{ trigger: number; start: number; intents: number[]; leaves: Record<string, number>; content: number }>(
-    { trigger: FALLBACK.trigger, start: FALLBACK.start, intents: [], leaves: {}, content: 0 });
+  /* ⚠️⚠️ **ONE HEIGHT PER ROW, NOT ONE PER NODE, AND THAT IS THE SYMMETRY FIX (9/8/2026).**
+     This was `intents: number[]` and `leaves: Record<string, number>` because sibling nodes
+     genuinely differed — the note above records "on SMS two sibling nodes differ by 21px purely
+     because one title wraps", and on the built-in SMS tree the sales leaf measured **142px
+     against the support leaf's 75px** because it carries two chips. The consequence was the
+     other half of the report: the two branches were visibly different lengths, and any
+     connector leaving those bottoms was too.
+
+     A row of siblings hanging off one bus has to share a baseline or its lines cannot be equal,
+     so `levelRow` below sets every node in a row to the tallest one's height and these become
+     SCALARS. The per-node lookups they replaced existed only to cope with the raggedness. */
+  const [h, setH] = useState<{ trigger: number; start: number; intent: number; leaf: number; path: number; content: number }>(
+    { trigger: FALLBACK.trigger, start: FALLBACK.start, intent: FALLBACK.intent,
+      leaf: FALLBACK.leaf, path: FALLBACK.leaf, content: 0 });
 
   const H = h.content > 0 ? h.content + BOTTOM_PAD : (anyPaths ? g.pathHeight : g.height);
   const colX = (i: number) => (W - nSlots * colW) / 2 + i * colW + colW / 2;
@@ -389,7 +401,6 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
   const leafCx = (bi: number, li: number) => cxOf(leafSlots(bi, li));
 
   const mid = W / 2;
-  const busY = g.intent - 30;
   const firstCx = branches.length ? branchCx(0) : mid;
   const lastCx = branches.length ? branchCx(branches.length - 1) : mid;
 
@@ -401,14 +412,44 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
      second line) that changes no prop. offsetHeight is the LAYOUT box, so the
      wrapper's transform: scale() does not distort it. */
 
+  /**
+   * Level one row and report the height it settled on.
+   *
+   * ⚠️⚠️ **IT CLEARS `minHeight` BEFORE MEASURING, AND THAT IS THE WHOLE TRICK.** Reading
+   * `offsetHeight` while the levelling from the previous pass is still applied returns the
+   * level, not the content — so the row could only ever grow. Ask AI dropping a chip or
+   * shortening a title would leave the row stranded at its old height with dead space in every
+   * box, and nothing on screen would say why. Clearing first makes each pass measure the real
+   * content, so a row shrinks as readily as it grows.
+   *
+   * ⚠️ **THE HEIGHT IS WRITTEN IMPERATIVELY, NOT THROUGH THE `style` PROP.** Rendering it would
+   * mean React re-applying it on the next commit and this effect clearing it again on the pass
+   * after — and when the measurement is unchanged `setH` bails, React does not re-render, and
+   * the row would be left CLEARED and ragged on screen. Ending the layout phase with the value
+   * applied is what guarantees the painted frame is levelled. `minHeight` is not a property
+   * React manages here, so nothing clobbers it.
+   */
+  const levelRow = (els: (HTMLDivElement | null)[], fallback: number): number => {
+    const live = els.filter((el): el is HTMLDivElement => !!el);
+    if (!live.length) return fallback;
+    live.forEach((el) => { el.style.minHeight = ""; });
+    const tallest = Math.max(...live.map((el) => el.offsetHeight));
+    live.forEach((el) => { el.style.minHeight = `${tallest}px`; });
+    return tallest || fallback;
+  };
+
   useLayoutEffect(() => {
     const measure = () => {
+      /* ⚠️ ORDER MATTERS: level the rows FIRST, then read `content`. The tree's real bottom is
+         the bottom of the LEVELLED last row, and measuring it before the levelling would size
+         the canvas to the pre-fix layout for one frame. */
+      const intent = levelRow(branches.map((_, i) => intentRefs.current[i]), FALLBACK.intent);
+      const leaf = levelRow(Object.values(leafRefs.current), FALLBACK.leaf);
+      const path = levelRow(Object.values(pathRefs.current), FALLBACK.leaf);
       const next = {
         trigger: triggerRef.current?.offsetHeight || FALLBACK.trigger,
         start: startRef.current?.offsetHeight || FALLBACK.start,
-        intents: branches.map((_, i) => intentRefs.current[i]?.offsetHeight || FALLBACK.intent),
-        leaves: Object.fromEntries(Object.entries(leafRefs.current)
-          .map(([k, el]) => [k, el?.offsetHeight || FALLBACK.leaf])),
+        intent, leaf, path,
         content: (() => {
           const t = treeRef.current;
           if (!t) return 0;
@@ -418,23 +459,39 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
       };
       setH((prev) =>
         prev.trigger === next.trigger && prev.start === next.start
-        && prev.intents.length === next.intents.length
-        && prev.intents.every((v, i) => v === next.intents[i])
-        && prev.content === next.content
-        && JSON.stringify(prev.leaves) === JSON.stringify(next.leaves) ? prev : next);
+        && prev.intent === next.intent && prev.leaf === next.leaf && prev.path === next.path
+        && prev.content === next.content ? prev : next);
     };
     measure();
+    /* ⚠️ THE OBSERVER WATCHES THE TWO UNLEVELLED NODES ONLY. Observing a levelled row would
+       fire on the very `minHeight` write above and loop; the trigger and Conversation Start
+       boxes are the ones whose own text wrapping has to push the rows below them down. */
     const ro = new ResizeObserver(measure);
-    [triggerRef.current, startRef.current, ...intentRefs.current].forEach((el) => el && ro.observe(el));
+    [triggerRef.current, startRef.current].forEach((el) => el && ro.observe(el));
     return () => ro.disconnect();
   }, [model, branches.length, scale]);
 
-  /* Real edges. Each branch uses ITS OWN intent height — on SMS two sibling nodes
-     differ by 21px purely because one title wraps. */
-  const triggerBottom = g.trigger + h.trigger;
-  const startBottom = g.start + h.start;
-  const intentBottom = (bi: number) => g.intent + (h.intents[bi] ?? FALLBACK.intent);
-  const leafBottom = (bi: number, li: number) => g.leaf + (h.leaves[`${bi}-${li}`] ?? FALLBACK.leaf);
+  /* ---- WHERE EVERY ROW SITS, from the measured rows above -------------------
+     ⚠️⚠️ **EACH ROW IS `max(its GEO constant, the row above + MIN_GAP)`.** The constants were
+     the only thing positioning a row, so a box that grew a line ate the gap beneath it: the
+     Conversation Start stub measured 4px on the two workflows whose subtitle wraps, against
+     23px on the five that do not and 73px on the voice tree.
+
+     ⚠️ **THE `max` MAKES IT MONOTONE, WHICH IS WHY NO SIGNED-OFF DIAGRAM MOVES.** A row only
+     ever moves DOWN, and only when it would otherwise be crowded — so the voice tree is
+     byte-identical (every one of its gaps already exceeds MIN_GAP) and the two built-in SMS
+     rows move by 7px, which is the bus finally clearing the box by the product's own 30.
+
+     ⚠️ **ONE `leafTop` FOR THE WHOLE ROW, EVEN WHEN ONE BRANCH SPLITS.** A row is a row: giving
+     the split branch its own lower row to clear its sub-bus would stagger the leaves and
+     reintroduce exactly the raggedness this change removes. So the row clears the sub-bus when
+     ANY branch has one. */
+  const anySplit = branches.some((b) => (b.leaves?.length ?? 0) > 1);
+  const R = rowLayout(model.variant, { trigger: h.trigger, start: h.start, intent: h.intent, leaf: h.leaf },
+    { split: anySplit, paths: anyPaths });
+  const { triggerBottom, startTop, startBottom, busY, intentTop, intentBottom, subBusY,
+    leafTop, leafBottom, leafBusY, pathTop } = R;
+
 
   /* One place decides what a clickable node looks like and does, so a node cannot end up
    with a pointer cursor and no handler (or the reverse). */
@@ -479,7 +536,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         style={{ width: W, height: H, margin: 0, transform: `scale(${scale})`, transformOrigin: "top left" }}>
         <svg className="wf-lines" viewBox={`0 0 ${W} ${H}`} width={W} height={H} aria-hidden="true">
           {/* trigger → start → the branch bus, from measured node bottoms */}
-          <line x1={mid} y1={triggerBottom} x2={mid} y2={g.start} className="wf-l" />
+          <line x1={mid} y1={triggerBottom} x2={mid} y2={startTop} className="wf-l" />
           <line x1={mid} y1={startBottom} x2={mid} y2={busY} className="wf-l" />
           {branches.length > 1 && (
             <line x1={firstCx} y1={busY} x2={lastCx} y2={busY} className="wf-l" />
@@ -494,21 +551,21 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
             const split = new Set(own.map((s) => s.leaf)).size > 1;
             return (
               <g key={`lines-${bi}`}>
-                <line x1={bx} y1={busY} x2={bx} y2={g.intent} className="wf-l" />
+                <line x1={bx} y1={busY} x2={bx} y2={intentTop} className="wf-l" />
                 {split ? (
                   <>
                     {/* second fork: stem, bus across this branch's leaves, drops */}
-                    <line x1={bx} y1={intentBottom(bi)} x2={bx} y2={g.subBus}
+                    <line x1={bx} y1={intentBottom} x2={bx} y2={subBusY}
                       className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
-                    <line x1={colX(own[0].i)} y1={g.subBus} x2={colX(own[own.length - 1].i)} y2={g.subBus}
+                    <line x1={colX(own[0].i)} y1={subBusY} x2={colX(own[own.length - 1].i)} y2={subBusY}
                       className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
                     {[...new Set(own.map((s) => s.leaf))].map((li) => (
-                      <line key={`d-${li}`} x1={leafCx(bi, li)} y1={g.subBus} x2={leafCx(bi, li)} y2={g.leaf}
+                      <line key={`d-${li}`} x1={leafCx(bi, li)} y1={subBusY} x2={leafCx(bi, li)} y2={leafTop}
                         className={"wf-l" + toneLine(b.leaves[li]?.tone)} />
                     ))}
                   </>
                 ) : (
-                  <line x1={bx} y1={intentBottom(bi)} x2={bx} y2={g.leaf}
+                  <line x1={bx} y1={intentBottom} x2={bx} y2={leafTop}
                     className={"wf-l" + toneLine(b.leaves[0]?.tone)} />
                 )}
 
@@ -522,12 +579,12 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
                   const lx = leafCx(bi, li);
                   return (
                     <g key={`paths-${bi}-${li}`}>
-                      <line x1={lx} y1={leafBottom(bi, li)} x2={lx} y2={g.leafBus}
+                      <line x1={lx} y1={leafBottom} x2={lx} y2={leafBusY}
                         className={"wf-l" + toneLine(lf.paths[0]?.tone ?? lf.tone)} />
-                      <line x1={colX(own2[0].i)} y1={g.leafBus} x2={colX(own2[own2.length - 1].i)} y2={g.leafBus}
+                      <line x1={colX(own2[0].i)} y1={leafBusY} x2={colX(own2[own2.length - 1].i)} y2={leafBusY}
                         className={"wf-l" + toneLine(lf.paths[0]?.tone ?? lf.tone)} />
                       {own2.map((s2) => (
-                        <line key={`pd-${s2.i}`} x1={colX(s2.i)} y1={g.leafBus} x2={colX(s2.i)} y2={g.path}
+                        <line key={`pd-${s2.i}`} x1={colX(s2.i)} y1={leafBusY} x2={colX(s2.i)} y2={pathTop}
                           className={"wf-l" + toneLine(lf.paths?.[s2.path]?.tone ?? lf.tone)} />
                       ))}
                     </g>
@@ -545,7 +602,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         </div>
 
         <div className="wf-node wf-start" ref={startRef}
-          style={{ left: mid - g.startW / 2, top: g.start, width: g.startW }}>
+          style={{ left: mid - g.startW / 2, top: startTop, width: g.startW }}>
           <div className="wf-node-title"><VIcon name="chat" />Conversation Start</div>
           <div className="wf-node-sub">{model.startLabel}</div>
         </div>
@@ -553,7 +610,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
         {branches.map((b, bi) => (
           <div {...open(`intent-${bi}`)} className={"wf-node wf-intent " + open(`intent-${bi}`).className} key={`intent-${bi}`}
             ref={(el) => { intentRefs.current[bi] = el; }}
-            style={{ left: branchCx(bi) - g.nodeW / 2, top: g.intent, width: g.nodeW }}>
+            style={{ left: branchCx(bi) - g.nodeW / 2, top: intentTop, width: g.nodeW }}>
             <div className="wf-node-title"><VIcon name={b.icon ?? "altRoute"} />{b.title}</div>
             {b.subtitle ? <div className="wf-node-sub">{b.subtitle}</div> : null}
           </div>
@@ -577,7 +634,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
                 className={"wf-node wf-leaf" + toneClass(leaf.tone) + " " + open("").className}
                 key={`leaf-${i}`}
               ref={(el) => { leafRefs.current[`${s.branch}-${s.leaf}`] = el; }}
-              style={{ left: leafCx(s.branch, s.leaf) - g.nodeW / 2, top: g.leaf, width: g.nodeW }}>
+              style={{ left: leafCx(s.branch, s.leaf) - g.nodeW / 2, top: leafTop, width: g.nodeW }}>
               <div className="wf-leaf-title">{leaf.title}</div>
               {leaf.addAction ? (
                 /* An unconfigured leaf: the affordance, not an action. No icon in the capture. */
@@ -610,7 +667,8 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
             <div {...open(`path-${s.branch}-${s.leaf}-${s.path}`)}
               className={"wf-node wf-leaf" + toneClass(pth.tone ?? "green") + " " + open("").className}
               key={`path-${i}`}
-              style={{ left: colX(i) - g.nodeW / 2, top: g.path, width: g.nodeW }}>
+              ref={(el) => { pathRefs.current[`${s.branch}-${s.leaf}-${s.path}`] = el; }}
+              style={{ left: colX(i) - g.nodeW / 2, top: pathTop, width: g.nodeW }}>
               <div className="wf-leaf-title">{pth.title}</div>
               <div className="wf-leaf-action">
                 <VIcon name={pth.actionIcon ?? "altRoute"} />
