@@ -7833,24 +7833,31 @@ a standby cannot see production's 219 demos. Failover needs the store moved off 
 `engine/demoStore.ts` — the same migration this file already names as the real fix for
 zero-downtime deploys. It needs a store provisioned, which is the user's to do.
 
-## ⚠️ OPEN ITEMS as of 9/8/2026
+## ⚠️ OPEN ITEMS as of 9/9/2026
 
-**0. THE STAGING SERVICE IS MID-CREATION, AND THE GIT STATE IS DELIBERATELY SPLIT.**
-- `origin/staging` exists at **9628972** (the environment work). `main` is **one commit
-  behind it and unpushed**, so production is still on `68c602c` and has none of it. That is
-  the intended state — staging gets it first — but it means `/api/status` on production does
-  NOT yet report `environment`, and nothing there is gated to production yet.
+**0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO
+COMMITS UNPUSHED.** ⚠️ **The paragraph this replaces is STALE — corrected here rather than
+left to mislead:** it said "production is still on `68c602c`". Production has since been
+pushed to and is now on **`3cc7ef0`** (the workflow-tree symmetry fix), confirmed live via
+`/api/status`. Current split:
+- `origin/main` = `3cc7ef0`. Local `main` is **two commits ahead, unpushed**:
+  `a0651d1` (the SMS thread header's toll-free number) and `c847814` (the "2026 Dallas Invoca
+  Summit" Launch dropdown). Neither is destructive or environment-sensitive; both are waiting
+  only because nobody has said "push it" for them yet.
+- `origin/staging` is still at **9628972** and has not moved since 9/8. It has not caught up
+  to `main` at all — everything from 9/8 onward (the ER workflows, the tree symmetry fix, the
+  toll-free number, the Dallas dropdown) is on `main`/production but NOT on `staging`.
 - ⚠️ **`staging` IS A DEPLOY POINTER, NOT A BRANCH TO DEVELOP ON.** Keep working on `main`
   locally; `git push origin HEAD:staging` deploys, `git push origin main` promotes. Do not
-  `git checkout staging`. `staging` being AHEAD of main is the normal state.
-- The Render Web Service itself was still being filled in when this session ended. Every
-  field value, the four autofills to correct, and the env vars to set and omit are in
-  **`docs/ENVIRONMENTS.md`** — read that before touching the dashboard.
-- ⚠️ **AN OPEN DECISION:** the user said they are **not** adding Google auth to staging. That
-  leaves every `/api/*` route reachable by anyone with the URL, and the exposure is COST (our
-  Anthropic, LiveKit and Places keys) rather than prospect data. The runbook gives the two
-  safe shapes — omit `ANTHROPIC_API_KEY` too (14 bundled prospects still render in full), or
-  add the two Google vars. **Not yet resolved; do not assume either.**
+  `git checkout staging`.
+- The Render Web Service itself was still being filled in as of 9/8 and its state has not been
+  checked since. Every field value, the four autofills to correct, and the env vars to set and
+  omit are in **`docs/ENVIRONMENTS.md`** — read that before touching the dashboard.
+- ⚠️ **AN OPEN DECISION, STILL UNRESOLVED:** the user said they are **not** adding Google auth
+  to staging. That leaves every `/api/*` route reachable by anyone with the URL, and the
+  exposure is COST (our Anthropic, LiveKit and Places keys) rather than prospect data. The
+  runbook gives the two safe shapes — omit `ANTHROPIC_API_KEY` too (14 bundled prospects still
+  render in full), or add the two Google vars. **Do not assume either.**
 
 ## ⚠️ OPEN ITEMS carried from 9/3/2026 (NOT yet fixed)
 
@@ -7909,8 +7916,10 @@ agent — `isBooked` requires `booked === true` plus a day and a time, so neithe
 lead. ⚠️ **The lesson: for anything gated on a captured call, "is it live?" is answered by
 checking the record AND the browser's captures, never by the commit alone.**
 
-**4. `src/data/generated/denver-health.json` is untracked and was not created by this work.**
-Left alone deliberately; decide whether it belongs in git.
+**4. ✅ RESOLVED — `src/data/generated/denver-health.json` is now tracked in git.** This item
+previously said it was untracked; checked 9/9/2026 and `git ls-files` confirms it is in the
+repo. Whoever decided it belonged in git did so at some point between then and now; nothing
+left to do.
 
 ## Deferred polish (TODO)
 0. **ZERO-DOWNTIME DEPLOYS — route B built 2026-08-20, ONE CHECK OUTSTANDING.**
