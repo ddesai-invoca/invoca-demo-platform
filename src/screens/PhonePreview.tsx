@@ -4,6 +4,7 @@ import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, type SmsWorkflowAgent } from "../data/smsBrain";
+import { tollFreeNumber } from "../data/smsContactNumber";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 
@@ -16,6 +17,8 @@ import type { SmsConversation, SmsTurn } from "../data/schema";
    to the AI SMS Conversation Intelligence report — the demo's headline move. */
 
 interface Msg { role: "user" | "assistant"; content: string; }
+
+
 
 /* ---- capture helpers (client-side; Date/Math.random are fine here) -------- */
 const HEX = "0123456789ABCDEF";
@@ -368,7 +371,7 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
               <button className="sms-navbtn sms-back" aria-label="Back"><span className="material-icons">arrow_back_ios_new</span></button>
               <div className="sms-contact">
                 <div className="sms-avatar"><span className="material-icons">person</span></div>
-                <div className="sms-namepill">{profile.customerName}<span className="material-icons">chevron_right</span></div>
+                <div className="sms-namepill">{tollFreeNumber(profile.id)}<span className="material-icons">chevron_right</span></div>
               </div>
               <span className="sms-navspacer" aria-hidden="true" />
             </div>

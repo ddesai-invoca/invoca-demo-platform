@@ -7398,6 +7398,53 @@ it holds the app in the Browser pane. Navigate within it via `preview_eval`
   NEW data-driven feature into `engine/core.ts` so new prospects get it. Pure design
   changes are shared CSS and apply to everyone.
 
+## The SMS thread header shows a toll-free number, not the prospect's name (9/8/2026)
+
+Asked for directly, against the selected `.sms-namepill` element reading "Orlando Health":
+*"For all prospects i want you to change the contact information from the name of the
+prospect to a random 1-800 number."*
+
+⚠️ **A REAL IPHONE MESSAGES THREAD ONLY SHOWS A NAME WHEN THE SENDER IS A SAVED CONTACT.**
+This is a cold business number texting in, so the mockup was overstating the relationship
+even before the ask — digits are the more faithful render, not just what was requested.
+
+`tollFreeNumber(profileId)` lives in its own file, **`src/data/smsContactNumber.ts`**, for
+the same reason `workflowChrome.ts` and `workflowRows.ts` are their own files: `PhonePreview.tsx`
+imports `useProfile`, which reaches `profiles.ts` and its Vite-only `import.meta.glob`, so
+node cannot import that screen and a function stranded inside it could only be grepped, never
+called and swept for real collisions across every profile.
+
+⚠️ **DETERMINISTIC, HASHED OFF THE PROFILE ID — NOT `Math.random()`.** This file's own
+`newConvBase()` a few lines above is allowed to randomize a `callerId`, because that is a
+fresh CONSUMER phoning in on every new conversation. This is the BUSINESS'S OWN number, which
+has to be the same every time this prospect's preview opens, or an SE rehearsing the same demo
+twice sees a different "800 number" reach out — the same drift this repo already refuses for
+the SMS agent's opening line. Verified live: Orlando Health renders `(800) 555-0959` and Shady
+Blinds `(800) 555-0673`, both stable across a reload and a page navigation.
+
+⚠️⚠️ **THE FIRST EXCHANGE CHOICE COLLIDED, AND A WIDER ONE WAS ALREADY SITTING IN THIS
+REPO'S OWN DATA.** The obvious reserved-for-fiction block is 555-0100 through 555-0199 (100
+values), and it collided twice over the 17 real profiles on disk. But this repo's own
+generated phone numbers already use the WIDER shape — `555-0184`, `555-0847`, `555-0641`,
+`555-0142` all appear elsewhere in this file's own history — i.e. exchange 555 followed by
+`0` and three digits, 1,000 values. Switching to that shape gives **zero collisions across
+all 23 profiles** (bundled and library), where the narrower block already had two.
+
+**`npm run audit:ai` gained 7 checks**: at least ten real profiles get swept, every number
+matches `(800) 555-0XXX`, all are distinct, the number is a pure function of the id, at least
+one real id proves the wider 1,000-value range is actually in effect (not just the narrower
+555-01XX block), the contact pill calls `tollFreeNumber(profile.id)`, and the old
+`profile.customerName` render is gone rather than merely shadowed. Each verified to fire:
+narrowing back to 100 values produced a real collision across the 23 profiles, breaking the
+format, making the number non-deterministic, and reverting the render call each turned one
+red.
+
+Verified in the browser on two prospects: Orlando Health's Preview Agent renders
+`(800) 555-0959` and Shady Blinds' renders `(800) 555-0673`, both matching the values computed
+directly from `hash(profileId) % 1000`, both surviving a `location.reload()`. `audit:voice`
+(107), `audit:place` and `audit:phases` green, typecheck clean, `audit:seeds` unchanged at the
+same pre-existing 14 of 34.
+
 ## No human-agent QA signals on the AI conversation reports (9/3/2026)
 
 Asked for pointing at "(QA) Proper Greeting" / "(QA) Proper Close" in the AI SMS report's MET

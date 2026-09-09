@@ -21,6 +21,7 @@ import { buildSmsBrain, smsWorkflowAgentOf, smsWorkflowScopePath,
 import { smsSystemPromptForAudit } from "../engine/chat.ts";
 import { CustomerProfile } from "../src/data/schema.ts";
 import { sweepValue } from "../engine/dashSweep.ts";
+import { tollFreeNumber } from "../src/data/smsContactNumber.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -31,6 +32,13 @@ const files = fs.readdirSync(SCREENS).filter((f) => f.endsWith(".tsx"));
 const read = (f: string) => fs.readFileSync(path.join(SCREENS, f), "utf8");
 /** Read anything in the repo — the voice-lock checks below span components/ and data/. */
 const readAny = (f: string) => fs.readFileSync(f, "utf8");
+/** Every profile on disk, bundled or in the local demo library — same pattern audit-place.ts uses. */
+function load(dir: string, unwrap: (j: any) => any) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((f) => f.endsWith(".json"))
+    .map((f) => unwrap(JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"))))
+    .filter((p) => p?.id);
+}
 
 console.log("\nRule 1 — presentation is never data");
 {
@@ -738,6 +746,62 @@ console.log("\nThe dash sweep leaves a workflow's flow alone");
   swept.openingMessage === "Hi there, this is a message to a patient."
     ? ok("while an openingMessage is still swept, because a patient reads it")
     : bad(`openingMessage was not swept: ${swept.openingMessage}`);
+}
+
+/* =============================================================================
+   THE SMS THREAD HEADER SHOWS A TOLL-FREE NUMBER, NOT THE PROSPECT'S NAME (9/8/2026)
+   -----------------------------------------------------------------------------
+   Asked for directly, against the phone mockup's contact pill (selected element:
+   ".sms-namepill", reading "Orlando Health"): *"For all prospects i want you to change the
+   contact information from the name of the prospect to a random 1-800 number."* A real
+   iPhone Messages thread only shows a NAME when the sender is a saved contact; this is a
+   cold business number, so digits are the more faithful mockup even before the ask.
+
+   `tollFreeNumber(profileId)` lives in `src/data/smsContactNumber.ts` — its own file, not
+   inline in `PhonePreview.tsx`, for the same reason `workflowChrome.ts` and
+   `workflowRows.ts` are their own files: that screen imports `useProfile`, which reaches
+   `profiles.ts` and its Vite-only `import.meta.glob`, so node cannot import it and a
+   function stranded there could only be grepped, not called and swept for real collisions.
+   ============================================================================= */
+console.log("\nThe SMS thread header shows a stable toll-free number, not the prospect's name");
+{
+  const profiles = [...load("src/data/generated", (j: any) => j),
+    ...load(".data/demos", (j: any) => j.profile)];
+  const seen = new Set<string>();
+  const ids = profiles.filter((p) => p?.id && !seen.has(p.id) && seen.add(p.id)).map((p) => p.id as string);
+
+  ids.length >= 10
+    ? ok(`swept ${ids.length} real profile ids`)
+    : bad(`only found ${ids.length} profiles to sweep — load() may be broken`);
+
+  const numbers = ids.map((id) => tollFreeNumber(id));
+  numbers.every((n) => /^\(800\) 555-0\d{3}$/.test(n))
+    ? ok("every number is shaped (800) 555-0XXX, the reserved-for-fiction exchange")
+    : bad(`a number is not in the 555-0XXX shape: ${numbers.find((n) => !/^\(800\) 555-0\d{3}$/.test(n))}`);
+
+  new Set(numbers).size === numbers.length
+    ? ok(`all ${numbers.length} prospects get a distinct number — zero collisions`)
+    : bad(`two prospects share a number, over ${numbers.length} profiles`);
+
+  ids.every((id) => tollFreeNumber(id) === tollFreeNumber(id))
+    ? ok("the number is a pure function of the profile id — stable across calls")
+    : bad("the number is not deterministic");
+
+  /* ⚠️ THE 555-01XX BLOCK (100 VALUES) WAS TRIED FIRST AND COLLIDED TWICE OVER 17 REAL
+     PROFILES — proof the wider 555-0XXX shape (1,000 values) is really in effect is that at
+     least one real id lands OUTSIDE the narrower 100-value block. */
+  const outside01xx = numbers.some((n) => !/^\(800\) 555-01\d{2}$/.test(n));
+  outside01xx
+    ? ok("at least one number falls outside the narrower 555-01XX block, proving the wider range is live")
+    : bad("every number still fits the old 100-value 555-01XX block — the widening may have regressed");
+
+  const phone = readAny("src/screens/PhonePreview.tsx");
+  /tollFreeNumber\(profile\.id\)/.test(phone)
+    ? ok("the contact pill renders the toll-free number, not profile.customerName")
+    : bad("the sms-namepill no longer calls tollFreeNumber — the prospect's name may be back");
+  !/sms-namepill">\{profile\.customerName\}/.test(phone)
+    ? ok("and the old customerName render is gone, not just shadowed")
+    : bad("the old customerName render is still present alongside the new one");
 }
 
 /* =============================================================================
