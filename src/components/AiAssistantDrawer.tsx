@@ -41,6 +41,12 @@ interface Msg { role: "user" | "assistant"; content: string; icon?: string }
    ============================================================================= */
 type TreeShape = {
   agent?: unknown;
+  /* ⚠️ THE CHANNEL, so the hint below does not offer a VOICE agent on an SMS page. Read from
+     the tree model's own `variant` rather than sniffed from the data: an SMS extra workflow
+     registers an `agent` half too now, and without this its empty state read "Build Orlando
+     Health's voice agent" and suggested opening with "Thanks for calling" on a screen whose
+     whole subject is text messages. */
+  variant?: string;
   branches?: { title?: string; leaves?: { title?: string; paths?: { title?: string }[] }[] }[];
 };
 
@@ -75,6 +81,36 @@ function pageHint(data: unknown, customerName: string): { title: string; body: R
   const titles = branchTitles(d);
   const last = titles[titles.length - 1];
 
+  /* ⚠️⚠️ **AN SMS WORKFLOW'S AGENT HALF IS A DIFFERENT OFFER (9/8/2026).** It configures the
+     workflow's opening TEXT MESSAGE and its ordered flow, not a voice, a spoken greeting or a
+     ZIP gate. Sharing the voice copy here would promise edits this page cannot make and word
+     them for a phone call. The two branches diverge only in the offer; the tree examples below
+     are derived the same way in both, off the branches the SE is actually looking at. */
+  if (d?.agent && d?.variant === "sms") {
+    const steps = (d.agent as { steps?: unknown }).steps;
+    const ex: string[] = [];
+    if (last) ex.push(`remove the ${last} branch`);
+    ex.push(`add a use case under All Support Users`);
+    if (titles[0] && titles[0] !== last) ex.push(`ask ${titles[0]} for their email as well`);
+    /* Offered only when this workflow states its flow as a list. A workflow whose flow lives
+       in its playbook prose has no `steps` to edit, and suggesting one would be an
+       instruction that quietly does nothing. */
+    if (Array.isArray(steps) && steps.length) ex.push(`add a step before the hand-off`);
+    ex.push(`open with Hi {name}, this is ${customerName}`);
+    return {
+      title: `Build ${possessive(customerName)} SMS agent`,
+      body: (
+        <>
+          Describe what you want the agent to do and I&apos;ll build the tree and configure it:
+          {" "}{ex.map((e, i) => (
+            <span key={e}>{i ? ", " : ""}&quot;{e}&quot;</span>
+          ))}.
+          {" "}The trigger, Conversation Start and the four nodes above the branches are
+          Invoca&apos;s own and cannot be renamed.
+        </>
+      ),
+    };
+  }
   if (d?.agent) {
     /* ⚠️ **BUILT AS A LIST SO NO BRANCH IS NAMED TWICE.** With fixed slots, Comfort Keepers'
        two branches put "Interested in becoming a caregiver" in both the remove example and the

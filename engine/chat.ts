@@ -82,6 +82,20 @@ export interface ChatBrain {
    * untouched workflow gets nothing appended and reads exactly as its author wrote it.
    */
   overrides?: { questions?: string[]; rules?: string[] };
+  /**
+   * The extra workflow's ORDERED FLOW (`reports.extraWorkflows[].playbookSteps`, or whatever
+   * the workflow page's Ask AI has edited it to).
+   *
+   * ⚠️ **A LIST, NOT PROSE, AND THAT IS THE POINT.** It is the SMS counterpart to the voice
+   * spec's `informSteps`: an SE asking to "confirm the facility before offering anything"
+   * needs a surgical edit to one entry, not a rewrite of a 2,000-character `customSystem`.
+   *
+   * ⚠️ **RENDERED ONLY IN THE `customSystem` BRANCH, and absent everywhere else.** A workflow
+   * that states its flow in prose sets nothing here, so its prompt is byte-identical. Never
+   * author BOTH for one workflow: two orderings of one flow is the self-contradicting prompt
+   * this file warns about, and the model picks one at random.
+   */
+  steps?: string[];
   /* The workflow diagram, when the caller came from a page that has one. Opt-in and
      defaulted to absent, so every existing caller keeps the hardcoded flow below. */
   voicePaths?: VoicePath[];
@@ -254,6 +268,28 @@ function overrideBlock(brain: ChatBrain): string {
   return parts.join("\n");
 }
 
+/**
+ * The workflow's own ordered flow, rendered under its playbook.
+ *
+ * ⚠️ **NUMBERED, WITH "DO NOT SKIP, DO NOT REORDER" — the wording is copied from step 2 of the
+ * main flow and from `overrideBlock` deliberately.** A bulleted list of steps reads to the
+ * model as a MENU: that exact mistake is recorded in CLAUDE.md against the Preview Agent's
+ * questions, where the agent skipped straight to the second one.
+ *
+ * ⚠️ **IT IS PART OF THE PLAYBOOK, SO IT CLAIMS NO PRECEDENCE.** `overrideBlock` says "THIS
+ * SECTION WINS" because it carries changes made AFTER the playbook was written and would
+ * otherwise compete with it. These steps ARE the playbook's flow, and a section that
+ * out-ranked the operator's later edits would invert the order those two were fixed in.
+ */
+function stepsBlock(brain: ChatBrain): string {
+  const s = brain.steps;
+  if (!s?.length) return "";
+  return [
+    "THE FLOW. Work through these steps IN THIS ORDER, one message at a time, waiting for the reply before moving on. Adapt the wording to what the person says, but do not skip a step, do not reorder them, and do not combine two into one message:",
+    s.map((x, i) => `${i + 1}. ${x}`).join("\n"),
+  ].join("\n");
+}
+
 function buildSystem(brain: ChatBrain, voice: boolean): string {
   /* A workflow-supplied playbook wins over the generated persona, with our
      channel format rules appended so the phone UI stays renderable. */
@@ -262,7 +298,10 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
        hand-written playbook without creating the self-contradicting prompt this file warns
        about elsewhere. It is emitted ONLY for config that actually differs from the
        prospect's profile, so a workflow nobody has edited is byte-identical to before. */
-    return [brain.customSystem, overrideBlock(brain), SMS_FORMAT_RULES]
+    /* ⚠️ ORDER MATTERS: playbook, then its own flow, then the operator's later changes, then
+       the channel's format rules. `overrideBlock` says it wins, so it has to come AFTER the
+       steps it may be overriding. */
+    return [brain.customSystem, stepsBlock(brain), overrideBlock(brain), SMS_FORMAT_RULES]
       .filter(Boolean).join("\n\n");
   }
   const rules = (brain.rules ?? []).map((r) => `- ${r}`).join("\n");

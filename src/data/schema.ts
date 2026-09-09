@@ -749,6 +749,19 @@ export const ExtraWorkflow = z.object({
   branches: z.array(WorkflowBranch),
   systemPrompt: z.string(),             // the agent's playbook, used by Preview Agent
   openingMessage: z.string().optional(),// what the agent texts first
+  /* THE ORDERED FLOW, AS A LIST — the SMS counterpart to the voice spec's `informSteps`.
+     ⚠️ **IT EXISTS SO Ask AI CAN EDIT THE FLOW SURGICALLY.** `systemPrompt` is one prose blob:
+     a model asked to "make it confirm the facility first" has to rewrite the whole thing, and
+     `editGuard` sees one giant string diff rather than a list whose length is its content. The
+     voice page settled this shape already — `agent.informSteps` is a `string[]` and is why
+     "drop the step that asks for a name" works there. This is the same field for SMS, so the
+     two channels' Ask AI behave the same way instead of one being a second-class surface.
+     ⚠️ **OPTIONAL, AND ABSENT ON EVERY WORKFLOW AUTHORED BEFORE IT.** Avi & Co and Reyes Law
+     carry their flow inside `systemPrompt` prose; with no `playbookSteps` nothing is appended
+     and their prompts are byte-identical. Authoring BOTH would be the duplicated-field trap
+     this repo has paid for three times (the greeting copied into `rules`, the ZIP allow-list
+     against the steps): put the flow here OR in the prose, never in both. */
+  playbookSteps: z.array(z.string()).optional(),
   /* The locations a BOOKING voice workflow can book into, e.g. Avi & Co's three boutiques.
      ⚠️ ITS PRESENCE IS WHAT MARKS THE WORKFLOW AS A BOOKING ONE — there is deliberately no
      separate `mode` flag to drift out of step with it. A booking agent with nowhere to book

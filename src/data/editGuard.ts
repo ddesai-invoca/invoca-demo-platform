@@ -75,7 +75,13 @@ const LENGTH_IS_CONTENT = [
      ⚠️ SCOPED TO `agent.` ON PURPOSE. A bare /rules$/ would also match the Signal Manager's
      rule strings and any other `rules` array on any screen, quietly widening rule 2 across the
      app to buy one page a feature. */
-  /^agent\.(rules|informSteps|serviceZips)$/i,
+  /* ⚠️ `steps` IS THE SMS SIDE OF `informSteps` (9/8/2026), registered beside an extra
+     workflow's diagram so its Ask AI matches the voice page's. Same reason it is a length
+     exemption: "drop the step that asks for the reason" and "add a step that confirms the
+     facility" are the whole feature, and a fixed length leaves it able to reword a step and
+     unable to add one. Still scoped to `agent.` — a bare /steps$/ would widen rule 2 across
+     any other screen that happens to hold a `steps` array. */
+  /^agent\.(rules|informSteps|serviceZips|steps)$/i,
   /* THE DIGITAL JOURNEY REPORT'S LEADING COLUMNS. Adding, removing, renaming or
      moving one is a normal thing to want of a demo table ("put a Location column
      before Marketing Source"), and it used to be declined as structural.

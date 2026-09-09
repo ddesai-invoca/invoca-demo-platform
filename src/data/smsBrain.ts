@@ -65,6 +65,70 @@ export interface SmsBrain {
    * exactly as they were signed off.
    */
   overrides?: { questions?: string[]; rules?: string[] };
+  /**
+   * The extra workflow's ORDERED FLOW, appended to its own playbook.
+   *
+   * ⚠️ **THE SMS COUNTERPART TO THE VOICE SPEC'S `informSteps`, and it exists so the two
+   * channels' Ask AI behave the same way.** The voice workflow page registers its agent
+   * alongside the diagram, so one instruction reshapes the tree AND configures the agent; an
+   * SMS extra workflow registered only the diagram, so "open with X" or "confirm the facility
+   * before offering anything" had nowhere to land — the model wrote the edit, `applyEdits`
+   * found no such path, and the drawer reported success. That is the silent no-op recorded
+   * five times in CLAUDE.md.
+   *
+   * ⚠️ **ABSENT UNLESS THE WORKFLOW AUTHORS `playbookSteps`.** Every workflow written before
+   * this carries its flow inside `systemPrompt` prose, so nothing is appended and its prompt
+   * is byte-identical.
+   */
+  steps?: string[];
+}
+
+/**
+ * The scope path an SMS extra workflow's page registers, i.e. where its `agent` half lives.
+ *
+ * ⚠️ **ONE DEFINITION, BECAUSE TWO SURFACES READ IT AND THEY ARE DIFFERENT PAGES.** The
+ * workflow page writes it (Ask AI, and the Details tab's Custom Greeting); the Preview Agent
+ * opens in a SEPARATE TAB at `/agent-studio/agent/preview?wf=<slug>` and has to read it back
+ * to honour the edit. A second copy of this string is how one of them ends up reading a key
+ * nobody writes, which looks exactly like an edit that applied and did nothing.
+ */
+export const smsWorkflowScopePath = (slug: string): string =>
+  `/agent-studio/agent/workflow/${slug}`;
+
+/**
+ * What an SMS extra workflow's Ask AI may configure: the fields the DIAGRAM CANNOT DRAW.
+ *
+ * ⚠️ **EACH FIELD HAS EXACTLY ONE HOME, the same rule the voice page's `agent` half follows.**
+ * Anything the tree draws (intent subtitles, leaf titles, use-case titles, chips) stays in the
+ * tree and only there. These two are invisible on the diagram and belong to THIS workflow
+ * rather than to the prospect's shared agent, which is why they live here and not under the
+ * Preview Agent page's `agentConfig`:
+ *   - `greeting`   — the workflow's own `openingMessage`
+ *   - `steps`      — its own `playbookSteps`
+ *
+ * ⚠️ **`rules` AND `questions` ARE DELIBERATELY NOT HERE.** They already have a home: the
+ * prospect's `brandConversationRules` and `smsPlaybook.qualifyingQuestions`, edited on the
+ * Preview Agent page and reaching a custom-playbook workflow through `overrides`. Registering
+ * them here too would give one field two homes, and the first edit to either would strand the
+ * other — the duplicated-field failure behind all three of the 8/27 voice bugs.
+ */
+export interface SmsWorkflowAgent {
+  greeting?: string;
+  steps?: string[];
+}
+
+/**
+ * The `agent` half to register beside an SMS extra workflow's diagram.
+ *
+ * ⚠️ **OMITS AN ABSENT FIELD RATHER THAN WRITING `undefined`**, the same contract
+ * `agentConfigOf` follows on the voice side: `editGuard` treats `undefined -> value` as a type
+ * flip unless the path is creatable, and the model is told a field exists when it does not.
+ */
+export function smsWorkflowAgentOf(wf: ExtraWorkflow): SmsWorkflowAgent {
+  return {
+    ...(wf.openingMessage ? { greeting: wf.openingMessage } : {}),
+    ...(wf.playbookSteps?.length ? { steps: wf.playbookSteps } : {}),
+  };
 }
 
 function aOrAn(word: string): string {
@@ -134,7 +198,18 @@ function editedSlices(profile: Profile, ac: AgentConfig): SmsBrain["overrides"] 
   return out.questions || out.rules ? out : undefined;
 }
 
-export function buildSmsBrain(profile: Profile, ac: AgentConfig, wf?: ExtraWorkflow): SmsBrain {
+/**
+ * @param wfAgent The EFFECTIVE `agent` half from the workflow page's own scope, when the
+ *   caller can obtain it. Absent for the built-in SMS agent (there is no such page) and
+ *   absent when nobody has edited the workflow, in which case every value below falls back
+ *   to the authored data and the brain is byte-identical to before this parameter existed.
+ */
+export function buildSmsBrain(
+  profile: Profile,
+  ac: AgentConfig,
+  wf?: ExtraWorkflow,
+  wfAgent?: SmsWorkflowAgent | null,
+): SmsBrain {
   return {
     customSystem: wf?.systemPrompt,
     /* Precedence: an extra workflow's scripted line wins (it is the whole point of
@@ -155,7 +230,14 @@ export function buildSmsBrain(profile: Profile, ac: AgentConfig, wf?: ExtraWorkf
 
        Unedited, this is byte-identical to the old behaviour: no stored greeting, so the
        workflow's own opener is still what the agent says. */
+    /* ⚠️ `wfAgent.greeting` SITS WHERE `wf.openingMessage` DID, not ahead of the stored
+       greeting. Its BASE *is* `wf.openingMessage` (see `smsWorkflowAgentOf`), so an unedited
+       workflow resolves to exactly the same string as before; when the workflow page's Ask AI
+       or its Details tab rewrites the opener, this is the line the phone actually sends.
+       Putting it first would have re-created the very precedence bug fixed on 9/3: a
+       workflow-side value outranking a greeting a human explicitly set. */
     openingMessage: ac?.smsPlaybook?.greeting?.trim()
+      || wfAgent?.greeting?.trim()
       || wf?.openingMessage
       || defaultGreeting(profile.customerName, ac?.smsPlaybook),
     agentLabel: wf?.label,
@@ -169,6 +251,12 @@ export function buildSmsBrain(profile: Profile, ac: AgentConfig, wf?: ExtraWorkf
        reach the prompt through `rules` and `playbook`, and sending them twice would have the
        agent read one list as an override of itself. */
     overrides: wf?.systemPrompt ? editedSlices(profile, ac) : undefined,
+    /* The edited flow when the page has one, the authored flow otherwise, and absent when the
+       workflow states its flow in prose instead. Rendered by `engine/chat.ts`. */
+    ...(() => {
+      const steps = wfAgent?.steps ?? wf?.playbookSteps;
+      return steps?.length ? { steps: steps.map(String) } : {};
+    })(),
   };
 }
 

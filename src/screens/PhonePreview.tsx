@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
-import { buildSmsBrain, resolveGreeting } from "../data/smsBrain";
+import { useAiAssistant } from "../data/AiAssistantContext";
+import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, type SmsWorkflowAgent } from "../data/smsBrain";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 
@@ -125,7 +126,8 @@ function BatteryIcon() {
    changes what the phone asks on the next message rather than being a note in a
    drawer. `title` gives the drawer a real scope label (agentConfig has none). */
 function useBrain(wfSlug?: string | null) {
-  const { profile } = useProfile();
+  const { profile, profileId } = useProfile();
+  const { effectiveData } = useAiAssistant();
   const base = useMemo(() => ({
     title: `Preview Agent — what the ${profile.customerName} SMS agent asks`,
     ...(profile.reports.agentConfig ?? {}),
@@ -136,19 +138,46 @@ function useBrain(wfSlug?: string | null) {
   const wf = wfSlug
     ? (profile.reports.extraWorkflows ?? []).find((w) => w.slug === wfSlug)
     : undefined;
+  /* ⚠️⚠️ **THE WORKFLOW PAGE'S OWN `agent` HALF, READ BACK ACROSS A TAB BOUNDARY (9/8/2026).**
+     Ask AI on an SMS extra workflow page now configures that workflow's opener and its ordered
+     flow (see `smsWorkflowAgentOf`), and Preview Agent opens in a SEPARATE TAB. Without this
+     read the edit would live in a scope nothing here consults, and the phone would keep
+     greeting with the authored line while the drawer reported success — the same cross-surface
+     no-op fixed on 9/3, one page over.
+
+     ⚠️ **`effectiveData` REGISTERS NOTHING**, so this cannot repoint this page's own scope (its
+     sparkle still edits the agent's questions). Overrides are persisted to localStorage, which
+     is what makes a value written in the other tab visible here at all; an UNEDITED workflow
+     has no such key, `effectiveData` returns undefined, and `buildSmsBrain` falls back to the
+     authored `openingMessage` and `playbookSteps` exactly as before. */
+  const wfAgent = wf
+    ? ((effectiveData(`${profileId}::${smsWorkflowScopePath(wf.slug)}`) as
+        { agent?: SmsWorkflowAgent } | undefined)?.agent ?? null)
+    : null;
   /* ⚠️ TELL THE DRAWER WHAT THIS AGENT ACTUALLY OPENS WITH. Without it the drawer falls back
      to a DERIVED default and shows an opening message this workflow never sends — which is
      what let Ask AI report a change to a line nobody would hear. Passed as scope metadata
      rather than folded into `base`, because the agent scope key is shared by every Preview
-     Agent regardless of `?wf=` and seeding it would leak this opener into the others. */
-  const ac = usePageData(base, { questionPath: QUESTIONS_PATH, greetingFallback: wf?.openingMessage });
+     Agent regardless of `?wf=` and seeding it would leak this opener into the others.
+
+     ⚠️⚠️ **IT IS THE EFFECTIVE OPENER, NOT THE AUTHORED ONE, AND THE FIRST BUILD OF THIS GOT
+     IT WRONG (9/8/2026).** Caught in the browser, not by a type: with the opener edited on the
+     workflow page, the phone's first bubble read "Hi Michael, Orlando Health here…" while this
+     drawer's OPENING MESSAGE row still showed "Hi Michael, this is Orlando Health…" — the
+     drawer displaying a line the agent does not send, which is defect 3 of the 9/3 report
+     reappearing through a new door. `wfAgent.greeting` is what `buildSmsBrain` resolves, so it
+     is what the row has to show. */
+  const ac = usePageData(base, {
+    questionPath: QUESTIONS_PATH,
+    greetingFallback: wfAgent?.greeting ?? wf?.openingMessage,
+  });
   /* Shape comes from data/smsBrain.ts, shared with the SMS workflow page's
      "Preview Workflow" chat drawer. Both are previews of ONE agent, so they must
      ask the same questions in the same order; two local copies of this object
      would drift on the first edit. What differs is only HOW each screen obtains
      the config — this one registers an AI scope (it is the page whose drawer edits
      the questions), the workflow drawer must not. See smsBrain.ts. */
-  return buildSmsBrain(profile, ac, wf);
+  return buildSmsBrain(profile, ac, wf, wfAgent);
 }
 
 /* mode "modal" = the in-app overlay (legacy); mode "page" = a standalone browser

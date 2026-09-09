@@ -1699,6 +1699,171 @@ the built-in SMS tree (Consumer Name / Rolex, 2 chips, unaffected, still one lin
 tree (unaffected, wrap was already there). `audit:ai` and `audit:voice` (62) both green; `tsc`
 clean.
 
+### Orlando Health's five ER messaging workflows, and Ask AI reaching an SMS agent (9/8/2026)
+Asked for with a doc attached: *"Create a new workflow for each of the scenarios just for Orlando
+Health, make sure the Tree matches, similar to the logic in the voice ai trees. and make sure
+preview agent and preview workflow does what the scenarios says. Also make sure the Ask AI
+performs the same way the Voice AI workflow does."* Source: **"Orlando Health - AI Messaging
+Scenarios for Demo Video"**, the sign-off doc for the video, five scenarios with transcripts.
+
+**Five `reports.extraWorkflows` entries on the BUNDLED profile** (`src/data/generated/orlando-health.json`,
+which is in git), so they travel with the demo and reach the live site through a push rather than
+a PATCH. That is the opposite of the Avi & Co case: those live in `.data/demos`, which is
+git-ignored, because Avi & Co is a library demo. **Check which store a prospect is in before
+authoring anything.**
+
+| slug | scenario | trigger | use cases |
+|---|---|---|---|
+| `sms-er-still-waiting` | 1, still waiting at ORMC | wait over threshold | 3 sales + 1 support |
+| `sms-er-lwbs-pcp` | 2, left without being seen, refer to primary care | LWBS in Epic | 2 + 1 |
+| `sms-er-lwbs-care-now` | 3, still needs care now | LWBS in Epic | 2 + 1 |
+| `sms-er-warm-handoff` | 4, context travels to the call center | asks for a person | 1 + 2 |
+| `sms-er-new-vs-existing` | 5, new versus established patient | LWBS, Epic record checked | 3 + 1 |
+
+Every `openingMessage` is the doc's own outbound text VERBATIM, minus the "Orlando Health:"
+sender label the doc uses to mark who is speaking. Scenario 5 keeps `{name}` as a token
+(`resolveGreeting` resolves it off the voice screenpop's caller, so it renders "Hi Michael…").
+The doc's five ground rules are in every `systemPrompt`, not spot-checked on one, and
+`audit:ai` asserts each of the seven on all five.
+
+#### `ExtraWorkflow.playbookSteps` — the ordered flow, as a LIST
+⚠️⚠️ **THE WHOLE REASON IT IS A LIST AND NOT MORE PROSE.** `systemPrompt` is one blob: a model
+asked to "confirm the facility first" has to rewrite the whole thing, and `editGuard` sees one
+giant string diff rather than a list whose length is its content. The voice page settled this
+shape already, `agent.informSteps` is a `string[]` and is why "drop the step that asks for a
+name" works there. Rendered by a new `stepsBlock()` in `engine/chat.ts`, **numbered, with "do
+not skip, do not reorder"** copied from step 2 of the main flow: a bulleted list of steps reads
+to the model as a MENU, which is the exact mistake this file records against the Preview Agent's
+questions.
+⚠️ **NEVER AUTHOR BOTH.** Put a workflow's flow in `playbookSteps` OR in the prose, not both, or
+the prompt carries two orderings of one flow and the model picks one. Avi & Co and Reyes Law
+carry theirs in prose and set no `playbookSteps`, so nothing is appended and their prompts are
+byte-identical, which `audit:ai` pins.
+⚠️ **IT IS SKIPPED BY THE DASH SWEEP**, and it needed its OWN constant to be. `systemPrompt`
+earned that exemption on 9/2 because it is instructions to the model and never shown to a
+prospect, and this is the same thing; but the object walk skips a `SKIP_KEY` **only when the
+value is a string**, so an array keyed `playbookSteps` was recursed into and swept step by step.
+`SKIP_LIST_KEY` + `isSkipped()` handle the list form. Kept separate rather than widening the
+guard to arrays, because `path` and `range` are also in `SKIP_KEY` and could hold an array
+somewhere.
+
+#### Ask AI on an SMS workflow now configures the agent, exactly as the voice page does
+⚠️⚠️ **BEFORE THIS, AN SMS EXTRA WORKFLOW REGISTERED ONLY ITS DIAGRAM.** So "open with X" or
+"confirm the facility before offering anything" had nowhere to land: the model wrote the edit,
+`applyEdits` found no such path, and the drawer reported success. Sixth instance of the silent
+no-op in this file, and the same gap the voice page closed on 8/27.
+
+`AgentWorkflow` now merges `agent: smsWorkflowAgentOf(extra)` into the SAME registered object as
+the tree (never a second `usePageData`, which is last-write-wins and would repoint the page's
+sparkle off the diagram).
+
+| lives in | fields |
+|---|---|
+| the **tree** | intent subtitles, leaf titles, use-case titles, chips |
+| **`agent`** | `greeting` (the workflow's `openingMessage`), `steps` (its `playbookSteps`) |
+
+⚠️ **`rules` AND `questions` ARE DELIBERATELY NOT IN IT.** They already have a home, the
+prospect's `brandConversationRules` and `smsPlaybook.qualifyingQuestions`, edited on the Preview
+Agent page and reaching a custom-playbook workflow through `overrides`. A second home for one
+field is the duplicated-field failure behind all three of the 8/27 voice bugs.
+
+⚠️ **THE EDIT HAS TO CROSS A TAB BOUNDARY, and that is the part that could have been a no-op.**
+Preview Agent opens at `/agent-studio/agent/preview?wf=<slug>`, a different page, so it rebuilds
+the workflow page's key via `smsWorkflowScopePath(slug)` and reads it with `effectiveData`
+(registers nothing). Overrides are persisted to localStorage, which is what makes a value
+written in the other tab visible at all. ONE definition of that path string, because the page
+writes it and another page reads it, and two copies is how one of them ends up reading a key
+nobody writes. `WorkflowChatPreview` gets the same half handed down as a `wfAgent` prop, since
+it is on the page and may not register a scope.
+
+⚠️ **PRECEDENCE IS `smsPlaybook.greeting` -> `wfAgent.greeting` -> `wf.openingMessage`.** The
+middle one's BASE is the authored opener, so an unedited workflow resolves to the same string as
+before. Putting `wfAgent` first would have re-created the 9/3 bug: a workflow-side value
+outranking a greeting a human explicitly set.
+
+#### Three things found by looking, not by a test
+1. ⚠️⚠️ **THE DRAWER SHOWED A LINE THE AGENT NO LONGER SENDS — defect 3 of the 9/3 report, back
+   through a new door.** With the opener edited on the workflow page, the phone's first bubble
+   read "Hi Michael, Orlando Health here…" while the drawer's OPENING MESSAGE row still showed
+   "Hi Michael, this is Orlando Health…". `greetingFallback` was `wf?.openingMessage`, the RAW
+   value, and it is now `wfAgent?.greeting ?? wf?.openingMessage`. The 9/3 check had to be
+   WIDENED (it required `greetingFallback:` immediately followed by `wf?.openingMessage`) and
+   the strict half moved to its own assertion.
+2. ⚠️ **THE AGENT MINTED A PHONE NUMBER.** Asked to refer a patient, it produced "Call Orlando
+   Health scheduling at 321-841-5111" — plausible, unverifiable, and headed for a demo video.
+   The doc writes "Call [number]" and leaves it to us. Ground rule 8 now pins **407-303-5910**,
+   which is Orlando Health's own callback number ELSEWHERE IN THIS DEMO (a call transcript in
+   `conversationIntelligence`), so it is derived rather than invented, and forbids inventing a
+   number, address, provider or facility.
+3. ⚠️ **THE DECORATIVE MINIMAP SAT ON THE LAST NODE OF A FOUR-COLUMN SMS TREE.** Measured at
+   1440x1000: `sms-er-new-vs-existing`'s "Clinical or Emotional Reply" and its action text were
+   both under the minimap's box, while a 3-use-case tree cleared it. **So it has been true since
+   9/2 for Avi & Co's `sms-new` and Reyes Law's `sms-nurture`, both four-branch.** `app.css`
+   already hides this element on the voice canvas with the note "Voice tree is taller, so it
+   doesn't overlap the leaves", so `.wf-canvas-tall` does the same for an SMS tree that has a
+   USE-CASE row. **The condition is the fourth row, not a column count** — keying off a
+   threshold would put hardcoded geometry back into the component that exists to compute it. The
+   built-in SMS tree, the Comfort Keepers override and a created workflow all have leaves with
+   no `paths`, so none of them changes.
+
+#### `extraTree` and the three leaf actions MOVED to `workflowChrome.ts`
+⚠️ **BECAUSE THE AUDIT COULD ONLY GREP THEM.** `AgentWorkflow.tsx` imports `useProfile`, which
+reaches `profiles.ts` and its Vite-only `import.meta.glob`, so node cannot import that screen —
+which is why the extra-workflow checks matched `title: INTENT_SALES` and counted `locked: true`
+occurrences. Exactly the reason `INTENT_SALES` and friends moved on 8/27, and that file's own
+header records why it matters: "a grep passed against `if (false && CHROME_KEYS.has(path))`."
+Nothing about the values or the logic changed; the one edit is the signature, which took
+`ReturnType<typeof useProfile>[...]` to reach a type the schema exports directly. All eight of
+those checks now BUILD a tree and read it, and the lock checks run against the tree they just
+built rather than a hand-written copy.
+
+**`npm run audit:ai` went from 76 checks to 123**, and every new one was broken on purpose and seen to fire.
+Two of them did not fire on the first try, both probe faults, both already in this file's
+catalogue:
+- ⚠️ **A CHECK THAT PASSED AGAINST DEAD CODE.** The Ask AI hint check located the SMS body by
+  searching for `d?.variant === "sms"` and then read the copy inside it, so disabling the branch
+  as `if (false && d?.variant === "sms")` left the search string in place and the check passed.
+  It now asserts the guard line verbatim.
+- ⚠️ **A CHECK THAT MATCHED ITS OWN DOCUMENTATION.** `!/usePageData/.test(chat)` failed on
+  correct code because `WorkflowChatPreview`'s header says "It must NEVER call `usePageData`".
+  Comments are stripped first, which is the fix `audit:place` already carries.
+- ⚠️ And one assertion was simply wrong about the codebase: it claimed a chart's `series` length
+  was still blocked, but `/\bseries$/i` has been a length exemption since the standing AI-button
+  rules. The thing to prove is that the exemption is SCOPED, so it now asserts a BARE `steps`
+  array is still refused while `agent.steps` is not.
+
+**Verified live, end to end, reading request bodies rather than trusting the drawer:**
+- The Agent Studio table lists all five with their own Triggered By prose; the sub-nav lists them
+  under the built-in pair.
+- Each tree draws the locked chrome (`Sales Inquiry` / `Need Support`, `All Sales Inquiry Users` /
+  `Qualify`, `All Support Users` / `Support & Escalate`) with its use cases and chips below, and
+  `isLockedEdit` refuses all four boxes on every one of the five.
+- Preview Workflow and Preview Agent both send `steps` and the workflow's playbook. Scenario 1
+  answered "what else is close" by naming Randal Park, about 15 miles, with the wait-times link
+  and no wait-time number. Scenario 2 answered the doc's own line almost verbatim: "I can't
+  advise on symptoms, but I can get you in with someone who can", then asked about a primary
+  care doctor, then referred with 407-303-5910 and the context attached. Scenario 3 flagged the
+  registration for Randal Park. Scenario 4 replied "I'll connect you with our team now. It will
+  be one moment." and asked nothing further. Scenario 5 handed to scheduling for Dr. Reyes
+  without offering a time.
+- One Ask AI instruction ("open with …, add a step that confirms which facility they checked
+  into, rename Wants Care Sooner to Needs Care Tonight") produced edits to **both halves**: the
+  greeting, `steps` grown from 6 to 7 with the new step at position 3, and the path title. The
+  tree redrew, the chat's next request body carried 7 steps and the new opener, and the agent's
+  reply confirmed the facility first. The **separate** Preview Agent tab opened with the edited
+  line, proving the cross-tab read.
+- Untouched and checked: the built-in `Orlando Health - SMS` page (6 nodes, minimap still drawn,
+  Ask AI still offers "Change Orlando Health's workflow") and `Orlando Health - Voice` (12 nodes,
+  "Build Orlando Health's voice agent"). `audit:voice` 107, `audit:place`, `audit:phases` green,
+  typecheck clean. `audit:seeds` fails orlando-health on the same 14 of 34 checks as before the
+  change, verified by stashing.
+- ⚠️ Pre-existing and NOT from this work, confirmed by stashing everything and reloading: a
+  console `useProfile must be used within ProfileProvider` on the workflow pages, and repeated
+  400s from `/api/livekit-token` (the documented probe against a server with no LiveKit creds).
+- ⚠️ Also noticed: **`.wf-canvas-wide` in `app.css` is dead** — declared for "a four-branch
+  nurture tree loses a whole node off the right edge" and applied nowhere. Left alone rather
+  than removed, since the horizontal-scroll behaviour it describes may still be wanted.
+
 ### A second SMS workflow for Avi & Co: "Avi & Co - New" (9/2/2026)
 Asked for directly: *"add one more Avi & Co - SMS workflow called 'Avi & Co - New'"*. Built as a
 **speed-to-lead** agent (chosen from four options offered, since a name gives no purpose): the

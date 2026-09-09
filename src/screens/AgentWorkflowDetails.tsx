@@ -173,20 +173,27 @@ export function AgentWorkflowDetails({ scopeKey, isSms, agent, triggeredBy }: Pr
       )}
 
       {/* ⚠️⚠️ **ONLY WHERE THERE IS AN AGENT TO WRITE TO, and the first build got this wrong
-          in a visible way.** On an SMS workflow the page registers no `agent` half, so this
-          rendered as a DISABLED, EMPTY input with no explanation — a dead control, which this
-          repo holds to be worse than an absent one. Two further reasons not to fake it there:
-          the screenshot this tab was built from is of a VOICE workflow, so an SMS Details tab's
-          real contents are unverified; and the SMS agent's opener is `smsPlaybook.greeting` in
-          the Preview Agent scope, so writing `agent.greeting` from here would edit a different
-          agent from the one the page is about. */}
+          in a visible way.** A workflow page with no `agent` half rendered this as a DISABLED,
+          EMPTY input with no explanation — a dead control, which this repo holds to be worse
+          than an absent one.
+
+          ⚠️ **AN SMS EXTRA WORKFLOW NOW HAS ONE, and the note here used to argue it never
+          could (9/8/2026).** It read: "the SMS agent's opener is `smsPlaybook.greeting` in the
+          Preview Agent scope, so writing `agent.greeting` from here would edit a different
+          agent from the one the page is about." True of the BUILT-IN SMS agent, which is the
+          prospect's and is shared; false of an extra workflow, whose opener is its own
+          `openingMessage` and belongs to this page. `smsWorkflowAgentOf` registers it and
+          `buildSmsBrain` reads it back, so the line typed here is the one both previews send.
+          The built-in SMS page still registers no agent half and still shows nothing. */}
       {agent && (
       <section className="wfd-sec">
         <h3 className="wfd-h">Custom Greeting</h3>
         <input
           className="wfd-input"
           defaultValue={agent?.greeting ?? ""}
-          placeholder="Hi, thanks for calling ..."
+          /* The channel's own wording. A text agent does not thank anyone for calling, and
+             `{name}` is the token `resolveGreeting` substitutes, so the hint teaches it. */
+          placeholder={isSms ? "Hi {name}, this is ..." : "Hi, thanks for calling ..."}
           disabled={readOnly || !agent}
           /* ⚠️ ON BLUR, NOT ON CHANGE. `applyEdits` pushes an undo step per call, so writing
              per keystroke would bury the page's undo stack under one entry per letter. */
@@ -196,7 +203,9 @@ export function AgentWorkflowDetails({ scopeKey, isSms, agent, triggeredBy }: Pr
           }}
         />
         <div className="wfd-help">
-          What should the agent say at the start of the call? Leave blank to use the default greeting.
+          {isSms
+            ? "What should the agent's first message say? Leave blank to use the default greeting."
+            : "What should the agent say at the start of the call? Leave blank to use the default greeting."}
         </div>
       </section>
       )}

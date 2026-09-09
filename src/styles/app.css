@@ -1127,6 +1127,13 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-voice .wf-leaf-orange .wf-leaf-action { color: #b33b00; }        /* Support & Escalate — Invoca warning orange */
 /* Voice tree is taller — hide the decorative minimap so it doesn't overlap the leaves. */
 .wf-canvas-voice .wf-minimap { display: none; }
+/* SAME REASON, SAME FIX, ON THE SMS CANVAS (9/8/2026). An SMS workflow that carries a
+   USE-CASE row is as tall as the voice tree, and at four columns its last node lands under
+   this box: measured on Orlando Health's `sms-er-new-vs-existing`, where "Clinical or
+   Emotional Reply" and its action text were both covered, while a 3-use-case tree cleared it.
+   True since 9/2 for Avi & Co's and Reyes Law's four-branch extras too. The class is set only
+   when a leaf actually has paths, so the built-in two-row SMS tree still draws it. */
+.wf-canvas-tall .wf-minimap { display: none; }
 /* The canvas clips (overflow:hidden) and is often narrower than the 760px tree.
    With the built-in two-branch trees the clipped part is empty margin, so it
    never mattered; a four-branch nurture tree loses a whole node off the right

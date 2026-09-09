@@ -29,6 +29,23 @@ import path from "node:path";
    it is copy and the rule applies. */
 const SKIP_KEY = /^(id|slug|url|href|domain|brandDomain|websiteUrl|dateRange|range|path|icon|label|systemPrompt)$/i;
 
+/* ⚠️ THE SAME EXEMPTION, FOR A KEY WHOSE VALUE IS AN ARRAY OF STRINGS (9/8/2026).
+   `playbookSteps` is an extra workflow's ordered flow: instructions to the model, never shown
+   to a patient, so it earns `systemPrompt`'s exemption for exactly the reason quoted above.
+   The list form is why it needs its own constant at all: the object walk skips a SKIP_KEY only
+   when the value is a `string`, so an array keyed `playbookSteps` would be recursed into and
+   each step swept as prose.
+   ⚠️ KEPT SEPARATE RATHER THAN WIDENING THE GUARD TO ARRAYS, deliberately. `path` and `range`
+   are also in SKIP_KEY and could hold an array somewhere in a profile; widening the guard
+   would silently change how those are treated, to buy one new field its exemption. */
+const SKIP_LIST_KEY = /^(playbookSteps)$/;
+
+/** True when this key's value is exempt from the prose rules — see both constants above. */
+function isSkipped(key: string, value: unknown): boolean {
+  if (SKIP_KEY.test(key) && typeof value === "string") return true;
+  return SKIP_LIST_KEY.test(key) && Array.isArray(value) && value.every((v) => typeof v === "string");
+}
+
 const looksStructural = (s: string) =>
   /^https?:\/\//.test(s) ||
   /^[\w.-]+\.(com|net|org|io|gov|edu)/i.test(s) ||
@@ -68,7 +85,7 @@ export function sweepValue(node: unknown, count: { n: number }): unknown {
   if (node && typeof node === "object") {
     const out: Record<string, unknown> = {};
     for (const [k, v] of Object.entries(node)) {
-      out[k] = SKIP_KEY.test(k) && typeof v === "string" ? v : sweepValue(v, count);
+      out[k] = isSkipped(k, v) ? v : sweepValue(v, count);
     }
     return out;
   }

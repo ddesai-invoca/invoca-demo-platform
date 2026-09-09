@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useAgentWorkflows } from "../data/agentWorkflows";
-import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, ZERO_TRIGGER, emptyWorkflowTree } from "../data/workflowChrome";
+import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, ZERO_TRIGGER, emptyWorkflowTree,
+  extraTree, LEAF_QUALIFY, LEAF_ESCALATE, LEAF_INFORM } from "../data/workflowChrome";
 import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
@@ -18,6 +19,7 @@ import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
 import { voiceCopy } from "../data/voiceCopy";
 import type { VoiceUseCase } from "../data/voiceUseCases";
 import { isProspect } from "../data/prospect";
+import { smsWorkflowAgentOf } from "../data/smsBrain";
 
 /* Agent Studio → a workflow's Definition (flow diagram). Opened from a workflow
    in the left sub-nav. Template flow (Conversation Start → classify intent →
@@ -78,11 +80,12 @@ function useCaseNodes(cases: VoiceUseCase[], tone: "green" | "orange"): TreePath
    prospect's real queues and carry caller-intent subtitles, because those were measured off
    Invoca's own Voice workflow page. Lock those too only against evidence from that screen. */
 
-/* The two leaf ACTIONS the product defaults to. Not the prospect's queue: "Route to <queue>"
-   was ours, and the real page shows one of a fixed set of agent behaviours here. */
-const LEAF_QUALIFY = "Qualify";
-const LEAF_ESCALATE = "Support & Escalate";
-const LEAF_INFORM = "Inform & Route";
+/* ⚠️ THE THREE DEFAULT LEAF ACTIONS MOVED TO `workflowChrome.ts` (9/8/2026), ALONGSIDE
+   `extraTree`, FOR THE SAME REASON THE INTENT NAMES DID: this screen imports `useProfile`,
+   which reaches `profiles.ts` and its Vite-only `import.meta.glob`, so nothing here can be
+   imported by `npm run audit:ai` — which is why the extra-workflow checks were reduced to
+   GREPPING this file's source. They are the product's own action names, not this screen's.
+   Nothing about the values changed in the move. */
 
 /* `isProspect` moved to src/data/prospect.ts when the franchise AI dashboard needed the same
    test. ONE implementation, several callers — see the note at the top of that file. */
@@ -276,81 +279,6 @@ function deriveTree(
   };
 }
 
-/* An extra workflow (Reyes Law's SMS nurture, Avi & Co's speed-to-lead) carries its branches
-   as data; this maps them onto the same model so there is one renderer rather than two.
-   -----------------------------------------------------------------------------------------
-   ⚠️⚠️ **THE FOUR CHROME BOXES ARE LOCKED HERE TOO, AND THIS USED TO SKIP THEM (9/2/2026).**
-   Reported directly: *"just like the voice tree the 'Sales Inquiry, Need support, all sales
-   inquiry users and All support users' box are locked, those can't be change / edit. we can
-   only do branches below that."*
-
-   It used to draw each authored branch as its own TOP-LEVEL intent node with a `${title}
-   Users` leaf under it — so a new workflow rendered four intent nodes where the product always
-   shows exactly two, and neither those nodes nor their leaves were locked. This file's own SMS
-   note had recorded the opposite as a deliberate exception ("EXTRA agent workflows keep their
-   own authored branch names, because a nurture flow's node is not 'Sales Inquiry'"), and that
-   exception was wrong: the intents and the user groups are product chrome on EVERY SMS
-   workflow, and what a nurture or speed-to-lead flow actually contributes is the USE CASES on
-   the row beneath them — which is the same shape the voice tree settled on.
-
-   ⚠️ CONSEQUENCE, STATED: this restructures Reyes Law's nurture diagram too. Its branches now
-   sit under the two locked leaves rather than being intent nodes themselves. That is not
-   collateral damage from someone else's fix — it is the same product rule, and its old tree
-   was drawing chrome the product does not have.
-
-   ⚠️ `chromeLocked` IS DELIBERATELY NOT SET. The two flags cover different things: per-node
-   `locked` refuses the four titles the user named, `chromeLocked` additionally freezes
-   `triggeredBy` and `startLabel`. An authored extra workflow's trigger line is real
-   configuration ("New inbound lead, web form and missed call" is what fires it, and the Agent
-   Studio table renders that same field under its own "Triggered By" column), and `editGuard`'s
-   note already sanctions exactly this: "an authored extra workflow that wants its own trigger
-   line simply does not set it." */
-function extraTree(
-  wf: NonNullable<ReturnType<typeof useProfile>["profile"]["reports"]["extraWorkflows"]>[number],
-): WorkflowTreeModel {
-  /* A branch with no `intent` is a sales-side use case, which is what every authored one was
-     before the field existed. */
-  const asPath = (b: (typeof wf.branches)[number]): TreePath => ({
-    title: b.title,
-    action: b.action,
-    tone: b.tone,
-    chips: b.chips,
-  });
-  const sales = wf.branches.filter((b) => b.intent !== "support").map(asPath);
-  const support = wf.branches.filter((b) => b.intent === "support").map(asPath);
-
-  return {
-    variant: "sms",
-    triggeredBy: wf.triggeredBy ?? "1 Campaign",
-    startLabel: wf.startLabel,
-    branches: [
-      {
-        title: INTENT_SALES, icon: "cart", locked: true,
-        leaves: [{
-          title: `All ${INTENT_SALES} Users`,
-          action: LEAF_QUALIFY,
-          tone: "green",
-          locked: true,
-          ...(sales.length ? { paths: sales } : {}),
-        }],
-      },
-      {
-        title: INTENT_SUPPORT, icon: "headset", locked: true,
-        leaves: [{
-          title: SUPPORT_LEAF,
-          action: LEAF_ESCALATE,
-          tone: "orange",
-          locked: true,
-          /* A workflow with no support-side use case renders the leaf as a terminal, exactly
-             as Comfort Keepers' voice tree does. */
-          ...(support.length ? { paths: support } : {}),
-        }],
-      },
-    ],
-  };
-}
-
-
 /* ⚠️ **BOTH GLYPHS ARE EXTRACTED VERBATIM from the capture's own svg paths**, per the
    standing use-the-real-icons rule — not Material ligatures that merely look similar. Read
    off the rendered DOM at 20px with their computed fills: the check is MUI `check_circle` in
@@ -437,8 +365,24 @@ export function AgentWorkflow() {
        and an SE could not choose its voice or edit its opener. Only the two fields that
        workflow actually owns; the routing spec's ZIP gate and steps deliberately stay out,
        because the booking flow states its own location policy. */
+    /* ⚠️⚠️ **AN SMS EXTRA WORKFLOW REGISTERS AN AGENT HALF TOO NOW (9/8/2026), asked for
+       directly: "make sure the Ask AI performs the same way the Voice AI workflow does."**
+       Before this, `baseAgent` was null for every extra and only the booking branch below
+       added one, so on an SMS workflow page Ask AI could reshape the diagram and NOTHING
+       else: "open with X" or "confirm the facility before offering anything" had nowhere to
+       land, `applyEdits` found no such path, and the drawer reported success. That is the
+       silent no-op this file records five times, and it is the same gap the voice page closed
+       on 8/27.
+
+       ⚠️ **ONLY THE TWO FIELDS THE DIAGRAM CANNOT DRAW, and `smsWorkflowAgentOf` is the one
+       definition of which those are.** The workflow's opener and its ordered flow are
+       invisible on the tree and belong to THIS workflow; its rules and questions are the
+       prospect's shared agent config, already edited on the Preview Agent page, and giving
+       them a second home here is the duplicated-field trap that caused all three of the
+       8/27 voice bugs. */
     ...(baseAgent ? { agent: agentConfigOf(baseAgent) }
       : extra?.bookingLocations?.length ? { agent: { greeting: extra.openingMessage ?? "" } }
+      : extra && isSms ? { agent: smsWorkflowAgentOf(extra) }
       : {}),
   }), [created, extra, profile, isSms, channelLabel, workflowName, baseAgent]);
   /* This page's sparkle edits the DIAGRAM, and only the diagram. The SMS agent is a
@@ -542,6 +486,13 @@ export function AgentWorkflow() {
         <WorkflowChatPreview
           workflowName={workflowName}
           wfSlug={extra?.slug}
+          /* ⚠️ HANDED DOWN FROM THE EFFECTIVE TREE, not re-read from the raw workflow. This
+             drawer must never call `usePageData` (a second registration would repoint this
+             page's sparkle from the diagram to the agent), and the page has already resolved
+             the override — so passing it is both correct and cheaper than a second lookup.
+             Without it, an opener changed by Ask AI on this very page would leave the chat
+             still greeting with the authored line. */
+          wfAgent={(tree as { agent?: { greeting?: string; steps?: string[] } }).agent}
           minimal={!!created}
           onClose={() => setSmsPreview(false)}
         />
@@ -622,7 +573,26 @@ export function AgentWorkflow() {
         </div>
       </div>
 
-      <div className={"wf-canvas" + (isSms ? "" : " wf-canvas-voice")}>
+      {/* ⚠️⚠️ **THE DECORATIVE MINIMAP SITS ON THE LAST NODE OF A FOUR-COLUMN SMS TREE, and it
+          is the SAME defect the voice canvas already hides it for (9/8/2026).** Measured on
+          this page at 1440x1000: `sms-er-new-vs-existing` (4 use cases) puts "Clinical or
+          Emotional Reply" and its action text underneath the minimap's box, while a 3-use-case
+          tree clears it. So it has been true since 9/2 for Avi & Co's `sms-new` and Reyes Law's
+          `sms-nurture`, both of which carry four branches; these workflows are the third and
+          fourth to hit it.
+
+          ⚠️ **THE CONDITION IS THE FOURTH ROW, NOT A COLUMN COUNT.** `app.css` already hides
+          this element on the voice canvas with the note "Voice tree is taller, so it doesn't
+          overlap the leaves", and a use-case row is exactly what makes an SMS tree that tall.
+          Keying off a column threshold instead would put a hardcoded geometry number back into
+          the code this component exists to compute.
+
+          ⚠️ **NO OTHER DIAGRAM CHANGES, and that is the reason for the narrow test.** The
+          built-in SMS tree, the Comfort Keepers override and a created workflow all have
+          leaves with no `paths`, so none of them gets the class. */}
+      <div className={"wf-canvas" + (isSms
+        ? (tree.branches.some((b) => b.leaves.some((l) => l.paths?.length)) ? " wf-canvas-tall" : "")
+        : " wf-canvas-voice")}>
         {/* ⚠️ VOICE ONLY, and this was caught by looking. The captures are all of a VOICE
               workflow, and handing `onNode` to every tree made the SMS diagram clickable too —
               where its "Schedule <bookingTerm>" leaf has no captured action type and fell
